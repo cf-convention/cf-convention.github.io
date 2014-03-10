@@ -7,8 +7,8 @@ title: Governance
 ###Governance Documents
 * [Rules for making changes to the CF Conventions][rules]
   * Discussion about these rules can be found in the [CF mailing list archives][mail], in June and July, 2007. See messages with the subject line "proposed rules for changes to CF conventions".
-* Rules for correcting errors in the CF documents
-* CF Governance Document  [PDF, HTML]
+* [Rules for correcting errors in the CF documents][errors]
+* CF Governance Document  [[PDF][pdf], [HTML][html]]
  
 
 ###Conventions Committee and Standard Names Committee

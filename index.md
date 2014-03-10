@@ -33,8 +33,8 @@ Quick Links:
 [overview]: http://Climate-Forecast.github.io/documents/other/cf_overview_viewgraphs.pdf
 [article]: http://Climate-Forecast.github.io/documents/other/cf_overview_article.pdf
 [discussion]: http://Climate-Forecast.github.io/discussion.html
-[q1]: http://Climate-Forecast.github.io/documents/cf-conventions/latest-cf-conventions-document-1
-[q2]: http://Climate-Forecast.github.io/documents/cf-standard-names/
+[q1]: http://Climate-Forecast.github.io/latest.html
+[q2]: http://Climate-Forecast.github.io/standard-names.html
 [q3]: http://cf-pcmdi.llnl.gov/trac/query?status=new&status=assigned&status=reopened&status=closed&order=id&desc=1
 [q4]: http://www.met.reading.ac.uk/~david/cf_trac_summary.html
 [q5]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/

@@ -46,8 +46,8 @@ title: Governance
 
 The climate research community is indebted to the above for their magnanimous contributions in establishing and improving the CF Conventions.
 
-[rules]: http://Climate-Forecast.github.io/rules.md
-[errors]: http://Climate-Forecast.github.io/errors.md
+[rules]: http://Climate-Forecast.github.io/rules.html
+[errors]: http://Climate-Forecast.github.io/errors.html
 [mail]: http://www.cgd.ucar.edu/pipermail/cf-metadata
 [html]: http://Climate-Forecast.github.io/white-papers/cf2_whitepaper_final.html
 [pdf]: http://Climate-Forecast.github.io/white-papers/cf2_whitepaper_final.pdf

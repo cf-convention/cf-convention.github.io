@@ -24,7 +24,7 @@ Quick Links:
 * [CF Standard Name Table][q2]
 * [CF Metadata Trac][q3]
 * [CF Metadata Trac Ticket Summary][q4]
-* [cf-metadata Mailing List Archives][q5]
+* [CF Metadata Mailing List Archives][q5]
 * [CF Conformance Requirements & Recommendations][q6]
 * [CF Compliance Checker][q7]
 

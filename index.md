@@ -18,15 +18,15 @@ cf-metadata mailing list.
 For further explanation of each of these, take a look at the [Discussion page][discussion].
 
 
-Quick Links
+Quick Links:
 
-[CF Conventions Document][q1]
-[CF Standard Name Table][q2]
-[CF Metadata Trac][q3]
-[CF Metadata Trac Ticket Summary][q4]
-[cf-metadata Mailing List Archives][q5]
-[CF Conformance Requirements & Recommendations][q6]
-[CF Compliance Checker][q7]
+* [CF Conventions Document][q1]
+* [CF Standard Name Table][q2]
+* [CF Metadata Trac][q3]
+* [CF Metadata Trac Ticket Summary][q4]
+* [cf-metadata Mailing List Archives][q5]
+* [CF Conformance Requirements & Recommendations][q6]
+* [CF Compliance Checker][q7]
 
 [api]: http://www.unidata.ucar.edu/packages/netcdf/index.html
 [coards]: http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html

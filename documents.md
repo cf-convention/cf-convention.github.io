@@ -5,7 +5,6 @@ title: Documents
 
 #Documents
 
-CF Conventions | CF Standard Names | Other
--- | --- | ---
-a | b | c
-
+<table class="table">
+  <tr><td>CF Conventions </td><td> CF Standard Names </td><td> Other </td></tr>
+</table>

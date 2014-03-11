@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Discussion
+group: "navigation"
 ---
 
 #Discussion

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Governance
+group: "navigation"
 ---
 
 #CF Governance

@@ -50,5 +50,5 @@ The climate research community is indebted to the above for their magnanimous co
 [rules]: http://Climate-Forecast.github.io/rules.html
 [errors]: http://Climate-Forecast.github.io/errors.html
 [mail]: http://www.cgd.ucar.edu/pipermail/cf-metadata
-[html]: http://Climate-Forecast.github.io/documents/white-papers/cf2_whitepaper_final.html
-[pdf]: http://Climate-Forecast.github.io/documents/white-papers/cf2_whitepaper_final.pdf
+[html]: http://Climate-Forecast.github.io/cf2_whitepaper_final.html
+[pdf]: https://github.com/Climate-Forecast/cf-documents/blob/master/white-papers/cf2_whitepaper_final.pdf

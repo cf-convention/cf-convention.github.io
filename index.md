@@ -30,8 +30,8 @@ Quick Links:
 
 [api]: http://www.unidata.ucar.edu/packages/netcdf/index.html
 [coards]: http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html
-[overview]: http://Climate-Forecast.github.io/documents/other/cf_overview_viewgraphs.pdf
-[article]: http://Climate-Forecast.github.io/documents/other/cf_overview_article.pdf
+[overview]: https://github.com/Climate-Forecast/cf-documents/blob/master/other/cf_overview_viewgraphs.pdf
+[article]: https://github.com/Climate-Forecast/cf-documents/blob/master/other/cf_overview_article.pdf
 [discussion]: http://Climate-Forecast.github.io/discussion.html
 [q1]: http://Climate-Forecast.github.io/latest.html
 [q2]: http://Climate-Forecast.github.io/standard-names.html

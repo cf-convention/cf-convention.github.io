@@ -1,4 +1,4 @@
-Climate-Forecast.github.io
+cf-convention.github.io
 ==========================
 
 ###CF Metadata

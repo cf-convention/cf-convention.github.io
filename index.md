@@ -30,14 +30,14 @@ Quick Links:
 
 [api]: http://www.unidata.ucar.edu/packages/netcdf/index.html
 [coards]: http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html
-[overview]: https://github.com/Climate-Forecast/cf-documents/blob/master/other/cf_overview_viewgraphs.pdf
-[article]: https://github.com/Climate-Forecast/cf-documents/blob/master/other/cf_overview_article.pdf
-[discussion]: http://Climate-Forecast.github.io/discussion.html
-[q1]: http://Climate-Forecast.github.io/latest.html
-[q2]: http://Climate-Forecast.github.io/standard-names.html
+[overview]: https://github.com/cf-convention/cf-documents/blob/master/other/cf_overview_viewgraphs.pdf
+[article]: https://github.com/cf-convention/cf-documents/blob/master/other/cf_overview_article.pdf
+[discussion]: http://cf-convention.github.io/discussion.html
+[q1]: http://cf-convention.github.io/latest.html
+[q2]: http://cf-convention.github.io/standard-names.html
 [q3]: http://kitt.llnl.gov/trac/query?status=new&status=assigned&status=reopened&status=closed&order=id&desc=1
 [q4]: http://www.met.reading.ac.uk/~david/cf_trac_summary.html
 [q5]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
-[q6]: http://Climate-Forecast.github.io/requirements-and-recommendations.html
-[q7]: http://Climate-Forecast.github.io/compliance-checker.html
+[q6]: http://cf-convention.github.io/requirements-and-recommendations.html
+[q7]: http://cf-convention.github.io/compliance-checker.html
 

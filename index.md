@@ -18,7 +18,7 @@ cf-metadata mailing list.
 For further explanation of each of these, take a look at the [Discussion page][discussion].
 
 
-Quick Links:
+Quick Links :
 
 * [CF Conventions Document][q1]
 * [CF Standard Name Table][q2]

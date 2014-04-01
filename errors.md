@@ -17,4 +17,4 @@ title: Errors
 
 These rules were agreed under Trac [ticket #13][13].
 
-[13]: http://cf-pcmdi.llnl.gov/trac/ticket/13
+[13]: http://kitt.llnl.gov/trac/ticket/13

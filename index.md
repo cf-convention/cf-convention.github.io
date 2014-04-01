@@ -39,5 +39,5 @@ Quick Links:
 [q4]: http://www.met.reading.ac.uk/~david/cf_trac_summary.html
 [q5]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
 [q6]: http://cf-convention.github.io/requirements-and-recommendations.html
-[q7]: http://cf-convention.github.io/compliance-check.html
+[q7]: http://cf-convention.github.io/compliance-checker.html
 

@@ -17,6 +17,7 @@ group: "navigation"
 * Philip Cameron-Smith
 * John Caron
 * Nan Galbraith
+* John Graybeal
 * Jonathan Gregory
 * Steve Hankin
 * Bryan Lawrence (chair of Standard Names Committee)
@@ -47,8 +48,8 @@ group: "navigation"
 
 The climate research community is indebted to the above for their magnanimous contributions in establishing and improving the CF Conventions.
 
-[rules]: http://Climate-Forecast.github.io/rules.html
-[errors]: http://Climate-Forecast.github.io/errors.html
+[rules]: http://cf-convention.github.io/rules.html
+[errors]: http://cf-convention.github.io/errors.html
 [mail]: http://www.cgd.ucar.edu/pipermail/cf-metadata
-[html]: http://Climate-Forecast.github.io/cf2_whitepaper_final.html
-[pdf]: https://github.com/Climate-Forecast/cf-documents/blob/master/white-papers/cf2_whitepaper_final.pdf
+[html]: http://cf-convention.github.io/cf2_whitepaper_final.html
+[pdf]: https://github.com/cf-convention/cf-documents/blob/master/white-papers/cf2_whitepaper_final.pdf

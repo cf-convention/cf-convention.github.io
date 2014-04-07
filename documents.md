@@ -80,7 +80,7 @@ group: "navigation"
 </div>
   <div class="col-md-4">
     <h2>Others</h2>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p></p>
   </div>
 </div>
 

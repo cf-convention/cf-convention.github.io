@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFC Home Page
+title: CF Conventions Home Page
 ---
 
 #CF Metadata

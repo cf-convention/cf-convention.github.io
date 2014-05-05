@@ -75,7 +75,7 @@ group: "navigation"
       <a href="https://github.com/cf-convention/cf-documents/blob/master/cf-standard-names/cf-standard-name-table-23.xml">v23</a> &nbsp;
       <a href="https://github.com/cf-convention/cf-documents/blob/master/cf-standard-names/cf-standard-name-table-24.xml">v24</a> &nbsp;
       <a href="https://github.com/cf-convention/cf-documents/blob/master/cf-standard-names/cf-standard-name-table-25.xml">v25</a> 
-      <a href="standard-names-26-html.html">v26</a> 
+      <a href="standard-names-26.html">v26</a> 
   
     </p>  
 </div>

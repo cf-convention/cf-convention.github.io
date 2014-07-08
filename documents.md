@@ -46,9 +46,10 @@ group: "navigation"
   <div class="col-md-4">
     <h2>CF Standard Names</h2>
     <p>
-      <h4> Standard Name Table (v26, 09 November 2012</h4>
-      <a href="standard-names-26.html">HTML</a> &nbsp;
-      <a href="http://github.com/cf-convention/cf-documents/blob/master/cf-standard-names/cf-standard-name-table-26.xml">XML</a>
+      <h4> Standard Name Table (v27, 28 November 2013</h4>
+      <a href="http://github.com/cf-convention/cf-documents/blob/master/cf-standard-names/cf-standard-name-table-27.xml">XML</a>
+      <h5>Previous Versions (HTML)</h5>
+      <a href="standard-names-26.html">v26</a> &nbsp;
       <h5>Previous Versions (XML)</h5>
       <a href="https://github.com/cf-convention/cf-documents/blob/master/cf-standard-names/cf-standard-name-table.xml">v1</a> &nbsp;
       <a href="https://github.com/cf-convention/cf-documents/blob/master/cf-standard-names/cf-standard-name-table-2.xml">v2</a> &nbsp;

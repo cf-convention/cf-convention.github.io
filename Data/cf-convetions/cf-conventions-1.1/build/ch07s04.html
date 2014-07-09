@@ -1,0 +1,323 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>7.4. Climatological Statistics</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch07.html" title="Chapter 7.  Data Representative of Cells"><link rel="prev" href="ch07s03.html" title="7.3. Cell Methods"><link rel="next" href="ch08.html" title="Chapter 8.  Reduction of Dataset Size"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">7.4. Climatological Statistics</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s03.html">Prev</a> </td><th width="60%" align="center">Chapter 7. 
+		Data Representative of Cells
+	</th><td width="20%" align="right"> <a accesskey="n" href="ch08.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="climatological-statistics"></a>7.4. Climatological Statistics</h2></div></div></div><p>
+			Climatological statistics may be derived from
+			corresponding portions of the annual cycle
+			in a set of years, e.g., the average January
+			temperatures in the climatology of 1961-1990,
+			where the values are derived by averaging the 30
+			Januarys from the separate years. Portions of the
+			climatological cycle are specified by references
+			to dates within the calendar year. However,
+			a calendar year is not a well-defined unit of
+			time, because it differs between leap years and
+			other years, and among calendars. Nonetheless for
+			practical purposes we wish to compare statistics
+			for months or seasons from different calendars,
+			and to make climatologies from a mixture of leap
+			years and other years. Hence we provide special
+			conventions for indicating dates within the
+			climatological year. Climatological statistics
+			may also be derived from corresponding portions
+			of a range of days, for instance the average
+			temperature for each hour of the average day in
+			April 1997. In addition the two concepts may
+			be used at once, for instance to indicate not
+			April 1997, but the average April of the five
+			years 1995-1999.
+		</p><p>
+			Climatological variables have a climatological
+			time axis. Like an ordinary time axis, a
+			climatological time axis may have a dimension
+			of unity (for example, a variable containing the
+			January average temperatures for 1961-1990), but
+			often it will have several elements (for example,
+			a climatological time axis with a dimension of
+			12 for the climatological average temperatures in
+			each month for 1961-1990, a dimension of 3 for the
+			January mean temperatures for the three decades
+			1961-1970, 1971-1980, 1981-1990, or a dimension of
+			24 for the hours of an average day). Intervals of
+			climatological time are conceptually different
+			from ordinary time intervals; a given interval
+			of climatological time represents a set
+			of subintervals which are not necessarily
+			contiguous. To indicate this difference, a
+			climatological time coordinate variable does
+			not have a 
+			<code class="varname">bounds</code> 
+			attribute. Instead, it has a
+			<code class="varname">climatology</code>
+			attribute, which names a variable
+			with dimensions (n,2), n being the dimension of
+			the climatological time axis. Using the units and
+			calendar of the time coordinate variable, element
+			(i,0) of the climatology variable specifies the
+			beginning of the first subinterval and element
+			(i,1) the end of the last subinterval used to
+			evaluate the climatological statistics with index
+			i in the time dimension. The time coordinates
+			should be values that are representative
+			of the climatological time intervals, such
+			that an application which does not recognise
+			climatological time will nonetheless be able to
+			make a reasonable interpretation.
+		</p><p>
+			The COARDS standard offers limited support
+			for climatological time. For compatibility with
+			COARDS, time coordinates should also be recognised
+			as climatological if they have a 
+			<code class="varname">units</code>
+			attribute
+			of time-units relative to midnight on 1 January
+			in year 0 i.e. <code class="varname">since 0-1-1</code> in udunits syntax , and
+			provided they refer to the real-world calendar. We
+			do not recommend this convention because (a)
+			it does not provide any information about the
+			intervals used to compute the climatology, and
+			(b) there is no standard for how dates since year
+			1 will be encoded with units having a reference
+			time in year 0, since this year does not exist;
+			consequently there may be inconsistencies among
+			software packages in the interpretation of the
+			time coordinates. Year 0 may be a valid year in
+			non-real-world calendars, and therefore cannot be
+			used to signal climatological time in such cases.
+		</p><p>
+			A climatological axis may use different
+			statistical methods to represent variation among
+			years, within years and within days. For example,
+			the average January temperature in a climatology
+			is obtained by averaging both within years and
+			over years. This is different from the average
+			January-maximum temperature and the maximum
+			January-average temperature. For the former,
+			we first calculate the maximum temperature in
+			each January, then average these maxima; for the
+			latter, we first calculate the average temperature
+			in each January, then find the largest one. As
+			usual, the statistical operations are recorded
+			in the 
+			<code class="varname">cell_methods</code>
+			attribute, which may have
+			two or three entries for the climatological
+			time dimension.
+		</p><p>
+			Valid values of the 
+			<code class="varname">cell_methods</code> attribute must be
+			in one of the forms from the following list. The
+			intervals over which various statistical methods
+			are applied are determined by decomposing the date
+			and time specifications of the climatological time
+			bounds of a cell, as recorded in the variable
+			named by the 
+			<code class="varname">climatology</code>
+			attribute. (The date
+			and time specifications must be calculated from
+			the time coordinates expressed in units of "time
+			interval since reference date and time".) In the
+			descriptions that follow we use the abbreviations
+			<span class="emphasis"><em>y</em></span>,
+            <span class="emphasis"><em>m</em></span>,
+            <span class="emphasis"><em>d</em></span>,
+            <span class="emphasis"><em>H</em></span>,
+            <span class="emphasis"><em>M</em></span>,
+            and <span class="emphasis"><em>S</em></span> for year, month, day, hour,
+			minute, and second respectively. The suffix <span class="emphasis"><em>0</em></span>
+			indicates the earlier bound and <span class="emphasis"><em>1</em></span> the latter.
+			</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">time: method1 <code class="varname">within years</code>   time: method2 <code class="varname">over years</code></span></dt><dd><p>
+							<span class="emphasis"><em>method1</em></span> is applied to the time intervals 
+							(mdHMS0-mdHMS1) within individual years 
+							and
+							<span class="emphasis"><em>method2</em></span> is applied over the range of years (y0-y1). 
+						</p></dd><dt><span class="term">time: method1 <code class="varname">within days</code>   time: method2 <code class="varname">over days</code></span></dt><dd><p>
+							<span class="emphasis"><em>method1</em></span> is applied to the time intervals 
+							(HMS0-HMS1) within individual days 
+							and
+							<span class="emphasis"><em>method2</em></span> is applied over the days in
+							the interval (ymd0-ymd1). 
+						</p></dd><dt><span class="term">time: method1 <code class="varname">within days</code>   time: method2 <code class="varname">over days</code>   time: method3 <code class="varname">over years</code></span></dt><dd><p>
+							<span class="emphasis"><em>method1</em></span> is applied to the time intervals 
+							(HMS0-HMS1) within individual days 
+							and
+							<span class="emphasis"><em>method2</em></span> is applied over the days in
+							the interval (md0-md1), and <span class="emphasis"><em>method3</em></span> is applied over the range of years (y0-y1). 
+						</p></dd></dl></div><p>
+		</p><p>
+			The methods which can be specified are those
+			listed in <a class="xref" href="ape.html" title="Appendix E. Cell Methods">Appendix E, <i>Cell Methods</i></a> and each entry in the
+			<code class="varname">cell_methods</code>
+			attribute may also, as usual, contain
+			non-standardised information in parentheses after
+			the method. For instance, a mean over ENSO years
+			might be indicated by 
+			"<code class="computeroutput">time: mean over years (ENSO years)</code>".
+		</p><p>
+			When considering intervals within years, if the
+			earlier climatological time bound is later in the
+			year than the later climatological time bound, it
+			implies that the time intervals for the individual
+			years run from each year across January 1 into the
+			next year e.g. DJF intervals run from December 1
+			0:00 to March 1 0:00. Analogous situations arise
+			for daily intervals running across midnight from
+			one day to the next.
+		</p><p>
+			When considering intervals within days, if the
+			earlier time of day is equal to the later time
+			of day, then the method is applied to a full 24
+			hour day.
+		</p><p>
+			<span class="emphasis"><em>
+				We have tried to make the examples in
+				this section easier to understand by
+				translating all time coordinate values
+				to date and time formats. This is not
+				currently valid CDL syntax.
+			</em></span>
+		</p><p>
+			</p><div class="example"><a name="idm412834550928"></a><p class="title"><b>Example 7.6. Climatological seasons</b></p><div class="example-contents"><p>
+					This example shows the metadata
+					for the average seasonal-minimum
+					temperature for the four standard
+					climatological seasons MAM JJA
+					SON DJF, made from data for
+					March 1960 to February 1991.
+				</p><p>
+					</p><pre class="programlisting">
+dimensions:
+  time=4;
+  nv=2;
+variables:
+  float temperature(time,lat,lon);
+    temperature:long_name="surface air temperature";
+    temperature:cell_methods="time: minimum within years time: mean over years";
+    temperature:units="K";
+  double time(time);
+    time:climatology="climatology_bounds";
+    time:units="days since 1960-1-1";
+  double climatology_bounds(time,nv);
+data:  // time coordinates translated to date/time format
+  time="1960-4-16", "1960-7-16", "1960-10-16", "1961-1-16" ;
+  climatology_bounds="1960-3-1",  "1990-6-1",
+                     "1960-6-1",  "1990-9-1",
+                     "1960-9-1",  "1990-12-1",
+                     "1960-12-1", "1991-3-1" ;
+					</pre><p>
+				</p></div></div><p><br class="example-break">
+		</p><p>
+			</p><div class="example"><a name="idm412834548096"></a><p class="title"><b>Example 7.7. Decadal averages for January</b></p><div class="example-contents"><p>
+					Average January precipitation
+					totals are given for each of the
+					decades 1961-1970, 1971-1980,
+					1981-1990.
+				</p><p>
+					</p><pre class="programlisting">
+dimensions:
+  time=3;
+  nv=2;
+variables:
+  float precipitation(time,lat,lon);
+    precipitation:long_name="precipitation amount";
+    precipitation:cell_methods="time: sum within years time: mean over years";
+    precipitation:units="kg m-2";
+  double time(time);
+    time:climatology="climatology_bounds";
+    time:units="days since 1901-1-1";
+  double climatology_bounds(time,nv);
+data:  // time coordinates translated to date/time format
+  time="1965-1-15", "1975-1-15", "1985-1-15" ;
+  climatology_bounds="1961-1-1", "1970-2-1",
+                     "1971-1-1", "1980-2-1",
+                     "1981-1-1", "1990-2-1" ;
+
+					</pre><p>
+				</p></div></div><p><br class="example-break">
+		</p><p>
+			</p><div class="example"><a name="idm412834544768"></a><p class="title"><b>Example 7.8. Temperature for each hour of the average day</b></p><div class="example-contents"><p>
+					Hourly average temperatures are given for April 1997. 
+				</p><p>
+					</p><pre class="programlisting">
+dimensions:
+  time=24;
+  nv=2;
+variables:
+  float temperature(time,lat,lon);
+    temperature:long_name="surface air temperature";
+    temperature:cell_methods="time: mean within days time: mean over days";
+    temperature:units="K";
+  double time(time);
+    time:climatology="climatology_bounds";
+    time:units="hours since 1997-4-1";
+  double climatology_bounds(time,nv);
+data:  // time coordinates translated to date/time format
+  time="1997-4-1 0:30", "1997-4-1 1:30", ... "1997-4-1 23:30" ;
+  climatology_bounds="1997-4-1 0:00",  "1997-4-30 1:00",
+                     "1997-4-1 1:00",  "1997-4-30 2:00",
+                      ...
+                      "1997-4-1 23:00", "1997-5-1 0:00" ;
+
+					</pre><p>
+				</p></div></div><p><br class="example-break">
+		</p><p>
+			</p><div class="example"><a name="idm412834541392"></a><p class="title"><b>Example 7.9. Temperature for each hour of the typical climatological day</b></p><div class="example-contents"><p>
+					This is a modified version
+					of the previous example. It
+					now applies to April from a
+					1961-1990 climatology.
+				</p><p>
+					</p><pre class="programlisting">
+variables:
+  float temperature(time,lat,lon);
+    temperature:long_name="surface air temperature";
+    temperature:cell_methods="time: mean within days ",
+      "time: mean over days time: mean over years";
+    temperature:units="K";
+  double time(time);
+    time:climatology="climatology_bounds";
+    time:units="days since 1961-1-1";
+  double climatology_bounds(time,nv);
+data:  // time coordinates translated to date/time format
+  time="1961-4-1 0:30", "1961-4-1 1:30", ..., "1961-4-1 23:30" ;
+  climatology_bounds="1961-4-1 0:00", "1990-4-30 1:00",
+                     "1961-4-1 1:00", "1990-4-30 2:00",
+                     ...
+                     "1961-4-1 23:00", "1990-5-1 0:00" ;
+					</pre><p>
+				</p></div></div><p><br class="example-break">
+		</p><p>
+			</p><div class="example"><a name="idm412834537936"></a><p class="title"><b>Example 7.10. Monthly-maximum daily precipitation totals</b></p><div class="example-contents"><p>
+					Maximum of daily precipitation
+					amounts for each of the three
+					months June, July and August 2000
+					are given. The first daily total
+					applies to 6 a.m. on 1 June to
+					6 a.m. on 2 June, the 30th from
+					6 a.m. on 30 June to 6 a.m. on
+					1 July. The maximum of these 30
+					values is stored under time index
+					0 in the precipitation array.
+				</p><p>
+					</p><pre class="programlisting">
+dimensions:
+  time=3;
+  nv=2;
+variables:
+  float precipitation(time,lat,lon);
+    precipitation:long_name="Accumulated precipitation";
+    precipitation:cell_methods="time: sum within days time: maximum over days"; 
+    precipitation:units="kg";
+  double time(time);
+    time:climatology="climatology_bounds";
+    time:units="days since 2000-6-1";
+  double climatology_bounds(time,nv);
+data:  // time coordinates translated to date/time format
+  time="2000-6-16", "2000-7-16", "2000-8-16" ;
+  climatology_bounds="2000-6-1 6:00:00", "2000-7-1 6:00:00",
+                     "2000-7-1 6:00:00", "2000-8-1 6:00:00",
+                     "2000-8-1 6:00:00", "2000-9-1 6:00:00" ;
+					</pre><p>
+				</p></div></div><p><br class="example-break">
+		</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">7.3. Cell Methods </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 8. 
+		Reduction of Dataset Size
+	</td></tr></table></div></body></html>

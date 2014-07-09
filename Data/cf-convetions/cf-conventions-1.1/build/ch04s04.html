@@ -1,0 +1,118 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>4.4. Time Coordinate</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch04.html" title="Chapter 4.  Coordinate Types"><link rel="prev" href="ch04s03.html" title="4.3. Vertical (Height or Depth) Coordinate"><link rel="next" href="ch05.html" title="Chapter 5.  Coordinate Systems"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.4. Time Coordinate</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a> </td><th width="60%" align="center">Chapter 4. 
+    Coordinate Types
+  </th><td width="20%" align="right"> <a accesskey="n" href="ch05.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="time-coordinate"></a>4.4. Time Coordinate</h2></div></div></div><p>
+      Variables representing time must always explicitly include
+      the <code class="varname">units</code> attribute; there is no default value.
+      The <code class="varname">units</code> attribute takes a string value formatted
+      as per the recommendations in the Udunits package [<a href="bi01.html#udunits" class="biblioref" title="[UDUNITS]"><abbr class="abbrev">UDUNITS</abbr></a>].
+      The following excerpt from the Udunits documentation explains the time unit encoding by example:
+      </p><pre class="programlisting">
+	The specification:
+
+    seconds since 1992-10-8 15:15:42.5 -6:00
+
+indicates seconds since October 8th, 1992  at  3  hours,  15
+minutes  and  42.5 seconds in the afternoon in the time zone
+which is six hours to the west of Coordinated Universal Time
+(i.e.  Mountain Daylight Time).  The time zone specification
+can also be written without a colon using one or  two-digits
+(indicating hours) or three or four digits (indicating hours
+and minutes).
+      </pre><p>
+    </p><p>
+      The acceptable units for time are listed in the
+      <a class="ulink" href="http://www.unidata.ucar.edu/software/udunits/" target="_top"><code class="filename">udunits.dat</code></a> file.
+      The most commonly used of these strings (and their abbreviations)
+      includes <code class="varname">day (d)</code>, <code class="varname">hour (hr, h)</code>,
+      <code class="varname">minute (min)</code> and <code class="varname">second (sec, s)</code>.
+      Plural forms are also acceptable. The reference time string
+      (appearing after the identifier <code class="varname">since</code>) may
+      include date alone; date and time; or date, time, and time zone.
+      The reference time is required. A reference time in year 0 has a
+      special meaning (see <a class="xref" href="ch07s04.html" title="7.4. Climatological Statistics">Section 7.4, &#8220;Climatological Statistics&#8221;</a>).
+    </p><p>
+      <span class="emphasis"><em>Note: if the time zone is omitted the default is UTC, and if both time and time zone are omitted the default is 00:00:00 UTC.</em></span>
+    </p><p>
+      We recommend that the unit <code class="varname">year</code> be used with caution. The Udunits package defines a <code class="varname">year</code> to be exactly 365.242198781 days (the interval between 2 successive passages of the sun through vernal equinox). <span class="emphasis"><em>It is not a calendar year.</em></span> Udunits includes the following definitions for years: a <code class="varname">common_year</code> is 365 days, a <code class="varname">leap_year</code> is 366 days, a <code class="varname">Julian_year</code> is 365.25 days, and a <code class="varname">Gregorian_year</code> is 365.2425 days.
+    </p><p>
+      For similar reasons the unit <code class="varname">month</code>, which is defined in
+      <a class="ulink" href="http://www.unidata.ucar.edu/software/udunits/" target="_top"><code class="filename">udunits.dat</code></a>
+      to be exactly <code class="varname">year/12</code>, should also be used with caution.
+    </p><div class="example"><a name="idm412835090480"></a><p class="title"><b>Example 4.4. Time axis</b></p><div class="example-contents"><pre class="programlisting">
+double time(time) ;
+  time:long_name = "time" ;
+  time:units = "days since 1990-1-1 0:0:0" ;
+      </pre></div></div><br class="example-break"><p>
+      A time coordinate is identifiable from its units string alone. The Udunits routines <code class="varname">utScan()</code> and <code class="varname">utIsTime()</code> can be used to make this determination.
+    </p><p>
+      Optionally, the time coordinate may be indicated additionally by providing the <code class="varname">standard_name</code> attribute with an appropriate value, and/or the <code class="varname">axis</code> attribute with the value <code class="varname">T</code>.
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="calendar"></a>4.4.1. Calendar</h3></div></div></div><p>
+	In order to calculate a new date and time given a base date, base time and a time increment one must know what calendar to use. For this purpose we recommend that the calendar be specified by the attribute <code class="varname">calendar</code> which is assigned to the time coordinate variable. The values currently defined for <code class="varname">calendar</code> are:
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"> <code class="varname">gregorian</code> or <code class="varname">standard</code> </span></dt><dd><p>
+		Mixed Gregorian/Julian calendar as defined by Udunits. <span class="emphasis"><em>This is the default.</em></span>
+	      </p></dd><dt><span class="term"> <code class="varname">proleptic_gregorian</code> </span></dt><dd><p>
+		A Gregorian calendar extended to dates before 1582-10-15. That is, a year is a leap year if either (i) it is divisible by 4 but not by 100 or (ii) it is divisible by 400.
+	      </p></dd><dt><span class="term"> <code class="varname">noleap</code> or <code class="varname">365_day</code> </span></dt><dd><p>
+		Gregorian calendar without leap years, i.e., all years are 365 days long. 
+	      </p></dd><dt><span class="term"> <code class="varname">all_leap</code> or <code class="varname">366_day</code> </span></dt><dd><p>
+		Gregorian calendar with every year being a leap year, i.e., all years are 366 days long.
+	      </p></dd><dt><span class="term"> <code class="varname">360_day</code> </span></dt><dd><p>
+		All years are 360 days divided into 30 day months.
+	      </p></dd><dt><span class="term"> <code class="varname">julian</code> </span></dt><dd><p>
+		Julian calendar. 
+	      </p></dd><dt><span class="term"> <code class="varname">none</code> </span></dt><dd><p>
+		No calendar.
+	      </p></dd></dl></div><p>
+      </p><p>
+	The <code class="varname">calendar</code> attribute may be set to <code class="varname">none</code> in climate experiments that simulate a fixed time of year. The time of year is indicated by the date in the reference time of the <code class="varname">units</code> attribute. The time coordinate that might apply in a perpetual July experiment are given in the following example.
+      </p><div class="example"><a name="idm412835065296"></a><p class="title"><b>Example 4.5. Perpetual time axis</b></p><div class="example-contents"><pre class="programlisting">
+variables:
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1-7-15 0:0:0" ;
+    time:calendar = "none" ;
+data:
+  time = 0., 1., 2., ...;
+      </pre></div></div><br class="example-break"><p>
+	Here, all days simulate the conditions of 15th July, so it does not make sense to give them different dates. The time coordinates are interpreted as 0, 1, 2, etc. days since the start of the experiment.
+      </p><p>
+	If none of the calendars defined above applies (e.g., calendars appropriate to a different paleoclimate era), a non-standard calendar can be defined. The lengths of each month are explicitly defined with the <code class="varname">month_lengths</code> attribute of the time axis: 
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="varname">month_lengths</code></span></dt><dd><p>
+		A vector of size 12, specifying the number of days in the months from January to December (in a non-leap year).
+	      </p></dd></dl></div><p>
+      </p><p>
+	If leap years are included, then two other attributes of the time axis should also be defined:
+	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="varname">leap_year</code></span></dt><dd><p>
+		An example of a leap year. It is assumed that all years that differ from this year by a multiple of four are also leap years. If this attribute is absent, it is assumed there are no leap years.
+	      </p></dd><dt><span class="term"><code class="varname">leap_month</code></span></dt><dd><p>
+		A value in the range 1-12, specifying which month is lengthened by a day in leap years (1=January). If this attribute is not present, February (2) is assumed. This attribute is ignored if <code class="varname">leap_year</code> is not specified.
+	      </p></dd></dl></div><p>
+      </p><p>
+	The <code class="varname">calendar</code> attribute is not required when a non-standard calendar is being used. It is sufficient to define the calendar using the <code class="varname">month_lengths</code> attribute, along with <code class="varname">leap_year</code>, and <code class="varname">leap_month</code> as appropriate. However, the <code class="varname">calendar</code> attribute is allowed to take non-standard values and in that case defining the non-standard calendar using the appropriate attributes is required.
+      </p><div class="example"><a name="idm412835052032"></a><p class="title"><b>Example 4.6. Paleoclimate time axis</b></p><div class="example-contents"><pre class="programlisting">
+double time(time) ;
+  time:long_name = "time" ;
+  time:units = "days since 1-1-1 0:0:0" ;
+  time:calendar = "126 kyr B.P." ;
+  time:month_lengths = 34, 31, 32, 30, 29, 27, 28, 28, 28, 32, 32, 34 ;
+	</pre></div></div><br class="example-break"><p>
+	The mixed Gregorian/Julian calendar used by Udunits is explained in the following excerpt from the udunits(3) man page:
+	</p><pre class="programlisting">
+The udunits(3) package uses a mixed Gregorian/Julian  calen-
+dar  system.   Dates  prior to 1582-10-15 are assumed to use
+the Julian calendar, which was introduced by  Julius  Caesar
+in 46 BCE and is based on a year that is exactly 365.25 days
+long.  Dates on and after 1582-10-15 are assumed to use  the
+Gregorian calendar, which was introduced on that date and is
+based on a year that is exactly 365.2425 days long.  (A year
+is  actually  approximately 365.242198781 days long.)  Seem-
+ingly strange behavior of the udunits(3) package can  result
+if  a user-given time interval includes the changeover date.
+For example, utCalendar() and utInvCalendar() can be used to
+show that 1582-10-15 *preceded* 1582-10-14 by 9 days.
+	</pre><p>
+      </p><p>
+	Due to problems caused by the discontinuity in the default mixed Gregorian/Julian calendar, we strongly recommend that this calendar should only be used when the time coordinate does not cross the discontinuity. For time coordinates that do cross the discontinuity the <code class="varname">proleptic_gregorian</code> calendar should be used instead.
+      </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.3. Vertical (Height or Depth) Coordinate </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 5. 
+    Coordinate Systems
+  </td></tr></table></div></body></html>

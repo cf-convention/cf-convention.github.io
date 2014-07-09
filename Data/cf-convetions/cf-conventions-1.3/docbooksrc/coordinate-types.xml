@@ -1,0 +1,506 @@
+<chapter id="coordinate-types">
+  <title>
+    Coordinate Types
+  </title>
+
+  <para>
+    Four types of coordinates receive special treatment by these
+    conventions: latitude, longitude, vertical, and time.
+    We continue to support the special role that the
+    <varname>units</varname> and <varname>positive</varname> attributes
+    play in the COARDS convention to identify coordinate type.
+    We extend COARDS by providing explicit definitions of dimensionless
+    vertical coordinates. The definitions are associated with a coordinate
+    variable via the <varname>standard_name</varname> and
+    <varname>formula_terms</varname> attributes. For backwards compatibility
+    with COARDS use of these attributes is not required, but is strongly recommended.
+  </para>
+
+  <para>
+    Because identification of a coordinate type by its units is complicated
+    by requiring the use of an external software
+    package <biblioref linkend="udunits"/>, we provide two optional
+    methods that yield a direct identification.
+    The attribute <varname>axis</varname> may be attached to a coordinate
+    variable and given one of the values <varname>X</varname>, <varname>Y</varname>,
+    <varname>Z</varname> or <varname>T</varname> which stand for a longitude,
+    latitude, vertical, or time axis respectively.
+    Alternatively the <varname>standard_name</varname> attribute may be used
+    for direct identification. But note that these optional
+    attributes are in addition to the required COARDS metadata.
+  </para>
+
+  <para>
+    Coordinate types other than latitude, longitude, vertical, and time
+    are allowed. To identify generic spatial coordinates we recommend
+    that the <varname>axis</varname> attribute be attached to these
+    coordinates and given one of the values <varname>X</varname>, 
+    <varname>Y</varname> or <varname>Z</varname>. 
+    The values <varname>X</varname> and <varname>Y</varname>
+    for the axis attribute should be used to identify horizontal coordinate
+    variables. If both X- and Y-axis are identified, <varname>X-Y-up</varname>
+    should define a right-handed coordinate system, i.e. rotation from the
+    positive X direction to the positive Y direction is anticlockwise if 
+    viewed from above.
+    We strongly recommend that coordinate
+    variables be used for all coordinate types whenever they are applicable.
+  </para>
+
+  <para>
+	  The methods of identifying coordinate types described in this
+      section apply both to coordinate variables and to auxiliary
+      coordinate variables named by the <varname>coordinates</varname>
+      attribute (see <xref linkend="coordinate-system"/>).
+  </para>
+
+  <section id="latitude-coordinate">
+    <title>Latitude Coordinate</title>
+    <para>
+      Variables representing latitude must always explicitly include the
+      <varname>units</varname> attribute; there is no default value.
+      The <varname>units</varname> attribute will be a string formatted
+      as per the
+      <ulink url="http://www.unidata.ucar.edu/software/udunits/"><filename>udunits.dat</filename></ulink> file.
+      The recommended unit of latitude
+      is <varname>degrees_north</varname>. Also acceptable 
+      are <varname>degree_north</varname>, <varname>degree_N</varname>,
+      <varname>degrees_N</varname>, <varname>degreeN</varname>,
+      and <varname>degreesN</varname>.
+    </para>
+    
+    <example><title>Latitude axis</title>
+      <programlisting>
+float lat(lat) ;
+  lat:long_name = "latitude" ;
+  lat:units = "degrees_north" ;
+  lat:standard_name = "latitude" ;
+      </programlisting>
+    </example>
+    
+    <para>
+      Application writers should note that the Udunits package does not
+      recognize the directionality implied by the "north" part of the unit
+      specification. It only recognizes its size, i.e., 1 degree is defined
+      to be pi/180 radians. Hence, determination that a coordinate is a
+      latitude type should be done via a string match between the given unit
+      and one of the acceptable forms of <varname>degrees_north</varname>.
+    </para>
+
+    <para>
+    Optionally, the latitude type may be indicated additionally by providing
+    the <varname>standard_name</varname> attribute with the value
+    <varname>latitude</varname>, and/or the <varname>axis</varname> attribute
+    with the value <varname>Y</varname>.
+    </para>
+      
+    <para>
+    Coordinates of latitude with respect to a rotated pole should be given
+    units of <varname>degrees</varname>, not <varname>degrees_north</varname>
+    or equivalents, because applications which use the units to identify
+    axes would have no means of distinguishing such an axis from real
+    latitude, and might draw incorrect coastlines, for instance. 
+    </para>
+    
+  </section>
+
+  <section id="longitude-coordinate">
+    <title>Longitude Coordinate</title>
+    <para>
+      Variables representing longitude must always explicitly include
+      the <varname>units</varname> attribute; there is no default value.
+      The units <varname>attribute</varname> will be a string formatted
+      as per the
+      <ulink url="http://www.unidata.ucar.edu/software/udunits/"><filename>udunits.dat</filename></ulink> file.
+      The recommended unit of longitude is
+      <varname>degrees_east</varname>. Also acceptable
+      are <varname>degree_east</varname>, <varname>degree_E</varname>,
+      <varname>degrees_E</varname>,  <varname>degreeE</varname>,
+      and  <varname>degreesE</varname>.
+    </para>
+
+    <example><title>Longitude axis</title>
+      <programlisting>
+float lon(lon) ;
+  lon:long_name = "longitude" ;
+  lon:units = "degrees_east" ;
+  lon:standard_name = "longitude" ;
+      </programlisting>
+    </example>
+
+    <para>
+      Application writers should note that the Udunits package has limited
+      recognition of the directionality implied by the "east" part of the
+      unit specification. It defines <varname>degrees_east</varname> to be
+      pi/180 radians, and hence equivalent to <varname>degrees_north</varname>.
+      We recommend the determination that a coordinate is a longitude type
+      should be done via a string match between the given unit and one of the
+      acceptable forms of <varname>degrees_east</varname>.
+    </para>
+
+    <para>
+      Optionally, the longitude type may be indicated additionally by
+      providing the <varname>standard_name</varname> attribute with the
+      value <varname>longitude</varname>, and/or the <varname>axis</varname>
+      attribute with the value <varname>X</varname>.
+    </para>
+
+    <para>
+      Coordinates of longitude with respect to a rotated pole should be
+      given units of <varname>degrees</varname>, not
+      <varname>degrees_east</varname> or equivalents, because applications
+      which use the units to identify axes would have no means of
+      distinguishing such an axis from real longitude, and might draw
+      incorrect coastlines, for instance. 
+    </para>
+  </section>
+	
+<section id="vertical-coordinate">
+    <title>Vertical (Height or Depth) Coordinate</title>
+    <para>
+      Variables representing dimensional height or depth axes must always
+      explicitly include the <varname>units</varname> attribute; there is
+      no default value.
+    </para>
+    
+    <para>
+      The direction of positive (i.e., the direction in which the coordinate
+      values are increasing), whether up or down, cannot in all cases be
+      inferred from the units. The direction of positive is useful for
+      applications displaying the data. For this reason the attribute
+      <varname>positive</varname> as defined in the COARDS standard is
+      required if the vertical axis units are not a valid unit of pressure
+      (a determination which can be made using the udunits routine, utScan)
+      -- otherwise its inclusion is optional. The <varname>positive</varname>
+      attribute may have the value <varname>up</varname> or
+      <varname>down</varname> (case insensitive). This attribute may be
+      applied to either coordinate variables or auxillary coordinate
+      variables that contain vertical coordinate data.
+    </para>
+
+    <para>
+      For example, if an oceanographic netCDF file encodes the depth of
+      the surface as 0 and the depth of 1000 meters as 1000 then the axis
+      would use attributes as follows:
+      <programlisting>
+axis_name:units = "meters" ; 
+axis_name:positive = "down" ; 	
+      </programlisting>
+    </para>
+
+    <para>
+      If, on the other hand, the depth of 1000 meters were represented
+      as -1000 then the value of the <varname>positive</varname> attribute
+      would have been <varname>up</varname>. If the <varname>units</varname>
+      attribute value is a valid pressure unit the default value of the
+      <varname>positive</varname> attribute is <varname>down</varname>.
+    </para>
+    
+    <para>
+      A vertical coordinate will be identifiable by:
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    units of pressure; or
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    the presence of the positive attribute with a value of
+        <varname>up</varname> or <varname>down</varname> (case insensitive).
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Optionally, the vertical type may be indicated additionally by
+      providing the <varname>standard_name</varname> attribute with an
+      appropriate value, and/or the <varname>axis</varname> attribute
+      with the value <varname>Z</varname>.
+    </para>
+
+    <section>
+      <title>Dimensional Vertical Coordinate</title>
+      <para>
+	The <varname>units</varname> attribute for dimensional coordinates will
+    be a string formatted as per the
+    <ulink url="http://www.unidata.ucar.edu/software/udunits/"><filename>udunits.dat</filename></ulink> file.
+    The acceptable units for vertical (depth or height) coordinate variables are:
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      units of pressure as listed in the file <filename>udunits.dat</filename>.
+          For vertical axes the most commonly used of these include
+          include <varname>bar</varname>, <varname>millibar</varname>,
+          <varname>decibar</varname>, <varname>atmosphere (atm)</varname>,
+          <varname>pascal (Pa)</varname>, and <varname>hPa</varname>.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      units of length as listed in the file udunits.dat. For vertical axes the most commonly used of these include <varname>meter (metre, m)</varname>, and <varname>kilometer (km)</varname>.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      other units listed in the file udunits.dat that may under certain circumstances reference vertical position such as units of density or temperature.
+	    </para>
+	  </listitem>
+	</itemizedlist>
+	Plural forms are also acceptable.
+      </para>
+    </section>
+	
+    <section id="dimensionless-vertical-coordinate">
+      <title>Dimensionless Vertical Coordinate</title>
+      <para>
+	The <varname>units</varname> attribute is not required for dimensionless coordinates. For backwards compatibility with COARDS we continue to allow the <varname>units</varname> attribute to take one of the values: <varname>level</varname>, <varname>layer</varname>, or <varname>sigma_level</varname>. These values are not recognized by the Udunits package, and are considered a deprecated feature in the CF standard.
+      </para>
+      <para>
+	For dimensionless vertical coordinates we extend the COARDS standard by making use of the <varname>standard_name</varname> attribute to associate a coordinate with its definition from <xref linkend="dimensionless-v-coord"/>. The definition provides a mapping between the dimensionless coordinate values and dimensional values that can positively and uniquely indicate the location of the data. A new attribute, <varname>formula_terms</varname>, is used to associate terms in the definitions with variables in a netCDF file. To maintain backwards compatibility with COARDS the use of these attributes is not required, but is strongly recommended.
+      </para>
+      
+      <example id="atm-sigma-coord-ex"><title>Atmosphere sigma coordinate</title>
+	<programlisting>
+float lev(lev) ;
+  lev:long_name = "sigma at layer midpoints" ;
+  lev:positive = "down" ;
+  lev:standard_name = "atmosphere_sigma_coordinate" ;
+  lev:formula_terms = "sigma: lev ps: PS ptop: PTOP" ;
+	</programlisting>
+      </example>
+      <para>
+	 In this example the <varname>standard_name</varname> value 
+         <varname>atmosphere_sigma_coordinate</varname> identifies the following 
+         definition from <xref linkend="dimensionless-v-coord"/> which specifies 
+         how to compute pressure at gridpoint <varname>(n,k,j,i)</varname> where 
+         <varname>j</varname> and <varname>i</varname> are horizontal indices, 
+         <varname>k</varname> is a vertical index, and <varname>n</varname> is a time index:
+	<programlisting>
+p(n,k,j,i) = ptop + sigma(k)*(ps(n,j,i)-ptop)
+	</programlisting>
+      </para>
+      <para>
+	The <varname>formula_terms</varname> attribute associates the variable <varname>lev</varname> with the term <varname>sigma</varname>, the variable <varname>PS</varname> with the term <varname>ps</varname>, and the variable <varname>PTOP</varname> with the term <varname>ptop</varname>. Thus the pressure at gridpoint <varname>(n,k,j,i)</varname> would be calculated by
+	<programlisting>
+p(n,k,j,i) = PTOP + lev(k)*(PS(n,j,i)-PTOP)
+	</programlisting>
+      </para>
+    </section>
+  </section>
+
+  <section id="time-coordinate">
+    <title>Time Coordinate</title>
+    <para>
+      Variables representing time must always explicitly include
+      the <varname>units</varname> attribute; there is no default value.
+      The <varname>units</varname> attribute takes a string value formatted
+      as per the recommendations in the Udunits package <biblioref linkend="udunits"/>.
+      The following excerpt from the Udunits documentation explains the time unit encoding by example:
+      <programlisting>
+	The specification:
+
+    seconds since 1992-10-8 15:15:42.5 -6:00
+
+indicates seconds since October 8th, 1992  at  3  hours,  15
+minutes  and  42.5 seconds in the afternoon in the time zone
+which is six hours to the west of Coordinated Universal Time
+(i.e.  Mountain Daylight Time).  The time zone specification
+can also be written without a colon using one or  two-digits
+(indicating hours) or three or four digits (indicating hours
+and minutes).
+      </programlisting>
+    </para>
+    <para>
+      The acceptable units for time are listed in the
+      <ulink url="http://www.unidata.ucar.edu/software/udunits/"><filename>udunits.dat</filename></ulink> file.
+      The most commonly used of these strings (and their abbreviations)
+      includes <varname>day (d)</varname>, <varname>hour (hr, h)</varname>,
+      <varname>minute (min)</varname> and <varname>second (sec, s)</varname>.
+      Plural forms are also acceptable. The reference time string
+      (appearing after the identifier <varname>since</varname>) may
+      include date alone; date and time; or date, time, and time zone.
+      The reference time is required. A reference time in year 0 has a
+      special meaning (see <xref linkend="climatological-statistics"/>).
+    </para>
+    <para>
+      <emphasis>Note: if the time zone is omitted the default is UTC, and if both time and time zone are omitted the default is 00:00:00 UTC.</emphasis>
+    </para>
+    <para>
+      We recommend that the unit <varname>year</varname> be used with caution. The Udunits package defines a <varname>year</varname> to be exactly 365.242198781 days (the interval between 2 successive passages of the sun through vernal equinox). <emphasis>It is not a calendar year.</emphasis> Udunits includes the following definitions for years: a <varname>common_year</varname> is 365 days, a <varname>leap_year</varname> is 366 days, a <varname>Julian_year</varname> is 365.25 days, and a <varname>Gregorian_year</varname> is 365.2425 days.
+    </para>
+    <para>
+      For similar reasons the unit <varname>month</varname>, which is defined in
+      <ulink url="http://www.unidata.ucar.edu/software/udunits/"><filename>udunits.dat</filename></ulink>
+      to be exactly <varname>year/12</varname>, should also be used with caution.
+    </para>
+    <example><title>Time axis</title>
+      <programlisting>
+double time(time) ;
+  time:long_name = "time" ;
+  time:units = "days since 1990-1-1 0:0:0" ;
+      </programlisting>
+    </example>
+    
+    <para>
+      A time coordinate is identifiable from its units string alone. The Udunits routines <varname>utScan()</varname> and <varname>utIsTime()</varname> can be used to make this determination.
+    </para>
+    <para>
+      Optionally, the time coordinate may be indicated additionally by providing the <varname>standard_name</varname> attribute with an appropriate value, and/or the <varname>axis</varname> attribute with the value <varname>T</varname>.
+    </para>
+
+    <section id="calendar">
+      <title>Calendar</title>
+      <para>
+	In order to calculate a new date and time given a base date, base time and a time increment one must know what calendar to use. For this purpose we recommend that the calendar be specified by the attribute <varname>calendar</varname> which is assigned to the time coordinate variable. The values currently defined for <varname>calendar</varname> are:
+	<variablelist>
+          <varlistentry>
+	    <term> <varname>gregorian</varname> or <varname>standard</varname> </term>
+	    <listitem>
+	      <para>
+		Mixed Gregorian/Julian calendar as defined by Udunits. <emphasis>This is the default.</emphasis>
+	      </para>
+	    </listitem>
+          </varlistentry>
+          <varlistentry>
+	    <term> <varname>proleptic_gregorian</varname> </term>
+	    <listitem>
+	      <para>
+		A Gregorian calendar extended to dates before 1582-10-15. That is, a year is a leap year if either (i) it is divisible by 4 but not by 100 or (ii) it is divisible by 400.
+	      </para>
+	    </listitem>
+          </varlistentry>
+          <varlistentry>
+	    <term> <varname>noleap</varname> or <varname>365_day</varname> </term>
+	    <listitem>
+	      <para>
+		Gregorian calendar without leap years, i.e., all years are 365 days long. 
+	      </para>
+	    </listitem>
+          </varlistentry>
+          <varlistentry>
+	    <term> <varname>all_leap</varname> or <varname>366_day</varname> </term>
+	    <listitem>
+	      <para>
+		Gregorian calendar with every year being a leap year, i.e., all years are 366 days long.
+	      </para>
+	    </listitem>
+          </varlistentry>
+          <varlistentry>
+	    <term> <varname>360_day</varname> </term>
+	    <listitem>
+	      <para>
+		All years are 360 days divided into 30 day months.
+	      </para>
+	    </listitem>
+          </varlistentry>
+          <varlistentry>
+	    <term> <varname>julian</varname> </term>
+	    <listitem>
+	      <para>
+		Julian calendar. 
+	      </para>
+	    </listitem>
+          </varlistentry>
+          <varlistentry>
+	    <term> <varname>none</varname> </term>
+	    <listitem>
+	      <para>
+		No calendar.
+	      </para>
+	    </listitem>
+          </varlistentry>
+	</variablelist>
+      </para>
+      <para>
+	The <varname>calendar</varname> attribute may be set to <varname>none</varname> in climate experiments that simulate a fixed time of year. The time of year is indicated by the date in the reference time of the <varname>units</varname> attribute. The time coordinate that might apply in a perpetual July experiment are given in the following example.
+      </para>
+    <example><title>Perpetual time axis</title>
+      <programlisting>
+variables:
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1-7-15 0:0:0" ;
+    time:calendar = "none" ;
+data:
+  time = 0., 1., 2., ...;
+      </programlisting>
+    </example>
+
+      <para>
+	Here, all days simulate the conditions of 15th July, so it does not make sense to give them different dates. The time coordinates are interpreted as 0, 1, 2, etc. days since the start of the experiment.
+      </para>
+      <para>
+	If none of the calendars defined above applies (e.g., calendars appropriate to a different paleoclimate era), a non-standard calendar can be defined. The lengths of each month are explicitly defined with the <varname>month_lengths</varname> attribute of the time axis: 
+	<variablelist>
+          <varlistentry>
+	    <term><varname>month_lengths</varname></term>
+	    <listitem>
+	      <para>
+		A vector of size 12, specifying the number of days in the months from January to December (in a non-leap year).
+	      </para>
+	    </listitem>
+          </varlistentry>
+	</variablelist>
+      </para>
+      
+      <para>
+	If leap years are included, then two other attributes of the time axis should also be defined:
+	<variablelist>
+          <varlistentry>
+	    <term><varname>leap_year</varname></term>
+	    <listitem>
+	      <para>
+		An example of a leap year. It is assumed that all years that differ from this year by a multiple of four are also leap years. If this attribute is absent, it is assumed there are no leap years.
+	      </para>
+	    </listitem>
+          </varlistentry>	
+          <varlistentry>
+	    <term><varname>leap_month</varname></term>
+	    <listitem>
+	      <para>
+		A value in the range 1-12, specifying which month is lengthened by a day in leap years (1=January). If this attribute is not present, February (2) is assumed. This attribute is ignored if <varname>leap_year</varname> is not specified.
+	      </para>
+	    </listitem>
+          </varlistentry>	
+	</variablelist>
+      </para>
+      <para>
+	The <varname>calendar</varname> attribute is not required when a non-standard calendar is being used. It is sufficient to define the calendar using the <varname>month_lengths</varname> attribute, along with <varname>leap_year</varname>, and <varname>leap_month</varname> as appropriate. However, the <varname>calendar</varname> attribute is allowed to take non-standard values and in that case defining the non-standard calendar using the appropriate attributes is required.
+      </para>
+      <example><title>Paleoclimate time axis</title>
+	<programlisting>
+double time(time) ;
+  time:long_name = "time" ;
+  time:units = "days since 1-1-1 0:0:0" ;
+  time:calendar = "126 kyr B.P." ;
+  time:month_lengths = 34, 31, 32, 30, 29, 27, 28, 28, 28, 32, 32, 34 ;
+	</programlisting>
+      </example>
+      <para>
+	The mixed Gregorian/Julian calendar used by Udunits is explained in the following excerpt from the udunits(3) man page:
+	<programlisting>
+The udunits(3) package uses a mixed Gregorian/Julian  calen-
+dar  system.   Dates  prior to 1582-10-15 are assumed to use
+the Julian calendar, which was introduced by  Julius  Caesar
+in 46 BCE and is based on a year that is exactly 365.25 days
+long.  Dates on and after 1582-10-15 are assumed to use  the
+Gregorian calendar, which was introduced on that date and is
+based on a year that is exactly 365.2425 days long.  (A year
+is  actually  approximately 365.242198781 days long.)  Seem-
+ingly strange behavior of the udunits(3) package can  result
+if  a user-given time interval includes the changeover date.
+For example, utCalendar() and utInvCalendar() can be used to
+show that 1582-10-15 *preceded* 1582-10-14 by 9 days.
+	</programlisting>
+      </para>
+      <para>
+	Due to problems caused by the discontinuity in the default mixed Gregorian/Julian calendar, we strongly recommend that this calendar should only be used when the time coordinate does not cross the discontinuity. For time coordinates that do cross the discontinuity the <varname>proleptic_gregorian</varname> calendar should be used instead.
+      </para>
+    </section>
+  </section>
+</chapter>
+
+
+
+

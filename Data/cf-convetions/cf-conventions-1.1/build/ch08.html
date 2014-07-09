@@ -1,0 +1,81 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Chapter 8.  Reduction of Dataset Size</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="prev" href="ch07s04.html" title="7.4. Climatological Statistics"><link rel="next" href="ch08s02.html" title="8.2. Compression by Gathering"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 8. 
+		Reduction of Dataset Size
+	</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s04.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch08s02.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="idm412834386192"></a>Chapter 8. 
+		Reduction of Dataset Size
+	</h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="ch08.html#packed-data">8.1. Packed Data</a></span></dt><dt><span class="section"><a href="ch08s02.html">8.2. Compression by Gathering</a></span></dt></dl></div><p>
+		There are two methods for reducing dataset size: packing
+		and compression. By packing we mean altering the data
+		in a way that reduces its precision. By compression we
+		mean techniques that store the data more efficiently
+		and result in no precision loss. Compression only
+		works in certain circumstances, e.g., when a variable
+		contains a significant amount of missing or repeated
+		data values. In this case it is possible to make use of
+		standard utilities, e.g., UNIX <code class="computeroutput">compress</code> 
+		or GNU <code class="computeroutput">gzip</code>, to
+		compress the entire file after it has been written. In
+		this section we offer an alternative compression method
+		that is applied on a variable by variable basis. This
+		has the advantage that only one variable need be
+		uncompressed at a given time. The disadvantage is that
+		generic utilities that don't recognize the CF conventions
+		will not be able to operate on compressed variables.
+	</p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="packed-data"></a>8.1. Packed Data</h2></div></div></div><p>
+			At the current time the netCDF interface does
+			not provide for packing data. However a simple
+			packing may be achieved through the use of the
+			optional NUG defined attributes 
+			<code class="varname">scale_factor</code>
+			and
+			<code class="varname">add_offset</code>. 
+			After the data values of a variable
+			have been read, they are to be multiplied by
+			the 
+			<code class="varname">scale_factor</code>, and have 
+			<code class="varname">add_offset</code> 
+			added to
+			them. If both attributes are present, the data
+			are scaled before the offset is added. When
+			scaled data are written, the application should
+			first subtract the offset and then divide by the
+			scale factor. The units of a variable should be
+			representative of the unpacked data.
+		</p><p>
+			This standard is more restrictive than the NUG
+			with respect to the use of the 
+			<code class="varname">scale_factor</code> and
+			<code class="varname">add_offset</code> 
+			attributes; ambiguities and precision
+			problems related to data type conversions
+			are resolved by these restrictions. If the
+			<code class="varname">scale_factor</code> 
+			and 
+			<code class="varname">add_offset</code> 
+			attributes are of
+			the same data type as the associated variable,
+			the unpacked data is assumed to be of the
+			same data type as the packed data. However,
+			if the 
+			<code class="varname">scale_factor</code> 
+			and 
+			<code class="varname">add_offset</code> 
+			attributes
+			are of a different data type from the variable
+			(containing the packed data) then the unpacked
+			data should match the type of these attributes,
+			which must both be of type <code class="varname">float</code> or both be of
+			type <code class="varname">double</code>. An additional restriction in this
+			case is that the variable containing the packed
+			data must be of type <code class="varname">byte</code>, <code class="varname">short</code> or <code class="varname">int</code>. It is
+			not advised to unpack an <code class="varname">int</code> into a <code class="varname">float</code> as
+			there is a potential precision loss.
+		</p><p>
+			When data to be packed contains missing values
+			the attributes that indicate missing values
+			(<code class="varname">_FillValue</code>, <code class="varname">valid_min</code>, <code class="varname">valid_max</code>, <code class="varname">valid_range</code>)
+			must be of the same data type as the packed
+			data. See <a class="xref" href="ch02s05.html#missing-data" title="2.5.1. Missing Data">Section 2.5.1, &#8220;Missing Data&#8221;</a> for a discussion of how
+			applications should treat variables that have
+			attributes indicating both missing values and
+			transformations defined by a scale and/or offset.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s04.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch08s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">7.4. Climatological Statistics </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 8.2. Compression by Gathering</td></tr></table></div></body></html>

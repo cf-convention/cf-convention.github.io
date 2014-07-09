@@ -1,0 +1,122 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>7.2. Cell Measures</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch07.html" title="Chapter 7.  Data Representative of Cells"><link rel="prev" href="ch07.html" title="Chapter 7.  Data Representative of Cells"><link rel="next" href="ch07s03.html" title="7.3. Cell Methods"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">7.2. Cell Measures</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07.html">Prev</a> </td><th width="60%" align="center">Chapter 7. 
+		Data Representative of Cells
+	</th><td width="20%" align="right"> <a accesskey="n" href="ch07s03.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="cell-measures"></a>7.2. Cell Measures</h2></div></div></div><p>
+			For some calculations, information is needed
+			about the size, shape or location of the cells
+			that cannot be deduced from the coordinates and
+			bounds without special knowledge that a generic
+			application cannot be expected to have. For
+			instance, in computing the mean of several cell
+			values, it is often appropriate to "weight" the
+			values by area. When computing an area-mean each
+			grid cell value is multiplied by the grid-cell
+			area before summing, and then the sum is divided
+			by the sum of the grid-cell areas. Area weights
+			may also be needed to map data from one grid to
+			another in such a way as to preserve the area
+			mean of the field. The preservation of area-mean
+			values while regridding may be essential, for
+			example, when calculating surface heat fluxes
+			in an atmospheric model with a grid that differs
+			from the ocean model grid to which it is coupled.
+		</p><p>
+			In many cases the areas can be calculated from the
+			cell bounds, but there are exceptions. Consider,
+			for example, a spherical geodesic grid composed
+			of contiguous, roughly hexagonal cells. The
+			vertices of the cells can be stored in the
+			variable identified by the 
+			<code class="varname">bounds </code> 
+			attribute,
+			but the cell perimeter is not uniquely defined
+			by its vertices (because the vertices could, for
+			example, be connected by straight lines, or, on
+			a sphere, by lines following a great circle, or,
+			in general, in some other way). Thus, given the
+			cell vertices alone, it is generally impossible
+			to calculate the area of a grid cell. This is
+			why it may be necessary to store the grid-cell
+			areas in addition to the cell vertices.
+		</p><p>
+			In other cases, the grid cell-volume might be
+			needed and might not be easily calculated from
+			the coordinate information. In ocean models, for
+			example, it is not uncommon to find "partial" grid
+			cells at the bottom of the ocean. In this case,
+			rather than (or in addition to) indicating grid
+			cell area, it may be necessary to indicate volume.
+		</p><p>
+			To indicate extra information about the
+			spatial properties of a variable's grid cells,
+			a 
+			<code class="varname">cell_measures</code> 
+			attribute may be defined for a
+			variable. This is a string attribute comprising
+			a list of blank-separated pairs of words of the
+			form "<code class="varname">measure: name</code>".
+            For the moment, "<code class="varname">area</code>" and
+			"<code class="varname">volume</code>" are the only defined measures, but others
+			may be supported in future. The "name" is the name
+			of the variable containing the measure values,
+			which we refer to as a "measure variable". The
+			dimensions of the measure variable should be
+			the same as or a subset of the dimensions of
+			the variable to which they are related, but
+			their order is not restricted. In the case of
+			area, for example, the field itself might be a
+			function of longitude, latitude, and time, but
+			the variable containing the area values would
+			only include longitude and latitude dimensions
+			(and the dimension order could be reversed,
+			although this is not recommended). The variable
+			must have a 
+			<code class="varname">units</code>
+			attribute and may have other
+			attributes such as a 
+			<code class="varname">standard_name</code>.
+		</p><p>
+			For rectangular longitude-latitude grids, the
+			area of grid cells can be calculated from the
+			bounds: the area of a cell is proportional to the
+			product of the difference in the longitude bounds
+			of the cell and the difference between the sine
+			of each latitude bound of the cell. In this case
+			supplying grid-cell areas via the 
+			<code class="varname">cell_measures</code>
+			attribute is unnecessary because it may be assumed
+			that applications can perform this calculation,
+			using their own value for the radius of the Earth.
+		</p><p>
+			</p><div class="example"><a name="idm412834626816"></a><p class="title"><b>Example 7.3.  Cell areas for a spherical geodesic grid</b></p><div class="example-contents"><p>
+					</p><pre class="programlisting">
+dimensions:
+  cell = 2562 ;  // number of grid cells
+  time = 12 ;
+  nv = 6 ;       // maximum number of cell vertices 
+variables:
+  float PS(time,cell) ;
+    PS:units = "Pa" ;
+    PS:coordinates = "lon lat" ;
+    PS:cell_measures = "area: cell_area" ;
+  float lon(cell) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+    lon:bounds="lon_vertices" ;
+  float lat(cell) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+    lat:bounds="lat_vertices" ;
+  float time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1979-01-01 0:0:0" ;
+  float cell_area(cell) ;
+    cell_area:long_name = "area of grid cell" ;
+    cell_area:standard_name="area";
+    cell_area:units = "m2"
+  float lon_vertices(cell,nv) ;
+  float lat_vertices(cell,nv) ;
+					</pre><p>
+				</p></div></div><p><br class="example-break">
+		</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch07s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 7. 
+		Data Representative of Cells
+	 </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 7.3. Cell Methods</td></tr></table></div></body></html>

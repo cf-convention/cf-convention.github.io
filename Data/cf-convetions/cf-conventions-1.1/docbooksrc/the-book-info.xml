@@ -1,0 +1,184 @@
+<bookinfo>
+    <title>NetCDF Climate and Forecast (CF) Metadata Conventions</title>
+    <subtitle>Version 1.1, 17 January, 2008</subtitle>
+ 
+    <authorgroup><title>Original Authors</title>    
+        <author>
+            <firstname>Brian</firstname><surname>Eaton</surname>
+            <affiliation><orgname> NCAR </orgname></affiliation>
+        </author>
+        <author>
+            <firstname>Jonathan</firstname><surname>Gregory</surname>
+            <affiliation><orgname> Hadley Centre, UK Met Office </orgname></affiliation>
+        </author>
+        <author>
+            <firstname>Bob</firstname><surname>Drach</surname>
+            <affiliation><orgname> PCMDI, LLNL </orgname></affiliation>
+        </author>
+        <author>
+            <firstname>Karl</firstname><surname>Taylor</surname>
+            <affiliation><orgname> PCMDI, LLNL </orgname></affiliation>
+        </author>
+        <author>
+            <firstname>Steve</firstname><surname>Hankin</surname>
+            <affiliation><orgname> PMEL, NOAA </orgname></affiliation>
+        </author>
+    </authorgroup>
+
+
+    <authorgroup><title>Additional Authors</title>
+      <author>
+        <firstname>John</firstname><surname>Caron</surname>
+        <affiliation><orgname> UCAR </orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Rich</firstname><surname>Signell</surname>
+        <affiliation><orgname> USGS </orgname></affiliation>
+      </author>
+    </authorgroup>
+
+    <othercredit>
+        <contrib>
+            <para>
+            Many others have contributed to the development of CF through their 
+            participation in discussions about proposed changes.
+            </para>
+        </contrib>
+    </othercredit>
+
+
+    <revhistory>
+        <revision>
+            <date>14 June 2004</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para>Added <xref linkend="lambert-azimuthal-equal-area"/>.</para></listitem>
+                        <listitem><para><xref linkend="polar-stereographic"/>: Added <varname>latitude_of_projection_origin</varname> map parameter.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+        <revision>
+            <date>1 July 2004</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para><xref linkend="scalar-coordinate-variables"/>: Added note that use of scalar coordinate variables inhibits interoperability with COARDS conforming applications.</para></listitem>
+                        <listitem><para><xref linkend="multiple-forecasts-from-single-analysis"/>: Added <varname>positive</varname> attribute to the scalar coordinate p500 to make it unambiguous that the pressure is a vertical coordinate value.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+         <revision>
+            <date>20 September 2004</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para><xref linkend="cell-methods"/>: Changed several incorrect occurances of the cell method <varname>"standard deviation"</varname> to <varname>"standard_deviation"</varname>.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+        <revision>
+            <date>22 October 2004</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para>Added <xref linkend="lambert-conformal-projection"/>.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+        <revision>
+            <date>25 November 2005</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para><xref linkend="atmosphere-hybrid-height-coordinate"/>: Fixed definition of atmosphere hybrid height coordinate.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+        <revision>
+            <date>21 March 2006</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para>Added <xref linkend="azimuthal-equidistant"/>.</para></listitem>
+                        <listitem><para>Added <xref linkend="atmosphere-natural-log-pressure-coordinate"/>.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+        <revision>
+          <date><emphasis role="newtext">17 January 2008</emphasis></date>
+          <revdescription><para>                
+            <orderedlist spacing="compact">                
+              <listitem><para>
+                <emphasis role="newtext">
+                  <xref linkend="preface"/>: Changed text to refer to rules of CF governance, and provisional status.
+                </emphasis>
+              </para></listitem>
+              <listitem><para>
+                <emphasis role="newtext">
+                  <xref linkend="coordinate-types"/>, <xref linkend="coordinate-system"/>: Made changes regarding use of the axis attribute to identify horizontal coordinate variables.
+                </emphasis>
+              </para></listitem>
+              <listitem><para>
+                <emphasis role="newtext">
+                  Changed document version to 1.1.
+                </emphasis>
+              </para></listitem>
+            </orderedlist>
+          </para></revdescription>
+        </revision>
+        
+    </revhistory>
+        
+    <abstract>
+        <title>Abstract</title>
+        <para>
+            This document describes the CF conventions for
+            climate and forecast metadata designed to promote
+            the processing and sharing of files created
+            with the netCDF Application Programmer Interface
+            <biblioref linkend="netcdf"/>. 
+            The conventions define metadata that
+            provide a definitive description of what the data
+            in each variable represents, and of the spatial
+            and temporal properties of the data. This enables
+            users of data from different sources to decide
+            which quantities are comparable, and facilitates
+            building applications with powerful extraction,
+            regridding, and display capabilities.
+        </para>
+        <para>
+            The CF conventions generalize and extend the
+            COARDS conventions <biblioref linkend="coards"/>. 
+            The extensions
+            include metadata that provides a precise
+            definition of each variable via specification of
+            a standard name, describes the vertical locations
+            corresponding to dimensionless vertical coordinate
+            values, and provides the spatial coordinates of
+            non-rectilinear gridded data. Since climate and
+            forecast data are often not simply representative
+            of points in space/time, other extensions provide
+            for the description of coordinate intervals,
+            multidimensional cells and climatological time
+            coordinates, and indicate how a data value is
+            representative of an interval or cell. This
+            standard also relaxes the COARDS constraints
+            on dimension order and specifies methods for
+            reducing the size of datasets.
+        </para>
+    </abstract>
+    
+</bookinfo>

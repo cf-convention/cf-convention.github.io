@@ -1,0 +1,589 @@
+<article>
+  <title>Guidelines for Construction of CF Standard Names</title>
+  <subtitle>Version 1, 3 December 2008</subtitle>
+
+  <section>
+    <title></title>
+    <para>
+Most of the CF standard names in the Standard Name Table have been constructed following 
+the guidelines described here, which have themselves drawn on the 
+<ulink url="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/ecmwf-grib-mapping">ECMWF</ulink>
+and 
+<ulink url="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/ncep-grib-code-cf-standard-name-mapping">NCEP</ulink> 
+GRIB tables, the 
+<ulink url="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/pcmdi-name-cf-standard-name-mapping">PCMDI</ulink>
+standard variable names, and the 
+<ulink url="http://gcmd.nasa.gov/Resources/valids">NASA Global Change Master Directory</ulink>
+. The guidelines may help to interpret the names and to suggest how new names could be derived. 
+Please send requests and questions concerning standard names to the 
+<ulink url="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">CF metadata mailing list</ulink>.
+    </para>
+  </section>
+
+  <section>
+    <title>Characters</title>
+    <para>
+Standard names consist of lower-letters, digits and underscores, and begin with a letter. Upper case is not used.
+    </para>
+  </section>
+
+  <section>
+    <title>Spelling</title>
+    <para>
+US spelling is used e.g. <varname>vapor</varname>, <varname>sulfur</varname>.
+    </para>
+  </section>
+
+  <section>
+    <title>Qualifications</title>
+    <para>
+Standard names may be qualified by the addition of phrases in certain standard forms and order. These qualifications do not change the units of the quantity. All of the following phrases in [] are optional. The words in <varname>typewriter type</varname> appear explicitly as stated, while the words in italic indicate other words or phrases to be substituted. The new standard name is constructed by joining the base standard name to the qualifiers using underscores.
+    </para>
+    <para>
+[<link linkend="surface">surface</link>] [<link linkend="component">component</link>] standard_name [<varname>at</varname> <link linkend="surface">surface</link>] [<varname>in</varname> <link linkend="medium">medium</link>] [<varname>due to</varname> <link linkend="process">process</link>] [<varname>assuming</varname> <link linkend="condition">condition</link>]
+    </para>
+
+    <section id="surface">
+      <title>Surface</title>
+      <para>
+A surface is defined as a function of horizontal position. Surfaces which are defined using a coordinate value (e.g. height of 1.5 m) are indicated by a single-valued coordinate variable, not by the standard name. In the standard name, some surfaces are named by single words which are placed at the start: <varname>toa</varname> (top of atmosphere), <varname>tropopause</varname>, <varname>surface</varname>. Other surfaces are named by multi-word phrases put after <varname>at</varname>: 
+  <varname>at_adiabatic_condensation_level</varname>, 
+  <varname>at_cloud_top</varname>, 
+  <varname>at_convective_cloud_top</varname>, 
+  <varname>at_cloud_base</varname>, 
+  <varname>at_convective_cloud_base</varname>, 
+  <varname>at_freezing_level</varname>, 
+  <varname>at_ground_level</varname>, 
+  <varname>at_maximum_wind_speed_level</varname>, 
+  <varname>at_sea_floor</varname>, 
+  <varname>at_sea_ice_base</varname>, 
+  <varname>at_sea_level</varname>, 
+  <varname>at_top_of_atmosphere_boundary_layer</varname>, 
+  <varname>at_top_of_atmosphere_model</varname>, 
+  <varname>at_top_of_dry_convection</varname>. 
+The surface called "<varname>surface</varname>" means the lower boundary of the atmosphere. <varname>sea_level</varname> means mean sea level, which is close to the geoid in sea areas. <varname>ground_level</varname> means the land surface (beneath the snow and surface water, if any). <varname>cloud_base</varname> refers to the base of the lowest cloud. <varname>cloud_top</varname> refers to the top of the highest cloud. Fluxes at the <varname>top_of_atmosphere_model</varname> differ from TOA fluxes only if the model TOA fluxes make some allowance for the atmosphere above the top of the model; if not, it is usual to give standard names with <varname>toa</varname> to the fluxes at the top of the model atmosphere.
+      </para>
+    </section>
+
+    <section id="component">
+      <title>Component</title>
+      <para>
+The direction of the spatial component of a vector is indicated by one of the words 
+  <varname>upward</varname>, 
+  <varname>downward</varname>, 
+  <varname>northward</varname>, 
+  <varname>southward</varname>, 
+  <varname>eastward</varname>, 
+  <varname>westward</varname>, 
+  <varname>x</varname>,
+  <varname>y</varname>. 
+The last two indicate directions along the horizontal grid being used when they are not true longitude and latitude (if there is a rotated pole, for instance).
+
+If the standard name indicates a tensor quantity, two of these direction words may be included, applying to two of the spatial dimensions Z Y X, in that order. If only one component is indicated for a tensor, it means the flux in the indicated direction of the magnitude of the vector quantity in the plane of the other two spatial dimensions.
+     </para>
+     <para>
+The names of vertical components of radiative fluxes are prefixed with <varname>net_</varname>, thus: <varname>net_downward</varname> and <varname>net_upward</varname>. This treatment is not applied for any kinds of flux other than radiative. Radiative fluxes from above and below are often measured and calculated separately, the "net" being the difference. Within the atmosphere, radiation from below (not net) is indicated by a prefix of <varname>upwelling</varname>, and from above with <varname>downwelling</varname>. For the top of the atmosphere, the prefixes <varname>incoming</varname> and <varname>outgoing</varname> are used instead.
+      </para>
+    </section>
+
+    <section id="medium">
+      <title>Medium</title>
+      <para>
+A medium indicates the local medium or layer within which an intensive quantity applies: 
+  <varname>in_air</varname>, 
+  <varname>in_atmosphere_boundary_layer</varname>, 
+  <varname>in_mesosphere</varname>,
+  <varname>in_sea_ice</varname>, 
+  <varname>in_sea_water</varname>, 
+  <varname>in_soil</varname>, 
+  <varname>in_soil_water</varname>, 
+  <varname>in_stratosphere</varname>, 
+  <varname>in_thermosphere</varname>, 
+  <varname>in_troposphere</varname>.
+      </para>
+    </section>
+
+    <section id="process">
+      <title>Process</title>
+      <para>
+The specification of a physical process by the phrase <varname>due_to_</varname><emphasis>process</emphasis> means that the quantity named is a single term in a sum of terms which together compose the general quantity named by omitting the phrase. Possibilites are: 
+  <varname>due_to_advection</varname>, 
+  <varname>due_to_convection</varname>, 
+  <varname>due_to_deep_convection</varname>, 
+  <varname>due_to_diabatic_processes</varname>, 
+  <varname>due_to_diffusion</varname>, 
+  <varname>due_to_dry_convection</varname>, 
+  <varname>due_to_gravity_wave_drag</varname>, 
+  <varname>due_to_gyre</varname>, 
+  <varname>due_to_isostatic_adjustment</varname>, 
+  <varname>due_to_large_scale_precipitation</varname>, 
+  <varname>due_to_longwave_heating</varname>, 
+  <varname>due_to_moist_convection</varname>, 
+  <varname>due_to_overturning</varname>, 
+  <varname>due_to_shallow_convection</varname>, 
+  <varname>due_to_shortwave_heating</varname>, 
+  <varname>due_to_thermodynamics</varname> (referring to sea ice freezing and melting).  
+      </para>
+    </section>
+
+
+    <section id="condition">
+      <title>Condition</title>
+      <para>
+A phrase <varname>assuming_</varname><emphasis>condition</emphasis> indicates that the named quantity is the value which would obtain if all aspects of the system were unaltered except for the assumption of the circumstances specified by the condition. Possibilities are 
+  <varname>assuming_clear_sky</varname>, 
+  <varname>assuming_deep_snow</varname>, 
+  <varname>assuming_no_snow</varname>.
+      </para>
+    </section>
+
+  </section>
+
+  <section>
+    <title>Transformations</title>
+    <para>
+Standard names may be derived from other standard names (represented here by X, Y and Z) by the following rules. Successive transformations may be applied. Transformations may alter the units as shown.  
+    <table frame="all">
+      <title></title>
+      <tgroup cols="3" align="left" colsep="1" rowsep="1">
+        <colspec colwidth="5*"/>
+        <colspec colwidth="2*"/>
+        <colspec colwidth="4*"/>
+        <thead>
+          <row>
+            <entry>Rule</entry>
+            <entry>Units</entry>
+            <entry>Meaning</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><varname>change_over_time_in_</varname>X</entry>
+            <entry>[X]</entry>
+            <entry>change in a quantity X over a time-interval, which should be defined by the bounds of the time coordinate.</entry>
+          </row>
+          <row>
+            <entry>[<varname>horizontal_</varname>]<varname>convergence_of_</varname>X</entry>
+            <entry>[X] <varname>m-1</varname></entry>
+            <entry>[horizontal] convergence of a vector X (i.e. the divergence multiplied by -1); if X does not have a vertical component then "horizontal" should be omitted.</entry>
+          </row>
+          <row>
+            <entry><varname>correlation_of_</varname>X<varname>_and_</varname>Y[<varname>_over_</varname>Z]</entry>
+            <entry><varname>1</varname></entry>
+            <entry>correlation coefficient for variations (over Z e.g. time, longitude) of X and Y. X and Y are ordered alphabetically.</entry>
+          </row>
+          <row>
+            <entry><varname>covariance_of_</varname>X<varname>_and_</varname>Y[_over_<varname>Z</varname>]</entry>
+            <entry>[X]*[Y]</entry>
+            <entry>covariance for variations (over Z e.g. time, longitude) of X and Y. X and Y are ordered alphabetically.</entry>
+          </row>
+          <row>
+            <entry><emphasis>component</emphasis><varname>_derivative_of_</varname>X</entry>
+            <entry>[X] <varname>m-1</varname></entry>
+            <entry>derivative of X with respect to distance in the component direction, which may be <varname>northward</varname>, <varname>southward</varname>, <varname>eastward</varname>, <varname>westward</varname>, <varname>x</varname> or <varname>y</varname>. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude.</entry>
+          </row>
+          <row>
+            <entry><varname>derivative_of_</varname>X<varname>_wrt_</varname>Y</entry>
+            <entry>[X]/[Y]</entry>
+            <entry>dX/dY (keeping any other independent variables constant, i.e. the partial derivative if appropriate).</entry>
+          </row>
+          <row>
+            <entry><varname>direction_of_</varname>X</entry>
+            <entry><varname>degree</varname></entry>
+            <entry>direction of a vector, a bearing.</entry>
+          </row>
+          <row>
+            <entry>[<varname>horizontal_</varname>]<varname>divergence_of_</varname>X</entry>
+            <entry>[X] <varname>m-1</varname></entry>
+            <entry>[horizontal] divergence of a vector X; if X does not have a vertical component then "horizontal" should be omitted.</entry>
+          </row>
+          <row>
+            <entry><varname>histogram_of_</varname>X[<varname>_over_</varname>Z]</entry>
+            <entry><varname>1</varname></entry>
+            <entry>histogram (i.e. number of counts for each range of X) of variations (over Z) of X. The data variable should have an axis for X.</entry>
+          </row>
+          <row>
+            <entry><varname>integral_of_</varname>Y<varname>_wrt_</varname>X</entry>
+            <entry>[X]*[Y]</entry>
+            <entry>int Y dX. The data variable should have an axis for X specifying the limits of the integral as bounds.</entry>
+          </row>
+          <row>
+            <entry><varname>ln_</varname>X</entry>
+            <entry><varname>1</varname></entry>
+            <entry>natural logarithm of X. X must be dimensionless.</entry>
+          </row>
+          <row>
+            <entry><varname>log10_</varname>X</entry>
+            <entry><varname>1</varname></entry>
+            <entry>common logarithm (i.e. base 10) of X. X must be dimensionless.</entry>
+          </row>
+          <row>
+            <entry><varname>magnitude_of_</varname>X</entry>
+            <entry>[X]</entry>
+            <entry>magnitude of a vector X.</entry>
+          </row>
+          <row>
+            <entry><varname>probability_distribution_of_</varname>X[<varname>_over_</varname>Z]</entry>
+            <entry><varname>1</varname></entry>
+            <entry>probability distribution (i.e. a number in the range 0.0-1.0 for each range of X) of variations (over Z) of X. The data variable should have an axis for X.</entry>
+          </row>
+          <row>
+            <entry><varname>probability_density_function_of_</varname>X[<varname>_over_</varname>Z]</entry>
+            <entry><varname>1</varname>/[X]</entry>
+            <entry>PDF for variations (over Z) of X. The data variable should have an axis for X.</entry>
+          </row>
+          <row>
+            <entry><varname>product_of_</varname>X<varname>_and_</varname>Y</entry>
+            <entry>[X]*[Y]</entry>
+            <entry>X*Y. If X and Y are both scalars or both components of vectors, they are put in alphabetical order. If one of them is the component of a vector, it is put first i.e. the vector component is X, the scalar is Y.</entry>
+          </row>
+          <row>
+            <entry><varname>ratio_of_</varname>X<varname>_to_</varname>Y</entry>
+            <entry>[X]/[Y]</entry>
+            <entry>X/Y.</entry>
+          </row>
+          <row>
+            <entry><varname>square_of_</varname>X</entry>
+            <entry>[X]*[X]</entry>
+            <entry>X*X.</entry>
+          </row>
+          <row>
+            <entry><varname>tendency_of_</varname>X</entry>
+            <entry>[X] <varname>s-1</varname></entry>
+            <entry>derivative of X with respect to time.</entry>
+          </row>
+        </tbody>
+        </tgroup>
+      </table>
+    </para>
+  </section>
+
+
+  <section>
+    <title>Special Phrases</title>
+    <para>
+Some words and phrases have meanings which should be noted.
+
+    <table frame="all">
+      <title></title>
+      <tgroup cols="2" align="left" colsep="1" rowsep="1">
+        <colspec colwidth="1*"/>
+        <colspec colwidth="3*"/>
+        <thead>
+          <row>
+            <entry>Phrase</entry>
+            <entry>Meaning</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><varname>anomaly</varname></entry>
+            <entry>difference from climatology</entry>
+          </row>
+          <row>
+            <entry><varname>area</varname></entry>
+            <entry>horizontal area unless otherwise stated</entry>
+          </row>
+          <row>
+            <entry><varname>atmosphere</varname></entry>
+            <entry>used instead of <varname>in_air</varname> for quantities which are large-scale rather than local</entry>
+          </row>
+          <row>
+            <entry><varname>condensed_water</varname></entry>
+            <entry>liquid and ice</entry>
+          </row>
+          <row>
+            <entry><varname>frozen_water</varname></entry>
+            <entry>ice</entry>
+          </row>
+          <row>
+            <entry><varname>longwave</varname></entry>
+            <entry>longwave radiation</entry>
+          </row>
+          <row>
+            <entry><varname>lwe</varname></entry>
+            <entry>liquid water equivalent</entry>
+          </row>
+          <row>
+            <entry><varname>moisture</varname></entry>
+            <entry>water in all phases contained in soil</entry>
+          </row>
+          <row>
+            <entry><varname>ocean</varname></entry>
+            <entry>used instead of <varname>in_sea_water</varname> for quantities which are large-scale rather than local</entry>
+          </row>
+          <row>
+            <entry><varname>shortwave</varname></entry>
+            <entry>shortwave radiation</entry>
+          </row>
+          <row>
+            <entry><varname>specific</varname></entry>
+            <entry>per unit mass unless otherwise stated</entry>
+          </row>
+          <row>
+            <entry><varname>stp</varname></entry>
+            <entry>standard temperature (0 degC) and pressure (101325 Pa)</entry>
+          </row>
+          <row>
+            <entry><varname>toa</varname></entry>
+            <entry>top of atmosphere</entry>
+          </row>
+          <row>
+            <entry><varname>unfrozen_water</varname></entry>
+            <entry>liquid and vapour</entry>
+          </row>
+          <row>
+            <entry><varname>water</varname></entry>
+            <entry>water in all phases if not otherwise qualified</entry>
+          </row>
+          <row>
+            <entry><varname>wrt</varname></entry>
+            <entry>with respect to</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+
+    </para>
+  </section>
+
+
+  <section>
+    <title>Chemical Species</title>
+    <para>
+The following names are used to identify chemical species in standard names.
+    <table frame="all">
+      <title></title>
+      <tgroup cols="1" align="left" colsep="1" rowsep="1">
+        <colspec colwidth="1*"/>
+        <thead>
+          <row>
+            <entry>Species</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><varname>carbon_dioxide</varname></entry>
+          </row>
+          <row>
+            <entry><varname>dimethyl_sulfide</varname></entry>
+          </row>
+          <row>
+            <entry><varname>nitrate</varname></entry>
+          </row>
+          <row>
+            <entry><varname>nitrate_and_nitrite</varname></entry>
+          </row>
+          <row>
+            <entry><varname>nitrite</varname></entry>
+          </row>
+          <row>
+            <entry><varname>oxygen</varname></entry>
+          </row>
+          <row>
+            <entry><varname>ozone</varname></entry>
+          </row>
+          <row>
+            <entry><varname>phosphate</varname></entry>
+          </row>
+          <row>
+            <entry><varname>silicate</varname></entry>
+          </row>
+          <row>
+            <entry><varname>sulfate</varname></entry>
+          </row>
+          <row>
+            <entry><varname>sulfur_dioxide</varname></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    </para>
+  </section>
+
+
+  <section>
+    <title>Generic Names</title>
+    <para>
+The following names are used with consistent meanings and units as elements in other standard names, although they are themselves too general to be chosen as standard names. They are recorded here for reference only. <emphasis>These are not standard names.</emphasis>
+    <table frame="all">
+      <title></title>
+      <tgroup cols="2" align="left" colsep="1" rowsep="1">
+        <colspec colwidth="2*"/>
+        <colspec colwidth="3*"/>
+        <thead>
+          <row>
+            <entry>Units</entry>
+            <entry>Generic Name</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>kg m-2</entry>
+            <entry>amount</entry>
+          </row>
+          <row>
+            <entry>m2</entry>
+            <entry>area</entry>
+          </row>
+          <row>
+            <entry>1</entry>
+            <entry>area_fraction</entry>
+          </row>
+          <row>
+            <entry>1</entry>
+            <entry>binary_mask</entry>
+          </row>
+          <row>
+            <entry>1</entry>
+            <entry>data_mask</entry>
+          </row>
+          <row>
+            <entry>kg m-3</entry>
+            <entry>density</entry>
+          </row>
+          <row>
+            <entry>J</entry>
+            <entry>energy</entry>
+          </row>
+          <row>
+            <entry>J m-2</entry>
+            <entry>energy_content</entry>
+          </row>
+          <row>
+            <entry>J m-3</entry>
+            <entry>energy_density</entry>
+          </row>
+          <row>
+            <entry>s-1</entry>
+            <entry>frequency</entry>
+          </row>
+          <row>
+            <entry>s-1</entry>
+            <entry>frequency_of_occurrence</entry>
+          </row>
+          <row>
+            <entry>W m-2</entry>
+            <entry>heat_flux</entry>
+          </row>
+          <row>
+            <entry>W</entry>
+            <entry>heat_transport</entry>
+          </row>
+          <row>
+            <entry>m2 s-1</entry>
+            <entry>horizontal_streamfunction</entry>
+          </row>
+          <row>
+            <entry>m2 s-1</entry>
+            <entry>horizontal_velocity_potential</entry>
+          </row>
+          <row>
+            <entry>kg</entry>
+            <entry>mass</entry>
+          </row>
+          <row>
+            <entry>kg m-2 s-1</entry>
+            <entry>mass_flux</entry>
+          </row>
+          <row>
+            <entry>1</entry>
+            <entry>mass_fraction</entry>
+          </row>
+          <row>
+            <entry>1</entry>
+            <entry>mass_mixing_ration</entry>
+          </row>
+          <row>
+            <entry>kg s-1</entry>
+            <entry>mass_transport</entry>
+          </row>
+          <row>
+            <entry>1</entry>
+            <entry>mole_fraction</entry>
+          </row>
+          <row>
+            <entry>mol m-2 s-1</entry>
+            <entry>mole_flux</entry>
+          </row>
+          <row>
+            <entry>Pa</entry>
+            <entry>momentum_flux</entry>
+          </row>
+          <row>
+            <entry>Pa</entry>
+            <entry>partial_pressure</entry>
+          </row>
+          <row>
+            <entry>s</entry>
+            <entry>period</entry>
+          </row>
+          <row>
+            <entry>W</entry>
+            <entry>power</entry>
+          </row>
+          <row>
+            <entry>Pa</entry>
+            <entry>pressure</entry>
+          </row>
+          <row>
+            <entry>1</entry>
+            <entry>probability</entry>
+          </row>
+          <row>
+            <entry>W m-2</entry>
+            <entry>radiative_flux</entry>
+          </row>
+          <row>
+            <entry>m2 s-2</entry>
+            <entry>specific_eddy_kinetic_energy</entry>
+          </row>
+          <row>
+            <entry>m s-1</entry>
+            <entry>speed</entry>
+          </row>
+          <row>
+            <entry>Pa</entry>
+            <entry>stress</entry>
+          </row>
+          <row>
+            <entry>K</entry>
+            <entry>temperature</entry>
+          </row>
+          <row>
+            <entry>m</entry>
+            <entry>thickness</entry>
+          </row>
+          <row>
+            <entry>m s-1</entry>
+            <entry>velocity</entry>
+          </row>
+          <row>
+            <entry>m3</entry>
+            <entry>volume</entry>
+          </row>
+          <row>
+            <entry>m s-1</entry>
+            <entry>volume_flux</entry>
+          </row>          
+          <row>
+            <entry>1</entry>
+            <entry>volume_fraction</entry>
+          </row>   
+          <row>
+            <entry>m3 s-1</entry>
+            <entry>volume_transport</entry>
+          </row>     
+          <row>
+            <entry>s-1</entry>
+            <entry>vorticity</entry>
+          </row>
+        </tbody>      
+      </tgroup> 
+     </table>
+   </para>
+  </section>
+
+</article>

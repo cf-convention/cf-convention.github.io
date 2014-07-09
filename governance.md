@@ -9,7 +9,7 @@ group: "navigation"
 * [Rules for making changes to the CF Conventions][rules]
   * Discussion about these rules can be found in the [CF mailing list archives][mail], in June and July, 2007. See messages with the subject line "proposed rules for changes to CF conventions".
 * [Rules for correcting errors in the CF documents][errors]
-* CF Governance Document  [[PDF][pdf], [HTML][html]]
+* CF Governance Document  \[ [PDF][pdf], [HTML][html] \]
  
 
 ###Conventions Committee and Standard Names Committee
@@ -48,8 +48,8 @@ group: "navigation"
 
 The climate research community is indebted to the above for their magnanimous contributions in establishing and improving the CF Conventions.
 
-[rules]: http://cf-convention.github.io/rules.html
-[errors]: http://cf-convention.github.io/errors.html
+[rules]: rules.html
+[errors]: errors.html
 [mail]: http://www.cgd.ucar.edu/pipermail/cf-metadata
-[html]: http://cf-convention.github.io/cf2_whitepaper_final.html
-[pdf]: https://github.com/cf-convention/cf-documents/blob/master/white-papers/cf2_whitepaper_final.pdf
+[html]: 
+[pdf]: 

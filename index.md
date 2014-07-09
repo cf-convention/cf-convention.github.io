@@ -5,9 +5,12 @@ title: CF Conventions Home Page
 
 #CF Metadata
 ##NetCDF CF Metadata Conventions
-The conventions for CF (Climate and Forecast) metadata are designed to promote the processing and sharing of files created with the [NetCDF API][api]. The CF conventions are increasingly gaining acceptance and have been adopted by a number of projects and groups as a primary standard. The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities.     
+The conventions for CF (Climate and Forecast) metadata are designed to promote the processing and sharing of files created with the [NetCDF API][api]. 
+The CF conventions are increasingly gaining acceptance and have been adopted by a number of projects and groups as a primary standard. 
+The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. 
+This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities.
 
-The CF conventions generalize and extend the [COARDS conventions][coards].     
+The CF conventions generalize and extend the [COARDS conventions][coards].
 
 Here are the slides for a talk that provides an [overview of CF][overview]. An expository version of this talk is in this [article][article].
 
@@ -33,11 +36,11 @@ Quick Links :
 [overview]: https://github.com/cf-convention/cf-documents/blob/master/other/cf_overview_viewgraphs.pdf
 [article]: https://github.com/cf-convention/cf-documents/blob/master/other/cf_overview_article.pdf
 [discussion]: http://cf-convention.github.io/discussion.html
-[q1]: http://cf-convention.github.io/latest.html
-[q2]: http://cf-convention.github.io/standard-names.html
+[q1]: latest.html
+[q2]: standard-names.html
 [q3]: http://kitt.llnl.gov/trac/query?status=new&status=assigned&status=reopened&status=closed&order=id&desc=1
 [q4]: http://www.met.reading.ac.uk/~david/cf_trac_summary.html
 [q5]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
-[q6]: http://cf-convention.github.io/requirements-and-recommendations.html
-[q7]: http://cf-convention.github.io/compliance-checker.html
+[q6]: requirements-and-recommendations.html
+[q7]: compliance-checker.html
 

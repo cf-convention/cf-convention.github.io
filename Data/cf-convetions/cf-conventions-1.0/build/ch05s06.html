@@ -1,0 +1,126 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>5.6. Grid Mappings and Projections</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch05.html" title="Chapter 5.  Coordinate Systems"><link rel="prev" href="ch05s05.html" title="5.5. Trajectories"><link rel="next" href="ch05s07.html" title="5.7. Scalar Coordinate Variables"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.6. Grid Mappings and Projections</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s05.html">Prev</a> </td><th width="60%" align="center">Chapter 5. 
+    Coordinate Systems
+  </th><td width="20%" align="right"> <a accesskey="n" href="ch05s07.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="grid-mappings-and-projections"></a>5.6. Grid Mappings and Projections</h2></div></div></div><p>
+      When the coordinate variables for a horizontal grid are not longitude
+      and latitude, it is required that the true latitude and longitude
+      coordinates be supplied via the <code class="varname">coordinates</code> attribute.
+      If in addition it is desired to describe the mapping between the
+      given coordinate variables and the true latitude and longitude
+      coordinates, the attribute <code class="varname">grid_mapping</code> may be
+      used to supply this description. This attribute is attached to data
+      variables so that variables with different mappings may be present
+      in a single file. The attribute takes a string value which is the
+      name of another variable in the file that provides the description
+      of the mapping via a collection of attached attributes. This variable
+      is called <span class="emphasis"><em>a grid mapping variable</em></span> and is of
+      arbitrary type since it contains no data. Its purpose is to act as
+      a container for the attributes that define the mapping. The one
+      attribute that all grid mapping variables must have is
+      <code class="varname">grid_mapping_name</code> which takes a string value that
+      contains the mapping's name. The other attributes that define a
+      specific mapping depend on the value of
+      <code class="varname">grid_mapping_name</code>. The valid values of
+      <code class="varname">grid_mapping_name</code> along with the attributes
+      that provide specific map parameter values are
+      described in <a class="xref" href="apf.html" title="Appendix F. Grid Mappings">Appendix F, <i>Grid Mappings</i></a>.
+    </p><p>
+        In order to make use of a grid mapping to directly calculate latitude
+        and longitude values it is necessary to associate the coordinate
+        variables with the independent variables of the mapping.
+        This is done by assigning a <code class="varname">standard_name</code> to
+        the coordinate variable. The appropriate values of the
+        <code class="varname">standard_name</code> depend on the grid mapping and
+        are given in <a class="xref" href="apf.html" title="Appendix F. Grid Mappings">Appendix F, <i>Grid Mappings</i></a>.
+    </p><div class="example"><a name="idm206148466960"></a><p class="title"><b>Example 5.6. Rotated pole grid</b></p><div class="example-contents"><pre class="programlisting">
+dimensions:
+  rlon = 128 ;
+  rlat = 64 ;
+  lev = 18 ;
+variables:
+  float T(lev,rlat,rlon) ;
+    T:long_name = "temperature" ;
+    T:units = "K" ;
+    T:coordinates = "lon lat" ;
+    T:grid_mapping="rotated_pole"
+  char rotated_pole
+    rotated_pole:grid_mapping_name = "rotated_latitude_longitude" ;
+    rotated_pole:grid_north_pole_latitude = 32.5 ;
+    rotated_pole:grid_north_pole_longitude = 170. ;
+  float rlon(rlon) ;
+    rlon:long_name = "longitude in rotated pole grid" ;
+    rlon:units = "degrees" ;
+    rlon:standard_name = "grid_longitude";
+  float rlat(rlat) ;
+    rlat:long_name = "latitude in rotated pole grid" ;
+    rlat:units = "degrees" ;
+    rlon:standard_name = "grid_latitude";
+  float lev(lev) ;
+    lev:long_name = "pressure level" ;
+    lev:units = "hPa" ;
+  float lon(rlat,rlon) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(rlat,rlon) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+      </pre></div></div><br class="example-break"><p>
+      A CF compliant application can determine that rlon and rlat are
+      longitude and latitude values in the rotated grid by
+      recognizing the standard names <code class="varname">grid_longitude</code>
+      and <code class="varname">grid_latitude</code>. Note that the units
+      of the rotated longitude and latitude axes are given as
+      <code class="varname">degrees</code>. This should prevent a COARDS
+      compliant application from mistaking the variables
+      <code class="varname">rlon</code> and <code class="varname">rlat</code> to be
+      actual longitude and latitude coordinates. The entries for these
+      names in the standard name table indicate the appropriate sign
+      conventions for the units of <code class="varname">degrees</code>.
+    </p><p class="newtext">
+    </p><div class="example"><a name="lambert-conformal-projection"></a><p class="title"><b>Example 5.7. Lambert conformal projection</b></p><div class="example-contents"><pre class="programlisting">
+dimensions:
+  y = 228;
+  x = 306;
+  time = 41;
+
+variables:
+  int Lambert_Conformal;
+    Lambert_Conformal:grid_mapping_name = "lambert_conformal_conic";
+    Lambert_Conformal:standard_parallel = 25.0;
+    Lambert_Conformal:longitude_of_central_meridian = 265.0;
+    Lambert_Conformal:latitude_of_projection_origin = 25.0;
+  double y(y);
+    y:units = "km";
+    y:long_name = "y coordinate of projection";
+    y:standard_name = "projection_y_coordinate";
+  double x(x);
+    x:units = "km";
+    x:long_name = "x coordinate of projection";
+    x:standard_name = "projection_x_coordinate";
+  double lat(y, x);
+    lat:units = "degrees_north";
+    lat:long_name = "latitude coordinate";
+    lat:standard_name = "latitude";
+  double lon(y, x);
+    lon:units = "degrees_east";
+    lon:long_name = "longitude coordinate";
+    lon:standard_name = "longitude";
+  int time(time);
+    time:long_name = "forecast time";
+    time:units = "hours since 2004-06-23T22:00:00Z";
+  float Temperature(time, y, x);
+    Temperature:units = "K";
+    Temperature:long_name = "Temperature @ surface";
+    Temperature:missing_value = 9999.0;
+    Temperature:coordinates = "lat lon";
+    Temperature:grid_mapping = "Lambert_Conformal";
+      </pre><p>
+      An application can determine that <code class="varname">x</code> and
+      <code class="varname">y</code> are the projection coordinates by
+      recognizing the standard names <code class="varname">projection_x_coordinate</code>
+      and <code class="varname">projection_y_coordinate</code>. The grid mapping
+      variable <code class="varname">Lambert_Conformal</code> contains the mapping
+      parameters as attributes, and is associated with
+      the <code class="varname">Temperature</code> variable via its
+      <code class="varname">grid_mapping attribute</code>.
+    </p></div></div><p class="newtext"><br class="example-break">
+    </p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.5. Trajectories </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 5.7. Scalar Coordinate Variables</td></tr></table></div></body></html>

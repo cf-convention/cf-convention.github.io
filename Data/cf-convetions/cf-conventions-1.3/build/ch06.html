@@ -1,0 +1,49 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Chapter 6.  Labels and Alternative Coordinates</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="prev" href="ch05s07.html" title="5.7. Scalar Coordinate Variables"><link rel="next" href="ch06s02.html" title="6.2. Alternative Coordinates"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 6. 
+        Labels and Alternative Coordinates
+    </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s07.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch06s02.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="idm315659877376"></a>Chapter 6. 
+        Labels and Alternative Coordinates
+    </h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="ch06.html#labels">6.1. Labels</a></span></dt><dd><dl><dt><span class="section"><a href="ch06.html#geographic-regions">6.1.1. Geographic Regions</a></span></dt></dl></dd><dt><span class="section"><a href="ch06s02.html">6.2. Alternative Coordinates</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="labels"></a>6.1. Labels</h2></div></div></div><p>
+      The previous section contained several examples in which measurements from scattered sites were grouped using a single dimension. Coordinates of the site locations can be provided using auxiliary coordinate variables, but it is often desirable to identify measurement sites by name, or some other unique string.
+    </p><p>
+      The list of string identifiers plays an analogous role to a coordinate variable, hence we have chosen to use the <code class="varname">coordinates</code> attribute to provide the name of the variable that contains the string array. An application processing the variables listed in the <code class="varname">coordinates</code> attribute can recognize a labeled axis by checking whether or not a given variable contains character data.
+    </p><div class="example"><a name="idm315659873184"></a><p class="title"><b>Example 6.1. Several parcel trajectories</b></p><div class="example-contents"><p>
+Consider a set of ocean floats that follow parcel trajectories and simultaneously measure temperature at fixed times. We wish to identify the floats by name. The temperature data is a function of parcel (i.e., <code class="constant">float</code>) and time. The location of each sample is also a function of parcel and time, so the position information is stored in a multidimensional coordinate variable.
+      </p><pre class="programlisting">
+dimensions:
+  parcel = 15 ; // number of trajectories
+  times = 20 ;
+  max_len_parcel_name = 64 ; // max length of trajectory name
+variables:
+  float temperature(parcel,times) ;
+    temperature:coordinates = "parcel_name lat lon" ;
+  float times(times) ;
+  char parcel_name(parcel,max_len_parcel_name) ;
+  float lon(parcel,times) ;
+  float lat(parcel,times) ;
+      </pre></div></div><br class="example-break"><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="geographic-regions"></a>6.1.1. Geographic Regions</h3></div></div></div><p>
+	When data is representative of geographic regions which can be identified by names but which have complex boundaries that cannot practically be specified using longitude and latitude boundary coordinates, a labeled axis should be used to identify the regions. We recommend that the names be chosen from the list of <a class="ulink" href="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/standardized-region-names" target="_top">standardized region names</a> whenever possible. To indicate that the label values are standardized the variable that contains the labels must be given the <code class="varname">standard_name</code> attribute with the value <code class="constant">region</code>.
+      </p><div class="example"><a name="idm315659866800"></a><p class="title"><b>Example 6.2. Northward heat transport in Atlantic Ocean</b></p><div class="example-contents"><p>
+	  Suppose we have data representing northward heat transport across a set of zonal slices in the Atlantic Ocean. Note that the standard names to describe this quantity do not include location information. That is provided by the latitude coordinate and the labeled axis:
+	</p><pre class="programlisting">
+dimensions:
+  times = 20 ;
+  lat = 5
+  lbl = 1 ;
+  strlen = 64 ;
+variables:
+  float n_heat_transport(time,lat,lbl);
+    n_heat_transport:units="W";
+    n_heat_transport:coordinates="geo_region";
+    n_heat_transport:standard_name="northward_ocean_heat_transport";
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1990-1-1 0:0:0" ;
+  float lat(lat) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  char geo_region(lbl,strlen) ;
+    geo_region:standard_name="region"
+data:
+  geo_region = "atlantic_ocean" ;
+  lat = 10., 20., 30., 40., 50. ;
+	</pre></div></div><br class="example-break"></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s07.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch06s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.7. Scalar Coordinate Variables </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 6.2. Alternative Coordinates</td></tr></table></div></body></html>

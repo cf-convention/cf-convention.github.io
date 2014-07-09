@@ -1,0 +1,111 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>2.6. Attributes</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch02.html" title="Chapter 2.  NetCDF Files and Components"><link rel="prev" href="ch02s05.html" title="2.5. Variables"><link rel="next" href="ch03.html" title="Chapter 3.  Description of the Data"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.6. Attributes</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s05.html">Prev</a> </td><th width="60%" align="center">Chapter 2. 
+      NetCDF Files and Components
+  </th><td width="20%" align="right"> <a accesskey="n" href="ch03.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idm206165787872"></a>2.6. Attributes</h2></div></div></div><p>
+      This standard describes many attributes (some
+      mandatory, others optional), but a file may
+      also contain non-standard attributes. Such
+      attributes do not represent a violation of this
+      standard. Application programs should ignore
+      attributes that they do not recognise or which
+      are irrelevant for their purposes. Conventional
+      attribute names should be used wherever
+      applicable. Non-standard names should be as
+      meaningful as possible. Before introducing
+      an attribute, consideration should be given
+      to whether the information would be better
+      represented as a variable. In general, if a
+      proposed attribute requires ancillary data to
+      describe it, is multidimensional, requires any of
+      the defined netCDF dimensions to index its values,
+      or requires a significant amount of storage,
+      a variable should be used instead. When this
+      standard defines string attributes that may take
+      various prescribed values, the possible values
+      are generally given in lower case. However,
+      applications programs should not be sensitive
+      to case in these attributes. Several string
+      attributes are defined by this standard to
+      contain "blank-separated lists". Consecutive
+      words in such a list are separated by one or more
+      adjacent spaces. The list may begin and end with
+      any number of spaces. See 
+      <a class="xref" href="apa.html" title="Appendix A. Attributes">Appendix A, <i>Attributes</i></a>
+      for a list
+      of attributes described by this standard.
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="identification-of-conventions"></a>2.6.1. Identification of Conventions</h3></div></div></div><p>
+        We recommend that netCDF files that
+        follow these conventions indicate
+        this by setting the NUG defined global
+        attribute 
+        <code class="varname">Conventions</code> 
+        to the string value "<code class="varname">CF-1.0</code>". The string is interpreted as a
+        directory name relative to a directory
+        that is a repository of documents
+        describing sets of discipline-specific
+        conventions. The conventions directory
+        name is currently interpreted relative to
+        the directory 
+        <code class="filename">pub/netcdf/Conventions/</code>
+        on the host machine 
+        <code class="computeroutput">ftp.unidata.ucar.edu</code>. The
+        web based versions of this
+        document are linked from the 
+        <a class="ulink" href="http://www.unidata.ucar.edu/packages/netcdf/conventions.html" target="_top">
+          netCDF Conventions web page
+        </a>.
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="description-of-file-contents"></a>2.6.2. Description of file contents</h3></div></div></div><p>
+        The following attributes are intended
+        to provide information about where the
+        data came from and what has been done to
+        it. This information is mainly for the
+        benefit of human readers. The attribute
+        values are all character strings. For
+        readability in ncdump outputs it is
+        recommended to embed newline characters
+        into long strings to break them into
+        lines. For backwards compatibility with
+        COARDS none of these global attributes
+        is required.
+      </p><p>
+        The NUG defines <code class="varname">title</code> and <code class="varname">history</code>
+        to be global attributes. We wish to
+        allow the newly defined attributes,
+        i.e., <code class="varname">institution</code>, <code class="varname">source</code>, 
+        <code class="varname">references</code>,
+        and <code class="varname">comment</code>, to be either global or
+        assigned to individual variables. When
+        an attribute appears both globally and
+        as a variable attribute, the variable's
+        version has precedence.
+      </p><p>
+        </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"> <code class="varname"> title </code> </span></dt><dd><p>
+                  A succinct description of what is in the dataset.
+                </p></dd><dt><span class="term"> <code class="varname"> institution </code> </span></dt><dd><p>
+                  Specifies where the original data was produced.
+                </p></dd><dt><span class="term"> <code class="varname"> source </code> </span></dt><dd><p>
+                  The method of production of the original data. If it was model-generated, 
+                  <code class="varname">source</code> 
+                  should name the model and
+                  its version, as specifically as
+                  could be useful.  If it
+                  is observational,
+                  <code class="varname">source</code> 
+                  should characterize it (e.g., "<code class="varname">surface observation</code>" or "<code class="varname">radiosonde</code>").
+                </p></dd><dt><span class="term"> <code class="varname"> history </code> </span></dt><dd><p>
+                  Provides an audit trail for modifications to the
+                  original data.  Well-behaved generic netCDF
+                  filters will automatically append their name
+                  and the parameters with which they were invoked to
+                  the global history attribute of an input
+                  netCDF file. We recommend that each line begin
+                  with a timestamp indicating the date and time of day
+                  that the program was executed.
+                </p></dd><dt><span class="term"> <code class="varname"> references </code> </span></dt><dd><p>
+                  Published or web-based references that
+                  describe the data or methods used to produce it.
+                </p></dd><dt><span class="term"> <code class="varname"> comment </code> </span></dt><dd><p>
+                  Miscellaneous information about the data or methods used to produce it.
+                </p></dd></dl></div><p>
+      </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.5. Variables </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 3. 
+    Description of the Data
+  </td></tr></table></div></body></html>

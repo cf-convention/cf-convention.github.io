@@ -4,6 +4,7 @@ title: Lastest
 ---
 
 #Lastest CF Conventions Document
-
-* [HTML](http://cf-convention.github.io/1.6.html)
-* [PDF](https://github.com/cf-convention/cf-documents/blob/master/cf-conventions/1.6/cf-conventions.pdf)
+##CF-Convetions-1.7
+ * <a href="Data/cf-convetions/cf-conventions-1.7/build/cf-conventions.html"> Single HTML </a> &nbsp;
+ * <a href="Data/cf-convetions/cf-conventions-1.7/build/cf-conventions-multi.html"> Multi HTML </a> &nbsp;
+ * <a href="Data/cf-convetions/cf-conventions-1.7/build/cf-conventions.pdf"> PDF </a>

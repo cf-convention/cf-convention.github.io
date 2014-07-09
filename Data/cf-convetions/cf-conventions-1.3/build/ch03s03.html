@@ -1,0 +1,42 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>3.3. Standard Name</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch03.html" title="Chapter 3.  Description of the Data"><link rel="prev" href="ch03s02.html" title="3.2. Long Name"><link rel="next" href="ch03s04.html" title="3.4. Ancillary Data"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.3. Standard Name</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><th width="60%" align="center">Chapter 3. 
+    Description of the Data
+  </th><td width="20%" align="right"> <a accesskey="n" href="ch03s04.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="standard-name"></a>3.3. Standard Name</h2></div></div></div><p>
+      A fundamental requirement for exchange of scientific data is the ability to describe precisely the physical quantities being represented. To some extent this is the role of the <code class="varname">long_name</code> attribute as defined in the NUG. However, usage of <code class="varname">long_name</code> is completely ad-hoc. For some applications it would be desirable to have a more definitive description of the quantity, which would allow users of data from different sources to determine whether quantities were in fact comparable. For this reason an optional mechanism for uniquely associating each variable with a standard name is provided.
+    </p><p>
+		A standard name is associated with a variable via the attribute <code class="varname">standard_name</code> which takes a string value comprised of a standard name optionally followed by one or more blanks and a standard name modifier (a string value from <a class="xref" href="apc.html" title="Appendix C. Standard Name Modifiers">Appendix C, <i>Standard Name Modifiers</i></a>).
+    </p><p>
+      The set of permissible standard names is contained in the standard name table. The table entry for each standard name contains the following:
+    </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">standard name</span></dt><dd><p>
+	    The name used to identify the physical quantity. A standard name contains no whitespace and is case sensitive.
+	  </p></dd><dt><span class="term">canonical units</span></dt><dd><p>
+		  Representative units of the physical quantity. Unless it is dimensionless, a variable with a <code class="varname">standard_name</code> attribute must have units which are physically equivalent (not necessarily identical) to the canonical units, possibly modified by an operation specified by either the standard name modifier (see below and <a class="xref" href="apc.html" title="Appendix C. Standard Name Modifiers">Appendix C, <i>Standard Name Modifiers</i></a>) or by the <code class="varname">cell_methods</code> attribute (see <a class="xref" href="ch07s03.html" title="7.3. Cell Methods">Section 7.3, &#8220;Cell Methods&#8221;</a> and <a class="xref" href="ape.html" title="Appendix E. Cell Methods">Appendix E, <i>Cell Methods</i></a>).
+	  </p></dd><dt><span class="term">description</span></dt><dd><p>
+	    The description is meant to clarify the qualifiers of the fundamental quantities such as which surface a quantity is defined on or what the flux sign conventions are. We don"t attempt to provide precise definitions of fundumental physical quantities (e.g., temperature) which may be found in the literature.
+	  </p></dd></dl></div><p>
+      When appropriate, the table entry also contains the corresponding GRIB parameter code(s) (from ECMWF and NCEP) and AMIP identifiers.
+    </p><p>
+	The standard name table is located at 
+        <a class="ulink" href="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/current/cf-standard-name-table.xml" target="_top">http://cf-pcmdi.llnl.gov/documents/cf-standard-names/current/cf-standard-name-table.xml</a>
+        , written in compliance with the XML format, as described in 
+        <a class="xref" href="apb.html" title="Appendix B. Standard Name Table Format">Appendix B, <i>Standard Name Table Format</i></a>. 
+        Knowledge of the XML format is only necessary for application 
+        writers who plan to directly access the table. A formatted text 
+        version of the table is provided at 
+        <a class="ulink" href="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/current/cf-standard-name-table.html" target="_top">http://cf-pcmdi.llnl.gov/documents/cf-standard-names/current/cf-standard-name-table.html</a>
+        , and this table may be consulted in order to find the standard 
+        name that should be assigned to a variable.
+    </p><p>
+			Standard names by themselves are not always sufficient to describe a quantity. For example, a variable may contain data to which spatial or temporal operations have been applied. Or the data may represent an uncertainty in the measurement of a quantity. These quantity attributes are expressed as modifiers of the standard name. Modifications due to common statistical operations are expressed via the <code class="varname">cell_methods</code> attribute (see <a class="xref" href="ch07s03.html" title="7.3. Cell Methods">Section 7.3, &#8220;Cell Methods&#8221;</a> and <a class="xref" href="ape.html" title="Appendix E. Cell Methods">Appendix E, <i>Cell Methods</i></a>). Other types of quantity modifiers are expressed using the optional modifier part of the <code class="varname">standard_name</code> attribute. The permissible values of these modifiers are given in <a class="xref" href="apc.html" title="Appendix C. Standard Name Modifiers">Appendix C, <i>Standard Name Modifiers</i></a>.
+    </p><div class="example"><a name="idm315660614112"></a><p class="title"><b>Example 3.1. Use of <code class="varname">standard_name</code></b></p><div class="example-contents"><pre class="programlisting">
+float psl(lat,lon) ;
+  psl:long_name = "mean sea level pressure" ;
+  psl:units = "hPa" ;
+  psl:standard_name = "air_pressure_at_sea_level" ;
+      </pre><p>
+	  The description in the standard name table entry for <code class="varname">air_pressure_at_sea_level</code> clarifies that "sea level" refers to the mean sea level, which is close to the geoid in sea areas.
+	</p></div></div><br class="example-break"><p>
+      Here are lists of equivalences between the CF standard names and the standard names from the 
+      <a class="ulink" href="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/ecmwf-grib-mapping" target="_top">ECMWF GRIB tables</a>,  the 
+      <a class="ulink" href="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/ncep-grib-code-cf-standard-name-mapping" target="_top">NCEP GRIB tables</a>, and the 
+      <a class="ulink" href="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/pcmdi-name-cf-standard-name-mapping" target="_top">PCMDI tables</a>.
+    </p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.2. Long Name </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 3.4. Ancillary Data</td></tr></table></div></body></html>

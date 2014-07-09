@@ -1,0 +1,249 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>7.3. Cell Methods</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch07.html" title="Chapter 7.  Data Representative of Cells"><link rel="prev" href="ch07s02.html" title="7.2. Cell Measures"><link rel="next" href="ch07s04.html" title="7.4. Climatological Statistics"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">7.3. Cell Methods</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s02.html">Prev</a> </td><th width="60%" align="center">Chapter 7. 
+		Data Representative of Cells
+	</th><td width="20%" align="right"> <a accesskey="n" href="ch07s04.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="cell-methods"></a>7.3. Cell Methods</h2></div></div></div><p>
+			To describe the characteristic of a field that
+			is represented by cell values we define the
+			<code class="varname">cell_methods</code>
+			attribute of the variable. This
+			is a string attribute comprising a list
+			of blank-separated words of the form "<code class="varname">name:
+			method</code>". Each "<code class="varname">name: method</code>" pair indicates that
+			for the axis identified by <code class="varname">name</code>, the cell values
+			representing the field have been determined or
+			derived by the specified <code class="varname">method</code>. The token name
+			can be a dimension of the variable, a scalar
+			coordinate variable, or a valid standard name. The
+			values of <code class="varname">method</code> should be selected from the list
+			in 
+			<a class="xref" href="ape.html" title="Appendix E. Cell Methods">Appendix E, <i>Cell Methods</i></a>, 
+			which includes 
+			<code class="constant">point</code>, 
+			<code class="constant">sum</code>, 
+			<code class="constant">mean</code>, 
+			<code class="constant">maximum</code>, 
+			<code class="constant">minimum</code>, 
+			<code class="constant">mid_range</code>, 
+			<code class="constant">standard_deviation</code>, 
+			<code class="constant">variance</code>, 
+			<code class="constant">mode</code>, 
+			and
+			<code class="constant">median</code>. 
+			Case is not
+			significant in the method name. Some methods
+			(e.g., <code class="constant">variance</code>) 
+			imply a change of units of
+			the variable, and this also is specified by
+			<a class="xref" href="apd.html" title="Appendix D. Dimensionless Vertical Coordinates">Appendix D, <i>Dimensionless Vertical Coordinates</i></a>. 
+			It must be remembered that the
+			method applies only to the axis indicated, and
+			different methods may apply to other axes. If
+			a precipitation value in a longitude-latitude
+			cell is given the method maximum for these axes,
+			for instance, it means that it is the maximum
+			within these spatial cells, and does not imply
+			that it is also the maximum in time.
+		</p><p>
+			The default interpretation for variables that
+			have cells associated with their grid points,
+			but do not have the 
+			<code class="varname">cell_methods</code>
+			attribute
+			specified, depends on whether the quantity is
+			extensive (which depends on the size of the cell)
+			or intensive (which doesn't). So, for example,
+			suppose the quantities "accumulated precipitation"
+			and "precipitation rate" each have a time axis
+			and that time intervals are associated with each
+			point on the time axis via a boundary variable. A
+			variable representing accumulated precipitation
+			is extensive in time and requires a time interval
+			to be completely specified. Hence its default
+			interpretation should be that the cell associated
+			with the grid point represents the time interval
+			over which the precipitation was accumulated. This
+			is indicated explicitly by setting the cell method
+			to <code class="varname">sum</code>. A precipitation rate on the other hand is
+			intensive in time and could equally well represent
+			an instantaneous value or a mean value over the
+			time interval specified by the cell. However,
+			if the <code class="varname">mean</code> method is not specified then the
+			default interpretation for the quantity would be
+			instantaneous. The default method is indicated
+			explicity by setting the cell method to <code class="varname">point</code>.
+		</p><p>
+			</p><div class="example"><a name="idm315659771168"></a><p class="title"><b>Example 7.4.  Methods applied to a timeseries </b></p><div class="example-contents"><p>
+					 Consider 12-hourly timeseries of pressure, temperature and
+					 precipitation from a number of stations, where pressure
+					 is measured instantaneously, maximum temperature for the
+					 preceding 12 hours is recorded, and precipitation is accumulated
+					 in a rain gauge. For a period of 48 hours from 6 a.m. on
+					 19 April 1998, the data is structured as follows:
+				</p><p>
+					</p><pre class="programlisting">
+dimensions:
+  time = UNLIMITED; // (5 currently)
+  station = 10;
+  nv = 2;
+variables:
+  float pressure(station,time);
+    pressure:long_name = "pressure";
+    pressure:units = "kPa";
+  float maxtemp(station,time);
+    maxtemp:long_name = "temperature";
+    maxtemp:units = "K";
+    maxtemp:cell_methods = "time: maximum";
+  float ppn(station,time);
+    ppn:long_name = "depth of water-equivalent precipitation";
+    ppn:units = "mm";
+  double time(time);
+    time:long_name = "time";
+    time:units = "h since 1998-4-19 6:0:0";
+    time:bounds = "time_bnds";
+  double time_bnds(time,nv);
+data:
+  time = 0., 12., 24., 36., 48.;
+  time_bnds = -12.,0., 0.,12., 12.,24., 24.,36., 36.,48.; 
+					</pre><p>
+				</p><p>
+					Note that in this example the
+					time axis values coincide with
+					the end of each interval. It is
+					sometimes desirable, however, to
+					use the midpoint of intervals as
+					coordinate values for variables
+					that are representative of an
+					interval. An application may
+					simply obtain the midpoint values
+					by making use of the boundary
+					data in <code class="constant">time_bnds</code>.
+				</p></div></div><p><br class="example-break">
+		</p><p>
+            If more than one cell method is to be indicated, they should be
+            arranged in the order they were applied. The left-most operation
+            is assumed to have been applied first. Suppose a quantity varies
+            in both longitude and time (dimensions lon and time) within each
+            gridbox. Values that represent the time-average of the zonal
+            maximum are labelled <code class="varname">cell_methods="lon: maximum time: mean"</code>,
+            i.e. find the largest value at each instant of time over all
+            longitudes, then average these maxima over time; values of the
+            zonal maximum of time-averages are labelled
+            <code class="varname">cell_methods="time: mean lon: maximum"</code>. If the methods could
+            have been applied in any order without affecting the outcome,
+            they may be put in any order in the <code class="varname">cell_methods</code> attribute.
+        </p><p>
+            If a data value is representative of variation over a combination
+            of axes, a single method should be prefixed by the names of all
+            the dimensions involved, whose order is immaterial. Dimensions
+            should be grouped in this way only if there is an essential
+            difference from treating them individually. For instance, the
+            standard deviation of topographic height within a
+            longitude-latitude gridbox would have
+            <code class="varname">cell_methods="lat: lon: standard_deviation"</code>. This is not the
+            same as
+            <code class="varname">cell_methods="lon: standard_deviation lat: standard_deviation"</code>,
+            which would mean finding the standard deviation along each
+            parallel of latitude within the zonal extent of the gridbox,
+            and then the standard deviation of these values over latitude.
+        </p><p>
+            To indicate more precisely how the cell method was applied,
+            extra information may be included in parentheses () after the
+            identification of the method. This information includes
+            standardized and non-standarized parts. Currently the only
+            stardardized information is to provide the typical interval
+            between the original data values to which the method was applied,
+            in the situation where the present data values are statistically
+            representative of original data values which had a finer spacing.
+            The syntax is <code class="varname">(interval: <span class="emphasis"><em>value unit</em></span>)</code>,
+            where <code class="varname"><span class="emphasis"><em>value</em></span></code> is a numerical
+            value and <code class="varname"><span class="emphasis"><em>unit</em></span></code>
+            is a string that can be recognized by UNIDATA's
+            Udunits package [<a href="bi01.html#udunits" class="biblioref" title="[UDUNITS]"><abbr class="abbrev">UDUNITS</abbr></a>].
+            The <code class="varname"><span class="emphasis"><em>unit</em></span></code> does not have to be
+            dimensionally equivalent to the unit of the corresponding
+            dimension name, although it often will be. Recording the original
+            interval is particularly important for standard deviations.
+            For example, the standard deviation of daily values could be
+            indicated by
+            <code class="varname">cell_methods="time: standard_deviation (interval: 1 day)"</code>
+            and of annual values
+            <code class="varname">cell_methods="time: standard_deviation (interval: 1 year)"</code>.
+        </p><p>
+            If the cell method applies to a combination of axes, they may
+            have a common original interval
+            e.g. <code class="varname">cell_methods="lat: lon: standard_deviation (interval: 10 km)"</code>.
+            Alternatively, they may have separate intervals, which are
+            matched to the names of axes by position
+            e.g. <code class="varname">cell_methods="lat: lon: standard_deviation (interval: 0.1 degree_N interval: 0.2 degree_E)"</code>,
+            in which 0.1 degree applies to latitude and 0.2 degree to longitude.
+        </p><p>
+            If there is both standardized and non-standardized information,
+            the non-standardized follows the standardized information and
+            the keyword <code class="varname">comment:</code>. For instance, an area-weighted mean over
+            latitude could be indicated as <code class="varname">lat: mean (area-weighted)</code>
+            or <code class="varname">lat: mean (interval: 1 degree_north comment: area-weighted)</code>.
+        </p><p>
+            A dimension of size one may be the result of "collapsing" an
+            axis by some statistical operation, for instance by calculating
+            a variance from time series data. We strongly recommend that
+            dimensions of size one be retained and used to document the
+            method and its domain.
+        </p><p>
+			</p><div class="example"><a name="idm315659751328"></a><p class="title"><b>Example 7.5. Surface air temperature variance</b></p><div class="example-contents"><p>
+					 The variance of the diurnal cycle on 1 January 1990
+                     has been calculated from hourly instantaneous surface
+                     air temperature measurments. The time dimension of size
+                     one has been retained.
+				</p><p>
+					</p><pre class="programlisting">
+dimensions:
+  lat=90;
+  lon=180;
+  time=1;
+  nv=2;
+variables:
+  float TS_var(time,lat,lon);
+    TS_var:long_name="surface air temperature variance"
+    TS_var:units="K2";
+    TS_var:cell_methods="time: variance (of hourly instantaneous)";
+  float time(time);
+    time:units="days since 1990-01-01 00:00:00";
+    time:bounds="time_bnds";
+  float time_bnds(time,nv);
+data:
+  time=.5;
+  time_bnds=0.,1.;
+					</pre><p>
+				</p><p>
+                    Notice that a parenthesized comment in the
+                    <code class="varname">cell_methods</code> attribute provides
+                    the nature of the samples used to calculate the variance.
+				</p></div></div><p><br class="example-break">
+		</p><p>
+            The convention of specifying a cell method for a
+            <code class="varname">standard_name</code> rather than for
+            a dimension with a coordinate variable is to allow
+            one to provide an indication that a particular cell
+            method is relevant to the data without having to
+            provide a precise description of the corresponding cell.
+            There are two reasons for doing this.
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+                    If the cell coordinate range cannot be precisely defined.
+                    For example, the Levitus ocean climatology uses any data
+                    that exists. It is a time mean but the time range
+                    is not well defined, so cannot be stated.
+                </p></li><li class="listitem"><p>
+                    For convenience, if the cell extends over all valid
+                    coordinates. This is permitted only for the standard
+                    names <code class="varname">longitude</code> and <code class="varname">latitude</code>. Methods specified
+                    for these standard names are assumed to apply
+                    to the complete range of longitude and latitude
+                    respectively. If in addition the data variable has
+                    a dimension with a corresponding labeled axis that
+                    specifies a geographic region <a class="xref" href="ch06.html#geographic-regions" title="6.1.1. Geographic Regions">Section 6.1.1, &#8220;Geographic Regions&#8221;</a>, the implied
+                    range of longitude and latitude is the valid range
+                    for each specified region.
+                </p></li></ul></div><p>
+            We recommend that whenever possible cell bounds should be
+            supplied by giving the variable a dimension of size one
+            and attaching bounds to the associated coordinate variable.
+        </p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch07s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">7.2. Cell Measures </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 7.4. Climatological Statistics</td></tr></table></div></body></html>

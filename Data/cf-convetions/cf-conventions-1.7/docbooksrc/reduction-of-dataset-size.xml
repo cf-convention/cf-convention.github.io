@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<chapter>
+	<title>
+		Reduction of Dataset Size
+	</title>
+
+	<para>
+		There are two methods for reducing dataset size: packing
+		and compression. By packing we mean altering the data
+		in a way that reduces its precision. By compression we
+		mean techniques that store the data more efficiently
+		and result in no precision loss. Compression only
+		works in certain circumstances, e.g., when a variable
+		contains a significant amount of missing or repeated
+		data values. In this case it is possible to make use of
+		standard utilities, e.g., UNIX <computeroutput>compress</computeroutput> 
+		or GNU <computeroutput>gzip</computeroutput>, to
+		compress the entire file after it has been written. In
+		this section we offer an alternative compression method
+		that is applied on a variable by variable basis. This
+		has the advantage that only one variable need be
+		uncompressed at a given time. The disadvantage is that
+		generic utilities that don't recognize the CF conventions
+		will not be able to operate on compressed variables.
+	</para>
+
+	<section id="packed-data">
+		<title>Packed Data</title>
+		<para>
+			At the current time the netCDF interface does
+			not provide for packing data. However a simple
+			packing may be achieved through the use of the
+			optional NUG defined attributes 
+			<varname>scale_factor</varname>
+			and
+			<varname>add_offset</varname>. 
+			After the data values of a variable
+			have been read, they are to be multiplied by
+			the 
+			<varname>scale_factor</varname>, and have 
+			<varname>add_offset</varname> 
+			added to
+			them. If both attributes are present, the data
+			are scaled before the offset is added. When
+			scaled data are written, the application should
+			first subtract the offset and then divide by the
+			scale factor. The units of a variable should be
+			representative of the unpacked data.
+		</para>
+		<para>
+			This standard is more restrictive than the NUG
+			with respect to the use of the 
+			<varname>scale_factor</varname> and
+			<varname>add_offset</varname> 
+			attributes; ambiguities and precision
+			problems related to data type conversions
+			are resolved by these restrictions. If the
+			<varname>scale_factor</varname> 
+			and 
+			<varname>add_offset</varname> 
+			attributes are of
+			the same data type as the associated variable,
+			the unpacked data is assumed to be of the
+			same data type as the packed data. However,
+			if the 
+			<varname>scale_factor</varname> 
+			and 
+			<varname>add_offset</varname> 
+			attributes
+			are of a different data type from the variable
+			(containing the packed data) then the unpacked
+			data should match the type of these attributes,
+			which must both be of type <varname>float</varname> or both be of
+			type <varname>double</varname>. An additional restriction in this
+			case is that the variable containing the packed
+			data must be of type <varname>byte</varname>, <varname>short</varname> or <varname>int</varname>. It is
+			not advised to unpack an <varname>int</varname> into a <varname>float</varname> as
+			there is a potential precision loss.
+		</para>
+		<para>
+			When data to be packed contains missing values
+			the attributes that indicate missing values
+			(<varname>_FillValue</varname>, <varname>valid_min</varname>, <varname>valid_max</varname>, <varname>valid_range</varname>)
+			must be of the same data type as the packed
+			data. See <xref linkend="missing-data"/> for a discussion of how
+			applications should treat variables that have
+			attributes indicating both missing values and
+			transformations defined by a scale and/or offset.
+		</para>
+	</section>
+
+
+
+	<section id="compression-by-gathering">
+		<title>Compression by Gathering</title>
+		<para>
+			To save space in the netCDF file, it may be
+			desirable to eliminate points from data arrays
+			that are invariably missing. Such a compression
+			can operate over one or more adjacent axes, and
+			is accomplished with reference to a list of the
+			points to be stored. The list is constructed by
+			considering a mask array that only includes the
+			axes to be compressed, and then mapping this array
+			onto one dimension without reordering. The list is
+			the set of indices in this one-dimensional mask
+			of the required points. In the compressed array,
+			the axes to be compressed are all replaced by a
+			single axis, whose dimension is the number of
+			wanted points. The wanted points appear along
+			this dimension in the same order they appear in
+			the uncompressed array, with the unwanted points
+			skipped over. Compression and uncompression are
+			executed by looping over the list.
+		</para>
+		<para>
+			The list is stored as the coordinate variable
+			for the compressed axis of the data array. Thus,
+			the list variable and its dimension have the same
+			name. The list variable has a string attribute
+			<varname>compress</varname>, <emphasis>containing a blank-separated list
+			of the dimensions which were affected by the
+			compression in the order of the CDL declaration
+			of the uncompressed array</emphasis>. The presence of
+			this attribute identifies the list variable
+			as such. The list, the original dimensions
+			and coordinate variables (including boundary
+			variables), and the compressed variables with
+			all the attributes of the uncompressed variables
+			are written to the netCDF file. The uncompressed
+			variables can be reconstituted exactly as they
+			were using this information.
+		</para>
+		<para>
+			<example>
+				<title>Horizontal compression of a three-dimensional array</title>
+				<para>
+					 We eliminate sea
+					 points at all depths in a
+					 longitude-latitude-depth array of
+					 soil temperatures. In this case,
+					 only the longitude and latitude
+					 axes would be affected by the
+					 compression. We construct a list
+					 <varname>landpoint(landpoint)</varname> containing
+					 the indices of land points.
+				</para>
+				<para>
+					<programlisting>
+dimensions:
+  lat=73;
+  lon=96;
+  landpoint=2381;
+  depth=4;
+variables:
+  int landpoint(landpoint);
+    landpoint:compress="lat lon";
+  float landsoilt(depth,landpoint);
+    landsoilt:long_name="soil temperature";
+    landsoilt:units="K";
+  float depth(depth);
+  float lat(lat);
+  float lon(lon);
+data:
+  landpoint=363, 364, 365, ...;
+
+					</programlisting>
+				</para>
+				<para>
+					Since 
+					<computeroutput>landpoint(0)=363</computeroutput>, 
+					for instance, we know that 
+					<computeroutput>landsoilt(*,0)</computeroutput> 
+					maps on to point 363 of the original data with dimensions 
+					<computeroutput>(lat,lon)</computeroutput>. 
+					This corresponds to indices 
+					<computeroutput>(3,75)</computeroutput>, 
+					i.e., 
+					<computeroutput>363 = 3*96 + 75</computeroutput>. 
+				</para>
+			</example>
+		</para>
+		<para>
+			<example>
+				<title>Compression of a three-dimensional field</title>
+				<para>
+					We compress a longitude-latitude-depth field of ocean salinity by eliminating points below the sea-floor. In this case, all three dimensions are affected by the compression, since there are successively fewer active ocean points at increasing depths.
+				</para>
+				<para>
+					<programlisting>
+variables:
+  float salinity(time,oceanpoint);
+  int oceanpoint(oceanpoint);
+    oceanpoint:compress="depth lat lon";
+  float depth(depth);
+  float lat(lat);
+  float lon(lon);
+  double time(time);
+					</programlisting>
+				</para>
+				<para>
+					This information implies that
+					the salinity field should be
+					uncompressed to an array with
+					dimensions 
+					<computeroutput>(depth,lat,lon)</computeroutput>.
+				</para>
+			</example>
+		</para>
+	</section>
+</chapter>
+
+
+
+
+
+
+

@@ -1,0 +1,325 @@
+<chapter>
+  <title>
+    Description of the Data
+  </title>
+
+  <para>
+    The attributes described in this section are used to
+    provide a description of the content and the units
+    of measurement for each variable. We continue to
+    support the use of the 
+    <varname>units</varname> 
+    and 
+    <varname>long_name</varname> attributes
+    as defined in COARDS. We extend COARDS by adding the
+    optional 
+    <varname>standard_name</varname> 
+    attribute which is used to provide
+    unique identifiers for variables. This is important for
+    data exchange since one cannot necessarily identify a
+    particular variable based on the name assigned to it by
+    the institution that provided the data.
+  </para>
+  
+  <para>
+    The 
+    <varname>standard_name</varname> 
+    attribute can
+    be used to identify variables that contain coordinate
+    data. But since it is an optional attribute, applications
+    that implement these standards must continue to be
+    able to identify coordinate types based on the COARDS
+    conventions.
+  </para>
+
+  <section id="units">
+    <title>Units</title>
+    <para>
+		The <varname>units</varname> attribute is required for all variables 
+        that represent dimensional quantities (except for boundary variables 
+        defined in <xref linkend="cell-boundaries"/> and climatology variables 
+        defined in  <xref linkend="climatological-statistics"/>). The value of 
+        the <varname>units</varname> attribute is a string that can be 
+        recognized by UNIDATA"s Udunits package <biblioref linkend="udunits"/>, 
+        with a few exceptions that are given below. 
+        The <ulink url="http://www.unidata.ucar.edu/software/udunits/">Udunits package</ulink> includes a file 
+        <filename>udunits.dat</filename>, 
+        which lists its supported unit names. Note that case is significant in the <varname>units</varname> strings.
+    </para>
+
+    <para>
+		The COARDS convention prohibits the unit 
+        <constant>degrees</constant> altogether, but this unit is not 
+        forbidden by the CF convention because it may in fact be appropriate 
+        for a variable containing, say, solar zenith angle. The unit 
+        <constant>degrees</constant> is also allowed on coordinate variables 
+        such as the latitude and longitude coordinates of a transformed grid. 
+        In this case the coordinate values are not true latitudes and 
+        longitudes which must always be identified using the more specific 
+        forms of <constant>degrees</constant> as described in 
+        <xref linkend="latitude-coordinate"/> and <xref linkend="longitude-coordinate"/>.
+    </para>
+
+    <para>
+      Units are not required for dimensionless quantities. A variable with no units attribute is assumed to be dimensionless. However, a units attribute specifying a dimensionless unit may optionally be included. The Udunits package defines a few dimensionless units, such as <constant>percent</constant>, but is lacking commonly used units such as ppm (parts per million). This convention does not support the addition of new dimensionless units that are not udunits compatible. The conforming unit for quantities that represent fractions, or parts of a whole, is "1". The conforming unit for parts per million is "1e-6". Descriptive information about dimensionless quantities, such as sea-ice concentration, cloud fraction, probability, etc., should be given in the <varname>long_name</varname> or <varname>standard_name</varname> attributes (see below) rather than the <varname>units</varname>.
+    </para>
+
+    <para>
+		The units <constant>level</constant>, <constant>layer</constant>, and <constant>sigma_level</constant> are allowed for dimensionless vertical coordinates to maintain backwards compatibility with COARDS. These units are not compatible with Udunits and are deprecated by this standard because conventions for more precisely identifying dimensionless vertical coordinates are introduced (see <xref linkend="dimensionless-vertical-coordinate"/>).
+    </para>
+
+    <para>
+      The Udunits syntax that allows scale factors and offsets to be applied to 
+      a unit is not supported by this standard. The application of any scale 
+      factors or offsets to data should be indicated by the 
+      <varname>scale_factor</varname> and <varname>add_offset</varname> 
+      attributes. Use of these attributes for data packing, 
+      which is their most important application, 
+      is discussed in detail in <xref linkend="packed-data"/>.
+    </para>
+
+    <para>
+      Udunits recognizes the following prefixes and their abbreviations.
+      <table id="table-supported-units" frame="all"><title>Supported Units</title>
+	<tgroup cols="7" align="left" colsep="1" rowsep="1">
+	  <thead>
+	    <row>
+	      <entry>Factor</entry>
+	      <entry>Prefix</entry>
+	      <entry>Abbreviation</entry>
+	      <entry></entry>
+	      <entry>Factor</entry>
+	      <entry>Prefix</entry>
+	      <entry>Abbreviation</entry>
+	    </row>
+	  </thead>
+	  <tbody>
+	    <row>
+	      <entry>1e1</entry>
+	      <entry>deca,deka</entry>
+	      <entry>da</entry>
+	      <entry></entry>
+	      <entry>1e-1</entry>
+	      <entry>deci</entry>
+	      <entry>d</entry>
+	    </row>
+	    <row>
+	      <entry>1e2</entry>
+	      <entry>hecto</entry>
+	      <entry>h</entry>
+	      <entry></entry>
+	      <entry>1e-2</entry>
+	      <entry><emphasis role="deletedtext">deci</emphasis><emphasis role="newtext">centi</emphasis></entry>
+	      <entry>c</entry>
+	    </row>
+	    <row>
+	      <entry>1e3</entry>
+	      <entry>kilo</entry>
+	      <entry>k</entry>
+	      <entry></entry>
+	      <entry>1e-3</entry>
+	      <entry>milli</entry>
+	      <entry>m</entry>
+	    </row>
+	    <row>
+	      <entry>1e6</entry>
+	      <entry>mega</entry>
+	      <entry>M</entry>
+	      <entry></entry>
+	      <entry>1e-6</entry>
+	      <entry>micro</entry>
+	      <entry>u</entry>
+	    </row>
+	    <row>
+	      <entry>1e9</entry>
+	      <entry>giga</entry>
+	      <entry>G</entry>
+	      <entry></entry>
+	      <entry>1e-9</entry>
+	      <entry>nano</entry>
+	      <entry>n</entry>
+	    </row>
+	    <row>
+	      <entry>1e12</entry>
+	      <entry>tera</entry>
+	      <entry>T</entry>
+	      <entry></entry>
+	      <entry>1e-12</entry>
+	      <entry>pico</entry>
+	      <entry>p</entry>
+	    </row>
+	    <row>
+	      <entry>1e15</entry>
+	      <entry>peta</entry>
+	      <entry>P</entry>
+	      <entry></entry>
+	      <entry>1e-15</entry>
+	      <entry>femto</entry>
+	      <entry>f</entry>
+	    </row>
+	    <row>
+	      <entry>1e18</entry>
+	      <entry>exa</entry>
+	      <entry>E</entry>
+	      <entry></entry>
+	      <entry>1e-18</entry>
+	      <entry>atto</entry>
+	      <entry>a</entry>
+	    </row>
+	    <row>
+	      <entry>1e21</entry>
+	      <entry>zetta</entry>
+	      <entry>Z</entry>
+	      <entry></entry>
+	      <entry>1e-21</entry>
+	      <entry>zepto</entry>
+	      <entry>z</entry>
+	    </row>
+	    <row>
+	      <entry>1e24</entry>
+	      <entry>yotta</entry>
+	      <entry>Y</entry>
+	      <entry></entry>
+	      <entry>1e-24</entry>
+	      <entry>yocto</entry>
+	      <entry>y</entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </table>
+    </para>
+
+  </section>
+  <section id="long-name">
+    <title>Long Name</title>
+    <para>
+      The <varname>long_name</varname> attribute is defined by the NUG to contain a long descriptive name which may, for example, be used for labeling plots. For backwards compatibility with COARDS this attribute is optional. But it is highly recommended that either this or the <varname>standard_name</varname> attribute defined in the next section be provided to make the file self-describing. If a variable has no <varname>long_name</varname> attribute then an application may use, as a default, the <varname>standard_name</varname> if it exists, or the variable name itself.
+    </para>
+  </section>
+
+  <section id="standard-name">
+    <title>Standard Name</title>
+    <para>
+      A fundamental requirement for exchange of scientific data is the ability to describe precisely the physical quantities being represented. To some extent this is the role of the <varname>long_name</varname> attribute as defined in the NUG. However, usage of <varname>long_name</varname> is completely ad-hoc. For some applications it would be desirable to have a more definitive description of the quantity, which would allow users of data from different sources to determine whether quantities were in fact comparable. For this reason an optional mechanism for uniquely associating each variable with a standard name is provided.
+    </para>
+    
+    <para>
+		A standard name is associated with a variable via the attribute <varname>standard_name</varname> which takes a string value comprised of a standard name optionally followed by one or more blanks and a standard name modifier (a string value from <xref linkend="standard-name-modifiers"/>).
+    </para>
+
+    <para>
+      The set of permissible standard names is contained in the standard name table. The table entry for each standard name contains the following:
+    </para>
+
+    <variablelist>
+      <varlistentry>
+	<term>standard name</term>
+	<listitem>
+	  <para>
+	    The name used to identify the physical quantity. A standard name contains no whitespace and is case sensitive.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>canonical units</term>
+	<listitem>
+	  <para>
+		  Representative units of the physical quantity. Unless it is dimensionless, a variable with a <varname>standard_name</varname> attribute must have units which are physically equivalent (not necessarily identical) to the canonical units, possibly modified by an operation specified by either the standard name modifier (see below and <xref linkend="standard-name-modifiers"/>) or by the <varname>cell_methods</varname> attribute (see <xref linkend="cell-methods"/> and <xref linkend="appendix-cell-methods"/>).
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>description</term>
+	<listitem>
+	  <para>
+	    The description is meant to clarify the qualifiers of the fundamental quantities such as which surface a quantity is defined on or what the flux sign conventions are. We don"t attempt to provide precise definitions of fundumental physical quantities (e.g., temperature) which may be found in the literature.
+	  </para>
+	</listitem>
+      </varlistentry>
+    </variablelist>    
+
+    <para>
+      When appropriate, the table entry also contains the corresponding GRIB parameter code(s) (from ECMWF and NCEP) and AMIP identifiers.
+    </para>
+
+    <para>
+	The standard name table is located at 
+        <ulink url="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/current/cf-standard-name-table.xml">http://cf-pcmdi.llnl.gov/documents/cf-standard-names/current/cf-standard-name-table.xml</ulink>
+        , written in compliance with the XML format, as described in 
+        <xref linkend="standard-name-table-format"/>. 
+        Knowledge of the XML format is only necessary for application 
+        writers who plan to directly access the table. A formatted text 
+        version of the table is provided at 
+        <ulink url="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/current/cf-standard-name-table.html">http://cf-pcmdi.llnl.gov/documents/cf-standard-names/current/cf-standard-name-table.html</ulink>
+        , and this table may be consulted in order to find the standard 
+        name that should be assigned to a variable.
+    </para>
+
+    <para>
+			Standard names by themselves are not always sufficient to describe a quantity. For example, a variable may contain data to which spatial or temporal operations have been applied. Or the data may represent an uncertainty in the measurement of a quantity. These quantity attributes are expressed as modifiers of the standard name. Modifications due to common statistical operations are expressed via the <varname>cell_methods</varname> attribute (see <xref linkend="cell-methods"/> and <xref linkend="appendix-cell-methods"/>). Other types of quantity modifiers are expressed using the optional modifier part of the <varname>standard_name</varname> attribute. The permissible values of these modifiers are given in <xref linkend="standard-name-modifiers"/>.
+    </para>
+    
+    <example>
+    <title>Use of <varname>standard_name</varname></title>
+      <programlisting>
+float psl(lat,lon) ;
+  psl:long_name = "mean sea level pressure" ;
+  psl:units = "hPa" ;
+  psl:standard_name = "air_pressure_at_sea_level" ;
+      </programlisting>
+	<para>
+	  The description in the standard name table entry for <varname>air_pressure_at_sea_level</varname> clarifies that "sea level" refers to the mean sea level, which is close to the geoid in sea areas.
+	</para>
+    </example>
+
+    <para>
+      Here are lists of equivalences between the CF standard names and the standard names from the 
+      <ulink url="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/ecmwf-grib-mapping">ECMWF GRIB tables</ulink>,  the 
+      <ulink url="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/ncep-grib-code-cf-standard-name-mapping">NCEP GRIB tables</ulink>, and the 
+      <ulink url="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/pcmdi-name-cf-standard-name-mapping">PCMDI tables</ulink>.
+    </para>
+  </section>
+
+  <section id="ancillary-data">
+    <title>Ancillary Data</title>
+    <para>
+		When one data variable provides metadata about the individual values of another data variable it may be desirable to express this association by providing a link between the variables. For example, instrument data may have associated measures of uncertainty. The attribute <varname>ancillary_variables</varname> is used to express these types of relationships. It is a string attribute whose value is a blank separated list of variable names. The nature of the relationship between variables associated via <varname>ancillary_variables</varname> must be determined by other attributes. The variables listed by the <varname>ancillary_variables</varname> attribute will often have the standard name of the variable which points to them including a modifier (<xref linkend="standard-name-modifiers"/>) to indicate the relationship.
+    </para>
+
+    <example><title>Instrument data</title>
+      <programlisting>
+  float q(time) ;
+    q:standard_name = "specific_humidity" ;
+    q:units = "g/g" ;
+    q:ancillary_variables = "q_error_limit q_detection_limit" ;
+  float q_error_limit(time)
+    q_error_limit:standard_name = "specific_humidity standard_error" ;
+    q_error_limit:units = "g/g" ;
+  float q_detection_limit(time)
+    q_detection_limit:standard_name = "specific_humidity detection_minimum" ;
+    q_detection_limit:units = "g/g" ;
+      </programlisting>	
+    </example>
+  </section>
+
+  <section id="flags">
+    <title>Flags</title>
+    <para>
+      The attributes <varname>flag_values</varname> and <varname>flag_meanings</varname> are intended to make variables that contain flag values self describing. The <varname>flag_values</varname> attribute is the same type as the variable to which it is attached, and contains a list of the possible flag values. The <varname>flag_meanings</varname> attribute is a string whose value is a blank separated list of descriptive words or phrases, one for each flag value. If multi-word phrases are used to describe the flag values, then the words within a phrase should be connected with underscores.
+    </para>
+    <example><title>A flag variable</title>
+      <programlisting>
+  byte current_speed_qc(time, depth, lat, lon) ;
+    current_speed_qc:long_name = "Current Speed Quality" ;
+    current_speed_qc:_FillValue = -128b ;
+    current_speed_qc:valid_range = -127b, 127b ;
+    current_speed_qc:flag_values = 0b, 1b, 2b ;
+    current_speed_qc:flag_meanings = "quality_good sensor_nonfunctional 
+                                                     outside_valid_range" ;
+      </programlisting>
+    </example>
+  </section>
+</chapter>
+
+
+

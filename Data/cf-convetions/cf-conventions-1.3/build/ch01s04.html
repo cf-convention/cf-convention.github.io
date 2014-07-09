@@ -1,0 +1,76 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>1.4. Relationship to the COARDS Conventions</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch01.html" title="Chapter 1.  Introduction"><link rel="prev" href="ch01s03.html" title="1.3. Overview"><link rel="next" href="ch02.html" title="Chapter 2.  NetCDF Files and Components"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.4. Relationship to the COARDS Conventions</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s03.html">Prev</a> </td><th width="60%" align="center">Chapter 1. 
+		Introduction
+	</th><td width="20%" align="right"> <a accesskey="n" href="ch02.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="coards-relationship"></a>1.4. Relationship to the COARDS Conventions</h2></div></div></div><p>
+			These conventions generalize and extend the
+			COARDS conventions 
+			[<a href="bi01.html#coards" class="biblioref" title="[COARDS]"><abbr class="abbrev">COARDS</abbr></a>]. 
+			A major design goal
+			has been to maintain <span class="emphasis"><em>backward compatibility</em></span> with
+			COARDS. Hence applications written to process
+			datasets that conform to these conventions
+			will also be able to process COARDS conforming
+			datasets. We have also striven to maximize
+			<span class="emphasis"><em>conformance</em></span> to the COARDS standard so that
+			datasets that only require the metadata that was
+			available under COARDS will still be able to be
+			processed by COARDS conforming applications. But
+			because of the extensions that provide new
+			metadata content, and the relaxation of some
+			COARDS requirements, datasets that conform
+			to these conventions will not necessarily
+			be recognized by applications that adhere to
+			the COARDS conventions. The features of these
+			conventions that allow writing netCDF files that
+			are not COARDS conforming are summarized below.
+		</p><p>
+			COARDS standardizes the description of grids
+			composed of independent latitude, longitude,
+			vertical, and time axes. In addition
+			to standardizing the metadata required to
+			identify each of these axis types COARDS
+			restricts the axis (equivalently dimension)
+			ordering to be longitude, latitude, vertical,
+			and time (with longitude being the most rapidly
+			varying dimension). Because of I/O performance
+			considerations it may not be possible for models
+			to output their data in conformance with the
+			COARDS requirement. The CF convention places no
+			rigid restrictions on the order of dimensions,
+			however we encourage data producers to make the
+			extra effort to stay within the COARDS standard
+			order. The use of non-COARDS axis ordering will
+			render files inaccessible to some applications
+			and limit interoperability. Often a buffering
+			operation can be used to miminize performance
+			penalties when axis ordering in model code does
+			not match the axis ordering of a COARDS file.
+		</p><p>
+			COARDS addresses the issue of identifying
+			dimensionless vertical coordinates, but does
+			not provide any mechanism for mapping the
+			dimensionless values to dimensional ones that
+			can be located with respect to the earth's
+			surface. For backwards compatibility we continue
+			to allow (but do not require) the 
+			<code class="varname">units</code>
+			attribute of dimensionless vertical coordinates to take the
+			values "level", "layer", or "sigma_level." But we
+			recommend that the 
+			<code class="varname">standard_name</code> and 
+			<code class="varname">formula_terms</code>
+			attributes be used to identify the appropriate
+			definition of the dimensionless vertical
+			coordinate (see 
+			<a class="xref" href="ch04s03.html#dimensionless-vertical-coordinate" title="4.3.2. Dimensionless Vertical Coordinate">Section 4.3.2, &#8220;Dimensionless Vertical Coordinate&#8221;</a>).
+		</p><p>
+			The CF conventions define attributes which
+			enable the description of data properties
+			that are outside the scope of the COARDS
+			conventions. These new attributes do not violate
+			the COARDS conventions, but applications that
+			only recognize COARDS conforming datasets will not
+			have the capabilities that the new attributes are
+			meant to enable. Briefly the new attributes allow:
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p> Identification of quantities using standard names. </p></li><li class="listitem"><p> Description of dimensionless vertical coordinates. </p></li><li class="listitem"><p> Associating dimensions with auxiliary coordinate variables. </p></li><li class="listitem"><p> Linking data variables to scalar coordinate variables. </p></li><li class="listitem"><p> Associating dimensions with labels. </p></li><li class="listitem"><p>Description of intervals and cells. </p></li><li class="listitem"><p> Description of properties of data defined on intervals and cells. </p></li><li class="listitem"><p> Description of climatological statistics. </p></li><li class="listitem"><p> Data compression for variables with missing values. </p></li></ul></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.3. Overview </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 2. 
+      NetCDF Files and Components
+  </td></tr></table></div></body></html>

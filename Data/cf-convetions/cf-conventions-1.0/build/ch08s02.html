@@ -1,0 +1,105 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>8.2. Compression by Gathering</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch08.html" title="Chapter 8.  Reduction of Dataset Size"><link rel="prev" href="ch08.html" title="Chapter 8.  Reduction of Dataset Size"><link rel="next" href="apa.html" title="Appendix A. Attributes"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">8.2. Compression by Gathering</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08.html">Prev</a> </td><th width="60%" align="center">Chapter 8. 
+		Reduction of Dataset Size
+	</th><td width="20%" align="right"> <a accesskey="n" href="apa.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="compression-by-gathering"></a>8.2. Compression by Gathering</h2></div></div></div><p>
+			To save space in the netCDF file, it may be
+			desirable to eliminate points from data arrays
+			that are invariably missing. Such a compression
+			can operate over one or more adjacent axes, and
+			is accomplished with reference to a list of the
+			points to be stored. The list is constructed by
+			considering a mask array that only includes the
+			axes to be compressed, and then mapping this array
+			onto one dimension without reordering. The list is
+			the set of indices in this one-dimensional mask
+			of the required points. In the compressed array,
+			the axes to be compressed are all replaced by a
+			single axis, whose dimension is the number of
+			wanted points. The wanted points appear along
+			this dimension in the same order they appear in
+			the uncompressed array, with the unwanted points
+			skipped over. Compression and uncompression are
+			executed by looping over the list.
+		</p><p>
+			The list is stored as the coordinate variable
+			for the compressed axis of the data array. Thus,
+			the list variable and its dimension have the same
+			name. The list variable has a string attribute
+			<code class="varname">compress</code>, <span class="emphasis"><em>containing a blank-separated list
+			of the dimensions which were affected by the
+			compression in the order of the CDL declaration
+			of the uncompressed array</em></span>. The presence of
+			this attribute identifies the list variable
+			as such. The list, the original dimensions
+			and coordinate variables (including boundary
+			variables), and the compressed variables with
+			all the attributes of the uncompressed variables
+			are written to the netCDF file. The uncompressed
+			variables can be reconstituted exactly as they
+			were using this information.
+		</p><p>
+			</p><div class="example"><a name="idm206148054384"></a><p class="title"><b>Example 8.1. Horizontal compression of a three-dimensional array</b></p><div class="example-contents"><p>
+					 We eliminate sea
+					 points at all depths in a
+					 longitude-latitude-depth array of
+					 soil temperatures. In this case,
+					 only the longitude and latitude
+					 axes would be affected by the
+					 compression. We construct a list
+					 <code class="varname">landpoint(landpoint)</code> containing
+					 the indices of land points.
+				</p><p>
+					</p><pre class="programlisting">
+dimensions:
+  lat=73;
+  lon=96;
+  landpoint=2381;
+  depth=4;
+variables:
+  int landpoint(landpoint);
+    landpoint:compress="lat lon";
+  float landsoilt(depth,landpoint);
+    landsoilt:long_name="soil temperature";
+    landsoilt:units="K";
+  float depth(depth);
+  float lat(lat);
+  float lon(lon);
+data:
+  landpoint=363, 364, 365, ...;
+
+					</pre><p>
+				</p><p>
+					Since 
+					<code class="computeroutput">landpoint(0)=363</code>, 
+					for instance, we know that 
+					<code class="computeroutput">landsoilt(*,0)</code> 
+					maps on to point 363 of the original data with dimensions 
+					<code class="computeroutput">(lat,lon)</code>. 
+					This corresponds to indices 
+					<code class="computeroutput">(3,75)</code>, 
+					i.e., 
+					<code class="computeroutput">363 = 3*96 + 75</code>. 
+				</p></div></div><p><br class="example-break">
+		</p><p>
+			</p><div class="example"><a name="idm206148048016"></a><p class="title"><b>Example 8.2. Compression of a three-dimensional field</b></p><div class="example-contents"><p>
+					We compress a longitude-latitude-depth field of ocean salinity by eliminating points below the sea-floor. In this case, all three dimensions are affected by the compression, since there are successively fewer active ocean points at increasing depths.
+				</p><p>
+					</p><pre class="programlisting">
+variables:
+  float salinity(time,oceanpoint);
+  int oceanpoint(oceanpoint);
+    oceanpoint:compress="depth lat lon";
+  float depth(depth);
+  float lat(lat);
+  float lon(lon);
+  double time(time);
+					</pre><p>
+				</p><p>
+					This information implies that
+					the salinity field should be
+					uncompressed to an array with
+					dimensions 
+					<code class="computeroutput">(depth,lat,lon)</code>.
+				</p></div></div><p><br class="example-break">
+		</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apa.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 8. 
+		Reduction of Dataset Size
+	 </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix A. Attributes</td></tr></table></div></body></html>

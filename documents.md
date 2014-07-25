@@ -55,7 +55,9 @@ group: "navigation"
     <h2>CF Standard Names</h2>
     <p>
       <h4> Standard Name Table (v27, 28 November 2013</h4>
-      <a href="Data/cf-standard-names/27/src/cf-standard-name-table.xml">XML</a>
+      <a href="Data/cf-standard-names/27/src/cf-standard-name-table.xml">XML</a>&nbsp;
+      <a href="Data/cf-standard-names/27/build/cf-standard-name-table.html">HTML</a>
+&nbsp;
       <h5>Previous Versions (HTML)</h5>
       <a href="Data/cf-standard-names/26/build/cf-standard-name-table.html">v26</a> &nbsp;
       <h5>Previous Versions (XML)</h5>

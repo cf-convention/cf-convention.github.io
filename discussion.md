@@ -15,9 +15,16 @@ Discussion about CF Metadata takes place in two formats:
 
 Links:
 
-* CF Metadata Trac
-* About the Trac Site
-* cf-metadata Mailing List
-* cf-metadata Mailing List Archives
-* Current status of proposals for new standard names
-* Archive of resolved proposals for new standard names (from March 2011 onwards)
+* [CF Metadata Trac][trac]
+* [About the Trac Site][about]
+* [cf-metadata Mailing List][mail]
+* [cf-metadata Mailing List Archives][archives]
+* [Current status of proposals for new standard names][current]
+* [Archive of resolved proposals for new standard names (from March 2011 onwards)][proposals]
+
+[trac]: http://helene.llnl.gov/cf/trac/query?status=new&status=assigned&status=reopened&status=closed&order=id&desc=1
+[about]: about-track.html
+[mail]: http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata
+[archives]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
+[current]: http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter
+[proposals]: http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter

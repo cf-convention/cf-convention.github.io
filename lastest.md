@@ -13,4 +13,8 @@ title: Lastest
 ##Standard Names Table [27]
 * <a href="Data/cf-standard-names/27/build/cf-standard-name-table.html"> HTML </a> &nbsp;
 
+## Standardized Region Names
+* <a href="Data/cf-standard-names/docs/standardized-region-names.html"> HTML </a> &nbsp;
 
+## Area Type Table
+* <a href="Data/cf-standard-names/docs/area-type-table.html"> HTML </a> &nbsp;

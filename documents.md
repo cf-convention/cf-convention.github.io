@@ -11,44 +11,44 @@ group: "navigation"
     <h2>CF Conventions</h2>
     <p>
       <h4>CF 1.7-draft1</h4>
-      <a href="Data/cf-convetions/cf-conventions-1.7/build/cf-conventions.html">   Single HTML</a> &nbsp;
-      <a href="Data/cf-convetions/cf-conventions-1.7/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
-      <a href="Data/cf-convetions/cf-conventions-1.7/build/cf-conventions.pdf">PDF</a>
+      <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html">   Single HTML</a> &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.pdf">PDF</a>
       
       <h4>CF 1.6</h4>
-      <a href="Data/cf-convetions/cf-conventions-1.6/build/cf-conventions.html">   Single HTML</a> &nbsp;
-      <!--<a href="Data/cf-convetions/cf-conventions-1.6/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
-      <a href="Data/cf-convetions/cf-conventions-1.6/build/cf-conventions.pdf">PDF</a>
+      <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html">   Single HTML</a> &nbsp;
+      <!--<a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
+      <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.pdf">PDF</a>
       
       <h4>CF 1.5</h4>
-      <a href="Data/cf-convetions/cf-conventions-1.5/build/cf-conventions.html">   Single HTML</a> &nbsp;
-      <!--<a href="Data/cf-convetions/cf-conventions-1.5/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
-      <a href="Data/cf-convetions/cf-conventions-1.5/build/cf-conventions.pdf">PDF</a>
+      <a href="Data/cf-conventions/cf-conventions-1.5/build/cf-conventions.html">   Single HTML</a> &nbsp;
+      <!--<a href="Data/cf-conventions/cf-conventions-1.5/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
+      <a href="Data/cf-conventions/cf-conventions-1.5/build/cf-conventions.pdf">PDF</a>
       
       <h4>CF 1.4</h4>
-      <a href="Data/cf-convetions/cf-conventions-1.4/build/cf-conventions.html">   Single HTML</a> &nbsp;
-      <!--<a href="Data/cf-convetions/cf-conventions-1.4/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
-      <a href="Data/cf-convetions/cf-conventions-1.4/build/cf-conventions.pdf">PDF</a>
+      <a href="Data/cf-conventions/cf-conventions-1.4/build/cf-conventions.html">   Single HTML</a> &nbsp;
+      <!--<a href="Data/cf-conventions/cf-conventions-1.4/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
+      <a href="Data/cf-conventions/cf-conventions-1.4/build/cf-conventions.pdf">PDF</a>
       
       <h4>CF 1.3</h4>
-      <a href="Data/cf-convetions/cf-conventions-1.3/build/cf-conventions.html">   Single HTML</a> &nbsp;
-      <a href="Data/cf-convetions/cf-conventions-1.3/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
-      <a href="Data/cf-convetions/cf-conventions-1.3/build/cf-conventions.pdf">PDF</a>
+      <a href="Data/cf-conventions/cf-conventions-1.3/build/cf-conventions.html">   Single HTML</a> &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.3/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.3/build/cf-conventions.pdf">PDF</a>
       
       <h4>CF 1.2</h4>
-      <a href="Data/cf-convetions/cf-conventions-1.2/build/cf-conventions.html">   Single HTML</a> &nbsp;
-      <a href="Data/cf-convetions/cf-conventions-1.2/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
-      <a href="Data/cf-convetions/cf-conventions-1.2/build/cf-conventions.pdf">PDF</a>
+      <a href="Data/cf-conventions/cf-conventions-1.2/build/cf-conventions.html">   Single HTML</a> &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.2/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.2/build/cf-conventions.pdf">PDF</a>
       
       <h4>CF 1.1</h4>
-      <a href="Data/cf-convetions/cf-conventions-1.1/build/cf-conventions.html">   Single HTML</a> &nbsp;
-      <a href="Data/cf-convetions/cf-conventions-1.1/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
-      <a href="Data/cf-convetions/cf-conventions-1.1/build/cf-conventions.pdf">PDF</a>
+      <a href="Data/cf-conventions/cf-conventions-1.1/build/cf-conventions.html">   Single HTML</a> &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.1/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.1/build/cf-conventions.pdf">PDF</a>
       
       <h4>CF 1.0</h4>
-      <a href="Data/cf-convetions/cf-conventions-1.0/build/cf-conventions.html">   Single HTML</a> &nbsp;
-      <a href="Data/cf-convetions/cf-conventions-1.0/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
-      <a href="Data/cf-convetions/cf-conventions-1.0/build/cf-conventions.pdf">PDF</a>
+      <a href="Data/cf-conventions/cf-conventions-1.0/build/cf-conventions.html">   Single HTML</a> &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.0/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.0/build/cf-conventions.pdf">PDF</a>
     </p>
   </div>
   <div class="col-md-4">

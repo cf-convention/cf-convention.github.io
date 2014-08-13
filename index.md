@@ -3,8 +3,10 @@ layout: default
 title: CF Conventions Home Page
 ---
 
-#CF Metadata
-##NetCDF CF Metadata Conventions
+
+{% include hero.html %}
+
+###NetCDF CF Metadata Conventions
 The conventions for CF (Climate and Forecast) metadata are designed to promote the processing and sharing of files created with the [NetCDF API][api]. 
 The CF conventions are increasingly gaining acceptance and have been adopted by a number of projects and groups as a primary standard. 
 The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. 
@@ -20,9 +22,7 @@ CF Metadata Trac, and
 cf-metadata mailing list.
 For further explanation of each of these, take a look at the [Discussion page][discussion].
 
-
-Quick Links :
-
+##Quick Links
 * [CF Conventions Document][q1]
 * [CF Standard Name Table][q2]
 * [CF Metadata Trac][q3]
@@ -43,4 +43,3 @@ Quick Links :
 [q5]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
 [q6]: requirements-and-recommendations.html
 [q7]: compliance-checker.html
-

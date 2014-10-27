@@ -25,6 +25,7 @@ For further explanation of each of these, take a look at the [Discussion page][d
 ##Quick Links
 * [CF Conventions Document][q1]
 * [CF Standard Name Table][q2]
+* [CF Conventions FAQ][q8]
 * [CF Metadata Trac][q3]
 * [CF Metadata Trac Ticket Summary][q4]
 * [CF Metadata Mailing List Archives][q5]
@@ -43,3 +44,4 @@ For further explanation of each of these, take a look at the [Discussion page][d
 [q5]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
 [q6]: requirements-and-recommendations.html
 [q7]: compliance-checker.html
+[q8]: FAQ.html

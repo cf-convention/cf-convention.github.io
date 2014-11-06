@@ -44,4 +44,4 @@ For further explanation of each of these, take a look at the [Discussion page][d
 [q5]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
 [q6]: requirements-and-recommendations.html
 [q7]: compliance-checker.html
-[q8]: FAQ.html
+[q8]: faq.html

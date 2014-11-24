@@ -39,7 +39,7 @@ For further explanation of each of these, take a look at the [Discussion page][d
 [discussion]: http://cf-convention.github.io/discussion.html
 [q1]: latest.html
 [q2]: standard-names.html
-[q3]: http://kitt.llnl.gov/trac/query?status=new&status=assigned&status=reopened&status=closed&order=id&desc=1
+[q3]: http://cf-trac.llnl.gov/trac
 [q4]: http://www.met.reading.ac.uk/~david/cf_trac_summary.html
 [q5]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
 [q6]: requirements-and-recommendations.html

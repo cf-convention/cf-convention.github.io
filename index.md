@@ -34,8 +34,8 @@ For further explanation of each of these, take a look at the [Discussion page][d
 
 [api]: http://www.unidata.ucar.edu/packages/netcdf/index.html
 [coards]: http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html
-[overview]: https://github.com/cf-convention/Data/cf-documents/overview/viewgraphs.pdf
-[article]: https://github.com/cf-convention/Data/cf-documents/overview/article.pdf
+[viewgraphs]: Data/cf-documents/overview/viewgraphs.pdf
+[article]: Data/cf-documents/overview/article.pdf
 [discussion]: http://cf-convention.github.io/discussion.html
 [q1]: latest.html
 [q2]: standard-names.html

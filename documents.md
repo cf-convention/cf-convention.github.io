@@ -97,6 +97,7 @@ group: "navigation"
 
   <div class="col-md-4">
     <h2>Others</h2>
+    <p>
       <h4> Area Type Table (v2, 10 July 2013)</h4>
       <a href="Data/area-type-table/2/build/area-type-table.html">HTML</a>&nbsp;
       <a href="Data/area-type-table/2/src/area-type-table.xml">XML</a>&nbsp;
@@ -109,8 +110,9 @@ group: "navigation"
 
       <h4> Standardized Region List </h4>
       CF list of <a href="Data/cf-standard-names/docs/standardized-region-names.html">standardized region names</a> &nbsp;
-    <p>
+    </p>
   </div>
+
 </div>
 
 

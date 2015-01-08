@@ -54,13 +54,16 @@ group: "navigation"
   <div class="col-md-4">
     <h2>CF Standard Names</h2>
     <p>
-      <h4> Standard Name Table (v27, 28 November 2013</h4>
-      <a href="Data/cf-standard-names/27/src/cf-standard-name-table.xml">XML</a>&nbsp;
-      <a href="Data/cf-standard-names/27/build/cf-standard-name-table.html">HTML</a>
-&nbsp;
+      <h4> Standard Name Table (v28, 07 January 2015)</h4>
+      <a href="Data/cf-standard-names/28/build/cf-standard-name-table.html">HTML</a>&nbsp;
+      <a href="Data/cf-standard-names/28/src/cf-standard-name-table.xml">XML</a>&nbsp;
+
       <h5>Previous Versions (HTML)</h5>
+      <a href="Data/cf-standard-names/27/build/cf-standard-name-table.html">v27</a> &nbsp;
       <a href="Data/cf-standard-names/26/build/cf-standard-name-table.html">v26</a> &nbsp;
+
       <h5>Previous Versions (XML)</h5>
+      <a href="Data/cf-standard-names/27/src/cf-standard-name-table.xml">v27</a> &nbsp;
       <a href="Data/cf-standard-names/26/src/cf-standard-name-table.xml">v26</a> &nbsp; 
       <a href="Data/cf-standard-names/25/src/cf-standard-name-table.xml">v25</a> &nbsp; 
       <a href="Data/cf-standard-names/24/src/cf-standard-name-table.xml">v24</a> &nbsp;
@@ -89,10 +92,24 @@ group: "navigation"
       <a href="Data/cf-standard-names/1/src/cf-standard-name-table.xml">v1</a>  &nbsp;
   
     </p>  
+      Standard names <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> document. &nbsp;
 </div>
+
   <div class="col-md-4">
     <h2>Others</h2>
-    <p></p>
+      <h4> Area Type Table (v2, 10 July 2013)</h4>
+      <a href="Data/area-type-table/2/build/area-type-table.html">HTML</a>&nbsp;
+      <a href="Data/area-type-table/2/src/area-type-table.xml">XML</a>&nbsp;
+
+      <h5>Previous Versions (HTML)</h5>
+      <a href="Data/area-type-table/1/build/area-type-table.html">v1</a> &nbsp;
+
+      <h5>Previous Versions (XML)</h5>
+      <a href="Data/area-type-table/1/src/area-type-table.xml">v1</a> &nbsp;
+
+      <h4> Standardized Region List </h4>
+      CF list of <a href="Data/cf-standard-names/docs/standardized-region-names.html">standardized region names</a> &nbsp;
+    <p>
   </div>
 </div>
 

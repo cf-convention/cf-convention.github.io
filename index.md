@@ -14,7 +14,7 @@ This enables users of data from different sources to decide which quantities are
 
 The CF conventions generalize and extend the [COARDS conventions][coards].
 
-Here are the slides for a talk that provides an [overview of CF][overview]. An expository version of this talk is in this [article][article].
+Here are the slides for a talk that provides an [overview of CF][viewgraphs]. An expository version of this talk is in this [article][article].
 
 Discussion about CF Metadata takes place in two formats:
 
@@ -34,8 +34,8 @@ For further explanation of each of these, take a look at the [Discussion page][d
 
 [api]: http://www.unidata.ucar.edu/packages/netcdf/index.html
 [coards]: http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html
-[overview]: https://github.com/cf-convention/cf-documents/blob/master/other/cf_overview_viewgraphs.pdf
-[article]: https://github.com/cf-convention/cf-documents/blob/master/other/cf_overview_article.pdf
+[viewgraphs]: Data/cf-documents/overview/viewgraphs.pdf
+[article]: Data/cf-documents/overview/article.pdf
 [discussion]: http://cf-convention.github.io/discussion.html
 [q1]: latest.html
 [q2]: standard-names.html

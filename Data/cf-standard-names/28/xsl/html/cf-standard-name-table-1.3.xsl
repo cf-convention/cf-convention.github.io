@@ -9,7 +9,7 @@
 
     <xsl:template match="standard_name_table">
         <!-- Put something useful into the Title -->
-        <title><xsl:value-of select="institution"/></title>
+        <title>CF Standard Names</title>
 
 
     <head>

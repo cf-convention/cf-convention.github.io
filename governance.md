@@ -50,6 +50,6 @@ The climate research community is indebted to the above for their magnanimous co
 
 [rules]: rules.html
 [errors]: errors.html
-[mail]: http://www.cgd.ucar.edu/pipermail/cf-metadata
+[mail]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata
 [html]: Data/cf-documents/cf-governance/cf2_whitepaper_final.html
 [pdf]:  Data/cf-documents/cf-governance/cf2_whitepaper_final.pdf

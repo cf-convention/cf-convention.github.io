@@ -6,11 +6,12 @@ group: "navigation"
 
 ##CF Standard Names
 <p>
-<h4> Standard Name Table (v28, 07 January 2015)</h4>
-  <a href="Data/cf-standard-names/28/build/cf-standard-name-table.html">HTML</a> &nbsp;
-  <a href="Data/cf-standard-names/28/src/cf-standard-name-table.xml">XML</a> &nbsp;
+<h4> Standard Name Table (v29, 08 July 2015)</h4>
+  <a href="Data/cf-standard-names/29/build/cf-standard-name-table.html">HTML</a> &nbsp;
+  <a href="Data/cf-standard-names/29/src/cf-standard-name-table.xml">XML</a> &nbsp;
 
   <h5>Previous Versions (HTML)</h5>
+    <a href="Data/cf-standard-names/28/build/cf-standard-name-table.html">v28</a> &nbsp;
     <a href="Data/cf-standard-names/27/build/cf-standard-name-table.html">v27</a> &nbsp;
     <a href="Data/cf-standard-names/26/build/cf-standard-name-table.html">v26</a> &nbsp;
     <a href="Data/cf-standard-names/25/build/cf-standard-name-table.html">v25</a> &nbsp;
@@ -40,6 +41,7 @@ group: "navigation"
     <a href="Data/cf-standard-names/1/build/cf-standard-name-table.html">v1</a> &nbsp;
 
   <h5>Previous Versions (XML)</h5>
+    <a href="Data/cf-standard-names/28/src/cf-standard-name-table.xml">v28</a>  &nbsp;
     <a href="Data/cf-standard-names/27/src/cf-standard-name-table.xml">v27</a>  &nbsp;
     <a href="Data/cf-standard-names/26/src/cf-standard-name-table.xml">v26</a>  &nbsp;
     <a href="Data/cf-standard-names/25/src/cf-standard-name-table.xml">v25</a>  &nbsp;
@@ -72,14 +74,16 @@ group: "navigation"
   <h5>Documents</h5>
     <a href="Data/cf-standard-names/docs/guidelines.html"> Guidelines for Construction of CF Standard Names </a>
 
-<h4> Area Type Table (v2, 10 July 2013)</h4>
-  <a href="Data/area-type-table/2/build/area-type-table.html">HTML</a>&nbsp;
-  <a href="Data/area-type-table/2/src/area-type-table.xml">XML</a>&nbsp;
+<h4> Area Type Table (v3, 8 July 2015)</h4>
+  <a href="Data/area-type-table/3/build/area-type-table.html">HTML</a>&nbsp;
+  <a href="Data/area-type-table/3/src/area-type-table.xml">XML</a>&nbsp;
 
   <h5>Previous Versions (HTML)</h5>
+    <a href="Data/area-type-table/2/build/area-type-table.html">v2</a> &nbsp;
     <a href="Data/area-type-table/1/build/area-type-table.html">v1</a> &nbsp;
 
   <h5>Previous Versions (XML)</h5>
+    <a href="Data/area-type-table/2/src/area-type-table.xml">v2</a> &nbsp;
     <a href="Data/area-type-table/1/src/area-type-table.xml">v1</a> &nbsp;
 
 <h4> Standardized Region List </h4>

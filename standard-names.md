@@ -75,7 +75,6 @@ group: "navigation"
     <a href="Data/cf-standard-names/docs/guidelines.html"> Guidelines for Construction of CF Standard Names </a>
 
   <h5>Discussion</h5>
-  Links:<br>
 
   <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Current status of proposals for new standard names</a> <br>
   <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Archive of resolved proposals for new standard names (from March 2011 onwards)</a> <br>

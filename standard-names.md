@@ -75,10 +75,10 @@ group: "navigation"
     <a href="Data/cf-standard-names/docs/guidelines.html"> Guidelines for Construction of CF Standard Names </a>
 
   <h5>Discussion</h5>
-  Links: &nbsp;
+  Links:<br>
 
-  [Current status of proposals for new standard names](http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter) &nbsp;
-  [Archive of resolved proposals for new standard names (from March 2011 onwards)](http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter) &nbsp;
+  <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Current status of proposals for new standard names]</a> <br>
+  <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Archive of resolved proposals for new standard names (from March 2011 onwards)</a> <br>
 
 <h4> Area Type Table (v3, 8 July 2015)</h4>
   <a href="Data/area-type-table/3/build/area-type-table.html">HTML</a>&nbsp;

@@ -22,7 +22,7 @@ Links:
 * [Current status of proposals for new standard names][current]
 * [Archive of resolved proposals for new standard names (from March 2011 onwards)][proposals]
 
-[trac]: http://helene.llnl.gov/cf/trac/query?status=new&status=assigned&status=reopened&status=closed&order=id&desc=1
+[trac]: http://cf-trac.llnl.gov/trac 
 [about]: about-trac.html
 [mail]: http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata
 [archives]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/

@@ -15,9 +15,11 @@ title: Lastest
 <tr>
   <td>
     <ul>
-      <li> <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html">Single HTML</a> </li> <br />
-      <li> <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions-multi.html">Multi HTML</a> </li> <br />
-      <li> <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.pdf">PDF</a> </li>
+      <li> <a href="/cf-conventions/v1.6.0/cf-conventions.html">Single HTML</a> </li> <br />
+      <li> <a href="/cf-conventions/v1.6.0/cf-conventions.pdf">PDF</a> </li> <br />
+      <li> <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html">Single HTML (DocBook)</a> </li> <br />
+      <!-- <li> <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions-multi.html">Multi HTML</a> </li> <br /> -->
+      <li> <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.pdf">PDF (DocBook)</a> </li>
     </ul>
   </td>
   <td>

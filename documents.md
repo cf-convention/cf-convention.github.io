@@ -16,9 +16,13 @@ group: "navigation"
       <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.pdf">PDF</a>
       
       <h4>CF 1.6</h4>
-      <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html">   Single HTML</a> &nbsp;
+      <a href="/cf-conventions/v1.6.0/cf-conventions.html">Single HTML</a>
+      &nbsp;
+      <a href="/cf-conventions/v1.6.0/cf-conventions.pdf">PDF</a>
+      &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html">Single HTML (DocBook)</a> &nbsp;
       <!--<a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
-      <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.pdf">PDF</a>
+      <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.pdf">PDF (DocBook)</a>
       
       <h4>CF 1.5</h4>
       <a href="Data/cf-conventions/cf-conventions-1.5/build/cf-conventions.html">   Single HTML</a> &nbsp;

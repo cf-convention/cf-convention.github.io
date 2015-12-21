@@ -282,7 +282,7 @@ The situation is complicated in the case of a climatology, where the total range
 ### My variable depends on the type of surface. How can I specify the surface type?
 CF maintains a vocabulary specifically for specifying surface and area types; it is available on the CF site as the [Area Type Table](http://cfconventions.org/Data/cf-standard-names/docs/area-type-table.html), and can also be accessed as a [controlled vocabulary](http://mmisw.org/ont/cf/areatype).
 
-Terms from this vocabulary may be used as specified in the CF Convention [section 7.3.3 Statistics applying to portions of cells](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.6/build/cf-conventions#statistics-applying-portions). However, it is also possible to describe a data variable by using a named quantity as a coordinate variable, and the area_type is often needed for such a purpose. The area_type can be attached as a dimensioned coordinate variable, or as a scalar coordinate.
+Terms from this vocabulary may be used as specified in the CF Convention [section 7.3.3 Statistics applying to portions of cells](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#statistics-applying-portions). However, it is also possible to describe a data variable by using a named quantity as a coordinate variable, and the area_type is often needed for such a purpose. The area_type can be attached as a dimensioned coordinate variable, or as a scalar coordinate.
 
 If the area_type you need is not in the list, [request a new area_type name](#stdnames_ask) just as you would a standard name (no units required).
 
@@ -336,7 +336,7 @@ surface_temperature:coordinates = "lat lon surface_type";
 <a class="anchor" id="faq_standard_names"></a>
 ## CF Standard Names
 
-Reference [section 3.3 of the CF Convention, Standard Names](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.6/build/cf-conventions#standard-name)
+Reference [section 3.3 of the CF Convention, Standard Names](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#standard-name)
 
 <a class="anchor" id="stdnames_official"></a>
 ### What is the official list of standard names?
@@ -429,12 +429,12 @@ for  | by | reported on | Artifact State
 The standard name should not include:
 
 * provenance of the variable, including details of the process by which the value was obtained,
-* mathematical transformations such as addition, multiplication, and averaging (these are handled by [cell_methods](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html#cell-methods)),
+* mathematical transformations such as addition, multiplication, and averaging (these are handled by [cell_methods](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#cell-methods)),
 * specialized terms not meaningful to a broad scientific audience, unless widely used and agreed on by the community of origin,
 * acronyms, or
 * geospatial location or similar deployment information, for example wind_speed_at_10_meter_platform.
 
-In many cases the standard name is qualified by a specific detail, for example area_type, whose value may change from one set of observations to another or one observation to another. In these cases the definition for the standard name references one or more attributes or variables where the additional qualifying information may be found. ([Standard name *modifiers*](http://cfconventions.org/1.6.html#standard-name-modifiers) and [cell_methods](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html#cell-methods) may also be used for this purpose.) In this way the divergence of the standard names is minimized, and interoperability increased.
+In many cases the standard name is qualified by a specific detail, for example area_type, whose value may change from one set of observations to another or one observation to another. In these cases the definition for the standard name references one or more attributes or variables where the additional qualifying information may be found. ([Standard name *modifiers*](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#standard-name-modifiers) and [cell_methods](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#cell-methods) may also be used for this purpose.) In this way the divergence of the standard names is minimized, and interoperability increased.
 
 <a class="anchor" id="stdnames_phrases"></a>
 ### Are there common standard name phrases that get re-used?

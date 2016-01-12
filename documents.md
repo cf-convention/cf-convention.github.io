@@ -133,6 +133,7 @@ group: "navigation"
 <h4> Area Type Table (v3, 8 July 2015)</h4>
 <a href="Data/area-type-table/3/build/area-type-table.html">HTML</a>&nbsp;
 <a href="Data/area-type-table/3/src/area-type-table.xml">XML</a>&nbsp;
+<a href="wkt-proj-4.html">CF-1.6 <--> WKT/PROJ.4 translation</a>&nbsp;
 <h5>Previous Versions (HTML)</h5>
 <a href="Data/area-type-table/2/build/area-type-table.html">v2</a> &nbsp;
 <a href="Data/area-type-table/1/build/area-type-table.html">v1</a> &nbsp;

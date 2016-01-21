@@ -4,8 +4,7 @@ title: Governance
 ---
 
 ##CF Trac Website
-The CF Trac website can be found at http://cf-pcmdi.llnl.gov/trac.
-
+The CF Trac website can be found at [http://cf-trac.llnl.gov/trac](http://cf-trac.llnl.gov/trac).
 
 ##How the Ticket System Works
 A Trac ticket is more or less equivalent to a discussion thread. The ticket system is aligned with a series of email lists corresponding to various thrusts of CF evolution (represented as "components" in Trac). The biggest change in the new system is that individuals no longer send email directly to the mailing list. Instead, the Trac system will automatically send email to the appropriate list(s) each time you create or modify a ticket. The mailing lists are arranged in such a way that you can choose to subscribe to only the discussions of interest to you - or you can subscribe to the parent list and receive an email for every single message post.

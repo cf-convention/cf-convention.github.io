@@ -5,6 +5,7 @@ group: "navigation"
 ---
 
 #CF Governance
+
 ###Governance Documents
 * [Rules for making changes to the CF Conventions][rules]
   * Discussion about these rules can be found in the [CF mailing list archives][mail], in June and July, 2007. See messages with the subject line "proposed rules for changes to CF conventions".

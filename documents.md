@@ -16,9 +16,13 @@ group: "navigation"
       <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.pdf">PDF</a>
       
       <h4>CF 1.6</h4>
-      <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html">   Single HTML</a> &nbsp;
+      <a href="/cf-conventions/v1.6.0/cf-conventions.html">Single HTML</a>
+      &nbsp;
+      <a href="/cf-conventions/v1.6.0/cf-conventions.pdf">PDF</a>
+      &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html">Single HTML (DocBook)</a> &nbsp;
       <!--<a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
-      <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.pdf">PDF</a>
+      <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.pdf">PDF (DocBook)</a>
       
       <h4>CF 1.5</h4>
       <a href="Data/cf-conventions/cf-conventions-1.5/build/cf-conventions.html">   Single HTML</a> &nbsp;
@@ -129,6 +133,7 @@ group: "navigation"
 <h4> Area Type Table (v3, 8 July 2015)</h4>
 <a href="Data/area-type-table/3/build/area-type-table.html">HTML</a>&nbsp;
 <a href="Data/area-type-table/3/src/area-type-table.xml">XML</a>&nbsp;
+<a href="wkt-proj-4.html">CF-1.6 <--> WKT/PROJ.4 translation</a>&nbsp;
 <h5>Previous Versions (HTML)</h5>
 <a href="Data/area-type-table/2/build/area-type-table.html">v2</a> &nbsp;
 <a href="Data/area-type-table/1/build/area-type-table.html">v1</a> &nbsp;

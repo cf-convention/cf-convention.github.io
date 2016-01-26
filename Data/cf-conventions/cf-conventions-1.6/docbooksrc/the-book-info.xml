@@ -1,0 +1,419 @@
+<bookinfo>
+    <title>NetCDF Climate and Forecast (CF) Metadata Conventions</title>
+    <subtitle>Version 1.6, 5 December, 2011</subtitle>
+ 
+    <authorgroup><title>Original Authors</title>    
+        <author>
+            <firstname>Brian</firstname><surname>Eaton</surname>
+            <affiliation><orgname> NCAR </orgname></affiliation>
+        </author>
+        <author>
+            <firstname>Jonathan</firstname><surname>Gregory</surname>
+            <affiliation><orgname> Hadley Centre, UK Met Office </orgname></affiliation>
+        </author>
+        <author>
+            <firstname>Bob</firstname><surname>Drach</surname>
+            <affiliation><orgname> PCMDI, LLNL </orgname></affiliation>
+        </author>
+        <author>
+            <firstname>Karl</firstname><surname>Taylor</surname>
+            <affiliation><orgname> PCMDI, LLNL </orgname></affiliation>
+        </author>
+        <author>
+            <firstname>Steve</firstname><surname>Hankin</surname>
+            <affiliation><orgname> PMEL, NOAA </orgname></affiliation>
+        </author>
+    </authorgroup>
+
+
+    <authorgroup><title>Additional Authors</title>
+      <author>
+        <firstname>John</firstname><surname>Caron</surname>
+        <affiliation><orgname> UCAR </orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Rich</firstname><surname>Signell</surname>
+        <affiliation><orgname> USGS </orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Phil</firstname><surname>Bentley</surname>
+        <affiliation><orgname> Hadley Centre, UK Met Office </orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Greg</firstname><surname>Rappa</surname>
+        <affiliation><orgname> MIT </orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Heinke</firstname><surname>Höck</surname>
+        <affiliation><orgname> DKRZ </orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Alison</firstname><surname>Pamment</surname>
+        <affiliation><orgname> BADC </orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Martin</firstname><surname>Juckes</surname>
+        <affiliation><orgname> BADC </orgname></affiliation>
+      </author>
+    </authorgroup>
+
+    <othercredit>
+        <contrib>
+            <para>
+            Many others have contributed to the development of CF through their 
+            participation in discussions about proposed changes.
+            </para>
+        </contrib>
+    </othercredit>
+
+
+    <revhistory>
+        <revision>
+            <date>14 June 2004</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para>Added <xref linkend="lambert-azimuthal-equal-area"/>.</para></listitem>
+                        <listitem><para><xref linkend="polar-stereographic"/>: Added <varname>latitude_of_projection_origin</varname> map parameter.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+        <revision>
+            <date>1 July 2004</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para><xref linkend="scalar-coordinate-variables"/>: Added note that use of scalar coordinate variables inhibits interoperability with COARDS conforming applications.</para></listitem>
+                        <listitem><para><xref linkend="multiple-forecasts-from-single-analysis"/>: Added <varname>positive</varname> attribute to the scalar coordinate p500 to make it unambiguous that the pressure is a vertical coordinate value.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+         <revision>
+            <date>20 September 2004</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para><xref linkend="cell-methods"/>: Changed several incorrect occurances of the cell method <varname>"standard deviation"</varname> to <varname>"standard_deviation"</varname>.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+        <revision>
+            <date>22 October 2004</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para>Added <xref linkend="lambert-conformal-projection"/>.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+        <revision>
+            <date>25 November 2005</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para><xref linkend="atmosphere-hybrid-height-coordinate"/>: Fixed definition of atmosphere hybrid height coordinate.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+        <revision>
+            <date>21 March 2006</date>
+            <revdescription>
+                <para>
+                    <orderedlist spacing="compact">
+                        <listitem><para>Added <xref linkend="azimuthal-equidistant"/>.</para></listitem>
+                        <listitem><para>Added <xref linkend="atmosphere-natural-log-pressure-coordinate"/>.</para></listitem>
+                    </orderedlist>
+                </para>
+            </revdescription>
+        </revision>
+        
+        <revision>
+          <date>17 January 2008</date>
+          <revdescription><para>                
+            <orderedlist spacing="compact">                
+              <listitem><para>
+                  <xref linkend="preface"/>: Changed text to refer to rules of CF governance, and provisional status.
+              </para></listitem>
+              <listitem><para>
+                  <xref linkend="coordinate-types"/>, <xref linkend="coordinate-system"/>: Made changes regarding use of the axis attribute to identify horizontal coordinate variables.
+              </para></listitem>
+              <listitem><para>
+                  Changed document version to 1.1.
+              </para></listitem>
+            </orderedlist>
+          </para></revdescription>
+        </revision>
+
+        <revision>
+          <date>4 May 2008</date>
+          <revdescription><para>                
+            <orderedlist spacing="compact">                
+              <listitem>
+                <para>
+                  <xref linkend="grid-mappings-and-projections"/>, <xref linkend="appendix-grid-mappings"/>
+                  : Additions and revisions to CF 
+                  grid mapping attributes to support the 
+                  specification of coordinate reference 
+                  system properties
+                  <ulink url="http://cf-pcmdi.llnl.gov/trac/ticket/18">(Trac ticket #18)</ulink>.
+                </para>
+              </listitem>
+              <listitem><para>
+                 <xref linkend="table-supported-units"/>
+                 : Corrected Prefix for Factor "1e-2" from "deci" to "centi".
+                 <ulink url="http://cf-pcmdi.llnl.gov/trac/ticket/25">(Trac ticket #25)</ulink>.
+              </para></listitem>
+              <listitem><para>
+                 Changed document version to 1.2.
+              </para></listitem>
+            </orderedlist>
+          </para></revdescription>
+        </revision>
+
+        <revision>
+          <date>15 July 2008</date>
+          <revdescription><para>                
+            <orderedlist spacing="compact">                
+              <listitem>
+                <para>
+                  <xref linkend="flags"/>, <xref linkend="attribute-appendix"/>,
+                  <xref linkend="standard-name-modifiers"/>
+                  : Enhanced the Flags definition to support bit field notation using
+                  a <varname>flag_masks</varname> attribute.
+                  <ulink url="http://cf-pcmdi.llnl.gov/trac/ticket/26">(Trac ticket #26)</ulink>.
+                </para>
+              </listitem>
+              <listitem><para>
+                 Changed document version to 1.3.
+              </para></listitem>
+            </orderedlist>
+          </para></revdescription>
+        </revision>
+
+        <revision>
+          <date>9 October 2008</date>
+          <revdescription><para>                
+            <orderedlist spacing="compact">                
+              <listitem>
+                <para>
+                  Fixed defect in <xref linkend="atm-sigma-coord-ex"/>.
+                  <ulink url="http://cf-pcmdi.llnl.gov/trac/ticket/30">(Trac ticket #30)</ulink>.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Fixed defect in <xref linkend="coordinate-system"/>.
+                  <ulink url="http://cf-pcmdi.llnl.gov/trac/ticket/32">(Trac ticket #32)</ulink>.
+                </para>
+              </listitem>
+            </orderedlist>
+          </para></revdescription>
+        </revision>
+
+        <revision>
+          <date>7 November 2008</date>
+          <revdescription><para>                
+            <orderedlist spacing="compact">                
+              <listitem>
+                <para>
+                  Fixed defect in wording of <xref linkend="coordinate-system"/>. 
+                  <ulink url="http://cf-pcmdi.llnl.gov/trac/ticket/35">(Trac ticket #35)</ulink>.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Fixed defect related to subsection headings in <xref linkend="dimensionless-v-coord"/>.
+                  <ulink url="http://cf-pcmdi.llnl.gov/trac/ticket/36">(Trac ticket #36)</ulink>.
+                </para>
+              </listitem>
+            </orderedlist>
+          </para></revdescription>
+        </revision>
+
+
+        <revision>
+          <date>10 December 2008</date>
+          <revdescription><para>                
+            <orderedlist spacing="compact">                
+              <listitem>
+                <para>
+                  Changes related to removing ambiguity in <xref linkend="cell-methods"/>.
+                  <ulink url="http://cf-pcmdi.llnl.gov/trac/ticket/17">(Trac ticket #17)</ulink>.
+                </para>
+              </listitem>
+              <listitem><para>
+                 Changed document version to 1.4.
+              </para></listitem>
+            </orderedlist>
+          </para></revdescription>
+        </revision>
+
+
+        <revision>
+          <date>11 December 2008</date>
+          <revdescription><para>                
+            <orderedlist spacing="compact">                
+              <listitem>
+                <para>
+                  Added grid mappings Lambert Cylindrical Equal Area, Mercator, and Orthographic to <xref linkend="appendix-grid-mappings"/>.
+                  <ulink url="http://cf-pcmdi.llnl.gov/trac/ticket/34">(Trac ticket #34)</ulink>.
+                </para>
+              </listitem>
+            </orderedlist>
+          </para></revdescription>
+        </revision>
+
+
+        <revision>
+          <date>12 December 2008</date>
+          <revdescription><para>                
+            <orderedlist spacing="compact">                
+              <listitem>
+                <para>
+                  Fixed defect in Mercator section of <xref linkend="appendix-grid-mappings"/> by updating to version 12 of Grid Map Names (see <ulink url="http://cf-pcmdi.llnl.gov/trac/wiki/GridMapNames?version=12"/>).
+                  
+                </para>
+              </listitem>
+            </orderedlist>
+          </para></revdescription>
+        </revision>
+        
+
+
+        <revision>
+          <date>27 February 2009</date>
+          <revdescription><para>                
+            <orderedlist spacing="compact">                
+              <listitem>
+                <para>
+                  Fixed defect by clarifying that coordinates indicate gridpoint location in <xref linkend="coordinate-types"/>. <ulink url="http://cf-pcmdi.llnl.gov/trac/ticket/44">(Trac ticket #44)</ulink>.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Fixed defect of outdated Conventions attribute. <ulink url="http://cf-pcmdi.llnl.gov/trac/ticket/45">(Trac ticket #45)</ulink>.
+                </para>
+              </listitem>
+            </orderedlist>
+          </para></revdescription>
+        </revision>
+
+	<revision>
+	    <date>25 October 2010</date>
+	  <revdescription><para>
+	    <emphasis role="newtext">
+	    Minor revisions requested by Jonathan Gregory.
+	    Revisions 33 and 49 were closed after discussions; the rest had elicited no objections.
+	    <orderedlist spacing="compact">
+	      <listitem>
+		<para>
+		  Ticket 33, cell_methods for statistical indices
+		</para>
+	      </listitem>
+	      <listitem>
+		<para>
+		  Ticket 49, clarification of flag_meanings attribute
+		</para>
+	      </listitem>
+	      <listitem>
+		<para>
+		  Ticket 58, remove deprecation of "missing_value" attribute
+		</para>
+	      </listitem>
+	      <listitem>
+		<para>
+		  Ticket 57, fix for broken URLs in CF Conventions document 
+		</para>
+	      </listitem>
+	      <listitem>
+		<para>
+		  Ticket 56, typo in CF conventions doc
+		</para>
+	      </listitem>
+	      <listitem>
+		<para>
+		  Ticket 51, syntax consistency for dimensionless vertical coordinate definitions
+		</para>
+	      </listitem>
+	      <listitem>
+		<para>
+		  Ticket 47, error in example 7.4
+		</para>
+	      </listitem>
+              <listitem><para>
+                 Changed document version to 1.5.
+              </para></listitem>
+              <listitem><para>
+		New chapter, ticket 37
+                 Changed document version to 1.6.
+              </para></listitem>
+	    </orderedlist></emphasis>
+	  </para></revdescription>
+	</revision>
+
+	<revision>
+	  <date>22 June 2011</date>
+	  <revdescription><para><emphasis role="newtext">
+	    Ticket 37.  Added Chapter 9, Discrete Sampling Geometries, and a related Appendix H, and revised several other chapters.
+	  </emphasis></para></revdescription>
+	</revision>
+	<revision>
+	  <date>5 December 2011</date>
+	  <revdescription><para><emphasis role="newtext">
+	    In Appendix H (Annotated Examples of Descrete Geometries), updated standard names "station_description" and
+	    "station_wmo_id" to "platform_name" and "platform_id".
+	  </emphasis></para></revdescription>
+	</revision>
+
+    </revhistory>
+        
+    <abstract>
+        <title>Abstract</title>
+        <para>
+            This document describes the CF conventions for
+            climate and forecast metadata designed to promote
+            the processing and sharing of files created
+            with the netCDF Application Programmer Interface
+            <biblioref linkend="netcdf"/>. 
+            The conventions define metadata that
+            provide a definitive description of what the data
+            in each variable represents, and of the spatial
+            and temporal properties of the data. This enables
+            users of data from different sources to decide
+            which quantities are comparable, and facilitates
+            building applications with powerful extraction,
+            regridding, and display capabilities.
+        </para>
+        <para>
+            The CF conventions generalize and extend the
+            COARDS conventions <biblioref linkend="coards"/>. 
+            The extensions
+            include metadata that provides a precise
+            definition of each variable via specification of
+            a standard name, describes the vertical locations
+            corresponding to dimensionless vertical coordinate
+            values, and provides the spatial coordinates of
+            non-rectilinear gridded data. Since climate and
+            forecast data are often not simply representative
+            of points in space/time, other extensions provide
+            for the description of coordinate intervals,
+            multidimensional cells and climatological time
+            coordinates, and indicate how a data value is
+            representative of an interval or cell. This
+            standard also relaxes the COARDS constraints
+            on dimension order and specifies methods for
+            reducing the size of datasets.
+        </para>
+    </abstract>
+    
+</bookinfo>

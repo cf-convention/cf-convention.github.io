@@ -1,0 +1,26 @@
+branches:
+    only:
+        - master
+
+env:
+    global:
+        - secure: "LY/9M98qx113HEAH6DbY8J5bpYYp3ElUWhcKWqYMQ9JD+1dshEEwiWh0PmY/krcLt/v2fzSFy22XmmjbOThkjG65UdpHSDdbnricesDmi0kWdd9gsBKhQWkur3sWKtL8TPdJAXXKD0iO9qKsDbbbKmNdmZtxsCqQWn3gpjbRIeo="
+        - secure: "Ln9TGZ7PN5KYyrbC82w4V6d+9XI/5g+bOYZ0/kHhh/hDI57odiotgIDG9WxPCB8LGF2KCXyxbRWkCtKe3Bh16wrCFBBzH8ojIRzEtP1UznRXyKIS/mWGIsSLzIDNWpBFhMBpzwgc6ltgLVhuXQv8f6lkgeUZq6fwkf4sQ6BT8JE="
+        - secure: "fMZ1KUDRy2gaGsyxj3cEjHiGWCFO0KnaZ+3gbxM+A3eEejngmrMrqta3HghFbxaP+KHYf71Ua6MbksJUgLDRN8XAXIgiohUgcL03qj45mipC7bd515JjefbLXpJDJx3u+2Ld+tq1i/zL7v6lFm3W2ZBl15RsPEzSCzFW2zdlnAg="
+
+before_script:
+    - git config --global user.email $GIT_EMAIL
+    - git config --global user.name $GIT_NAME
+    - git config --global push.default simple
+
+install:
+    - sudo apt-get update -qq
+    - sudo apt-get install -qq xsltproc fop
+
+script:
+    - git clone https://${GH_TOKEN}@github.com/cf-convention/cf-convention.github.io.git pages > /dev/null 2>&1
+    - cd pages
+    - bash generate.sh
+
+after_success:
+    - git push --force --quiet > /dev/null 2>&1

@@ -5,6 +5,7 @@ group: "navigation"
 ---
 
 #CF Governance
+
 ###Governance Documents
 * [Rules for making changes to the CF Conventions][rules]
   * Discussion about these rules can be found in the [CF mailing list archives][mail], in June and July, 2007. See messages with the subject line "proposed rules for changes to CF conventions".
@@ -50,6 +51,6 @@ The climate research community is indebted to the above for their magnanimous co
 
 [rules]: rules.html
 [errors]: errors.html
-[mail]: http://www.cgd.ucar.edu/pipermail/cf-metadata
+[mail]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata
 [html]: Data/cf-documents/cf-governance/cf2_whitepaper_final.html
 [pdf]:  Data/cf-documents/cf-governance/cf2_whitepaper_final.pdf

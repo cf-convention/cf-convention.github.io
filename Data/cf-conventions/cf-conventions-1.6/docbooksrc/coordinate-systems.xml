@@ -1,0 +1,642 @@
+<chapter  id="coordinate-system">
+  <title>
+    Coordinate Systems
+  </title>
+  <para>
+    A variable's spatiotemporal dimensions are used to locate data values in
+    time and space. This is accomplished by associating these dimensions with
+    the relevant set of latitude, longitude, vertical, and time coordinates.
+    This section presents two methods for making that association: the use of
+    <emphasis>coordinate variables</emphasis>, and the use of 
+    <emphasis>auxiliary coordinate variables</emphasis>.
+  </para>
+  <para>
+    All of a variable's dimensions that are latitude, longitude, vertical,
+    or time dimensions (see <xref linkend="terminology"/>) must have
+    corresponding coordinate variables, i.e., one-dimensional variables
+    with the same name as the dimension (see examples
+    in <xref linkend="coordinate-types"/>). This is the only method of
+    associating dimensions with coordinates that is supported
+    by <biblioref linkend="coards">COARDS</biblioref>.
+  </para>
+  <para>
+    All of a variable's spatiotemporal dimensions that are not latitude,
+    longitude, vertical, or time dimensions are required to be associated
+    with the relevant latitude, longitude, vertical, or time coordinates
+    via the new <varname>coordinates</varname> attribute of the variable.
+    The value of the <varname>coordinates</varname> attribute is
+    <emphasis>a blank separated list of the names of auxiliary coordinate variables</emphasis>.
+    There is no restriction on the order in which the auxiliary coordinate
+    variables appear in the <varname>coordinates</varname> attribute string.
+    <emphasis role="deletedtext">
+    The dimensions of an auxiliary coordinate variable must be a subset of
+    the dimensions of the variable with which the coordinate is associated
+    (an exception is label coordinates (<xref linkend="labels"/>) which
+    contain a dimension for maximum string length).</emphasis>
+    <emphasis role="newtext">
+    The dimensions of an auxiliary coordinate variable must be a subset of the
+    dimensions of the variable with which the coordinate is associated, with
+    two exceptions. First, string-valued coordinates (<xref linkend="labels"/>)
+    have a dimension for maximum string length. Second, in the ragged array
+    representations of data (<xref linkend="discrete-sampling-geometries"/>),
+    special methods are needed to connect the data and coordinates
+    </emphasis>
+  </para>
+  <para>
+    We recommend that the
+    name of a multidimensional coordinate variable should not match the name
+    of any of its dimensions because that precludes supplying a
+    coordinate variable for the dimension. This practice also avoids potential
+    bugs in applications that determine coordinate variables by only checking
+    for a name match between a dimension and a variable and not checking that
+    the variable is one dimensional.
+  </para>
+  <para>
+    The use of coordinate variables is required whenever they are applicable.
+    That is, auxiliary coordinate variables may not be used as the only way
+    to identify latitude and longitude coordinates that could be identified
+    using coordinate variables. This is both to enhance conformance to COARDS
+    and to facilitate the use of generic applications that recognize the NUG
+    convention for coordinate variables. An application that is trying to
+    find the latitude coordinate of a variable should always look first to
+    see if any of the variable's dimensions correspond to a latitude
+    coordinate variable. If the latitude coordinate is not found this way,
+    then the auxiliary coordinate variables listed by the
+    <varname>coordinates</varname> attribute should be checked. Note that it
+    is permissible, but optional, to list coordinate variables as well as
+    auxiliary coordinate variables in the <varname>coordinates</varname>
+    attribute.
+    </para>
+    <para>
+    If an <varname>axis</varname> attribute is attached to an auxiliary coordinate variable, it can
+    be used by applications in the same way the <varname>axis</varname> attribute attached to a
+    coordinate variable is used. However, it is not permissible for a data variable to have both a
+    coordinate variable and an auxiliary coordinate variable, or more than one of either type of
+    variable, having an <varname>axis</varname> attribute with any given value e.g. there must be no
+    more than one <varname>axis</varname> attribute for <varname>X</varname> for any data
+    variable. Note that if the <varname>axis</varname> attribute is not specified for an auxiliary
+    coordinate variable, it may still be possible to determine if it is a spatiotemporal dimension
+    from its own units or standard_name, or from the units and standard_name of the coordinate
+    variable corresponding to its dimensions (see <xref linkend="coordinate-types"/> ). For
+    instance, auxiliary coordinate variables which lie on the horizontal surface can be identified
+    as such by their dimensions being horizontal. Horizontal dimensions are those whose coordinate
+    variables have an <varname>axis</varname> attribute of <varname>X</varname> or
+    <varname>Y</varname>, or a <varname>units</varname> attribute indicating latitude and longitude.
+  </para>
+  <para>
+    If the coordinate variables for a horizontal grid are not longitude
+    and latitude, it is recommended that they be supplied
+    <emphasis>in addition</emphasis> to the required coordinates.
+    For example, the Cartesian coordinates of a map projection should be
+    supplied as coordinate variables in addition to the required
+    two-dimensional latitude and longitude variables that are identified
+    via the <varname>coordinates</varname> attribute.
+    The use of the <varname>axis</varname> attribute with
+    values <varname>X</varname> and <varname>Y</varname> is recommended
+    for the coordinate variables(see <xref linkend="coordinate-types"/>).
+  </para>
+  <para>
+    It is sometimes not practical to specify the latitude-longitude
+    location of data which is representative of geographic regions
+    with complex boundaries. For this purpose, provision is made
+    in <xref linkend="geographic-regions"/> for indicating the region
+    by a standardized name.
+  </para>
+  
+  <section>
+    <title>Independent Latitude, Longitude, Vertical, and Time Axes</title>
+    <para>
+      When each of a variable's spatiotemporal dimensions is a latitude,
+      longitude, vertical, or time dimension, then each axis is
+      identified by a coordinate variable.
+    </para>
+    <example>
+      <title>Independent coordinate variables</title>
+      <programlisting>
+dimensions:
+  lat = 18 ;
+  lon = 36 ;
+  pres = 15 ;
+  time = 4 ;
+variables:
+  float xwind(time,pres,lat,lon) ;
+    xwind:long_name = "zonal wind" ;
+    xwind:units = "m/s" ;
+  float lon(lon) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(lat) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  float pres(pres) ;
+    pres:long_name = "pressure" ;
+    pres:units = "hPa" ;
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1990-1-1 0:0:0" ;
+      </programlisting>
+    </example>
+    <para>
+      <varname>xwind(n,k,j,i)</varname> is associated with the coordinate values <varname>lon(i)</varname>, <varname>lat(j)</varname>, <varname>pres(k)</varname>, and <varname>time(n)</varname>.
+    </para>
+  </section>
+	
+  <section>
+    <title>Two-Dimensional Latitude, Longitude, Coordinate Variables</title>
+    <para>
+      The latitude and longitude coordinates of a horizontal grid that was
+      not defined as a Cartesian product of latitude and longitude axes,
+      can sometimes be represented using two-dimensional coordinate variables.
+      These variables are identified as coordinates by use of
+      the <varname>coordinates</varname> attribute.
+    </para>
+    <example>
+      <title>Two-dimensional coordinate variables</title>
+      <programlisting>
+dimensions:
+  xc = 128 ;
+  yc = 64 ;
+  lev = 18 ;
+variables:
+  float T(lev,yc,xc) ;
+    T:long_name = "temperature" ;
+    T:units = "K" ;
+    T:coordinates = "lon lat" ;
+  float xc(xc) ;
+    xc:axis = "X" ;
+    xc:long_name = "x-coordinate in Cartesian system" ;
+    xc:units = "m" ;
+  float yc(yc) ;
+    yc:axis = "Y" ;
+    yc:long_name = "y-coordinate in Cartesian system" ;
+    yc:units = "m" ;
+  float lev(lev) ;
+    lev:long_name = "pressure level" ;
+    lev:units = "hPa" ;
+  float lon(yc,xc) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(yc,xc) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+      </programlisting>
+    </example>
+    <para>
+      <varname>T(k,j,i)</varname> is associated with the coordinate
+      values <varname>lon(j,i)</varname>, <varname>lat(j,i)</varname>,
+      and <varname>lev(k)</varname>. The vertical coordinate is represented
+      by the coordinate variable <varname>lev(lev)</varname> and the
+      latitude and longitude coordinates are represented by the auxiliary
+      coordinate variables <varname>lat(yc,xc)</varname> and
+      <varname>lon(yc,xc)</varname> which are identified by the
+      <varname>coordinates</varname> attribute.
+    </para>
+    <para>
+      Note that coordinate variables are also defined for the
+      <varname>xc</varname> and <varname>yc</varname> dimensions.
+      This faciliates processing of this data by generic applications
+      that don't recognize the multidimensional latitude and longitude
+      coordinates.
+    </para>
+  </section>
+
+  <section id="reduced-horizontal-grid">
+    <title>Reduced Horizontal Grid</title>
+    <para>
+      A "reduced" longitude-latitude grid is one in which the points
+      are arranged along constant latitude lines with the number of
+      points on a latitude line decreasing toward the poles.
+      Storing this type of gridded data in two-dimensional arrays
+      wastes space, and results in the presence of missing values
+      in the 2D coordinate variables. We recommend that this type
+      of gridded data be stored using the compression scheme
+      described in <xref linkend="compression-by-gathering"/>.
+      Compression by gathering preserves structure by storing
+      a set of indices that allows an application to easily
+      scatter the compressed data back to two-dimensional
+      arrays. The compressed latitude and longitude auxiliary
+      coordinate variables are identified by
+      the <varname>coordinates</varname> attribute.
+    </para>
+    <example>
+      <title>Reduced horizontal grid</title>
+      <programlisting>
+dimensions:
+  londim = 128 ;
+  latdim = 64 ;
+  rgrid = 6144 ;
+variables:
+  float PS(rgrid) ;
+    PS:long_name = "surface pressure" ;
+    PS:units = "Pa" ;
+    PS:coordinates = "lon lat" ;
+  float lon(rgrid) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(rgrid) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  int rgrid(rgrid);
+    rgrid:compress = "latdim londim";
+      </programlisting>
+    </example>
+    <para>
+      <varname>PS(n)</varname> is associated with the coordinate
+      values <varname>lon(n)</varname>, <varname>lat(n)</varname>.
+      Compressed grid index <varname>(n)</varname> would be assigned
+      to 2D index <varname>(j,i)</varname> (C index conventions) where
+      <programlisting>
+j = rgrid(n) / 128
+i = rgrid(n) - 128*j
+      </programlisting>
+    </para>
+    <para>
+      Notice that even if an application does not recognize
+      the <varname>compress</varname> attribute, the grids
+      stored in this format can still be handled, by an application
+      that recognizes the <varname>coordinates</varname> attribute.
+    </para>
+  </section>
+
+  <section>
+    <title><emphasis role="deletedtext">Timeseries of Station Data</emphasis></title>
+    <para>
+      <emphasis role="commenttext">This section has been superseded by the
+      treatment of time series as a type of discrete sampling geometry in
+      Chapter 9.</emphasis>
+    </para>
+    <para><emphasis role="deletedtext">
+      To represent data at scattered points it is convenient to use a variable with one dimension to represent the measurement locations. Auxiliary coordinate variables are used to associate a single spatial dimension with multiple independent coordinates.
+    </emphasis></para>
+    <example>
+      <title><emphasis role="deletedtext">Timeseries of station data</emphasis></title>
+      <programlisting><emphasis role="deletedtext">
+dimensions:
+  station = 10 ;  // measurement locations
+  pressure = 11 ; // pressure levels
+  time = UNLIMITED ;
+variables:
+  float humidity(time,pressure,station) ;
+    humidity:long_name = "specific humidity" ;
+    humidity:coordinates = "lat lon" ;
+  double time(time) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(station) ;
+    lon:long_name = "station longitude";
+    lon:units = "degrees_east";
+  float lat(station) ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+  float pressure(pressure) ;
+    pressure:long_name = "pressure" ;
+    pressure:units = "hPa" ;
+      </emphasis></programlisting>
+    </example>
+    <para><emphasis role="deletedtext">
+      <varname>humidity(n,k,i)</varname> is associated with the coordinate values <varname>time(n)</varname>, <varname>pressure(k)</varname>, <varname>lat(i)</varname>, and <varname>lon(i)</varname>.
+    </emphasis></para>
+  </section>
+
+  <section>
+    <title><emphasis role="deletedtext">Trajectories</emphasis></title>
+    <para>
+      <emphasis role="commenttext">This section has been superseded by the
+      treatment of trajectories as a type of discrete sampling geometry in
+      Chapter 9.</emphasis>
+    </para>
+    <para><emphasis role="deletedtext">
+      A possible representation of the spatiotemporal locations of
+      measurements along a flight path is to use time to parameterize
+      the trajectory and use auxiliary coordinate variables to provide
+      the spatial locations.
+    </emphasis></para>
+    <example>
+      <title><emphasis role="deletedtext">Trajectories</emphasis></title>
+      <programlisting><emphasis role="deletedtext">
+dimensions:
+  time = 1000 ;
+variables:
+  float O3(time) ;
+    O3:long_name = "ozone concentration" ;
+    O3:units = "1e-9" ;
+    O3:coordinates = "lon lat z" ;
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(time) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(time) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  float z(time) ;
+    z:long_name = "height above mean sea level" ;
+    z:units = "km" ;
+    z:positive = "up" ;
+      </emphasis></programlisting>
+    </example>
+    <para><emphasis role="deletedtext">
+      <varname>O3(n)</varname> is associated with the coordinate
+      values <varname>time(n)</varname>, <varname>z(n)</varname>,
+      <varname>lat(n)</varname>, and <varname>lon(n)</varname>.
+    </emphasis></para>
+  </section>
+
+  <section id="grid-mappings-and-projections">
+    <title><emphasis role="deletedtext">Grid Mappings and Projections</emphasis><emphasis role="newtext">Horizontal Coordinate Reference Systems, Grid Mappings, and Projections</emphasis></title>
+    <para>
+      When the coordinate variables for a horizontal grid are not longitude
+      and latitude, it is required that the true latitude and longitude
+      coordinates be supplied via the <varname>coordinates</varname> attribute.
+      If in addition it is desired to describe the mapping between the
+      given coordinate variables and the true latitude and longitude
+      coordinates, the attribute <varname>grid_mapping</varname> may be
+      used to supply this description. This attribute is attached to data
+      variables so that variables with different mappings may be present
+      in a single file. The attribute takes a string value which is the
+      name of another variable in the file that provides the description
+      of the mapping via a collection of attached attributes. This variable
+      is called <emphasis>a grid mapping variable</emphasis> and is of
+      arbitrary type since it contains no data. Its purpose is to act as
+      a container for the attributes that define the mapping. The one
+      attribute that all grid mapping variables must have is
+      <varname>grid_mapping_name</varname> which takes a string value that
+      contains the mapping's name. The other attributes that define a
+      specific mapping depend on the value of
+      <varname>grid_mapping_name</varname>. The valid values of
+      <varname>grid_mapping_name</varname> along with the attributes
+      that provide specific map parameter values are
+      described in <xref linkend="appendix-grid-mappings"/>.
+    </para>
+    
+    <para>
+        <emphasis role="newtext">When the coordinate variables for a horizontal grid are longitude
+        and latitude, a grid mapping variable with <varname>grid_mapping_name</varname>
+        of <varname>latitude_longitude</varname> may be used to specify the 
+        ellipsoid and prime meridian.</emphasis>
+    </para>
+    
+    <para>
+        In order to make use of a grid mapping to directly calculate latitude
+        and longitude values it is necessary to associate the coordinate
+        variables with the independent variables of the mapping.
+        This is done by assigning a <varname>standard_name</varname> to
+        the coordinate variable. The appropriate values of the
+        <varname>standard_name</varname> depend on the grid mapping and
+        are given in <xref linkend="appendix-grid-mappings"/>.
+    </para>
+    
+    <example>
+      <title>Rotated pole grid</title>
+      <programlisting>
+dimensions:
+  rlon = 128 ;
+  rlat = 64 ;
+  lev = 18 ;
+variables:
+  float T(lev,rlat,rlon) ;
+    T:long_name = "temperature" ;
+    T:units = "K" ;
+    T:coordinates = "lon lat" ;
+    T:grid_mapping = "rotated_pole" ;
+  char rotated_pole
+    rotated_pole:grid_mapping_name = "rotated_latitude_longitude" ;
+    rotated_pole:grid_north_pole_latitude = 32.5 ;
+    rotated_pole:grid_north_pole_longitude = 170. ;
+  float rlon(rlon) ;
+    rlon:long_name = "longitude in rotated pole grid" ;
+    rlon:units = "degrees" ;
+    rlon:standard_name = "grid_longitude";
+  float rlat(rlat) ;
+    rlat:long_name = "latitude in rotated pole grid" ;
+    rlat:units = "degrees" ;
+    rlon:standard_name = "grid_latitude";
+  float lev(lev) ;
+    lev:long_name = "pressure level" ;
+    lev:units = "hPa" ;
+  float lon(rlat,rlon) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(rlat,rlon) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+      </programlisting>
+    </example>
+    <para>
+      A CF compliant application can determine that rlon and rlat are
+      longitude and latitude values in the rotated grid by
+      recognizing the standard names <varname>grid_longitude</varname>
+      and <varname>grid_latitude</varname>. Note that the units
+      of the rotated longitude and latitude axes are given as
+      <varname>degrees</varname>. This should prevent a COARDS
+      compliant application from mistaking the variables
+      <varname>rlon</varname> and <varname>rlat</varname> to be
+      actual longitude and latitude coordinates. The entries for these
+      names in the standard name table indicate the appropriate sign
+      conventions for the units of <varname>degrees</varname>.
+    </para>
+    
+    <example id="lambert-conformal-projection">
+      <title>Lambert conformal projection</title>
+      <programlisting>
+dimensions:
+  y = 228;
+  x = 306;
+  time = 41;
+
+variables:
+  int Lambert_Conformal;
+    Lambert_Conformal:grid_mapping_name = "lambert_conformal_conic";
+    Lambert_Conformal:standard_parallel = 25.0;
+    Lambert_Conformal:longitude_of_central_meridian = 265.0;
+    Lambert_Conformal:latitude_of_projection_origin = 25.0;
+  double y(y);
+    y:units = "km";
+    y:long_name = "y coordinate of projection";
+    y:standard_name = "projection_y_coordinate";
+  double x(x);
+    x:units = "km";
+    x:long_name = "x coordinate of projection";
+    x:standard_name = "projection_x_coordinate";
+  double lat(y, x);
+    lat:units = "degrees_north";
+    lat:long_name = "latitude coordinate";
+    lat:standard_name = "latitude";
+  double lon(y, x);
+    lon:units = "degrees_east";
+    lon:long_name = "longitude coordinate";
+    lon:standard_name = "longitude";
+  int time(time);
+    time:long_name = "forecast time";
+    time:units = "hours since 2004-06-23T22:00:00Z";
+  float Temperature(time, y, x);
+    Temperature:units = "K";
+    Temperature:long_name = "Temperature @ surface";
+    Temperature:missing_value = 9999.0;
+    Temperature:coordinates = "lat lon";
+    Temperature:grid_mapping = "Lambert_Conformal";
+      </programlisting>
+
+    <para>
+      An application can determine that <varname>x</varname> and
+      <varname>y</varname> are the projection coordinates by
+      recognizing the standard names <varname>projection_x_coordinate</varname>
+      and <varname>projection_y_coordinate</varname>. The grid mapping
+      variable <varname>Lambert_Conformal</varname> contains the mapping
+      parameters as attributes, and is associated with
+      the <varname>Temperature</varname> variable via its
+      <varname>grid_mapping attribute</varname>.
+    </para>
+    
+    </example>
+
+    <example id="latitude-and-longitude-on-a-spherical-earth">
+      <title><emphasis role="newtext">Latitude and longitude on a spherical Earth</emphasis></title>
+      <programlisting>
+<emphasis role="newtext">dimensions:
+  lat = 18 ;
+  lon = 36 ;
+variables:
+  double lat(lat) ;
+  double lon(lon) ;
+  float temp(lat, lon) ;
+    temp:long_name = "temperature" ;
+    temp:units = "K" ;
+    temp:grid_mapping = "crs" ;
+  int crs ;
+    crs:grid_mapping_name = "latitude_longitude"
+    crs:semi_major_axis = 6371000.0 ;
+    crs:inverse_flattening = 0 ;</emphasis>
+      </programlisting>
+    </example>
+
+    <example id="latitude-and-longitude-on-the-wgs-1984-datum">
+      <title><emphasis role="newtext">Latitude and longitude on the WGS 1984 datum</emphasis></title>
+      <programlisting>
+<emphasis role="newtext">dimensions:
+  lat = 18 ;
+  lon = 36 ;
+variables:
+  double lat(lat) ;
+  double lon(lon) ;
+  float temp(lat, lon) ;
+    temp:long_name = "temperature" ;
+    temp:units = "K" ;
+    temp:grid_mapping = "crs" ;
+  int crs ;
+    crs:grid_mapping_name = "latitude_longitude";
+    crs:longitude_of_prime_meridian = 0.0 ;
+    crs:semi_major_axis = 6378137.0 ;
+    crs:inverse_flattening = 298.257223563 ;</emphasis>
+      </programlisting>
+    </example>
+
+    <example id="british-national-grid">
+      <title><emphasis role="newtext">British National Grid</emphasis></title>
+      <programlisting>
+<emphasis role="newtext">dimensions:
+  lat = 648 ;
+  lon = 648 ;
+  y = 18 ;
+  x = 36 ;
+variables:
+  double x(x) ;
+    x:standard_name = "projection_x_coordinate" ;
+    x:units = "m" ;
+  double y(y) ;
+    y:standard_name = "projection_y_coordinate" ;
+    y:units = "m" ;
+  double lat(y, x) ;
+  double lon(y, x) ;
+  float temp(y, x) ;
+    temp:long_name = "temperature" ;
+    temp:units = "K" ;
+    temp:coordinates = "lat lon" ;
+    temp:grid_mapping = "crs" ;
+  int crs ;
+    crs:grid_mapping_name = "transverse_mercator";
+    crs:semi_major_axis = 6377563.396 ;
+    crs:semi_minor_axis = 6356256.910 ;
+    crs:inverse_flattening = 299.3249646 ;
+    crs:latitude_of_projection_origin = 49.0 ;
+    crs:longitude_of_projection_origin = -2.0 ;
+    crs:false_easting = 400000.0 ;
+    crs:false_northing = -100000.0 ;
+    crs:scale_factor_at_projection_origin = 0.9996012717 ;</emphasis>
+      </programlisting>
+    </example>
+  </section>
+
+  <section id="scalar-coordinate-variables">
+    <title>Scalar Coordinate Variables</title>
+    <para>
+      When a variable has an associated coordinate which is
+      single-valued, that coordinate may be represented as a
+      scalar variable. Since there is no associated dimension
+      these scalar coordinate variables should be attached to
+      a data variable via the <varname>coordinates</varname> attribute.
+    </para>
+    <para>
+        Under COARDS the method of providing a single valued coordinate was
+        to add a dimension of size one to the variable, and supply the
+        corresponding coordinate variable. The new scalar coordinate
+        variable is a convenience feature which avoids adding size
+        one dimensions to variables. Scalar coordinate variables have
+        the same information content and can be used in the same
+        contexts as a size one coordinate variable. Note however that
+        use of this feature with a latitude, longitude, vertical,
+        or time coordinate will inhibit COARDS conforming
+        applications from recognizing them.
+    </para>
+    <para>
+        Once a name is used for a scalar coordinate variable it can not
+        be used for a 1D coordinate variable. For this reason we
+        strongly recommend against using a name for a scalar coordinate
+        variable that matches the name of any dimension in the file.
+    </para>
+    <example id="multiple-forecasts-from-single-analysis">
+      <title>Multiple forecasts from a single analysis</title>
+      <programlisting>
+dimensions:
+  lat = 180 ;
+  lon = 360 ;
+  time = UNLIMITED ;
+variables:
+  double atime
+    atime:standard_name = "forecast_reference_time" ;
+    atime:units = "hours since 1999-01-01 00:00" ;
+  double time(time);
+    time:standard_name = "time" ;
+    time:units = "hours since 1999-01-01 00:00" ;
+  double lon(lon) ;
+    lon:long_name = "station longitude";
+    lon:units = "degrees_east";
+  double lat(lat) ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+  double p500
+    p500:long_name = "pressure" ;
+    p500:units = "hPa" ;
+    p500:positive = "down" ;
+  float height(time,lat,lon);
+    height:long_name = "geopotential height" ;
+    height:standard_name = "geopotential_height" ;
+    height:units = "m" ;
+    height:coordinates = "atime p500" ;
+data:
+  time = 6., 12., 18., 24. ;
+  atime = 0. ;
+  p500 = 500. ;
+      </programlisting>
+    </example>
+    <para>
+      In this example both the analysis time and the single pressure level are represented using scalar coordinate variables. The analysis time is identified by the standard name "forecast_reference_time" while the valid time of the forecast is identified by the standard name "time".
+    </para>
+  </section>
+</chapter>
+
+
+
+
+

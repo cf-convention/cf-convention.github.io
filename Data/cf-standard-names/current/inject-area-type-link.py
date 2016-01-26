@@ -18,7 +18,7 @@ i.close()
 # Replace text.
 text = 'area_type table'
 p = re.compile(text, re.DOTALL)
-fix = re.sub(p, '<a href="http://cfconventions.org/Data/cf-standard-names/area-type-table/current/area-type-table.html">%s</a>'%text, s, 1)
+fix = re.sub(p, '<a href="http://cfconventions.org/Data/area-type-table/current/build/area-type-table.html">%s</a>'%text, s, 1)
 
 # Write output.
 o = open(file, 'w')

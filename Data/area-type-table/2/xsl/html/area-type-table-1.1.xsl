@@ -10,7 +10,7 @@
     <xsl:template match="area_type_table">
         <head>
         <!-- Put something useful into the Title -->
-        <title><xsl:value-of select="institution"/></title>
+        <title>CF area types</title>
 
         <!-- This page requires an external javascript which is included by Plone -->
         <!-- See: /usr/local/zopeinstance1/Products/CMFPlone/skins/plone_ecmascript/toggleHelp.js -->

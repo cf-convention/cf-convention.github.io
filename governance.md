@@ -37,6 +37,18 @@ group: "navigation"
 * Bryan Lawrence
 * Russ Rew
 * Karl Taylor (chair)
+
+###Information Management and Support
+* John Graybeal (Stanford University)
+* Kyle Halliday (LLNL)
+* Matthew Harris (LLNL)
+* David Hassell (University of Reading)
+* Rosalyn Hatcher (University of Reading)
+* Richard Hattersley (UK Met Office)
+* Mark Hedley (UK Met Office)
+* Velimir Mlaker (LLNL)
+* Jeff Painter (LLNL)
+* Alison Pamment (CEDA)
  
 
 ###Former Committee Members

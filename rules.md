@@ -33,10 +33,6 @@ title: Rules
 
 <p>The author of the proposal should be added to the list of contributing authors of the CF convention.</p>
 
-<p>At this point, the change is shown in the CF documents as provisional, but it will not be revoked unless subsequent testing shows it to be flawed. In rare circumstances, unforeseen issues may arise during testing that could lead the standards committee to decide by unanimous opinion to revoke the provisional change.</p>
-
-<p>Provisional status lasts until at least two applications have successfully interpreted the data in the test or some other netCDF file following the new convention. The Unidata libcf and the NCAS CF checker would be sufficient to meet this requirement. If other applications are to be used, the conventions committee must be satisfied that they are suitable.</p>
-
-<p>Once the testing is successful, the CF documents should again be updated to remove the provisional status, and the version number incremented again. If the testing is not successful, the change is revoked.</p>
+<p>If the change, once implemented in the conventions, subsequently turns out to be materially flawed, meaning that data written following the convention could be somehow erroneous or ambiguous, a trac ticket should urgently be opened to discuss whether to revoke the change. If this is agreed by a majority of the committee, a new version of the conventions will be prepared immediately, with the second digit of the version number incremented, and will be recommended to be used instead of the flawed version. The flawed version will be deprecated by a statement in the standard document and the conformance document. However, any data written with the flawed version will not be invalidated, although it may be problematic for users. Errors or lack of clarity in wording, when the convention itself is not at fault, can be corrected by defect tickets on the usual schedule.</p>
 
 <p>All versions of the standard and conformance document should be kept available online, with their trac tickets and a history of changes.</p>

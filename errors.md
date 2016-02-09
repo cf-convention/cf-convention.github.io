@@ -3,7 +3,7 @@ layout: default
 title: Errors 
 ---
 
-#Rules for Correcting Errors in CF Documents
+# Rules for Correcting Errors in CF Documents
  
 <p>These rules apply to the CF conventions document, the conformance document, the standard name table and its guidelines.</p>
 

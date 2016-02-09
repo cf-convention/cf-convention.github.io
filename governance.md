@@ -4,17 +4,18 @@ title: Governance
 group: "navigation"
 ---
 
-#CF Governance
+# CF Governance
 
-###Governance Documents
+### Governance Documents
+
 * [Rules for making changes to the CF Conventions][rules]
   * Discussion about these rules can be found in the [CF mailing list archives][mail], in June and July, 2007. See messages with the subject line "proposed rules for changes to CF conventions".
   * The rules were amended in January 2016 following [CF trac ticket 146][ticket146]
 * [Rules for correcting errors in the CF documents][errors]
 * CF Governance Document  \[ [PDF][pdf], [HTML][html] \]
  
+### Conventions Committee and Standard Names Committee
 
-###Conventions Committee and Standard Names Committee
 * Balaji
 * Philip Cameron-Smith
 * John Caron
@@ -30,15 +31,16 @@ group: "navigation"
 * Rich Signell
 * Karl Taylor (chair of Conventions Committee)
  
+### Governance Panel
 
-###Governance Panel
 * Jonathan Gregory
 * Steve Hankin
 * Bryan Lawrence
 * Russ Rew
 * Karl Taylor (chair)
 
-###Information Management and Support
+### Information Management and Support
+
 * John Graybeal (Stanford University)
 * Kyle Halliday (LLNL)
 * Matthew Harris (LLNL)
@@ -49,9 +51,10 @@ group: "navigation"
 * Velimir Mlaker (LLNL)
 * Jeff Painter (LLNL)
 * Alison Pamment (CEDA)
- 
 
-###Former Committee Members
+
+### Former Committee Members
+
 * Michel Crucifix (Standard Names)
 * Burkhardt Rockel (Standard Names)
 * Christiane Textor (Standard Names)

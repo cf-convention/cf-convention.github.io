@@ -4,7 +4,7 @@ title: Standard Names
 group: "navigation"
 ---
 
-##CF Standard Names
+<h2>CF Standard Names</h2>
 <p>
 <h4> Standard Name Table (v30, 03 December 2015)</h4>
   <a href="Data/cf-standard-names/30/build/cf-standard-name-table.html">HTML</a> &nbsp;

@@ -3,7 +3,7 @@ layout: default
 title: Rules
 ---
 
-#Rules for CF Conventions Changes
+# Rules for CF Conventions Changes
  
 <p>New proposals are to be made on trac using the template, including verbatim changes proposed to the text of standard document and the conformance document.</p>
 

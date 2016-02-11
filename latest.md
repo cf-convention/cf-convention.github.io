@@ -32,11 +32,14 @@ title: Lastest
 </tr>
 </table>
 
-##Standard Names Table (v27)
+## Standard Names Table (v27)
+
 * <a href="Data/cf-standard-names/27/build/cf-standard-name-table.html">HTML</a>
 
 ## Standardized Region Names
+
 * <a href="Data/cf-standard-names/docs/standardized-region-names.html">HTML</a>
 
 ## Area Type Table
+
 * <a href="Data/cf-standard-names/docs/area-type-table.html"> HTML </a>

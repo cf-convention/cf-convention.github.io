@@ -3,17 +3,20 @@ layout: default
 title: Governance
 ---
 
-##CF Trac Website
+## CF Trac Website
+
 The CF Trac website can be found at [http://cf-trac.llnl.gov/trac](http://cf-trac.llnl.gov/trac).
 
-##How the Ticket System Works
+## How the Ticket System Works
+
 A Trac ticket is more or less equivalent to a discussion thread. The ticket system is aligned with a series of email lists corresponding to various thrusts of CF evolution (represented as "components" in Trac). The biggest change in the new system is that individuals no longer send email directly to the mailing list. Instead, the Trac system will automatically send email to the appropriate list(s) each time you create or modify a ticket. The mailing lists are arranged in such a way that you can choose to subscribe to only the discussions of interest to you - or you can subscribe to the parent list and receive an email for every single message post.
 
 In summary, you send messages using the Trac web interface and you receive messages via the mailing lists you subscribe to or by reading the messages in your web browser.
 
 
 
-##Joining the Discussion
+## Joining the Discussion
+
 Spammers have managed to make our lives miserable, and they are getting more sophisticated. They now even have bots that create spam Trac tickets! For this reason, each person is required to have an account in Trac to create and modify tickets. Follow the steps below to get started:
 
 If you ARE already a member of the cf-metadata@cgd.ucar.edu mailing list:
@@ -31,7 +34,7 @@ Note: Step 1 is only required if you want to post messages. If you only want to 
 2. Subscribe yourself to the mailing lists you're interested in. You will automatically be subscribed to the cf-conventions and cf-standard-names mailing lists. You must independently subscribe to the working group lists.
  
 
-##Components and Mailing Lists
+## Components and Mailing Lists
 
 Component	| Mailing List | Description
 --- | --- | ---
@@ -49,7 +52,8 @@ cf-wg-discovery | cf-wg-discovery@lists.llnl.gov | How to include discovery info
 cf-wg-compliance | cf-wg-compliance@lists.llnl.gov | Reference implementations, CF API, CMOR, sample datasets.
  
 
-##Subscribing to the Mailing Lists
+## Subscribing to the Mailing Lists
+
 To subscribe to any of the above mailing lists, send a message to majordomo@lists.llnl.gov with the following contained in the email body:
 
     subscribe <list-name>
@@ -69,5 +73,6 @@ Send a message to majordomo@lists.llnl.gov with the following contained in the e
 
 where <list-name> is one of the Component names (not the full mailing list name).
 
-##Posting to the Mailing Lists
+## Posting to the Mailing Lists
+
 Don't send email directly to the mailing lists. Rather, use the Trac ticketing system, which will automatically send mail to the correct lists. If you accidentally reply to an email sent by Trac or send mail directly to one of the mailing lists, the message will be delivered to the mailing list maintainer, who will politely remind you to use the Trac system instead.

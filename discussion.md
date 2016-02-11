@@ -4,7 +4,7 @@ title: Discussion
 group: "navigation"
 ---
 
-#Discussion
+# Discussion
  
 Discussion about CF Metadata takes place in two formats:
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Lastest
+title: Latest
 ---
 
 # Latest CF Conventions Documents
@@ -24,9 +24,11 @@ title: Lastest
   </td>
   <td>
     <ul>
-      <li> <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html">Single HTML</a> </li> <br />
-      <li> <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions-multi.html">Multi HTML</a> </li> <br />
-      <li> <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.pdf">PDF</a> </li>
+      <li> <a href="/cf-conventions/cf-conventions.html">Single HTML</a> </li> <br />
+      <li> <a href="/cf-conventions/cf-conventions.pdf">PDF</a> </li> <br />
+      <li> <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html">Single HTML (DocBook)</a> </li> <br />
+      <li> <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions-multi.html">Multi HTML (DocBook)</a> </li> <br />
+      <li> <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.pdf">PDF (DocBook)</a> </li>
     </ul>
   </td>
 </tr>

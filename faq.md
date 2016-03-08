@@ -241,14 +241,14 @@ Some directional components are not necessarily signed, and so may not be specif
 
 ### How can I encode flag values (or other enumerated lists) with CF?
 
-Often data values in an enumerated list are given as string codes ("UP", "GOOD", "Warning"), yet it is more useful to encode these values as integers. CF's [flag_values mechanism](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/build/ch03s05.html) can encode strings in numeric data variables, while defining flag_meanings to map the numbers to the meanings. The `flag_values` and `flag_meanings` attributes (and, if necessary, the `flag_masks` attribute) describe a status flag consisting of mutually exclusive coded values. The `flag_values` attribute is the same type as the variable to which it is attached, and contains a list of the possible flag values. The `flag_meanings` attribute is a string whose value is a blank-separated list of descriptive words or phrases, one for each flag value. 
+Often data values in an enumerated list are given as string codes ("UP", "GOOD", "Warning"), yet it is more useful to encode these values as integers. CF's [flag_values mechanism](http://cfconventions.org/cf-conventions.html#flags) can encode strings in numeric data variables, while defining flag_meanings to map the numbers to the meanings. The `flag_values` and `flag_meanings` attributes (and, if necessary, the `flag_masks` attribute) describe a status flag consisting of mutually exclusive coded values. The `flag_values` attribute is the same type as the variable to which it is attached, and contains a list of the possible flag values. The `flag_meanings` attribute is a string whose value is a blank-separated list of descriptive words or phrases, one for each flag value. 
 <a class="anchor" id="auxiliary_coordinate_axis"></a>
 
 ### What good is the auxiliary coordinate axis, how is it different from a regular coordinate axis?
 
 In NetCDF, a `coordinate variable` is a one-dimensional variable with the same name as its dimension [e.g., time(time)]; is a numeric data type; has values that are ordered monotonically (always going in one direction); and has no missing values. If you have a variable that contains coordinate values but does not meet these criteria, in CF you can still indicate that it has coordinate values by naming it as an auxiliary coordinate variable. 
 
-The rules for creating and using auxiliary coordinate variables are described in the [Coordinate Systems](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html#coordinate-system) section of the Convention.
+The rules for creating and using auxiliary coordinate variables are described in the [Coordinate Systems](http://cfconventions.org/cf-conventions/cf-conventions.html#coordinate-system) section of the Convention.
 <div style="font-style:italic"><a href="#toc" title="Go to table of contents">Up to TOC</a></div>
 <a class="anchor" id="faq_rich_technical"></a>
 
@@ -262,9 +262,9 @@ CF allows coordinate variables to be used for any quantity that you might regard
 
 CF offers a rich set of options for specifying coordinate axes. Here is a short list of possibilities; others may be appropriate.
 
-* [Discrete axes](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html#discrete-axis) can have unordered, enumerated axis values, like days of the week or model levels [example](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html#alternative-coordinates).
+* [Discrete axes](http://cfconventions.org/cf-conventions/cf-conventions.html#discrete-axis) can have unordered, enumerated axis values, like days of the week or model levels [example](http://cfconventions.org/cf-conventions/cf-conventions.html#alternative-coordinates).
 * Isotherms are described as a data variable of depth with a coordinate of (potential) temperature. 
-* Various other vertical coordinate systems that are dimensionless are explicitly listed in [Appendix D](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html#dimensionless-v-coord), and are specified as described in [Dimensionless Vertical Coordinates section](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html#dimensionless-vertical-coordinate).
+* Various other vertical coordinate systems that are dimensionless are explicitly listed in [Appendix D](http://cfconventions.org/cf-conventions/cf-conventions.html#dimensionless-v-coord), and are specified as described in [Dimensionless Vertical Coordinates section](http://cfconventions.org/cf-conventions/cf-conventions.html#dimensionless-vertical-coordinate).
 * Swath coordinates (e.g., 'along-track' and 'across-track' values often obtained from platforms following a path, like satellites, planes, and autonomous underwater vehicles) can be expressed as x,y coordinates that are mapped to latitude and longitude.
 * Degree-day integrals are described as integral_of_air_temperature_deficit|excess_wrt_time with a coordinate of air_temperature_threshold. 
 * Electromagnetic radiation at particular wavelengths uses a coordinate of radiation_wavelength or radiation_frequency.
@@ -278,7 +278,7 @@ There are several ways that multiple time coordinates may be handled; you may wi
  
 CF's standard name for the valid or forecast time is `time` (also used for the time of an observation). CF also has a standard name for the time the analysis was performed (its 'run time'): forecast_reference_time. Very briefly, values in either or both of these axes may vary (a single run may have multiple forecast periods, or multiple runs may target a single period, or multiple runs may target multiple periods). If either axis contains just a single value, they are both specified as coordinates. If both are multi-valued, then they are each defined as one-dimensional auxiliary coordinate variables, with a common index dimension. 
 
-CF section 5.7 has an [example of the first case](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html#scalar-coordinate-variables), with a scalar coordinate variable for forecast_reference_time and a multivalued time axis for the valid time.
+CF section 5.7 has an [example of the first case](http://cfconventions.org/cf-conventions/cf-conventions.html#scalar-coordinate-variables), with a scalar coordinate variable for forecast_reference_time and a multivalued time axis for the valid time.
 
 [CF ticket #117](http://kitt.llnl.gov/trac/ticket/117) has an example of the second case, drawn from the email referenced above.
 <a class="anchor" id="dsg"></a>

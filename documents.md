@@ -131,8 +131,8 @@ group: "navigation"
       <a href="Data/cf-standard-names/1/src/cf-standard-name-table.xml">v1</a>  &nbsp;
   
     </p>  
-      Standard names <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> document. &nbsp;
-      List of <a href="Data/cf-standard-names/docs/standard-name-contributors.html">contributors to CF Standard Names</a> &nbsp;
+      <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for construction of CF Standard Names<br>
+      List of <a href="Data/cf-standard-names/docs/standard-name-contributors.html">contributors</a> to CF Standard Names 
 </div>
 
 <div class="col-md-4">

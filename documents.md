@@ -132,6 +132,7 @@ group: "navigation"
   
     </p>  
       Standard names <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> document. &nbsp;
+      List of <a href="Data/cf-standard-names/docs/standard-name-contributors.html">contributors to CF Standard Names</a> &nbsp;
 </div>
 
 <div class="col-md-4">

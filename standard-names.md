@@ -6,11 +6,12 @@ group: "navigation"
 
 <h2>CF Standard Names</h2>
 <p>
-<h4> Standard Name Table (v32, 05 April 2016)</h4>
-  <a href="Data/cf-standard-names/32/build/cf-standard-name-table.html">HTML</a> &nbsp;
-  <a href="Data/cf-standard-names/32/src/cf-standard-name-table.xml">XML</a> &nbsp;
+<h4> Standard Name Table (v33, 17 May 2016)</h4>
+  <a href="Data/cf-standard-names/33/build/cf-standard-name-table.html">HTML</a> &nbsp;
+  <a href="Data/cf-standard-names/33/src/cf-standard-name-table.xml">XML</a> &nbsp;
 
   <h5>Previous Versions (HTML)</h5>
+    <a href="Data/cf-standard-names/32/build/cf-standard-name-table.html">v32</a> &nbsp;
     <a href="Data/cf-standard-names/31/build/cf-standard-name-table.html">v31</a> &nbsp;
     <a href="Data/cf-standard-names/30/build/cf-standard-name-table.html">v30</a> &nbsp;
     <a href="Data/cf-standard-names/29/build/cf-standard-name-table.html">v29</a> &nbsp;
@@ -44,6 +45,7 @@ group: "navigation"
     <a href="Data/cf-standard-names/1/build/cf-standard-name-table.html">v1</a> &nbsp;
 
   <h5>Previous Versions (XML)</h5>
+    <a href="Data/cf-standard-names/32/src/cf-standard-name-table.xml">V32</a> &nbsp;
     <a href="Data/cf-standard-names/31/src/cf-standard-name-table.xml">v31</a> &nbsp;
     <a href="Data/cf-standard-names/30/src/cf-standard-name-table.xml">v30</a> &nbsp;
     <a href="Data/cf-standard-names/29/src/cf-standard-name-table.xml">v29</a> &nbsp;
@@ -86,15 +88,17 @@ group: "navigation"
   <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Current status of proposals for new standard names</a> <br>
   <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Archive of resolved proposals for new standard names (from March 2011 onwards)</a> <br>
 
-<h4> Area Type Table (v3, 8 July 2015)</h4>
-  <a href="Data/area-type-table/3/build/area-type-table.html">HTML</a>&nbsp;
-  <a href="Data/area-type-table/3/src/area-type-table.xml">XML</a>&nbsp;
+<h4> Area Type Table (v4, 17 May 2016)</h4>
+  <a href="Data/area-type-table/4/build/area-type-table.html">HTML</a>&nbsp;
+  <a href="Data/area-type-table/4/src/area-type-table.xml">XML</a>&nbsp;
 
   <h5>Previous Versions (HTML)</h5>
+    <a href="Data/area-type-table/3/build/area-type-table.html">V3</a>&nbsp;
     <a href="Data/area-type-table/2/build/area-type-table.html">v2</a> &nbsp;
     <a href="Data/area-type-table/1/build/area-type-table.html">v1</a> &nbsp;
 
   <h5>Previous Versions (XML)</h5>
+    <a href="Data/area-type-table/3/src/area-type-table.xml">V3</a>&nbsp;
     <a href="Data/area-type-table/2/src/area-type-table.xml">v2</a> &nbsp;
     <a href="Data/area-type-table/1/src/area-type-table.xml">v1</a> &nbsp;
 

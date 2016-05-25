@@ -44,4 +44,4 @@ title: Latest
 
 ## Area Type Table
 
-* <a href="Data/cf-standard-names/docs/area-type-table.html"> HTML </a>
+* <a href="Data/area-type-table/current/build/area-type-table.html"> HTML </a>

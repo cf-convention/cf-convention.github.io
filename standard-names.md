@@ -6,7 +6,7 @@ group: "navigation"
 
 <h2>CF Standard Names</h2>
 <p>
-<h4> Standard Name Table (v35, 29 July 2016)</h4>
+<h4> Standard Name Table (v35, 20 July 2016)</h4>
   <a href="Data/cf-standard-names/35/build/cf-standard-name-table.html">HTML</a> &nbsp;
   <a href="Data/cf-standard-names/35/src/cf-standard-name-table.xml">XML</a> &nbsp;
 

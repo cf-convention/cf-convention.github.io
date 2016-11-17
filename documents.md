@@ -62,11 +62,12 @@ group: "navigation"
   <div class="col-md-4">
     <h2>CF Standard Names</h2>
     <p>
-      <h4>Standard Name Table (v36, 21 September 2016)</h4>
-      <a href="Data/cf-standard-names/35/build/cf-standard-name-table.html">HTML</a>&nbsp;
-      <a href="Data/cf-standard-names/35/src/cf-standard-name-table.xml">XML</a>&nbsp;
+      <h4>Standard Name Table (v37, 16 November 2016)</h4>
+      <a href="Data/cf-standard-names/37/build/cf-standard-name-table.html">HTML</a>&nbsp;
+      <a href="Data/cf-standard-names/37/src/cf-standard-name-table.xml">XML</a>&nbsp;
 
       <h5>Previous Versions (HTML)</h5>
+      <a href="Data/cf-standard-names/36/build/cf-standard-name-table.html">v36</a>&nbsp;
       <a href="Data/cf-standard-names/35/build/cf-standard-name-table.html">v35</a>&nbsp;
       <a href="Data/cf-standard-names/34/build/cf-standard-name-table.html">v34</a>&nbsp;
       <a href="Data/cf-standard-names/33/build/cf-standard-name-table.html">v33</a>&nbsp;
@@ -104,6 +105,7 @@ group: "navigation"
       <a href="Data/cf-standard-names/1/build/cf-standard-name-table.html">v1</a> &nbsp;
 
       <h5>Previous Versions (XML)</h5>
+      <a href="Data/cf-standard-names/36/src/cf-standard-name-table.xml">v36</a>&nbsp;
       <a href="Data/cf-standard-names/35/src/cf-standard-name-table.xml">v35</a>&nbsp;
       <a href="Data/cf-standard-names/34/src/cf-standard-name-table.xml">v34</a>&nbsp;
       <a href="Data/cf-standard-names/33/src/cf-standard-name-table.xml">v33</a>&nbsp;

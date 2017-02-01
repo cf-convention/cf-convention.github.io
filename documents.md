@@ -67,7 +67,7 @@ group: "navigation"
       <a href="Data/cf-standard-names/40/src/cf-standard-name-table.xml">XML</a>&nbsp;
 
       <h5>Previous Versions (HTML)</h5>
-      N.B. For technical reasons, no standard name table was published with version number 38.
+      N.B. For technical reasons, no standard name table was published with version number 38.<br>
       <a href="Data/cf-standard-names/39/build/cf-standard-name-table.html">v39</a>&nbsp;
       <a href="Data/cf-standard-names/37/build/cf-standard-name-table.html">v37</a>&nbsp;
       <a href="Data/cf-standard-names/36/build/cf-standard-name-table.html">v36</a>&nbsp;
@@ -108,7 +108,7 @@ group: "navigation"
       <a href="Data/cf-standard-names/1/build/cf-standard-name-table.html">v1</a> &nbsp;
 
       <h5>Previous Versions (XML)</h5>
-      N.B. For technical reasons, no standard name table was published with version number 38.
+      N.B. For technical reasons, no standard name table was published with version number 38.<br>
       <a href="Data/cf-standard-names/39/src/cf-standard-name-table.xml">v39</a>&nbsp;
       <a href="Data/cf-standard-names/37/src/cf-standard-name-table.xml">v37</a>&nbsp;
       <a href="Data/cf-standard-names/36/src/cf-standard-name-table.xml">v36</a>&nbsp;

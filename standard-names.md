@@ -4,13 +4,13 @@ title: Standard Names
 group: "navigation"
 ---
 
-<h2>CF Standard Names</h2>
+<h2><b>CF Standard Names</b></h2>
 <p>
-<h4> Standard Name Table (v40, 25 January 2017)</h4>
+<h4><b>Standard Name Table (v40, 25 January 2017)</b></h4>
   <a href="Data/cf-standard-names/40/build/cf-standard-name-table.html">HTML</a> &nbsp;
   <a href="Data/cf-standard-names/40/src/cf-standard-name-table.xml">XML</a> &nbsp;
 
-  <h5>Previous Versions (HTML)</h5>
+  <h5><b>Previous Versions (HTML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
     <a href="Data/cf-standard-names/39/build/cf-standard-name-table.html">v39</a> &nbsp;
     <a href="Data/cf-standard-names/37/build/cf-standard-name-table.html">v37</a> &nbsp;
@@ -51,7 +51,7 @@ group: "navigation"
     <a href="Data/cf-standard-names/2/build/cf-standard-name-table.html">v2</a> &nbsp;
     <a href="Data/cf-standard-names/1/build/cf-standard-name-table.html">v1</a> &nbsp;
 
-  <h5>Previous Versions (XML)</h5>
+  <h5><b>Previous Versions (XML)</b></h5>
     <a href="Data/cf-standard-names/37/src/cf-standard-name-table.xml">v37</a> &nbsp;
     <a href="Data/cf-standard-names/36/src/cf-standard-name-table.xml">v36</a> &nbsp;
     <a href="Data/cf-standard-names/35/src/cf-standard-name-table.xml">v35</a> &nbsp;
@@ -91,30 +91,32 @@ group: "navigation"
     <a href="Data/cf-standard-names/1/src/cf-standard-name-table.xml">v1</a> &nbsp;
 
 
-  <h5>Documents</h5>
+  <h5><b>Documents</b></h5>
     <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for Construction of CF Standard Names<br>
     List of<a href="Data/cf-standard-names/docs/standard-name-contributors.html"> contributors</a> to CF Standard Names
 
-  <h5>Discussion</h5>
+  <h5><b>Discussion</b></h5>
 
   <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Current status of proposals for new standard names</a> <br>
   <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Archive of resolved proposals for new standard names (from March 2011 onwards)</a> <br>
 
-<h4> Area Type Table (v4, 17 May 2016)</h4>
-  <a href="Data/area-type-table/4/build/area-type-table.html">HTML</a>&nbsp;
-  <a href="Data/area-type-table/4/src/area-type-table.xml">XML</a>&nbsp;
+<h4><b>Area Type Table (v5, 25 January 2017)<b></h4>
+  <a href="Data/area-type-table/5/build/area-type-table.html">HTML</a>&nbsp;
+  <a href="Data/area-type-table/5/src/area-type-table.xml">XML</a>&nbsp;
 
   <h5>Previous Versions (HTML)</h5>
-    <a href="Data/area-type-table/3/build/area-type-table.html">V3</a>&nbsp;
+    <a href="Data/area-type-table/3/build/area-type-table.html">v4</a>&nbsp;
+    <a href="Data/area-type-table/3/build/area-type-table.html">v3</a>&nbsp;
     <a href="Data/area-type-table/2/build/area-type-table.html">v2</a> &nbsp;
     <a href="Data/area-type-table/1/build/area-type-table.html">v1</a> &nbsp;
 
   <h5>Previous Versions (XML)</h5>
-    <a href="Data/area-type-table/3/src/area-type-table.xml">V3</a>&nbsp;
+    <a href="Data/area-type-table/3/src/area-type-table.xml">v3</a>&nbsp;
+    <a href="Data/area-type-table/3/src/area-type-table.xml">v3</a>&nbsp;
     <a href="Data/area-type-table/2/src/area-type-table.xml">v2</a> &nbsp;
     <a href="Data/area-type-table/1/src/area-type-table.xml">v1</a> &nbsp;
 
-<h4> Standardized Region List </h4>
+<h4><b>Standardized Region List</b></h4>
   CF list of <a href="Data/cf-standard-names/docs/standardized-region-names.html">standardized region names</a> &nbsp;
 
 </p>  

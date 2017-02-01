@@ -52,6 +52,7 @@ group: "navigation"
     <a href="Data/cf-standard-names/1/build/cf-standard-name-table.html">v1</a> &nbsp;
 
   <h5><b>Previous Versions (XML)</b></h5>
+    N.B. For technical reasons, no standard name table was published with version number 38.<br>
     <a href="Data/cf-standard-names/37/src/cf-standard-name-table.xml">v37</a> &nbsp;
     <a href="Data/cf-standard-names/36/src/cf-standard-name-table.xml">v36</a> &nbsp;
     <a href="Data/cf-standard-names/35/src/cf-standard-name-table.xml">v35</a> &nbsp;

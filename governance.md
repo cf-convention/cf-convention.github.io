@@ -17,26 +17,24 @@ group: "navigation"
 ### Conventions Committee and Standard Names Committee
 
 * Balaji
+* Jim Biard
 * Philip Cameron-Smith
-* John Caron
 * Nan Galbraith
 * John Graybeal
 * Jonathan Gregory
-* Steve Hankin
-* Bryan Lawrence (chair of Standard Names Committee)
+* David Hassell
 * Roy Lowry
 * Alison Pamment (secretary of Standard Names Committee)
-* Russ Rew
 * Martin Schultz
 * Rich Signell
 * Karl Taylor (chair of Conventions Committee)
  
 ### Governance Panel
 
+* Ethan Davis
 * Jonathan Gregory
-* Steve Hankin
 * Bryan Lawrence
-* Russ Rew
+* Rich Signell
 * Karl Taylor (chair)
 
 ### Information Management and Support
@@ -51,10 +49,11 @@ group: "navigation"
 * Velimir Mlaker (LLNL)
 * Jeff Painter (LLNL)
 * Alison Pamment (CEDA)
-
+* Tanya Reshel (LLNL)
 
 ### Former Committee Members
 
+* John Caron (Conventions)
 * Michel Crucifix (Standard Names)
 * Burkhardt Rockel (Standard Names)
 * Christiane Textor (Standard Names)
@@ -62,6 +61,9 @@ group: "navigation"
 * Tom Gross (Conventions)
 * Manuel Fuentes (Standard Names)
 * Heinke Höck (Standard Names)
+* Steve Hankin (Conventions and Governance)
+* Bryan Lawrence (Standard Names)
+* Russ Rew (Conventions and Governance)
 
 The climate research community is indebted to the above for their magnanimous contributions in establishing and improving the CF Conventions.
 

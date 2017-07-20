@@ -131,7 +131,8 @@ group: "navigation"
     <a href="Data/area-type-table/1/src/area-type-table.xml">v1</a> &nbsp;
 
 <h4><b>Standardized Region List</b></h4>
-  CF list of <a href="Data/cf-standard-names/docs/standardized-region-names.html">standardized region names</a> &nbsp;
+    <a href="Data/cf-standard-names/docs/standardized-region-names.html">HTML</a> &nbsp;
+    <a href="Data/cf-standard-names/docs/standardized-region-names.xml">XML</a> &nbsp;
 
 </p>  
 

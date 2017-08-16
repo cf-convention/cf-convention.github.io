@@ -21,6 +21,8 @@ group: "navigation"
       &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.7/cf-conventions.pdf">PDF</a>
       &nbsp;
+
+      <h4>CF 1.7.2 (obsolete)</h4>
       <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html">Single HTML (DocBook)</a> &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
       <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.pdf">PDF (DocBook)</a>

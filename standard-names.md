@@ -6,12 +6,13 @@ group: "navigation"
 
 <h2><b>CF Standard Names</b></h2>
 <p>
-<h4><b>Standard Name Table (v47, 19 September 2017)</b></h4>
-  <a href="Data/cf-standard-names/47/build/cf-standard-name-table.html">HTML</a> &nbsp;
-  <a href="Data/cf-standard-names/47/src/cf-standard-name-table.xml">XML</a> &nbsp;
+<h4><b>Standard Name Table (v48, 28 November 2017)</b></h4>
+  <a href="Data/cf-standard-names/48/build/cf-standard-name-table.html">HTML</a> &nbsp;
+  <a href="Data/cf-standard-names/48/src/cf-standard-name-table.xml">XML</a> &nbsp;
 
   <h5><b>Previous Versions (HTML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/47/build/cf-standard-name-table.html">v47</a> &nbsp;
     <a href="Data/cf-standard-names/46/build/cf-standard-name-table.html">v46</a> &nbsp;
     <a href="Data/cf-standard-names/45/build/cf-standard-name-table.html">v45</a> &nbsp;
     <a href="Data/cf-standard-names/44/build/cf-standard-name-table.html">v44</a> &nbsp;
@@ -60,6 +61,7 @@ group: "navigation"
 
   <h5><b>Previous Versions (XML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/47/src/cf-standard-name-table.xml">v47</a> &nbsp;
     <a href="Data/cf-standard-names/46/src/cf-standard-name-table.xml">v46</a> &nbsp;
     <a href="Data/cf-standard-names/45/src/cf-standard-name-table.xml">v45</a> &nbsp;
     <a href="Data/cf-standard-names/44/src/cf-standard-name-table.xml">v44</a> &nbsp;
@@ -106,6 +108,8 @@ group: "navigation"
     <a href="Data/cf-standard-names/2/src/cf-standard-name-table.xml">v2</a>  &nbsp;
     <a href="Data/cf-standard-names/1/src/cf-standard-name-table.xml">v1</a> &nbsp;
 
+<h5>Previous Versions (Keyword Centred List)</h5>
+      <a href="Data/cf-standard-names/47/kwicindex/kwic_index_for_cf_standard_names_v47.html">v47</a>  &nbsp;
 
   <h5><b>Documents</b></h5>
     <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for Construction of CF Standard Names<br>

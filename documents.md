@@ -70,12 +70,13 @@ group: "navigation"
   <div class="col-md-4">
     <h2>CF Standard Names</h2>
     <p>
-      <h4>Standard Name Table (v47, 19 September 2017)</h4>
-      <a href="Data/cf-standard-names/47/build/cf-standard-name-table.html">HTML</a>&nbsp;
-      <a href="Data/cf-standard-names/47/src/cf-standard-name-table.xml">XML</a>&nbsp;
+      <h4>Standard Name Table (v48, 28 November 2017)</h4>
+      <a href="Data/cf-standard-names/48/build/cf-standard-name-table.html">HTML</a>&nbsp;
+      <a href="Data/cf-standard-names/48/src/cf-standard-name-table.xml">XML</a>&nbsp;
 
       <h5>Previous Versions (HTML)</h5>
       N.B. For technical reasons, no standard name table was published with version number 38.<br>
+     <a href="Data/cf-standard-names/47/build/cf-standard-name-table.html">v47</a>&nbsp;
      <a href="Data/cf-standard-names/46/build/cf-standard-name-table.html">v46</a>&nbsp;
      <a href="Data/cf-standard-names/45/build/cf-standard-name-table.html">v45</a>&nbsp;
       <a href="Data/cf-standard-names/44/build/cf-standard-name-table.html">v44</a>&nbsp;
@@ -124,6 +125,7 @@ group: "navigation"
 
       <h5>Previous Versions (XML)</h5>
       N.B. For technical reasons, no standard name table was published with version number 38.<br>
+      <a href="Data/cf-standard-names/47/src/cf-standard-name-table.xml">v47</a>&nbsp;
       <a href="Data/cf-standard-names/46/src/cf-standard-name-table.xml">v46</a>&nbsp;
       <a href="Data/cf-standard-names/45/src/cf-standard-name-table.xml">v45</a>&nbsp;
       <a href="Data/cf-standard-names/44/src/cf-standard-name-table.xml">v44</a>&nbsp;
@@ -169,7 +171,10 @@ group: "navigation"
       <a href="Data/cf-standard-names/3/src/cf-standard-name-table.xml">v3</a>  &nbsp;
       <a href="Data/cf-standard-names/2/src/cf-standard-name-table.xml">v2</a>  &nbsp;
       <a href="Data/cf-standard-names/1/src/cf-standard-name-table.xml">v1</a>  &nbsp;
-  
+ 
+<h5>Previous Versions (Keyword Centred List)</h5>
+      <a href="Data/cf-standard-names/47/kwicindex/kwic_index_for_cf_standard_names_v47.html">v47</a>  &nbsp;
+
     </p>  
       <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for construction of CF Standard Names<br>
       List of <a href="Data/cf-standard-names/docs/standard-name-contributors.html">contributors</a> to CF Standard Names 

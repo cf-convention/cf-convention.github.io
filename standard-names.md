@@ -6,12 +6,13 @@ group: "navigation"
 
 <h2><b>CF Standard Names</b></h2>
 <p>
-<h4><b>Standard Name Table (v49, 12 February 2018)</b></h4>
-  <a href="Data/cf-standard-names/49/build/cf-standard-name-table.html">HTML</a> &nbsp;
-  <a href="Data/cf-standard-names/49/src/cf-standard-name-table.xml">XML</a> &nbsp;
+<h4><b>Standard Name Table (v50, 13 March 2018)</b></h4>
+  <a href="Data/cf-standard-names/50/build/cf-standard-name-table.html">HTML</a> &nbsp;
+  <a href="Data/cf-standard-names/50/src/cf-standard-name-table.xml">XML</a> &nbsp;
 
   <h5><b>Previous Versions (HTML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/49/build/cf-standard-name-table.html">v49</a> &nbsp;
     <a href="Data/cf-standard-names/48/build/cf-standard-name-table.html">v48</a> &nbsp;
     <a href="Data/cf-standard-names/47/build/cf-standard-name-table.html">v47</a> &nbsp;
     <a href="Data/cf-standard-names/46/build/cf-standard-name-table.html">v46</a> &nbsp;
@@ -62,6 +63,7 @@ group: "navigation"
 
   <h5><b>Previous Versions (XML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/49/src/cf-standard-name-table.xml">v49</a> &nbsp;
     <a href="Data/cf-standard-names/48/src/cf-standard-name-table.xml">v48</a> &nbsp;
     <a href="Data/cf-standard-names/47/src/cf-standard-name-table.xml">v47</a> &nbsp;
     <a href="Data/cf-standard-names/46/src/cf-standard-name-table.xml">v46</a> &nbsp;
@@ -122,11 +124,12 @@ group: "navigation"
   <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Current status of proposals for new standard names</a> <br>
   <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Archive of resolved proposals for new standard names (from March 2011 onwards)</a> <br>
 
-<h4><b>Area Type Table (v6, 22 February 2017)</b></h4>
-  <a href="Data/area-type-table/6/build/area-type-table.html">HTML</a>&nbsp;
-  <a href="Data/area-type-table/6/src/area-type-table.xml">XML</a>&nbsp;
+<h4><b>Area Type Table (v7, 13 March 2018)</b></h4>
+  <a href="Data/area-type-table/7/build/area-type-table.html">HTML</a>&nbsp;
+  <a href="Data/area-type-table/7/src/area-type-table.xml">XML</a>&nbsp;
 
   <h5>Previous Versions (HTML)</h5>
+    <a href="Data/area-type-table/6/build/area-type-table.html">v6</a>&nbsp;
     <a href="Data/area-type-table/5/build/area-type-table.html">v5</a>&nbsp;
     <a href="Data/area-type-table/4/build/area-type-table.html">v4</a>&nbsp;
     <a href="Data/area-type-table/3/build/area-type-table.html">v3</a>&nbsp;

@@ -137,6 +137,7 @@ group: "navigation"
     <a href="Data/area-type-table/1/build/area-type-table.html">v1</a> &nbsp;
 
   <h5>Previous Versions (XML)</h5>
+    <a href="Data/area-type-table/6/src/area-type-table.xml">v6</a>&nbsp;
     <a href="Data/area-type-table/5/src/area-type-table.xml">v5</a>&nbsp;
     <a href="Data/area-type-table/4/src/area-type-table.xml">v4</a>&nbsp;
     <a href="Data/area-type-table/3/src/area-type-table.xml">v3</a>&nbsp;

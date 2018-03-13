@@ -70,7 +70,7 @@ group: "navigation"
   <div class="col-md-4">
     <h2>CF Standard Names</h2>
     <p>
-      <h4>Standard Name Table (v49, 13 March 2018)</h4>
+      <h4>Standard Name Table (v50, 13 March 2018)</h4>
       <a href="Data/cf-standard-names/50/build/cf-standard-name-table.html">HTML</a>&nbsp;
       <a href="Data/cf-standard-names/50/src/cf-standard-name-table.xml">XML</a>&nbsp;
 
@@ -191,13 +191,14 @@ group: "navigation"
     <a href="Data/area-type-table/7/build/area-type-table.html">HTML</a>&nbsp;
     <a href="Data/area-type-table/7/src/area-type-table.xml">XML</a>&nbsp;
 <h5>Previous Versions (HTML)</h5>
-    <a href="Data/area-type-table/6/build/area-type-table.html">v5</a>&nbsp;
+    <a href="Data/area-type-table/6/build/area-type-table.html">v6</a>&nbsp;
     <a href="Data/area-type-table/5/build/area-type-table.html">v5</a>&nbsp;
     <a href="Data/area-type-table/4/build/area-type-table.html">v4</a>&nbsp;
     <a href="Data/area-type-table/3/build/area-type-table.html">v3</a>&nbsp;
     <a href="Data/area-type-table/2/build/area-type-table.html">v2</a> &nbsp;
     <a href="Data/area-type-table/1/build/area-type-table.html">v1</a> &nbsp;
 <h5>Previous Versions (XML)</h5>
+    <a href="Data/area-type-table/6/src/area-type-table.xml">v6</a>&nbsp;
     <a href="Data/area-type-table/5/src/area-type-table.xml">v5</a>&nbsp;
     <a href="Data/area-type-table/4/src/area-type-table.xml">v4</a>&nbsp;
     <a href="Data/area-type-table/3/src/area-type-table.xml">v3</a>&nbsp;

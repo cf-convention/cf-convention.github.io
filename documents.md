@@ -70,7 +70,7 @@ group: "navigation"
   <div class="col-md-4">
     <h2>CF Standard Names</h2>
     <p>
-      <h4>Standard Name Table (v50, 13 March 2018)</h4>
+      <h4>Standard Name Table (v50, 14 March 2018)</h4>
       <a href="Data/cf-standard-names/50/build/cf-standard-name-table.html">HTML</a>&nbsp;
       <a href="Data/cf-standard-names/50/src/cf-standard-name-table.xml">XML</a>&nbsp;
 
@@ -187,7 +187,7 @@ group: "navigation"
 <div class="col-md-4">
 <h2>Others</h2>
 <a href="wkt-proj-4.html">CF-1.6 <--> WKT/PROJ.4 translation</a>&nbsp;
-<h4> Area Type Table (v7, 13 March 2018)</h4>
+<h4> Area Type Table (v7, 14 March 2018)</h4>
     <a href="Data/area-type-table/7/build/area-type-table.html">HTML</a>&nbsp;
     <a href="Data/area-type-table/7/src/area-type-table.xml">XML</a>&nbsp;
 <h5>Previous Versions (HTML)</h5>

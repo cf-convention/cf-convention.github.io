@@ -129,8 +129,8 @@ group: "navigation"
   <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Archive of resolved proposals for new standard names (from March 2011 onwards)</a> <br>
 
 <h4><b>Area Type Table (v8, 16 May 2018)</b></h4>
-  <a href="Data/area-type-table/7/build/area-type-table.html">HTML</a>&nbsp;
-  <a href="Data/area-type-table/7/src/area-type-table.xml">XML</a>&nbsp;
+  <a href="Data/area-type-table/8/build/area-type-table.html">HTML</a>&nbsp;
+  <a href="Data/area-type-table/8/src/area-type-table.xml">XML</a>&nbsp;
 
   <h5>Previous Versions (HTML)</h5>
     <a href="Data/area-type-table/7/build/area-type-table.html">v7</a>&nbsp;
@@ -142,6 +142,7 @@ group: "navigation"
     <a href="Data/area-type-table/1/build/area-type-table.html">v1</a> &nbsp;
 
   <h5>Previous Versions (XML)</h5>
+    <a href="Data/area-type-table/7/src/area-type-table.xml">v7</a>&nbsp;
     <a href="Data/area-type-table/6/src/area-type-table.xml">v6</a>&nbsp;
     <a href="Data/area-type-table/5/src/area-type-table.xml">v5</a>&nbsp;
     <a href="Data/area-type-table/4/src/area-type-table.xml">v4</a>&nbsp;

@@ -70,12 +70,13 @@ group: "navigation"
   <div class="col-md-4">
     <h2>CF Standard Names</h2>
     <p>
-      <h4>Standard Name Table (v51, 17 April 2018)</h4>
-      <a href="Data/cf-standard-names/51/build/cf-standard-name-table.html">HTML</a>&nbsp;
-      <a href="Data/cf-standard-names/51/src/cf-standard-name-table.xml">XML</a>&nbsp;
+      <h4>Standard Name Table (v52, 16 May 2018)</h4>
+      <a href="Data/cf-standard-names/52/build/cf-standard-name-table.html">HTML</a>&nbsp;
+      <a href="Data/cf-standard-names/52/src/cf-standard-name-table.xml">XML</a>&nbsp;
 
       <h5>Previous Versions (HTML)</h5>
       N.B. For technical reasons, no standard name table was published with version number 38.<br>
+      <a href="Data/cf-standard-names/51/build/cf-standard-name-table.html">v51</a>&nbsp;
       <a href="Data/cf-standard-names/50/build/cf-standard-name-table.html">v50</a>&nbsp;
       <a href="Data/cf-standard-names/49/build/cf-standard-name-table.html">v49</a>&nbsp;
       <a href="Data/cf-standard-names/48/build/cf-standard-name-table.html">v48</a>&nbsp;
@@ -128,6 +129,7 @@ group: "navigation"
 
       <h5>Previous Versions (XML)</h5>
       N.B. For technical reasons, no standard name table was published with version number 38.<br>
+      <a href="Data/cf-standard-names/51/src/cf-standard-name-table.xml">v51</a>&nbsp;
       <a href="Data/cf-standard-names/50/src/cf-standard-name-table.xml">v50</a>&nbsp;
       <a href="Data/cf-standard-names/49/src/cf-standard-name-table.xml">v49</a>&nbsp;
       <a href="Data/cf-standard-names/48/src/cf-standard-name-table.xml">v48</a>&nbsp;
@@ -189,10 +191,11 @@ group: "navigation"
 <div class="col-md-4">
 <h2>Others</h2>
 <a href="wkt-proj-4.html">CF-1.6 <--> WKT/PROJ.4 translation</a>&nbsp;
-<h4> Area Type Table (v7, 14 March 2018)</h4>
-    <a href="Data/area-type-table/7/build/area-type-table.html">HTML</a>&nbsp;
-    <a href="Data/area-type-table/7/src/area-type-table.xml">XML</a>&nbsp;
+<h4> Area Type Table (v8, 16 May 2018)</h4>
+    <a href="Data/area-type-table/8/build/area-type-table.html">HTML</a>&nbsp;
+    <a href="Data/area-type-table/8/src/area-type-table.xml">XML</a>&nbsp;
 <h5>Previous Versions (HTML)</h5>
+    <a href="Data/area-type-table/7/build/area-type-table.html">v7</a>&nbsp;
     <a href="Data/area-type-table/6/build/area-type-table.html">v6</a>&nbsp;
     <a href="Data/area-type-table/5/build/area-type-table.html">v5</a>&nbsp;
     <a href="Data/area-type-table/4/build/area-type-table.html">v4</a>&nbsp;
@@ -200,6 +203,7 @@ group: "navigation"
     <a href="Data/area-type-table/2/build/area-type-table.html">v2</a> &nbsp;
     <a href="Data/area-type-table/1/build/area-type-table.html">v1</a> &nbsp;
 <h5>Previous Versions (XML)</h5>
+    <a href="Data/area-type-table/7/src/area-type-table.xml">v7</a>&nbsp;
     <a href="Data/area-type-table/6/src/area-type-table.xml">v6</a>&nbsp;
     <a href="Data/area-type-table/5/src/area-type-table.xml">v5</a>&nbsp;
     <a href="Data/area-type-table/4/src/area-type-table.xml">v4</a>&nbsp;

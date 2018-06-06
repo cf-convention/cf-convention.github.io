@@ -39,6 +39,7 @@ group: "navigation"
 
 ### Information Management and Support
 
+* Martin Desruisseaux (Geomatys)
 * John Graybeal (Stanford University)
 * Kyle Halliday (LLNL)
 * Matthew Harris (LLNL)

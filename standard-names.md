@@ -6,12 +6,13 @@ group: "navigation"
 
 <h2><b>CF Standard Names</b></h2>
 <p>
-<h4><b>Standard Name Table (v54, 31 May 2018)</b></h4>
-  <a href="Data/cf-standard-names/54/build/cf-standard-name-table.html">HTML</a> &nbsp;
-  <a href="Data/cf-standard-names/54/src/cf-standard-name-table.xml">XML</a> &nbsp;
+<h4><b>Standard Name Table (v55, 12 June 2018)</b></h4>
+  <a href="Data/cf-standard-names/55/build/cf-standard-name-table.html">HTML</a> &nbsp;
+  <a href="Data/cf-standard-names/55/src/cf-standard-name-table.xml">XML</a> &nbsp;
 
   <h5><b>Previous Versions (HTML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/54/build/cf-standard-name-table.html">v54</a> &nbsp;
     <a href="Data/cf-standard-names/53/build/cf-standard-name-table.html">v53</a> &nbsp;
     <a href="Data/cf-standard-names/52/build/cf-standard-name-table.html">v52</a> &nbsp;
     <a href="Data/cf-standard-names/51/build/cf-standard-name-table.html">v51</a> &nbsp;
@@ -67,6 +68,7 @@ group: "navigation"
 
   <h5><b>Previous Versions (XML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/54/src/cf-standard-name-table.xml">v54</a> &nbsp;
     <a href="Data/cf-standard-names/53/src/cf-standard-name-table.xml">v53</a> &nbsp;
     <a href="Data/cf-standard-names/52/src/cf-standard-name-table.xml">v52</a> &nbsp;
     <a href="Data/cf-standard-names/51/src/cf-standard-name-table.xml">v51</a> &nbsp;

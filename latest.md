@@ -28,9 +28,9 @@ title: Latest
 </tr>
 </table>
 
-## Standard Names Table (v27)
+## Standard Names Table (v55)
 
-* <a href="Data/cf-standard-names/27/build/cf-standard-name-table.html">HTML</a>
+* <a href="Data/cf-standard-names/current/build/cf-standard-name-table.html">HTML</a>
 
 ## Standardized Region Names
 

@@ -28,14 +28,14 @@ title: Latest
 </tr>
 </table>
 
-## Standard Names Table (v27)
+## Standard Names Table - current version
 
-* <a href="Data/cf-standard-names/27/build/cf-standard-name-table.html">HTML</a>
+* <a href="Data/cf-standard-names/current/build/cf-standard-name-table.html">HTML</a>
 
-## Standardized Region Names
+## Standardized Region Names - current version
 
 * <a href="Data/cf-standard-names/docs/standardized-region-names.html">HTML</a>
 
-## Area Type Table
+## Area Type Table - current version
 
 * <a href="Data/area-type-table/current/build/area-type-table.html"> HTML </a>

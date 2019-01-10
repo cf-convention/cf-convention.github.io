@@ -34,7 +34,7 @@ title: Latest
 
 ## Standardized Region Names - current version
 
-* <a href="Data/cf-standard-names/docs/standardized-region-names.html">HTML</a>
+* <a href="Data/standardized-region-list/standardized-region-list.html">HTML</a>
 
 ## Area Type Table - current version
 

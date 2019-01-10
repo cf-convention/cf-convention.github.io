@@ -6,12 +6,13 @@ group: "navigation"
 
 <h2><b>CF Standard Names</b></h2>
 <p>
-<h4><b>Standard Name Table (v61, 13 November 2018)</b></h4>
-  <a href="Data/cf-standard-names/61/build/cf-standard-name-table.html">HTML</a> &nbsp;
-  <a href="Data/cf-standard-names/61/src/cf-standard-name-table.xml">XML</a> &nbsp;
+<h4><b>Standard Name Table (v61, 18 December 2018)</b></h4>
+  <a href="Data/cf-standard-names/62/build/cf-standard-name-table.html">HTML</a> &nbsp;
+  <a href="Data/cf-standard-names/62/src/cf-standard-name-table.xml">XML</a> &nbsp;
 
   <h5><b>Previous Versions (HTML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/61/build/cf-standard-name-table.html">v61</a> &nbsp;
     <a href="Data/cf-standard-names/60/build/cf-standard-name-table.html">v60</a> &nbsp;
     <a href="Data/cf-standard-names/59/build/cf-standard-name-table.html">v59</a> &nbsp;
     <a href="Data/cf-standard-names/58/build/cf-standard-name-table.html">v58</a> &nbsp;
@@ -74,6 +75,7 @@ group: "navigation"
 
   <h5><b>Previous Versions (XML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/61/src/cf-standard-name-table.xml">v61</a> &nbsp;
     <a href="Data/cf-standard-names/60/src/cf-standard-name-table.xml">v60</a> &nbsp;
     <a href="Data/cf-standard-names/59/src/cf-standard-name-table.xml">v59</a> &nbsp;
     <a href="Data/cf-standard-names/58/src/cf-standard-name-table.xml">v58</a> &nbsp;
@@ -146,7 +148,7 @@ group: "navigation"
   <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Current status of proposals for new standard names</a> <br>
   <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">Archive of resolved proposals for new standard names (from March 2011 onwards)</a> <br>
 
-<h4><b>Area Type Table (v9, 4 July 2018)</b></h4>
+<h4><b>Area Type Table (v9, 07 August 2018)</b></h4>
   <a href="Data/area-type-table/9/build/area-type-table.html">HTML</a>&nbsp;
   <a href="Data/area-type-table/9/src/area-type-table.xml">XML</a>&nbsp;
 
@@ -171,8 +173,19 @@ group: "navigation"
     <a href="Data/area-type-table/1/src/area-type-table.xml">v1</a> &nbsp;
 
 <h4><b>Standardized Region List</b></h4>
-    <a href="Data/cf-standard-names/docs/standardized-region-names.html">HTML</a> &nbsp;
-    <a href="Data/cf-standard-names/docs/standardized-region-names.xml">XML</a> &nbsp;
+    <a href="Data/standardized-region-list/standardized-region-list.html">HTML</a> &nbsp;
+    <a href="Data/standardized-region-list/standardized-region-list.xml">XML</a> &nbsp;
+    Old format <a href="Data/cf-standard-names/docs/standardized-region-names.html">HTML</a> (deprecated).&nbsp;
+
+  <h5>Previous Versions (HTML)</h5>
+    <a href="Data/standardized-region-list/standardized-region-list.3.html">3</a> &nbsp;
+    <a href="Data/standardized-region-list/standardized-region-list.2.html">2</a> &nbsp;
+    <a href="Data/standardized-region-list/standardized-region-list.1.html">1</a> &nbsp;
+
+  <h5>Previous Versions (XML)</h5>
+    <a href="Data/standardized-region-list/standardized-region-list.3.xml">3</a> &nbsp;
+    <a href="Data/standardized-region-list/standardized-region-list.2.xml">2</a> &nbsp;
+    <a href="Data/standardized-region-list/standardized-region-list.1.xml">1</a> &nbsp;
 
 </p>  
 

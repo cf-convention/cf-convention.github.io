@@ -12,6 +12,8 @@
         <!-- Put something useful into the Title -->
         <title>CF area types</title>
 
+        <h1 class="documentFirstHeading">CF Area Type Table</h1>
+
         <!-- This page requires an external javascript which is included by Plone -->
         <!-- See: /usr/local/zopeinstance1/Products/CMFPlone/skins/plone_ecmascript/toggleHelp.js -->
         <script>

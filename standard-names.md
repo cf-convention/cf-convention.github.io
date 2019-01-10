@@ -6,7 +6,7 @@ group: "navigation"
 
 <h2><b>CF Standard Names</b></h2>
 <p>
-<h4><b>Standard Name Table (v61, 18 December 2018)</b></h4>
+<h4><b>Standard Name Table (v62, 18 December 2018)</b></h4>
   <a href="Data/cf-standard-names/62/build/cf-standard-name-table.html">HTML</a> &nbsp;
   <a href="Data/cf-standard-names/62/src/cf-standard-name-table.xml">XML</a> &nbsp;
 
@@ -172,7 +172,7 @@ group: "navigation"
     <a href="Data/area-type-table/2/src/area-type-table.xml">v2</a> &nbsp;
     <a href="Data/area-type-table/1/src/area-type-table.xml">v1</a> &nbsp;
 
-<h4><b>Standardized Region List</b></h4>
+<h4><b>Standardized Region List (v4, 18 December 2018)</b></h4>
     <a href="Data/standardized-region-list/standardized-region-list.html">HTML</a> &nbsp;
     <a href="Data/standardized-region-list/standardized-region-list.xml">XML</a> &nbsp;
     Old format <a href="Data/cf-standard-names/docs/standardized-region-names.html">HTML</a> (deprecated).&nbsp;

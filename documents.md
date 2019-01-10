@@ -233,7 +233,7 @@ group: "navigation"
     <a href="Data/area-type-table/2/src/area-type-table.xml">v2</a> &nbsp;
     <a href="Data/area-type-table/1/src/area-type-table.xml">v1</a> &nbsp;
 
-<h4>Standardized Region List></h4>
+<h4>Standardized Region List (V4, 18 December 2018)</h4>
     <a href="Data/standardized-region-list/standardized-region-list.html">HTML</a> &nbsp;
     <a href="Data/standardized-region-list/standardized-region-list.xml">XML</a> &nbsp;
     Old format <a href="Data/cf-standard-names/docs/standardized-region-names.html">HTML</a> (deprecated).&nbsp;

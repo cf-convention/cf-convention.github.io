@@ -22,7 +22,7 @@ group: "navigation"
 * Nan Galbraith
 * John Graybeal
 * Jonathan Gregory
-* David Hassell
+* David Hassell (secretary of the Conventions Committee)
 * Roy Lowry
 * Alison Pamment (secretary of Standard Names Committee)
 * Martin Schultz
@@ -39,6 +39,7 @@ group: "navigation"
 
 ### Information Management and Support
 
+* Martin Desruisseaux (Geomatys)
 * John Graybeal (Stanford University)
 * Kyle Halliday (LLNL)
 * Matthew Harris (LLNL)

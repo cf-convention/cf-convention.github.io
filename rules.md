@@ -37,7 +37,7 @@ title: Rules
 
 <p>All versions of the standard and conformance document should be kept available online, with their github issues and a history of changes.</p>
 
-## Additional rules relating to the CF dat model
+## Additional rules relating to the CF data model
 
 <p>The CF data model will guide the development of CF by providing a framework for ensuring that proposed changes fit into CF in a logical way, rather than just a pragmatic one.
 

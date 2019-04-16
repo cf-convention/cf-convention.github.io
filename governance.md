@@ -41,13 +41,10 @@ group: "navigation"
 
 * Martin Desruisseaux (Geomatys)
 * John Graybeal (Stanford University)
-* Kyle Halliday (LLNL)
-* Matthew Harris (LLNL)
 * David Hassell (University of Reading)
 * Rosalyn Hatcher (University of Reading)
 * Richard Hattersley (UK Met Office)
 * Mark Hedley (UK Met Office)
-* Velimir Mlaker (LLNL)
 * Jeff Painter (LLNL)
 * Alison Pamment (CEDA)
 * Tanya Reshel (LLNL)

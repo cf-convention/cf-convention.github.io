@@ -9,6 +9,7 @@ group: "navigation"
 <h4><b>Standard Name Table (v65, 9 April 2019)</b></h4>
   <a href="Data/cf-standard-names/65/build/cf-standard-name-table.html">HTML</a> &nbsp;
   <a href="Data/cf-standard-names/65/src/cf-standard-name-table.xml">XML</a> &nbsp;
+  <a href="Data/cf-standard-names/65/build/kwic_index_for_cf_standard_names_v65.html">KWIC_Index</a> &nbsp;
 
   <h5><b>Previous Versions (HTML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>

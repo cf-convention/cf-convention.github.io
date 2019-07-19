@@ -5,15 +5,17 @@ title: Rules
 
 # Rules for CF Conventions Changes
  
-<p>New proposals are to be made in github issues using the template, including verbatim changes proposed to the text of standard document and the conformance document.</p>
+<p>New proposals are to be initiated in github issues using the proposal-change-request template, including verbatim changes proposed to the text of standard document and the conformance document.</p>
 
 <p>A member of the conventions committee, or another suitably qualified person, volunteers to moderate the discussion. If no-one volunteers, the chairman of the committee will ask someone to do it.</p>
 
 <p>The discussion takes place on github issues and all may participate.</p>
 
-<p>The moderator periodically summarises discussion on github, keeps it moving forward and tries to achieve a consensus. It is expected that everyone with an interest will contribute to the discussion and to achieving a consensus during this stage. During the discussion, if an objection is raised, answered and not reasserted, the moderator will assume the objection has been dropped. However, since consensus is the best outcome, it will be helpful if anyone who expresses an objection explicitly withdraws it on changing their mind or deciding to accept the majority view.</p>
-
-<p>The moderator is encouraged to organize conference calls and/or webex-type interactions if this might help resolve an issue more quickly.</p>
+ 1. The moderator, if one has volunteered, should be in charge of the discussion and make sure that it is conducted in a fair and organized way;
+ 2. The moderator may list major points of agreement and contention, and, if appropriate, provide links to key milestones of the discussion in the top issue of a discussion;
+ 3. Participant's in a discussion are expected to respect and comply with requests from the moderator (e.g. to suspend discussion on one topic until another is resolved or to answer specific questions from the moderator). Such requests from the moderator, with appropriate explanations, should be placed in the flow of the discussion.
+ 4. The individual acting as moderator may also act as a participant, but should clearly distinguish between the two roles;
+ 5. The moderator should oversee the implementation of proposed changes which are agreed and close the issue when this process is complete.
 
 <p>It will be helpful if a test netCDF file is provided as early as possible during the discussion. However, several variants of the proposal may be discussed, and the proposer may not be able to provide test netCDF files for all of them.</p>
 

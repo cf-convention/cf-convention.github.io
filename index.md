@@ -35,7 +35,7 @@ For further explanation of each of these, take a look at the [Discussion page][d
 * [CF Compliance Checker][q7]
 
 [api]: http://www.unidata.ucar.edu/packages/netcdf/index.html
-[coards]: http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html
+[coards]: https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html
 [viewgraphs]: Data/cf-documents/overview/viewgraphs.pdf
 [article]: Data/cf-documents/overview/article.pdf
 [discussion]: http://cf-convention.github.io/discussion.html

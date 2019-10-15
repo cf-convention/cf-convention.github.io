@@ -559,7 +559,7 @@ These combinations can be combined as follows in CF:
 * taken to an integral power, using '^n' or '**n' notation (or simply appending the power, if using symbols;
 * divided by a quotient, using 'per' (or a slash, '/', if using symbols) to indicate the quotient
 
-You can review [basic examples in the UDUNITS documentation](http://www.unidata.ucar.edu/software/udunits/udunits-2.2.16/doc/udunits/udunits2lib.html#Examples).
+You can review [basic examples in the UDUNITS documentation](https://www.unidata.ucar.edu/software/udunits/udunits-current/doc/udunits/udunits2lib.html#Examples).
 
 More complicated examples of units can be found in the CF Standard Names table, which lists the canonical units for each standard name.
 
@@ -592,7 +592,7 @@ Details of the CF units not in UDUNITS:
 
 The [UDUNITS-2 GitHub repository](https://github.com/Unidata/UDUNITS-2) contains working code and documentation.
 
-The [API-Guide](http://www.unidata.ucar.edu/software/udunits/udunits-2.2.16/doc/udunits/udunits2lib.html) contains some detailed information, but it is oriented entirely for developers. 
+The [API-Guide](https://www.unidata.ucar.edu/software/udunits/udunits-current/doc/udunits/udunits2lib.html) contains some detailed information, but it is oriented entirely for developers. 
 
 A [units conversion page on the ERDDAP site](http://coastwatch.pfeg.noaa.gov/erddap/convert/units.html) lets you try different unit strings, and provides additional context on UDUNITS (and UCUM units) further down the page.
 

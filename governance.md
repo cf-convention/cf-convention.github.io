@@ -19,6 +19,7 @@ group: "navigation"
 * Balaji
 * Jim Biard
 * Philip Cameron-Smith
+* David Blodgett
 * Nan Galbraith
 * John Graybeal
 * Jonathan Gregory

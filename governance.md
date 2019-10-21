@@ -23,6 +23,7 @@ group: "navigation"
 * John Graybeal
 * Jonathan Gregory
 * David Hassell (secretary of the Conventions Committee)
+* Daniel Lee
 * Roy Lowry
 * Alison Pamment (secretary of Standard Names Committee)
 * Martin Schultz

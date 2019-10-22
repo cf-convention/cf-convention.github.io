@@ -19,10 +19,12 @@ group: "navigation"
 * Balaji
 * Jim Biard
 * Philip Cameron-Smith
+* David Blodgett
 * Nan Galbraith
 * John Graybeal
 * Jonathan Gregory
 * David Hassell (secretary of the Conventions Committee)
+* Daniel Lee
 * Roy Lowry
 * Alison Pamment (secretary of Standard Names Committee)
 * Martin Schultz

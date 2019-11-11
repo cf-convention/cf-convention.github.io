@@ -42,6 +42,7 @@ group: "navigation"
 ### Information Management and Support
 
 * Martin Desruisseaux (Geomatys)
+* Fran Eggleton (CEDA)
 * John Graybeal (Stanford University)
 * David Hassell (University of Reading)
 * Rosalyn Hatcher (University of Reading)

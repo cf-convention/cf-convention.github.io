@@ -10,9 +10,9 @@ These __provisional__ mappings have been compiled to support, among other things
 If you spot any errors or omissions, please email the authors (Phil Bentley and Etienne Tourigny) or the CF mailing list, or else update this wiki page.
 
 In Tables 1 and 2 the names of WKT PARAMETER elements follow the names of coordinate operation parameters
-defined in the http://www.epsg-registry.org EPSG geodetic parameter registry].
+defined in the [EPSG geodetic parameter registry](http://www.epsg-registry.org).
 
-The following tables list translations of projection parameter names between CF and various other representations (such as OGC WKT, EPSG and PROJ.4). The information was obtained from various sources, including http://www.remotesensing.org/geotiff/proj_list/[​http://www.remotesensing.org/geotiff/proj_list/] .
+The following tables list translations of projection parameter names between CF and various other representations (such as OGC WKT, EPSG and PROJ.4). The information was obtained from various sources, including [​http://www.remotesensing.org/geotiff/proj_list/](http://www.remotesensing.org/geotiff/proj_list/).
 
 The various representations listed are:
 
@@ -20,13 +20,13 @@ The various representations listed are:
 
 *   **OGC WKT** The names following OGC WKT specification (used by GDAL/OGR and CadCorp(?))
 
-*   **PROJ.4** The names used in the PROJ.4 software (http://trac.osgeo.org/proj/[​http://trac.osgeo.org/proj/])
+*   **PROJ.4** The names used in the PROJ.4 software ([http://trac.osgeo.org/proj/](​http://trac.osgeo.org/proj/))
 
-*   **EPSG** The names and codes used in the EPSG Geodetic Parameter Dataset (http://www.epsg.org/[​http://www.epsg.org/] and http://www.epsg-registry.org/[​http://www.epsg-registry.org/])
+*   **EPSG** The names and codes used in the EPSG Geodetic Parameter Dataset ([http://www.epsg.org/](​http://www.epsg.org/) and [http://www.epsg-registry.org/](​http://www.epsg-registry.org/))
 
-*   **GeoTIFF ID** The names used in the GeoTIFF raster format (http://trac.osgeo.org/geotiff/[​http://trac.osgeo.org/geotiff/])
+*   **GeoTIFF ID** The names used in the GeoTIFF raster format ([​http://trac.osgeo.org/geotiff/](http://trac.osgeo.org/geotiff/))
 
-The following files are provided to list the various possible Datum, Ellipsoid and Prime Meridian names (in support of CF proposal http://cf-trac.llnl.gov/trac/ticket/80[80])
+The following files are provided to list the various possible Datum, Ellipsoid and Prime Meridian names (in support of CF proposal [80](http://cf-trac.llnl.gov/trac/ticket/80))
 
 *   horiz_datum.csv - horizontal datum parameters for use as reference for CF-1.7 (source: GDAL/OGR, modified by Etienne Tourigny)
 
@@ -218,12 +218,12 @@ EPSG codes below correspond to "EPSG dataset coordinate operation method" codes.
 
 #### Lambert conformal 1SP / 2SP
 
-The 1SP variant corresponds to EPSG code 9801 - Lambert Conic Conformal (1SP), with CF latitude_of_projection_origin#standard_parallel and WKT scale_factor#1. A scale factor less than 1 means that there are 2 standard parallels (see http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html[​http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html]), but it cannot be translated to the CF 1SP variant, therefore the 2SP variant should be used instead. The 2SP variant corresponds to EPSG code 9802 - Lambert Conic Conformal (2SP).
+The 1SP variant corresponds to EPSG code 9801 - Lambert Conic Conformal (1SP), with CF latitude_of_projection_origin#standard_parallel and WKT scale_factor#1. A scale factor less than 1 means that there are 2 standard parallels (see [​http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html](http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html)), but it cannot be translated to the CF 1SP variant, therefore the 2SP variant should be used instead. The 2SP variant corresponds to EPSG code 9802 - Lambert Conic Conformal (2SP).
 
 
 #### Lambert cylindrical equal area
 
-The scale_factor_at_projection_origin variant is not recommended as it does not translate to and from WKT/PROJ.4. Snyder formulas 10-2b and 10-2 can be used to relate scale_factor_at_projection_origin, standard_parallel1 and latitude_of_projection_origin but the latter is not part of this projection's parameters. It has been proposed to deprecate or remove this variant from the CF spec (see CF trac ticket http://cf-trac.llnl.gov/trac/ticket/75[75]).
+The scale_factor_at_projection_origin variant is not recommended as it does not translate to and from WKT/PROJ.4. Snyder formulas 10-2b and 10-2 can be used to relate scale_factor_at_projection_origin, standard_parallel1 and latitude_of_projection_origin but the latter is not part of this projection's parameters. It has been proposed to deprecate or remove this variant from the CF spec (see CF trac ticket [75](http://cf-trac.llnl.gov/trac/ticket/75)).
 
 
 #### Mercator 1SP / 2SP

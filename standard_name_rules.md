@@ -20,16 +20,21 @@ title: Vocabulary rules
 
 <p>A status page summarizing the progress of standard name proposals through the discussion process may also be viewed in the <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter)">CEDA vocabulary editor</a>.</p>
 
-<p>The moderator periodically summarises discussion on github, keeps it moving forward and tries to achieve a consensus. It is expected that everyone with an interest will contribute to the discussion and to achieving a consensus during this stage. During the discussion, if an objection is raised, answered and not reasserted, the moderator will assume the objection has been dropped. However, since consensus is the best outcome, it will be helpful if anyone who expresses an objection explicitly withdraws it on changing their mind or deciding to accept the majority view.</p>
+<p>If a proposal is received for a new vocabulary term that follows the same syntactic patterns as existing terms, and whose description can also be based on existing term descriptions, the proposal can be accepted after brief discussion, subject to checking by the moderator.<p>
+
+<p>For proposals that require more discussion, the moderator periodically summarises the current status on github, keeps it moving forward and tries to achieve a consensus. It is expected that everyone with an interest will contribute to the discussion and to achieving a consensus during this stage. During the discussion, if an objection is raised, answered and not reasserted, the moderator will assume the objection has been dropped. However, since consensus is the best outcome, it will be helpful if anyone who expresses an objection explicitly withdraws it on changing their mind or deciding to accept the majority view.</p>
 
 <p>If a consensus, or near consensus, view can not be achieved by discussion the moderator can ask the standard names committee to vote on a proposal. The committee's decision is final.</p>
+
+<p>If three weeks have passed with no contributions being made the moderator should attempt to reinvigorate the discussion so that a conclusion can be reached.</p>
 
 <p>The moderator will summarize the outcome of the discussion of each vocabulary term proposal.</p>
 
 <p>A proposal will be accepted if one of the following is true:
-<br>(a) consensus has been reached in favour of the proposal;
-<br>(b) the moderator's summary indicates that consensus in favour of the proposal has nearly been achieved;
-<br>(c) a majority of the standard names committee vote to accept the proposal.</p>
+<br>(a) it is similar to existing terms and has been checked for conistency by the moderator;
+<br>(b) consensus has been reached in favour of the proposal;
+<br>(c) the moderator's summary indicates that consensus in favour of the proposal has nearly been achieved;
+<br>(d) a majority of the standard names committee vote to accept the proposal.</p>
 
 <p>A proposal will be rejected if one of the following is true:
 <br>(a) it duplicates an existing vocabulary term;

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <standard_name_table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cf-standard-name-table-1.1.xsd">
-   <version_number>70</version_number>
-   <last_modified>2019-12-10T14:47:41Z</last_modified>
+   <version_number>71</version_number>
+   <last_modified>2020-02-04T12:00Z</last_modified>
    <institution>Centre for Environmental Data Analysis</institution>
    <contact>support@ceda.ac.uk</contact>
 
@@ -59,7 +59,7 @@
       <canonical_units>K</canonical_units>
       <grib>13</grib>
       <amip>theta</amip>
-      <description>Potential temperature is the temperature a parcel of air or sea water would have if moved adiabatically to sea level pressure.</description>
+      <description>Air potential temperature is the temperature a parcel of air would have if moved dry adiabatically to a standard pressure, typically representative of mean sea level pressure. To specify the standard pressure to which the quantity applies, provide a scalar coordinate variable with standard name reference_pressure.</description>
    </entry>
   
    <entry id="air_pressure">
@@ -773,7 +773,7 @@
       <canonical_units>kg m-2</canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>&quot;Content&quot; indicates a quantity per unit area. The &quot;atmosphere content&quot; of a quantity refers to the vertical integral from the surface to the top of the atmosphere. For the content between specified levels in the atmosphere, standard names including content_of_atmosphere_layer are used.</description>
+      <description>&quot;Content&quot; indicates a quantity per unit area. The &quot;atmosphere content&quot; of a quantity refers to the vertical integral from the surface to the top of the atmosphere. For the content between specified levels in the atmosphere, standard names including content_of_atmosphere_layer are used. &quot;Cloud liquid water&quot; refers to the liquid phase of cloud water. A diameter of 0.2 mm has been suggested as an upper limit to the size of drops that shall be regarded as cloud drops; larger drops fall rapidly enough so that only very strong updrafts can sustain them. Any such division is somewhat arbitrary, and active cumulus clouds sometimes contain cloud drops much larger than this. Reference: AMS Glossary http://glossary.ametsoc.org/wiki/Cloud_drop.</description>
    </entry>
   
    <entry id="atmosphere_mass_content_of_clox_expressed_as_chlorine">
@@ -1285,6 +1285,13 @@
       <grib></grib>
       <amip></amip>
       <description>&quot;Content&quot; indicates a quantity per unit area. The &quot;atmosphere content&quot; of a quantity refers to the vertical integral from the surface to the top of the atmosphere. For the content between specified levels in the atmosphere, standard names including content_of_atmosphere_layer are used. The mass is the total mass of the particles. &quot;Aerosol&quot; means the system of suspended liquid or solid particles in air (except cloud droplets) and their carrier gas, the air itself. Aerosol particles take up ambient water (a process known as hygroscopic growth) depending on the relative humidity and the composition of the particles. &quot;Dry aerosol particles&quot; means aerosol particles without any water uptake. &quot;Secondary particulate organic matter &quot; means particulate organic matter formed within the atmosphere from gaseous precursors. The sum of primary_particulate_organic_matter_dry_aerosol and secondary_particulate_organic_matter_dry_aerosol is particulate_organic_matter_dry_aerosol.</description>
+   </entry>
+  
+   <entry id="atmosphere_mass_content_of_snow">
+      <canonical_units>kg m-2</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Content&quot; indicates a quantity per unit area. The &quot;atmosphere content&quot; of a quantity refers to the vertical integral from the surface to the top of the atmosphere. For the content between specified levels in the atmosphere, standard names including &quot;content_of_atmosphere_layer&quot; are used. &quot;Snow&quot; refers to the precipitating part of snow in the atmosphere – the cloud snow content is excluded.</description>
    </entry>
   
    <entry id="atmosphere_mass_content_of_sulfate">
@@ -2400,6 +2407,20 @@
       <description>The specification of a physical process by the phrase due_to_process means that the quantity named is a single term in a sum of terms which together compose the general quantity named by omitting the phrase. Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level. &quot;Bedrock&quot; is the solid Earth surface beneath land ice or ocean water. The zero of bedrock altitude change is arbitrary. Isostatic adjustment is the vertical movement of the lithosphere due to changing surface ice and water loads.</description>
    </entry>
   
+   <entry id="biological_taxon_identifier">
+      <canonical_units></canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Biological taxon&quot; is a name or other label identifying an organism or a group of organisms as belonging to a unit of classification in a hierarchical taxonomy. The quantity with standard name biological_taxon_identifier is the machine-readable identifier for the taxon registration in either WoRMS (the AphiaID) or ITIS (the taxonomic serial number or TSN), including namespace. The namespace strings are &#39;aphia:&#39; or &#39;tsn:&#39;. For example, Calanus finmarchicus is encoded as either &#39;aphia:104464&#39; or &#39;tsn:85272&#39;. For the marine domain WoRMS has more complete coverage and so aphia Ids are preferred. See Section 6.1.2 of the CF convention (version 1.8 or later) for information about biological taxon auxiliary coordinate variables.</description>
+   </entry>
+  
+   <entry id="biological_taxon_name">
+      <canonical_units></canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Biological taxon&quot; is a name or other label identifying an organism or a group of organisms as belonging to a unit of classification in a hierarchical taxonomy. The quantity with standard name biological_taxon_name is the human-readable label for the taxon such as Calanus finmarchicus. The label should be registered in either WoRMS (http://www.marinespecies.org) or ITIS (https://www.itis.gov/) and spelled exactly as registered. See Section 6.1.2 of the CF convention (version 1.8 or later) for information about biological taxon auxiliary coordinate variables.</description>
+   </entry>
+  
    <entry id="bioluminescent_photon_rate_in_sea_water">
       <canonical_units>s-1 m-3</canonical_units>
       <grib></grib>
@@ -2670,7 +2691,7 @@
       <canonical_units>kg m-3</canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>Potential density is the density a parcel of air or sea water would have if moved adiabatically to a reference pressure, by default assumed to be sea level pressure.  For sea water potential density, if 1000 kg m-3 is subtracted, the standard name &quot;sea_water_sigma_theta&quot; should be chosen instead. &quot;change_over_time_in_X&quot; means change in a quantity X over a time-interval, which should be defined by the bounds of the time coordinate.</description>
+      <description>The phrase &quot;change_over_time_in_X&quot; means change in a quantity X over a time interval, which should be defined by the bounds of the time coordinate. Sea water potential density is the density a parcel of sea water would have if moved adiabatically to a reference pressure, by default assumed to be sea level pressure. To specify the reference pressure to which the quantity applies, provide a scalar coordinate variable with standard name reference_pressure. The density of a substance is its mass per unit volume. For sea water potential density, if 1000 kg m-3 is subtracted, the standard name &quot;sea_water_sigma_theta&quot; should be chosen instead.</description>
    </entry>
   
    <entry id="change_over_time_in_sea_water_potential_temperature">
@@ -2804,6 +2825,13 @@
       <grib></grib>
       <amip></amip>
       <description>cloud_top refers to the top of the highest cloud. Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level.</description>
+   </entry>
+  
+   <entry id="colony_forming_unit_number_concentration_of_biological_taxon_in_sea_water">
+      <canonical_units>m-3</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Colony forming unit&quot; means an estimate of the viable bacterial or fungal numbers determined by counting colonies grown from a sample. &quot;Number concentration&quot; means the number of particles or other specified objects per unit volume. &quot;Biological taxon&quot; is a name or other label identifying an organism or a group of organisms as belonging to a unit of classification in a hierarchical taxonomy. There must be an auxiliary coordinate variable with standard name biological_taxon_name to identify the taxon in human readable format and optionally an auxiliary coordinate variable with standard name biological_taxon_identifier to provide a machine-readable identifier. See Section 6.1.2 of the CF convention (version 1.8 or later) for information about biological taxon auxiliary coordinate variables.</description>
    </entry>
   
    <entry id="compressive_strength_of_sea_ice">
@@ -3048,7 +3076,7 @@
       <canonical_units>1</canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>The term &quot;Exner function&quot; is applied to various quantities in the literature. &quot;Dimensionless Exner function&quot; is the standard name of (p/p0)^(R/Cp), where p is pressure, p0 a reference pressure, R the gas constant and Cp the specific heat at constant pressure. This quantity is also the ratio of in-situ to potential temperature. Standard names for other variants can be defined on request.</description>
+      <description>The term &quot;Exner function&quot; is applied to various quantities in the literature. &quot;Dimensionless Exner function&quot; is the standard name of (p/p0)^(R/Cp), where p is pressure, p0 a reference pressure, R the gas constant and Cp the specific heat at constant pressure. This quantity is also the ratio of in-situ to potential temperature. Standard names for other variants can be defined on request. To specify the reference pressure to which the quantity applies, provide a scalar coordinate variable with standard name reference_pressure.</description>
    </entry>
   
    <entry id="direct_downwelling_shortwave_flux_in_air">
@@ -7895,6 +7923,27 @@
       <description>Mass concentration means mass per unit volume and is used in the construction mass_concentration_of_X_in_Y, where X is a material constituent of Y. A chemical species denoted by X may be described by a single term such as &quot;nitrogen&quot; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. The phrase &quot;expressed_as&quot; is used in the construction A_expressed_as_B, where B is a chemical constituent of A. It means that the quantity indicated by the standard name is calculated solely with respect to the B contained in A, neglecting all other chemical constituents of A. &quot;nmvoc&quot; means non methane volatile organic compounds; &quot;nmvoc&quot; is the term used in standard names to describe the group of chemical species having this classification that are represented within a given model. The list of individual species that are included in a quantity having a group chemical standard name can vary between models. Where possible, the data variable should be accompanied by a complete description of the species represented, for example, by using a comment attribute. &quot;Biogenic&quot; means influenced, caused, or created by natural processes.</description>
    </entry>
   
+   <entry id="mass_concentration_of_biological_taxon_expressed_as_carbon_in_sea_water">
+      <canonical_units>kg m-3</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Mass concentration&quot; means mass per unit volume and is used in the construction &quot;mass_concentration_of_X_in_Y&quot;, where X is a material constituent of Y. A chemical species or biological group denoted by X may be described by a single term such as &quot;nitrogen&quot; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. The phrase &quot;expressed_as&quot; is used in the construction &quot;A_expressed_as_B&quot;, where B is a chemical constituent of A. It means that the quantity indicated by the standard name is calculated solely with respect to the B contained in A, neglecting all other chemical constituents of A. Mass concentration of biota expressed as carbon is also referred to as &quot;carbon biomass&quot;. &quot;Biological taxon&quot; is a name or other label identifying an organism or a group of organisms as belonging to a unit of classification in a hierarchical taxonomy. There must be an auxiliary coordinate variable with standard name biological_taxon_name to identify the taxon in human readable format and optionally an auxiliary coordinate variable with standard name biological_taxon_identifier to provide a machine-readable identifier. See Section 6.1.2 of the CF convention (version 1.8 or later) for information about biological taxon auxiliary coordinate variables.</description>
+   </entry>
+  
+   <entry id="mass_concentration_of_biological_taxon_expressed_as_chlorophyll_in_sea_water">
+      <canonical_units>kg m-3</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Mass concentration&quot; means mass per unit volume and is used in the construction &quot;mass_concentration_of_X_in_Y&quot;, where X is a material constituent of Y. A chemical species or biological group denoted by X may be described by a single term such as &quot;nitrogen&quot; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. The phrase &quot;expressed_as&quot; is used in the construction &quot;A_expressed_as_B&quot;, where B is a chemical constituent of A. It means that the quantity indicated by the standard name is calculated solely with respect to the B contained in A, neglecting all other chemical constituents of A. &quot;Biological taxon&quot; is a name or other label identifying an organism or a group of organisms as belonging to a unit of classification in a hierarchical taxonomy. There must be an auxiliary coordinate variable with standard name biological_taxon_name to identify the taxon in human readable format and optionally an auxiliary coordinate variable with standard name biological_taxon_identifier to provide a machine-readable identifier. See Section 6.1.2 of the CF convention (version 1.8 or later) for information about biological taxon auxiliary coordinate variables. Chlorophylls are the green pigments found in most plants, algae and cyanobacteria; their presence is essential for photosynthesis to take place. There are several different forms of chlorophyll that occur naturally. All contain a chlorin ring (chemical formula C20H16N4) which gives the green pigment and a side chain whose structure varies. The naturally occurring forms of chlorophyll contain between 35 and 55 carbon atoms.</description>
+   </entry>
+  
+   <entry id="mass_concentration_of_biological_taxon_expressed_as_nitrogen_in_sea_water">
+      <canonical_units>kg m-3</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Mass concentration&quot; means mass per unit volume and is used in the construction &quot;mass_concentration_of_X_in_Y&quot;, where X is a material constituent of Y. A chemical species or biological group denoted by X may be described by a single term such as &quot;nitrogen&quot; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. The phrase &quot;expressed_as&quot; is used in the construction &quot;A_expressed_as_B&quot;, where B is a chemical constituent of A. It means that the quantity indicated by the standard name is calculated solely with respect to the B contained in A, neglecting all other chemical constituents of A. Mass concentration of biota expressed as nitrogen is also referred to as &quot;nitrogen biomass&quot;. &quot;Biological taxon&quot; is a name or other label identifying an organism or a group of organisms as belonging to a unit of classification in a hierarchical taxonomy. There must be an auxiliary coordinate variable with standard name biological_taxon_name to identify the taxon in human readable format and optionally an auxiliary coordinate variable with standard name biological_taxon_identifier to provide a machine-readable identifier. See Section 6.1.2 of the CF convention (version 1.8 or later) for information about biological taxon auxiliary coordinate variables.</description>
+   </entry>
+  
    <entry id="mass_concentration_of_biomass_burning_dry_aerosol_particles_in_air">
       <canonical_units>kg m-3</canonical_units>
       <grib></grib>
@@ -8039,8 +8088,7 @@
       <canonical_units>kg m-3</canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>Mass concentration means mass per unit volume and is used in the construction mass_concentration_of_X_in_Y, where X is a material constituent of Y.  A chemical species denoted by X may be described by a single term such as &#39;nitrogen&#39; or a phrase such as &#39;nox_expressed_as_nitrogen&#39;. Chlorophylls are the green pigments found in most plants, algae and cyanobacteria; their presence is essential for photosynthesis to take place. There are several different forms of chlorophyll that occur naturally. All contain a chlorin ring (chemical formula C20H16N4) which gives the green pigment and a side chain whose structure varies. The naturally occurring forms of chlorophyll contain between 35 and 55 carbon atoms.
-</description>
+      <description>Mass concentration means mass per unit volume and is used in the construction mass_concentration_of_X_in_Y, where X is a material constituent of Y.  A chemical species denoted by X may be described by a single term such as &#39;nitrogen&#39; or a phrase such as &#39;nox_expressed_as_nitrogen&#39;. Chlorophylls are the green pigments found in most plants, algae and cyanobacteria; their presence is essential for photosynthesis to take place. There are several different forms of chlorophyll that occur naturally. All contain a chlorin ring (chemical formula C20H16N4) which gives the green pigment and a side chain whose structure varies. The naturally occurring forms of chlorophyll contain between 35 and 55 carbon atoms.</description>
    </entry>
   
    <entry id="mass_concentration_of_cloud_liquid_water_in_air">
@@ -8790,6 +8838,13 @@
       <grib></grib>
       <amip></amip>
       <description>Mass concentration means mass per unit volume and is used in the construction mass_concentration_of_X_in_Y, where X is a material constituent of Y.  A chemical species denoted by X may be described by a single term such as &#39;nitrogen&#39; or a phrase such as &#39;nox_expressed_as_nitrogen&#39;. The chemical formula for xylene is C6H4C2H6. In chemistry, xylene is a generic term for a group of three isomers of dimethylbenzene. The IUPAC names for the isomers are 1,2-dimethylbenzene, 1,3-dimethylbenzene and 1,4-dimethylbenzene. Xylene is an aromatic hydrocarbon. There are standard names that refer to aromatic_compounds as a group, as well as those for individual species.</description>
+   </entry>
+  
+   <entry id="mass_concentration_of_zooplankton_expressed_as_carbon_in_sea_water">
+      <canonical_units>kg m-3</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Mass concentration&quot; means mass per unit volume and is used in the construction &quot;mass_concentration_of_X_in_Y&quot;, where X is a material constituent of Y. A chemical species or biological group denoted by X may be described by a single term such as &quot;nitrogen&quot; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. The phrase &quot;expressed_as&quot; is used in the construction A_expressed_as_B, where B is a chemical constituent of A. It means that the quantity indicated by the standard name is calculated solely with respect to the B contained in A, neglecting all other chemical constituents of A. &quot;Zooplankton&quot; means the total zooplankton population, with components such as mesozooplankton, microzooplankton and miscellaneous zooplankton.</description>
    </entry>
   
    <entry id="mass_content_of_13C_in_vegetation_and_litter_and_soil_and_forestry_and_agricultural_products">
@@ -9947,18 +10002,18 @@
       <description>&quot;Mass fraction&quot; is used in the construction &quot;mass_fraction_of_X_in_Y&quot;, where X is a material constituent of Y. It means the ratio of the mass of X to the mass of Y (including X). A chemical or biological species denoted by X may be described by a single term such as &quot;nitrogen&quot; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. The chemical symbol for radon is Rn.</description>
    </entry>
   
+   <entry id="mass_fraction_of_rain_and_drizzle_in_air">
+      <canonical_units>1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Mass fraction&quot; is used in the construction &quot;mass_fraction_of_X_in_Y&quot;, where X is a material constituent of Y. It means the ratio of the mass of X to the mass of Y (including X). A chemical species or biological group denoted by X may be described by a single term such as &quot;nitrogen&quot; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. Rain&quot; means drops of water falling through the atmosphere that have a diameter greater than 0.5 mm. &quot;Drizzle&quot; means drops of water falling through the atmosphere that have a diameter typically in the range 0.2-0.5 mm.</description>
+   </entry>
+  
    <entry id="mass_fraction_of_rainfall_falling_onto_surface_snow">
       <canonical_units>1</canonical_units>
       <grib></grib>
       <amip></amip>
       <description>The quantity with standard name mass_fraction_of_rainfall_falling_onto_surface_snow is the mass of rainfall falling onto snow as a fraction of the mass of rainfall falling within the area of interest. The phrase &quot;surface_snow&quot; means snow lying on the surface. Unless indicated in the cell_methods attribute, a quantity is assumed to apply to the whole area of each horizontal grid box.</description>
-   </entry>
-  
-   <entry id="mass_fraction_of_rain_in_air">
-      <canonical_units>1</canonical_units>
-      <grib></grib>
-      <amip></amip>
-      <description>Mass fraction is used in the construction mass_fraction_of_X_in_Y, where X is a material constituent of Y. It means the ratio of the mass of X to the mass of Y (including X).</description>
    </entry>
   
    <entry id="mass_fraction_of_sea_salt_dry_aerosol_particles_expressed_as_cations_in_air">
@@ -9986,7 +10041,7 @@
       <canonical_units>1</canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>Mass fraction is used in the construction mass_fraction_of_X_in_Y, where X is a material constituent of Y. It means the ratio of the mass of X to the mass of Y (including X).</description>
+      <description>Mass fraction is used in the construction mass_fraction_of_X_in_Y, where X is a material constituent of Y. It means the ratio of the mass of X to the mass of Y (including X). &quot;Snow&quot; refers to the precipitating part of snow in the atmosphere – the cloud snow content is excluded.</description>
    </entry>
   
    <entry id="mass_fraction_of_solid_precipitation_falling_onto_surface_snow">
@@ -10512,6 +10567,20 @@
       <grib></grib>
       <amip></amip>
       <description>Mole concentration means number of moles per unit volume, also called &quot;molarity&quot;, and is used in the construction mole_concentration_of_X_in_Y, where X is a material constituent of Y.  A chemical species denoted by X may be described by a single term such as &quot;nitrogen&quot; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. The phrase &quot;expressed_as&quot; is used in the construction A_expressed_as_B, where B is a chemical constituent of A. It means that the quantity indicated by the standard name is calculated solely with respect to the B contained in A, neglecting all other chemical constituents of A. &quot;nmvoc&quot; means non methane volatile organic compounds; &quot;nmvoc&quot; is the term used in standard names to describe the group of chemical species having this classification that are represented within a given model. The list of individual species that are included in a quantity having a group chemical standard name can vary between models. Where possible, the data variable should be accompanied by a complete description of the species represented, for example, by using a comment attribute. &quot;Biogenic&quot; means influenced, caused, or created by natural processes.</description>
+   </entry>
+  
+   <entry id="mole_concentration_of_biological_taxon_expressed_as_carbon_in_sea_water">
+      <canonical_units>mol m-3</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Mole concentration&quot; means number of moles per unit volume, also called &quot;molarity&quot;, and is used in the construction &quot;mole_concentration_of_X_in_Y&quot;, where X is a material constituent of Y. A chemical species or biological group denoted by X may be described by a single term such as &quot;nitrogen&quot; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. The phrase &quot;expressed_as&quot; is used in the construction &quot;A_expressed_as_B&quot;, where B is a chemical constituent of A. It means that the quantity indicated by the standard name is calculated solely with respect to the B contained in A, neglecting all other chemical constituents of A. &quot;Biological taxon&quot; is a name or other label identifying an organism or a group of organisms as belonging to a unit of classification in a hierarchical taxonomy. There must be an auxiliary coordinate variable with standard name biological_taxon_name to identify the taxon in human readable format and optionally an auxiliary coordinate variable with standard name biological_taxon_identifier to provide a machine-readable identifier. See Section 6.1.2 of the CF convention (version 1.8 or later) for information about biological taxon auxiliary coordinate variables.</description>
+   </entry>
+  
+   <entry id="mole_concentration_of_biological_taxon_expressed_as_nitrogen_in_sea_water">
+      <canonical_units>mol m-3</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Mole concentration&quot; means number of moles per unit volume, also called &quot;molarity&quot;, and is used in the construction &quot;mole_concentration_of_X_in_Y&quot;, where X is a material constituent of Y. A chemical species or biological group denoted by X may be described by a single term such as &quot;nitrogen&quot; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. The phrase &quot;expressed_as&quot; is used in the construction &quot;A_expressed_as_B&quot;, where B is a chemical constituent of A. It means that the quantity indicated by the standard name is calculated solely with respect to the B contained in A, neglecting all other chemical constituents of A. &quot;Biological taxon&quot; is a name or other label identifying an organism or a group of organisms as belonging to a unit of classification in a hierarchical taxonomy. There must be an auxiliary coordinate variable with standard name biological_taxon_name to identify the taxon in human readable format and optionally an auxiliary coordinate variable with standard name biological_taxon_identifier to provide a machine-readable identifier. See Section 6.1.2 of the CF convention (version 1.8 or later) for information about biological taxon auxiliary coordinate variables.</description>
    </entry>
   
    <entry id="mole_concentration_of_bromine_chloride_in_air">
@@ -13039,6 +13108,13 @@
       <grib></grib>
       <amip></amip>
       <description>&quot;Number concentration&quot; means the number of particles or other specified objects per unit volume. &quot;Aerosol&quot; means the system of suspended liquid or solid particles in air (except cloud droplets) and their carrier gas, the air itself. &quot;Ambient_aerosol&quot; means that the aerosol is measured or modelled at the ambient state of pressure, temperature and relative humidity that exists in its immediate environment. &quot;Ambient aerosol particles&quot; are aerosol particles that have taken up ambient water through hygroscopic growth. The extent of hygroscopic growth depends on the relative humidity and the composition of the particles.</description>
+   </entry>
+  
+   <entry id="number_concentration_of_biological_taxon_in_sea_water">
+      <canonical_units>m-3</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Number concentration&quot; means the number of particles or other specified objects per unit volume. &quot;Biological taxon&quot; is a name or other label identifying an organism or a group of organisms as belonging to a unit of classification in a hierarchical taxonomy. There must be an auxiliary coordinate variable with standard name biological_taxon_name to identify the taxon in human readable format and optionally an auxiliary coordinate variable with standard name biological_taxon_identifier to provide a  machine-readable identifier. See Section 6.1.2 of the CF convention (version 1.8 or later) for information about biological taxon auxiliary coordinate variables.</description>
    </entry>
   
    <entry id="number_concentration_of_cloud_condensation_nuclei_at_stp_in_air">
@@ -17052,6 +17128,13 @@
       <description>For models using a dimensionless vertical coordinate, for example, sigma, hybrid sigma-pressure or eta, the values of the vertical coordinate at the model levels are calculated relative to a reference level. &quot;Reference air pressure&quot; is the air pressure at the model reference level. It is a model-dependent constant.</description>
    </entry>
   
+   <entry id="reference_pressure">
+      <canonical_units>Pa</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>A constant pressure value, typically representative of mean sea level pressure, which can be used in defining coordinates or functions of state.</description>
+   </entry>
+  
    <entry id="reference_sea_water_density_for_boussinesq_approximation">
       <canonical_units>kg m-3</canonical_units>
       <grib></grib>
@@ -17626,6 +17709,13 @@
       <description>The quantity with standard name sea_surface_primary_swell_wave_from_direction is the direction from which the most energetic swell waves are coming. Swell waves are waves on the ocean surface and are the low frequency portion of a bimodal wave frequency spectrum. The primary swell wave is the most energetic swell wave. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north.</description>
    </entry>
   
+   <entry id="sea_surface_primary_swell_wave_from_direction_at_variance_spectral_density_maximum">
+      <canonical_units>degree</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name sea_surface_primary_swell_wave_from_direction_at_variance_spectral_density_maximum is the direction from which the most energetic waves are coming in the primary swell wave component of a sea. Swell waves are waves on the ocean surface and are the low frequency portion of a bimodal wave frequency spectrum. The primary swell wave is the most energetic swell wave in the low frequency portion of a bimodal wave frequency spectrum. The spectral peak is the most energetic wave in the wave spectrum partition. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north. The wave directional spectrum can be written as a five dimensional function S(t,x,y,f,theta) where t is time, x and y are horizontal coordinates (such as longitude and latitude), f is frequency and theta is direction. S has the standard name sea_surface_wave_directional_variance_spectral_density. S can be integrated over direction to give S1= integral(S dtheta) and this quantity has the standard name sea_surface_wave_variance_spectral_density.</description>
+   </entry>
+  
    <entry id="sea_surface_primary_swell_wave_mean_period">
       <canonical_units>s</canonical_units>
       <grib></grib>
@@ -17675,6 +17765,13 @@
       <description>The quantity with standard name sea_surface_secondary_swell_wave_from_direction is the direction from which the second most energetic swell waves are coming. Swell waves are waves on the ocean surface and are the low frequency portion of a bimodal wave frequency spectrum. The secondary swell wave is the second most energetic wave in the low frequency portion of a bimodal wave frequency spectrum. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north.</description>
    </entry>
   
+   <entry id="sea_surface_secondary_swell_wave_from_direction_at_variance_spectral_density_maximum">
+      <canonical_units>degree</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name sea_surface_secondary_swell_wave_from_direction_at_variance_spectral_density_maximum is the direction from which the most energetic waves are coming in the secondary swell wave component of a sea. Swell waves are waves on the ocean surface and are the low frequency portion of a bimodal wave frequency spectrum. The secondary swell wave is the second most energetic wave in the low frequency portion of a bimodal wave frequency spectrum. The spectral peak is the most energetic wave in the wave spectrum partition. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north. The wave directional spectrum can be written as a five dimensional function S(t,x,y,f,theta) where t is time, x and y are horizontal coordinates (such as longitude and latitude), f is frequency and theta is direction. S has the standard name sea_surface_wave_directional_variance_spectral_density. S can be integrated over direction to give S1= integral(S dtheta) and this quantity has the standard name sea_surface_wave_variance_spectral_density.</description>
+   </entry>
+  
    <entry id="sea_surface_secondary_swell_wave_mean_period">
       <canonical_units>s</canonical_units>
       <grib></grib>
@@ -17710,11 +17807,25 @@
       <description>The sea surface subskin temperature is the temperature at the base of the conductive laminar sub-layer of the ocean surface, that is, at a depth of approximately 1 - 1.5 millimeters below the air-sea interface. For practical purposes, this quantity can be well approximated to the measurement of surface temperature by a microwave radiometer operating in the 6 - 11 gigahertz frequency range, but the relationship is neither direct nor invariant to changing physical conditions or to the specific geometry of the microwave measurements. Measurements of this quantity are subject to a large potential diurnal cycle due to thermal stratification of the upper ocean layer in low wind speed high solar irradiance conditions.</description>
    </entry>
   
+   <entry id="sea_surface_swell_wave_directional_spread">
+      <canonical_units>degree</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name sea_surface_swell_wave_directional_spread is the directional width of the swell wave component of a sea. Swell waves are waves on the ocean surface and are the low frequency portion of a bimodal wave frequency spectrum. Directional spread is the (one-sided) directional width within a given sub-domain of the wave directional spectrum, S(t,x,y,f,theta) where t is time, x and y are horizontal coordinates (such as longitude and latitude), f is frequency and theta is direction. For a given mean wave (beam) direction the quantity approximates half the root mean square width about the beam axis, as derived either directly from circular moments or via the Fourier components of the wave directional spectrum.</description>
+   </entry>
+  
    <entry id="sea_surface_swell_wave_from_direction">
       <canonical_units>degree</canonical_units>
       <grib></grib>
       <amip></amip>
       <description>Swell waves are waves on the ocean surface and are the low frequency portion of a bimodal wave frequency spectrum. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north.</description>
+   </entry>
+  
+   <entry id="sea_surface_swell_wave_from_direction_at_variance_spectral_density_maximum">
+      <canonical_units>degree</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name sea_surface_swell_wave_from_direction_at_variance_spectral_density_maximum is the direction from which the most energetic waves are coming in the swell wave component of a sea. Swell waves are waves on the ocean surface and are the low frequency portion of a bimodal wave frequency spectrum. The spectral peak is the most energetic wave in the wave spectrum partition. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north. The swell wave directional spectrum can be written as a five dimensional function S(t,x,y,f,theta) where t is time, x and y are horizontal coordinates (such as longitude and latitude), f is frequency and theta is direction. S has the standard name sea_surface_wave_directional_variance_spectral_density. S can be integrated over direction to give S1= integral(S dtheta) and this quantity has the standard name sea_surface_wave_variance_spectral_density.</description>
    </entry>
   
    <entry id="sea_surface_swell_wave_mean_period">
@@ -17750,6 +17861,13 @@
       <grib>106</grib>
       <amip></amip>
       <description>A period is an interval of time, or the time-period of an oscillation. Swell waves are waves on the ocean surface.</description>
+   </entry>
+  
+   <entry id="sea_surface_swell_wave_period_at_variance_spectral_density_maximum">
+      <canonical_units>s</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name sea_surface_swell_wave_period_at_variance_spectral_density_maximum is the period of the most energetic waves within the swell wave component of a sea. Swell waves are waves on the ocean surface and are the low frequency portion of a bimodal wave frequency spectrum. A period is an interval of time, or the time-period of an oscillation. Wave period is the interval of time between repeated features on the waveform such as crests, troughs or upward passes through the mean level. The phrase &quot;wave_period_at_variance_spectral_density_maximum&quot;, sometimes called peak wave period, describes the period of the most energetic waves within a given sub-domain of the wave spectrum.</description>
    </entry>
   
    <entry id="sea_surface_swell_wave_significant_height">
@@ -17792,6 +17910,13 @@
       <grib></grib>
       <amip></amip>
       <description>The quantity with standard name sea_surface_tertiary_swell_wave_from_direction is the direction from which the third most energetic swell waves are coming. Swell waves are waves on the ocean surface and are the low frequency portion of a bimodal wave frequency spectrum. The tertiary swell wave is the third most energetic swell wave. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north.</description>
+   </entry>
+  
+   <entry id="sea_surface_tertiary_swell_wave_from_direction_at_variance_spectral_density_maximum">
+      <canonical_units>degree</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name sea_surface_tertiary_swell_wave_from_direction_at_variance_spectral_density_maximum is the direction from which the most energetic waves are coming in the tertiary swell wave component of a sea. Swell waves are waves on the ocean surface and are the low frequency portion of a bimodal wave frequency spectrum. The tertiary swell wave is the third most energetic swell wave in the low frequency portion of a bimodal wave frequency spectrum. The spectral peak is the most energetic wave in the wave spectrum partition. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north. The wave directional spectrum can be written as a five dimensional function S(t,x,y,f,theta) where t is time, x and y are horizontal coordinates (such as longitude and latitude), f is frequency and theta is direction. S has the standard name sea_surface_wave_directional_variance_spectral_density. S can be integrated over direction to give S1= integral(S dtheta) and this quantity has the standard name sea_surface_wave_variance_spectral_density.</description>
    </entry>
   
    <entry id="sea_surface_tertiary_swell_wave_mean_period">
@@ -18067,6 +18192,13 @@
       <description>Wind waves are waves on the ocean surface and are the high frequency portion of a bimodal wave frequency spectrum. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north.</description>
    </entry>
   
+   <entry id="sea_surface_wind_wave_from_direction_at_variance_spectral_density_maximum">
+      <canonical_units>degree</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name sea_surface_wind_wave_from_direction_at_variance_spectral_density_maximum is the direction from which the most energetic waves are coming in the wind wave component of a sea. Wind waves are waves on the ocean surface and are the high frequency portion of a bimodal wave frequency spectrum. The spectral peak is the most energetic wave in the wave spectrum partition. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north. The wave directional spectrum can be written as a five dimensional function S(t,x,y,f,theta) where t is time, x and y are horizontal coordinates (such as longitude and latitude), f is frequency and theta is direction. S has the standard name sea_surface_wave_directional_variance_spectral_density. S can be integrated over direction to give S1= integral(S dtheta) and this quantity has the standard name sea_surface_wave_variance_spectral_density.</description>
+   </entry>
+  
    <entry id="sea_surface_wind_wave_mean_period">
       <canonical_units>s</canonical_units>
       <grib></grib>
@@ -18253,14 +18385,14 @@
       <canonical_units>kg m-3</canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>Potential density is the density a parcel of air or sea water would have if moved adiabatically to a reference pressure, by default assumed to be sea level pressure. For sea water potential density, if 1000 kg m-3 is subtracted, the standard name sea_water_sigma_theta should be chosen instead.</description>
+      <description>Sea water potential density is the density a parcel of sea water would have if moved adiabatically to a reference pressure, by default assumed to be sea level pressure. To specify the reference pressure to which the quantity applies, provide a scalar coordinate variable with standard name reference_pressure. The density of a substance is its mass per unit volume. For sea water potential density, if 1000 kg m-3 is subtracted, the standard name sea_water_sigma_theta should be chosen instead.</description>
    </entry>
   
    <entry id="sea_water_potential_temperature">
       <canonical_units>K</canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>Potential temperature is the temperature a parcel of air or sea water would have if moved adiabatically to sea level pressure.</description>
+      <description>Sea water potential temperature is the temperature a parcel of sea water would have if moved adiabatically to sea level pressure.</description>
    </entry>
   
    <entry id="sea_water_potential_temperature_at_sea_floor">
@@ -18379,7 +18511,7 @@
       <canonical_units>kg m-3</canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>Sigma-theta of sea water is the potential density (i.e. the density when moved adiabatically to a reference pressure) of water having the same temperature and salinity, minus 1000 kg m-3. Note that sea water sigma is not the same quantity as the dimensionless ocean sigma coordinate (see Appendix D of the CF convention), for which there is another standard name.</description>
+      <description>Sigma-theta of sea water is the potential density (i.e. the density when moved adiabatically to a reference pressure) of water having the same temperature and salinity, minus 1000 kg m-3. Note that sea water sigma is not the same quantity as the dimensionless ocean sigma coordinate (see Appendix D of the CF convention), for which there is another standard name. To specify the reference pressure to which the quantity applies, provide a scalar coordinate variable with standard name reference_pressure.</description>
    </entry>
   
    <entry id="sea_water_sigma_theta_difference">
@@ -19444,6 +19576,13 @@
       <grib></grib>
       <amip></amip>
       <description>The surface called &quot;surface&quot; means the lower boundary of the atmosphere. &quot;Diffuse&quot; radiation is radiation that has been scattered by gas molecules in the atmosphere and by particles such as cloud droplets and aerosols. The term &quot;shortwave&quot; means shortwave radiation. Hemispherical reflectance is the ratio of the energy of the reflected to the incident radiation. This term gives the fraction of the surface_diffuse_downwelling_shortwave_flux_in_air which is reflected. If the diffuse radiation is isotropic, this term is equivalent to the integral of surface_bidirectional_reflectance over all incident angles and over all outgoing angles in the hemisphere above the surface. A coordinate variable of radiation_wavelength or radiation_frequency can be used to specify the wavelength or frequency, respectively, of the radiation. Shortwave hemispherical reflectance is related to albedo, but albedo is defined in terms of the fraction of the full spectrum of incident solar radiation which is reflected. It is related to the hemispherical reflectance averaged over all wavelengths using a weighting proportional to the incident radiative flux.</description>
+   </entry>
+  
+   <entry id="surface_direct_along_beam_shortwave_flux_in_air">
+      <canonical_units>W m-2</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The surface called &quot;surface&quot; means the lower boundary of the atmosphere. &quot;Direct&quot; (also known as &quot;beam&quot;) radiation is radiation that has followed a direct path from the sun and is alternatively known as &quot;direct insolation&quot;. The phrase &quot;along_beam&quot; refers to direct radiation on a plane perpendicular to the direction of the sun. This is in contrast to standard names such as direct_downwelling_shortwave_flux_in_air, where the radiation falls on a horizontal plane at the earth surface. The term &quot;shortwave&quot; means shortwave radiation. In accordance with common usage in geophysical disciplines, &quot;flux&quot; implies per unit area, called &quot;flux density&quot; in physics. The quantity with standard name surface_direct_along_beam_shortwave_flux_in_air is also called Direct Normal Irradiance (DNI) in the solar energy industry.</description>
    </entry>
   
    <entry id="surface_direct_downwelling_shortwave_flux_in_air">
@@ -29228,6 +29367,13 @@ final_air_pressure_of_lifted_parcel should be specified to indicate the specific
       <description>&quot;Sea surface height&quot; is a time-varying quantity. &quot;Height_above_X&quot; means the vertical distance above the named surface X. &quot;Lowest astronomical tide&quot; describes a local vertical reference based on the lowest water level that can be expected to occur under average meteorological conditions and under any combination of astronomical conditions. The tidal component of sea surface height describes the predicted variability of the sea surface due to astronomic forcing (chiefly lunar and solar cycles) and shallow water resonance of tidal components; for example as generated based on harmonic analysis, or resulting from the application of harmonic tidal series as boundary conditions to a numerical tidal model.</description>
    </entry>
   
+   <entry id="tidal_sea_surface_height_above_mean_low_water_springs">
+      <canonical_units>m</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Sea surface height&quot; is a time-varying quantity. &quot;Height_above_X&quot; means the vertical distance above the named surface X. &quot;Mean low water springs&quot; describes a local vertical reference based on the time mean of the low water levels during spring tides (the tides each lunar month with the greatest difference between high and low water that happen during full and new moons phases) expected to occur under average meteorological conditions and under any combination of astronomical conditions. The tidal component of sea surface height describes the predicted variability of the sea surface due to astronomic forcing (chiefly lunar and solar cycles) and shallow water resonance of tidal components; for example as generated based on harmonic analysis, or resulting from the application of harmonic tidal series as boundary conditions to a numerical tidal model.</description>
+   </entry>
+  
    <entry id="tidal_sea_surface_height_above_mean_sea_level">
       <canonical_units>m</canonical_units>
       <grib></grib>
@@ -30977,10 +31123,6 @@ final_air_pressure_of_lifted_parcel should be specified to indicate the specific
   
   <alias id="atmosphere_cloud_ice_content">
     <entry_id>atmosphere_mass_content_of_cloud_ice</entry_id>
-  </alias>
-  
-  <alias id="atmosphere_cloud_liquid_water_content">
-    <entry_id>atmosphere_mass_content_of_cloud_liquid_water</entry_id>
   </alias>
   
   <alias id="atmosphere_convective_cloud_condensed_water_content">
@@ -32837,6 +32979,14 @@ final_air_pressure_of_lifted_parcel should be specified to indicate the specific
   
   <alias id="sea_water_from_direction">
     <entry_id>sea_water_velocity_from_direction</entry_id>
+  </alias>
+  
+  <alias id="mass_fraction_of_rain_in_air">
+    <entry_id>mass_fraction_of_rain_and_drizzle_in_air</entry_id>
+  </alias>
+  
+  <alias id="atmosphere_cloud_liquid_water_content">
+    <entry_id>atmosphere_mass_content_of_cloud_liquid_water</entry_id>
   </alias>
  
 

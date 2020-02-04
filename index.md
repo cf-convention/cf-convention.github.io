@@ -16,11 +16,13 @@ This enables users of data from different sources to decide which quantities are
 The CF conventions generalize and extend the [COARDS conventions][coards].
 
 Here are the slides for a talk that provides an [overview of CF][viewgraphs]. An expository version of this talk is in this [article][article].
+[This page](latest.html) links to the most recently published version of the CF Conventions, as well as the [current working draft of the next version](cf-conventions/cf-conventions.html).
 
 Discussion about CF Metadata takes place in two formats:
 
-CF Metadata Trac, and
-cf-metadata mailing list.
+* CF Metadata Trac, and
+* cf-metadata mailing list.
+
 For further explanation of each of these, take a look at the [Discussion page][discussion].
 
 ## Quick Links

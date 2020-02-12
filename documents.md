@@ -10,12 +10,18 @@ group: "navigation"
   <div class="col-md-4">
     <h2>CF Conventions</h2>
     <p>
-      <h4>CF 1.8-draft</h4>
+      <h4>CF 1.9-draft</h4>
       <a href="/cf-conventions/cf-conventions.html">Single HTML</a>
       &nbsp;
       <a href="/cf-conventions/cf-conventions.pdf">PDF</a>
       &nbsp;
       
+      <h4>CF 1.7</h4>
+      <a href="Data/cf-conventions/cf-conventions-1.8/cf-conventions.html">Single HTML</a>
+      &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.8/cf-conventions.pdf">PDF</a>
+      &nbsp;
+
       <h4>CF 1.7</h4>
       <a href="Data/cf-conventions/cf-conventions-1.7/cf-conventions.html">Single HTML</a>
       &nbsp;

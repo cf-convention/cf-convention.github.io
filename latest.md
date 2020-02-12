@@ -9,8 +9,8 @@ title: Latest
 
 <table>
 <tr>
-  <th width="300px"> Most Recent Release (v1.7) <br /> &nbsp;</th>
-  <th width="300px"> Current Working Draft (v1.8) <br /> &nbsp;</th> 
+  <th width="300px"> Most Recent Release (v1.8) <br /> &nbsp;</th>
+  <th width="300px"> Current Working Draft (v1.9) <br /> &nbsp;</th> 
 </tr>
 <tr>
   <td>

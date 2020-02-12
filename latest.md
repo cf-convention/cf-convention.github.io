@@ -15,8 +15,8 @@ title: Latest
 <tr>
   <td>
     <ul>
-      <li> <a href="Data/cf-conventions/cf-conventions-1.7/cf-conventions.html">Single HTML</a> </li> <br />
-      <li> <a href="Data/cf-conventions/cf-conventions-1.7/cf-conventions.pdf">PDF</a> </li> <br />
+      <li> <a href="Data/cf-conventions/cf-conventions-1.8/cf-conventions.html">Single HTML</a> </li> <br />
+      <li> <a href="Data/cf-conventions/cf-conventions-1.8/cf-conventions.pdf">PDF</a> </li> <br />
     </ul>
   </td>
   <td>

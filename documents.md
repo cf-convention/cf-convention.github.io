@@ -16,7 +16,7 @@ group: "navigation"
       <a href="/cf-conventions/cf-conventions.pdf">PDF</a>
       &nbsp;
       
-      <h4>CF 1.7</h4>
+      <h4>CF 1.8</h4>
       <a href="Data/cf-conventions/cf-conventions-1.8/cf-conventions.html">Single HTML</a>
       &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.8/cf-conventions.pdf">PDF</a>

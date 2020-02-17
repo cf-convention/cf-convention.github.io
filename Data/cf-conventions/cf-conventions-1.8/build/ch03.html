@@ -1,0 +1,52 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter 3. Description of the Data</title><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="prev" href="ch02s06.html" title="2.6. Attributes"><link rel="next" href="ch03s02.html" title="3.2. Long Name"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 3. Description of the Data</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s06.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch03s02.html">Next</a></td></tr></table><hr></div><div class="chapter" lang="en"><div class="titlepage"><div><div></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch03.html#units">3.1. Units</a></span></dt><dt><span class="section"><a href="ch03s02.html">3.2. Long Name</a></span></dt><dt><span class="section"><a href="ch03s03.html">3.3. Standard Name</a></span></dt><dt><span class="section"><a href="ch03s04.html">3.4. Ancillary Data</a></span></dt><dt><span class="section"><a href="ch03s05.html">3.5. Flags</a></span></dt></dl></div><p>The attributes described in this section are used to provide a
+  description of the content and the units of measurement for each variable.
+  We continue to support the use of the <code class="varname">units</code> and
+  <code class="varname">long_name</code> attributes as defined in COARDS. We extend
+  COARDS by adding the optional <code class="varname">standard_name</code> attribute
+  which is used to provide unique identifiers for variables. This is important
+  for data exchange since one cannot necessarily identify a particular
+  variable based on the name assigned to it by the institution that provided
+  the data.</p><p>The <code class="varname">standard_name</code> attribute can be used to identify
+  variables that contain coordinate data. But since it is an optional
+  attribute, applications that implement these standards must continue to be
+  able to identify coordinate types based on the COARDS conventions.</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="units"></a>3.1. Units</h2></div></div></div><p>The <code class="varname">units</code> attribute is required for all variables
+    that represent dimensional quantities (except for boundary variables
+    defined in <a class="xref" href="ch07.html#cell-boundaries" title="7.1. Cell Boundaries">Section 7.1, &#8220;Cell Boundaries&#8221;</a> and climatology variables
+    defined in <a class="xref" href="ch07s04.html" title="7.4. Climatological Statistics">Section 7.4, &#8220;Climatological Statistics&#8221;</a>). The value of the
+    <code class="varname">units</code> attribute is a string that can be recognized by
+    UNIDATA"s Udunits package [<a href="bi01.html#udunits" class="biblioref" title="[UDUNITS]"><abbr class="abbrev">UDUNITS</abbr></a>], with a few
+    exceptions that are given below. The <a class="ulink" href="http://www.unidata.ucar.edu/software/udunits/" target="_top">Udunits
+    package</a> includes a file <code class="filename">udunits.dat</code>, which
+    lists its supported unit names. Note that case is significant in the
+    <code class="varname">units</code> strings.</p><p>The COARDS convention prohibits the unit
+    <code class="constant">degrees</code> altogether, but this unit is not forbidden by
+    the CF convention because it may in fact be appropriate for a variable
+    containing, say, solar zenith angle. The unit <code class="constant">degrees</code>
+    is also allowed on coordinate variables such as the latitude and longitude
+    coordinates of a transformed grid. In this case the coordinate values are
+    not true latitudes and longitudes which must always be identified using
+    the more specific forms of <code class="constant">degrees</code> as described in
+    <a class="xref" href="ch04.html#latitude-coordinate" title="4.1. Latitude Coordinate">Section 4.1, &#8220;Latitude Coordinate&#8221;</a> and <a class="xref" href="ch04s02.html" title="4.2. Longitude Coordinate">Section 4.2, &#8220;Longitude Coordinate&#8221;</a>.</p><p>Units are not required for dimensionless quantities. A variable with
+    no units attribute is assumed to be dimensionless. However, a units
+    attribute specifying a dimensionless unit may optionally be included. The
+    Udunits package defines a few dimensionless units, such as
+    <code class="constant">percent</code>, but is lacking commonly used units such as
+    ppm (parts per million). This convention does not support the addition of
+    new dimensionless units that are not udunits compatible. The conforming
+    unit for quantities that represent fractions, or parts of a whole, is "1".
+    The conforming unit for parts per million is "1e-6". Descriptive
+    information about dimensionless quantities, such as sea-ice concentration,
+    cloud fraction, probability, etc., should be given in the
+    <code class="varname">long_name</code> or <code class="varname">standard_name</code>
+    attributes (see below) rather than the <code class="varname">units</code>.</p><p>The units <code class="constant">level</code>, <code class="constant">layer</code>,
+    and <code class="constant">sigma_level</code> are allowed for dimensionless
+    vertical coordinates to maintain backwards compatibility with COARDS.
+    These units are not compatible with Udunits and are deprecated by this
+    standard because conventions for more precisely identifying dimensionless
+    vertical coordinates are introduced (see <a class="xref" href="ch04s03.html#dimensionless-vertical-coordinate" title="4.3.2. Dimensionless Vertical Coordinate">Section 4.3.2, &#8220;Dimensionless Vertical Coordinate&#8221;</a>).</p><p>The Udunits syntax that allows scale factors and offsets to be
+    applied to a unit is not supported by this standard. The application of
+    any scale factors or offsets to data should be indicated by the
+    <code class="varname">scale_factor</code> and <code class="varname">add_offset</code>
+    attributes. Use of these attributes for data packing, which is their most
+    important application, is discussed in detail in <a class="xref" href="ch08.html#packed-data" title="8.1. Packed Data">Section 8.1, &#8220;Packed Data&#8221;</a>.</p><p>Udunits recognizes the following prefixes and their abbreviations.
+    </p><div class="table"><a name="table-supported-units"></a><p class="title"><b>Table 3.1. Supported Units</b></p><div class="table-contents"><table summary="Supported Units" border="1"><colgroup><col><col><col><col><col><col><col></colgroup><thead><tr><th align="left">Factor</th><th align="left">Prefix</th><th align="left">Abbreviation</th><th align="left"> </th><th align="left">Factor</th><th align="left">Prefix</th><th align="left">Abbreviation</th></tr></thead><tbody><tr><td align="left">1e1</td><td align="left">deca,deka</td><td align="left">da</td><td align="left"> </td><td align="left">1e-1</td><td align="left">deci</td><td align="left">d</td></tr><tr><td align="left">1e2</td><td align="left">hecto</td><td align="left">h</td><td align="left"> </td><td align="left">1e-2</td><td align="left">centi</td><td align="left">c</td></tr><tr><td align="left">1e3</td><td align="left">kilo</td><td align="left">k</td><td align="left"> </td><td align="left">1e-3</td><td align="left">milli</td><td align="left">m</td></tr><tr><td align="left">1e6</td><td align="left">mega</td><td align="left">M</td><td align="left"> </td><td align="left">1e-6</td><td align="left">micro</td><td align="left">u</td></tr><tr><td align="left">1e9</td><td align="left">giga</td><td align="left">G</td><td align="left"> </td><td align="left">1e-9</td><td align="left">nano</td><td align="left">n</td></tr><tr><td align="left">1e12</td><td align="left">tera</td><td align="left">T</td><td align="left"> </td><td align="left">1e-12</td><td align="left">pico</td><td align="left">p</td></tr><tr><td align="left">1e15</td><td align="left">peta</td><td align="left">P</td><td align="left"> </td><td align="left">1e-15</td><td align="left">femto</td><td align="left">f</td></tr><tr><td align="left">1e18</td><td align="left">exa</td><td align="left">E</td><td align="left"> </td><td align="left">1e-18</td><td align="left">atto</td><td align="left">a</td></tr><tr><td align="left">1e21</td><td align="left">zetta</td><td align="left">Z</td><td align="left"> </td><td align="left">1e-21</td><td align="left">zepto</td><td align="left">z</td></tr><tr><td align="left">1e24</td><td align="left">yotta</td><td align="left">Y</td><td align="left"> </td><td align="left">1e-24</td><td align="left">yocto</td><td align="left">y</td></tr></tbody></table></div></div><p><br class="table-break"></p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s06.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch03s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.6. Attributes </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 3.2. Long Name</td></tr></table></div></body></html>

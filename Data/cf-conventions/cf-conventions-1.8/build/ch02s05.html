@@ -1,0 +1,59 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>2.5. Variables</title><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch02.html" title="Chapter 2. NetCDF Files and Components"><link rel="prev" href="ch02s04.html" title="2.4. Dimensions"><link rel="next" href="ch02s06.html" title="2.6. Attributes"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.5. Variables</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s04.html">Prev</a> </td><th width="60%" align="center">Chapter 2. NetCDF Files and Components</th><td width="20%" align="right"> <a accesskey="n" href="ch02s06.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div></div></div></div><p>This convention does not standardize variable names.</p><p>NetCDF variables that contain coordinate data are referred to as
+    <span class="emphasis"><em>coordinate variables</em></span>, <span class="emphasis"><em>auxiliary coordinate
+    variables</em></span>, <span class="emphasis"><em>scalar coordinate variables</em></span>, or
+    <span class="emphasis"><em>multidimensional coordinate variables</em></span>.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="missing-data"></a>2.5.1. Missing Data<span class="newtext">, valid and actual
+      range</span></h3></div></div></div><p>The NUG conventions ( <span class="deletedtext"> <a class="ulink" href="http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12" target="_top">
+      NUG section 8.1</a></span> <span class="newtext"> <a class="ulink" href="http://www.unidata.ucar.edu/netcdf/docs/netcdf.html#Attribute-Conventions" target="_top">
+      NUG section 8.1</a></span> ) provide the
+      <code class="varname">_FillValue</code>, <span class="newtext"><code class="varname">missing_value</code>,</span>
+      <code class="varname">valid_min</code>, <code class="varname">valid_max</code>, and
+      <code class="varname">valid_range</code> attributes to indicate missing
+      data.</p><p>The NUG conventions for missing data changed significantly between
+      version 2.3 and version 2.4. Since version 2.4 the NUG defines missing
+      data as all values outside of the <code class="varname">valid_range</code>, and
+      specifies how the <code class="varname">valid_range</code> should be defined from
+      the <code class="varname">_FillValue</code> (which has library specified default
+      values) if it hasn't been explicitly specified. If only one missing
+      value is needed for a variable then we recommend <span class="deletedtext">strongly</span> that this value be specified
+      using the <code class="varname">_FillValue</code> attribute. Doing this guarantees
+      that the missing value will be recognized by generic applications that
+      follow either the before or after version 2.4 conventions.</p><p>The scalar attribute with the name <code class="varname">_FillValue</code>
+      and of the same type as its variable is recognized by the netCDF library
+      as the value used to pre-fill disk space allocated to the variable. This
+      value is considered to be a special value that indicates undefined or
+      missing data, and is returned when reading values that were not written.
+      The <code class="varname">_FillValue</code> should be outside the range specified
+      by <code class="varname">valid_range</code> (if used) for a variable. The netCDF
+      library defines a default fill value for each data type ( <span class="deletedtext"> <a class="ulink" href="http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-12.html#HEADING12-1381" target="_top">
+      NUG section 7.16</a></span> <span class="newtext"> <a class="ulink" href="http://www.unidata.ucar.edu/netcdf/docs/netcdf.html#NetCDF-Classic-Format" target="_top">
+      NUG section 7.16</a></span> ).</p><p><span class="deletedtext"> The <code class="varname">missing_value</code>
+      attribute is considered deprecated by the NUG and we do not recommend
+      its use. However for backwards compatibility with COARDS this standard
+      continues to recognize the use of the <code class="varname"> missing_value</code>
+      attribute to indicate undefined or missing data. </span></p><p>The missing values of a variable with
+      <code class="varname">scale_factor</code> and/or <code class="varname">add_offset</code>
+      attributes (see section <a class="xref" href="ch08.html#packed-data" title="8.1. Packed Data">Section 8.1, &#8220;Packed Data&#8221;</a>) are interpreted
+      relative to the variable's external values <span class="deletedtext">
+      , i.e., the values stored in the netCDF file.</span> <span class="newtext">(a.k.a. the packed values, the raw values, the values
+      stored in the netCDF file), not the values that result after the scale
+      and offset are applied.</span> Applications that process variables
+      that have attributes to indicate both a transformation (via a scale
+      and/or offset) and missing values should first check that a data value
+      is valid, and then apply the transformation. Note that values that are
+      identified as missing should not be transformed. Since the missing value
+      is outside the valid range it is possible that applying a transformation
+      to it could result in an invalid operation. For example, the default
+      <code class="varname">_FillValue</code> is very close to the maximum representable
+      value of IEEE single precision floats, and multiplying it by 100
+      produces an "Infinity" (using single precision arithmetic).</p><p><a name="actual_range"></a><span class="newtext">This convention defines
+      a two-element vector attribute <code class="varname">actual_range </code>for
+      variables containing numeric data. If the variable is packed using the
+      <code class="varname">scale_factor</code> and <code class="varname">add_offset</code>
+      attributes (see section 8.1), the elements of the
+      <code class="varname">actual_range</code> should have the type intended for the
+      unpacked data. The elements of <code class="varname">actual_range</code> must be
+      exactly equal to the minimum and the maximum data values which occur in
+      the variable (when unpacked if packing is used), and both must be within
+      the <code class="varname">valid_range</code> if specified. If the data is all
+      missing or invalid, the <code class="varname">actual_range</code> attribute cannot
+      be used. </span></p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.4. Dimensions </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.6. Attributes</td></tr></table></div></body></html>

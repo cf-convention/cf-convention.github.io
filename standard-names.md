@@ -13,7 +13,7 @@ group: "navigation"
 
   <h5><b>Previous Versions (HTML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
-    <a href="Data/cf-standard-names/71/build/cf-standard-name-table.html">v70</a> &nbsp;
+    <a href="Data/cf-standard-names/71/build/cf-standard-name-table.html">v71</a> &nbsp;
     <a href="Data/cf-standard-names/70/build/cf-standard-name-table.html">v70</a> &nbsp;
     <a href="Data/cf-standard-names/69/build/cf-standard-name-table.html">v69</a> &nbsp;
     <a href="Data/cf-standard-names/68/build/cf-standard-name-table.html">v68</a> &nbsp;

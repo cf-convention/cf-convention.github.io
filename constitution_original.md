@@ -1,9 +1,9 @@
-= Terms of Reference for CF Committees and Governance Panel
+# Terms of Reference for CF Committees and Governance Panel
 B. N. Lawrence, R. Drach, B. E. Eaton, J. M. Gregory, S. C. Hankin, R. K. Lowry, R. K. Rew, and K. E. Taylor
 From the CF white paper of 2006
 
 
-=== Constitution of the CF Governance Panel
+### Constitution of the CF Governance Panel
 
 The CF Governance Panel will come into existence on 1st October 2006 and assume
 its duties and responsibilities from that date. Until that date, the original
@@ -21,7 +21,7 @@ in support of CF, and the chairs of the CF committees on conventions and
 standard names.
 
 
-=== Terms of reference of the CF Governance Panel
+### Terms of reference of the CF Governance Panel
 
 The panel will be responsible for the stewardship of CF, but will not have any
 special responsibility for or influence on the technical content of CF.
@@ -50,7 +50,7 @@ committee and the panel. The panel will ensure that the current membership of
 the two CF committees is published.
 
 
-=== Constitution of the CF committees
+### Constitution of the CF committees
 
 Anyone with sufficient time, interest and expertise is qualified to serve as an
 ordinary member of the conventions committee or the standard names committee or
@@ -118,7 +118,7 @@ The committees may not change their constitutions or terms of reference
 themselves, but each may propose changes to be made by the CF Governance Panel.
 
 
-=== Terms of reference of the conventions committee
+### Terms of reference of the conventions committee
 
 The conventions committee will be responsible for the development of the CF
 conventions constituting the CF netCDF standard, except for the definition of
@@ -141,7 +141,7 @@ those who maintain widely used software which follows the CF conventions,
 especially those which the committee regards as reference implementations.
 
 
-=== Terms of reference of the standard names committee
+### Terms of reference of the standard names committee
 
 The standard names committee will be responsible for the definition of CF
 standard names and of any other aspects of controlled vocabulary in the

@@ -39,16 +39,16 @@ title: Rules
 
 ## Additional rules relating to the CF data model
 
-<p>The CF data model will guide the development of CF by providing a framework for ensuring that proposed changes fit into CF in a logical way, rather than just a pragmatic one.
+The CF data model will guide the development of CF by providing a framework for ensuring that proposed changes fit into CF in a logical way, rather than just a pragmatic one.
 
-<p> All new proposals will be assessed to see if the new features defined in the proposal map onto the CF data model.
+All new proposals will be assessed to see if the new features defined in the proposal map onto the CF data model.
 
-<p> The assessment will be carried out by a member of the conventions  committee or another suitably qualified person. If no-one  volunteers, the chairman of the committee will ask someone to do it.
+The assessment will be carried out by a member of the conventions  committee or another suitably qualified person. If no-one  volunteers, the chairman of the committee will ask someone to do it.
 
-<p> If the proposal maps onto the existing CF data model then no  modifications to the data model are required.
+If the proposal maps onto the existing CF data model then no  modifications to the data model are required.
 
-<p> Otherwise an attempt must be made to modify the proposal so that its  new features do map onto the CF data model, and in such a way that  the proposal's intent is not compromised.
+Otherwise an attempt must be made to modify the proposal so that its  new features do map onto the CF data model, and in such a way that  the proposal's intent is not compromised.
 
-<p> If the proposal cannot be acceptably modified to conform to the existing data model, then the data model will need to be modified to  accommodate the new features. This modification will be either backwards compatible or backwards incompatible. The former (preferable) case occurs if the data model may be extended or generalised in some way that allows the new features but does not affect its existing constructs and relationships.
+If the proposal cannot be acceptably modified to conform to the existing data model, then the data model will need to be modified to  accommodate the new features. If the data model may be extended or generalised in some way that allows the new features but does not affect its existing constructs and relationships, the proposal is considered backwards compatible. This is the preferred solution.
 
-<p> Any changes to the data model must be described verbatim as part of the proposal discussion, including any modified or new data model diagrams. However, to facilitate the progress of a proposal that requires data model changes, it is sufficient for the general nature of the data model modifications to be identified, on the understanding that the data model text will be updated in detail at a later date, possibly after the proposal has been accepted.
+Any changes to the data model must be described verbatim as part of the proposal discussion, including any modified or new data model diagrams. However, to facilitate the progress of a proposal that requires data model changes, it is sufficient for the general nature of the data model modifications to be identified, on the understanding that the data model text will be updated in detail at a later date, possibly after the proposal has been accepted.

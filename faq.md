@@ -126,7 +126,7 @@ Work began on CF in 2001 and [Version 1.0](http://cfconventions.org/Data/cf-conv
 
 ### How does CF relate to other conventions/specifications (especially COARDS and netCDF)?
 
-CF is a convention built on top of the netCDF standard, and it generalizes and extends the netCDF [COARDS conventions](http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html). Whereas the netCDF specification is designed to be domain-agnostic, the CF conventions were developed specifically to target climatology and weather forecasting domains. Since then, the CF conventions have targeted earth science domains more broadly, and expanded from a focus on models to include observational data.
+CF is a convention built on top of the netCDF standard, and it generalizes and extends the netCDF [COARDS conventions](https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html). Whereas the netCDF specification is designed to be domain-agnostic, the CF conventions were developed specifically to target climatology and weather forecasting domains. Since then, the CF conventions have targeted earth science domains more broadly, and expanded from a focus on models to include observational data.
 
 The conventions of netCDF and COARDS are assumed and upheld by CF. Where COARDS is adequate, CF does not provide an alternative, while all of CF's extensions to COARDS are optional and provide new functionality.
 
@@ -142,7 +142,7 @@ A motivation for developing CF was the need for extra features not found in netC
 
 Not entirely; because CF is a netCDF convention, it assumes the netCDF standard is being followed. And it relies on the UDUNITS system of specifying units (see <a href="#udunits">CF and COARDS units</a> below). CF does not replicate the information from these other documents, so to adhere to CF you may need to become familiar with the other specifications as well, particularly the netCDF User's Guide.
 
-The CF Conventions were originally based on the netCDF convention called the [COARDS conventions](http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html) (named for their sponsor, the Cooperative Ocean/Atmosphere Research Data Service), developed in 1995. While there may be a few things in that document that are not documented in CF, working with the CF conventions does not require previous understanding of COARDS.
+The CF Conventions were originally based on the netCDF convention called the [COARDS conventions](https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html) (named for their sponsor, the Cooperative Ocean/Atmosphere Research Data Service), developed in 1995. While there may be a few things in that document that are not documented in CF, working with the CF conventions does not require previous understanding of COARDS.
 
 Aside from those references, a CF principle is to be self-contained. So for example the CF Standard Names attempt to be as general and well-defined as possible, so the reader does not have to access outside sources to understand the terms.
 <a class="anchor" id="research"></a>

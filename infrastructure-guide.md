@@ -30,7 +30,7 @@ Configuration files are:
 The CF Conventions Document is built from source documents (in AsciiDoc)
 on the `master` branch of the [CF Conventions repo](https://github.com/cf-convention/cf-conventions).
 
-For each commit to the `master` branch of the CF Conventinos repo,
+For each commit to the `master` branch of the CF Conventions repo,
 [Travis](https://travis-ci.org) builds the CF Conventions document(s)
 using [Asciidoctor](https://asciidoctor.org/).
 The resulting HTML page and PDF document are pushed to the `gh-pages` branch
@@ -52,7 +52,7 @@ GitHub Releases are made ...
 ### PR Testing for the CF Conventions Document 
 PRs to the CF Convention repo are built/tested by GitHub Actions
 using Asciidoctor. The resulting HTML page and PDF document are available
-as artifacts in each build on the CF Conventions repo GitHub Actions [page](https://github.com/cf-convention/cf-conventions/actions) 
+as artifacts in each build on the CF Conventions repo GitHub Actions [page](https://github.com/cf-convention/cf-conventions/actions).
 
 The configuration file for this GitHub Action is:
 - [`check_adoc_build.yml`](https://github.com/cf-convention/cf-conventions/blob/master/.github/workflows/check_adoc_build.yml)

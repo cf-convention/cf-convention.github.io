@@ -8,7 +8,7 @@ group: "navigation"
 
 ## Annual CF Workshops
 
-* [2020 CF Workshop][2020] - 9-11 June 2020 at University of Cantabria in Santandor, Spain
+* [2020 CF Workshop][2020] - 9-11 June 2020 - Virtual Workshop
 * [2019 CF Workshop][2019] - 
 * [2018 CF Workshop][2018] - 
  

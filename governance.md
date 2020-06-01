@@ -34,11 +34,11 @@ group: "navigation"
  
 ### Governance Panel
 
-* Ethan Davis
+* Ethan Davis (chair)
 * Jonathan Gregory
 * Bryan Lawrence
-* Rich Signell
-* Karl Taylor (chair)
+* Daniel Lee
+* Karl Taylor
 
 ### Information Management and Support
 
@@ -66,6 +66,8 @@ group: "navigation"
 * Steve Hankin (Conventions and Governance)
 * Bryan Lawrence (Standard Names)
 * Russ Rew (Conventions and Governance)
+* Rich Signell (Governance)
+* Karl Taylor (Governance, former chair but present member)
 
 The climate research community is indebted to the above for their magnanimous contributions in establishing and improving the CF Conventions.
 

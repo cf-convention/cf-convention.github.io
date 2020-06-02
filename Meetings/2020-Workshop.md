@@ -43,9 +43,10 @@ closer to the time of the meeting.
 Please make suggestion or comments on the CF Discuss GitHub repo "The 2020 CF Workshop"
 issue ([#53](https://github.com/cf-convention/discuss/issues/53)).
 
-Thanks to the [University of Cantabria](https://web.unican.es/en/),
-[IS-ENES3](https://is.enes.org/), and [EUMETSAT](https://www.eumetsat.int/)
-for their support of this meeting.
+Thanks for their support to:
+ - [University of Cantabria](https://web.unican.es/en/)
+ - [IS-ENES3](https://is.enes.org/) which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
+ - [EUMETSAT](https://www.eumetsat.int/)
 
 ## Agenda
 

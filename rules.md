@@ -7,20 +7,19 @@ These are the rules for making changes to the CF Conventions. Note that errata a
 Discussions about changes to the CF Conventions, and all decisions pertaining to these, take place and are stored permanently on GitHub.
 Additionally, all versions of the standard and conformance documents are kept available online with a history of changes.
 
+Changes to [this website](https://github.com/cf-convention/cf-convention.github.io) are made according to the process described [in the repository's CONTRIBUTING.md file](https://github.com/cf-convention/cf-convention.github.io/blob/master/CONTRIBUTING.md).
+
 ## Enhancements
 The rules for introducing enhancements into the CF Conventions are set forth in the following text and summarised in the figure below.
 
 ![Figure detailing change process, derived from cf-change-process.plantuml](Data/media/images/cf-change-process.svg)
 
-Enhancements can apply to the [CF Conventions](https://github.com/cf-convention/cf-conventions) themselves or to [this website](https://github.com/cf-convention/cf-convention.github.io).
-In either case, enhancements are proposed by raising an issue in the appropriate GitHub repository.
-Each repository contains a `CONTRIBUTING.md` file with guidelines on how changes are proposed and managed.
+Enhancements to the [CF Conventions](https://github.com/cf-convention/cf-conventions) are proposed by raising an issue in the GitHub repository.
+The repository contains a `CONTRIBUTING.md` file with guidelines on how this process is implemented using GitHub.
 If in doubt, ask a question by raising an issue in the [CF Conventions Discussion forum](https://github.com/cf-convention/discuss) and the Community will help.
 
-New proposals are made by raising GitHub issues.
-
-A suitably qualified person, such as a member of the Conventions Committee, volunteers to moderate the discussion.
-If no-one volunteers, the chairman of the Committee will ask someone to do it.
+When a new proposal is made by raising GitHub issues, a suitably qualified person, such as a member of the Conventions Committee, volunteers to moderate the discussion.
+If no-one volunteers, the chairman of the Committee asks someone to do it.
 
 The discussion takes place in GitHub issues and all may participate.
 

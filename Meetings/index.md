@@ -9,9 +9,17 @@ group: "navigation"
 ## Annual CF Workshops
 
 * [2020 CF Workshop][2020] - 9-11 June 2020 - Virtual Workshop
-* [2019 CF Workshop][2019] - 
-* [2018 CF Workshop][2018] - 
+* [2019 CF Workshop][2019] - 16-17 July 2019 - ESIP Summer Meeting - Tacoma, WA (USA) 
+* [2018 netCDF-CF Workshop][2018] - 19-20 June 2018 - NCAS - Reading (UK)
+* [2017 Advancing netCDF-CF Workshop][2017] - 6-8 September 2017 - EarthCube - Boulder, CO (USA)
+* [2016 Advancing netCDF-CF Workshop for the Geosciences][2016] - 24-26 May 2016 - EarthCube - Boulder, CO (USA)
  
 [2020]: 2020-Workshop.html
 [2019]: 2019-Workshop.html
 [2018]: 2018-Workshop.html
+[2017]: 2017-Workshop.html
+[2016]: 2016-Workshop.html
+
+## Other related CF meetings
+
+***To Be Completed***

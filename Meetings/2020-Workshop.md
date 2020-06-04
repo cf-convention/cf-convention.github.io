@@ -68,18 +68,18 @@ Thanks for their support to:
 **19:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour
 
-### Wednesday, 10 June 2020 - Update, Roadmap, Current Enhancment Proposals
+### Wednesday, 10 June 2020 - Update, Roadmap, Tools,  Current Enhancment Proposals
 **16:00 - Roadmap: CF 1.8, CF 1.9, and Onward (David Hassell)**
-* Review CF-1.8
-* Roadmap for CF -.9
+* Review of CF-1.8
+* Roadmap for CF-1.9
 * The Future
 
 **16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell)**
 * CF Compliance Checkers
 * A data model reference implementation
 
-**17:30 - Breakouts for Current Discussion Topics**
-* Zoom breakout rooms with Google Documents for Notes
+**17:30 - Breakouts for [Current Discussion Topics](#current-discussion-topics)**
+* Four Zoom breakout rooms with Google Documents for Notes
   * [Standard names](https://drive.google.com/drive/folders/1n6oM1aricNnwddUfaA28s3LHKVgGd_1J)
   * [Cell methods](https://drive.google.com/drive/folders/16nI5kuEuft1s2y53rLOjocswVGUwe06c)
   * [Figure for bounds](https://drive.google.com/drive/folders/1SP8fhITvMosXcnRWLGSRqACHCWxDkqQ2)
@@ -90,7 +90,7 @@ Thanks for their support to:
 
 ### Thursday, 11 June 2020 - Breakouts for Current Discussion Topics
 **16:00 - Breakouts for [Current Discussion Topics](#current-discussion-topics)**
-* Zoom breakout rooms with Google Documents for Notes
+* Four Zoom breakout rooms with Google Documents for Notes
   * [Metadata handling (provenance)](https://drive.google.com/drive/folders/1rVxkdFzFuya7rF0VlSeCE_xqZ8RDWj78)
   * [Subsampled coordinates](https://drive.google.com/drive/folders/1lCibg2P8W9J-Aag0SxOcxIC2SFgnsoH_)
   * [CRS WKT](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio)

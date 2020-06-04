@@ -70,11 +70,11 @@ Thanks for their support to:
 
 ### Wednesday, 10 June 2020 - Update, Roadmap, Current Enhancment Proposals
 **16:00 - Roadmap: CF 1.8, CF 1.9, and Onward (David Hassell)**
-* Review CF 1.8
-* Roadmap for CF 1.9
+* Review CF-1.8
+* Roadmap for CF -.9
 * The Future
 
-**16:30 - Software Tools and keeping up to date with CF (David Hassell)**
+**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Ros Hatcher, David Hassell)**
 * CF Compliance Checkers
 * Other CF tools
 

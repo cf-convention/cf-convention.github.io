@@ -35,5 +35,8 @@ A description of the [Python CF Data Model Package](https://ncas-cms.github.io/c
 ### cf-python - CF Python Package
 A description of the [CF Python Package](https://ncas-cms.github.io/cf-python/).
 
+### netCDF Flattener - Flatten netCDF files
+The [netCDF Flattener](https://gitlab.eumetsat.int/open-source/netcdf-flattener/) Python package takes netCDF objects that use groups and flattens them while preserving references as described in the [CF Conventions](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html#groups).
+The resulting object is logically equivalent to the original, and can be processed by software that isn't able to work with files that use netCDF-4 groups.
 
 ## Commercial Software Packages

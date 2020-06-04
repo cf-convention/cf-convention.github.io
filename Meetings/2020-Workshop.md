@@ -76,7 +76,7 @@ Thanks for their support to:
 
 **16:30 - Software Tools and keeping up to date with CF (Robert Fratantonio, Rosalyn Hatcher, David Hassell)**
 * CF Compliance Checkers
-* Other CF tools
+* Data model implementation
 
 **17:30 - Breakouts for Current Discussion Topics**
 * Zoom breakout rooms with Google Documents for Notes

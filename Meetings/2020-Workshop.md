@@ -74,31 +74,33 @@ Thanks for their support to:
 * Roadmap for CF -.9
 * The Future
 
-**16:30 - Software Tools and keeping up to date with CF (Robert Fratantonio, Rosalyn Hatcher, David Hassell)**
+**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell)**
 * CF Compliance Checkers
-* Data model implementation
+* A data model reference implementation
 
 **17:30 - Breakouts for Current Discussion Topics**
 * Zoom breakout rooms with Google Documents for Notes
-
-**18:45 - Report out from Breakout**
-
+  * [Standard names](https://drive.google.com/drive/folders/1n6oM1aricNnwddUfaA28s3LHKVgGd_1J)
+  * [Cell methods](https://drive.google.com/drive/folders/16nI5kuEuft1s2y53rLOjocswVGUwe06c)
+  * [Figure for bounds](https://drive.google.com/drive/folders/1SP8fhITvMosXcnRWLGSRqACHCWxDkqQ2)
+  * [Mesh or boundary variable](https://drive.google.com/drive/folders/1cR5iWfXox4cgOomIr7CoICERj0OXuRsh)
+ 
 **19:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour
 
 ### Thursday, 11 June 2020 - Breakouts for Current Discussion Topics
 **16:00 - Breakouts for [Current Discussion Topics](#current-discussion-topics)**
 * Zoom breakout rooms with Google Documents for Notes
+  * [Metadata handling (provenance)](https://drive.google.com/drive/folders/1rVxkdFzFuya7rF0VlSeCE_xqZ8RDWj78)
+  * [Subsampled coordinates](https://drive.google.com/drive/folders/1lCibg2P8W9J-Aag0SxOcxIC2SFgnsoH_)
+  * [CRS WKT](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio)
+  * [Moderation of proposals](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob) 
+   
+**17:30 - Report out from Breakouts**
+* 5 minute summaries from each breakout topic
 
-**16:45 - Report out from Breakout**
-        
-**17:00 - Breakouts for [Current Discussion Topics](#current-discussion-topics)**
-* Zoom breakout rooms with Google Documents for Notes
-        
-**17:45 - Report out from Breakout**
-
-**18:00 - Wrap-up and Conclusions (Antonio Cofiño)**
-* Summary and Wrap-up
+**18:15 - Wrap-up and Conclusions (Antonio Cofiño)**
+* Overall summary and Wrap-up
 * Action Items and Decisions
 
 **19:00 - Adjourn to Virtual Social Hour**
@@ -144,3 +146,11 @@ Thanks for their support to:
   * [Summary Statement](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit#heading=h.jof6l6da7mbf)
   * GoogleDoc (coming soon) for Note Taking and Report Out
   * See[Conventions Issue #151](https://github.com/cf-convention/cf-conventions/issues/151)
+
+-----
+
+**The orgainizing committee**
+
+Jim Biard, Dave Blodgett, Kevin O'Brien, Antonio Cofino, Ethan Davis,
+David Hassell, Jessica Hausman, Aleksandar Jelenak, Daniel Lee,
+Jonathan Yu

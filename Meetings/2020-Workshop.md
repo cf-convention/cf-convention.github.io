@@ -74,7 +74,7 @@ Thanks for their support to:
 * Roadmap for CF -.9
 * The Future
 
-**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Rosalyn Hatcher, David Hassell)**
+**16:30 - Software Tools and keeping up to date with CF (Robert Fratantonio, Rosalyn Hatcher, David Hassell)**
 * CF Compliance Checkers
 * Other CF tools
 

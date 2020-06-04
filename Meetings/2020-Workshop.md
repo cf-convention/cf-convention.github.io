@@ -68,10 +68,10 @@ Thanks for their support to:
 **19:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour
 
-### Wednesday, 10 June 2020 - Update, Roadmap, Tools, Current Enhancment Proposals
-**16:00 - Roadmap: CF 1.8, CF 1.9, and Onward (David Hassell)**
+### Wednesday, 10 June 2020 - Update, Road map, Tools, Current Enhancement Proposals
+**16:00 - Road map: CF 1.8, CF 1.9, and Onward (David Hassell)**
 * Review of CF-1.8
-* Roadmap for CF-1.9
+* Road map for CF-1.9
 * The Future
 
 **16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell)**
@@ -88,7 +88,7 @@ Thanks for their support to:
 **19:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour
 
-### Thursday, 11 June 2020 - Current Enhancment Proposals, Wrap-up and Conclusions
+### Thursday, 11 June 2020 - Current Enhancement Proposals, Wrap-up and Conclusions
 **16:00 - Breakouts for [Current Discussion Topics](#current-discussion-topics)**
 * Four Zoom breakout rooms with Google Documents for Notes
   * [Metadata handling (provenance)](https://drive.google.com/drive/folders/1rVxkdFzFuya7rF0VlSeCE_xqZ8RDWj78)
@@ -149,8 +149,8 @@ Thanks for their support to:
 
 -----
 
-**The orgainizing committee**
+**The organising committee**
 
-Jim Biard, Dave Blodgett, Kevin O'Brien, Antonio Cofino, Ethan Davis,
+Jim Biard, Dave Blodgett, Kevin O'Brien, Antonio Cofiño, Ethan Davis,
 David Hassell, Jessica Hausman, Aleksandar Jelenak, Daniel Lee,
 Jonathan Yu

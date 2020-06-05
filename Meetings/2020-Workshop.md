@@ -38,7 +38,7 @@ closer to the time of the meeting.
   to the session to type your question/comment.
   Please be succinct in both your questions and answers.
 
-**Suggestions, Comments, Discussion**
+**Suggestions, Comments on the agenda**
 
 Please make suggestion or comments on the CF Discuss GitHub repo "The 2020 CF Workshop"
 issue ([#53](https://github.com/cf-convention/discuss/issues/53)).
@@ -48,28 +48,32 @@ Thanks for their support to:
  - [IS-ENES3](https://is.enes.org/) which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
  - [EUMETSAT](https://www.eumetsat.int/)
 
+**Questions, Discussion, and note taking during the meeting**
+
+[There is 2020 CF Workshop Google drive folder](https://drive.google.com/drive/folders/1LzgP7wwSzz55giCVZyk-4xiu28gp68Fg)
+
 ## Agenda
 
 ### Tuesday, 9 June 2020 - Governance
-**16:00 - Welcome and Introductions (David Hassell)**
+**16:00 - Welcome and Introductions (David Hassell)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
 
-**16:15 - CF Standard Names (Alison Pamment)**
+**16:15 - CF Standard Names (Alison Pamment)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
 * Overview -- What are standard names?
 * Process, Creation, Tracking
 
-**17:30 - Governance (Ethan Davis)**
+**17:30 - Governance (Ethan Davis)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
 * Community
 * Constitution, Governance Panel, and Committee(s)
 * Contributors
 * Process: Conventions Document and Website
 
-**18:15 - Process Demo and Q&A (Daniel Lee)**
+**18:15 - Process Demo and Q&A (Daniel Lee)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
 
 **19:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour
 
 ### Wednesday, 10 June 2020 - Update, Road map, Tools, Current Enhancement Proposals
-**16:00 - Road map: CF 1.8, CF 1.9, and Onward (David Hassell)**
+**16:00 - Road map: CF 1.8, CF 1.9, and Onward (David Hassell)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
 * Review of CF-1.8
 * Road map for CF-1.9
 * The Future
@@ -96,10 +100,10 @@ Thanks for their support to:
   * [CRS WKT](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio)
   * [Moderation of proposals](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob) 
    
-**17:30 - Report out from Breakouts**
+**17:30 - Report out from Breakouts** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
 * 5 minute summaries from each breakout topic
 
-**18:15 - Wrap-up and Conclusions (Antonio Cofiño)**
+**18:15 - Wrap-up and Conclusions (Antonio Cofiño)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
 * Overall summary and Wrap-up
 * Action Items and Decisions
 

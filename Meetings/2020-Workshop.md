@@ -87,7 +87,7 @@ Thanks for their support to:
   * **[Standard names](https://drive.google.com/drive/folders/1n6oM1aricNnwddUfaA28s3LHKVgGd_1J)**
   * **[Cell methods](https://drive.google.com/drive/folders/16nI5kuEuft1s2y53rLOjocswVGUwe06c)**
   * **[Figure for bounds](https://drive.google.com/drive/folders/1SP8fhITvMosXcnRWLGSRqACHCWxDkqQ2)**
-  * [Mesh or boundary variable](https://drive.google.com/drive/folders/1cR5iWfXox4cgOomIr7CoICERj0OXuRsh)**
+  * **[Mesh or boundary variable](https://drive.google.com/drive/folders/1cR5iWfXox4cgOomIr7CoICERj0OXuRsh)**
  
 **19:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour
@@ -98,7 +98,7 @@ Thanks for their support to:
   * **[Metadata handling (provenance)](https://drive.google.com/drive/folders/1rVxkdFzFuya7rF0VlSeCE_xqZ8RDWj78)**
   * **[Subsampled coordinates](https://drive.google.com/drive/folders/1lCibg2P8W9J-Aag0SxOcxIC2SFgnsoH_)**
   * **[CRS WKT](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio)**
-  * **[Moderation of proposals](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob) **
+  * **[Moderation of proposals](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob)**
    
 **17:30 - Report out from Breakouts [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
 * 5 minute summaries from each breakout topic

@@ -48,9 +48,15 @@ Thanks for their support to:
  - [IS-ENES3](https://is.enes.org/) which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
  - [EUMETSAT](https://www.eumetsat.int/)
 
-**Questions, Discussion, and note taking during the meeting**
+**Questions, Discussion and note taking during the meeting**
 
-[There is 2020 CF Workshop Google drive folder](https://drive.google.com/drive/folders/1LzgP7wwSzz55giCVZyk-4xiu28gp68Fg)
+There is **[2020 CF Workshop Google drive
+folder](https://drive.google.com/drive/folders/1LzgP7wwSzz55giCVZyk-4xiu28gp68Fg)**
+which contains the presentations and the Google Docs which will be the
+forum for asking questions and for general comment and
+discussion. There are also sub-folders for each breakout topic, in
+which notes can also be taken. The relevant documents are linked from
+each session in this agenda.
 
 ## Agenda
 
@@ -58,7 +64,7 @@ Thanks for their support to:
 **16:00 - Welcome and Introductions (David Hassell) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
 
 **16:15 - CF Standard Names (Alison Pamment) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
-* Overview -- What are standard names?
+* Overview - What are standard names?
 * Process, Creation, Tracking
 
 **17:30 - Governance (Ethan Davis) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**

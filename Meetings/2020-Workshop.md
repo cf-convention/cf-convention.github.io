@@ -52,7 +52,7 @@ Thanks for their support to:
 
 There is **[2020 CF Workshop Google drive
 folder](https://drive.google.com/drive/folders/1LzgP7wwSzz55giCVZyk-4xiu28gp68Fg)**
-which contains the presentations and the Google Docs which will be the
+which contains the presentations and the Google Docs which will be a
 forum for asking questions and for general comment and
 discussion. There are also sub-folders for each breakout topic, in
 which notes can also be taken. The relevant documents are linked from

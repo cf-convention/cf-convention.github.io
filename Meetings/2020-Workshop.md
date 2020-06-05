@@ -58,6 +58,10 @@ discussion. There are also sub-folders for each breakout topic, in
 which notes can also be taken. The relevant documents are linked from
 each session in this agenda.
 
+The aim is that during a presentation, questions can be asked and
+commented on by everyone in the Google Doc, and then these can be
+verbally discussed with the presenter and everyone afterwards.
+
 ## Agenda
 
 ### Tuesday, 9 June 2020 - Governance

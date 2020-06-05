@@ -48,7 +48,7 @@ Thanks for their support to:
  - [IS-ENES3](https://is.enes.org/) which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
  - [EUMETSAT](https://www.eumetsat.int/)
 
-**Questions, Discussion and note taking during the meeting**
+## Questions, Discussion and note taking during the meeting
 
 There is **[2020 CF Workshop Google drive
 folder](https://drive.google.com/drive/folders/1LzgP7wwSzz55giCVZyk-4xiu28gp68Fg)**

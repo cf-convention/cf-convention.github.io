@@ -55,30 +55,30 @@ Thanks for their support to:
 ## Agenda
 
 ### Tuesday, 9 June 2020 - Governance
-**16:00 - Welcome and Introductions (David Hassell)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
+**16:00 - Welcome and Introductions (David Hassell) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
 
-**16:15 - CF Standard Names (Alison Pamment)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
+**16:15 - CF Standard Names (Alison Pamment) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
 * Overview -- What are standard names?
 * Process, Creation, Tracking
 
-**17:30 - Governance (Ethan Davis)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
+**17:30 - Governance (Ethan Davis) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
 * Community
 * Constitution, Governance Panel, and Committee(s)
 * Contributors
 * Process: Conventions Document and Website
 
-**18:15 - Process Demo and Q&A (Daniel Lee)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
+**18:15 - Process Demo and Q&A (Daniel Lee) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
 
 **19:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour
 
 ### Wednesday, 10 June 2020 - Update, Road map, Tools, Current Enhancement Proposals
-**16:00 - Road map: CF 1.8, CF 1.9, and Onward (David Hassell)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
+**16:00 - Road map: CF 1.8, CF 1.9, and Onward (David Hassell) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
 * Review of CF-1.8
 * Road map for CF-1.9
 * The Future
 
-**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell)**
+**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
 * CF Compliance Checkers
 * A data model reference implementation
 
@@ -100,10 +100,10 @@ Thanks for their support to:
   * [CRS WKT](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio)
   * [Moderation of proposals](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob) 
    
-**17:30 - Report out from Breakouts** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
+**17:30 - Report out from Breakouts [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
 * 5 minute summaries from each breakout topic
 
-**18:15 - Wrap-up and Conclusions (Antonio Cofiño)** [Questions/discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)
+**18:15 - Wrap-up and Conclusions (Antonio Cofiño) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
 * Overall summary and Wrap-up
 * Action Items and Decisions
 

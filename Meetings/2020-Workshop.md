@@ -52,13 +52,13 @@ Thanks for their support to:
 
 The **[2020 CF Workshop Google drive
 folder](https://drive.google.com/drive/folders/1LzgP7wwSzz55giCVZyk-4xiu28gp68Fg)**
-contains the presentations and the Google Docs which will be a
+contains the presentations and the Google Docs that will be a
 forum for asking questions and for general comment and
-discussion. There are also sub-folders for each breakout topic, in
-which notes can also be taken. The relevant documents are linked from
-each session in this agenda.
+discussion. Each breakout topic has its own sub-folder in
+which there is a Google Doc for notes; and any useful materials can be uploaded.
+The relevant documents and sub-folders for each session are linked from the agenda.
 
-The aim is that during a presentation, questions can be asked and
+In the plenary session presentations, questions can be asked and
 commented on by everyone in the Google Doc, and then these can be
 verbally discussed with the presenter and everyone afterwards.
 

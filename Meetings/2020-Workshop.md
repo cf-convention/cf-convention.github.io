@@ -50,9 +50,9 @@ Thanks for their support to:
 
 ## Questions, Discussion and note taking during the meeting
 
-There is **[2020 CF Workshop Google drive
+The **[2020 CF Workshop Google drive
 folder](https://drive.google.com/drive/folders/1LzgP7wwSzz55giCVZyk-4xiu28gp68Fg)**
-which contains the presentations and the Google Docs which will be a
+contains the presentations and the Google Docs which will be a
 forum for asking questions and for general comment and
 discussion. There are also sub-folders for each breakout topic, in
 which notes can also be taken. The relevant documents are linked from
@@ -66,6 +66,7 @@ verbally discussed with the presenter and everyone afterwards.
 
 ### Tuesday, 9 June 2020 - Governance
 **16:00 - Welcome and Introductions (David Hassell) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
+* A brief introduction to CF-netCDF
 
 **16:15 - CF Standard Names (Alison Pamment) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
 * Overview - What are standard names?

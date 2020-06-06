@@ -160,7 +160,7 @@ verbally discussed with the presenter and everyone afterwards.
 * **Moderation of proposals?**
   * [Summary Statement](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit#heading=h.jof6l6da7mbf)
   * [GoogleDoc](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob) for Note Taking and Report Out
-  * See[Conventions Issue #151](https://github.com/cf-convention/cf-conventions/issues/151)
+  * See [Conventions Issue #151](https://github.com/cf-convention/cf-conventions/issues/151)
 
 -----
 

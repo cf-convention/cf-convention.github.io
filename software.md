@@ -27,12 +27,9 @@ The cf-checker verifies conformance according to the requirements and recommenda
 It is possible to check conformance against any CF version.
 
 ### IOOS Compliance Checker
-A description of the [IOOS Compliance Checker](https://compliance.ioos.us/).
 The [IOOS Compliance Checker](https://github.com/ioos/compliance-checker)
 is a python based tool for data providers to check for completeness
-and community standard compliance of local or remote
-[netCDF](https://en.wikipedia.org/wiki/NetCDF) files against
-[CF](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html),
+and community standard compliance of local or remote netCDF files against CF,
 [ACDD](http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery_1-3),
 and [IOOS Metadata Profile](https://ioos.github.io/ioos-metadata) file standards.
 The Compliance Checker can be used as a command-line tool or as a library
@@ -81,7 +78,9 @@ CF Standard names, units, and coordinate metadata are built into Iris,
 giving you a rich and expressive interface for maintaining an accurate representation of your data.
 
 ### netCDF Flattener - Flatten netCDF files
-The [netCDF Flattener](https://gitlab.eumetsat.int/open-source/netcdf-flattener/) Python package takes netCDF objects that use groups and flattens them while preserving references as described in the [CF Conventions](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html#groups).
+The [netCDF Flattener](https://gitlab.eumetsat.int/open-source/netcdf-flattener/) Python package takes netCDF objects that use groups and flattens them
+while preserving references as described in the [Groups section](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html#groups)
+of the CF Conventions.
 The resulting object is logically equivalent to the original, and can be processed by software that isn't able to work with files that use netCDF-4 groups.
 
 ### netCDF-Java Library

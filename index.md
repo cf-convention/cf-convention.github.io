@@ -30,6 +30,7 @@ For further explanation of each of these, take a look at the [Discussion page][d
 * [CF Conventions Document][q1]
 * [CF Standard Name Table][q2]
 * [CF Conventions FAQ][q8]
+* [List of Software that "Understands" CF](software.md)
 * [CF Metadata Trac][q3]
 * [CF Metadata Trac Ticket Summary][q4]
 * [CF Metadata Mailing List Archives][q5]

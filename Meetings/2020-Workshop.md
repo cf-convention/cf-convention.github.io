@@ -26,7 +26,6 @@ Many thanks to everyone who compiled it at short notice.
 
 **Participation Information**
 
-**Connection to the meeting**
 Information on how to participate in the meeting will be made available
 closer to the time of the meeting.
 

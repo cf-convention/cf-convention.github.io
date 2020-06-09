@@ -26,8 +26,10 @@ Many thanks to everyone who compiled it at short notice.
 
 **Participation Information**
 
-Information on how to participate in the meeting will be made available
-closer to the time of the meeting.
+Connection details for the opening plenary session: https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09
+
+You can find the dial-in details for each plenary and breaksout session inside the "Questions/Discussion" Google Docs linked next to each session's heading in the meeting agenda. These may also be accessed through the [2020 CF Workshop Google drive
+folder](https://drive.google.com/drive/folders/1LzgP7wwSzz55giCVZyk-4xiu28gp68Fg).
 
 **Online Meeting Etiquette**
 * Please include your complete name and institution in Video Conference platform display name:

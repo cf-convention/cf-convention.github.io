@@ -65,60 +65,60 @@ verbally discussed with the presenter and everyone afterwards.
 ## Agenda
 
 ### Tuesday, 9 June 2020 - Governance
-**16:00 UTC - Welcome and Introductions (David Hassell) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
+**16:00 UTC - Welcome and Introductions (David Hassell) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit) + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 * A brief introduction to CF-netCDF
 
-**16:15 - CF Standard Names (Alison Pamment) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
+**16:15 - CF Standard Names (Alison Pamment) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit) + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 * Overview - What are standard names?
 * Process, Creation, Tracking
 
-**17:30 - Governance (Ethan Davis) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
+**17:30 - Governance (Ethan Davis) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit) + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 * Community
 * Constitution, Governance Panel, and Committee(s)
 * Contributors
 * Process: Conventions Document and Website
 
-**18:15 - Process Demo and Q&A (Daniel Lee) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
+**18:15 - Process Demo and Q&A (Daniel Lee) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit) + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 
-**19:00 - Adjourn to Virtual Social Hour**
+**19:00 - Adjourn to Virtual Social Hour + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 * Virtual Social Hour
 
 ### Wednesday, 10 June 2020 - Update, Road map, Tools, Current Enhancement Proposals
-**16:00 UTC - Road map: CF 1.8, CF 1.9, and Onward (David Hassell) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
+**16:00 UTC - Road map: CF 1.8, CF 1.9, and Onward (David Hassell) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit) + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 * Review of CF-1.8
 * Road map for CF-1.9
 * The Future
 
-**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
+**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit) + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 * CF Compliance Checkers
 * A data model reference implementation
 
 **17:30 - Breakouts for [Current Discussion Topics](#current-discussion-topics)**
 * Four Zoom breakout rooms with Google Documents for Notes
-  * **[Standard names](https://drive.google.com/drive/folders/1n6oM1aricNnwddUfaA28s3LHKVgGd_1J)**
-  * **[Cell methods](https://drive.google.com/drive/folders/16nI5kuEuft1s2y53rLOjocswVGUwe06c)**
-  * **[Figure for bounds](https://drive.google.com/drive/folders/1SP8fhITvMosXcnRWLGSRqACHCWxDkqQ2)**
-  * **[Mesh or boundary variable](https://drive.google.com/drive/folders/1cR5iWfXox4cgOomIr7CoICERj0OXuRsh)**
+  * **[Standard names](https://drive.google.com/drive/folders/1n6oM1aricNnwddUfaA28s3LHKVgGd_1J)** - [Zoom session link](https://eumetsat.zoom.us/j/95579038370?pwd=d1lZOWJBZDlxTkM4U1lnYVA2empSdz09)
+  * **[Cell methods](https://drive.google.com/drive/folders/16nI5kuEuft1s2y53rLOjocswVGUwe06c)** - [Zoom session link](https://eumetsat.zoom.us/j/5705037618?pwd=REtXNmtaNDdTNmE1dmZ0VFViTzd4dz09)
+  * **[Figure for bounds](https://drive.google.com/drive/folders/1SP8fhITvMosXcnRWLGSRqACHCWxDkqQ2)** - [Zoom session link](https://eumetsat.zoom.us/j/97592002298?pwd=Rjd3RDNPdzVzZm40R0JEa3R1S1BCQT09)
+  * **[Mesh or boundary variable](https://drive.google.com/drive/folders/1cR5iWfXox4cgOomIr7CoICERj0OXuRsh)** - [Zoom session link](https://eumetsat.zoom.us/j/99256914300?pwd=RkMyZExycWR2WGR6UFhxc3huMmwydz09)
  
-**19:00 - Adjourn to Virtual Social Hour**
+**19:00 - Adjourn to Virtual Social Hour + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 * Virtual Social Hour
 
 ### Thursday, 11 June 2020 - Current Enhancement Proposals, Wrap-up and Conclusions
 **16:00 UTC - Breakouts for [Current Discussion Topics](#current-discussion-topics)**
 * Four Zoom breakout rooms with Google Documents for Notes
-  * **[Metadata handling (provenance)](https://drive.google.com/drive/folders/1rVxkdFzFuya7rF0VlSeCE_xqZ8RDWj78)**
-  * **[Subsampled coordinates](https://drive.google.com/drive/folders/1lCibg2P8W9J-Aag0SxOcxIC2SFgnsoH_)**
-  * **[CRS WKT](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio)**
-  * **[Moderation of proposals](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob)**
+  * **[Metadata handling (provenance)](https://drive.google.com/drive/folders/1rVxkdFzFuya7rF0VlSeCE_xqZ8RDWj78)** - [Zoom session link](https://eumetsat.zoom.us/j/96292112820?pwd=dEgzZVNTU2ZObFZmV1N1b1VFQld3QT09)
+  * **[Subsampled coordinates](https://drive.google.com/drive/folders/1lCibg2P8W9J-Aag0SxOcxIC2SFgnsoH_)** - [Zoom session link](https://eumetsat.zoom.us/j/96533174273?pwd=aDFzSHlRbEJEVGNKUngwUmF3RXZpQT09)
+  * **[CRS WKT](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio)** - [Zoom session link](https://eumetsat.zoom.us/j/98950036908?pwd=WVNlVlZNRGJaWTU0aGJJVGNVaXpNZz09)
+  * **[Moderation of proposals](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob)** - [Zoom session link](https://eumetsat.zoom.us/j/94128853090?pwd=WWJKbC9oWVJZT3VybUtYYmVaOURkUT09)
    
-**17:30 - Report out from Breakouts [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
+**17:30 - Report out from Breakouts [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit) + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 * 5 minute summaries from each breakout topic
 
-**18:15 - Wrap-up and Conclusions (Antonio Cofiño) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit)**
+**18:15 - Wrap-up and Conclusions (Antonio Cofiño) [Questions/Discussion](https://docs.google.com/document/d/1lGEnqGAiudC2t3LQzp7SPmVfsQUoqQUMapjvPBY-OkE/edit) + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 * Overall summary and Wrap-up
 * Action Items and Decisions
 
-**19:00 - Adjourn to Virtual Social Hour**
+**19:00 - Adjourn to Virtual Social Hour + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 * Virtual Social Hour
 
 ## Current Discussion Topics

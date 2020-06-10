@@ -104,4 +104,15 @@ labelled, multi-dimensional array data, built around the netCDF data model.
 It uses CF conventions in several ways, such as encoding / decoding variables
 and interpreting metadata for visualization.
 
+### `gridded` - A Python API for accessing / working with gridded model results on multiple grid types
+[gridded](https://github.com/NOAA-ORR-ERD/gridded) is a python package designed for working with
+various grids used for (primarily) met/ocean modeling The goal of this package is to present a
+single way to work with results from ANY model -- regardless of what type of grid it was computed on.
+Currently supported are:
+
+* Regular Structured Grids (CF Conventions)
+* Unstructured Grids (CF + [UGRID Conventions](http://ugrid-conventions.github.io/ugrid-conventions/))
+* Staggered Grids (CF + [SGRID Conventions](http://sgrid.github.io/sgrid/))
+
+
 ## Commercial Software Packages

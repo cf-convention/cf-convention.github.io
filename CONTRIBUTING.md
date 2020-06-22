@@ -6,17 +6,16 @@ Thank you for taking the time to consider making a contribution to the [website 
 
 This set of guidelines provides an overview of the process for making changes to the website.
 
-## Correcting errors
-Raise an issue describing the error.
-Consider associating that issue to a pull request that corrects the error.
-A member of the [CF Information Management and Support Team](info-mgmt) will review the change and merge it, deploying it to the website.
+When raising an issue, please use the appropriate issue template.
+Consider associating that issue to a pull request that implements the proposed change.
+Each issue template notes that the approval of one or more members of the following bodies is necessary for the proposed change to be merged:
+- The [CF Information Management and Support Team](info-mgmt),
+- The [Conventions Committee and Standard Names Committee](committee), or
+- The [Governance Panel](gov-panel)
 
-## Making improvements
-Raise an issue describing what you'd like to do.
-A member of the [CF Information Management and Support Team](info-mgmt) will review it and decide how to approach the change.
-Generally, items on the website affect the governance of CF and therefore require the approval of 2 members of the [Governance Panel](gov-panel) before merging.
-However, minor changes of a technical nature may be implemented upon approval of a member of the [CF Information Management and Support Team](info-mgmt).
+Details are noted in the relevant issue template.
 
 [cf-website]: http://cfconventions.org/
 [info-mgmt]: http://cfconventions.org/governance.html#information-management-and-support
+[committee]: http://cfconventions.org/governance.html#conventions-committee-and-standard-names-committee
 [gov-panel]: http://cfconventions.org/governance.html#governance-panel

@@ -2,37 +2,68 @@
 layout: default
 title: Rules
 ---
-
 # Rules for CF Conventions Changes
- 
-<p>New proposals are to be made in github issues using the template, including verbatim changes proposed to the text of standard document and the conformance document.</p>
+These are the rules for making changes to the CF Conventions. Note that errata and enhancements are treated via separate processes, detailed in separate sections of this page.
+Discussions about changes to the CF Conventions, and all decisions pertaining to these, take place and are stored permanently on GitHub.
+Additionally, all versions of the standard and conformance documents are kept available online with a history of changes.
 
-<p>A member of the conventions committee, or another suitably qualified person, volunteers to moderate the discussion. If no-one volunteers, the chairman of the committee will ask someone to do it.</p>
+## Enhancements
+The rules for introducing enhancements into the CF Conventions are set forth in the following text and summarised in the figure below.
 
-<p>The discussion takes place on github issues and all may participate.</p>
+![Figure detailing change process, derived from cf-change-process.plantuml](Data/media/images/cf-change-process.svg)
 
-<p>The moderator periodically summarises discussion on github, keeps it moving forward and tries to achieve a consensus. It is expected that everyone with an interest will contribute to the discussion and to achieving a consensus during this stage. During the discussion, if an objection is raised, answered and not reasserted, the moderator will assume the objection has been dropped. However, since consensus is the best outcome, it will be helpful if anyone who expresses an objection explicitly withdraws it on changing their mind or deciding to accept the majority view.</p>
+Enhancements can apply to the [CF Conventions](https://github.com/cf-convention/cf-conventions) themselves or to [this website](https://github.com/cf-convention/cf-convention.github.io).
+In either case, enhancements are proposed by raising an issue in the appropriate GitHub repository.
+Each repository contains a `CONTRIBUTING.md` file with guidelines on how changes are proposed and managed.
+If in doubt, ask a question by raising an issue in the [CF Conventions Discussion forum](https://github.com/cf-convention/discuss) and the Community will help.
 
-<p>The moderator is encouraged to organize conference calls and/or webex-type interactions if this might help resolve an issue more quickly.</p>
+New proposals are made by raising GitHub issues.
 
-<p>It will be helpful if a test netCDF file is provided as early as possible during the discussion. However, several variants of the proposal may be discussed, and the proposer may not be able to provide test netCDF files for all of them.</p>
+A suitably qualified person, such as a member of the Conventions Committee, volunteers to moderate the discussion.
+If no-one volunteers, the chairman of the Committee will ask someone to do it.
 
-<p>When three weeks have passed with no contributions being made, the moderator should attempt to move toward a decision on the proposal by summarising the discussion and indicating the outcome as consensus, near consensus, or not near consensus (see below) on making the proposed change. Since several versions of the proposal might have been discussed, the summary should make clear which one, if any, would be adopted. The moderator will then invite further comment on the proposal, as summarised. If further comments are made i.e. the discussion restarts, this step is repeated.</p>
+The discussion takes place in GitHub issues and all may participate.
 
-<p>Once the summary has been made, if the test netCDF file does not yet exist, it must be created (unless the summary suggests the proposal should be rejected). When three weeks have passed with no contributions following a summary, and providing a test file exists (if appropriate), a decision is reached in one of the following ways:</p>
+The moderator periodically summarises the discussion on GitHub, keeps it moving forward, and tries to achieve a consensus.
+It is expected that everyone with an interest will contribute to the discussion and to achieving a consensus during this stage.
+During the discussion, if an objection is raised, answered and not reasserted, the moderator will assume the objection has been dropped.
+However, since consensus is the best outcome, it will be helpful if anyone who expresses an objection explicitly withdraws it on changing their mind or deciding to accept the majority view.
+The moderator can organize real-time interactions if this might help resolve an issue more quickly.
 
-<p>Consensus: Accept the proposal if there is no outstanding objection, and at least three contributors have expressed support for it, including at least two members of the conventions committee. If the moderator personally expresses support, he or she can be counted among the supporters.</p>
+When three weeks have passed with no contributions being made, the moderator attempts to move toward a decision on the proposal by summarising the discussion and indicating the outcome as one of the following:
 
-<p>Near consensus: If the conditions for consensus are not met but the moderator's summary is that consensus has nearly been achieved, accept the proposal if all, or all but one, of the conventions committee vote in favour of it. The moderator will call for votes and all members should vote.</p>
+- Consensus: There is no outstanding objection, and at least three contributors have expressed support for it, including at least two members of the conventions committee.
+If the moderator personally expresses support, they can be counted among the supporters.
+- Near consensus: The conditions for consensus are not met but the moderator's summary is that consensus has nearly been achieved.
+- Not near consensus.
 
-<p>Not near consensus: No change to standard.</p>
+The moderator will then invite further comment on the proposal, as summarised.
+If further comments are made i.e. the discussion restarts, this step is repeated.
+Once the summary has been made, if a test netCDF file does not yet exist, it must be created (unless deemed unnecessary or the summary suggests the proposal should be rejected).
 
-<p>The github issue is then closed by the moderator stating the outcome.</p>
+When three weeks have passed with no contributions following a summary, and providing a test file exists, the issue is closed based on the outcome of the moderator's summary:
+- Consensus: The proposal is accepted.
+- Near consensus: The moderator calls for votes by the Conventions Committee and all members should vote.
+The proposal is accepted if all, or all but one, members of the Conventions Committee vote in favour of it.
+- Not near consensus: No change to standard.
 
-<p>If the change is accepted, the standard document should be updated, the CF convention version number incremented, and the conformance document updated.</p>
+If the change is accepted, the standard document and the conformance document, if needed, are updated.
+The author of the proposal is added to the list of contributing authors of the CF Conventions.
 
-<p>The author of the proposal should be added to the list of contributing authors of the CF convention.</p>
+## Errata
+These rules apply to the CF conventions document, the conformance document, the standard name table and its guidelines.
+They are applicable for correcting errors in these documents if it is clear that the text as it stands isn't what was agreed, because of a typographical or some other error.
+They cannot be used to make substantive changes.
 
-<p>If the change, once implemented in the conventions, subsequently turns out to be materially flawed, meaning that data written following the convention could be somehow erroneous or ambiguous, a github issue should urgently be opened to discuss whether to revoke the change. If this is agreed by a majority of the committee, a new version of the conventions will be prepared immediately, with the second digit of the version number incremented, and will be recommended to be used instead of the flawed version. The flawed version will be deprecated by a statement in the standard document and the conformance document. However, any data written with the flawed version will not be invalidated, although it may be problematic for users. Errors or lack of clarity in wording, when the convention itself is not at fault, can be corrected by defect tickets on the usual schedule.</p>
+Errors in the standard names can alternatively be pointed out on the CF email list, and implemented by the manager of CF standard names (Alison) as part of a regular update.
 
-<p>All versions of the standard and conformance document should be kept available online, with their github issues and a history of changes.</p>
+If someone thinks there is an error in a document, they should open a GitHub issue of type "defect" to point it out and to state what should be done to the text in order to correct the error.
+A corresponding GitHub pull request can also be submitted in addition to the issue.
+
+The correction is held to have been agreed if three weeks pass without anyone disagreeing with it.
+After that period, the issue should be closed by the manager of the CF conventions or the manager of CF standard names, who will make the change and/or merge the pull request.
+No moderator is needed because there cannot be any substantive discussion under these rules.
+
+If anyone disagrees that the correction should be made, because they think the document does have the intended meaning, then a correction cannot be made by these rules.
+In that case the issue should be closed, and the change should be proposed as an enhancement instead, following the rules for making changes to the CF standard, if the proposer wants to pursue the issue.
+

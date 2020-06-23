@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <standard_name_table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cf-standard-name-table-1.1.xsd">
-   <version_number>72</version_number>
-   <last_modified>2020-03-10T11:52:02Z</last_modified>
+   <version_number>73</version_number>
+   <last_modified>2020-06-23T11:50:17Z</last_modified>
    <institution>Centre for Environmental Data Analysis</institution>
    <contact>support@ceda.ac.uk</contact>
 
@@ -346,7 +346,7 @@
       <canonical_units></canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>A variable with the standard name of area_type contains strings which indicate the nature of the surface e.g. land, sea, sea_ice. These strings are standardised.  Values must be taken from the area_type table.</description>
+      <description>A variable with the standard_name of area_type contains either strings which indicate the nature of the surface e.g. land, sea, sea_ice, or flags which can be translated to strings using flag_values and flag_meanings attributes. These strings are standardised. Values must be taken from the area_type table.</description>
    </entry>
   
    <entry id="asymmetry_factor_of_ambient_aerosol_particles">
@@ -2446,14 +2446,14 @@
       <canonical_units>m</canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level. &quot;Bedrock&quot; is the solid Earth surface beneath land ice or ocean water.</description>
+      <description>Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level. &quot;Bedrock&quot; is the solid Earth surface beneath land ice, ocean water or soil.</description>
    </entry>
   
    <entry id="bedrock_altitude_change_due_to_isostatic_adjustment">
       <canonical_units>m</canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>The specification of a physical process by the phrase due_to_process means that the quantity named is a single term in a sum of terms which together compose the general quantity named by omitting the phrase. Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level. &quot;Bedrock&quot; is the solid Earth surface beneath land ice or ocean water. The zero of bedrock altitude change is arbitrary. Isostatic adjustment is the vertical movement of the lithosphere due to changing surface ice and water loads.</description>
+      <description>The specification of a physical process by the phrase due_to_process means that the quantity named is a single term in a sum of terms which together compose the general quantity named by omitting the phrase. Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level. &quot;Bedrock&quot; is the solid Earth surface beneath land ice, ocean water or soil. The zero of bedrock altitude change is arbitrary. Isostatic adjustment is the vertical movement of the lithosphere due to changing surface ice and water loads.</description>
    </entry>
   
    <entry id="biological_taxon_identifier">
@@ -3916,7 +3916,7 @@
       <canonical_units>K m2 kg-1 s-1</canonical_units>
       <grib></grib>
       <amip>vorpot</amip>
-      <description></description>
+      <description>The Ertel potential vorticity is the scalar product of the atmospheric absolute vorticity vector and the gradient of potential temperature. It is a conserved quantity in the absence of friction and heat sources [AMS Glossary, http://glossary.ametsoc.org/wiki/Ertel_potential_vorticity]. A frequently used simplification of the general Ertel potential vorticity considers the Earth rotation vector to have only a vertical component. Then, only the vertical contribution of the scalar product is calculated.</description>
    </entry>
   
    <entry id="fast_soil_pool_mass_content_of_carbon">
@@ -7339,7 +7339,7 @@
       <canonical_units></canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>A variable with the standard name of land_cover_sccs contains strings which indicate the nature of the surface, e.g. cropland_..., tree_... . These strings are standardised. Values must be combinations of classifiers from the Land Cover Classification System (LCCS; Di Gregorio A., 2005, UN Land Cover Classification System (LCCS) - Classification concepts and user manual for Software version 2; available at www.fao.org/DOCREP/003/X0596E/X0596e00.htm).</description>
+      <description>A variable with the standard name of land_cover_lccs contains strings which indicate the nature of the surface, e.g. cropland_..., tree_... . Each string should represent a land cover class constructed using the Land Cover Classification System (LCCS; Di Gregorio A., 2005, UN Land Cover Classification System (LCCS) - Classification concepts and user manual for Software version 2; available at www.fao.org/DOCREP/003/X0596E/X0596e00.htm). String values should represent the classifiers used to define each class.</description>
    </entry>
   
    <entry id="land_ice_area_fraction">
@@ -11003,6 +11003,13 @@
       <description>&quot;Mole concentration&quot; means number of moles per unit volume, also called &quot;molarity&quot;, and is used in the construction &quot;mole_concentration_of_X_in_Y&quot;, where X is a material constituent of Y. A chemical or biological species denoted by X may be described by a single term such as &quot;nitrogen&#39; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. &quot;Organic carbon&quot; describes a family of chemical species and is the term used in standard names for all species belonging to the family that are represented within a given model. The list of individual species that are included in a quantity having a group chemical standard name can vary between models. Where possible, the data variable should be accompanied by a complete description of the species represented, for example, by using a comment attribute.</description>
    </entry>
   
+   <entry id="mole_concentration_of_dissolved_organic_nitrogen_in_sea_water">
+      <canonical_units>mol/m3</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Mole concentration&quot; means number of moles per unit volume, also called &quot;molarity&quot;, and is used in the construction &quot;mole_concentration_of_X_in_Y&quot;, where X is a material constituent of Y. A chemical species or biological group denoted by X may be described by a single term such as &quot;nitrogen&quot; or a phrase such as &quot;nox_expressed_as_nitrogen&quot;. &quot;Dissolved organic nitrogen&quot; describes the nitrogen held in carbon compounds in solution. These are mostly generated by plankton excretion and decay.</description>
+   </entry>
+  
    <entry id="mole_concentration_of_ethane_in_air">
       <canonical_units>mol m-3</canonical_units>
       <grib></grib>
@@ -13920,6 +13927,20 @@
       <grib></grib>
       <amip></amip>
       <description>The partial pressure of a dissolved gas in sea water is the partial pressure in air with which it would be in equilibrium. The partial pressure of a gaseous constituent of air is the pressure that it would exert if all other gaseous constituents were removed, assuming the volume, the temperature, and its number of moles remain unchanged. The chemical formula for methane is CH4.</description>
+   </entry>
+  
+   <entry id="permafrost_active_layer_thickness">
+      <canonical_units>m</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name permafrost_active_layer_thickness is the thickness of the layer of the ground that is subject to annual thawing and freezing in areas underlain by permafrost. &quot;Thickness&quot; means the vertical extent of a layer. Permafrost is soil or rock that has remained at a temperature at or below zero degrees Celsius throughout the seasonal cycle for two or more years.</description>
+   </entry>
+  
+   <entry id="permafrost_area_fraction">
+      <canonical_units>1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>&quot;Area fraction&quot; is the fraction of a grid cell&#39;s horizontal area that has some characteristic of interest. It is evaluated as the area of interest divided by the grid cell area. It may be expressed as a fraction, a percentage, or any other dimensionless representation of a fraction. Permafrost is soil or rock that has remained at a temperature at or below zero degrees Celsius throughout the seasonal cycle for two or more years.</description>
    </entry>
   
    <entry id="permafrost_layer_thickness">
@@ -17251,7 +17272,7 @@
       <canonical_units></canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>A variable with the standard name of region contains strings which indicate geographical regions. These strings must be chosen from the standard region list.</description>
+      <description>A variable with the standard name of region contains either strings which indicate a geographical region or flags which can be translated to strings using flag_values and flag_meanings attributes. These strings are standardised. Values must be taken from the CF standard region list.</description>
    </entry>
   
    <entry id="relative_humidity">
@@ -19036,7 +19057,7 @@
       <canonical_units>K</canonical_units>
       <grib>85</grib>
       <amip></amip>
-      <description>Soil temperature is the bulk temperature of the soil, not the surface (skin) temperature.</description>
+      <description>Soil temperature is the bulk temperature of the soil, not the surface (skin) temperature. &quot;Soil&quot; means the near-surface layer where plants sink their roots. For subsurface temperatures that extend beneath the soil layer or in areas where there is no surface soil layer, the standard name solid_earth_subsurface_temperature should be used.</description>
    </entry>
   
    <entry id="soil_thermal_capacity">
@@ -19093,6 +19114,13 @@
       <grib></grib>
       <amip></amip>
       <description>Solar zenith angle is the the angle between the line of sight to the sun and the local vertical.</description>
+   </entry>
+  
+   <entry id="solid_earth_subsurface_temperature">
+      <canonical_units>K</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name solid_earth_subsurface_temperature is the temperature at any depth (or in a layer) of the &quot;solid&quot; earth, excluding surficial snow and ice (but not permafrost or soil). For temperatures in surface lying snow and ice, the more specific standard names temperature_in_surface_snow and land_ice_temperature should be used. For temperatures measured or modelled specifically in the soil layer (the near-surface layer where plants sink their roots) the standard name soil_temperature should be used.</description>
    </entry>
   
    <entry id="solid_precipitation_flux">
@@ -27688,7 +27716,7 @@
       <canonical_units>m s-1</canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>&quot;tendency_of_X&quot; means derivative of X with respect to time. Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level. &quot;Bedrock&quot; is the solid Earth surface beneath land ice or ocean water.</description>
+      <description>The phrase &quot;tendency_of_X&quot; means derivative of X with respect to time. Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level. &quot;Bedrock&quot; is the solid Earth surface beneath land ice, ocean water or soil.</description>
    </entry>
   
    <entry id="tendency_of_canopy_water_amount_due_to_evaporation_of_intercepted_precipitation">
@@ -31797,14 +31825,6 @@
     <entry_id>tendency_of_atmosphere_mass_content_of_particulate_organic_matter_dry_aerosol_particles_expressed_as_carbon_due_to_emission_from_industrial_processes_and_combustion</entry_id>
   </alias>
   
-  <alias id="land_cover">
-    <entry_id>area_type</entry_id>
-  </alias>
-  
-  <alias id="surface_cover">
-    <entry_id>area_type</entry_id>
-  </alias>
-  
   <alias id="significant_height_of_swell_waves">
     <entry_id>sea_surface_swell_wave_significant_height</entry_id>
   </alias>
@@ -33151,6 +33171,14 @@
   
   <alias id="mass_fraction_of_rain_in_air">
     <entry_id>mass_fraction_of_liquid_precipitation_in_air</entry_id>
+  </alias>
+  
+  <alias id="land_cover">
+    <entry_id>area_type</entry_id>
+  </alias>
+  
+  <alias id="surface_cover">
+    <entry_id>area_type</entry_id>
   </alias>
  
 

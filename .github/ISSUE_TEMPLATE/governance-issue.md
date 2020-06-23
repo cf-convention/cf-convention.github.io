@@ -2,7 +2,7 @@
 name: Governance issue
 about: Use to propose changes to the CF governance processes
 title: ''
-labels: defect
+labels: governance
 assignees: ''
 
 ---

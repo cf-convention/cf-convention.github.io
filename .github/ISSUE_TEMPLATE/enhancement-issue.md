@@ -2,7 +2,7 @@
 name: Enhancement proposal
 about: Use to propose enhancements to the website's look and feel
 title: ''
-labels: defect
+labels: enhancement
 assignees: ''
 
 ---

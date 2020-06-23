@@ -2,7 +2,7 @@
 name: Update
 about: Use to post updates to the website
 title: ''
-labels: defect
+labels: update
 assignees: ''
 
 ---

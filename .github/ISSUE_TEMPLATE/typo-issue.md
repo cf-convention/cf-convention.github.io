@@ -2,7 +2,7 @@
 name: Typo
 about: Use to correct typographical errors
 title: ''
-labels: defect
+labels: typo
 assignees: ''
 
 ---

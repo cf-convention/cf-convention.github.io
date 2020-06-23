@@ -2,7 +2,7 @@
 name: GitHub issue
 about: Use to correct technical problems with GitHub
 title: ''
-labels: defect
+labels: github
 assignees: ''
 
 ---

@@ -1,6 +1,6 @@
 ---
 name: Defect
-about: Use to correct content mistakes
+about: Use to correct content mistakes found on the CF website
 title: ''
 labels: defect
 assignees: ''

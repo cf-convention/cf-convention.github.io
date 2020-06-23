@@ -1,6 +1,6 @@
 ---
 name: Typo
-about: Use to correct typographical errors
+about: Use to correct typographical errors on the CF website
 title: ''
 labels: typo
 assignees: ''

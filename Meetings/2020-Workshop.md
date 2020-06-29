@@ -82,7 +82,7 @@ verbally discussed with the presenter and everyone afterwards.
 
 **18:15 - Process Demo and Q&A (Daniel Lee) [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
 
-**19:00 - Adjourn to Virtual Social Hour + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
+**19:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour
 
 ### Wednesday, 10 June 2020 - Update, Road map, Tools, Current Enhancement Proposals
@@ -97,19 +97,20 @@ verbally discussed with the presenter and everyone afterwards.
 
 **17:30 - Breakouts for [Current Discussion Topics](#current-discussion-topics)**
 * Four Zoom breakout rooms with Google Documents for Notes
-  * **[Standard names](https://drive.google.com/drive/folders/1n6oM1aricNnwddUfaA28s3LHKVgGd_1J)** - [Zoom session link](https://eumetsat.zoom.us/j/95579038370?pwd=d1lZOWJBZDlxTkM4U1lnYVA2empSdz09)
-  * **[Cell methods](https://drive.google.com/drive/folders/16nI5kuEuft1s2y53rLOjocswVGUwe06c)** - [Zoom session link](https://eumetsat.zoom.us/j/5705037618?pwd=REtXNmtaNDdTNmE1dmZ0VFViTzd4dz09)
-  * **[Figure for bounds](https://drive.google.com/drive/folders/1SP8fhITvMosXcnRWLGSRqACHCWxDkqQ2)** - [Zoom session link](https://eumetsat.zoom.us/j/97592002298?pwd=Rjd3RDNPdzVzZm40R0JEa3R1S1BCQT09)
-  * **[Mesh or boundary variable](https://drive.google.com/drive/folders/1cR5iWfXox4cgOomIr7CoICERj0OXuRsh)** - [Zoom session link](https://eumetsat.zoom.us/j/99256914300?pwd=RkMyZExycWR2WGR6UFhxc3huMmwydz09)
+  * **[Standard names](2020-workshop/Standard-names-discussion-notes.pdf)**
+  * **Cell methods - [Notes](2020-workshop/Cell-methods-discussion-notes.pdf) & [presentation](2020-workshop/Cell_methods__Breakout-intro.pdf)
+  * **[Figure for bounds](2020-workshop/Figure-for-bounds-discussion-notes.pdf)
+  * **[Mesh or boundary variable](2020-workshop/Mesh-or-boundary-variable-discussion-notes.pdf)
  
-**19:00 - Adjourn to Virtual Social Hour + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
+**19:00 - Adjourn to Virtual Social Hour
 * Virtual Social Hour
 
 ### Thursday, 11 June 2020 - Current Enhancement Proposals, Wrap-up and Conclusions
 **16:00 UTC - Breakouts for [Current Discussion Topics](#current-discussion-topics)**
 * Four Zoom breakout rooms with Google Documents for Notes
-  * **[Metadata handling (provenance)](https://drive.google.com/drive/folders/1rVxkdFzFuya7rF0VlSeCE_xqZ8RDWj78)** - [Zoom session link](https://eumetsat.zoom.us/j/96292112820?pwd=dEgzZVNTU2ZObFZmV1N1b1VFQld3QT09)
-  * **[Subsampled coordinates](https://drive.google.com/drive/folders/1lCibg2P8W9J-Aag0SxOcxIC2SFgnsoH_)** - [Zoom session link](https://eumetsat.zoom.us/j/96533174273?pwd=aDFzSHlRbEJEVGNKUngwUmF3RXZpQT09)
+  * **[Metadata handling (provenance)](2020-workshop/Metadata-handling-provenance-discussion-notes.pdf)
+  * **Subsampled coordinates - [Notes](2020-workshop/Subsampled-coordinates-discussion-notes.pdf) & [presentation](2020-workshop/Subsampled-coordinates-in-CF-netCDF.pdf)
+  <!-- TODO: Resume from here -->
   * **[CRS WKT](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio)** - [Zoom session link](https://eumetsat.zoom.us/j/98950036908?pwd=WVNlVlZNRGJaWTU0aGJJVGNVaXpNZz09)
   * **[Moderation of proposals](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob)** - [Zoom session link](https://eumetsat.zoom.us/j/94128853090?pwd=WWJKbC9oWVJZT3VybUtYYmVaOURkUT09)
    

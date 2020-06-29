@@ -67,31 +67,31 @@ verbally discussed with the presenter and everyone afterwards.
 ## Agenda
 
 ### Tuesday, 9 June 2020 - Governance
-**16:00 UTC - Welcome and Introductions (David Hassell) [Questions/Discussion](2020-Workshop/CF meeting 2020 discussion topics.pdf)**
+**16:00 UTC - Welcome and Introductions (David Hassell) [Questions/Discussion](2020-Workshop/CF-meeting-2020-discussion-topics.pdf)**
 * A brief introduction to CF-netCDF
 
-**16:15 - CF Standard Names (Alison Pamment) [Questions/Discussion](2020-Workshop/CF meeting 2020 discussion topics.pdf)**
+**16:15 - CF Standard Names (Alison Pamment) [Questions/Discussion](2020-Workshop/CF-meeting-2020-discussion-topics.pdf)**
 * Overview - What are standard names?
 * Process, Creation, Tracking
 
-**17:30 - Governance (Ethan Davis) [Questions/Discussion](2020-Workshop/CF meeting 2020 discussion topics.pdf)**
+**17:30 - Governance (Ethan Davis) [Questions/Discussion](2020-Workshop/CF-meeting-2020-discussion-topics.pdf)**
 * Community
 * Constitution, Governance Panel, and Committee(s)
 * Contributors
 * Process: Conventions Document and Website
 
-**18:15 - Process Demo and Q&A (Daniel Lee) [Questions/Discussion](2020-Workshop/CF meeting 2020 discussion topics.pdf)**
+**18:15 - Process Demo and Q&A (Daniel Lee) [Questions/Discussion](2020-Workshop/CF-meeting-2020-discussion-topics.pdf)**
 
 **19:00 - Adjourn to Virtual Social Hour + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
 * Virtual Social Hour
 
 ### Wednesday, 10 June 2020 - Update, Road map, Tools, Current Enhancement Proposals
-**16:00 UTC - Road map: CF 1.8, CF 1.9, and Onward (David Hassell) [Questions/Discussion](2020-Workshop/CF meeting 2020 discussion topics.pdf)**
+**16:00 UTC - Road map: CF 1.8, CF 1.9, and Onward (David Hassell) [Questions/Discussion](2020-Workshop/CF-meeting-2020-discussion-topics.pdf)**
 * Review of CF-1.8
 * Road map for CF-1.9
 * The Future
 
-**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell) [Questions/Discussion](2020-Workshop/CF meeting 2020 discussion topics.pdf)**
+**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell) [Questions/Discussion](2020-Workshop/CF-meeting-2020-discussion-topics.pdf)**
 * CF Compliance Checkers
 * A data model reference implementation
 
@@ -113,10 +113,10 @@ verbally discussed with the presenter and everyone afterwards.
   * **[CRS WKT](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio)** - [Zoom session link](https://eumetsat.zoom.us/j/98950036908?pwd=WVNlVlZNRGJaWTU0aGJJVGNVaXpNZz09)
   * **[Moderation of proposals](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob)** - [Zoom session link](https://eumetsat.zoom.us/j/94128853090?pwd=WWJKbC9oWVJZT3VybUtYYmVaOURkUT09)
    
-**17:30 - Report out from Breakouts [Questions/Discussion](2020-Workshop/CF meeting 2020 discussion topics.pdf)**
+**17:30 - Report out from Breakouts [Questions/Discussion](2020-Workshop/CF-meeting-2020-discussion-topics.pdf)**
 * 5 minute summaries from each breakout topic
 
-**18:15 - Wrap-up and Conclusions (Antonio Cofiño) [Questions/Discussion](2020-Workshop/CF meeting 2020 discussion topics.pdf)**
+**18:15 - Wrap-up and Conclusions (Antonio Cofiño) [Questions/Discussion](2020-Workshop/CF-meeting-2020-discussion-topics.pdf)**
 * Overall summary and Wrap-up
 * Action Items and Decisions
 

@@ -50,9 +50,9 @@ Thanks for their support to:
 **17:30 - Breakouts for Current Discussion Topics
 * Four Zoom breakout rooms with Google Documents for Notes
   * **[Standard names](2020-workshop/Standard-names-discussion-notes.pdf)**
-  * **Cell methods - [Notes](2020-workshop/Cell-methods-discussion-notes.pdf) & [presentation](2020-workshop/Cell_methods__Breakout-intro.pdf)
-  * **[Figure for bounds](2020-workshop/Figure-for-bounds-discussion-notes.pdf)
-  * **[Mesh or boundary variable](2020-workshop/Mesh-or-boundary-variable-discussion-notes.pdf)
+  * **Cell methods** - [Notes](2020-workshop/Cell-methods-discussion-notes.pdf) & [presentation](2020-workshop/Cell_methods__Breakout-intro.pdf)
+  * **[Figure for bounds](2020-workshop/Figure-for-bounds-discussion-notes.pdf)**
+  * **[Mesh or boundary variable](2020-workshop/Mesh-or-boundary-variable-discussion-notes.pdf)**
 
 **19:00 - Adjourn to Virtual Social Hour
 * Virtual Social Hour

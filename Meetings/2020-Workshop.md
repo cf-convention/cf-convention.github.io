@@ -9,62 +9,18 @@ The 2020 CF Workshop will be virtual on 9-11 June 2020.
 The meeting will run for only 3 hours on each day, 16:00 to 19:00 UTC,
 and will be followed by a short purely social time for those who can, and want to, stay on.
 
-**Registration**
+Thanks for their support to:
+ - [University of Cantabria](https://web.unican.es/en/)
+ - [IS-ENES3](https://is.enes.org/) which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
+ - [EUMETSAT](https://www.eumetsat.int/)
 
-Please [register](https://forms.gle/RoKHT4h8hnBN23Pk7) so we can get an idea
-of the numbers of participants. There is, of course, no fee!
-The registration form also asks you to express your interest in the
-Current Discussion Topics sessions that will be discussed in the breakout sessions
-on day 2 and 3. Please select as many of these as are of interest, even though the discussions
-are happening in parallel, as it will be useful to have a rough idea of numbers for each session.
+## Agenda
 
 The list of discussion topics and a link to a
 [document](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit)
 that contains a very short summary of each topic is available below and on the registration
 form to help you decide which one, or ones, you might like to discuss.
 Many thanks to everyone who compiled it at short notice.
-
-**Participation Information**
-
-Connection details for the opening plenary session: <https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09>
-
-You can find the dial-in details for each plenary and breakout session inside the "Questions/Discussion" Google Docs linked next to each session's heading in the meeting agenda. These may also be accessed through the [2020 CF Workshop Google drive
-folder](https://drive.google.com/drive/folders/1LzgP7wwSzz55giCVZyk-4xiu28gp68Fg).
-
-**Online Meeting Etiquette**
-* Please include your complete name and institution in Video Conference platform display name:
-  FirstName LastName (Institution)
-* By default, keep your microphone muted unless you are speaking.
-  To preserve bandwidth, please keep the camera off unless speaking.
-* If you have a question or comment, please use the Google Doc that is linked
-  to the session to type your question/comment.
-  Please be succinct in both your questions and answers.
-
-**Suggestions, Comments on the agenda**
-
-Please make suggestion or comments on the CF Discuss GitHub repo "The 2020 CF Workshop"
-issue ([#53](https://github.com/cf-convention/discuss/issues/53)).
-
-Thanks for their support to:
- - [University of Cantabria](https://web.unican.es/en/)
- - [IS-ENES3](https://is.enes.org/) which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
- - [EUMETSAT](https://www.eumetsat.int/)
-
-## Questions, Discussion and note taking during the meeting
-
-The **[2020 CF Workshop Google drive
-folder](https://drive.google.com/drive/folders/1LzgP7wwSzz55giCVZyk-4xiu28gp68Fg)**
-contains the presentations and the Google Docs that will be a
-forum for asking questions and for general comment and
-discussion. Each breakout topic has its own sub-folder in
-which there is a Google Doc for notes; and any useful materials can be uploaded.
-The relevant documents and sub-folders for each session are linked from the agenda.
-
-In the plenary session presentations, questions can be asked and
-commented on by everyone in the Google Doc, and then these can be
-verbally discussed with the presenter and everyone afterwards.
-
-## Agenda
 
 ### Tuesday, 9 June 2020 - Governance
 **16:00 UTC - Welcome and Introductions (David Hassell) [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
@@ -101,7 +57,7 @@ verbally discussed with the presenter and everyone afterwards.
   * **Cell methods - [Notes](2020-workshop/Cell-methods-discussion-notes.pdf) & [presentation](2020-workshop/Cell_methods__Breakout-intro.pdf)
   * **[Figure for bounds](2020-workshop/Figure-for-bounds-discussion-notes.pdf)
   * **[Mesh or boundary variable](2020-workshop/Mesh-or-boundary-variable-discussion-notes.pdf)
- 
+
 **19:00 - Adjourn to Virtual Social Hour
 * Virtual Social Hour
 

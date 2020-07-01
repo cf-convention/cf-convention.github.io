@@ -38,16 +38,16 @@ Thanks for their support to:
 * Virtual Social Hour
 
 ### Wednesday, 10 June 2020 - Update, Road map, Tools, Current Enhancement Proposals
-**16:00 UTC - Road map: CF 1.8, CF 1.9, and Onward (David Hassell) [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
+**16:00 UTC - Road map: CF 1.8, CF 1.9, and Onward (David Hassell) [Questions/Discussion](2020-workshop/Plenary-discussion-notes.pdf)**
 * Review of CF-1.8
 * Road map for CF-1.9
 * The Future
 
-**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell) [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
+**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell) [Questions/Discussion](2020-workshop/Plenary-discussion-notes.pdf)**
 * CF Compliance Checkers
 * A data model reference implementation
 
-**17:30 - Breakouts for [Current Discussion Topics](#current-discussion-topics)**
+**17:30 - Breakouts for Current Discussion Topics
 * Four Zoom breakout rooms with Google Documents for Notes
   * **[Standard names](2020-workshop/Standard-names-discussion-notes.pdf)**
   * **Cell methods - [Notes](2020-workshop/Cell-methods-discussion-notes.pdf) & [presentation](2020-workshop/Cell_methods__Breakout-intro.pdf)
@@ -58,7 +58,7 @@ Thanks for their support to:
 * Virtual Social Hour
 
 ### Thursday, 11 June 2020 - Current Enhancement Proposals, Wrap-up and Conclusions
-**16:00 UTC - Breakouts for [Current Discussion Topics](#current-discussion-topics)**
+**16:00 UTC - Breakouts for Current Discussion Topics
 * Four Zoom breakout rooms with Google Documents for Notes
   * **[Metadata handling (provenance)](2020-workshop/Metadata-handling-provenance-discussion-notes.pdf)
   * **Subsampled coordinates - [Notes](2020-workshop/Subsampled-coordinates-discussion-notes.pdf) & [presentation](2020-workshop/Subsampled-coordinates-in-CF-netCDF.pdf)

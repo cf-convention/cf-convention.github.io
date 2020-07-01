@@ -19,20 +19,20 @@ Thanks for their support to:
 [This document provides a brief summary of each topic discussed](2020-workshop/CF-meeting-2020-discussion-topics.pdf).
 
 ### Tuesday, 9 June 2020 - Governance
-**16:00 UTC - Welcome and Introductions (David Hassell) [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
+**16:00 UTC - Welcome and Introductions (David Hassell) [Questions/Discussion](2020-workshop/Plenary-discussion-notes.pdf)**
 * A brief introduction to CF-netCDF
 
-**16:15 - CF Standard Names (Alison Pamment) [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
+**16:15 - CF Standard Names (Alison Pamment) [Questions/Discussion](2020-workshop/Plenary-discussion-notes.pdf)**
 * Overview - What are standard names?
 * Process, Creation, Tracking
 
-**17:30 - Governance (Ethan Davis) [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
+**17:30 - Governance (Ethan Davis) [Questions/Discussion](2020-workshop/Plenary-discussion-notes.pdf)**
 * Community
 * Constitution, Governance Panel, and Committee(s)
 * Contributors
 * Process: Conventions Document and Website
 
-**18:15 - Process Demo and Q&A (Daniel Lee) [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
+**18:15 - Process Demo and Q&A (Daniel Lee) [Questions/Discussion](2020-workshop/Plenary-discussion-notes.pdf)**
 
 **19:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour

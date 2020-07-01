@@ -65,10 +65,10 @@ Thanks for their support to:
   * **[CRS WKT](2020-workshop/CRS-WKT-discussion-notes.pdf)**
   * **[Moderation of proposals](2020-workshop/Moderation-of-proposals-discussion-notes.pdf)**
 
-**17:30 - Report out from Breakouts [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
+**17:30 - Report out from Breakouts [Questions/Discussion](2020-workshop/Plenary-discussion-notes.pdf)**
 * 5 minute summaries from each breakout topic
 
-**18:15 - Wrap-up and Conclusions (Antonio Cofiño) [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
+**18:15 - Wrap-up and Conclusions (Antonio Cofiño) [Questions/Discussion](2020-workshop/Plenary-discussion-notes.pdf)**
 * Overall summary and Wrap-up
 * Action Items and Decisions
 

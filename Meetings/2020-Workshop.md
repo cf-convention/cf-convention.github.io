@@ -16,7 +16,7 @@ Thanks for their support to:
 
 ## Agenda
 
-[This document provides a brief summary of each topic discussed](2020-workshop/Subsampled-coordinates-discussion-notes.pdf).
+[This document provides a brief summary of each topic discussed](2020-workshop/CF-meeting-2020-discussion-topics.pdf).
 
 ### Tuesday, 9 June 2020 - Governance
 **16:00 UTC - Welcome and Introductions (David Hassell) [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**

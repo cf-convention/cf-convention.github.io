@@ -16,11 +16,7 @@ Thanks for their support to:
 
 ## Agenda
 
-The list of discussion topics and a link to a
-[document](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
-that contains a very short summary of each topic is available below and on the registration
-form to help you decide which one, or ones, you might like to discuss.
-Many thanks to everyone who compiled it at short notice.
+[This document provides a brief summary of each topic discussed](2020-workshop/Subsampled-coordinates-discussion-notes.pdf).
 
 ### Tuesday, 9 June 2020 - Governance
 **16:00 UTC - Welcome and Introductions (David Hassell) [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
@@ -66,9 +62,8 @@ Many thanks to everyone who compiled it at short notice.
 * Four Zoom breakout rooms with Google Documents for Notes
   * **[Metadata handling (provenance)](2020-workshop/Metadata-handling-provenance-discussion-notes.pdf)
   * **Subsampled coordinates - [Notes](2020-workshop/Subsampled-coordinates-discussion-notes.pdf) & [presentation](2020-workshop/Subsampled-coordinates-in-CF-netCDF.pdf)
-  <!-- TODO: Resume from here -->
-  * **[CRS WKT](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio)** - [Zoom session link](https://eumetsat.zoom.us/j/98950036908?pwd=WVNlVlZNRGJaWTU0aGJJVGNVaXpNZz09)
-  * **[Moderation of proposals](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob)** - [Zoom session link](https://eumetsat.zoom.us/j/94128853090?pwd=WWJKbC9oWVJZT3VybUtYYmVaOURkUT09)
+  * **[CRS WKT](2020-workshop/CRS-WKT-discussion-notes.pdf)**
+  * **[Moderation of proposals](2020-workshop/Moderation-of-proposals-discussion-notes.pdf)**
 
 **17:30 - Report out from Breakouts [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
 * 5 minute summaries from each breakout topic
@@ -77,53 +72,10 @@ Many thanks to everyone who compiled it at short notice.
 * Overall summary and Wrap-up
 * Action Items and Decisions
 
-**19:00 - Adjourn to Virtual Social Hour + [Zoom session link](https://eumetsat.zoom.us/j/9636813552?pwd=VTFudW5iQ0M2VWFRSFpFV215YUZ4QT09)**
+**19:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour
 
-## Current Discussion Topics
-
-* **Standard Names**
-  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
-  * [GoogleDoc](https://drive.google.com/drive/folders/1n6oM1aricNnwddUfaA28s3LHKVgGd_1J) for Note Taking and Report Out
-
-* **Cell methods: "within"\|"over" "days"\|"months" and time axis (Section 7.4)**
-  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
-  * [GoogleDoc](https://drive.google.com/drive/folders/16nI5kuEuft1s2y53rLOjocswVGUwe06c) for Note Taking and Report Out
-  * See [Conventions Issue #197](https://github.com/cf-convention/cf-conventions/issues/197)
-
-* **Standard way to define subsampled coordinates**
-  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
-  * [GoogleDoc](https://drive.google.com/drive/folders/1lCibg2P8W9J-Aag0SxOcxIC2SFgnsoH_) for Note Taking and Report Out
-  * See [Discussion Issue #37](https://github.com/cf-convention/discuss/issues/37)
- 
-* **"mesh variable" instead of "boundary variable" for contiguous grid cells**
-  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
-  * [GoogleDoc](https://drive.google.com/drive/folders/1cR5iWfXox4cgOomIr7CoICERj0OXuRsh) for Note Taking and Report Out
-  * See [Discussion Issue #5](https://github.com/cf-convention/discuss/issues/5)
- 
-* **Metadata handling through processes**
-  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
-  * [GoogleDoc](https://drive.google.com/drive/folders/1rVxkdFzFuya7rF0VlSeCE_xqZ8RDWj78) for Note Taking and Report Out
-  * See [Discussion Issue #33](https://github.com/cf-convention/discuss/issues/33)
- 
-* **Allow CRS WKT to represent the CRS without requiring comparison with grid mapping parameters**
-  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
-  * [GoogleDoc](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio) for Note Taking and Report Out
-  * See [Conventions Issue #222](https://github.com/cf-convention/cf-conventions/issues/222)
- 
-* **Adding figure to paragraph "Bounds for 2-D coordinate variables with 4-sided cells" in Section 7.1 on bounds**
-  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
-  * [GoogleDoc](https://drive.google.com/drive/folders/1SP8fhITvMosXcnRWLGSRqACHCWxDkqQ2) for Note Taking and Report Out
-  * See [Conventions Issue #193](https://github.com/cf-convention/cf-conventions/issues/193)
- 
-* **Moderation of proposals?**
-  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
-  * [GoogleDoc](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob) for Note Taking and Report Out
-  * See [Conventions Issue #151](https://github.com/cf-convention/cf-conventions/issues/151)
-
------
-
-**The organising committee**
+## The organising committee
 
 Jim Biard, Dave Blodgett, Kevin O'Brien, Antonio Cofiño, Ethan Davis,
 David Hassell, Jessica Hausman, Aleksandar Jelenak, Daniel Lee,

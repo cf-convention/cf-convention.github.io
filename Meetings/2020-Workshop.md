@@ -5,11 +5,11 @@ title: 2020 CF Workshop
 
 # 2020 CF Workshop
 
-The 2020 CF Workshop will be virtual on 9-11 June 2020.
-The meeting will run for only 3 hours on each day, 16:00 to 19:00 UTC,
-and will be followed by a short purely social time for those who can, and want to, stay on.
+The 2020 CF Workshop took place virtually on 9-11 June 2020.
+The meeting ran for 3 hours on each day, 16:00 to 19:00 UTC,
+and was followed by a short purely social time for those who could and wanted to stay on.
 
-Thanks for their support to:
+Thanks for their support is extended to to:
  - [University of Cantabria](https://web.unican.es/en/)
  - [IS-ENES3](https://is.enes.org/) which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
  - [EUMETSAT](https://www.eumetsat.int/)
@@ -47,21 +47,21 @@ Thanks for their support to:
 * CF Compliance Checkers
 * A data model reference implementation
 
-**17:30 - Breakouts for Current Discussion Topics
+**17:30 - Breakouts for Current Discussion Topics**
 * Four Zoom breakout rooms with Google Documents for Notes
   * **[Standard names](2020-workshop/Standard-names-discussion-notes.pdf)**
   * **Cell methods** - [Notes](2020-workshop/Cell-methods-discussion-notes.pdf) & [presentation](2020-workshop/Cell_methods__Breakout-intro.pdf)
   * **[Figure for bounds](2020-workshop/Figure-for-bounds-discussion-notes.pdf)**
   * **[Mesh or boundary variable](2020-workshop/Mesh-or-boundary-variable-discussion-notes.pdf)**
 
-**19:00 - Adjourn to Virtual Social Hour
+**19:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour
 
 ### Thursday, 11 June 2020 - Current Enhancement Proposals, Wrap-up and Conclusions
-**16:00 UTC - Breakouts for Current Discussion Topics
+**16:00 UTC - Breakouts for Current Discussion Topics**
 * Four Zoom breakout rooms with Google Documents for Notes
-  * **[Metadata handling (provenance)](2020-workshop/Metadata-handling-provenance-discussion-notes.pdf)
-  * **Subsampled coordinates - [Notes](2020-workshop/Subsampled-coordinates-discussion-notes.pdf) & [presentation](2020-workshop/Subsampled-coordinates-in-CF-netCDF.pdf)
+  * **[Metadata handling (provenance)](2020-workshop/Metadata-handling-provenance-discussion-notes.pdf)**
+  * **Subsampled coordinates** - [Notes](2020-workshop/Subsampled-coordinates-discussion-notes.pdf) & [presentation](2020-workshop/Subsampled-coordinates-in-CF-netCDF.pdf)
   * **[CRS WKT](2020-workshop/CRS-WKT-discussion-notes.pdf)**
   * **[Moderation of proposals](2020-workshop/Moderation-of-proposals-discussion-notes.pdf)**
 

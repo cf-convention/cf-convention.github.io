@@ -17,7 +17,7 @@ Thanks for their support to:
 ## Agenda
 
 The list of discussion topics and a link to a
-[document](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit)
+[document](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
 that contains a very short summary of each topic is available below and on the registration
 form to help you decide which one, or ones, you might like to discuss.
 Many thanks to everyone who compiled it at short notice.
@@ -69,7 +69,7 @@ Many thanks to everyone who compiled it at short notice.
   <!-- TODO: Resume from here -->
   * **[CRS WKT](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio)** - [Zoom session link](https://eumetsat.zoom.us/j/98950036908?pwd=WVNlVlZNRGJaWTU0aGJJVGNVaXpNZz09)
   * **[Moderation of proposals](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob)** - [Zoom session link](https://eumetsat.zoom.us/j/94128853090?pwd=WWJKbC9oWVJZT3VybUtYYmVaOURkUT09)
-   
+
 **17:30 - Report out from Breakouts [Questions/Discussion](2020-workshop/CF-meeting-2020-discussion-topics.pdf)**
 * 5 minute summaries from each breakout topic
 
@@ -83,41 +83,41 @@ Many thanks to everyone who compiled it at short notice.
 ## Current Discussion Topics
 
 * **Standard Names**
-  * [Summary Statement](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit#heading=h.uz8gofyci4rg)
+  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
   * [GoogleDoc](https://drive.google.com/drive/folders/1n6oM1aricNnwddUfaA28s3LHKVgGd_1J) for Note Taking and Report Out
-  
+
 * **Cell methods: "within"\|"over" "days"\|"months" and time axis (Section 7.4)**
-  * [Summary Statement](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit#heading=h.jykkruknxpn1)
+  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
   * [GoogleDoc](https://drive.google.com/drive/folders/16nI5kuEuft1s2y53rLOjocswVGUwe06c) for Note Taking and Report Out
   * See [Conventions Issue #197](https://github.com/cf-convention/cf-conventions/issues/197)
- 
+
 * **Standard way to define subsampled coordinates**
-  * [Summary Statement](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit#heading=h.npjzrt8h11om) 
+  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
   * [GoogleDoc](https://drive.google.com/drive/folders/1lCibg2P8W9J-Aag0SxOcxIC2SFgnsoH_) for Note Taking and Report Out
   * See [Discussion Issue #37](https://github.com/cf-convention/discuss/issues/37)
  
 * **"mesh variable" instead of "boundary variable" for contiguous grid cells**
-  * [Summary Statement](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit#heading=h.7u2qc3amtkb) 
+  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
   * [GoogleDoc](https://drive.google.com/drive/folders/1cR5iWfXox4cgOomIr7CoICERj0OXuRsh) for Note Taking and Report Out
   * See [Discussion Issue #5](https://github.com/cf-convention/discuss/issues/5)
  
 * **Metadata handling through processes**
-  * [Summary Statement](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit#heading=h.4k5u5woia0ke) 
+  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
   * [GoogleDoc](https://drive.google.com/drive/folders/1rVxkdFzFuya7rF0VlSeCE_xqZ8RDWj78) for Note Taking and Report Out
   * See [Discussion Issue #33](https://github.com/cf-convention/discuss/issues/33)
  
 * **Allow CRS WKT to represent the CRS without requiring comparison with grid mapping parameters**
-  * [Summary Statement](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit#heading=h.ao5tcxspvnmy) 
+  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
   * [GoogleDoc](https://drive.google.com/drive/folders/1NU0P_2YQ-YevGiUc7PjiRtZ2MI04Qtio) for Note Taking and Report Out
   * See [Conventions Issue #222](https://github.com/cf-convention/cf-conventions/issues/222)
  
 * **Adding figure to paragraph "Bounds for 2-D coordinate variables with 4-sided cells" in Section 7.1 on bounds**
-  * [Summary Statement](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit#heading=h.wpbusqqe4vz2) 
+  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
   * [GoogleDoc](https://drive.google.com/drive/folders/1SP8fhITvMosXcnRWLGSRqACHCWxDkqQ2) for Note Taking and Report Out
   * See [Conventions Issue #193](https://github.com/cf-convention/cf-conventions/issues/193)
  
 * **Moderation of proposals?**
-  * [Summary Statement](https://docs.google.com/document/d/1urPWngzDCuHTrfpA8nedGoRDVKXs5OmjqO8M6i3UZJM/edit#heading=h.jof6l6da7mbf)
+  * [Summary Statement](2020-workshop/Subsampled-coordinates-discussion-notes.pdf)
   * [GoogleDoc](https://drive.google.com/drive/folders/1_XSieZc9IewaFgjzLyuXHaltnb5tqZob) for Note Taking and Report Out
   * See [Conventions Issue #151](https://github.com/cf-convention/cf-conventions/issues/151)
 

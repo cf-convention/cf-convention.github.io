@@ -70,7 +70,7 @@ Thanks for their support is extended to to:
 **17:30 - Report out from Breakouts**
 * 5 minute summaries from each breakout topic
 
-**18:15 - Wrap-up and Conclusions (Antonio Cofiño)**
+**18:15 - Wrap-up and Conclusions (Antonio Cofiño)** - [Presentation](2020-workshop/Day3_18_15Z_Wrap-upAndConclussions_AntonioSCofino.pdf)
 * Overall summary and Wrap-up
 * Action Items and Decisions
 

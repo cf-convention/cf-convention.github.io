@@ -40,14 +40,14 @@ Thanks for their support is extended to to:
 * Virtual Social Hour
 
 ### Wednesday, 10 June 2020 - Update, Road map, Tools, Current Enhancement Proposals
-**16:00 UTC - Road map: CF 1.8, CF 1.9, and Onward (David Hassell)**
+**16:00 UTC - Road map: CF 1.8, CF 1.9, and Onward (David Hassell)** - [Presentation](2020-workshop/CF_meeting_2020_Roadmap.pdf)
 * Review of CF-1.8
 * Road map for CF-1.9
 * The Future
 
-**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell)**
-* CF Compliance Checkers
-* A data model reference implementation
+**16:30 - Software Tools and keeping up to date with CF (Kevin O'Brien, Robert Fratantonio, Rosalyn Hatcher, David Hassell)** - [Session summary](2020-workshop/Summary-of-the-CF-Software-tools-session.pdf)
+* IOOS Compliance Checker - [Presentation](2020-workshop/IOOS_Compliance_Checker.pdf)
+* A data model reference implementation - [Jupyter Notebook](2020-workshop/CF_2020_cfdm_demo.ipynb)
 
 **17:30 - Breakouts for Current Discussion Topics**
 * Four Zoom breakout rooms with Google Documents for Notes

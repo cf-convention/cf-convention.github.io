@@ -20,7 +20,7 @@ changes to goverance procedures and the CF committees, the use of
 GitHub as the primary repository for CF and a review of recent and
 upcoming changes to the conventions.
 
-The **tools** session (1 hour) contained three demonstrations of
+The **tools** session (1 hour) comprised three demonstrations of
 generic tools that could be useful to the CF community - two CF
 checkers and a reference implementation of the CF data model. This was
 a new addition to recent annual meetings, and one that will surely be

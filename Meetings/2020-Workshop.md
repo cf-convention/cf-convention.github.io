@@ -5,7 +5,7 @@ title: 2020 CF Workshop
 
 # 2020 CF Workshop
 
-The 2020 CF Workshop took place virtually on 9-11 June 2020.  The
+The 2020 CF Workshop took place virtually on 9-11 June 2020. The
 meeting ran for 3 hours on each day, 16:00 to 19:00 UTC, and was
 followed by a short purely social time for those who could and wanted
 to stay on.
@@ -13,21 +13,22 @@ to stay on.
 The workshop had three main themes: Goverance, Tools, and Current
 Enhancement Proposals.
 
-The goverance sesssions (3.5 hours) covered standard names, recent
+The **goverance** sesssions (3.5 hours) covered standard names, recent
 changes to goverance procedures and the CF committees, the use of
 GitHub as the primary repository for CF and a review of recent and
 upcoming changes to the conventions.
 
-The tools session (1 hour) contained three demonstrations of generic
-tools that could be useful to the CF community - two CF checkers and a
-reference implementation of the CF data model. This was a new addition
-to the annual meeting, and one that will surely be repeated.
+The **tools** session (1 hour) contained three demonstrations of
+generic tools that could be useful to the CF community - two CF
+checkers and a reference implementation of the CF data model. This was
+a new addition to the annual meeting, and one that will surely be
+repeated.
 
 The remining time (4.75 hours) was devoted to eight breakout
 discussions, with four occuring in parallel on each of two days. Seven
 of the sessions focussed on furthering the progress of an open
-enhancement in the GithUb issue tracker, with the other session
-devoted to a general discussion on standard names.
+**enhancement proposals** in the GithUb issue tracker, with the other
+session devoted to a general discussion on standard names.
 
 
 Thanks for their support is extended to to:

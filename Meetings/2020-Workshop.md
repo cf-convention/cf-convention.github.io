@@ -10,8 +10,8 @@ meeting ran for 3 hours on each day, 16:00 to 19:00 UTC, and was
 followed by a short purely social time for those who could and wanted
 to stay on.
 
-The workshop had three main themes: Goverance, Tools, and Current
-Enhancement Proposals.
+The workshop had three main themes: **goverance**, **tools**, and
+**current enhancement proposals**.
 
 The **goverance** sesssions (3.5 hours) covered standard names, recent
 changes to goverance procedures and the CF committees, the use of

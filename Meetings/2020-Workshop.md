@@ -8,7 +8,9 @@ title: 2020 CF Workshop
 The 2020 CF Workshop took place virtually on 9-11 June 2020. The
 meeting ran for 3 hours on each day, 16:00 to 19:00 UTC, and was
 followed by a short purely social time for those who could and wanted
-to stay on.
+to stay on. There was a high level of interest through out the CF
+community, with 132 people registering from 15 countries (mainly from
+the Americas and Europe), and 65-90 people attending each day session.
 
 The workshop had three main themes: **goverance**, **tools**, and
 **current enhancement proposals**.

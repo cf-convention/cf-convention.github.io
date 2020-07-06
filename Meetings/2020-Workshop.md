@@ -24,12 +24,15 @@ checkers and a reference implementation of the CF data model. This was
 a new addition to the annual meeting, and one that will surely be
 repeated.
 
-The remining time (3.75 hours) was devoted to eight breakout
-discussions, with four occuring in parallel on each of two days. Seven
-of the sessions focussed on furthering the progress of an open
-**enhancement proposals** in the GithUb issue tracker, with the other
-session devoted to a general discussion on standard names.
+The **current enhancement proposals** sessions (3.75 hours) were
+devoted to eight breakout discussions, with four occuring in parallel
+on each of two days. Seven of the sessions focussed on furthering the
+progress of an open enhancement proposals in the GithUb issue tracker,
+with the other session devoted to a general discussion on standard
+names.
 
+The meeting finished with an overview (0.75 hours) of the topics
+covered, and highlighing points raised during the workshop.
 
 Thanks for their support is extended to to:
  - [University of Cantabria](https://web.unican.es/en/)

@@ -24,7 +24,7 @@ checkers and a reference implementation of the CF data model. This was
 a new addition to the annual meeting, and one that will surely be
 repeated.
 
-The remining time (4.75 hours) was devoted to eight breakout
+The remining time (3.75 hours) was devoted to eight breakout
 discussions, with four occuring in parallel on each of two days. Seven
 of the sessions focussed on furthering the progress of an open
 **enhancement proposals** in the GithUb issue tracker, with the other

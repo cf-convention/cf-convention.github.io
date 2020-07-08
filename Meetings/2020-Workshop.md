@@ -45,7 +45,7 @@ Thanks for their support is extended to to:
 
 [This document provides a brief summary of each topic discussed](2020-workshop/CF-meeting-2020-discussion-topics.pdf).
 
-[This document presents the questions and discussion that took place during the meeting in full](2020-Workshop/Plenary-discussion-notes.pdf).
+[This document presents the questions and discussion that took place during the meeting in full](2020-workshop/Plenary-discussion-notes.pdf).
 
 ### Tuesday, 9 June 2020 - Governance
 **16:00 UTC - Welcome and Introductions (David Hassell)** - [Presentation](2020-workshop/Introduction_to_CF-netCDF.pdf)

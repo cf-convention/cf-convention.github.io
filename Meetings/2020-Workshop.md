@@ -5,6 +5,7 @@ title: 2020 CF Workshop
 
 # 2020 CF Workshop
 
+## Executive summary
 The 2020 CF Workshop took place virtually on 9-11 June 2020. The
 meeting ran for 3 hours on each day, 16:00 to 19:00 UTC, and was
 followed by a short purely social time for those who could and wanted

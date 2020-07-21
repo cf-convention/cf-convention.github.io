@@ -36,6 +36,7 @@ names.
 
 The meeting finished with an overview (0.75 hours) of the topics
 covered, and highlighing points raised during the workshop.
+Actions resulting from this meeting are tracked in [a dedicated board](https://github.com/orgs/cf-convention/projects/1).
 
 Thanks for their support is extended to to:
  - [University of Cantabria](https://web.unican.es/en/)

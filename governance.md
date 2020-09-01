@@ -40,6 +40,8 @@ group: "navigation"
 * Daniel Lee
 * Karl Taylor
 
+[Minutes](Governance/GovPanel/meeting-minutes.md) from meetings/discussions
+
 ### Information Management and Support
 
 * Martin Desruisseaux (Geomatys)

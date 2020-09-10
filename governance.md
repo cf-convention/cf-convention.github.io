@@ -40,6 +40,8 @@ group: "navigation"
 * Daniel Lee
 * Karl Taylor
 
+CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
+
 ### Information Management and Support
 
 * Martin Desruisseaux (Geomatys)

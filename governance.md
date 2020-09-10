@@ -40,7 +40,7 @@ group: "navigation"
 * Daniel Lee
 * Karl Taylor
 
-[Minutes](Governance/GovPanel/meeting-minutes.md) from meetings/discussions
+CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 
 ### Information Management and Support
 

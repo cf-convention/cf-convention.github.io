@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <standard_name_table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cf-standard-name-table-1.1.xsd">
-   <version_number>74</version_number>
-   <last_modified>2020-08-04T14:43:55Z</last_modified>
+   <version_number>75</version_number>
+   <last_modified>2020-09-15T14:45:31Z</last_modified>
    <institution>Centre for Environmental Data Analysis</institution>
    <contact>support@ceda.ac.uk</contact>
 
@@ -300,6 +300,13 @@
       <description>The &quot;Angstrom exponent&quot; appears in the formula relating aerosol optical thickness to the wavelength of incident radiation: T(lambda) = T(lambda0) * [lambda/lambda0] ** (-1 * alpha) where alpha is the Angstrom exponent, lambda is the wavelength of incident radiation, lambda0 is a reference wavelength, T(lambda) and T(lambda0) are the values of aerosol optical thickness at wavelengths lambda and lambda0, respectively. &quot;Aerosol&quot; means the system of suspended liquid or solid particles in air (except cloud droplets) and their carrier gas, the air itself. &quot;Ambient_aerosol&quot; means that the aerosol is measured or modelled at the ambient state of pressure, temperature and relative humidity that exists in its immediate environment. &quot;Ambient aerosol particles&quot; are aerosol particles that have taken up ambient water through hygroscopic growth. The extent of hygroscopic growth depends on the relative humidity and the composition of the particles. To specify the relative humidity and temperature at which the quantity described by the standard name applies, provide scalar coordinate variables with standard names of &quot;relative_humidity&quot; and &quot;air_temperature&quot;.</description>
    </entry>
   
+   <entry id="apparent_air_temperature">
+      <canonical_units>K</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>Air temperature is the bulk temperature of the air, not the surface (skin) temperature. The quantity with standard name apparent_air_temperature is the perceived air temperature derived from either a combination of temperature and wind (which has standard name wind_chill_of_air_temperature) or temperature and humidity (which has standard name heat_index_of_air_temperature) for the hour indicated by the time coordinate variable. When the air temperature falls to 283.15 K or below, wind chill is used for the apparent_air_temperature. When the air temperature rises above 299.817 K, the heat index is used for apparent_air_temperature. For temperatures above 283.15 and below 299.817K, the apparent_air_temperature is the ambient air temperature (which has standard name air_temperature). References: https://digital.weather.gov/staticpages/definitions.php; WMO codes registry entry http://codes.wmo.int/grib2/codeflag/4.2/_0-0-21.</description>
+   </entry>
+  
    <entry id="apparent_oxygen_utilization">
       <canonical_units>mol kg-1</canonical_units>
       <grib></grib>
@@ -354,13 +361,6 @@
       <grib></grib>
       <amip></amip>
       <description>The asymmetry factor is the angular integral of the aerosol scattering phase function weighted by the cosine of the angle with the incident radiation flux. The asymmetry coefficient is assumed to be an integral over all wavelengths, unless a coordinate of radiation_wavelength is included to specify the wavelength. &quot;Aerosol&quot; means the system of suspended liquid or solid particles in air (except cloud droplets) and their carrier gas, the air itself. &quot;Ambient_aerosol&quot; means that the aerosol is measured or modelled at the ambient state of pressure, temperature and relative humidity that exists in its immediate environment. &quot;Ambient aerosol particles&quot; are aerosol particles that have taken up ambient water through hygroscopic growth. The extent of hygroscopic growth depends on the relative humidity and the composition of the particles. To specify the relative humidity and temperature at which the quantity described by the standard name applies, provide scalar coordinate variables with standard names of &quot;relative_humidity&quot; and &quot;air_temperature&quot;.</description>
-   </entry>
-  
-   <entry id="atmosphere_absolute_vorticity">
-      <canonical_units>s-1</canonical_units>
-      <grib>41</grib>
-      <amip></amip>
-      <description>Absolute vorticity is the sum of relative vorticity and the upward component of vorticity due to the Earth&#39;s rotation.</description>
    </entry>
   
    <entry id="atmosphere_absorption_optical_thickness_due_to_ambient_aerosol_particles">
@@ -522,6 +522,13 @@
       <grib></grib>
       <amip></amip>
       <description>&quot;Content&quot; indicates a quantity per unit area. The &quot;atmosphere content&quot; of a quantity refers to the vertical integral from the surface to the top of the atmosphere. For the content between specified levels in the atmosphere, standard names including content_of_atmosphere_layer are used.</description>
+   </entry>
+  
+   <entry id="atmosphere_layer_thickness_expressed_as_geopotential_height_difference">
+      <canonical_units>m</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name atmosphere_layer_thickness_expressed_as_geopotential_height_difference is the difference of geopotential height between two atmospheric levels. &quot;Layer&quot; means any layer with upper and lower boundaries that have constant values in some vertical coordinate. There must be a vertical coordinate variable indicating the extent of the layer(s). If the layers are model layers, the vertical coordinate can be &quot;model_level_number&quot;, but it is recommended to specify a physical coordinate (in a scalar or auxiliary coordinate variable) as well. &quot;Thickness&quot; means the vertical extent of a layer. Geopotential is the sum of the specific gravitational potential energy relative to the geoid and the specific centripetal potential energy. Geopotential height is the geopotential divided by the standard acceleration due to gravity. It is numerically similar to the altitude (or geometric height) and not to the quantity with standard name &quot;height&quot;, which is relative to the surface.</description>
    </entry>
   
    <entry id="atmosphere_level_of_free_convection">
@@ -2295,13 +2302,6 @@
       <description>&quot;Content&quot; indicates a quantity per unit area. The &quot;atmosphere content&quot; of a quantity refers to the vertical integral from the surface to the top of the atmosphere. For the content between specified levels in the atmosphere, standard names including content_of_atmosphere_layer are used. Potential energy is the sum of the gravitational potential energy relative to the geoid and the centripetal potential energy. (The geopotential is the specific potential energy.)</description>
    </entry>
   
-   <entry id="atmosphere_relative_vorticity">
-      <canonical_units>s-1</canonical_units>
-      <grib>43 E138</grib>
-      <amip></amip>
-      <description>Relative vorticity is the upward component of the vorticity vector i.e. the component which arises from horizontal velocity.</description>
-   </entry>
-  
    <entry id="atmosphere_sigma_coordinate">
       <canonical_units>1</canonical_units>
       <grib></grib>
@@ -2349,6 +2349,20 @@
       <grib></grib>
       <amip></amip>
       <description>The atmosphere convective mass flux is the vertical transport of mass for a field of cumulus clouds or thermals, given by the product of air density and vertical velocity. For an area-average, cell_methods should specify whether the average is over all the area or the area of updrafts and/or downdrafts only. &quot;Updraft&quot; means that the flux is positive in the updward direction (negative downward). upward. In accordance with common usage in geophysical disciplines, &quot;flux&quot; implies per unit area, called &quot;flux density&quot; in physics.</description>
+   </entry>
+  
+   <entry id="atmosphere_upward_absolute_vorticity">
+      <canonical_units>s-1</canonical_units>
+      <grib>41</grib>
+      <amip></amip>
+      <description>Atmosphere upward absolute vorticity is the sum of the atmosphere upward relative vorticity and the vertical component of vorticity due to the Earth’s rotation. In contrast, the quantity with standard name atmosphere_upward_relative_vorticity excludes the Earth&#39;s rotation. Vorticity is a vector quantity. &quot;Upward&quot; indicates a vector component which is positive when directed upward (negative downward). A positive value of atmosphere_upward_absolute_vorticity indicates anticlockwise rotation when viewed from above.</description>
+   </entry>
+  
+   <entry id="atmosphere_upward_relative_vorticity">
+      <canonical_units>s-1</canonical_units>
+      <grib>43 E138</grib>
+      <amip></amip>
+      <description>Atmosphere upward relative vorticity is the vertical component of the 3D air vorticity vector. The vertical component arises from horizontal velocity only. &quot;Relative&quot; in this context means the vorticity of the air relative to the rotating solid earth reference frame, i.e. excluding the Earth&#39;s own rotation. In contrast, the quantity with standard name atmosphere_upward_absolute_vorticity includes the Earth&#39;s rotation. &quot;Upward&quot; indicates a vector component which is positive when directed upward (negative downward). A positive value of atmosphere_upward_relative_vorticity indicates anticlockwise rotation when viewed from above.</description>
    </entry>
   
    <entry id="attenuated_signal_test_quality_flag">
@@ -3653,11 +3667,32 @@
       <description>&quot;Eastward&quot; indicates a vector component which is positive when directed eastward (negative westward). Transport across_unit_distance means expressed per unit distance normal to the direction of transport.</description>
    </entry>
   
+   <entry id="eastward_derivative_of_eastward_wind">
+      <canonical_units>s-1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name eastward_derivative_of_eastward_wind is the derivative of the eastward component of wind with respect to distance in the eastward direction for a given atmospheric level. The phrase &quot;component_derivative_of_X&quot; means derivative of X with respect to distance in the component direction, which may be &quot;northward&quot;, &quot;southward&quot;, &quot;eastward&quot;, &quot;westward&quot;, &quot;upward&quot;, &quot;downward&quot;, &quot;x&quot; or &quot;y&quot;. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude. A positive value indicates that X is increasing with distance along the positive direction of the axis. Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name &quot;upward_air_velocity&quot;).</description>
+   </entry>
+  
    <entry id="eastward_derivative_of_northward_sea_ice_velocity">
       <canonical_units>s-1</canonical_units>
       <grib></grib>
       <amip></amip>
       <description>A velocity is a vector quantity. &quot;Eastward&quot; indicates a vector component which is positive when directed eastward (negative westward). &quot;Northward&quot; indicates a vector component which is positive when directed northward (negative southward). Sea ice velocity is defined as a two-dimensional vector, with no vertical component. &quot;component_derivative_of_X&quot; means derivative of X with respect to distance in the component direction, which may be northward, southward, eastward, westward, x or y. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude. The named quantity is a component of the strain rate tensor for sea ice. &quot;Sea ice&quot; means all ice floating in the sea which has formed from freezing sea water, rather than by other processes such as calving of land ice to form icebergs.</description>
+   </entry>
+  
+   <entry id="eastward_derivative_of_northward_wind">
+      <canonical_units>s-1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name eastward_derivative_of_northward_wind is the derivative of the northward component of wind with respect to distance in the eastward direction for a given atmospheric level. The phrase &quot;component_derivative_of_X&quot; means derivative of X with respect to distance in the component direction, which may be &quot;northward&quot;, &quot;southward&quot;, &quot;eastward&quot;, &quot;westward&quot;, &quot;upward&quot;, &quot;downward&quot;, &quot;x&quot; or &quot;y&quot;. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude. A positive value indicates that X is increasing with distance along the positive direction of the axis. Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name &quot;upward_air_velocity&quot;).</description>
+   </entry>
+  
+   <entry id="eastward_derivative_of_wind_from_direction">
+      <canonical_units>degree m-1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name eastward_derivative_of_wind_from_direction is the derivative of wind from_direction with respect to the change in eastward lateral position for a given atmospheric level. The phrase &quot;component_derivative_of_X&quot; means derivative of X with respect to distance in the component direction, which may be &quot;northward&quot;, &quot;southward&quot;, &quot;eastward&quot;, &quot;westward&quot;, &quot;upward&quot;, &quot;downward&quot;, &quot;x&quot; or &quot;y&quot;. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude. A positive value indicates that X is increasing with distance along the positive direction of the axis. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north. In meteorological reports, the direction of the wind vector is usually (but not always) given as the direction from which it is blowing (&quot;wind_from_direction&quot;) (westerly, northerly, etc.). In other contexts, such as atmospheric modelling, it is often natural to give the direction in the usual manner of vectors as the heading or the direction to which it is blowing (&quot;wind_to_direction&quot;) (eastward, southward, etc.). Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name &quot;upward_air_velocity&quot;).</description>
    </entry>
   
    <entry id="eastward_flood_water_velocity">
@@ -4400,6 +4435,13 @@
       <grib></grib>
       <amip></amip>
       <description>In accordance with common usage in geophysical disciplines, &quot;flux&quot; implies per unit area, called &quot;flux density&quot; in physics.  The specification of a physical process by the phrase due_to_process means that the quantity named is a  single term in a sum of terms which together compose the general quantity  named by omitting the phrase.  &quot;Snow thermodynamics&quot; refers to the addition or subtraction of mass due to surface and basal fluxes, i.e., due to melting, sublimation and fusion.</description>
+   </entry>
+  
+   <entry id="heat_index_of_air_temperature">
+      <canonical_units>K</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>Air temperature is the bulk temperature of the air, not the surface (skin) temperature. The quantity with standard name heat_index_of_air_temperature is the perceived air temperature when relative humidity is taken into consideration (which makes it feel hotter than the actual air temperature). Heat index is only defined when the ambient air temperature is at or above 299.817 K. References: https://www.weather.gov/safety/heat-index; WMO codes registry entry http://codes.wmo.int/grib2/codeflag/4.2/_0-0-12.</description>
    </entry>
   
    <entry id="height">
@@ -12921,6 +12963,27 @@
       <description>A velocity is a vector quantity. &quot;Eastward&quot; indicates a vector component which is positive when directed eastward (negative westward). &quot;Northward&quot; indicates a vector component which is positive when directed northward (negative southward). Sea ice velocity is defined as a two-dimensional vector, with no vertical component. The phrase &quot;component_derivative_of_X&quot; means derivative of X with respect to distance in the component direction, which may be northward, southward, eastward, westward, x or y. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude. The named quantity is a component of the strain rate tensor for sea ice. &quot;Sea ice&quot; means all ice floating in the sea which has formed from freezing sea water, rather than by other processes such as calving of land ice to form icebergs.</description>
    </entry>
   
+   <entry id="northward_derivative_of_eastward_wind">
+      <canonical_units>s-1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name northward_derivative_of_eastward_wind is the derivative of the eastward component of the wind with respect to distance in the northward direction for a given atmospheric level. The phrase &quot;component_derivative_of_X&quot; means derivative of X with respect to distance in the component direction, which may be &quot;northward&quot;, &quot;southward&quot;, &quot;eastward&quot;, &quot;westward&quot;, &quot;upward&quot;, &quot;downward&quot;, &quot;x&quot; or &quot;y&quot;. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude. A positive value indicates that X is increasing with distance along the positive direction of the axis. Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name &quot;upward_air_velocity&quot;).</description>
+   </entry>
+  
+   <entry id="northward_derivative_of_northward_wind">
+      <canonical_units>s-1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name northward_derivative_of_northward_wind is the derivative of the northward component of wind with respect to distance in the northward direction for a given atmospheric level. The phrase &quot;component_derivative_of_X&quot; means derivative of X with respect to distance in the component direction, which may be &quot;northward&quot;, &quot;southward&quot;, &quot;eastward&quot;, &quot;westward&quot;, &quot;upward&quot;, &quot;downward&quot;, &quot;x&quot; or &quot;y&quot;. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude. A positive value indicates that X is increasing with distance along the positive direction of the axis. Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name &quot;upward_air_velocity&quot;).</description>
+   </entry>
+  
+   <entry id="northward_derivative_of_wind_from_direction">
+      <canonical_units>degree m-1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name northward_derivative_of_wind_from_direction is the derivative of wind from_direction with respect to the change in northward lateral position for a given atmospheric level. The phrase &quot;component_derivative_of_X&quot; means derivative of X with respect to distance in the component direction, which may be &quot;northward&quot;, &quot;southward&quot;, &quot;eastward&quot;, &quot;westward&quot;, &quot;upward&quot;, &quot;downward&quot;, &quot;x&quot; or &quot;y&quot;. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude. A positive value indicates that X is increasing with distance along the positive direction of the axis. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north. In meteorological reports, the direction of the wind vector is usually (but not always) given as the direction from which it is blowing (&quot;wind_from_direction&quot;) (westerly, northerly, etc.). In other contexts, such as atmospheric modelling, it is often natural to give the direction in the usual manner of vectors as the heading or the direction to which it is blowing (&quot;wind_to_direction&quot;) (eastward, southward, etc.). Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name &quot;upward_air_velocity&quot;).</description>
+   </entry>
+  
    <entry id="northward_eliassen_palm_flux_in_air">
       <canonical_units>m3 s-2</canonical_units>
       <grib></grib>
@@ -14389,6 +14452,13 @@
       <grib></grib>
       <amip>prveg</amip>
       <description>&quot;Precipitation&quot; in the earth&#39;s atmosphere means precipitation of water in all phases. In accordance with common usage in geophysical disciplines, &quot;flux&quot; implies per unit area, called &quot;flux density&quot; in physics. Unless indicated in the cell_methods attribute, a quantity is assumed to apply to the whole area of each horizontal grid box. Previously, the qualifier where_type was used to specify that the quantity applies only to the part of the grid box of the named type. Names containing the where_type qualifier are deprecated and newly created data should use the cell_methods attribute to indicate the horizontal area to which the quantity applies. &quot;Canopy&quot; means the vegetative covering over a surface. The canopy is often considered to be the outer surfaces of the vegetation. Plant height and the distribution, orientation and shape of plant leaves within a canopy influence the atmospheric environment and many plant processes within the canopy. Reference: AMS Glossary http://glossary.ametsoc.org/wiki/Canopy.</description>
+   </entry>
+  
+   <entry id="predominant_precipitation_type_at_surface">
+      <canonical_units></canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>A variable with the standard name predominant_precipitation_type_at_surface contains strings which indicate the character of the predominant precipitating hydrometeor at a location or grid cell. These strings have not yet been standardised. Alternatively, the data variable may contain integers which can be translated to strings using flag_values and flag_meanings attributes. &quot;Precipitation&quot; in the earth&#39;s atmosphere means precipitation of water in all phases. The surface called &quot;surface&quot; means the lower boundary of the atmosphere.</description>
    </entry>
   
    <entry id="pressure_at_effective_cloud_top_defined_by_infrared_radiation">
@@ -17528,7 +17598,7 @@
    </entry>
   
    <entry id="sea_ice_classification">
-      <canonical_units>1</canonical_units>
+      <canonical_units></canonical_units>
       <grib></grib>
       <amip></amip>
       <description>A variable with the standard name of sea_ice_classification contains strings which indicate the character of the ice surface e.g. open_ice, or first_year_ice. These strings have not yet been standardised. However, and whenever possible, they should follow the terminology defined in the WMO Standard Nomenclature for Sea Ice Classification. Alternatively, the data variable may contain integers which can be translated to strings using flag_values and flag_meanings attributes. &quot;Sea ice&quot; means all ice floating in the sea which has formed from freezing sea water, rather than by other processes such as calving of land ice to form icebergs.</description>
@@ -18871,6 +18941,13 @@
       <description>Convective precipitation is that produced by the convection schemes in an atmosphere model. Some atmosphere models differentiate between shallow and deep convection. &quot;Precipitation&quot; in the earth&#39;s atmosphere means precipitation of water in all phases. In accordance with common usage in geophysical disciplines, &quot;flux&quot; implies per unit area, called &quot;flux density&quot; in physics.</description>
    </entry>
   
+   <entry id="signal_intensity_from_multibeam_acoustic_doppler_velocity_sensor_in_sea_water">
+      <canonical_units>1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The magnitude of an acoustic signal emitted by the instrument toward a reflecting surface and received again by the instrument.</description>
+   </entry>
+  
    <entry id="single_scattering_albedo_in_air_due_to_ambient_aerosol_particles">
       <canonical_units>1</canonical_units>
       <grib></grib>
@@ -19096,7 +19173,7 @@
    </entry>
   
    <entry id="soil_type">
-      <canonical_units>1</canonical_units>
+      <canonical_units></canonical_units>
       <grib></grib>
       <amip></amip>
       <description>A variable with the standard name of soil_type contains strings which indicate the character of the soil e.g. clay. These strings have not yet been standardised. Alternatively, the data variable may contain integers which can be translated to strings using flag_values and flag_meanings attributes.</description>
@@ -29449,10 +29526,10 @@
    </entry>
   
    <entry id="thermodynamic_phase_of_cloud_water_particles_at_cloud_top">
-      <canonical_units>1</canonical_units>
+      <canonical_units></canonical_units>
       <grib></grib>
       <amip></amip>
-      <description>&quot;cloud_top&quot; refers to the top of the highest cloud. &quot;Water&quot; means water in all phases. A variable with the standard name of thermodynamic_phase_of_cloud_water_particles_at_cloud_top contains integers which can be translated to strings using flag_values and flag_meanings attributes. Alternatively, the data variable may contain strings which indicate the thermodynamic phase. These strings are standardised. Values must be chosen from the following list: liquid; ice; mixed; clear_sky; super_cooled_liquid_water; unknown.</description>
+      <description>A variable with the standard name of thermodynamic_phase_of_cloud_water_particles_at_cloud_top contains integers which can be translated to strings using flag_values and flag_meanings attributes. Alternatively, the data variable may contain strings which indicate the thermodynamic phase. These strings are standardised. Values must be chosen from the following list: liquid; ice; mixed; clear_sky; super_cooled_liquid_water; unknown. &quot;Water&quot; means water in all phases. The phrase &quot;cloud_top&quot; refers to the top of the highest cloud.</description>
    </entry>
   
    <entry id="thermosteric_change_in_mean_sea_level">
@@ -30069,6 +30146,27 @@
       <grib>40</grib>
       <amip></amip>
       <description>A velocity is a vector quantity. &quot;Upward&quot; indicates a vector component which is positive when directed upward (negative downward). Upward air velocity is the vertical component of the 3D air velocity vector. The standard name downward_air_velocity may be used for a vector component with the opposite sign convention.</description>
+   </entry>
+  
+   <entry id="upward_derivative_of_eastward_wind">
+      <canonical_units>s-1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name upward_derivative_of_eastward_wind is the derivative of the eastward component of wind with respect to height. The phrase &quot;component_derivative_of_X&quot; means derivative of X with respect to distance in the component direction, which may be &quot;northward&quot;, &quot;southward&quot;, &quot;eastward&quot;, &quot;westward&quot;, &quot;upward&quot;, &quot;downward&quot;, &quot;x&quot; or &quot;y&quot;. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude. A positive value indicates that X is increasing with distance along the positive direction of the axis. Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name &quot;upward_air_velocity&quot;).</description>
+   </entry>
+  
+   <entry id="upward_derivative_of_northward_wind">
+      <canonical_units>s-1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name upward_derivative_of_northward_wind is the derivative of the northward component of wind speed with respect to height. The phrase &quot;component_derivative_of_X&quot; means derivative of X with respect to distance in the component direction, which may be &quot;northward&quot;, &quot;southward&quot;, &quot;eastward&quot;, &quot;westward&quot;, &quot;upward&quot;, &quot;downward&quot;, &quot;x&quot; or &quot;y&quot;. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude. A positive value indicates that X is increasing with distance along the positive direction of the axis. Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name &quot;upward_air_velocity&quot;).</description>
+   </entry>
+  
+   <entry id="upward_derivative_of_wind_from_direction">
+      <canonical_units>degree m-1</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>The quantity with standard name upward_derivative_of_wind_from_direction is the derivative of wind from_direction with respect to height. The phrase &quot;component_derivative_of_X&quot; means derivative of X with respect to distance in the component direction, which may be &quot;northward&quot;, &quot;southward&quot;, &quot;eastward&quot;, &quot;westward&quot;, &quot;upward&quot;, &quot;downward&quot;, &quot;x&quot; or &quot;y&quot;. The last two indicate derivatives along the axes of the grid, in the case where they are not true longitude and latitude. A positive value indicates that X is increasing with distance along the positive direction of the axis. The phrase &quot;from_direction&quot; is used in the construction X_from_direction and indicates the direction from which the velocity vector of X is coming. The direction is a bearing in the usual geographical sense, measured positive clockwise from due north. In meteorological reports, the direction of the wind vector is usually (but not always) given as the direction from which it is blowing (&quot;wind_from_direction&quot;) (westerly, northerly, etc.). In other contexts, such as atmospheric modelling, it is often natural to give the direction in the usual manner of vectors as the heading or the direction to which it is blowing (&quot;wind_to_direction&quot;) (eastward, southward, etc.). Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name &quot;upward_air_velocity&quot;).</description>
    </entry>
   
    <entry id="upward_dry_static_energy_flux_due_to_diffusion">
@@ -30860,6 +30958,13 @@
       <grib></grib>
       <amip></amip>
       <description></description>
+   </entry>
+  
+   <entry id="wind_chill_of_air_temperature">
+      <canonical_units>K</canonical_units>
+      <grib></grib>
+      <amip></amip>
+      <description>Air temperature is the bulk temperature of the air, not the surface (skin) temperature. The quantity with standard name wind_chill_of_air_temperature is the perceived air temperature when wind is factored in with the ambient air temperature (which makes it feel colder than the actual air temperature). Wind chill is based on the rate of heat loss from exposed skin caused by wind and cold. Wind chill temperature is only defined for ambient temperatures at or below 283.1 K and wind speeds above 1.34 m s-1. References: https://www.weather.gov/safety/cold-wind-chill-chart; WMO codes registry entry http://codes.wmo.int/grib2/codeflag/4.2/0-0-13.</description>
    </entry>
   
    <entry id="wind_from_direction">
@@ -33207,6 +33312,14 @@
   
   <alias id="surface_cover">
     <entry_id>area_type</entry_id>
+  </alias>
+  
+  <alias id="atmosphere_absolute_vorticity">
+    <entry_id>atmosphere_upward_absolute_vorticity</entry_id>
+  </alias>
+  
+  <alias id="atmosphere_relative_vorticity">
+    <entry_id>atmosphere_upward_relative_vorticity</entry_id>
   </alias>
  
 

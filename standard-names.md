@@ -181,7 +181,7 @@ group: "navigation"
 
   <h5><b>Documents</b></h5>
     <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for Construction of CF Standard Names<br>
-    List of<a href="Data/cf-standard-names/docs/standard-name-contributors.html"> contributors</a> to CF Standard Names
+    List of<a href="Data/cf-standard-names/docs/standard-name-contributors.html"> contributors</a> to CF Standard Names<br>
     CF Standard Names <a href="standard_name_rules.md">rules</a>
 
   <h5><b>Discussion</b></h5>

@@ -6,13 +6,14 @@ group: "navigation"
 
 <h2><b>CF Standard Names</b></h2>
 <p>
-<h4><b>Standard Name Table (v75, 15 September 2020)</b></h4>
-  <a href="Data/cf-standard-names/75/build/cf-standard-name-table.html">HTML</a> &nbsp;
-  <a href="Data/cf-standard-names/75/src/cf-standard-name-table.xml">XML</a> &nbsp;
-  <a href="Data/cf-standard-names/75/build/kwic_index_for_cf_standard_names.html">KWIC_Index</a>
+<h4><b>Standard Name Table (v76, 13 October 2020)</b></h4>
+  <a href="Data/cf-standard-names/76/build/cf-standard-name-table.html">HTML</a> &nbsp;
+  <a href="Data/cf-standard-names/76/src/cf-standard-name-table.xml">XML</a> &nbsp;
+  <a href="Data/cf-standard-names/76/build/kwic_index_for_cf_standard_names.html">KWIC_Index</a>
 
   <h5><b>Previous Versions (HTML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/75/build/cf-standard-name-table.html">v75</a> &nbsp;
     <a href="Data/cf-standard-names/74/build/cf-standard-name-table.html">v74</a> &nbsp;
     <a href="Data/cf-standard-names/73/build/cf-standard-name-table.html">v73</a> &nbsp;
     <a href="Data/cf-standard-names/72/build/cf-standard-name-table.html">v72</a> &nbsp;
@@ -89,6 +90,7 @@ group: "navigation"
 
   <h5><b>Previous Versions (XML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/75/src/cf-standard-name-table.xml">v75</a> &nbsp;
     <a href="Data/cf-standard-names/74/src/cf-standard-name-table.xml">v74</a> &nbsp;
     <a href="Data/cf-standard-names/73/src/cf-standard-name-table.xml">v73</a> &nbsp;
     <a href="Data/cf-standard-names/72/src/cf-standard-name-table.xml">v72</a> &nbsp;
@@ -164,6 +166,7 @@ group: "navigation"
     <a href="Data/cf-standard-names/1/src/cf-standard-name-table.xml">v1</a> &nbsp;
 
 <h5>Previous Versions (Keyword Centred List)</h5>
+      <a href="Data/cf-standard-names/75/build/kwic_index_for_cf_standard_names.html">v75</a>  &nbsp;
       <a href="Data/cf-standard-names/74/build/kwic_index_for_cf_standard_names.html">v74</a>  &nbsp;
       <a href="Data/cf-standard-names/73/build/kwic_index_for_cf_standard_names.html">v73</a>  &nbsp;
       <a href="Data/cf-standard-names/72/build/kwic_index_for_cf_standard_names.html">v72</a>  &nbsp;
@@ -179,6 +182,7 @@ group: "navigation"
   <h5><b>Documents</b></h5>
     <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for Construction of CF Standard Names<br>
     List of<a href="Data/cf-standard-names/docs/standard-name-contributors.html"> contributors</a> to CF Standard Names
+    CF Standard Names <a href="standard_name_rules.md">rules</a>
 
   <h5><b>Discussion</b></h5>
 

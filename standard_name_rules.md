@@ -3,7 +3,7 @@ layout: default
 title: Vocabulary rules
 ---
 
-# Proposed Rules for Changes to CF Standard Names, Area Types and Standardized Region List Vocabularies
+# Rules for Changes to CF Standard Names, Area Types and Standardized Region List Vocabularies
 
 <p><b>These rules apply only to changes in CF controlled vocabularies. The rules for changes to the CF conventions themselves are given <a href="http://cfconventions.org/rules.html">here</a>.</b></p> 
 

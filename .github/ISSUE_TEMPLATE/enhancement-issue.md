@@ -10,4 +10,4 @@ assignees: ''
 Before submitting an issue be sure you have read and understand the [contributing guidelines](https://github.com/cf-convention/cf-convention.github.io/blob/master/CONTRIBUTING.md).
 
 Enhancement proposals must be approved by a member of the Information Management and Support Team, the Conventions Committee and Standard Names Committee, or the Governance Panel.
-Following approval, if no objections are raised, the proposal is merged.
+Following after three weeks have elapsed for comments, if no objections are raised, the proposal can be approved and the proposal merged.

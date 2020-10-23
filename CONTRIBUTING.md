@@ -16,8 +16,6 @@ Each issue template notes that the approval of one or more members of the follow
 - The [Conventions Committee and Standard Names Committee](committee), or
 - The [Governance Panel](gov-panel)
 
-Details are noted in the relevant issue template.
-
 [cf-website]: http://cfconventions.org/
 [contribute-conventions]: https://github.com/cf-convention/cf-conventions/blob/master/CONTRIBUTING.md
 [discuss]: https://github.com/cf-convention/discuss/issues

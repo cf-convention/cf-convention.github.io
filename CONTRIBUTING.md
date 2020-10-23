@@ -9,6 +9,7 @@ Separate guidelines apply for [changing the CF Conventions or proposing standard
 If you have a general question about CF matters, please raise them as issues in the [discuss repository](discuss).
 
 When raising an issue, please use the appropriate issue template.
+The template explains the approval process for issues of that type and automatically adds the correct label to the issue you create.
 Consider associating that issue to a pull request that implements the proposed change.
 Each issue template notes that the approval of one or more members of the following bodies is necessary for the proposed change to be merged:
 - The [CF Information Management and Support Team](info-mgmt),

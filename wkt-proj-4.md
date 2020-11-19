@@ -26,7 +26,7 @@ The various representations listed are:
 
 *   **GeoTIFF ID** The names used in the GeoTIFF raster format ([​http://trac.osgeo.org/geotiff/](http://trac.osgeo.org/geotiff/))
 
-The following files are provided to list the various possible Datum, Ellipsoid and Prime Meridian names (in support of CF proposal [80](http://cf-trac.llnl.gov/trac/ticket/80))
+The following files are provided to list the various possible Datum, Ellipsoid and Prime Meridian names (in support of CF trac ticket [80](http://cf-trac.llnl.gov/trac/ticket/80))
 
 *   horiz_datum.csv - horizontal datum parameters for use as reference for CF-1.7 (source: GDAL/OGR, modified by Etienne Tourigny)
 

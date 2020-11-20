@@ -21,10 +21,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Link Checker
+        id: lc
         uses: peter-evans/link-checker@v1.2.2
-      - name: Create Issue From File
-        uses: peter-evans/create-issue-from-file@v2
-        with:
-          title: Link Checker Report
-          content-filepath: ./link-checker/out.md
-          labels: report, automated issue
+      - name: Fail on link errors
+        run: exit ${{ steps.lc.outputs.exit_code }}
+      # Disabled because the error list is too large
+      #- name: Create Issue From File
+      #  uses: peter-evans/create-issue-from-file@v2
+      #  with:
+      #    title: Link Checker Report
+      #    content-filepath: ./link-checker/out.md
+      #    labels: report, automated issue

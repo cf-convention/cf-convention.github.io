@@ -36,7 +36,7 @@ Prior to December 2019, general discussion took place on the
 on the [CF Metadata Trac][trac] site.
 
 
-Archive links:
+### Archive links
 
 * [cf-metadata Mailing List Archives][archives]
 * [Archive of resolved proposals for new standard names (from March 2011 onwards)][proposals]

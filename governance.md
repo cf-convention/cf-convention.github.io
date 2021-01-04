@@ -54,6 +54,7 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Jeff Painter (LLNL)
 * Alison Pamment (CEDA)
 * Tanya Reshel (LLNL)
+* Sadie Bartholomew (University of Reading)
 
 ### Former Committee Members
 

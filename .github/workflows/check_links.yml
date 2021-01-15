@@ -14,21 +14,11 @@ on:
 
 jobs:
   check_links:
-    name: Check links
+    name: Check Markdown links  # TODO: Check also Asciidoc
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Check links
-        uses: ./actions/
-        id: check
-        #- name: Fail on link errors
-        #run: exit ${{ steps.lc.outputs.exit_code }}
-      # Disabled because the error list is too large
-      #- name: Create Issue From File
-      #  uses: peter-evans/create-issue-from-file@v2
-      #  with:
-      #    title: Link Checker Report
-      #    content-filepath: ./link-checker/out.md
-      #    labels: report, automated issue
+        uses: lycheeverse/lychee-action@v1

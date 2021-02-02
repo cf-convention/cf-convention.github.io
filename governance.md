@@ -17,20 +17,18 @@ group: "navigation"
  
 ### Conventions Committee and Standard Names Committee
 
-* Balaji
-* Jim Biard
-* Philip Cameron-Smith
-* David Blodgett
-* Nan Galbraith
-* John Graybeal
-* Jonathan Gregory
-* David Hassell (secretary of the Conventions Committee)
-* Daniel Lee
-* Roy Lowry
-* Alison Pamment (secretary of Standard Names Committee)
-* Martin Schultz
-* Rich Signell
-* Karl Taylor (chair of Conventions Committee)
+(The date of the end of each member's present term appears in parentheses)
+
+* Philip Cameron-Smith (29 May 2025)
+* David Blodgett (30 Sep 2023)
+* Nan Galbraith (29 May 2025)
+* John Graybeal (29 May 2025)
+* Jonathan Gregory (29 May 2025)
+* David Hassell (secretary of the Conventions Committee) (31 March 2022)
+* Daniel Lee (30 Sep 2024)
+* Roy Lowry (29 May 2025)
+* Alison Pamment (secretary of Standard Names Committee) (29 May 2025)
+* Karl Taylor (chair of Conventions Committee) (29 May 2025)
  
 ### Governance Panel
 
@@ -56,8 +54,10 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Tanya Reshel (LLNL)
 * Sadie Bartholomew (University of Reading)
 
-### Former Committee Members
+### Former Committee and Panel Members
 
+* Balaji (Conventions)
+* Jim Biard (Conventions)
 * John Caron (Conventions)
 * Michel Crucifix (Standard Names)
 * Burkhardt Rockel (Standard Names)
@@ -69,7 +69,8 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Steve Hankin (Conventions and Governance)
 * Bryan Lawrence (Standard Names)
 * Russ Rew (Conventions and Governance)
-* Rich Signell (Governance)
+* Martin Schultz (Conventions)
+* Rich Signell (Governance and Standard Names)
 * Karl Taylor (Governance, former chair but present member)
 
 The climate research community is indebted to the above for their magnanimous contributions in establishing and improving the CF Conventions.

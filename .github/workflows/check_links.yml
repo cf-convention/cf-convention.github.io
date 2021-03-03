@@ -1,0 +1,38 @@
+#
+# GitHub Actions Workflow for pull request events against master
+# check for problems in links.
+#
+# For more information on the actions used in this workflow, please see:
+#   https://github.com/actions/checkout
+#   https://github.com/marketplace/actions/build-jekyll
+#   https://github.com/actions/upload-artifact
+#
+name: Check links
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  check_links:
+    name: Check Markdown links  # TODO: Check also Asciidoc
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Check links
+        uses: lycheeverse/lychee-action@5abbdad
+        
+      - name: Upload report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v1
+        with:
+          name: Link check report
+          path: ./lychee/out.md
+      
+      - name: Create Issue From File
+        uses: peter-evans/create-issue-from-file@v2
+        with:
+          title: Link Checker Report
+          content-filepath: ./lychee/out.md
+          labels: report, automated issue

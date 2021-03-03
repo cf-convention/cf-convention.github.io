@@ -19,7 +19,7 @@ of the level of support for CF.
 ## CF Compliance Checkers
 
 ### cf-checker - Python Tool for Compliance Checking
-The [cf-checker](https://github.com/cedadev/cf-checker) is a python tool to check compliance of netCDF files against the CF Convention.
+The [cf-checker](https://github.com/breaklink/cedadev/cf-checker) is a python tool to check compliance of netCDF files against the CF Convention.
 It can be run as a command-line tool, via a web interface (available at [NCAS](https://github.com/cedadev/cf-checker)
 and [CEDA](http://wps-web1.ceda.ac.uk/submit/form?proc_id=CFChecker)) or imported as a python library.
 The cf-checker verifies conformance according to the requirements and recommendations laid out in the
@@ -27,7 +27,7 @@ The cf-checker verifies conformance according to the requirements and recommenda
 It is possible to check conformance against any CF version.
 
 ### IOOS Compliance Checker
-The [IOOS Compliance Checker](https://github.com/ioos/compliance-checker)
+The [IOOS Compliance Checker](https://github.com/breaklink/ioos/compliance-checker/)
 is a python based tool for data providers to check for completeness
 and community standard compliance of local or remote netCDF files against CF,
 [ACDD](http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery_1-3),
@@ -51,7 +51,7 @@ may be ingested from existing datasets and written to new datasets.
 This is so that datasets which are partially conformant may nonetheless be modified in memory.
 
 ### cf-python - CF Python Package
-The [Python cf package, "cf-python"](https://ncas-cms.github.io/cf-python/),
+The [Python cf package, "cf-python"](https://ncas-cms.github.io/cf-python/breaklink/),
 is an Earth Science data analysis library.
 It is built on [cfdm](#cfdm---python-cf-data-model-package) and implements the CF data model
 for its internal data structures so is able to process any CF-compliant dataset.

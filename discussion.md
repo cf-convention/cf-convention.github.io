@@ -24,7 +24,7 @@ Discussion about CF Metadata takes place on GitHub in three locations:
     conventions, that may or may not have started as conversations on
     the general discussion forum.
 
-2. [Website discussion][github_website]
+3. [Website discussion][github_website]
 
   * A forum for discussing and proposing changes to the [CF
     website][website].

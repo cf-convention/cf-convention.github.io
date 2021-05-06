@@ -34,14 +34,14 @@ is a freely available [GitHub account][github].
 
 Prior to December 2019, general discussion took place on the
 [cf-metadata mailing list][archives], and enhancements were proposed
-on the [CF Metadata Trac][trac] site.
+on the [CF Metadata Trac](Data/trac.html) site.
 
 
 ### Archive links
 
 * [cf-metadata Mailing List Archives][archives]
 * [Archive of resolved proposals for new standard names (from March 2011 onwards)][proposals]
-* [CF Metadata Trac][trac]
+* [CF Metadata Trac](Data/trac.html)
 * [About the Trac Site][about]
 
 [github_discuss]: https://github.com/cf-convention/discuss/issues
@@ -49,7 +49,7 @@ on the [CF Metadata Trac][trac] site.
 [github_website]: https://github.com/cf-convention/cf-convention.github.io/issues
 [github]: https://github.com
 [website]: https://cfconventions.org
-[trac]: http://cf-trac.llnl.gov/trac 
+[trac]: Data/trac.html
 [about]: about-trac.html
 [mail]: http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata
 [archives]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/

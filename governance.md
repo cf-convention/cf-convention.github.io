@@ -35,6 +35,7 @@ group: "navigation"
  
 ### Governance Panel
 
+* Fanny Adloff
 * Ethan Davis (chair)
 * Jonathan Gregory
 * Bryan Lawrence

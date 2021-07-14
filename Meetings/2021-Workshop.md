@@ -39,13 +39,15 @@ More information coming soon.
 * Virtual Social Hour
 
 ### Wednesday, 22 September 2021
-**15:00 UTC - Experiences with CMIP6 (Martin Juckes)**
+**15:00 UTC - Climate indices (Lars Baring)**
 
-**15:30 - CF and the Global Community (Gui Castelao, Kevin O'Brien)**
+**15:30 UTC - Experiences with CMIP6 (Martin Juckes)**
+
+**16:00 - CF and the Global Community (Gui Castelao, Kevin O'Brien)**
 * OG 1.0 - OceanGliders data format (Gui)
 * Integraton of CF-netCDF profiles with WMO data distribution process (Kevin)
 
-**16:00 - Breakouts for Current Discussion Topics**
+**16:30 - Breakouts for Current Discussion Topics**
 
 **18:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour

@@ -25,7 +25,7 @@ More information coming soon.
 
 **15:45 - Governance (?)**
 
-**16:15 - CF Standard Names (Alison Pamment)**
+**16:15 - CF Standard Names (Alison Pamment, Sadie Bartholomew)**
 
 **17:00 - Developments in netCDF (Ethan Davis)**
 * The NUG - NetCDF Users Guide (Ethan Davis)
@@ -50,7 +50,7 @@ More information coming soon.
 **18:00 - Adjourn to Virtual Social Hour**
 * Virtual Social Hour
 
-### Wednesday, 22 September 2021
+### Thursday, 23 September 2021
 **15:00 UTC - Breakouts for Current Discussion Topics**
 
 **16:30 - Report out from Breakouts**

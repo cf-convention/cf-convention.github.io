@@ -39,7 +39,7 @@ More information coming soon.
 * Virtual Social Hour
 
 ### Wednesday, 22 September 2021
-**15:00 UTC - Climate indices (Lars Baring)**
+**15:00 UTC - Climate indices (Lars Bärring)**
 
 **15:30 UTC - Experiences with CMIP6 (Martin Juckes)**
 

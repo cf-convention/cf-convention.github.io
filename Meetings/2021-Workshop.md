@@ -31,7 +31,7 @@ More information coming soon.
 * The NUG - NetCDF Users Guide (Ethan Davis)
 * Zarr and ncZarr (??)
 
-**17:30 - Compression (Charlie Zender)**
+**17:30 - Lossy Compression (Charlie Zender)**
 * Metadata to encode precision of lossy compression (Charlie Zender)
 * Lossy compression by coordinate sampling (Anders Sorensen)
 

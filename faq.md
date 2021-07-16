@@ -373,7 +373,7 @@ The purpose of the `standard_name` attribute is to provide a succinct and distin
 
 The standard name is useful for listing and discussing the contents of a file, providing the kind of answer an expert might give to the non-expert's question "What is in that file?" This helps users share files across disciplines and over time.
 
-The standard name also makee it possible for a computer to assess whether a variables is likely to be comparable to another, mathematically and semantically.  This increases interoperability by enabling automated discovery. Variables with different standard names are presumably not directly comparable. (Variables with different (that is, incompatible) canonical units are not mathematically comparable, and so are required to have different standard names.) Of course users must review the details of variables, particularly their `long_name` and `source` attributes, to assess whether they are truly interoperable. 
+The standard name also make it possible for a computer to assess whether a variables is likely to be comparable to another, mathematically and semantically.  This increases interoperability by enabling automated discovery. Variables with different standard names are presumably not directly comparable. (Variables with different (that is, incompatible) canonical units are not mathematically comparable, and so are required to have different standard names.) Of course users must review the details of variables, particularly their `long_name` and `source` attributes, to assess whether they are truly interoperable.
 
 References:
 * J Gregory, 2008: [what standard names are for](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2008/052334.html)

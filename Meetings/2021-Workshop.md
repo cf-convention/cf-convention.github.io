@@ -43,8 +43,8 @@ More information coming soon.
 
 **15:30 UTC - Experiences with CMIP6 (Martin Juckes)**
 
-**16:00 - CF and the Global Community (Gui Castelao, Kevin O'Brien)**
-* OG 1.0 - OceanGliders data format (Gui)
+**16:00 - CF and the Global Community (Gui Castelão, Kevin O'Brien)**
+* OG 1.0 - OceanGliders data format (Dan Hayes)
 * Integraton of CF-netCDF profiles with WMO data distribution process (Kevin)
 
 **16:30 - Breakouts for Current Discussion Topics**
@@ -80,5 +80,5 @@ Daniel Lee
 David Hassell (chair)
 Ethan Davis
 Fernando Carvalho Pacheco
-Guilherme Castelao
+Guilherme Castelão
 Kevin O'Brien

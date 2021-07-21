@@ -25,7 +25,7 @@ group: "navigation"
 * Fran Eggleton (12 Apr 2026)  
 * Nan Galbraith (29 May 2025)
 * John Graybeal (29 May 2025)
-* Jonathan Gregory (chair of CF Committees) (29 May 2025)
+* Jonathan Gregory (chair of CF Committees, 6 July 2024) (29 May 2025)
 * David Hassell (secretary of the Conventions Committee) (31 March 2022)
 * Martin Juckes (12 Apr 2026)
 * Daniel Lee (30 Sep 2024)
@@ -75,7 +75,7 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Russ Rew (Conventions and Governance)
 * Martin Schultz (Conventions)
 * Rich Signell (Governance and Standard Names)
-* Karl Taylor (Governance, former chair but present member)
+* Karl Taylor (Governance and Conventions, former chair but present member of both)
 
 The climate research community is indebted to the above for their magnanimous contributions in establishing and improving the CF Conventions.
 

@@ -63,7 +63,7 @@ More information coming soon.
 * **16:30 - Report out from Breakouts**
   * 5 minute summaries from each breakout topic
 
-* **18:15 - Wrap-up and Conclusions (TBD)**
+* **17:15 - Wrap-up and Conclusions (TBD)**
   * Overall summary and Wrap-up
   * Action Items and Decisions
 

@@ -22,21 +22,23 @@ More information coming soon.
 
 ### Tuesday, 21 September 2021
 
-* **15:00 UTC - Welcome and Introductions (TBD)**
+* **15:00 UTC - Welcome and Introduction (David Hassell, Alison Pamment)**
 
 * **15:15 - Review of CF-1.9 (David Hassell)**
 
-* **15:45 - Governance (TBD)**
+* **15:30 - Governance (TBD)**
 
-* **16:15 - CF Standard Names (Alison Pamment, Sadie Bartholomew)**
+* **15:45 - CF Standard Names (Alison Pamment, Sadie Bartholomew)**
+
+* **16:30 - Lossy Compression (Charlie Zender)**
+  * Metadata to encode precision of lossy compression (Charlie Zender)
+  * Lossy compression by coordinate sampling (Anders Sorensen)
 
 * **17:00 - Developments in netCDF (Ethan Davis)**
   * The NUG - NetCDF Users Guide (Ethan Davis)
-  * Zarr and ncZarr (TBD)
+  * Zarr and ncZarr (Hailey Johnson)
 
-* **17:30 - Lossy Compression (Charlie Zender)**
-  * Metadata to encode precision of lossy compression (Charlie Zender)
-  * Lossy compression by coordinate sampling (Anders Sorensen)
+* **17:30 - General discussion**
 
 * **18:00 - Adjourn to Virtual Social Hour**
   * Virtual Social Hour
@@ -45,7 +47,7 @@ More information coming soon.
 
 * **15:00 UTC - Climate indices (Lars Bärring)**
 
-* **15:30 UTC - Experiences with CMIP6 (Martin Juckes)**
+* **15:30 UTC - Experiences with CMIP6 (Francesca Eggleton)**
 
 * **16:00 - CF and the Global Community (Gui Castelão, Kevin O'Brien)**
   * OG 1.0 - OceanGliders data format (Dan Hayes)
@@ -63,7 +65,7 @@ More information coming soon.
 * **16:30 - Report out from Breakouts**
   * 5 minute summaries from each breakout topic
 
-* **17:15 - Wrap-up and Conclusions (TBD)**
+* **17:15 - Wrap-up and Conclusions (Antonio S. Cofiño)**
   * Overall summary and Wrap-up
   * Action Items and Decisions
 
@@ -77,12 +79,11 @@ To suggest a topic, please comment on GitHub Issue #[114](https://github.com/cf-
 
 ### Proposed Topics (with lead)
 
-* Standard names (Alison Pamment)
-* The CFA conventions for the storage of aggregation variables within CF-netCDF datasets (David Hassell)
-* Climate indices (Lars Bärring)
-* Metadata to encode precision of lossy compression (Charlie Zender)
-* Use cases for CF in machine learning training datasets (Aleksandar Jelenak)
-* Trusted Provenance (Daniel Lee)
+| Wednesday, 22 September 2021 | Thursday, 23 September 2021 |
+|---|---|
+| Metadata to encode precision of lossy compression (Charlie Zender) | The CFA conventions for the storage of aggregation variables within CF-netCDF datasets (David Hassell) |
+| Standard names (Alison Pamment) | Climate indices (Lars Bärring) |
+| Use cases for CF in machine learning training datasets (Aleksandar Jelenak) | Trusted Provenance (Daniel Lee) |
 
 ## The organising committee
 

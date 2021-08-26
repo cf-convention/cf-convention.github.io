@@ -11,8 +11,8 @@ plus an informal hour at the end of each day.
 
 ## Registration
 
-A registration form will be coming soon.
-There will not be any fee!
+You can register using [this form](https://docs.google.com/forms/d/e/1FAIpQLSfXo0fRC0ciLHKFzyX_pvEhqORPxr5uL1St0xM7NijOqdtn7w/viewform).
+There is no fee!
 
 ## Virtual Meeting Information
 

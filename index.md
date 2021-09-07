@@ -12,8 +12,10 @@ The CF convention includes a standard name table, which defines strings that ide
 
 ---
 
-**Latest release** (1.8) [HTML][releasedhtml] [PDF][releasepdf]
+**Latest release** (1.8) [HTML][releasedhtml] [PDF][releasedpdf]
+<code>&nbsp;&nbsp;</code>
 **Working draft** [HTML][workinghtml] [PDF][workingpdf]
+<code>&nbsp;&nbsp;</code>
 [**Standard name table**][currentnames]
 
 ---

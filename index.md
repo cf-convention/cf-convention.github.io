@@ -3,39 +3,39 @@ layout: default
 title: CF Conventions Home Page
 ---
 
+# CF Metadata Conventions
 
-{% include hero.html %}
-
-### NetCDF CF Metadata Conventions
-
-The conventions for CF (Climate and Forecast) metadata are designed to promote the processing and sharing of files created with the [NetCDF API][api]. 
-The CF conventions are increasingly gaining acceptance and have been adopted by a number of projects and groups as a primary standard. 
+The CF metadata conventions are designed to promote the processing and sharing of files created with the [NetCDF API][api]. 
 The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. 
 This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities.
+The CF convention includes a standard name table, which defines strings that identify physical quantities and define their physical units.
 
-The CF conventions generalize and extend the [COARDS conventions][coards].
+---
 
-Here are the slides for a talk that provides an [overview of CF][viewgraphs]. An expository version of this talk is in this [article][article].
+**Latest release** (1.8) [HTML][releasedhtml] [PDF][releasepdf]
+**Working draft** [HTML][workinghtml] [PDF][workingpdf]
+[**Standard name table**][currentnames]
+
+---
+
+CF is developed through open discussion on GitHub. If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here](cfconventions.org/discussion.html). Changes are decided according to the CF [governance arrangements](cfconventions.org/governance.html). The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion. 
+
+Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models. The use of CF is recommended where applicable by Unidata.
+
+Here are the slides for a talk that provides an .
 [This page](latest.html) links to the most recently published version of the CF Conventions, as well as the [current working draft of the next version](cf-conventions/cf-conventions.html).
 
-Discussion about CF Metadata takes place in two formats:
+## Quick links to some documents
 
-* CF Metadata Trac, and
-* cf-metadata mailing list.
+See also the links in the navigation bar at the top of this page.
 
-For further explanation of each of these, take a look at the [Discussion page][discussion].
+* [Latest release of CF conventions][releasedhtml]
+* [Current version of CF standard name table][currentnames]
+* [CF FAQ][q8]
+* [List of software for working with CF](software.md)
+* [Paper][cfdmpaper] describing the CF data model and reference software
+* Overview of CF basics as a [presentation][viewgraphs] and [paper][article]
 
-## Quick Links
-
-* [CF Conventions Document][q1]
-* [CF Standard Name Table][q2]
-* [CF Conventions FAQ][q8]
-* [List of Software that "Understands" CF](software.md)
-* [CF Metadata Trac][q3]
-* [CF Metadata Trac Ticket Summary][q4]
-* [CF Metadata Mailing List Archives][q5]
-* [CF Conformance Requirements & Recommendations][q6]
-* [CF Compliance Checker][q7]
 
 [api]: https://www.unidata.ucar.edu/software/netcdf/index.html
 [coards]: https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html
@@ -50,3 +50,9 @@ For further explanation of each of these, take a look at the [Discussion page][d
 [q6]: requirements-and-recommendations.html
 [q7]: compliance-checker.html
 [q8]: faq.html
+[releasedhtml]: Data/cf-conventions/cf-conventions-1.8/cf-conventions.html
+[releasedpdf]: Data/cf-conventions/cf-conventions-1.8/cf-conventions.html
+[workinghtml]: Data/cf-conventions/cf-conventions.html
+[workingpdf]: Data/cf-conventions/cf-conventions.pdf
+[currentnames]: cf-standard-names/current/build/cf-standard-name-table.html
+[cfdmpaper]: https://doi.org/10.5194/gmd-10-4619-2017

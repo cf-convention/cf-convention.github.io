@@ -10,7 +10,7 @@ Discussion about CF Metadata takes place on GitHub in three locations:
 
 1. [General discussion][github_discuss]
 
-  * A forum for proposing standard names, any discussion about the
+    A forum for proposing standard names, any discussion about the
     interpretation and use of the CF conventions, and initial
     suggestions for proposals to change or extend the CF conventions.
 
@@ -20,14 +20,14 @@ Discussion about CF Metadata takes place on GitHub in three locations:
   
 2. [Enhancements and defects][github_conventions]
 
-  * Proposals for enhancements and possible defects to the CF
+    Proposals for enhancements and reports of defects in the CF
     conventions, that may or may not have started as conversations on
     the general discussion forum.
 
 3. [Website discussion][github_website]
 
-  * A forum for discussing and proposing changes to the [CF
-    website][website].
+    A forum for discussing and proposing changes to the [CF
+    website][website] or reporting defects.
 
 No registration with CF is required to contribute; all that is needed
 is a freely available [GitHub account][github].

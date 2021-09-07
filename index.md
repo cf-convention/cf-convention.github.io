@@ -8,7 +8,7 @@ title: CF Conventions Home Page
 The CF metadata conventions are designed to promote the processing and sharing of files created with the [NetCDF API][api]. 
 The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. 
 This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities.
-The CF convention includes a standard name table, which defines strings that identify physical quantities and define their physical units.
+The CF convention includes a standard name table, which defines strings that identify physical quantities.
 
 ---
 
@@ -23,9 +23,6 @@ The CF convention includes a standard name table, which defines strings that ide
 CF is developed through open discussion on GitHub. If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here](cfconventions.org/discussion.html). Changes are decided according to the CF [governance arrangements](cfconventions.org/governance.html). The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion. 
 
 Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models. The use of CF is recommended where applicable by Unidata.
-
-Here are the slides for a talk that provides an .
-[This page](latest.html) links to the most recently published version of the CF Conventions, as well as the [current working draft of the next version](cf-conventions/cf-conventions.html).
 
 ## Quick links to some documents
 

@@ -6,11 +6,12 @@ group: "navigation"
 
 # Discussion
  
-Discussion about CF Metadata takes place on GitHub in three locations:
+Discussion about CF Metadata takes place on GitHub in three forums,
+using [GitHub issues][github_issues].
 
-1. [General discussion][github_discuss]
+1. [General discussion and standard names][github_discuss]
 
-    A forum for proposing standard names, any discussion about the
+    For proposing standard names, any discussion about the
     interpretation and use of the CF conventions, and initial
     suggestions for proposals to change or extend the CF conventions.
 
@@ -18,16 +19,16 @@ Discussion about CF Metadata takes place on GitHub in three locations:
     proposals for new standard names][current] that have been
     initiated on the general discussion forum.
   
-2. [Enhancements and defects][github_conventions]
+2. [Conventions][github_conventions]
 
-    Proposals for enhancements and reports of defects in the CF
+    For proposing for enhancements and reporting defects in the CF
     conventions, that may or may not have started as conversations on
     the general discussion forum.
 
-3. [Website discussion][github_website]
+3. [Website and governance][github_website]
 
-    A forum for discussing and proposing changes to the [CF
-    website][website] or reporting defects.
+    For discussing, proposing changes and reporting defects in the [CF
+    website][website], and for discussion of CF governance.
 
 No registration with CF is required to contribute; all that is needed
 is a freely available [GitHub account][github].
@@ -55,3 +56,4 @@ on the [CF Metadata Trac](Data/trac.html) site.
 [archives]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
 [current]: http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter
 [proposals]: http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter
+[github_issues]: https://guides.github.com/features/issues

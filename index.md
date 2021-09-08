@@ -24,12 +24,13 @@ CF is developed through open discussion on GitHub. If you would like to propose 
 
 Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models. The use of CF is recommended where applicable by Unidata.
 
-## Quick links to some documents
+## Quick links
 
 See also the links in the navigation bar at the top of this page.
 
 * [Latest release of CF conventions][releasedhtml]
 * [Current version of CF standard name table][currentnames]
+* Current issues: [general discussion][github_discuss] (including standard names), [conventions][github_conventions], this [website][github_website] (including governance)
 * [CF FAQ][q8]
 * [List of software for working with CF](software.md)
 * [Paper][cfdmpaper] describing the CF data model and reference software
@@ -55,3 +56,6 @@ See also the links in the navigation bar at the top of this page.
 [workingpdf]: Data/cf-conventions/cf-conventions.pdf
 [currentnames]: cf-standard-names/current/build/cf-standard-name-table.html
 [cfdmpaper]: https://doi.org/10.5194/gmd-10-4619-2017
+[github_discuss]: https://github.com/cf-convention/discuss/issues
+[github_conventions]: https://github.com/cf-convention/cf-conventions/issues
+[github_website]: https://github.com/cf-convention/cf-convention.github.io/issues

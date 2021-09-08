@@ -9,7 +9,7 @@ group: "navigation"
 Discussion about CF Metadata takes place on GitHub in three forums,
 using [GitHub issues][github_issues].
 
-1. [General discussion and standard names][github_discuss]
+*   [General discussion and standard names][github_discuss]
 
     For proposing standard names, any discussion about the
     interpretation and use of the CF conventions, and initial
@@ -19,13 +19,13 @@ using [GitHub issues][github_issues].
     proposals for new standard names][current] that have been
     initiated on the general discussion forum.
   
-2. [Conventions][github_conventions]
+*   [Conventions][github_conventions]
 
     For proposing for enhancements and reporting defects in the CF
     conventions, that may or may not have started as conversations on
     the general discussion forum.
 
-3. [Website and governance][github_website]
+*   [Website and governance][github_website]
 
     For discussing, proposing changes and reporting defects in the [CF
     website][website], and for discussion of CF governance.

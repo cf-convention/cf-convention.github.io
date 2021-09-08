@@ -21,7 +21,7 @@ using [GitHub issues][github_issues].
   
 *   [Conventions][github_conventions]
 
-    For proposing for enhancements and reporting defects in the CF
+    For proposing enhancements and reporting defects in the CF
     conventions, that may or may not have started as conversations on
     the general discussion forum.
 
@@ -33,16 +33,18 @@ using [GitHub issues][github_issues].
 No registration with CF is required to contribute; all that is needed
 is a freely available [GitHub account][github].
 
-Prior to December 2019, general discussion took place on the
-[cf-metadata mailing list][archives], and enhancements were proposed
+Before the CF community migrated to GitHub,
+general and standard-name discussion took place on the
+[cf-metadata mailing list][archives], and enhancements
+to the conventions were proposed
 on the [CF Metadata Trac](Data/trac.html) site.
 
 
 ### Archive links
 
-* [cf-metadata Mailing List Archives][archives]
+* [cf-metadata Mailing List Archives][archives] (until December 2019)
 * [Resolved proposals for new standard names][proposals] (from March 2011 onwards)
-* [CF Metadata Trac](Data/trac.html)
+* [CF Metadata Trac](Data/trac.html) (until July 2018)
 * [About CF Metadata Trac][about]
 
 [github_discuss]: https://github.com/cf-convention/discuss/issues

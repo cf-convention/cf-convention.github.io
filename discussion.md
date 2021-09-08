@@ -41,9 +41,9 @@ on the [CF Metadata Trac](Data/trac.html) site.
 ### Archive links
 
 * [cf-metadata Mailing List Archives][archives]
-* [Resolved proposals for new standard names][proposals] (from March 2011 onwards)]
+* [Resolved proposals for new standard names][proposals] (from March 2011 onwards)
 * [CF Metadata Trac](Data/trac.html)
-* [About the CF Metadata Trac][about] site
+* [About CF Metadata Trac][about]
 
 [github_discuss]: https://github.com/cf-convention/discuss/issues
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues

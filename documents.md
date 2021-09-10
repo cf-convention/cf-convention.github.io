@@ -10,13 +10,19 @@ group: "navigation"
   <div class="col-md-6">
     <h2>CF Conventions</h2>
     <p>
-      <h4><b>Current working draft</b>: CF 1.9-draft</h4>
+      <h4><b>Current working draft</b>: CF 1.10-draft</h4>
       <a href="/cf-conventions/cf-conventions.html">Single HTML</a>
       &nbsp;
       <a href="/cf-conventions/cf-conventions.pdf">PDF</a>
       &nbsp;
       
-      <h4><b>Latest released version</b>: CF 1.8 (February 2020)</h4>
+      <h4><b>Latest released version</b>: CF 1.9 (September 2021)</h4>
+      <a href="Data/cf-conventions/cf-conventions-1.9/cf-conventions.html">Single HTML</a>
+      &nbsp;
+      <a href="Data/cf-conventions/cf-conventions-1.9/cf-conventions.pdf">PDF</a>
+      &nbsp;
+
+      <h4>CF 1.8 (February 2020)</h4>
       <a href="Data/cf-conventions/cf-conventions-1.8/cf-conventions.html">Single HTML</a>
       &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.8/cf-conventions.pdf">PDF</a>

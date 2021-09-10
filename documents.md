@@ -99,7 +99,7 @@ group: "navigation"
       <li><a href="Data/cf-documents/requirements-recommendations/requirements-recommendations-1.2.html">1.2</a></li>
       <li><a href="Data/cf-documents/requirements-recommendations/requirements-recommendations-1.1.html">1.1</a></li>
       <li><a href="Data/cf-documents/requirements-recommendations/requirements-recommendations-1.0.html">1.0</a></li>
-    </ul>
+    </ul></p>
 
     <h2><a href="wkt-proj-4.html">CF Grid Mapping &rlhar; CRS WKT</a></h2>
 

@@ -20,7 +20,7 @@ More information coming soon.
 
 ## Documents
 
-All of the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder](https://github.com/cf-convention/cf-conventions/issues/127).
+All of the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder](https://drive.google.com/drive/folders/1JSHIrPMtlu6MlFEhR8Tcijefs__mX9Wl).
 
 ## Agenda (proposed - times approximate)
 

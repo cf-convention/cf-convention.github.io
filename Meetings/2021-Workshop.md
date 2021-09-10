@@ -77,13 +77,17 @@ More information coming soon.
 We invite suggestions of topics for breakout sessions.
 To suggest a topic, please comment on GitHub Issue #[114](https://github.com/cf-convention/discuss/issues/114) "Inviting suggestions for breakout discussion topics at the 2021 CF workshop".
 
+
 ### Proposed Topics (with lead)
+
+[See here](https://docs.google.com/document/d/1WtJrysGg8AFU0R0cgzOCesWOKDN3NsaClVd2TiIqzuc) for a brief description of each session.
 
 | Wednesday, 22 September 2021 | Thursday, 23 September 2021 |
 |---|---|
 | Metadata to encode precision of lossy compression (Charlie Zender) | The CFA conventions for the storage of aggregation variables within CF-netCDF datasets (David Hassell) |
 | Standard names (Alison Pamment) | Climate indices (Lars Bärring) |
 | Use cases for CF in machine learning training datasets (Aleksandar Jelenak) | Trusted Provenance (Daniel Lee) |
+|  | Assign DOIs for CF conventions (Guilherme Castelao) |
 
 ## The organising committee
 

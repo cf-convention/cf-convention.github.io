@@ -91,7 +91,7 @@ To suggest a topic, please comment on GitHub Issue #[114](https://github.com/cf-
 | Metadata to encode precision of lossy compression (Charlie Zender) | The CFA conventions for the storage of aggregation variables within CF-netCDF datasets (David Hassell) |
 | Standard names (Alison Pamment) | Climate indices (Lars Bärring) |
 | Use cases for CF in machine learning training datasets (Aleksandar Jelenak) | Trusted Provenance (Daniel Lee) |
-|  | Assign DOIs for CF conventions (Guilherme Castelao) |
+|  | Assign DOIs for CF conventions (Guilherme Castelão) |
 
 ## The organising committee
 

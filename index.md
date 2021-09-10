@@ -41,7 +41,7 @@ See also the links in the navigation bar at the top of this page.
 [coards]: https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html
 [viewgraphs]: Data/cf-documents/overview/viewgraphs.pdf
 [article]: Data/cf-documents/overview/article.pdf
-[discussion]: http://cf-convention.github.io/discussion.html
+[discussion]: discussion.html
 [q1]: latest.html
 [q2]: standard-names.html
 [q3]: http://cf-trac.llnl.gov/trac

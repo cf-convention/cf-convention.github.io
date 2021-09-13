@@ -9,14 +9,14 @@ title: Latest
 
 <table>
 <tr>
-  <th width="300px"> Most Recent Release (v1.8) <br /> &nbsp;</th>
-  <th width="300px"> Current Working Draft (v1.9) <br /> &nbsp;</th> 
+  <th width="300px"> Most Recent Release (v1.9) <br /> &nbsp;</th>
+  <th width="300px"> Current Working Draft (v1.10) <br /> &nbsp;</th> 
 </tr>
 <tr>
   <td>
     <ul>
-      <li> <a href="Data/cf-conventions/cf-conventions-1.8/cf-conventions.html">Single HTML</a> </li> <br />
-      <li> <a href="Data/cf-conventions/cf-conventions-1.8/cf-conventions.pdf">PDF</a> </li> <br />
+      <li> <a href="Data/cf-conventions/cf-conventions-1.9/cf-conventions.html">Single HTML</a> </li> <br />
+      <li> <a href="Data/cf-conventions/cf-conventions-1.9/cf-conventions.pdf">PDF</a> </li> <br />
     </ul>
   </td>
   <td>

@@ -89,7 +89,8 @@ group: "navigation"
     Each version of the CF conventions document is accompanied by a conformance document which lists the requirements and recommendations that could be verified by the compliance checker or any program with a similar aim. For any <em>recommendation</em> which is not followed, the checker gives a warning; for any <em>requirement</em> which is not met, it reports an error.
 
     <p><ul>
-      <li><a href="http://cfconventions.org/cf-conventions/conformance.html">1.9 draft</a></li>
+      <li><a href="http://cfconventions.org/cf-conventions/conformance.html">1.10 draft</a></li>
+      <li><a href="Data/cf-documents/requirements-recommendations/conformance-1.9.html">1.9</a></li>
       <li><a href="Data/cf-documents/requirements-recommendations/conformance-1.8.html">1.8</a></li>
       <li><a href="Data/cf-documents/requirements-recommendations/requirements-recommendations-1.7.html">1.7</a></li>
       <li><a href="Data/cf-documents/requirements-recommendations/requirements-recommendations-1.6.html">1.6</a></li>

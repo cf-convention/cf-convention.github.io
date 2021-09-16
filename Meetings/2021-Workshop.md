@@ -9,9 +9,9 @@ The 2021 CF Workshop will be a virtual meeting on 21-23 September 2021.
 The meeting will run for three hours on each day, 15:00 to 18:00 UTC,
 plus an informal hour at the end of each day.
 
-Thanks for their support of this meeting to: 
- - IS-ENES3 funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084: https://is.enes.org
- - Institute of Physics of Cantabria (IFCA, CSIC-UC): https://ifca.unican.es/en-us
+Thanks for its support of this meeting to:
+ - [IS-ENES3](https://is.enes.org/) which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
+ - [Institute of Physics of Cantabria (IFCA, CSIC-UC)](https://ifca.unican.es/en-us)
 
 ## Registration
 

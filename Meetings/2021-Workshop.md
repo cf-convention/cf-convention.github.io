@@ -20,7 +20,9 @@ There is no fee!
 
 ## Virtual Meeting Information
 
-More information coming soon.
+The meeting will be held on Zoom. [Click here to access the meeting](https://zoom.us/j/97191567321?pwd=UWNiRkJsSnZOQVJGYmMrN1FodUNJdz09).
+
+[Click here](https://www.wonder.me/r?id=a61caecf-07d5-4cd6-9b9f-73f0cf3b7296) to join the social hour after each day's sessions (the password should have been e-mailed to you, but if not it will be made available during the meeting).
 
 ## Documents
 

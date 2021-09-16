@@ -16,9 +16,11 @@ There is no fee!
 
 ## Virtual Meeting Information
 
-More information coming soon.
+The meeting will held on Zoom. [Click here to access the meeting](https://zoom.us/j/97191567321?pwd=UWNiRkJsSnZOQVJGYmMrN1FodUNJdz09).
 
-## Agenda (proposed - times approximate)
+[Click here](https://www.wonder.me/r?id=a61caecf-07d5-4cd6-9b9f-73f0cf3b7296) to join the social hour after each day's sessions (the password should have been e-mailed to you, but if not it will be made available during the meeting).
+
+## Agenda
 
 ### Tuesday, 21 September 2021
 
@@ -47,7 +49,7 @@ More information coming soon.
 
 * **15:00 UTC - Climate indices (Lars Bärring)**
 
-* **15:30 UTC - Experiences with CMIP6 (Francesca Eggleton)**
+* **15:30 - Experiences with CMIP6 (Francesca Eggleton)**
 
 * **16:00 - CF and the Global Community (Gui Castelão, Kevin O'Brien)**
   * OG 1.0 - OceanGliders data format (Dan Hayes)

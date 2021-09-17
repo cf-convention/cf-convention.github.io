@@ -5,7 +5,6 @@ title: Rules
 <!-- 
 TODO:
 https://github.com/cf-convention/cf-convention.github.io/issues/102#issuecomment-641318312 :
-- Decrease size of diagram
 - Update diagram to include data model updates
 -->
 # Rules for CF Conventions Changes
@@ -18,7 +17,8 @@ Changes to [this website](https://github.com/cf-convention/cf-convention.github.
 ## Enhancements
 The rules for introducing enhancements into the CF Conventions are set forth in the following text and summarised in the figure below.
 
-![Figure detailing change process, derived from cf-change-process.plantuml](Data/media/images/cf-change-process.svg)
+#![Figure detailing change process, derived from cf-change-process.plantuml](Data/media/images/cf-change-process.svg)
+<a href="Data/media/images/cf-change-process.svg"><img src="Data/media/images/cf-change-process.svg" alt="Figure detailing change process, derived from cf-change-process.plantuml" height="500px"></a>
 
 Enhancements to the [CF Conventions](https://github.com/cf-convention/cf-conventions) are proposed by raising an issue in the GitHub repository.
 The repository contains a `CONTRIBUTING.md` file with guidelines on how this process is implemented using GitHub.

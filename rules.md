@@ -4,12 +4,9 @@ title: Rules
 ---
 <!-- 
 TODO:
-https://github.com/cf-convention/cf-convention.github.io/issues/102#issuecomment-641318312:
+https://github.com/cf-convention/cf-convention.github.io/issues/102#issuecomment-641318312 :
 - Decrease size of diagram
 - Update diagram to include data model updates
-
-https://github.com/cf-convention/cf-convention.github.io/issues/102#issuecomment-641346514:
-- Switch labels
 -->
 # Rules for CF Conventions Changes
 These are the rules for making changes to the CF Conventions. Note that errata and enhancements are treated via separate processes, detailed in separate sections of this page.

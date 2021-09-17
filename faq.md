@@ -8,7 +8,7 @@ title: Frequently Asked Questions
 
 This page covers many of the most common questions asked about the Climate and Forecast conventions (and Standard Names). If you have a question that isn't on this list, please ask it of the CF-metadata mail list, so that the CF community can respond. We will use that list as the basis for additional content for this set of questions.
 
-Note that many links in this FAQ point to previously released versions of the CF specification. However, others point to the currently-released CF 1.8 specification.  This may provide better explanations or context, or more advanced capabilities. But generally these specifications do not conflict with one another, so there is no harm in following a link to a previous version.
+Note that many links in this FAQ point to previously released versions of the CF specification. However, others point to the currently-released CF 1.9 specification.  This may provide better explanations or context, or more advanced capabilities. But generally these specifications do not conflict with one another, so there is no harm in following a link to a previous version.
 
 The questions are organized by topic. Click on any question to go to its answer.
 
@@ -121,7 +121,7 @@ The CF conventions are maintained by volunteers, led by a Governance Panel and a
 
 ### How long has CF been around? Is it mature?
 
-Work began on CF in 2001 and [Version 1.0](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.0/build/cf-conventions.html) was released in October 2003. Now at Version 1.8, it has been used for tens of thousands of distinct netCDF products, has an active discussion list with hundreds of participants, and is a mature technical specification. Because it is community-supported and community-driven, turnaround on questions and changes can take a little time, but are generally thoroughly considered.
+Work began on CF in 2001 and [Version 1.0](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.0/build/cf-conventions.html) was released in October 2003. Now at Version 1.9, it has been used for tens of thousands of distinct netCDF products, has an active discussion list with hundreds of participants, and is a mature technical specification. Because it is community-supported and community-driven, turnaround on questions and changes can take a little time, but are generally thoroughly considered.
 <a class="anchor" id="related_conventions"></a>
 
 ### How does CF relate to other conventions/specifications (especially COARDS and netCDF)?
@@ -373,7 +373,7 @@ The purpose of the `standard_name` attribute is to provide a succinct and distin
 
 The standard name is useful for listing and discussing the contents of a file, providing the kind of answer an expert might give to the non-expert's question "What is in that file?" This helps users share files across disciplines and over time.
 
-The standard name also makee it possible for a computer to assess whether a variables is likely to be comparable to another, mathematically and semantically.  This increases interoperability by enabling automated discovery. Variables with different standard names are presumably not directly comparable. (Variables with different (that is, incompatible) canonical units are not mathematically comparable, and so are required to have different standard names.) Of course users must review the details of variables, particularly their `long_name` and `source` attributes, to assess whether they are truly interoperable. 
+The standard name also make it possible for a computer to assess whether a variables is likely to be comparable to another, mathematically and semantically.  This increases interoperability by enabling automated discovery. Variables with different standard names are presumably not directly comparable. (Variables with different (that is, incompatible) canonical units are not mathematically comparable, and so are required to have different standard names.) Of course users must review the details of variables, particularly their `long_name` and `source` attributes, to assess whether they are truly interoperable.
 
 References:
 * J Gregory, 2008: [what standard names are for](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2008/052334.html)

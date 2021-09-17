@@ -1,0 +1,25 @@
+name: Build diagrams
+on:
+  push:
+    paths:
+      - '**.plantuml'
+
+jobs:
+  diagrams:
+    name: Draw diagrams
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Generate diagrams
+        uses: Timmy/plantuml-action@v1
+        with:
+          args: '-tsvg cf-change-process.plantuml'
+      - name: Commit diagrams if needed
+        run: |
+          mv cf-change-process.svg Data/media/images/
+          git config --global user.email cf@cfconventions.org
+          git config --global user.name "CF Bot"
+          git add Data/media/images/cf-change-process.svg
+          git commit -m "Update change process diagram"
+          git push

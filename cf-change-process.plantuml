@@ -1,0 +1,56 @@
+@startuml
+|Proposer|
+start
+
+:Discuss idea on "Discuss" list;
+if (Change to conventions needed?) then (no)
+  stop
+else (yes)
+  :Create issue using
+  appropriate template
+  in Conventions repository;
+
+|Moderator|
+while (A moderator volunteers?) is (no)
+|Conventions \nCommittee \nchair|
+  :Ask for volunteers;
+endwhile
+
+repeat
+|Community|
+:Discuss issue and
+proposed text;
+
+|Proposer|
+:Revise proposal as needed;
+
+|Moderator|
+:Facilitate discussion;
+
+|Community|
+:3 weeks pass without \nchanges or objections;
+
+|Moderator|
+:Summarise discussion;
+
+|Proposer|
+:Provide test netCDF file;
+
+|Moderator|
+:Allow 3 weeks for new objections;
+repeat while (Objections raised) is (yes)
+
+if (Consensus reached?) then (Almost);
+  |Conventions \nCommittee|
+  :Vote;
+  if (Rejected) then (yes)
+    stop
+  else (no)
+    :Approved;
+  endif
+endif
+|Information \nmanagement and \nsupport team|
+:Merge into next \nversion of Conventions;
+
+stop
+@enduml

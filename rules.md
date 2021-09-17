@@ -2,11 +2,6 @@
 layout: default
 title: Rules
 ---
-<!-- 
-TODO:
-https://github.com/cf-convention/cf-convention.github.io/issues/102#issuecomment-641318312 :
-- Update diagram to include data model updates
--->
 # Rules for CF Conventions Changes
 These are the rules for making changes to the CF Conventions. Note that errata and enhancements are treated via separate processes, detailed in separate sections of this page.
 Discussions about changes to the CF Conventions, and all decisions pertaining to these, take place and are stored permanently on GitHub.

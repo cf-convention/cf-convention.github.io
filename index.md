@@ -20,7 +20,7 @@ The CF convention includes a standard name table, which defines strings that ide
 
 ---
 
-CF is developed through open discussion on GitHub. If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here](cfconventions.org/discussion.html). Changes are decided according to the CF [governance arrangements](cfconventions.org/governance.html). The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion. 
+CF is developed through open discussion on GitHub. If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here](https://cfconventions.org/discussion.html). Changes are decided according to the CF [governance arrangements](https://cfconventions.org/governance.html). The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion. 
 
 Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models. The use of CF is recommended where applicable by Unidata.
 

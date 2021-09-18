@@ -1,7 +1,6 @@
 ---
 layout: default
 title: CF Governance Panel Minutes
-group: "navigation"
 ---
 
 # CF Governance Panel Meeting Minutes

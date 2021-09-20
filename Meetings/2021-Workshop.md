@@ -28,7 +28,7 @@ The meeting will be held on Zoom. [Click here to access the meeting](https://zoo
 
 All of the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder](https://drive.google.com/drive/folders/1JSHIrPMtlu6MlFEhR8Tcijefs__mX9Wl).
 
-## Agenda (proposed - times approximate)
+## Agenda
 
 ### Tuesday, 21 September 2021
 
@@ -42,7 +42,7 @@ All of the presentations and notes for the plenary and breakout sessions will be
 
 * **16:30 - Lossy Compression (Charlie Zender)**
   * Metadata to encode precision of lossy compression (Charlie Zender)
-  * Lossy compression by coordinate sampling (Anders Sorensen)
+  * Lossy compression by coordinate subsampling (Anders Sorensen)
 
 * **17:00 - Developments in netCDF (Ethan Davis)**
   * The NUG - NetCDF Users Guide (Ethan Davis)
@@ -57,7 +57,7 @@ All of the presentations and notes for the plenary and breakout sessions will be
 
 * **15:00 UTC - Climate indices (Lars Bärring)**
 
-* **15:30 UTC - Experiences with CMIP6 (Francesca Eggleton)**
+* **15:30 - Experiences with CMIP6 (Francesca Eggleton)**
 
 * **16:00 - CF and the Global Community (Gui Castelão, Kevin O'Brien)**
   * OG 1.0 - OceanGliders data format (Dan Hayes)

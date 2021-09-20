@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Conformance
-group: "navigation"
 ---
 
 # Conformance

@@ -31,6 +31,7 @@ See also the links in the navigation bar at the top of this page.
 * [Latest release of CF conventions][releasedhtml]
 * [Current version of CF standard name table][currentnames]
 * Current issues: [general discussion][github_discuss] (including standard names), [conventions][github_conventions], this [website][github_website] (including governance)
+* [CF GitHub organisation][cf_github]
 * [CF FAQ][q8]
 * [List of software for working with CF](software.md)
 * [Paper][cfdmpaper] describing the CF data model and reference software
@@ -59,3 +60,4 @@ See also the links in the navigation bar at the top of this page.
 [github_discuss]: https://github.com/cf-convention/discuss/issues
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues
 [github_website]: https://github.com/cf-convention/cf-convention.github.io/issues
+[cf_github]: https://github.com/cf-convention

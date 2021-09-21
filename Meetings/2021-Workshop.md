@@ -36,7 +36,7 @@ All of the presentations and notes for the plenary and breakout sessions will be
 
 * **15:15 - Review of CF-1.9 (David Hassell)**
 
-* **15:30 - Governance (TBD)**
+* **15:30 - Governance (Ethan Davis)**
 
 * **15:45 - CF Standard Names (Alison Pamment, Sadie Bartholomew)**
 

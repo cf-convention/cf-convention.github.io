@@ -244,7 +244,7 @@ For example, a TM projection with longitude_of_central_meridian#-117 would have 
 
 ## Mapping from CF Grid Mapping Attributes to CRS WKT Elements (previous table by Phil Bentley, Oct 2011)
 
-These __provisional__ mappings have been compiled to support, among other things, CF proposal http://cf-trac.llnl.gov/trac/ticket/69[69].
+These __provisional__ mappings have been compiled to support, among other things, CF proposal [69](http://cfconventions.org/Data/Trac-tickets/69.html).
 If you spot any errors or omissions, please email the author or the CF mailing list, or else update this wiki page.
 
 Mappings are only listed for the current set of CF grid mapping attributes -- there are a number of WKT elements,
@@ -253,7 +253,7 @@ and many CRS PARAMETERs, for which there are no corresponding CF attributes.
 The order of attributes follows Table F.1 in the CF conventions document.
 
 The names of WKT PARAMETER elements follow the names of coordinate operation parameters
-defined in the http://www.epsg-registry.org/[​EPSG geodetic parameter registry].
+defined in the [​EPSG geodetic parameter registry](http://www.epsg-registry.org).
 
 ---
 

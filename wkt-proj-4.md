@@ -6,7 +6,7 @@ title: WKT/PROJ.4
 
 ## Mapping from CF Grid Mapping Attributes to CRS WKT Elements
 
-These __provisional__ mappings have been compiled to support, among other things, CF proposals [69](http://cf-trac.llnl.gov/trac/ticket/69) and [80](http://cf-trac.llnl.gov/trac/ticket/80); which have been incorporated in the CF Conventions document version 1.7.
+These __provisional__ mappings have been compiled to support, among other things, CF proposals [69](http://cfconventions.org/Data/Trac-tickets/69.html) and [80](http://cfconventions.org/Data/Trac-tickets/80.html); which have been incorporated in the CF Conventions document version 1.7.
 If you spot any errors or omissions, please email the authors (Phil Bentley and Etienne Tourigny) or the CF mailing list, or else update this wiki page.
 
 In Tables 1 and 2 the names of WKT PARAMETER elements follow the names of coordinate operation parameters

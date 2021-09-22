@@ -12,7 +12,7 @@ If you spot any errors or omissions, please email the authors (Phil Bentley and 
 In Tables 1 and 2 the names of WKT PARAMETER elements follow the names of coordinate operation parameters
 defined in the [EPSG geodetic parameter registry](http://www.epsg-registry.org).
 
-The following tables list translations of projection parameter names between CF and various other representations (such as OGC WKT, EPSG and PROJ.4). The information was obtained from various sources, including [​http://www.remotesensing.org/geotiff/proj_list/](http://www.remotesensing.org/geotiff/proj_list/).
+The following tables list translations of projection parameter names between CF and various other representations (such as OGC WKT, EPSG and PROJ.4). The information was obtained from various sources.
 
 The various representations listed are:
 
@@ -20,11 +20,11 @@ The various representations listed are:
 
 *   **OGC WKT** The names following OGC WKT specification (used by GDAL/OGR and CadCorp(?))
 
-*   **PROJ.4** The names used in the PROJ.4 software ([http://trac.osgeo.org/proj/](​http://trac.osgeo.org/proj/))
+*   **PROJ.4** The names used in the PROJ.4 software (​http://trac.osgeo.org/proj)
 
-*   **EPSG** The names and codes used in the EPSG Geodetic Parameter Dataset ([http://www.epsg.org/](​http://www.epsg.org/) and [http://www.epsg-registry.org/](​http://www.epsg-registry.org/))
+*   **EPSG** The names and codes used in the EPSG Geodetic Parameter Dataset (http://www.epsg.org and http://www.epsg-registry.org)
 
-*   **GeoTIFF ID** The names used in the GeoTIFF raster format ([​http://trac.osgeo.org/geotiff/](http://trac.osgeo.org/geotiff/))
+*   **GeoTIFF ID** The names used in the GeoTIFF raster format (http://trac.osgeo.org/geotiff)
 
 The following files are provided to list the various possible Datum, Ellipsoid and Prime Meridian names (in support of CF trac ticket [80](http://cf-trac.llnl.gov/trac/ticket/80))
 

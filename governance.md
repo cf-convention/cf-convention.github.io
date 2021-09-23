@@ -44,7 +44,7 @@ group: "navigation"
 
 CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 
-### Information Management and Support
+### Information Management and Support Team
 
 * Martin Desruisseaux (Geomatys)
 * Fran Eggleton (CEDA)
@@ -53,12 +53,10 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Rosalyn Hatcher (University of Reading)
 * Richard Hattersley (UK Met Office)
 * Mark Hedley (UK Met Office)
-* Jeff Painter (LLNL)
 * Alison Pamment (CEDA)
-* Tanya Reshel (LLNL)
 * Sadie Bartholomew (University of Reading)
 
-### Former Committee and Panel Members
+### Former Committee, Panel and Team Members
 
 * Balaji (Conventions)
 * Jim Biard (Conventions)
@@ -69,9 +67,13 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Dave Bader (Governance)
 * Tom Gross (Conventions)
 * Manuel Fuentes (Standard Names)
+* Kyle Halliday (Information Management and Support)
 * Heinke Höck (Standard Names)
 * Steve Hankin (Conventions and Governance)
 * Bryan Lawrence (Standard Names)
+* Velimir Mlaker (Information Management and Support)
+* Jeff Painter (Information Management and Support)
+* Tanya Reshel (Information Management and Support)
 * Russ Rew (Conventions and Governance)
 * Martin Schultz (Conventions)
 * Rich Signell (Governance and Standard Names)

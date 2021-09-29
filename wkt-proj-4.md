@@ -123,7 +123,7 @@ The following files are provided to list the various possible Datum, Ellipsoid a
 | |false_easting |false_easting |+x_0 |False easting |8806 |FalseEasting |
 | |false_northing |false_northing |+y_0 |False northing |8807 |FalseNorthing |
 |  |  |  |  |  |  |  |  | 
-|**LCC-1SP** |Lambert conformal |lambert_conformal_conic |Lambert_Conformal_Conic_1SP |+proj#lcc |Lambert Conic Conformal (1SP) |9801 |CT_LambertConfConic_1SP |[link](http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html)
+|**LCC-1SP** |Lambert conformal |lambert_conformal_conic |Lambert_Conformal_Conic_1SP |+proj#lcc |Lambert Conic Conformal (1SP) |9801 |CT_LambertConfConic_1SP |
 |  |  |standard_parallel |latitude_of_origin |+lat_1 |Latitude of natural origin |8801 |NatOriginLat |standard_parallel#latitude_of_projection_origin
 |  |  |longitude_of_central_meridian |central_meridian |+lon_0 |Longitude of natural origin |8802 |NatOriginLong | 
 |  |  |latitude_of_projection_origin |latitude_of_origin |+lat_0 |Latitude of natural origin |8801 |NatOriginLat | 
@@ -131,7 +131,7 @@ The following files are provided to list the various possible Datum, Ellipsoid a
 | |false_easting |false_easting |+x_0 |False easting |8806 |FalseEasting |
 | |false_northing |false_northing |+y_0 |False northing |8807 |FalseNorthing |
 |  |  |  |  |  |  |  |  | 
-|**LCC-2SP** |Lambert conformal |lambert_conformal_conic |Lambert_Conformal_Conic_2SP |+proj#lcc |Lambert Conic Conformal (2SP) |9802 |CT_LambertConfConic_2SP  |[link](http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_2sp.html)]
+|**LCC-2SP** |Lambert conformal |lambert_conformal_conic |Lambert_Conformal_Conic_2SP |+proj#lcc |Lambert Conic Conformal (2SP) |9802 |CT_LambertConfConic_2SP  |
 |  |  |standard_parallel![1] |standard_parallel_1 |+lat_1 |Latitude of 1st standard parallel |8823 |!StdParallel1 | 
 |  |  |standard_parallel![2] |standard_parallel_2 |+lat_2 |Latitude of 2nd standard parallel |8824 |!StdParallel2 | 
 |  |  |longitude_of_central_meridian |central_meridian |+lon_0 |Longitude of false origin |8822 |FalseOriginLong | 
@@ -218,7 +218,7 @@ EPSG codes below correspond to "EPSG dataset coordinate operation method" codes.
 
 #### Lambert conformal 1SP / 2SP
 
-The 1SP variant corresponds to EPSG code 9801 - Lambert Conic Conformal (1SP), with CF latitude_of_projection_origin#standard_parallel and WKT scale_factor#1. A scale factor less than 1 means that there are 2 standard parallels (see [​http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html](http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html)), but it cannot be translated to the CF 1SP variant, therefore the 2SP variant should be used instead. The 2SP variant corresponds to EPSG code 9802 - Lambert Conic Conformal (2SP).
+The 1SP variant corresponds to EPSG code 9801 - Lambert Conic Conformal (1SP), with CF latitude_of_projection_origin#standard_parallel and WKT scale_factor#1. A scale factor less than 1 means that there are 2 standard parallels, but it cannot be translated to the CF 1SP variant, therefore the 2SP variant should be used instead. The 2SP variant corresponds to EPSG code 9802 - Lambert Conic Conformal (2SP).
 
 
 #### Lambert cylindrical equal area

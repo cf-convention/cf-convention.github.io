@@ -6,13 +6,13 @@ title: WKT/PROJ.4
 
 ## Mapping from CF Grid Mapping Attributes to CRS WKT Elements
 
-These __provisional__ mappings have been compiled to support, among other things, CF proposals [69](http://cf-trac.llnl.gov/trac/ticket/69) and [80](http://cf-trac.llnl.gov/trac/ticket/80); which have been incorporated in the CF Conventions document version 1.7.
+These __provisional__ mappings have been compiled to support, among other things, CF proposals [69](http://cfconventions.org/Data/Trac-tickets/69.html) and [80](http://cfconventions.org/Data/Trac-tickets/80.html); which have been incorporated in the CF Conventions document version 1.7.
 If you spot any errors or omissions, please email the authors (Phil Bentley and Etienne Tourigny) or the CF mailing list, or else update this wiki page.
 
 In Tables 1 and 2 the names of WKT PARAMETER elements follow the names of coordinate operation parameters
 defined in the [EPSG geodetic parameter registry](http://www.epsg-registry.org).
 
-The following tables list translations of projection parameter names between CF and various other representations (such as OGC WKT, EPSG and PROJ.4). The information was obtained from various sources, including [​http://www.remotesensing.org/geotiff/proj_list/](http://www.remotesensing.org/geotiff/proj_list/).
+The following tables list translations of projection parameter names between CF and various other representations (such as OGC WKT, EPSG and PROJ.4). The information was obtained from various sources.
 
 The various representations listed are:
 
@@ -20,11 +20,11 @@ The various representations listed are:
 
 *   **OGC WKT** The names following OGC WKT specification (used by GDAL/OGR and CadCorp(?))
 
-*   **PROJ.4** The names used in the PROJ.4 software ([http://trac.osgeo.org/proj/](​http://trac.osgeo.org/proj/))
+*   **PROJ.4** The names used in the PROJ.4 software (​http://trac.osgeo.org/proj)
 
-*   **EPSG** The names and codes used in the EPSG Geodetic Parameter Dataset ([http://www.epsg.org/](​http://www.epsg.org/) and [http://www.epsg-registry.org/](​http://www.epsg-registry.org/))
+*   **EPSG** The names and codes used in the EPSG Geodetic Parameter Dataset (http://www.epsg.org and http://www.epsg-registry.org)
 
-*   **GeoTIFF ID** The names used in the GeoTIFF raster format ([​http://trac.osgeo.org/geotiff/](http://trac.osgeo.org/geotiff/))
+*   **GeoTIFF ID** The names used in the GeoTIFF raster format (http://trac.osgeo.org/geotiff)
 
 The following files are provided to list the various possible Datum, Ellipsoid and Prime Meridian names (in support of CF trac ticket [80](http://cf-trac.llnl.gov/trac/ticket/80))
 
@@ -123,7 +123,7 @@ The following files are provided to list the various possible Datum, Ellipsoid a
 | |false_easting |false_easting |+x_0 |False easting |8806 |FalseEasting |
 | |false_northing |false_northing |+y_0 |False northing |8807 |FalseNorthing |
 |  |  |  |  |  |  |  |  | 
-|**LCC-1SP** |Lambert conformal |lambert_conformal_conic |Lambert_Conformal_Conic_1SP |+proj#lcc |Lambert Conic Conformal (1SP) |9801 |CT_LambertConfConic_1SP |[link](http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html)
+|**LCC-1SP** |Lambert conformal |lambert_conformal_conic |Lambert_Conformal_Conic_1SP |+proj#lcc |Lambert Conic Conformal (1SP) |9801 |CT_LambertConfConic_1SP |
 |  |  |standard_parallel |latitude_of_origin |+lat_1 |Latitude of natural origin |8801 |NatOriginLat |standard_parallel#latitude_of_projection_origin
 |  |  |longitude_of_central_meridian |central_meridian |+lon_0 |Longitude of natural origin |8802 |NatOriginLong | 
 |  |  |latitude_of_projection_origin |latitude_of_origin |+lat_0 |Latitude of natural origin |8801 |NatOriginLat | 
@@ -131,7 +131,7 @@ The following files are provided to list the various possible Datum, Ellipsoid a
 | |false_easting |false_easting |+x_0 |False easting |8806 |FalseEasting |
 | |false_northing |false_northing |+y_0 |False northing |8807 |FalseNorthing |
 |  |  |  |  |  |  |  |  | 
-|**LCC-2SP** |Lambert conformal |lambert_conformal_conic |Lambert_Conformal_Conic_2SP |+proj#lcc |Lambert Conic Conformal (2SP) |9802 |CT_LambertConfConic_2SP  |[link](http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_2sp.html)]
+|**LCC-2SP** |Lambert conformal |lambert_conformal_conic |Lambert_Conformal_Conic_2SP |+proj#lcc |Lambert Conic Conformal (2SP) |9802 |CT_LambertConfConic_2SP  |
 |  |  |standard_parallel![1] |standard_parallel_1 |+lat_1 |Latitude of 1st standard parallel |8823 |!StdParallel1 | 
 |  |  |standard_parallel![2] |standard_parallel_2 |+lat_2 |Latitude of 2nd standard parallel |8824 |!StdParallel2 | 
 |  |  |longitude_of_central_meridian |central_meridian |+lon_0 |Longitude of false origin |8822 |FalseOriginLong | 
@@ -218,7 +218,7 @@ EPSG codes below correspond to "EPSG dataset coordinate operation method" codes.
 
 #### Lambert conformal 1SP / 2SP
 
-The 1SP variant corresponds to EPSG code 9801 - Lambert Conic Conformal (1SP), with CF latitude_of_projection_origin#standard_parallel and WKT scale_factor#1. A scale factor less than 1 means that there are 2 standard parallels (see [​http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html](http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html)), but it cannot be translated to the CF 1SP variant, therefore the 2SP variant should be used instead. The 2SP variant corresponds to EPSG code 9802 - Lambert Conic Conformal (2SP).
+The 1SP variant corresponds to EPSG code 9801 - Lambert Conic Conformal (1SP), with CF latitude_of_projection_origin#standard_parallel and WKT scale_factor#1. A scale factor less than 1 means that there are 2 standard parallels, but it cannot be translated to the CF 1SP variant, therefore the 2SP variant should be used instead. The 2SP variant corresponds to EPSG code 9802 - Lambert Conic Conformal (2SP).
 
 
 #### Lambert cylindrical equal area
@@ -244,7 +244,7 @@ For example, a TM projection with longitude_of_central_meridian#-117 would have 
 
 ## Mapping from CF Grid Mapping Attributes to CRS WKT Elements (previous table by Phil Bentley, Oct 2011)
 
-These __provisional__ mappings have been compiled to support, among other things, CF proposal http://cf-trac.llnl.gov/trac/ticket/69[69].
+These __provisional__ mappings have been compiled to support, among other things, CF proposal [69](http://cfconventions.org/Data/Trac-tickets/69.html).
 If you spot any errors or omissions, please email the author or the CF mailing list, or else update this wiki page.
 
 Mappings are only listed for the current set of CF grid mapping attributes -- there are a number of WKT elements,
@@ -253,7 +253,7 @@ and many CRS PARAMETERs, for which there are no corresponding CF attributes.
 The order of attributes follows Table F.1 in the CF conventions document.
 
 The names of WKT PARAMETER elements follow the names of coordinate operation parameters
-defined in the http://www.epsg-registry.org/[​EPSG geodetic parameter registry].
+defined in the [​EPSG geodetic parameter registry](http://www.epsg-registry.org).
 
 ---
 

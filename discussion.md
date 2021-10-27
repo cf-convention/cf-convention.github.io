@@ -11,7 +11,7 @@ using [GitHub issues][github_issues].
 
 *   [General discussion and standard names][github_discuss]
 
-    For proposing standard names, any discussion about the
+    For proposing standard names, asking questions or having discussions about the
     interpretation and use of the CF conventions, and initial
     suggestions for proposals to change or extend the CF conventions.
 

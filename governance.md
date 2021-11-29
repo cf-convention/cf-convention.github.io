@@ -47,7 +47,7 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 ### Information Management and Support Team
 
 * Martin Desruisseaux (Geomatys)
-* Fran Eggleton (CEDA)
+* Fran Eggleton (UK Met Office)
 * John Graybeal (Stanford University)
 * David Hassell (University of Reading)
 * Rosalyn Hatcher (University of Reading)

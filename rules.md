@@ -59,7 +59,7 @@ CF incorporates named versions of the UGRID conventions without
 redefining them in the CF conventions document, i.e. CF formally
 refers to the UGRID conventions document for its description of mesh
 topologies. UGRID has its own governance that is independent of the
-rules governing the CF conventions, and itt is therefore the joint
+rules governing the CF conventions, and it is therefore the joint
 responsibility of the CF and UGRID communities to ensure that changes
 to one convention are mutually agreeable to the other. However, in the
 unlikely and highly undesirable event that a non-negotiable change to

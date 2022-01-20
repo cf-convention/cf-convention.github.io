@@ -63,8 +63,9 @@ rules governing the CF conventions, and it is therefore the joint
 responsibility of the CF and UGRID communities to ensure that changes
 to one convention are mutually agreeable to the other. However, in the
 unlikely and highly undesirable event that a non-negotiable change to
-one convention is incompatible with the other convention, then this
-may be resolved either by restricting which versions of UGRID are
-allowed in CF; or else rewriting UGRID into the CF conventions
-document, including any required compatibility changes, thereby
-breaking the formal dependence on the external UGRID conventions.
+one convention is incompatible with the other convention then this may
+be resolved either by restricting which versions of UGRID are allowed
+in CF; or else (as a last resort) rewriting UGRID into the CF
+conventions document, including any required compatibility changes,
+thereby breaking the formal dependence on the external UGRID
+conventions.

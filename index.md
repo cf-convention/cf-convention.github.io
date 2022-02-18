@@ -48,8 +48,6 @@ See also the links in the navigation bar at the top of this page.
 [q3]: http://cf-trac.llnl.gov/trac
 [q4]: http://www.met.reading.ac.uk/~david/cf_trac_summary.html
 [q5]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
-[q6]: requirements-and-recommendations.html
-[q7]: compliance-checker.html
 [q8]: faq.html
 [releasedhtml]: Data/cf-conventions/cf-conventions-1.9/cf-conventions.html
 [releasedpdf]: Data/cf-conventions/cf-conventions-1.9/cf-conventions.pdf

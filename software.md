@@ -23,7 +23,7 @@ The [cf-checker](https://github.com/cedadev/cf-checker) is a python tool to chec
 It can be run as a command-line tool, via a web interface (available at [NCAS](https://github.com/cedadev/cf-checker)
 and [CEDA](http://wps-web1.ceda.ac.uk/submit/form?proc_id=CFChecker)) or imported as a python library.
 The cf-checker verifies conformance according to the requirements and recommendations laid out in the
-[CF Conformance Document](http://cfconventions.org/requirements-and-recommendations.html).
+[CF Conformance Document](https://cfconventions.org/cf-conventions/conformance.html).
 It is possible to check conformance against any CF version.
 
 ### IOOS Compliance Checker

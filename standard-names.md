@@ -6,13 +6,14 @@ group: "navigation"
 
 <h2><b>CF Standard Names and other CF Controlled Vocabulary</b></h2>
 <p>
-<h4><b>Standard Name Table (current version, v78, 21 September 2021)</b></h4>
-  <a href="Data/cf-standard-names/78/build/cf-standard-name-table.html">HTML</a> &nbsp;
-  <a href="Data/cf-standard-names/78/src/cf-standard-name-table.xml">XML</a> &nbsp;
-  <a href="Data/cf-standard-names/78/build/kwic_index_for_cf_standard_names.html">KWIC_Index</a>
+<h4><b>Standard Name Table (current version, v79, 19 March 2022)</b></h4>
+  <a href="Data/cf-standard-names/79/build/cf-standard-name-table.html">HTML</a> &nbsp;
+  <a href="Data/cf-standard-names/79/src/cf-standard-name-table.xml">XML</a> &nbsp;
+  <a href="Data/cf-standard-names/79/build/kwic_index_for_cf_standard_names.html">KWIC_Index</a>
 
   <h5><b>Previous Versions (HTML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/78/build/cf-standard-name-table.html">v78</a> &nbsp;
     <a href="Data/cf-standard-names/77/build/cf-standard-name-table.html">v77</a> &nbsp;
     <a href="Data/cf-standard-names/76/build/cf-standard-name-table.html">v76</a> &nbsp;
     <a href="Data/cf-standard-names/75/build/cf-standard-name-table.html">v75</a> &nbsp;
@@ -92,6 +93,7 @@ group: "navigation"
 
   <h5><b>Previous Versions (XML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/78/src/cf-standard-name-table.xml">v78</a> &nbsp;
     <a href="Data/cf-standard-names/77/src/cf-standard-name-table.xml">v77</a> &nbsp;
     <a href="Data/cf-standard-names/76/src/cf-standard-name-table.xml">v76</a> &nbsp;
     <a href="Data/cf-standard-names/75/src/cf-standard-name-table.xml">v75</a> &nbsp;
@@ -170,6 +172,7 @@ group: "navigation"
     <a href="Data/cf-standard-names/1/src/cf-standard-name-table.xml">v1</a> &nbsp;
 
 <h5>Previous Versions (Keyword Centred List)</h5>
+      <a href="Data/cf-standard-names/78/build/kwic_index_for_cf_standard_names.html">v78</a>  &nbsp;
       <a href="Data/cf-standard-names/77/build/kwic_index_for_cf_standard_names.html">v77</a>  &nbsp;
       <a href="Data/cf-standard-names/76/build/kwic_index_for_cf_standard_names.html">v76</a>  &nbsp;
       <a href="Data/cf-standard-names/75/build/kwic_index_for_cf_standard_names.html">v75</a>  &nbsp;

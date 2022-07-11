@@ -14,7 +14,7 @@ The Climate and Forecast metadata conventions (CF) are a community-developed sta
 
 ## Registration
 
-There are no registration fees, but registration before 30th of August it's required.
+There are no registration fees, but registration before 30th of August is required.
 
 You can register using [this form][REGISTRATION].
 

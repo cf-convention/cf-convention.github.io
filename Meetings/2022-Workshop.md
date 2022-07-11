@@ -54,7 +54,7 @@ Please express an interest in any number of these sessions, in the [registration
 More details at: <https://github.com/cf-convention/discuss/issues/152>
 
 ### Poster contributions 
-During the CF Workshop there will be available displays for Poster contributions from participants. There will not formal poster session but it's expected to informal chats over during breaks. 
+During the CF Workshop there will be available displays for Poster contributions from participants. There will be no formal poster session, but posters expected to chatted about informally during breaks.
 
 To help us with planning, please check the "Other" box, in the [registration form][REGISTRATION], and provided a tentative title, if you would be interested to bring your poster. 
 

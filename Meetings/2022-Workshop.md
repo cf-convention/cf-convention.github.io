@@ -19,7 +19,7 @@ There are no registration fees, but registration before 30th of August is requir
 You can register using [this form][REGISTRATION].
 
 
-[REGISTRATION]: https://forms.gle/RB9BYZuLULcVKBsF6)
+[REGISTRATION]: https://forms.gle/RB9BYZuLULcVKBsF6
 
 ## Venue
 The workshop takes place at [IFCA] which it's located at [University of Cantabria Campus][IFCA-campus] in the city of Santander (Spain). Take a look at IFCA's ["street view"][IFCA-street-view]!

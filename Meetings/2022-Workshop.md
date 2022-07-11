@@ -41,7 +41,7 @@ This will take place on Thursday 8th September, 1500 - 1800 UTC.
 
 **The full programme will be published on the CF website prior to the event.** 
 
-Pre-registration is not essential, but to help us with planning please the corresponding checkbox, in the [registration form][REGISTRATION], if you would be interested in attending. Videos of the training presentations will be made available for later viewing by those unable to attend the event itself. 
+Pre-registration for the on-line training event is not essential, but to help us with planning please the corresponding checkbox, in the [registration form][REGISTRATION], if you would be interested in attending. Videos of the training presentations will be made available for later viewing by those unable to attend the event itself. 
 
 More details at: <https://github.com/cf-convention/discuss/issues/158>
 

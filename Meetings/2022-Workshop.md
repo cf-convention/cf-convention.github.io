@@ -9,7 +9,7 @@ The Climate and Forecast metadata conventions (CF) are a community-developed sta
 
 2022 CF Workshop will take place on 13-15 September 2022 hosted by [IFCA] at Santander (Spain). After 2 successful virtual editions ([2020] and [2021]), the 2022 edition is organized as a hybrid event having in-person and on-line participants. 
 
-[2021]: 2021-Workshop.html "2021 CF Workshop"
+[2021]: https://cfconventions.org/Meetings/2021-Workshop.html "2021 CF Workshop"
 [2020]: https://cfconventions.org/Meetings/2020-Workshop.html "2020 CF Workshop"
 
 ## Registration

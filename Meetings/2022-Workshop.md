@@ -45,7 +45,7 @@ Pre-registration for the on-line training event is not essential, but to help us
 
 More details at: <https://github.com/cf-convention/discuss/issues/158>
 
-### Topics for hackatons sessions
+### Topics for hackathon sessions
 
 We will devote the afternoon (CEST time) sessions of each day to focused-attention hackathons, during which it is hoped that concrete progress on each topic can be made (such as actual changes suggested to the Conventions text). 
 

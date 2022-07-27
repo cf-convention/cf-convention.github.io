@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] New CF tools from David Hassell on 2013-04-24 (cf-metadata-mailman)</title>
+<meta name="Author" content="David Hassell (d.c.hassell)" />
+<meta name="Subject" content="[CF-metadata] New CF tools" />
+<meta name="Date" content="2013-04-24" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5286.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5288.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] New CF tools</h1>
+<!-- received="Wed Apr 24 07:54:58 2013" -->
+<!-- isoreceived="20130424065458" -->
+<!-- sent="Wed, 24 Apr 2013 14:54:58 +0100" -->
+<!-- isosent="20130424135458" -->
+<!-- name="David Hassell" -->
+<!-- email="d.c.hassell" -->
+<!-- subject="[CF-metadata] New CF tools" -->
+<!-- id="20130424135458.GA31911_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20130325173206.GB12849_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5287" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5288.html" accesskey="d" title="Jablonski, Kathryn L: &quot;[CF-metadata] Accept geostationary projection&quot;">Next message</a> ]
+[ <a href="./5286.html" title="Jonathan Gregory: &quot;[CF-metadata] New Standard Names for Satellite Data&quot;">Previous message</a> ]
+[ <a href="./5187.html" title="David Hassell: &quot;[CF-metadata] CF trac ticket summary update&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5914.html" accesskey="t" title="David Hassell: &quot;[CF-metadata] Update: cfdump and cfa&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5287" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5287" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5287" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5287" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: David Hassell &lt;<a href="mailto:d.c.hassell?Subject=Re%3A%20%5BCF-metadata%5D%20New%20CF%20tools">d.c.hassell</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 24 Apr 2013 14:54:58 +0100</span><br />
+</address>
+<br />
+Dear CF community,
+<br />
+<br />I would like to advertise two new CF command line tools for inspecting
+<br />
+and combining datasets:
+<br />
+<br />&nbsp;&nbsp;cfdump - view CF fields
+<br />
+&nbsp;&nbsp;cfa    - create aggregated CF datasets
+<br />
+<br />These utilities accept multiple input files (or URLs if DAP access is
+<br />
+enabled) and aggregate their contents according to the CF aggregation
+<br />
+rules (ticket #78) before either describing the combined fields
+<br />
+(cfdump) or writing them out (cfa). These utilities are useful even if
+<br />
+aggregation is not relevant. In that case they simply describe or
+<br />
+write out the data variables from the input file(s).
+<br />
+<br />Aggregation means that all the input files are treated as though they
+<br />
+were a single file, and individual data variables in different files
+<br />
+are regarded as parts of a larger data variable if their coordinates
+<br />
+and other metadata indicate that this interpretation is possible. For
+<br />
+example, each file might contain data for surface temperature on the
+<br />
+same lat-lon grid but with a different range of dates. The aggregated
+<br />
+dataset then contains a single data variable covering all the
+<br />
+dates. The CF aggregation rules are fully general so, for example,
+<br />
+multidimensional aggregations are handled as are aggregations of
+<br />
+fields with ancillary variables, etc.
+<br />
+<br />However, these utilities will not create the aggregated file unless
+<br />
+requested; the aggregation is done in memory, using only the metadata,
+<br />
+in the first place.
+<br />
+<br />cfdump
+<br />
+------
+<br />
+The cfdump tool generates text representations on standard output of
+<br />
+the CF fields contained in the input files. It can describe fields in
+<br />
+various amounts of detail from one-line summaries, to medium-length
+<br />
+and complete dumps. It is complementary to other similar tools, such
+<br />
+as ncdump, but tells you about the data from a CF point of view
+<br />
+because it knows the CF conventions.
+<br />
+<br />For example, a one-line summary of a complete dataset that has been
+<br />
+split across two files (file1.nc and file2.nc) might look like:
+<br />
+<br />&nbsp;&nbsp;$ cfdump -s file1.nc file2.nc
+<br />
+&nbsp;&nbsp;&lt;CF Field: air_temperature(time(1200), latitude(64), longitude(128)) K&gt;
+<br />
+<br />See <a href="http://www.met.reading.ac.uk/~david/cfdump.1">http://www.met.reading.ac.uk/~david/cfdump.1</a> for more examples.
+<br />
+<br />cfa
+<br />
+<pre>
+---
+The cfa tool creates and writes to disk the aggregated CF fields
+contained in the input files.
+For example (using the same files as in the cfdump example):
+  $ cfa -o new_file.nc file1.nc file2.nc
+  $ cfdump -s new_file.nc
+  &lt;CF Field: air_temperature(time(1200), latitude(64), longitude(128)) K&gt;
+See <a href="http://www.met.reading.ac.uk/~david/cfa.1">http://www.met.reading.ac.uk/~david/cfa.1</a> for more examples.
+CFA-netCDF format files
+-----------------------
+Both tools accept CFA-netCDF format files as input, and cfa also
+outputs such files. A CFA-netCDF file is actually a netCDF file
+following the CF convention with the addition of a private convention
+(the CFA convention) to allow the data to be omitted, because it
+resides in the individual files that are being aggregated. CFA-netCDF
+files are consequently typically rather small. The suffix .nca is
+suggested for CFA-netCDF files. The CFA convention has been designed
+specifically to cope with the full generality of aggregations made
+possible by the CF aggregation rules.
+For example (using the same files as in the cfdump example):
+  $ cfa -f CFA -o new_file.nca file[12].nc
+  $ cfdump -s new_file.nca
+  &lt;CF Field: air_temperature(time(1200), latitude(64), longitude(128)) K&gt;
+See <a href="http://www.met.reading.ac.uk/~david/cfa/0.3/">http://www.met.reading.ac.uk/~david/cfa/0.3/</a> for details.
+Met Office (UK) PP format files
+-------------------------------
+Both utilities accept PP format files as input, but output from cfa is
+only in CF-netCDF or CFA-netCDF format. Therefore cfa may be used as a
+PP to CF converter.
+cf-python
+---------
+Both utilities are built on the cf-python library, which also offers
+an interactive programming environment in which you may read, write,
+create and manipulate CF fields, including those which are larger than
+the available machine memory.
+How do you get these tools and cf-python?
+-----------------------------------------
+They are automatically installed with the open source cf-python
+library version 0.9.7 (download from
+<a href="http://cfpython.bitbucket.org/">http://cfpython.bitbucket.org/</a>). Currently, this library only works on
+Linux.
+I hope that these utilities will be useful. I would welcome any
+feedback, particularly if you find a dataset for which they don't work
+as expected, and will be glad to make any improvements to cfdump, cfa
+or the cf-python library.
+All the best,
+David
+--
+David Hassell
+National Centre for Atmospheric Science (NCAS)
+Department of Meteorology, University of Reading,
+Earley Gate, PO Box 243,
+Reading RG6 6BB, U.K.
+Tel   : +44 118 3785613
+E-mail: d.c.hassell at reading.ac.uk
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Apr 24 2013 - 07:54:58 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5287">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5288.html" title="Next message in the list">Jablonski, Kathryn L: "[CF-metadata] Accept geostationary projection"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5286.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] New Standard Names for Satellite Data"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5187.html" title="Message to which this message replies">David Hassell: "[CF-metadata] CF trac ticket summary update"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5914.html" title="Next message in this discussion thread">David Hassell: "[CF-metadata] Update: cfdump and cfa"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5914.html" title="Message sent in reply to this message">David Hassell: "[CF-metadata] Update: cfdump and cfa"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5287" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5287" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5287" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5287" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:20 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5286.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5288.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

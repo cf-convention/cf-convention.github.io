@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] point observation data in CF 1.4 from Rich Signell on 2010-10-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="Rich Signell (rsignell)" />
+<meta name="Subject" content="[CF-metadata] point observation data in CF 1.4" />
+<meta name="Date" content="2010-10-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2861.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2863.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] point observation data in CF 1.4</h1>
+<!-- received="Wed Oct 13 06:13:28 2010" -->
+<!-- isoreceived="20101013051328" -->
+<!-- sent="Wed, 13 Oct 2010 08:13:28 -0400" -->
+<!-- isosent="20101013121328" -->
+<!-- name="Rich Signell" -->
+<!-- email="rsignell" -->
+<!-- subject="[CF-metadata] point observation data in CF 1.4" -->
+<!-- id="AANLkTimm3sZm-a33e7cAGu2ZnF4ctBcuPt-mWCrY5W4F_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20101013115627.GC20375_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2862" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2863.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  point observation data in CF 1.4&quot;">Next message</a> ]
+[ <a href="./2861.html" title="Jonathan Gregory: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Previous message</a> ]
+[ <a href="./2861.html" title="Jonathan Gregory: &quot;[CF-metadata] point observation data in CF 1.4&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2863.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata]  point observation data in CF 1.4&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2862" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2862" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2862" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2862" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Rich Signell &lt;<a href="mailto:rsignell?Subject=Re%3A%20%5BCF-metadata%5D%20point%20observation%20data%20in%20CF%201.4">rsignell</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 13 Oct 2010 08:13:28 -0400</span><br />
+</address>
+<br />
+Jonathan,
+<br />
+<br /><em class="quotelev2">&gt;&gt; Typical producers of this kind of data are numerical particle tracking
+</em><br />
+<em class="quotelev2">&gt;&gt; models. ?These codes step through time, following the (x,y,t) or
+</em><br />
+<em class="quotelev2">&gt;&gt; (x,y,z,t) trajectories of individual particles. ?At each time step,
+</em><br />
+<em class="quotelev2">&gt;&gt; more particles may be introduced to be tracked, while other particles
+</em><br />
+<em class="quotelev2">&gt;&gt; stop being tracked because they leave the domain, hit the boundary, or
+</em><br />
+<em class="quotelev2">&gt;&gt; whatever.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; This kind of data could be described by the trajectory feature type, but each
+</em><br />
+<em class="quotelev1">&gt; trajectory would be entirely independent, so they'd all have separate times,
+</em><br />
+<em class="quotelev1">&gt; whereas as you describe it the time coord is common to all trajectories (that
+</em><br />
+<em class="quotelev1">&gt; exist at a particular time). To arrange this, an indirection could be used on
+</em><br />
+<em class="quotelev1">&gt; the time dimension:
+</em><br />
+<em class="quotelev1">&gt; ?data(i,o) ? ? x(i,o) y(i,o) z(i,o) t(tindex(i,o))
+</em><br />
+<em class="quotelev1">&gt; where i is the instance (which of the trajectories), o is the point along that
+</em><br />
+<em class="quotelev1">&gt; trajectory, t is the coordinate vector of common times, and tindex is an index
+</em><br />
+<em class="quotelev1">&gt; to t. For example, we might have these two trajectories (x,t) (omitting y and
+</em><br />
+<em class="quotelev1">&gt; z for simplicity)
+</em><br />
+<em class="quotelev1">&gt; ?(0,10) (1,11) (2,12)
+</em><br />
+<em class="quotelev1">&gt; ? ? ? ? (3,11) (2,12) (1,13) (0,14)
+</em><br />
+<em class="quotelev1">&gt; Then t would be [10,11,12,13,14] (all the times). For the first trajectory
+</em><br />
+<em class="quotelev1">&gt; ?x=[0,1,2] tindex=[0,1,2]
+</em><br />
+<em class="quotelev1">&gt; and for the second
+</em><br />
+<em class="quotelev1">&gt; ?x=[3,2,1,0] tindex=[1,2,3,4]
+</em><br />
+<em class="quotelev1">&gt; Is that right? Perhaps/probably there's a neater or more natural way to do it.
+</em><br />
+<br />Yes, that's exactly right.
+<br />
+<br />With the approach you suggest, if you wanted to obtain all the
+<br />
+particle positions at a particular time step, would you need to read
+<br />
+all tindex for all particles?  (I'm a little fuzzy on what the CDL
+<br />
+would look like...)
+<br />
+<br />Thanks,
+<br />
+Rich
+<br />
+<pre>
+-- 
+Dr. Richard P. Signell?? (508) 457-2229
+USGS, 384 Woods Hole Rd.
+Woods Hole, MA 02543-1598
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Oct 13 2010 - 06:13:28 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2862">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2863.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  point observation data in CF 1.4"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2861.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2861.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2863.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata]  point observation data in CF 1.4"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2863.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata]  point observation data in CF 1.4"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2862" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2862" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2862" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2862" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:33 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2861.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2863.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

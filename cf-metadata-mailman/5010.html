@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] directional data in a projected coordinate system from Charles Seaton on 2013-02-07 (cf-metadata-mailman)</title>
+<meta name="Author" content="Charles Seaton (cseaton)" />
+<meta name="Subject" content="[CF-metadata] directional data in a projected coordinate system" />
+<meta name="Date" content="2013-02-07" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5009.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5011.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] directional data in a projected coordinate system</h1>
+<!-- received="Wed Feb  6 19:55:12 2013" -->
+<!-- isoreceived="20130206195512" -->
+<!-- sent="Wed, 06 Feb 2013 18:55:12 -0800" -->
+<!-- isosent="20130207025512" -->
+<!-- name="Charles Seaton" -->
+<!-- email="cseaton" -->
+<!-- subject="[CF-metadata] directional data in a projected coordinate system" -->
+<!-- id="51131790.8090502_at_stccmop.org" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5010" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5011.html" accesskey="d" title="Hattersley, Richard: &quot;[CF-metadata] directional data in a projected coordinate system&quot;">Next message</a> ]
+[ <a href="./5009.html" title="Nan Galbraith: &quot;[CF-metadata] Usage of the &#0039;Conventions&#0039; attribute (Phil	Bentley)&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5011.html" accesskey="t" title="Hattersley, Richard: &quot;[CF-metadata] directional data in a projected coordinate system&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5010" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5010" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5010" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5010" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Charles Seaton &lt;<a href="mailto:cseaton?Subject=Re%3A%20%5BCF-metadata%5D%20directional%20data%20in%20a%20projected%20coordinate%20system">cseaton</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 06 Feb 2013 18:55:12 -0800</span><br />
+</address>
+<br />
+Hello all,
+<br />
+<br />We are in the process of switching standard model output at CMOP over to 
+<br />
+CF compliant netcdf. As we do so, we are looking at whether we can 
+<br />
+retain our data in projected coordinates or whether we need to switch to 
+<br />
+using global lat-lon coordinates. We have run into an ambiguity in the 
+<br />
+handling of directional data in a projected coordinate system in CF.
+<br />
+<br />If I have model output velocities generated in a projected coordinate 
+<br />
+system, should velocity data that is relative to the projected 
+<br />
+coordinate system?
+<br />
+<br />Take the canonical lambert conformal conic example (example 5.7 at 
+<br />
+<a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.0/ch05s06.html">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.0/ch05s06.html</a>). If 
+<br />
+I add a variable:
+<br />
+<br />float VelN(time, y, x);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VelN:standard_name =&quot;northward_sea_water_velocity&quot;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VelN:coordinates=&quot;lat lon&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VelN:grid_mapping = &quot;Lambert_Conformal&quot;;
+<br />
+<br />would it then be understood (by CF compliant software) that this is the 
+<br />
+y-component of velocity within the context of the projection, which will 
+<br />
+differ from the true Northward component of velocity at most points 
+<br />
+within the projection? Or does using the name &quot;northward_X&quot; mean that 
+<br />
+the velocity should be the true Northward component of velocity?
+<br />
+<br />thanks,
+<br />
+<br />Charles Seaton
+<br />
+<br />Research Associate
+<br />
+Center for Coastal Margin Observation and Prediction (CMOP)
+<br />
+Oregon Health and Science University
+<br />
+cseaton at stccmop.org
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Feb 06 2013 - 19:55:12 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5010">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5011.html" title="Next message in the list">Hattersley, Richard: "[CF-metadata] directional data in a projected coordinate system"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5009.html" title="Previous message in the list">Nan Galbraith: "[CF-metadata] Usage of the &#0039;Conventions&#0039; attribute (Phil	Bentley)"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5011.html" title="Next message in this discussion thread">Hattersley, Richard: "[CF-metadata] directional data in a projected coordinate system"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5011.html" title="Message sent in reply to this message">Hattersley, Richard: "[CF-metadata] directional data in a projected coordinate system"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5010" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5010" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5010" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5010" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:14 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5009.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5011.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

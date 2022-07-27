@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] JSON representation based on CF from Chris Barker on 2017-07-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="Chris Barker (chris.barker)" />
+<meta name="Subject" content="[CF-metadata] JSON representation based on CF" />
+<meta name="Date" content="2017-07-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8442.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8444.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] JSON representation based on CF</h1>
+<!-- received="Wed Jul 26 18:30:11 2017" -->
+<!-- isoreceived="20170726173011" -->
+<!-- sent="Wed, 26 Jul 2017 17:30:11 -0700" -->
+<!-- isosent="20170727003011" -->
+<!-- name="Chris Barker" -->
+<!-- email="chris.barker" -->
+<!-- subject="[CF-metadata] JSON representation based on CF" -->
+<!-- id="CALGmxEKAsz9dq5JUjtwbzLo_9DqPjpOF9pu=z=s3pM5x5Sju8w_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CALGmxE+R9ON0sthRgBMOQGf=2G5UU_xhoYnDNMTRuf=TPU5N5g_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8443" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8444.html" accesskey="d" title="David Johnson: &quot;[CF-metadata] JSON representation based on CF&quot;">Next message</a> ]
+[ <a href="./8442.html" title="Chris Barker: &quot;[CF-metadata] JSON representation based on CF&quot;">Previous message</a> ]
+[ <a href="./8442.html" title="Chris Barker: &quot;[CF-metadata] JSON representation based on CF&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8444.html" accesskey="t" title="David Johnson: &quot;[CF-metadata] JSON representation based on CF&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8443" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8443" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8443" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8443" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Chris Barker &lt;<a href="mailto:chris.barker?Subject=Re%3A%20%5BCF-metadata%5D%20JSON%20representation%20based%20on%20CF">chris.barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 26 Jul 2017 17:30:11 -0700</span><br />
+</address>
+<br />
+Just looked a tiny bit more at CF_JSON, and see an issue right away:
+<br />
+<br />&quot;The data object contains the actual data for each variable as its
+<br />
+key:value members. Each data key MUST be the same as it variable ID key.&quot;
+<br />
+<br />{
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;variables&quot;: {
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tmp2m&quot;: {
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;dimensions&quot;: [&quot;time&quot;,&quot;latitude&quot;,&quot;longitude&quot;]
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;: {
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tmp2m&quot;: [
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[1.2,3.4,5.6 ...],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.3,6.5,8.7 ...],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+}
+<br />
+<br />JSON can be arbitrarily nested -- so why store the &quot;data&quot; object separately
+<br />
+from the variable objects, using a key to map them?
+<br />
+<br />why not:
+<br />
+<br />{
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;variables&quot;: { &quot;tmp2m&quot;: {&quot;dimensions&quot;: [&quot;time&quot;,&quot;latitude&quot;,&quot;longitude&quot;]
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;attributes&quot;: {&quot;units&quot;: &quot;ms^{-1}&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;long_name&quot;: &quot;Easterly
+<br />
+component of wind&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;standard_name&quot;: &quot;eastward_wind&quot;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;: [[1.2,3.4,5.6 ...],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.3,6.5,8.7 ...],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br />
+}
+<br />
+<br />I think that's more or less how NCO's JSON works, and it keeps everything
+<br />
+about a variable all in one place -- easier for parsing tools, etc. And
+<br />
+maps well to the Python netCDF4 data structure anyway.
+<br />
+<br />-CHB
+<br />
+<br /><br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170726/148edcd7/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170726/148edcd7/attachment.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Jul 26 2017 - 18:30:11 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8443">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8444.html" title="Next message in the list">David Johnson: "[CF-metadata] JSON representation based on CF"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8442.html" title="Previous message in the list">Chris Barker: "[CF-metadata] JSON representation based on CF"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8442.html" title="Message to which this message replies">Chris Barker: "[CF-metadata] JSON representation based on CF"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8444.html" title="Next message in this discussion thread">David Johnson: "[CF-metadata] JSON representation based on CF"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8444.html" title="Message sent in reply to this message">David Johnson: "[CF-metadata] JSON representation based on CF"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8443" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8443" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8443" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8443" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:15 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8442.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8444.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

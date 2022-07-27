@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jim Biard on 2015-07-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-07-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7213.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7215.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Mon Jul 13 10:15:03 2015" -->
+<!-- isoreceived="20150713091503" -->
+<!-- sent="Mon, 13 Jul 2015 12:15:03 -0400" -->
+<!-- isosent="20150713161503" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="55A3E407.4080304_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20150713144506.GA27417_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7214" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7215.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./7213.html" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+[ <a href="./7211.html" title="Jonathan Gregory: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7214" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7214" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7214" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7214" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 13 Jul 2015 12:15:03 -0400</span><br />
+</address>
+<br />
+Jonathan,
+<br />
+<br />On 7/13/15 10:45 AM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Jim
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I look at your second case and consider that this looks a whole lot
+</em><br />
+<em class="quotelev2">&gt;&gt; like the plain gregorian calendar case. While inputs may have been
+</em><br />
+<em class="quotelev2">&gt;&gt; timestamped with UTC times, the model output definitely isn't UTC,
+</em><br />
+<em class="quotelev2">&gt;&gt; and I don't see any justification for the level of precision implied
+</em><br />
+<em class="quotelev2">&gt;&gt; by gregorian_utc_nls. (Note that if you know you have elapsed time
+</em><br />
+<em class="quotelev2">&gt;&gt; encoded from UTC without considering leap seconds, you can actually
+</em><br />
+<em class="quotelev2">&gt;&gt; precisely handle it. It's just that there are potential
+</em><br />
+<em class="quotelev2">&gt;&gt; discontinuities and/or offsets encoded into the elapsed times.) As a
+</em><br />
+<em class="quotelev2">&gt;&gt; result, I'd say that your second case should be labeled with
+</em><br />
+<em class="quotelev2">&gt;&gt; gregorian, not gregorian_nls.
+</em><br />
+<em class="quotelev1">&gt; I don't agree with that, because gregorian is *imprecise*. It is deliberately
+</em><br />
+<em class="quotelev1">&gt; not defined whether it is GPS or UTC or whether there are leap seconds in the
+</em><br />
+<em class="quotelev1">&gt; encoding. This is reasonable for applications which aren't affected by this
+</em><br />
+<em class="quotelev1">&gt; level of precision, or the precise information is not available.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; However, models running to simulate the real world (without leap seconds)
+</em><br />
+<em class="quotelev1">&gt; are *precise*. They do run with second precision, and there is a need to
+</em><br />
+<em class="quotelev1">&gt; decode their time coordinates to timestamps which are exactly right. It would
+</em><br />
+<em class="quotelev1">&gt; be unsatisfactory not to be able to do this, or to get timestamps which were
+</em><br />
+<em class="quotelev1">&gt; wrong by odd numbers of seconds. Hence this is a different case from gregorian.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree that you can exactly decode gregorian_utc_nls to get the accurate
+</em><br />
+<em class="quotelev1">&gt; timestamps, and that the inaccuracy is in the elapsed time. But that is a
+</em><br />
+<em class="quotelev1">&gt; different case too. For models running with gregorian_nls, the elapsed time
+</em><br />
+<em class="quotelev1">&gt; is correct (in model world) as well as the decoded timestamps.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Therefore I think gregorian, gregorian_utc_nls and gregorian_nls are different
+</em><br />
+<em class="quotelev1">&gt; and necessary use-cases, but it's the latter two which are most similar. They
+</em><br />
+<em class="quotelev1">&gt; are so similar that it would be hard to choose the right one reliably, so I
+</em><br />
+<em class="quotelev1">&gt; would rather not make the distinction. gregorian_nls cannot properly be called
+</em><br />
+<em class="quotelev1">&gt; UTC, because it isn't, but gregorian_utc_nls could be called gregorian_nls,
+</em><br />
+<em class="quotelev1">&gt; because _nls won't be needed for any real-world times apart from UTC. I'm sorry
+</em><br />
+<em class="quotelev1">&gt; not to have thought this through last week.
+</em><br />
+Hmmmm... If the input times were GPS times, would you - as a modeler - 
+<br />
+feel the need to convert those times to UTC times before using them in 
+<br />
+your model?
+<br />
+<br />I've never dealt with weather or climate models, but it seems to me that 
+<br />
+while models are precise regarding time, they may not be accurate - in 
+<br />
+that having your inputs off by 15 seconds won't make a material 
+<br />
+difference in your outputs. (And I'm not trying to denigrate models in 
+<br />
+any way when I say that.)
+<br />
+<br />I'd like to hear your thoughts about this while I continue to ponder this.
+<br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Grace and peace,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Jim
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 7/13/15 6:18 AM, Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Dear Jim and Karl
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Thanks for your emails.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; To Jim, I think I spoke too soon! I do agree that it's better to be precise,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; but I'm concerned on reflection that there are two uses of real-world time
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; encoded as if there were no leap seconds in the real world:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; * Observational data or models run with observational input, where the data
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; is timestamped in UTC, but encoded as coordinates without leap seconds. This
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; is what we agreed to call gregorian_utc_nls. In this case we pretend that the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; real world has a constant day-length and no leap seconds.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; * Models run to resemble the real world, with the real-world calendar and the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; intention to compare actual weather or climate with model output, but without
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; leap seconds. CMIP5 historical and AMIP experiments are in this category, for
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; which some models use the real-world calendar (but no leap seconds), and some
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; of the input (for instance SSTs and atmospheric composition) refers to the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; real-world calendar. However it is model data, and the model definitely does
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; not have leap seconds, so cannot truly be UTC at all. It actually is running
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; with a constant day-length. Thus we can't rightly call this gregorian_utc_nls.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; It would be more accurate to call it gregorian_nls (not UTC, not GPS).
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; However the distinction between gregorian_utc_nls and gregorian_nls is very
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; subtle. I can barely see it myself, even when writing about it! I expect it
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; would not reliably be made by data-producers. Therefore I'd like to revert to
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; gregorian_nls for both cases. I think this only applies to UTC really. GPS
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; does not have leap seconds anyway, so a special no-leap-second encoding would
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; only be needed if you put a reference time for GPS before the GPS epoch. Maybe
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; we should disallow that, to avoid this ambiguity.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Therefore, with apologies, I have to ask the opposite question of whether you
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; could live with gregorian_nls to mean encoded UTC when it's truly real-world
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; data. I don't think it's satisfactory to call it just &quot;gregorian&quot; because we
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; have also recognised the need for a deliberately imprecise situation, when it's
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; not known if it's GPS or UTC or how encoded. gregorian_nls is precisely 86400-
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; second days, encoded as such, by intention.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Karl, do you have any comments about this?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Karl, I agree with your analysis. Jim and I also discussed ways of changing
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; the calendar, and we decided it wasn't essential to the definitions as such
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; to say how you could do it. Another possibility for changing from UTC to GPS
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; or v-v is to alter the reference time and its calendar so it refers to the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; same instant in the real world. Then you don't need to alter the encoded time
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; coords. For changing between real-world and model calendars, I would argue that
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; they are only related via timestamps in principle (that is, January is the same
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; in both sorts of calendar only because it's regarded as January and comparable
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; for that reason), and the simplest way to convert is to decode the coords to
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; timestamps in the old calendar and reencode in the new calendar.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Best wishes
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Jonathan
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; -- 
+</em><br />
+<em class="quotelev2">&gt;&gt; CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+</em><br />
+<em class="quotelev2">&gt;&gt; Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+</em><br />
+<em class="quotelev2">&gt;&gt; *Research Scholar*
+</em><br />
+<em class="quotelev2">&gt;&gt; Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; /formerly NOAA?s National Climatic Data Center/
+</em><br />
+<em class="quotelev2">&gt;&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev2">&gt;&gt; e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; o: +1 828 271 4900
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; /Connect with us on Facebook for climate
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow
+</em><br />
+<em class="quotelev2">&gt;&gt; us on Twitter at _at_NOAANCEIclimate
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and _at_NOAANCEIocngeo
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+Grace and peace,
+<br />
+<br />Jim
+<br />
+<pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/Connect with us on Facebook for climate 
+&lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+&lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us 
+on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and 
+_at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150713/07595d6c/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150713/07595d6c/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150713/07595d6c/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150713/07595d6c/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Jul 13 2015 - 10:15:03 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7214">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7215.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7213.html" title="Previous message in the list">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7211.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7214" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7214" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7214" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7214" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:58 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7213.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7215.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

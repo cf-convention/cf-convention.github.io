@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Satellite community use of netCDF CF (GHRSST-PP) from Richard Ullman on 2006-11-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="Richard Ullman (richard.ullman)" />
+<meta name="Subject" content="[CF-metadata] Satellite community use of netCDF CF (GHRSST-PP)" />
+<meta name="Date" content="2006-11-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0421.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0423.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Satellite community use of netCDF CF (GHRSST-PP)</h1>
+<!-- received="Mon Nov 13 13:54:33 2006" -->
+<!-- isoreceived="20061113135433" -->
+<!-- sent="Mon, 13 Nov 2006 15:54:33 -0500" -->
+<!-- isosent="20061113205433" -->
+<!-- name="Richard Ullman" -->
+<!-- email="richard.ullman" -->
+<!-- subject="[CF-metadata] Satellite community use of netCDF CF (GHRSST-PP)" -->
+<!-- id="DA2C7BFE-F6E4-4AAE-A2A3-CDB0B42E6790_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="p06230907c17950d92e44_at_[137.78.31.96]" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start422" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0423.html" accesskey="d" title="John Caron: &quot;[CF-metadata] axis attribute&quot;">Next message</a> ]
+[ <a href="./0421.html" title="Brian Eaton: &quot;[CF-metadata] axis attribute&quot;">Previous message</a> ]
+[ <a href="./0404.html" title="Ed Armstrong: &quot;[CF-metadata] Satellite community use of netCDF CF (GHRSST-PP)&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0428.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] packed flags&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg422" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg422" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg422" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg422" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Richard Ullman &lt;<a href="mailto:richard.ullman?Subject=Re%3A%20%5BCF-metadata%5D%20Satellite%20community%20use%20of%20netCDF%20CF%20(GHRSST-PP)">richard.ullman</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 13 Nov 2006 15:54:33 -0500</span><br />
+</address>
+<br />
+Not regarding GHRSST, but I too have been looking at how to map swath  
+<br />
+data into CF, in my case, I'm looking at the design for the
+<br />
+NPP/NPOESS data products.  I'd like to be able to provide a standard  
+<br />
+mapping, but some of the data model conventions we have
+<br />
+just don't seem to map to CF.
+<br />
+<br />Regarding coded flag data as mentioned below:  perhaps this is an  
+<br />
+area that needs some work in developing a CF profile.
+<br />
+Here is the present design for NPOESS/NPP:
+<br />
+<br />In the NPOESS products, there are  quite a few flag values - mostly  
+<br />
+quality measures of various kinds and these are
+<br />
+stored as the minimum number of bits required for the number of  
+<br />
+discrete flag values.  So for example, if the
+<br />
+flag_meanings were &quot;good&quot; and &quot;bad&quot; the flag would be encoded as a  
+<br />
+single bit, but if the flag_meanings were
+<br />
+&quot;cloud&quot;, &quot;water&quot;, &quot;land&quot; then we would use two bits.  The flags are  
+<br />
+then packed into 8-bit byte values and stored as
+<br />
+variables parallel to the &quot;data&quot; variable.  The variable we call a  
+<br />
+&quot;Field&quot; and each flag we call a &quot;Datum&quot; and we provide
+<br />
+an offset and size for each.  We use the terms &quot;LegendEntry_Name&quot; and  
+<br />
+&quot;LegendEntry_Value&quot; to mean &quot;flag_meanings&quot; and
+<br />
+&quot;flag_values&quot; respectively.  NPOESS products are stored in HDF which  
+<br />
+allows our attributes to be n-dimensional arrays of values.
+<br />
+<br />So for example:
+<br />
+<br />Field_Name:: 1 values of type string::
+<br />
+[0] = QF3_VIIRSNHFEDR
+<br />
+<br />Datum_DatumOffset:: 5 values of type integer::
+<br />
+[0] = 0
+<br />
+[1] = 2
+<br />
+[2] = 4
+<br />
+[3] = 6
+<br />
+[4] = 7
+<br />
+<br />Datum_DataType:: 5 values of type string::
+<br />
+[0] = 2 bits
+<br />
+[1] = 2 bits
+<br />
+[2] = 2 bits
+<br />
+[3] = 1 bits
+<br />
+[4] = 1 bits
+<br />
+<br />Datum_Description:: 5 values of type string::
+<br />
+[0] = SW Radiative Flux Over Ice Quality
+<br />
+[1] = LW Radiative Flux Over Water Quality
+<br />
+[2] = LW Radiative Flux Over Ice Quality
+<br />
+[3] = Sea Surface Temperature Input Quality
+<br />
+[4] = Ice Surface Temperature Input Quality
+<br />
+<br />Datum[0]_LegendEntry_Name:: 4 values of type string::
+<br />
+[0] = Good
+<br />
+[1] = Invalid
+<br />
+[2] = Out of Range
+<br />
+[3] = Exclusion (missing data)
+<br />
+<br />Datum[0]_LegendEntry_Value:: 4 values of type 2-bit field::
+<br />
+[0] =  0
+<br />
+[1] =  1
+<br />
+[2] =  2
+<br />
+[3] =  3
+<br />
+<br />Datum[1]_LegendEntry_Name:: 4 values of type string::
+<br />
+[0] = Good
+<br />
+[1] = Invalid
+<br />
+[2] = Out of Range
+<br />
+[3] = Exclusion (missing data)
+<br />
+<br />Datum[1]_LegendEntry_Value:: 4 values of type 2-bit field::
+<br />
+[0] =  0
+<br />
+[1] =  1
+<br />
+[2] =  2
+<br />
+[3] =  3
+<br />
+<br />Datum[2]_LegendEntry_Name:: 4 values of type string::
+<br />
+[0] = Good
+<br />
+[1] = Invalid
+<br />
+[2] = Out of Range
+<br />
+[3] = Exclusion (missing data)
+<br />
+<br />Datum[2]_LegendEntry_Value:: 4 values of type 2-bit field::
+<br />
+[0] =  0
+<br />
+[1] =  1
+<br />
+[2] =  2
+<br />
+[3] =  3
+<br />
+<br />Datum[3]_LegendEntry_Name:: 2 values of type string::
+<br />
+[0] = Valid
+<br />
+[1] = Invalid
+<br />
+<br />Datum[3]_LegendEntry_Value:: 2 values of type 1-bit field::
+<br />
+[0] =  0
+<br />
+[1] =  1
+<br />
+<br />Datum[4]_LegendEntry_Name:: 2 values of type string::
+<br />
+[0] = Valid
+<br />
+[1] = Invalid
+<br />
+<br />Datum[4]_LegendEntry_Value:: 2 values of type 1-bit field::
+<br />
+[0] =  0
+<br />
+[1] =  1
+<br />
+<br /><br />On Nov 9, 2006, at 4:45 PM, Ed Armstrong wrote:
+<br />
+&lt;snip&gt;
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; At 6:40 PM +0100 2006/10/16, Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear Steve
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  As you may know the GODAE High Resolution SST Pilot Project  
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; (GHRSST-PP,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  <a href="http://www.ghrsst-pp.org/">http://www.ghrsst-pp.org/</a>) has adopted a flavor of netCDF-CF as  
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; its data
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  standard for both the level 2 (swath) data and the level 4  
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; (gridded)
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  fields.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Thanks for posting this. I am glad to see this done but have only  
+</em><br />
+<em class="quotelev2">&gt;&gt; just had
+</em><br />
+<em class="quotelev2">&gt;&gt; time for a look at it. In general it seems to conform very well to  
+</em><br />
+<em class="quotelev2">&gt;&gt; CF.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  1) _the use of CF for swath data represents a
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  significant new class of data_ that has not been directly  
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; addressed by
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  the CF community previously
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; That is true, but it appears to be unproblematic, using the  
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinates
+</em><br />
+<em class="quotelev2">&gt;&gt; attribute in the conventional way to provide lat and lon.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  2) the GHRSST community variable names
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  are encoded as the netCDF variable names; _what considerations  
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; should be
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  made for CF standard names_?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;snip&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Several of the quantities are coded flag data. The use of codes  
+</em><br />
+<em class="quotelev2">&gt;&gt; isn't really
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-compliant, since CF aims to be self-describing. It can be  
+</em><br />
+<em class="quotelev2">&gt;&gt; improved by using
+</em><br />
+<em class="quotelev2">&gt;&gt; the attributes flag_values and flag_meanings (CF 3.5).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;snip&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<br /><br /><br />- - - - - - - - - - -
+<br />
+Richard E. Ullman
+<br />
+NASA
+<br />
+Goddard Space Flight Center
+<br />
+richard.e.ullman at nasa.gov
+<br />
++1 301 614-5228
+<br />
+NESDIS/IPO
+<br />
+System Engineering, Data/Information Architecture
+<br />
+richard.ullman at noaa.gov
+<br />
++1 301 713 4866
+<br />
+<br /><br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20061113/89b26111/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20061113/89b26111/attachment-0002.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Nov 13 2006 - 13:54:33 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start422">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0423.html" title="Next message in the list">John Caron: "[CF-metadata] axis attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0421.html" title="Previous message in the list">Brian Eaton: "[CF-metadata] axis attribute"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0404.html" title="Message to which this message replies">Ed Armstrong: "[CF-metadata] Satellite community use of netCDF CF (GHRSST-PP)"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0428.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] packed flags"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0428.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] packed flags"</a></li>
+<li><dfn>Reply</dfn>: <a href="./0435.html" title="Message sent in reply to this message">Steve Hankin: "[CF-metadata] Satellite community use of netCDF CF (GHRSST-PP)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg422" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg422" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg422" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg422" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:50 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0421.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0423.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

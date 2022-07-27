@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Extensions to the Standard Name table from Lowry, Roy K. on 2012-10-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Lowry, Roy K. (rkl)" />
+<meta name="Subject" content="[CF-metadata] Extensions to the Standard Name table" />
+<meta name="Date" content="2012-10-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4787.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4789.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Extensions to the Standard Name table</h1>
+<!-- received="Fri Oct 19 05:30:42 2012" -->
+<!-- isoreceived="20121019043042" -->
+<!-- sent="Fri, 19 Oct 2012 12:30:42 +0100" -->
+<!-- isosent="20121019113042" -->
+<!-- name="Lowry, Roy K." -->
+<!-- email="rkl" -->
+<!-- subject="[CF-metadata] Extensions to the Standard Name table" -->
+<!-- id="40829B0E077C1145A6DE44D39B3830A921F5722C84_at_nerckwmb1.ad.nerc.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4788" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4789.html" accesskey="d" title="Schultz, Martin: &quot;[CF-metadata] Extensions to the Standard Name table&quot;">Next message</a> ]
+[ <a href="./4787.html" title="Hedley, Mark: &quot;[CF-metadata] Coordinate systems&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4788" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4788" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4788" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4788" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Lowry, Roy K. &lt;<a href="mailto:rkl?Subject=Re%3A%20%5BCF-metadata%5D%20Extensions%20to%20the%20Standard%20Name%20table">rkl</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 19 Oct 2012 12:30:42 +0100</span><br />
+</address>
+<br />
+Dear All,
+<br />
+<br />Martin Schultz was proposing an extension to the Standard Name table to provide a means of easily identifying the Standard Names associated with a given atmospheric contaminant.  What follows provides an alternative way to address his use case.  Go to the URL <a href="http://vocab.nerc.ac.uk/sparql/">http://vocab.nerc.ac.uk/sparql/</a> and copy the SPARQL query at the end of this message into the box, choose your output format and press 'Get Results'. If you don't want 'carbon monoxide' simply replace 'Carbon monoxide' by another valid EEA contaminant name.
+<br />
+<br />For the techies on the list, this is done by a federated SPARQL query involving SPARQL endpoints on vocabulary servers at BODC and the EEA. This is based on string matching, but could be made more robust by implementing an EEA/Standard Names mapping in NVS should this be requested by the CF community.
+<br />
+<br />Cheers, Roy.
+<br />
+<br /><br />PREFIX skos: &lt;<a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>#&gt;
+<br />
+PREFIX j.0: &lt;<a href="http://rdfdata.eionet.europa.eu/airbase/schema/">http://rdfdata.eionet.europa.eu/airbase/schema/</a>&gt;
+<br />
+PREFIX rdfs: &lt;<a href="http://www.w3.org/2000/01/rdf-schema">http://www.w3.org/2000/01/rdf-schema</a>#&gt;
+<br />
+SELECT ?urie ?labele ?urin ?labeln WHERE
+<br />
+{
+<br />
+&nbsp;&nbsp;BIND(&quot;Carbon monoxide&quot; AS ?pollutant)
+<br />
+&nbsp;&nbsp;SERVICE&lt;<a href="http://cr.eionet.europa.eu/sparql">http://cr.eionet.europa.eu/sparql</a>&gt;
+<br />
+&nbsp;&nbsp;{
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;?urie skos:inScheme &lt;<a href="http://rdfdata.eionet.europa.eu/airquality/components/">http://rdfdata.eionet.europa.eu/airquality/components/</a>&gt;.
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;?urie skos:prefLabel ?labele.
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;?urie j.0:pollutant ?pollutant.
+<br />
+&nbsp;&nbsp;}.
+<br />
+&nbsp;&nbsp;&lt;<a href="http://vocab.nerc.ac.uk/collection/P07/current/">http://vocab.nerc.ac.uk/collection/P07/current/</a>&gt; skos:member ?urin.
+<br />
+&nbsp;&nbsp;?urin skos:prefLabel ?labeln.
+<br />
+&nbsp;&nbsp;?urin skos:definition ?defn.
+<br />
+&nbsp;&nbsp;FILTER CONTAINS (str(lcase(?defn)),str(lcase(?pollutant)))
+<br />
+}
+<br />
+<br /><br /><br />Please note that I now work part-time from Tuesday to Thursday.  E-mail response on other days is possible but not guaranteed!
+<br />
+<br /><br /><br /><pre>
+-- 
+This message (and any attachments) is for the recipient only. NERC
+is subject to the Freedom of Information Act 2000 and the contents
+of this email and any reply you make may be disclosed by NERC unless
+it is exempt from release under the Act. Any material supplied to
+NERC may be stored in an electronic records management system.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20121019/b7ec509d/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20121019/b7ec509d/attachment-0001.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Oct 19 2012 - 05:30:42 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4788">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4789.html" title="Next message in the list">Schultz, Martin: "[CF-metadata] Extensions to the Standard Name table"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4787.html" title="Previous message in the list">Hedley, Mark: "[CF-metadata] Coordinate systems"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4788" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4788" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4788" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4788" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:10 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4787.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4789.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

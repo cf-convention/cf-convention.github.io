@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line from Matthias Lankhorst on 2019-01-18 (cf-metadata-mailman)</title>
+<meta name="Author" content="Matthias Lankhorst (mlankhorst)" />
+<meta name="Subject" content="[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line" />
+<meta name="Date" content="2019-01-18" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9496.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9498.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line</h1>
+<!-- received="Thu Jan 17 18:33:59 2019" -->
+<!-- isoreceived="20190117183359" -->
+<!-- sent="Thu, 17 Jan 2019 17:33:59 -0800" -->
+<!-- isosent="20190118013359" -->
+<!-- name="Matthias Lankhorst" -->
+<!-- email="mlankhorst" -->
+<!-- subject="[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line" -->
+<!-- id="1547775239.7816.16.camel_at_sendlab01" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="mailman.418.1547732367.15849.cf-metadata_at_cgd.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9497" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9498.html" accesskey="d" title="Ryan Abernathey: &quot;[CF-metadata] Provide input on draft of STAC &#0034;Datacube&#0034; Extension&quot;">Next message</a> ]
+[ <a href="./9496.html" title="Jim Biard: &quot;[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9497" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9497" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9497" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9497" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Matthias Lankhorst &lt;<a href="mailto:mlankhorst?Subject=Re%3A%20%5BCF-metadata%5D%20question%20about%20proper%20cell%20bounds%20for%20ocean_volume_transport_across_line">mlankhorst</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 17 Jan 2019 17:33:59 -0800</span><br />
+</address>
+<br />
+Hello,
+<br />
+<br />still trying to resolve how to define my section endpoints and which way
+<br />
+is counted as positive...
+<br />
+<br />While I can provide (scalar) lat/lon that would be something like the
+<br />
+section mid-point, and proper cell_bounds with these, the result is that
+<br />
+the user then knows a lat/lon box where my data are from. The user does
+<br />
+not yet know which ones of the box vertices are my actual section
+<br />
+endpoints (could be the NW-to-SE corner or SW-to-NE). I can see a
+<br />
+solution along the following idea:
+<br />
+<br />1. We define lat/lon variables with separate variables linked in
+<br />
+cell_bound attributes. We clarify that these are interpreted
+<br />
+sequentially, i.e. the line connects latbounds(i,1)/lonbounds(i,1) to
+<br />
+latbounds(i,2)/lonbounds(i,2) and so on. Default assumption is that
+<br />
+the section between the points is shaped as great circle. Neither the
+<br />
+lat/lon nor the bounds have to be monotonic, in order to express
+<br />
+odd-shaped sections like OSNAP. Beware: for an east-west section across
+<br />
+e.g. 16N, the latitude bounds would be [16 16], which might be confusing
+<br />
+since the size of that cell would appear to be be zero.
+<br />
+<br />2. We point to these lat/lon variables in the &quot;coordinates&quot; attribute of
+<br />
+the actual transport data.
+<br />
+<br />3. We amend the standard_name definition to clarify that when looking in
+<br />
+the direction in which the line is sequentially defined in the lat/lon
+<br />
+bounds, positive is considered to be 90 degrees to the left. I assume
+<br />
+this would not only apply to my particular standard_name, but all of:
+<br />
+&nbsp;&nbsp;ocean_volume_transport_across_line
+<br />
+&nbsp;&nbsp;sea_ice_area_transport_across_line
+<br />
+&nbsp;&nbsp;sea_ice_transport_across_line
+<br />
+&nbsp;&nbsp;sea_water_transport_across_line
+<br />
+&nbsp;&nbsp;snow_transport_across_line_due_to_sea_ice_dynamics
+<br />
+<br />Together, that might look like the following. I guess the fundamental
+<br />
+logic is that the lat/lon are not true coordinates with each having its
+<br />
+own dimension, but they are auxiliaries and each have the same dimension
+<br />
+expressing the count of stations along the line (much like a trajectory
+<br />
+versus an orthogonal grid).
+<br />
+<br />LATITUDE(numberofsegments)
+<br />
+&nbsp;&nbsp;standard_name=&quot;latitude&quot;
+<br />
+&nbsp;&nbsp;axis=&quot;Y&quot;
+<br />
+&nbsp;&nbsp;cell_bounds=&quot;LATITUDE_BOUNDS&quot;
+<br />
+<br />LATITUDE_BOUNDS(numberofsegments,dim2)
+<br />
+<br />LONGITUDE(numberofsegments)
+<br />
+&nbsp;&nbsp;standard_name=&quot;longitude&quot;
+<br />
+&nbsp;&nbsp;axis=&quot;X&quot;
+<br />
+&nbsp;&nbsp;cell_bounds=&quot;LONGITUDE_BOUNDS&quot;
+<br />
+<br />LONGITUDE_BOUNDS(numberofsegments,dim2)
+<br />
+<br />TIME(TIME)
+<br />
+&nbsp;&nbsp;standard_name=&quot;longitude&quot;
+<br />
+&nbsp;&nbsp;axis=&quot;T&quot;
+<br />
+&nbsp;&nbsp;cell_bounds=&quot;TIME_BOUNDS&quot;
+<br />
+<br />TIME_BOUNDS(TIME,dim2)
+<br />
+<br />PRESSURE(PRESSURE)
+<br />
+&nbsp;&nbsp;standard_name=&quot;sea_water_pressure_due_to_sea_water&quot;
+<br />
+&nbsp;&nbsp;axis=&quot;Z&quot;
+<br />
+&nbsp;&nbsp;positive=&quot;down&quot;
+<br />
+&nbsp;&nbsp;cell_bounds=&quot;PRESSURE_BOUNDS&quot;
+<br />
+<br />PRESSURE_BOUNDS(PRESSURE,dim2)
+<br />
+<br />OCEAN_TRANSPORT(TIME)
+<br />
+&nbsp;&nbsp;standard_name=&quot;ocean_volume_transport_across_line&quot;
+<br />
+&nbsp;&nbsp;coordinates=&quot;TIME PRESSURE LATITUDE LONGITUDE&quot;
+<br />
+<br />Is this reasonable?
+<br />
+<br />Regards, Matthias
+<br />
+<br /><br /><br /><br />On Thu, 2019-01-17 at 06:39 -0700, cf-metadata-request at cgd.ucar.edu
+<br />
+wrote:
+<br />
+<em class="quotelev1">&gt; Message: 3
+</em><br />
+<em class="quotelev1">&gt; Date: Thu, 17 Jan 2019 13:39:20 +0000
+</em><br />
+<em class="quotelev1">&gt; From: Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; To: &quot;cf-metadata at cgd.ucar.edu&quot; &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] question about proper cell bounds for
+</em><br />
+<em class="quotelev1">&gt;         ocean_volume_transport_across_line
+</em><br />
+<em class="quotelev1">&gt; Message-ID: &lt;20190117133923.GA17058 at met.reading.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; Content-Type: text/plain; charset=&quot;us-ascii&quot;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Dear Matthias
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Recap: I have a time series of ocean volume transport (given in
+</em><br />
+<em class="quotelev2">&gt; &gt; Sverdrup) across a line. The line has two end points, and the
+</em><br />
+<em class="quotelev1">&gt; transport
+</em><br />
+<em class="quotelev2">&gt; &gt; is computed over a specific depth range. I would like to represent
+</em><br />
+<em class="quotelev1">&gt; this
+</em><br />
+<em class="quotelev2">&gt; &gt; in a clever way in a netcdf file with CF conventions.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; As far as variables go, I really only have two (happy to add more to
+</em><br />
+<em class="quotelev2">&gt; &gt; e.g. contain the cell boundaries), and their standard_names are:
+</em><br />
+<em class="quotelev2">&gt; &gt;    time
+</em><br />
+<em class="quotelev2">&gt; &gt;    ocean_volume_transport_across_line
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; I know how to include bounds for the time such that I can show over
+</em><br />
+<em class="quotelev1">&gt; how
+</em><br />
+<em class="quotelev2">&gt; &gt; many days my data were averaged.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Yes, including a cell_methods of &quot;mean&quot; for time.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; I suppose I could figure out the depth range by including a single
+</em><br />
+<em class="quotelev2">&gt; &gt; scalar for depth, with associated bounds, and having a &quot;coordinates&quot;
+</em><br />
+<em class="quotelev2">&gt; &gt; attribute on my transport that points to the depth. Does this sound
+</em><br />
+<em class="quotelev2">&gt; &gt; correct?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Yes, that would be right. The cell_methods for depth would be &quot;sum&quot;.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; How about the two section endpoints? And when I have those, how
+</em><br />
+<em class="quotelev1">&gt; would
+</em><br />
+<em class="quotelev2">&gt; &gt; the user know which direction across that section is counted
+</em><br />
+<em class="quotelev1">&gt; positive?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; So far, the tranport across line has been used only with &quot;named&quot;
+</em><br />
+<em class="quotelev1">&gt; sections. The
+</em><br />
+<em class="quotelev1">&gt; names of the sections haven't been standardised in CF, but there's a
+</em><br />
+<em class="quotelev1">&gt; list of
+</em><br />
+<em class="quotelev1">&gt; them for CMIP6, defined by endpoints, in Griffies et al. 2016, Table
+</em><br />
+<em class="quotelev1">&gt; J1,
+</em><br />
+<em class="quotelev1">&gt; doi:10.5194/gmd-9-3231-2016. The reason for using names is that the
+</em><br />
+<em class="quotelev1">&gt; exact line
+</em><br />
+<em class="quotelev1">&gt; depends on the model, so matching the names facilitates model
+</em><br />
+<em class="quotelev1">&gt; comparison. I
+</em><br />
+<em class="quotelev1">&gt; don't remember a discussion about how to specify them more
+</em><br />
+<em class="quotelev1">&gt; quantitatively. I
+</em><br />
+<em class="quotelev1">&gt; think it would be reasonable to attach scalar latitude and longitude
+</em><br />
+<em class="quotelev1">&gt; (like the
+</em><br />
+<em class="quotelev1">&gt; depth range) and use their bounds to specify the endpoints.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The standard name table doesn't mention the sign convention. We should
+</em><br />
+<em class="quotelev1">&gt; have
+</em><br />
+<em class="quotelev1">&gt; defined that. Griffies et al. says it's positive for northwards and
+</em><br />
+<em class="quotelev1">&gt; eastwards.
+</em><br />
+<em class="quotelev1">&gt; But what if the normal to the section is north-west or south-east? Do
+</em><br />
+<em class="quotelev1">&gt; you have
+</em><br />
+<em class="quotelev1">&gt; any in those quandrants? We ought to generalise this.
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Cheers, Matthias
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; On Tue, 2016-04-26 at 08:25 -0700, Matthias Lankhorst wrote:
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; Dear CF,
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; 
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; what is the proper way to define the shape and boundaries of an
+</em><br />
+<em class="quotelev1">&gt; oceanic
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; section, for which I want to report the volume transport across
+</em><br />
+<em class="quotelev1">&gt; that
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; section?
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; 
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; The use case is an irregular-shaped section like OSNAP
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt;
+</em><br />
+<em class="quotelev1">&gt; (<a href="http://www.o-snap.org/wp-content/uploads/2013/11/20160329_OSNAP_planeview.jpg">http://www.o-snap.org/wp-content/uploads/2013/11/20160329_OSNAP_planeview.jpg</a>), and the property to be reported is the seawater volume transport in a given depth range as a timeseries with this CF standard_name:
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; ocean_volume_transport_across_line
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; 
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; There needs to be some ancillary variable to say what the line
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; coordinates are, and I am not sure how to squeeze that into
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; &quot;cell_bounds&quot;.
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; 
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; In addition, how about the lower limit vertically if this is the
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; seafloor? If the transports were to be everything below e.g. 1000
+</em><br />
+<em class="quotelev1">&gt; m,
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; would it be appropriate to state vertical cell bounds as 1000 to
+</em><br />
+<em class="quotelev1">&gt; 5000 m,
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; even if the ocean is not 5000 m deep? I.e. is the user intelligent
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; enough to realize that &quot;5000&quot; really means &quot;5000 m or the
+</em><br />
+<em class="quotelev1">&gt; seafloor,
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; whichever is shallower&quot;?
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; 
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; Thanks, Matthias
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; 
+</em><br />
+<br /><pre>
+-- 
+_______________________________________
+ Dr. Matthias Lankhorst
+ Scripps Institution of Oceanography
+ 9500 Gilman Drive, Mail Code 0230
+ La Jolla, CA 92093-0230
+ USA
+ Phone:  +1 858 822 5013
+ Fax:    +1 858 534 9820
+ E-Mail: mlankhorst at ucsd.edu
+ <a href="http://pordlabs.ucsd.edu/mlankhorst/">http://pordlabs.ucsd.edu/mlankhorst/</a>
+-- 
+_______________________________________
+ Dr. Matthias Lankhorst
+ Scripps Institution of Oceanography
+ 9500 Gilman Drive, Mail Code 0230
+ La Jolla, CA 92093-0230
+ USA
+ Phone:  +1 858 822 5013
+ Fax:    +1 858 534 9820
+ E-Mail: mlankhorst at ucsd.edu
+ <a href="http://pordlabs.ucsd.edu/mlankhorst/">http://pordlabs.ucsd.edu/mlankhorst/</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Jan 17 2019 - 18:33:59 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9497">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9498.html" title="Next message in the list">Ryan Abernathey: "[CF-metadata] Provide input on draft of STAC &#0034;Datacube&#0034; Extension"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9496.html" title="Previous message in the list">Jim Biard: "[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9497" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9497" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9497" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9497" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:31 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9496.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9498.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Question on WKT representation of CRS from Jonathan Gregory on 2011-12-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Question on WKT representation of CRS" />
+<meta name="Date" content="2011-12-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4075.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4077.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Question on WKT representation of CRS</h1>
+<!-- received="Fri Dec 30 06:06:21 2011" -->
+<!-- isoreceived="20111230060621" -->
+<!-- sent="Fri, 30 Dec 2011 13:06:21 +0000" -->
+<!-- isosent="20111230130621" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Question on WKT representation of CRS" -->
+<!-- id="20111230130621.GA9398_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CA+TxYvPhSwPrDFWbFXj+9pnObiNc0=A1-FiM0Ea_oNbbjJhAUw_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4076" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4077.html" accesskey="d" title="Nan Galbraith: &quot;[CF-metadata] Convention attribute&quot;">Next message</a> ]
+[ <a href="./4075.html" title="Hedley, Mark: &quot;[CF-metadata] Discrete Sampling Geometries | sample data&quot;">Previous message</a> ]
+[ <a href="./4032.html" title="Etienne Tourigny: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4079.html" accesskey="t" title="Etienne Tourigny: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4076" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4076" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4076" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4076" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Question%20on%20WKT%20representation%20of%20CRS">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 30 Dec 2011 13:06:21 +0000</span><br />
+</address>
+<br />
+Dear Etienne
+<br />
+<br />Thanks for your posting of 13 Dec and apologies again for slow reply.
+<br />
+<br /><em class="quotelev1">&gt; =&gt; In light of all this,  could we add datum_name, datum_code and
+</em><br />
+<em class="quotelev1">&gt; towgs84 to grid_mapping?
+</em><br />
+<br />I think we should call it horizontal_datum_name (since there are also vertical
+<br />
+datums). We also need various other names to store the strings which are used
+<br />
+in WKT: the projected coordinate system, geographic coordinate system,
+<br />
+reference ellipsoid and prime meridian all have names in your WKT strings.
+<br />
+If these names are valuable, we should define attributes for them too. Are
+<br />
+these names standardised, or are they just user-readable information (like
+<br />
+netCDF long_names)?
+<br />
+<br />Yes, we need towgs84, and also prime_meridian_longitude (as well as its name).
+<br />
+<br />My only reservation is about including the code and authority in grid_mapping.
+<br />
+I am concerned about this because it is redundant information if the mapping
+<br />
+is fully described by the other attributes. There is a danger that it might be
+<br />
+inconsistent with those attributes e.g. the mapping might claim to be EPSG
+<br />
+4618 but differ from the proper definition of that mapping in some way. Then
+<br />
+applications would behave differently according to which definition they
+<br />
+followed. This is the same kind of concern as I have (in ticket 69) about the
+<br />
+possible inconsistency of WKT and grid_mapping if both are stored in the file.
+<br />
+<br /><em class="quotelev1">&gt; As maintainer of GDAL's netcdf driver, I see that the only thing
+</em><br />
+<em class="quotelev1">&gt; missing in the WKT/CF transformation is named datum (and ideally datum
+</em><br />
+<em class="quotelev1">&gt; code and towgs84), then there would not be any need to keep the entire
+</em><br />
+<em class="quotelev1">&gt; WKT string
+</em><br />
+<br />That would be the best solution, in my opinion. I am encouraged by this.
+<br />
+<br /><em class="quotelev1">&gt; with some exceptions where the parameters are not 100% compatible
+</em><br />
+<br />I hope that we will be able to resolve these differences, as detailed in your
+<br />
+exchanges with John. Have you yet been able to obtain a trac username, so that
+<br />
+you can open a ticket to correct defects in grid_mapping definition and propose
+<br />
+new ones?
+<br />
+<br /><em class="quotelev2">&gt; &gt; The VERT_CS and VERT_DATUM appear to be names (in the Newlyn example). Are
+</em><br />
+<em class="quotelev2">&gt; &gt; these names standardised?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; They are part of CT 1.0 , I suggest you take a look at the WKT
+</em><br />
+<em class="quotelev1">&gt; keywords.
+</em><br />
+<br />The definition of the WKT keywords isn't helpful, unfortunately. The document
+<br />
+linked to the CT website doesn't say anything I can find about what values they
+<br />
+can take. I suppose we should postpone consideration of vertical reference
+<br />
+systems until someone comes forward with a specific use case. In fact, that
+<br />
+information might belong better with the CF vertical coordinate, like
+<br />
+formula_terms, rather than in the grid_mapping.
+<br />
+<br />Best wishes and happy 2012
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Dec 30 2011 - 06:06:21 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4076">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4077.html" title="Next message in the list">Nan Galbraith: "[CF-metadata] Convention attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4075.html" title="Previous message in the list">Hedley, Mark: "[CF-metadata] Discrete Sampling Geometries | sample data"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4032.html" title="Message to which this message replies">Etienne Tourigny: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4079.html" title="Next message in this discussion thread">Etienne Tourigny: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4079.html" title="Message sent in reply to this message">Etienne Tourigny: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4076" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4076" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4076" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4076" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:56 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4075.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4077.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

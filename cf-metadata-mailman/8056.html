@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] example Re:  Pre-proposal for &quot;charset&quot; from Jonathan Gregory on 2017-02-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] example Re:  Pre-proposal for &quot;charset&quot;" />
+<meta name="Date" content="2017-02-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8055.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8057.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] example Re:  Pre-proposal for &quot;charset&quot;</h1>
+<!-- received="Tue Feb 28 13:16:53 2017" -->
+<!-- isoreceived="20170228131653" -->
+<!-- sent="Tue, 28 Feb 2017 20:16:53 +0000" -->
+<!-- isosent="20170228201653" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] example Re:  Pre-proposal for &quot;charset&quot;" -->
+<!-- id="20170228201653.GA3493_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CAFhraUzdDPRPYsVKYCokdw4uKGh7mj6CkXyjZ76iukU3rZ7FvQ_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8056" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8057.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Pre-proposal for &#0034;charset&#0034;&quot;">Next message</a> ]
+[ <a href="./8055.html" title="Signell, Richard: &quot;[CF-metadata] Best representation of wire-crawling profiler&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8058.html" accesskey="t" title="Bob Simons - NOAA Federal: &quot;[CF-metadata] example Re:  Pre-proposal for &#0034;charset&#0034;&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8056" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8056" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8056" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8056" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20example%20Re%3A%20%20Pre-proposal%20for%20%22charset%22">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 28 Feb 2017 20:16:53 +0000</span><br />
+</address>
+<br />
+Dear Rich, Bob
+<br />
+<br />Rich asked
+<br />
+<em class="quotelev1">&gt; What is the difference that makes example CF H.4 okay, but not Bob's example?
+</em><br />
+<br />That's a good question. You're right, I think example H4 has the same
+<br />
+problem! I didn't read it carefully enough - sorry. The station_name:cf_role
+<br />
+attribute in H4 says it's a station ID, but there's no association with the
+<br />
+data variable. If you had more than one data variable in the file, as in Bob's
+<br />
+example as he gave it originally, you couldn't tell which one it belonged to,
+<br />
+so it can't be used as identification. In examples H6 and H7, however, where
+<br />
+there are several timeseries, there is an instance (station) dimension, and the
+<br />
+timeseries_id variable is station_name(station, name_strlen). So here's it's
+<br />
+clear that the station_name belongs to the stations, and you can infer that
+<br />
+it's an array of strings, not a 2D character array.
+<br />
+<br />Therefore I think H4 and H5 are defective.
+<br />
+<br />In Bob's example, he has several data variables (five, I think) each of size
+<br />
+996, and a variable
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;char timeseries(timeseries=10);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cf_role = &quot;timeseries_id&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:long_name = &quot;timeseries&quot;;
+<br />
+<br />I don't know what this refers to - that's my problem. Does it belong to any
+<br />
+of the data variables? The dimension timeseries is not otherwise used.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br /><br />On Mon, Feb 27, 2017 at 02:41:49PM -0500, Signell, Richard wrote:
+<br />
+<em class="quotelev1">&gt; Date: Mon, 27 Feb 2017 14:41:49 -0500
+</em><br />
+<em class="quotelev1">&gt; From: &quot;Signell, Richard&quot; &lt;rsignell at usgs.gov&gt;
+</em><br />
+<em class="quotelev1">&gt; To: Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] Pre-proposal for &quot;charset&quot;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On Mon, Feb 27, 2017 at 1:11 PM, Jonathan Gregory
+</em><br />
+<em class="quotelev1">&gt; &lt;j.m.gregory at reading.ac.uk&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt; &gt; Dear Bob
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; That's right, there doesn't have to be an instance dimension. The problem with
+</em><br />
+<em class="quotelev2">&gt; &gt; the file is that the variable you're concerned with (timeseries) isn't linked
+</em><br />
+<em class="quotelev2">&gt; &gt; to any of the other variables, so its purpose is not clear.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; #1 CF Example H.4
+</em><br />
+<em class="quotelev1">&gt; <a href="http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#example-h.4">http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#example-h.4</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; dimensions:
+</em><br />
+<em class="quotelev1">&gt;       time = 100233 ;
+</em><br />
+<em class="quotelev1">&gt;       name_strlen = 23 ;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    variables:
+</em><br />
+<em class="quotelev1">&gt;       float lon ;
+</em><br />
+<em class="quotelev1">&gt;           lon:standard_name = &quot;longitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;           lon:long_name = &quot;station longitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;           lon:units = &quot;degrees_east&quot;;
+</em><br />
+<em class="quotelev1">&gt;       float lat ;
+</em><br />
+<em class="quotelev1">&gt;           lat:standard_name = &quot;latitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;           lat:long_name = &quot;station latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           lat:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev1">&gt;       float alt ;
+</em><br />
+<em class="quotelev1">&gt;           alt:long_name = &quot;vertical distance above the surface&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           alt:standard_name = &quot;height&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           alt:units = &quot;m&quot;;
+</em><br />
+<em class="quotelev1">&gt;           alt:positive = &quot;up&quot;;
+</em><br />
+<em class="quotelev1">&gt;           alt:axis = &quot;Z&quot;;
+</em><br />
+<em class="quotelev1">&gt;       char station_name(name_strlen) ;
+</em><br />
+<em class="quotelev1">&gt;           station_name:long_name = &quot;station name&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           station_name:cf_role = &quot;timeseries_id&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;       double time(time) ;
+</em><br />
+<em class="quotelev1">&gt;           time:standard_name = &quot;time&quot;;
+</em><br />
+<em class="quotelev1">&gt;           time:long_name = &quot;time of measurement&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           time:units = &quot;days since 1970-01-01 00:00:00&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           time:missing_value = -999.9;
+</em><br />
+<em class="quotelev1">&gt;       float humidity(time) ;
+</em><br />
+<em class="quotelev1">&gt;           humidity:standard_name = ?specific_humidity? ;
+</em><br />
+<em class="quotelev1">&gt;           humidity:coordinates = &quot;time lat lon alt&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           humidity:_FillValue = -999.9;
+</em><br />
+<em class="quotelev1">&gt;       float temp(time) ;
+</em><br />
+<em class="quotelev1">&gt;           temp:standard_name = ?air_temperature? ;
+</em><br />
+<em class="quotelev1">&gt;           temp:units = &quot;Celsius&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           temp:coordinates = &quot;time lat lon alt&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           temp:_FillValue = -999.9;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    attributes:
+</em><br />
+<em class="quotelev1">&gt;           :featureType = &quot;timeSeries&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; #2 Bob's example:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; netcdf summary_allTB2007.nc {
+</em><br />
+<em class="quotelev1">&gt;   dimensions:
+</em><br />
+<em class="quotelev1">&gt;     timeseries = 10;
+</em><br />
+<em class="quotelev1">&gt;     time = 996;
+</em><br />
+<em class="quotelev1">&gt;   variables:
+</em><br />
+<em class="quotelev1">&gt;     char timeseries(timeseries=10);
+</em><br />
+<em class="quotelev1">&gt;       :cf_role = &quot;timeseries_id&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :long_name = &quot;timeseries&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     double time(time=996);
+</em><br />
+<em class="quotelev1">&gt;       :units = &quot;seconds since 1970-01-01T00:00:00Z&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :standard_name = &quot;time&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :long_name = &quot;time&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :calendar = &quot;gregorian&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :axis = &quot;T&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     double latitude;
+</em><br />
+<em class="quotelev1">&gt;       :valid_min = -90.0; // double
+</em><br />
+<em class="quotelev1">&gt;       :valid_max = 90.0; // double
+</em><br />
+<em class="quotelev1">&gt;       :axis = &quot;Y&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :long_name = &quot;latitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :standard_name = &quot;latitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :units = &quot;degrees_north&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     double longitude;
+</em><br />
+<em class="quotelev1">&gt;       :valid_min = -180.0; // double
+</em><br />
+<em class="quotelev1">&gt;       :valid_max = 180.0; // double
+</em><br />
+<em class="quotelev1">&gt;       :axis = &quot;X&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :long_name = &quot;longitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :standard_name = &quot;longitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :units = &quot;degrees_east&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     double depth;
+</em><br />
+<em class="quotelev1">&gt;       :positive = &quot;down&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :axis = &quot;Z&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :valid_min = 0.0; // double
+</em><br />
+<em class="quotelev1">&gt;       :valid_max = 10971.0; // double
+</em><br />
+<em class="quotelev1">&gt;       :long_name = &quot;depth&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :standard_name = &quot;depth&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :units = &quot;m&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     char platform;
+</em><br />
+<em class="quotelev1">&gt;       :long_name = &quot;MVCO ASIT&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     char instrument;
+</em><br />
+<em class="quotelev1">&gt;       :long_name = &quot;Imaging FlowCytobot&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     double crs;
+</em><br />
+<em class="quotelev1">&gt;       :grid_mapping_name = &quot;latitude_longitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :longitude_of_prime_meridian = 0.0; // double
+</em><br />
+<em class="quotelev1">&gt;       :semi_major_axis = 6378137.0; // double
+</em><br />
+<em class="quotelev1">&gt;       :inverse_flattening = 298.257223563; // double
+</em><br />
+<em class="quotelev1">&gt;       :epsg_code = &quot;EPSG:4326&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     double Phaeocystis(time=996);
+</em><br />
+<em class="quotelev1">&gt;       :_FillValue = -9999.9; // double
+</em><br />
+<em class="quotelev1">&gt;       :long_name = &quot;Phaeocystis&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :standard_name = &quot;Phaeocystis&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :units = &quot;1&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :coordinates = &quot;time depth latitude longitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :grid_mapping = &quot;crs&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :platform = &quot;platform&quot;;
+</em><br />
+<em class="quotelev1">&gt;       :instrument = &quot;instrument&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;   // global attributes:
+</em><br />
+<em class="quotelev1">&gt;   :featureType = &quot;timeSeries&quot;;
+</em><br />
+<em class="quotelev1">&gt;   :cdm_data_type = &quot;TimeSeries&quot;;
+</em><br />
+<em class="quotelev1">&gt;   :Conventions = &quot;CF-1.6&quot;;
+</em><br />
+<em class="quotelev1">&gt;   :summary = &quot;Phytoplankton concentration by class derived from images
+</em><br />
+<em class="quotelev1">&gt; collected by Imaging FlowCytobot\n&quot;;
+</em><br />
+<em class="quotelev1">&gt;   :institution = &quot;WHOI&quot;;
+</em><br />
+<em class="quotelev1">&gt;   :title = &quot;Phytoplankton concentration by class&quot;;
+</em><br />
+<em class="quotelev1">&gt; }
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; -- 
+</em><br />
+<em class="quotelev1">&gt; Dr. Richard P. Signell   (508) 457-2229
+</em><br />
+<em class="quotelev1">&gt; USGS, 384 Woods Hole Rd.
+</em><br />
+<em class="quotelev1">&gt; Woods Hole, MA 02543-1598
+</em><br />
+<span id="received"><dfn>Received on</dfn> Tue Feb 28 2017 - 13:16:53 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8056">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8057.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8055.html" title="Previous message in the list">Signell, Richard: "[CF-metadata] Best representation of wire-crawling profiler"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8058.html" title="Next message in this discussion thread">Bob Simons - NOAA Federal: "[CF-metadata] example Re:  Pre-proposal for &#0034;charset&#0034;"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8058.html" title="Message sent in reply to this message">Bob Simons - NOAA Federal: "[CF-metadata] example Re:  Pre-proposal for &#0034;charset&#0034;"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8056" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8056" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8056" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8056" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:10 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8055.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8057.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

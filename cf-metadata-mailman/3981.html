@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] standards for probabilities from Lorenzo Bigagli on 2011-12-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Lorenzo Bigagli (lorenzo.bigagli)" />
+<meta name="Subject" content="[CF-metadata] standards for probabilities" />
+<meta name="Date" content="2011-12-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3980.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3982.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] standards for probabilities</h1>
+<!-- received="Mon Dec  5 08:09:08 2011" -->
+<!-- isoreceived="20111205080908" -->
+<!-- sent="Mon, 5 Dec 2011 15:09:08 +0000" -->
+<!-- isosent="20111205150908" -->
+<!-- name="Lorenzo Bigagli" -->
+<!-- email="lorenzo.bigagli" -->
+<!-- subject="[CF-metadata] standards for probabilities" -->
+<!-- id="342D6F3F-A013-4E43-AD25-726539C638DF_at_pin.unifi.it" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="158046655.383245.1322561867964.JavaMail.root_at_imap1a" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3981" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3982.html" accesskey="d" title="Thomas Lavergne: &quot;[CF-metadata] Proposal for better handling vector quantities in CF&quot;">Next message</a> ]
+[ <a href="./3980.html" title="Chris Barker: &quot;[CF-metadata] FW: netcdf for particle trajectories&quot;">Previous message</a> ]
+[ <a href="./3964.html" title="Vegard B&#0248;nes: &quot;[CF-metadata] standards for probabilities&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3989.html" accesskey="t" title="Lorenzo Bigagli: &quot;[CF-metadata] standards for probabilities&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3981" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3981" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3981" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3981" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Lorenzo Bigagli &lt;<a href="mailto:lorenzo.bigagli?Subject=Re%3A%20%5BCF-metadata%5D%20standards%20for%20probabilities">lorenzo.bigagli</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 5 Dec 2011 15:09:08 +0000</span><br />
+</address>
+<br />
+Dear Vegard, all,
+<br />
+<br />Please find enclosed the draft netCDF-U conventions, as presented to the Earth System Science DWG at the last OGC TC Meeting in Bruxelles last wednesday.
+<br />
+<br />We are continuing the discussion on the draft within the relevant OGC Working Groups, to address and incorporate comments and improve the document for the next Meeting (march 2012, Austin, Texas).
+<br />
+The contribution of the CF-metadata community would be very welcome.
+<br />
+<br />To facilitate communication and avoid cross-posting, I would ask the interested readers to contact me, so we can keep them posted (possibly we may set up a dedicated mailing list, if need be).
+<br />
+<br />As you will read in the attachment, we have tried to be convention-neutral, in particular making sure that netCDF-U fully integrates with the netCDF-CF Conventions, using the same constructs when possible (e.g. the ancillary_variables attribute). 
+<br />
+Ideally, we think of datasets that would conform to _both_ the conventions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Conventions = &quot;CF-1.5 UW-1.0&quot;
+<br />
+NetCDF-U is based on  a generic mechanism for annotating netCDF variables according to the UncertML conceptual model.
+<br />
+<br />The rationale for this it that we argue a probabilistic description of scientific quantities is a cross-cutting aspect that may be modularized.
+<br />
+In particular, we wouldn't &quot;clutter&quot; the application-level dictionaries with probabilistic concepts and jargon.
+<br />
+<br />This said, I think the cell-methods mechanism has a partial overlapping with netCDF-U, in that it can account for (some of the) UncertML Summary Statistics concepts. However, it does not currently address Distributions and Samples.
+<br />
+We could think of extending it, but we preferred to introduce a new mechanism, based on the standard URI syntax and RDF semantics.
+<br />
+<br />On the other hand, the cell-methods mechanism is arguably more fine-grained than netCDF-U, allowing to express different methods on multi-dimensional variables, particular as far as the semantics of dimension intervals is concerned.
+<br />
+I am unclear at the moment how much this is application dependent, and hence strictly pertaining to the CF conventions.
+<br />
+In other words, it may be that some application would still need the more fine-grained semantics of CF cell-methods to make sense of the data.
+<br />
+<br />This is in line with our aim of netCDF-U being complementary to netCDF-CF, and not replacing it.
+<br />
+On the other hand, a generic mechanism for associating distinct summary statistics semantics to distinct dimension variables may be useful in general.
+<br />
+We are looking forward to investigate this further and we welcome your expression of interest in being involved in this discussion.
+<br />
+<br />Regards,
+<br />
+&nbsp;&nbsp;LB
+<br />
+<br /><br />Il giorno 29/nov/2011, alle ore 10:17, Vegard B?nes ha scritto:
+<br />
+<br /><em class="quotelev1">&gt; Hi,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Unfortunately, I did not see your email until today, so I have not taken it into consideration when choosing how to handle probabilities for myself.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Like Roy, however, I believe that expressing probabilities as dimensions rather than attributes is the best approach for this. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The problem with attributes is that if you have many variables and many probabilities or percentiles,  you will get a huge amount of separate variables in your data set, and the relationship between them is not as easy to see as when (for example) all percentiles for air temperature are lumped into the same variable. If many users are like me, and use ncdump and ncview to look at the data, this will be a huge advantage.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; VG
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message -----
+</em><br />
+<em class="quotelev1">&gt; Fra: &quot;Lorenzo Bigagli&quot; &lt;lorenzo.bigagli at pin.unifi.it&gt;
+</em><br />
+<em class="quotelev1">&gt; Til: cf-metadata at cgd.ucar.edu, &quot;vegard bones&quot; &lt;vegard.bones at met.no&gt;
+</em><br />
+<em class="quotelev1">&gt; Kopi: &quot;Nativi Stefano&quot; &lt;stefano.nativi at cnr.it&gt;
+</em><br />
+<em class="quotelev1">&gt; Sendt: 24. november 2011 18:07:07
+</em><br />
+<em class="quotelev1">&gt; Emne: [CF-metadata] standards for probabilities
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Dear Vegard, all, 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I take the opportunity to inform you that we are drafting a proposal for a netCDF convention on uncertainty (NetCDF-U). 
+</em><br />
+<em class="quotelev1">&gt; This work is partly developed in the framework of the FP7 UncertWeb project. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; We are going to present it next wednesday at the Open Geospatial Consortium TC Meeting in Bruxelles, to circulate it shortly after. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; We have tried to be convention-neutral, in particular making sure that netCDF-U fully integrates with the netCDF-CF Conventions, even using the same constructs when possible (e.g. the ancillary_variables attribute). 
+</em><br />
+<em class="quotelev1">&gt; Ideally, we think of datasets that would conform to both the conventions: 
+</em><br />
+<em class="quotelev1">&gt; :Conventions = &quot;CF-1.5 UW-1.0&quot; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; NetCDF-U is based on a generic mechanism for annotating netCDF variables according to the UncertML conceptual model. 
+</em><br />
+<em class="quotelev1">&gt; The first example in your use-case would read something like (note that CF attributes are unchanged): 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; float precipitation_25(time, x, y) ; 
+</em><br />
+<em class="quotelev1">&gt; precipitation_25:standard_name = &quot;precipitation_amount&quot; ; 
+</em><br />
+<em class="quotelev1">&gt; precipitation_25:long_name = &quot;precipitation_amount 25th percentile&quot; ; 
+</em><br />
+<em class="quotelev1">&gt; precipitation_25:ref = &quot; <a href="http://www.uncertml.org/statistics/percentile">http://www.uncertml.org/statistics/percentile</a> &quot; ; 
+</em><br />
+<em class="quotelev1">&gt; precipitation_25:level = &quot;25&quot; ; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The second, provided we have a variable &quot;difference(Lat=100, Lon=100)&quot; that contains the difference between the observed value and the forecast: 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; float probability(Lat=100, Lon=100) ; 
+</em><br />
+<em class="quotelev1">&gt; probability:ref = &quot; <a href="http://www.uncertml.org/statistics/probability">http://www.uncertml.org/statistics/probability</a> &quot; ; 
+</em><br />
+<em class="quotelev1">&gt; probability:gt = &quot;-2.5&quot; ; 
+</em><br />
+<em class="quotelev1">&gt; probability:lt = &quot;2.5&quot; ; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I apologize if this is not clear enough, for the moment, and I hope it can be of prospective interest. 
+</em><br />
+<em class="quotelev1">&gt; Any comment is very appreciated. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Best regards, 
+</em><br />
+<em class="quotelev1">&gt; Lorenzo Bigagli 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; --- 
+</em><br />
+<em class="quotelev1">&gt; Dott. Lorenzo Bigagli 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Consiglio Nazionale delle Ricerche 
+</em><br />
+<em class="quotelev1">&gt; Istituto di Metodologie per l'Analisi Ambientale (CNR-IMAA) 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; i: Area della Ricerca di Potenza, Contrada Santa Loja 
+</em><br />
+<em class="quotelev1">&gt; Zona Industriale, 85050 Tito Scalo (PZ), Italia 
+</em><br />
+<em class="quotelev1">&gt; t: +39 0971 427221 
+</em><br />
+<em class="quotelev1">&gt; f: +39 0971 427222 
+</em><br />
+<em class="quotelev1">&gt; m: lorenzo.bigagli at cnr.it 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20111205/30e5da25/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20111205/30e5da25/attachment.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Dec 05 2011 - 08:09:08 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3981">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3982.html" title="Next message in the list">Thomas Lavergne: "[CF-metadata] Proposal for better handling vector quantities in CF"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3980.html" title="Previous message in the list">Chris Barker: "[CF-metadata] FW: netcdf for particle trajectories"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3964.html" title="Message to which this message replies">Vegard B&#0248;nes: "[CF-metadata] standards for probabilities"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3989.html" title="Next message in this discussion thread">Lorenzo Bigagli: "[CF-metadata] standards for probabilities"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3981" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3981" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3981" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3981" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3980.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3982.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

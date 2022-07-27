@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Indices or Labels as Coordinate Variables from Jonathan Gregory on 2019-07-08 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Indices or Labels as Coordinate Variables" />
+<meta name="Date" content="2019-07-08" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9759.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9761.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Indices or Labels as Coordinate Variables</h1>
+<!-- received="Mon Jul  8 06:42:21 2019" -->
+<!-- isoreceived="20190708054221" -->
+<!-- sent="Mon, 8 Jul 2019 12:42:21 +0000" -->
+<!-- isosent="20190708124221" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Indices or Labels as Coordinate Variables" -->
+<!-- id="20190708124230.GE32307_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9760" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9761.html" accesskey="d" title="Daniel Lee: &quot;[CF-metadata] netCDF-CF Workshop agenda&quot;">Next message</a> ]
+[ <a href="./9759.html" title="Alison Pamment - UKRI STFC: &quot;[CF-metadata] Renaming of GitHub repositories&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9760" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9760" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9760" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9760" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Indices%20or%20Labels%20as%20Coordinate%20Variables">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 8 Jul 2019 12:42:21 +0000</span><br />
+</address>
+<br />
+Dear Tom
+<br />
+<br />It would be a coordinate variable if it's location(location) and in that case
+<br />
+its values have to be unique and monotonic because generic applications
+<br />
+may make that assumption when plotting or doing computations with them. If
+<br />
+these are really labels then those operations don't really make sense anyway.
+<br />
+In that case it would be more suitable to store the IDs in an auxiliary
+<br />
+coordinate variable, which doesn't have the same name as the dimension, and
+<br />
+is listed in the coordinates attribute of the data variable. Values in aux
+<br />
+coord variables do not have to be unique or monotonic or even numeric. It is
+<br />
+not mandatory to include a coordinate variable (in the Unidata sense).
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br />----- Forwarded message from Tom Evans &lt;Tom.Evans at niwa.co.nz&gt; -----
+<br />
+<br /><em class="quotelev1">&gt; Date: Mon, 8 Jul 2019 01:51:19 +0000
+</em><br />
+<em class="quotelev1">&gt; From: Tom Evans &lt;Tom.Evans at niwa.co.nz&gt;
+</em><br />
+<em class="quotelev1">&gt; To: &quot;cf-metadata at cgd.ucar.edu&quot; &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; Subject: [CF-metadata] Indices or Labels as Coordinate Variables
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I have a question regarding coordinate variables:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I am working with time-series data representing hydrological conditions at fixed locations in a stream network. The values are generated by a model at regular time intervals, and I believe that the data will fit well into the timeSeries feature type described in the ?Discrete Sampling Geometries? chapter of the CF conventions. For example, we would put all the discharge values into a single 2D array:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     double flow(time, location)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The dimension ?location? here is the ?instance dimension? described in the convention.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I would like to use an integer variable named ?location? as a coordinate variable to go along with the location dimension. I think this would provide a handy way for post-processing programs to locate a time series in our model result files. The Best Practices guidance on the Unidata website, though, says that coordinate variables ?must be strictly monotonic? and the order of the IDs in my location variable is arbitrary. All of the location values are unique, but the location numbers are essentially numerical labels ? location 1524 is distinct from location 2817, but neither is greater than the other in a way that means anything to the model. Location IDs do not consistently increase or decrease traveling downstream, for example.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; So, is the guidance that coordinate variable should strictly increase or decrease relevant to my case? I?ve built some sample files and examined them using Panoply, and in Python using xarray. I haven?t seen any problems with using non-monotonic integer ?ID numbers? as coordinate variables, but that ?must? in the guidance troubles me. If my locations are identified by arbitrary numbers, do I run the risk of scrambling the links between my time series and their identifiers?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thanks
+</em><br />
+<em class="quotelev1">&gt; Tom Evans
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; [cid:image9ef98c.PNG at 58bab801.4bad83a3]&lt;<a href="http://www.niwa.co.nz">http://www.niwa.co.nz</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Dr Tom Evans
+</em><br />
+<em class="quotelev1">&gt; Software Developer
+</em><br />
+<em class="quotelev1">&gt; T +64-7-859-1832
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; National Institute of Water &amp; Atmospheric Research Ltd (NIWA)
+</em><br />
+<em class="quotelev1">&gt; Gate 10 Silverdale Road, Hillcrest, Hamilton
+</em><br />
+<em class="quotelev1">&gt; Connect with NIWA: niwa.co.nz&lt;<a href="https://www.niwa.co.nz">https://www.niwa.co.nz</a>&gt; Facebook&lt;<a href="https://www.facebook.com/nzniwa">https://www.facebook.com/nzniwa</a>&gt; Twitter&lt;<a href="https://twitter.com/niwa_nz">https://twitter.com/niwa_nz</a>&gt; LinkedIn&lt;<a href="https://www.linkedin.com/company/niwa">https://www.linkedin.com/company/niwa</a>&gt; Instagram&lt;<a href="https://www.instagram.com/niwa_science">https://www.instagram.com/niwa_science</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; To ensure compliance with legal requirements and to maintain cyber security standards, NIWA's IT systems are subject to ongoing monitoring, activity logging and auditing. This monitoring and auditing service may be provided by third parties. Such third parties can access information transmitted to, processed by and stored on NIWA's IT systems.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<br /><br /><br /><em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><br />----- End forwarded message -----
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Jul 08 2019 - 06:42:21 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9760">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9761.html" title="Next message in the list">Daniel Lee: "[CF-metadata] netCDF-CF Workshop agenda"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9759.html" title="Previous message in the list">Alison Pamment - UKRI STFC: "[CF-metadata] Renaming of GitHub repositories"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9760" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9760" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9760" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9760" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9759.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9761.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

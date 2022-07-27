@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Standardizing how ensemble (realization) axes are encoded from Jonathan Gregory on 2013-11-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Standardizing how ensemble (realization) axes are encoded" />
+<meta name="Date" content="2013-11-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5874.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5876.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Standardizing how ensemble (realization) axes are encoded</h1>
+<!-- received="Tue Nov 19 04:31:19 2013" -->
+<!-- isoreceived="20131119043119" -->
+<!-- sent="Tue, 19 Nov 2013 11:31:19 +0000" -->
+<!-- isosent="20131119113119" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Standardizing how ensemble (realization) axes are encoded" -->
+<!-- id="20131119113119.GA25843_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="528675BF.8070801_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5875" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5876.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  UV-index in CF compliant files&quot;">Next message</a> ]
+[ <a href="./5874.html" title="Gary Meehan: &quot;[CF-metadata] new standard names: fire area, fire temperature, fire radiative power&quot;">Previous message</a> ]
+[ <a href="./5871.html" title="Steve Hankin: &quot;[CF-metadata] Standardizing how ensemble (realization) axes are encoded&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5875" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5875" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5875" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5875" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Standardizing%20how%20ensemble%20(realization)%20axes%20are%20encoded">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 19 Nov 2013 11:31:19 +0000</span><br />
+</address>
+<br />
+Dear Steve
+<br />
+<br />My argument is this: the standard name is the name of a quantity contained
+<br />
+in the variable. Time and longitude are quantities. An ensemble is not a
+<br />
+quantity, however. In fact, an ensemble_member is not a quantity either,
+<br />
+perhaps, but it would be understood to mean ensemble_member &quot;identifier&quot; in
+<br />
+some undefined sense, so it's more like a usual standard name.
+<br />
+<br />However I agree that, in cell_methods, for an omitted ensemble axis, it would
+<br />
+be more natural to read &quot;ensemble: mean&quot; than &quot;ensemble_member: mean&quot;. We
+<br />
+could specifically allow &quot;ensemble&quot; as a keyword with this sense (i.e. to
+<br />
+indicate a statistic calculated over the members of an ensemble, when there
+<br />
+is no dimension or coordinate for the ensemble), like we
+<br />
+allow &quot;area&quot; as a special keyword in cell_methods to stand for the combination
+<br />
+of horizontal axes (whatever they are). To do that would require a change to
+<br />
+the convention, because it's not just a standard_name.
+<br />
+<br />As I said, permitting axis='E' would also be a convention change.
+<br />
+<br />If anyone would like to propose these additions in a trac ticket, I'd
+<br />
+support it.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br /><br />On Fri, Nov 15, 2013 at 11:27:59AM -0800, Steve Hankin wrote:
+<br />
+<em class="quotelev1">&gt; On second though it is all thoroughly ambiguous, whether CF names
+</em><br />
+<em class="quotelev1">&gt; its axis standard_names for the collective or for the individual
+</em><br />
+<em class="quotelev1">&gt; member.  &quot;ensemble&quot; seems immediately clear and short, compared to
+</em><br />
+<em class="quotelev1">&gt; &quot;ensemble_member&quot;, which seems a bit labored.  But I understand your
+</em><br />
+<em class="quotelev1">&gt; concern over consistency with &quot;realization&quot;.   Either choice is fine
+</em><br />
+<em class="quotelev1">&gt; with me.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     - Steve
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ============================================
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On 11/15/2013 11:15 AM, Steve Hankin wrote:
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;On 11/15/2013 10:30 AM, Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;Dear Steve et al.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;I support the idea that the term &quot;ensemble&quot; be allowed (by whatever
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;machinery) as an alias for &quot;realization&quot;.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;It'd be fine to have an standard_name alias, I agree, but I
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;think it should be
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&quot;ensemble_member&quot;, not &quot;ensemble&quot;. The ensemble is the
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;collection of members
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;(aka realizations).
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;It feels a bit backwards, doesn't it?  By this logic shouldn't the
+</em><br />
+<em class="quotelev2">&gt; &gt;standard_name &quot;time&quot; be &quot;snapshot&quot; instead -- named for its
+</em><br />
+<em class="quotelev2">&gt; &gt;individual members, rather than for its collective?
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;&quot;time&quot; &quot;depth&quot;, &quot;longitude&quot; and &quot;latitude&quot; axes all represent the
+</em><br />
+<em class="quotelev2">&gt; &gt;collection of many individual points.  By analogy an &quot;ensemble&quot;
+</em><br />
+<em class="quotelev2">&gt; &gt;axis would be the collective of many individual members.  It's
+</em><br />
+<em class="quotelev2">&gt; &gt;true that, the choice of &quot;realization&quot; as a standard_name took the
+</em><br />
+<em class="quotelev2">&gt; &gt;opposite outlook.  hmmm ...  Are we better off to maintain
+</em><br />
+<em class="quotelev2">&gt; &gt;consistency with CF's well known geo-spatial axis standard_names?
+</em><br />
+<em class="quotelev2">&gt; &gt;or consistency with &quot;realization&quot;?
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;    - Steve
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;axis=&quot;E&quot; also seems like an appropriate step to maintain consistency
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;with other well known axis types, given the high likelihood that
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;ensemble axes will become commonplace in the future.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;That would require a change to the convention to be proposed on
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;a trac ticket
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;by someone.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;Best wishes
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;Jonathan
+</em><br />
+<span id="received"><dfn>Received on</dfn> Tue Nov 19 2013 - 04:31:19 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5875">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5876.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  UV-index in CF compliant files"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5874.html" title="Previous message in the list">Gary Meehan: "[CF-metadata] new standard names: fire area, fire temperature, fire radiative power"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5871.html" title="Message to which this message replies">Steve Hankin: "[CF-metadata] Standardizing how ensemble (realization) axes are encoded"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5875" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5875" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5875" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5875" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:32 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5874.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5876.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

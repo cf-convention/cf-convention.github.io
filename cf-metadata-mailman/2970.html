@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] point observation data in CF 1.4 from Wright, Bruce on 2010-11-11 (cf-metadata-mailman)</title>
+<meta name="Author" content="Wright, Bruce (bruce.wright)" />
+<meta name="Subject" content="[CF-metadata] point observation data in CF 1.4" />
+<meta name="Date" content="2010-11-11" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2969.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2971.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] point observation data in CF 1.4</h1>
+<!-- received="Thu Nov 11 06:02:21 2010" -->
+<!-- isoreceived="20101111060221" -->
+<!-- sent="Thu, 11 Nov 2010 13:02:21 -0000" -->
+<!-- isosent="20101111130221" -->
+<!-- name="Wright, Bruce" -->
+<!-- email="bruce.wright" -->
+<!-- subject="[CF-metadata] point observation data in CF 1.4" -->
+<!-- id="8AC4893FB411FA4AA8CFECD9C8913B660A014B27_at_EXXMAIL01.desktop.frd.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4CD30C97.5090003_at_sintef.no" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2970" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2971.html" accesskey="d" title="Ben Hetland: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Next message</a> ]
+[ <a href="./2969.html" title="alison.pamment at stfc.ac.uk: &quot;[CF-metadata] One new aerosol standard name&quot;">Previous message</a> ]
+[ <a href="./2966.html" title="Ben Hetland: &quot;[CF-metadata] point observation data in CF 1.4&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2971.html" accesskey="t" title="Ben Hetland: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2970" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2970" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2970" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2970" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Wright, Bruce &lt;<a href="mailto:bruce.wright?Subject=Re%3A%20%5BCF-metadata%5D%20point%20observation%20data%20in%20CF%201.4">bruce.wright</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 11 Nov 2010 13:02:21 -0000</span><br />
+</address>
+<br />
+Dave Thomson from the Met Office Atmospheric Dispersion Research and
+<br />
+Response Team asked me to post the follow-up comments below on his
+<br />
+behalf.
+<br />
+<br />Regards, 
+<br />
+Bruce Wright
+<br />
+<br />Expert Strategic Advisor, Met Office
+<br />
+E-mail: bruce.wright at metoffice.gov.uk
+<br />
+<pre>
+----
+Here are some thoughts in response to a number of postings:
+In response to Chris Barker (2/Nov): We certainly vary the time step
+between particles in our models but usually as a sub-step. I agree there
+is no strong need to be able to store the substeps. Trajectories are
+quite a common need for us but usually for a small subset of particles
+(several hundred at any one time). These could be output as a separate
+stream and the small files would then make trajectory reconstruction
+cheap. Also the &quot;already proposed standard for trajectories&quot; mentioned
+by Chris on 4/Nov would presumably be an option for a small subset of
+particles (I don't know anything about this though).
+In response to John Caron (4/Nov): &quot;Those&quot; are indeed reasonable
+assumptions. Navg is generally similar to Nmax in our runs (the
+exception being during &quot;spin up times&quot; at the start of runs). In some
+runs Navg can increase roughly linearly with time, so Navg ~ Nmax/2.
+These are runs dominated by spin up with just a short period after
+spin-up. Data per particle is typically in the range 10-300 bytes,
+depending on what is stored (e.g. may have masses for ~100 chemical
+species, plus met data at particle location). Data might include release
+time and travel time of the particle which might be best stored in a
+&quot;time variable&quot;.
+Response to Jon Caron (4/Nov, later post): 20K particles is very small
+for us. 4M is not uncommon and this is likely to increase in the future.
+However, as mentioned above, the need for trajectory output (or indeed,
+usually, the need for any particle output as opposed to gridded
+concentrations) is restricted to a small sample of particles.
+Response to Ben Hetland (4/Nov): &quot;if one wants to jump directly to
+particle p at timestep t, then a simple prop(index(t)+p) should do the
+lookup&quot; assumes that all particles are stored at each time step. In
+practice for a long run with continuously emitting sources, particles
+are created and destroyed.
+Dave
+---
+-----Original Message-----
+From: cf-metadata-bounces at cgd.ucar.edu
+[mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Ben Hetland
+Sent: 04 November 2010 19:42
+To: cf-metadata at cgd.ucar.edu
+Subject: Re: [CF-metadata] point observation data in CF 1.4
+On 04.11.2010 16:07, John Caron wrote:
+&gt; On 11/4/2010 5:50 AM, Ben Hetland wrote:
+[...]
+&gt;&gt; In a recent case I had, the data were to be transferred to a client 
+&gt;&gt; computer over the Internet for viewing locally. In that case reducing
+&gt;&gt; the content of the file to the absolute minimum set of properties 
+&gt;&gt; (that the client needed in order to visualize) became paramount. Even
+&gt;&gt; a fast Internet connection does have bandwidth limitations... :-)
+&gt; 
+&gt; im thinking more of the file as its written by the model.
+Our model currently uses a proprietary format to hold all this
+information, but we are investigating changing that to using netCDF
+instead, in an attempt to be a little bit more &quot;standard compliant&quot; and
+facilitate exchange with other software.
+In the indicated &quot;Internet use case&quot; we actually extract data from that
+native file into a NetCDF file, and the netCDF is then used as the
+&quot;exchange format&quot;. We still found the current CF 1.4 convention too
+limiting for what we ideally would like to represent, and the proposed
+1.6 wasn't quite up to it either.
+&gt; but it seems like an interesting use case is to then be able to 
+&gt; transform it automatically to some other optimized layout.
+Yes!
+However, it is just as interesting for us if we could deal directly with
+only that single file containing &quot;everything&quot;. We wouldn't know the
+&quot;optimized layout&quot; anyway before the end-user made a choice of what and
+how to view something, so at that point incurring a delay (for
+transforming/optimizing) is somewhat less interesting.
+&gt;&gt; Yes, often sequentially by time as well.
+&gt; 
+&gt; sequential is very fast.
+I'm not familiar with the internals of the netCDF storage, but doesn't
+this assume that the values are also _stored_ sequentially by time?
+&gt; Well, its impossible to optimize for both &quot;get me all data for this 
+&gt; time step&quot; and &quot;get me all data for this trajectory&quot; unless you write 
+&gt; the data twice.
+Why is that impossible?
+Isn't such a thing normally achieved by suitable file organization and
+indexing? It's the retrieval times for the data query that's critical,
+not how it is organized sequentially (or internally for that matter).
+&gt; So im hearing we should do the former, and make the trajectory 
+&gt; visualization as fast as possible.
+Acceptable to me, if there has to be a trade-off.
+&gt; without knowing Nmax, you couldnt use netcdf-3 multidimension arrays, 
+&gt; but you could use the new &quot;ragged array&quot; conventions.
+Yes, already discovered that limitation. Is that a restriction
+associated with netCDF itself, or is it related to CF conventions only?
+&gt; because the grouping is reversed (first time, then station dimension) 
+&gt; from the current trajectory feature type (first trajectory, then 
+&gt; time), i need to think how to indicate that so that the software knows
+&gt; how to optimize it.
+I got one idea how to do it, but it may conflict with some convention as
+it currently is, or with basic netCDF reading optimization. Anyway, here
+goes...
+Suppose we consider representing a time series of particle clouds which
+is highly variable. I here represent a single particle property by the
+imaginary variable 'prop'. If we have several properties (very likely;
+lat, lon, depth, mass, just to indicate a few), then we would simply
+have several such 'prop' arrays with identical dimensions.
+dimensions:
+	time = UNLIMITED;
+	record = UNLIMITED; // yes, ideally!
+variables:
+  double time(time); // the usual one
+  int index(time);
+  float prop(record);
+In this case, the array 'index' simply holds the starting record index
+of a given timestep. The particles are simply stored consecutively from
+that index until 'index(time+1) - 1'.
+Number of particles at timestep 'i' can be calculated as:
+   index(i+1) - index(i)
+(Optionally the 'index' could be 2-dimensional holding both a start and
+count value.)
+Example:
+- 4 time steps:
+	at time 2.0, 3 particles (values 'a')
+	time 2.5, 0 particles (values 'b')
+	time 3.0, 4 particles (values 'c')
+	time 3.5, 1 particle (values 'd')
+- 8 particles total.
+Thus:
+	time = 4
+	record = 8
+then:
+   time = { 2.0, 2.5, 3.0, 3.5 }
+   index = { 0, 3, 3, 7 }
+   prop = { a1, a2, a3, c1, c2, c3, c4, d1 }
+Straight forward to read sequentially (by time), I should say, but if
+one wants to jump directly to particle p at timestep t, then a simple
+	prop(index(t)+p)
+should do the lookup.
+&gt; 20K particles x 100 bytes/particle = 2M / time step. So every access 
+&gt; to a time step would cost you a disk seek = 10 ms.
+How do you know this would be a single disk seek if these 100 bytes are
+stored in, say, 25 different float variables? There would also be
+variables storing values pertaining to the time step as a whole, not any
+particular particle. (Eg., a bounding rectangle for the entire particle
+cloud, or things like &quot;total mass&quot;.)
+(This also assumes the file was stored continuously on the disk itself.)
+&gt; So 1000 time steps = 10 seconds to retrieve a trajectory. Fast enough?
+Not if there are hundreds of trajectories to process, I guess... ;-)
+--
+Regards,  -+- Ben Hetland &lt;ben.a.hetland at sintef.no&gt; -+-
+Opinions expressed are my own, not necessarily those of my employer.
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Nov 11 2010 - 06:02:21 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2970">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2971.html" title="Next message in the list">Ben Hetland: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2969.html" title="Previous message in the list">alison.pamment at stfc.ac.uk: "[CF-metadata] One new aerosol standard name"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2966.html" title="Message to which this message replies">Ben Hetland: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2971.html" title="Next message in this discussion thread">Ben Hetland: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2971.html" title="Message sent in reply to this message">Ben Hetland: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2970" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2970" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2970" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2970" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2969.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2971.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

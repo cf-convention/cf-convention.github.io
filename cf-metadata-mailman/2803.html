@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] coordinate bounds with non-unique coordinate values from John Caron on 2010-09-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] coordinate bounds with non-unique coordinate values" />
+<meta name="Date" content="2010-09-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2802.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2804.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] coordinate bounds with non-unique coordinate values</h1>
+<!-- received="Mon Sep 20 15:18:07 2010" -->
+<!-- isoreceived="20100920141807" -->
+<!-- sent="Mon, 20 Sep 2010 15:18:07 -0600" -->
+<!-- isosent="20100920211807" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] coordinate bounds with non-unique coordinate values" -->
+<!-- id="4C97CF8F.5030101_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2803" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2804.html" accesskey="d" title="alison.pamment at stfc.ac.uk: &quot;[CF-metadata] CMIP5 cloud, aerosol and radiation standard names&quot;">Next message</a> ]
+[ <a href="./2802.html" title="Pierre Friedlingstein: &quot;[CF-metadata] CMIP5 carbon cycle standard names&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2807.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] coordinate bounds with non-unique coordinate values&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2803" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2803" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2803" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2803" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20coordinate%20bounds%20with%20non-unique%20coordinate%20values">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 20 Sep 2010 15:18:07 -0600</span><br />
+</address>
+<br />
+&nbsp;&nbsp;While decoding NCEP forecast model output in GRIB2, and converting to 
+<br />
+CF-NetCDF, we have run across time coordinates that are actually 
+<br />
+intervals, not points. The time intervals are unique, but sometimes the 
+<br />
+forecast time coordinate values are not.
+<br />
+<br />For example, below is the &quot;Total_precipitation&quot; variable and its time 
+<br />
+coordinates, from the NAM Conus 12km model run on 2010-09-14T00:00:00Z, 
+<br />
+coming over the conduit data feed:
+<br />
+<br />&nbsp;&nbsp;&nbsp;float Total_precipitation(time=50, y=428, x=614);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;kg m-2&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:long_name = &quot;Total_precipitation_Accumulation (Accumulation for  
+<br />
+Mixed Intervals) _at_ surface&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cell_methods = &quot;time: sum&quot;;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;int time(time=50);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:long_name = &quot;forecast time for (mixed intervals)&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;hour since 2010-09-14T00:00:00Z&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:bounds = &quot;time_bounds&quot;;
+<br />
+<br />&nbsp;&nbsp;data:
+<br />
+<br />&nbsp;&nbsp;&nbsp;{0, 3, 6, 6, 9, 9, 12, 12, 15, 18, 18, 21, 21, 24, 24, 27, 30, 30, 
+<br />
+33, 33, 36, 36, 39, 42, 42, 45, 45, 48, 48, 51, 54, 54, 57, 57, 60, 60, 
+<br />
+63, 66, 66, 69, 69, 72, 72, 75, 78, 78, 81, 81, 84, 84}
+<br />
+<br />&nbsp;&nbsp;&nbsp;int time_bounds(time=50, bounds_dim=2);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:long_name = &quot;bounds for time&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;hour since 2010-09-14T00:00:00Z&quot;;
+<br />
+<br />&nbsp;&nbsp;data:
+<br />
+<br />&nbsp;&nbsp;&nbsp;{
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{0, 0},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{0, 3},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{0, 6},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{3, 6},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{0, 9},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{6, 9},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{0, 12},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{9, 12},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{12, 15},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{12, 18},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{15, 18},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{12, 21},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{18, 21},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{12, 24},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{21, 24},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{24, 27},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{24, 30},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{27, 30},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{24, 33},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{30, 33},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{24, 36},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{33, 36},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{36, 39},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{36, 42},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{39, 42},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{36, 45},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{42, 45},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{36, 48},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{45, 48},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{48, 51},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{48, 54},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{51, 54},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{48, 57},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{54, 57},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{48, 60},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{57, 60},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{60, 63},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{60, 66},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{63, 66},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{60, 69},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{66, 69},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{60, 72},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{69, 72},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{72, 75},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{72, 78},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{75, 78},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{72, 81},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{78, 81},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{72, 84},
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{81, 84}
+<br />
+&nbsp;&nbsp;&nbsp;}
+<br />
+<br />So these are accumulations of total precipitation at the surface, and 
+<br />
+for whatever reason the data producers want to output multiple 
+<br />
+accumulation intervals with the same forecast time. Note that the 
+<br />
+forecast time coordinate is always the end of the interval, and is not 
+<br />
+unique.
+<br />
+<br />My thought is that since the bounds are unique, this is a reasonable way 
+<br />
+to encode this, even though it violates the rule for unique, monotonic 
+<br />
+coordinates. My argument is that the &quot;unique, monotonic coordinates&quot; 
+<br />
+rule covers the common case for coordinate variables, but is sometimes 
+<br />
+not appropriate, as in this case.  Thus would require a client to make 
+<br />
+coordinate bounds (when they exist) an integral part of coordinate 
+<br />
+processing, however.
+<br />
+<br />Comments are solicited.
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Sep 20 2010 - 15:18:07 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2803">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2804.html" title="Next message in the list">alison.pamment at stfc.ac.uk: "[CF-metadata] CMIP5 cloud, aerosol and radiation standard names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2802.html" title="Previous message in the list">Pierre Friedlingstein: "[CF-metadata] CMIP5 carbon cycle standard names"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2807.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] coordinate bounds with non-unique coordinate values"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2807.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] coordinate bounds with non-unique coordinate values"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2803" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2803" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2803" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2803" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:32 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2802.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2804.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

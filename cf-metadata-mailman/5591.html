@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Using cell methods for statistics associated with gridded observation data from rhorne at excaliburlabs.com on 2013-07-02 (cf-metadata-mailman)</title>
+<meta name="Author" content="rhorne at excaliburlabs.com (rhorne)" />
+<meta name="Subject" content="[CF-metadata] Using cell methods for statistics associated with gridded observation data" />
+<meta name="Date" content="2013-07-02" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5590.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5592.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Using cell methods for statistics associated with gridded observation data</h1>
+<!-- received="Tue Jul  2 13:57:51 2013" -->
+<!-- isoreceived="20130702125751" -->
+<!-- sent="Tue, 2 Jul 2013 15:57:51 -0400" -->
+<!-- isosent="20130702195751" -->
+<!-- name="rhorne at excaliburlabs.com" -->
+<!-- email="rhorne" -->
+<!-- subject="[CF-metadata] Using cell methods for statistics associated with gridded observation data" -->
+<!-- id="1e475e2d$51546762$699eb764$_at_excaliburlabs.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5591" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5592.html" accesskey="d" title="John Graybeal: &quot;[CF-metadata] new standard name for primary production of carbon per unit volume&quot;">Next message</a> ]
+[ <a href="./5590.html" title="Seth McGinnis: &quot;[CF-metadata] Non-real-world calendars&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5591" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5591" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5591" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5591" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: rhorne at excaliburlabs.com &lt;<a href="mailto:rhorne?Subject=Re%3A%20%5BCF-metadata%5D%20Using%20cell%20methods%20for%20statistics%20associated%20with%20gridded%20observation%20data">rhorne</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 2 Jul 2013 15:57:51 -0400</span><br />
+</address>
+<br />
+Folks: 
+<br />
+<br />&nbsp;&nbsp;
+<br />
+<br />The GOES-R ground system generates level 2+ products such as aerosol optical depth, for the hemispheric, continental US, and mesocale (100 km x 1000 km) regions.  
+<br />
+<br />The NetCDF product files need to contain statistics (min, max, mean, and standard deviation) associated with ALL the gridded data associated with a region.  
+<br />
+<br />It would seem the use of cell methods to express these statistics in the product file makes sense even though there is only one cell (i.e. the one cell that captures the statistic for the entire region).  
+<br />
+<br />It is stated in the first sentence of CF standard para. 7.3.3 that the statistical method is evaluated over the entire horizontal area of the cell.  In the case of our level 2+ products, this is not always the case, so we have a need to somehow express that the statistic is associated with a subset of the cell.  
+<br />
+<br />For example, in the case of the Aerosol Optical Depth (AOD) product, the algorithm that generates the gridded data is has solar zenith angle and platform zenith angle constraints.  
+<br />
+<br />Essentially, these statistics apply to a portion of the single cell.  Unfortunately, the &quot;where &lt;area_type&gt;&quot; features discussed in CF standard para. 7.3.3 do not work for us because the AOD product constraints are associated with the solar zenith angle and platform zenith angle at the time of observation, not one of the area_types.  
+<br />
+<br />Given the currently available cell method constructs, which allow for capturing the original spacing of the gridded data elements and the ability to include non-standardized information, we have applied the existing CF cell_method constructs as follow:  
+<br />
+<br />float minimum_AOD_for_region ;  
+<br />
+<br />&nbsp;&nbsp;&nbsp;coordinates = &quot;solar_zenith_angle  platform_zenith_angle  time  y  x&quot; ;   
+<br />
+<br />&nbsp;&nbsp;&nbsp;cell_methods = &quot;time: sum  area: sum (interval: 2 km  comment:solar_zenith_angle and platform_zenith_angle conforming pixels only)&quot; ;   
+<br />
+<br />Note that solar_zenith_angle and platform_zenith_angle are scalar coordinate variables whose standard_name is the same, and where a boundary variables are used to express the angular extents within the cell's area where data is used to determine the minimum AOD for the region.  Similarly time, y, and x are scalar coordinate variables also with boundary variables to express the observation period, and y and x extents of the region associated with the cell.  
+<br />
+<br />Also note that 2 km is the spacing of the original data.  
+<br />
+<br />Is the way we are applying cell methods consistent with the CF standard ?  
+<br />
+<br />&nbsp;&nbsp;&nbsp;
+<br />
+<br />very respectfully,  
+<br />
+<br />randy  
+<br />
+<br />&nbsp;&nbsp;
+<br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130702/38774f1d/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130702/38774f1d/attachment.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Jul 02 2013 - 13:57:51 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5591">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5592.html" title="Next message in the list">John Graybeal: "[CF-metadata] new standard name for primary production of carbon per unit volume"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5590.html" title="Previous message in the list">Seth McGinnis: "[CF-metadata] Non-real-world calendars"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5591" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5591" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5591" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5591" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:26 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5590.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5592.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

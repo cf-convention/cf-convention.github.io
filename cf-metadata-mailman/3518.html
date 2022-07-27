@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Interpretation of Compression by Gathering method from Bentley, Philip on 2011-06-01 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bentley, Philip (philip.bentley)" />
+<meta name="Subject" content="[CF-metadata] Interpretation of Compression by Gathering method" />
+<meta name="Date" content="2011-06-01" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3517.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3519.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Interpretation of Compression by Gathering method</h1>
+<!-- received="Wed Jun  1 07:47:37 2011" -->
+<!-- isoreceived="20110601064737" -->
+<!-- sent="Wed, 01 Jun 2011 13:47:37 -0000" -->
+<!-- isosent="20110601134737" -->
+<!-- name="Bentley, Philip" -->
+<!-- email="philip.bentley" -->
+<!-- subject="[CF-metadata] Interpretation of Compression by Gathering method" -->
+<!-- id="E51EDFEBF10BE44BB4BDAF5FC2F024B9036367C4_at_EXXMAIL02.desktop.frd.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3518" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3519.html" accesskey="d" title="Steve Hankin: &quot;[CF-metadata] Interpretation of Compression by Gathering method&quot;">Next message</a> ]
+[ <a href="./3517.html" title="Mike Grant: &quot;[CF-metadata] CF Metadata - CF Convention 1.5&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3519.html" accesskey="t" title="Steve Hankin: &quot;[CF-metadata] Interpretation of Compression by Gathering method&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3518" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3518" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3518" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3518" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bentley, Philip &lt;<a href="mailto:philip.bentley?Subject=Re%3A%20%5BCF-metadata%5D%20Interpretation%20of%20Compression%20by%20Gathering%20method">philip.bentley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 01 Jun 2011 13:47:37 -0000</span><br />
+</address>
+<br />
+Hi folks,
+<br />
+<br />In investigating possible ways of efficiently storing data variables
+<br />
+containing large numbers of contiguous missing values within CF-netCDF3
+<br />
+files, I have been looking at chapter 8 in the CF conventions document,
+<br />
+which describes the technique of compression by gathering. (Of course,
+<br />
+effective compression could readily be achieved externally using, say,
+<br />
+gzip.  But for this discussion I'm interested in ways to do this solely
+<br />
+using netCDF-3.)
+<br />
+<br />Whilst the compression by gathering method doesn't appear to be designed
+<br />
+expressly for the purpose of circumventing the need to store long (time)
+<br />
+series of missing data values, it does, on the face of it, seem like it
+<br />
+could be subverted for just that purpose.  However, for this to work it
+<br />
+has to be assumed that, upon expansion of the dimensions specified in
+<br />
+the 'compress' attribute of the mask array variable (e.g. the landpoint
+<br />
+variable of example 8.1), all non-masked elements are assigned the
+<br />
+missing/fill value within the in-memory data array.
+<br />
+<br />The final sentence of chapter 8, in referring to example 8.2, reads:
+<br />
+&quot;This information implies that the salinity field should be uncompressed
+<br />
+to an array with dimensions (depth, lat, lon)&quot;.
+<br />
+<br />I wonder if that should actually read &quot;(time, depth, lat, lon)&quot;?
+<br />
+Regardless, the implication seems to be that missing elements in the
+<br />
+uncompressed array should take on the missing/fill value.  Is that the
+<br />
+correct interpretation?  If so, can we further assume that either the
+<br />
+_FillValue or the missing_value attribute becomes mandatory for
+<br />
+compressed variables? (Or perhaps netCDF's default fill value would be
+<br />
+used instead?)
+<br />
+<br />To add a final twist, of the four netCDF clients (ncview, ncbrowse,
+<br />
+panoply, in house app) I have tried against a variable compressed in
+<br />
+this fashion, none uncompresses the variable as expected according to
+<br />
+the wording of the CF convention - though some of this may well be due
+<br />
+to simple pilot error!  In all cases the variable is treated, if at all,
+<br />
+merely as a regular 2D variable - in my case (time, goodpoints).  Is
+<br />
+anyone aware of any netCDF clients out there which can handle compressed
+<br />
+variables correctly?
+<br />
+<br />Regards,
+<br />
+Phil
+<br />
+<br />PS: Clearly the general requirement described above can be met at
+<br />
+netCDF-4 through use of the per-variable compression options available
+<br />
+with that version.
+<br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110601/736d98a6/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110601/736d98a6/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Jun 01 2011 - 07:47:37 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3518">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3519.html" title="Next message in the list">Steve Hankin: "[CF-metadata] Interpretation of Compression by Gathering method"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3517.html" title="Previous message in the list">Mike Grant: "[CF-metadata] CF Metadata - CF Convention 1.5"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3519.html" title="Next message in this discussion thread">Steve Hankin: "[CF-metadata] Interpretation of Compression by Gathering method"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3519.html" title="Message sent in reply to this message">Steve Hankin: "[CF-metadata] Interpretation of Compression by Gathering method"</a></li>
+<li><dfn>Reply</dfn>: <a href="./3524.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] Interpretation of Compression by Gathering method"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3518" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3518" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3518" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3518" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:46 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3517.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3519.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

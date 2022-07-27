@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Re: GDAL NetCDF driver and projection. from Denis Nadeau on 2006-05-01 (cf-metadata-mailman)</title>
+<meta name="Author" content="Denis Nadeau (denis.nadeau)" />
+<meta name="Subject" content="[CF-metadata] Re: GDAL NetCDF driver and projection." />
+<meta name="Date" content="2006-05-01" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0132.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0134.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Re: GDAL NetCDF driver and projection.</h1>
+<!-- received="Mon May  1 11:35:39 2006" -->
+<!-- isoreceived="20060501103539" -->
+<!-- sent="Mon, 1 May 2006 13:35:39 -0400" -->
+<!-- isosent="20060501173539" -->
+<!-- name="Denis Nadeau" -->
+<!-- email="denis.nadeau" -->
+<!-- subject="[CF-metadata] Re: GDAL NetCDF driver and projection." -->
+<!-- id="304163b00605011035s7c252d49p9301e109a622b414_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="44563B25.5040905_at_usgs.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start133" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0134.html" accesskey="d" title="Steve Kopp: &quot;[CF-metadata] RE: GDAL NetCDF driver and projection.&quot;">Next message</a> ]
+[ <a href="./0132.html" title="Rich Signell: &quot;[CF-metadata] Re: GDAL NetCDF driver and projection.&quot;">Previous message</a> ]
+[ <a href="./0132.html" title="Rich Signell: &quot;[CF-metadata] Re: GDAL NetCDF driver and projection.&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg133" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg133" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg133" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg133" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Denis Nadeau &lt;<a href="mailto:denis.nadeau?Subject=Re%3A%20%5BCF-metadata%5D%20Re%3A%20GDAL%20NetCDF%20driver%20and%20projection.">denis.nadeau</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 1 May 2006 13:35:39 -0400</span><br />
+</address>
+<br />
+Hi Rich,
+<br />
+<br />...
+<br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Denis -- It seems that you are doing something slightly different than
+</em><br />
+<em class="quotelev1">&gt; ESRI.  Are you using ESRI WKT, OpenGIS WKT in your NetCDF files, or
+</em><br />
+<em class="quotelev1">&gt; something different.  It would be nice to see an example of these as
+</em><br />
+<em class="quotelev1">&gt; well.  Is your primary objective to have a NetCDF file that can be used
+</em><br />
+<em class="quotelev1">&gt; as input and output from GDAL, but able to handle any georeferencing
+</em><br />
+<em class="quotelev1">&gt; information that GDAL is capable of producing?
+</em><br />
+<br /><br />My primery objective is indeed to have a NetCDF file that can be used as
+<br />
+input and ouput from GDAL.  And I want the NetCDF driver to handle any
+<br />
+georeferencing information that GDAL is capable of producing.
+<br />
+<br />I am using OpenGIS WKT in my NetCDF files.  I can easily support ESRI PE
+<br />
+strings, but I do not know at this point if ESRI PE strings is equivalent to
+<br />
+ESRI WKT.  Here is an example of GDAL NetCDF file.  It is still a prototype
+<br />
+at this point and needs to be polished.
+<br />
+<br />I used NetCDF CF-1 convention to create the file.
+<br />
+<br />netcdf CratedNetcdf {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = 515 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = 515 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char lambert_conformal_conic ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:Northernmost_Northing =
+<br />
+15448.6987687312
+<br />
+&nbsp;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:Southernmost_Northing = -
+<br />
+15451.301231268
+<br />
+8 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:Easternmost_Easting =
+<br />
+15488.384688517 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:Westernmost_Easting = -
+<br />
+15411.615311483 ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:spatial_ref = &quot;PROJCS[\&quot;LCC
+<br />
+E000
+<br />
+\&quot;,GEOGCS[\&quot;NAD27\&quot;,DATUM[\&quot;North_American_Datum_1927\&quot;,SPHEROID[\&quot;Clarke
+<br />
+1866\&quot;,6378206.4,294.9786982139006
+<br />
+,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7008\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6267\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0],UNIT[\&quot;degree\&quot;,
+<br />
+0.0174532925199433],AUTHORITY[\
+<br />
+&quot;EPSG\&quot;,\&quot;4267\&quot;]],PROJECTION[\&quot;Lambert_Conformal_Conic_2SP\&quot;],PARAMETER[\&quot;standard_parallel_1\&quot;,
+<br />
+33.90363402777778],PARAMETER[\&quot;standard_parallel_2\&quot;,33.6252900
+<br />
+2777778],PARAMETER[\&quot;latitude_of_origin\&quot;,33.76446202777778
+<br />
+],PARAMETER[\&quot;central_meridian\&quot;,-117.4745428888889
+<br />
+],PARAMETER[\&quot;false_easting\&quot;,0],PARAMETER[\&quot;false
+<br />
+_northing\&quot;,0],UNIT[\&quot;metre\&quot;,1,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9001\&quot;]]]&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:GeoTransform = &quot;-15411.6 60 0
+<br />
+15448.70-60 &quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:grid_mapping_name =
+<br />
+&quot;lambert_conformal_conic&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:standard_parallel_1 = 33.90363f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:standard_parallel_2 = 33.62529f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:latitude_of_projection_origin =
+<br />
+33.76446f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:central_meridian = -117.4745f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:false_easting = 0.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:false_northing = 0.f ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte Band1(y, x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Band1:coordinates = &quot;lon lat&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Band1:grid_mapping = &quot;lambert_conformal_conic&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Band1:long_name = &quot;GDAL Band Number 1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Band1:_FillValue = -9999. ;
+<br />
+<br />// global attributes:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Conventions = &quot;CF-1.0&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:AREA_OR_POINT = &quot;Area&quot; ;
+<br />
+}
+<br />
+<br /><em class="quotelev1">&gt; John -- how does this stuff relate to Unidata's &quot;Coordinate System
+</em><br />
+<em class="quotelev1">&gt; Object Model&quot;?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -Rich
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; Richard P. Signell
+</em><br />
+<em class="quotelev1">&gt; U.S. Geological Survey       Phone: (508) 457-2229
+</em><br />
+<em class="quotelev1">&gt; 384 Woods Hole Road          Fax:   (508) 457-2310
+</em><br />
+<em class="quotelev1">&gt; Woods Hole, MA  02543-1598
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Denis Nadeau wrote:
+</em><br />
+<em class="quotelev2">&gt; &gt; Steve,
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; I have finished the projection part of NetCDF with the same approach.
+</em><br />
+<em class="quotelev2">&gt; &gt; It is not checked in yet, but I am planning to do so today.    I have
+</em><br />
+<em class="quotelev2">&gt; &gt; created and computed the following metadata.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; Attributes:
+</em><br />
+<em class="quotelev2">&gt; &gt; Northernmost_Northing   (These attributes are used only if there is no
+</em><br />
+<em class="quotelev2">&gt; &gt; GeoTransform array.)
+</em><br />
+<em class="quotelev2">&gt; &gt; Southernmost_Northing
+</em><br />
+<em class="quotelev2">&gt; &gt; Easternmost_Easting
+</em><br />
+<em class="quotelev2">&gt; &gt; Westernmost_Easting
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; GeoTransform  (this is the GDAL adfGeoTransform array  )
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; spatial_ref (this is the WKT you called esri_pe_string );
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; Denis
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; 2006/4/28, Steve Kopp &lt;skopp at esri.com &lt;mailto:skopp at esri.com&gt;&gt;:
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     Denis,
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     After discussions with John last year, this is the same approach we
+</em><br />
+<em class="quotelev2">&gt; &gt;     have taken with ArcGIS when exporting to netCDF, and so far it is
+</em><br />
+<em class="quotelev2">&gt; &gt;     working well for us.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     When we export to a netCDF file we write projection information as
+</em><br />
+<em class="quotelev2">&gt; &gt;     an attribute of a variable. We call the attribute &quot;esri_pe_string&quot;.
+</em><br />
+<em class="quotelev2">&gt; &gt;     Of course we are reading and writing the CF standard projection
+</em><br />
+<em class="quotelev2">&gt; &gt;     information when it is a coordinate system supported by CF.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     Steve
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     float wdemclputm(y, x) ;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;                        wdemclputm:long_name = &quot;wdemclputm&quot; ;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;                        wdemclputm:esri_pe_string =
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev1">&gt; &quot;PROJCS[\&quot;Clarke_1866_UTM_Zone_12N\&quot;,GEOGCS[\&quot;GCS_Clarke_1866\&quot;,DATUM[\&quot;D_Clarke_1866\&quot;,SPHEROID[\&quot;Clarke_1866\&quot;,
+</em><br />
+<em class="quotelev1">&gt; 6378206.4,294.9786982]],PRIMEM[\&quot;Greenwich\&quot;,0.0],UNIT[\&quot;Degree\&quot;,
+</em><br />
+<em class="quotelev2">&gt; &gt;     0.0174532925199433
+</em><br />
+<em class="quotelev1">&gt; ]],PROJECTION[\&quot;Transverse_Mercator\&quot;],PARAMETER[\&quot;False_Easting\&quot;,
+</em><br />
+<em class="quotelev1">&gt; 500000.0],PARAMETER[\&quot;False_Northing\&quot;,0.0
+</em><br />
+<em class="quotelev1">&gt; ],PARAMETER[\&quot;Central_Meridian\&quot;,-111.0],PARAMETER[\&quot;Scale_Factor\&quot;,
+</em><br />
+<em class="quotelev2">&gt; &gt;     0.9996],PARAMETER[\&quot;Latitude_Of_Origin\&quot;,0.0],UNIT[\&quot;Meter\&quot;,1.0]]&quot;
+</em><br />
+<em class="quotelev1">&gt; ;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------------------------------------------------------------
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     *From:* owner-galeon at unidata.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt;     &lt;mailto:owner-galeon at unidata.ucar.edu&gt; [mailto:
+</em><br />
+<em class="quotelev2">&gt; &gt;     owner-galeon at unidata.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt;     &lt;mailto:owner-galeon at unidata.ucar.edu&gt;] *On Behalf Of *Denis Nadeau
+</em><br />
+<em class="quotelev2">&gt; &gt;     *Sent:* Thursday, April 27, 2006 6:51 AM
+</em><br />
+<em class="quotelev2">&gt; &gt;     *To:* John Caron
+</em><br />
+<em class="quotelev2">&gt; &gt;     *Cc:* galeon at unidata.ucar.edu &lt;mailto:galeon at unidata.ucar.edu&gt;; CF
+</em><br />
+<em class="quotelev2">&gt; &gt;     *Subject:* Re: GDAL NetCDF driver and projection.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     Hi John,
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     Thank you for taking the time to write this email.  Your points are
+</em><br />
+<em class="quotelev2">&gt; &gt;     very clear, and they are very helpful.  I must tell you that you
+</em><br />
+<em class="quotelev2">&gt; &gt;     give me information and that you sure taught me about CF-1
+</em><br />
+<em class="quotelev2">&gt; &gt;     convention community .  I will keep your email as a reference when
+</em><br />
+<em class="quotelev2">&gt; &gt;     coding the GDAL  NetCDF driver.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     I have decided to use WKT to encode projections and if I see a new
+</em><br />
+<em class="quotelev2">&gt; &gt;     governance structure from CF checked in, I will update the driver.
+</em><br />
+<em class="quotelev2">&gt; &gt;     As well, I think for this time being I will relax the lat,lon array
+</em><br />
+<em class="quotelev2">&gt; &gt;     requirements.  If needed by the community, it would be very easy to
+</em><br />
+<em class="quotelev2">&gt; &gt;     compute, but I do not want the driver to be expensive in CPU and
+</em><br />
+<em class="quotelev1">&gt; space.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     Thanks again,
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     Regards,
+</em><br />
+<em class="quotelev2">&gt; &gt;     Denis
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     2006/4/26, John Caron &lt;caron at unidata.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt;     &lt;mailto:caron at unidata.ucar.edu&gt;&gt;:
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     Hi Denis:
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     1) CF has unfortunately not yet dealt with datum and spheroid
+</em><br />
+<em class="quotelev2">&gt; &gt;     encoding (not sure what &quot;authority&quot; is), but its on our list to
+</em><br />
+<em class="quotelev2">&gt; &gt;     tackle. CF does specify a list of known projections and how to
+</em><br />
+<em class="quotelev2">&gt; &gt;     encode those (Appendix F).
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     2) You can, of course, add any metadata you want, eg GeoTransform
+</em><br />
+<em class="quotelev2">&gt; &gt;     values, from the CF POV, which CF readers are likely to ignore.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     3) Frank Warmerdam and I talked a while ago about using WKT to
+</em><br />
+<em class="quotelev2">&gt; &gt;     encode projection info. At the moment, it seems as good as any, with
+</em><br />
+<em class="quotelev2">&gt; &gt;     the proviso that the CF group may decide to do it another way (when
+</em><br />
+<em class="quotelev2">&gt; &gt;     we eventually decide).
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     4) Calculating the lat,lon arrays for projections is currently
+</em><br />
+<em class="quotelev2">&gt; &gt;     required under CF. I have proposed that this requirement be relaxed,
+</em><br />
+<em class="quotelev2">&gt; &gt;     perhaps as a CF profile, for the case where this is unneeded and
+</em><br />
+<em class="quotelev2">&gt; &gt;     burdonsome. Issues like this are awaiting a new CF governence
+</em><br />
+<em class="quotelev1">&gt; structure.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     5) Unidata's software maps OPeNDAP datasets into the NetCDF data
+</em><br />
+<em class="quotelev2">&gt; &gt;     model (aka &quot;Common Data Model&quot;), so we strongly encourage everyone
+</em><br />
+<em class="quotelev2">&gt; &gt;     to use the NetCDF metadata conventions such as CF in their OPeNDAP
+</em><br />
+<em class="quotelev2">&gt; &gt;     Servers. We think of OPeNDAP datasets as remote NetCDF datasets, and
+</em><br />
+<em class="quotelev2">&gt; &gt;     make access to them as transparent as possible.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     6) BTW, CF is an organization independent of Unidata. It grew out of
+</em><br />
+<em class="quotelev2">&gt; &gt;     &quot;climate and forecasting&quot; modelers using NetCDF files, but is now
+</em><br />
+<em class="quotelev2">&gt; &gt;     broader than that, and is an exemplar &quot;community of practice&quot; around
+</em><br />
+<em class="quotelev2">&gt; &gt;     scientific metadata.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     I am cc'ing to the CF list in case anyone there wants to add more,
+</em><br />
+<em class="quotelev2">&gt; &gt;     and so the list can hear about what you are trying to do. In case
+</em><br />
+<em class="quotelev2">&gt; &gt;     anyone doenst know, GDAL is an excellent C library for geospatial
+</em><br />
+<em class="quotelev2">&gt; &gt;     work, kind of a &quot;Common Data Model&quot; for C .
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     Denis Nadeau wrote:
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  Hi,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  I have looked at the DODS OpeNDAP site and I could use the same
+</em><br />
+<em class="quotelev2">&gt; &gt;     metadata
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  structure to store NetCDF projection information.  This way if
+</em><br />
+<em class="quotelev2">&gt; &gt;     somebody
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  needs to convert from GTIFF to NetCDF, all projecton information could
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  be used by GRADS, Openev or other applications. I guess my main
+</em><br />
+<em class="quotelev2">&gt; &gt;     problem
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  is related on how the CF-1 convention from Unidata handle
+</em><br />
+<em class="quotelev2">&gt; &gt;     projections.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  This bring me to a main question:
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  What are the needs for projections in the GALEON projects?
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  I am the current GDAL NetCDF driver programmer, and would like to make
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  the driver as useful as it can be to the community.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  Thanks,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;  Denis
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     Here are some notes on what was planned for storing projection,
+</em><br />
+<em class="quotelev2">&gt; &gt;     etc in
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     other parts of GDAL drivers.  To my knowledge, the never really
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     propogated
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     through to the OPeNDAP driver.  If the NetCDF or HDF direct
+</em><br />
+<em class="quotelev2">&gt; &gt;     access GDAL
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     driver is updated that those changes propogate through to the
+</em><br />
+<em class="quotelev2">&gt; &gt;     OPeNDAP
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     driver so that the same NetCDF/HDF datasets are accessible via
+</em><br />
+<em class="quotelev2">&gt; &gt;     native
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     OPeNDAP server, Grads GDS and THREDDS.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     At this point, a lot more support is there for local NetCDF/HDF
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     files than
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     for support of those files through OPeNDAP.   Its on my rather
+</em><br />
+<em class="quotelev2">&gt; &gt;     large
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     to do
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     list, but somewhere in the 2 year timeframe.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     <a href="http://home.gdal.org/~warmerda/gdal_opendap_design.html">http://home.gdal.org/~warmerda/gdal_opendap_design.html</a>
+</em><br />
+<em class="quotelev2">&gt; &gt;     &lt;<a href="http://home.gdal.org/%7Ewarmerda/gdal_opendap_design.html">http://home.gdal.org/%7Ewarmerda/gdal_opendap_design.html</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; (GeoTiff)
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     <a href="http://gdal.maptools.org/frmt_dods.html">http://gdal.maptools.org/frmt_dods.html</a>
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     &lt;<a href="http://gdal.maptools.org/frmt_dods.html">http://gdal.maptools.org/frmt_dods.html</a>
+</em><br />
+<em class="quotelev2">&gt; &gt;     &lt;<a href="http://gdal.maptools.org/frmt_dods.html">http://gdal.maptools.org/frmt_dods.html</a>&gt;&gt; (DODS/OPeNDAP)
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     Thanks!
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     Rob
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     On Wed, April 26, 2006 5:32 am, Denis Nadeau wrote:
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; Hi All,
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; I would like to have suggestions from the community on the
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     current needs
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; for the GDAL NetCDF driver.  I am currently writing the
+</em><br />
+<em class="quotelev2">&gt; &gt;     CreateCopy
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     method to
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; allow people to convert from any GDAL supported format to
+</em><br />
+<em class="quotelev2">&gt; &gt;     NetCDF CF-1
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; convention format.
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; At this point I am stuck with projection issues.  How should
+</em><br />
+<em class="quotelev2">&gt; &gt;     I handle
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; DATUM,
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; SPHEROID and AUTHORITY?  I can produce a lat lon arrays to
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     reproject the
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; projected coordinates to lat/lon space but that may be expensive
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     in cpu
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; and
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; space.
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; I am thinking as well to create an array containning the
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     GeoTransform
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; values
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; if found in the source file.
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;      adfGeoTransform[0] /* top left x */
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;      adfGeoTransform[1] /* w-e pixel resolution */
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;      adfGeoTransform[2] /* rotation, 0 if image is &quot;north up&quot; */
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;      adfGeoTransform[3] /* top left y */
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;      adfGeoTransform[4] /* rotation, 0 if image is &quot;north up&quot; */
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;      adfGeoTransform[5] /* n-s pixel resolution */
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; Thanks for your suggestion,
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; Best Regards,
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt; Denis Nadeau
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;      &gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     --
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     Alaska Ocean Observing System
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     Database Manager
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     907-474-7948
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev1">&gt; ===============================================================================
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     To unsubscribe galeon, visit:
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;     <a href="http://www.unidata.ucar.edu/mailing-list-delete-form.html">http://www.unidata.ucar.edu/mailing-list-delete-form.html</a>
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev1">&gt; ===============================================================================
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; ------------------------------------------------------------------------
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20060501/9906c4ba/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20060501/9906c4ba/attachment-0002.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Mon May 01 2006 - 11:35:39 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start133">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0134.html" title="Next message in the list">Steve Kopp: "[CF-metadata] RE: GDAL NetCDF driver and projection."</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0132.html" title="Previous message in the list">Rich Signell: "[CF-metadata] Re: GDAL NetCDF driver and projection."</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0132.html" title="Message to which this message replies">Rich Signell: "[CF-metadata] Re: GDAL NetCDF driver and projection."</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg133" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg133" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg133" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg133" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:44 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0132.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0134.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

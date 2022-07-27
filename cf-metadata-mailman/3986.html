@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Question on WKT representation of CRS from Etienne Tourigny on 2011-12-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="Etienne Tourigny (etourigny.dev)" />
+<meta name="Subject" content="[CF-metadata] Question on WKT representation of CRS" />
+<meta name="Date" content="2011-12-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3985.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3987.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Question on WKT representation of CRS</h1>
+<!-- received="Mon Dec  5 18:03:23 2011" -->
+<!-- isoreceived="20111205180323" -->
+<!-- sent="Mon, 5 Dec 2011 23:03:23 -0200" -->
+<!-- isosent="20111206010323" -->
+<!-- name="Etienne Tourigny" -->
+<!-- email="etourigny.dev" -->
+<!-- subject="[CF-metadata] Question on WKT representation of CRS" -->
+<!-- id="CA+TxYvOx40AtiTreedfVNd3yZmg310pPLtTfv-qghWWaKcjzaw_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20111125185738.GA15109_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3986" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3987.html" accesskey="d" title="Steve Hankin: &quot;[CF-metadata] CF Conventions 1.6&quot;">Next message</a> ]
+[ <a href="./3985.html" title="Jeffrey F. Painter: &quot;[CF-metadata] CF Conventions 1.6&quot;">Previous message</a> ]
+[ <a href="./3949.html" title="Jonathan Gregory: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4031.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3986" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3986" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3986" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3986" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Etienne Tourigny &lt;<a href="mailto:etourigny.dev?Subject=Re%3A%20%5BCF-metadata%5D%20Question%20on%20WKT%20representation%20of%20CRS">etourigny.dev</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 5 Dec 2011 23:03:23 -0200</span><br />
+</address>
+<br />
+Ok you mean that we could add new projections easily to the CF
+<br />
+standard? That's great to know.
+<br />
+<br />I'm not sure I understand your question - do you mean to ask if these
+<br />
+additions to CF would be sufficient to describe most WKT definitions
+<br />
+in pure CF metadata (without the WKT)?
+<br />
+<br />By all means my suggestions are not extensive... I'd have to think
+<br />
+about it a bit more.
+<br />
+<br />A thing that is very useful in WKT is AUTHORITY nodes (namely EPSG codes).
+<br />
+<br />In the case of Datums define named datums and control points, to make
+<br />
+accurate datum shifts.  It would be best to add TOWGS84 and perhaps
+<br />
+omething like datum_epsg to keep the datum's epsg code if precise
+<br />
+transformations are needed.   For transformations with errors less
+<br />
+than 1km, TOWGS84 parameters (for a Bursa-Wolf transformation) may not
+<br />
+be adequate, see this page:
+<br />
+<a href="http://www.unidata.ucar.edu/mailing_lists/archives/netcdf-java/2011/msg00024.html">http://www.unidata.ucar.edu/mailing_lists/archives/netcdf-java/2011/msg00024.html</a>
+<br />
+<br />However, I don't want to start this debate all over, as it seems the
+<br />
+use of EPSG codes is not accepted here (on their own). It seems that
+<br />
+for many applications (especially at the scale most netcdf files are
+<br />
+used for), TOWGS84 parameters are sufficient. A named datum would be
+<br />
+nice, but there are quite a few different ways to identify datums (OGC
+<br />
+vs ESRI).
+<br />
+<br /><br />The following page lists many projections which are supported by
+<br />
+GDAL/OGR and their OGC WKT Name, some of which are not supported by
+<br />
+the CF standard.
+<br />
+That list is not exhaustive and probably not all are frequently used.
+<br />
+I can't say if they all can be represented with CF
+<br />
+metadata.<a href="http://remotesensing.org/geotiff/proj_list/">http://remotesensing.org/geotiff/proj_list/</a>
+<br />
+e.g. the sinusoidal projection at
+<br />
+<a href="http://remotesensing.org/geotiff/proj_list/sinusoidal.html">http://remotesensing.org/geotiff/proj_list/sinusoidal.html</a>
+<br />
+<br />I'll think about which projections we could add easily to the CF
+<br />
+standard (sinusoidal is the first that comes to mind).
+<br />
+<br />Here is a small compilation of the compatabilities between WKT (as
+<br />
+GDAL sees it) and CF-1.5 projections, there are a few
+<br />
+problems/unknowns with some projections:
+<br />
+<a href="http://trac.osgeo.org/gdal/wiki/NetCDF_ProjectionTestingStatus">http://trac.osgeo.org/gdal/wiki/NetCDF_ProjectionTestingStatus</a>
+<br />
+<br /><br />The following page lists WKT parameters:
+<br />
+<a href="http://www.geoapi.org/2.0/javadoc/org/opengis/referencing/doc-files/WKT.html">http://www.geoapi.org/2.0/javadoc/org/opengis/referencing/doc-files/WKT.html</a>
+<br />
+There are a few other parameters like VERT_CS, COMPD_CS and VERT_DATUM
+<br />
+that some users may need.
+<br />
+<br /><br />Regards, Etienne
+<br />
+<br />On Fri, Nov 25, 2011 at 4:57 PM, Jonathan Gregory
+<br />
+&lt;j.m.gregory at reading.ac.uk&gt; wrote:
+<br />
+<em class="quotelev1">&gt; Dear Etienne
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks for your email. It's great that you can convert successfully between
+</em><br />
+<em class="quotelev1">&gt; CF and WKT in both directions.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; you are correct about the additions that would be needed to support
+</em><br />
+<em class="quotelev2">&gt;&gt; these files.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Those extensions to CF appear to me to be comparatively minor, and we ought
+</em><br />
+<em class="quotelev1">&gt; to be able to add them easily. Is it your impression that we would meet the
+</em><br />
+<em class="quotelev1">&gt; needs of WKT users, given your CF&lt;-&gt;WKT conversion, if we added them, or are
+</em><br />
+<em class="quotelev1">&gt; there others that also need to be considered?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Dec 05 2011 - 18:03:23 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3986">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3987.html" title="Next message in the list">Steve Hankin: "[CF-metadata] CF Conventions 1.6"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3985.html" title="Previous message in the list">Jeffrey F. Painter: "[CF-metadata] CF Conventions 1.6"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3949.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4031.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4031.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3986" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3986" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3986" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3986" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3985.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3987.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

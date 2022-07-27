@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] scalar coordinates from Jonathan Gregory on 2013-05-21 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] scalar coordinates" />
+<meta name="Date" content="2013-05-21" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5381.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5383.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] scalar coordinates</h1>
+<!-- received="Tue May 21 11:37:21 2013" -->
+<!-- isoreceived="20130521103721" -->
+<!-- sent="Tue, 21 May 2013 18:37:21 +0100" -->
+<!-- isosent="20130521173721" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] scalar coordinates" -->
+<!-- id="20130521173721.GA17739_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5382" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5383.html" accesskey="d" title="Charles Paxson: &quot;[CF-metadata] GOES-R generated binary mask products under proposal&quot;">Next message</a> ]
+[ <a href="./5381.html" title="Jeffrey F. Painter: &quot;[CF-metadata] not receiving all messages&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5382" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5382" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5382" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5382" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20scalar%20coordinates">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 21 May 2013 18:37:21 +0100</span><br />
+</address>
+<br />
+Dear Mark
+<br />
+<br />As when we have discussed this before, I am certain that when we introduced
+<br />
+scalar coordinate variables, we intended them to mean the same thing as
+<br />
+size-one coordinate variables. Though I do not remember the actual discussions
+<br />
+I am sure that's what we had in mind, and it is quite likely that it was me
+<br />
+who drafted the words currently in the document with that intention.
+<br />
+<br />I agree that subsequently the introduction of string-valued scalar coordinate
+<br />
+variables muddied the picture. Again it was probably me who drafted the words
+<br />
+and I'm sorry those words are a bit careless and not clearer. However, I am
+<br />
+sure, again, this was intended as a convenience feature, not intended to imply
+<br />
+any new sort of information. For example, if you want to label a geographical
+<br />
+region with a string-valued coordinate of region, having value atlantic_ocean
+<br />
+for example, this must be an auxiliary coordinate variable, because it is
+<br />
+string-valued. The idea is that
+<br />
+<br />&nbsp;&nbsp;basin=1;
+<br />
+&nbsp;&nbsp;maxlength=30;
+<br />
+&nbsp;&nbsp;float sf(basin,depth,latitude);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;sf:standard_name=&quot;ocean_meridional_overturning_streamfunction&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;sf:units=&quot;1e6 m3 s-1&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;sf:coordinates=&quot;basinname&quot;;
+<br />
+&nbsp;&nbsp;char basinname(basin,maxlength);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;basinname:standard_name=&quot;region&quot;;
+<br />
+<br />can be more conveniently encoded as
+<br />
+<br />&nbsp;&nbsp;maxlength=30;
+<br />
+&nbsp;&nbsp;float sf(depth,latitude);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;sf:standard_name=&quot;ocean_meridional_overturning_streamfunction&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;sf:units=&quot;1e6 m3 s-1&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;sf:coordinates=&quot;basinname&quot;;
+<br />
+&nbsp;&nbsp;char basinname(maxlength);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;basinname:standard_name=&quot;region&quot;;
+<br />
+<br />which fairly obviously means the same thing, I would say, so it is reasonable
+<br />
+to regard basinname as an auxiliary coordinate variable of a size-one dimension
+<br />
+which has been omitted for convenience. I didn't write this down in my last
+<br />
+posting, for the sake of simplicity.
+<br />
+<br />You argue that because the words are unclear people have made use of the
+<br />
+flexibility to introduce scalar coordinates without deciding whether they are
+<br />
+functionally equivalent to (Unidata) coordinate variables or auxiliary
+<br />
+coordinate variables. As I argued in my last posting, I think there is an
+<br />
+advantage if the data-writer indicates the association between these size-one
+<br />
+coordinates, if there is one, by using a size-one dimension. However, the
+<br />
+data-writer may choose not to do so, and that's fine. In that case, the
+<br />
+data-writer has decided to omit some potentially useful information.
+<br />
+<br />My interpretation, if there are n scalar coordinates, is that they imply n
+<br />
+independent dimensions. However, it seems to me that it is no big deal, when
+<br />
+you read the file, to decide you don't like that interpretation, and instead
+<br />
+group them in some way of your choice into m (Unidata) coordinate variables
+<br />
+and p auxiliary coordinate variables, with m+p=n. This will not affect the
+<br />
+data, so it is easy to do.
+<br />
+<br />The difference between our points of view is this, as far as I understand:
+<br />
+<br />* I think there are (Unidata) coordinate variables, and auxiliary coordinate
+<br />
+variables, and scalar coordinate variables are a way to encode these without
+<br />
+defining a netCDF dimension of size one.
+<br />
+<br />* You think that scalar coordinate variables are in a third class of their own.
+<br />
+<br />We agree that it makes no difference to the data. It's just a matter of
+<br />
+interpretation. I favour my interpretation because it has one fewer abstract
+<br />
+concept (so it is simpler), and because I think it is the most obvious
+<br />
+interpretation of what the standard means by saying scalar coordinates are
+<br />
+functionally equivalent to size-one coordinates (as well as being certain that
+<br />
+is what the standard was *intended* to mean, when the words were written).
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Tue May 21 2013 - 11:37:21 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5382">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5383.html" title="Next message in the list">Charles Paxson: "[CF-metadata] GOES-R generated binary mask products under proposal"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5381.html" title="Previous message in the list">Jeffrey F. Painter: "[CF-metadata] not receiving all messages"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5382" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5382" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5382" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5382" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:22 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5381.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5383.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

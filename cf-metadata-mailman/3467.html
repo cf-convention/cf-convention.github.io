@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] generalizing forecast_reference_time and forecast_period from Schultz, Martin on 2011-05-18 (cf-metadata-mailman)</title>
+<meta name="Author" content="Schultz, Martin (m.schultz)" />
+<meta name="Subject" content="[CF-metadata] generalizing forecast_reference_time and forecast_period" />
+<meta name="Date" content="2011-05-18" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3466.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3468.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] generalizing forecast_reference_time and forecast_period</h1>
+<!-- received="Wed May 18 04:53:38 2011" -->
+<!-- isoreceived="20110518035338" -->
+<!-- sent="Wed, 18 May 2011 10:53:38 -0000" -->
+<!-- isosent="20110518105338" -->
+<!-- name="Schultz, Martin" -->
+<!-- email="m.schultz" -->
+<!-- subject="[CF-metadata] generalizing forecast_reference_time and forecast_period" -->
+<!-- id="5B141CC6507E4944995EAFDF6298A2F8C3064ACC80_at_MBX-CLUSTER01.ad.fz-juelich.de" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="mailman.9.1305682202.30849.cf-metadata_at_cgd.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3467" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3468.html" accesskey="d" title="Benno Blumenthal: &quot;[CF-metadata] generalizing forecast_reference_time and forecast_period&quot;">Next message</a> ]
+[ <a href="./3466.html" title="Karl Taylor: &quot;[CF-metadata] generalizing forecast_reference_time and	forecast_period&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3467" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3467" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3467" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3467" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Schultz, Martin &lt;<a href="mailto:m.schultz?Subject=Re%3A%20%5BCF-metadata%5D%20generalizing%20forecast_reference_time%20and%20forecast_period">m.schultz</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 18 May 2011 10:53:38 -0000</span><br />
+</address>
+<br />
+Dear all,
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;once again I haven't followed the entire discussion carefully, but I sense there is more to the problem than what has been discussed so far:
+<br />
+<br />1) if we define the meaning of &quot;time&quot; as a specific datetime instance on a given calendar, then all time values along a trajectory should indeed be in a form that can be expressed in the usual &quot;days since DATE&quot; units.
+<br />
+<br />2) the trajectory &quot;starting point&quot; (as 4D space-time tuple if you like to get fancy ;-) is a unique characteristic of the trajectory as a whole. This means that within the same model (or interpolation technique) you will always be able to reproduce the exact same trajectory if you know this one location and time. In this sense it is similar to the &quot;reference time&quot; of for example a 3D model run, which is usually expressed as the DATE in the time units attribute. In order to avoid confusion here, I suggest to use the term &quot;trajectory_start_time&quot; (or short: &quot;start_time&quot;) here.
+<br />
+<br />3) trajectories can be run forward and backward in time. Therefore the &quot;time&quot; values can be negative relative to the &quot;trajectory_start_time&quot;.
+<br />
+<br />4) in the simple case of having one trajectory in the file (equivalent to some output interval from a model simulation), one could easily live with the standard way of setting the reference time (DATE part of time units attribute) to the trajectory_start_time and have the time values express the relatve time shift with respect to the trajectory_start_time.
+<br />
+<br />5) in the more complex case with several trajectories in the file, one option could be to allow for a new DATE value in the time units attribute, such as:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time: units = 'days since trajectory_start_time'
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;string trajectory_start_time(ntraj)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double time(ntraj, nsteps)
+<br />
+Hence, the term &quot;trajectory_start_time&quot; would refer to a variable rather than a given fixed date.
+<br />
+Not so nice if you have to evaluate a lot of strings every time you use this.
+<br />
+<br />6) Alternatively, DATE would still be an arbitrary reference date, and the trajectory_start_time variable would be an offset relative to this. Hence:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;real_time = reftime + trajectory_start_time + time
+<br />
+This would, however, require some means of expressing the meaning of the &quot;trajectory_start_time&quot; variable, because otherwise any automated system would compute time simply as real_time = reftime + time. Could one use the formula terms for this?
+<br />
+<br />7) Trajectories don't necessarily all have the same length (for example flight tracks of ozone sondes which end when the balloon bursts). Not too careful thinking suggests that one should then either move to hdf or agree on a certain maximum number of &quot;steps&quot; for all trajectories.
+<br />
+<br />Hope this helps a bit,
+<br />
+<br />Martin
+<br />
+<br /><br />------------------------------------------------------------------------------------------------
+<br />
+------------------------------------------------------------------------------------------------
+<br />
+Forschungszentrum Juelich GmbH
+<br />
+52425 Juelich
+<br />
+Sitz der Gesellschaft: Juelich
+<br />
+Eingetragen im Handelsregister des Amtsgerichts Dueren Nr. HR B 3498
+<br />
+Vorsitzender des Aufsichtsrats: MinDirig Dr. Karl Eugen Huthmacher
+<br />
+Geschaeftsfuehrung: Prof. Dr. Achim Bachem (Vorsitzender),
+<br />
+Dr. Ulrich Krafft (stellv. Vorsitzender), Prof. Dr.-Ing. Harald Bolt,
+<br />
+Prof. Dr. Sebastian M. Schmidt
+<br />
+------------------------------------------------------------------------------------------------
+<br />
+------------------------------------------------------------------------------------------------
+<br />
+<br />Besuchen Sie uns auf unserem neuen Webauftritt unter www.fz-juelich.de
+<br />
+<span id="received"><dfn>Received on</dfn> Wed May 18 2011 - 04:53:38 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3467">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3468.html" title="Next message in the list">Benno Blumenthal: "[CF-metadata] generalizing forecast_reference_time and forecast_period"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3466.html" title="Previous message in the list">Karl Taylor: "[CF-metadata] generalizing forecast_reference_time and	forecast_period"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3467" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3467" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3467" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3467" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:45 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3466.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3468.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

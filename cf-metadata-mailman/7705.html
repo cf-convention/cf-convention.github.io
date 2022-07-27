@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CMIP6 Sea Ice MIP: sub grid scale thickness distribution from Dirk Notz on 2016-07-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Dirk Notz (dirk.notz)" />
+<meta name="Subject" content="[CF-metadata] CMIP6 Sea Ice MIP: sub grid scale thickness distribution" />
+<meta name="Date" content="2016-07-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7704.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7706.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CMIP6 Sea Ice MIP: sub grid scale thickness distribution</h1>
+<!-- received="Tue Jul 19 01:53:04 2016" -->
+<!-- isoreceived="20160719005304" -->
+<!-- sent="Tue, 19 Jul 2016 09:53:04 +0200" -->
+<!-- isosent="20160719075304" -->
+<!-- name="Dirk Notz" -->
+<!-- email="dirk.notz" -->
+<!-- subject="[CF-metadata] CMIP6 Sea Ice MIP: sub grid scale thickness distribution" -->
+<!-- id="578DDC60.7040805_at_mpimet.mpg.de" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7705" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7706.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  CMIP6 Sea Ice MIP: Integrated quantities&quot;">Next message</a> ]
+[ <a href="./7704.html" title="Dirk Notz: &quot;[CF-metadata] CMIP6 Sea Ice MIP: Integrated quantities&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7705" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7705" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7705" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7705" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Dirk Notz &lt;<a href="mailto:dirk.notz?Subject=Re%3A%20%5BCF-metadata%5D%20CMIP6%20Sea%20Ice%20MIP%3A%20sub%20grid%20scale%20thickness%20distribution">dirk.notz</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 19 Jul 2016 09:53:04 +0200</span><br />
+</address>
+<br />
+Dear CF community,
+<br />
+<br />as part of CMIP6 sea-ice output, we would like to allow individual
+<br />
+groups to store information on their sub-grid scale ice-thickness
+<br />
+distribution. For this distribution, sea-ice models usually assume
+<br />
+around 5 different thickness categories, each of which has its own area
+<br />
+fraction and actual sea-ice thickness. As ice grows and melts, the
+<br />
+thickness and area fraction within the categories changes, but the
+<br />
+thickness bounds of each category remain fixed.
+<br />
+<br />To store the sub-grid scale information, we would like to use the
+<br />
+existing variables sea_ice_area_fraction and sea_ice_thickness.
+<br />
+<br />We suggest, after some help from Alison, that the sub-grid scale
+<br />
+information might be stored as follows:
+<br />
+<br />&quot;The lower limit of each thickness range provides the coordinate
+<br />
+variable. To this coordinate variable, a bounds variable should be
+<br />
+attached that gives the upper and lower values of ice thickness for each
+<br />
+category. (Following CF conventions doc Section 7.1) for more details of
+<br />
+how to do this). The cell_methods attribute would then read,
+<br />
+cell_methods = &quot;area: mean where sea_ice (and sea_ice thickness is
+<br />
+between category bounds)&quot;. &quot;
+<br />
+<br />As we have little technical experience with such kind of variable
+<br />
+storage, we would be very grateful for any thoughts or input on this
+<br />
+suggestion.
+<br />
+<br />Thank you very much,
+<br />
+<br />Dirk Notz
+<br />
+<br /><br /><pre>
+-- 
+----
+Dr. Dirk Notz
+<a href="http://www.mpimet.mpg.de/~notz.dirk">http://www.mpimet.mpg.de/~notz.dirk</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Jul 19 2016 - 01:53:04 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7705">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7706.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  CMIP6 Sea Ice MIP: Integrated quantities"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7704.html" title="Previous message in the list">Dirk Notz: "[CF-metadata] CMIP6 Sea Ice MIP: Integrated quantities"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7705" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7705" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7705" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7705" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:05 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7704.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7706.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

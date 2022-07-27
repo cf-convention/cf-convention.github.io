@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Are ensembles a compelling use case for &quot;group-aware&quot; metadata? (CZ) from Jim Biard on 2013-09-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jim.biard)" />
+<meta name="Subject" content="[CF-metadata] Are ensembles a compelling use case for &quot;group-aware&quot; metadata? (CZ)" />
+<meta name="Date" content="2013-09-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5745.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5747.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Are ensembles a compelling use case for &quot;group-aware&quot; metadata? (CZ)</h1>
+<!-- received="Thu Sep 26 07:48:29 2013" -->
+<!-- isoreceived="20130926064829" -->
+<!-- sent="Thu, 26 Sep 2013 09:48:29 -0400" -->
+<!-- isosent="20130926134829" -->
+<!-- name="Jim Biard" -->
+<!-- email="jim.biard" -->
+<!-- subject="[CF-metadata] Are ensembles a compelling use case for &quot;group-aware&quot; metadata? (CZ)" -->
+<!-- id="F9817F59-20DA-40DD-9B7B-296B9BE83949_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="298F51ABD432DA4288CE6B8C469A2AFC548B6A16_at_PRDEXMBX-08.the-lab.llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5746" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5747.html" accesskey="d" title="Steve Hankin: &quot;[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)&quot;">Next message</a> ]
+[ <a href="./5745.html" title="Cameron-smith, Philip: &quot;[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)&quot;">Previous message</a> ]
+[ <a href="./5745.html" title="Cameron-smith, Philip: &quot;[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5747.html" accesskey="t" title="Steve Hankin: &quot;[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5746" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5746" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5746" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5746" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jim.biard?Subject=Re%3A%20%5BCF-metadata%5D%20Are%20ensembles%20a%20compelling%20use%20case%20for%20%22group-aware%22%20metadata%3F%20(CZ)">jim.biard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 26 Sep 2013 09:48:29 -0400</span><br />
+</address>
+<br />
+Hi.
+<br />
+<br />I am currently building netCDF-4 files that use groups.  I'd love it if CF were modified such that these files would be &quot;mostly&quot; compliant (which would require nothing more than acceptance of groups and hierarchical inheritance of 'file-level' attributes).  I am well aware that my use case is significantly different than most CF use cases, but it might help illuminate the discussion.  Here's what I'm doing and why.
+<br />
+<br />I am building a data product that is much lower level than most (NOAA Level 1a) - swaths of raw binary counts accompanied by coefficients for algorithms that can be used to convert the counts to calibrated scientific unit measurements.  The data contained is from the Visible Infrared Imaging Radiometer Suite (VIIRS) instrument on the Suomi-NPP satellite.  I store the data from the VIIRS sensor in 'data' files, and the algorithm coefficients in 'supporting data' files.  (I separate them this way because the contents of one supporting data file applies to many data files.)
+<br />
+<br />Each data file is on the order of 200 MB in size, and contains 321 variables.  Each file contains four VIIRS science Raw Data Record (RDR) granules (~6 minutes of data).  I have groups for:
+<br />
+<br />imagery data for the 375 m (nadir) resolution bands
+<br />
+imagery data for the 750 m single-gain bands
+<br />
+imagery data for the 750 m dual-gain bands
+<br />
+imagery data for the day/night band
+<br />
+engineering data for the instrument
+<br />
+ephemeris, attitude, and spacecraft state data
+<br />
+<br />The image variables in the four groups of imagery bands have different shapes from one another.  The engineering and &quot;ephemeris, etc&quot; data each have different first dimensions in their shapes.
+<br />
+<br />The supporting data (coefficients) comes to me as 35 different 'binary blob' files (C structures written directly to files), totaling around 5 MB.  I break the contents of each binary blob into its constituent variables, and store the variables from each incoming file in a separate group.  There are 307 variables in each supporting data file.  The supporting data values change, but at a much lower rate (less than or equal to once per week) than the science data.
+<br />
+<br />I chose to use groups because I came to the conclusion that the name lengths needed to store all of these variables in flat files would be a detriment to human understanding of the contents and groupings of the contents.  Creating constellations of 41 flat files (one for each group) also imposed a significant organization and maintenance burden when compared with the use of groups.
+<br />
+<br />The data files only have group attributes at the entire file level and for the &quot;ephemeris, etc&quot; group.  The &quot;ephemeris, etc&quot; group has metadata values that hold for all elements of the group that are different from the values for the rest of the data.  The supporting data files have few file-level attributes (ACDD and CF), and more extensive metadata values that are different for each group.
+<br />
+<br />Love it or hate it, this is what I've got. :)  As I said at the beginning, extending CF to embrace groups and inheritance of group (file-level) attributes would make these files compliant.  (Or at lease mostly compliant.  There are no geographic coordinates, for example.)
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />Visit us on
+<br />
+Facebook	Jim Biard
+<br />
+Research Scholar
+<br />
+Cooperative Institute for Climate and Satellites NC
+<br />
+North Carolina State University
+<br />
+NOAA's National Climatic Data Center
+<br />
+151 Patton Ave, Asheville, NC 28801
+<br />
+e: jim.biard at noaa.gov
+<br />
+o: +1 828 271 4900
+<br />
+<br /><br /><br />On Sep 25, 2013, at 6:35 PM, &quot;Cameron-smith, Philip&quot; &lt;cameronsmith1 at llnl.gov&gt; wrote:
+<br />
+<br /><em class="quotelev1">&gt; Hi All,
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; I think Steve's email (below) is a fair summary of how I see the current state of the discussion too.
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; In order to move the discussion forward, I have put forward below a simple strawman suggestion that is very limited, but which I think would capture the most useful piece of hierarchies with minimal impact on CF.   Note that credit for many of the elements should go to other people who have previously proposed them - my main contribution is to stick my neck out and try to make the case :-).
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 1) CF file structures stay 'flat'.
+</em><br />
+<em class="quotelev1">&gt; 2) Allow an _optional_ hierarchy attribute for variables.
+</em><br />
+<em class="quotelev1">&gt; 3) CF would define the attribute name  and the rules for the attribute.   I expect it would be something like: 'hierarchy = root.trunk.branch.leaf'
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; Key comments:
+</em><br />
+<em class="quotelev1">&gt; a) Since the hierarchy attribute is optional, backwards and forwards compatibility should be automatic (except, possibly, for updating CF checkers), ie no change is necessary for people who don't want to.
+</em><br />
+<em class="quotelev1">&gt; b) An external tool could easily parse a CF file, or set of files, that contains the hierarchy attributes to generate an external hierarchy structure that can then be used to decide how to further process the data.   
+</em><br />
+<em class="quotelev1">&gt; c) The external hierarchy could easily be regenerated to keep it consistent with the underlying data files.
+</em><br />
+<em class="quotelev1">&gt; c) The hierarchy metadata should be human readable.
+</em><br />
+<em class="quotelev1">&gt; d) All variable CF attributes would stay with the variables (as currently), ie no inheritance of CF attributes (to maintain compatibility).   The common attributes that I think inheritance would be most useful for are history attributes, and since CF doesn't control history attributes (AFAIK) this would be allowed.
+</em><br />
+<em class="quotelev1">&gt; e) So why not let individuals add their own such syntax? Defining the syntax of the hierarchy will allow general CF tools to be extended (if they want to), and set the stage for further expansion into hierarchies if experience shows that a lot of people are using the hierarchy syntax and start asking for more.
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; In my opinion, the benefits of this extension would exceed the minimal costs of extending the CF standard.
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; Let the slings and arrows fly ;-).
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; Best wishes,
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt;     Philip
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; -----------------------------------------------------------------------
+</em><br />
+<em class="quotelev1">&gt; Dr Philip Cameron-Smith, pjc at llnl.gov, Lawrence Livermore National Lab.
+</em><br />
+<em class="quotelev1">&gt; -----------------------------------------------------------------------
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Steve Hankin
+</em><br />
+<em class="quotelev1">&gt; Sent: Wednesday, September 25, 2013 12:34 PM
+</em><br />
+<em class="quotelev1">&gt; To: Charlie Zender
+</em><br />
+<em class="quotelev1">&gt; Cc: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] Are ensembles a compelling use case for &quot;group-aware&quot; metadata? (CZ)
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; On 9/24/2013 9:45 PM, Charlie Zender wrote:
+</em><br />
+<em class="quotelev1">&gt; It is not my place to determine whether there is a consensus, or how close we are, but it's clear to me there is no consensus yet. Bryan Lawrence, Steve Hankin, Jonathan Gregory, Karl Taylor, and Philip Cameron-Smith are not &quot;on board&quot;. I hope they will speak-up and say if they concur that maintaining the status quo (flat files) is best (period), or whether they do wish to extend CF to hierarchies (starting now), or the additional information they would need to decide.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Hi Charlie et. al.,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Since you have asked ....  I have heard two points that seemed to bolster Bryan's pov that the multi-model use case is  &quot;great but not compelling&quot;.  (See a more positive spin at the end.)
+</em><br />
+<em class="quotelev1">&gt; file size.   Model outputs today are typically too large for even a single variable from a single model to be packaged in a single file.  Addressing a model ensemble multiplies the size barrier by the ensemble size, N.   Thus the use of groups to package a model ensemble applies only for the cases where user is interested in quite a small subset of the model domain, or perhaps in pre-processed, data-reduced versions of the models.   A gut-estimate is that single file solutions, like netCDF4 groups addresses 25% or less of the stated use case.   We could argue over that number, but it seems likely to remain on the low side of 50%.  (Issues of THREDDS-aggregating files bearing groups also deserve to be discussed and understood.  What works?  what doesn't?)
+</em><br />
+<em class="quotelev1">&gt; The problems of the &quot;suitcase packing&quot; metaphor were invoked time and again, further narrowing the applicability of the use case.  The sweet spot that was identified is the case of a single user desiring a particular subset from a single data provider.   Essentially a multi-model ensemble encoded using netCDF4 groups would offer a standardized &quot;shopping basket&quot; with advantages that will be enjoyed by some high powered analysis users. 
+</em><br />
+<em class="quotelev1">&gt;   
+</em><br />
+<em class="quotelev1">&gt; For this narrower use case I couldn't help asking myself how the cost/benefit found through the use of netCDF4 groups compares with the cost/benefit of simply zip-packaging the individual CF model files.   There is almost no cost to this alternative.  Tools to pack and unpack zip files are universal, have UIs embedded into common OSes, and offer APIs that permit ensemble analysis to be done on the zip file as a unit at similar programming effort to the use of netCDF4 groups.  Comprehension and acceptance of the zip alternative  on the part of user communities would likely be instantaneous -- hardly even a point to generate discussion.  Zip files do not address more specialized use cases, like a desire to view the ensemble as a 2-level hierarchy of models each providing multiple scenarios, but the &quot;suitcase&quot; metaphor discussions have pointed out the diminishing returns that accrue as the packing strategy is made more complex.
+</em><br />
+<em class="quotelev1">&gt; The tipping point for me is not whether a particular group of users would find value in a particular enhancement.  It is whether the overall cost/benefit considerations -- the expanded complexity, the need to enhance applications, the loss of interoperabilty etc. versus the breadth of users and the benefits they will enjoy -- clearly motivate a change.   My personal vote is that thus far the arguments fall well short of this tipping point.  But maybe there are other use cases to be explored.  Perhaps in aggregate they may tip the cost/benefit analysis.  What about the &quot;group of satellite swaths&quot; scenario? -- a feature collection use case.  AFAIK CF remains weak at addressing this need thus far.  (If we pursue this line of discussion we should add the 'cf_satellite' list onto the thread.  That community may have new work on this topic to discuss.) 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     - Steve
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130926/43bc9468/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130926/43bc9468/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Sep 26 2013 - 07:48:29 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5746">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5747.html" title="Next message in the list">Steve Hankin: "[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5745.html" title="Previous message in the list">Cameron-smith, Philip: "[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5745.html" title="Message to which this message replies">Cameron-smith, Philip: "[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5747.html" title="Next message in this discussion thread">Steve Hankin: "[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5747.html" title="Message sent in reply to this message">Steve Hankin: "[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5746" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5746" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5746" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5746" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:30 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5745.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5747.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

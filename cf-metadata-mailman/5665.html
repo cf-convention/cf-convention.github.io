@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] thredds changing CF conventions version from Seth McGinnis on 2013-08-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] thredds changing CF conventions version" />
+<meta name="Date" content="2013-08-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5664.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5666.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] thredds changing CF conventions version</h1>
+<!-- received="Wed Aug 28 12:59:27 2013" -->
+<!-- isoreceived="20130828115927" -->
+<!-- sent="Wed, 28 Aug 2013 12:59:27 -0600" -->
+<!-- isosent="20130828185927" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] thredds changing CF conventions version" -->
+<!-- id="web-48161690_at_mail.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4E838F66-AEAB-4BCD-8709-933B69B67322_at_marinexplore.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5665" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5666.html" accesskey="d" title="John Caron: &quot;[CF-metadata] thredds changing CF conventions version&quot;">Next message</a> ]
+[ <a href="./5664.html" title="John Graybeal: &quot;[CF-metadata] thredds changing CF conventions version&quot;">Previous message</a> ]
+[ <a href="./5664.html" title="John Graybeal: &quot;[CF-metadata] thredds changing CF conventions version&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5667.html" accesskey="t" title="John Caron: &quot;[CF-metadata] thredds changing CF conventions version&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5665" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5665" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5665" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5665" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20thredds%20changing%20CF%20conventions%20version">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 28 Aug 2013 12:59:27 -0600</span><br />
+</address>
+<br />
+Hi Sean,
+<br />
+<br />Personally, I would regard that as suspect behavior.
+<br />
+<br />I'm of the opinion that it's best practice for a data service to
+<br />
+affect the data it operates on in very targeted and transparent
+<br />
+way, and that it should pass everything else through untouched.
+<br />
+If it doesn't do that, it's harder to trust the service, because
+<br />
+the more ways that it modifies the data, the more opportunities
+<br />
+there are for it to get something wrong, and the more likely it
+<br />
+is that the error will go unnoticed because it's hiding amongst a
+<br />
+bunch of other changes.
+<br />
+<br />Case in point, I have recently discovered that when the THREDDS
+<br />
+server subsets CF data that uses a coordinate system other that
+<br />
+lat-lon, it mangles a bunch of the ancillary data in the file.  I
+<br />
+suspect this happens, ironically enough, precisely because it's
+<br />
+trying to make the data CF-1.0 conformant instead of just leaving
+<br />
+it as-is...
+<br />
+<br />So yes, I think it's significant that the data coming out of
+<br />
+THREDDS is in a different convention than the source files, and
+<br />
+that it's cause for concern.
+<br />
+<br />Cheers,
+<br />
+<br />--Seth 
+<br />
+<br /><pre>
+----
+Seth McGinnis
+NARCCAP Data Manager
+NCAR - IMAGe
+On Wed, 28 Aug 2013 10:11:10 -0700
+ John Graybeal &lt;john.graybeal at marinexplore.com&gt; wrote:
+&gt;It isn't just about feature presentation, right?  On the assumption that the
+&gt;latest version is always most current (so everyone will use the latest version
+&gt;if they can), I use the version as a proxy for how
+&gt;current/up-to-date/sophisticated the data provider is.  
+&gt;
+&gt;It also gives me a clue about which standard name table version they might
+&gt;use, though that version info is often available elsewhere.
+&gt;
+&gt;If true, this may help explain why so few data providers seemed to be using
+&gt;1.6, anyway....
+&gt;
+&gt;John
+&gt;
+&gt;On Aug 28, 2013, at 08:56, John Caron &lt;caron at unidata.ucar.edu&gt; wrote:
+&gt;
+&gt;&gt; Hi Sean:
+&gt;&gt; 
+&gt;&gt; What feature of CF are you using that you need to preserve the version?
+&gt;&gt; 
+&gt;&gt; John
+&gt;&gt; 
+&gt;&gt; &quot;If you torture data long enough, it will confess.&quot;
+&gt;&gt;  -- Economist Ronald Coase
+&gt;&gt; 
+&gt;&gt; 
+&gt;&gt; 
+&gt;&gt; On 8/28/2013 3:28 AM, Gaffney, Sean P. wrote:
+&gt;&gt;&gt; Hi,
+&gt;&gt;&gt; Here at the British Oceanographic Data Centre we use THREDDS to deliver
+&gt;&gt;&gt; and subset our numerical model data that we hold in CF netcdf format.
+&gt;&gt;&gt; I?ve just been made aware that during the delivery and subsetting
+&gt;&gt;&gt; process, THREDDS seems to be converting the CF files we hold from
+&gt;&gt;&gt; whatever CF convention they have been supplied in, to CF 1.0.
+&gt;&gt;&gt; Is this something that the rest of the community are aware of, and if
+&gt;&gt;&gt; so, do people consider it to be of major importance that the files
+&gt;&gt;&gt; outputted by thredds are in a different convention to the source files
+&gt;&gt;&gt; thredds interrogates?
+&gt;&gt;&gt; Cheers
+&gt;&gt;&gt; Sean Gaffney
+&gt;&gt;&gt; BODC
+&gt;&gt;&gt; 
+&gt;&gt;&gt; _  ________________________________ _
+&gt;&gt;&gt; This message (and any attachments) is for the recipient only. NERC is
+&gt;&gt;&gt; subject to the Freedom of Information Act 2000 and the contents of this
+&gt;&gt;&gt; email and any reply you make may be disclosed by NERC unless it is
+&gt;&gt;&gt; exempt from release under the Act. Any material supplied to NERC may be
+&gt;&gt;&gt; stored in an electronic records management system.
+&gt;&gt;&gt; 
+&gt;&gt;&gt; 
+&gt;&gt;&gt; _______________________________________________
+&gt;&gt;&gt; CF-metadata mailing list
+&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+&gt;&gt;&gt; 
+&gt;&gt; _______________________________________________
+&gt;&gt; CF-metadata mailing list
+&gt;&gt; CF-metadata at cgd.ucar.edu
+&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+&gt;
+&gt;------------------------------------
+&gt;John Graybeal
+&gt;Senior Data Manager, Metadata and Semantics
+&gt;
+&gt;T +1 (408) 675-5545
+&gt;F +1 (408) 616-1626
+&gt;skype: graybealski 
+&gt;
+&gt;Marinexplore
+&gt;920 Stewart Drive
+&gt;Sunnyvale, CA
+&gt;
+&gt;
+&gt;
+&gt;_______________________________________________
+&gt;CF-metadata mailing list
+&gt;CF-metadata at cgd.ucar.edu
+&gt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Aug 28 2013 - 12:59:27 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5665">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5666.html" title="Next message in the list">John Caron: "[CF-metadata] thredds changing CF conventions version"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5664.html" title="Previous message in the list">John Graybeal: "[CF-metadata] thredds changing CF conventions version"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5664.html" title="Message to which this message replies">John Graybeal: "[CF-metadata] thredds changing CF conventions version"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5667.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] thredds changing CF conventions version"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5667.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] thredds changing CF conventions version"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5665" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5665" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5665" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5665" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:28 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5664.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5666.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

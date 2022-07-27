@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Rotated Pole projection possibly wrong from Heiko Klein on 2013-03-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="Heiko Klein (Heiko.Klein)" />
+<meta name="Subject" content="[CF-metadata] Rotated Pole projection possibly wrong" />
+<meta name="Date" content="2013-03-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5050.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5052.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Rotated Pole projection possibly wrong</h1>
+<!-- received="Wed Mar  6 08:03:43 2013" -->
+<!-- isoreceived="20130306080343" -->
+<!-- sent="Wed, 06 Mar 2013 16:03:43 +0100" -->
+<!-- isosent="20130306150343" -->
+<!-- name="Heiko Klein" -->
+<!-- email="Heiko.Klein" -->
+<!-- subject="[CF-metadata] Rotated Pole projection possibly wrong" -->
+<!-- id="51375ACF.9010100_at_met.no" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="51375036.4020903_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5051" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5052.html" accesskey="d" title="John Caron: &quot;[CF-metadata] Rotated Pole projection possibly wrong&quot;">Next message</a> ]
+[ <a href="./5050.html" title="John Caron: &quot;[CF-metadata] Rotated Pole projection possibly wrong&quot;">Previous message</a> ]
+[ <a href="./5050.html" title="John Caron: &quot;[CF-metadata] Rotated Pole projection possibly wrong&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5052.html" accesskey="t" title="John Caron: &quot;[CF-metadata] Rotated Pole projection possibly wrong&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5051" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5051" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5051" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5051" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Heiko Klein &lt;<a href="mailto:Heiko.Klein?Subject=Re%3A%20%5BCF-metadata%5D%20Rotated%20Pole%20projection%20possibly%20wrong">Heiko.Klein</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 06 Mar 2013 16:03:43 +0100</span><br />
+</address>
+<br />
+Hi John,
+<br />
+<br />all our models use rotated_latitute_longitude. And we have a consistent 
+<br />
+way of translating it between grib, proj and netcdf-java, i.e. publicly 
+<br />
+available at:
+<br />
+<a href="http://thredds.met.no/thredds/catalog/metno/proff4km/default/catalog.html">http://thredds.met.no/thredds/catalog/metno/proff4km/default/catalog.html</a>
+<br />
+<br /><br />grid_mapping_name: rotated_latitude_longitude
+<br />
+grid_north_pole_longitude: 156.0
+<br />
+grid_north_pole_latitude: 23.5
+<br />
+earth_radius: 6367470.0
+<br />
+<br />to proj:
+<br />
+proj4: +proj=ob_tran +o_proj=longlat +lon_0=-24 +o_lat_p=23.5 
+<br />
++a=6367470.0 +no_defs
+<br />
+<br />from grib:
+<br />
+lonRot = longitudeOfSouthernPoleInDegrees
+<br />
+latRot = latitudeOfSouthernPoleInDegrees
+<br />
+<br />+proj=ob_tran +o_proj=longlat +lon_0=&quot; &lt;&lt; normalizeLongitude180(lonRot) 
+<br />
+&lt;&lt; &quot; +o_lat_p=&quot; &lt;&lt; (-1 * latRot);
+<br />
+<br /><br /><br />This is the set of parameters which have been useful. I'm not sure if 
+<br />
+they are named in a useful way. proj4's ob_tran even allows for a 
+<br />
+o_lon_p parameter, but this doesn't seem to be used by grib or CF.
+<br />
+<br />Best regards,
+<br />
+<br />Heiko
+<br />
+<br /><br /><br />On 2013-03-06 15:18, John Caron wrote:
+<br />
+<em class="quotelev1">&gt; The &quot;Rotated Pole&quot; projection here:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; <a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/cf-conventions.html#appendix-grid-mappings">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/cf-conventions.html#appendix-grid-mappings</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;     Rotated pole
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; grid_mapping_name = rotated_latitude_longitude
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Map parameters:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;       *
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;         grid_north_pole_latitude
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;       *
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;         grid_north_pole_longitude
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;       *
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;         north_pole_grid_longitude - This parameter is option (default is 0).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Map coordinates:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;     The rotated latitude and longitude coordinates are identified by
+</em><br />
+<em class="quotelev1">&gt;     the standard_name attribute values
+</em><br />
+<em class="quotelev1">&gt;     grid_latitude and grid_longitude respectively.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; is problematic. It has no reference to Proj.4, and is not in Snyder.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Its likely the same as the GRIB-2 GDS Template 3.1:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Grid Definition Template 3.1:     Rotated Latitude/longitude (or
+</em><br />
+<em class="quotelev1">&gt; equidistant cylindrical, or Plate Carr?e)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Octet No. Contents
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;        15-72 Same as Grid Definition Template 3.0 (see Note 1)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;        73-76 Latitude of the southern pole of projection
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 77-80                             Longitude of the southern pole of
+</em><br />
+<em class="quotelev1">&gt; projection
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;        81-84 Angle of rotation of projection
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;        85-nn                            List of number of points along
+</em><br />
+<em class="quotelev1">&gt; each meridian or parallel (These octets are only present for
+</em><br />
+<em class="quotelev1">&gt; quasi-regular grids as described in Note 3)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Notes:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; (2)         Three parameters define a general latitude/longitude
+</em><br />
+<em class="quotelev1">&gt; coordinate system, formed by a general rotation of the sphere. One
+</em><br />
+<em class="quotelev1">&gt; choice for these parameters is:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; (a)         The geographic latitude in degrees of the southern pole of
+</em><br />
+<em class="quotelev1">&gt; the coordinate system, ?p for example.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; (b)         The geographic longitude in degrees of the southern pole of
+</em><br />
+<em class="quotelev1">&gt; the coordinate system, ?p for example.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; (c)         The angle of rotation in degrees about the new polar axis
+</em><br />
+<em class="quotelev1">&gt; (measured clockwise when looking from the southern to the northern pole)
+</em><br />
+<em class="quotelev1">&gt; of the coordinate system, assuming the new axis to have been obtained by
+</em><br />
+<em class="quotelev1">&gt; first rotating the sphere through ?p degrees about the geographic polar
+</em><br />
+<em class="quotelev1">&gt; axis, and then rotating through (90 + ?p) degrees so that the southern
+</em><br />
+<em class="quotelev1">&gt; pole moved along the (previously rotated) Greenwich meridian.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Except note that GRIB-2 uses &quot;southern pole of projection&quot;. Not sure how
+</em><br />
+<em class="quotelev1">&gt; that affects the algorithm.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The CF parameter &quot;north_pole_grid_longitude&quot; likely should be &quot;Angle of
+</em><br />
+<em class="quotelev1">&gt; rotation&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Anyone using this or have some insight on it ??
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><pre>
+-- 
+Dr. Heiko Klein                              Tel. + 47 22 96 32 58
+Development Section / IT Department          Fax. + 47 22 69 63 55
+Norwegian Meteorological Institute           <a href="http://www.met.no">http://www.met.no</a>
+P.O. Box 43 Blindern  0313 Oslo NORWAY
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Mar 06 2013 - 08:03:43 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5051">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5052.html" title="Next message in the list">John Caron: "[CF-metadata] Rotated Pole projection possibly wrong"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5050.html" title="Previous message in the list">John Caron: "[CF-metadata] Rotated Pole projection possibly wrong"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5050.html" title="Message to which this message replies">John Caron: "[CF-metadata] Rotated Pole projection possibly wrong"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5052.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] Rotated Pole projection possibly wrong"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5052.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] Rotated Pole projection possibly wrong"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5051" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5051" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5051" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5051" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:14 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5050.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5052.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] time unit in CF-netCDF from John Caron on 2007-07-02 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] time unit in CF-netCDF" />
+<meta name="Date" content="2007-07-02" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0903.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0905.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] time unit in CF-netCDF</h1>
+<!-- received="Mon Jul  2 15:25:17 2007" -->
+<!-- isoreceived="20070702142517" -->
+<!-- sent="Mon, 02 Jul 2007 15:25:17 -0600" -->
+<!-- isosent="20070702212517" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] time unit in CF-netCDF" -->
+<!-- id="46896D3D.8060405_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="6.2.1.2.2.20070702162705.0315b660_at_rattler.gsfc.nasa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start904" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0905.html" accesskey="d" title="Pamment, JA: &quot;[CF-metadata] standard_names for aerosols and chemistry for HTAP: sources&quot;">Next message</a> ]
+[ <a href="./0903.html" title="Jonathan Gregory: &quot;[CF-metadata] proposed rules for changes to CF conventions&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg904" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg904" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg904" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg904" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20time%20unit%20in%20CF-netCDF">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 02 Jul 2007 15:25:17 -0600</span><br />
+</address>
+<br />
+Wenli Yang wrote:
+<br />
+<em class="quotelev1">&gt; Benno,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<br /><em class="quotelev3">&gt;&gt;&gt; 1. the coordinate variable value itself is actually unitless because the coordinate values are completely determined by the values is the bound variable.  For example, the time intervals are solely determined by the time_bnds (= -12.,0., 0.,12., 12.,24., 24.,36., 36.,48.) while the time values (time = 0., 12., 24., 36., 48.) play only a role of indexing and can be replaced by something like (time = 1.,2.,3.,4.,5.).  If the time_bnds values are used as offsets to the time values rather than absolute value (in time:units), then the time:units would apply to both the time variable and the time_bnds variable.
+</em><br />
+<br /><em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) is not true -- one is not required to look at the bounds values, 
+</em><br />
+<em class="quotelev2">&gt;&gt; and the coordinate values should be centered in the intervals for 
+</em><br />
+<em class="quotelev2">&gt;&gt; programs that do not look at the bounds, or in situations where the 
+</em><br />
+<em class="quotelev2">&gt;&gt; bounds are not necessary (simple plotting, for example).  I think that 
+</em><br />
+<em class="quotelev2">&gt;&gt; the bounds variable should have explicit units and be (usually but not 
+</em><br />
+<em class="quotelev2">&gt;&gt; necessarily) the same as the original variable, though common usage 
+</em><br />
+<em class="quotelev2">&gt;&gt; (and the official example) is to leave off the units on the bounds 
+</em><br />
+<em class="quotelev2">&gt;&gt; variable.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; It is reasonable that the unit of a bounds variable, if not specified, 
+</em><br />
+<em class="quotelev1">&gt; is default to the same as the original coordinate variable.  When I 
+</em><br />
+<em class="quotelev1">&gt; first read the boundary clause, I was confused on how the values of a 
+</em><br />
+<em class="quotelev1">&gt; bounds variable should be used, i.e., whether as absolute values or as 
+</em><br />
+<em class="quotelev1">&gt; offset values to the original variable.  Your example helped clarify its 
+</em><br />
+<em class="quotelev1">&gt; usage, i.e., using them as absolute values (in the unit of the original 
+</em><br />
+<em class="quotelev1">&gt; coordinate variable if no unit is given to the bounds variable).  This, 
+</em><br />
+<em class="quotelev1">&gt; on the other hand, implies that the value in the original coordinate 
+</em><br />
+<em class="quotelev1">&gt; variable is useless and only the size of the variable is useful.  That 
+</em><br />
+<em class="quotelev1">&gt; is, the number of bound pairs is the size of the original variable and 
+</em><br />
+<em class="quotelev1">&gt; the bounds values come solely from the bounds variable.  Thus, it seems 
+</em><br />
+<em class="quotelev1">&gt; better to move the unit from original coordinate variable to the bounds 
+</em><br />
+<em class="quotelev1">&gt; variable.   Anyway, it's the choice of the specification designer.  I am 
+</em><br />
+<em class="quotelev1">&gt; most interested in getting the coordinate values correctly set in our 
+</em><br />
+<em class="quotelev1">&gt; CF-netCDF file.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thanks for all your responses.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Wenli
+</em><br />
+<br />Hi Benno, Wenli:
+<br />
+<br />Thanks for discussing and clarifying these issues!
+<br />
+<br />I wanted to clarify one aspect of this discussion, and im cc'ing to netcdfgroup and cf in case others have something to add. 
+<br />
+<br />1) Coordinate values should always have units, there's no real point to having them without units.
+<br />
+<br />2) If you are using packed (scale/offset) variables, the units should refer to the unpacked values. (This point is not clear in the Netcdf User's Manual, but we will remedy that). 
+<br />
+<br />3. I cant think of an example when the bounds units would be different from the coordinate units. Can anyone?
+<br />
+<br />John
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Jul 02 2007 - 15:25:17 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start904">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0905.html" title="Next message in the list">Pamment, JA: "[CF-metadata] standard_names for aerosols and chemistry for HTAP: sources"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0903.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] proposed rules for changes to CF conventions"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg904" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg904" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg904" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg904" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:57 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0903.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0905.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

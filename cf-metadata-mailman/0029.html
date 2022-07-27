@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] request for new netCDF standart names from Jonathan Gregory on 2006-02-09 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] request for new netCDF standart names" />
+<meta name="Date" content="2006-02-09" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0028.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0030.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] request for new netCDF standart names</h1>
+<!-- received="Thu Feb  9 14:45:41 2006" -->
+<!-- isoreceived="20060209144541" -->
+<!-- sent="Thu, 9 Feb 2006 21:45:41 +0000" -->
+<!-- isosent="20060209214541" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] request for new netCDF standart names" -->
+<!-- id="20060209214541.GA6191_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start29" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0030.html" accesskey="d" title="Beate.Geyer at gkss.de: &quot;[CF-metadata] cellmethods=&#0034;lat: lon: mean over land&#0034;&quot;">Next message</a> ]
+[ <a href="./0028.html" title="Bryan Lawrence: &quot;[CF-metadata] request for new netCDF standart names&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg29" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg29" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg29" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg29" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20request%20for%20new%20netCDF%20standart%20names">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 9 Feb 2006 21:45:41 +0000</span><br />
+</address>
+<br />
+Dear Elke
+<br />
+<br /><em class="quotelev1">&gt; 1. forest_area_fraction
+</em><br />
+Obviously we could define a lot of names like this, for different types of
+<br />
+vegetation, etc. I think therefore we should consider something more generic.
+<br />
+I propose that we introduce a standard name of area_fraction, and require that
+<br />
+a variable with this standard name should have a coordinate which specifies
+<br />
+somehow what quantity is being given an area fraction. For your case you would
+<br />
+use a string-valued coordinate variable of land_cover (recently defined). Your
+<br />
+data variable of forest area fraction would therefore be described thus:
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;float area_fraction(land_cover,lat,lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;area_fraction:standard_name=&quot;area_fraction&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;area_fraction:units=&quot;1&quot;; // optional
+<br />
+&nbsp;&nbsp;char land_cover(surface_cover,stringmaxlength);
+<br />
+data:
+<br />
+&nbsp;&nbsp;land_cover=&quot;forest&quot;; 
+<br />
+<br />A scalar coordinate variable could alternatively be used:
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;float area_fraction(lat,lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;area_fraction:standard_name=&quot;area_fraction&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;area_fraction:units=&quot;1&quot;; // optional
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;area_fraction:coordinates=&quot;land_cover&quot;;
+<br />
+&nbsp;&nbsp;char land_cover(stringmaxlength);
+<br />
+<br />If you have fractional land coverage of grid boxes and wish to specify whether
+<br />
+the forest fraction is expressed per unit area of land or per unit area of the
+<br />
+whole grid box, this can be done with cell_methods=&quot;lat: lon: mean over land&quot;
+<br />
+or &quot;lat: lon: mean&quot; (this is a convention we agreed earlier in this list but
+<br />
+have not added to the standard yet).
+<br />
+<br />What do you think?
+<br />
+<br />I agree with Bryan that strings such as the possible values of area_fraction
+<br />
+should be tabulated and standardised eventually, as we have done for other
+<br />
+lists such as region names.
+<br />
+<br /><em class="quotelev1">&gt; 2. skin_reservoir_content
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; A part of this quantity is the canopy water amount but additionally this
+</em><br />
+<em class="quotelev1">&gt; quantity contains the wetting of the bare soil. MKS unit=m
+</em><br />
+<br />By &quot;wetting of the bare soil&quot; do you mean liquid water standing on the surface
+<br />
+(not soil moisture content)?
+<br />
+<br /><em class="quotelev1">&gt; 3. frozen_soil_fraction
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; This quantity describes the part of the soil which is frozen, MKS unit=1
+</em><br />
+<br />We already have mass_fraction_of_frozen_water_in_soil_moisture. Is that what
+<br />
+you mean? If not, could you describe more precisely what fraction you mean?
+<br />
+<br /><em class="quotelev1">&gt; 4. surface_snow_amount_change
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; This quantity describes the change of the snow amount at the surface, 
+</em><br />
+<em class="quotelev1">&gt; MKS unit=kg/m**2
+</em><br />
+<br />I don't think we should define such a name. We'd have to do that for every
+<br />
+variable, potentially! But I can understand that you want to distinguish a
+<br />
+change from an unchanged quantity. Perhaps it would be more informative to
+<br />
+express the change as a rate of change in kg m-2 s-1. In that case you could
+<br />
+also use the time bounds to show the time interval over which the change
+<br />
+occurred; that information could be useful.
+<br />
+<br />If we need to provide special names for changes, I think we'll have to
+<br />
+introduce a new mechanism for it. Comments welcome from everyone.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Feb 09 2006 - 14:45:41 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start29">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0030.html" title="Next message in the list">Beate.Geyer at gkss.de: "[CF-metadata] cellmethods=&#0034;lat: lon: mean over land&#0034;"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0028.html" title="Previous message in the list">Bryan Lawrence: "[CF-metadata] request for new netCDF standart names"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg29" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg29" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg29" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg29" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:43 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0028.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0030.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

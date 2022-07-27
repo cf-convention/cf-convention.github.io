@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF from Jonathan Gregory on 2007-04-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF" />
+<meta name="Date" content="2007-04-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0815.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0817.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF</h1>
+<!-- received="Fri Apr 27 10:56:59 2007" -->
+<!-- isoreceived="20070427095659" -->
+<!-- sent="Fri, 27 Apr 2007 17:56:59 +0100" -->
+<!-- isosent="20070427165659" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF" -->
+<!-- id="20070427165659.GA8992_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start816" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0817.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] new standard names proposal for CEOP-II model ouput&quot;">Next message</a> ]
+[ <a href="./0815.html" title="Jon Blower: &quot;[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0818.html" accesskey="t" title="Bryan Lawrence: &quot;[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg816" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg816" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg816" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg816" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20vector%20quantities%20(e.g.%20velocities)%20in%20CF-NetCDF">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 27 Apr 2007 17:56:59 +0100</span><br />
+</address>
+<br />
+Dear Jon
+<br />
+<br />I think this was the kind of instance that was suggested before. To deal with
+<br />
+it, I tend to think that it would be better to have extra information *outside*
+<br />
+the netCDF file. This may be an unpopular view, but my reason is that the file
+<br />
+is already adequately self-describing. The relationship between vector
+<br />
+components is a &quot;scientific&quot; relation, which is of the same kind (so it
+<br />
+seems to me) as the relationship between (for instance) TOA net longwave
+<br />
+and net shortwave radiation, or between rainfall flux and rainfall amount.
+<br />
+For particular purposes, programs need to know &quot;scientific&quot; relations of this
+<br />
+kind, but we can't possibly encode all such relationships in the netCDF file.
+<br />
+That is not metadata, but instructions on what you can do with the data.
+<br />
+<br />My proposal therefore would be that we maintain another table in a machineable
+<br />
+form listing the components of vectors (for your case). We can compile this
+<br />
+table now from the standard name table, and add to it as we add to the standard
+<br />
+name table. Possibly some ingenious system of flags in the standard name table
+<br />
+itself might avoid the need for a separate table.
+<br />
+<br />Some relationships can be deduced, given the systematic construction
+<br />
+of standard names. If you open your file, read in a list of all the standard
+<br />
+names which occur in it, and do something like this to the list:
+<br />
+s/northward/NE/
+<br />
+s/eastward/NE/
+<br />
+then identical results will occur in pairs for vectors expressed as northward
+<br />
+and eastward components. But other cases can't be dealt with like this, so
+<br />
+a table is needed in general.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Apr 27 2007 - 10:56:59 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start816">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0817.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] new standard names proposal for CEOP-II model ouput"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0815.html" title="Previous message in the list">Jon Blower: "[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0818.html" title="Next message in this discussion thread">Bryan Lawrence: "[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0818.html" title="Message sent in reply to this message">Bryan Lawrence: "[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg816" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg816" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg816" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg816" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:56 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0815.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0817.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

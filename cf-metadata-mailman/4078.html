@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Convention attribute from Lowry, Roy K. on 2011-12-31 (cf-metadata-mailman)</title>
+<meta name="Author" content="Lowry, Roy K. (rkl)" />
+<meta name="Subject" content="[CF-metadata] Convention attribute" />
+<meta name="Date" content="2011-12-31" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4077.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4079.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Convention attribute</h1>
+<!-- received="Sat Dec 31 04:50:30 2011" -->
+<!-- isoreceived="20111231045030" -->
+<!-- sent="Sat, 31 Dec 2011 11:50:30 +0000" -->
+<!-- isosent="20111231115030" -->
+<!-- name="Lowry, Roy K." -->
+<!-- email="rkl" -->
+<!-- subject="[CF-metadata] Convention attribute" -->
+<!-- id="40829B0E077C1145A6DE44D39B3830A9203E4DFCA4_at_nerckwmb1.ad.nerc.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4EFDF1DB.6080303_at_whoi.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4078" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4079.html" accesskey="d" title="Etienne Tourigny: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">Next message</a> ]
+[ <a href="./4077.html" title="Nan Galbraith: &quot;[CF-metadata] Convention attribute&quot;">Previous message</a> ]
+[ <a href="./4077.html" title="Nan Galbraith: &quot;[CF-metadata] Convention attribute&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4081.html" accesskey="t" title="John Graybeal: &quot;[CF-metadata] Convention attribute&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4078" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4078" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4078" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4078" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Lowry, Roy K. &lt;<a href="mailto:rkl?Subject=Re%3A%20%5BCF-metadata%5D%20Convention%20attribute">rkl</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sat, 31 Dec 2011 11:50:30 +0000</span><br />
+</address>
+<br />
+Hi Nan,
+<br />
+<br />SeaDataNet is based on a whole family of standards.  In the case of the (still to be finalised) NetCDF format that will be adopted by SeaDataNet one possibility is that it will be CF-1.6 with just a handful of additional SDN namespace attributes.  That to me is 'tweaking' (or profiling as I prefer to call it).  It has also crossed my mind that OceanSITES might be a profile of CF rather than a full-blown convention, but am not sufficiently familiar with the details to form a definite opinion.  There is also the (eminently sensible to me) possibility that the SeaDataNet profile might be a profile of OceanSITES (i.e. OceanSITES with a handful of extra attributes).
+<br />
+<br />We therefore end up with several possibilities for the Convention Attribute:
+<br />
+<br />CF-x.x OceanSITES x.x SeaDataNet-x.x
+<br />
+CF-x.x/OceanSITES x.x/SeaDataNet-x.x
+<br />
+CF-x.x/SeaDataNetx.x CF-x.x/OceanSITES x.x
+<br />
+<br />These have subtly different semantics.  The first says nothing about the convention relationship.  The second states SeaDataNet is a profile of OceanSITES which is in turn a profile of CF.  The third states that the file is conformant to two independent profiles of CF.
+<br />
+<br />I guess the $64,000 question is whether any application program cares about such subtleties and I think the answer is probably not. Most will simply search for the convention required by the application within the attribute string.  Therefore we should be more concerned to ensure that our convention designators avoid including well-known designators - like 'CF' - as substrings than with delimiters. Therefore,having information about the relationship between conventions recorded within the file is useful provenance metadata that could be achieved at virtually no cost.
+<br />
+<br />Cheers, Roy. 
+<br />
+________________________________________
+<br />
+From: cf-metadata-bounces at cgd.ucar.edu [cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Nan Galbraith [ngalbraith at whoi.edu]
+<br />
+Sent: 30 December 2011 17:16
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] Convention attribute
+<br />
+<br />Hmmm, I GUESS it's good that someone noticed that text, and
+<br />
+I'm surprised how much on that page I miss every time I look at
+<br />
+it.  I'm not sure what the advantage is in inserting the '/'  vs using
+<br />
+a space, and I'm very curious if any existing software recognizes
+<br />
+that syntax.
+<br />
+<br />It seems to me that the authors intended the '/' to be used
+<br />
+for specifications that are &quot;tweaked&quot; versions of major standards;
+<br />
+SeaDataNet is a full-blown standard, though, and IMHO should
+<br />
+be listed as a separate entity (blank separated) in this space.
+<br />
+<br />What happens to data that is compliant with both SeaDataNet and
+<br />
+(e.g.) OceanSITES?  It's not a problem if these are each listed separately.
+<br />
+<br />And, regarding the care we need for using multiple conventions, it seems
+<br />
+logical that the authors of standards like SDN, OceanSITES and ACDD
+<br />
+would be responsible for ensuring that their specifications don't conflict
+<br />
+with CF. This is why it's critical for the developers to provide an open
+<br />
+venue
+<br />
+for users to discuss the details of a new standard.  CF certainly provides
+<br />
+this kind of forum, so if we're adding a term, we can be fairly sure that
+<br />
+users of other standards have the opportunity to comment on possible
+<br />
+conflicts.
+<br />
+<br />Cheers - Nan
+<br />
+<br /><br />On 12/29/11 10:14 AM, Lowry, Roy K. wrote:
+<br />
+<em class="quotelev1">&gt; Thanks Mark,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It's good to have somebody reading stuff that I should read but never have the time! That certainly works for me. Providing there are no comments to the contrary that would make ''CF-1.6/SeaDataNet' or maybe 'CF-1.6/SeaDataNet-1.0' the value to be specified in the conventions attribute for the SeaDataNet NetCDF profile that will be a part of SeaDataNet II.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I feel it is essential for profile documentation to be published if data conforming to that profile are to be made publicly available.  Further, if the data are to be exposed through INSPIRE then the way in which the profile is documented should follow the ISO conventions (it's one of the ISO19xxx documents, but I forget which).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers, Roy.
+</em><br />
+<em class="quotelev1">&gt; ________________________________________
+</em><br />
+<em class="quotelev1">&gt; From: cf-metadata-bounces at cgd.ucar.edu [cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Hedley, Mark [mark.hedley at metoffice.gov.uk]
+</em><br />
+<em class="quotelev1">&gt; Sent: 29 December 2011 13:27
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] Convention attribute
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; hello Roy
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I wonder if this could be captured by the notation in the Unidata documentation:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; '''
+</em><br />
+<em class="quotelev1">&gt; Later, if another group agrees upon some additional conventions for a specific subset of XXX data, for example time series data, the description of the additional conventions might be associated with the name &quot;XXX/Time_series&quot;, and files that adhered to these additional conventions would use the global attribute
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      :Conventions = &quot;XXX/Time_series&quot; ;
+</em><br />
+<em class="quotelev1">&gt; '''
+</em><br />
+<em class="quotelev1">&gt; (<a href="http://www.unidata.ucar.edu/software/netcdf/conventions.html">http://www.unidata.ucar.edu/software/netcdf/conventions.html</a>)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Does this provide a mechanism for profiling CF?:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; :Conventions = &quot;CF-1.6/mark'sFruityProfile&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Does the profile name &quot;mark'sFruityProfile&quot; get recorded somewhere?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Should this be published, or can I keep it to myself and my friends?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; By the nature of the :Conventions declaration I have stated that &quot;mark'sFruityProfile&quot; is CF compliant, is that enough information?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; cheers
+</em><br />
+<em class="quotelev1">&gt; mark
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: cf-metadata-bounces at cgd.ucar.edu on behalf of Lowry, Roy K.
+</em><br />
+<em class="quotelev1">&gt; Sent: Thu 29/12/2011 10:08
+</em><br />
+<em class="quotelev1">&gt; To: Jonathan Gregory; cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] Convention attribute
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear All,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; One thought that this debate has brought to mind is what should the practice be if the file convention is a profile (in the ISO sense) of CF?  In other words, the file conforms to a given version of CF modified by a formally documented set of extensions (e.g. optional CF attributes declared as mandatory or additional attributes in the profile's namespace).  Should both the CF convention and the profile name be included?  My vote would be yes to avoid application software having to be aware of all CF profiles, but should there be any indication that it is a profile rather than an independent parallel standard?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers, Roy.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ________________________________________
+</em><br />
+<em class="quotelev1">&gt; From: cf-metadata-bounces at cgd.ucar.edu [cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Jonathan Gregory [j.m.gregory at reading.ac.uk]
+</em><br />
+<em class="quotelev1">&gt; Sent: 28 December 2011 22:22
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] Convention attribute
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear Mark and Dave
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree with Dave's answers. If two conventions are used together, it is the
+</em><br />
+<em class="quotelev1">&gt; responsibility of the data-writer to guarantee that the metadata supplied is
+</em><br />
+<em class="quotelev1">&gt; consistent if there are any overlaps in meaning. A particular case of that is
+</em><br />
+<em class="quotelev1">&gt; if the two conventions define attributes with the same names. It has been
+</em><br />
+<em class="quotelev1">&gt; suggested that conventions could signal their own name-spaces e.g. CF
+</em><br />
+<em class="quotelev1">&gt; attributes could all be prefixed with &quot;cf_&quot; (like the cf_role attribute, which
+</em><br />
+<em class="quotelev1">&gt; has been introduced in the new CF section 9). That could help with preventing
+</em><br />
+<em class="quotelev1">&gt; collisions of namespaces, but
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; * it would be cumbersome for writers of files that adhere to only one
+</em><br />
+<em class="quotelev1">&gt; convention, which is the usual case, and awkward for programs that read files,
+</em><br />
+<em class="quotelev1">&gt; since they would have to check for every attribute by two different names
+</em><br />
+<em class="quotelev1">&gt; (with and without the prefix, considering all the data that already exists
+</em><br />
+<em class="quotelev1">&gt; without prefixes).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; * it doesn't help if the two conventions are inconsistent in their metadata,
+</em><br />
+<em class="quotelev1">&gt; whether or not they use similarly named attributes, and this is the more
+</em><br />
+<em class="quotelev1">&gt; serious problem, I would argue.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Therefore I don't think this is really a magic solution to get rid of the
+</em><br />
+<em class="quotelev1">&gt; potential difficulty. Rather, the writers of conventions have to be aware of
+</em><br />
+<em class="quotelev1">&gt; other netCDF conventions that might be used with theirs, and try to use ones
+</em><br />
+<em class="quotelev1">&gt; that already exist instead of defining new ones for a given purpose.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><pre>
+--
+*******************************************************
+* Nan Galbraith        Information Systems Specailist *
+* Upper Ocean Processes Group            Mail Stop 29 *
+* Woods Hole Oceanographic Institution                *
+* Woods Hole, MA 02543                 (508) 289-2444 *
+*******************************************************
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>-- 
+This message (and any attachments) is for the recipient only. NERC
+is subject to the Freedom of Information Act 2000 and the contents
+of this email and any reply you make may be disclosed by NERC unless
+it is exempt from release under the Act. Any material supplied to
+NERC may be stored in an electronic records management system.
+</pre>
+<span id="received"><dfn>Received on</dfn> Sat Dec 31 2011 - 04:50:30 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4078">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4079.html" title="Next message in the list">Etienne Tourigny: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4077.html" title="Previous message in the list">Nan Galbraith: "[CF-metadata] Convention attribute"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4077.html" title="Message to which this message replies">Nan Galbraith: "[CF-metadata] Convention attribute"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4081.html" title="Next message in this discussion thread">John Graybeal: "[CF-metadata] Convention attribute"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4081.html" title="Message sent in reply to this message">John Graybeal: "[CF-metadata] Convention attribute"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4078" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4078" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4078" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4078" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:56 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4077.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4079.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

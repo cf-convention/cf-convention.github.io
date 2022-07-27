@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] [cf-satellite] Sharing quality flags amongmultiple variables from Jonathan Gregory on 2011-11-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] [cf-satellite] Sharing quality flags amongmultiple variables" />
+<meta name="Date" content="2011-11-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3903.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3905.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] [cf-satellite] Sharing quality flags amongmultiple variables</h1>
+<!-- received="Sat Nov  5 03:16:18 2011" -->
+<!-- isoreceived="20111105031618" -->
+<!-- sent="Sat, 5 Nov 2011 09:16:18 +0000" -->
+<!-- isosent="20111105091618" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] [cf-satellite] Sharing quality flags amongmultiple variables" -->
+<!-- id="20111105091618.GA16527_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="c207a18c32beea4d.4eb15322_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3904" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3905.html" accesskey="d" title="David Hassell: &quot;[CF-metadata] FW: FW: FW: Connecting coordinates to Grid Mapping variables&quot;">Next message</a> ]
+[ <a href="./3903.html" title="Hedley, Mark: &quot;[CF-metadata] FW: FW: FW: Connecting coordinates to Grid Mapping variables&quot;">Previous message</a> ]
+[ <a href="./3899.html" title="Upendra.Dadi at noaa.gov: &quot;[CF-metadata] [cf-satellite] Sharing quality flags amongmultiple variables&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3900.html" accesskey="t" title="Mike Grant: &quot;[CF-metadata] [cf-satellite] Sharing quality flags amongmultiple variables&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3904" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3904" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3904" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3904" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%5Bcf-satellite%5D%20Sharing%20quality%20flags%20amongmultiple%20variables">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sat, 5 Nov 2011 09:16:18 +0000</span><br />
+</address>
+<br />
+Dear all
+<br />
+<br />Referring to Mike's comment. I agree that the ancillary_variables attribute
+<br />
+indicates that the status_flag variable is associated with its data variable,
+<br />
+and that alone identifies it to some extent, but (a) it doesn't specifically
+<br />
+indicate its purpose, since there could be more than one ancillary variable
+<br />
+for a given data variables (status flag, standard error, number of
+<br />
+observations, ...); (b) the status flag variable can be regarded as a data
+<br />
+variable in its own right, and as such needs a standard_name to be
+<br />
+self-describing; it is quite possible, for example, that variables for
+<br />
+status_flag or number_of_observations might be stored in different netCDF
+<br />
+files from the variables they describe, and then the correspondence would
+<br />
+depend on them being distinguishable e.g. by
+<br />
+&nbsp;&nbsp;standard_name=&quot;sea_water_salinity number_of_observations&quot;
+<br />
+&nbsp;&nbsp;standard_name=&quot;sea_water_potential_temperature number_of_observations&quot;.
+<br />
+However, when the standard_name modifiers were introduced, I don't think we
+<br />
+foresaw the possibility that several data variables might need to share the
+<br />
+same ancillary variable e.g. when the number of observations for salinity and
+<br />
+temperature are the same.
+<br />
+<br />Referring to Upendra's comment. We could introduce both changes, but I think
+<br />
+we should do that only if really necessary for existing examples that are
+<br />
+likely to represent common use-cases. We should not complicate the CF standard
+<br />
+more than we have to! I would say the same about Mike's ingenious scheme for
+<br />
+include-statements.
+<br />
+<br />If it would serve the purpose that began this discussion, personally I would
+<br />
+favour the first solution, and generalise the use of the standard_name att,
+<br />
+like Edward said e.g.
+<br />
+<br />float thetao(lat,lon);
+<br />
+&nbsp;&nbsp;thetao:standard_name=&quot;sea_water_potential_temperature&quot;;
+<br />
+&nbsp;&nbsp;thetao:ancillary_variables=&quot;nobs flags&quot;;
+<br />
+&nbsp;&nbsp;thetao:units=&quot;degC&quot;;
+<br />
+float so(lat,lon);
+<br />
+&nbsp;&nbsp;thetao:standard_name=&quot;sea_water_salinity&quot;;
+<br />
+&nbsp;&nbsp;thetao:ancillary_variables=&quot;nobs flags&quot;;
+<br />
+&nbsp;&nbsp;thetao:units=&quot;psu&quot;; // not allowed currently---but that's a different story!
+<br />
+int nobs(lat,lon);
+<br />
+&nbsp;&nbsp;nobs:standard_name=&quot;sea_water_potential_temperature sea_water_salinity number_of_observations&quot;;
+<br />
+int flags(lat,lon);
+<br />
+&nbsp;&nbsp;flags:flag_values = 0, 1, 2;
+<br />
+&nbsp;&nbsp;flags:flag_meanings = &quot;accepted_value range_outlier failed_inversion_check&quot;;
+<br />
+<br />That is, we would change the text in CF sect 3.3 that reads
+<br />
+<br />&quot;A standard name is associated with a variable via the attribute standard_name
+<br />
+which takes a string value comprised of a standard name optionally followed by
+<br />
+one or more blanks and a standard name modifier (a string value from Appendix
+<br />
+C, Standard Name Modifiers).&quot;
+<br />
+<br />to
+<br />
+<br />&quot;A standard name is associated with a variable via the attribute standard_name
+<br />
+which takes a string value that can have either of two forms. The first form
+<br />
+is a standard name alone. The second form is a blank-separated list beginning
+<br />
+with one or more standard names and ending with a single standard name
+<br />
+modifier (a string value from Appendix C, Standard Name Modifiers)
+<br />
+i.e. standard_name [standard_name ...] standard_name_modifier. This second
+<br />
+form permits a single variable to provide ancillary data (see Section 3.4) for
+<br />
+several variables that have various standard names.&quot;
+<br />
+<br />Naturally this would require change to software, such as the CF_checker, which
+<br />
+analyses the standard_name att, but it would not require any change to
+<br />
+software which uses the complete att simply as an identifying string, to label
+<br />
+plots, etc.
+<br />
+<br />What does you think?
+<br />
+<br />Cheers
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Sat Nov 05 2011 - 03:16:18 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3904">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3905.html" title="Next message in the list">David Hassell: "[CF-metadata] FW: FW: FW: Connecting coordinates to Grid Mapping variables"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3903.html" title="Previous message in the list">Hedley, Mark: "[CF-metadata] FW: FW: FW: Connecting coordinates to Grid Mapping variables"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3899.html" title="Message to which this message replies">Upendra.Dadi at noaa.gov: "[CF-metadata] [cf-satellite] Sharing quality flags amongmultiple variables"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3900.html" title="Next message in this discussion thread">Mike Grant: "[CF-metadata] [cf-satellite] Sharing quality flags amongmultiple variables"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3904" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3904" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3904" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3904" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:53 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3903.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3905.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

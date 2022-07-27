@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] proposed change to calendar definitions from Tony Craig on 2010-10-08 (cf-metadata-mailman)</title>
+<meta name="Author" content="Tony Craig (tcraig)" />
+<meta name="Subject" content="[CF-metadata] proposed change to calendar definitions" />
+<meta name="Date" content="2010-10-08" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2843.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2845.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] proposed change to calendar definitions</h1>
+<!-- received="Fri Oct  8 12:00:57 2010" -->
+<!-- isoreceived="20101008110057" -->
+<!-- sent="Fri, 08 Oct 2010 11:00:57 -0700" -->
+<!-- isosent="20101008180057" -->
+<!-- name="Tony Craig" -->
+<!-- email="tcraig" -->
+<!-- subject="[CF-metadata] proposed change to calendar definitions" -->
+<!-- id="4CAF5C59.8050105_at_ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2844" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2845.html" accesskey="d" title="Aleksandar Jelenak: &quot;[CF-metadata] Multidimensional variables as discrete sampling geometry data?&quot;">Next message</a> ]
+[ <a href="./2843.html" title="Rich Signell: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2844" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2844" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2844" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2844" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Tony Craig &lt;<a href="mailto:tcraig?Subject=Re%3A%20%5BCF-metadata%5D%20proposed%20change%20to%20calendar%20definitions">tcraig</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 08 Oct 2010 11:00:57 -0700</span><br />
+</address>
+<br />
+The NCAR CCSM climate model tries to follow the CF standard
+<br />
+as much as possible with regard to input and output datasets.
+<br />
+However, we are finding it nearly impossible to adhere to the
+<br />
+calendaring standard.  We do not have access to time managers
+<br />
+either internally or through external sources, such as ESMF, to
+<br />
+support the default CF &quot;gregorian/standard&quot; calendar as documented here,
+<br />
+<br /><a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.4/cf-conventions.html#calendar">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.4/cf-conventions.html#calendar</a>
+<br />
+<br />And at the end of that section, the CF convention notes in particular
+<br />
+the challenges associated with &quot;the discontinuity&quot; in the mixed
+<br />
+gregorian/julian calendar.  We have discussed calendaring issues with the
+<br />
+ESMF developers, and they also have no immediate plans to support
+<br />
+the mixed gregorian/julian calendar.  ESMF is one of our primary tools
+<br />
+for supporting infrastructure in climate models, especially time managers.
+<br />
+<br />As a result, in our implementation, we treat the calendar naming
+<br />
+conventions differently.
+<br />
+<br />gregorian == proleptic_gregorian
+<br />
+<br />and mixed gregorian/julian is not supported.
+<br />
+<br />We would like to propose a change to the CF calendar conventions to
+<br />
+reflect what we believe the community is already doing.  We propose
+<br />
+<br />1. continued support of the name proleptic_calendar for backwards
+<br />
+&nbsp;&nbsp;&nbsp;compatability.
+<br />
+2. changing the definition of gregorian and standard to be the proleptic
+<br />
+&nbsp;&nbsp;&nbsp;gregorian calendar instead of the mixed gregorian/julian.
+<br />
+3. make the proleptic gregorian the default calendar
+<br />
+4. add a new calendar name, such a gregorian_julian to provide the
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ability to define a mixed calendar in CF conventions.
+<br />
+<br />that would change the definition in the above CF standards document to the
+<br />
+following
+<br />
+<br />gregorian or proleptic_gregorian or standard
+<br />
+&nbsp;&nbsp;&nbsp;A gregorian calendar extended to dates before 1582...
+<br />
+&nbsp;&nbsp;&nbsp;This is the default.
+<br />
+<br />gregorian_julian
+<br />
+&nbsp;&nbsp;&nbsp;Mixed Gregorian/Julian calendar as defined by Udunits.
+<br />
+<br />We've had discussions about this with ESMF and they are supportive
+<br />
+of this proposal.  Their gregorian calendar is also proleptic and this
+<br />
+proposed change would make both their and our implementation more
+<br />
+closely aligned with the CF convention.
+<br />
+<br />If you have any questions, please feel free to contact me.  thanks,
+<br />
+<br />tony..........
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Oct 08 2010 - 12:00:57 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2844">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2845.html" title="Next message in the list">Aleksandar Jelenak: "[CF-metadata] Multidimensional variables as discrete sampling geometry data?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2843.html" title="Previous message in the list">Rich Signell: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2844" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2844" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2844" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2844" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:33 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2843.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2845.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

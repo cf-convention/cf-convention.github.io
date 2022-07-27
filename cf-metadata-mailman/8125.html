@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Geometries in NetCDF Update from Jonathan Gregory on 2017-03-17 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Geometries in NetCDF Update" />
+<meta name="Date" content="2017-03-17" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8124.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8126.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Geometries in NetCDF Update</h1>
+<!-- received="Fri Mar 17 09:00:45 2017" -->
+<!-- isoreceived="20170317090045" -->
+<!-- sent="Fri, 17 Mar 2017 15:00:45 +0000" -->
+<!-- isosent="20170317150045" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Geometries in NetCDF Update" -->
+<!-- id="20170317150045.GA6081_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8125" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8126.html" accesskey="d" title="David Blodgett: &quot;[CF-metadata] Geometries in NetCDF Update&quot;">Next message</a> ]
+[ <a href="./8124.html" title="Jim Biard: &quot;[CF-metadata] Recording &#0034;day of year on which something happens&#0034;&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8126.html" accesskey="t" title="David Blodgett: &quot;[CF-metadata] Geometries in NetCDF Update&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8125" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8125" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8125" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8125" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Geometries%20in%20NetCDF%20Update">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 17 Mar 2017 15:00:45 +0000</span><br />
+</address>
+<br />
+Dear Dave
+<br />
+<br />Yes, I think you would have a multi-dimensional node_count. I think that fits
+<br />
+the design, because a DSG can always be thought of as though it were an
+<br />
+orthogonal array, albeit sparsely filled, with an instance dimension and an
+<br />
+element dimension. The instance dimension is a discrete axis in the sense of
+<br />
+CF section 4.5. Instead of this single discrete axis, you could have several
+<br />
+spatial axes.
+<br />
+<br />In fact, in the case I mentioned of a polyhedron, I imagine the data array
+<br />
+might have to be 1D anyway, because you can't generally flatten a polyhedron
+<br />
+into a rectangular 2D array of faces. So that would be formally just like the
+<br />
+case of a DSG.
+<br />
+<br />Until/unless there is a use-case for the application of simple geometries
+<br />
+outside DSGs we don't need to say anything about this, but I suggest that the
+<br />
+possibility of its being needed means your new section doesn't belong in ch 9.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br />----- Forwarded message from David Blodgett &lt;dblodgett at usgs.gov&gt; -----
+<br />
+<br /><em class="quotelev1">&gt; Date: Thu, 16 Mar 2017 14:19:43 -0500
+</em><br />
+<em class="quotelev1">&gt; From: David Blodgett &lt;dblodgett at usgs.gov&gt;
+</em><br />
+<em class="quotelev1">&gt; To: Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; CC: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata]  Geometries in NetCDF Update
+</em><br />
+<em class="quotelev1">&gt; X-Mailer: Apple Mail (2.3259)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Dear Jonathan,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thank you for looking things over.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Makes sense that we would add a new ?geometry? attribute that would point at the geometry container variable and be in both the node coordinates and the data variables.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Yes, the 0 or 1 is meant to be inside or outside. We thought that would be specified in the document. I hadn?t thought of it as a true/false, but 0 and 1 are nice because they can be treated that way. We could also use O and I, but I?m hesitant to use characters, where an integer will suffice. We will choose a suitable name that allows the variable to be interpreted as a true/false. Your suggestion is a good starting point, I?ll see how Tim feels about it.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I spent a lot of brain cycles trying to figure out how a ?count?ed contiguous ragged array of nodes could be made to apply to a grid. Would you have a multi-dimension count variable? I guess I?d need to see the cdl structure to understand that case. I?m stuck on the ?count? needing to be on the instance dimension. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Tim and I will reconcile some of this in the README as well as a more detailed wiki writeup in that GitHub repository then submit the Trac ticket with a proposed section for the spec unless others have input we should consider?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Regards,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; - Dave
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; On Mar 16, 2017, at 12:28 PM, Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Dear Dave
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Thanks for this
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; <a href="https://github.com/twhiteaker/netCDF-CF-simple-geometry/blob/master/README.md">https://github.com/twhiteaker/netCDF-CF-simple-geometry/blob/master/README.md</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; I think your explanation of what is needed and why is very clear, and I like
+</em><br />
+<em class="quotelev2">&gt; &gt; the present form of the proposal.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; You asked me what I'd expect the bounds attribute to point to. This is my only
+</em><br />
+<em class="quotelev2">&gt; &gt; reservation about the current design. We agree that the simple geometries are
+</em><br />
+<em class="quotelev2">&gt; &gt; a kind of complicated bounds specification. However, we don't have to use the
+</em><br />
+<em class="quotelev2">&gt; &gt; existing bounds att with a new purpose because of that. It currently points to
+</em><br />
+<em class="quotelev2">&gt; &gt; a variable which must be numeric and have particular dimensions; hence one
+</em><br />
+<em class="quotelev2">&gt; &gt; could tell reliably if it was a simple geometry instead if we insist that the
+</em><br />
+<em class="quotelev2">&gt; &gt; geometry container variable must be a scalar, for example. So this does work,
+</em><br />
+<em class="quotelev2">&gt; &gt; but to make it work would require changing existing software, which otherwise
+</em><br />
+<em class="quotelev2">&gt; &gt; would think this new convention is an error. That wouldn't be friendly.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Therefore I would suggest *not* using the bounds att of the aux coord vars, but
+</em><br />
+<em class="quotelev2">&gt; &gt; instead giving them a new att e.g. geometry, to point to the geometry container
+</em><br />
+<em class="quotelev2">&gt; &gt; variable. We can make a rule that it's an error to have both a geometry and a
+</em><br />
+<em class="quotelev2">&gt; &gt; bounds att, like we do with climatology and bounds att.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; I'd also suggest requiring the data variable to have the same geometry att.
+</em><br />
+<em class="quotelev2">&gt; &gt; That's because CF is generally &quot;centred&quot; on the data variable. If you've found
+</em><br />
+<em class="quotelev2">&gt; &gt; the data variable, it's convenient to go straight from there to the geometry
+</em><br />
+<em class="quotelev2">&gt; &gt; spec, rather than having to go via the aux coords. However I can see that you
+</em><br />
+<em class="quotelev2">&gt; &gt; also want to attach it to the coordinates, since you might want to describe a
+</em><br />
+<em class="quotelev2">&gt; &gt; geometry without a data variable at all but with nominal coordinates (although,
+</em><br />
+<em class="quotelev2">&gt; &gt; at present, CF always expects there to be data variables).
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Arising from your discussion with Dan, I suppose you could say that if there
+</em><br />
+<em class="quotelev2">&gt; &gt; is no part_node_count it must imply there is only one part per instance i.e.
+</em><br />
+<em class="quotelev2">&gt; &gt; you can omit this attribute if it's not needed.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; I assume that 0 means inside and 1 outside for the polygon_ring_type. If it's
+</em><br />
+<em class="quotelev2">&gt; &gt; a binary choice like that, maybe it would be more self-explanatory to call it
+</em><br />
+<em class="quotelev2">&gt; &gt; outside, or something else which indicates the convention.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; I would note that this new convention is applicable for data on a grid too
+</em><br />
+<em class="quotelev2">&gt; &gt; i.e. on a polyhedron which is composed of more than one type of polygon. Its
+</em><br />
+<em class="quotelev2">&gt; &gt; usefulness is not limited to DSGs.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Best wishes
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Jonathan
+</em><br />
+<em class="quotelev2">&gt; &gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<br />----- End forwarded message -----
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Mar 17 2017 - 09:00:45 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8125">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8126.html" title="Next message in the list">David Blodgett: "[CF-metadata] Geometries in NetCDF Update"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8124.html" title="Previous message in the list">Jim Biard: "[CF-metadata] Recording &#0034;day of year on which something happens&#0034;"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8126.html" title="Next message in this discussion thread">David Blodgett: "[CF-metadata] Geometries in NetCDF Update"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8126.html" title="Message sent in reply to this message">David Blodgett: "[CF-metadata] Geometries in NetCDF Update"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8125" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8125" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8125" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8125" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:11 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8124.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8126.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

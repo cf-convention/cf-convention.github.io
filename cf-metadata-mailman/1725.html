@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Confused about ordering of info in &quot;coordinates&quot; attribute from David Pierce on 2008-11-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="David Pierce (dpierce)" />
+<meta name="Subject" content="[CF-metadata] Confused about ordering of info in &quot;coordinates&quot; attribute" />
+<meta name="Date" content="2008-11-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1724.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1726.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Confused about ordering of info in &quot;coordinates&quot; attribute</h1>
+<!-- received="Tue Nov  4 17:31:13 2008" -->
+<!-- isoreceived="20081104173113" -->
+<!-- sent="Tue, 4 Nov 2008 16:31:13 -0800 (PST)" -->
+<!-- isosent="20081105003113" -->
+<!-- name="David Pierce" -->
+<!-- email="dpierce" -->
+<!-- subject="[CF-metadata] Confused about ordering of info in &quot;coordinates&quot; attribute" -->
+<!-- id="3845.132.239.114.8.1225845073.squirrel_at_crdmail.ucsd.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1725" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1726.html" accesskey="d" title="Seth McGinnis: &quot;[CF-metadata] Confused about ordering of info in &#0034;coordinates&#0034;	attribute&quot;">Next message</a> ]
+[ <a href="./1724.html" title="John Graybeal: &quot;[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1726.html" accesskey="t" title="Seth McGinnis: &quot;[CF-metadata] Confused about ordering of info in &#0034;coordinates&#0034;	attribute&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1725" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1725" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1725" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1725" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: David Pierce &lt;<a href="mailto:dpierce?Subject=Re%3A%20%5BCF-metadata%5D%20Confused%20about%20ordering%20of%20info%20in%20%22coordinates%22%20attribute">dpierce</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 4 Nov 2008 16:31:13 -0800 (PST)</span><br />
+</address>
+<br />
+Hello,
+<br />
+<br />I've gotten various requests over the years to have ncview handle 2-D
+<br />
+coordinate axes, and thought I'd get around to adding that.  I figured the
+<br />
+&quot;coordinates&quot; attribute would be the one to parse for this information,
+<br />
+but am surprised by how it seems to be used.  (Or, not understanding the
+<br />
+reasoning behind it.)  For example, here is a snippet from the CF doc:
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;float T(lev,yc,xc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;T:long_name = &quot;temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;T:units = &quot;K&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;T:coordinates = &quot;lon lat&quot; ;
+<br />
+<br />As usual, the variable's dimensions are described in the ncdump order (or
+<br />
+C language order) of Z,Y,X.  However, the entries in the &quot;coordinates&quot;
+<br />
+attribute are given in X,Y (fortran) order.  Is there some reason why
+<br />
+information in &quot;coordinates&quot; is specified in a manner opposite to how the
+<br />
+variable is described?
+<br />
+<br />What the code has to do is match up strings in &quot;coordinates&quot; to their
+<br />
+associated dimensions in the variable.  I had thought this would be a
+<br />
+simple ordered matching, i.e., the first entry in the T(lev,yc,xc)
+<br />
+dimension list that requires mapping would be matched to the first entry
+<br />
+in &quot;coordinates&quot;, and so on.  But obviously that would reverse the axes
+<br />
+here.  Is the information in the &quot;coordinates&quot; attribute guaranteed to be
+<br />
+in X,Y order?
+<br />
+<br />Thanks for any info,
+<br />
+<br />--Dave
+<br />
+<br />-------------------------------------------------------------------
+<br />
+David W. Pierce
+<br />
+Division of Climate, Atmospheric Science, and Physical Oceanography
+<br />
+Scripps Institution of Oceanography
+<br />
+(858) 534-8276 (voice)  /  (858) 534-8561 (fax)    dpierce at ucsd.edu
+<br />
+-------------------------------------------------------------------
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Nov 04 2008 - 17:31:13 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1725">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1726.html" title="Next message in the list">Seth McGinnis: "[CF-metadata] Confused about ordering of info in &#0034;coordinates&#0034;	attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1724.html" title="Previous message in the list">John Graybeal: "[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1726.html" title="Next message in this discussion thread">Seth McGinnis: "[CF-metadata] Confused about ordering of info in &#0034;coordinates&#0034;	attribute"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1726.html" title="Message sent in reply to this message">Seth McGinnis: "[CF-metadata] Confused about ordering of info in &#0034;coordinates&#0034;	attribute"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1725" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1725" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1725" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1725" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:12 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1724.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1726.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

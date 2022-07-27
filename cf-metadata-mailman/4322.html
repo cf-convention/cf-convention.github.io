@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] standard names for defined global attribute names from Jonathan Gregory on 2012-04-01 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] standard names for defined global attribute names" />
+<meta name="Date" content="2012-04-01" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4321.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4323.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] standard names for defined global attribute names</h1>
+<!-- received="Sun Apr  1 01:02:34 2012" -->
+<!-- isoreceived="20120401000234" -->
+<!-- sent="Sun, 1 Apr 2012 08:02:34 +0100" -->
+<!-- isosent="20120401070234" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] standard names for defined global attribute names" -->
+<!-- id="20120401070234.GA25103_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4F75C0E1.9000200_at_whoi.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4322" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4323.html" accesskey="d" title="andrew walsh: &quot;[CF-metadata] Ocean CTD data following CF Conventions v1.6&quot;">Next message</a> ]
+[ <a href="./4321.html" title="Jonathan Gregory: &quot;[CF-metadata] CF-1.6 Conformance Requirements/Recommendations&quot;">Previous message</a> ]
+[ <a href="./4319.html" title="Nan Galbraith: &quot;[CF-metadata] standard names for defined global attribute names&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4322" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4322" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4322" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4322" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20standard%20names%20for%20defined%20global%20attribute%20names">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sun, 1 Apr 2012 08:02:34 +0100</span><br />
+</address>
+<br />
+Dear Nan
+<br />
+<br />I agree that the use of a string-valued aux coord var for &quot;source&quot; or
+<br />
+&quot;institution&quot; is not the only way to store this kind of information.  However,
+<br />
+I think there is some logic to this extension.  (Although conventions are
+<br />
+arbitrary, we prefer them to be logical!) I would make two arguments for it:
+<br />
+<br />* It is quite similar to the use of string-valued aux coord vars for &quot;region&quot;
+<br />
+and &quot;area_type&quot;, which are also allowed by CF; both of these are string-valued
+<br />
+and have standardised values. region is commonly used, for instance, when
+<br />
+storing the ocean meridional overturning streamfunction in a data variable
+<br />
+(basin,depth,latitude). The basin dimension is an index dimension which
+<br />
+doesn't have a (Unidata) numeric coordinate variable; instead it has a
+<br />
+string-valued aux coord var (following CF sect 6.1) providing labels such as
+<br />
+atlantic_ocean. area_type is used, for instance, to label a dimension that
+<br />
+runs over land surface types e.g. bare soil, grass, needleleaf trees. Both
+<br />
+of these kind of dimension are concerned with location in horizontal space,
+<br />
+so they are like geographical coordinates, although not numeric.
+<br />
+<br />* The commonest need for source and institution is to label a dimension that
+<br />
+runs over members of an ensemble. This is a frequent need in analysis of model
+<br />
+data, especially from intercomparisons. (If I remember correctly, I think that
+<br />
+the use of source and institution in this way came from this need for it.) The
+<br />
+ensemble dimension can be treated just like other dimensions, such as time,
+<br />
+lat and lon, when calculating statistics and other data reductions. Therefore
+<br />
+it seems natural for it to have coordinates. However, if they are string-
+<br />
+valued, they have to be aux coord vars. If the members of the ensemble just
+<br />
+had numbers, we could have a (Unidata) numeric coord var, and we could assign
+<br />
+a standard_name to it. This would then seem even more like a spatial coord
+<br />
+var, such as one with standard_name of model_level_number.
+<br />
+<br />It seems to me that these examples suggest a &quot;formal&quot; motivation for this use
+<br />
+of aux coord vars, namely that the metadata concerned in these cases (source,
+<br />
+institution, area_type, region, ensemble member number) is multi-valued, and
+<br />
+its dimension is one of the dimensions of the data variable. It's therefore
+<br />
+natural to see it like a 1D coordinate variable. When these strings are all
+<br />
+different, and if netCDF classic had a string data type, you could actually
+<br />
+store them in a 1D string-valued coord var.
+<br />
+<br /><em class="quotelev1">&gt; Do all the possible instance
+</em><br />
+<em class="quotelev1">&gt; variables  (station, profile...)
+</em><br />
+<em class="quotelev1">&gt; need to have standard names, too?
+</em><br />
+<br />In chapter 9, we decided to use cf_role to indicate an instance variable that
+<br />
+labels the timeseries, profile, etc. I think this is mainly because we do not
+<br />
+mandate what *kind* of label this is. It might be a name, but it might numeric.
+<br />
+For instance, if we had decided to define a standard_name of
+<br />
+wmo_station_number, that number could provide the station identification, and
+<br />
+the instance variable would have both a cf_role and a standard_name. The
+<br />
+cf_role indicates generically the structural function of the variable, and the
+<br />
+standard_name indicates specifically what the values of it mean.
+<br />
+<br />I think the main inconsistency of using standard_names for things like this is
+<br />
+that they are not really geophysical variables, which is what we mostly define
+<br />
+standard names for. We have to beware of this.
+<br />
+&nbsp;
+<br />
+<em class="quotelev1">&gt; If I understand what you're conveying with this CDL, 'institution'
+</em><br />
+<em class="quotelev1">&gt; it looks really similar to
+</em><br />
+<em class="quotelev1">&gt; the NODC 'instrument' attribute.
+</em><br />
+<br />I agree that a variable attribute is a logical way to record a label which
+<br />
+applies to the whole data variable. It is hard to draw a distinction between
+<br />
+a string-valued attribute and a scalar string-valued aux coord var. If we
+<br />
+allow source as a standard_name, the same information could be stored like
+<br />
+this:
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;float temperature(lat,lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;temperature:source=&quot;Hadley Centre&quot;;
+<br />
+<br />or like this:
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;float temperature(lat,lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;temperature:coordinates=&quot;label&quot;;
+<br />
+&nbsp;&nbsp;char label(stringlength);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;label:standard_name=&quot;source&quot;;
+<br />
+data:
+<br />
+&nbsp;&nbsp;source=&quot;Hadley Centre&quot;;
+<br />
+<br />and the first is probably better. However, the second is just a special case
+<br />
+of a *multi-valued* source.
+<br />
+<br />How can we decide between using a variable or using an attribute? I think that
+<br />
+we use variables when they might depend on data dimensions, or when they
+<br />
+themselves need attributes. The former is the reason in this case. Both are
+<br />
+general reasons why CF uses scalar or size-1 coord vars. For example, it's
+<br />
+better to store &quot;height of 1.5 m&quot; in a scalar coordinate variable than to
+<br />
+define a special attribute for &quot;height&quot;, because it needs a unit (m) and a
+<br />
+standard_name (height) to describe it, and these are just the same as you
+<br />
+would use for a multi-valued height coord var.
+<br />
+<br />The case where I think an ancillary_variable is most appropriate is when the
+<br />
+quantity being provided is metadata for *individual elements* of the data
+<br />
+variable. This mechanism was introduced to store things like standard errors,
+<br />
+but in another thread (Martin Boettcher's), there is discussion of providing
+<br />
+a string-valued aux coord var to specify the source for each *element* of the
+<br />
+data variable.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Sun Apr 01 2012 - 01:02:34 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4322">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4323.html" title="Next message in the list">andrew walsh: "[CF-metadata] Ocean CTD data following CF Conventions v1.6"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4321.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] CF-1.6 Conformance Requirements/Recommendations"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4319.html" title="Message to which this message replies">Nan Galbraith: "[CF-metadata] standard names for defined global attribute names"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4322" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4322" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4322" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4322" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:00 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4321.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4323.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

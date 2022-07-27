@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jim Biard on 2015-06-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-06-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7166.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7168.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Mon Jun 29 10:25:23 2015" -->
+<!-- isoreceived="20150629092523" -->
+<!-- sent="Mon, 29 Jun 2015 12:25:23 -0400" -->
+<!-- isosent="20150629162523" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="55917173.9010504_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="888F94E85551044BAE03E23F711A43F4D7D45F8F7D_at_EXW10.eum.root.eumetsat.int" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7167" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7168.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Specifying latitude and longitude of transects and regions&quot;">Next message</a> ]
+[ <a href="./7166.html" title="Jonathan Gregory: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+[ <a href="./7161.html" title="Timothy Patterson: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7153.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7167" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7167" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7167" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7167" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 29 Jun 2015 12:25:23 -0400</span><br />
+</address>
+<br />
+Tim,
+<br />
+<br />I come to all of this from working with polar satellite data, where a 
+<br />
+difference of 1 second represents a geographic error of ~7 km, so I am 
+<br />
+sensitive to your concerns.
+<br />
+<br />The very thing we are trying to make sure in this discussion is that 
+<br />
+whether you record your reference date and time as timestamps in UTC 
+<br />
+(with leap seconds) or GPS (without leap seconds), that you can tell the 
+<br />
+world that they can trust that the elapsed time values in your time 
+<br />
+variable are true elapsed seconds (or minutes, or milliseconds, etc). It 
+<br />
+is clear from a little thought experiment that the calendar attribute 
+<br />
+(under most circumstances, at least) is only telling me how to interpret 
+<br />
+my reference time. (I can build a data acquisition system that includes 
+<br />
+a synced clock and a highly precise time counter. When I acquire 
+<br />
+measurements, my system records the start date and time, starts the 
+<br />
+counter, and records the elapsed time each time I acquire a measurement. 
+<br />
+I can directly store all of this into a CF time variable, and for others 
+<br />
+to make proper use of it, all I have to indicate is base unit my elapsed 
+<br />
+time is in and what representation system was used for my reference date 
+<br />
+and time.) Is my reference clock a UTC clock or a GPS clock? Thus the 
+<br />
+different calendars under discussion - gregorian_utc and gregorian_gps. 
+<br />
+(These aren't the only possible calendars, either. There can be other 
+<br />
+calendars that use other time systems, such as TAI. They can be added as 
+<br />
+they are requested.) The gregorian_utc and gregorian_gps calendars are 
+<br />
+telling data consumers that you have error-free elapsed times and 
+<br />
+telling them how to interpret the reference date/time stamp.
+<br />
+<br />The reality is that numerous data producers didn't acquire their elapsed 
+<br />
+times as in my thought experiment. Some started with UTC timestamps 
+<br />
+obtained from a synced source at each measurement time, and used 
+<br />
+software that wasn't aware of leap seconds (such as the Unix/linux suite 
+<br />
+of functions) as part of the calculations that produced their elapsed 
+<br />
+times. Depending on the choice of reference date and time, they 
+<br />
+introduced a possible offset into all of their elapsed time values, and 
+<br />
+if the range of times included a leap second boundary, they introduced a 
+<br />
+discontinuity part way through the elapsed time series.
+<br />
+<br />Other data producers (modelers, for example) generated time stamps 
+<br />
+unconnected to the real motions of the real earth, then calculated 
+<br />
+elapsed times using software that wasn't aware of leap seconds. Which is 
+<br />
+fine. It's a model. In the model universe there are no leap seconds. But 
+<br />
+the time in the reference timestamp isn't UTC.
+<br />
+<br />The thing is, most of these data producers are working with intervals on 
+<br />
+the order of minutes or longer. The errors that might be produced by 
+<br />
+misconstruing the reference timestamp or introducing offsets or 
+<br />
+discontinuities into the elapsed times are well below the &quot;noise floor&quot;. 
+<br />
+The discussion about the gregorian_nls calendar and some other possible 
+<br />
+calendar (gregorian_utc_lse? - lse = leap second errors), as well as the 
+<br />
+discussion about what to do with interpretation of the existing calendar 
+<br />
+named gregorian is about how to handle these cases, since people without 
+<br />
+fine time resolution are likely going to continue to work the way they 
+<br />
+have been; and, indeed, there is no reason they should forced to change 
+<br />
+- using conversion software that is aware of leap seconds when your time 
+<br />
+interval is 0.5 days and your effective resolution is 0.01 days is overkill.
+<br />
+<br />The CF community is becoming more and more diverse, and the challenge is 
+<br />
+to find ways to document the data that accommodates everyone reasonably 
+<br />
+well, &quot;makes sense&quot;, and has intuitive power.
+<br />
+<br />The conventions up through 1.6 used the term UTC, but was really using 
+<br />
+it as a shorthand for &quot;a time system that is based on longitude 0 
+<br />
+degrees and puts midnight on that longitude at approximately the point 
+<br />
+where the longitude is facing directly away from the Sun.&quot; There wasn't 
+<br />
+really any thought of leap seconds involved at the time. We've gotten to 
+<br />
+the point where more precise definitions are required by some. Thus the 
+<br />
+discussion.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 6/29/15 6:16 AM, Timothy Patterson wrote:
+<br />
+<em class="quotelev1">&gt; I understand that for climate or forecast data that 30+ seconds of inaccuracy may not be significant, but even though the C and F in &quot;CF Conventions&quot; stand for &quot;Climate and Forecast&quot;, the conventions are also being increasingly adopted for instrument and measurement datasets. In these cases, time accuracy at small time scales becomes more important, which is why seeing a proposed convention that allows the time to be written ambiguously (so that there may or may not be discontinuities or offsets) is rather disconcerting, like telling a climate scientist that the netCDF encoding of his temperature data may or may not have introduced an inaccuracy of a few Kelvin in some readings.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Under the CF1.6 conventions, I believe the base time or epoch time was always expressed in UTC and the calendar attribute was applied to the encoded time count. Using this convention, I could specify a UTC start time and then have a simple GPS-like count of elapsed seconds (with no discontinuities introduced by leap seconds). Under the proposals for the 1.7 convention, this doesn't seem possible. The epoch and time count must both be expressed either as UTC or as GPS time and the only &quot;mixed calendar&quot; options introduce the above mentioned ambiguity.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Regards,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Tim Patterson
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Any email message from EUMETSAT is sent in good faith but shall neither be binding nor construed as constituting a commitment by EUMETSAT, except where provided for in a written agreement or contract or if explicitly stated in the email. Please note that any views or opinions presented in this email are solely those of the sender and do not necessarily represent those of EUMETSAT. This message and any attachments are intended for the sole use of the addressee(s) and may contain confidential and privileged information. Any unauthorised use, disclosure, dissemination or distribution (in whole or in part) of its contents is not permitted. If you received this message in error, please notify the sender and delete it from your system.
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/Connect with us on Facebook for climate 
+&lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+&lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us 
+on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and 
+_at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150629/06e69819/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150629/06e69819/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150629/06e69819/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150629/06e69819/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Jun 29 2015 - 10:25:23 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7167">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7168.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Specifying latitude and longitude of transects and regions"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7166.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7161.html" title="Message to which this message replies">Timothy Patterson: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7153.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7167" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7167" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7167" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7167" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:57 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7166.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7168.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

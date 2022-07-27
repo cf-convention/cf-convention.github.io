@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Proposal for better handling vector quantities in CF from Thomas Lavergne on 2011-11-24 (cf-metadata-mailman)</title>
+<meta name="Author" content="Thomas Lavergne (t.lavergne)" />
+<meta name="Subject" content="[CF-metadata] Proposal for better handling vector quantities in CF" />
+<meta name="Date" content="2011-11-24" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3941.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3943.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Proposal for better handling vector quantities in CF</h1>
+<!-- received="Thu Nov 24 14:53:52 2011" -->
+<!-- isoreceived="20111124145352" -->
+<!-- sent="Thu, 24 Nov 2011 21:53:52 +0000 (UTC)" -->
+<!-- isosent="20111124215352" -->
+<!-- name="Thomas Lavergne" -->
+<!-- email="t.lavergne" -->
+<!-- subject="[CF-metadata] Proposal for better handling vector quantities in CF" -->
+<!-- id="176657102.362565.1322171632994.JavaMail.root_at_imap1a" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="81690375.362479.1322169497667.JavaMail.root_at_imap1a" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3942" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3943.html" accesskey="d" title="Christian Wetzel: &quot;[CF-metadata] New standard names: upward_sensible_heat_flux, upward_latent_heat_flux&quot;">Next message</a> ]
+[ <a href="./3941.html" title="Randy Horne: &quot;[CF-metadata] Ang.: Making a proposal for the addition of the geosprojection&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3945.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] Proposal for better handling vector quantities in CF&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3942" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3942" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3942" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3942" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Thomas Lavergne &lt;<a href="mailto:t.lavergne?Subject=Re%3A%20%5BCF-metadata%5D%20Proposal%20for%20better%20handling%20vector%20quantities%20in%20CF">t.lavergne</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 24 Nov 2011 21:53:52 +0000 (UTC)</span><br />
+</address>
+<br />
+Dear all,
+<br />
+<br />This email is a proposal to strenghthen the storage and exploitation of vector/tensor data in CF. Thanks to Jonathan for commenting an early version of this note.
+<br />
+<br />As far as I can tell, vectors are not handled as such by CF, only their components (via the standard names defining them, e.g. sea_ice_x_velocity, northward_sea_ice_velocity, eastern_wind, etc...). Life and some applications (e.g. plotting) would be easier if it was possible to group all components of a vector field into a single &quot;vector&quot; object. 
+<br />
+<br />Here is my use case: I have an ice drift product, thus two datasets to define my vectors: sea_ice_x_displacement, and sea_ice_y_displacement. Note that it could be any combination of x/y, north/east, module/direction. It is moreover not limited to ice drift, but rather applies to any 2D (3D as well) variables such as vectors. As far as I know, the current CF does not provide me a way to &quot;group&quot; these two components an re-unite them into a vector. Two consequences: 1) I cannot define a third variable (say status_flag) that would apply to the vector object (thus to both its components). And 2) computer programmes (that for example want to draw vectors instead of colour contours) have to &quot;guess&quot; that my CF file contains a vector. The software has to skim through my variables, check that any two pairs of standard names define a vector, and propose a &quot;vector plot&quot; option to the user. This might work in simple files, but will fail if my CF files contains 2 sets of vectors, say one from model, the other from satell<br />
+ite: X_model, Y_model, X_sat, Y_sat. Will a software be smart enough to avoid proposing a (X_model,Y_sat) vector plots when all the 4 share the same standard_names: sea_ice_(x|y)_displacements? 
+<br />
+<br />Here, an approach could be that the X dataset defines its corresponding Y dataset as an &quot;auxiliary variable&quot; (and the Y dataset would do the same with X). This would probably work, but does not solve my concern number 1 to share a 3rd variable with both X and Y.
+<br />
+<br />The solution I propose for discussion is to allow an umbrella &quot;dummy&quot; dataset (like the proj/mapping ones: no dimension, no data, just attributes). This umbrella variable would have a valid standard name &quot;sea_ice_displacement_vector&quot; (definition of &quot;vector&quot;). We would then define a new standard attribute pattern: components = &lt;space separated list of components&gt;, e.g. &quot;dX dY dir&quot;. The string values in  the list are the name of the datasets containing the components of the vector. Note that even for a 2D vector, I could choose to have both x/y and speed/dir in the same CF file, hence the need to allow more than just 2 &quot;components&quot;, even for a 2D vector. We must have at least 2.
+<br />
+<br />So in my case:
+<br />
+<br />The two X and Y datasets and the direction:
+<br />
+<br />float dX(time, yc, xc) ;
+<br />
+&nbsp;dX:long_name = &quot;component of the displacement along the x axis of the grid&quot; ;
+<br />
+&nbsp;dX:standard_name = &quot;sea_ice_x_displacement&quot; ;
+<br />
+&nbsp;dX:units = &quot;km&quot; ;
+<br />
+&nbsp;dX:_FillValue = -1.e+10f ;
+<br />
+&nbsp;dX:coordinates = &quot;lat lon&quot; ;
+<br />
+&nbsp;dX:grid_mapping = &quot;Polar_Stereographic_Grid&quot; ;
+<br />
+<br />float dY(time, yc, xc) ;
+<br />
+&nbsp;dY:long_name = &quot;component of the displacement along the y axis of the grid&quot; ;
+<br />
+&nbsp;dY:standard_name = &quot;sea_ice_y_displacement&quot; ;
+<br />
+&nbsp;dY:units = &quot;km&quot; ;
+<br />
+&nbsp;dY:_FillValue = -1.e+10f ;
+<br />
+&nbsp;dX:coordinates = &quot;lat lon&quot; ;
+<br />
+&nbsp;dX:grid_mapping = &quot;Polar_Stereographic_Grid&quot; ;
+<br />
+<br />float dir(time, yc, xc) ;
+<br />
+&nbsp;dY:long_name = &quot;direction of the displacement&quot; ;
+<br />
+&nbsp;dY:standard_name = &quot;direction_of_sea_ice_displacement&quot; ;
+<br />
+&nbsp;dY:units = &quot;degrees&quot; ;
+<br />
+&nbsp;dY:_FillValue = -1.e+10f ;
+<br />
+&nbsp;dX:coordinates = &quot;lat lon&quot; ;
+<br />
+&nbsp;dX:grid_mapping = &quot;Polar_Stereographic_Grid&quot; ;
+<br />
+<br /><br />The new dummy umbrella:
+<br />
+<br />int ice_drift_vector;
+<br />
+&nbsp;drift_vector:standard_name = &quot;sea_ice_displacement&quot; ;
+<br />
+&nbsp;drift_vector:long_name = &quot;sea ice drift vector&quot; ;
+<br />
+&nbsp;drift_vector:components = &quot;dX dY dir&quot; ;
+<br />
+<br />A status flag for the vector:
+<br />
+<br />byte status_flag(time, yc, xc) ;
+<br />
+&nbsp;status_flag:standard_name = &quot;sea_ice_displacement status_flag&quot; ;
+<br />
+&nbsp;status_flag:long_name = &quot;rejection and quality level flag&quot; ;
+<br />
+&nbsp;status_flag:valid_min = 0b ;
+<br />
+&nbsp;status_flag:valid_max = 30b ;
+<br />
+&nbsp;status_flag:grid_mapping = &quot;Polar_Stereographic_Grid&quot; ;
+<br />
+&nbsp;status_flag:coordinates = &quot;lat lon&quot; ;
+<br />
+&nbsp;status_flag:flag_values = 0b, 1b,..., 22b, 30b ;
+<br />
+&nbsp;status_flag:flag_meanings = &quot;missing_input_data over_land ... interpolated nominal_quality&quot; ;
+<br />
+<br />When browsing through the file, a software would immediately see that there are vectors available (e.g. for display) and which datasets hold the components. It still have to read the component datasets to know how to use them (by reading the standard_name). We could even imagine that tools are able to automatically compute (for display or comparison)the vector length although only the x/y components are available. 
+<br />
+<br />Some new standard names would be needed, of course. As well as the &quot;components&quot; attribute. A revisit/cleanup of many definitions of existing standard names of component variables could also be envisaged.
+<br />
+<br />This proposal needs to be more thouroughly discussed. Those CF users handling vector quantities could check against their file if this approach breaks anything. Even if it does not break anything: what is the added value that this change would bring? Do you see other applications that would benefit from this? There is little point in implementing it if it does not help others...
+<br />
+<br />Regards,
+<br />
+Thomas
+<br />
+<br /><pre>
+-- 
+========================================== 
+Thomas Lavergne 
+Norwegian Meteorological Institute 
+P.O.BOX 43, Blindern, NO-0313 OSLO, Norway 
+Phone: (+47) 22963364  Fax: (+47) 22963380 
+Email: t.lavergne at met.no 
+OSISAF HL Portal:     <a href="http://osisaf.met.no">http://osisaf.met.no</a> 
+========================================== 
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Nov 24 2011 - 14:53:52 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3942">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3943.html" title="Next message in the list">Christian Wetzel: "[CF-metadata] New standard names: upward_sensible_heat_flux, upward_latent_heat_flux"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3941.html" title="Previous message in the list">Randy Horne: "[CF-metadata] Ang.: Making a proposal for the addition of the geosprojection"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3945.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] Proposal for better handling vector quantities in CF"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3945.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] Proposal for better handling vector quantities in CF"</a></li>
+<li><dfn>Reply</dfn>: <a href="./4004.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] Proposal for better handling vector quantities in CF"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3942" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3942" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3942" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3942" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:54 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3941.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3943.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

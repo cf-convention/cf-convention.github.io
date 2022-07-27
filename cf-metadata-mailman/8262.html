@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] axis attribute from Sebastien Villaume on 2017-04-18 (cf-metadata-mailman)</title>
+<meta name="Author" content="Sebastien Villaume (sebastien.villaume)" />
+<meta name="Subject" content="[CF-metadata] axis attribute" />
+<meta name="Date" content="2017-04-18" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8261.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8263.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] axis attribute</h1>
+<!-- received="Tue Apr 18 04:08:08 2017" -->
+<!-- isoreceived="20170418030808" -->
+<!-- sent="Tue, 18 Apr 2017 10:08:08 +0000 (GMT-00:00)" -->
+<!-- isosent="20170418100808" -->
+<!-- name="Sebastien Villaume" -->
+<!-- email="sebastien.villaume" -->
+<!-- subject="[CF-metadata] axis attribute" -->
+<!-- id="255688332.43059522.1492510088422.JavaMail.zimbra_at_ecmwf.int" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="2e3427fa-6e87-8bd2-82ce-5b8ddcf86bbd_at_cicsnc.org" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8262" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8263.html" accesskey="d" title="Sebastien Villaume: &quot;[CF-metadata] axis attribute&quot;">Next message</a> ]
+[ <a href="./8261.html" title="Sebastien Villaume: &quot;[CF-metadata] New standard names for NEMO ocean model output&quot;">Previous message</a> ]
+[ <a href="./8260.html" title="Jim Biard: &quot;[CF-metadata] axis attribute&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8262" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8262" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8262" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8262" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Sebastien Villaume &lt;<a href="mailto:sebastien.villaume?Subject=Re%3A%20%5BCF-metadata%5D%20axis%20attribute">sebastien.villaume</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 18 Apr 2017 10:08:08 +0000 (GMT-00:00)</span><br />
+</address>
+<br />
+Dear Jonathan and Jim,
+<br />
+<br />thank you for your further comments.
+<br />
+<br />_at_Jonathan: I don't want to define an axis without coordinates or put the &quot;axis&quot; attribute on more than one object, I only propose to decouple the axis definition from the coordinate definition. I don't see why I can't define a dummy object, it is exactly what is done to define a crs: a variable without dimension, without data, only attributes: 
+<br />
+<br />&nbsp;&nbsp;int crs ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;crs:grid_mapping_name = &quot;latitude_longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;crs:semi_major_axis = 6371000.0 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;crs:inverse_flattening = 0 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br />
+<br />following the same principle, I could define:
+<br />
+<br />&nbsp;&nbsp;int axis_x ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;axis_x:axis = X;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;axis_x:standard_name = &quot;axis&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;axis_x:long_name = &quot;axis for the longitude coordinate&quot;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;axis_x:units = &quot;1&quot; ;
+<br />
+<br />and then have my longitude:
+<br />
+<br />float longitude(j,i);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;longitude:standard_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degree_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;longitude:long_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;longitude:axis_mapping = &quot;X&quot; ;
+<br />
+<br />In that specific example, only axis_x has the &quot;axis&quot; attribute. I added a &quot;axis_mapping&quot; attribute to the longitude variable to indicate that it should be understood as the coordinate of the axis given in &quot;axis_mapping&quot;. 
+<br />
+<br />I favour this solution over creating a dummy coordinate variable with gridbox indices. It seems artificial to do so and usually creating something artificial to comply to a rule is the sign of a design problem or a lack of functionality to describe the use case. 
+<br />
+<br />_at_Jim: I agree with your last message, It would be beneficial to have an explicit mechanism to identify axes, coordinates, and their relationships when the use case does not conform to the common  case dimension = axis = coordinate .
+<br />
+<br />What is the CF mechanism to extend the convention or to propose semantic changes, rewrites of some portions of chapters, etc. ?  
+<br />
+<br />Best wishes,
+<br />
+/S?bastien
+<br />
+<br />----- Original Message -----
+<br />
+From: &quot;Jim Biard&quot; &lt;jbiard at cicsnc.org&gt;
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Sent: Friday, 14 April, 2017 23:11:44
+<br />
+Subject: Re: [CF-metadata] axis attribute
+<br />
+<br />Jonathan, 
+<br />
+<br />We've got no great options available. The axis attribute ought to be an indicator of an independent coordinate axis. Because of possible backward compatibility issues, I think we need to demote the axis attribute to being a plotting hint. I'm at a loss for a word to use for a new attribute, but overloading axis with the different meanings seems too confusing. 
+<br />
+<br />The existing convention for identifying 1D coordinate variables (variable name = dimension name) works well for identifying independent axes as far as that goes, so what are we missing with a fuzzy or demoted axis attribute? It seems to me that we lack a clean way to identify the x/y/z/t/etc relationships between the different independent axes, and we lack a way to clearly identify a 1-D variable as an independent axis if it doesn't conform to the variable name = dimension name convention. 
+<br />
+<br /><br />I'm not sure what's the cleanest way to go about it, but I'll suggest a name for an attribute that would fill some portion of these purposes. How about basis (or bases)? 
+<br />
+<br />Grace and peace, 
+<br />
+<br />Jim 
+<br />
+<br />On 4/11/17 10:36 AM, Jonathan Gregory wrote: 
+<br />
+<br /><br /><br />Dear David and Sebastien
+<br />
+<br />In a given model the level numbers are meaningful indeed, but there's no
+<br />
+universal convention for them. Maybe some atmosphere models number them from
+<br />
+the TOA downwards, for instance. Nothing would prohibit that, and the
+<br />
+standard_name of model_level_number doesn't prescribe any convention for it.
+<br />
+There is likewise no universal convention for how to number the gridboxes in
+<br />
+x and y, but in any given model there is a convention for it. Thus I think
+<br />
+it's the same. The standard name identifies a conventional concept, but not a
+<br />
+convention for the numbers themselves.
+<br />
+<br />As for the axis attribute itself, maybe we could distinguish the two meanings
+<br />
+of &quot;axis&quot; and avoid backwards compatibility by removing the restriction in
+<br />
+chapter 5 that it is not permissible for a data variable to have both a
+<br />
+coordinate variable and an auxiliary coordinate variable having an axis
+<br />
+attribute with any given value. That is, at present you can't have both a 1D
+<br />
+x-coordinate variable with axis=&quot;X&quot; and a 2D longitude auxiliary coordinate
+<br />
+variable with axis=&quot;X&quot;. But we could allow them both, with different meanings.
+<br />
+We could say that the axis attribute of 1D coordinate variables labels the
+<br />
+index dimensions of the data variable, while the axis attribute of multi-
+<br />
+dimensional auxiliary coordinate variables labels them as spatiotemporal
+<br />
+dimensions, as a hint for plotting.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br />----- Forwarded message from David Hassell &lt;david.hassell at ncas.ac.uk&gt; ----- 
+<br />
+<br /><br /><br />Date: Tue, 11 Apr 2017 08:41:34 +0100
+<br />
+From: David Hassell &lt;david.hassell at ncas.ac.uk&gt; To: Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt; CC: CF Metadata &lt;cf-metadata at cgd.ucar.edu&gt; Subject: Re: [CF-metadata] axis attribute
+<br />
+<br />Hello all,
+<br />
+<br />I am still uncomfortable with creating a coordinate variable with arbitrary
+<br />
+values. The analogy with model_level_number is not quite there, I think, as
+<br />
+the model_level_number values are not arbitrary. For example, a value of 6
+<br />
+means (in one model I know) that this is the first level above the boundary
+<br />
+layer. That value and meaning is relevant however the data may have been
+<br />
+subspaced/sliced.
+<br />
+<br />Perhaps an auxiliary coordinate variable could be used with missing data in
+<br />
+all of its values, an axis attribute (of &quot;X&quot; or &quot;Y&quot;) and *no* standard
+<br />
+name? In the absence of a coordinate variable for that dimension, the axis
+<br />
+attribute of the auxiliary coordinate variable would give meaning to the
+<br />
+dimension.
+<br />
+<br />This is still not ideal, though ...
+<br />
+<br />All the best,
+<br />
+<br />David
+<br />
+<br /><br /><br />On 10 April 2017 at 18:25, Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt; wrote: 
+<br />
+<br /><br /><br />Dear S?bastien
+<br />
+<br />Yes, you're right, we can't have an axis without coordinates. This is
+<br />
+because
+<br />
+CF is a netCDF convention, and there's no way to attach attributes to a
+<br />
+dimension other than by creating a coordinate variable. Similarly we don't
+<br />
+have data variables with just dimensions but no data. We could have
+<br />
+conventions
+<br />
+for these concepts in CF-netCDF but it hasn't been proposed.
+<br />
+<br />However it seems pretty good to me to do as you suggest and create a
+<br />
+coordinate variable with the gridbox indices in it, for which (as
+<br />
+discussed)
+<br />
+we could define a standard name. This is analogous to model_level_number,
+<br />
+which is already a standard name and could be a vertical coordinate
+<br />
+variable.
+<br />
+It can do what you want, and I agree it makes sense to label these
+<br />
+coordinate
+<br />
+variables as X and Y. That indicates that they are the horizontal
+<br />
+dimensions.
+<br />
+It's probably less important which is X and which Y. That's a plotting
+<br />
+issue.
+<br />
+<br />I think the confusion probably arises because we didn't define what we mean
+<br />
+by &quot;axis&quot;. We used the word as an &quot;obvious&quot; concept, but there is an
+<br />
+ambiguity
+<br />
+about whether it corresponds to a dimension of a data variable, or a
+<br />
+physical
+<br />
+variable (not necessarily spatiotemporal) which could be an independent
+<br />
+variable on which the data depends. Latitude might be an axis in the second
+<br />
+sense even if it's not an axis in the first sense. I prefer the first
+<br />
+sense,
+<br />
+which is the one the axis attribute originally had.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br /><br />----- Forwarded message from Sebastien Villaume &lt; sebastien.villaume at ecmwf.int &gt; ----- 
+<br />
+<br /><br /><br />Date: Fri, 7 Apr 2017 09:10:09 +0000
+<br />
+From: Sebastien Villaume &lt;sebastien.villaume at ecmwf.int&gt; To: David Hassell &lt;david.hassell at ncas.ac.uk&gt; CC: CF Metadata &lt;cf-metadata at cgd.ucar.edu&gt; , Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt; Subject: Re: [CF-metadata] axis attribute
+<br />
+X-Mailer: Zimbra 8.6.0_GA_1200 (ZimbraWebClient - FF50 
+<br />
+(Linux)/8.6.0_GA_1200) 
+<br />
+<br /><br /><br />Dear David,
+<br />
+<br />I see your point and you are probably right that a plotting routine will 
+<br />
+probably sort this out. 
+<br />
+<br /><br /><br />However this is not what I am after, I am more interested in metadata 
+<br />
+discovery and indexing. 
+<br />
+<br /><br /><br />I need to discover what I have in a file without plotting it, without 
+<br />
+having a human looking at it to confirm what it is and that it has been
+<br />
+plotted correctly. 
+<br />
+<br /><br /><br />I also would like to use these metadata informations to perform actions 
+<br />
+like merging netCDF files, slicing, cropping, aggregating, interpolating,
+<br />
+comparing data in different grids and representations, etc. 
+<br />
+<br /><br /><br />I understand that implicit is fine and that explicit is not required for 
+<br />
+some applications. I have no issue with this. 
+<br />
+<br /><br /><br />My personal point of view is that explicit is better than implicit: I 
+<br />
+tend to prefer &quot;mandatory&quot; over &quot;optional&quot;. 
+<br />
+<br /><br /><br />Being implicit means that the assumptions made need to be valid 100% of 
+<br />
+the time to avoid accidents or corner cases. 
+<br />
+<br /><br /><br />I would like to be explicit so I need all the proper mechanisms 
+<br />
+(variables, semantics, etc.) in place so I can use them. 
+<br />
+<br /><br /><br />Right now it feels that I am missing some functionality.
+<br />
+<br />Let me copy below few bits of the terminology section in the CF 1.7 
+<br />
+draft document (very similar to 1.6). Please read it keeping in mind what
+<br />
+is really an axis, a coordinate, a spatio-temporal dimension and an an
+<br />
+array dimension. Each time you read &quot;coordinate2, &quot;dimension&quot; or
+<br />
+&quot;dimensional&quot;, ask yourself what is implied and if it is not ambiguous: 
+<br />
+<br /><br /><br />------------------------
+<br />
+variables
+<br />
+------------------------
+<br />
+auxiliary coordinate variable
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;Any netCDF variable that contains coordinate data, but is not a 
+<br />
+coordinate variable (in the sense of that term defined by the NUG and used
+<br />
+by this standard - see below). Unlike coordinate variables, there is no
+<br />
+relationship between the name of an auxiliary coordinate variable and the
+<br />
+name(s) of its dimension(s). 
+<br />
+<br /><br /><br />coordinate variable
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;We use this term precisely as it is defined in section 2.3.1 of the 
+<br />
+NUG . It is a one-dimensional variable with the same name as its dimension
+<br />
+[e.g., time(time) ], and it is defined as a numeric data type with values
+<br />
+that are ordered monotonically. Missing values are not allowed in
+<br />
+coordinate variables. 
+<br />
+<br /><br /><br />grid mapping variable
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;A variable used as a container for attributes that define a specific 
+<br />
+grid mapping. The type of the variable is arbitrary since it contains no
+<br />
+data. 
+<br />
+<br /><br /><br />multidimensional coordinate variable
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;An auxiliary coordinate variable that is multidimensional.
+<br />
+<br />scalar coordinate variable
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;A scalar variable (i.e. one with no dimensions) that contains 
+<br />
+coordinate data. Depending on context, it may be functionally equivalent
+<br />
+either to a size-one coordinate variable (Section 5.7, &quot;Scalar Coordinate
+<br />
+Variables&quot;) or to a size-one auxiliary coordinate variable (Section 6.1,
+<br />
+&quot;Labels&quot; and Section 9.2, &quot;Collections, instances, and elements&quot;). 
+<br />
+<br /><br /><br />------------------------
+<br />
+dimensions
+<br />
+------------------------
+<br />
+latitude dimension
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;A dimension of a netCDF variable that has an associated latitude 
+<br />
+coordinate variable. 
+<br />
+<br /><br /><br />longitude dimension
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;A dimension of a netCDF variable that has an associated longitude 
+<br />
+coordinate variable. 
+<br />
+<br /><br /><br />spatiotemporal dimension
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;A dimension of a netCDF variable that is used to identify a location 
+<br />
+in time and/or space. 
+<br />
+<br /><br /><br />time dimension
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;A dimension of a netCDF variable that has an associated time 
+<br />
+coordinate variable. 
+<br />
+<br /><br /><br />vertical dimension
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;A dimension of a netCDF variable that has an associated vertical 
+<br />
+coordinate variable. 
+<br />
+<br /><br /><br />------------------------
+<br />
+<br />So according to this terminology, I have in my file, 2 auxiliary 
+<br />
+coordinates variables, but no &quot;real&quot; coordinates variables (according to
+<br />
+the NUG) so my auxiliary coordinates are auxiliary to what? 
+<br />
+<br /><br /><br />What is a &quot;multidimensional coordinate&quot;? if dimension means 
+<br />
+spatio-temporal dimension it is a non sense because a coordinate can only
+<br />
+reference 1 spatio-temporal dimension, if it is meant to be
+<br />
+array-dimensions it is not clear... 
+<br />
+<br /><br /><br />What are my 2D array latitude and longitude then? are they latitude and 
+<br />
+longitude dimension defined in the terminology? not really.... because
+<br />
+there are no such things as latitude and longitude dimension: you can
+<br />
+define latitude and longitude coordinates, associated with 2 axis that
+<br />
+themselves define 2 spatial dimensions... but the coordinates can be
+<br />
+defined in whatever n-D array. 
+<br />
+<br /><br /><br />I like the definition of &quot;grid mapping variable&quot;, I could use a similar 
+<br />
+variable to be a container for attributes for my &quot;axis variable&quot; with no
+<br />
+data! 
+<br />
+<br /><br /><br />I know that in the day-to-day life and discussions we don't make the 
+<br />
+effort to be precise (I don't) and that it is easy to overload the meaning
+<br />
+of things but I think that the CF document needs to be very precise, non
+<br />
+ambiguous and can not mix axes, coordinates, spatio-temporal and array
+<br />
+dimensions. 
+<br />
+<br /><br /><br />/S?bastien
+<br />
+<br />----- Original Message -----
+<br />
+From: &quot;David Hassell&quot; &lt;david.hassell at ncas.ac.uk&gt; To: &quot;Sebastien Villaume&quot; &lt;sebastien.villaume at ecmwf.int&gt; Cc: &quot;CF Metadata&quot; &lt;cf-metadata at cgd.ucar.edu&gt; , &quot;Jonathan Gregory&quot; &lt; 
+<br />
+j.m.gregory at reading.ac.uk &gt; 
+<br />
+<br /><br /><br />Sent: Friday, 7 April, 2017 08:37:20
+<br />
+Subject: Re: [CF-metadata] axis attribute
+<br />
+<br />Dear S?bastien,
+<br />
+<br />Please bear with me when I ask to right back to the beginning! I am not
+<br />
+sure what the benefit is in labelling the dimensions as X or Y. In the
+<br />
+original tripolar case we have:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;i = 96 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;j = 73 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float latitude(j, i) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float longitude(j, i) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float sit(j, i) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sit:units = &quot;m&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sit:standard_name = &quot;sea_ice_thickness&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sit:coordinates = &quot;latitude longitude&quot; ;
+<br />
+<br />There is nothing stopping anything from seeing that this is 2-d array of
+<br />
+size i*j, and there is nothing stopping software subpacing the data by i
+<br />
+and j indices.
+<br />
+<br />I don't think a plotting routine would benefit from knowing that the i
+<br />
+dimension was &quot;X&quot;, because there are no 1-d coordinates it can use along
+<br />
+that dimension.
+<br />
+<br />Many thanks and all the best,
+<br />
+<br />David
+<br />
+<br />On 6 April 2017 at 22:45, Sebastien Villaume &lt; 
+<br />
+sebastien.villaume at ecmwf.int &gt; 
+<br />
+<br /><br /><br />wrote: 
+<br />
+<br /><br /><br />Dear Mark and Jonathan,
+<br />
+<br />thank you for your comments.
+<br />
+<br />_at_Mark:
+<br />
+the short answer: you can put in principle whatever you want in that
+<br />
+variable because in this case it is a dummy variable only there to 
+<br />
+hold the 
+<br />
+<br /><br /><br /><br /><br />axis attribute. But please read the long explanation!
+<br />
+<br />the long, boring explanation:
+<br />
+As I understand it, the CF convention does not recognize axis as a 
+<br />
+valid 
+<br />
+<br /><br /><br /><br /><br />object on its own like for &quot;dimensions&quot; and the various type of 
+<br />
+&quot;variables&quot; 
+<br />
+<br /><br /><br /><br /><br />and the convention seems to make it mandatory to attach to it a 
+<br />
+variable 
+<br />
+<br /><br /><br /><br /><br />that becomes a &quot;coordinate&quot; variable. Note that I say that it is the
+<br />
+coordinate variable that is attached to the axis and not the opposite.
+<br />
+<br /><em class="quotelev1">&gt;From a mathematical point of view, it is perfectly possible to define 
+</em><br />
+an 
+<br />
+<br /><br /><br /><br /><br />axis without a coordinate on it (arguably it is not that useful). The
+<br />
+common case is that a 1-D array defines positions on that axis (the
+<br />
+coordinate). Then your 1-D data points are positioned with the help of 
+<br />
+the 
+<br />
+<br /><br /><br /><br /><br />coordinate, itself attached to the axis.
+<br />
+<br />If you have one more axis, you can define a new coordinate on it. This
+<br />
+creates a 2-D space. Now you have the choice on how you represent your 
+<br />
+2-D 
+<br />
+<br /><br /><br /><br /><br />data points:
+<br />
+if the dataset is totally irregular you will have a 1-D array of &quot;n&quot; 
+<br />
+data 
+<br />
+<br /><br /><br /><br /><br />points associated with a 1-D array of &quot;n&quot; positions for the first 
+<br />
+dimension 
+<br />
+<br /><br /><br /><br /><br />and a 1-D array of &quot;n&quot; positions for the second dimension. It works, 
+<br />
+it is 
+<br />
+<br /><br /><br /><br /><br />still a 2-D dataset stored in a long one dimensional vector.
+<br />
+<br />Imagine that you realize that your dataset is not as irregular as you
+<br />
+thought, it is in fact a regular grid! you identify that you only have 
+<br />
+i 
+<br />
+<br /><br /><br /><br /><br />possible values of the first coordinate and j possible values for the
+<br />
+second coordinate, you also notice that i*j=n. Great you can now 
+<br />
+represent 
+<br />
+<br /><br /><br /><br /><br />your dataset with 2 coordinates of length i and j respectively, each of
+<br />
+them associated with 2 axes x and y and your data is now a 2-D array of
+<br />
+size (i,j). you can position your data using the coordinates, it is 
+<br />
+mapped 
+<br />
+<br /><br /><br /><br /><br />using the indices within each coordinate array. Now you have a 2-D 
+<br />
+spatial 
+<br />
+<br /><br /><br /><br /><br />dataset sored in a 2-D array with 2 supporting 1-D spatial coordinates
+<br />
+stored in one dimensional vectors.
+<br />
+<br />Lets say now that you take this regular grid and you distort it... your
+<br />
+regular grid is gone you can no longer use i and j for partitioning!
+<br />
+really? well no, nobody says that you can not slice your &quot;n&quot; long 
+<br />
+vectors 
+<br />
+<br /><br /><br /><br /><br />into i*j arrays! you could choose whatever you want for i and j as 
+<br />
+long as 
+<br />
+<br /><br /><br /><br /><br />i*j=n. Of course if you choose (2)*(n/2) or (n/2)*(2), it is a bit 
+<br />
+useless, 
+<br />
+<br /><br /><br /><br /><br />but you can also choose meaningful i and j because even if your grid 
+<br />
+became 
+<br />
+<br /><br /><br /><br /><br />irregular, it is not random points, it is still a grid of size i*j . 
+<br />
+This 
+<br />
+<br /><br /><br /><br /><br />is exactly my use case! And in that situation your coordinates can be
+<br />
+arranged in arrays of size i*j. What I need is 2 axes and 2 
+<br />
+coordinates of 
+<br />
+<br /><br /><br /><br /><br />dimension 2 with lengths i and j. The catch here is that I have 2-D 
+<br />
+arrays 
+<br />
+<br /><br /><br /><br /><br />to store one &quot;spatial&quot; dimension! It is another case of overlapped
+<br />
+concepts, dimension is used transparently for the dimension of arrays,
+<br />
+dimension of the geometrical space, and sometimes for the size of one 
+<br />
+of 
+<br />
+<br /><br /><br /><br /><br />the dimensions of an array!!
+<br />
+<br />Anyway, I should be able to define my axes like this:
+<br />
+<br />int x;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x:axis = &quot;X&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x:standard_name = &quot;x_axis&quot; ; // no standard name exists...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x:units = &quot;1&quot; ; // no units, it will come with the coordinate
+<br />
+int y;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y:axis = &quot;Y&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y:standard_name = &quot;y_axis&quot; ; // no standard name exists...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y:units = &quot;1&quot; ; // no units, it will come with the coordinate
+<br />
+float longitude(j,i);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;longitude:standard_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degrees&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;longitude:positive = &quot;east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;longitude:long_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;longitude:axis_mapping = &quot;X&quot; ;
+<br />
+float latitude(j,i);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;latitude:standard_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;latitude:units = &quot;degrees&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;latitude:positive = &quot;north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;latitude:long_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;latitude:axis_mapping = &quot;Y&quot; ;
+<br />
+float sit(j, i) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;sit:units = &quot;m&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;sit:standard_name = &quot;sea_ice_thickness&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;sit:long_name = &quot;Ice thickness&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;sit:coordinates = &quot;latitude longitude&quot; ;
+<br />
+<br />several comments:
+<br />
+notice how one could tell on which axis the coordinate should go using 
+<br />
+for 
+<br />
+<br /><br /><br /><br /><br />instance a &quot;axis_mapping&quot; attribute. Not a &quot;coordinate&quot; attribute, 
+<br />
+this one 
+<br />
+<br /><br /><br /><br /><br />should be used to tell the coordinates of my data variable!
+<br />
+I find this approach clearer and more flexible as it can probably cater
+<br />
+for any situation of axes, coordinates, etc.
+<br />
+<br />But because in CF one cannot create bare axis, I follow the rules and
+<br />
+creates:
+<br />
+<br />double x(i);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x:axis = &quot;X&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x:standard_name = &quot;...&quot; ; // not an axis anymore, give me a 
+<br />
+standard 
+<br />
+<br /><br /><br /><br /><br />name
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y:long_name = &quot;i-index of mesh grid&quot; ;
+<br />
+double y(j);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y:axis = &quot;Y&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y:standard_name = &quot;...&quot; ; // not an axis anymore, give me a 
+<br />
+standard 
+<br />
+<br /><br /><br /><br /><br />name
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y:long_name = &quot;j-index of mesh grid&quot; ;
+<br />
+<br />and I have the choice of what I put in those arrays since it is somehow
+<br />
+artificial.
+<br />
+<br />I could populate the &quot;primary&quot; coordinates with 1 to i and 1 to j which
+<br />
+would represent the indices and if I subset the grid, I then retain the
+<br />
+information that the domain has been cropped because the indices left 
+<br />
+will 
+<br />
+<br /><br /><br /><br /><br />not be 1 to i/j but n to m.
+<br />
+I don' t really like this but what can I do?
+<br />
+<br />If we follow this idea, it means introducing a clear concept from 
+<br />
+&quot;axis&quot; 
+<br />
+<br /><br /><br /><br /><br />besides the other types of variables, defining new attribute to 
+<br />
+&quot;attach&quot; 
+<br />
+<br /><br /><br /><br /><br />coordinates to axes, etc.
+<br />
+<br />Another solution, much less disturbing, would be to heavily modify the
+<br />
+proper chapters in the CF document to:
+<br />
+- completely decouple the concepts of &quot;axis&quot; and &quot;coordinate&quot;: a
+<br />
+coordinate is not an axis and vice versa.
+<br />
+- completely decouple the concepts of spatio temporal dimension from 
+<br />
+array 
+<br />
+<br /><br /><br /><br /><br />dimension from the size the array dimension
+<br />
+- continue to use the &quot;axis&quot; attribute  but on n-D array coordinates: 
+<br />
+the 
+<br />
+<br /><br /><br /><br /><br />array has n-D dimensions but the coordinate map to 1 axis/spatial 
+<br />
+dimension 
+<br />
+<br /><br /><br /><br /><br />only!
+<br />
+- Whatever the dimensions of the array for the coordinate, all the 
+<br />
+values 
+<br />
+<br /><br /><br /><br /><br />contained in the array must be mapped on one given axis, the one 
+<br />
+defined in 
+<br />
+<br /><br /><br /><br /><br />axis attribute. For instance, a 2-D latitude only contains values that 
+<br />
+are 
+<br />
+<br /><br /><br /><br /><br />latitudes and will only map on one axis.
+<br />
+- In principle one could have in the same file several coordinates of
+<br />
+possibly different &quot;array&quot; dimensions, different sizes and different 
+<br />
+units 
+<br />
+<br /><br /><br /><br /><br />defined for one axis. This means that the attribute &quot;axis=z&quot; for 
+<br />
+instance 
+<br />
+<br /><br /><br /><br /><br />can appears more than once in the file. The only restriction I see is 
+<br />
+that 
+<br />
+<br /><br /><br /><br /><br />2 data variables can be only plotted simultaneously if all their
+<br />
+coordinates share the same units (the coordinate mapped on one axis of 
+<br />
+the 
+<br />
+<br /><br /><br /><br /><br />first data variable must have the same units than the coordinate 
+<br />
+mapped on 
+<br />
+<br /><br /><br /><br /><br />the same axis for the other data variable). This allow 2 data variables
+<br />
+defined on two different grid sharing the same units to be in the same 
+<br />
+file 
+<br />
+<br /><br /><br /><br /><br />and plotted together.
+<br />
+- X and Y should be clearly decoupled from longitude and latitude. X 
+<br />
+and Y 
+<br />
+<br /><br /><br /><br /><br />are the axes, longitude and latitude are the coordinates!
+<br />
+<br /><br />_at_Jonathan:
+<br />
+I think the whole confusion here comes from the overlapping of 
+<br />
+concepts: 
+<br />
+<br /><br /><br /><br /><br />axes and coordinates on one hand and dimension of arrays and spatial
+<br />
+dimensions on the other hand. If the relevant chapters are rewritten
+<br />
+carefully to separate axes from coordinates and array dimensions from
+<br />
+spatio-temporal dimensions we are good.  think
+<br />
+<br />_at_all: Reading more through the Trac tickets system, I noticed the nice
+<br />
+Trac ticket 117 about &quot;multiple&quot; time axis. This is a nice example of
+<br />
+mixing axes, coordinates, dimensions of arrays, the time dimension, 
+<br />
+etc! 
+<br />
+<br /><br /><br /><br /><br />/S?bastien
+<br />
+<br />----- Original Message -----
+<br />
+From: &quot;Jonathan Gregory&quot; &lt;j.m.gregory at reading.ac.uk&gt; To: cf-metadata at cgd.ucar.edu Sent: Thursday, 6 April, 2017 16:49:56
+<br />
+Subject: Re: [CF-metadata] axis attribute
+<br />
+<br />Dear Jim and Sebastien
+<br />
+<br />The original intention of axis was to label the independent variables 
+<br />
+as 1D 
+<br />
+<br /><br /><br /><br /><br />xyzt axes of the data variables.  This can be deduced from other
+<br />
+attributes,
+<br />
+but it's more effort. It's partly a plotting hint, but also it's 
+<br />
+because 
+<br />
+<br /><br /><br /><br /><br />you
+<br />
+might reasonable want to tell software, &quot;give me the z-axis 
+<br />
+coordinates&quot;, 
+<br />
+<br /><br /><br /><br /><br />or
+<br />
+&quot;calculate a mean over the x-direction&quot;. The latter is often a zonal 
+<br />
+mean, 
+<br />
+<br /><br /><br /><br /><br />but
+<br />
+it isn't with a rotated-pole or tripolar grid, yet the operation is 
+<br />
+still 
+<br />
+<br /><br /><br /><br /><br />performed sometimes.
+<br />
+<br />It's useful that you've pointed out the confusion of purpose. If it 
+<br />
+were 
+<br />
+<br /><br /><br /><br /><br />regarded as an acceptable backwards-incompatibility, which I'm nervous
+<br />
+about,
+<br />
+I'd be happy if we returned &quot;axis&quot; to its original purpose of 
+<br />
+identifying 
+<br />
+<br /><br /><br /><br /><br />1D
+<br />
+axes, and also for scalar coordinate variables (which are equivalent to
+<br />
+axes
+<br />
+of size one), and provided another attribute to label aux coords as
+<br />
+horizontal.
+<br />
+<br />I agree that if we have 1D x and y, with 2D lat and lon, the 1D 
+<br />
+variables 
+<br />
+<br /><br /><br /><br /><br />are
+<br />
+the axes. That's consistent with the original purpose of the axis
+<br />
+attribute. 
+<br />
+<br /><br /><br />I also find the units of latitude and longitude confusing: it looks 
+<br />
+like 
+<br />
+<br /><br /><br /><br /><br />it was a way to squeeze the direction of the coordinate inside the 
+<br />
+units. I 
+<br />
+<br /><br /><br /><br /><br />have the same observation for the time coordinate that has its origin 
+<br />
+in 
+<br />
+<br /><br /><br /><br /><br />the units!
+<br />
+<br />This convention was kept in CF for backwards-compatibility with 
+<br />
+COARDS. CF 
+<br />
+<br /><br /><br /><br /><br />does
+<br />
+not use units in any other case to identify the quantity or sense. 
+<br />
+<br /><br /><br />It was done correctly for z coordinate using &quot;units&quot; and &quot;positive&quot;, 
+<br />
+probably because there are many types of z coordinates with various 
+<br />
+origin 
+<br />
+<br /><br /><br /><br /><br />and directions, and no real consensus. I note however that often the 
+<br />
+origin 
+<br />
+<br /><br /><br /><br /><br />is not always clearly defined.
+<br />
+<br />The positive attribute was also kept for backwards-compatibility with
+<br />
+COARDS.
+<br />
+It has the advantage of being useful to identify the vertical axis, but
+<br />
+this
+<br />
+can also be done with axis=&quot;Z&quot;. CF standard names provide information 
+<br />
+which 
+<br />
+<br /><br /><br /><br /><br />indicates the sign convention.
+<br />
+<br />If coordinate_index is confusing, I think standard_names containing 
+<br />
+x_index 
+<br />
+<br /><br /><br /><br /><br />or y_index would be OK, provided we change the existing standard names
+<br />
+&nbsp;&nbsp;magnitude_of_derivative_of_position_wrt_x_coordinate_index
+<br />
+&nbsp;&nbsp;magnitude_of_derivative_of_position_wrt_y_coordinate_index
+<br />
+to remove &quot;_coordinate&quot;.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list CF-metadata at cgd.ucar.edu <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> _______________________________________________
+<br />
+CF-metadata mailing list CF-metadata at cgd.ucar.edu <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> 
+<br />
+<pre>
+--
+David Hassell
+National Centre for Atmospheric Science
+Department of Meteorology, University of Reading,
+Earley Gate, PO Box 243, Reading RG6 6BB
+<a href="Tel: +44 118 378 5613 http://www.met.reading.ac.uk/">Tel: +44 118 378 5613 http://www.met.reading.ac.uk/</a> 
+----- End forwarded message -----
+_______________________________________________
+CF-metadata mailing list CF-metadata at cgd.ucar.edu <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> 
+-- 
+David Hassell
+National Centre for Atmospheric Science
+Department of Meteorology, University of Reading,
+Earley Gate, PO Box 243, Reading RG6 6BB
+<a href="Tel: +44 118 378 5613 http://www.met.reading.ac.uk/">Tel: +44 118 378 5613 http://www.met.reading.ac.uk/</a> 
+----- End forwarded message -----
+_______________________________________________
+CF-metadata mailing list CF-metadata at cgd.ucar.edu <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> 
+-- 
+	Visit us on 
+Facebook 	Jim Biard 
+Research Scholar 
+Cooperative Institute for Climate and Satellites NC 
+North Carolina State University 
+NOAA National Centers for Environmental Information 
+formerly NOAA?s National Climatic Data Center 
+151 Patton Ave, Asheville, NC 28801 
+e: jbiard at cicsnc.org 
+o: +1 828 271 4900 
+Connect with us on Facebook for climate and ocean and geophysics information, and follow us on Twitter at _at_NOAANCEIclimate and &#64;NOAANCEIocngeo &#46;<!--nospam--> 
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Apr 18 2017 - 04:08:08 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8262">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8263.html" title="Next message in the list">Sebastien Villaume: "[CF-metadata] axis attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8261.html" title="Previous message in the list">Sebastien Villaume: "[CF-metadata] New standard names for NEMO ocean model output"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8260.html" title="Message to which this message replies">Jim Biard: "[CF-metadata] axis attribute"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8262" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8262" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8262" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8262" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:13 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8261.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8263.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

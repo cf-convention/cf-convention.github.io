@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to call dimension variables which are a function of an actual dimension? from Jim Biard on 2015-04-07 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] How to call dimension variables which are a function of an actual dimension?" />
+<meta name="Date" content="2015-04-07" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6859.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6861.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to call dimension variables which are a function of an actual dimension?</h1>
+<!-- received="Tue Apr  7 09:04:11 2015" -->
+<!-- isoreceived="20150407080411" -->
+<!-- sent="Tue, 07 Apr 2015 11:04:11 -0400" -->
+<!-- isosent="20150407150411" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] How to call dimension variables which are a function of an actual dimension?" -->
+<!-- id="5523F1EB.2010006_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="5523EAFB.5060009_at_hilboll.de" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6860" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6861.html" accesskey="d" title="martin.juckes at stfc.ac.uk: &quot;[CF-metadata] Conventions global attribute and the conventions playground&quot;">Next message</a> ]
+[ <a href="./6859.html" title="Andreas Hilboll: &quot;[CF-metadata] How to call dimension variables which are a function of an actual dimension?&quot;">Previous message</a> ]
+[ <a href="./6859.html" title="Andreas Hilboll: &quot;[CF-metadata] How to call dimension variables which are a function of an actual dimension?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6860" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6860" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6860" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6860" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20call%20dimension%20variables%20which%20are%20a%20function%20of%20an%20actual%20dimension%3F">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 07 Apr 2015 11:04:11 -0400</span><br />
+</address>
+<br />
+Andreas,
+<br />
+<br />You treat this like any other coordinate variable, it just doesn't have 
+<br />
+a standard_name attribute. You can specify what the quantity is in the 
+<br />
+long_name attribute and add more detail in a comment attribute on the 
+<br />
+variable.
+<br />
+<br />The Guidelines for Construction of Standard Names 
+<br />
+&lt;<a href="http://cfconventions.org/Data/cf-standard-names/docs/guidelines.html">http://cfconventions.org/Data/cf-standard-names/docs/guidelines.html</a>&gt; 
+<br />
+document describes how to derive a standard name that is the result of a 
+<br />
+transformation such as the cosine, but it uses a controlled vocabulary. 
+<br />
+If you wanted to add cosine_of_X you would have to request this and see 
+<br />
+how the community feels about it.
+<br />
+<br />Then there's the whole question (depending on what variables you have) 
+<br />
+of which variables are data, which are coordinates, which are auxiliary 
+<br />
+coordinates, and which are ancillary data. So much fun!
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 4/7/15 10:34 AM, Andreas Hilboll wrote:
+<br />
+<em class="quotelev1">&gt; Hi all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; My current use-case is that I have some coordinates which are a function
+</em><br />
+<em class="quotelev1">&gt; of a &quot;standard-named&quot; quantity.  For example, I have a coordinate
+</em><br />
+<em class="quotelev1">&gt; &quot;cosine of solar zenith angle&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Is this case covered by CF conventions?  How would I need to name the
+</em><br />
+<em class="quotelev1">&gt; variable?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best,
+</em><br />
+<em class="quotelev1">&gt;    Andreas.
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA's National Climatic Data Center &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org
+o: +1 828 271 4900
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150407/b9e294d4/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150407/b9e294d4/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ejhbbigg.png
+Type: image/png
+Size: 11847 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150407/b9e294d4/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150407/b9e294d4/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Apr 07 2015 - 09:04:11 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6860">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6861.html" title="Next message in the list">martin.juckes at stfc.ac.uk: "[CF-metadata] Conventions global attribute and the conventions playground"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6859.html" title="Previous message in the list">Andreas Hilboll: "[CF-metadata] How to call dimension variables which are a function of an actual dimension?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6859.html" title="Message to which this message replies">Andreas Hilboll: "[CF-metadata] How to call dimension variables which are a function of an actual dimension?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6860" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6860" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6860" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6860" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:53 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6859.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6861.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

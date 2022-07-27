@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF compliant tripolar grid representation from Sebastien Villaume on 2017-04-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="Sebastien Villaume (sebastien.villaume)" />
+<meta name="Subject" content="[CF-metadata] CF compliant tripolar grid representation" />
+<meta name="Date" content="2017-04-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8201.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8203.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF compliant tripolar grid representation</h1>
+<!-- received="Mon Apr  3 07:56:40 2017" -->
+<!-- isoreceived="20170403065640" -->
+<!-- sent="Mon, 3 Apr 2017 13:56:40 +0000 (GMT-00:00)" -->
+<!-- isosent="20170403135640" -->
+<!-- name="Sebastien Villaume" -->
+<!-- email="sebastien.villaume" -->
+<!-- subject="[CF-metadata] CF compliant tripolar grid representation" -->
+<!-- id="152496699.30479087.1491227800903.JavaMail.zimbra_at_ecmwf.int" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="7819C496F4E10E47BCEFBE74551AAC9643ADA10A_at_EXXCMPD1DAG3.cmpd1.metoffice.gov.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8202" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8203.html" accesskey="d" title="Andrew Barna: &quot;[CF-metadata] Standard Names Representing Measurements not due to some process&quot;">Next message</a> ]
+[ <a href="./8201.html" title="Hedley, Mark: &quot;[CF-metadata] CF compliant tripolar grid representation&quot;">Previous message</a> ]
+[ <a href="./8201.html" title="Hedley, Mark: &quot;[CF-metadata] CF compliant tripolar grid representation&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8190.html" accesskey="t" title="Sebastien Villaume: &quot;[CF-metadata] CF compliant tripolar grid representation&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8202" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8202" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8202" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8202" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Sebastien Villaume &lt;<a href="mailto:sebastien.villaume?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20compliant%20tripolar%20grid%20representation">sebastien.villaume</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 3 Apr 2017 13:56:40 +0000 (GMT-00:00)</span><br />
+</address>
+<br />
+Hi Mark,
+<br />
+<br />I agree that we need to find the best way to describe these grids (with the appropriate controlled metadata) and not necessarily use an existing concept (crs, grid_mapping) if it does not fit the purpose and generates confusion. 
+<br />
+<br />These tripolar grids are tricky and I guess this is why there is no standard systematic way to describe them.
+<br />
+<br />Reading more on it, I realized that some of them are not always &quot;regular grids&quot; (by regular I mean monotonic increase of lat and lon when increasing i and j indices): it seems that some NEMO configurations reuse some of the i and j indices that are over land (large parts of Asia and Africa) and relocate them over specific water regions to locally increase the grid resolution! 
+<br />
+<br />This can be seen here: <a href="http://www.nemo-ocean.eu/content/download/7538/40914/file/meshmask_grid.pdf">http://www.nemo-ocean.eu/content/download/7538/40914/file/meshmask_grid.pdf</a>
+<br />
+<br />Some of these grids do not have a simple analytical description since it is a composite of several local descriptions. How can I then properly reference/identify them? using an attribute like &quot;model_grid_mapping&quot; or &quot;model_mesh_mapping&quot; or simply &quot;mesh_mapping&quot; instead of &quot;grid_mapping&quot; and points to an URN/URI?
+<br />
+<br />AMy main issue is that I can not derive directly from the metadata the type of grid used. I have to plot it to know what it is and this is not satisfactory.
+<br />
+<br />Regardless of the preferred solution (if one exists), I would still like to have a proper standard name for my 1-D mesh indices i and j.
+<br />
+<br />thanks
+<br />
+____________________________________ 
+<br />
+<br />Dr. S?bastien Villaume 
+<br />
+Analyst 
+<br />
+ECMWF Shinfield Park, 
+<br />
+Reading RG2 9AX, UK 
+<br />
++44 7825 521592 
+<br />
+sebastien.villaume at ecmwf.int 
+<br />
+____________________________________
+<br />
+<br />----- Original Message -----
+<br />
+From: &quot;Hedley, Mark&quot; &lt;mark.hedley at metoffice.gov.uk&gt;
+<br />
+To: &quot;Jim Biard&quot; &lt;jbiard at cicsnc.org&gt;, cf-metadata at cgd.ucar.edu
+<br />
+Sent: Monday, 3 April, 2017 10:28:05
+<br />
+Subject: Re: [CF-metadata] CF compliant tripolar grid representation
+<br />
+<br />Hello All, 
+<br />
+<br />I'd like to pick up on an earlier comment from Jim: 
+<br />
+If I'm not mistaken, we would need to propose a new grid_mapping to be 
+<br />
+added to the Conventions that would define a Tripolar Coordinate Reference 
+<br />
+System, along with any attributes that don't currently exist that are 
+<br />
+needed to complete the definition. I did a search for a standard tripolar 
+<br />
+CRS in proj4 or epsg, and was unable to find one. Is it possible to make 
+<br />
+such a definition? 
+<br />
+I don't think this is the correct approach 
+<br />
+<br />In my opinion, the tri-polar grid is described with respect to a Geographic Coordinate Reference System: typically the one used to co-locate the observations for assimilation, by spatial coordinates. 
+<br />
+The 'Grid' is not a projection and it is not a coordinate reference system: it is the description of a model grid. 
+<br />
+In data files I have seen, each spatial location is defined by a location in latitude, longitude and depth, with respect to a suitable geodetic datum. 
+<br />
+<br /><br />I agree with your more recent comment Jim: 
+<br />
+<br />I'm wondering if x and y have too strong an association to projected coordinate 
+<br />
+systems. I also like u/v, but that may be too strongly associated for some people 
+<br />
+with vector components (wind, for example). 
+<br />
+<br />I think that describing grid indices should be carefully distinguished from spatial coordinates. Put a different way, I don't think a grid index can be georeferenceable. 
+<br />
+<br />I think that a good deal of care not to confuse the grid indices with any interpretation of 'grid_mapping' relations is required here. 
+<br />
+I don't think that a CF grid mapping should be used to connect any description of model index space with geographic space in these cases. 
+<br />
+<br />Sebastien states: 
+<br />
+<br />I would like to propose for addition standard names to support the mesh indices/coordinates: 
+<br />
+<br />&quot;mesh_grid_i/j_index&quot; suggested by Jim 
+<br />
+or
+<br />
+&quot;x/y_coordinate_index&quot; suggested by Jonathan 
+<br />
+<br />The mixing of the terms coordinate and index gives me pause for thought. What information is being encoded here? 
+<br />
+<br />A key question I have is about the expectation for values of these indices, under operations such as sub-setting. I have seen many files which do not have coordinate variables for the x-like and y-like dimensions, the only horizontal spatial metadata is contained in auxiliary coordinates. 
+<br />
+Clearly I can perform index operations on these arrays, but I don't consider the index values important and I don't preserve them. 
+<br />
+<br />Sebastien: 
+<br />
+Is it the case that you would like to ensure that model index space values are preserved, for example when removing a regional subset from a tri-polar ocean model? 
+<br />
+Would you like to be able to encode a result where it is clear that a regional subset of 50 &lt;= x &lt; 150, 70 &lt;= x &lt; 120 has been taken from a larger extent model? 
+<br />
+<br />If standard names are provided to encode such information, I would advocate clear descriptive text stating that there is no mathematical relationship between such index coordinates (i still don't like mixing these terms) and projection coordinates or geographic coordinates 
+<br />
+<br />Sebastien states: 
+<br />
+I have checked both IPSL and CNRM CMIP5 datasets. It is indeed NEMO datasets and it is probably a 
+<br />
+ORCA tripolar grid in both cases. I write &quot;probably&quot; because it is not clear and conclusive 
+<br />
+without plotting the datasets: lat and lon are 2D fields, the datasets define 2 extra 1D coordinates &quot;i&quot; and &quot;j&quot; 
+<br />
+to be used as mesh indices (but without a proper standard name). 
+<br />
+The datasets also have bounds for lat and lon, defined as &quot;lat_vertices&quot; and &quot;lon_vertices&quot; which I think 
+<br />
+is one solution to describe the tripolar grid. I would prefer something more standardized and documented so 
+<br />
+that one can quickly identify from the metadata that it is a tripolar grid (defining the resolution, 
+<br />
+where are the poles, how it is derived, etc.) 
+<br />
+<br />I appreciate the desire to have a standardised approach to defining such a model grid. I would not advocate trying to use grid mapping variables 
+<br />
+and relationships for this, I think this could do more harm than good. 
+<br />
+I don't have a better suggestion to hand, I'm sad to say. 
+<br />
+<br />I am not raising principled objections to this conversation or the direction of travel; I am raising waryness and caution about introducing further confusion or implying stronger relationships than can be provided. 
+<br />
+<br />all the best 
+<br />
+mark 
+<br />
+<br /><br />From: CF-metadata [cf-metadata-bounces at cgd.ucar.edu] on behalf of Jim Biard [jbiard at cicsnc.org] 
+<br />
+Sent: 31 March 2017 23:26 
+<br />
+To: cf-metadata at cgd.ucar.edu 
+<br />
+Subject: Re: [CF-metadata] CF compliant tripolar grid representation 
+<br />
+<br /><br /><br />Hi. 
+<br />
+<br />I like the more generic x/y_coordinate_index name, but I'm wondering if x and y have too strong an association to projected coordinate systems. I also like u/v, but that may be too strongly associated for some people with vector components (wind, for example). What do the rest of you think? Here are some names that come to mind. Feel free to suggest something better! 
+<br />
+<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;* mesh_grid_i_index, mesh_grid_j_index 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;* grid_i_index, grid_j_index 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;* grid_i_coordinate, grid_j_coordinate 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;* x_coordinate_index, y_coordinate_index 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;* index_x_coordinate, index_y_coordinate (this ordering matches the projection_x/y_coordinate naming) 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;* u_coordinate, v_coordinate 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;* i_coordinate, j_coordinate 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;* grid_row_coordinate, grid_column_coordinate 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;* row_coordinate, column_coordinate 
+<br />
+<br /><br />The more I look at these, the more I like the last two. 
+<br />
+<br /><br />As for a definitions, how about something like this variation on the ones for the projection_x/y_coordinate? 
+<br />
+<br /><br /><br /><br />column_coordinate: &quot;column&quot; indicates the fastest-changing dimension of a two-dimensional grid, when this is not associated with a spatial coordinate dimension such as longitude or projected X, positive with increasing column. The column coordinate, possibly in conjunction with the row coordinate, serves as a parametric driver mapping abstract grid positions to spatial coordinates such as latitude and longitude. 
+<br />
+<br /><br />row_coordinate: &quot;row&quot; indicates the the slowest-changing dimension of a 2-dimensional grid, when this is not associated with a spatial coordinate dimension such as latitude or projected Y, positive with increasing row. The row and column coordinates serve as a parametric driver mapping abstract grid positions to spatial coordinates such as latitude and longitude. Grace and peace, 
+<br />
+<br />Jim 
+<br />
+<br />On 3/31/17 5:37 PM, Sebastien Villaume wrote: 
+<br />
+<br /><br /><br />Hi all,
+<br />
+<br />I have checked both IPSL and CNRM CMIP5 datasets. It is indeed NEMO datasets and it is probably a ORCA tripolar grid in both cases. I write &quot;probably&quot; because it is not clear and conclusive without plotting the datasets: lat and lon are 2D fields, the datasets define 2 extra 1D coordinates &quot;i&quot; and &quot;j&quot; to be used as mesh indices (but without a proper standard name). The datasets also have bounds for lat and lon, defined as &quot;lat_vertices&quot; and &quot;lon_vertices&quot; which I think is one solution to describe the tripolar grid. I would prefer something more standardized and documented so that one can quickly identify from the metadata that it is a tripolar grid (defining the resolution, where are the poles, how it is derived, etc.)
+<br />
+<br />I would like to propose for addition standard names to support the mesh indices/coordinates: 
+<br />
+<br />&quot;mesh_grid_i/j_index&quot; suggested by Jim 
+<br />
+or
+<br />
+&quot;x/y_coordinate_index&quot; suggested by Jonathan
+<br />
+<br />I let the experts in standard names decide which pair suits best the present case.
+<br />
+<br />Regarding tripolar grids characteristics, I did some research and came to the conclusion that &quot;Murray tripolar grids&quot; are not identical to &quot;ORCA/NEMO tripolar grids&quot;. This is true even without considering characteristics like the grid resolution, the location of the poles or where the latitude boundary is placed between the modified and unmodified parts. 
+<br />
+<br />The Murray tripolar grid (used by GFDL) has its &quot;north&quot; poles on the boundary as shown here: <a href="https://www.gfdl.noaa.gov/wp-content/uploads/pix/user_images/mw/bipolar.gif">https://www.gfdl.noaa.gov/wp-content/uploads/pix/user_images/mw/bipolar.gif</a> The ORCA/NEMO tripolar grids have the &quot;north&quot; poles within the modified regions but not on the boundary as shown in my original post: <a href="http://www.geomar.de/typo3temp/pics/globe_grid2_14_b8edb639ae.png">http://www.geomar.de/typo3temp/pics/globe_grid2_14_b8edb639ae.png</a> This complicates things...
+<br />
+<br /><br />____________________________________ 
+<br />
+<br />Dr. S?bastien Villaume 
+<br />
+Analyst 
+<br />
+ECMWF Shinfield Park, 
+<br />
+Reading RG2 9AX, UK 
+<br />
++44 7825 521592 sebastien.villaume at ecmwf.int ____________________________________
+<br />
+<br />----- Original Message -----
+<br />
+From: &quot;James Orr&quot; &lt;James.Orr at lsce.ipsl.fr&gt; To: &quot;Karl Taylor&quot; &lt;taylor13 at llnl.gov&gt; Cc: cf-metadata at cgd.ucar.edu Sent: Thursday, 30 March, 2017 23:01:54
+<br />
+Subject: Re: [CF-metadata] CF compliant tripolar grid representation
+<br />
+<br />The IPSL and CNRM cimate models that participated in CMIP5 both used the NEMO 
+<br />
+model (ORCA2 and ORCA1 configurations) with tripolar grids.  Both provided 
+<br />
+output the was CF compliant.
+<br />
+<br />James
+<br />
+<br />On Thu, 30 Mar 2017, Karl Taylor wrote: 
+<br />
+<br /><br /><br />Hi Sebastien,
+<br />
+<br />More than one group stored output on a tripolar grid in CMIP5.  I'm pretty 
+<br />
+sure they did it in a CF-conforming way.  I know at least some of the GFDL 
+<br />
+model output was reported on a tripolar grid, as described at <a href="http://nomads.gfdl.noaa.gov/CM2.X/oceangrid.html">http://nomads.gfdl.noaa.gov/CM2.X/oceangrid.html</a> (or search on &quot;tripolar 
+<br />
+grid&quot; for additional links).  You could look to their example, and see if you 
+<br />
+think it is done correctly.
+<br />
+<br />I don't think extensions or modifications to CF are needed for tripolar 
+<br />
+grids.
+<br />
+<br />best regards,
+<br />
+Karl
+<br />
+<br />On 3/30/17 9:42 AM, Jim Biard wrote: 
+<br />
+<br /><br /><br />S?bastien,
+<br />
+<br />If I'm not mistaken, we would need to propose a new grid_mapping to be 
+<br />
+added to the Conventions that would define a Tripolar Coordinate Reference 
+<br />
+System, along with any attributes that don't currently exist that are 
+<br />
+needed to complete the definition. I did a search for a standard tripolar 
+<br />
+CRS in proj4 or epsg, and was unable to find one. Is it possible to make 
+<br />
+such a definition?
+<br />
+<br />Regarding the standard names for your X and Y coordinate variables, I think 
+<br />
+you could use &quot;projection_x/y_coordinate&quot; once a grid_mapping has been 
+<br />
+defined. Of course you could always leave the attribute off, since a 
+<br />
+standard_name attribute is not a requirement.
+<br />
+<br />If making a new grid_mapping is not feasible, you could request standard 
+<br />
+names along the lines of mesh_grid_i_index and mesh_grid_j_index. These 
+<br />
+standard names would (on reading their definitions) make it clear that the 
+<br />
+measurements are on a mesh grid for which there is no CRS. At least that's 
+<br />
+what comes to mind at the moment.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 3/30/17 11:52 AM, Sebastien Villaume wrote: 
+<br />
+<br /><br /><br />Hello all,
+<br />
+<br />I am looking for the best approach to describe in a CF compliant way the 
+<br />
+tripolar grids usually used in NEMO configurations.
+<br />
+<br />Basically, the difference with a usual bipolar grid (north pole-south 
+<br />
+pole) is that the north pole is split into 2 poles moved over Canada and 
+<br />
+Russia (to have distortions/singularities not over the ocean). A good 
+<br />
+visual representation can be found here: <a href="http://www.geomar.de/typo3temp/pics/globe_grid2_14_b8edb639ae.png">http://www.geomar.de/typo3temp/pics/globe_grid2_14_b8edb639ae.png</a> everything south of the green line (40degN) is identical to a regular 
+<br />
+grid, but everything north of it is computed using a technique described 
+<br />
+here:
+<br />
+<br />Madec, G. and M. Imbard, 1996 : A global ocean mesh to overcome the north 
+<br />
+pole singularity. Clim. Dyn., 12, 381?388.
+<br />
+<br /><br />The usual NEMO output of the grid looks like this:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float longitude(y, x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:standard_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:long_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float latitude(y, x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:standard_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:long_name = &quot;latitude&quot; ;
+<br />
+<br /><br />Basically both latitudes and longitudes need to be specified for each grid 
+<br />
+point, hence lat and lon are 2D arrays. This is not a problem itself but I 
+<br />
+would like to give more information through maybe grid_mapping or crs so 
+<br />
+it is clear that the grid is tripolar. This is useful information if one 
+<br />
+want to project/interpolate this back to a more regular representation.
+<br />
+<br />Looking at the CF conventions, I can see that grids can be fairly nicely 
+<br />
+documented but nothing for tripolar grids.
+<br />
+<br />Is there some documentation/guidelines on how to derive a proper 
+<br />
+grid_mapping/crs with valid attributes for tripolar grids?
+<br />
+<br />I would also like to add to my netcdf file a way to better describe axes:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double y(y) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:long_name = &quot;j-index of mesh grid&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:standard_name = ??? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double x(x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:long_name = &quot;i-index of mesh grid&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:standard_name = ??? ;
+<br />
+<br />what would be the standard name of these?
+<br />
+<br />Thanks,
+<br />
+<br />____________________________________
+<br />
+<br />Dr. S?bastien Villaume
+<br />
+Analyst
+<br />
+ECMWF Shinfield Park,
+<br />
+Reading RG2 9AX, UK
+<br />
++44 7825 521592 sebastien.villaume at ecmwf.int ____________________________________
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list CF-metadata at cgd.ucar.edu <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> 
+<br />
+<pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; *Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt; North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt; NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt; /formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt; o: +1 828 271 4900
+/Connect with us on Facebook for climate &lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics &lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us on 
+Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and 
+_at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt; . /
+_______________________________________________
+CF-metadata mailing list CF-metadata at cgd.ucar.edu <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> 
+-- 
+	Visit us on 
+Facebook 	Jim Biard 
+Research Scholar 
+Cooperative Institute for Climate and Satellites NC 
+North Carolina State University 
+NOAA National Centers for Environmental Information 
+formerly NOAA?s National Climatic Data Center 
+151 Patton Ave, Asheville, NC 28801 
+e: jbiard at cicsnc.org 
+o: +1 828 271 4900 
+Connect with us on Facebook for climate and ocean and geophysics information, and follow us on Twitter at _at_NOAANCEIclimate and &#64;NOAANCEIocngeo &#46;<!--nospam--> 
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Apr 03 2017 - 07:56:40 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8202">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8203.html" title="Next message in the list">Andrew Barna: "[CF-metadata] Standard Names Representing Measurements not due to some process"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8201.html" title="Previous message in the list">Hedley, Mark: "[CF-metadata] CF compliant tripolar grid representation"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8201.html" title="Message to which this message replies">Hedley, Mark: "[CF-metadata] CF compliant tripolar grid representation"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8190.html" title="Next message in this discussion thread">Sebastien Villaume: "[CF-metadata] CF compliant tripolar grid representation"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8202" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8202" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8202" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8202" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:12 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8201.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8203.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

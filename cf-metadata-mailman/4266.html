@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  CF-1.6 Conformance Requirements/Recommendations from Jonathan Gregory on 2012-03-23 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  CF-1.6 Conformance Requirements/Recommendations" />
+<meta name="Date" content="2012-03-23" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4265.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4267.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  CF-1.6 Conformance Requirements/Recommendations</h1>
+<!-- received="Fri Mar 23 12:55:35 2012" -->
+<!-- isoreceived="20120323125535" -->
+<!-- sent="Fri, 23 Mar 2012 18:55:35 +0000" -->
+<!-- isosent="20120323185535" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  CF-1.6 Conformance Requirements/Recommendations" -->
+<!-- id="20120323185534.GA24756_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4F6C6A2E.3090903_at_reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4266" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4267.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] CF-1.6 Conformance Requirements/Recommendations&quot;">Next message</a> ]
+[ <a href="./4265.html" title="Rosalyn Hatcher: &quot;[CF-metadata] CF-1.6 Conformance Requirements/Recommendations&quot;">Previous message</a> ]
+[ <a href="./4265.html" title="Rosalyn Hatcher: &quot;[CF-metadata] CF-1.6 Conformance Requirements/Recommendations&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4267.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] CF-1.6 Conformance Requirements/Recommendations&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4266" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4266" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4266" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4266" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20CF-1.6%20Conformance%20Requirements%2FRecommendations">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 23 Mar 2012 18:55:35 +0000</span><br />
+</address>
+<br />
+Dear Ros
+<br />
+<br />Thanks a lot for working on this. I think you have correctly identified parts
+<br />
+which are stated as requirements and recommendations, but you have to put
+<br />
+yourself in the shoes of the CF-checker, and consider what you can actually
+<br />
+*do* to make the checks. The CF-checker, for instance, does not know what we
+<br />
+mean by element and instance dimensions, in the first statement:
+<br />
+<br />&quot;In the multidimensional array representations, data variables have both an
+<br />
+instance dimension and an element dimension.  The dimensions may be given in
+<br />
+any order.  If there is a need for either the instance or an element dimension
+<br />
+to be the netCDF unlimited dimension (so that more features or more elements
+<br />
+can be appended), then that dimension must be the outer dimension of the data
+<br />
+variable i.e. the leading dimension in CDL.&quot;
+<br />
+<br />To check this statement, I think we have first to refer to the table in 9.1,
+<br />
+which implies a lot of checks on dimensions and coordinates. For instance, if
+<br />
+the featureType att says it's a timeseries, the table says that the data is
+<br />
+logically 1D (i), and there are mandatory coord or aux coord vars with the
+<br />
+logical structure x(i) y(i) t(i,o). There are five possibilities for storing a
+<br />
+collection of timeseries features. These are alternative sets of requirements
+<br />
+for the CF-checker, and one of these sets must be satisfied:
+<br />
+<br />* Single timeseries: The data variable is 1D (the element dimension). It has a
+<br />
+coord var or a 1D aux coord var of time. It has two scalar coord vars of
+<br />
+horizontal position.
+<br />
+<br />* Orthogonal multidimensional representation: The data variable is 2D. One of
+<br />
+its dimensions (the element dimension) has a coordinate variable or a 1D
+<br />
+auxiliary coordinate variable of time. The other one (the instance dimension)
+<br />
+has two coordinate or 1D aux coord variables of horizontal position.
+<br />
+<br />* Incomplete multidimensional rep: The data variable is 2D. It has a 2D aux
+<br />
+coord var of time with the same dimensions as itself. One of the dimensions
+<br />
+has two coordinate or 1D aux coord variables of horizontal position.
+<br />
+<br />* Contiguous ragged array rep: The data variable is 1D. It has a 1D aux coord
+<br />
+var of time with this dimension. There is a variable in the file (the count
+<br />
+variable) with a sample_dimension att that names the dimension of the data
+<br />
+variable. The data variable has two 1D aux coord vars of horizontal position,
+<br />
+whose dimension is the dimension of the count variable.
+<br />
+<br />* Indexed ragged array rep: The data variable is 1D. It has a 1D aux coord var
+<br />
+of time with this dimension. There is an variable in the file (the index
+<br />
+variable) with the same dimension as the data variable and which has an
+<br />
+index_dimension att.  The data variable has two 1D aux coord vars of
+<br />
+horizontal position with the dimension is named by the instance_dimension att
+<br />
+of the index variable.
+<br />
+<br />This is a bottom-up approach, but that's what the checker has to do, isn't it.
+<br />
+When you find that one of these cases matches what you have, it allows you
+<br />
+formally to identify the instance and element dimensions, and the count and
+<br />
+index variables if relevant. Do you see what I mean? It would be necessary to
+<br />
+work through the other cases in a similar way, but it would take a lot of
+<br />
+space to write them all down in the conformance rules in the way I have done
+<br />
+above. Perhaps there would be a way to summarise the principles on which the
+<br />
+checker would work from the table.
+<br />
+<br />We did not say exactly what constitutes a horizontal coordinate. I propose
+<br />
+that if two horizontal coord or aux coord vars are required, they should be
+<br />
+longitude and latitude, or grid_longitude and grid_latitude, or
+<br />
+projection_x_coordinate and projection_y_coordinate, or *any* pair of
+<br />
+coordinates if one of them has axis='X' and the other axis='Y'. It is allowed
+<br />
+to provide more than one of these pairs, but it is not allowed (for instance)
+<br />
+to supply only longitude and grid_latitude, which don't form a pair.
+<br />
+<br />(It is always OK to supply coordinates in addition to those which are
+<br />
+mandatory. These can just be ignored by the checker.)
+<br />
+<br />Once these identifications have been made, other checks can be applied:
+<br />
+<br />H.2 It is recommended that there is be a variable with cf_role of
+<br />
+timeseries_id. If there is such a variable, it must have the instance
+<br />
+dimension. All the values of this variable must be different.  (These are for
+<br />
+timeseries. Corresponding but different rules would apply for profiles and
+<br />
+trajectories. Appendix H suggests others, such as it is recommended that there
+<br />
+should be station variables with standard_name attributes &quot;platform_name&quot;,
+<br />
+&quot;surface_altitude&quot; and &quot;platform_id&quot; when applicable, from H.5.)
+<br />
+<br />9.3 A count variable or an index variable must be integer.
+<br />
+<br />9.3 Negative values (except missing data) are not allowed in a count
+<br />
+variable. The sum of the non-missing values must not exceed the dimension of
+<br />
+the data variable.
+<br />
+<br />9.3 Negative values (except missing data) are not allowed in an index
+<br />
+variable. None of the values may be greater than or equal to the dimension of
+<br />
+the data variable (because they must be valid indices). All of the non-missing
+<br />
+values must be different.
+<br />
+<br />You say that the featureType att is required. This is a tricky one. We don't
+<br />
+know it's required unless we know we have a discrete sampling geometry that
+<br />
+requires it, but we don't know it's a discrete sampling geometry for sure
+<br />
+unless there is a featureType. I suggest you look for the featureType first,
+<br />
+and only apply the checks for sect 9 if it is present, except that you could
+<br />
+give an error if there is no featureType and there is a count or index var in
+<br />
+the file. That must indicate a ragged rep, and they require featureType.
+<br />
+<br />9.6 Where any auxiliary coordinate variable contains a missing value, all
+<br />
+other coordinate, auxiliary coordinate and data values corresponding to that
+<br />
+element should also contain missing values.
+<br />
+<br />9.6 Where the instance variable identified by cf_role contains a missing value
+<br />
+indicator, all other instance variable should also contain missing values
+<br />
+corresponding to that element.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Mar 23 2012 - 12:55:35 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4266">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4267.html" title="Next message in the list">Jim Biard: "[CF-metadata] CF-1.6 Conformance Requirements/Recommendations"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4265.html" title="Previous message in the list">Rosalyn Hatcher: "[CF-metadata] CF-1.6 Conformance Requirements/Recommendations"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4265.html" title="Message to which this message replies">Rosalyn Hatcher: "[CF-metadata] CF-1.6 Conformance Requirements/Recommendations"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4267.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] CF-1.6 Conformance Requirements/Recommendations"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4267.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] CF-1.6 Conformance Requirements/Recommendations"</a></li>
+<li><dfn>Reply</dfn>: <a href="./4269.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] CF-1.6 Conformance Requirements/Recommendations"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4266" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4266" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4266" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4266" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:59 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4265.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4267.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

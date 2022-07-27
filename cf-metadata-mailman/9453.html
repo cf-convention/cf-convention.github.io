@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Decibel units in CF standard names from Martin Juckes - UKRI STFC on 2018-10-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Martin Juckes - UKRI STFC (martin.juckes)" />
+<meta name="Subject" content="[CF-metadata] Decibel units in CF standard names" />
+<meta name="Date" content="2018-10-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9452.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9454.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Decibel units in CF standard names</h1>
+<!-- received="Tue Oct 30 07:42:13 2018" -->
+<!-- isoreceived="20181030074213" -->
+<!-- sent="Tue, 30 Oct 2018 13:42:13 +0000" -->
+<!-- isosent="20181030134213" -->
+<!-- name="Martin Juckes - UKRI STFC" -->
+<!-- email="martin.juckes" -->
+<!-- subject="[CF-metadata] Decibel units in CF standard names" -->
+<!-- id="5c6c3a71bf7f492f887cbe2adea709c0_at_stfc.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9453" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9454.html" accesskey="d" title="Ethan Davis: &quot;[CF-metadata] [CF-metadar ata] [EXTERNAL] &#0039;months since&#0039; and &#0039;years since&#0039; time units&quot;">Next message</a> ]
+[ <a href="./9452.html" title="Martin Juckes - UKRI STFC: &quot;[CF-metadata] Using units with a scale factor&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9453" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9453" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9453" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9453" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Martin Juckes - UKRI STFC &lt;<a href="mailto:martin.juckes?Subject=Re%3A%20%5BCF-metadata%5D%20Decibel%20units%20in%20CF%20standard%20names">martin.juckes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 30 Oct 2018 13:42:13 +0000</span><br />
+</address>
+<br />
+Hello All,
+<br />
+<br /><br />The CF standard names have several variables using decibels (&quot;dB&quot;) as units, and one using &quot;decibels of Z (dBZ)&quot;:
+<br />
+<br />sound_intensity_level_in_air            1e-12 W m-2         10 log10(I/I0)
+<br />
+sound_intensity_level_in_water       6.7e-19 W m-2     10 log10(I/I0)
+<br />
+sound_pressure_level_in_air            2e-5 Pa                 20 log_10(p/p0)
+<br />
+sound_pressure_level_in_water       1e-6 Pa                 20 log_10(p/p0)
+<br />
+equivalent_reflectivity_factor           1 mm6 m-3          10 log_10(Z/Z0)
+<br />
+<br /><br />Each has a different reference level, and two use an additional factor two in the definition of the decibel level.
+<br />
+<br /><br />There are a few issues here, the main one is that &quot;dB&quot; is not a valid Udunits string. There is a secondary point that the details of the definitions are not easily available to software reading the files.
+<br />
+<br /><br />Where Udunits does support decibels, it is units such as dBZ, dBW for which a specific reference value is defined. As all these variables have different reference values, that would require 4 new units.
+<br />
+<br /><br />The reference values are currently specified within the standard name description. It maattry make sense to add explicit attributes so that this information can be made more accessible to users and software reading the file. E.g. &quot;decibel_reference_level&quot; with the name of a scalar variable holding the reference value (specifying standard name, units and value) and &quot;decibel_scale_factor&quot; set to &quot;10&quot; or &quot;20&quot;. With these modifications it would be possible to compute the power/intensity etc from the decibel parameter.
+<br />
+<br /><br />regards,
+<br />
+<br />Martin
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Oct 30 2018 - 07:42:13 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9453">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9454.html" title="Next message in the list">Ethan Davis: "[CF-metadata] [CF-metadar ata] [EXTERNAL] &#0039;months since&#0039; and &#0039;years since&#0039; time units"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9452.html" title="Previous message in the list">Martin Juckes - UKRI STFC: "[CF-metadata] Using units with a scale factor"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9453" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9453" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9453" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9453" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:31 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9452.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9454.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

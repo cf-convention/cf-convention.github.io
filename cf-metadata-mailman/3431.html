@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] udunits time units question from Cecelia DeLuca on 2011-04-18 (cf-metadata-mailman)</title>
+<meta name="Author" content="Cecelia DeLuca (Cecelia.DeLuca)" />
+<meta name="Subject" content="[CF-metadata] udunits time units question" />
+<meta name="Date" content="2011-04-18" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3430.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3432.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] udunits time units question</h1>
+<!-- received="Mon Apr 18 15:22:58 2011" -->
+<!-- isoreceived="20110418142258" -->
+<!-- sent="Mon, 18 Apr 2011 21:22:58 -0000" -->
+<!-- isosent="20110418212258" -->
+<!-- name="Cecelia DeLuca" -->
+<!-- email="Cecelia.DeLuca" -->
+<!-- subject="[CF-metadata] udunits time units question" -->
+<!-- id="4DACABB3.5040604_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20110401155003.GB19539_at_ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3431" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3432.html" accesskey="d" title="John Caron: &quot;[CF-metadata] udunits time units question&quot;">Next message</a> ]
+[ <a href="./3430.html" title="John Caron: &quot;[CF-metadata] physical vs dimensional units&quot;">Previous message</a> ]
+[ <a href="./3396.html" title="Brian Eaton: &quot;[CF-metadata] udunits time units question&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3432.html" accesskey="t" title="John Caron: &quot;[CF-metadata] udunits time units question&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3431" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3431" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3431" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3431" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Cecelia DeLuca &lt;<a href="mailto:Cecelia.DeLuca?Subject=Re%3A%20%5BCF-metadata%5D%20udunits%20time%20units%20question">Cecelia.DeLuca</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 18 Apr 2011 21:22:58 -0000</span><br />
+</address>
+<br />
+&nbsp;&nbsp;Hi John, Chris, all:
+<br />
+<br />Here's a more direct link to the ESMF utility for timekeeping than Brian 
+<br />
+provided:
+<br />
+<br /><a href="http://www.earthsystemmodeling.org/esmf_releases/public/last/ESMF_refdoc/node5.html#SECTION05040000000000000000">http://www.earthsystemmodeling.org/esmf_releases/public/last/ESMF_refdoc/node5.html#SECTION05040000000000000000</a>
+<br />
+<br />There are a number of calendars supported (Proleptic Gregorian, 
+<br />
+no-leap,  Julian and
+<br />
+Julian day calendars, 360 day, custom calendars for planets, etc.).  
+<br />
+Proleptic Gregorian
+<br />
+is used already by some climate groups;  I would think its use would 
+<br />
+increase as modelers
+<br />
+try to answer questions that combine climate model output with other 
+<br />
+kinds of information,
+<br />
+and perform comparisons of model output with observations.
+<br />
+<br />The length of days can change with the calendar, so they're not a basic 
+<br />
+time unit.
+<br />
+<br />ESMF has time instant and time interval classes.  Their operators 
+<br />
+(+,-,&lt;,&gt;, ==, etc.) are
+<br />
+overloaded so you can write, for example:
+<br />
+time = init_time + timeinterval
+<br />
+or
+<br />
+timeinterval = init_timeinterval * 3
+<br />
+<br />Increments can be in many different time units, including  months.  If 
+<br />
+you add three months
+<br />
+to a date like April 1 you will get July 1.  ESMF computes to the
+<br />
+same day that many months later.  There is a special end-of-the-month 
+<br />
+case so that
+<br />
+if you add three month to March 31 you will get June 30.
+<br />
+I think John was originally wondering if there was a lib that does this 
+<br />
+sort of thing.
+<br />
+<br />Other methods it offers include getting things like middle of the month and
+<br />
+day of the week.  There are clock and alarm classes to manage model 
+<br />
+time, with clocks
+<br />
+that can run forward or backward in time.  Development priorities were 
+<br />
+set by modelers
+<br />
+so most of what's there was needed by somebody.
+<br />
+<br />It's portable and pretty widely used in the modeling community.  If you 
+<br />
+think there's
+<br />
+something that could be done to make it more accessible or useful to the 
+<br />
+data community,
+<br />
+please write.
+<br />
+<br />Note, one calendar that ESMF does not support is the mixed 
+<br />
+Gregorian/Julian calendar that
+<br />
+is the CF default.  For modelers having to use the mixed 
+<br />
+Gregorian/Julian calendar just
+<br />
+doesn't make sense.
+<br />
+<br />-- Cecelia
+<br />
+<br />On 4/1/2011 9:50 AM, Brian Eaton wrote:
+<br />
+<em class="quotelev1">&gt; Hi John,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; You might have a look at the ESMF time handling utilies for some ideas
+</em><br />
+<em class="quotelev1">&gt; about what a library that supports modelling (i.e., non-standard calendars)
+</em><br />
+<em class="quotelev1">&gt; contains.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.earthsystemmodeling.org/esmf_releases/public/last/ESMF_refdoc/">http://www.earthsystemmodeling.org/esmf_releases/public/last/ESMF_refdoc/</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Brian
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On Fri, Apr 01, 2011 at 05:04:42AM -0600, John Caron wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Hi Martin and all:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Im wondering what essential methods a calendar library needs to have
+</em><br />
+<em class="quotelev2">&gt;&gt; to support, eg 360 day calendars? The only one that comes to mind is
+</em><br />
+<em class="quotelev2">&gt;&gt; to calculate the difference between two dates in, say, seconds? What
+</em><br />
+<em class="quotelev2">&gt;&gt; else?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; John
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 4/1/2011 12:55 AM, Schultz, Martin wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Hi Chris et al.,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;       indeed it seems like some clarification is necessary about the use of different calendars in modelling. Your suggestion to &quot;map&quot; the 360 day calendar onto the Gregorian calendar in output files won't work: there would be no need for a 360 day calendar if it would. The idea behind fixed-length-year calendars is precisely the opposite: preserve seasonality without having to deal with leap years etc. Of course you need to adjust the solar cycle accordingly, that means your model will have a solar year that is precisely 360 days long (and not 365.25 as in reality). If you were to map these dates onto the gregorian calendar, you would have to interpolate the time axis so that days 1 to 360 fit into the range 1 to 365 or 366, respectively. Yes - a converter 360-days (or 365-days) to gregorian (and reverse) could be written, but you would redce the number of your friends if you insist that this is the only valid way to represent time of the model output ;-)
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;      You are right that a date such as 1960-01-31 is invalid in a 360-day calendar, and indeed a smart tool should flag this as an error.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Hope this helps,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Martin
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; ------------------------------------------------------------------------------------------------
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; ------------------------------------------------------------------------------------------------
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Forschungszentrum Juelich GmbH
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 52425 Juelich
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Sitz der Gesellschaft: Juelich
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Eingetragen im Handelsregister des Amtsgerichts Dueren Nr. HR B 3498
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Vorsitzender des Aufsichtsrats: MinDirig Dr. Karl Eugen Huthmacher
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Geschaeftsfuehrung: Prof. Dr. Achim Bachem (Vorsitzender),
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Dr. Ulrich Krafft (stellv. Vorsitzender), Prof. Dr.-Ing. Harald Bolt,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Prof. Dr. Sebastian M. Schmidt
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; ------------------------------------------------------------------------------------------------
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; ------------------------------------------------------------------------------------------------
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Besuchen Sie uns auf unserem neuen Webauftritt unterwww.fz-juelich.de
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><br /><pre>
+-- 
+===================================================================
+Cecelia DeLuca
+NESII/CIRES/NOAA Earth System Research Laboratory
+325 Broadway, Boulder 80305-337
+Email: cecelia.deluca at noaa.gov
+Phone: 303-497-3604
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Apr 18 2011 - 15:22:58 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3431">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3432.html" title="Next message in the list">John Caron: "[CF-metadata] udunits time units question"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3430.html" title="Previous message in the list">John Caron: "[CF-metadata] physical vs dimensional units"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3396.html" title="Message to which this message replies">Brian Eaton: "[CF-metadata] udunits time units question"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3432.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] udunits time units question"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3432.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] udunits time units question"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3431" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3431" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3431" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3431" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:44 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3430.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3432.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

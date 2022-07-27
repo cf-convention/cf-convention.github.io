@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line from Matthias Lankhorst on 2016-04-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Matthias Lankhorst (mlankhorst)" />
+<meta name="Subject" content="[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line" />
+<meta name="Date" content="2016-04-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7568.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7570.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line</h1>
+<!-- received="Tue Apr 26 09:25:01 2016" -->
+<!-- isoreceived="20160426082501" -->
+<!-- sent="Tue, 26 Apr 2016 08:25:01 -0700" -->
+<!-- isosent="20160426152501" -->
+<!-- name="Matthias Lankhorst" -->
+<!-- email="mlankhorst" -->
+<!-- subject="[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line" -->
+<!-- id="1461684301.3773.10.camel_at_sendlab01" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7569" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7570.html" accesskey="d" title="Elodie Fernandez: &quot;[CF-metadata] Copernicus Marine Service standard_names&quot;">Next message</a> ]
+[ <a href="./7568.html" title="John Caron: &quot;[CF-metadata] [netcdfgroup] [Hdf-forum] Detecting netCDF versus HDF5 -- PROPOSED SOLUTIONS --REQUEST FOR COMMENTS&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./9494.html" accesskey="t" title="Matthias Lankhorst: &quot;[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7569" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7569" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7569" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7569" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Matthias Lankhorst &lt;<a href="mailto:mlankhorst?Subject=Re%3A%20%5BCF-metadata%5D%20question%20about%20proper%20cell%20bounds%20for%20ocean_volume_transport_across_line">mlankhorst</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 26 Apr 2016 08:25:01 -0700</span><br />
+</address>
+<br />
+Dear CF,
+<br />
+<br />what is the proper way to define the shape and boundaries of an oceanic
+<br />
+section, for which I want to report the volume transport across that
+<br />
+section?
+<br />
+<br />The use case is an irregular-shaped section like OSNAP
+<br />
+(<a href="http://www.o-snap.org/wp-content/uploads/2013/11/20160329_OSNAP_planeview.jpg">http://www.o-snap.org/wp-content/uploads/2013/11/20160329_OSNAP_planeview.jpg</a>), and the property to be reported is the seawater volume transport in a given depth range as a timeseries with this CF standard_name:
+<br />
+ocean_volume_transport_across_line
+<br />
+<br />There needs to be some ancillary variable to say what the line
+<br />
+coordinates are, and I am not sure how to squeeze that into
+<br />
+&quot;cell_bounds&quot;.
+<br />
+<br />In addition, how about the lower limit vertically if this is the
+<br />
+seafloor? If the transports were to be everything below e.g. 1000 m,
+<br />
+would it be appropriate to state vertical cell bounds as 1000 to 5000 m,
+<br />
+even if the ocean is not 5000 m deep? I.e. is the user intelligent
+<br />
+enough to realize that &quot;5000&quot; really means &quot;5000 m or the seafloor,
+<br />
+whichever is shallower&quot;?
+<br />
+<br />Thanks, Matthias
+<br />
+<br /><br /><pre>
+-- 
+_______________________________________
+ Dr. Matthias Lankhorst
+ Scripps Institution of Oceanography
+ 9500 Gilman Drive, Mail Code 0230
+ La Jolla, CA 92093-0230
+ USA
+ Phone:  +1 858 822 5013
+ Fax:    +1 858 534 9820
+ E-Mail: mlankhorst at ucsd.edu
+ <a href="http://www-pord.ucsd.edu/~mlankhorst/">http://www-pord.ucsd.edu/~mlankhorst/</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Apr 26 2016 - 09:25:01 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7569">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7570.html" title="Next message in the list">Elodie Fernandez: "[CF-metadata] Copernicus Marine Service standard_names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7568.html" title="Previous message in the list">John Caron: "[CF-metadata] [netcdfgroup] [Hdf-forum] Detecting netCDF versus HDF5 -- PROPOSED SOLUTIONS --REQUEST FOR COMMENTS"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./9494.html" title="Next message in this discussion thread">Matthias Lankhorst: "[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./9494.html" title="Message sent in reply to this message">Matthias Lankhorst: "[CF-metadata] question about proper cell bounds for ocean_volume_transport_across_line"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7569" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7569" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7569" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7569" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:03 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7568.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7570.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

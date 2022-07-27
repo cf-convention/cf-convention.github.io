@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] swath format -- not just for satellite, but for sonar? from Mike Grant on 2013-11-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="Mike Grant (mggr)" />
+<meta name="Subject" content="[CF-metadata] swath format -- not just for satellite, but for sonar?" />
+<meta name="Date" content="2013-11-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5854.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5856.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] swath format -- not just for satellite, but for sonar?</h1>
+<!-- received="Wed Nov 13 02:38:38 2013" -->
+<!-- isoreceived="20131113023838" -->
+<!-- sent="Wed, 13 Nov 2013 09:38:38 +0000" -->
+<!-- isosent="20131113093838" -->
+<!-- name="Mike Grant" -->
+<!-- email="mggr" -->
+<!-- subject="[CF&ndash;metadata] swath format &ndash;&ndash; not just for satellite, but for sonar?" -->
+<!-- id="5283489E.3090307_at_pml.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="B48EEE4A-0082-422E-B53D-47B08595C442_at_marinexplore.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5855" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5856.html" accesskey="d" title="Hedley, Mark: &quot;[CF-metadata] Cell methods when there are no coordinates&quot;">Next message</a> ]
+[ <a href="./5854.html" title="Jim Biard: &quot;[CF-metadata] Standard name for Greenland surface melt product&quot;">Previous message</a> ]
+[ <a href="./5844.html" title="John Graybeal: &quot;[CF-metadata] swath format -- not just for satellite, but for sonar?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5855" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5855" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5855" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5855" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Mike Grant &lt;<a href="mailto:mggr?Subject=Re%3A%20%5BCF-metadata%5D%20swath%20format%20--%20not%20just%20for%20satellite%2C%20but%20for%20sonar%3F">mggr</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 13 Nov 2013 09:38:38 +0000</span><br />
+</address>
+<br />
+On 11/11/13 18:47, John Graybeal wrote:
+<br />
+<em class="quotelev1">&gt; I'm looking for the latest status of presenting swath data in CF.  I
+</em><br />
+<br />I think most user-level satellite swath data follows the principle of
+<br />
+providing full (or at least tie-point) lat/long grids, e.g.
+<br />
+&nbsp;<a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/ch05s02.html">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/ch05s02.html</a>
+<br />
+<br />It's possible they might then use cell methods to more accurately
+<br />
+represent the placement and shape of pixels on the ground (or whatever)
+<br />
+vs assuming everything is square or pointlike, but I've not really seen
+<br />
+this in practice.
+<br />
+<br />In terms of the actual data represented, there isn't much consensus on
+<br />
+the specifics, but perhaps a few generalities are useful.  Single
+<br />
+variables per sensed quantity/wavelength seem to be slightly winning
+<br />
+again 3+D arrays for wavelengths of the same quantity, since they're
+<br />
+more easily supported by existing applications.  There's a legacy
+<br />
+tendency to try and pack data, but (I think) this is slowly losing out
+<br />
+to the nearly-equivalent transparent netcdf4 compression and the
+<br />
+consequent much easier data access.
+<br />
+<br />I can't comment on sonar but, if it has multiple depth returns, it might
+<br />
+be worth looking at LIDAR representations for what's done (often ends up
+<br />
+in LAS files rather than netCDF though).
+<br />
+<br />As you say though, there's a lot of variety out there.  Hopefully I'll
+<br />
+have provoked others to comment too!
+<br />
+<br />Cheers,
+<br />
+<br />Mike.
+<br />
+<br /><br />Latest news: www.pml.ac.uk and _at_PlymouthMarine
+<br />
+<br />Plymouth Marine Laboratory (PML) is a company limited by guarantee registered in England &amp; Wales, company number 4178503. Registered Charity No. 1091222. Registered Office: Prospect Place, The Hoe, Plymouth  PL1 3DH, UK. 
+<br />
+<br />This message is private and confidential. If you have received this message in error, please notify the sender and remove it from your system. You are reminded that e-mail communications are not secure and may contain viruses; PML accepts no liability for any loss or damage which may be caused by viruses.
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Nov 13 2013 - 02:38:38 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5855">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5856.html" title="Next message in the list">Hedley, Mark: "[CF-metadata] Cell methods when there are no coordinates"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5854.html" title="Previous message in the list">Jim Biard: "[CF-metadata] Standard name for Greenland surface melt product"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5844.html" title="Message to which this message replies">John Graybeal: "[CF-metadata] swath format -- not just for satellite, but for sonar?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5855" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5855" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5855" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5855" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:32 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5854.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5856.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

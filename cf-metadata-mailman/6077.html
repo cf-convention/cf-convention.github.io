@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Vertical datums (again) from John Graybeal on 2014-02-17 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Graybeal (john.graybeal)" />
+<meta name="Subject" content="[CF-metadata] Vertical datums (again)" />
+<meta name="Date" content="2014-02-17" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6076.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6078.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Vertical datums (again)</h1>
+<!-- received="Mon Feb 17 14:10:27 2014" -->
+<!-- isoreceived="20140217141027" -->
+<!-- sent="Mon, 17 Feb 2014 13:10:27 -0800" -->
+<!-- isosent="20140217211027" -->
+<!-- name="John Graybeal" -->
+<!-- email="john.graybeal" -->
+<!-- subject="[CF-metadata] Vertical datums (again)" -->
+<!-- id="396B3C8D-EB66-419A-8DF6-7266CBA5DFDC_at_marinexplore.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20140217175006.GB20870_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6077" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6078.html" accesskey="d" title="Signell, Richard: &quot;[CF-metadata] Vertical datums (again)&quot;">Next message</a> ]
+[ <a href="./6076.html" title="Signell, Richard: &quot;[CF-metadata] Vertical datums (again)&quot;">Previous message</a> ]
+[ <a href="./6075.html" title="Jonathan Gregory: &quot;[CF-metadata] Vertical datums (again)&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6078.html" accesskey="t" title="Signell, Richard: &quot;[CF-metadata] Vertical datums (again)&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6077" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6077" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6077" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6077" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Graybeal &lt;<a href="mailto:john.graybeal?Subject=Re%3A%20%5BCF-metadata%5D%20Vertical%20datums%20(again)">john.graybeal</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 17 Feb 2014 13:10:27 -0800</span><br />
+</address>
+<br />
+Simple terms like height, depth, and altitude are great for onboarding -- though complicated usage ('geoid must always be defined in the grid_mapping'), lessens the onboarding benefit. And if they are ambiguous, the long-term usability is affected. (See: sea_surface_temperature.)
+<br />
+<br />I want a consistent approach that starts simple -- e.g., 'altitude' is an alias for geodetic distance above geoid, and if no particular geoid is specified, a default is assumed, perhaps carrying along explicit assumptions about the possible error bounds. 
+<br />
+<br />The basic concepts discussed so far seem to break down as: 
+<br />
+&nbsp;&nbsp;&nbsp;distance_[above | below]_[surface | geoid | ellipsoid | center],   # 'distance' avoids loaded terms altitude, depth, etc.
+<br />
+with the possibility of a prefix like
+<br />
+&nbsp;&nbsp;orthometric | geodetic | geocentric | geometric
+<br />
+and the need or possibility to specify additional parameters for at least some of these choices (ex: surface may default to the bottom of the atmosphere, but could be defined using any of the Sample Dimensions in the MetOcean graphic [1]).
+<br />
+<br /><em class="quotelev1">&gt; It would be really useful if anyone could explain how the geoid is identified in CRS WKT.
+</em><br />
+<br /><br />Do you mean 'identified' or 'specified'? From Dru Smith's 1998 paper [2] -- it didn't look like an 'identifier' would be sufficient any time soon, or do we already have controlled terms for the various 'geoid candidates' that are out there?  (Note for non-experts like me: I found that Wikipedia's simple and specific definitions [3] bypass the problem of defining where 'the geoid' actually is.) It's hard to imagine that CF users will be in a position to provide those geoidal identification or specification details, though....
+<br />
+<br />John
+<br />
+<br />[1] <a href="http://external.opengeospatial.org/twiki_public/MetOceanDWG/MetOceanWMSBP20120206">http://external.opengeospatial.org/twiki_public/MetOceanDWG/MetOceanWMSBP20120206</a>
+<br />
+[2] <a href="http://www.ngs.noaa.gov/PUBS_LIB/EGM96_GEOID_PAPER/egm96_geoid_paper.html">http://www.ngs.noaa.gov/PUBS_LIB/EGM96_GEOID_PAPER/egm96_geoid_paper.html</a>
+<br />
+[3] <a href="http://en.wikipedia.org/wiki/Geoid">http://en.wikipedia.org/wiki/Geoid</a>, <a href="http://en.wikipedia.org/wiki/Physical_geodesy">http://en.wikipedia.org/wiki/Physical_geodesy</a>
+<br />
+<br />On Feb 17, 2014, at 09:50, Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt; wrote:
+<br />
+<br /><em class="quotelev1">&gt; Dear all
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thank you for clarifications and further information.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; We used &quot;altitude&quot; for &quot;height above geoid&quot; because that's what it most
+</em><br />
+<em class="quotelev1">&gt; commonly means, I think. However, it's unclear. To avoid confusion, we could
+</em><br />
+<em class="quotelev1">&gt; rename altitude as height_above_geoid, using aliases. There are 14 standard
+</em><br />
+<em class="quotelev1">&gt; names which use the word altitude. Would that be worth doing?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Similarly, we could rename plain &quot;height&quot; as height_above_surface. There are
+</em><br />
+<em class="quotelev1">&gt; about 5 standard names which would be affected. Likewise (and relating also to
+</em><br />
+<em class="quotelev1">&gt; another thread), we could rename plain &quot;depth&quot; as depth_below_surface. There
+</em><br />
+<em class="quotelev1">&gt; are about 14 standard names using this word in that sense. Is this worthwhile,
+</em><br />
+<em class="quotelev1">&gt; or shall we continue with short words and rely on the definitions? Opinions
+</em><br />
+<em class="quotelev1">&gt; would be welcome.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; It would be really useful if anyone could explain how the geoid is identified
+</em><br />
+<em class="quotelev1">&gt; in CRS WKT.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Feb 17 2014 - 14:10:27 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6077">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6078.html" title="Next message in the list">Signell, Richard: "[CF-metadata] Vertical datums (again)"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6076.html" title="Previous message in the list">Signell, Richard: "[CF-metadata] Vertical datums (again)"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6075.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] Vertical datums (again)"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6078.html" title="Next message in this discussion thread">Signell, Richard: "[CF-metadata] Vertical datums (again)"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6078.html" title="Message sent in reply to this message">Signell, Richard: "[CF-metadata] Vertical datums (again)"</a></li>
+<li><dfn>Reply</dfn>: <a href="./6088.html" title="Message sent in reply to this message">Snaith, Helen M.: "[CF-metadata] Vertical datums (again)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6077" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6077" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6077" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6077" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:36 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6076.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6078.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

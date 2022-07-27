@@ -1,0 +1,1342 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF compliant tripolar grid representation from Sebastien Villaume on 2017-04-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Sebastien Villaume (sebastien.villaume)" />
+<meta name="Subject" content="[CF-metadata] CF compliant tripolar grid representation" />
+<meta name="Date" content="2017-04-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8220.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8222.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF compliant tripolar grid representation</h1>
+<!-- received="Wed Apr  5 07:01:05 2017" -->
+<!-- isoreceived="20170405060105" -->
+<!-- sent="Wed, 5 Apr 2017 13:01:05 +0000 (GMT-00:00)" -->
+<!-- isosent="20170405130105" -->
+<!-- name="Sebastien Villaume" -->
+<!-- email="sebastien.villaume" -->
+<!-- subject="[CF-metadata] CF compliant tripolar grid representation" -->
+<!-- id="1553538801.32183533.1491397265026.JavaMail.zimbra_at_ecmwf.int" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CAEMt9PNS4JfBRzgz8K+JW0yU-TJc1EQarnxEkgt=m92KMQvHkQ_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8221" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8222.html" accesskey="d" title="B&#0228;rring Lars: &quot;[CF-metadata] Recording &#0034;day of year on which something happens&#0034;&quot;">Next message</a> ]
+[ <a href="./8220.html" title="B&#0228;rring Lars: &quot;[CF-metadata] Overstated restriction on references to external variables in version 1.7&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8221" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8221" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8221" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8221" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Sebastien Villaume &lt;<a href="mailto:sebastien.villaume?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20compliant%20tripolar%20grid%20representation">sebastien.villaume</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 5 Apr 2017 13:01:05 +0000 (GMT-00:00)</span><br />
+</address>
+<br />
+Hi David,
+<br />
+<br />yes the purpose of having index coordinates variables is purely to identify spatial dimensions in this case.
+<br />
+<br />My actual lat and lon are both 2-D, with dimensions (291,360). It could have been described as one long 1-D vector of dimension 291*360=104760. 
+<br />
+<br />But why it has not been done this way?
+<br />
+first of all because you will confuse many software if you have in your files:  
+<br />
+<br />dimensions :
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d = 104760 ;
+<br />
+variables :
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float lat(d);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;float lon(d);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;float sea_surface_temp(d);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br />secondly, these two dimensions have a meaning! does 360 for the &quot;x&quot; dimension sounds familiar? yep, the grid is a 1deg longitude grid but this is only true for the part of the tripolar grid that follows the regular lat/lon. The &quot;irregular&quot; part will not follow this but it will still have the same number of i points for a given index of the other dimension. This can be seen on this projection:
+<br />
+<br /><a href="http://sosie.sourceforge.net/sosie_files/fig_irregular.png">http://sosie.sourceforge.net/sosie_files/fig_irregular.png</a>
+<br />
+<br />but keep in mind that if I was projecting the same grid but taking the north pole as origin, the previously &quot;irregular&quot; part would look like &quot;regular&quot; and vice versa (actually not exactly regular because the two extra poles and the traditional north pole are not aligned which creates small distortions).
+<br />
+<br />Anyway, I don't see a major issue having index coordinates defined to support the dimensions? Is it because the units for those are in fact &quot;1&quot;? Is it because those are not really what we usually call an &quot;axis&quot;? 
+<br />
+<br />Maybe something else is more appropriate than &quot;axis&quot;, maybe the attribute that we use to label a dimension should be extended : not only &quot;axis&quot; but also &quot;angle&quot;, &quot;index&quot;, etc. The CF requirement would be that you have no more than 3 spatial dimensions to describe a parameter: nr axes + nr angles + nr indices &lt;= 3 
+<br />
+<br />cartesian, curvilinear, etc.: 3 axes (x, y, z)
+<br />
+spherical : 1 axis (r) + 2 angles (theta, phi)
+<br />
+my case : 2 indices (i, j) + 1 axis (z or why not k)
+<br />
+<br />if you think about it, some of the popular z axes are not really z axes and could be classified as &quot;index k&quot; (pressure levels, isotherms, etc...): these are simply a different way (than traditional axis with distance units) to define an origin (0 Pa, 0Kelvin, etc.), some units (Pa, K, et.) and direction (positive/negative) for a specific dimension... Geopotential height is equivalent to height but with a different choice of origin and the same units (meters).
+<br />
+<br />what is making these &quot;z&quot; axis acceptable but not indices?
+<br />
+<br />Regarding sub-regions, you would not extract the sub-regions based on the indices directly but using the lat and lon built on top.
+<br />
+<br /><br />____________________________________ 
+<br />
+<br />Dr. S?bastien Villaume 
+<br />
+Analyst 
+<br />
+ECMWF Shinfield Park, 
+<br />
+Reading RG2 9AX, UK 
+<br />
++44 7825 521592 
+<br />
+sebastien.villaume at ecmwf.int 
+<br />
+____________________________________
+<br />
+<br />----- Original Message -----
+<br />
+From: &quot;David Hassell&quot; &lt;david.hassell at ncas.ac.uk&gt;
+<br />
+To: &quot;Sebastien Villaume&quot; &lt;sebastien.villaume at ecmwf.int&gt;
+<br />
+Cc: &quot;CF Metadata&quot; &lt;cf-metadata at cgd.ucar.edu&gt;
+<br />
+Sent: Wednesday, 5 April, 2017 11:52:49
+<br />
+Subject: Re: [CF-metadata] CF compliant tripolar grid representation
+<br />
+<br />Hello,
+<br />
+<br />I may not be grasping everything here, but it seems to me that the purpose
+<br />
+of having two index coordinate variables is purely to be able to identify
+<br />
+the *dimensions* as X and Y - is that right?
+<br />
+<br />If so, storing a coordinate variable with integer positions seems
+<br />
+unsatisfactory - what do the contained integer numbers actually mean? What
+<br />
+happens when you extract a sub-region (as Mark pointed out)? I think the
+<br />
+parallel with the magnitude_of_derivative_of_position_wrt_x_coordinate_index
+<br />
+standard name could be a bit misleading, as this is a derivative, so the
+<br />
+absolute values of any x-indices is not important.
+<br />
+<br />Thanks for you patience!
+<br />
+<br />David
+<br />
+<br />On 5 April 2017 at 09:47, Sebastien Villaume &lt;sebastien.villaume at ecmwf.int&gt;
+<br />
+wrote:
+<br />
+<br /><em class="quotelev1">&gt; Hi all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I could try to draft an new entry in grid_mapping or a new entry in
+</em><br />
+<em class="quotelev1">&gt; Appendix D (it will not be a dimensionless &quot;vertical&quot; coordinate but a
+</em><br />
+<em class="quotelev1">&gt; dimensionless &quot;horizontal&quot; coordinate)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Could we agree first on what I need to define? I don't want to invest too
+</em><br />
+<em class="quotelev1">&gt; much time in defining something before everyone agree on the way forward.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; thanks
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dr. S?bastien Villaume
+</em><br />
+<em class="quotelev1">&gt; Analyst
+</em><br />
+<em class="quotelev1">&gt; ECMWF Shinfield Park,
+</em><br />
+<em class="quotelev1">&gt; Reading RG2 9AX, UK
+</em><br />
+<em class="quotelev1">&gt; +44 7825 521592
+</em><br />
+<em class="quotelev1">&gt; sebastien.villaume at ecmwf.int
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message -----
+</em><br />
+<em class="quotelev1">&gt; From: &quot;Jim Biard&quot; &lt;jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Sent: Tuesday, 4 April, 2017 21:47:36
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] CF compliant tripolar grid representation
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I tend to agree with Jonathan about the use of the grid_mapping variable,
+</em><br />
+<em class="quotelev1">&gt; although it would probably be necessary to provide a clear distinction
+</em><br />
+<em class="quotelev1">&gt; between this sort of information about mapping grid indices to lats and
+</em><br />
+<em class="quotelev1">&gt; lons and providing information about mapping projected coordinate axis
+</em><br />
+<em class="quotelev1">&gt; values to lats and lons. This new use is probably more appropriate for the
+</em><br />
+<em class="quotelev1">&gt; name of the variable ( grid _mapping). Having said that, the potential for
+</em><br />
+<em class="quotelev1">&gt; confusion and complication makes me wonder if a new construct isn't needed.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The problem that I see with x/y_coordinate_index is that the indices are
+</em><br />
+<em class="quotelev1">&gt; very likely indices to lat/lon coordinates, not x/y coordinates. They
+</em><br />
+<em class="quotelev1">&gt; function as a sort of unitless, non-geographic x and y, but I think it
+</em><br />
+<em class="quotelev1">&gt; would better to avoid overloading concepts. It's also possible that these
+</em><br />
+<em class="quotelev1">&gt; indices could be indices to x and y coordinates, so it seems to me that
+</em><br />
+<em class="quotelev1">&gt; lat/lon_coordinate_index would be no better. This is what led me to the
+</em><br />
+<em class="quotelev1">&gt; names in my list that didn't use x, y, lat, or lon. They could be useful in
+</em><br />
+<em class="quotelev1">&gt; other scenarios, such as satellite swath imagery, which have axes of scan
+</em><br />
+<em class="quotelev1">&gt; and sample, so I didn't want to constrain the terms too closely to the mesh
+</em><br />
+<em class="quotelev1">&gt; grid scenario that this discussion started with.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Grace and peace,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jim
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 4/4/17 4:25 PM, Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear S?bastien et al.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; From what you say I understand that the translation of indices to
+</em><br />
+<em class="quotelev1">&gt; coordinate
+</em><br />
+<em class="quotelev1">&gt; values is rather ad-hoc, rather than being done by the same formulae for
+</em><br />
+<em class="quotelev1">&gt; all
+</em><br />
+<em class="quotelev1">&gt; sorts of tripolar grid. You could identify the grid construction, if that
+</em><br />
+<em class="quotelev1">&gt; would
+</em><br />
+<em class="quotelev1">&gt; be useful, in a non-standard way in some attribute such as &quot;comment&quot;. To
+</em><br />
+<em class="quotelev1">&gt; provide a standardised description, I still think grid_mapping would be the
+</em><br />
+<em class="quotelev1">&gt; right place, but evidently &quot;tripolar&quot; would not be a sufficient definition.
+</em><br />
+<em class="quotelev1">&gt; Instead you would need different entries in Appendix D for the different
+</em><br />
+<em class="quotelev1">&gt; sorts
+</em><br />
+<em class="quotelev1">&gt; of tripolar grid in use. In these entries you could certainly give URLs to
+</em><br />
+<em class="quotelev1">&gt; documentation, I think, as well as a description. The aim of putting it in
+</em><br />
+<em class="quotelev1">&gt; Appendix D would be to provide a source of information about how the
+</em><br />
+<em class="quotelev1">&gt; indices
+</em><br />
+<em class="quotelev1">&gt; are related to coordinate values.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I suggested [xy]_coordinate_index because these phrases are already used in
+</em><br />
+<em class="quotelev1">&gt; standard names (one of each). If we don't like them now, we ought to
+</em><br />
+<em class="quotelev1">&gt; change the
+</em><br />
+<em class="quotelev1">&gt; existing names, since we should be consistent. I think the phrase
+</em><br />
+<em class="quotelev1">&gt; &quot;coordinate
+</em><br />
+<em class="quotelev1">&gt; index&quot; means &quot;the index to a coordinate value&quot;. Just &quot;index&quot; would be less
+</em><br />
+<em class="quotelev1">&gt; informative, I feel.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Forwarded message from Sebastien Villaume &lt;
+</em><br />
+<em class="quotelev1">&gt; sebastien.villaume at ecmwf.int&gt; -----
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Date: Mon, 3 Apr 2017 13:56:40 +0000
+</em><br />
+<em class="quotelev1">&gt; From: Sebastien Villaume &lt;sebastien.villaume at ecmwf.int&gt; To:
+</em><br />
+<em class="quotelev1">&gt; cf-metadata at cgd.ucar.edu Subject: Re: [CF-metadata] CF compliant tripolar
+</em><br />
+<em class="quotelev1">&gt; grid representation
+</em><br />
+<em class="quotelev1">&gt; X-Mailer: Zimbra 8.6.0_GA_1200 (ZimbraWebClient - FF50
+</em><br />
+<em class="quotelev1">&gt; (Linux)/8.6.0_GA_1200)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi Mark,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree that we need to find the best way to describe these grids (with
+</em><br />
+<em class="quotelev1">&gt; the appropriate controlled metadata) and not necessarily use an existing
+</em><br />
+<em class="quotelev1">&gt; concept (crs, grid_mapping) if it does not fit the purpose and generates
+</em><br />
+<em class="quotelev1">&gt; confusion.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; These tripolar grids are tricky and I guess this is why there is no
+</em><br />
+<em class="quotelev1">&gt; standard systematic way to describe them.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Reading more on it, I realized that some of them are not always &quot;regular
+</em><br />
+<em class="quotelev1">&gt; grids&quot; (by regular I mean monotonic increase of lat and lon when increasing
+</em><br />
+<em class="quotelev1">&gt; i and j indices): it seems that some NEMO configurations reuse some of the
+</em><br />
+<em class="quotelev1">&gt; i and j indices that are over land (large parts of Asia and Africa) and
+</em><br />
+<em class="quotelev1">&gt; relocate them over specific water regions to locally increase the grid
+</em><br />
+<em class="quotelev1">&gt; resolution!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; This can be seen here: <a href="http://www.nemo-ocean.eu/">http://www.nemo-ocean.eu/</a>
+</em><br />
+<em class="quotelev1">&gt; content/download/7538/40914/file/meshmask_grid.pdf Some of these grids do
+</em><br />
+<em class="quotelev1">&gt; not have a simple analytical description since it is a composite of several
+</em><br />
+<em class="quotelev1">&gt; local descriptions. How can I then properly reference/identify them? using
+</em><br />
+<em class="quotelev1">&gt; an attribute like &quot;model_grid_mapping&quot; or &quot;model_mesh_mapping&quot; or simply
+</em><br />
+<em class="quotelev1">&gt; &quot;mesh_mapping&quot; instead of &quot;grid_mapping&quot; and points to an URN/URI?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; AMy main issue is that I can not derive directly from the metadata the
+</em><br />
+<em class="quotelev1">&gt; type of grid used. I have to plot it to know what it is and this is not
+</em><br />
+<em class="quotelev1">&gt; satisfactory.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Regardless of the preferred solution (if one exists), I would still like
+</em><br />
+<em class="quotelev1">&gt; to have a proper standard name for my 1-D mesh indices i and j.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; thanks
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dr. S?bastien Villaume
+</em><br />
+<em class="quotelev1">&gt; Analyst
+</em><br />
+<em class="quotelev1">&gt; ECMWF Shinfield Park,
+</em><br />
+<em class="quotelev1">&gt; Reading RG2 9AX, UK
+</em><br />
+<em class="quotelev1">&gt; +44 7825 521592 sebastien.villaume at ecmwf.int
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message -----
+</em><br />
+<em class="quotelev1">&gt; From: &quot;Hedley, Mark&quot; &lt;mark.hedley at metoffice.gov.uk&gt; To: &quot;Jim Biard&quot; &lt;
+</em><br />
+<em class="quotelev1">&gt; jbiard at cicsnc.org&gt; , cf-metadata at cgd.ucar.edu Sent: Monday, 3 April, 2017
+</em><br />
+<em class="quotelev1">&gt; 10:28:05
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] CF compliant tripolar grid representation
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hello All,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I'd like to pick up on an earlier comment from Jim:
+</em><br />
+<em class="quotelev1">&gt; If I'm not mistaken, we would need to propose a new grid_mapping to be
+</em><br />
+<em class="quotelev1">&gt; added to the Conventions that would define a Tripolar Coordinate Reference
+</em><br />
+<em class="quotelev1">&gt; System, along with any attributes that don't currently exist that are
+</em><br />
+<em class="quotelev1">&gt; needed to complete the definition. I did a search for a standard tripolar
+</em><br />
+<em class="quotelev1">&gt; CRS in proj4 or epsg, and was unable to find one. Is it possible to make
+</em><br />
+<em class="quotelev1">&gt; such a definition?
+</em><br />
+<em class="quotelev1">&gt; I don't think this is the correct approach
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In my opinion, the tri-polar grid is described with respect to a
+</em><br />
+<em class="quotelev1">&gt; Geographic Coordinate Reference System: typically the one used to co-locate
+</em><br />
+<em class="quotelev1">&gt; the observations for assimilation, by spatial coordinates.
+</em><br />
+<em class="quotelev1">&gt; The 'Grid' is not a projection and it is not a coordinate reference
+</em><br />
+<em class="quotelev1">&gt; system: it is the description of a model grid.
+</em><br />
+<em class="quotelev1">&gt; In data files I have seen, each spatial location is defined by a location
+</em><br />
+<em class="quotelev1">&gt; in latitude, longitude and depth, with respect to a suitable geodetic datum.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree with your more recent comment Jim:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I'm wondering if x and y have too strong an association to projected
+</em><br />
+<em class="quotelev1">&gt; coordinate
+</em><br />
+<em class="quotelev1">&gt; systems. I also like u/v, but that may be too strongly associated for some
+</em><br />
+<em class="quotelev1">&gt; people
+</em><br />
+<em class="quotelev1">&gt; with vector components (wind, for example).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think that describing grid indices should be carefully distinguished
+</em><br />
+<em class="quotelev1">&gt; from spatial coordinates. Put a different way, I don't think a grid index
+</em><br />
+<em class="quotelev1">&gt; can be georeferenceable.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think that a good deal of care not to confuse the grid indices with any
+</em><br />
+<em class="quotelev1">&gt; interpretation of 'grid_mapping' relations is required here.
+</em><br />
+<em class="quotelev1">&gt; I don't think that a CF grid mapping should be used to connect any
+</em><br />
+<em class="quotelev1">&gt; description of model index space with geographic space in these cases.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Sebastien states:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I would like to propose for addition standard names to support the mesh
+</em><br />
+<em class="quotelev1">&gt; indices/coordinates:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; &quot;mesh_grid_i/j_index&quot; suggested by Jim
+</em><br />
+<em class="quotelev1">&gt; or
+</em><br />
+<em class="quotelev1">&gt; &quot;x/y_coordinate_index&quot; suggested by Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The mixing of the terms coordinate and index gives me pause for thought.
+</em><br />
+<em class="quotelev1">&gt; What information is being encoded here?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; A key question I have is about the expectation for values of these
+</em><br />
+<em class="quotelev1">&gt; indices, under operations such as sub-setting. I have seen many files which
+</em><br />
+<em class="quotelev1">&gt; do not have coordinate variables for the x-like and y-like dimensions, the
+</em><br />
+<em class="quotelev1">&gt; only horizontal spatial metadata is contained in auxiliary coordinates.
+</em><br />
+<em class="quotelev1">&gt; Clearly I can perform index operations on these arrays, but I don't
+</em><br />
+<em class="quotelev1">&gt; consider the index values important and I don't preserve them.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Sebastien:
+</em><br />
+<em class="quotelev1">&gt; Is it the case that you would like to ensure that model index space values
+</em><br />
+<em class="quotelev1">&gt; are preserved, for example when removing a regional subset from a tri-polar
+</em><br />
+<em class="quotelev1">&gt; ocean model?
+</em><br />
+<em class="quotelev1">&gt; Would you like to be able to encode a result where it is clear that a
+</em><br />
+<em class="quotelev1">&gt; regional subset of 50 &lt;= x &lt; 150, 70 &lt;= x &lt; 120 has been taken from a
+</em><br />
+<em class="quotelev1">&gt; larger extent model?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If standard names are provided to encode such information, I would
+</em><br />
+<em class="quotelev1">&gt; advocate clear descriptive text stating that there is no mathematical
+</em><br />
+<em class="quotelev1">&gt; relationship between such index coordinates (i still don't like mixing
+</em><br />
+<em class="quotelev1">&gt; these terms) and projection coordinates or geographic coordinates
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Sebastien states:
+</em><br />
+<em class="quotelev1">&gt; I have checked both IPSL and CNRM CMIP5 datasets. It is indeed NEMO
+</em><br />
+<em class="quotelev1">&gt; datasets and it is probably a
+</em><br />
+<em class="quotelev1">&gt; ORCA tripolar grid in both cases. I write &quot;probably&quot; because it is not
+</em><br />
+<em class="quotelev1">&gt; clear and conclusive
+</em><br />
+<em class="quotelev1">&gt; without plotting the datasets: lat and lon are 2D fields, the datasets
+</em><br />
+<em class="quotelev1">&gt; define 2 extra 1D coordinates &quot;i&quot; and &quot;j&quot;
+</em><br />
+<em class="quotelev1">&gt; to be used as mesh indices (but without a proper standard name).
+</em><br />
+<em class="quotelev1">&gt; The datasets also have bounds for lat and lon, defined as &quot;lat_vertices&quot;
+</em><br />
+<em class="quotelev1">&gt; and &quot;lon_vertices&quot; which I think
+</em><br />
+<em class="quotelev1">&gt; is one solution to describe the tripolar grid. I would prefer something
+</em><br />
+<em class="quotelev1">&gt; more standardized and documented so
+</em><br />
+<em class="quotelev1">&gt; that one can quickly identify from the metadata that it is a tripolar grid
+</em><br />
+<em class="quotelev1">&gt; (defining the resolution,
+</em><br />
+<em class="quotelev1">&gt; where are the poles, how it is derived, etc.)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I appreciate the desire to have a standardised approach to defining such a
+</em><br />
+<em class="quotelev1">&gt; model grid. I would not advocate trying to use grid mapping variables
+</em><br />
+<em class="quotelev1">&gt; and relationships for this, I think this could do more harm than good.
+</em><br />
+<em class="quotelev1">&gt; I don't have a better suggestion to hand, I'm sad to say.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I am not raising principled objections to this conversation or the
+</em><br />
+<em class="quotelev1">&gt; direction of travel; I am raising waryness and caution about introducing
+</em><br />
+<em class="quotelev1">&gt; further confusion or implying stronger relationships than can be provided.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; all the best
+</em><br />
+<em class="quotelev1">&gt; mark
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; From: CF-metadata [ cf-metadata-bounces at cgd.ucar.edu ] on behalf of Jim
+</em><br />
+<em class="quotelev1">&gt; Biard [ jbiard at cicsnc.org ]
+</em><br />
+<em class="quotelev1">&gt; Sent: 31 March 2017 23:26
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu Subject: Re: [CF-metadata] CF compliant
+</em><br />
+<em class="quotelev1">&gt; tripolar grid representation
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I like the more generic x/y_coordinate_index name, but I'm wondering if x
+</em><br />
+<em class="quotelev1">&gt; and y have too strong an association to projected coordinate systems. I
+</em><br />
+<em class="quotelev1">&gt; also like u/v, but that may be too strongly associated for some people with
+</em><br />
+<em class="quotelev1">&gt; vector components (wind, for example). What do the rest of you think? Here
+</em><br />
+<em class="quotelev1">&gt; are some names that come to mind. Feel free to suggest something better!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;     * mesh_grid_i_index, mesh_grid_j_index
+</em><br />
+<em class="quotelev1">&gt;     * grid_i_index, grid_j_index
+</em><br />
+<em class="quotelev1">&gt;     * grid_i_coordinate, grid_j_coordinate
+</em><br />
+<em class="quotelev1">&gt;     * x_coordinate_index, y_coordinate_index
+</em><br />
+<em class="quotelev1">&gt;     * index_x_coordinate, index_y_coordinate (this ordering matches the
+</em><br />
+<em class="quotelev1">&gt; projection_x/y_coordinate naming)
+</em><br />
+<em class="quotelev1">&gt;     * u_coordinate, v_coordinate
+</em><br />
+<em class="quotelev1">&gt;     * i_coordinate, j_coordinate
+</em><br />
+<em class="quotelev1">&gt;     * grid_row_coordinate, grid_column_coordinate
+</em><br />
+<em class="quotelev1">&gt;     * row_coordinate, column_coordinate
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The more I look at these, the more I like the last two.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; As for a definitions, how about something like this variation on the ones
+</em><br />
+<em class="quotelev1">&gt; for the projection_x/y_coordinate?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; column_coordinate: &quot;column&quot; indicates the fastest-changing dimension of a
+</em><br />
+<em class="quotelev1">&gt; two-dimensional grid, when this is not associated with a spatial coordinate
+</em><br />
+<em class="quotelev1">&gt; dimension such as longitude or projected X, positive with increasing
+</em><br />
+<em class="quotelev1">&gt; column. The column coordinate, possibly in conjunction with the row
+</em><br />
+<em class="quotelev1">&gt; coordinate, serves as a parametric driver mapping abstract grid positions
+</em><br />
+<em class="quotelev1">&gt; to spatial coordinates such as latitude and longitude.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; row_coordinate: &quot;row&quot; indicates the the slowest-changing dimension of a
+</em><br />
+<em class="quotelev1">&gt; 2-dimensional grid, when this is not associated with a spatial coordinate
+</em><br />
+<em class="quotelev1">&gt; dimension such as latitude or projected Y, positive with increasing row.
+</em><br />
+<em class="quotelev1">&gt; The row and column coordinates serve as a parametric driver mapping
+</em><br />
+<em class="quotelev1">&gt; abstract grid positions to spatial coordinates such as latitude and
+</em><br />
+<em class="quotelev1">&gt; longitude. Grace and peace,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jim
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 3/31/17 5:37 PM, Sebastien Villaume wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I have checked both IPSL and CNRM CMIP5 datasets. It is indeed NEMO
+</em><br />
+<em class="quotelev1">&gt; datasets and it is probably a ORCA tripolar grid in both cases. I write
+</em><br />
+<em class="quotelev1">&gt; &quot;probably&quot; because it is not clear and conclusive without plotting the
+</em><br />
+<em class="quotelev1">&gt; datasets: lat and lon are 2D fields, the datasets define 2 extra 1D
+</em><br />
+<em class="quotelev1">&gt; coordinates &quot;i&quot; and &quot;j&quot; to be used as mesh indices (but without a proper
+</em><br />
+<em class="quotelev1">&gt; standard name). The datasets also have bounds for lat and lon, defined as
+</em><br />
+<em class="quotelev1">&gt; &quot;lat_vertices&quot; and &quot;lon_vertices&quot; which I think is one solution to describe
+</em><br />
+<em class="quotelev1">&gt; the tripolar grid. I would prefer something more standardized and
+</em><br />
+<em class="quotelev1">&gt; documented so that one can quickly identify from the metadata that it is a
+</em><br />
+<em class="quotelev1">&gt; tripolar grid (defining the resolution, where are the poles, how it is
+</em><br />
+<em class="quotelev1">&gt; derived, etc.)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I would like to propose for addition standard names to support the mesh
+</em><br />
+<em class="quotelev1">&gt; indices/coordinates:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; &quot;mesh_grid_i/j_index&quot; suggested by Jim
+</em><br />
+<em class="quotelev1">&gt; or
+</em><br />
+<em class="quotelev1">&gt; &quot;x/y_coordinate_index&quot; suggested by Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I let the experts in standard names decide which pair suits best the
+</em><br />
+<em class="quotelev1">&gt; present case.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Regarding tripolar grids characteristics, I did some research and came to
+</em><br />
+<em class="quotelev1">&gt; the conclusion that &quot;Murray tripolar grids&quot; are not identical to &quot;ORCA/NEMO
+</em><br />
+<em class="quotelev1">&gt; tripolar grids&quot;. This is true even without considering characteristics like
+</em><br />
+<em class="quotelev1">&gt; the grid resolution, the location of the poles or where the latitude
+</em><br />
+<em class="quotelev1">&gt; boundary is placed between the modified and unmodified parts.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The Murray tripolar grid (used by GFDL) has its &quot;north&quot; poles on the
+</em><br />
+<em class="quotelev1">&gt; boundary as shown here: <a href="https://www.gfdl.noaa.gov/wp">https://www.gfdl.noaa.gov/wp</a>-
+</em><br />
+<em class="quotelev1">&gt; content/uploads/pix/user_images/mw/bipolar.gif The ORCA/NEMO tripolar
+</em><br />
+<em class="quotelev1">&gt; grids have the &quot;north&quot; poles within the modified regions but not on the
+</em><br />
+<em class="quotelev1">&gt; boundary as shown in my original post: <a href="http://www.geomar.de/">http://www.geomar.de/</a>
+</em><br />
+<em class="quotelev1">&gt; typo3temp/pics/globe_grid2_14_b8edb639ae.png This complicates things...
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dr. S?bastien Villaume
+</em><br />
+<em class="quotelev1">&gt; Analyst
+</em><br />
+<em class="quotelev1">&gt; ECMWF Shinfield Park,
+</em><br />
+<em class="quotelev1">&gt; Reading RG2 9AX, UK
+</em><br />
+<em class="quotelev1">&gt; +44 7825 521592 sebastien.villaume at ecmwf.int
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message -----
+</em><br />
+<em class="quotelev1">&gt; From: &quot;James Orr&quot; &lt;James.Orr at lsce.ipsl.fr&gt; To: &quot;Karl Taylor&quot; &lt;
+</em><br />
+<em class="quotelev1">&gt; taylor13 at llnl.gov&gt; Cc: cf-metadata at cgd.ucar.edu Sent: Thursday, 30 March,
+</em><br />
+<em class="quotelev1">&gt; 2017 23:01:54
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] CF compliant tripolar grid representation
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The IPSL and CNRM cimate models that participated in CMIP5 both used the
+</em><br />
+<em class="quotelev1">&gt; NEMO
+</em><br />
+<em class="quotelev1">&gt; model (ORCA2 and ORCA1 configurations) with tripolar grids.  Both provided
+</em><br />
+<em class="quotelev1">&gt; output the was CF compliant.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; James
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On Thu, 30 Mar 2017, Karl Taylor wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi Sebastien,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; More than one group stored output on a tripolar grid in CMIP5.  I'm pretty
+</em><br />
+<em class="quotelev1">&gt; sure they did it in a CF-conforming way.  I know at least some of the GFDL
+</em><br />
+<em class="quotelev1">&gt; model output was reported on a tripolar grid, as described at
+</em><br />
+<em class="quotelev1">&gt; <a href="http://nomads.gfdl.noaa.gov/CM2.X/oceangrid.html">http://nomads.gfdl.noaa.gov/CM2.X/oceangrid.html</a> (or search on &quot;tripolar
+</em><br />
+<em class="quotelev1">&gt; grid&quot; for additional links).  You could look to their example, and see if
+</em><br />
+<em class="quotelev1">&gt; you
+</em><br />
+<em class="quotelev1">&gt; think it is done correctly.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I don't think extensions or modifications to CF are needed for tripolar
+</em><br />
+<em class="quotelev1">&gt; grids.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; best regards,
+</em><br />
+<em class="quotelev1">&gt; Karl
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 3/30/17 9:42 AM, Jim Biard wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; S?bastien,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If I'm not mistaken, we would need to propose a new grid_mapping to be
+</em><br />
+<em class="quotelev1">&gt; added to the Conventions that would define a Tripolar Coordinate Reference
+</em><br />
+<em class="quotelev1">&gt; System, along with any attributes that don't currently exist that are
+</em><br />
+<em class="quotelev1">&gt; needed to complete the definition. I did a search for a standard tripolar
+</em><br />
+<em class="quotelev1">&gt; CRS in proj4 or epsg, and was unable to find one. Is it possible to make
+</em><br />
+<em class="quotelev1">&gt; such a definition?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Regarding the standard names for your X and Y coordinate variables, I think
+</em><br />
+<em class="quotelev1">&gt; you could use &quot;projection_x/y_coordinate&quot; once a grid_mapping has been
+</em><br />
+<em class="quotelev1">&gt; defined. Of course you could always leave the attribute off, since a
+</em><br />
+<em class="quotelev1">&gt; standard_name attribute is not a requirement.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If making a new grid_mapping is not feasible, you could request standard
+</em><br />
+<em class="quotelev1">&gt; names along the lines of mesh_grid_i_index and mesh_grid_j_index. These
+</em><br />
+<em class="quotelev1">&gt; standard names would (on reading their definitions) make it clear that the
+</em><br />
+<em class="quotelev1">&gt; measurements are on a mesh grid for which there is no CRS. At least that's
+</em><br />
+<em class="quotelev1">&gt; what comes to mind at the moment.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Grace and peace,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jim
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 3/30/17 11:52 AM, Sebastien Villaume wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hello all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I am looking for the best approach to describe in a CF compliant way the
+</em><br />
+<em class="quotelev1">&gt; tripolar grids usually used in NEMO configurations.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Basically, the difference with a usual bipolar grid (north pole-south
+</em><br />
+<em class="quotelev1">&gt; pole) is that the north pole is split into 2 poles moved over Canada and
+</em><br />
+<em class="quotelev1">&gt; Russia (to have distortions/singularities not over the ocean). A good
+</em><br />
+<em class="quotelev1">&gt; visual representation can be found here: <a href="http://www.geomar.de/">http://www.geomar.de/</a>
+</em><br />
+<em class="quotelev1">&gt; typo3temp/pics/globe_grid2_14_b8edb639ae.png everything south of the
+</em><br />
+<em class="quotelev1">&gt; green line (40degN) is identical to a regular
+</em><br />
+<em class="quotelev1">&gt; grid, but everything north of it is computed using a technique described
+</em><br />
+<em class="quotelev1">&gt; here:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Madec, G. and M. Imbard, 1996 : A global ocean mesh to overcome the north
+</em><br />
+<em class="quotelev1">&gt; pole singularity. Clim. Dyn., 12, 381?388.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The usual NEMO output of the grid looks like this:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      float longitude(y, x) ;
+</em><br />
+<em class="quotelev1">&gt;          longitude:standard_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          longitude:units = &quot;degrees_east&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          longitude:long_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;      float latitude(y, x) ;
+</em><br />
+<em class="quotelev1">&gt;          latitude:standard_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          latitude:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          latitude:long_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Basically both latitudes and longitudes need to be specified for each grid
+</em><br />
+<em class="quotelev1">&gt; point, hence lat and lon are 2D arrays. This is not a problem itself but I
+</em><br />
+<em class="quotelev1">&gt; would like to give more information through maybe grid_mapping or crs so
+</em><br />
+<em class="quotelev1">&gt; it is clear that the grid is tripolar. This is useful information if one
+</em><br />
+<em class="quotelev1">&gt; want to project/interpolate this back to a more regular representation.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Looking at the CF conventions, I can see that grids can be fairly nicely
+</em><br />
+<em class="quotelev1">&gt; documented but nothing for tripolar grids.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Is there some documentation/guidelines on how to derive a proper
+</em><br />
+<em class="quotelev1">&gt; grid_mapping/crs with valid attributes for tripolar grids?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I would also like to add to my netcdf file a way to better describe axes:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      double y(y) ;
+</em><br />
+<em class="quotelev1">&gt;          y:units = &quot;1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          y:long_name = &quot;j-index of mesh grid&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          y:standard_name = ??? ;
+</em><br />
+<em class="quotelev1">&gt;      double x(x) ;
+</em><br />
+<em class="quotelev1">&gt;          x:units = &quot;1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          x:long_name = &quot;i-index of mesh grid&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          x:standard_name = ??? ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; what would be the standard name of these?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dr. S?bastien Villaume
+</em><br />
+<em class="quotelev1">&gt; Analyst
+</em><br />
+<em class="quotelev1">&gt; ECMWF Shinfield Park,
+</em><br />
+<em class="quotelev1">&gt; Reading RG2 9AX, UK
+</em><br />
+<em class="quotelev1">&gt; +44 7825 521592 sebastien.villaume at ecmwf.int
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> --
+</em><br />
+<em class="quotelev1">&gt; CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+</em><br />
+<em class="quotelev1">&gt; Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; *Jim Biard*
+</em><br />
+<em class="quotelev1">&gt; *Research Scholar*
+</em><br />
+<em class="quotelev1">&gt; Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt; NOAA National Centers
+</em><br />
+<em class="quotelev1">&gt; for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt; /formerly NOAA?s
+</em><br />
+<em class="quotelev1">&gt; National Climatic Data Center/
+</em><br />
+<em class="quotelev1">&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev1">&gt; e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt; o: +1 828 271 4900
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; /Connect with us on Facebook for climate &lt;<a href="https://www.facebook.com/">https://www.facebook.com/</a>
+</em><br />
+<em class="quotelev1">&gt; NOAANCEIclimate&gt; and ocean and geophysics &lt;<a href="https://www.facebook.com/">https://www.facebook.com/</a>
+</em><br />
+<em class="quotelev1">&gt; NOAANCEIoceangeo&gt; information, and follow us on
+</em><br />
+<em class="quotelev1">&gt; Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and
+</em><br />
+<em class="quotelev1">&gt; _at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt; . /
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> --
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;         Visit us on
+</em><br />
+<em class="quotelev1">&gt; Facebook        Jim Biard
+</em><br />
+<em class="quotelev1">&gt; Research Scholar
+</em><br />
+<em class="quotelev1">&gt; Cooperative Institute for Climate and Satellites NC
+</em><br />
+<em class="quotelev1">&gt; North Carolina State University
+</em><br />
+<em class="quotelev1">&gt; NOAA National Centers for Environmental Information
+</em><br />
+<em class="quotelev1">&gt; formerly NOAA?s National Climatic Data Center
+</em><br />
+<em class="quotelev1">&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev1">&gt; e: jbiard at cicsnc.org o: +1 828 271 4900
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Connect with us on Facebook for climate and ocean and geophysics
+</em><br />
+<em class="quotelev1">&gt; information, and follow us on Twitter at _at_NOAANCEIclimate and
+</em><br />
+<em class="quotelev1">&gt; _at_NOAANCEIocngeo .
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;         Visit us on
+</em><br />
+<em class="quotelev1">&gt; Facebook        Jim Biard
+</em><br />
+<em class="quotelev1">&gt; Research Scholar
+</em><br />
+<em class="quotelev1">&gt; Cooperative Institute for Climate and Satellites NC
+</em><br />
+<em class="quotelev1">&gt; North Carolina State University
+</em><br />
+<em class="quotelev1">&gt; NOAA National Centers for Environmental Information
+</em><br />
+<em class="quotelev1">&gt; formerly NOAA?s National Climatic Data Center
+</em><br />
+<em class="quotelev1">&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev1">&gt; e: jbiard at cicsnc.org
+</em><br />
+<em class="quotelev1">&gt; o: +1 828 271 4900
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Connect with us on Facebook for climate and ocean and geophysics
+</em><br />
+<em class="quotelev1">&gt; information, and follow us on Twitter at _at_NOAANCEIclimate and
+</em><br />
+<em class="quotelev1">&gt; _at_NOAANCEIocngeo .
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><pre>
+-- 
+David Hassell
+National Centre for Atmospheric Science
+Department of Meteorology, University of Reading,
+Earley Gate, PO Box 243, Reading RG6 6BB
+Tel: +44 118 378 5613
+<a href="http://www.met.reading.ac.uk/">http://www.met.reading.ac.uk/</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Apr 05 2017 - 07:01:05 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8221">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8222.html" title="Next message in the list">B&#0228;rring Lars: "[CF-metadata] Recording &#0034;day of year on which something happens&#0034;"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8220.html" title="Previous message in the list">B&#0228;rring Lars: "[CF-metadata] Overstated restriction on references to external variables in version 1.7"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8221" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8221" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8221" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8221" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:12 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8220.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8222.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

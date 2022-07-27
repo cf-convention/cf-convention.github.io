@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Question on WKT representation of CRS from TOYODA Eizi on 2011-10-07 (cf-metadata-mailman)</title>
+<meta name="Author" content="TOYODA Eizi (toyoda)" />
+<meta name="Subject" content="[CF-metadata] Question on WKT representation of CRS" />
+<meta name="Date" content="2011-10-07" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3835.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3837.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Question on WKT representation of CRS</h1>
+<!-- received="Fri Oct  7 02:50:53 2011" -->
+<!-- isoreceived="20111007015053" -->
+<!-- sent="Fri, 7 Oct 2011 17:50:53 +0900" -->
+<!-- isosent="20111007085053" -->
+<!-- name="TOYODA Eizi" -->
+<!-- email="toyoda" -->
+<!-- subject="[CF-metadata] Question on WKT representation of CRS" -->
+<!-- id="0B343B627BE94A929A274FE923DB3154_at_met.kishou.go.jp" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4E8DCCE1.7060003&#64;met.no" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3836" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3837.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">Next message</a> ]
+[ <a href="./3835.html" title="Seth McGinnis: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3838.html" accesskey="t" title="Upendra Dadi: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3836" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3836" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3836" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3836" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: TOYODA Eizi &lt;<a href="mailto:toyoda?Subject=Re%3A%20%5BCF-metadata%5D%20Question%20on%20WKT%20representation%20of%20CRS">toyoda</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 7 Oct 2011 17:50:53 +0900</span><br />
+</address>
+<br />
+Dear Heiko,
+<br />
+<br />I'm afraid I don't think the datum shift is something we can self-describe 
+<br />
+in ~ 1 m precision by a handy set of numeric parameters.  It's more messsy 
+<br />
+thing that must be first named, not described.
+<br />
+<br />Not knowing much about Norway (sorry), please find the datum shift (relative 
+<br />
+to that of Tokyo) between Tokyo datum and WGS84 is illustrated in 
+<br />
+URL:<a href="http://www.gsi.go.jp/common/000012836.gif">http://www.gsi.go.jp/common/000012836.gif</a> for example.  It's not simple 
+<br />
+mathematical translation or rotation.  Random bias is found in some regions, 
+<br />
+due to distortion of triangulation network in pre-satellite/computer era and 
+<br />
+sometimes actual crustal movemnents.  Datum shift is actually correction of 
+<br />
+such distortions.
+<br />
+<br />So it is essential to name it, such as NAD27, Tokyo, or OSGB1936.  When it 
+<br />
+is identified by name (or better by EPSG code), user can choose db-based 
+<br />
+conversion or approximation by TOWGS84.  If we have only seven numeric 
+<br />
+parameters, it is hard to guess original name, and that is often 
+<br />
+insufficient for even ~ 10 m precision.
+<br />
+<br />Examples for those who prefer code to lengthy text:
+<br />
+<br />// 1. identification (essential)
+<br />
+// (1) best  (concise, extendable, enough computer-readable)
+<br />
+&nbsp;&nbsp;grid:datum = &quot;EPSG:4277&quot;;
+<br />
+<br />// (2) better  (what if other registry gets popular?)
+<br />
+&nbsp;&nbsp;grid:datum_epsg_code = 4277;
+<br />
+<br />// (3) hmm  (some people love that, but I don't know the use of lengthy 
+<br />
+prefix)
+<br />
+&nbsp;&nbsp;grid:datum = &quot;urn:ogc:def:datum:EPSG::4277&quot;
+<br />
+<br />// (4) worse:  having concern of space-or-hyphen &amp; upper-and-lowercase 
+<br />
+problems
+<br />
+&nbsp;&nbsp;grid:datum = &quot;Tokyo Datum&quot;;
+<br />
+<br />// (5) worst
+<br />
+&nbsp;&nbsp;grid:datum = &quot;DATUM[\&quot;OSGB_1936\&quot;, SPHEROID[\&quot;Airy 
+<br />
+1830\&quot;,6377563.396,299.3249646,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7001\&quot;]],TOWGS84[375,-111,431,0,0,0,0], 
+<br />
+AUTHORITY[\&quot;EPSG\&quot;,\&quot;6277\&quot;]]&quot;;
+<br />
+<br /><br />// 2. approximate self-description (optional)
+<br />
+&nbsp;&nbsp;grid:to_wgs84 = 375.,-111.,431.,0.,0.,0.,0.;
+<br />
+<br />Regards,
+<br />
+Eizi
+<br />
+<br />----- Original Message ----- 
+<br />
+From: &quot;Heiko Klein&quot; &lt;Heiko.Klein at met.no&gt;
+<br />
+To: &quot;Jonathan Gregory&quot; &lt;j.m.gregory at reading.ac.uk&gt;
+<br />
+Cc: &lt;cf-metadata at cgd.ucar.edu&gt;
+<br />
+Sent: Friday, October 07, 2011 12:44 AM
+<br />
+Subject: Re: [CF-metadata] Question on WKT representation of CRS
+<br />
+<br /><br /><em class="quotelev1">&gt; Hi,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think the CF-approach of being self-explanatory rather than to rely on 
+</em><br />
+<em class="quotelev1">&gt; external tables/database has worked very well so far. If I understand this 
+</em><br />
+<em class="quotelev1">&gt; thread correctly, the question is how to describe a CRS.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I would rather like to turn this argument around and ask: How to describe 
+</em><br />
+<em class="quotelev1">&gt; a CRS to get an accuracy of ~1m? Below 1m, I think even the WKT parameters 
+</em><br />
+<em class="quotelev1">&gt; are not enough since then, conversion algorithms play a role.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In a lot WKT examples, the additional information to what is available in 
+</em><br />
+<em class="quotelev1">&gt; CF are the TOWGS84 parameters like in the example at 
+</em><br />
+<em class="quotelev1">&gt; <a href="http://spatialreference.org/ref/epsg/7405/prettywkt/">http://spatialreference.org/ref/epsg/7405/prettywkt/</a> I guess, it would be 
+</em><br />
+<em class="quotelev1">&gt; quite easy to add those to CF.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There exist also special 'grid-shift' files, in particular for the NAD* 
+</em><br />
+<em class="quotelev1">&gt; datums. If or how to add those in a meaningful way to CF, I don't know.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Those are the only two parameter-sets used by many open source GIS 
+</em><br />
+<em class="quotelev1">&gt; software for datum-shifts. (grass, postgis)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Additional EPSG codes might be a nice addition for interoperability or 
+</em><br />
+<em class="quotelev1">&gt; reference.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best regards,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Heiko
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 2011-10-06 15:25, Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear all
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I agree with Seth and Bryan in the point made earlier by Balaji that 
+</em><br />
+<em class="quotelev2">&gt;&gt; model
+</em><br />
+<em class="quotelev2">&gt;&gt; datasets may not truly correspond to any real-world CRS. But for 
+</em><br />
+<em class="quotelev2">&gt;&gt; observational
+</em><br />
+<em class="quotelev2">&gt;&gt; datasets and model datasets where applicable, we should provide the 
+</em><br />
+<em class="quotelev2">&gt;&gt; optional
+</em><br />
+<em class="quotelev2">&gt;&gt; facility to be more precise, as Bruce says.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I think this is opaque:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; GEOGCS[&quot;WGS 84&quot;,
+</em><br />
+<em class="quotelev2">&gt;&gt;      DATUM[&quot;WGS_1984&quot;,
+</em><br />
+<em class="quotelev2">&gt;&gt;          SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,
+</em><br />
+<em class="quotelev2">&gt;&gt;              AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
+</em><br />
+<em class="quotelev2">&gt;&gt;          AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
+</em><br />
+<em class="quotelev2">&gt;&gt;      PRIMEM[&quot;Greenwich&quot;,0,
+</em><br />
+<em class="quotelev2">&gt;&gt;          AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
+</em><br />
+<em class="quotelev2">&gt;&gt;      UNIT[&quot;degree&quot;,0.01745329251994328,
+</em><br />
+<em class="quotelev2">&gt;&gt;          AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],
+</em><br />
+<em class="quotelev2">&gt;&gt;      AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; because the terms it in are not spelled out sufficiently for me to know 
+</em><br />
+<em class="quotelev2">&gt;&gt; what
+</em><br />
+<em class="quotelev2">&gt;&gt; they mean. It is human-readable, indeed, but not self-explanatory. I am 
+</em><br />
+<em class="quotelev2">&gt;&gt; very
+</em><br />
+<em class="quotelev2">&gt;&gt; concerned that we should not import metadata wholesale without being 
+</em><br />
+<em class="quotelev2">&gt;&gt; clear
+</em><br />
+<em class="quotelev2">&gt;&gt; about how it relates to the rest of CF metadata. Hence I would prefer an
+</em><br />
+<em class="quotelev2">&gt;&gt; incremental addition to the existing facilities of grid_mapping, which I 
+</em><br />
+<em class="quotelev2">&gt;&gt; think
+</em><br />
+<em class="quotelev2">&gt;&gt; is what Eizi suggests. Can we identify some specific extensions which 
+</em><br />
+<em class="quotelev2">&gt;&gt; people
+</em><br />
+<em class="quotelev2">&gt;&gt; need to be made?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; The use of EPSG codes would be non-self-describing, but we could provide 
+</em><br />
+<em class="quotelev2">&gt;&gt; both
+</em><br />
+<em class="quotelev2">&gt;&gt; EPSG code and grid_mapping. In that case it would be good to be able to 
+</em><br />
+<em class="quotelev2">&gt;&gt; verify
+</em><br />
+<em class="quotelev2">&gt;&gt; they were consistent. That would require an online EPSG database that 
+</em><br />
+<em class="quotelev2">&gt;&gt; could be
+</em><br />
+<em class="quotelev2">&gt;&gt; used by the CF checker, and some work by someone to establish the
+</em><br />
+<em class="quotelev2">&gt;&gt; correspondence between EPSG terms and CF metadata.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Best wishes
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> 
+</em><br />
+<span id="received"><dfn>Received on</dfn> Fri Oct 07 2011 - 02:50:53 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3836">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3837.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3835.html" title="Previous message in the list">Seth McGinnis: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3838.html" title="Next message in this discussion thread">Upendra Dadi: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3838.html" title="Message sent in reply to this message">Upendra Dadi: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<li><dfn>Reply</dfn>: <a href="./3842.html" title="Message sent in reply to this message">Heiko Klein: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3836" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3836" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3836" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3836" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3835.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3837.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

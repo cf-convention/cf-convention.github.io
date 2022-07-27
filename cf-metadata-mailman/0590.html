@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] COARDS name for a time offset from Ed Armstrong on 2006-12-18 (cf-metadata-mailman)</title>
+<meta name="Author" content="Ed Armstrong (earmstro)" />
+<meta name="Subject" content="[CF-metadata] COARDS name for a time offset" />
+<meta name="Date" content="2006-12-18" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0589.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0591.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] COARDS name for a time offset</h1>
+<!-- received="Mon Dec 18 11:49:10 2006" -->
+<!-- isoreceived="20061218114910" -->
+<!-- sent="Mon, 18 Dec 2006 10:49:10 -0800" -->
+<!-- isosent="20061218184910" -->
+<!-- name="Ed Armstrong" -->
+<!-- email="earmstro" -->
+<!-- subject="[CF-metadata] COARDS name for a time offset" -->
+<!-- id="p06230900c1ac8df057e7_at_[137.79.160.238]" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start590" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0591.html" accesskey="d" title="Steve Hankin: &quot;[CF-metadata] Getting back to ensembles&quot;">Next message</a> ]
+[ <a href="./0589.html" title="Jonathan Gregory: &quot;[CF-metadata] new standard names -&#0062; cell metrics&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg590" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg590" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg590" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg590" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Ed Armstrong &lt;<a href="mailto:earmstro?Subject=Re%3A%20%5BCF-metadata%5D%20COARDS%20name%20for%20a%20time%20offset">earmstro</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 18 Dec 2006 10:49:10 -0800</span><br />
+</address>
+<br />
+Hi CF folks,
+<br />
+<br />I would like some advice from your group on a name for a COARDS 
+<br />
+metadata atttribute to describe a time offset for a field.
+<br />
+<br />First off, I  represent the data management side  of GHRSST: 
+<br />
+<a href="http://www.ghrsst-pp.org">http://www.ghrsst-pp.org</a>,  which has adopted netCDF and the CF format 
+<br />
+for all our sea surface temperature satellite products.
+<br />
+<br />The problem is straightforward.  In all files we represent time of 
+<br />
+the satellite observations of SST as the following field:
+<br />
+<br />int time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:long_name = &quot;reference time of sst file&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;seconds since 1981-01-01 00:00:00&quot; ;
+<br />
+<br />however, within our files we have many other observations or model 
+<br />
+predictions of other fields (observed or predicted at different 
+<br />
+times) and we would like to propose something like a 
+<br />
+&quot;offset_from_time&quot; field that represents the time difference in 
+<br />
+seconds from &quot;time&quot; above.  An example might be :
+<br />
+<br /><br />&nbsp;&nbsp;byte wind_speed(time, nj, ni) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:long_name = &quot;wind speed&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:units = &quot;m s-1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:_FillValue = -128b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:add_offset = 0.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:scale_factor = 1.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:valid_min = -127b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:valid_max = 127b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:coordinates = &quot;lon lat&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed: offset_from_time = 3600s
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:offset_from_time_units: &quot;seconds&quot;
+<br />
+<br />Looking over the COARDS/CF documentation I found on the web, I could 
+<br />
+not find anything that describes what I would like to do. What I have 
+<br />
+proposed..... does it sound reasonable or have I overlooked existing 
+<br />
+COARDS metadata attributes that would fufill our needs ???
+<br />
+<br />Any advice appreciated
+<br />
+<br /><br /><br /><pre>
+-- 
+    ~ed
+Edward M. Armstrong
+Physical Oceanography DAAC		Tel: 818 393-6710
+Jet Propulsion Laboratory		Fax: 818 393-2710
+	edward.armstrong at jpl.nasa.gov
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Dec 18 2006 - 11:49:10 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start590">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0591.html" title="Next message in the list">Steve Hankin: "[CF-metadata] Getting back to ensembles"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0589.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] new standard names -&#0062; cell metrics"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg590" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg590" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg590" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg590" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0589.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0591.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

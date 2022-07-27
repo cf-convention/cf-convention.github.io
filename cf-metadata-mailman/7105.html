@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Ben Hetland on 2015-06-10 (cf-metadata-mailman)</title>
+<meta name="Author" content="Ben Hetland (Ben.A.Hetland)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-06-10" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7104.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7106.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Wed Jun 10 16:40:13 2015" -->
+<!-- isoreceived="20150610154013" -->
+<!-- sent="Wed, 10 Jun 2015 22:40:13 +0000" -->
+<!-- isosent="20150610224013" -->
+<!-- name="Ben Hetland" -->
+<!-- email="Ben.A.Hetland" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="C691EC42-9AC8-44A3-993A-DEF0D8A713EC_at_sintef.no" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="557867FD.9010900_at_cicsnc.org" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7105" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7106.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./7104.html" title="Chris Barker: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+[ <a href="./7103.html" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7106.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7105" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7105" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7105" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7105" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Ben Hetland &lt;<a href="mailto:Ben.A.Hetland?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">Ben.A.Hetland</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 10 Jun 2015 22:40:13 +0000</span><br />
+</address>
+<br />
+Jim,
+<br />
+<br />You wrote:
+<br />
+<em class="quotelev1">&gt; As a data consumer, all I have to do is convert the reference time from the stated calendar to my desired calender, then use that as the basis for producing timestamps from the elapsed times in the variable (using the correct set of time functions, of course). Expressing the elapsed times as timestamps in one calendar and then converting those timestamps to another is another way that you could do it, but one which adds unneeded steps. I don't see any reason to assume that data consumers would work in one particular way.
+</em><br />
+<br />Suppose then, for the sake of argument and since somebody already introduced the concept of a 360-day model calendar, that I have this model that produces data in &quot;days&quot; since 2012-01-01 of this simplified calendar (where every month also has 30 days). For my convenience as the data producer I then indicate that kind of calendar in the NetCDF, and &quot;days since&quot; makes sense because that is also my internal time axis coordinates. The dates can perhaps be interpreted such that they are just to be roughly the same date in the Gregorian calendar. So when I get to 2013-01-01 in my model I just store the time as 360.0 &quot;days&quot;.
+<br />
+<br />Turning to the consumer side, it might be simple in my own little viewer tool that just uses the &quot;simplistic&quot; calendar calculations to show monthly values as, say, 2012/dec and 2013/jan for the 330 and 360 day entries respectively. However, another reader might have implemented more accurate calendar support, and it correctly converts the ref. timestamp from 360-d into gregorian. If the reader now gives no further thought to just that peculiar &quot;days&quot; unit, but just adds the day counts on the Gregorian timescale, then the aforementioned two data values will end up at 2012/nov and 2012/dec instead.
+<br />
+<br />OK, so if it was a bad idea to do it that way, should the reader just scale the time values by eg. (365.2425/360.0)? Still my 360-value would become 2012-12-31T05:49 because it was a leap year. Still other conversions could be weird if we have models where every .0 time is at midnight and the .5 fractions are at noon, because now they will just end up at all times of day on the Gregorian scale...
+<br />
+<br />The core of the problem here, as with the leap seconds, is that either the length of the units are not the same in all reference systems (such as the days vs months vs year above), or they are not really constant or have discontinuies across two reference systems (here: the calendars). The latter has already been well illustrated in this discussion thread regarding the leap seconds, I think, so further elaborations appear unnecessary.
+<br />
+<br /><br /><em class="quotelev1">&gt; The reference timestamp in the units attribute is what anchors the     elapsed time values into history.
+</em><br />
+<br />Yes.
+<br />
+<br /><br /><em class="quotelev1">&gt; That's all that is needed.
+</em><br />
+<br />Only if the &quot;units&quot; are well-defined (see above), which unfortunately in the case of calendars seems not to be the case.
+<br />
+<br /><br /><em class="quotelev1">&gt; If you modify a time variable by giving the calendar attribute a new value and changing the timestamp in the units attribute from the original calendar to the new calendar, the contents of the altered time variable will still refer to the same points in history.
+</em><br />
+<br />Not if it had been converted into &quot;elapsed time&quot; using the inherent assumptions tied with one calendar system, and then we use different assumptions from the new calendar system to back-convert into a timestamp. Again a &quot;hidden&quot; scaling/ modification happens when switching the &quot;system&quot;. I suppose other things than time/calendar are affected by this too, like monetary values involving two or more currencies for instance. (&quot;Which reference rate.&quot;)
+<br />
+<br /><pre>
+-- 
+-+-Ben-+-
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: CicsLogoTiny.png
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150610/f3db368d/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150610/f3db368d/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Jun 10 2015 - 16:40:13 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7105">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7106.html" title="Next message in the list">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7104.html" title="Previous message in the list">Chris Barker: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7103.html" title="Message to which this message replies">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7106.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7106.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7105" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7105" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7105" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7105" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:56 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7104.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7106.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

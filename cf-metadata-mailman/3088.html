@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF feature types and definitions from Rich Signell on 2010-12-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Rich Signell (rsignell)" />
+<meta name="Subject" content="[CF-metadata] CF feature types and definitions" />
+<meta name="Date" content="2010-12-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3087.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3089.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF feature types and definitions</h1>
+<!-- received="Thu Dec 30 05:39:03 2010" -->
+<!-- isoreceived="20101230053903" -->
+<!-- sent="Thu, 30 Dec 2010 07:39:03 -0500" -->
+<!-- isosent="20101230123903" -->
+<!-- name="Rich Signell" -->
+<!-- email="rsignell" -->
+<!-- subject="[CF-metadata] CF feature types and definitions" -->
+<!-- id="AANLkTinK=k_SECX1R-Zy2Armw-qcdpHm3AJ34X-sPEXR_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="40829B0E077C1145A6DE44D39B3830A91FF2226AD8_at_nerckwmb1.ad.nerc.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3088" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3089.html" accesskey="d" title="Rich Signell: &quot;[CF-metadata] CF feature types and definitions&quot;">Next message</a> ]
+[ <a href="./3087.html" title="Lowry, Roy K.: &quot;[CF-metadata] CF feature types and definitions&quot;">Previous message</a> ]
+[ <a href="./3087.html" title="Lowry, Roy K.: &quot;[CF-metadata] CF feature types and definitions&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3089.html" accesskey="t" title="Rich Signell: &quot;[CF-metadata] CF feature types and definitions&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3088" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3088" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3088" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3088" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Rich Signell &lt;<a href="mailto:rsignell?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20feature%20types%20and%20definitions">rsignell</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 30 Dec 2010 07:39:03 -0500</span><br />
+</address>
+<br />
+Roy, Nan &amp; CF-ers,
+<br />
+<br />I imagine Nan would be okay with her ADCP currents to be type
+<br />
+&quot;timeSeriesProfile&quot; as long as:
+<br />
+1)  both &quot;timeSeriesProfile&quot;  and &quot;timeSeries&quot; featureTypes can exist
+<br />
+in the same dataset.  (as Roy points out)
+<br />
+2)  she had a function to extract a featureType &quot;timeSeries&quot; from a
+<br />
+featureType &quot;timeSeriesProfile&quot;.
+<br />
+3)  the extraction process (2) does not cause a noticable slowdown in
+<br />
+her workflow
+<br />
+<br />In the past, we have stored both ADCP currents (time,depth) and
+<br />
+temperature (time) as degenerate &quot;grid&quot; featureTypes
+<br />
+V(time,depth,lat,lon) and T(time,lat,lon) with time being the slowest
+<br />
+varying dimension.    Thus extraction of time series at different ADCP
+<br />
+bins (depths), the most common operation by far, is efficient and
+<br />
+fast.
+<br />
+<br />If storing as  &quot;timeSeriesProfile&quot; means that the outer (slowest
+<br />
+varying) dimension becomes depth instead of time, and that slows down
+<br />
+the extraction of time series data a specified depths, that could be
+<br />
+hard sell indeed (as Nan points out).
+<br />
+<br />-Rich
+<br />
+<br />On Wed, Dec 29, 2010 at 5:13 PM, Lowry, Roy K. &lt;rkl at bodc.ac.uk&gt; wrote:
+<br />
+<em class="quotelev1">&gt; Hi Nan,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Let's consider how you're moored instrument data are mapped into NetCDF. ?If a given parameter is stored as a 2-D array with time as one dimension and instrument depth as the other then I would describe the data in that array as a 'profile series'. ? If they are stored as a set of 1-D vectors against a common time channel, then I would call them a 'time series'. ?It is perfectly possible to have a mixture of 'profile series' and 'time series' in a single file - such as 2-D current arrays and 1-D water temperature from an ADCP.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; So far I have considered the feature type as a property of individual variables, not the file as a whole. ?Is this the CF intention (it's been a long time since I read the proposal)? ?If so, I can't see Nan's problem. However, I think she is talking about file-level feature types, which we also need in our system to drive visualisation software. What I've done is to define our 'profile series' equivalent as a file containing one or more 2D arrays (plotted as contoured parameters) with zero or more 1D vectors (plotted as time series plots stacked with the contour plots on a common time x-axis). ?Our 'time series' is defined as one or more 1D vectors that are plotted as a stacked time series plot. In our working practice, these come from a single instrument, but providing all instruments have a common time channel this doesn't have to be so. Consequently, 'profile series' and 'time series' work for me as all I want to do is plot the data as discrete variables.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; However, Nan, I'm guessing that you have other use cases. ?It would be helpful for my understanding of what you need if you could give examples of the variables that would be in your files and the information that you expect to obtain from the file feature type. This should help clarify ?any extensions required to the feature type vocabulary.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers, Roy.
+</em><br />
+<em class="quotelev1">&gt; ________________________________________
+</em><br />
+<em class="quotelev1">&gt; From: cf-metadata-bounces at cgd.ucar.edu [cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Nan Galbraith [ngalbraith at whoi.edu]
+</em><br />
+<em class="quotelev1">&gt; Sent: 29 December 2010 18:41
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] CF feature types and definitions
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Bob's message reminds me that once these terms are agreed upon
+</em><br />
+<em class="quotelev1">&gt; they may be used for many purposes, across many different types
+</em><br />
+<em class="quotelev1">&gt; of systems, while a lot of the discussion of this convention has been
+</em><br />
+<em class="quotelev1">&gt; focused on just describing the shape of a chunk of data to be returned
+</em><br />
+<em class="quotelev1">&gt; by software queries.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; For that reason, I still feel strongly that 'timeSeries' data should be
+</em><br />
+<em class="quotelev1">&gt; defined in a way that allows data from moored instruments at multiple
+</em><br />
+<em class="quotelev1">&gt; depths in a single file. ?In the current version, the term 'location' in
+</em><br />
+<em class="quotelev1">&gt; the
+</em><br />
+<em class="quotelev1">&gt; definition of the timeSeries feature type is misleading; it can be taken
+</em><br />
+<em class="quotelev1">&gt; as x-y location, but I think you mean x-y-z. The definition needs to
+</em><br />
+<em class="quotelev1">&gt; be more specific, and I hope it will allow multiple depths.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; A time-consuming search of the email archive didn't turn up a specific
+</em><br />
+<em class="quotelev1">&gt; message, but I recall that in the past I've been told that moorings with
+</em><br />
+<em class="quotelev1">&gt; data at different depths should be classified as a collection of profiles.
+</em><br />
+<em class="quotelev1">&gt; While that might be acceptable in terms of defining the shape of the
+</em><br />
+<em class="quotelev1">&gt; data returned in a query, it will not be useful when these terms are used
+</em><br />
+<em class="quotelev1">&gt; in other ways.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There's a big difference between a series of profiles at a single x-y
+</em><br />
+<em class="quotelev1">&gt; location
+</em><br />
+<em class="quotelev1">&gt; and a time series of data taken at the same x-y location by different
+</em><br />
+<em class="quotelev1">&gt; instruments at different depths. Not only are different variables measured
+</em><br />
+<em class="quotelev1">&gt; at different depths, the characteristics of the measurements can be
+</em><br />
+<em class="quotelev1">&gt; different -
+</em><br />
+<em class="quotelev1">&gt; instruments have different response times, resolution/accuracy, ranges,
+</em><br />
+<em class="quotelev1">&gt; etc.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; As I've said before, it would be a pretty hard sell to describe our station
+</em><br />
+<em class="quotelev1">&gt; time series data sets as collections of profiles; a terrific 2d time series
+</em><br />
+<em class="quotelev1">&gt; is not likely to be seen as a good collection of profiles.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I hope we can find a better way to include data from moored buoys in
+</em><br />
+<em class="quotelev1">&gt; this vocabulary, without having to distort the data into something else.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks -
+</em><br />
+<em class="quotelev1">&gt; Nan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 12/23/10 11:06 AM, John Caron wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Attached is a message from Bob Simon at ERD/NOAA pointing out the
+</em><br />
+<em class="quotelev2">&gt;&gt; inconsistencies in &quot;data type&quot; and &quot;feature type&quot; names in various
+</em><br />
+<em class="quotelev2">&gt;&gt; Unidata related efforts. The almost-ready CF discrete sampling
+</em><br />
+<em class="quotelev2">&gt;&gt; proposal has made a start at standardizing some of these names, and
+</em><br />
+<em class="quotelev2">&gt;&gt; there is an interest, I think, between Steve, Jon and I to extend that
+</em><br />
+<em class="quotelev2">&gt;&gt; to other types like grid. Essentially its a controlled vocabulary for
+</em><br />
+<em class="quotelev2">&gt;&gt; classifying data.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; If this group is interested, I would propose a new ticket that would
+</em><br />
+<em class="quotelev2">&gt;&gt; add probably an Appendix that would specify this vocabulary and their
+</em><br />
+<em class="quotelev2">&gt;&gt; definitions. I anticipate it will be added to and clarified over time.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; John
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; -------- Original Message --------
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: ? ? ?Re: [netcdf-java] CDM names
+</em><br />
+<em class="quotelev2">&gt;&gt; Date: ? ? ? ? Thu, 23 Dec 2010 08:48:41 -0700
+</em><br />
+<em class="quotelev2">&gt;&gt; From: ? ? ? ? John Caron &lt;caron at unidata.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; To: ? netcdf-java at unidata.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Hi Bob:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Yes, you are right, there are too many forms of the &quot;data type&quot; and
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;feature type&quot; names, with different lineages.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) The CF discrete sampling proposal will be the recommended one for
+</em><br />
+<em class="quotelev2">&gt;&gt; point data when thats finalized. Unfortunately, it will be somewhat
+</em><br />
+<em class="quotelev2">&gt;&gt; different from whats gone before. The CF: prefix is dropped until the
+</em><br />
+<em class="quotelev2">&gt;&gt; namespace proposal can be completed. So those feature types are now
+</em><br />
+<em class="quotelev2">&gt;&gt; proposed to be:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * *point*: one or more parameters measured at a set of points in
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? ? time and space
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * *timeSeries*: a time-series of data points at the same location,
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? ? with varying time
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * *trajectory*: a connected set of data points along a 1D curve in
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? ? time and space
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * *profile*: a set of data points along a vertical line
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * *timeSeriesProfile*: a time-series of profiles at a named location
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * *trajectoryProfile*: a collection of profiles which originate
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? ? along a trajectory
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; The CDM will be backwards compatible, including:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * ? accepting the CF: prefix
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * ? being case insensitive
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * ? &quot;station&quot; and &quot;stationTimeSeries&quot;as aliases for &quot;timeSeries&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * ? &quot;stationProfile&quot; as alias for &quot;timeSeriesProfile&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * ? &quot;section&quot; as alias for &quot;trajectoryProfile&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I know that CF wants to standardize on other feature types also. Its
+</em><br />
+<em class="quotelev2">&gt;&gt; hard to anticipate what they will come with, but its likely:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * grid
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * swath
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; maybe:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * image
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * radial
+</em><br />
+<em class="quotelev2">&gt;&gt; ? ? * unstructuredGrid
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) The DataDiscoveryAttConvention is due for another round of work,
+</em><br />
+<em class="quotelev2">&gt;&gt; esp in light of the ISO work that Ted and Dave have done. That might
+</em><br />
+<em class="quotelev2">&gt;&gt; be a good opportunity to try to reconcile.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 3) I will work on the CDM library to standardize.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Thanks for bringing this up.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 12/22/2010 4:36 PM, Bob Simons wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; It is unfortunate that the CDM names listed at the sites below are
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; all slightly different (different sets of names, different names for
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; the same feature, different case).
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; And it is unfortunate that there are two global attributes to
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; identify the CDM feature/data type (#2 and #3 below).
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Is it possible that these could be standardized?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 1)
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://www.unidata.ucar.edu/software/netcdf-java/v4.0/javadoc/index.html">http://www.unidata.ucar.edu/software/netcdf-java/v4.0/javadoc/index.html</a>
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; ?CF.FeatureType ?(e.g., &quot;stationTimeSeries&quot;)
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 2) The cdm_data_type global attribute:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html">http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html</a>
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; (e.g., &quot;Station&quot;)
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; The UAF GeoIDE project is using this
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="https://nosc.ngdc.noaa.gov/dmc/swg/wiki/index.php?title=NetCDF_Attribute_Convention_for_Dataset_Discovery">https://nosc.ngdc.noaa.gov/dmc/swg/wiki/index.php?title=NetCDF_Attribute_Convention_for_Dataset_Discovery</a>
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 3) The proposed CF:featureType global attribute:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="https://cf-pcmdi.llnl.gov/trac/wiki/PointObservationConventions">https://cf-pcmdi.llnl.gov/trac/wiki/PointObservationConventions</a>
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; section 9.8.3 (e.g., &quot;timeSeries&quot;)
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 4)The THREDDS dataType types
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://www.unidata.ucar.edu/projects/THREDDS/tech/catalog/InvCatalogSpec.html#dataType">http://www.unidata.ucar.edu/projects/THREDDS/tech/catalog/InvCatalogSpec.html#dataType</a>
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; (e.g., &quot;Station&quot;)
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Thank you for looking into this.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Sincerely,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Bob Simons
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; *******************************************************
+</em><br />
+<em class="quotelev1">&gt; * Nan Galbraith ? ? ? ? ? ? ? ? ? ? ? ?(508) 289-2444 *
+</em><br />
+<em class="quotelev1">&gt; * Upper Ocean Processes Group ? ? ? ? ? ?Mail Stop 29 *
+</em><br />
+<em class="quotelev1">&gt; * Woods Hole Oceanographic Institution ? ? ? ? ? ? ? ?*
+</em><br />
+<em class="quotelev1">&gt; * Woods Hole, MA 02543 ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ?*
+</em><br />
+<em class="quotelev1">&gt; *******************************************************
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>--
+</em><br />
+<em class="quotelev1">&gt; This message (and any attachments) is for the recipient only NERC
+</em><br />
+<em class="quotelev1">&gt; is subject to the Freedom of Information Act 2000 and the contents
+</em><br />
+<em class="quotelev1">&gt; of this email and any reply you make may be disclosed by NERC unless
+</em><br />
+<em class="quotelev1">&gt; it is exempt from release under the Act. Any material supplied to
+</em><br />
+<em class="quotelev1">&gt; NERC may be stored in an electronic records management system.
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><br /><pre>
+-- 
+Dr. Richard P. Signell?? (508) 457-2229
+USGS, 384 Woods Hole Rd.
+Woods Hole, MA 02543-1598
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Dec 30 2010 - 05:39:03 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3088">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3089.html" title="Next message in the list">Rich Signell: "[CF-metadata] CF feature types and definitions"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3087.html" title="Previous message in the list">Lowry, Roy K.: "[CF-metadata] CF feature types and definitions"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3087.html" title="Message to which this message replies">Lowry, Roy K.: "[CF-metadata] CF feature types and definitions"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3089.html" title="Next message in this discussion thread">Rich Signell: "[CF-metadata] CF feature types and definitions"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3089.html" title="Message sent in reply to this message">Rich Signell: "[CF-metadata] CF feature types and definitions"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3088" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3088" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3088" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3088" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:38 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3087.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3089.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

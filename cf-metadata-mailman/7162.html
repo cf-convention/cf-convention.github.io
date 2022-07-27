@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Specifying latitude and longitude of transects and regions from martin.juckes at stfc.ac.uk on 2015-06-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="martin.juckes at stfc.ac.uk (martin.juckes)" />
+<meta name="Subject" content="[CF-metadata] Specifying latitude and longitude of transects and regions" />
+<meta name="Date" content="2015-06-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7161.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7163.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Specifying latitude and longitude of transects and regions</h1>
+<!-- received="Mon Jun 29 06:31:37 2015" -->
+<!-- isoreceived="20150629053137" -->
+<!-- sent="Mon, 29 Jun 2015 12:31:37 +0000" -->
+<!-- isosent="20150629123137" -->
+<!-- name="martin.juckes at stfc.ac.uk" -->
+<!-- email="martin.juckes" -->
+<!-- subject="[CF-metadata] Specifying latitude and longitude of transects and regions" -->
+<!-- id="E21FBC3F00D7304687CB46529F9676D79C855555_at_EXCHMBX01.fed.cclrc.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7162" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7163.html" accesskey="d" title="alison.pamment at stfc.ac.uk: &quot;[CF-metadata] Proposal for standard names: radiance and irradiance as measured from satellite&quot;">Next message</a> ]
+[ <a href="./7161.html" title="Timothy Patterson: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7176.html" accesskey="t" title="Hedley, Mark: &quot;[CF-metadata] Specifying latitude and longitude of transects and	regions&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7162" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7162" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7162" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7162" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: martin.juckes at stfc.ac.uk &lt;<a href="mailto:martin.juckes?Subject=Re%3A%20%5BCF-metadata%5D%20Specifying%20latitude%20and%20longitude%20of%20transects%20and%20regions">martin.juckes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 29 Jun 2015 12:31:37 +0000</span><br />
+</address>
+<br />
+Hello All,
+<br />
+<br />There are some variables in the CMIP5 archive which lack explicit latitude and longitude information, such as mfo (standard name sea_water_transport_across_line) and msftzzzba (ocean_y_overturning_mass_streamfunction_due_to_bolus_advection). The first is a mass flux across a transect and the second is a zonally averaged stream function, averaged across an ocean basin.  
+<br />
+<br />For transects, the mfo variable is encoded with an index dimension and a coordinate &quot;passage&quot; which labels transects by the name of the passage they cross (e.g. fram_strait). The information about precisely which part of the Fram Strait is used is in a document referred to from the MIP tables. It would be nice to have a means of encoding the end points of the transect in the CF metadata. I looked into using the &quot;bounds&quot; attribute, but that is defined to represent cell boundaries, so an extension to the convention is, I think, needed. It makes sense to follow the pattern used to represent cell boundaries.  I propose defining a new attribute &quot;transect&quot; which, like the &quot;bounds&quot; attribute, can be attached to coordinate variables and takes the name of another variable as its value. The named variable should contain the end points of the transect.
+<br />
+<br />The same approach could be used for the streamfunction .. which is a mean across an east-west transect (this approach would lead to a specifcation of the east and west endpoints of each basin at each latitude -- but I'm not sure that it would be feasible to collect that much detail in the CMIP data files). 
+<br />
+<br />Is there a cleaner way of encoding transect and basin coordinates?
+<br />
+<br />regards,
+<br />
+Martin
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Jun 29 2015 - 06:31:37 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7162">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7163.html" title="Next message in the list">alison.pamment at stfc.ac.uk: "[CF-metadata] Proposal for standard names: radiance and irradiance as measured from satellite"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7161.html" title="Previous message in the list">Timothy Patterson: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7176.html" title="Next message in this discussion thread">Hedley, Mark: "[CF-metadata] Specifying latitude and longitude of transects and	regions"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7176.html" title="Message sent in reply to this message">Hedley, Mark: "[CF-metadata] Specifying latitude and longitude of transects and	regions"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7162" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7162" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7162" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7162" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:57 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7161.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7163.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

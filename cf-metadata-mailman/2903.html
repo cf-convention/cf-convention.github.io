@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] New standard names for satellite obs data from Lowry, Roy K on 2010-10-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="Lowry, Roy K (rkl)" />
+<meta name="Subject" content="[CF-metadata] New standard names for satellite obs data" />
+<meta name="Date" content="2010-10-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2902.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2904.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] New standard names for satellite obs data</h1>
+<!-- received="Wed Oct 20 14:50:06 2010" -->
+<!-- isoreceived="20101020135006" -->
+<!-- sent="Wed, 20 Oct 2010 21:50:06 +0100" -->
+<!-- isosent="20101020205006" -->
+<!-- name="Lowry, Roy K" -->
+<!-- email="rkl" -->
+<!-- subject="[CF-metadata] New standard names for satellite obs data" -->
+<!-- id="40829B0E077C1145A6DE44D39B3830A91F89E9D191_at_nerckwmb1.ad.nerc.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="57ED7E83DBF35C41BA34677D524C906909FA64_at_VIME-VS3.rdg-home.ad.rdg.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2903" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2904.html" accesskey="d" title="Evan Manning: &quot;[CF-metadata] New standard names for satellite obs data&quot;">Next message</a> ]
+[ <a href="./2902.html" title="Nan Galbraith: &quot;[CF-metadata] New standard names for satellite obs data&quot;">Previous message</a> ]
+[ <a href="./2895.html" title="Jon Blower: &quot;[CF-metadata] New standard names for satellite obs data&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2905.html" accesskey="t" title="Steve Hankin: &quot;[CF-metadata] New standard names for satellite obs data (time as ISO strings)&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2903" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2903" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2903" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2903" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Lowry, Roy K &lt;<a href="mailto:rkl?Subject=Re%3A%20%5BCF-metadata%5D%20New%20standard%20names%20for%20satellite%20obs%20data">rkl</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 20 Oct 2010 21:50:06 +0100</span><br />
+</address>
+<br />
+Hi Jon,
+<br />
+<br />I prefer handling the precision issue through a format mask attribute.  I usually hit this problem in Oracle with the 'date' data type (in say column X), whose format I control by also storing an Oracle date/time format string (say in column Y).  Formatted date/time to the appropriate precision is then obtained using the function to_date (X,Y).  
+<br />
+<br />Something similar should surely be possible in CF with a binary time channel, an ISO-8601 template (parameter attribute?) and an interface function.
+<br />
+<br />Cheers, Roy.
+<br />
+________________________________________
+<br />
+From: cf-metadata-bounces at cgd.ucar.edu [cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Jon Blower [j.d.blower at reading.ac.uk]
+<br />
+Sent: 20 October 2010 14:41
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] New standard names for satellite obs data
+<br />
+<br />Hi all,
+<br />
+<br />I haven't followed this debate closely, but I've had cause to do a fair
+<br />
+amount of thinking (outside the CF context) on the pros and cons of
+<br />
+identifying date/times as strings or numbers.  I could probably write a
+<br />
+very boring essay on this but in summary, they are not exactly
+<br />
+equivalent ways of representing the same information.
+<br />
+<br />One way in which they are different is precision.  A value of &quot;x seconds
+<br />
+since y&quot; has no implied precision - typically in programs we take the
+<br />
+precision to be milliseconds, but there's nothing to suggest this in the
+<br />
+actual metadata (anyone who tries to populate a GUI from CF metadata
+<br />
+struggles with this).  Semantically it's a time instant; i.e. an
+<br />
+infinitesimal position in a temporal coordinate reference system.
+<br />
+However, an ISO8601 string can have various precisions.  (The string
+<br />
+&quot;2009-10&quot; is not considered equivalent to &quot;2009-10-01T00:00:00.000Z&quot;.)
+<br />
+<br /><em class="quotelev1">&gt;From Wikipedia (<a href="http://en.wikipedia.org/wiki/ISO_8601">http://en.wikipedia.org/wiki/ISO_8601</a>):
+</em><br />
+<br />&quot;For reduced accuracy, any number of values may be dropped from any of
+<br />
+the date and time representations, but in the order from the least to
+<br />
+the most significant. For example, &quot;2004-05&quot; is a valid ISO 8601 date,
+<br />
+which indicates May (the fifth month) 2004. This format will never
+<br />
+represent the 5th day of an unspecified month in 2004, nor will it
+<br />
+represent a time-span extending from 2004 into 2005.&quot;
+<br />
+<br />I've argued before in a previous thread on this list that it would be
+<br />
+good to be able to specify the precision of time coordinates in terms of
+<br />
+calendar date/time fields (which isn't the same thing as providing a
+<br />
+tolerance value on the numeric coordinate value of a time axis).
+<br />
+<br />I'm not saying that we should definitely allow time strings in CF, just
+<br />
+pointing out that they have some use cases we currently can't fulfil.
+<br />
+I'm not sure they are definitively &quot;bad practice&quot; in all cases.
+<br />
+<br />(Regarding a technical point raised below, yes, it's a pain to represent
+<br />
+variable length strings in NetCDF, but there is a maximum length for
+<br />
+ISO8601 strings.)
+<br />
+<br />Hope this helps,
+<br />
+Jon
+<br />
+<br />-----Original Message-----
+<br />
+From: cf-metadata-bounces at cgd.ucar.edu
+<br />
+[mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Lowry, Roy K
+<br />
+Sent: 20 October 2010 10:00
+<br />
+To: Ben Hetland; cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] New standard names for satellite obs data
+<br />
+<br />Dear All,
+<br />
+<br />As others have said, I think this debate is irrelevant as there should
+<br />
+be no need for string timestamps in NetCDF. Providing a Standard Name
+<br />
+only encourages what I consider to be bad practice.
+<br />
+<br />Cheers, Roy.
+<br />
+<br />-----Original Message-----
+<br />
+From: cf-metadata-bounces at cgd.ucar.edu
+<br />
+[mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Ben Hetland
+<br />
+Sent: 20 October 2010 09:14
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] New standard names for satellite obs data
+<br />
+<br />On 19.10.2010 16:27, Seth McGinnis wrote:
+<br />
+<em class="quotelev1">&gt; What about using 'date' for string-valued times?  That was my homebrew
+</em><br />
+<em class="quotelev1">&gt; solution when I was considering a similar problem.
+</em><br />
+<br />If I may butt in and contribute here, I usually prefer names like
+<br />
+'datetime' or 'timestamp' in cases like this, because 'date' is
+<br />
+potentially confusing. It may not be immediately obvious to a future
+<br />
+reader (or programmer) that a variable called 'date' supports points in
+<br />
+time down to for example seconds of accuracy.
+<br />
+<br /><br /><em class="quotelev1">&gt; (Note that string data is a big pain to deal with in NetCDF-3, because
+</em><br />
+<em class="quotelev1">&gt; you're limited to fixed-length character arrays.  You need to use
+</em><br />
+<em class="quotelev1">&gt; NetCDF-4 / HDF5 to get Strings as a data type.)
+</em><br />
+<br />(It may not be such a practical issue with ISO 8601 strings, as a
+<br />
+reasonable max. length can be determined, I presume.)
+<br />
+<br /><pre>
+--
+Regards,
+   -+-Ben-+-
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+--
+This message (and any attachments) is for the recipient only. NERC
+is subject to the Freedom of Information Act 2000 and the contents
+of this email and any reply you make may be disclosed by NERC unless
+it is exempt from release under the Act. Any material supplied to
+NERC may be stored in an electronic records management system.
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Oct 20 2010 - 14:50:06 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2903">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2904.html" title="Next message in the list">Evan Manning: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2902.html" title="Previous message in the list">Nan Galbraith: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2895.html" title="Message to which this message replies">Jon Blower: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2905.html" title="Next message in this discussion thread">Steve Hankin: "[CF-metadata] New standard names for satellite obs data (time as ISO strings)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2903" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2903" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2903" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2903" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:34 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2902.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2904.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

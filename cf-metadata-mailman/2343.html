@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Swath observational data from Raskin, Rob on 2009-11-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Raskin, Rob (robert.g.raskin)" />
+<meta name="Subject" content="[CF-metadata] Swath observational data" />
+<meta name="Date" content="2009-11-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2342.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2344.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Swath observational data</h1>
+<!-- received="Wed Nov 18 21:22:11 2009" -->
+<!-- isoreceived="20091118212211" -->
+<!-- sent="Wed, 18 Nov 2009 20:22:11 -0800" -->
+<!-- isosent="20091119042211" -->
+<!-- name="Raskin, Rob" -->
+<!-- email="robert.g.raskin" -->
+<!-- subject="[CF-metadata] Swath observational data" -->
+<!-- id="AE2D7176105BF4468B1E863EBFE953A79489118B55_at_ALTPHYEMBEVSP30.RES.AD.JPL" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2343" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2344.html" accesskey="d" title="olivier lauret: &quot;[CF-metadata] Swath observational data&quot;">Next message</a> ]
+[ <a href="./2342.html" title="Emanuele Cordano: &quot;[CF-metadata] standard names for geomorphological variables&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2344.html" accesskey="t" title="olivier lauret: &quot;[CF-metadata] Swath observational data&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2343" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2343" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2343" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2343" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Raskin, Rob &lt;<a href="mailto:robert.g.raskin?Subject=Re%3A%20%5BCF-metadata%5D%20Swath%20observational%20data">robert.g.raskin</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 18 Nov 2009 20:22:11 -0800</span><br />
+</address>
+<br />
+While the Point observational conventions document is undergoing final review, I want to initiate a discussion on a complementary topic - Swath observational conventions. This model addresses satellite observational measurements and potentially airborne measurements.
+<br />
+<br />The Swath conceptual model is essentially a grid in spacecraft coordinates. One dimension of this grid (&quot;along_track&quot;) follows the path of the satellite. Normally there are one or two additional dimensions: &quot;cross_track&quot; and/or &quot;vertical&quot;. The &quot;cross_track&quot; dimension is perpendicular to the satellite path, as the instrument typically makes &quot;side views&quot; of the surface rather than just at the nadir. The &quot;vertical&quot; dimension is present when a vertical profiler instrument is used. CF:FeatureType will need to account for each possible combination of these 2-D and 3-D swaths.
+<br />
+<br />Typically, time is explicitly stored and associated only with the along-track dimension. Spatial resolution generally will differ in the along_track and cross_track directions. 
+<br />
+<br />Orbits are not mapped to files in any consistent way: a file might correspond to a complete orbit, a half-orbit, or some other value. However, it is common to explicitly consider yet another dimension: &quot;satellite_node&quot;, with values &quot;ascending&quot; (crosses equator going northward) and &quot;descending&quot; (crosses equator going southward).  
+<br />
+<br />Common satellites are in sun-synchronous polar orbits such that the ascending node remains at a near constant Local Solar Time (LST), while the descending node remains at a near constant LST shifted by 12 hours. For example, the ascending node may be at 6am LST and the descending node at 6pm LST. Often gridded data products are produced from these swaths, with separate grids corresponding to the AM and PM cases. A new CF time representation for &quot;LST&quot; is required to indicate that the global data are all at a time such as 6am LST.
+<br />
+<br />Unrelated to the swath geometry, some measurements use spectral band as an independent variable, as they sample at multiple &quot;channels&quot;. This capability requires a new standard name for &quot;spectral_band&quot; or &quot;spectral_channel&quot; with values that may be numeric, a numeric range, or string.
+<br />
+<br />Swath data include many new dependent variables that correspond to engineering parameters of the retrieval rather than geophysical parameters (point spread function is a common example). If these names are standardized at all, they should be indicated as being of the engineering type.
+<br />
+<br />In the case of an airborne (rather than satellite) measurement, there is more commonality with the &quot;trajectory&quot; representation from the Point observation model. Hence, the focus here is on spacecraft measurements.
+<br />
+<br />Finally, on an unrelated note, I have semantically mapped the entire CF Standard Name list to an ontological representation. But that is the subject of a separate communication.
+<br />
+<br />-Rob
+<br />
+<br />------------------------------------
+<br />
+Rob Raskin
+<br />
+Group Supervisor, Science Data Engineering and Archiving
+<br />
+Instrument Software and Science Data Systems Section
+<br />
+Jet Propulsion Laboratory
+<br />
+Pasadena, CA 91109
+<br />
+(818) 354-4228
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Nov 18 2009 - 21:22:11 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2343">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2344.html" title="Next message in the list">olivier lauret: "[CF-metadata] Swath observational data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2342.html" title="Previous message in the list">Emanuele Cordano: "[CF-metadata] standard names for geomorphological variables"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2344.html" title="Next message in this discussion thread">olivier lauret: "[CF-metadata] Swath observational data"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2344.html" title="Message sent in reply to this message">olivier lauret: "[CF-metadata] Swath observational data"</a></li>
+<li><dfn>Reply</dfn>: <a href="./2348.html" title="Message sent in reply to this message">Jon Blower: "[CF-metadata] Swath observational data"</a></li>
+<li><dfn>Reply</dfn>: <a href="./2358.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] Swath observational data"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2343" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2343" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2343" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2343" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:24 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2342.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2344.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

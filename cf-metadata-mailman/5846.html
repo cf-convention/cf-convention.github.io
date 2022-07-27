@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] adding domain information to Cell methods when there are no coordinates from Hedley, Mark on 2013-11-12 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hedley, Mark (mark.hedley)" />
+<meta name="Subject" content="[CF-metadata] adding domain information to Cell methods when there are no coordinates" />
+<meta name="Date" content="2013-11-12" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5845.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5847.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] adding domain information to Cell methods when there are no coordinates</h1>
+<!-- received="Tue Nov 12 06:50:26 2013" -->
+<!-- isoreceived="20131112065026" -->
+<!-- sent="Tue, 12 Nov 2013 13:50:26 +0000" -->
+<!-- isosent="20131112135026" -->
+<!-- name="Hedley, Mark" -->
+<!-- email="mark.hedley" -->
+<!-- subject="[CF-metadata] adding domain information to Cell methods when there are no coordinates" -->
+<!-- id="7819C496F4E10E47BCEFBE74551AAC9608F077_at_EXXCMPD1DAG3.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5846" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5847.html" accesskey="d" title="Lauret Olivier: &quot;[CF-metadata] Standard name table update&quot;">Next message</a> ]
+[ <a href="./5845.html" title="Alexander Barth: &quot;[CF-metadata] cell_methods for monthly climatologies&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5846" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5846" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5846" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5846" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hedley, Mark &lt;<a href="mailto:mark.hedley?Subject=Re%3A%20%5BCF-metadata%5D%20adding%20domain%20information%20to%20Cell%20methods%20when%20there%20are%20no%20coordinates">mark.hedley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 12 Nov 2013 13:50:26 +0000</span><br />
+</address>
+<br />
+Hello Jonathan
+<br />
+<br />I think the second need is the more important.  This is the information I really want to capture.
+<br />
+<br /><em class="quotelev1">&gt; You suggest listing all the coord or aux coord vars in the cell_methods comment. Would it not be sufficient, and more economical, to give the name of the uncollapsed dimension(s)?
+</em><br />
+<br />My wariness in this regard is linked to the scope of the variable.  I need a variable to be in scope with respect to the data variable to maintain the referencing, particularly if the file is chopped up or reformed.  The 'coords' from the input data are no longer in scope for the result data variable unless I add them explicitly; the mechanism available to do this is an ancillary variables.
+<br />
+<br />Once I have a set of ancillary variables, it is easy for me to see that I can use these as part of a domain definition inside a cell method.
+<br />
+<br />If I use the dimension as a short cut for this then I make this scoping less clear, and more difficult to test for.  I prefer to be explicit that I am referencing variables which are in scope, even if that means I get a longer domain definition.  The short hand of using the dimension name seems to me to be bringing issues of variable scope and variable management onto shakier ground, so I am not sure it is worth the benefit of simplified domain definition.
+<br />
+<br />I have raised a ticket for this addition to the conventions, we can continue the discussion there:
+<br />
+<a href="https://cf-pcmdi.llnl.gov/trac/ticket/108">https://cf-pcmdi.llnl.gov/trac/ticket/108</a>
+<br />
+<br />Having reread section 7.3.4 I am beginning to understand what you mean in your first point.  However the text appears clear, the aim of using a standard_name as a cell_method name is to identify the dimension:
+<br />
+<br />&nbsp;&nbsp;'''the &quot;name&quot; that appears in a &quot;name: method&quot; pair may be an appropriate standard_name (which identifies the dimension)'''
+<br />
+<br />There is no standard_name which identifies the dimension in my example; I see that a coordinate could be added, but the contents of this would be arbitrary in my case.
+<br />
+<br /><em class="quotelev1">&gt; In the absence of these vars, the dimension name in the cell methods isn't informative.
+</em><br />
+I'm not sure I agree with this statement, i think it is a bit informative, and better than nothing.  It provides basic cell_method definition which the domain can augment.
+<br />
+<br />I agree that no change is required to the conventions to enable linking, but I am not convinced that the use of the standard_name syntax from 7.3.4 really helps here.
+<br />
+<br />many thanks for your comments and thoughts
+<br />
+mark
+<br />
+<br />________________________________________
+<br />
+From: Jonathan Gregory [j.m.gregory at reading.ac.uk]
+<br />
+Sent: 09 November 2013 21:07
+<br />
+To: Hedley, Mark
+<br />
+Cc: CF metadata
+<br />
+Subject: [CF-metadata] Cell methods when there are no coordinates
+<br />
+<br />Dear Mark
+<br />
+<br />Thanks for the clarifications in your last email. If I have understood this
+<br />
+correctly now, there are two needs, which might be distinct.
+<br />
+<br />(1) Indicate that a collapsed (size-one) axis is an ensemble axis, although
+<br />
+it doesn't have a coord var or any aux coord vars. I can see that it might
+<br />
+well not have these vars because there might not be anything useful you could
+<br />
+put in them. In the absence of these vars, the dimension name in the cell
+<br />
+methods isn't informative. We could perhaps solve this by introducing a new
+<br />
+standard name such as ensemble_member_id (a string) or ensemble_member_number
+<br />
+(a number) or perhaps both. These could anyway be useful. These standard names
+<br />
+could appear in your cell_methods, following section 7.3.4, instead of the name
+<br />
+of the size-one dimension, indicating that the statistic applied to all the
+<br />
+available members of an ensemble, without needing any coord information. I
+<br />
+don't think this change would require an alteration to the convention.
+<br />
+<br />(2) Point to the coordinate information which applied to the axis before the
+<br />
+collapse. This could be useful for any sort of collapsed axis, and in fact I
+<br />
+think we have discussed it before at some point in the last 15 years! I agree
+<br />
+with your suggestion that it would be logical to record this in cell_methods
+<br />
+as a standardised comment. An alternative would be to add an attribute to the
+<br />
+collapsed coord var, but you don't have those (as you say), and also the
+<br />
+collapse may apply to a combination of axes. You suggest listing all the coord
+<br />
+or aux coord vars in the cell_methods comment. Would it not be sufficient, and
+<br />
+more economical, to give the name of the uncollapsed dimension(s)?
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Nov 12 2013 - 06:50:26 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5846">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5847.html" title="Next message in the list">Lauret Olivier: "[CF-metadata] Standard name table update"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5845.html" title="Previous message in the list">Alexander Barth: "[CF-metadata] cell_methods for monthly climatologies"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5846" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5846" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5846" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5846" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:32 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5845.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5847.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Map parameter question from Philip Bentley on 2007-10-02 (cf-metadata-mailman)</title>
+<meta name="Author" content="Philip Bentley (philip.bentley)" />
+<meta name="Subject" content="[CF-metadata] Map parameter question" />
+<meta name="Date" content="2007-10-02" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1062.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1064.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Map parameter question</h1>
+<!-- received="Tue Oct  2 04:57:53 2007" -->
+<!-- isoreceived="20071002035753" -->
+<!-- sent="Tue, 02 Oct 2007 11:57:53 +0100" -->
+<!-- isosent="20071002105753" -->
+<!-- name="Philip Bentley" -->
+<!-- email="philip.bentley" -->
+<!-- subject="[CF-metadata] Map parameter question" -->
+<!-- id="1191322673.3199.72.camel_at_eld414.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20070914155811.jgqgqayxw4wsw84w_at_webmail.eol.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1063" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1064.html" accesskey="d" title="Benno Blumenthal: &quot;[CF-metadata] domain for calendar, add_offset, scale_factor&quot;">Next message</a> ]
+[ <a href="./1062.html" title="Rosalyn Hatcher: &quot;[CF-metadata] Trac problems. Is it just me?&quot;">Previous message</a> ]
+[ <a href="./1049.html" title="mcginnis at ucar.edu: &quot;[CF-metadata] Map parameter question&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1063" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1063" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1063" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1063" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Philip Bentley &lt;<a href="mailto:philip.bentley?Subject=Re%3A%20%5BCF-metadata%5D%20Map%20parameter%20question">philip.bentley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 02 Oct 2007 11:57:53 +0100</span><br />
+</address>
+<br />
+Hi Seth,
+<br />
+<br />When using the Transverse Mercator projection, the scale factor
+<br />
+parameter (k) is typically used to 'spread' the scale distortion more
+<br />
+evenly across the map. In its standard form the central meridian of a
+<br />
+Transverse Mercator map represents the line - indeed the only line -
+<br />
+along which there is zero scale distortion. Thus, if your map is plotted
+<br />
+at a scale of, say, 1:100,000 then this scale applies only along the
+<br />
+central meridian. At all other points on the map the scale differs from
+<br />
+this 'nominal' scale; in fact the scale distortion increases
+<br />
+dramatically the further one move aways from the central meridian
+<br />
+(recall how scale distortion increaases towards the poles in the normal
+<br />
+Mercator projection).
+<br />
+<br />The scale factor is usually used to reduce the scale at the central
+<br />
+meridian, which has the effect of producing on the projected map two
+<br />
+lines parallel to the central meridian along which the scale factor is 1
+<br />
+(i.e. k = 1.0). These two lines are now free from scale distortion and,
+<br />
+using our earlier example, represent the locus of points at which the
+<br />
+nominal scale of 1:100,000 applies. If a scale factor is not specified,
+<br />
+then the default value of 1 is assumed by most (all?) map projection
+<br />
+applications.
+<br />
+<br />By way of a more concrete example, the 6 degree zones used in the UTM
+<br />
+coordinate reference system, and the Transverse Mercator projection used
+<br />
+in the British National Grid, both employ a scale factor of k=0.9996 at
+<br />
+the central meridian. This means that the two lines of zero scale
+<br />
+distortion are approximately 180 km either side of the central meridian.
+<br />
+<br />Whether of not you choose to utilise a scale factor will depend on the
+<br />
+scale and intended usage of your map. If the map is not going to be used
+<br />
+for navigation or measurement then assigning a scale factor is probably
+<br />
+not required. Likewise, for qualitative interpretation of
+<br />
+regional/global data a scale factor would not be useful, but then you
+<br />
+would almost certainly choose a different map projection for this
+<br />
+purpose, one with more favourable scale distortion characteristics.
+<br />
+<br />In answer then to your question, yes, the scale factor is a single
+<br />
+positive number, typically close to 1.0 (the default value).
+<br />
+<br />Hope this is helpful.
+<br />
+<br />Regards,
+<br />
+<br />Phil
+<br />
+<br />On Fri, 2007-09-14 at 15:58 -0600, mcginnis at ucar.edu wrote:
+<br />
+<br /><em class="quotelev1">&gt; Hi all,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; If one is using a transverse Mercator grid mapping, how does the 
+</em><br />
+<em class="quotelev1">&gt; attribute scale_factor_at_central_meridian work?  In particular, is it 
+</em><br />
+<em class="quotelev1">&gt; a single number, or is it an array of values?  My guess is that it's 
+</em><br />
+<em class="quotelev1">&gt; just one number, but it's not clear from the description in table F.1 
+</em><br />
+<em class="quotelev1">&gt; of the conventions doc.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thanks!
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Seth McGinnis
+</em><br />
+<em class="quotelev1">&gt; Associate Scientist
+</em><br />
+<em class="quotelev1">&gt; ISSE / NCAR
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ----------------------------------------------------------------
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20071002/fda7970a/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20071002/fda7970a/attachment-0002.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Oct 02 2007 - 04:57:53 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1063">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1064.html" title="Next message in the list">Benno Blumenthal: "[CF-metadata] domain for calendar, add_offset, scale_factor"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1062.html" title="Previous message in the list">Rosalyn Hatcher: "[CF-metadata] Trac problems. Is it just me?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./1049.html" title="Message to which this message replies">mcginnis at ucar.edu: "[CF-metadata] Map parameter question"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1063" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1063" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1063" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1063" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:00 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1062.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1064.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

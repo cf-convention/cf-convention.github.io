@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF compliance: auxiliary coordinate variables, compressed data, coordinates attribute from Lang, Günther on 2011-04-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="Lang, Günther (Guenther.Lang)" />
+<meta name="Subject" content="[CF-metadata] CF compliance: auxiliary coordinate variables, compressed data, coordinates attribute" />
+<meta name="Date" content="2011-04-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3446.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3448.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF compliance: auxiliary coordinate variables, compressed data, coordinates attribute</h1>
+<!-- received="Thu Apr 28 08:49:14 2011" -->
+<!-- isoreceived="20110428074914" -->
+<!-- sent="Thu, 28 Apr 2011 16:49:14 +0200" -->
+<!-- isosent="20110428144914" -->
+<!-- name="Lang, Günther" -->
+<!-- email="Guenther.Lang" -->
+<!-- subject="[CF-metadata] CF compliance: auxiliary coordinate variables, compressed data, coordinates attribute" -->
+<!-- id="2FD1E68A207EE4458010E702EB96BE2EACD635_at_NECHBET.Hamburg.BAW.DE" -->
+<!-- charset="iso-8859-1" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3447" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3448.html" accesskey="d" title="Ken Roberts: &quot;[CF-metadata] New CF Standard Name (antenna_temperature)&quot;">Next message</a> ]
+[ <a href="./3446.html" title="Jonathan Gregory: &quot;[CF-metadata] [Standard name request] property changes over time&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3422.html" accesskey="t" title="Rosalyn Hatcher: &quot;[CF-metadata] CF compliance: auxiliary coordinate variables, compressed data, coordinates attribute&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3447" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3447" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3447" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3447" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Lang, Günther &lt;<a href="mailto:Guenther.Lang?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20compliance%3A%20auxiliary%20coordinate%20variables%2C%20compressed%20data%2C%20coordinates%20attribute">Guenther.Lang</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 28 Apr 2011 16:49:14 +0200</span><br />
+</address>
+<br />
+Dear CF metadata discussion group.
+<br />
+<br />&nbsp;
+<br />
+<br />Salinity data given at several arbitrarily spaced locations in different depth layers shall
+<br />
+be stored in a NetCDF file using a compressed dimension (datapoint) to remove permanently
+<br />
+missing data from the data record.
+<br />
+<br />&nbsp;
+<br />
+<br />In order to get used to this style of data storage I have prepared two example CDL sets.
+<br />
+<br />With NCGEN the respective NetCDF data files were generated from the CDL files and
+<br />
+verified using checker program <a href="http://puma.nerc.ac.uk/cgi-bin/cf-checker.pl">http://puma.nerc.ac.uk/cgi-bin/cf-checker.pl</a> .
+<br />
+<br />&nbsp;
+<br />
+<br />Example 1 - compression by gathering using true coordinate variables:
+<br />
+<br />&nbsp;
+<br />
+<br />*	see attached files test_compress_true_coord_var.cdl | .nc . 
+<br />
+*	checker says: ok, CF compliant . 
+<br />
+<br />&nbsp;
+<br />
+<br />Example 2 - compression by gathering using auxiliary coordinate variables for the horizontal:
+<br />
+<br />&nbsp;
+<br />
+<br />*	see attached files test_compress_aux_coord_var.cdl | .nc . 
+<br />
+*	checker says: not ok, due to 
+<br />
+*	ERROR (5): Dimensions of node_lon must be a subset of dimensions of salinity_3d 
+<br />
+*	ERROR (5): Dimensions of node_lat must be a subset of dimensions of salinity_3d 
+<br />
+<br />&nbsp;
+<br />
+<br /><em class="quotelev1">&gt;From my understanding the dimensions of the auxiliary coordinate variables NODE_LON
+</em><br />
+and NODE_LAT are a true subset of the (uncompressed) dimensions of salinity_3d, similar 
+<br />
+to the above example 1. 
+<br />
+<br />&nbsp;
+<br />
+<br />Due to the fact that the only difference lies in the use of auxiliary coordinates
+<br />
+for the horizontal domain, my question is whether within example 2 there is a 
+<br />
+true error concerning the CF compliant description of this data set or whether
+<br />
+it is not possible at all to store data like example 2 in a CF compliant compressed
+<br />
+NetCDF file. 
+<br />
+<br />&nbsp;
+<br />
+<br />Any helpful remarks welcome.
+<br />
+<br />&nbsp;
+<br />
+<br />Yours sincerely,
+<br />
+<br />G?nther Lang
+<br />
+Bundesanstalt f?r Wasserbau
+<br />
+Abteilung Wasserbau im K?stenbereich
+<br />
+Referat ?stuarsysteme II (K3)
+<br />
+Wedeler Landstra?e 157
+<br />
+22559 Hamburg, Germany
+<br />
+phone +49 40 81908 360
+<br />
+mail  guenther.lang at baw.de
+<br />
+<br /><br /><br />&nbsp;
+<br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110428/fa64e7d4/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110428/fa64e7d4/attachment-0001.html</a>&gt;
+<br />
+-------------- next part --------------
+<br />
+A non-text attachment was scrubbed...
+<br />
+Name: test_compress_true_coord_var.cdl
+<br />
+Type: application/octet-stream
+<br />
+Size: 3798 bytes
+<br />
+Desc: test_compress_true_coord_var.cdl
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110428/fa64e7d4/attachment-0004.obj">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110428/fa64e7d4/attachment-0004.obj</a>&gt;
+<br />
+-------------- next part --------------
+<br />
+A non-text attachment was scrubbed...
+<br />
+Name: test_compress_true_coord_var.nc
+<br />
+Type: application/octet-stream
+<br />
+Size: 4000 bytes
+<br />
+Desc: test_compress_true_coord_var.nc
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110428/fa64e7d4/attachment-0005.obj">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110428/fa64e7d4/attachment-0005.obj</a>&gt;
+<br />
+-------------- next part --------------
+<br />
+A non-text attachment was scrubbed...
+<br />
+Name: test_compress_aux_coord_var.cdl
+<br />
+Type: application/octet-stream
+<br />
+Size: 3699 bytes
+<br />
+Desc: test_compress_aux_coord_var.cdl
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110428/fa64e7d4/attachment-0006.obj">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110428/fa64e7d4/attachment-0006.obj</a>&gt;
+<br />
+-------------- next part --------------
+<br />
+A non-text attachment was scrubbed...
+<br />
+Name: test_compress_aux_coord_var.nc
+<br />
+Type: application/octet-stream
+<br />
+Size: 4004 bytes
+<br />
+Desc: test_compress_aux_coord_var.nc
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110428/fa64e7d4/attachment-0007.obj">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110428/fa64e7d4/attachment-0007.obj</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Apr 28 2011 - 08:49:14 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3447">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3448.html" title="Next message in the list">Ken Roberts: "[CF-metadata] New CF Standard Name (antenna_temperature)"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3446.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] [Standard name request] property changes over time"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3422.html" title="Next message in this discussion thread">Rosalyn Hatcher: "[CF-metadata] CF compliance: auxiliary coordinate variables, compressed data, coordinates attribute"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3422.html" title="Message sent in reply to this message">Rosalyn Hatcher: "[CF-metadata] CF compliance: auxiliary coordinate variables, compressed data, coordinates attribute"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3447" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3447" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3447" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3447" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:45 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3446.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3448.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

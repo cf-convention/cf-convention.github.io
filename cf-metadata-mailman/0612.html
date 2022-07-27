@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] COARDS name for a time offset from Ed Armstrong on 2006-12-23 (cf-metadata-mailman)</title>
+<meta name="Author" content="Ed Armstrong (earmstro)" />
+<meta name="Subject" content="[CF-metadata] COARDS name for a time offset" />
+<meta name="Date" content="2006-12-23" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0611.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0613.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] COARDS name for a time offset</h1>
+<!-- received="Fri Dec 22 17:18:28 2006" -->
+<!-- isoreceived="20061222171828" -->
+<!-- sent="Fri, 22 Dec 2006 16:18:28 -0800" -->
+<!-- isosent="20061223001828" -->
+<!-- name="Ed Armstrong" -->
+<!-- email="earmstro" -->
+<!-- subject="[CF-metadata] COARDS name for a time offset" -->
+<!-- id="p06230923c1b21bb10981_at_[137.78.31.96]" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="458C6244.9030600_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start612" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0613.html" accesskey="d" title="Roy Lowry: &quot;[CF-metadata] Proposed standard names for biological model outputs&quot;">Next message</a> ]
+[ <a href="./0611.html" title="Steve Hankin: &quot;[CF-metadata] COARDS name for a time offset&quot;">Previous message</a> ]
+[ <a href="./0611.html" title="Steve Hankin: &quot;[CF-metadata] COARDS name for a time offset&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0615.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] COARDS name for a time offset&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg612" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg612" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg612" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg612" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Ed Armstrong &lt;<a href="mailto:earmstro?Subject=Re%3A%20%5BCF-metadata%5D%20COARDS%20name%20for%20a%20time%20offset">earmstro</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 22 Dec 2006 16:18:28 -0800</span><br />
+</address>
+<br />
+Hi Steve,
+<br />
+<br /><br />Thanks for your input.  I did not receive any mail directly from 
+<br />
+Jonathan, perhaps because I am not the on CF mailist ?
+<br />
+<br />Anyway,  let me try to describe more of what we (as GHRSST) are 
+<br />
+trying to do. Below is a more complete dump of a typical GHRSST L2P 
+<br />
+netCDF file (but still a subset, we can have 20 fields or so). The 
+<br />
+field 'sst_dtime' is the actual observation of the sea surface 
+<br />
+temperature pixels made by the satellite when you add 'time' 
+<br />
+(reference time in seconds).   For other measurements such as wind, 
+<br />
+which could be measured at a different time,  I would like to specify 
+<br />
+a time offset such that for a certain wind pixel:
+<br />
+<br />time[0] + sst_dtime[0, nj,ni]  + this_offset = time of observation of 
+<br />
+the wind pixel.
+<br />
+<br />I think Steve's solution of having another  time  array (TIME2) to 
+<br />
+describe the offset is too complex, and will be too confusing to 
+<br />
+users.  Besides are
+<br />
+<br />&nbsp;&nbsp;TIME2: data_offset = 1; TIME2: data_link = TIME;
+<br />
+<br />valid COARDS attributes?  I've never seen them before.  If  we did 
+<br />
+implement Steves second suggestion we would have up to 5 time arrays 
+<br />
+for the SST and ancillary fields:
+<br />
+<br />Time (baseline reference)
+<br />
+Time2( offset for wind)
+<br />
+Time2( offset for solar insolation)
+<br />
+Time3( offset for aerosol optical depth)
+<br />
+Time 4( offset for sea ice)
+<br />
+<br />I think this would be to confusing to users and unnecessarily 
+<br />
+complicate the file. The drivers here are certainly space and well as 
+<br />
+user friendliness.  The GHRSST L2P specification actually allows for 
+<br />
+a separate pixel-by-pixel time array for fields like wind (full 3 d 
+<br />
+array like 'sst_dtime')  but we are trying to eliminate them in the 
+<br />
+interest of saving space. Why store a full 3 d array when a simple 
+<br />
+offset to an existing array (sst_dtime) will  suffice.?? That is why 
+<br />
+I proposed some simple new attributes for the ancillary arrays 
+<br />
+themselves to specify this offset in my first email.
+<br />
+<br />But we want to remain CF compliant as well, so perhaps some 
+<br />
+compromise can be reached.
+<br />
+<br />If you reply please make sure my email is visible
+<br />
+<br /><br /><br />~~~~~~~~~ GHRSST L2P netCDF  ~~~~~~~~~~~~~~~~
+<br />
+<br /><br /><br />netcdf 20061118-MODIS_A-JPL-L2P-A2006322173000.L2_LAC_GHRSST-v01 {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time = 1 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nj = 2040 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ni = 1354 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float lat(nj, ni) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat:long_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat:_FillValue = -999.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float lon(nj, ni) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon:long_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon:_FillValue = -639.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:long_name = &quot;reference time of sst file&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;seconds since 1981-01-01 00:00:00&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;short sea_surface_temperature(time, nj, ni) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sea_surface_temperature:long_name = &quot;sea surface temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sea_surface_temperature:_FillValue = -32767s ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sea_surface_temperature:valid_min = -1000s ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sea_surface_temperature:valid_max = 8000s ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sea_surface_temperature:scale_factor = 0.005f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sea_surface_temperature:add_offset = 273.15f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sea_surface_temperature:units = &quot;kelvin&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sea_surface_temperature:coordinates = &quot;lon lat&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sea_surface_temperature:source = &quot;NASA and University 
+<br />
+of Miami&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sea_surface_temperature:comment = &quot;sea surface 
+<br />
+temperature from thermal IR (11 um) channels&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;short sst_dtime(time, nj, ni) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sst_dtime:long_name = &quot;time difference from reference time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sst_dtime:_FillValue = -32768s ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sst_dtime:valid_min = -32767s ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sst_dtime:valid_max = 32767s ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sst_dtime:scale_factor = 1.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sst_dtime:add_offset = 0.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sst_dtime:units = &quot;second&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sst_dtime:coordinates = &quot;lon lat&quot; ;
+<br />
+&nbsp;&nbsp;byte wind_speed(time, nj, ni) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:long_name = &quot;wind speed&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:units = &quot;m s-1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:_FillValue = -128b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:add_offset = 0.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:scale_factor = 1.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:valid_min = -127b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:valid_max = 127b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wind_speed:coordinates = &quot;lon lat&quot; ;
+<br />
+<br /><br /><br />At 2:55 PM -0800 2006/12/22, Steve Hankin wrote:
+<br />
+<em class="quotelev1">&gt;Hi Ed,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;It sounds like NASA's situation is that they want a single CF file 
+</em><br />
+<em class="quotelev1">&gt;(or dataset) to contain multiple variables that are each on 
+</em><br />
+<em class="quotelev1">&gt;different time axes.  But the time axes differ only by a constant 
+</em><br />
+<em class="quotelev1">&gt;offset.  In this case they would not like to physically store 
+</em><br />
+<em class="quotelev1">&gt;multiple time axes in the file.  Storing multiple time axes would 
+</em><br />
+<em class="quotelev1">&gt;lead to 1) wasted space, 2) clouding the close relationship between 
+</em><br />
+<em class="quotelev1">&gt;the time axes.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;I cannot think of existing machinery that can do this.  Such an 
+</em><br />
+<em class="quotelev1">&gt;attribute would need to preserve the assumption made by clients that 
+</em><br />
+<em class="quotelev1">&gt;shared use of a coordinate variable means shared coordinates.   So 
+</em><br />
+<em class="quotelev1">&gt;it would need to introduce a new coordinate variable without 
+</em><br />
+<em class="quotelev1">&gt;duplicating the coordinates, themselves.  Something like the 
+</em><br />
+<em class="quotelev1">&gt;following:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;dimensions:
+</em><br />
+<em class="quotelev1">&gt;         dummy = 1;
+</em><br />
+<em class="quotelev1">&gt;         TIME = UNLIMITED ;
+</em><br />
+<em class="quotelev1">&gt;variables:
+</em><br />
+<em class="quotelev1">&gt;         double TIME(TIME) ;
+</em><br />
+<em class="quotelev1">&gt;                 TIME:units = &quot;hour since 0000-01-01 00:00:00&quot; ;
+</em><br />
+<em class="quotelev1">&gt;         float SST(TIME, Y, X) ;
+</em><br />
+<em class="quotelev1">&gt;                 SST:long_name = &quot;SEA SURFACE TEMPERATURE&quot; ;
+</em><br />
+<em class="quotelev1">&gt;         double TIME2(dummy);
+</em><br />
+<em class="quotelev1">&gt;                  TIME2: offset = 1;  // 1 hour offset
+</em><br />
+<em class="quotelev1">&gt;                  TIME2: data_link = TIME;  //  &lt;==!!  re-use of 
+</em><br />
+<em class="quotelev1">&gt;values from another
+</em><br />
+<em class="quotelev1">&gt;         float SLH(TIME, Y, X) ;
+</em><br />
+<em class="quotelev1">&gt;                 SLH:long_name = &quot;SEA LEVEL HEIGHT&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                 SLH:coordinates= &quot;X, Y, TIME2&quot;;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;The client application would need to synthesize the coordinates of 
+</em><br />
+<em class="quotelev1">&gt;TIME2 based upon the guidance in the file.  Unfortunately this file 
+</em><br />
+<em class="quotelev1">&gt;would not be intelligible to existing CF applications.  That could 
+</em><br />
+<em class="quotelev1">&gt;be overcome using this alternative:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;dimensions:
+</em><br />
+<em class="quotelev1">&gt;         TIME = UNLIMITED ;
+</em><br />
+<em class="quotelev1">&gt;variables:
+</em><br />
+<em class="quotelev1">&gt;         double TIME(TIME) ;
+</em><br />
+<em class="quotelev1">&gt;                 TIME:units = &quot;hour since 0000-01-01 00:00:00&quot; ;
+</em><br />
+<em class="quotelev1">&gt;         float SST(TIME, Y, X) ;
+</em><br />
+<em class="quotelev1">&gt;                 SST:long_name = &quot;SEA SURFACE TEMPERATURE&quot; ;
+</em><br />
+<em class="quotelev1">&gt;         double TIME2(TIME);   /// values are offset by 1 hour from TIME
+</em><br />
+<em class="quotelev1">&gt;                  TIME2: data_offset = 1;
+</em><br />
+<em class="quotelev1">&gt;                  TIME2: data_link = TIME;
+</em><br />
+<em class="quotelev1">&gt;         float SLH(TIME, Y, X) ;
+</em><br />
+<em class="quotelev1">&gt;                 SLH:long_name = &quot;SEA LEVEL HEIGHT&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                 SLH:coordinates= &quot;X, Y, TIME2&quot;;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;In this version existing CF applications will find the file fully 
+</em><br />
+<em class="quotelev1">&gt;intelligible.  Application that understand &quot;data_link&quot; and 
+</em><br />
+<em class="quotelev1">&gt;&quot;data_offset&quot; will immediately understand the inter-relationships 
+</em><br />
+<em class="quotelev1">&gt;(these may be standardized in the NASA community, only).  But we 
+</em><br />
+<em class="quotelev1">&gt;*do* require two sets of coordinates to be stored.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Ed, is this latter satisfactory?  If not can you supply some 
+</em><br />
+<em class="quotelev1">&gt;discussion on how much the overall size of the file would be 
+</em><br />
+<em class="quotelev1">&gt;impacted by the existence of multiple coordinates.  Or are there 
+</em><br />
+<em class="quotelev1">&gt;other drivers?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;     - Steve 
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;================================
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;Dear Ed
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;I wonder why this you need to store the time-offset. If the time of the wind
+</em><br />
+<em class="quotelev2">&gt;&gt;and the time of the SST are different, but both are stored in time units of
+</em><br />
+<em class="quotelev2">&gt;&gt;seconds since the same reference, it is easy to work out the offset as the
+</em><br />
+<em class="quotelev2">&gt;&gt;difference of the two times, isn't it?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;Best wishes
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;Jonathan
+</em><br />
+<em class="quotelev2">&gt;&gt;_______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt;CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt;&lt;mailto:CF-metadata at cgd.ucar.edu&gt;CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt;&lt;<a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>&gt;<a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;--
+</em><br />
+<em class="quotelev1">&gt;--
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Steve Hankin, NOAA/PMEL -- 
+</em><br />
+<em class="quotelev1">&gt;&lt;mailto:Steven.C.Hankin at noaa.gov&gt;Steven.C.Hankin at noaa.gov
+</em><br />
+<em class="quotelev1">&gt;7600 Sand Point Way NE, Seattle, WA 98115-0070
+</em><br />
+<em class="quotelev1">&gt;ph. (206) 526-6080, FAX (206) 526-6744
+</em><br />
+<br /><br /><pre>
+-- 
+    ~ed
+Edward M. Armstrong
+Physical Oceanography DAAC		Tel: 818 393-6710
+Jet Propulsion Laboratory		Fax: 818 393-2710
+	edward.armstrong at jpl.nasa.gov
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20061222/ecc39db8/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20061222/ecc39db8/attachment-0002.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Dec 22 2006 - 17:18:28 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start612">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0613.html" title="Next message in the list">Roy Lowry: "[CF-metadata] Proposed standard names for biological model outputs"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0611.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] COARDS name for a time offset"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0611.html" title="Message to which this message replies">Steve Hankin: "[CF-metadata] COARDS name for a time offset"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0615.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] COARDS name for a time offset"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0615.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] COARDS name for a time offset"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg612" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg612" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg612" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg612" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:53 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0611.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0613.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

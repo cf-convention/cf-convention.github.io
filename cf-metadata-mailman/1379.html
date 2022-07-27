@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] attributes for min/max data values for visualization from Jon Blower on 2008-06-09 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jon Blower (jdb)" />
+<meta name="Subject" content="[CF-metadata] attributes for min/max data values for visualization" />
+<meta name="Date" content="2008-06-09" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1378.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1380.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] attributes for min/max data values for visualization</h1>
+<!-- received="Mon Jun  9 09:04:45 2008" -->
+<!-- isoreceived="20080609080445" -->
+<!-- sent="Mon, 9 Jun 2008 16:04:45 +0100" -->
+<!-- isosent="20080609150445" -->
+<!-- name="Jon Blower" -->
+<!-- email="jdb" -->
+<!-- subject="[CF-metadata] attributes for min/max data values for visualization" -->
+<!-- id="2bb6ee950806090804m2980f62s8c89e266628ad55f_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="460EA423.40206_at_rl.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1379" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1380.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] attributes for min/max data values for visualization&quot;">Next message</a> ]
+[ <a href="./1378.html" title="Pamment, JA: &quot;[CF-metadata] Standard name table update&quot;">Previous message</a> ]
+[ <a href="./0790.html" title="Stephen Pascoe: &quot;[CF-metadata] attributes for min/max data values	for	visualization&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1382.html" accesskey="t" title="Julia Collins: &quot;[CF-metadata] attributes for min/max data values for visualization&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1379" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1379" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1379" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1379" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jon Blower &lt;<a href="mailto:jdb?Subject=Re%3A%20%5BCF-metadata%5D%20attributes%20for%20min%2Fmax%20data%20values%20for%20visualization">jdb</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 9 Jun 2008 16:04:45 +0100</span><br />
+</address>
+<br />
+Hi Stephen et al.,
+<br />
+<br />I have rediscovered this conversation in the depths of my inbox and
+<br />
+thought it might be worth resurrecting.  To summarize the discussion
+<br />
+so far:
+<br />
+<br />1) I proposed two new standard optional CF attributes (called
+<br />
+something like minimum_data_value and maximum_data_value) that would
+<br />
+be attached to a variable in a NetCDF file, redundantly holding its
+<br />
+actual min and max values in that file.  As well as helping with data
+<br />
+mining applications, this would act as a hint to visualization
+<br />
+packages to provide a first attempt at automatically defining a colour
+<br />
+scale range for sensible portrayal.  Note that this attribute pair is
+<br />
+distinct in purpose from valid_min and valid_max (which contains
+<br />
+theoretical extrema, beyond which data is considered invalid).
+<br />
+<br />2) Steve Hankin proposed a more sophisticated approach whereby there
+<br />
+would be a min/max pair for each vertical level in the data.
+<br />
+<br />3) Stephen Pascoe pointed out that spatial subsets will have different
+<br />
+min and max values so the value of the simplistic approach is limited.
+<br />
+<br />Clearly both (2) and (3) are very valid points.  But I still feel that
+<br />
+in a &quot;bang for buck&quot; approach, the simplest approach (1) still has
+<br />
+benefits.  Even the simplest approach gives a sensible (if imperfect)
+<br />
+range of values, without which a visualization application has no idea
+<br />
+how to generate a colour scale, without extracting potentially-large
+<br />
+quantities of data.  Furthermore it is very easy for an NcML
+<br />
+aggregation to look these min/max attributes in each file and generate
+<br />
+the min/max for the aggregated dataset.  I mentioned visualization as
+<br />
+the primary use case for this proposal, but data mining apps can
+<br />
+benefit too: it would be much quicker and easier to answer questions
+<br />
+like, &quot;which files contain temperatures above 30 degC&quot;?
+<br />
+<br />Stephen mentioned cell_methods, which I'm not expert in.  If this
+<br />
+approach is to be adopted, do people think it would be best to express
+<br />
+the min/max as two attributes or in cell_methods?
+<br />
+<br />Should this discussion be moved to the trac site?
+<br />
+<br />Jon
+<br />
+<br />On Sat, Mar 31, 2007 at 7:10 PM, Stephen Pascoe &lt;S.Pascoe at rl.ac.uk&gt; wrote:
+<br />
+<em class="quotelev1">&gt; I would also like to express some reservations about the usefulness of
+</em><br />
+<em class="quotelev1">&gt; simple  min/max attributes for the purpose John suggests (calculating
+</em><br />
+<em class="quotelev1">&gt; appropriate colourbar ranges in visualisations).  My experience is that a
+</em><br />
+<em class="quotelev1">&gt; single pair of values is only relevant at a particular scale.  Once you
+</em><br />
+<em class="quotelev1">&gt; start subsetting a domain there's a good chance the actual min/max will be
+</em><br />
+<em class="quotelev1">&gt; substantially different.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; For instance, taking an example from the IPCC data distribution centre, we
+</em><br />
+<em class="quotelev1">&gt; have a diurnal temperature range field with a min--max of ca. 1--40 deg_c.
+</em><br />
+<em class="quotelev1">&gt;  However, half of this range is due to the variation over Greenland during
+</em><br />
+<em class="quotelev1">&gt; the winter.  Subset anywhere else and the max is more like 20 deg_c.
+</em><br />
+<em class="quotelev1">&gt;  Similarly, the maximum temperature field varies between ca. -50 and +45
+</em><br />
+<em class="quotelev1">&gt; deg_c but most subselections in time or space only cover a fraction of this
+</em><br />
+<em class="quotelev1">&gt; range.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There is no harm in having optional CF attributes for min and max but I'm
+</em><br />
+<em class="quotelev1">&gt; not convinced it will solve the problem.  I like Steve's approach of
+</em><br />
+<em class="quotelev1">&gt; providing the extrema in auxiliary variables.  In CF min/max can be
+</em><br />
+<em class="quotelev1">&gt; specified using the cell_methods attribute.  What would be needed something
+</em><br />
+<em class="quotelev1">&gt; like Steve's &quot;parent&quot; attribute to specify two variables represent the same
+</em><br />
+<em class="quotelev1">&gt; field (with different cell_methods).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers,
+</em><br />
+<em class="quotelev1">&gt; Stephen.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ---
+</em><br />
+<em class="quotelev1">&gt; Stephen Pascoe  01235 445980
+</em><br />
+<em class="quotelev1">&gt; British Atmospheric Data Centre
+</em><br />
+<em class="quotelev1">&gt; Rutherford Appleton Laboratory, CCLRC
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Steve Hankin wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Hi Jon,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Can you really get away with simple attributes to contain the guidance on
+</em><br />
+<em class="quotelev2">&gt;&gt; extrema?  For example, if this is 3D data (has a Z axis) and you are
+</em><br />
+<em class="quotelev2">&gt;&gt; interested in visualizations at different depths (heights), then the
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;recommended&quot; contour ranges might well need to be different for each depth
+</em><br />
+<em class="quotelev2">&gt;&gt; (illustrating why we have tended to back away from this problem for such a
+</em><br />
+<em class="quotelev2">&gt;&gt; long time).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Might it make sense to think more in terms of min/max values stored in new
+</em><br />
+<em class="quotelev2">&gt;&gt; variables and identified by standard names.  Here is a conceptual example
+</em><br />
+<em class="quotelev2">&gt;&gt; for discussion (not a formal proposal, so please cut me slack):
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;    variables:
+</em><br />
+<em class="quotelev2">&gt;&gt;      float temperature(time,pres,lat,lon) ;
+</em><br />
+<em class="quotelev2">&gt;&gt;      float temp_min(pres) ;
+</em><br />
+<em class="quotelev2">&gt;&gt;        temp_min:parent = &quot;temperature&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;        temp_min:standard_name = &quot;minimum_over_domain&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;      float temp_max(pres) ;
+</em><br />
+<em class="quotelev2">&gt;&gt;        temp_max:parent = &quot;temperature&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;        temp_max:standard_name = &quot;maximum_over_domain&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; This approach offers a lot more flexibility.  Does the scope of the
+</em><br />
+<em class="quotelev2">&gt;&gt; problem that needs to be solved require this flexibility?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;    - Steve
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ==================================================
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Jon Blower wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Dear Jonathan,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; OK, that sounds fine too.  How do we move forward to incorporate this
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; into the CF standard?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Thanks, Jon
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; On 3/28/07, Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt; wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Dear Jon and Phil
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; I'd suggest actual_min and actual_max, because they would complement the
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; already defined (Unidata standard) valid_min and valid_max.
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Cheers
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Jonathan
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; Steve Hankin, NOAA/PMEL -- Steven.C.Hankin at noaa.gov
+</em><br />
+<em class="quotelev2">&gt;&gt; 7600 Sand Point Way NE, Seattle, WA 98115-0070
+</em><br />
+<em class="quotelev2">&gt;&gt; ph. (206) 526-6080, FAX (206) 526-6744
+</em><br />
+<em class="quotelev2">&gt;&gt; ------------------------------------------------------------------------
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><br /><pre>
+-- 
+--------------------------------------------------------------
+Dr Jon Blower Tel: +44 118 378 5213 (direct line)
+Technical Director Tel: +44 118 378 8741 (ESSC)
+Reading e-Science Centre Fax: +44 118 378 6413
+ESSC Email: jdb at mail.nerc-essc.ac.uk
+University of Reading
+3 Earley Gate
+Reading RG6 6AL, UK
+--------------------------------------------------------------
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Jun 09 2008 - 09:04:45 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1379">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1380.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] attributes for min/max data values for visualization"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1378.html" title="Previous message in the list">Pamment, JA: "[CF-metadata] Standard name table update"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0790.html" title="Message to which this message replies">Stephen Pascoe: "[CF-metadata] attributes for min/max data values	for	visualization"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1382.html" title="Next message in this discussion thread">Julia Collins: "[CF-metadata] attributes for min/max data values for visualization"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1382.html" title="Message sent in reply to this message">Julia Collins: "[CF-metadata] attributes for min/max data values for visualization"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1379" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1379" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1379" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1379" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:05 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1378.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1380.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

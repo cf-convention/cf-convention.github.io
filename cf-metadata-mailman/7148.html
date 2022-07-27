@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] cell_methods for climatology? from Charlie Zender on 2015-06-25 (cf-metadata-mailman)</title>
+<meta name="Author" content="Charlie Zender (zender)" />
+<meta name="Subject" content="[CF-metadata] cell_methods for climatology?" />
+<meta name="Date" content="2015-06-25" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7147.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7149.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] cell_methods for climatology?</h1>
+<!-- received="Thu Jun 25 14:48:39 2015" -->
+<!-- isoreceived="20150625134839" -->
+<!-- sent="Thu, 25 Jun 2015 13:48:39 -0700" -->
+<!-- isosent="20150625204839" -->
+<!-- name="Charlie Zender" -->
+<!-- email="zender" -->
+<!-- subject="[CF-metadata] cell_methods for climatology?" -->
+<!-- id="558C6927.5080500_at_uci.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7148" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7149.html" accesskey="d" title="Karl Taylor: &quot;[CF-metadata] cell_methods for climatology?&quot;">Next message</a> ]
+[ <a href="./7147.html" title="Jonathan Gregory: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7149.html" accesskey="t" title="Karl Taylor: &quot;[CF-metadata] cell_methods for climatology?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7148" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7148" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7148" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7148" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Charlie Zender &lt;<a href="mailto:zender?Subject=Re%3A%20%5BCF-metadata%5D%20cell_methods%20for%20climatology%3F">zender</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 25 Jun 2015 13:48:39 -0700</span><br />
+</address>
+<br />
+Dear CFers,
+<br />
+<br />What should the cell_methods of a non-coordinate
+<br />
+variable (e.g., temperature) in a climatology?
+<br />
+<br />We have climate model output archived as monthly means
+<br />
+in each gridcell, so the cell_methods attribute of these
+<br />
+monthly data begin as &quot;time: mean&quot; (i.e., monthly mean).
+<br />
+We then create a climatology by a sequence of one or two
+<br />
+more temporal-averaging steps. The one-step method puts
+<br />
+all the months in the hopper and averages those.
+<br />
+The two-step method first averages the months into four
+<br />
+climatological seasons, and then averages those four
+<br />
+seasons into the climatological annual mean.
+<br />
+<br />My understanding is that the resulting time coordinate
+<br />
+cell_methods should be
+<br />
+<br />&quot;time: mean within years time: mean over years&quot;
+<br />
+<br />and that the time coordinate should supplant the time
+<br />
+bounds attribute/variable with a climatology bounds
+<br />
+attribute variable with appropriate endpoints.
+<br />
+<br />My question is what should be the cell_methods of the
+<br />
+non-coordinate variables? I can think of five plausible
+<br />
+answers:
+<br />
+<br />1. &quot;time: mean&quot; (it's just a time-mean, after all)
+<br />
+2. &quot;time: mean time: mean&quot; (one-step climatology)
+<br />
+3. &quot;time: mean time: mean time: mean&quot; (two-step climo)
+<br />
+4. &quot;time: mean within years time: mean over years&quot; (same as time)
+<br />
+5. &quot;time: mean time: mean within years time: mean over years&quot;
+<br />
+6. ???
+<br />
+<br />I favor 1 or 4 because 2, 3, and 5 seem redundant (though
+<br />
+they do convey information about the arithmetic method).
+<br />
+What is the CF-recommendation on this?
+<br />
+<br />Muchas gracias,
+<br />
+Carlos
+<br />
+<pre>
+-- 
+Charlie Zender, Earth System Sci. &amp; Computer Sci.
+University of California, Irvine 949-891-2429 )'(
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Jun 25 2015 - 14:48:39 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7148">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7149.html" title="Next message in the list">Karl Taylor: "[CF-metadata] cell_methods for climatology?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7147.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7149.html" title="Next message in this discussion thread">Karl Taylor: "[CF-metadata] cell_methods for climatology?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7149.html" title="Message sent in reply to this message">Karl Taylor: "[CF-metadata] cell_methods for climatology?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7148" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7148" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7148" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7148" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:57 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7147.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7149.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

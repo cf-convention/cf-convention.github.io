@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] fixed sensors, depth, datum from Jonathan Gregory on 2008-09-11 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] fixed sensors, depth, datum" />
+<meta name="Date" content="2008-09-11" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1519.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1521.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] fixed sensors, depth, datum</h1>
+<!-- received="Thu Sep 11 10:36:51 2008" -->
+<!-- isoreceived="20080911093651" -->
+<!-- sent="Thu, 11 Sep 2008 17:36:51 +0100" -->
+<!-- isosent="20080911163651" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] fixed sensors, depth, datum" -->
+<!-- id="20080911163651.GA16688_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1520" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1521.html" accesskey="d" title="Ethan Davis: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Next message</a> ]
+[ <a href="./1519.html" title="Dale Robinson: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1521.html" accesskey="t" title="Ethan Davis: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1520" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1520" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1520" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1520" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20fixed%20sensors%2C%20depth%2C%20datum">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 11 Sep 2008 17:36:51 +0100</span><br />
+</address>
+<br />
+Dear Dale
+<br />
+<br />It seems none of us who has so far contributed claims to be an expert. If any
+<br />
+experts are listening in, they are welcome to comment!
+<br />
+<br /><em class="quotelev1">&gt;    The recommendation is that I request a few new standard names.
+</em><br />
+<em class="quotelev1">&gt;    Standard names like height_above_geoid and
+</em><br />
+<em class="quotelev1">&gt;    height_above_reference_ellipsoid seem appropriate
+</em><br />
+Yes.
+<br />
+<br /><em class="quotelev1">&gt;    Can one use in any variable an
+</em><br />
+<em class="quotelev1">&gt;    attribute normally found in the crs variable such as
+</em><br />
+<em class="quotelev1">&gt;    vertical_datum_name?  For example
+</em><br />
+<em class="quotelev1">&gt;    float ht_wgs84
+</em><br />
+<em class="quotelev1">&gt;        ht_wgs84:long_name = &quot;Height referenced to WGS84&quot;;
+</em><br />
+<em class="quotelev1">&gt;        ht_wgs84:standard_name = height_above_reference_ellipsoid
+</em><br />
+<em class="quotelev1">&gt;        ht_wgs84:vertical_datum_name = &quot;World Geodetic System 1984&quot;
+</em><br />
+vertical_datum_name is not a CF attribute. CF doesn't preclude other attributes
+<br />
+being included, so that's fine, but software implementing CF would not use
+<br />
+the attribute.
+<br />
+<br />In my earlier posting, I suggested that we could define the geoid by
+<br />
+extending the grid_mapping variable (CF 5.6). There is currently not a standard
+<br />
+CF way to name the geoid or ellipsoid, but the ellipsoid can be defined
+<br />
+geometrically by the grid_mapping variable. Any solution to this would need
+<br />
+an addition to the CF standard.
+<br />
+<br /><em class="quotelev1">&gt;    One option is to propose more specific standard names as suggested by
+</em><br />
+<em class="quotelev1">&gt;    Jon.  E.g. height_above_wgs84 and height_above_navd88.  Do you think
+</em><br />
+<em class="quotelev1">&gt;    that this is a viable direction?
+</em><br />
+<br />I don't like that so much myself, because I feel that heights above various
+<br />
+geoids are the same geophysical quantity, so they should not have different
+<br />
+standard names. It seems better to me to add something to the convention,
+<br />
+especially as this has been raised before but not solved.
+<br />
+<br />In your example it appeared that you wanted to record the offsets between
+<br />
+the geoid and the various tidal datums. My suggestion for that is to put them
+<br />
+in separate data variables and give them standard names (to be proposed) of
+<br />
+the form height_above_geoid_of_TIDAL_DATUM.
+<br />
+<br /><em class="quotelev1">&gt;    Finally, how do I go about suggesting new standard names?
+</em><br />
+By proposing them to this email list, with canonical units and brief
+<br />
+description.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Sep 11 2008 - 10:36:51 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1520">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1521.html" title="Next message in the list">Ethan Davis: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1519.html" title="Previous message in the list">Dale Robinson: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1521.html" title="Next message in this discussion thread">Ethan Davis: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1521.html" title="Message sent in reply to this message">Ethan Davis: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><dfn>Reply</dfn>: <a href="./1523.html" title="Message sent in reply to this message">Dale Robinson: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1520" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1520" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1520" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1520" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:08 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1519.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1521.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

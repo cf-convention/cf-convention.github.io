@@ -1,0 +1,1333 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF-metadata Digest, Vol 166, Issue 5 from Chris Barker on 2017-02-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="Chris Barker (chris.barker)" />
+<meta name="Subject" content="[CF-metadata] CF-metadata Digest, Vol 166, Issue 5" />
+<meta name="Date" content="2017-02-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7995.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7997.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF-metadata Digest, Vol 166, Issue 5</h1>
+<!-- received="Fri Feb  3 14:31:56 2017" -->
+<!-- isoreceived="20170203143156" -->
+<!-- sent="Fri, 3 Feb 2017 13:31:56 -0800" -->
+<!-- isosent="20170203213156" -->
+<!-- name="Chris Barker" -->
+<!-- email="chris.barker" -->
+<!-- subject="[CF-metadata] CF-metadata Digest, Vol 166, Issue 5" -->
+<!-- id="CALGmxE+uxSMERwZ4DFkYTyn51OSh9TnuN7sxj6vJHer+7vvw2g_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CAG=jf3f4oML-NuCV+SJU3qD9uifikrptkonbXGFAx8_WJTn5zQ_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7996" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7997.html" accesskey="d" title="David Blodgett: &quot;[CF-metadata] CF-metadata Digest, Vol 166, Issue 5&quot;">Next message</a> ]
+[ <a href="./7995.html" title="Bob Simons - NOAA Federal: &quot;[CF-metadata] CF-metadata Digest, Vol 166, Issue 5&quot;">Previous message</a> ]
+[ <a href="./7995.html" title="Bob Simons - NOAA Federal: &quot;[CF-metadata] CF-metadata Digest, Vol 166, Issue 5&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7997.html" accesskey="t" title="David Blodgett: &quot;[CF-metadata] CF-metadata Digest, Vol 166, Issue 5&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7996" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7996" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7996" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7996" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Chris Barker &lt;<a href="mailto:chris.barker?Subject=Re%3A%20%5BCF-metadata%5D%20CF-metadata%20Digest%2C%20Vol%20166%2C%20Issue%205">chris.barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 3 Feb 2017 13:31:56 -0800</span><br />
+</address>
+<br />
+a few thoughts. First, I think there are three core &quot;issues&quot; that need to
+<br />
+be resolved:
+<br />
+<br />1) Coordinate indexing (indirection)
+<br />
+<br />the question of whether you have an array of &quot;vertices&quot; that the geomotry
+<br />
+types index into to get thier data:
+<br />
+<br />Advantages:
+<br />
+&nbsp;- if a number of geometries share a lot of vertices, it can be more
+<br />
+efficient
+<br />
+&nbsp;- the relationship between geometries that share vertices (i.e. polygons
+<br />
+that share a boundary) etc. is well defined. you dopnt need to check for
+<br />
+closeness, and maybe have a tolerance, etc.
+<br />
+<br />These were absolutely critical for UGRID for example -- a UGRID mesh is a
+<br />
+single thing&quot;, NOT a collection of polygons that happen to share some
+<br />
+vertices.
+<br />
+<br />Disadvantages:
+<br />
+&nbsp;-  if the geometries do not share many vertices, it is less efficient.
+<br />
+&nbsp;-  there are additional code complications in &quot;getting&quot; the vertices of
+<br />
+the given geometry
+<br />
+&nbsp;- it does not match the OGC data model.
+<br />
+<br />My 0.02 -- given my use cases, I tend to want teh advantages -- but I don't
+<br />
+know that that's a typical use case. And I think it's a really good idea to
+<br />
+keep with the OGS data model where possible -- i.e. e able to translate
+<br />
+from netcdf to, say, geoJSON as losslessly as possible. Given that I think
+<br />
+it's probably a better idea not to have the indirection.
+<br />
+<br />However (to equivocate) perhaps the types of information people are likely
+<br />
+to want to store in netcdf are a subset of what the OGC standards are
+<br />
+designed for -- and for those use-cases, maybe shared vertices are critical.
+<br />
+<br />One way to think about it -- how would you translate between netcdf
+<br />
+geometries and, say geo JSON:
+<br />
+&nbsp;&nbsp;- nc =&gt; geojson would lose the shared index info.
+<br />
+&nbsp;&nbsp;- geojson =&gt; nc -- would you try to reconstruct the shared vertices?? I&quot;m
+<br />
+thinking that would be a bit dangerous in the general case, because you are
+<br />
+adding information that you don't know is true -- are these a shared vertex
+<br />
+or two that just happen to be at the same location?
+<br />
+<br /><em class="quotelev2">&gt; &gt; Break values
+</em><br />
+<br />I don't really like break values as an approach, but with netcdf any option
+<br />
+will be ugly one way or another. So keeping with the WKT approach makes
+<br />
+sense to me. Either way you'll need custom code to unpack it. (BTW -- what
+<br />
+does WellKnownBinary do?)
+<br />
+<br /><em class="quotelev2">&gt; &gt; Ragged indexing
+</em><br />
+<br />There are two &quot;natural&quot; ways to represent a ragged array:
+<br />
+<br />(a) store the length of each &quot;row&quot;
+<br />
+(b) store the index to the beginning (or end) or each &quot;row&quot;
+<br />
+<br />CF already uses (a). However, working with it, I'm pretty convinced that
+<br />
+it's the &quot;wrong&quot; choice:
+<br />
+<br />If you want to know how long a given row is, that is really easy with (a),
+<br />
+and almost as easy with (b) (involves two indexes and a subtraction)
+<br />
+<br />However, if you want to extract a particular row: (b) makes this really
+<br />
+easy -- you simply access the slice of the array you want. with (a) you
+<br />
+need to loop through the entire &quot;length_of_rows&quot; array (up to the row of
+<br />
+interest) and add up the values to find the slice you need. not a huge
+<br />
+issue, but it is an issue. In fact, in my code to read ragged arrays in
+<br />
+netcdf, the first thing I do is pre-compute the index-to-each-row, so I can
+<br />
+then use that to access individual rows for future access -- if  you are
+<br />
+accessing via OpenDAP -- that's particular helpful.
+<br />
+<br />So -- (b) is clearly (to me) the &quot;best&quot; way to do it -- but is it worth
+<br />
+introducing a second way to handle ragged arrays in CF? I would think yes,
+<br />
+but that would be offset if:
+<br />
+<br />&nbsp;- There is a bunch of existing library code that transparently handles
+<br />
+ragged arrays in netcdf (does netcdfJava have something? I'm pretty sure
+<br />
+Python doesn't -- certainly not in netCDF4)
+<br />
+<br />&nbsp;- That that existing lib code would be advantageous to leverage for code
+<br />
+reading features: I suspect that there will have to be enough custom code
+<br />
+that the ragged array bits are going to be the least of it.
+<br />
+<br />So I'm for the &quot;new&quot; way of representing ragged arrays
+<br />
+<br />-CHB
+<br />
+<br /><br />On Fri, Feb 3, 2017 at 11:41 AM, Bob Simons - NOAA Federal &lt;
+<br />
+bob.simons at noaa.gov&gt; wrote:
+<br />
+<br /><em class="quotelev1">&gt; Then, isn't this proposal just the first step in the creation of a new
+</em><br />
+<em class="quotelev1">&gt; model and a new encoding of Simple Features, one that is &quot;align[ed] ...
+</em><br />
+<em class="quotelev1">&gt; with as many other encoding standards in this space as is practical&quot;? In
+</em><br />
+<em class="quotelev1">&gt; other words, yet another standard for Simple Features?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If so, it seems risky to me to take just the first (easy?) step &quot;to
+</em><br />
+<em class="quotelev1">&gt; support the use cases that have a compelling need today&quot; and not solve the
+</em><br />
+<em class="quotelev1">&gt; entire problem. I know the CF way is to just solve real, current needs, but
+</em><br />
+<em class="quotelev1">&gt; in this case it seems to risk a head slap moment in the future when we
+</em><br />
+<em class="quotelev1">&gt; realize that, in order to deal with some new simple feature variant, we
+</em><br />
+<em class="quotelev1">&gt; should have done things differently from the beginning?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; And it seems odd to reject existing standards that have been so
+</em><br />
+<em class="quotelev1">&gt; painstakingly hammered out, in favor of starting the process all over
+</em><br />
+<em class="quotelev1">&gt; again.  We follow existing standards for other things (e.g., IEEE-754 for
+</em><br />
+<em class="quotelev1">&gt; representing floating point numbers in binary files), why can't we follow
+</em><br />
+<em class="quotelev1">&gt; an existing Simple Features standard?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ---
+</em><br />
+<em class="quotelev1">&gt; Rather than just be a naysayer, let me suggest a very different
+</em><br />
+<em class="quotelev1">&gt; alternative:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There are several projects in the CF realm (e.g., this Simple Features
+</em><br />
+<em class="quotelev1">&gt; project, Discrete Sampling Geometry (DSG), true variable-length Strings,
+</em><br />
+<em class="quotelev1">&gt; ugrid(?)) which share a common underlying problem: how to deal with
+</em><br />
+<em class="quotelev1">&gt; variable-length multidimensional arrays: a[b][c], where the length of the c
+</em><br />
+<em class="quotelev1">&gt; dimension may be different for different b indices.
+</em><br />
+<em class="quotelev1">&gt; DSG solved this (5 different ways!), but only for DSG.
+</em><br />
+<em class="quotelev1">&gt; The Simple Features proposal seeks to solve the problem for Simple
+</em><br />
+<em class="quotelev1">&gt; Features.
+</em><br />
+<em class="quotelev1">&gt; We still have no support for Unicode variable-length Strings.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Instead of continuing to solve the variable-length problem a different way
+</em><br />
+<em class="quotelev1">&gt; every time we confront it, shouldn't we solve it once, with one small
+</em><br />
+<em class="quotelev1">&gt; addition to the standard, and then use that solution repeatedly?
+</em><br />
+<em class="quotelev1">&gt; The solution could be a simple variant of one of the DSG solutions, but
+</em><br />
+<em class="quotelev1">&gt; generalized so that it could be used in different situations.
+</em><br />
+<em class="quotelev1">&gt; An encoding standard and built-in support for variable-length data arrays
+</em><br />
+<em class="quotelev1">&gt; in netcdf-java/c would solve a lot of problems, now and in the future.
+</em><br />
+<em class="quotelev1">&gt; Some work on this is already done: I think the netcdf-java API already
+</em><br />
+<em class="quotelev1">&gt; supports variable-length arrays when reading netcdf-4 files.
+</em><br />
+<em class="quotelev1">&gt; For Simple Features, the problem would reduce to: store the feature (using
+</em><br />
+<em class="quotelev1">&gt; some specified existing standard like WKT or WKB) in a variable-length
+</em><br />
+<em class="quotelev1">&gt; array.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On Fri, Feb 3, 2017 at 9:07 AM, &lt;cf-metadata-request at cgd.ucar.edu&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Date: Fri, 3 Feb 2017 11:07:00 -0600
+</em><br />
+<em class="quotelev2">&gt;&gt; From: David Blodgett &lt;dblodgett at usgs.gov&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; To: Bob Simons - NOAA Federal &lt;bob.simons at noaa.gov&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Cc: CF Metadata &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: Re: [CF-metadata] Extension of Discrete Sampling Geometries
+</em><br />
+<em class="quotelev2">&gt;&gt;         for Simple Features
+</em><br />
+<em class="quotelev2">&gt;&gt; Message-ID: &lt;8EE85E65-2815-4720-90FC-13C72D3C7952 at usgs.gov&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Content-Type: text/plain; charset=&quot;utf-8&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear Bob,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I?ll just take these in line.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) noted. We have been trying to figure out what to do with the point
+</em><br />
+<em class="quotelev2">&gt;&gt; featureType and I think leaving it more or less alone is a viable path
+</em><br />
+<em class="quotelev2">&gt;&gt; forward.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) This is not an exact replica of WKT, but rather a similar approach to
+</em><br />
+<em class="quotelev2">&gt;&gt; WKT. As I stated, we have followed the ISO simple features data model and
+</em><br />
+<em class="quotelev2">&gt;&gt; well known text feature types in concept, but have not used the same
+</em><br />
+<em class="quotelev2">&gt;&gt; standardization formalisms. We aren?t advocating for supporting ?all of?
+</em><br />
+<em class="quotelev2">&gt;&gt; any standard but are rather attempting to support the use cases that have a
+</em><br />
+<em class="quotelev2">&gt;&gt; compelling need today while aligning this with as many other encoding
+</em><br />
+<em class="quotelev2">&gt;&gt; standards in this space as is practical. Hopefully that answers your
+</em><br />
+<em class="quotelev2">&gt;&gt; question, sorry if it?s vague.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 3) The google doc linked in my response contains the encoding we are
+</em><br />
+<em class="quotelev2">&gt;&gt; proposing as a starting point for conversation: <a href="http://goo.gl/Kq9ASq">http://goo.gl/Kq9ASq</a> &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://goo.gl/Kq9ASq">http://goo.gl/Kq9ASq</a>&gt; I want to stress, as a starting point for
+</em><br />
+<em class="quotelev2">&gt;&gt; discussion. I expect that this proposal will change drastically before
+</em><br />
+<em class="quotelev2">&gt;&gt; we?re done.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 4) Absolutely envision tools doing what you say, convert to/from standard
+</em><br />
+<em class="quotelev2">&gt;&gt; spatial formats and NetCDF-CF geometries. We intend to introduce an R and a
+</em><br />
+<em class="quotelev2">&gt;&gt; Python implementation that does exactly as you say along with whatever form
+</em><br />
+<em class="quotelev2">&gt;&gt; this standard takes in the end. R and Python were chosen as the team that
+</em><br />
+<em class="quotelev2">&gt;&gt; brought this together are familiar with those two languages, additional
+</em><br />
+<em class="quotelev2">&gt;&gt; implementations would be more than welcome.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 5) We do include a ?geometry? featureType similar to the ?point?
+</em><br />
+<em class="quotelev2">&gt;&gt; featureType. Thus our difficulty with what to do with the ?point?
+</em><br />
+<em class="quotelev2">&gt;&gt; featureType. You are correct, there are lots of non timeSeries applications
+</em><br />
+<em class="quotelev2">&gt;&gt; to be solved and this proposal does intend to support them (within the
+</em><br />
+<em class="quotelev2">&gt;&gt; existing DSG constructs).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Thanks for your questions, hopefully my answers close some gaps for you.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; - Dave
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; On Feb 3, 2017, at 10:47 AM, Bob Simons - NOAA Federal &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; bob.simons at noaa.gov&gt; wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; 1) There is a vague comment in the proposal about possibly changing the
+</em><br />
+<em class="quotelev2">&gt;&gt; point featureType. Please don't, unless the changes don't affect current
+</em><br />
+<em class="quotelev2">&gt;&gt; uses of Point. There are already 1000's of files that use it. If this new
+</em><br />
+<em class="quotelev2">&gt;&gt; system offers an alternative, then fine, it's an alternative. One of the
+</em><br />
+<em class="quotelev2">&gt;&gt; most important and useful features of a good standard is backwards
+</em><br />
+<em class="quotelev2">&gt;&gt; compatibility.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; 2) You advocate &quot;Implement the WKT approach using a NetCDF binary
+</em><br />
+<em class="quotelev2">&gt;&gt; array.&quot; Is this system then an exact encoding of WKT, neither a subset nor
+</em><br />
+<em class="quotelev2">&gt;&gt; a superset?  &quot;Simple Features&quot; are often not simple.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; If it is WKT (or something else), what is the standard you are
+</em><br />
+<em class="quotelev2">&gt;&gt; following to describe the Simple Features (e.g.,  ISO/IEC 13249-3:2016 and
+</em><br />
+<em class="quotelev2">&gt;&gt; ISO 19162:2015)?
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Does your proposal deviate in any way from the standard's capabilities?
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Do you advocate following the entire WKT standard, e.g., supporting all
+</em><br />
+<em class="quotelev2">&gt;&gt; the feature types that WKT supports?
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; 3) Since you are not using the WKT encoding, but creating your own,
+</em><br />
+<em class="quotelev2">&gt;&gt; where is the definition of the encoding system you are using?
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; 4) This is a little out of CF scope, but:
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Do you envision tools, notably, netcdf-c/java, having a writer function
+</em><br />
+<em class="quotelev2">&gt;&gt; that takes in WKT and encodes the information in a file, and having a
+</em><br />
+<em class="quotelev2">&gt;&gt; reader function that reads the file and returns WKT? Or is it your plan
+</em><br />
+<em class="quotelev2">&gt;&gt; that the encoding/ decoding is left to the user?
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; 5) This proposal is for &quot;Simple Features plus Time Series&quot; (my phrase
+</em><br />
+<em class="quotelev2">&gt;&gt; not yours). But aren't there lots of other uses of Simple Features? Will
+</em><br />
+<em class="quotelev2">&gt;&gt; there be other proposals in the future for &quot;Simple Features plus X&quot; and
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;Simple Features plus Y&quot;? If so, will CF eventually become a massive
+</em><br />
+<em class="quotelev2">&gt;&gt; document where Simple Features are defined over and over again, but in
+</em><br />
+<em class="quotelev2">&gt;&gt; different contexts? If so, wouldn't a better solution be to deal with
+</em><br />
+<em class="quotelev2">&gt;&gt; Simple Features separately (as Postgres does by making a geometric data
+</em><br />
+<em class="quotelev2">&gt;&gt; type?), and then add &quot;Simple Features plus Time Series&quot; as the first use of
+</em><br />
+<em class="quotelev2">&gt;&gt; it?
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Thanks for answering these questions.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Please forgive me if I missed parts of your proposal that answer these
+</em><br />
+<em class="quotelev2">&gt;&gt; questions.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; On Thu, Feb 2, 2017 at 5:57 AM, &lt;cf-metadata-request at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:cf-metadata-request at cgd.ucar.edu&gt;&gt; wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Date: Thu, 2 Feb 2017 07:57:36 -0600
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; From: David Blodgett &lt;dblodgett at usgs.gov &lt;mailto:dblodgett at usgs.gov&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; To: &lt;cf-metadata at cgd.ucar.edu &lt;mailto:cf-metadata at cgd.ucar.edu&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Subject: [CF-metadata] Extension of Discrete Sampling Geometries for
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;         Simple  Features
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Message-ID: &lt;224C2828-7212-449F-8C2C-97D903F6BE1E at usgs.gov &lt;mailto:
+</em><br />
+<em class="quotelev2">&gt;&gt; 224C2828-7212-449F-8C2C-97D903F6BE1E at usgs.gov&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Content-Type: text/plain; charset=&quot;utf-8&quot;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Dear CF Community,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; We are pleased to submit this proposal for your consideration and
+</em><br />
+<em class="quotelev2">&gt;&gt; review. The cover letter we've prepared below provides some background and
+</em><br />
+<em class="quotelev2">&gt;&gt; explanation for the proposed approach. The google doc here &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://goo.gl/Kq9ASq">http://goo.gl/Kq9ASq</a> &lt;<a href="http://goo.gl/Kq9ASq">http://goo.gl/Kq9ASq</a>&gt;&gt; is an excerpt of the CF
+</em><br />
+<em class="quotelev2">&gt;&gt; specification with track changes turned on. Permissions for the document
+</em><br />
+<em class="quotelev2">&gt;&gt; allow any google user to comment, so feel free to comment and ask questions
+</em><br />
+<em class="quotelev2">&gt;&gt; in line.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Note that I?m sharing this with you with one issue unresolved. What to
+</em><br />
+<em class="quotelev2">&gt;&gt; do with the point featureType? Our draft suggests that it is part of a new
+</em><br />
+<em class="quotelev2">&gt;&gt; geometry featureType, but it could be that we leave it alone and introduce
+</em><br />
+<em class="quotelev2">&gt;&gt; a geometry featureType. This may be a minor point of discussion, but we
+</em><br />
+<em class="quotelev2">&gt;&gt; need to be clear that this is an issue that still needs to be resolved in
+</em><br />
+<em class="quotelev2">&gt;&gt; the proposal.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Thank you for your time and consideration.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Best Regards,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; David Blodgett, Tim Whiteaker, and Ben Koziol
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Proposed Extension to NetCDF-CF for Simple Geometries
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Preface
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; The proposed addition to NetCDF-CF introduced below is inspired by a
+</em><br />
+<em class="quotelev2">&gt;&gt; pre-existing data model governed by OGC and ISO as ISO 19125-1. More
+</em><br />
+<em class="quotelev2">&gt;&gt; information on Simple Features may be found here. &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="https://en.wikipedia.org/wiki/Simple_Features">https://en.wikipedia.org/wiki/Simple_Features</a> &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="https://en.wikipedia.org/wiki/Simple_Features">https://en.wikipedia.org/wiki/Simple_Features</a>&gt;&gt; To the knowledge of the
+</em><br />
+<em class="quotelev2">&gt;&gt; authors, it is consistent with ISO 19125-1 but has not been specified using
+</em><br />
+<em class="quotelev2">&gt;&gt; the formalisms of OGC or ISO. Language used attempts to hold true to
+</em><br />
+<em class="quotelev2">&gt;&gt; NetCDF-CF semantics while not conflicting with the existing standards
+</em><br />
+<em class="quotelev2">&gt;&gt; baseline. While this proposal does not support the entire scope of the the
+</em><br />
+<em class="quotelev2">&gt;&gt; simple features ecosystem, it does support the core data types in most
+</em><br />
+<em class="quotelev2">&gt;&gt; common use around the community.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; The other existing standard to mention is UGRID convention &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://ugrid-conventions.github.io/ugrid-conventions/">http://ugrid-conventions.github.io/ugrid-conventions/</a> &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://ugrid-conventions.github.io/ugrid-conventions/">http://ugrid-conventions.github.io/ugrid-conventions/</a>&gt;&gt;. The authors
+</em><br />
+<em class="quotelev2">&gt;&gt; have experience reading and writing UGRID and have designed the proposed
+</em><br />
+<em class="quotelev2">&gt;&gt; structure in a way that is inspired by and consistent with it.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Terms and Definitions
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; (Taken from OGC 06-103r4 OpenGIS Implementation Specification for
+</em><br />
+<em class="quotelev2">&gt;&gt; Geographic information - Simple feature access - Part 1: Common
+</em><br />
+<em class="quotelev2">&gt;&gt; architecture &lt;<a href="http://www.opengeospatial.org/standards/sfa">http://www.opengeospatial.org/standards/sfa</a> &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://www.opengeospatial.org/standards/sfa">http://www.opengeospatial.org/standards/sfa</a>&gt;&gt;.)
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Feature: Abstraction of real world phenomena - typically a geospatial
+</em><br />
+<em class="quotelev2">&gt;&gt; abstraction with associated descriptive attributes.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Simple Feature: A feature with all geometric attributes described
+</em><br />
+<em class="quotelev2">&gt;&gt; piecewise by straight line or planar interpolation between point sets.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Geometry (geometric complex): A set of disjoint geometric primitives -
+</em><br />
+<em class="quotelev2">&gt;&gt; one or more points, lines, or polygons that form the spatial representation
+</em><br />
+<em class="quotelev2">&gt;&gt; of a feature.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Introduction
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Discrete Sampling Geometries (DSGs) handle data from one (or a
+</em><br />
+<em class="quotelev2">&gt;&gt; collection of) timeSeries (point), Trajectory, Profile, TrajectoryProfile
+</em><br />
+<em class="quotelev2">&gt;&gt; or timeSeriesProfile geometries. Measurements are from a point (timeSeries
+</em><br />
+<em class="quotelev2">&gt;&gt; and Profile) or points along a trajectory. In this proposal, we reuse the
+</em><br />
+<em class="quotelev2">&gt;&gt; core DSG timeSeries type which provides support for basic time series use
+</em><br />
+<em class="quotelev2">&gt;&gt; cases e.g., a timeSerieswhich is measured (or modeled) at a given point.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Changes to Existing CF Specification
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; In NetCDF-CF 1.7, Discrete Sampling Geometries separate dimensions and
+</em><br />
+<em class="quotelev2">&gt;&gt; variables into two types ? instance and element &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://cfconventions.org/cf-conventions/cf-conventions.html">http://cfconventions.org/cf-conventions/cf-conventions.html</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; #_collections_instances_and_elements &lt;<a href="http://cfconventions.org/cf-c">http://cfconventions.org/cf-c</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; onventions/cf-conventions.html#_collections_instances_and_elements&gt;&gt;.
+</em><br />
+<em class="quotelev2">&gt;&gt; Instance refers to individual points, trajectories, profiles, etc. These
+</em><br />
+<em class="quotelev2">&gt;&gt; would sometimes be referred to as features given that they are identified
+</em><br />
+<em class="quotelev2">&gt;&gt; entities that can have associated attributes and be related to other
+</em><br />
+<em class="quotelev2">&gt;&gt; entities. Element dimensions describe temporal or other dimensions to
+</em><br />
+<em class="quotelev2">&gt;&gt; describe data on a per-instance basis. This proposal extends the DSG
+</em><br />
+<em class="quotelev2">&gt;&gt; timeSeries featuretype &lt;<a href="http://cfconventions.org/cf-c">http://cfconventions.org/cf-c</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; onventions/cf-conventions.html#_features_and_feature_types &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://cfconventions.org/cf-conventions/cf-conventions.html">http://cfconventions.org/cf-conventions/cf-conventions.html</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; #_features_and_feature_types&gt;&gt; such that the geospatial coordinates of
+</em><br />
+<em class="quotelev2">&gt;&gt; the instances can be point, multi-point, line, multi-line, polygon, or
+</em><br />
+<em class="quotelev2">&gt;&gt; multi-polyg
+</em><br />
+<em class="quotelev2">&gt;&gt;  on geometries. Rather than overload the DSG contiguous ragged array
+</em><br />
+<em class="quotelev2">&gt;&gt; encoding, designed with timeseries in mind, a geometry ragged array
+</em><br />
+<em class="quotelev2">&gt;&gt; encoding is introduced in a new section 9.3.5. See thi
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;  s google doc for specific proposed changes. &lt;<a href="http://goo.gl/Kq9ASq">http://goo.gl/Kq9ASq</a> &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://goo.gl/Kq9ASq">http://goo.gl/Kq9ASq</a>&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Motivation
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; DSGs have no system to define a geometry (polyline, polygon, etc.,
+</em><br />
+<em class="quotelev2">&gt;&gt; other than point) and an association with a time series that applies over
+</em><br />
+<em class="quotelev2">&gt;&gt; that entire geometry e.g., The expected rainfall in this watershed polygon
+</em><br />
+<em class="quotelev2">&gt;&gt; for some period of time is 10 mm. As suggested in the last paragraph of
+</em><br />
+<em class="quotelev2">&gt;&gt; section 9.1, current practice is to assign a representative point or just
+</em><br />
+<em class="quotelev2">&gt;&gt; use an ID and forgo spatial information within a NetCDF-CF file. In order
+</em><br />
+<em class="quotelev2">&gt;&gt; to satisfy a number of environmental modeling use cases, we need a way to
+</em><br />
+<em class="quotelev2">&gt;&gt; encode a geometry (point, line, polygon, multi-point, multi-line, or
+</em><br />
+<em class="quotelev2">&gt;&gt; multi-polygon) that is the static spatial feature representation to which
+</em><br />
+<em class="quotelev2">&gt;&gt; one or more timeSeries can be associated. In this proposal, we provide an
+</em><br />
+<em class="quotelev2">&gt;&gt; encoding to define collections of simple feature geometries. It interfaces
+</em><br />
+<em class="quotelev2">&gt;&gt; cleanly with the existing DSG specification, enabling DSGs and Simple
+</em><br />
+<em class="quotelev2">&gt;&gt; Geometries to be used concurrently.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Looking Forward
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; This proposal is a compromise solution that attempts to stay consisten
+</em><br />
+<em class="quotelev2">&gt;&gt; to CF ideals and fit within the structure of the existing specification
+</em><br />
+<em class="quotelev2">&gt;&gt; with minimal disruption. Line and polygon data types often require variable
+</em><br />
+<em class="quotelev2">&gt;&gt; length arrays. Development of this proposal has brought to light the need
+</em><br />
+<em class="quotelev2">&gt;&gt; for a general abstraction for variable length arrays in NetCDF-CF. Such a
+</em><br />
+<em class="quotelev2">&gt;&gt; general abstraction would necessarily be reusable for character arrays,
+</em><br />
+<em class="quotelev2">&gt;&gt; ragged arrays of time series, and ragged arrays of geometry nodes, as well
+</em><br />
+<em class="quotelev2">&gt;&gt; as any other ragged data structures that may come up in the future. This
+</em><br />
+<em class="quotelev2">&gt;&gt; proposal does not introduce such a general ragged array abstraction but
+</em><br />
+<em class="quotelev2">&gt;&gt; does not preclude such a development in the future.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Three Alternative Approaches
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Respecting the human readability ideal of NetCDF-CF, the development of
+</em><br />
+<em class="quotelev2">&gt;&gt; this proposal started from a human readable format for geometries known as
+</em><br />
+<em class="quotelev2">&gt;&gt; Well Known Text &lt;<a href="https://en.wikipedia.org/wiki/Well-known_text">https://en.wikipedia.org/wiki/Well-known_text</a> &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="https://en.wikipedia.org/wiki/Well-known_text">https://en.wikipedia.org/wiki/Well-known_text</a>&gt;&gt;. We considered three
+</em><br />
+<em class="quotelev2">&gt;&gt; high level design approaches while developing this proposal.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Direct use of Well-Known Text (WKT). In this approach, well known text
+</em><br />
+<em class="quotelev2">&gt;&gt; strings would be encoded using character arrays following a contiguous
+</em><br />
+<em class="quotelev2">&gt;&gt; ragged array approach to index the character array by geometry (or instance
+</em><br />
+<em class="quotelev2">&gt;&gt; in DSG parlance).
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Implement the WKT approach using a NetCDF binary array. In this
+</em><br />
+<em class="quotelev2">&gt;&gt; approach, well known text separators (brackets, commas and spaces) for
+</em><br />
+<em class="quotelev2">&gt;&gt; multipoint, multiline, multipolygon, and polygon holes, would be encoded as
+</em><br />
+<em class="quotelev2">&gt;&gt; break type separator values like -1 for multiparts and -2 for holes.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Implement the fundamental dimensions of geometry data in NetCDF. In
+</em><br />
+<em class="quotelev2">&gt;&gt; this approach, additional dimensions and variables along those dimensions
+</em><br />
+<em class="quotelev2">&gt;&gt; would be introduced to represent geometries, geometry parts, geometry
+</em><br />
+<em class="quotelev2">&gt;&gt; nodes, and unique (potentially shared) coordinate locations for nodes to
+</em><br />
+<em class="quotelev2">&gt;&gt; reference.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Selected Approach
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; The first approach was seen as too opaque to stay true to the CF ideal
+</em><br />
+<em class="quotelev2">&gt;&gt; of complete self-description. The third approach seemed needlessly verbose
+</em><br />
+<em class="quotelev2">&gt;&gt; and difficult to implement. The second approach was selected for the
+</em><br />
+<em class="quotelev2">&gt;&gt; following reasons:
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; The second approach is just as or more human-readable than the third.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Use of break values keeps geometries relatively atomic.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Will be familiar to developers who are familiar with the WKT geometry
+</em><br />
+<em class="quotelev2">&gt;&gt; format.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Character arrays, which are needed for options one and three, are
+</em><br />
+<em class="quotelev2">&gt;&gt; cumbersome to use in some programming languages in common use with NetCDF.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Break values replace the need for extraneous variables related to
+</em><br />
+<em class="quotelev2">&gt;&gt; multi-part and polygon holes (interiors). Multi-part geometries are
+</em><br />
+<em class="quotelev2">&gt;&gt; generally an exception and excessive instrumentation to support them should
+</em><br />
+<em class="quotelev2">&gt;&gt; be discounted.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Example: Representation of WKT-Style Polygons in a NetCDF-3
+</em><br />
+<em class="quotelev2">&gt;&gt; timeSeriesfeatureType
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Below is sample CDL demonstrating how polygons are encoded in NetCDF-3
+</em><br />
+<em class="quotelev2">&gt;&gt; using a continuous ragged array-like encoding. There are three details to
+</em><br />
+<em class="quotelev2">&gt;&gt; note in the example below.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; The attribute contiguous_ragged_dimension with value of a dimension in
+</em><br />
+<em class="quotelev2">&gt;&gt; the file.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; The geom_coordinates attribute with a value containing a space
+</em><br />
+<em class="quotelev2">&gt;&gt; separated string of variable names.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; The cf_role geometry_x_node and geometry_y_node.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; These three attributes form a system to fully describe collections of
+</em><br />
+<em class="quotelev2">&gt;&gt; multi-polygon feature geometries. Any variable that has the
+</em><br />
+<em class="quotelev2">&gt;&gt; continuous_ragged_dimension attribute contains integers that indicate the
+</em><br />
+<em class="quotelev2">&gt;&gt; 0-indexed starting position of each geometry along the instance dimension.
+</em><br />
+<em class="quotelev2">&gt;&gt; Any variable that uses the dimension referenced in the
+</em><br />
+<em class="quotelev2">&gt;&gt; continuous_ragged_dimension attribute can be interpreted using the values
+</em><br />
+<em class="quotelev2">&gt;&gt; in the variable containing the contiguous_ragged_dimension attribute. The
+</em><br />
+<em class="quotelev2">&gt;&gt; variables referenced in the geom_coordinates attribute describe spatial
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinates of geometries. These variables can also be identified by the
+</em><br />
+<em class="quotelev2">&gt;&gt; cf_roles geometry_x_node and geometry_y_node. Note that the example below
+</em><br />
+<em class="quotelev2">&gt;&gt; also includes a mechanism to handle multi-polygon features that also
+</em><br />
+<em class="quotelev2">&gt;&gt; contain holes.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; netcdf multipolygon_example {
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; dimensions:
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   node = 47 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   indices = 55 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   instance = 3 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   time = 5 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   strlen = 5 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; variables:
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   char instance_name(instance, strlen) ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     instance_name:cf_role = &quot;timeseries_id&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   int coordinate_index(indices) ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     coordinate_index:geom_type = &quot;multipolygon&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     coordinate_index:geom_coordinates = &quot;x y&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     coordinate_index:multipart_break_value = -1 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     coordinate_index:hole_break_value = -2 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     coordinate_index:outer_ring_order = &quot;anticlockwise&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     coordinate_index:closure_convention = &quot;last_node_equals_first&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   int coordinate_index_start(instance) ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     coordinate_index_start:long_name = &quot;index of first coordinate in
+</em><br />
+<em class="quotelev2">&gt;&gt; each instance geometry&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     coordinate_index_start:contiguous_ragged_dimension = &quot;indices&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   double x(node) ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     x:units = &quot;degrees_east&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     x:standard_name = &quot;longitude&quot; ; // or projection_x_coordinate
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     X:cf_role = &quot;geometry_x_node&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   double y(node) ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     y:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     y:standard_name = ?latitude? ; // or projection_y_coordinate
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     y:cf_role = &quot;geometry_y_node&quot;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   double someVariable(instance) ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     someVariable:long_name = &quot;a variable describing a single-valued
+</em><br />
+<em class="quotelev2">&gt;&gt; attribute of a polygon&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   int time(time) ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     time:units = &quot;days since 2000-01-01&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   double someData(instance, time) ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     someData:coordinates = &quot;time x y&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     someData:featureType = &quot;timeSeries&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; // global attributes:
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     :Conventions = &quot;CF-1.8&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; data:
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;  instance_name =
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   &quot;flash&quot;,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   &quot;bang&quot;,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   &quot;pow&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;  coordinate_index = 0, 1, 2, 3, 4, -2, 5, 6, 7, 8, -2, 9, 10, 11, 12,
+</em><br />
+<em class="quotelev2">&gt;&gt; -2, 13, 14, 15, 16,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     -1, 17, 18, 19, 20, -1, 21, 22, 23, 24, 25, 26, 27, 28, -1, 29, 30,
+</em><br />
+<em class="quotelev2">&gt;&gt; 31, 32, 33,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     34, -2, 35, 36, 37, 38, 39, 40, 41, 42, -1, 43, 44, 45, 46 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;  coordinate_index_start = 0, 30, 46 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;  x = 0, 20, 20, 0, 0, 1, 10, 19, 1, 5, 7, 9, 5, 11, 13, 15, 11, 5, 9, 7,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     5, 11, 15, 13, 11, -40, -20, -45, -40, -20, -10, -10, -30, -45,
+</em><br />
+<em class="quotelev2">&gt;&gt; -20, -30, -20, -20, -30, 30,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     45, 10, 30, 25, 50, 30, 25 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;  y = 0, 0, 20, 20, 0, 1, 5, 1, 1, 15, 19, 15, 15, 15, 19, 15, 15, 25,
+</em><br />
+<em class="quotelev2">&gt;&gt; 25, 29,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     25, 25, 25, 29, 25, -40, -45, -30, -40, -35, -30, -10, -5, -20,
+</em><br />
+<em class="quotelev2">&gt;&gt; -35, -20, -15, -25, -20, 20,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;     40, 40, 20, 5, 10, 15, 5 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;  someVariable = 1, 2, 3 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;  time = 1, 2, 3, 4, 5 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;  someData =
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   1, 2, 3, 4, 5,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   1, 2, 3, 4, 5,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;   1, 2, 3, 4, 5 ;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; }
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; How To Interpret
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Starting from the timeSeries variables:
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; See CF-1.8 conventions.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; See the timeSeries featureType.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Find the timeseries_id cf_role.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Find the coordinates attribute of data variables.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; See that the variables indicated by the coordinates attribute have a
+</em><br />
+<em class="quotelev2">&gt;&gt; cf_role geometry_x_nodeand geometry_y_node to determine that these are
+</em><br />
+<em class="quotelev2">&gt;&gt; geometries according to this new specification.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Find the coordinate index variable with geom_coordinates that point to
+</em><br />
+<em class="quotelev2">&gt;&gt; the nodes.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Find the variable with contiguous_ragged_dimension pointing to the
+</em><br />
+<em class="quotelev2">&gt;&gt; dimension of the coordinate index variable to determine how to index into
+</em><br />
+<em class="quotelev2">&gt;&gt; the coordinate index.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Iterate over polygons, parsing out geometries using the contiguous
+</em><br />
+<em class="quotelev2">&gt;&gt; ragged start variable and coordinate index variable to interpret the
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinate data variables.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Or, without reference to timeSeries:
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; See CF-1.8 conventions.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; See the geom_type of multipolygon.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Find the variable with a contiguous_ragged_dimension matching the
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinate index variable?s dimension.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; See the geom_coordinates of x y.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Using the contiguous ragged start variable found in 3 and the
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinate index variable found in 2, geometries can be parsed out of the
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinate index variable and parsed using the hole and break values in it.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; -------------- next part --------------
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; An HTML attachment was scrubbed...
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachmen">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachmen</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; ts/20170202/4ce5b42f/attachment.html &lt;<a href="http://mailman.cgd.ucar.edu/p">http://mailman.cgd.ucar.edu/p</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; ipermail/cf-metadata/attachments/20170202/4ce5b42f/attachment.html&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; ------------------------------
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Subject: Digest Footer
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; ------------------------------
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; End of CF-metadata Digest, Vol 166, Issue 3
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; *******************************************
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; --
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Sincerely,
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Bob Simons
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; IT Specialist
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Environmental Research Division
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; NOAA Southwest Fisheries Science Center
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; 99 Pacific St., Suite 255A      (New!)
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Monterey, CA 93940               (New!)
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Phone: (831)333-9878            (New!)
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Fax:   (831)648-8440
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Email: bob.simons at noaa.gov &lt;mailto:bob.simons at noaa.gov&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; The contents of this message are mine personally and
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; do not necessarily reflect any position of the
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Government or the National Oceanic and Atmospheric Administration.
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; -------------- next part --------------
+</em><br />
+<em class="quotelev2">&gt;&gt; An HTML attachment was scrubbed...
+</em><br />
+<em class="quotelev2">&gt;&gt; URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachmen">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachmen</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; ts/20170203/4ff55def/attachment.html&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ------------------------------
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: Digest Footer
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ------------------------------
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; End of CF-metadata Digest, Vol 166, Issue 5
+</em><br />
+<em class="quotelev2">&gt;&gt; *******************************************
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; Sincerely,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Bob Simons
+</em><br />
+<em class="quotelev1">&gt; IT Specialist
+</em><br />
+<em class="quotelev1">&gt; Environmental Research Division
+</em><br />
+<em class="quotelev1">&gt; NOAA Southwest Fisheries Science Center
+</em><br />
+<em class="quotelev1">&gt; 99 Pacific St., Suite 255A      (New!)
+</em><br />
+<em class="quotelev1">&gt; Monterey, CA 93940               (New!)
+</em><br />
+<em class="quotelev1">&gt; Phone: (831)333-9878 &lt;(831)%20333-9878&gt;            (New!)
+</em><br />
+<em class="quotelev1">&gt; Fax:   (831)648-8440 &lt;(831)%20648-8440&gt;
+</em><br />
+<em class="quotelev1">&gt; Email: bob.simons at noaa.gov
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The contents of this message are mine personally and
+</em><br />
+<em class="quotelev1">&gt; do not necessarily reflect any position of the
+</em><br />
+<em class="quotelev1">&gt; Government or the National Oceanic and Atmospheric Administration.
+</em><br />
+<em class="quotelev1">&gt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170203/5119e5ef/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170203/5119e5ef/attachment.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Feb 03 2017 - 14:31:56 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7996">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7997.html" title="Next message in the list">David Blodgett: "[CF-metadata] CF-metadata Digest, Vol 166, Issue 5"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7995.html" title="Previous message in the list">Bob Simons - NOAA Federal: "[CF-metadata] CF-metadata Digest, Vol 166, Issue 5"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7995.html" title="Message to which this message replies">Bob Simons - NOAA Federal: "[CF-metadata] CF-metadata Digest, Vol 166, Issue 5"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7997.html" title="Next message in this discussion thread">David Blodgett: "[CF-metadata] CF-metadata Digest, Vol 166, Issue 5"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7997.html" title="Message sent in reply to this message">David Blodgett: "[CF-metadata] CF-metadata Digest, Vol 166, Issue 5"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7996" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7996" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7996" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7996" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:09 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7995.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7997.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

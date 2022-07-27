@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Rotated-pole grids from Steve Hankin on 2009-06-17 (cf-metadata-mailman)</title>
+<meta name="Author" content="Steve Hankin (Steven.C.Hankin)" />
+<meta name="Subject" content="[CF-metadata] Rotated-pole grids" />
+<meta name="Date" content="2009-06-17" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2100.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2102.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Rotated-pole grids</h1>
+<!-- received="Wed Jun 17 09:29:15 2009" -->
+<!-- isoreceived="20090617082915" -->
+<!-- sent="Wed, 17 Jun 2009 08:29:15 -0700" -->
+<!-- isosent="20090617152915" -->
+<!-- name="Steve Hankin" -->
+<!-- email="Steven.C.Hankin" -->
+<!-- subject="[CF-metadata] Rotated-pole grids" -->
+<!-- id="4A390BCB.5030100_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="2bb6ee950906170756y75395254t3f4736dc81958516_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2101" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2102.html" accesskey="d" title="Steve Hankin: &quot;[CF-metadata] Rotated-pole grids&quot;">Next message</a> ]
+[ <a href="./2100.html" title="Jon Blower: &quot;[CF-metadata] Rotated-pole grids&quot;">Previous message</a> ]
+[ <a href="./2100.html" title="Jon Blower: &quot;[CF-metadata] Rotated-pole grids&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2102.html" accesskey="t" title="Steve Hankin: &quot;[CF-metadata] Rotated-pole grids&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2101" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2101" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2101" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2101" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Steve Hankin &lt;<a href="mailto:Steven.C.Hankin?Subject=Re%3A%20%5BCF-metadata%5D%20Rotated-pole%20grids">Steven.C.Hankin</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 17 Jun 2009 08:29:15 -0700</span><br />
+</address>
+<br />
+Hi Jon,
+<br />
+<br />Assuming I've understood your situation ...
+<br />
+<br />First to restate the party line:  The philosophy of CF has always been 
+<br />
+that the coordinate systems be self-describing without the application 
+<br />
+needing to know the specific algorithms used to calculate coordinates 
+<br />
+(from the name of the projection and a list of parameters).  This 
+<br />
+approach has great merit.  It shifts the burden of generating 
+<br />
+coordinates from clients, who would need to know all projection types 
+<br />
+(in a dynamically growing list), to the individual data provider, who 
+<br />
+needs to know how to generate just the coordinates for the particular  
+<br />
+coordinate system being used.  Admittedly, there are some geometric 
+<br />
+computations that are only  possible through knowledge of the projection 
+<br />
+parameters, and for that reason those parameters have been added over 
+<br />
+the past 2-3 years to CF.  GFDL's proposed &quot;gridspec&quot; additions to CF 
+<br />
+actually find a way to include most of that geometry information in the 
+<br />
+file without the need to know the projection parameters -- making the 
+<br />
+file more self-describing, but again at the expense of effort to the 
+<br />
+data provider.  (Gridspec tooling can add a whole lot of additional 
+<br />
+power, too -- support for generalized regridding, etc.)
+<br />
+<br />It sounds like the situation that you face is that you are the lucky one 
+<br />
+to receive files that contain implied coordinates and you have to serve 
+<br />
+them as CF with explicit coordinates.  That is a pain in the neck for 
+<br />
+sure.  On the other hand think of the bright side  ;-) .  The pain in 
+<br />
+the neck lands only on you; not on every client who would access this 
+<br />
+file.  That seems like a good trade-off to promote broad 
+<br />
+interoperability.  (Would a GIS client understand a rotated pole 
+<br />
+projection?  It seems like a projection that might be known only by 
+<br />
+numerical ocean modelers.)
+<br />
+<br />&nbsp;&nbsp;&nbsp;2 cents  - Steve
+<br />
+<br />=======================
+<br />
+<br />Jon Blower wrote:
+<br />
+<em class="quotelev1">&gt; Thanks for the confirmation Don.  This seems very odd indeed - if the
+</em><br />
+<em class="quotelev1">&gt; source data don't contain the (real) lon and lat coordinates then it's
+</em><br />
+<em class="quotelev1">&gt; quite onerous (and quite pointless) to do so in a convenient fashion
+</em><br />
+<em class="quotelev1">&gt; (it would generally involve re-writing the headers, or using some long
+</em><br />
+<em class="quotelev1">&gt; and ugly NcML).  Presumably there must have been a good reason for
+</em><br />
+<em class="quotelev1">&gt; including these coordinates?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers, Jon
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On Wed, Jun 17, 2009 at 3:52 PM, Don Murray&lt;dmurray at unidata.ucar.edu&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;   
+</em><br />
+<em class="quotelev2">&gt;&gt; John-
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I believe for all grid_mappings that lat/lon are required even though the
+</em><br />
+<em class="quotelev2">&gt;&gt; grid mapping defines the transformations necessary.  I think it is redundant
+</em><br />
+<em class="quotelev2">&gt;&gt; in all cases, not just for the rotated lat/lon.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Don
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Jon Blower wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;     
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Dear all,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; We have some data that use a rotated pole grid.  The CF convention for
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; describing this is here:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.4/cf-conventions.html#id2985006">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.4/cf-conventions.html#id2985006</a>.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  Are the 2D lon and lat variables in this example really necessary?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; They would seem to be redundant as their values can be calculated from
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; rlon, rlat and the location of the new &quot;north&quot; pole.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Thanks, Jon
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;       
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; *************************************************************
+</em><br />
+<em class="quotelev2">&gt;&gt; Don Murray                               UCAR Unidata Program
+</em><br />
+<em class="quotelev2">&gt;&gt; dmurray at unidata.ucar.edu                        P.O. Box 3000
+</em><br />
+<em class="quotelev2">&gt;&gt; (303) 497-8628                              Boulder, CO 80307
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://www.unidata.ucar.edu/staff/donm">http://www.unidata.ucar.edu/staff/donm</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; *************************************************************
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   
+</em><br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20090617/334b316c/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20090617/334b316c/attachment-0002.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Jun 17 2009 - 09:29:15 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2101">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2102.html" title="Next message in the list">Steve Hankin: "[CF-metadata] Rotated-pole grids"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2100.html" title="Previous message in the list">Jon Blower: "[CF-metadata] Rotated-pole grids"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2100.html" title="Message to which this message replies">Jon Blower: "[CF-metadata] Rotated-pole grids"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2102.html" title="Next message in this discussion thread">Steve Hankin: "[CF-metadata] Rotated-pole grids"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2101" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2101" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2101" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2101" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:19 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2100.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2102.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

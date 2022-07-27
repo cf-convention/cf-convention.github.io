@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Proposal for better handling vector quantities in CF (and the role of libCF) from Seth McGinnis on 2011-12-14 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] Proposal for better handling vector quantities in CF (and the role of libCF)" />
+<meta name="Date" content="2011-12-14" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4023.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4025.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Proposal for better handling vector quantities in CF (and the role of libCF)</h1>
+<!-- received="Tue Dec 13 17:28:24 2011" -->
+<!-- isoreceived="20111213172824" -->
+<!-- sent="Tue, 13 Dec 2011 17:28:24 -0700" -->
+<!-- isosent="20111214002824" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] Proposal for better handling vector quantities in CF (and the role of libCF)" -->
+<!-- id="web-38171201_at_mail.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4EE7AFBF.6080403_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4024" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4025.html" accesskey="d" title="Cameron-smith, Philip: &quot;[CF-metadata] standard name for sea water ph without&quot;">Next message</a> ]
+[ <a href="./4023.html" title="Karl Taylor: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">Previous message</a> ]
+[ <a href="./4038.html" title="Steve Hankin: &quot;[CF-metadata] Proposal for better handling vector quantities in CF (and the role of libCF)&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4042.html" accesskey="t" title="Thomas Lavergne: &quot;[CF-metadata] Proposal for better handling vector quantities in CF (and the role of libCF)&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4024" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4024" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4024" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4024" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20Proposal%20for%20better%20handling%20vector%20quantities%20in%20CF%20(and%20the%20role%20of%20libCF)">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 13 Dec 2011 17:28:24 -0700</span><br />
+</address>
+<br />
+<em class="quotelev1">&gt;I agree with your reasoning.  It is worth considering the use of Groups, but
+</em><br />
+<em class="quotelev1">&gt;the approach should be weighed against the best proposals that can be
+</em><br />
+<em class="quotelev1">&gt;generated that stick to the classic model.  Fundamentally the need is for 2
+</em><br />
+<em class="quotelev1">&gt;bit of semantics:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 1. associate components together so they form a conceptual N-vector object
+</em><br />
+<em class="quotelev1">&gt; 2. associate metadata with the N-vector object
+</em><br />
+<br />Having these two bits of semantics would be really valuable because it 
+<br />
+also provides a generic method for handling tabular data within netcdf,
+<br />
+which is something I think we need.
+<br />
+<br />If you want to represent a set of events (e.g., earthquakes) in netcdf, I 
+<br />
+believe the best way to do it is to have a bunch of variables (e.g., time, 
+<br />
+lat, lon, magnitude) with a common &quot;ID&quot; dimension. Having a common 
+<br />
+dimension links them together implicitly, but there's currently no good 
+<br />
+way to say explicitly &quot;these variables are different features of this set 
+<br />
+of entities&quot; or to provide metadata about the collection, like &quot;this is a 
+<br />
+catalog of Japanese earthquakes of magnitude 5.0 and greater&quot;.
+<br />
+<br />Something simple along the lines of the coordinates attribute would
+<br />
+probably suffice.  I'm not sure whether it would be better to attach it
+<br />
+to the ID dimension, and use that as the holding point for metadata
+<br />
+associated with the table, or whether it would be preferable to simply
+<br />
+have a dummy variable, as is used for map_projection metadata.
+<br />
+<br />(I had more conclusions about some of these issues, but lost the
+<br />
+document where I collected all my thoughts in a hard-drive crash...)
+<br />
+<br />This would also provide a stepping-stone to better handling of spatial
+<br />
+categorical data.  Currently, CF says to use flag_values and 
+<br />
+flag_meanings for categorical data, but that gets really awkward and 
+<br />
+human-unfriendly if you have more than a handful of categories.  It 
+<br />
+would be much more elegant to have the meanings of the numeric 
+<br />
+values defined by reference to a table.  (This also solves an issue I 
+<br />
+posted about a while back: we could have one set of standard
+<br />
+names for use with controlled vocabularies like the Area Type and 
+<br />
+Region Names tables, and another for user-provided categorizations, 
+<br />
+which would then be enumerated in the same file.)
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Dec 13 2011 - 17:28:24 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4024">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4025.html" title="Next message in the list">Cameron-smith, Philip: "[CF-metadata] standard name for sea water ph without"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4023.html" title="Previous message in the list">Karl Taylor: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4038.html" title="Message to which this message replies">Steve Hankin: "[CF-metadata] Proposal for better handling vector quantities in CF (and the role of libCF)"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4042.html" title="Next message in this discussion thread">Thomas Lavergne: "[CF-metadata] Proposal for better handling vector quantities in CF (and the role of libCF)"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4042.html" title="Message sent in reply to this message">Thomas Lavergne: "[CF-metadata] Proposal for better handling vector quantities in CF (and the role of libCF)"</a></li>
+<li><dfn>Reply</dfn>: <a href="./4043.html" title="Message sent in reply to this message">Steve Hankin: "[CF-metadata] Proposal for better handling vector quantities in CF (and the role of libCF)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4024" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4024" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4024" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4024" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4023.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4025.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

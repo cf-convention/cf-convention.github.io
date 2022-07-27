@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF calendars (was: problem with times in PSD dataset) from Cathy Smith on 2012-12-10 (cf-metadata-mailman)</title>
+<meta name="Author" content="Cathy Smith (cathy.smith)" />
+<meta name="Subject" content="[CF-metadata] CF calendars (was: problem with times in PSD dataset)" />
+<meta name="Date" content="2012-12-10" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4869.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4871.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF calendars (was: problem with times in PSD dataset)</h1>
+<!-- received="Mon Dec 10 08:27:20 2012" -->
+<!-- isoreceived="20121210082720" -->
+<!-- sent="Mon, 10 Dec 2012 08:27:20 -0700" -->
+<!-- isosent="20121210152720" -->
+<!-- name="Cathy Smith" -->
+<!-- email="cathy.smith" -->
+<!-- subject="[CF-metadata] CF calendars (was: problem with times in PSD dataset)" -->
+<!-- id="50C5FF58.1020607_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20121209154549.GA12214_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4870" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4871.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] CF calendars (was: problem with times in PSD dataset)&quot;">Next message</a> ]
+[ <a href="./4869.html" title="Jon Blower: &quot;[CF-metadata] CF calendars (was: problem with times in PSD dataset)&quot;">Previous message</a> ]
+[ <a href="./4868.html" title="Jonathan Gregory: &quot;[CF-metadata] CF calendars (was: problem with times in PSD dataset)&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4872.html" accesskey="t" title="Cecelia DeLuca: &quot;[CF-metadata] CF calendars (was: problem with times in PSD dataset)&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4870" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4870" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4870" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4870" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Cathy Smith &lt;<a href="mailto:cathy.smith?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20calendars%20(was%3A%20problem%20with%20times%20in%20PSD%20dataset)">cathy.smith</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 10 Dec 2012 08:27:20 -0700</span><br />
+</address>
+<br />
+Jonathon
+<br />
+<br />We have the issue that we store many long terms means (subdaily,daily,
+<br />
+monthly...). These long terms means have no &quot;years&quot; per se though the
+<br />
+rest of the date is an actual 'date'. We have been storing them as year
+<br />
+1 generally speaking (usually base 1-1-1) as we want to avoid using  a
+<br />
+date within the date range of the dataset as we feel it confuses people.
+<br />
+So, in your proposal below, we couldn't use year 1 as the date because
+<br />
+we couldn't use 1-1-1., We also couldn't use 1800-1-1- and year 1
+<br />
+(negative dates). So, we would have to use some other year that didn't
+<br />
+look like a real year but was &gt;1800. We could use something like 9999
+<br />
+would work but would lead to large values of the time variable and would
+<br />
+be hard to read. We could switch the base date for the LTM's (instead of
+<br />
+1800-1-1 use 9999-1-1) but I'm not sure that is a good idea to switch
+<br />
+base dates within a dataset. For us, the best thing for LTM's is to use
+<br />
+1-1-1 and year 1 as that is fairly easy to read and won't tend to
+<br />
+confuse people. CF doesn't have a standard and looking at the doc page,
+<br />
+the examples all show values that use a year from the range (something
+<br />
+that really does confuse some users in our experience).  We could also
+<br />
+switch the default calendar and maybe that is sufficient but in my
+<br />
+experience only people who care about calendars would notice any
+<br />
+calendar attribute (e.g. not scientific users) so potentially that could
+<br />
+prove an issue. If we did switch, I could see that possibly being a
+<br />
+problem with applications  as well, unless coded well.
+<br />
+<br />I'm really not sure the best solution to this problem but I do think any
+<br />
+calender solution needs to take into account how to store climatological
+<br />
+dates.
+<br />
+<br />Cathy
+<br />
+<br /><br />On 12/9/12 8:45 AM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Cecilia
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks for your posting. Are we in agreement? I think that we are.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; However, the current default is also problematic - reasons I see are:
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) it does send a message to modelers who find the default unusable,
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) because different calendar defaults are used on the modeling and
+</em><br />
+<em class="quotelev2">&gt;&gt; data side, current tools are limited to particular calendars,
+</em><br />
+<em class="quotelev2">&gt;&gt; affecting users,
+</em><br />
+<em class="quotelev2">&gt;&gt; and 3) the mixed Julian-Gregorian calendar is an ugly beast to peg as the
+</em><br />
+<em class="quotelev2">&gt;&gt; standard forevermore.
+</em><br />
+<em class="quotelev1">&gt; I agree with these drawbacks. If CF only dealt with the real world, obviously
+</em><br />
+<em class="quotelev1">&gt; the real-world calendar (mixed Julian-Gregorian) would be the default and only
+</em><br />
+<em class="quotelev1">&gt; calendar it had to deal with. However, at its outset CF was for models, many of
+</em><br />
+<em class="quotelev1">&gt; which do not use this calendar, which was nonetheless chosen as the default
+</em><br />
+<em class="quotelev1">&gt; because of udunits. I agree with you and others that providing such an
+</em><br />
+<em class="quotelev1">&gt; inconvenient default is unsatisfactory in retrospect. But here we are!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; it is a good idea to add another, strict Gregorian (error before 1582).
+</em><br />
+<em class="quotelev1">&gt; Thanks for seeing it like that. Yes, perhaps we should define what I suggested
+</em><br />
+<em class="quotelev1">&gt; as a new calendar: strict_gregorian, which is not allowed to have a ref date
+</em><br />
+<em class="quotelev1">&gt; before 1582, or to use negative time coordinates, or to describe dates before
+</em><br />
+<em class="quotelev1">&gt; 1582 (which would be impossible given the first two conditions). (Note, I am
+</em><br />
+<em class="quotelev1">&gt; not personally the eponymous strict Gregory.)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In that case, we could change the default in the next release from gregorian
+</em><br />
+<em class="quotelev1">&gt; or standard to strict_gregorian. For software which is careful about versions,
+</em><br />
+<em class="quotelev1">&gt; this would mean that dates in the default calendar before 1582 would give an
+</em><br />
+<em class="quotelev1">&gt; error. This would be a safe failure, rather than a wrong answer.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Some data sets would be CF compliant only under particular versions of CF.
+</em><br />
+<em class="quotelev2">&gt;&gt; Is this the first time that a change to CF would have such an impact?
+</em><br />
+<em class="quotelev1">&gt; In the sense of old data becoming invalid in a *later* version, yes I think
+</em><br />
+<em class="quotelev1">&gt; it is. Of course new features always allow datasets which are invalid in an
+</em><br />
+<em class="quotelev1">&gt; *earlier* version.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In the failing cases, I think we agree that tools might offer the facility
+</em><br />
+<em class="quotelev2">&gt;&gt; to provide the calendar if none was found.
+</em><br />
+<em class="quotelev2">&gt;&gt; However, I imagine most tools would continue to assume the current default.
+</em><br />
+<em class="quotelev1">&gt; Yes, I expect so. They would still be unsafe, if datasets have been wrongly
+</em><br />
+<em class="quotelev1">&gt; coded with the default, but it would be no worse than now.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; This does not seem so bad to me.  The removal of the default solution should
+</em><br />
+<em class="quotelev2">&gt;&gt; not produce the nastier kinds of errors that you would get if you
+</em><br />
+<em class="quotelev2">&gt;&gt; changed the default.
+</em><br />
+<em class="quotelev1">&gt; That's what I think, except that formally the above suggestion is a change to
+</em><br />
+<em class="quotelev1">&gt; to the default - one which installs a fail-safe mechanism.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+----------------------------------------------
+NOAA/ESRL PSD and CIRES CDC
+303-497-6263
+<a href="http://www.esrl.noaa.gov/psd/people/cathy.smith/">http://www.esrl.noaa.gov/psd/people/cathy.smith/</a>
+Emails about data/webpages may get quicker responses from emailing 
+esrl.psd.data at noaa.gov
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Dec 10 2012 - 08:27:20 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4870">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4871.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] CF calendars (was: problem with times in PSD dataset)"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4869.html" title="Previous message in the list">Jon Blower: "[CF-metadata] CF calendars (was: problem with times in PSD dataset)"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4868.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] CF calendars (was: problem with times in PSD dataset)"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4872.html" title="Next message in this discussion thread">Cecelia DeLuca: "[CF-metadata] CF calendars (was: problem with times in PSD dataset)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4870" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4870" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4870" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4870" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:11 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4869.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4871.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

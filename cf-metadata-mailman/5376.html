@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] scalar coordinates from Kenneth S. Casey - NOAA Federal on 2013-05-21 (cf-metadata-mailman)</title>
+<meta name="Author" content="Kenneth S. Casey - NOAA Federal (kenneth.casey)" />
+<meta name="Subject" content="[CF-metadata] scalar coordinates" />
+<meta name="Date" content="2013-05-21" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5375.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5377.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] scalar coordinates</h1>
+<!-- received="Tue May 21 05:22:34 2013" -->
+<!-- isoreceived="20130521042234" -->
+<!-- sent="Tue, 21 May 2013 07:22:34 -0400" -->
+<!-- isosent="20130521112234" -->
+<!-- name="Kenneth S. Casey - NOAA Federal" -->
+<!-- email="kenneth.casey" -->
+<!-- subject="[CF-metadata] scalar coordinates" -->
+<!-- id="4DE6E5A4-E44F-48A2-96D3-91C5303F36C3_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="7819C496F4E10E47BCEFBE74551AAC96049418_at_EXXCMPD1DAG3.cmpd1.metoffice.gov.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5376" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5377.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] GOES-R generated binary mask products under proposal&quot;">Next message</a> ]
+[ <a href="./5375.html" title="Hedley, Mark: &quot;[CF-metadata] scalar coordinates&quot;">Previous message</a> ]
+[ <a href="./5375.html" title="Hedley, Mark: &quot;[CF-metadata] scalar coordinates&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5401.html" accesskey="t" title="Nan Galbraith: &quot;[CF-metadata] scalar coordinates&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5376" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5376" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5376" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5376" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Kenneth S. Casey - NOAA Federal &lt;<a href="mailto:kenneth.casey?Subject=Re%3A%20%5BCF-metadata%5D%20scalar%20coordinates">kenneth.casey</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 21 May 2013 07:22:34 -0400</span><br />
+</address>
+<br />
+Hi Everyone,
+<br />
+<br />After spending 15 minutes reading this and Jonathan's previous post, and trying hard to be sure I really understand them, I am left wondering if a &quot;convenience feature&quot; is really a convenience at all.  I know programmers don't like clutter in their code and have certain aesthetic to uphold (I used to do much more serious programming in my younger days, but am now just a lazy Matlaber), but is the added complexity of having these two options, copied from Jonathan's post:
+<br />
+<br />&nbsp;float height; // scalar coordinate variable
+<br />
+&nbsp;&nbsp;&nbsp;height: standard_name=&quot;height&quot;;
+<br />
+&nbsp;float temp(lat,lon);
+<br />
+&nbsp;&nbsp;&nbsp;temp: standard_name=&quot;air_temperature&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;temp: coordinates=&quot;height&quot;;
+<br />
+<br />&nbsp;float height(height);  // size-one coordinate var, with dimension height=1
+<br />
+&nbsp;&nbsp;&nbsp;height: standard_name=&quot;height&quot;;
+<br />
+&nbsp;float temp(height,lat,lon);
+<br />
+&nbsp;&nbsp;&nbsp;temp: standard_name=&quot;air_temperature&quot;;
+<br />
+<br />really worth it?  The manual must be longer to describe the &quot;convenience&quot;, and the application programmers and downstream users of the data now have to build complexity into THEIR code to handle both cases. This list has to take time explaining and debating the options, and I have to take time explaining it to both data producers and data consumers who have never used netCDF or CF before.   Maybe that is not such a big deal on a case by case basis, but in the broader picture when folks like me are trying to get everyone and their brothers and sisters and mothers and fathers using CF-netCDF, it is a real pain.  My vote is to simplify. Use the second example, since it handles the case where height=1 as easily as the case where height=1000.  I say be explicit.  Does the first example gain us any functionality?  If not, then don't use it and stay away from it.  Encourage others to do the same. 
+<br />
+<br />Ken
+<br />
+<br /><br />On May 21, 2013, at 5:48 AM, &quot;Hedley, Mark&quot; &lt;mark.hedley at metoffice.gov.uk&gt; wrote:
+<br />
+<br /><em class="quotelev1">&gt; The term 'convenience feature' is mentioned in the conventions document:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  'The new scalar coordinate variable is a convenience feature which avoids adding size one dimensions to variables.' 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Data creators have seen the benefits in not encoding size one dimensions and made use of this feature, it has proved very convenient.  The conventions go on to say:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  'Scalar coordinate variables have the same information content and can be used in the same contexts as a size one coordinate variable.'
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; But this statement is not quite true: the ordering of dimensions is not encoded, and the ability to link many coordinates to the same dimension is lost.  The assumption in this statement is an aspiration which I think cannot be delivered without particularly strict limitations on the use of scalars during encoding.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Nowhere in the conventions does it state that if more than one single-valued coordinate is related to the same degree of freedom, a dimension must be declared for these and this relationship explicitly encoded. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Later, the case of character strings is addressed:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  'If a character variable has only one dimension (the maximum length of the string), it is regarded as a string-valued scalar coordinate variable, analogous to a numeric scalar coordinate variable (see Section 5.7, ?Scalar Coordinate Variables?) '
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; which is a required feature, but the NUG only allows numerical valued data arrays as Coordinate Variables, so a further section is added, in the  Terminology:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  'scalar coordinate variable
+</em><br />
+<em class="quotelev1">&gt;    A scalar variable that contains coordinate data. Functionally equivalent to either a size one coordinate variable or a size one auxiliary coordinate variable. '
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; These statements together provide information on how to write files, but they are limited in their assistance to file reading and interpretation.  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The conventions are not clear how to, or whether to make a distinction for a particular scalar coordinate: it does not say that a scalar coordinate is a Coordinate Variable or an Auxiliary Coordinate Variable, it says it is functionally equivalent to either one or the other.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I have read these sections to mean that by encoding a scalar coordinate the data creator is not providing information about how the coordinate is related to the dimensions in the file, other than to say it applies to all of the cells currently in the file.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; As such, I disagree with the statement that that 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  'Scalar coordinate variables have the same information content and can be used in the same contexts as a size one coordinate variable.'
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; In many cases this will turn out to be a valid interpretation but it is not the only one, and this nuance is a really useful feature, which many data creators have benefited from.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; From one point of view, a third type of Coordinate exists in CF, the Scalar Coordinate, which is neither a Coordinate Variable, nor an Auxiliary Coordinate.  From another point of view a Scalar Coordinate is an Auxiliary Coordinates which has the potential to be an emergent Coordinate Variable, if required and consistent for the data consumer.  (I am sure there are other useful perspectives we can consider)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; We have come across many data sets from other data creators where a considered reading of the data suggests that they have taken an interpretation such as this as well.  No distinction has been made between scalars which represent a degree of freedom and scalars which do not.  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The scalar coordinate is a convenient feature allowing metadata to be simply encoded in a clear manner and I feel that the conventions document should adapt to reflect the usage some sections of the community have adopted.  It is not ambiguous, it provides sufficient information to work with the file and the data and metadata are well specified.  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Indeed when converting from other formats (such as GRIB and BUFR) to CF it is the logical way to encode the available metadata.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I am concerned about the implications for these data sets if the interpretation of scalar coordinates is tightened in a future version of the conventions document to explicitly disallow this useful and well used point of view.  I would like to stress again Jonathan's point, that all of this data is CF compliant, the question is how consumers interpret the semantics of the data set.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I think the utility of the scalar coordinate variable is significantly diminished if Option B or some derivative of it is pursued for the next version of the conventions.  Option A preserves all of the interpretations of Option B intact, but with caution needed on loading and interpretation not to read too much information into any scalar coordinates present.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />Kenneth S. Casey, Ph.D.
+<br />
+Technical Director
+<br />
+NOAA National Oceanographic Data Center
+<br />
+1315 East-West Highway
+<br />
+Silver Spring MD 20910
+<br />
+301-713-3272 x133
+<br />
+<a href="http://www.nodc.noaa.gov">http://www.nodc.noaa.gov</a>
+<br />
+<br /><br /><br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130521/e1a8e96b/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130521/e1a8e96b/attachment-0001.html</a>&gt;
+<br />
+-------------- next part --------------
+<br />
+A non-text attachment was scrubbed...
+<br />
+Name: facebook.png
+<br />
+Type: image/png
+<br />
+Size: 533 bytes
+<br />
+Desc: not available
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130521/e1a8e96b/attachment-0002.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130521/e1a8e96b/attachment-0002.png</a>&gt;
+<br />
+-------------- next part --------------
+<br />
+A non-text attachment was scrubbed...
+<br />
+Name: RSS.png
+<br />
+Type: image/png
+<br />
+Size: 1654 bytes
+<br />
+Desc: not available
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130521/e1a8e96b/attachment-0003.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130521/e1a8e96b/attachment-0003.png</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Tue May 21 2013 - 05:22:34 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5376">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5377.html" title="Next message in the list">Jim Biard: "[CF-metadata] GOES-R generated binary mask products under proposal"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5375.html" title="Previous message in the list">Hedley, Mark: "[CF-metadata] scalar coordinates"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5375.html" title="Message to which this message replies">Hedley, Mark: "[CF-metadata] scalar coordinates"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5401.html" title="Next message in this discussion thread">Nan Galbraith: "[CF-metadata] scalar coordinates"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5401.html" title="Message sent in reply to this message">Nan Galbraith: "[CF-metadata] scalar coordinates"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5376" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5376" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5376" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5376" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:22 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5375.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5377.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

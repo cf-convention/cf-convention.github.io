@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  Taxa in CF.  Some questions from Jonathan Gregory on 2013-04-02 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  Taxa in CF.  Some questions" />
+<meta name="Date" content="2013-04-02" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5242.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5244.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  Taxa in CF.  Some questions</h1>
+<!-- received="Tue Apr  2 10:38:19 2013" -->
+<!-- isoreceived="20130402093819" -->
+<!-- sent="Tue, 2 Apr 2013 17:38:19 +0100" -->
+<!-- isosent="20130402163819" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  Taxa in CF.  Some questions" -->
+<!-- id="20130402163819.GA29509_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5243" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5244.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  interplay of standard name modifiers, cell_methods -- is there a problem?&quot;">Next message</a> ]
+[ <a href="./5242.html" title="Jim Biard: &quot;[CF-metadata] interplay of standard name modifiers, cell_methods -- is there a problem?&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5245.html" accesskey="t" title="Lowry, Roy K.: &quot;[CF-metadata] Taxa in CF.  Some questions&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5243" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5243" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5243" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5243" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20Taxa%20in%20CF.%20%20Some%20questions">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 2 Apr 2013 17:38:19 +0100</span><br />
+</address>
+<br />
+Dear Roy
+<br />
+<br />Yes, I think you are right that it is useful to have the taxon as a dimension
+<br />
+because it allows you to put several of them in one variable, provided it's
+<br />
+the same quantity, with the same generic standard name. That is just like
+<br />
+bundling up timeseries from different locations into one data variable. This
+<br />
+kind of dimension is called a &quot;discrete axis&quot; in CF 1.6, section 4.5. By
+<br />
+&quot;container variable&quot; CF so far means something different: that's an empty
+<br />
+data variable which exists to hang attributes from, to specify grid_mappings.
+<br />
+<br />I assume that MAXT is the size of the time dimension, isn't it? Could we write
+<br />
+your example like this:
+<br />
+<br />dimensions;
+<br />
+&nbsp;&nbsp;time=1000;
+<br />
+&nbsp;&nbsp;string80=80;
+<br />
+&nbsp;&nbsp;taxon=2;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;float abundance(time,taxon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;abundance:standard_name=&quot;number_concentration_of_taxon_in_sea_water&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;abundance:coordinates=&quot;taxon_identifier taxon_name&quot;;
+<br />
+&nbsp;&nbsp;char taxon_name(taxon,string80);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;taxon_name:standard_name=&quot;taxon_name&quot;;
+<br />
+&nbsp;&nbsp;char taxon_identifier(taxon,string80);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;taxon_name:standard_name=&quot;taxon_identifier&quot;;
+<br />
+<br />I am not sure if I've understood your example, though. Yes, I think both the
+<br />
+taxon descriptions should be string-valued auxiliary coordinate variables, as
+<br />
+I have shown them (CF section 6.1).
+<br />
+<br />If there is only one taxon, the taxon dimension could be omitted.
+<br />
+<br />However, I am a bit disturbed to learn that the taxon_name might not be
+<br />
+reliable or unique. If CF is going to depend on an external vocabulary, I would
+<br />
+argue that it needs one which provides unique and reliable self-describing
+<br />
+identifiers.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Apr 02 2013 - 10:38:19 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5243">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5244.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  interplay of standard name modifiers, cell_methods -- is there a problem?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5242.html" title="Previous message in the list">Jim Biard: "[CF-metadata] interplay of standard name modifiers, cell_methods -- is there a problem?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5245.html" title="Next message in this discussion thread">Lowry, Roy K.: "[CF-metadata] Taxa in CF.  Some questions"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5245.html" title="Message sent in reply to this message">Lowry, Roy K.: "[CF-metadata] Taxa in CF.  Some questions"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5243" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5243" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5243" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5243" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:18 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5242.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5244.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

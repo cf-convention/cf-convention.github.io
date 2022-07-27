@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] daily maximum of running 8-hour means from Jonathan Gregory on 2011-10-24 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] daily maximum of running 8-hour means" />
+<meta name="Date" content="2011-10-24" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3866.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3868.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] daily maximum of running 8-hour means</h1>
+<!-- received="Sun Oct 23 18:29:47 2011" -->
+<!-- isoreceived="20111023172947" -->
+<!-- sent="Sun, 23 Oct 2011 18:29:47 -0600" -->
+<!-- isosent="20111024002947" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] daily maximum of running 8-hour means" -->
+<!-- id="20111024002947.GA10579_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3867" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3868.html" accesskey="d" title="Cameron-smith, Philip: &quot;[CF-metadata] daily maximum of running 8-hour means&quot;">Next message</a> ]
+[ <a href="./3866.html" title="Jonathan Gregory: &quot;[CF-metadata] Standard Name Table - GRIB column&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3868.html" accesskey="t" title="Cameron-smith, Philip: &quot;[CF-metadata] daily maximum of running 8-hour means&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3867" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3867" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3867" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3867" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20daily%20maximum%20of%20running%208-hour%20means">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sun, 23 Oct 2011 18:29:47 -0600</span><br />
+</address>
+<br />
+Dear Martin and Philip
+<br />
+<br />Thank you for your use-cases showing the need for standardised metadata for
+<br />
+daily maxima of 8-hour running means. I expect that similar cases will arise
+<br />
+in other areas and actually it is quite surprising they haven't already, I
+<br />
+think.
+<br />
+<br />What you want to describe involves two cell_methods processing operations: (1)
+<br />
+Calculate an 8-hour running mean for consecutive hours, (2) Calculate a
+<br />
+maximum of these within days. We could record this explicitly and completely
+<br />
+if we had different time coordinates for the two operations. For the first
+<br />
+operation, the cell_method is a mean, and we have time coordinates at hourly
+<br />
+intervals, each with bounds specifying an 8-hour period. The cell bounds
+<br />
+overlap, but that's no problem. E.g. they could be [0:00, 8:00], [1:00, 9:00],
+<br />
+[2:00, 10:00], ... (just the time, omitting the date). For the second
+<br />
+operation, the cell_method is a maximum, the bounds indicate periods of days,
+<br />
+spaced at daily intervals i.e. not overlapping.
+<br />
+<br />One possibility would be to extend CF to allow you to preserve the original
+<br />
+time axis to which the first operation applied, even though it is no longer
+<br />
+provides the time coordinates once the second operation has been carried
+<br />
+out. For instance, we could allow:
+<br />
+<br />&nbsp;&nbsp;float air_quality(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;air_quality:cell_methods=&quot;old_time: mean time: maximum&quot;;
+<br />
+&nbsp;&nbsp;double old_time;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;old_time:units=&quot;hours since 2011-10-23 0:00&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;old_time:bounds=&quot;old_time_bounds&quot;;
+<br />
+&nbsp;&nbsp;double old_time_bounds(old_time,two);
+<br />
+&nbsp;&nbsp;double time(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time:units=&quot;hours since 2011-10-23 0:00&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time:bounds=&quot;time_bounds&quot;;
+<br />
+&nbsp;&nbsp;double time_bounds(time,two);
+<br />
+<br />&nbsp;&nbsp;old_time=0.5, 1.5, 2.5, ...;
+<br />
+&nbsp;&nbsp;old_time_bounds=-3.5,4.5, -2.5,5,5, -1.5,6.5, ...;
+<br />
+&nbsp;&nbsp;time=12, 36, 60, ...
+<br />
+&nbsp;&nbsp;time_bounds=0,24, 24,48, 48,72, ...;
+<br />
+<br />This is not currently legal because old_time is not a dimension of air_quality,
+<br />
+but it seems a reasonable extension to me.
+<br />
+<br />For climatological time, we have a similar issue of multiple time processing,
+<br />
+and in that case we do not find it necessary to keep old time coordinates.
+<br />
+Instead, we use a special interpretation for the time bounds (CF sect 7.4).
+<br />
+However, this doesn't seem to be easy to adapt for the general case, because
+<br />
+of the overlapping periods. Climatological time doesn't allow that.
+<br />
+<br />Another possibility would be to define new kinds of standardised metadata,
+<br />
+following Philip's categories, to describe the superseded time coordinate e.g.
+<br />
+cell_methods=&quot;time: mean (period: 8 hours offset: -15.5 hours) time: maximum
+<br />
+(interval: 1 hour)&quot;. The second entry is standard, and records that hourly
+<br />
+values were input to the calculation of the daily maximum. The first entry
+<br />
+records that those values were themselves means calculated over periods of 8
+<br />
+hours, and the first such period began 15.5 hours before the first time
+<br />
+coordinate (12 - 15.5 = -3.5, the lower bound of the first old_time cell).
+<br />
+<br />I am sure there are plenty of other possibilities, but I wonder what you think
+<br />
+of either of these as a start?
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Sun Oct 23 2011 - 18:29:47 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3867">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3868.html" title="Next message in the list">Cameron-smith, Philip: "[CF-metadata] daily maximum of running 8-hour means"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3866.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Standard Name Table - GRIB column"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3868.html" title="Next message in this discussion thread">Cameron-smith, Philip: "[CF-metadata] daily maximum of running 8-hour means"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3868.html" title="Message sent in reply to this message">Cameron-smith, Philip: "[CF-metadata] daily maximum of running 8-hour means"</a></li>
+<li><dfn>Reply</dfn>: <a href="./3883.html" title="Message sent in reply to this message">Hedley, Mark: "[CF-metadata] FW:  daily maximum of running 8-hour means"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3867" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3867" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3867" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3867" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3866.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3868.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

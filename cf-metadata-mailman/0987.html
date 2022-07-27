@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] new chemical species from Philip J. Cameron-smith on 2007-07-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Philip J. Cameron-smith (cameronsmith1)" />
+<meta name="Subject" content="[CF-metadata] new chemical species" />
+<meta name="Date" content="2007-07-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0986.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0988.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] new chemical species</h1>
+<!-- received="Mon Jul 30 11:13:39 2007" -->
+<!-- isoreceived="20070730101339" -->
+<!-- sent="Mon, 30 Jul 2007 10:13:39 -0700 (PDT)" -->
+<!-- isosent="20070730171339" -->
+<!-- name="Philip J. Cameron-smith" -->
+<!-- email="cameronsmith1" -->
+<!-- subject="[CF-metadata] new chemical species" -->
+<!-- id="Pine.LNX.4.63.0707300931170.20841_at_passatt.llnl.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20070730082845.GF6120_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start987" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0988.html" accesskey="d" title="John Caron: &quot;[CF-metadata] example of rotated pole&quot;">Next message</a> ]
+[ <a href="./0986.html" title="Jonathan Gregory: &quot;[CF-metadata]  proposed rules for changes to CF conventions&quot;">Previous message</a> ]
+[ <a href="./0985.html" title="Jonathan Gregory: &quot;[CF-metadata] new chemical species&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg987" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg987" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg987" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg987" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Philip J. Cameron-smith &lt;<a href="mailto:cameronsmith1?Subject=Re%3A%20%5BCF-metadata%5D%20new%20chemical%20species">cameronsmith1</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 30 Jul 2007 10:13:39 -0700 (PDT)</span><br />
+</address>
+<br />
+Hi,
+<br />
+<br />There are two key points I want to add:
+<br />
+<br />1) One of the current problems with chemistry output is that there is 
+<br />
+currently NO agreed upon list of species names: many species have various 
+<br />
+common names, and those names are often abbreviated in codes, which can 
+<br />
+lead to confusion and incompatible files (eg ACET could refer to acetone 
+<br />
+or acetaldehyde)
+<br />
+<br />It would be really good if an agreed upon list of names could be agreed 
+<br />
+upon bf CF.
+<br />
+<br />2) The internal structure containing chemicals in models does NOT have to 
+<br />
+be the same as that used in the NetCDF output, and my preference is to 
+<br />
+have them be different.
+<br />
+<br />Jonathan is correct that in all the models I have worked with the species 
+<br />
+are all in the same array with an additional dimension for specie, and 
+<br />
+sometimes an additional dimension for aerosol size.  There are a couple of 
+<br />
+problems with copying this into the netCDF file: first, it means 5 and 6 
+<br />
+dimensional arrays (lat,lon,alt,time,specie,size), which some plotting 
+<br />
+programs don't handle.  The large arrays can also be unwieldy (both memory 
+<br />
+and file-size constraints can be a problem).
+<br />
+<br />Second, and more importantly, chemical mechanisms often change.  If the 
+<br />
+netCDF structure just uses a dimension for species, it is a pain to create 
+<br />
+new input files: I often find myself needing to add or remove species, or 
+<br />
+scale some of the species.  For analysis, I also usually find myself 
+<br />
+wanting to extract a long time history of just one or two species (out of 
+<br />
+a hundred), which is also a real nuisance with a single array for all 
+<br />
+species, and the process is prone to error.  There is also a minor 
+<br />
+nuisance that if a single specie is extracted, the degenerate dimension 
+<br />
+needs to be handled.
+<br />
+<br />Lastly, it is usually sufficient to output a small subset of species 
+<br />
+(saving a lot of file-space), in which case the output array will not 
+<br />
+match the internal array anyway.
+<br />
+<br />The alternative is to have each specie as a different variable in the 
+<br />
+NetCDF file.  The pain here is that the code needs to know the names of 
+<br />
+all the variables, and needs to read them in one by one.
+<br />
+<br />I have used codes that handled this situation both ways.  Personally, I 
+<br />
+prefer to have each specie separate in the netCDF: the ease and accuracy 
+<br />
+of post-processing easily outweighs the disadvantages.
+<br />
+<br />In conclusion, I would like to see:
+<br />
+<br />A) A list of specie names agreed upon by CF,
+<br />
+B) Species stored separately in CF compliant netCDF files.
+<br />
+<br />Best wishes,
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Philip
+<br />
+<br /><br />On Mon, 30 Jul 2007, Jonathan Gregory wrote:
+<br />
+<br /><em class="quotelev1">&gt; Dear Stephen
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; When dealing with 5600 chemical species in a model, I guess that you must
+</em><br />
+<em class="quotelev1">&gt; have arrays in which the chemical species is one of the dimensions, do you?
+</em><br />
+<em class="quotelev1">&gt; In that case, allowing a dimension for chemical species in CF would be
+</em><br />
+<em class="quotelev1">&gt; an obvious generalisation, as with surface cover types.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br />------------------------------------------------------------------------
+<br />
+Dr Philip Cameron-Smith        Energy &amp; Environment Directorate
+<br />
+pjc at llnl.gov                   Lawrence Livermore National Laboratory
+<br />
++1 925 4236634                 7000 East Avenue, Livermore, CA94550, USA
+<br />
+------------------------------------------------------------------------
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Jul 30 2007 - 11:13:39 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start987">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0988.html" title="Next message in the list">John Caron: "[CF-metadata] example of rotated pole"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0986.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  proposed rules for changes to CF conventions"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0985.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] new chemical species"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg987" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg987" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg987" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg987" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:59 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0986.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0988.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

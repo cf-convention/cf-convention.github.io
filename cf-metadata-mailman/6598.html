@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Rotated pole definition from Hedley, Mark on 2014-10-17 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hedley, Mark (mark.hedley)" />
+<meta name="Subject" content="[CF-metadata] Rotated pole definition" />
+<meta name="Date" content="2014-10-17" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6597.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6599.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Rotated pole definition</h1>
+<!-- received="Fri Oct 17 05:13:33 2014" -->
+<!-- isoreceived="20141017041333" -->
+<!-- sent="Fri, 17 Oct 2014 11:13:33 +0000" -->
+<!-- isosent="20141017111333" -->
+<!-- name="Hedley, Mark" -->
+<!-- email="mark.hedley" -->
+<!-- subject="[CF-metadata] Rotated pole definition" -->
+<!-- id="7819C496F4E10E47BCEFBE74551AAC9606F3A38A_at_EXXCMPD1DAG3.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="22C6A8A4889F0C45B71BF3272671822EE286_at_SVNSBIOMBX02.ENT.dfo-mpo.ca" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6598" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6599.html" accesskey="d" title="DeTracey, Brendan: &quot;[CF-metadata] Rotated pole definition&quot;">Next message</a> ]
+[ <a href="./6597.html" title="DeTracey, Brendan: &quot;[CF-metadata] Rotated pole definition&quot;">Previous message</a> ]
+[ <a href="./6597.html" title="DeTracey, Brendan: &quot;[CF-metadata] Rotated pole definition&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6599.html" accesskey="t" title="DeTracey, Brendan: &quot;[CF-metadata] Rotated pole definition&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6598" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6598" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6598" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6598" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hedley, Mark &lt;<a href="mailto:mark.hedley?Subject=Re%3A%20%5BCF-metadata%5D%20Rotated%20pole%20definition">mark.hedley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 17 Oct 2014 11:13:33 +0000</span><br />
+</address>
+<br />
+Hello Brendan
+<br />
+<br />I believe the intent of the rotated pole grid mapping definition is to describe a polar coordinate reference system, based on the earth, but  with a different axis of rotation.
+<br />
+<br />To do this, a new north pole location is specified in the earth polar coordinate reference system by
+<br />
+&nbsp;- grid_north_pole_latitude
+<br />
+&nbsp;- grid_north_pole_longitude
+<br />
+This defines a point on the surface of the non-rotated system.  A new rotational axis is defined through this location and the centre of the body.
+<br />
+A further rotation is then applied about this new axis, as defined by:
+<br />
+&nbsp;- north_pole_grid_longitude (optional, default 0).
+<br />
+<br />For a spherical geometry, this is equivalent to 3 rotation transforms of the basis (theta,phi) (ordered operation):
+<br />
+&nbsp;- rotate in the theta-hat direction by:
+<br />
+&nbsp;- Pi + grid_north_pole_longitude
+<br />
+&nbsp;- rotate in the phi-hat direction by:
+<br />
+&nbsp;- grid_north_pole_latitude
+<br />
+&nbsp;- rotate in the theta-hat direction by:
+<br />
+&nbsp;- north_pole_grid_longitude | 0
+<br />
+<br />This provides a new basis which coordinates may be defined with respect to.
+<br />
+<br />I keep an inflatable globe on my desk to help me with this.  I have not found a clear diagram on line which illustrates this unambiguously, or managed to draw one for myself; I would like to.
+<br />
+<br />I hope this information is correct and useful.
+<br />
+<br />mark
+<br />
+<br />________________________________
+<br />
+From: CF-metadata [cf-metadata-bounces at cgd.ucar.edu] on behalf of DeTracey, Brendan [Brendan.DeTracey at dfo-mpo.gc.ca]
+<br />
+Sent: 16 October 2014 12:49
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: [CF-metadata] Rotated pole definition
+<br />
+<br />Hi,
+<br />
+<br />I am looking for clarification on the rotated pole definition.  Is the globe rotated such that the north pole traces a great circle from its original to its new position? And then rotated counter clockwise  about the new pole by north_pole_grid_longitude degrees? There is not enough detail in the CF document describing this.
+<br />
+<br />Brendan
+<br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20141017/bf58c9d5/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20141017/bf58c9d5/attachment.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Oct 17 2014 - 05:13:33 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6598">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6599.html" title="Next message in the list">DeTracey, Brendan: "[CF-metadata] Rotated pole definition"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6597.html" title="Previous message in the list">DeTracey, Brendan: "[CF-metadata] Rotated pole definition"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6597.html" title="Message to which this message replies">DeTracey, Brendan: "[CF-metadata] Rotated pole definition"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6599.html" title="Next message in this discussion thread">DeTracey, Brendan: "[CF-metadata] Rotated pole definition"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6599.html" title="Message sent in reply to this message">DeTracey, Brendan: "[CF-metadata] Rotated pole definition"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6598" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6598" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6598" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6598" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:48 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6597.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6599.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

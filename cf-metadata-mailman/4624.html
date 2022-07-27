@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED] from Timothy Hume on 2012-07-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Timothy Hume (T.Hume)" />
+<meta name="Subject" content="[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]" />
+<meta name="Date" content="2012-07-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4623.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4625.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]</h1>
+<!-- received="Sun Jul 29 19:36:19 2012" -->
+<!-- isoreceived="20120729183619" -->
+<!-- sent="Mon, 30 Jul 2012 11:36:19 +1000" -->
+<!-- isosent="20120730013619" -->
+<!-- name="Timothy Hume" -->
+<!-- email="T.Hume" -->
+<!-- subject="[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]" -->
+<!-- id="86343BB013AEA542ABCC04CF41E7D2B1069DE9B416F1_at_BOM-VMBX-HO.bom.gov.au" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4624" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4625.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]&quot;">Next message</a> ]
+[ <a href="./4623.html" title="Jonathan Gregory: &quot;[CF-metadata] Standard names for sea level change&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4624" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4624" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4624" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4624" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Timothy Hume &lt;<a href="mailto:T.Hume?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20include%20EPSG%20codes%20or%20WKT%20information%20in%20a%20CF%20file%20%5BSEC%3DUNCLASSIFIED%5D">T.Hume</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 30 Jul 2012 11:36:19 +1000</span><br />
+</address>
+<br />
+Hi,
+<br />
+<br />I am adding grid mapping information to my NetCDF files. My data are on a lon-lat grid on a spherical Earth. I can put in the standard CF attributes, grid_mapping_name etc, but also want to include the EPSG and WKT codes to help software applications that might want these. I have not been able to find out how this is done in NetCDF-CF, so am using this format:
+<br />
+=     
+<br />
+int crs ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crs:grid_mapping_name = &quot;latitude_longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crs:earth_radius = 6371007.0 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crs:prime_meridian = 0.0 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crs:epsg_code = 4047 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crs:wkt = &quot;GEOGCS[\&quot;Unspecified datum based upon the GRS 1980 Authalic Sphere\&quot;,DATUM[\&quot;Not_specified_based_on
+<br />
+_GRS_1980_Authalic_Sphere\&quot;,SPHEROID[\&quot;GRS 1980 Authalic Sphere\&quot;,6371007,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7048\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\
+<br />
+&quot;6047\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4047\&quot;]]&quot; ;
+<br />
+<br />What do other people do when including this extra grid information?
+<br />
+<br />Cheers,
+<br />
+<br />Tim Hume
+<br />
+Centre for Australian Weather and Climate Research
+<br />
+Bureau of Meteorology
+<br />
+Melbourne
+<br />
+Australia
+<br />
+<span id="received"><dfn>Received on</dfn> Sun Jul 29 2012 - 19:36:19 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4624">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4625.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4623.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Standard names for sea level change"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4624" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4624" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4624" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4624" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:05 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4623.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4625.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

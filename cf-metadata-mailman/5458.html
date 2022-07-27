@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF-1.6 DSG clarification: time series &amp; lat/lon coordinates from Jonathan Gregory on 2013-06-04 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] CF-1.6 DSG clarification: time series &amp; lat/lon coordinates" />
+<meta name="Date" content="2013-06-04" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5457.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5459.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF-1.6 DSG clarification: time series &amp; lat/lon coordinates</h1>
+<!-- received="Tue Jun  4 04:17:55 2013" -->
+<!-- isoreceived="20130604031755" -->
+<!-- sent="Tue, 4 Jun 2013 11:17:55 +0100" -->
+<!-- isosent="20130604101755" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] CF-1.6 DSG clarification: time series &amp; lat/lon coordinates" -->
+<!-- id="20130604101755.GA30170_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5458" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5459.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Precise location example&quot;">Next message</a> ]
+[ <a href="./5457.html" title="Jonathan Gregory: &quot;[CF-metadata]  new standard name: atmosphere_stability_k_index&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5460.html" accesskey="t" title="John Caron: &quot;[CF-metadata] CF-1.6 DSG clarification: time series &#0038; lat/lon coordinates&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5458" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5458" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5458" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5458" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20CF-1.6%20DSG%20clarification%3A%20time%20series%20%26%20lat%2Flon%20coordinates">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 4 Jun 2013 11:17:55 +0100</span><br />
+</address>
+<br />
+Dear John Caron and John Maurer
+<br />
+<br />I agree with John C that the problem arises when the coordinate variables
+<br />
+are not size one. John M's example
+<br />
+<br /><em class="quotelev2">&gt; &gt;       float lon(lon) ;
+</em><br />
+<em class="quotelev2">&gt; &gt;       float lat(lat) ;
+</em><br />
+<em class="quotelev2">&gt; &gt;       float alt(alt) ;
+</em><br />
+<em class="quotelev2">&gt; &gt;       float temp(time, alt, lat, lon) ;
+</em><br />
+<em class="quotelev2">&gt; &gt;           temp:standard_name = ?air_temperature? ;
+</em><br />
+<em class="quotelev2">&gt; &gt;           temp:units = &quot;Celsius&quot; ;
+</em><br />
+<em class="quotelev2">&gt; &gt;           temp:coordinates = &quot;time lat lon alt&quot; ;
+</em><br />
+<em class="quotelev2">&gt; &gt;           temp:_FillValue = -999.9;
+</em><br />
+<br />with alt=lat=lon=1 is legal in CF. In fact the coordinates attribute is not
+<br />
+needed, because these are all (Unidata) coordinate variables (1D, with name
+<br />
+of the variable equal to the name of the dimension). Ignoring the coordinates
+<br />
+attribute, this example is fine in COARDS as well. In the data model, lon lat
+<br />
+alt time are all dimension coordinate constructs with separate domain axes.
+<br />
+<br />But when there are *two* timeseries, you would not have alt=lat=lon=2. That
+<br />
+would mean three independent size-2 dimensions. This would also be legal in
+<br />
+CF and COARDS, but it means timeseries at a grid of 8 points, not two points.
+<br />
+To deal with this situation, we introduce an index dimension of size 2, and
+<br />
+make alt lat lon auxiliary coordinate variables of this single dimension. In
+<br />
+the data model, there is then only one domain axis for alt lat lon.
+<br />
+<br />Back to the case of one timeseries: Example H4 shows scalar coordinate
+<br />
+variables for alt lat lon. That is, these size-1 dimensions have been omitted.
+<br />
+In this case, the coordinates attribute is needed; that's how scalar coordinate
+<br />
+variables are attached to the data variable. In the data model (in my opinion)
+<br />
+this is logically equivalent including the size-1 dimensions.
+<br />
+<br />Maybe this question raises an issue for chapter 9 and Example H4. The example
+<br />
+is following Section 9.2:
+<br />
+<br />&quot;If there is only a single feature to be stored in a data variable, there is no
+<br />
+need for an instance dimension and it is permitted to omit it. The data will
+<br />
+then be one-dimensional, which is a special (degenerate) case of the
+<br />
+multidimensional array representation.  The instance variables will be scalar
+<br />
+coordinate variables; the data variable and other auxiliary coordinate
+<br />
+variables will have only an element dimension and not have an instance
+<br />
+dimension, e.g. data(o) and t(o) for a single timeSeries.&quot;
+<br />
+<br />In the multidimensional array representation, featureType doesn't have to be
+<br />
+coded, because this representation has always existed in CF. We could say that
+<br />
+*if* you encode featureType, there *must* be an instance dimension (of size 1
+<br />
+if appropriate) and that alt lat lon must be auxiliary coordinate variables
+<br />
+with this dimension. That would be a restriction we don't have in CF 1.6, so
+<br />
+it would be a change to CF. What do you think, John C?
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Jun 04 2013 - 04:17:55 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5458">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5459.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Precise location example"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5457.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  new standard name: atmosphere_stability_k_index"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5460.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] CF-1.6 DSG clarification: time series &#0038; lat/lon coordinates"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5460.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] CF-1.6 DSG clarification: time series &#0038; lat/lon coordinates"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5458" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5458" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5458" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5458" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:23 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5457.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5459.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

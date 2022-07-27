@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Groups in netCDF4 files and CF from H. Joe Lee on 2013-05-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="H. Joe Lee (hyoklee)" />
+<meta name="Subject" content="[CF-metadata] Groups in netCDF4 files and CF" />
+<meta name="Date" content="2013-05-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5366.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5368.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Groups in netCDF4 files and CF</h1>
+<!-- received="Mon May 20 12:46:35 2013" -->
+<!-- isoreceived="20130520114635" -->
+<!-- sent="Mon, 20 May 2013 13:46:35 -0500" -->
+<!-- isosent="20130520184635" -->
+<!-- name="H. Joe Lee" -->
+<!-- email="hyoklee" -->
+<!-- subject="[CF-metadata] Groups in netCDF4 files and CF" -->
+<!-- id="CADeM3-yDCUeXL4SyLmZgScN_AdKBouTf3Fr1ZoztZj8VvB-9VA_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="EE1DBA06-5C7F-47CC-9896-1F59F49E4994_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5367" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5368.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] Groups in netCDF4 files and CF&quot;">Next message</a> ]
+[ <a href="./5366.html" title="Dave Allured - NOAA Affiliate: &quot;[CF-metadata] CF trac ticket summary update&quot;">Previous message</a> ]
+[ <a href="./5363.html" title="Jim Biard: &quot;[CF-metadata] Groups in netCDF4 files and CF&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5368.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] Groups in netCDF4 files and CF&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5367" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5367" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5367" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5367" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: H. Joe Lee &lt;<a href="mailto:hyoklee?Subject=Re%3A%20%5BCF-metadata%5D%20Groups%20in%20netCDF4%20files%20and%20CF">hyoklee</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 20 May 2013 13:46:35 -0500</span><br />
+</address>
+<br />
+Andreas &amp; Jim,
+<br />
+<br /><br />&nbsp;&nbsp;The hdf5_handler module in Hyrax OPeNDAP server has implemented the Jim's
+<br />
+idea of making the group structure flat. For example,  we've made ICESat-2
+<br />
+Mabel product (HDF5 with many groups)  conform to CF conventions [1] so
+<br />
+users can even download it as NetCDF-3 [2].    We've made many NASA HDF5
+<br />
+products work with Panoply in this manner [3].
+<br />
+<br /><br />&nbsp;&nbsp;By the way, we used '_' instead of '/' because we thought CF doesn't
+<br />
+allow '/' character according to the following statement:
+<br />
+<br />&nbsp;&nbsp;&quot;Variable, dimension and attribute names must begin with a letter and be
+<br />
+composed of letters, digits, and underscores.&quot;
+<br />
+<br />&nbsp;&nbsp;According to Jim, it seems OK to use '/' in var/dim/att names. I'd like
+<br />
+to confirm it with this CF group if '/' is really OK.
+<br />
+<br /><br />&nbsp;&nbsp;&nbsp;Anyway, there's a chance that your file can be visualized with Panoply
+<br />
+through OPeNDAP hdf5_handler because NetCDF-4 is HDF5 underneath.
+<br />
+&nbsp;&nbsp;If you want, I can quickly check if your file can be visualized with
+<br />
+Panoply using our demo OPeNDAP server. Please feel free to send your data
+<br />
+file for testing.
+<br />
+<br />&nbsp;&nbsp;Regards,
+<br />
+<br /><br /><br />[1]
+<br />
+<a href="http://eosdap.hdfgroup.uiuc.edu:8080/opendap/data/NASAFILES/hdf5/more/mabel_l2a_20110322T165030_005_1.h5.das">http://eosdap.hdfgroup.uiuc.edu:8080/opendap/data/NASAFILES/hdf5/more/mabel_l2a_20110322T165030_005_1.h5.das</a>
+<br />
+[2]
+<br />
+<a href="http://eosdap.hdfgroup.uiuc.edu:8080/opendap/data/NASAFILES/hdf5/more/mabel_l2a_20110322T165030_005_1.h5.html">http://eosdap.hdfgroup.uiuc.edu:8080/opendap/data/NASAFILES/hdf5/more/mabel_l2a_20110322T165030_005_1.h5.html</a>
+<br />
+[3] <a href="http://hdfeos.org/zoo/hdf5_handler/">http://hdfeos.org/zoo/hdf5_handler/</a>
+<br />
+<br /><br /><pre>
+--
+HDF: Software that Powers Science
+On Mon, May 20, 2013 at 10:58 AM, Jim Biard &lt;jim.biard at noaa.gov&gt; wrote:
+&gt; Andreas,
+&gt;
+&gt; CF has yet to address the new netCDF-4 features.  My personal opinion is
+&gt; that CF needs to be extended to embrace the new netCDF-4 features (and I am
+&gt; currently using netCDF-4 with groups), but interoperability / backward
+&gt; compatibility concerns have prevented this.  As a result, I'm not surprised
+&gt; to find that PanoplyJ doesn't support your file.  I'm not sure, but I think
+&gt; it might be that there is no viewer application that will properly handle
+&gt; your file.
+&gt;
+&gt; Since there are no applicable CF conventions, what I'm about to say has no
+&gt; authority whatsoever, but I am going to share my thoughts and opinions
+&gt; about file design using groups as a possible step in the direction of
+&gt; developing such conventions.
+&gt;
+&gt; I think the best way to consider groups within a netCDF-4 file is to treat
+&gt; each one as a file in its own right (with certain extensions).  The group
+&gt; concept in netCDF-4 is a form of scope control.  Placing coordinates in a
+&gt; different group than measurements would then imply that the two sets of
+&gt; variables are not visible to one another.  If there are dimensions or
+&gt; coordinate variables that are common to data variables that have been
+&gt; placed in different groups, they could be reasonably be placed at a common
+&gt; level above the groups (such as the root).  Dimensions declared in a group
+&gt; (including the root) are visible to all child groups, so extension to
+&gt; coordinate variables would not be unreasonable.
+&gt;
+&gt; There is another way to think about groups, which is to consider them as
+&gt; nothing more than ways to make hierarchical names for attributes,
+&gt; dimensions, and variables.  In this view, your file contents are effectively
+&gt;
+&gt; dimensions:
+&gt; lon = 5760 ;
+&gt; nv = 2 ;
+&gt; lat = 2880 ;
+&gt; time = UNLIMITED ; // (204 currently)
+&gt; variables:
+&gt; double coordinates/lon(lon) ;
+&gt;  coordinates/lon:standard_name = &quot;longitude&quot; ;
+&gt;
+&gt;  coordinates/lon:units = &quot;degrees_east&quot; ;
+&gt;
+&gt;  coordinates/lon:bounds = &quot;coordinates/lon_bnds&quot; ;
+&gt;
+&gt; double coordinates/lon_bnds(lon, nv) ;
+&gt;
+&gt; double coordinates/lat(lat) ;
+&gt;
+&gt;  coordinates/lat:standard_name = &quot;lat&quot; ;
+&gt;
+&gt;  coordinates/lat:units = &quot;degrees_north&quot; ;
+&gt;
+&gt;  coordinates/lat:bounds = &quot;coordinates/lat_bnds&quot; ;
+&gt;
+&gt; double coordinates/lat_bnds(lat, nv) ;
+&gt;
+&gt; int coordinates/time(time) ;
+&gt;
+&gt;  coordinates/time:standard_name = &quot;time&quot; ;
+&gt;
+&gt;  coordinates/time:units = &quot;hours since 1994-01-01 00:00:00 +0:00&quot; ;
+&gt;
+&gt;  coordinates/time:calendar = &quot;gregorian&quot; ;
+&gt;
+&gt;  coordinates/time:bounds = &quot;coordinates/time_bnds&quot; ;
+&gt;
+&gt; int coordinates/time_bnds(time, nv) ;
+&gt;
+&gt; double data/sciamachy_vcdtrop-no2_v4(time, lon, lat) ;
+&gt;  data/sciamachy_vcdtrop-no2_v4:_FillValue = NaN ;
+&gt;  data/sciamachy_vcdtrop-no2_v4:least_significant_digit = 5L ;
+&gt;
+&gt;
+&gt; (I have used '/' characters to concatenate the group names with the
+&gt; variable names to make the &quot;flattened&quot; names.  You could as easily use '_'
+&gt; characters instead.)
+&gt;
+&gt; There is nothing overtly &quot;wrong&quot; about variables with names such as these.
+&gt;  In fact, there is a certain attraction to making the distinction between
+&gt; measurement and coordinate variables clear through what amounts to a naming
+&gt; convention.  But  (You knew that was coming, didn't you?), I have
+&gt; reservations about a convention that starts by splitting the world into
+&gt; coordinate and measurement domains at the top level.  I think this approach
+&gt; will lead to unnecessary limitations.
+&gt;
+&gt; Grace and peace,
+&gt;
+&gt; Jim
+&gt;
+&gt; Jim Biard
+&gt; Research Scholar
+&gt; Cooperative Institute for Climate and Satellites &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt;
+&gt; Remote Sensing and Applications Division
+&gt; National Climatic Data Center &lt;<a href="http://www.ncdc.noaa.gov/">http://www.ncdc.noaa.gov/</a>&gt;
+&gt; 151 Patton Ave, Asheville, NC 28801-5001
+&gt;
+&gt; jim.biard at noaa.gov
+&gt; 828-271-4900
+&gt;
+&gt;
+&gt;
+&gt; Follow us on Facebook &lt;<a href="https://www.facebook.com/cicsnc">https://www.facebook.com/cicsnc</a>&gt;!
+&gt;
+&gt; On May 19, 2013, at 11:50 AM, Andreas Hilboll &lt;lists at hilboll.de&gt; wrote:
+&gt;
+&gt; Dear Dr. Schmunk, dear CF experts,
+&gt;
+&gt; I'm wondering if CF concentions say anything about the grouping within a
+&gt; netCDF4 file, and if PanoplyJ can handle files with different groups? I
+&gt; couldn't find anything in the documentation, but wanted to make sure.
+&gt;
+&gt; I'm having issues using PanoplyJ
+&gt; (<a href="http://www.giss.nasa.gov/tools/panoply/">http://www.giss.nasa.gov/tools/panoply/</a>) with a file  where data and
+&gt; coordinate variables are in different groups. For example, the data
+&gt; variable of this file cannot be plotted with Panoply:
+&gt;
+&gt; ---8&lt;-------
+&gt; dimensions:
+&gt; lon = 5760 ;
+&gt; lat = 2880 ;
+&gt; time = UNLIMITED ; // (204 currently)
+&gt; nv = 2 ;
+&gt;
+&gt; group: coordinates {
+&gt;  variables:
+&gt;   double lon(lon) ;
+&gt;   lon:standard_name = &quot;longitude&quot; ;
+&gt;   lon:units = &quot;degrees_east&quot; ;
+&gt;   lon:bounds = &quot;lon_bnds&quot; ;
+&gt;   double lon_bnds(lon, nv) ;
+&gt;   double lat(lat) ;
+&gt;   lat:standard_name = &quot;lat&quot; ;
+&gt;   lat:units = &quot;degrees_north&quot; ;
+&gt;   lat:bounds = &quot;lat_bnds&quot; ;
+&gt;   double lat_bnds(lat, nv) ;
+&gt;   int time(time) ;
+&gt;   time:standard_name = &quot;time&quot; ;
+&gt;   time:units = &quot;hours since 1994-01-01 00:00:00 +0:00&quot; ;
+&gt;   time:calendar = &quot;gregorian&quot; ;
+&gt;   time:bounds = &quot;time_bnds&quot; ;
+&gt;   int time_bnds(time, nv) ;
+&gt;  } // group coordinates
+&gt;
+&gt; group: data {
+&gt;
+&gt;  group: VCDtrop_NO2 {
+&gt;
+&gt;    group: SCIAMACHY {
+&gt;      variables:
+&gt;       float sciamachy_vcdtrop-no2_v4(time, lon, lat) ;
+&gt;       sciamachy_vcdtrop-no2_v4:_FillValue = NaNf ;
+&gt;       sciamachy_vcdtrop-no2_v4:least_significant_digit = 5L ;
+&gt;      } // group SCIAMACHY
+&gt;    } // group VCDtrop_NO2
+&gt;  } // group data
+&gt; }
+&gt; ---8&lt;-------
+&gt;
+&gt; However, when collapsed so that all variables are in the rootgrp, the
+&gt; file is plotted correctly:
+&gt;
+&gt; ---8&lt;-------
+&gt; dimensions:
+&gt; lon = 5760 ;
+&gt; nv = 2 ;
+&gt; lat = 2880 ;
+&gt; time = UNLIMITED ; // (204 currently)
+&gt; variables:
+&gt; double lon(lon) ;
+&gt;  lon:standard_name = &quot;longitude&quot; ;
+&gt;  lon:units = &quot;degrees_east&quot; ;
+&gt;  lon:bounds = &quot;lon_bnds&quot; ;
+&gt; double lon_bnds(lon, nv) ;
+&gt; double lat(lat) ;
+&gt;  lat:standard_name = &quot;lat&quot; ;
+&gt;  lat:units = &quot;degrees_north&quot; ;
+&gt;  lat:bounds = &quot;lat_bnds&quot; ;
+&gt; double lat_bnds(lat, nv) ;
+&gt; int time(time) ;
+&gt;  time:standard_name = &quot;time&quot; ;
+&gt;  time:units = &quot;hours since 1994-01-01 00:00:00 +0:00&quot; ;
+&gt;  time:calendar = &quot;gregorian&quot; ;
+&gt;  time:bounds = &quot;time_bnds&quot; ;
+&gt; int time_bnds(time, nv) ;
+&gt; double sciamachy_vcdtrop-no2_v4(time, lon, lat) ;
+&gt;  sciamachy_vcdtrop-no2_v4:_FillValue = NaN ;
+&gt;  sciamachy_vcdtrop-no2_v4:least_significant_digit = 5L ;
+&gt; ---8&lt;-------
+&gt;
+&gt; So my question is: is this a bug in PanoplyJ, or is Panoply doing the
+&gt; right thing and I don't understand the CF conventions correctly?
+&gt;
+&gt; Your help is greatly appreciated!
+&gt; Andreas.
+&gt;
+&gt;
+&gt; -- Andreas.
+&gt; _______________________________________________
+&gt; CF-metadata mailing list
+&gt; CF-metadata at cgd.ucar.edu
+&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+&gt;
+&gt;
+&gt;
+&gt; _______________________________________________
+&gt; CF-metadata mailing list
+&gt; CF-metadata at cgd.ucar.edu
+&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+&gt;
+&gt;
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130520/61dfc80d/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130520/61dfc80d/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130520/61dfc80d/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130520/61dfc80d/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon May 20 2013 - 12:46:35 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5367">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5368.html" title="Next message in the list">Jim Biard: "[CF-metadata] Groups in netCDF4 files and CF"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5366.html" title="Previous message in the list">Dave Allured - NOAA Affiliate: "[CF-metadata] CF trac ticket summary update"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5363.html" title="Message to which this message replies">Jim Biard: "[CF-metadata] Groups in netCDF4 files and CF"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5368.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] Groups in netCDF4 files and CF"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5368.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] Groups in netCDF4 files and CF"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5367" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5367" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5367" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5367" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:22 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5366.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5368.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

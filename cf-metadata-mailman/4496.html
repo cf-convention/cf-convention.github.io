@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] clarification using cell_methods &amp; cell_bounds, standard name for acoustic travel time from Matthias Lankhorst on 2012-05-12 (cf-metadata-mailman)</title>
+<meta name="Author" content="Matthias Lankhorst (mlankhorst)" />
+<meta name="Subject" content="[CF-metadata] clarification using cell_methods &amp; cell_bounds, standard name for acoustic travel time" />
+<meta name="Date" content="2012-05-12" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4495.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4497.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] clarification using cell_methods &amp; cell_bounds, standard name for acoustic travel time</h1>
+<!-- received="Fri May 11 17:50:09 2012" -->
+<!-- isoreceived="20120511165009" -->
+<!-- sent="Fri, 11 May 2012 16:50:09 -0700" -->
+<!-- isosent="20120511235009" -->
+<!-- name="Matthias Lankhorst" -->
+<!-- email="mlankhorst" -->
+<!-- subject="[CF-metadata] clarification using cell_methods &amp; cell_bounds, standard name for acoustic travel time" -->
+<!-- id="201205111650.09869.mlankhorst_at_ucsd.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4496" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4497.html" accesskey="d" title="TOYODA Eizi: &quot;[CF-metadata] Standard_name for cloud-cover by phenomenon&quot;">Next message</a> ]
+[ <a href="./4495.html" title="John Caron: &quot;[CF-metadata] Reverse-time trajectory&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4496" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4496" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4496" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4496" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Matthias Lankhorst &lt;<a href="mailto:mlankhorst?Subject=Re%3A%20%5BCF-metadata%5D%20clarification%20using%20cell_methods%20%26%20cell_bounds%2C%20standard%20name%20for%20acoustic%20travel%20time">mlankhorst</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 11 May 2012 16:50:09 -0700</span><br />
+</address>
+<br />
+Hi,
+<br />
+<br />can a knowledgeable person please comment on whether I am using the 
+<br />
+&quot;cell_methods&quot; and &quot;cell_bounds&quot; attributes correctly in the example below? In 
+<br />
+particular, is my understanding correct that the cell_methods are attributed 
+<br />
+to the data variable, whereas the cell_bounds are attributed to the coordinate 
+<br />
+variable?
+<br />
+<br />Also, is there a standard name suitable for expressing an acoustic travel time 
+<br />
+from an underwater echo sounder signal? The device literally reports a time 
+<br />
+(in seconds) of how long it took the echo to travel to its target and back. I 
+<br />
+am against reporting it as an average sound speed because the distance to the 
+<br />
+target might not be known with high accuracy, leaving me with two unknowns 
+<br />
+(sound speed and distance). The travel time itself is the quantity of 
+<br />
+interest.
+<br />
+<br />Thanks, Matt L.
+<br />
+<br /><br /><br />My first shot at cell methods:
+<br />
+<br /><br />Dimensions:
+<br />
+TIME=100
+<br />
+DEPTH=1
+<br />
+AUX=2
+<br />
+<br />Data variable:
+<br />
+VATT(TIME,DEPTH)
+<br />
+VATT:long_name=&quot;vertical acoustic travel time&quot;
+<br />
+VATT:units=&quot;s&quot;
+<br />
+VATT:cell_methods=&quot;TIME: point DEPTH: sum&quot;
+<br />
+<br />Coordinate variable:
+<br />
+DEPTH(DEPTH)       % here: one depth only, 3500m
+<br />
+DEPTH:units=&quot;m&quot;
+<br />
+DEPTH:cell_bounds=&quot;AUX_DEPTH_BOUNDS&quot;
+<br />
+<br />Auxiliary variable:
+<br />
+AUX_DEPTH_BOUNDS(AUX)=0,3500;
+<br />
+<br /><br />So... the cell_bounds are given as an attribute to DEPTH, and point to yet 
+<br />
+another variable (of length DEPTH+1) that actually contains the values.
+<br />
+<br />Or can I just write the values into the attribute to DEPTH:
+<br />
+DEPTH:cell_bounds=0,3500;
+<br />
+<br /><br /><br /><br /><pre>
+-- 
+_______________________________________
+ Dr. Matthias Lankhorst
+ Scripps Institution of Oceanography
+ 9500 Gilman Drive, Mail Code 0230
+ La Jolla, CA 92093-0230
+ USA
+ Phone:  +1 858 822 5013
+ Fax:    +1 858 534 9820
+ E-Mail: mlankhorst at ucsd.edu
+ <a href="http://www-pord.ucsd.edu/~mlankhorst/">http://www-pord.ucsd.edu/~mlankhorst/</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri May 11 2012 - 17:50:09 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4496">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4497.html" title="Next message in the list">TOYODA Eizi: "[CF-metadata] Standard_name for cloud-cover by phenomenon"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4495.html" title="Previous message in the list">John Caron: "[CF-metadata] Reverse-time trajectory"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4496" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4496" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4496" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4496" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:03 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4495.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4497.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

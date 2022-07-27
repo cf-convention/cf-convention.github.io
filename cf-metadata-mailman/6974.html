@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jonathan Gregory on 2015-05-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-05-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6973.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6975.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Wed May 13 10:54:26 2015" -->
+<!-- isoreceived="20150513095426" -->
+<!-- sent="Wed, 13 May 2015 17:54:26 +0100" -->
+<!-- isosent="20150513165426" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="20150513165426.GA4396_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6974" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6975.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./6973.html" title="John Graybeal: &quot;[CF-metadata] New standard name request for FAPAR&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6975.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6974" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6974" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6974" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6974" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 13 May 2015 17:54:26 +0100</span><br />
+</address>
+<br />
+Dear Jim
+<br />
+<br />I think your last email (which didn't go to the email list) explains why we
+<br />
+have not been understanding each other about your points 2 and 3:
+<br />
+<br /><em class="quotelev1">&gt; There shouldn't be (or there is no) good reason to use a different
+</em><br />
+<em class="quotelev1">&gt; calendar to encode and decode, but this is exactly what has been
+</em><br />
+<em class="quotelev1">&gt; done with regard to times. As a netCDF file producer, if you have a
+</em><br />
+<em class="quotelev1">&gt; set of observations that have attached correct Gregorian/UTC date &amp;
+</em><br />
+<em class="quotelev1">&gt; time strings and you use a POSIX calculator to encode your times
+</em><br />
+<em class="quotelev1">&gt; since your correct Gregorian/UTC reference date &amp; time string, then
+</em><br />
+<em class="quotelev1">&gt; you are at risk of producing incorrect elapsed time values. (Whether
+</em><br />
+<em class="quotelev1">&gt; you actually do or not depends on factors mentioned in previous
+</em><br />
+<em class="quotelev1">&gt; emails.) The contents of time variables *should* always be true
+</em><br />
+<em class="quotelev1">&gt; counts of time that has elapsed since the reference epoch and
+</em><br />
+<em class="quotelev1">&gt; *should* never, ever encode leap second induced discontinuities or
+</em><br />
+<em class="quotelev1">&gt; offsets.
+</em><br />
+<br />That's not how I understand what we've been discussing. I think that if
+<br />
+calendar=&quot;gregorian[_nls]&quot; then the encoding/decoding should be done without
+<br />
+leap seconds (86400 s per day), but if calendar=&quot;gregorian_utc&quot; the encoding/
+<br />
+decoding should be done with leap seconds according to UTC. This why I see
+<br />
+the issue as being one that relates to the calendar, and not to the units
+<br />
+or the reference time, which are calendar-neutral. Is this what we disagree on?
+<br />
+<br />I can see there's a difficulty with the UTC calendar that if a second is taken
+<br />
+out there will be two consecutive seconds with the same timestamp. This is
+<br />
+a problem for encoding - the data-writer would have to be careful that he
+<br />
+chose the right one. It's not a problem for using the encoded time coords,
+<br />
+which will be monotonic and run forward at 1 second per second, nor for
+<br />
+decoding, which will correctly produce the repeated timestamp. Inserting a
+<br />
+leap second is the same kind of discontinuity as the change from Julian to
+<br />
+Gregorian calendar. It means that there is a range of date-times which cannot
+<br />
+be encoded because they are not valid, but decoding is no problem. Similarly
+<br />
+there are dates which are valid in some calendars but not others, such as
+<br />
+30 Feb being valid in the 360_day calendar.
+<br />
+<br />I think my view is consistent with the general treatment of calendars by CF.
+<br />
+The encoding/decoding algorithm differs, but the same units string could
+<br />
+always be used.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Wed May 13 2015 - 10:54:26 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6974">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6975.html" title="Next message in the list">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6973.html" title="Previous message in the list">John Graybeal: "[CF-metadata] New standard name request for FAPAR"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6975.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6975.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6974" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6974" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6974" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6974" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6973.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6975.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

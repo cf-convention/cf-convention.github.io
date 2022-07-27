@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Help needed with area_type and &quot;surface type classification&quot; datasets from Thomas Lavergne on 2011-09-22 (cf-metadata-mailman)</title>
+<meta name="Author" content="Thomas Lavergne (t.lavergne)" />
+<meta name="Subject" content="[CF-metadata] Help needed with area_type and &quot;surface type classification&quot; datasets" />
+<meta name="Date" content="2011-09-22" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3752.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3754.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Help needed with area_type and &quot;surface type classification&quot; datasets</h1>
+<!-- received="Thu Sep 22 01:52:50 2011" -->
+<!-- isoreceived="20110922005250" -->
+<!-- sent="Thu, 22 Sep 2011 07:52:50 +0000 (UTC)" -->
+<!-- isosent="20110922075250" -->
+<!-- name="Thomas Lavergne" -->
+<!-- email="t.lavergne" -->
+<!-- subject="[CF-metadata] Help needed with area_type and &quot;surface type classification&quot; datasets" -->
+<!-- id="2008823110.367446.1316677970258.JavaMail.root_at_imap1a" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="1280657593.366685.1316672701870.JavaMail.root_at_imap1a" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3753" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3754.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] Help needed with area_type and &#0034;surface type classification&#0034; datasets&quot;">Next message</a> ]
+[ <a href="./3752.html" title="Hedley, Mark: &quot;[CF-metadata] standard names for defined global attribute names&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3754.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] Help needed with area_type and &#0034;surface type classification&#0034; datasets&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3753" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3753" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3753" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3753" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Thomas Lavergne &lt;<a href="mailto:t.lavergne?Subject=Re%3A%20%5BCF-metadata%5D%20Help%20needed%20with%20area_type%20and%20%22surface%20type%20classification%22%20datasets">t.lavergne</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 22 Sep 2011 07:52:50 +0000 (UTC)</span><br />
+</address>
+<br />
+Dear all,
+<br />
+<br />This message is to revive (part of) a short-lived thread in the last days of May 2011. Jonathan was kind enough to answer some of my questions then, but it never ended in a definite solution to my problem, thus the need (for me) to revive the subject.
+<br />
+<br />I have a (satellite product) data field which is a land-surface classification. That means for each cell in my grid, I have a single &quot;area type&quot;: &quot;open water&quot;, &quot;first year ice&quot;, &quot;multi year ice&quot;, &quot;land&quot;, &quot;unclassified&quot;, and &quot;no data&quot;. For those interested, an example (picture of) product is accessible here (with color scale if you zoom-in)
+<br />
+<a href="http://osisaf.met.no/p/ice/nh/type/imgs/OSI_HL_SAF_201109211200_pal.jpg">http://osisaf.met.no/p/ice/nh/type/imgs/OSI_HL_SAF_201109211200_pal.jpg</a>
+<br />
+<br />What is the &quot;CF&quot; way of storing such a dataset, and what is the associated standard_name? In the latest version of the CF document, I found a quite in-depth description of how to specify statistics per area-type inside a grid cell, and I suspect I must use the &quot;area_type&quot; mechanism. But when I assign an area_type to my cell, it means that &quot;the cell is mostly covered with area_type&quot; (and I am not guessing the area fraction). 
+<br />
+<br />1) When it comes to the definition of my &quot;area_type&quot;, do I have to use the CF standard ones? I understand it is best, but on the other hand, the strings entering &quot;flag_meanings&quot; are not standardized in any way, yet are usefull information that a human can take advantage of, and that a machine can easily use to create a colored map, and associated legend.
+<br />
+<br />2) Still, I am open to defining them:
+<br />
+&quot;open_water&quot; will probably be changed to &quot;ice_free_sea&quot; (already in the standard table), &quot;first_year_sea_ice&quot; and &quot;multi_year_sea_ice&quot; might be a bit tricky to define (is it &quot;sea ice that survived a summer melting&quot; or &quot;sea ice whose age is larger than 1 year&quot;?). &quot;land&quot; is already in the standard table. What happens then to &quot;ambiguous&quot; (we tried to estimate the type of sea ice, but failed: we cannot decide between first_year and multi_year). This might also be interpreted as &quot;even mixture of several (but not all) area types&quot;. Finally &quot;unclassified&quot; and &quot;no data&quot; is where we do not have sufficient data or confidence to even start the classification: we know up-front the result will be too uncertain. 
+<br />
+<br /><br />3) would the following 2 datasets be accepted (omitting the dimension and grid_mapping definition)?
+<br />
+byte sea_ice_type(time, xc, yc):
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type:standard_name = &quot;area_type&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type:long_name = &quot;sea ice type classification&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type:_FillValue = -1b ;
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type:valid_min = 1b ;
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type:valid_max = 4b ;
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type:area_type_values = 1b, 2b, 3b, 4b ;
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type:area_type_meanings = &quot;ice_free_sea first_year_sea_ice multi_year_sea_ice ambiguous&quot; ;
+<br />
+byte sea_ice_type_qflags(time, xc, yc):
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type_qflags:standard_name = &quot;sea_ice_type status_flag&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type_qflags:_FillValue    = -1b ;
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type_qflags:valid_min     = 0b ;
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type_qflags:valid_max     = 102b ;
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type_qflags:flag_values   = 0b, 100b, 101b, 102b ;
+<br />
+&nbsp;&nbsp;&nbsp;sea_ice_type_qflags:flag_meanings = &quot;nominal_quality no_data unclassified land&quot; ;
+<br />
+<br />The first dataset is inspired by CF &quot;flags&quot; (with &lt;x&gt;_values and &lt;x&gt;_meanings, &lt;x&gt; being &quot;area_type&quot;). The first one documents where a sea_ice_type is actually defined (that is where we have data, and where we are not over (or close to) land). The second one is a regular CF &quot;status_flag&quot; describing the quality of the classification in each cell (and explain why there is no valid classification in some cells).
+<br />
+<br />4) if the former is not accepted, does CF have a standard way to storing these classifications? Please direct me to the appropriate section in the doc, and sorry I missed that one.
+<br />
+<br />5) if my proposal is ok, then should we define the two attributes &quot;area_type_values&quot; and &quot;area_type_meanings&quot;? Maybe they could be a generalization of &lt;x&gt;_values / &lt;x&gt;_meanings, along with &quot;flag_values&quot; / &quot;flags_meanings&quot;? 
+<br />
+<br />6) Is &quot;area_type&quot; truely the standard_name I am going for my first dataset? Maybe something like &quot;sea_ice area_type&quot; (&quot;area_type&quot; as a standard_name modifier) is what I want?
+<br />
+<br />Thank you for reading so far in my question! I hope you can help me define how my file should look like before it is &quot;released&quot; (and later more difficult to amend). Hopefully, this will also convert in a CF-standard way of handling surface classification (if it is currently missing, that is).
+<br />
+<br />All the best,
+<br />
+Thomas
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Sep 22 2011 - 01:52:50 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3753">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3754.html" title="Next message in the list">Jim Biard: "[CF-metadata] Help needed with area_type and &#0034;surface type classification&#0034; datasets"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3752.html" title="Previous message in the list">Hedley, Mark: "[CF-metadata] standard names for defined global attribute names"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3754.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] Help needed with area_type and &#0034;surface type classification&#0034; datasets"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3754.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] Help needed with area_type and &#0034;surface type classification&#0034; datasets"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3753" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3753" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3753" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3753" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:51 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3752.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3754.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jonathan Gregory on 2015-07-01 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-07-01" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7182.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7184.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Wed Jul  1 08:42:10 2015" -->
+<!-- isoreceived="20150701074210" -->
+<!-- sent="Wed, 1 Jul 2015 16:42:10 +0200" -->
+<!-- isosent="20150701144210" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="20150701144210.GA8960_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7183" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7184.html" accesskey="d" title="alison.pamment at stfc.ac.uk: &quot;[CF-metadata] GOES-R standard names&quot;">Next message</a> ]
+[ <a href="./7182.html" title="Hedley, Mark: &quot;[CF-metadata] Specifying latitude and longitude of transects and	regions&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7204.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7183" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7183" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7183" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7183" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 1 Jul 2015 16:42:10 +0200</span><br />
+</address>
+<br />
+Dear Karl
+<br />
+<br />Thanks for your contributions. The points you are raising are similar to those
+<br />
+which Jim and I have been debating for some time, gradually moving towards
+<br />
+mutual understanding! I think the position we had got to is quite economical.
+<br />
+Let me try to relate it to what you suggest.
+<br />
+<br />Your main suggestion is to allow UTC or GPS to be stated in the time units,
+<br />
+whereas Jim and I have been discussing putting it in the calendar attribute.
+<br />
+The latter is what I prefer because it seems to me that the distinction between
+<br />
+UTC and GPS is quite like the differences among all the model calendars, and
+<br />
+with the real-world calendar. The calendar attribute indicates two things:
+<br />
+<br />* The calendar (or time system) in which the reference time is stated.
+<br />
+<br />* The algorithms which should be used to decode the time coordinates into
+<br />
+timestamps in the calendar of the reference time, and to encode timestamps in
+<br />
+that calendar to time coordinates with the given reference time.
+<br />
+<br />These points distinguish UTC and GPS times, and they similarly distinguish
+<br />
+UTC from 360-day-calendar times, for instance. So it's a more uniform approach
+<br />
+to use the calendar attribute in all cases. Also, parsing the time units att
+<br />
+is less convenient than inspecting the calendar att, which is a single word
+<br />
+with only a small number of possible values.
+<br />
+<br /><em class="quotelev1">&gt; 1) CF not try to accommodate folks using &quot;wrong&quot; software.
+</em><br />
+<br />The case in point is using software without leap seconds to encode UTC
+<br />
+timestamps. I think it's too harsh to call it &quot;wrong&quot;. It pretends that UTC
+<br />
+is something slightly different and other-worldly, and that makes its elapsed
+<br />
+times a bit inaccurate. But it's a perfectly reasonable thing to do. As I
+<br />
+said in a recent email, I expect that many or most climate and NWP models,
+<br />
+when using the &quot;real-world&quot; calendar to deal with real-world weather and
+<br />
+climate (assimilating and comparing with real-world obs), have time coords
+<br />
+which are encoded from UTC timestamps but not using leap seconds i.e. &quot;wrong&quot;.
+<br />
+This seems sensible to me since they certainly don't depend on precision to
+<br />
+within a few seconds, and it's easier. So why not? It's not the job of CF to
+<br />
+tell people what to do, and we should accommodate it so long as it's well-
+<br />
+defined and has a use-case.
+<br />
+<br /><em class="quotelev1">&gt; 2) we relax our requirement that udunits be able to handle the time
+</em><br />
+<em class="quotelev1">&gt; coordinate because it won't recognize and interpret &quot;UTC&quot; and &quot;GPS&quot;.
+</em><br />
+<br />udunits can't handle model calendars anyway. We use udunits only to define
+<br />
+the format of the time units, not to depend on it for decoding and encoding.
+<br />
+<br />There is also a use-case for real-world times where the data-producer is not
+<br />
+precise about whether the ref time is UTC or GPS, or whether the coords were
+<br />
+encoded with leap seconds. It seems that we should distinguish this case from
+<br />
+the precise and deliberate use of 86400-second days for UTC. I think this is
+<br />
+a rather specific case of imprecision, not the same as inaccuracy in coord
+<br />
+values in general (for which we don't have a convention at present - no-one's
+<br />
+asked for one yet), and that it relates specifically to the calendar. So I
+<br />
+still prefer the proposal we've already arrived at for four values of the
+<br />
+calendar att for the real world:
+<br />
+<br />gregorian: Not specifying whether it's GPS or UTC or how encoded. Elapsed
+<br />
+times and decoded coords are therefore imprecise.
+<br />
+<br />gregorian_nls: UTC ref time and time coords encoded from UTC timestamps without
+<br />
+leap seconds, which are inaccurate elapsed time, but can be decoded accurately.
+<br />
+<br />gregorian_utc: UTC ref time, time coords are elapsed time, decoding to UTC
+<br />
+timestamps if UTC algorithm is used.
+<br />
+<br />gregorian_gps: GPS ref time, time coords are elapsed time, decoding to GPS
+<br />
+timestamps if GPS algorithm is used (which is actually the same algorithm
+<br />
+as for gregorian_nls i.e. 86400-second days).
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Jul 01 2015 - 08:42:10 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7183">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7184.html" title="Next message in the list">alison.pamment at stfc.ac.uk: "[CF-metadata] GOES-R standard names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7182.html" title="Previous message in the list">Hedley, Mark: "[CF-metadata] Specifying latitude and longitude of transects and	regions"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7204.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7204.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7183" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7183" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7183" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7183" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:58 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7182.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7184.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

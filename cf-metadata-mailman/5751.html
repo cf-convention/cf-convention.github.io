@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] ncdismember flattens hierarchical files, calls cfchecker from Charlie Zender on 2013-09-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="Charlie Zender (zender)" />
+<meta name="Subject" content="[CF-metadata] ncdismember flattens hierarchical files, calls cfchecker" />
+<meta name="Date" content="2013-09-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5750.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5752.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] ncdismember flattens hierarchical files, calls cfchecker</h1>
+<!-- received="Thu Sep 26 21:23:14 2013" -->
+<!-- isoreceived="20130926202314" -->
+<!-- sent="Thu, 26 Sep 2013 20:23:14 -0700" -->
+<!-- isosent="20130927032314" -->
+<!-- name="Charlie Zender" -->
+<!-- email="zender" -->
+<!-- subject="[CF-metadata] ncdismember flattens hierarchical files, calls cfchecker" -->
+<!-- id="5244FA22.60108_at_uci.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5751" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5752.html" accesskey="d" title="Lynnes, Christopher S.: &quot;[CF-metadata] ncdismember flattens hierarchical files, calls cfchecker&quot;">Next message</a> ]
+[ <a href="./5750.html" title="Steve Hankin: &quot;[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5752.html" accesskey="t" title="Lynnes, Christopher S.: &quot;[CF-metadata] ncdismember flattens hierarchical files, calls cfchecker&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5751" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5751" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5751" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5751" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Charlie Zender &lt;<a href="mailto:zender?Subject=Re%3A%20%5BCF-metadata%5D%20ncdismember%20flattens%20hierarchical%20files%2C%20calls%20cfchecker">zender</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 26 Sep 2013 20:23:14 -0700</span><br />
+</address>
+<br />
+Hi All,
+<br />
+<br />Some users at NASA have to flatten their hierarchical files so that
+<br />
+the constituent groups can be checked for CF-compliance with standard
+<br />
+CF checkers that are not &quot;group-aware&quot;. This can be painful if done by
+<br />
+&quot;brute force&quot;: ncdump (or h5dump), strip out group info, rebuild each
+<br />
+group as flat netCDF3, pass to a checker. To accelerate this procedure
+<br />
+I've modified the script I mentioned earlier so it can call cfchecker:
+<br />
+<br /><a href="http://nco.sf.net/nco.html#dismember">http://nco.sf.net/nco.html#dismember</a>
+<br />
+<br />ncdismember is a script that calls ncks to extract each leaf group
+<br />
+into a netCDF3 file, as expected by most compliance checkers.
+<br />
+It calls cfchecker when invoked with an optional third argument of
+<br />
+'cf'. An example follows. Thanks to the Juelich group for making
+<br />
+cfchecker so painless to intall!
+<br />
+<br />Enjoy,
+<br />
+cz
+<br />
+<br />Dismembering:
+<br />
+zender at roulee:~$ ncdismember ~/nco/data/mdl.nc /data/zender/nco/tmp
+<br />
+Dismembering file /home/zender/nco/data/mdl.nc into following files:
+<br />
+/data/zender/nco/tmp/cesm.cesm_01.nc
+<br />
+/data/zender/nco/tmp/cesm.cesm_02.nc
+<br />
+/data/zender/nco/tmp/ecmwf.ecmwf_01.nc
+<br />
+/data/zender/nco/tmp/ecmwf.ecmwf_02.nc
+<br />
+<br />Dismembering followed by cfchecker compliance check:
+<br />
+zender at roulee:~$ ncdismember ~/nco/data/mdl.nc /data/zender/nco/tmp cf
+<br />
+Dismembering file /home/zender/nco/data/mdl.nc into following files:
+<br />
+/data/zender/nco/tmp/cesm.cesm_01.nc
+<br />
+WARNING: Using the default (non-CF) Udunits database
+<br />
+/data/zender/nco/tmp/cesm.cesm_01.nc:
+<br />
+INFO: INIT:	running CFchecker version 1.5.15
+<br />
+INFO: INIT:	checking compliance with convention CF-1.5
+<br />
+INFO: INIT:	using standard name table version: 25, last modified:
+<br />
+2013-07-05T05:40:30Z
+<br />
+INFO: INIT:	using area type table version: 2, date: 10 July 2013
+<br />
+INFO: 2.4:	no axis information found in dimension variables, not
+<br />
+checking dimension order
+<br />
+WARNING: 3:	variable &quot;tas&quot; contains neither long_name nor standard_name
+<br />
+attribute
+<br />
+INFO: 3.1:	variable &quot;tas&quot; does not contain units attribute
+<br />
+--------------------------------------------------
+<br />
+total files: 1, OK: 0, with warnings: 1, with errors: 0
+<br />
+/data/zender/nco/tmp/cesm.cesm_02.nc
+<br />
+WARNING: Using the default (non-CF) Udunits database
+<br />
+...
+<br />
+<br /><pre>
+-- 
+Charlie Zender, Earth System Sci. &amp; Computer Sci.
+University of California, Irvine 949-891-2429 )'(
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Sep 26 2013 - 21:23:14 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5751">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5752.html" title="Next message in the list">Lynnes, Christopher S.: "[CF-metadata] ncdismember flattens hierarchical files, calls cfchecker"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5750.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5752.html" title="Next message in this discussion thread">Lynnes, Christopher S.: "[CF-metadata] ncdismember flattens hierarchical files, calls cfchecker"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5752.html" title="Message sent in reply to this message">Lynnes, Christopher S.: "[CF-metadata] ncdismember flattens hierarchical files, calls cfchecker"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5751" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5751" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5751" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5751" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:30 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5750.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5752.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

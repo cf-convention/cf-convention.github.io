@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Are cell_methods attributes OK for coordinate variables? from Jim Biard on 2015-06-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] Are cell_methods attributes OK for coordinate variables?" />
+<meta name="Date" content="2015-06-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7068.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7070.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Are cell_methods attributes OK for coordinate variables?</h1>
+<!-- received="Wed Jun  3 06:44:31 2015" -->
+<!-- isoreceived="20150603054431" -->
+<!-- sent="Wed, 03 Jun 2015 08:44:31 -0400" -->
+<!-- isosent="20150603124431" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] Are cell_methods attributes OK for coordinate variables?" -->
+<!-- id="556EF6AF.6000304_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="556E1CE4.2020907_at_uci.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7069" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7070.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] FW:  Salinity units&quot;">Next message</a> ]
+[ <a href="./7068.html" title="Hollis, Dan: &quot;[CF-metadata] FW:  Salinity units&quot;">Previous message</a> ]
+[ <a href="./7063.html" title="Charlie Zender: &quot;[CF-metadata] Are cell_methods attributes OK for coordinate variables?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7069" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7069" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7069" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7069" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20Are%20cell_methods%20attributes%20OK%20for%20coordinate%20variables%3F">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 03 Jun 2015 08:44:31 -0400</span><br />
+</address>
+<br />
+Charlie,
+<br />
+<br />The way I have come to view coordinate variables vs auxiliary coordinate 
+<br />
+variables based on discussions with this group is that &quot;true&quot; coordinate 
+<br />
+variables should be considered as quite close to just that - abstract 
+<br />
+mathematical axes. Certainly in the majority of cases where 
+<br />
+spatio-temporal averaging is done (at least with grids) data producers 
+<br />
+are not calculating time, lat, or lon averages to put in their time, 
+<br />
+lat, and lon variables. They are selecting the same spatio-temporal 
+<br />
+point relative to the origin of each time, lat, and lon cell (usually 
+<br />
+the midpoint, but not always) and writing the values to the time, lat, 
+<br />
+and lon coordinate variables. I'd say that qualifies as pretty abstract. 
+<br />
+It is certainly independent of the data values.
+<br />
+<br />This abstract quality is how I've understood the reason why it is not 
+<br />
+OK, for example, to have missing_data or fill values in true coordinate 
+<br />
+variables. They are not, strictly speaking, to be understood as 
+<br />
+functions of input data.
+<br />
+<br />The same is not true of auxiliary coordinate variables. It is fine for 
+<br />
+them to be understood as functions of input data. They may act as 
+<br />
+coordinates for other data variables, but they are themselves data 
+<br />
+variables, even if it is only that they are the outputs of a coordinate 
+<br />
+transformation.
+<br />
+<br />Perhaps this understanding is way off base. I'd appreciate understanding 
+<br />
+how the rest of the community understands the distinction between true 
+<br />
+and auxiliary coordinates.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 6/2/15 5:15 PM, Charlie Zender wrote:
+<br />
+<em class="quotelev1">&gt; Thank you for your thoughts on this David, Karl, and Jim.
+</em><br />
+<em class="quotelev1">&gt; David, I concur with you.
+</em><br />
+<em class="quotelev1">&gt; Karl, rest assured we are talking about adding cell_methods to _both_
+</em><br />
+<em class="quotelev1">&gt; the variable and its coordinate, not the coordinate instead of the
+</em><br />
+<em class="quotelev1">&gt; variable.
+</em><br />
+<em class="quotelev1">&gt; Jim, you seem to view coordinates as abstract mathematical axes while
+</em><br />
+<em class="quotelev1">&gt; I prefer their geophysical meaning. With respect to this discussion
+</em><br />
+<em class="quotelev1">&gt; I see time similarly to other coordinates like lat, lon, lev.
+</em><br />
+<em class="quotelev1">&gt; For example, when NCO averages a spatiotemporal region I want users to
+</em><br />
+<em class="quotelev1">&gt; know that the scalar (or size 1 array) values of time, lat, and lon
+</em><br />
+<em class="quotelev1">&gt; values in the output represent averages over the original input region
+</em><br />
+<em class="quotelev1">&gt; and cell_methods seems to be the natural way to do this.
+</em><br />
+<em class="quotelev1">&gt; Since CF seems to allow cell_methods on coordinates, NCO will continue
+</em><br />
+<em class="quotelev1">&gt; its current behavior. I hope the NERC CF checker starts to allow
+</em><br />
+<em class="quotelev1">&gt; this behavior (the Decker/Schultz cfchecker always has).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best,
+</em><br />
+<em class="quotelev1">&gt; Charlie
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; p.s. thank you! to whomever fixed the archive URL issue
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/Connect with us on Facebook for climate 
+&lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+&lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us 
+on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and 
+_at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150603/b8fcbb06/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150603/b8fcbb06/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150603/b8fcbb06/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150603/b8fcbb06/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Jun 03 2015 - 06:44:31 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7069">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7070.html" title="Next message in the list">Jim Biard: "[CF-metadata] FW:  Salinity units"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7068.html" title="Previous message in the list">Hollis, Dan: "[CF-metadata] FW:  Salinity units"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7063.html" title="Message to which this message replies">Charlie Zender: "[CF-metadata] Are cell_methods attributes OK for coordinate variables?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7069" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7069" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7069" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7069" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:56 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7068.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7070.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

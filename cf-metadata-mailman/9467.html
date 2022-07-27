@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Decibel units in CF standard names from Martin Juckes - UKRI STFC on 2018-11-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Martin Juckes - UKRI STFC (martin.juckes)" />
+<meta name="Subject" content="[CF-metadata] Decibel units in CF standard names" />
+<meta name="Date" content="2018-11-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9466.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9468.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Decibel units in CF standard names</h1>
+<!-- received="Mon Nov  5 02:32:59 2018" -->
+<!-- isoreceived="20181105023259" -->
+<!-- sent="Mon, 5 Nov 2018 09:32:59 +0000" -->
+<!-- isosent="20181105093259" -->
+<!-- name="Martin Juckes - UKRI STFC" -->
+<!-- email="martin.juckes" -->
+<!-- subject="[CF-metadata] Decibel units in CF standard names" -->
+<!-- id="73d1a1758ece4c5f99d56aafce3069cb_at_stfc.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20181104170415.GA32590_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9467" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9468.html" accesskey="d" title="Martin Juckes - UKRI STFC: &quot;[CF-metadata] Addictional area types needed for CMIP6&quot;">Next message</a> ]
+[ <a href="./9466.html" title="Jonathan Gregory: &quot;[CF-metadata] ice_sheet/land_ice confusion&quot;">Previous message</a> ]
+[ <a href="./9465.html" title="Jonathan Gregory: &quot;[CF-metadata] Decibel units in CF standard names&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./9480.html" accesskey="t" title="John Graybeal: &quot;[CF-metadata] Decibel units in CF standard names&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9467" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9467" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9467" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9467" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Martin Juckes - UKRI STFC &lt;<a href="mailto:martin.juckes?Subject=Re%3A%20%5BCF-metadata%5D%20Decibel%20units%20in%20CF%20standard%20names">martin.juckes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 5 Nov 2018 09:32:59 +0000</span><br />
+</address>
+<br />
+Dear Jonathan,
+<br />
+<br /><br />The discussion of a machine-readable document with details of rules related to specific standard names is here: <a href="https://cf-trac.llnl.gov/trac/ticket/153">https://cf-trac.llnl.gov/trac/ticket/153</a> . It has been quiet for some time. The dB issues could be covered there, as you say. There is a difference in that the rules discussed in ticket 153 are about specifying what needs to be in the data file, so that it is possible to check that file meta-data is as complete as intended by the convention. Your suggestion would entail adding information that would not be in the data file. There are, however, some other issues that need tidying up.
+<br />
+<br /><br />You also suggest that alternative reference levels could be specified in an attribute, but that does not appear to be allowed by current standard name definitions, e.g. &quot;Sound intensity is the sound energy per unit time per unit area. Sound intensity level in water is expressed on a logarithmic scale with reference to a sound intensity of 6.7e-19 W m-2. LI = 10 log10(I/I0) where LI is sound intensity level, I is sound intensity and I0 is the reference sound intensity.&quot; for sound_intensity_level_in_water states what the level is and does not indicate any attribute that might be used for for a different level. If the data provider uses a different level and encodes the information in an attribute of his choice it will create ambiguity, with applications tending to ignore the additional information and humans reading the file perhaps seeing it. If you believe that alternative reference levels should be possible, then surely we need a mechanism in the convention to specify them, and adjustment to descriptions su<br />
+ch as the above to draw attention to the possibility.
+<br />
+<br /><br />It is true that dB is dimensionless, like &quot;1&quot;, but we would create huge confusion if dB data values were multiplied by 100 and presented as &quot;%&quot; ... a sound_intensity_level_in_water with a value of 25% might be technically equivalent to 0.25dB, but not very useful to users. I'm not sure how to deal with this, but I'm not comfortable with the idea that dB is fully equivalent to &quot;1&quot; as a unit.
+<br />
+<br /><br /><em class="quotelev1">&gt;From another perspective dB is like distance and time in that the user often needs to know a reference point to make full sense of the data. For time, CF supplies the additional information through the &quot;since ...&quot; construct (perhaps qualified with an additional calendar attribute), for distance the datum can be given in a grid mapping construct. For dB, CF does not currently provide a place for this information.
+</em><br />
+<br /><br />regards,
+<br />
+<br />Martin
+<br />
+<br />________________________________
+<br />
+From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu&gt; on behalf of Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt;
+<br />
+Sent: 04 November 2018 17:03
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: [CF-metadata] Decibel units in CF standard names
+<br />
+<br />Dear Martin
+<br />
+<br />Your points are good ones and have been raised before. More than once we have
+<br />
+talked about maintaining a CF version of the udunits definition to include dB
+<br />
+and sverdrup, or ask udunits to add them (if they're not there). dB is a dimen-
+<br />
+sionless unit, equivalent to 1. I suggest that dBZ should be changed to dB,
+<br />
+as I don't think we ought to have several of them. I believe that the default
+<br />
+reference levels are mostly conventional and stated in the definitions of the
+<br />
+standard name, as you say. They can be overridden by supplying a size-one or
+<br />
+scalar coordinate variable. You have previously suggested an xml table to
+<br />
+contain more information about the definition of standard names, haven't you?
+<br />
+It seems to me that an arrangement like that would be the right place to store
+<br />
+the default reference levels and scale factor in a machine-readable way.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br />----- Forwarded message from Martin Juckes - UKRI STFC &lt;martin.juckes at stfc.ac.uk&gt; -----
+<br />
+<br /><em class="quotelev1">&gt; Date: Tue, 30 Oct 2018 13:42:13 +0000
+</em><br />
+<em class="quotelev1">&gt; From: Martin Juckes - UKRI STFC &lt;martin.juckes at stfc.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; To: &quot;CF-metadata (cf-metadata at cgd.ucar.edu)&quot; &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; Subject: [CF-metadata] Decibel units in CF standard names
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hello All,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The CF standard names have several variables using decibels (&quot;dB&quot;) as units, and one using &quot;decibels of Z (dBZ)&quot;:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; sound_intensity_level_in_air            1e-12 W m-2         10 log10(I/I0)
+</em><br />
+<em class="quotelev1">&gt; sound_intensity_level_in_water       6.7e-19 W m-2     10 log10(I/I0)
+</em><br />
+<em class="quotelev1">&gt; sound_pressure_level_in_air            2e-5 Pa                 20 log_10(p/p0)
+</em><br />
+<em class="quotelev1">&gt; sound_pressure_level_in_water       1e-6 Pa                 20 log_10(p/p0)
+</em><br />
+<em class="quotelev1">&gt; equivalent_reflectivity_factor           1 mm6 m-3          10 log_10(Z/Z0)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Each has a different reference level, and two use an additional factor two in the definition of the decibel level.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There are a few issues here, the main one is that &quot;dB&quot; is not a valid Udunits string. There is a secondary point that the details of the definitions are not easily available to software reading the files.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Where Udunits does support decibels, it is units such as dBZ, dBW for which a specific reference value is defined. As all these variables have different reference values, that would require 4 new units.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The reference values are currently specified within the standard name description. It maattry make sense to add explicit attributes so that this information can be made more accessible to users and software reading the file. E.g. &quot;decibel_reference_level&quot; with the name of a scalar variable holding the reference value (specifying standard name, units and value) and &quot;decibel_scale_factor&quot; set to &quot;10&quot; or &quot;20&quot;. With these modifications it would be possible to compute the power/intensity etc from the decibel parameter.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; regards,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Martin
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />----- End forwarded message -----
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Nov 05 2018 - 02:32:59 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9467">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9468.html" title="Next message in the list">Martin Juckes - UKRI STFC: "[CF-metadata] Addictional area types needed for CMIP6"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9466.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] ice_sheet/land_ice confusion"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./9465.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] Decibel units in CF standard names"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./9480.html" title="Next message in this discussion thread">John Graybeal: "[CF-metadata] Decibel units in CF standard names"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9467" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9467" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9467" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9467" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:31 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9466.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9468.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

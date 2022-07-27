@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF upgrade to netCDF variable names from Russ Rew on 2014-01-15 (cf-metadata-mailman)</title>
+<meta name="Author" content="Russ Rew (russ)" />
+<meta name="Subject" content="[CF-metadata] CF upgrade to netCDF variable names" />
+<meta name="Date" content="2014-01-15" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5996.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5998.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF upgrade to netCDF variable names</h1>
+<!-- received="Wed Jan 15 14:34:22 2014" -->
+<!-- isoreceived="20140115143422" -->
+<!-- sent="Wed, 15 Jan 2014 14:34:22 -0700" -->
+<!-- isosent="20140115213422" -->
+<!-- name="Russ Rew" -->
+<!-- email="russ" -->
+<!-- subject="[CF-metadata] CF upgrade to netCDF variable names" -->
+<!-- id="24446.1389821662_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="6C0CDF4D-0B96-4C80-86FE-D2062315CD29_at_mindspring.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5997" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5998.html" accesskey="d" title="Chris Barker: &quot;[CF-metadata] CF upgrade to netCDF variable names&quot;">Next message</a> ]
+[ <a href="./5996.html" title="John Graybeal: &quot;[CF-metadata] CF upgrade to netCDF variable names&quot;">Previous message</a> ]
+[ <a href="./5996.html" title="John Graybeal: &quot;[CF-metadata] CF upgrade to netCDF variable names&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5998.html" accesskey="t" title="Chris Barker: &quot;[CF-metadata] CF upgrade to netCDF variable names&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5997" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5997" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5997" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5997" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Russ Rew &lt;<a href="mailto:russ?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20upgrade%20to%20netCDF%20variable%20names">russ</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 15 Jan 2014 14:34:22 -0700</span><br />
+</address>
+<br />
+John Graybeal wrote:
+<br />
+<em class="quotelev1">&gt; This prompts me to observe that somehow, in this brave new age of computer programming, people are
+</em><br />
+<em class="quotelev1">&gt; developing netCDF software that supports Unicode characters -- Unicode!! -- in variable (attribute
+</em><br />
+<em class="quotelev1">&gt; etc) names. There will be netCDF files in the wild, used by scientists and normal people (especially
+</em><br />
+<em class="quotelev1">&gt; normal people from non-English-speaking countries) that use all sorts of wild and crazy characters
+</em><br />
+<em class="quotelev1">&gt; in their variable names. (Perhaps CF thinks these are &quot;alphanumeric&quot;, in which case I've found a
+</em><br />
+<em class="quotelev1">&gt; solution! The standard certainly is not explicitly ASCII-only.)  By the way, I was amazed to learn
+</em><br />
+<em class="quotelev1">&gt; that using Unicode in programming languages is starting to take hold.
+</em><br />
+<br />Yes, since June 2008 we have supported use of Unicode characters in
+<br />
+names in both netCDF-3 and netCDF-4 software.  The intent was to make
+<br />
+netCDF more suitable for international use, rather than to encode
+<br />
+mathematical operations in variable names.  But we were also responding
+<br />
+to needs of some user communities, for example atmospheric chemists who
+<br />
+wanted to be able to use standard notations for chemical species in
+<br />
+variable names.
+<br />
+<br />Here's a small non-sensical example of ncdump output for a file
+<br />
+containing Unicode names:
+<br />
+<br />&nbsp;&nbsp;<a href="http://www.unidata.ucar.edu/netcdf/workshops/most-recent/utilities/Unicode.html">http://www.unidata.ucar.edu/netcdf/workshops/most-recent/utilities/Unicode.html</a>
+<br />
+<br />The precise rules for netCDF names are in the format documentation, but
+<br />
+the short version is:
+<br />
+<br />&nbsp;&nbsp;... The first character of a name must be alphanumeric, a multi-byte
+<br />
+&nbsp;&nbsp;UTF-8 character, or '_' (reserved for special names with meaning to
+<br />
+&nbsp;&nbsp;implementations, such as the ?_FillValue? attribute). Subsequent
+<br />
+&nbsp;&nbsp;characters may also include printing special characters, except for
+<br />
+&nbsp;&nbsp;'/' which is not allowed in names. Names that have trailing space
+<br />
+&nbsp;&nbsp;characters are also not permitted.
+<br />
+<br />That document also warns:
+<br />
+<br />&nbsp;&nbsp;Note that by using special characters in names, you may make your data
+<br />
+&nbsp;&nbsp;not compliant with conventions that have more stringent requirements
+<br />
+&nbsp;&nbsp;on valid names for netCDF components, for example the CF Conventions.
+<br />
+<br /><em class="quotelev1">&gt; At some point, we in the CF-supporting community are going to have to support the standard practices
+</em><br />
+<em class="quotelev1">&gt; in this aspect that are going on everywhere else in the software world, or decide we want a
+</em><br />
+<em class="quotelev1">&gt; permanent back-water for the 'scientists who are not interested in or capable of supporting these
+</em><br />
+<em class="quotelev1">&gt; practices' (not my claim).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     Perhaps there are some reasons to want less-restrictive variable names -- I'm not always
+</em><br />
+<em class="quotelev1">&gt;     that imaginative, but if so, then present them.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Let's just make the list so far, to get everyone up to speed with the discussion:
+</em><br />
+<em class="quotelev1">&gt; * easier visual parsing (taste, yes, but practical also if you work with lots of data sets from
+</em><br />
+<em class="quotelev1">&gt; different communities)
+</em><br />
+<em class="quotelev1">&gt; * embedding semantic meaning (taste)
+</em><br />
+<em class="quotelev1">&gt; * clearly isolating the context (namespace, hierarchy)
+</em><br />
+<em class="quotelev1">&gt; * matching attribute names that come from the source data
+</em><br />
+<em class="quotelev1">&gt; * consistency with netCDF usage/files -&gt; easier onboarding of those files
+</em><br />
+<em class="quotelev1">&gt; * Unicode/internationalization support
+</em><br />
+<br />--Russ
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Jan 15 2014 - 14:34:22 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5997">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5998.html" title="Next message in the list">Chris Barker: "[CF-metadata] CF upgrade to netCDF variable names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5996.html" title="Previous message in the list">John Graybeal: "[CF-metadata] CF upgrade to netCDF variable names"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5996.html" title="Message to which this message replies">John Graybeal: "[CF-metadata] CF upgrade to netCDF variable names"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5998.html" title="Next message in this discussion thread">Chris Barker: "[CF-metadata] CF upgrade to netCDF variable names"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5997" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5997" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5997" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5997" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5996.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5998.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

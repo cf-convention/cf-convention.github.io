@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jim Biard on 2015-05-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-05-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6974.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6976.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Wed May 13 11:35:17 2015" -->
+<!-- isoreceived="20150513103517" -->
+<!-- sent="Wed, 13 May 2015 13:35:17 -0400" -->
+<!-- isosent="20150513173517" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="55538B55.1010507_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20150513165426.GA4396_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6975" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6976.html" accesskey="d" title="Lowry, Roy K.: &quot;[CF-metadata] New standard name request for FAPAR&quot;">Next message</a> ]
+[ <a href="./6974.html" title="Jonathan Gregory: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+[ <a href="./6974.html" title="Jonathan Gregory: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6975" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6975" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6975" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6975" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 13 May 2015 13:35:17 -0400</span><br />
+</address>
+<br />
+Jonathan,
+<br />
+<br />I'd say this is a lot of where the misunderstanding lies.
+<br />
+<br />I agree that if the calendar and time system are specified as 
+<br />
+Gregorian/NLS, then you should not involve leap seconds in your 
+<br />
+calculations going between times represented as HH:MM:SS and elapsed 
+<br />
+times since your epoch. But if the calendar and time system are 
+<br />
+specified as Gregorian/UTC, then you should involve leap seconds in 
+<br />
+those same calculations. But in either case you *should* end up with a 
+<br />
+set of elapsed times in your time variable that don't have any leap 
+<br />
+second offsets or discontinuities.
+<br />
+<br />Let's say I have a machine that counts the number of total seconds and 
+<br />
+86,400 second periods (standard days) that have gone by since I started 
+<br />
+it, which was on Jan 1, 1970. (A UNIX system with a super-accurate CPU 
+<br />
+clock.) When I have a leap day, I don't add or subtract anything from 
+<br />
+the counts the machine has. What I do is use the algorithms specified by 
+<br />
+the Gregorian calendar to represent February as having one more day than 
+<br />
+usual so that my YYYY-MM-DD calendar date stays more closely aligned 
+<br />
+with Earth's position in its orbit. Leap seconds are just like that. I 
+<br />
+don't add or subtract anything from the counts my machine has. I use the 
+<br />
+algorithms specified by the UTC time system to represent June 30 (in a 
+<br />
+year when I have a leap second) as having one more second in the last 
+<br />
+minute of the last hour so that my HH:MM:SS clock time stays more 
+<br />
+closely aligned with Earth's position in its rotation.
+<br />
+<br />In the particular case of *nix systems using the Network Time Protocol, 
+<br />
+getting the system to display the correct UTC time actually is 
+<br />
+accomplished by subtracting a second from the elapsed time being counted 
+<br />
+by the system, thus ensuring that any long term recording of elapsed 
+<br />
+times since the computer was started does, in fact, include leap second 
+<br />
+discontinuities. This can add a whole other facet to the general problem 
+<br />
+of how to get all of this right as a data producer if I'm getting my 
+<br />
+time from my *nix machine. I don't know for sure how Windows boxes 
+<br />
+handle it, but I don't think it's actually any better.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 5/13/15 12:54 PM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Jim
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think your last email (which didn't go to the email list) explains why we
+</em><br />
+<em class="quotelev1">&gt; have not been understanding each other about your points 2 and 3:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; There shouldn't be (or there is no) good reason to use a different
+</em><br />
+<em class="quotelev2">&gt;&gt; calendar to encode and decode, but this is exactly what has been
+</em><br />
+<em class="quotelev2">&gt;&gt; done with regard to times. As a netCDF file producer, if you have a
+</em><br />
+<em class="quotelev2">&gt;&gt; set of observations that have attached correct Gregorian/UTC date &amp;
+</em><br />
+<em class="quotelev2">&gt;&gt; time strings and you use a POSIX calculator to encode your times
+</em><br />
+<em class="quotelev2">&gt;&gt; since your correct Gregorian/UTC reference date &amp; time string, then
+</em><br />
+<em class="quotelev2">&gt;&gt; you are at risk of producing incorrect elapsed time values. (Whether
+</em><br />
+<em class="quotelev2">&gt;&gt; you actually do or not depends on factors mentioned in previous
+</em><br />
+<em class="quotelev2">&gt;&gt; emails.) The contents of time variables *should* always be true
+</em><br />
+<em class="quotelev2">&gt;&gt; counts of time that has elapsed since the reference epoch and
+</em><br />
+<em class="quotelev2">&gt;&gt; *should* never, ever encode leap second induced discontinuities or
+</em><br />
+<em class="quotelev2">&gt;&gt; offsets.
+</em><br />
+<em class="quotelev1">&gt; That's not how I understand what we've been discussing. I think that if
+</em><br />
+<em class="quotelev1">&gt; calendar=&quot;gregorian[_nls]&quot; then the encoding/decoding should be done without
+</em><br />
+<em class="quotelev1">&gt; leap seconds (86400 s per day), but if calendar=&quot;gregorian_utc&quot; the encoding/
+</em><br />
+<em class="quotelev1">&gt; decoding should be done with leap seconds according to UTC. This why I see
+</em><br />
+<em class="quotelev1">&gt; the issue as being one that relates to the calendar, and not to the units
+</em><br />
+<em class="quotelev1">&gt; or the reference time, which are calendar-neutral. Is this what we disagree on?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I can see there's a difficulty with the UTC calendar that if a second is taken
+</em><br />
+<em class="quotelev1">&gt; out there will be two consecutive seconds with the same timestamp. This is
+</em><br />
+<em class="quotelev1">&gt; a problem for encoding - the data-writer would have to be careful that he
+</em><br />
+<em class="quotelev1">&gt; chose the right one. It's not a problem for using the encoded time coords,
+</em><br />
+<em class="quotelev1">&gt; which will be monotonic and run forward at 1 second per second, nor for
+</em><br />
+<em class="quotelev1">&gt; decoding, which will correctly produce the repeated timestamp. Inserting a
+</em><br />
+<em class="quotelev1">&gt; leap second is the same kind of discontinuity as the change from Julian to
+</em><br />
+<em class="quotelev1">&gt; Gregorian calendar. It means that there is a range of date-times which cannot
+</em><br />
+<em class="quotelev1">&gt; be encoded because they are not valid, but decoding is no problem. Similarly
+</em><br />
+<em class="quotelev1">&gt; there are dates which are valid in some calendars but not others, such as
+</em><br />
+<em class="quotelev1">&gt; 30 Feb being valid in the 360_day calendar.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think my view is consistent with the general treatment of calendars by CF.
+</em><br />
+<em class="quotelev1">&gt; The encoding/decoding algorithm differs, but the same units string could
+</em><br />
+<em class="quotelev1">&gt; always be used.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/We will be updating our social media soon. Follow our current Facebook 
+(NOAA National Climatic Data Center 
+&lt;<a href="https://www.facebook.com/NOAANationalClimaticDataCenter">https://www.facebook.com/NOAANationalClimaticDataCenter</a>&gt; and NOAA 
+National Oceanographic Data Center &lt;<a href="https://www.facebook.com/noaa.nodc">https://www.facebook.com/noaa.nodc</a>&gt;) 
+and Twitter (_at_NOAANCDC &lt;<a href="https://twitter.com/NOAANCDC">https://twitter.com/NOAANCDC</a>&gt; and @NOAAOceanData 
+&lt;<a href="https://twitter.com/NOAAOceanData">https://twitter.com/NOAAOceanData</a>&gt;) accounts for the latest information./
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150513/b6bc90a5/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150513/b6bc90a5/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150513/b6bc90a5/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150513/b6bc90a5/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed May 13 2015 - 11:35:17 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6975">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6976.html" title="Next message in the list">Lowry, Roy K.: "[CF-metadata] New standard name request for FAPAR"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6974.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6974.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6975" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6975" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6975" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6975" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6974.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6976.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

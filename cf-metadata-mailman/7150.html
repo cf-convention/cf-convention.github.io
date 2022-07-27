@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] cell_methods for climatology? from Hollis, Dan on 2015-06-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hollis, Dan (dan.hollis)" />
+<meta name="Subject" content="[CF-metadata] cell_methods for climatology?" />
+<meta name="Date" content="2015-06-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7149.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7151.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] cell_methods for climatology?</h1>
+<!-- received="Fri Jun 26 03:00:43 2015" -->
+<!-- isoreceived="20150626020043" -->
+<!-- sent="Fri, 26 Jun 2015 09:00:43 +0000" -->
+<!-- isosent="20150626090043" -->
+<!-- name="Hollis, Dan" -->
+<!-- email="dan.hollis" -->
+<!-- subject="[CF-metadata] cell_methods for climatology?" -->
+<!-- id="D7D1372D480AEE41B3C1276C9A15404B3572C332_at_EXXCMPD1DAG1.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="558C7D35.4020203_at_llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7150" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7151.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] cell_methods for climatology?&quot;">Next message</a> ]
+[ <a href="./7149.html" title="Karl Taylor: &quot;[CF-metadata] cell_methods for climatology?&quot;">Previous message</a> ]
+[ <a href="./7149.html" title="Karl Taylor: &quot;[CF-metadata] cell_methods for climatology?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7150" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7150" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7150" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7150" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hollis, Dan &lt;<a href="mailto:dan.hollis?Subject=Re%3A%20%5BCF-metadata%5D%20cell_methods%20for%20climatology%3F">dan.hollis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 26 Jun 2015 09:00:43 +0000</span><br />
+</address>
+<br />
+Hi Charlie,
+<br />
+<br />I agree with Karl - if the end result is basically a mean over the whole period (even though it might have been computed in two steps) then it seems simpler and clearer to just specify &quot;time: mean&quot;.
+<br />
+<br />Obviously in other circumstances it is essential to record the fact that it's a two-stage calculation e.g. we generate monthly values of mean daily maximum temperature for which the cell method would be:
+<br />
+&quot;time: maximum within days   time: mean over days&quot;
+<br />
+<br />One slight downside (in my opinion) is that closely related variables are then treated slightly differently e.g. for monthly values:
+<br />
+<br />mean daily maximum temperature - &quot;climatology&quot; attribute with cell method of &quot;time: maximum within days   time: mean over days&quot;
+<br />
+mean daily minimum temperature - &quot;climatology&quot; attribute with cell method of &quot;time: minimum within days   time: mean over days&quot;
+<br />
+mean temperature (computed by averaging the daily max and min values) - &quot;bounds&quot; attribute with cell method of &quot;time: mean&quot;
+<br />
+<br />Can anyone out there give a reason for there being two separate attributes, &quot;climatology&quot; and &quot;bounds&quot;. Our monthly stats are for individual calendar months, not 30-year averages, yet the convention seems to require us to specify a &quot;climatology&quot; attribute due to the two-stage calculation method. It seems to me that the nature of the variable is clear from the cell method. Is the use of the &quot;climatology&quot; attribute simply to alert the user, or does it affect the way the cell methods are interpreted (in a way that I haven't grasped)? Put another way, is it non-compliant to combine a &quot;bounds&quot; attribute with a cell method of &quot;time: maximum within days   time: mean over days&quot;?
+<br />
+<br />Regards,
+<br />
+<br />Dan
+<br />
+<br /><br />________________________________
+<br />
+From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Karl Taylor
+<br />
+Sent: 25 June 2015 23:14
+<br />
+To: Charlie Zender; CF Metadata Mail List
+<br />
+Subject: Re: [CF-metadata] cell_methods for climatology?
+<br />
+<br />Hi Charlie (Carlos),
+<br />
+<br />I'm pretty sure the cell_methods should only be an attribute of a non-coordinate variable (*not* an attribute of &quot;time&quot;).
+<br />
+<br />Your 1-step and 2-step methods will yield the same answer (if you keep track of how long each season is when you do the averaging, and you weight the samples appropriately).  CF doesn't try to record in the cell_methods attribute the details of your algorithm.  So I think you have two options for specifying the cell_methods (for time):
+<br />
+<br />If you have a &quot;bounds&quot; attribute for time, then &quot;time: mean&quot;.
+<br />
+<br />If you have a &quot;climatology&quot; attribute for time, then &quot;time: mean within years time: mean over years&quot;
+<br />
+<br />I'd go with the first option I think.
+<br />
+<br />You can place additional information in parentheses as allowed for in section 7.3.2 of the convention.
+<br />
+<br />Best regards,
+<br />
+Karl
+<br />
+<br /><br />On 6/25/15 1:48 PM, Charlie Zender wrote:
+<br />
+Dear CFers,
+<br />
+<br />What should the cell_methods of a non-coordinate
+<br />
+variable (e.g., temperature) in a climatology?
+<br />
+<br />We have climate model output archived as monthly means
+<br />
+in each gridcell, so the cell_methods attribute of these
+<br />
+monthly data begin as &quot;time: mean&quot; (i.e., monthly mean).
+<br />
+We then create a climatology by a sequence of one or two
+<br />
+more temporal-averaging steps. The one-step method puts
+<br />
+all the months in the hopper and averages those.
+<br />
+The two-step method first averages the months into four
+<br />
+climatological seasons, and then averages those four
+<br />
+seasons into the climatological annual mean.
+<br />
+<br />My understanding is that the resulting time coordinate
+<br />
+cell_methods should be
+<br />
+<br />&quot;time: mean within years time: mean over years&quot;
+<br />
+<br />and that the time coordinate should supplant the time
+<br />
+bounds attribute/variable with a climatology bounds
+<br />
+attribute variable with appropriate endpoints.
+<br />
+<br />My question is what should be the cell_methods of the
+<br />
+non-coordinate variables? I can think of five plausible
+<br />
+answers:
+<br />
+<br />1. &quot;time: mean&quot; (it's just a time-mean, after all)
+<br />
+2. &quot;time: mean time: mean&quot; (one-step climatology)
+<br />
+3. &quot;time: mean time: mean time: mean&quot; (two-step climo)
+<br />
+4. &quot;time: mean within years time: mean over years&quot; (same as time)
+<br />
+5. &quot;time: mean time: mean within years time: mean over years&quot;
+<br />
+6. ???
+<br />
+<br />I favor 1 or 4 because 2, 3, and 5 seem redundant (though
+<br />
+they do convey information about the arithmetic method).
+<br />
+What is the CF-recommendation on this?
+<br />
+<br />Muchas gracias,
+<br />
+Carlos
+<br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150626/759b2ad1/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150626/759b2ad1/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Jun 26 2015 - 03:00:43 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7150">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7151.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] cell_methods for climatology?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7149.html" title="Previous message in the list">Karl Taylor: "[CF-metadata] cell_methods for climatology?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7149.html" title="Message to which this message replies">Karl Taylor: "[CF-metadata] cell_methods for climatology?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7150" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7150" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7150" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7150" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:57 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7149.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7151.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

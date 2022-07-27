@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF-netcdf for Mercator projection - use lat/lon, or xc/yc plus lat/lon from Mark Mathewson Consulting on 2012-10-11 (cf-metadata-mailman)</title>
+<meta name="Author" content="Mark Mathewson Consulting (mathewsonconsulting)" />
+<meta name="Subject" content="[CF-metadata] CF-netcdf for Mercator projection - use lat/lon, or xc/yc plus lat/lon" />
+<meta name="Date" content="2012-10-11" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4781.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4783.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF-netcdf for Mercator projection - use lat/lon, or xc/yc plus lat/lon</h1>
+<!-- received="Thu Oct 11 12:05:23 2012" -->
+<!-- isoreceived="20121011110523" -->
+<!-- sent="Thu, 11 Oct 2012 11:05:23 -0700" -->
+<!-- isosent="20121011180523" -->
+<!-- name="Mark Mathewson Consulting" -->
+<!-- email="mathewsonconsulting" -->
+<!-- subject="[CF-metadata] CF-netcdf for Mercator projection - use lat/lon, or xc/yc plus lat/lon" -->
+<!-- id="50770A63.3000404_at_gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4782" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4783.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] Coordinate systems&quot;">Next message</a> ]
+[ <a href="./4781.html" title="Jim Biard: &quot;[CF-metadata] Choice of fill value for unpacked data&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4782" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4782" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4782" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4782" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Mark Mathewson Consulting &lt;<a href="mailto:mathewsonconsulting?Subject=Re%3A%20%5BCF-metadata%5D%20CF-netcdf%20for%20Mercator%20projection%20-%20use%20lat%2Flon%2C%20or%20xc%2Fyc%20plus%20lat%2Flon">mathewsonconsulting</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 11 Oct 2012 11:05:23 -0700</span><br />
+</address>
+<br />
+I have data that I'm putting into CF netcdf format (conventions 1.6) 
+<br />
+that is in the Mercator projection.  I'm trying to determine which 
+<br />
+method is preferred for CF-compliance, in regard to the projection 
+<br />
+information.   The basic question is: Since the Mercator projection is 
+<br />
+N-S-E-W, is there any need to provide projection coordinates (xc, yc)?   
+<br />
+I can see the need to provide the projection coordinates for projections 
+<br />
+such as Polar Stereographic.
+<br />
+<br />Example 1:  Use of x and y projection coordinates, with separate lat/lon 
+<br />
+variables.
+<br />
+netcdf \1 {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xc = 287 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yc = 232 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time = 1 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char Mercator ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:longitude_of_projection_origin = 135.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:long_name = &quot;projection information&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:standard_parallel = 0.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:false_northing = 0.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:grid_mapping_name = &quot;mercator&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:false_easting = 0.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float yc(yc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yc:units = &quot;m&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yc:standard_name = &quot;projection_y_coordinate&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float xc(xc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xc:units = &quot;m&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xc:standard_name = &quot;projection_x_coordinate&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;hours since 1970-01-01T00:00:00Z&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:long_name = &quot;starting time for grids&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:calendar = &quot;gregorian&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float longitude(yc, xc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:standard_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float latitude(yc, xc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:standard_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float Wind_SFC(time, yc, xc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:_FillValue = -30000.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:grid_mapping = &quot;Mercator&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:coordinates = &quot;latitude longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:valid_range = 0.f, 64.30556f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:standard_name = &quot;wind_speed&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:cell_methods = &quot;time: mode&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:units = &quot;m sec**-1&quot; ;
+<br />
+<br />Example 2:  Just using lat/lon coordinate variables, even though the 
+<br />
+projection is not latlon.
+<br />
+netcdf \1 {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude = 287 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude = 232 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time = 1 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char Mercator ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:longitude_of_projection_origin = 135.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:long_name = &quot;projection information&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:standard_parallel = 0.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:false_northing = 0.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:grid_mapping_name = &quot;mercator&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mercator:false_easting = 0.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;hours since 1970-01-01T00:00:00Z&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:long_name = &quot;starting time for grids&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:calendar = &quot;gregorian&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float longitude(longitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:standard_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float latitude(latitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:standard_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float Wind_SFC(time, latitude, longitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:_FillValue = -30000.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:grid_mapping = &quot;Mercator&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:valid_range = 0.f, 64.30556f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:standard_name = &quot;wind_speed&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:cell_methods = &quot;time: mode&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind_Mag_SFC:units = &quot;m sec**-1&quot; ;
+<br />
+<br /><br />Which example is preferred?   If example 2 is used, should the xy 
+<br />
+coordinates be provided as:
+<br />
+float xc(longitude) ;
+<br />
+float yc(latitude);
+<br />
+and use the coordinate attribute for Wind pointing to xc and yc?
+<br />
+<br />Thanks.
+<br />
+<br />Regards,
+<br />
+Mark
+<br />
+<br /><pre>
+-- 
+Mark Mathewson Consulting
+535 Swanson Mill Rd.
+Tonasket, WA 98855
+509-429-8635
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Oct 11 2012 - 12:05:23 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4782">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4783.html" title="Next message in the list">Jim Biard: "[CF-metadata] Coordinate systems"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4781.html" title="Previous message in the list">Jim Biard: "[CF-metadata] Choice of fill value for unpacked data"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4782" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4782" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4782" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4782" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:10 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4781.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4783.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

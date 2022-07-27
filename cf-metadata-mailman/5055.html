@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Rotated Pole projection possibly wrong from Seth McGinnis on 2013-03-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] Rotated Pole projection possibly wrong" />
+<meta name="Date" content="2013-03-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5054.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5056.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Rotated Pole projection possibly wrong</h1>
+<!-- received="Wed Mar  6 13:17:34 2013" -->
+<!-- isoreceived="20130306131734" -->
+<!-- sent="Wed, 06 Mar 2013 13:17:34 -0700" -->
+<!-- isosent="20130306201734" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] Rotated Pole projection possibly wrong" -->
+<!-- id="web-44959106_at_mail.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20130306182947.GA21574_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5055" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5056.html" accesskey="d" title="John Caron: &quot;[CF-metadata] Rotated Pole projection possibly wrong&quot;">Next message</a> ]
+[ <a href="./5054.html" title="Burkhardt Rockel: &quot;[CF-metadata] Rotated Pole projection possibly wrong&quot;">Previous message</a> ]
+[ <a href="./5053.html" title="David Hassell: &quot;[CF-metadata] Rotated Pole projection possibly wrong&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5057.html" accesskey="t" title="John Caron: &quot;[CF-metadata] Rotated Pole projection possibly wrong&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5055" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5055" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5055" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5055" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20Rotated%20Pole%20projection%20possibly%20wrong">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 06 Mar 2013 13:17:34 -0700</span><br />
+</address>
+<br />
+So there are an infinite number of ways to decompose a 3-D orientation into
+<br />
+three orthogonal rotations.  Specifying the projection in terms of the final
+<br />
+location of the north pole and an optional rotation around that point means
+<br />
+that CF is actually agnostic about exactly how you get there.
+<br />
+<br />That said, given that it's being specified in that way, the decomposition that
+<br />
+maps most straightforwardly to those parameters is a Z-Y-X rotation sequence
+<br />
+using an extrinsic (space-fixed) coordinate system:
+<br />
+<br />First rotate by angle phi around the north pole in space-fixed coordinates.
+<br />
+Then rotate by angle theta around 0N 90E in space-fixed coordinates.
+<br />
+Finally, rotate by angle psi around 0N 0E in space-fixed coordinates.
+<br />
+<br />The location of the grid's north pole in the original lat-lon coordinate system
+<br />
+is now at longitude = phi, colatitude = minus theta.  
+<br />
+<br />(I'm not sure how psi relates to north_pole_grid_longitude mathematically; it
+<br />
+defaults to zero and I've never seen it in use, so I think it's included mostly
+<br />
+for completeness. I agree that we may well want to change it to something more
+<br />
+obvious like an azimuth angle.)
+<br />
+<br />Switching to the GRIB2 convention where you use the south pole instead of the
+<br />
+north should be just a matter of adding 180 degrees to phi and negating theta.
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<br /><br />On Wed, 6 Mar 2013 18:29:47 +0000
+<br />
+&nbsp;David Hassell &lt;d.c.hassell at reading.ac.uk&gt; wrote:
+<br />
+<em class="quotelev1">&gt;Hello,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;It is a bit of mess! As I understand it, the full rotation described
+</em><br />
+<em class="quotelev1">&gt;is a sequence of rotations about three different axes:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   Z  = 90S - 90N
+</em><br />
+<em class="quotelev1">&gt;   Y' = 90W' - 90E'
+</em><br />
+<em class="quotelev1">&gt;   X&quot; = 0E&quot; - 180E&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;where it is understood that the definitions of the N-S and W-E axes
+</em><br />
+<em class="quotelev1">&gt;change after each rotation (hence the primes and double
+</em><br />
+<em class="quotelev1">&gt;primes). Therefore the order in which they are done matters.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;I suspect that the usual and assumed order is Z, Y', X&quot;?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;From the GRIB-2 stuff John posted the north_pole_grid_longitude gives
+</em><br />
+<em class="quotelev1">&gt;the rotation about the X&quot; axis.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Something like John's &quot;Angle of rotation&quot; seems right to me. 
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;The apparent lack of consistency between the parameter names irks
+</em><br />
+<em class="quotelev1">&gt;me. Perhaps one solution could be to:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;i) Add some text to the conventions state the order (Z, Y', X&quot;, say)
+</em><br />
+<em class="quotelev1">&gt;   and direction of rotations.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;ii) add three new, consistent, self-describing parameters (e.g.)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;angle_of_rotation_z
+</em><br />
+<em class="quotelev1">&gt;angle_of_rotation_y
+</em><br />
+<em class="quotelev1">&gt;angle_of_rotation_x
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;iii) allow aliases for backwards compatibility
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;grid_north_pole_longitude &lt;=&gt; angle_of_rotation_z
+</em><br />
+<em class="quotelev1">&gt;grid_north_pole_latitude  &lt;=&gt; angle_of_rotation_y
+</em><br />
+<em class="quotelev1">&gt;north_pole_grid_longitude &lt;=&gt; angle_of_rotation_x   
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Or would that just obfuscate things even more?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;All the best,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;David
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;P.S. If you have a copy available, there are some nice descriptions in
+</em><br />
+<em class="quotelev1">&gt;     &quot;Coordinate Systems and Map Projections&quot; by D. H. Maling
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;--
+</em><br />
+<em class="quotelev1">&gt;David Hassell
+</em><br />
+<em class="quotelev1">&gt;National Centre for Atmospheric Science (NCAS)
+</em><br />
+<em class="quotelev1">&gt;Department of Meteorology, University of Reading,
+</em><br />
+<em class="quotelev1">&gt;Earley Gate, PO Box 243,
+</em><br />
+<em class="quotelev1">&gt;Reading RG6 6BB, U.K.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Tel   : 0118 3785613
+</em><br />
+<em class="quotelev1">&gt;Fax   : 0118 3788316
+</em><br />
+<em class="quotelev1">&gt;E-mail: d.c.hassell at reading.ac.uk
+</em><br />
+<em class="quotelev1">&gt;_______________________________________________
+</em><br />
+<em class="quotelev1">&gt;CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt;CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Wed Mar 06 2013 - 13:17:34 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5055">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5056.html" title="Next message in the list">John Caron: "[CF-metadata] Rotated Pole projection possibly wrong"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5054.html" title="Previous message in the list">Burkhardt Rockel: "[CF-metadata] Rotated Pole projection possibly wrong"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5053.html" title="Message to which this message replies">David Hassell: "[CF-metadata] Rotated Pole projection possibly wrong"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5057.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] Rotated Pole projection possibly wrong"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5057.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] Rotated Pole projection possibly wrong"</a></li>
+<li><dfn>Reply</dfn>: <a href="./5063.html" title="Message sent in reply to this message">Tom Kunicki: "[CF-metadata] Rotated Pole projection possibly wrong"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5055" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5055" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5055" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5055" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:15 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5054.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5056.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

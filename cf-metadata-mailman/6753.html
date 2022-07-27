@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] variable depth as a dimension in oceanographic models from Seth McGinnis on 2015-01-23 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] variable depth as a dimension in oceanographic models" />
+<meta name="Date" content="2015-01-23" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6752.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6754.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] variable depth as a dimension in oceanographic models</h1>
+<!-- received="Fri Jan 23 08:11:55 2015" -->
+<!-- isoreceived="20150123081155" -->
+<!-- sent="Fri, 23 Jan 2015 08:11:55 -0700" -->
+<!-- isosent="20150123151155" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] variable depth as a dimension in oceanographic models" -->
+<!-- id="54C264BB.9020506_at_ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="40829B0E077C1145A6DE44D39B3830A9249CEB049A_at_nerckwmb1.ad.nerc.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6753" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6754.html" accesskey="d" title="Gaffney, Sean P.: &quot;[CF-metadata] variable depth as a dimension in oceanographic models&quot;">Next message</a> ]
+[ <a href="./6752.html" title="Gaffney, Sean P.: &quot;[CF-metadata] variable depth as a dimension in oceanographic models&quot;">Previous message</a> ]
+[ <a href="./6752.html" title="Gaffney, Sean P.: &quot;[CF-metadata] variable depth as a dimension in oceanographic models&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6754.html" accesskey="t" title="Gaffney, Sean P.: &quot;[CF-metadata] variable depth as a dimension in oceanographic models&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6753" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6753" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6753" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6753" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20variable%20depth%20as%20a%20dimension%20in%20oceanographic%20models">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 23 Jan 2015 08:11:55 -0700</span><br />
+</address>
+<br />
+Hi Sean,
+<br />
+<br />You can't make depth into a dimension unless it's one-dimensional and
+<br />
+monotonic, which would give it a one-to-one correspondence with
+<br />
+model_level_number.  It sounds like that's not the case here.
+<br />
+<br />I believe what you want to do is to declare depth as an auxiliary
+<br />
+coordinate variable by adding the name of the depth variable to the
+<br />
+&quot;coordinates&quot; attribute of your data variables for currents. Sections 5,
+<br />
+5.2 and 6.2 of the CF spec cover auxiliary coordinates.
+<br />
+<br />That ought to be sufficient for depth to be automatically included when
+<br />
+a user selects one of the currents as an output parameter.  (And if it's
+<br />
+not, I would say that means the data portal software doesn't understand
+<br />
+CF very well, and needs some fixing up.)
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<br />Seth McGinnis
+<br />
+NARCCAP Data Manager
+<br />
+IMAGe - CISL - NCAR
+<br />
+<br /><br />On 1/23/2015 3:56 AM, Gaffney, Sean P. wrote:
+<br />
+<em class="quotelev1">&gt; Hi everyone,
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; Sean Gaffney from the British Oceanographic Data Centre here. Apologies
+</em><br />
+<em class="quotelev1">&gt; if I?m posting this in the wrong place, but I could use some advice please.
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; I?ve been supplied with some numerical model data representing vertical
+</em><br />
+<em class="quotelev1">&gt; and horizontal currents in 40 depth layers in the North Atlantic, as CF
+</em><br />
+<em class="quotelev1">&gt; compliant files. The existing dimensions are longitude, latitude,
+</em><br />
+<em class="quotelev1">&gt; model_level_number and time. However, I?ve also been supplied in the
+</em><br />
+<em class="quotelev1">&gt; file with depth for each 3-D cell, but this has just been supplied as a
+</em><br />
+<em class="quotelev1">&gt; normal variable.
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; This means that, if someone accesses the BODC model delivery portal,
+</em><br />
+<em class="quotelev1">&gt; unless they explicitly select depth as an output parameter along with
+</em><br />
+<em class="quotelev1">&gt; currents, they won?t get the depth data, but just the model_level_number
+</em><br />
+<em class="quotelev1">&gt; as an indicator of the vertical position of the model output in the
+</em><br />
+<em class="quotelev1">&gt; water column. Feedback from some users is that actual depth values in
+</em><br />
+<em class="quotelev1">&gt; metres are required to make full use of the current data, but that this
+</em><br />
+<em class="quotelev1">&gt; can be lost by having to select depth as an independent additional variable.
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; I wondered could this potential problem be resolved by converting depth
+</em><br />
+<em class="quotelev1">&gt; into a dimension in the netcdf files? I?m uncertain though of whether
+</em><br />
+<em class="quotelev1">&gt; this will work as the values will be different in every grid point, and
+</em><br />
+<em class="quotelev1">&gt; therefore I?d like advice on whether this is a wise or practical thing
+</em><br />
+<em class="quotelev1">&gt; to do.
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; Many thanks
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; Sean Gaffney
+</em><br />
+<em class="quotelev1">&gt; BODC
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _  ________________________________  _
+</em><br />
+<em class="quotelev1">&gt; This message (and any attachments) is for the recipient only. NERC is
+</em><br />
+<em class="quotelev1">&gt; subject to the Freedom of Information Act 2000 and the contents of this
+</em><br />
+<em class="quotelev1">&gt; email and any reply you make may be disclosed by NERC unless it is
+</em><br />
+<em class="quotelev1">&gt; exempt from release under the Act. Any material supplied to NERC may be
+</em><br />
+<em class="quotelev1">&gt; stored in an electronic records management system.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<span id="received"><dfn>Received on</dfn> Fri Jan 23 2015 - 08:11:55 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6753">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6754.html" title="Next message in the list">Gaffney, Sean P.: "[CF-metadata] variable depth as a dimension in oceanographic models"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6752.html" title="Previous message in the list">Gaffney, Sean P.: "[CF-metadata] variable depth as a dimension in oceanographic models"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6752.html" title="Message to which this message replies">Gaffney, Sean P.: "[CF-metadata] variable depth as a dimension in oceanographic models"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6754.html" title="Next message in this discussion thread">Gaffney, Sean P.: "[CF-metadata] variable depth as a dimension in oceanographic models"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6754.html" title="Message sent in reply to this message">Gaffney, Sean P.: "[CF-metadata] variable depth as a dimension in oceanographic models"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6753" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6753" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6753" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6753" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:51 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6752.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6754.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

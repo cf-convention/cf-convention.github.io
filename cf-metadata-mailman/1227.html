@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Polar stereographic projection question from Philip Bentley on 2008-03-07 (cf-metadata-mailman)</title>
+<meta name="Author" content="Philip Bentley (philip.bentley)" />
+<meta name="Subject" content="[CF-metadata] Polar stereographic projection question" />
+<meta name="Date" content="2008-03-07" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1226.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1228.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Polar stereographic projection question</h1>
+<!-- received="Fri Mar  7 02:50:31 2008" -->
+<!-- isoreceived="20080307025031" -->
+<!-- sent="Fri, 07 Mar 2008 09:50:31 +0000" -->
+<!-- isosent="20080307095031" -->
+<!-- name="Philip Bentley" -->
+<!-- email="philip.bentley" -->
+<!-- subject="[CF-metadata] Polar stereographic projection question" -->
+<!-- id="1204883431.30696.38.camel_at_eld414.desktop.frd.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="47D0268C.1010307_at_llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1227" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1228.html" accesskey="d" title="Schultz, Martin: &quot;[CF-metadata] CF-metadata Digest, Vol 60, Issue 3&quot;">Next message</a> ]
+[ <a href="./1226.html" title="Martin Juckes: &quot;[CF-metadata]   standard name proposal for CCMVal&quot;">Previous message</a> ]
+[ <a href="./1222.html" title="Karl Taylor: &quot;[CF-metadata] Polar stereographic projection question&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1227" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1227" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1227" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1227" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Philip Bentley &lt;<a href="mailto:philip.bentley?Subject=Re%3A%20%5BCF-metadata%5D%20Polar%20stereographic%20projection%20question">philip.bentley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 07 Mar 2008 09:50:31 +0000</span><br />
+</address>
+<br />
+Karl, Sue,
+<br />
+<br />Although I'm not too familiar with the proj4 library, it looks to me
+<br />
+like the 'lat_ts' parameter represents the latitude of true scale.
+<br />
+Typically, for north or south polar stereographic projections, this
+<br />
+would be 90N or 90S. At the latitude of true scale the scale factor, k,
+<br />
+is equal to 1.
+<br />
+<br />Depending upon your application domain, however, it may be desirable to
+<br />
+use some other small circle (parallel) as the latitude of true scale. In
+<br />
+which case the scale factor, k0, at the projection (=natural) origin
+<br />
+will be some other value. In the case of polar stereographic projections
+<br />
+it will be less than 1.
+<br />
+<br />This leads to 3 typical scenarios:
+<br />
+<br />1. The projection origin and latitude of true scale are located at the
+<br />
+pole (N or S) and the scale factor at this origin is equal to 1, i.e.
+<br />
+the nominal map scale is correct only at the pole.
+<br />
+<br />2. The projection origin is at the pole and some scale factor, k0 &lt; 1,
+<br />
+is assigned to this point. The latitude of true scale can then be
+<br />
+derived from standard equations. The nominal map scale is correct at all
+<br />
+points along this parallel of latitude.
+<br />
+<br />3. The projection origin is at the pole and a latitude of true scale is
+<br />
+specified. The scale factor at the projection origin (or indeed anywhere
+<br />
+else) can then be derived from standard equations. Again, the nominal
+<br />
+map scale is correct at all points along the specified latitude of true
+<br />
+scale.
+<br />
+<br />In CF the latitude of true scale is specified using the
+<br />
+&quot;standard_parallel&quot; attribute.  I believe, therefore, that it is this
+<br />
+attribute that corresponds to your 'lat_ts' parameter.
+<br />
+<br />If both the &quot;scale_factor_at_projection_origin&quot; and &quot;standard_parallel&quot;
+<br />
+attributes are specified then they should be mutually consistent
+<br />
+(although the CF specification doesn't explicitly say as such). I'm not
+<br />
+certain if there is a precedent for favouring one attribute over the
+<br />
+other. In some map projections it is usual to specify the standard
+<br />
+parallel/s (e.g. lambert conic conformal), while in others it is the
+<br />
+scale factor that is given (e.g. transverse mercator).
+<br />
+<br />Hope this is of use.
+<br />
+<br />Regards,
+<br />
+<br />Phil
+<br />
+<br /><br /><em class="quotelev1">&gt;  Taylor wrote:Dear all,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; We received an email suggesting that a parameter was missing from the CF 
+</em><br />
+<em class="quotelev1">&gt; polar stereographic projection documentation.  Can anyone clear this up?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; thanks,
+</em><br />
+<em class="quotelev1">&gt; Karl
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Sue Dettling wrote:
+</em><br />
+<em class="quotelev2">&gt;  &gt;
+</em><br />
+<em class="quotelev2">&gt;  &gt; I am wondering if you are missing an arguement from the Polar 
+</em><br />
+<em class="quotelev1">&gt; stereographic projection documentaion
+</em><br />
+<em class="quotelev2">&gt;  &gt; 
+</em><br />
+<em class="quotelev1">&gt; (<a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.0/apf.html#id2976188">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.0/apf.html#id2976188</a>)
+</em><br />
+<em class="quotelev2">&gt;  &gt;
+</em><br />
+<em class="quotelev2">&gt;  &gt; You list the following parameters for the projection:
+</em><br />
+<em class="quotelev2">&gt;  &gt; 1) straight_vertical_longitude_from_pole
+</em><br />
+<em class="quotelev2">&gt;  &gt; 2) latitude_of_projection_origin - Either +90. or -90.
+</em><br />
+<em class="quotelev2">&gt;  &gt; 3) Either standard_parallel or scale_factor_at_projection_origin
+</em><br />
+<em class="quotelev2">&gt;  &gt; 4) false_easting
+</em><br />
+<em class="quotelev2">&gt;  &gt; 5) false northing
+</em><br />
+<em class="quotelev2">&gt;  &gt;
+</em><br />
+<em class="quotelev2">&gt;  &gt;
+</em><br />
+<em class="quotelev2">&gt;  &gt; The  proj4 reference 
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.remotesensing.org/geotiff/proj_list/polar_stereographic.html">http://www.remotesensing.org/geotiff/proj_list/polar_stereographic.html</a> 
+</em><br />
+<em class="quotelev1">&gt; lists the following:
+</em><br />
+<em class="quotelev2">&gt;  &gt;
+</em><br />
+<em class="quotelev2">&gt;  &gt; +lat_ts=Latitude at natural origin
+</em><br />
+<em class="quotelev2">&gt;  &gt; +lat_0=90
+</em><br />
+<em class="quotelev2">&gt;  &gt; +lon_0=Longitude at natural origin
+</em><br />
+<em class="quotelev2">&gt;  &gt; +k_0=Scale factor at natural origin (normally 1.0)
+</em><br />
+<em class="quotelev2">&gt;  &gt; +x_0=False Easting
+</em><br />
+<em class="quotelev2">&gt;  &gt; +y_0=False Northing
+</em><br />
+<em class="quotelev2">&gt;  &gt;
+</em><br />
+<em class="quotelev2">&gt;  &gt;
+</em><br />
+<em class="quotelev2">&gt;  &gt; In reading both pages it seems the corresponence of args is:
+</em><br />
+<em class="quotelev2">&gt;  &gt; +lat_ts ==  ???
+</em><br />
+<em class="quotelev2">&gt;  &gt; +lat_0 ==   (2) latitude_of_projection_origin
+</em><br />
+<em class="quotelev2">&gt;  &gt; +lon_0 ==   (1) straight_vertical_longitude_from_pole
+</em><br />
+<em class="quotelev2">&gt;  &gt; +k_0 ==     (3) scale_factor_at_projection_origin
+</em><br />
+<em class="quotelev2">&gt;  &gt; +x_0=False Easting ==  (4) false_easting
+</em><br />
+<em class="quotelev2">&gt;  &gt; +y_0=False Northing == (5) false northing
+</em><br />
+<em class="quotelev2">&gt;  &gt;
+</em><br />
+<em class="quotelev2">&gt;  &gt; Is this an error in the documentation that there doesnt seem to be a 
+</em><br />
+<em class="quotelev1">&gt;   map parameter for lat_ts?
+</em><br />
+<em class="quotelev2">&gt;  &gt;
+</em><br />
+<em class="quotelev2">&gt;  &gt; Thanks, your response is greatly appreciated,
+</em><br />
+<em class="quotelev2">&gt;  &gt;
+</em><br />
+<em class="quotelev2">&gt;  &gt; Sue
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20080307/ea93e0a9/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20080307/ea93e0a9/attachment-0002.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Mar 07 2008 - 02:50:31 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1227">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1228.html" title="Next message in the list">Schultz, Martin: "[CF-metadata] CF-metadata Digest, Vol 60, Issue 3"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1226.html" title="Previous message in the list">Martin Juckes: "[CF-metadata]   standard name proposal for CCMVal"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./1222.html" title="Message to which this message replies">Karl Taylor: "[CF-metadata] Polar stereographic projection question"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1227" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1227" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1227" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1227" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:02 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1226.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1228.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

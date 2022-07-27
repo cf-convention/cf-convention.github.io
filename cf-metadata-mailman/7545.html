@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] cells with different numbers of vertices from Chris Barker on 2016-04-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="Chris Barker (chris.barker)" />
+<meta name="Subject" content="[CF-metadata] cells with different numbers of vertices" />
+<meta name="Date" content="2016-04-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7544.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7546.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] cells with different numbers of vertices</h1>
+<!-- received="Wed Apr  6 12:44:52 2016" -->
+<!-- isoreceived="20160406114452" -->
+<!-- sent="Wed, 6 Apr 2016 11:44:52 -0700" -->
+<!-- isosent="20160406184452" -->
+<!-- name="Chris Barker" -->
+<!-- email="chris.barker" -->
+<!-- subject="[CF-metadata] cells with different numbers of vertices" -->
+<!-- id="CALGmxEL=X7_m_ds0gB+H5kPV4bXX-qw_+BSrJrHHbPZOpPuSWg_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="57040BBB.4080001_at_llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7545" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7546.html" accesskey="d" title="alison.pamment at stfc.ac.uk: &quot;[CF-metadata] CF Standard Name Table update&quot;">Next message</a> ]
+[ <a href="./7544.html" title="Charlie Zender: &quot;[CF-metadata] cells with different numbers of vertices&quot;">Previous message</a> ]
+[ <a href="./7540.html" title="Karl Taylor: &quot;[CF-metadata] cells with different numbers of vertices&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7545" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7545" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7545" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7545" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Chris Barker &lt;<a href="mailto:chris.barker?Subject=Re%3A%20%5BCF-metadata%5D%20cells%20with%20different%20numbers%20of%20vertices">chris.barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 6 Apr 2016 11:44:52 -0700</span><br />
+</address>
+<br />
+On Tue, Apr 5, 2016 at 12:02 PM, Karl Taylor &lt;taylor13 at llnl.gov&gt; wrote:
+<br />
+<br /><em class="quotelev1">&gt; For unstructured grids when some cells are quadralaterals and others are
+</em><br />
+<em class="quotelev1">&gt; pentagons, the convention stipulates that bounds should be dimensioned
+</em><br />
+<em class="quotelev1">&gt; (n,5) so that the lat and lon locations of all 5 penatagon vertices can be
+</em><br />
+<em class="quotelev1">&gt; recorded.  My question is what to do about the extra vertex for the
+</em><br />
+<em class="quotelev1">&gt; quadralaterals?  Should we define a &quot;missing_value&quot; and store it in the
+</em><br />
+<em class="quotelev1">&gt; unused vertex location?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br />Take a look at the UGRID conventions:
+<br />
+<br /><a href="http://ugrid-conventions.github.io/ugrid-conventions/">http://ugrid-conventions.github.io/ugrid-conventions/</a>
+<br />
+<br />In there, the lat-lon are specified in a nodes array, and the cells are
+<br />
+specified as indexes into that nodes array.
+<br />
+<br />In the case of cells of different order, the &quot;extra&quot; indexes use a missing
+<br />
+value, usually -1.
+<br />
+<br />That should be defined as the _FillValue.
+<br />
+<br />This is under debate right now, but I think that's where it is headed:
+<br />
+<br /><a href="https://github.com/ugrid-conventions/ugrid-conventions/issues/26">https://github.com/ugrid-conventions/ugrid-conventions/issues/26</a>
+<br />
+<br />(someone still needs to update the text)
+<br />
+<br />BTW, as I read the latest convensions:
+<br />
+<br /><a href="http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#missing-data">http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#missing-data</a>
+<br />
+<br />you want to use _FillValue if there is only one &quot;Missing&quot; value needed.
+<br />
+<br />If so, perhaps we should make this clear in the convention document.
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<br />Where does the CF conventions address this issue (i.e. unstructured grids)
+<br />
+at all?
+<br />
+<br />-CHB
+<br />
+<br /><br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160406/23ad8ce3/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160406/23ad8ce3/attachment.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Apr 06 2016 - 12:44:52 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7545">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7546.html" title="Next message in the list">alison.pamment at stfc.ac.uk: "[CF-metadata] CF Standard Name Table update"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7544.html" title="Previous message in the list">Charlie Zender: "[CF-metadata] cells with different numbers of vertices"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7540.html" title="Message to which this message replies">Karl Taylor: "[CF-metadata] cells with different numbers of vertices"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7545" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7545" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7545" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7545" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:02 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7544.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7546.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

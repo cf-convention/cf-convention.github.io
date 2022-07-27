@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file from Heiko Klein on 2011-08-04 (cf-metadata-mailman)</title>
+<meta name="Author" content="Heiko Klein (Heiko.Klein)" />
+<meta name="Subject" content="[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file" />
+<meta name="Date" content="2011-08-04" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3606.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3608.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file</h1>
+<!-- received="Thu Aug  4 00:55:28 2011" -->
+<!-- isoreceived="20110803235528" -->
+<!-- sent="Thu, 04 Aug 2011 08:55:28 +0200" -->
+<!-- isosent="20110804065528" -->
+<!-- name="Heiko Klein" -->
+<!-- email="Heiko.Klein" -->
+<!-- subject="[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file" -->
+<!-- id="4E3A4260.4090400_at_met.no" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="E51EDFEBF10BE44BB4BDAF5FC2F024B9036368FA_at_EXXMAIL02.desktop.frd.metoffice.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3607" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3608.html" accesskey="d" title="Heiko Klein: &quot;[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file&quot;">Next message</a> ]
+[ <a href="./3606.html" title="Upendra.Dadi at noaa.gov: &quot;[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file&quot;">Previous message</a> ]
+[ <a href="./3591.html" title="Bentley, Philip: &quot;[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3578.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] the need to store lat/lon coordinates in a CF metadata compliant netCDF file&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3607" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3607" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3607" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3607" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Heiko Klein &lt;<a href="mailto:Heiko.Klein?Subject=Re%3A%20%5BCF-metadata%5D%20the%20need%20to%20store%20lat%2Flon%20coordinates%20in%20a%20CF-compliant%20netCDF%20file">Heiko.Klein</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 04 Aug 2011 08:55:28 +0200</span><br />
+</address>
+<br />
+Dear Phil,
+<br />
+<br />a programmer has usually to decide if he accepts 'minor' problems with 
+<br />
+the input or not. A program-user usually selects the program which 
+<br />
+accepts most input. So a CF-processing program not accepting a dataset 
+<br />
+without datum won't get very popular. Of course, a program allowing the 
+<br />
+user to modify/correct the datum is even more popular.
+<br />
+<br />The climate and forecast modellers used for a very long time a spherical 
+<br />
+earth with a radius around 3671km (= GRS1980 Authalic Sphere, not the 
+<br />
+GRS1980 ellipsoid). Therefore, all CF-processing programs I know assume 
+<br />
+that spherical earth radius of that size (i.e. netcdf-java, ncview, 
+<br />
+fimex). So, the proposed default is the de facto standard and I believe, 
+<br />
+it is better to write it down than to keep it informal.
+<br />
+<br />If datum information is merely an extension to CF, it will take very 
+<br />
+long until it is accepted. If CF always comes with a datum, 
+<br />
+data-providers will adapt more quickly, since a missing datum might be 
+<br />
+an obvious error (high priority) rather than a missing extension (low 
+<br />
+priority).
+<br />
+<br /><br />Setting a default for something previously undefined is very common. A 
+<br />
+precedence which was the same amount of work (update of attributes) for 
+<br />
+all non-english data-providers was the definition of UTF-8 as 
+<br />
+character-encoding in netcdf-3.6.3 in ~2008.
+<br />
+<br />Best regards,
+<br />
+<br />Heiko
+<br />
+<br />On 2011-08-03 15:48, Bentley, Philip wrote:
+<br />
+<em class="quotelev1">&gt; Dear Heiko,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I hope CF could define a default datum, e.g. the GRS1980
+</em><br />
+<em class="quotelev2">&gt;&gt; Authalic Sphere, since this matches most closely with
+</em><br />
+<em class="quotelev2">&gt;&gt; existing software (netcdf-java). This would make live easier
+</em><br />
+<em class="quotelev2">&gt;&gt; for the software-developers who have to use something if
+</em><br />
+<em class="quotelev2">&gt;&gt; nothing is given.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I'm not sure that defining a default datum for CF is the right way to go
+</em><br />
+<em class="quotelev1">&gt; in this instance. I would have thought that if a particular piece of
+</em><br />
+<em class="quotelev1">&gt; data analysis is at a resolution that requires a geodetic datum to be
+</em><br />
+<em class="quotelev1">&gt; specified then, in absentia the actual one being defined in metadata,
+</em><br />
+<em class="quotelev1">&gt; it's not clear to me that using some semi-arbitrary, and potentially
+</em><br />
+<em class="quotelev1">&gt; invalid, default datum is any better than giving the user the
+</em><br />
+<em class="quotelev1">&gt; opportunity to select the one s/he believes to be the most appropriate
+</em><br />
+<em class="quotelev1">&gt; for the task in hand.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The current CF conventions include a (fairly minimal) set of metadata
+</em><br />
+<em class="quotelev1">&gt; attributes which can be used to describe the basic properties of the
+</em><br />
+<em class="quotelev1">&gt; coordinate reference system associated with a given dataset. The onus
+</em><br />
+<em class="quotelev1">&gt; then is on data producers to utilise those metadata attributes to
+</em><br />
+<em class="quotelev1">&gt; describe their data to the fullest extent possible. Furthermore, other
+</em><br />
+<em class="quotelev1">&gt; non-CF attributes may be used to augment the standard set - over time
+</em><br />
+<em class="quotelev1">&gt; some of these additional attributes would no doubt find their way into
+</em><br />
+<em class="quotelev1">&gt; the CF specification.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Ultimately, if end-users consider that a given dataset has insufficient
+</em><br />
+<em class="quotelev1">&gt; metadata to justify its use within a particular context, then they can
+</em><br />
+<em class="quotelev1">&gt; always choose to ignore that dataset. With the passage of time - and in
+</em><br />
+<em class="quotelev1">&gt; true Darwinian fashion - such datasets (and their producers) will find
+</em><br />
+<em class="quotelev1">&gt; that they are increasingly disregarded/overlooked in analyses. Hopefully
+</em><br />
+<em class="quotelev1">&gt; this would galvanise such data producers into improving the quality of
+</em><br />
+<em class="quotelev1">&gt; their spatial metadata!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Regards,
+</em><br />
+<em class="quotelev1">&gt; Phil
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; PS: if a default datum were to be encoded into the CF conventions, I'd
+</em><br />
+<em class="quotelev1">&gt; imagine that the WGS84 datum would be the way to go rather than GRS80
+</em><br />
+<em class="quotelev1">&gt; which, if I understand correctly, has somewhat more of a bias towards
+</em><br />
+<em class="quotelev1">&gt; use over the North American continent. That said, I suspect the
+</em><br />
+<em class="quotelev1">&gt; differences between the 2 datums are sufficiently small as to get lost
+</em><br />
+<em class="quotelev1">&gt; in the underflow for many metocean research applications.
+</em><br />
+<span id="received"><dfn>Received on</dfn> Thu Aug 04 2011 - 00:55:28 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3607">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3608.html" title="Next message in the list">Heiko Klein: "[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3606.html" title="Previous message in the list">Upendra.Dadi at noaa.gov: "[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3591.html" title="Message to which this message replies">Bentley, Philip: "[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3578.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] the need to store lat/lon coordinates in a CF metadata compliant netCDF file"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3607" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3607" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3607" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3607" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:48 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3606.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3608.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

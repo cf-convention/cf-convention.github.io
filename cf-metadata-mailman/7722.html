@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Conventions for use of local solar time in gridded climate data from Mitchelson, Joel on 2016-07-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="Mitchelson, Joel (joel.mitchelson)" />
+<meta name="Subject" content="[CF-metadata] Conventions for use of local solar time in gridded climate data" />
+<meta name="Date" content="2016-07-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7721.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7723.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Conventions for use of local solar time in gridded climate data</h1>
+<!-- received="Thu Jul 28 07:23:53 2016" -->
+<!-- isoreceived="20160728062353" -->
+<!-- sent="Thu, 28 Jul 2016 13:23:53 +0000" -->
+<!-- isosent="20160728132353" -->
+<!-- name="Mitchelson, Joel" -->
+<!-- email="joel.mitchelson" -->
+<!-- subject="[CF-metadata] Conventions for use of local solar time in gridded climate data" -->
+<!-- id="3172B8DB656FE7409F1A0D003A41D2160766D824_at_EXXCMPD1DAG2.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CAEMt9PNbLjr=Q+FEjM3OMOBeUkcx4fpjunFLgfO9zSJ-ZMH6iA_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7722" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7723.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] Conventions for use of local solar time in gridded climate data&quot;">Next message</a> ]
+[ <a href="./7721.html" title="Mitchelson, Joel: &quot;[CF-metadata] Conventions for use of local solar time in gridded climate data&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7722" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7722" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7722" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7722" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Mitchelson, Joel &lt;<a href="mailto:joel.mitchelson?Subject=Re%3A%20%5BCF-metadata%5D%20Conventions%20for%20use%20of%20local%20solar%20time%20in%20gridded%20climate%20data">joel.mitchelson</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 28 Jul 2016 13:23:53 +0000</span><br />
+</address>
+<br />
+Hi David,
+<br />
+<br />Many thanks for the reply and for the positive feedback.
+<br />
+<br />Yes the localtime dimension in the example CDL fragment is indeed an index into a sequence of lat-lon fields, with one field per solar day. Perhaps we could call this dimension solarday or something like that, if you think that would aid understanding?
+<br />
+<br />Kind regards,
+<br />
+Joel.
+<br />
+<br /><pre>
+--
+From: David Hassell [mailto:david.hassell at ncas.ac.uk] 
+Sent: 28 July 2016 14:02
+To: Mitchelson, Joel
+Cc: cf-metadata at cgd.ucar.edu
+Subject: Re: [CF-metadata] Conventions for use of local solar time in gridded climate data
+Hello Joel,
+This approach looks reasonable and CF-compliant to me, with &quot;time&quot; acting as a standard name in the cell method. I'm not sure what the 'localtime' dimension physically represents in this case, but I presume that it is there with size 1 because this is the first element of what will eventually be a time series of lat-lon fields?
+All the best,
+David
+--
+On 28 July 2016 at 12:58, Mitchelson, Joel &lt;joel.mitchelson at metoffice.gov.uk&gt; wrote:
+Dear cf-metadata community,
+We are working on new high resolution daily data sets of climate observations as part of the EUSTACE project ( <a href="http://www.eustaceproject.eu/">http://www.eustaceproject.eu/</a> ), where fields such as surface air temperature are presented on global grids, and the sampling period for each grid box is from midnight to midnight in local solar time. In other words, the UTC time period of each grid box depends on longitude.
+It seems that within CF conventions there might be several possible approaches to expressing this, though no specific example appears to be given in the conventions documents (versions 1.6 or 1.7). It would be desirable if our chosen method works nicely with as many existing software tools as possible; and uses established conventions if they exist.
+Do conventions for this already exist?
+If not, is the example CDL fragment below likely to be easy to use within many existing software tools for working with gridded fields of climate data, or might there be a more widely compatible method?
+Many thanks in advance for your kind attention.
+Joel.
+--
+Dr. Joel R. Mitchelson? Observational Climate Data Software Specialist
+Met Office Hadley Centre? FitzRoy Road? Exeter? Devon? EX1 3PB? United Kingdom
+--
+// Example CDL fragment representing a single day of data in one NetCDF file.
+// To represent more than one day multiple files could be used,
+// or else a single file with the localtime dimension set to equal the number of days.
+dimensions:
+? ? localtime = UNLIMITED ; // (1 currently)
+? ? latitude = 720 ;
+? ? longitude = 1440 ;
+? ? bounds = 2 ;
+variables:
+? ? float time(localtime, longitude) ;
+? ? ? ? time:units = &quot;days since 1850-1-1 0:0:0&quot; ;
+? ? ? ? time:long_name = &quot;Time (days)&quot; ;
+? ? ? ? time:standard_name = &quot;time&quot; ;
+? ? ? ? time:bounds = &quot;timebounds&quot; ;
+? ? ? ? time:calendar = &quot;gregorian&quot; ;
+? ? float timebounds(localtime, longitude, bounds)
+? ? float latitude(latitude) ;
+? ? ? ? latitude:units = &quot;degrees_north&quot; ;
+? ? ? ? latitude:long_name = &quot;Latitude (deg)&quot; ;
+? ? ? ? latitude:standard_name = &quot;latitude&quot; ;
+? ? float longitude(longitude) ;
+? ? ? ? longitude:units = &quot;degrees_east&quot; ;
+? ? ? ? longitude:long_name = &quot;Longitude (deg)&quot; ;
+? ? ? ? longitude:standard_name = &quot;longitude&quot; ;
+? ? short tas(localtime, latitude, longitude) ;
+? ? ? ? tas:units = &quot;K&quot; ;
+? ? ? ? tas:long_name = &quot;Mean daily surface air temperature (K)&quot; ;
+? ? ? ? tas:standard_name = &quot;air_temperature&quot; ;
+? ? ? ? tas:coordinates = &quot;time&quot; ;
+? ? ? ? tas:cell_methods = &quot;time: mean&quot; ;
+? ? ? ? tas:_FillValue = -32768s ;
+? ? ? ? tas:scale_factor = 0.002 ;
+? ? ? ? tas:add_offset = 273.15 ;
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+-- 
+David Hassell
+National Centre for Atmospheric Science
+Department of Meteorology, University of Reading,
+Earley Gate, PO Box 243, Reading RG6 6BB
+Tel: +44 118 378 5613
+<a href="http://www.met.reading.ac.uk/">http://www.met.reading.ac.uk/</a> 
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Jul 28 2016 - 07:23:53 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7722">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7723.html" title="Next message in the list">Jim Biard: "[CF-metadata] Conventions for use of local solar time in gridded climate data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7721.html" title="Previous message in the list">Mitchelson, Joel: "[CF-metadata] Conventions for use of local solar time in gridded climate data"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7722" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7722" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7722" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7722" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:05 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7721.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7723.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

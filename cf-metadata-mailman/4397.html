@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] identification of vector components from Jon Blower on 2012-04-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jon Blower (j.d.blower)" />
+<meta name="Subject" content="[CF-metadata] identification of vector components" />
+<meta name="Date" content="2012-04-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4396.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4398.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] identification of vector components</h1>
+<!-- received="Thu Apr 19 10:39:57 2012" -->
+<!-- isoreceived="20120419093957" -->
+<!-- sent="Thu, 19 Apr 2012 16:39:57 +0000" -->
+<!-- isosent="20120419163957" -->
+<!-- name="Jon Blower" -->
+<!-- email="j.d.blower" -->
+<!-- subject="[CF-metadata] identification of vector components" -->
+<!-- id="D38DCA8842FECD4585C8DE16D602ABF42DDD3152_at_vime-mbx1.rdg.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="8AC4893FB411FA4AA8CFECD9C8913B660CB47C79_at_EXXMAIL01.desktop.frd.metoffice.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4397" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4398.html" accesskey="d" title="John Caron: &quot;[CF-metadata] need reference for rotated pole grid mapping&quot;">Next message</a> ]
+[ <a href="./4396.html" title="Gaffney, Sean P.: &quot;[CF-metadata] code that does semantic checking of CF headers&quot;">Previous message</a> ]
+[ <a href="./4393.html" title="Hedley, Mark: &quot;[CF-metadata] identification of vector components&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4397" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4397" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4397" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4397" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jon Blower &lt;<a href="mailto:j.d.blower?Subject=Re%3A%20%5BCF-metadata%5D%20identification%20of%20vector%20components">j.d.blower</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 19 Apr 2012 16:39:57 +0000</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />I started off agreeing with Mark in this discussion and thought that eastward_wind should be a special case of x_wind.  However, I'm not so sure now.  &quot;eastward&quot; is a suitably imprecise concept to go with the suitably-imprecise definition of &quot;longitude&quot; in CF (hence its evolution I guess).  If the coordinate system is more precisely specified as a defined projection with a projection_x_coordinate, then x_wind seems appropriate.
+<br />
+<br />I.e. I think Bryan has a point when he says (or as I interpret): &quot;if I see x_wind I expect to inspect the coordinate variable, if I see eastward_wind I don't&quot;.  I think this is a useful distinction.
+<br />
+<br />What would one do in the case of a precisely-specified lat-lon system, e.g. a WGS84 system?  Would this be encoded as a projection, and would we use x_wind in this case?  What about, say, British National Grid, where the eastings and northings are oriented (roughly) east and north?  Would eastward_wind be allowable?
+<br />
+<br />(I guess I'm driving toward the suggestion that eastward_wind only be allowed for the implicit lat-lon grid that CF allows and tends to be the default in the GCM community.)
+<br />
+<br />Thoughts?
+<br />
+Jon
+<br />
+<br />-----Original Message-----
+<br />
+From: cf-metadata-bounces at cgd.ucar.edu [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Hedley, Mark
+<br />
+Sent: 19 April 2012 12:51
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] identification of vector components
+<br />
+<br /><br /><em class="quotelev1">&gt; The problem I have with what you are proposing is that we would then potentially have two different standard names for the *same* quantity, and until such time as we have a way of handling that properly, we ought not do it.
+</em><br />
+<br />I do not feel uncomfortable about this.  I feel that this situation already exists in a number of situations.
+<br />
+<br />For example, there are ocean models which use a tri-polar horizontal model grid, with 2 northerly poles and a normal south pole.  The consequence of this grid for vector components is as follows:
+<br />
+<br />&nbsp;- in the southern hemisphere:
+<br />
+&nbsp;&nbsp;&nbsp;- x == eastward
+<br />
+&nbsp;&nbsp;&nbsp;- y == northward
+<br />
+&nbsp;- in the northern hemisphere
+<br />
+&nbsp;&nbsp;&nbsp;- x != eastward
+<br />
+&nbsp;&nbsp;&nbsp;- y != northward
+<br />
+&nbsp;&nbsp;&nbsp;- the amount of discrepancy changes as either of the northerly poles is approached
+<br />
+<br />The Ocean models I know of write out vector components as x-&lt;standard_name&gt; and y-&lt;standard_name&gt; so in some locations x is east and in other locations it is not
+<br />
+<br />I suspect there are other datasets created where x may mean east.
+<br />
+<br />I feel it is a better compromise to allow x to mean east and encourage data consumers to be careful in interpreting vector components.  I believe that <a href="https://cf-pcmdi.llnl.gov/trac/ticket/79">https://cf-pcmdi.llnl.gov/trac/ticket/79</a> will help data consumers with this.
+<br />
+<br />mark
+<br />
+<br />-----Original Message-----
+<br />
+From: Bryan Lawrence [mailto:bryan.lawrence at ncas.ac.uk]
+<br />
+<br /><br />The problem I have with what you are proposing is that we would then potentially have two different standard names for the *same* quantity, and until such time as we have a way of handling that properly, we ought not do it.
+<br />
+<br />Cheers
+<br />
+Bryan
+<br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Hello Bryan
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Sorry, silence doesn't mean consent.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I didn't think it did, but prodding that notion can encourage people to pitch in. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; My reasoning is that I do not think it is the responsibility of the standard name to define what is meant by x.  The initial parts of the definition in the table: '&quot;x&quot; indicates a vector component along the grid x-axis' ... ', positive with increasing x'; say everything there is to say.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; It is the responsibility of the coordinate and grid_mapping variables to define what 'x' means.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Rather than this we have the case now where significant metadata inspection on coordinate system and coordinate is required to determine the correct standard_name from two mutually exclusive choices when writing CF NetCDF.  This feels to me to be an unnecessary complication which delivers little benefit from a data and metadata definition perspective. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; If you are importing something where x is used as the coordinate, and it is longitude, then why not put that in other metadata?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I would say that I have defined this explicitly, using the approach I propose.  I define that the data variable is x-wind and I define that x is longitude, therefore I can infer that the x-wind data variable is eastward wind, with respect to the defined grid_mapping.  Forcing me to put it in the standard_name adds complexity to software which writes data and increases the opportunity for data to be written incorrectly.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; For example, does the cf_checker cross reference the 'x' coordinate and any standard names to ensure that datasets defined with respect to a true longitude coordinate variable do not use standard names with the 'x' modifier?  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; The you say x, I say x, and we both mean different things, is what we need to avoid
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; This cannot be avoided, in almost all cases x means different things in different datasets. It can even mean different things in the same file.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; in particular we must not change definitions of existing quantitities.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I don't think that it is safe to make that strong a statement on definition changes over time.  I can understand the desire to avoid invalidating datasets by narrowing definitions after they are defined; but I don't think that a constrained broadening of the definition of a modifier should be refused on principle.  Such changes sometimes need to take place to keep the standard as applicable to its community as possible.  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; That's not to say 'eastward' isn't a useful standard name: there is a good case for model intercomparison, as there is no guarantee that my 'x' is anything like your 'x' for a given dataset: we can agree to publish data as 'eastward' to allow quick and easy intercomparison.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; even this becomes slightly problematic at small scales, as eastward is with respect to a coordinate reference system, so my east may be subtly different from yours.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; many thanks
+</em><br />
+<em class="quotelev1">&gt; mark
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: Bryan Lawrence [mailto:bryan.lawrence at ncas.ac.uk]
+</em><br />
+<em class="quotelev1">&gt; Sent: Wed 18/04/2012 11:34
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Cc: Hedley, Mark
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] identification of vector components
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; Hi Mark
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Sorry, silence doesn't mean consent.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I think it is exactly the place of standard names to be completely proscriptive about what terms mean.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The you say x, I say x, and we both mean different things, is what we need to avoid, and in particular we must not change definitions of existing quantitities.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Admittedly, your change wouldn't strictly change anything retrospectively, since it's an inclusive change, but it's probably a dangerous thing to do. (My sense of deja vu tells me we've been here before, and I may even have been on the other side of the argument :-).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; If you are importing something where x is used as the coordinate, and it is longitude, then why not put that in other metadata? The point of the CF standard is that it just that ....
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Bryan
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; There have not been any responses to this post in the last 10 days.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; I know that this is a dangerous philosophy, but can I suggest that, in this case, silence equals consent? 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; If it is, I would like to see these amendments in the standard_name publications as soon as possible.  Would this cause concern?
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; many thanks
+</em><br />
+<em class="quotelev2">&gt; &gt; mark 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; -----Original Message-----
+</em><br />
+<em class="quotelev2">&gt; &gt; From: cf-metadata-bounces at cgd.ucar.edu on behalf of Hedley, Mark
+</em><br />
+<em class="quotelev2">&gt; &gt; Sent: Thu 05/04/2012 17:35
+</em><br />
+<em class="quotelev2">&gt; &gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; Subject: [CF-metadata] identification of vector components
+</em><br />
+<em class="quotelev2">&gt; &gt;  
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; There is a statement in the definition of many standard names which are used for vector component definitions, e.g.:
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;   x_wind
+</em><br />
+<em class="quotelev2">&gt; &gt;     alias: grid_eastward_wind
+</em><br />
+<em class="quotelev2">&gt; &gt;     &quot;x&quot; indicates a vector component along the grid x-axis, when this is not true longitude, positive with increasing x. Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name upward_air_velocity.)
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; I think that the statement 'when this is not true longitude' is problematic, particularly for software converting from other formats, where x indicates the grid i direction, independent of rotation or projection.  I do not think it is the place for standard_name to limit the use of the term 'x' to cases where the horizontal coordinate reference system is not 'true latitude longitude'
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; I propose that these terms be removed from all standard names which have 'x' or 'y' as a modifier.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; This would enable all x-ward and y-ward definitions to be used, independent of the grid_mapping, as standard names.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; eastward and northward remain useful modifiers as many models may choose to output eastward vector components where east is not the x direction for the model grid.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; The work on vector containers in:
+</em><br />
+<em class="quotelev2">&gt; &gt;   <a href="https://cf-pcmdi.llnl.gov/trac/ticket/79">https://cf-pcmdi.llnl.gov/trac/ticket/79</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; has indicated a good way forward for identifying vector components, and identifying that vectors are with respect to a grid_mapping.  I think this proposed change would interface nicely to the proposal in ticket 79
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; How would this proposal be viewed by the community?
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; mark
+</em><br />
+<em class="quotelev2">&gt; &gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; Bryan Lawrence
+</em><br />
+<em class="quotelev1">&gt; University of Reading:  Professor of Weather and Climate Computing.
+</em><br />
+<em class="quotelev1">&gt; National Centre for Atmospheric Science: Director of Models and Data. 
+</em><br />
+<em class="quotelev1">&gt; STFC: Director of the Centre for Environmental Data Archival.
+</em><br />
+<em class="quotelev1">&gt; Ph: +44 118 3786507 or 1235 445012; Web:home.badc.rl.ac.uk/lawrence
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<br /><pre>
+--
+Bryan Lawrence
+University of Reading:  Professor of Weather and Climate Computing.
+National Centre for Atmospheric Science: Director of Models and Data. 
+STFC: Director of the Centre for Environmental Data Archival.
+Ph: +44 118 3786507 or 1235 445012; Web:home.badc.rl.ac.uk/lawrence
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Apr 19 2012 - 10:39:57 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4397">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4398.html" title="Next message in the list">John Caron: "[CF-metadata] need reference for rotated pole grid mapping"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4396.html" title="Previous message in the list">Gaffney, Sean P.: "[CF-metadata] code that does semantic checking of CF headers"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4393.html" title="Message to which this message replies">Hedley, Mark: "[CF-metadata] identification of vector components"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4397" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4397" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4397" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4397" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:02 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4396.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4398.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] string valued coordinates from Hedley, Mark on 2014-10-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hedley, Mark (mark.hedley)" />
+<meta name="Subject" content="[CF-metadata] string valued coordinates" />
+<meta name="Date" content="2014-10-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6614.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6616.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] string valued coordinates</h1>
+<!-- received="Thu Oct 30 12:06:10 2014" -->
+<!-- isoreceived="20141030120610" -->
+<!-- sent="Thu, 30 Oct 2014 18:06:10 +0000" -->
+<!-- isosent="20141030180610" -->
+<!-- name="Hedley, Mark" -->
+<!-- email="mark.hedley" -->
+<!-- subject="[CF-metadata] string valued coordinates" -->
+<!-- id="7819C496F4E10E47BCEFBE74551AAC9606F3F448_at_EXXCMPD1DAG3.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="5452636B.5000606_at_cicsnc.org" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6615" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6616.html" accesskey="d" title="John Graybeal: &quot;[CF-metadata] realization | x of n&quot;">Next message</a> ]
+[ <a href="./6614.html" title="Hedley, Mark: &quot;[CF-metadata] FW:   realization | x of n&quot;">Previous message</a> ]
+[ <a href="./6610.html" title="Jim Biard: &quot;[CF-metadata] string valued coordinates&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6617.html" accesskey="t" title="Eizi TOYODA: &quot;[CF-metadata] string valued coordinates&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6615" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6615" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6615" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6615" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hedley, Mark &lt;<a href="mailto:mark.hedley?Subject=Re%3A%20%5BCF-metadata%5D%20string%20valued%20coordinates">mark.hedley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 30 Oct 2014 18:06:10 +0000</span><br />
+</address>
+<br />
+<em class="quotelev1">&gt; The unit of '1' is generally used to indicate fractions and the like. In cases where I am storing a raw binary value, I leave off the units attribute, as the 'number' isn't something that should be treated as a decimal quantity.
+</em><br />
+<br />This is the same behaviour as I was looking to adopt, but CF 3.1 makes this incorrect, I believe, as a lack of a units attribute is to be interpreted as a units of '1'.
+<br />
+<br />I think a clear way to define that a quantity is not dimensioned and is not dimensionless is required.  I would have liked to use the lack of a unit for this purpose, but this has already been taken, so something else is needed.
+<br />
+<br /><em class="quotelev1">&gt; My preference is that one explicitly puts in the units. For dimensionless, &quot;1&quot; or &quot;&quot; is ok for udunits.
+</em><br />
+<br />udunits2 treats '1' and '' differently.
+<br />
+<br />&nbsp;&nbsp;a unit of '1' has a definition of '1'
+<br />
+&nbsp;&nbsp;a unit of '' has a definition of '?'
+<br />
+<br />The CF conventions description of units (3.1) states that an absence of a units attribute is deemed to be equivalent to dimensionless, a unit of '1'.  This is the convention, and it has been in force a long time.
+<br />
+<br />However CF makes no statement that I can find regarding a unit of ''.  Thus I believe we defer back to udunits, which CF states is how units are defined.  Udunits states that a unit of '' is undefined, the quantity is not dimensioned and is not dimensionless.  We could adopt this to use for the cases in question.
+<br />
+<br /><em class="quotelev1">&gt; area_type is given in the standard_name table as having a unit of 1. It is a categorical string-valued quantity.
+</em><br />
+<br />On the basis of the discussion, I would suggest that this is an error.  If area_type is a categorical string-valued quantity, it is not dimensionless, it is not continuous and numerical, it is not a pure number and should not be treated as such.  I think we should fix this.
+<br />
+<br />We could take the view that the conventions would benefit from the addition of some text into 3.1 to explicitly make the point about quantities which are not dimensioned or dimensionless.
+<br />
+We could alternatively defer to udunits as most unit questions do, which already exhibits this behaviour, and just patch the 'area_type' and any similar names with erroneous canonical units.
+<br />
+We could also request that udunits be updated with a clearer string for this case, given the need for it, such as including the term 'no_units' as a valid udunits term to mean there are no units here: this is not dimensionless, this is not dimensioned.
+<br />
+I don't mind which route is preferred, I'm happy to put a change together and pursue it; whichever way seems better to people.
+<br />
+<br />cheers
+<br />
+mark
+<br />
+<br />________________________________
+<br />
+From: CF-metadata [cf-metadata-bounces at cgd.ucar.edu] on behalf of Jim Biard [jbiard at cicsnc.org]
+<br />
+Sent: 30 October 2014 16:12
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] string valued coordinates
+<br />
+<br />CF says that if the units attribute is missing, then the quantity has no units.
+<br />
+<br />The Conventions document, section 3.1 says:
+<br />
+<br />The units attribute is required for all variables that represent dimensional quantities (except for boundary variables defined in Section 7.1, ?Cell Boundaries? &lt;<a href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html#cell-boundaries">http://cfconventions.org/Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html#cell-boundaries</a>&gt; and climatology variables defined in Section 7.4, ?Climatological Statistics? &lt;<a href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html#climatological-statistics">http://cfconventions.org/Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html#climatological-statistics</a>&gt; ).
+<br />
+<br />and
+<br />
+<br />Units are not required for dimensionless quantities. A variable with no units attribute is assumed to be dimensionless. However, a units attribute specifying a dimensionless unit may optionally be included. The Udunits package defines a few dimensionless units, such as percent , but is lacking commonly used units such as ppm (parts per million). This convention does not support the addition of new dimensionless units that are not udunits compatible. The conforming unit for quantities that represent fractions, or parts of a whole, is &quot;1&quot;. The conforming unit for parts per million is &quot;1e-6&quot;. Descriptive information about dimensionless quantities, such as sea-ice concentration, cloud fraction, probability, etc., should be given in the long_name or standard_name attributes (see below) rather than the units.
+<br />
+<br />The unit of '1' is generally used to indicate fractions and the like. In cases where I am storing a raw binary value, I leave off the units attribute, as the 'number' isn't something that should be treated as a decimal quantity.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 10/30/14, 11:35 AM, John Caron wrote:
+<br />
+My preference is that one explicitly puts in the units. For dimensionless, &quot;1&quot; or &quot;&quot; is ok for udunits. If the units attribute isnt there, I assume that the user forgot to specify it, so the units are unknown.
+<br />
+<br />Im not sure what CF actually says, but it would be good to clarify.
+<br />
+<br />John
+<br />
+<br />On Thu, Oct 30, 2014 at 2:37 AM, Hedley, Mark &lt;mark.hedley at metoffice.gov.uk&lt;mailto:mark.hedley at metoffice.gov.uk&gt;&gt; wrote:
+<br />
+Hello CF
+<br />
+<br /><em class="quotelev1">&gt; From: CF-metadata [cf-metadata-bounces at cgd.ucar.edu&lt;mailto:cf-metadata-bounces at cgd.ucar.edu&gt;] on behalf of Jonathan Gregory [j.m.gregory at reading.ac.uk&lt;mailto:j.m.gregory at reading.ac.uk&gt;]
+</em><br />
+<br /><em class="quotelev1">&gt; Yes, there are some standard names which imply string values, as Karl says. If the standard_name table says 1, that means the quantity is dimensionless, so it's also fine to omit the units, as Jim says.
+</em><br />
+<br />I would like to raise question about this statement.  Omitting the units and stating that the units are '1' are two very different things;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;dimensionless != no_unit
+<br />
+is an important statement which should be clear to data consumers and producers.
+<br />
+<br />If the standard name table defines a canonical unit for a standard_name of '1' then I expect this quantity to be dimensionless, with a unit of '1' or some multiple there of.
+<br />
+If the standard name states that the canonical unit for a standard_name is '' then I expect that quantity to have no unit stated.
+<br />
+Any deviation from this behaviour is a break with the conventions.  I have code which explicitly checks this for data sets.
+<br />
+<br />Are people aware of examples of the pattern of use described by Jonathan, such as a categorical quantities identified by a standard_name with a canonical unit of '1'?
+<br />
+<br />thank you
+<br />
+mark
+<br />
+<br />_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<br /><br /><br /><br /><br />_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<br /><br /><pre>
+--
+[CICS-NC] &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt;       Jim Biard
+Research Scholar
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA's National Climatic Data Center &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org&lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20141030/4df436b1/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20141030/4df436b1/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: iiagagce.png
+Type: image/png
+Size: 11847 bytes
+Desc: iiagagce.png
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20141030/4df436b1/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20141030/4df436b1/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Oct 30 2014 - 12:06:10 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6615">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6616.html" title="Next message in the list">John Graybeal: "[CF-metadata] realization | x of n"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6614.html" title="Previous message in the list">Hedley, Mark: "[CF-metadata] FW:   realization | x of n"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6610.html" title="Message to which this message replies">Jim Biard: "[CF-metadata] string valued coordinates"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6617.html" title="Next message in this discussion thread">Eizi TOYODA: "[CF-metadata] string valued coordinates"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6617.html" title="Message sent in reply to this message">Eizi TOYODA: "[CF-metadata] string valued coordinates"</a></li>
+<li><dfn>Reply</dfn>: <a href="./6618.html" title="Message sent in reply to this message">John Graybeal: "[CF-metadata] string valued coordinates"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6615" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6615" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6615" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6615" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:49 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6614.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6616.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

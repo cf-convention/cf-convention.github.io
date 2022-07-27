@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] how to specify time dimension for monthly averages from Seth McGinnis on 2013-03-15 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] how to specify time dimension for monthly averages" />
+<meta name="Date" content="2013-03-15" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5084.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5086.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] how to specify time dimension for monthly averages</h1>
+<!-- received="Fri Mar 15 16:56:16 2013" -->
+<!-- isoreceived="20130315165616" -->
+<!-- sent="Fri, 15 Mar 2013 16:56:16 -0600" -->
+<!-- isosent="20130315225616" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] how to specify time dimension for monthly averages" -->
+<!-- id="web-45099953_at_mail.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="51439CCB.4090005_at_hilboll.de" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5085" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5086.html" accesskey="d" title="Andreas Hilboll: &quot;[CF-metadata] how to specify time dimension for monthly averages&quot;">Next message</a> ]
+[ <a href="./5084.html" title="Andreas Hilboll: &quot;[CF-metadata] how to specify time dimension for monthly averages&quot;">Previous message</a> ]
+[ <a href="./5084.html" title="Andreas Hilboll: &quot;[CF-metadata] how to specify time dimension for monthly averages&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5086.html" accesskey="t" title="Andreas Hilboll: &quot;[CF-metadata] how to specify time dimension for monthly averages&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5085" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5085" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5085" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5085" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20how%20to%20specify%20time%20dimension%20for%20monthly%20averages">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 15 Mar 2013 16:56:16 -0600</span><br />
+</address>
+<br />
+If your intervals are contiguous, time_bounds[i,1] should equal
+<br />
+time_bounds[i+1,0]  (See the beginning of section 7.1 in the CF spec.)  So for
+<br />
+January 2013, you should set the endpoint to 2013-02-01 00:00:00.
+<br />
+<br />(The resulting potential for confusion is why I think it's best practice to put
+<br />
+the time coordinate at the midpoint of the interval rather than either end.)
+<br />
+<br />There's been some discussion of time resolution on this list, but nothing
+<br />
+that's made it into the spec.
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<br /><br />On Fri, 15 Mar 2013 23:12:27 +0100
+<br />
+&nbsp;Andreas Hilboll &lt;lists at hilboll.de&gt; wrote:
+<br />
+<em class="quotelev1">&gt;Seth, thanks for this nice walkthrough! I still have one question,
+</em><br />
+<em class="quotelev1">&gt;regarding 3):
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;for Jan 2013, I would chose 2013-01-01 00:00:00 as the start point, but
+</em><br />
+<em class="quotelev1">&gt;what about the end point?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;- 2013-01-31 23:59:59
+</em><br />
+<em class="quotelev1">&gt;- 2013-01-31 00:00:00
+</em><br />
+<em class="quotelev1">&gt;- ...
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Is it possible to somehow set the time 'resolution'
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Cheers, Andreas.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) Set the time values to the midpoint of the time interval.*
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) Set a &quot;cell_methods&quot; attribute on the data variable with a
+</em><br />
+<em class="quotelev2">&gt;&gt; value of &quot;time: mean (interval: 1 month)&quot;.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; 3) Create a time_bounds variable with dimensions (time,2) 
+</em><br />
+<em class="quotelev2">&gt;&gt; whose values are the start and end points of each time interval. 
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; 4) Set a &quot;bounds&quot; attribute on the time coordinate variable 
+</em><br />
+<em class="quotelev2">&gt;&gt; equal to the name of your time_bounds variable.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; *CF allows you to put the time coordinate anywhere in the 
+</em><br />
+<em class="quotelev2">&gt;&gt; interval, but in my experience at the midpoint is the best option,
+</em><br />
+<em class="quotelev2">&gt;&gt; as it is the most intuitively obvious and least likely to cause
+</em><br />
+<em class="quotelev2">&gt;&gt; problems if you ever create aggregations over longer periods.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Cheers,
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; --Seth
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; On Fri, 15 Mar 2013 22:45:39 +0100
+</em><br />
+<em class="quotelev2">&gt;&gt;  Andreas Hilboll &lt;lists at hilboll.de&gt; wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Hi,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; I want to store monthly averages of gridded satellite measurements of
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; atmospheric trace gas columns. I'm wondering how I should specify the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; time axis, i.e. set the time for each monthly aggregate to the first, or
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; the central, or the last day of the month. How should I specify that the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; values are actually monthly averages?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Thanks for your ideas!
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Cheers, Andreas.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<span id="received"><dfn>Received on</dfn> Fri Mar 15 2013 - 16:56:16 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5085">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5086.html" title="Next message in the list">Andreas Hilboll: "[CF-metadata] how to specify time dimension for monthly averages"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5084.html" title="Previous message in the list">Andreas Hilboll: "[CF-metadata] how to specify time dimension for monthly averages"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5084.html" title="Message to which this message replies">Andreas Hilboll: "[CF-metadata] how to specify time dimension for monthly averages"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5086.html" title="Next message in this discussion thread">Andreas Hilboll: "[CF-metadata] how to specify time dimension for monthly averages"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5086.html" title="Message sent in reply to this message">Andreas Hilboll: "[CF-metadata] how to specify time dimension for monthly averages"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5085" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5085" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5085" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5085" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:15 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5084.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5086.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

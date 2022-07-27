@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  Cell methods - depth mean from Jonathan Gregory on 2009-08-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  Cell methods - depth mean" />
+<meta name="Date" content="2009-08-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2154.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2156.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  Cell methods - depth mean</h1>
+<!-- received="Mon Aug  3 02:46:52 2009" -->
+<!-- isoreceived="20090803014652" -->
+<!-- sent="Mon, 3 Aug 2009 09:46:52 +0100" -->
+<!-- isosent="20090803084652" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  Cell methods - depth mean" -->
+<!-- id="20090803084652.GC6054_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2155" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2156.html" accesskey="d" title="Heinke Hoeck: &quot;[CF-metadata] sea_surface_height_above_reference_ellipsoid&quot;">Next message</a> ]
+[ <a href="./2154.html" title="John Graybeal: &quot;[CF-metadata] new standard name request for pH&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2155" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2155" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2155" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2155" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20Cell%20methods%20-%20depth%20mean">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 3 Aug 2009 09:46:52 +0100</span><br />
+</address>
+<br />
+Dear Jenny
+<br />
+<br /><em class="quotelev1">&gt; In my data I have lat, long, time and the depth-mean east,north-velocities. I guess I need to attach the cell_methods attribute to the velocity variable. e.g. cell_methods=&quot;ocean_sigma_coordinate:mean&quot;
+</em><br />
+<br />Yes, that's right, except there should be a space after &quot;:&quot;.
+<br />
+<br /><em class="quotelev1">&gt; Do I then create an ocean_sigma_coordinate variable (with correct dimensions and values) and attach a bounds attribute?
+</em><br />
+<em class="quotelev1">&gt; e.g. ocean_sigma_coordinate : bounds = &quot; sigma_coordinate_bnds&quot;
+</em><br />
+<br />Yes. But since this is a depth-mean, the coordinate variable will have size
+<br />
+one, not 32 or however many levels you have. This is not the usual vertical
+<br />
+coordinate. It's a &quot;collapsed&quot; vertical coordinate included specially in order
+<br />
+to indicate the limits of the vertical mean. As an alternative to a size-one
+<br />
+dimension and coordinate variable, CF allows a scalar coordinate variable
+<br />
+named by the coordinates attribute.
+<br />
+<br />The value of the size-one or scalar coord variable is a bit arbitrary. It is
+<br />
+a representative sigma value. The important information is the bounds. They
+<br />
+should be the sigma values of the top and bottom of the vertical mean.
+<br />
+<br />Cheers
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Aug 03 2009 - 02:46:52 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2155">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2156.html" title="Next message in the list">Heinke Hoeck: "[CF-metadata] sea_surface_height_above_reference_ellipsoid"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2154.html" title="Previous message in the list">John Graybeal: "[CF-metadata] new standard name request for pH"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2155" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2155" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2155" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2155" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:20 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2154.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2156.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

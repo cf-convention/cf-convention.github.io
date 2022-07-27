@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF compliant tripolar grid representation from Sebastien Villaume on 2017-03-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Sebastien Villaume (sebastien.villaume)" />
+<meta name="Subject" content="[CF-metadata] CF compliant tripolar grid representation" />
+<meta name="Date" content="2017-03-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8184.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8186.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF compliant tripolar grid representation</h1>
+<!-- received="Thu Mar 30 09:52:56 2017" -->
+<!-- isoreceived="20170330085256" -->
+<!-- sent="Thu, 30 Mar 2017 15:52:56 +0000 (GMT-00:00)" -->
+<!-- isosent="20170330155256" -->
+<!-- name="Sebastien Villaume" -->
+<!-- email="sebastien.villaume" -->
+<!-- subject="[CF-metadata] CF compliant tripolar grid representation" -->
+<!-- id="1002596496.27548921.1490889176744.JavaMail.zimbra_at_ecmwf.int" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8185" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8186.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] CF compliant tripolar grid representation&quot;">Next message</a> ]
+[ <a href="./8184.html" title="Lowry, Roy K.: &quot;[CF-metadata] WG: proposal for two new standard_names and	an	additional chemical species&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8186.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] CF compliant tripolar grid representation&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8185" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8185" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8185" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8185" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Sebastien Villaume &lt;<a href="mailto:sebastien.villaume?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20compliant%20tripolar%20grid%20representation">sebastien.villaume</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 30 Mar 2017 15:52:56 +0000 (GMT-00:00)</span><br />
+</address>
+<br />
+Hello all,
+<br />
+<br />I am looking for the best approach to describe in a CF compliant way the tripolar grids usually used in NEMO configurations.
+<br />
+<br />Basically, the difference with a usual bipolar grid (north pole-south pole) is that the north pole is split into 2 poles moved over Canada and Russia (to have distortions/singularities not over the ocean). A good visual representation can be found here:
+<br />
+<br /><a href="http://www.geomar.de/typo3temp/pics/globe_grid2_14_b8edb639ae.png">http://www.geomar.de/typo3temp/pics/globe_grid2_14_b8edb639ae.png</a> 
+<br />
+<br />everything south of the green line (40degN) is identical to a regular grid, but everything north of it is computed using a technique described here: 
+<br />
+<br />Madec, G. and M. Imbard, 1996 : A global ocean mesh to overcome the north pole singularity. Clim. Dyn., 12, 381?388.
+<br />
+<br /><br />The usual NEMO output of the grid looks like this:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;float longitude(y, x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:standard_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:long_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float latitude(y, x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:standard_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:long_name = &quot;latitude&quot; ;
+<br />
+<br /><br />Basically both latitudes and longitudes need to be specified for each grid point, hence lat and lon are 2D arrays. This is not a problem itself but I would like to give more information through maybe grid_mapping or crs so it is clear that the grid is tripolar. This is useful information if one want to project/interpolate this back to a more regular representation.
+<br />
+<br />Looking at the CF conventions, I can see that grids can be fairly nicely documented but nothing for tripolar grids. 
+<br />
+<br />Is there some documentation/guidelines on how to derive a proper grid_mapping/crs with valid attributes for tripolar grids? 
+<br />
+<br />I would also like to add to my netcdf file a way to better describe axes:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;double y(y) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:long_name = &quot;j-index of mesh grid&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:standard_name = ??? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double x(x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:long_name = &quot;i-index of mesh grid&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:standard_name = ??? ;
+<br />
+<br />what would be the standard name of these?
+<br />
+<br />Thanks,
+<br />
+<br />____________________________________ 
+<br />
+<br />Dr. S?bastien Villaume 
+<br />
+Analyst 
+<br />
+ECMWF Shinfield Park, 
+<br />
+Reading RG2 9AX, UK 
+<br />
++44 7825 521592 
+<br />
+sebastien.villaume at ecmwf.int 
+<br />
+____________________________________
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Mar 30 2017 - 09:52:56 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8185">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8186.html" title="Next message in the list">Jim Biard: "[CF-metadata] CF compliant tripolar grid representation"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8184.html" title="Previous message in the list">Lowry, Roy K.: "[CF-metadata] WG: proposal for two new standard_names and	an	additional chemical species"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8186.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] CF compliant tripolar grid representation"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8186.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] CF compliant tripolar grid representation"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8185" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8185" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8185" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8185" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:12 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8184.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8186.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -83,7 +83,7 @@ The climate research community is indebted to the above for their magnanimous co
 
 [rules]: rules.md
 [errors]: errors.md
-[mail]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata
+[mail]: cf-metadata-mailman
 [html]: Data/cf-documents/cf-governance/cf2_whitepaper_final.html
 [pdf]:  Data/cf-documents/cf-governance/cf2_whitepaper_final.pdf
 [ticket146]: http://cfconventions.org/Data/Trac-tickets/146.html

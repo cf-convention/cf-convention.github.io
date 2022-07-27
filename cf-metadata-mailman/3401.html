@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] udunits time unit question from Christopher Barker on 2011-04-04 (cf-metadata-mailman)</title>
+<meta name="Author" content="Christopher Barker (Chris.Barker)" />
+<meta name="Subject" content="[CF-metadata] udunits time unit question" />
+<meta name="Date" content="2011-04-04" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3400.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3402.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] udunits time unit question</h1>
+<!-- received="Mon Apr  4 12:36:11 2011" -->
+<!-- isoreceived="20110404113611" -->
+<!-- sent="Mon, 04 Apr 2011 11:36:11 -0700" -->
+<!-- isosent="20110404183611" -->
+<!-- name="Christopher Barker" -->
+<!-- email="Chris.Barker" -->
+<!-- subject="[CF-metadata] udunits time unit question" -->
+<!-- id="4D9A0F9B.4030807_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="web-34683994_at_mail.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3401" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3402.html" accesskey="d" title="Ken Roberts: &quot;[CF-metadata] New CF Standard Name (antenna_temperature)&quot;">Next message</a> ]
+[ <a href="./3400.html" title="Stefano Nativi: &quot;[CF-metadata] relationship between CF model and netCDF-classic data model&quot;">Previous message</a> ]
+[ <a href="./3371.html" title="Seth McGinnis: &quot;[CF-metadata] udunits time unit question&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3409.html" accesskey="t" title="Jon Blower: &quot;[CF-metadata] udunits time unit question&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3401" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3401" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3401" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3401" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Christopher Barker &lt;<a href="mailto:Chris.Barker?Subject=Re%3A%20%5BCF-metadata%5D%20udunits%20time%20unit%20question">Chris.Barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 04 Apr 2011 11:36:11 -0700</span><br />
+</address>
+<br />
+On 3/31/11 10:18 AM, Seth McGinnis wrote:
+<br />
+<em class="quotelev1">&gt; For those who have never encountered a non-standard calendar in the wild,
+</em><br />
+<em class="quotelev1">&gt; here's one place they show up:
+</em><br />
+<br />Thanks for the clarification.
+<br />
+<br />I draw the following conclusions:
+<br />
+<br />1) converting between Calendars is ripe for error/mis-interpretation, 
+<br />
+and probably shouldn't be attempted.
+<br />
+<br />2) &quot;months&quot; and &quot;year&quot; really should be considered a calendar concept, 
+<br />
+NOT a unit of time, like &quot;seconds&quot; and &quot;hours&quot;, and thus should only be 
+<br />
+used in the context of calendar-specific calculation and specification. 
+<br />
+I don't know about &quot;days&quot; and &quot;weeks&quot;.
+<br />
+<br /><em class="quotelev1">&gt; The point of storing the data using the 360-day calendar is that it faithfully
+</em><br />
+<em class="quotelev1">&gt; reflects the structure of the model output.
+</em><br />
+<br />I totally agree -- and further processing should respect that calendar, too.
+<br />
+<br /><br /><em class="quotelev1">&gt; I'm wondering what essential methods a calendar library needs to have to
+</em><br />
+<em class="quotelev1">&gt; support, eg 360 day calendars? The only one that comes to mind is to
+</em><br />
+<em class="quotelev1">&gt; calculate the difference between two dates in, say, seconds? What else?
+</em><br />
+<br />I think using a data type that represents a date-time and another one 
+<br />
+for a time-delta, and system to work with them is really helpful.
+<br />
+<br />a time-delta is a span of time, which could be expresses in seconds, 
+<br />
+hour, etc. However, when you pick a unit (like seconds) you are 
+<br />
+specifying a resolution and range, so it's kind of nice to have a 
+<br />
+universal one -- for instance, Python's timedelta stores days, seconds 
+<br />
+and microseconds internall to get a good range and microsecond 
+<br />
+resolution -- of course microsecond resolution isn't adequate for all 
+<br />
+use, so that may not be ideal. Perhaps udinits's time functionality is 
+<br />
+already good for this.
+<br />
+<br />A date-time represents a particular point in time (rather than a span), 
+<br />
+and must be tied to a given calendar.
+<br />
+<br />So:
+<br />
+&nbsp;&nbsp;&nbsp;The difference between two date-times is a time-delta.
+<br />
+&nbsp;&nbsp;&nbsp;You can add a time-delta to a date-time to get another date-time.
+<br />
+&nbsp;&nbsp;&nbsp;etc.
+<br />
+<br />With date-times, and good calender support, you could express things like:
+<br />
+<br />x calendar months from a given date-time.
+<br />
+next thursday from a given date-time
+<br />
+<br />and all sorts of nifty things like that, but they are distinctly 
+<br />
+different operations from:
+<br />
+<br />date_time + 45 hours.
+<br />
+<br />The mxDateTime package:
+<br />
+<br /><a href="http://www.egenix.com/products/python/mxBase/mxDateTime/doc/">http://www.egenix.com/products/python/mxBase/mxDateTime/doc/</a>
+<br />
+<br />provides a &quot;RelativeDateTime&quot; object to handle that kind of calendar 
+<br />
+concepts/calculsations. That's a pretty nice approach.
+<br />
+<br />HTH,
+<br />
+<br />&nbsp;&nbsp;&nbsp;-Chris
+<br />
+<br /><br /><br /><br /><br /><br /><br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Apr 04 2011 - 12:36:11 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3401">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3402.html" title="Next message in the list">Ken Roberts: "[CF-metadata] New CF Standard Name (antenna_temperature)"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3400.html" title="Previous message in the list">Stefano Nativi: "[CF-metadata] relationship between CF model and netCDF-classic data model"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3371.html" title="Message to which this message replies">Seth McGinnis: "[CF-metadata] udunits time unit question"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3409.html" title="Next message in this discussion thread">Jon Blower: "[CF-metadata] udunits time unit question"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3401" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3401" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3401" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3401" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:44 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3400.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3402.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

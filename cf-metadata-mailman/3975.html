@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] FW: netcdf for particle trajectories from Chris.Barker on 2011-11-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="Chris.Barker (Chris.Barker)" />
+<meta name="Subject" content="[CF-metadata] FW: netcdf for particle trajectories" />
+<meta name="Date" content="2011-11-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3974.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3976.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] FW: netcdf for particle trajectories</h1>
+<!-- received="Tue Nov 29 14:02:52 2011" -->
+<!-- isoreceived="20111129140252" -->
+<!-- sent="Tue, 29 Nov 2011 13:02:52 -0800" -->
+<!-- isosent="20111129210252" -->
+<!-- name="Chris.Barker" -->
+<!-- email="Chris.Barker" -->
+<!-- subject="[CF-metadata] FW: netcdf for particle trajectories" -->
+<!-- id="4ED5487C.4050306_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20111129121557.GD28278_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3975" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3976.html" accesskey="d" title="Thomas Lavergne: &quot;[CF-metadata] Proposal for better handling vector quantities in CF&quot;">Next message</a> ]
+[ <a href="./3974.html" title="Rich Signell: &quot;[CF-metadata] Storing outline information in NetCDF/CF?&quot;">Previous message</a> ]
+[ <a href="./3966.html" title="Jonathan Gregory: &quot;[CF-metadata] FW: netcdf for particle trajectories&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3975" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3975" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3975" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3975" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: &lt;<a href="mailto:Chris.Barker?Subject=Re%3A%20%5BCF-metadata%5D%20FW%3A%20netcdf%20for%20particle%20trajectories">Chris.Barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 29 Nov 2011 13:02:52 -0800</span><br />
+</address>
+<br />
+On 11/29/11 4:15 AM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; That could be done if you can represent the data using a new kind of
+</em><br />
+<em class="quotelev1">&gt; featureType to be added to the CF chapter on discrete sampling geometries,
+</em><br />
+<em class="quotelev1">&gt; which will be included in CF 1.6 (coming soon). The text for the discrete
+</em><br />
+<em class="quotelev1">&gt; sampling geometry chapter is at
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.unidata.ucar.edu/staff/caron/public/CFch9-feb25_jg.pdf">http://www.unidata.ucar.edu/staff/caron/public/CFch9-feb25_jg.pdf</a>
+</em><br />
+<br />Sorry that the discussion about this has been so disjointed, but I think 
+<br />
+our needs can not be met with somethign as simple a a new feature type.
+<br />
+<br />We've had a bit of discussion about this, both on and off this list, but 
+<br />
+I don't think anyone has kept good notes of the main points raised. I'll 
+<br />
+try to write up a proposal soon, but briefly:
+<br />
+<br />The goal is to store the output of &quot;partical tracking&quot;models. These are 
+<br />
+used to mode the advection and dispersion of various substances in a 
+<br />
+flow field: oil spills, larval transport, pollutants in the atmosphere, etc.
+<br />
+<br />Some key features:
+<br />
+<br />&nbsp;&nbsp;* In general, what is of interest is a collection (100s to 10,000s, or 
+<br />
+more... ) of particles, rather than an one individual particle. Thus, it 
+<br />
+is more likely that the user might ask:
+<br />
+<br />&quot;where are all the particles at time T?&quot;
+<br />
+<br />than:
+<br />
+<br />&quot;How did particle X travel over time?&quot;
+<br />
+<br />This has consequences on how one stores the data, so that either 
+<br />
+question can be asked but the first is the more efficient one.
+<br />
+<br />&nbsp;&nbsp;* particles can have many associated attributes (properties, etc) that 
+<br />
+change over time.
+<br />
+<br />&nbsp;&nbsp;* Some models create a set of particles at one time, the track them 
+<br />
+for the duration of the run -- that is the easy case. But many models 
+<br />
+create and destroy particles as the model runs -- adding particles when 
+<br />
+increased resolution is desired, removing them as they move out of the 
+<br />
+domain, or are destroyed by physical processes.
+<br />
+<br />This is a key issue -- it is not so straightforward how to store them 
+<br />
+when they numbers change, and when you don't knoe at the start of teh 
+<br />
+model run how many particles there will be at any given time, or even 
+<br />
+the maximum number of particles.
+<br />
+<br />With discussion, we had come to something of a consensus that in order 
+<br />
+to accommodate these needs, a &quot;ragged array&quot; approach would work. i.e. a 
+<br />
+2-d table of sorts, with one row for each time step, and where each row 
+<br />
+might be any length. There appears to be something of a standard for 
+<br />
+this in CF already, and we have attempted to use that (more later).
+<br />
+<br />We've got a version of this working now in out software, but...
+<br />
+<br />The trick that Ute has brought up is that you may now neither how many 
+<br />
+particles there will be, nor how many time steps. Thus you would like to 
+<br />
+have two &quot;unlimited&quot; dimensions, which netcdf3 does not support. We've 
+<br />
+accomplished it because we know how many time steps will be run before 
+<br />
+we start.
+<br />
+<br />My first thought is that we could use exactly the same format as hs been 
+<br />
+discusses already, but make it optional to use netcdf4, an an unlimited 
+<br />
+time dimension. Presumably these files could be easily converted, after 
+<br />
+the fact, to a netcdf3 format, as the number of time steps would then be 
+<br />
+known.
+<br />
+<br />About netcdf 3 vs. 4 -- it seems netcdf4 has some nice features, after 
+<br />
+all, it was developed for a reason. However it doesn't not appear to 
+<br />
+have been widely adopted yet. However, maybe we really shouldn't bend 
+<br />
+over backwards to fit a data model to netcdf3 anymore -- it's a chick 
+<br />
+and egg problem, maybe time to make some eggs.
+<br />
+<br />For our part, we use the netcdf4 lib with Python anyway, though our 
+<br />
+C/C++ code is all using netcdf3 -- the burden of compiling the hdf libs 
+<br />
+is something we choose to avoid, though it's not that big a deal.
+<br />
+<br />Anyway -- more soon, I hope.
+<br />
+<br />-Chris
+<br />
+<br /><br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Nov 29 2011 - 14:02:52 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3975">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3976.html" title="Next message in the list">Thomas Lavergne: "[CF-metadata] Proposal for better handling vector quantities in CF"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3974.html" title="Previous message in the list">Rich Signell: "[CF-metadata] Storing outline information in NetCDF/CF?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3966.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] FW: netcdf for particle trajectories"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3975" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3975" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3975" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3975" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3974.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3976.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

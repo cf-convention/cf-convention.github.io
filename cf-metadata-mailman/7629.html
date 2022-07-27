@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]   weighted time mean vs. conditional time mean. from Jonathan Gregory on 2016-05-21 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]   weighted time mean vs. conditional time mean." />
+<meta name="Date" content="2016-05-21" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7628.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7630.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]   weighted time mean vs. conditional time mean.</h1>
+<!-- received="Sat May 21 03:31:41 2016" -->
+<!-- isoreceived="20160521023141" -->
+<!-- sent="Sat, 21 May 2016 10:31:41 +0100" -->
+<!-- isosent="20160521093141" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]   weighted time mean vs. conditional time mean." -->
+<!-- id="20160521093141.GA18726_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7629" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7630.html" accesskey="d" title="Karl Taylor: &quot;[CF-metadata] Use of CF standard name region&quot;">Next message</a> ]
+[ <a href="./7628.html" title="Jonathan Gregory: &quot;[CF-metadata] Use of CF standard name region&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7629" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7629" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7629" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7629" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20%20weighted%20time%20mean%20vs.%20conditional%20time%20mean.">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sat, 21 May 2016 10:31:41 +0100</span><br />
+</address>
+<br />
+Dear Martin
+<br />
+<br />In my reading of 7.3.3 and the conformance document, it seems clear that
+<br />
+&quot;where&quot; is intended to be used with area types. 
+<br />
+<br /><em class="quotelev1">&gt; There is an issue, it appears, about the use of the &quot;where&quot; modifier for cell_methods elements other than &quot;area:&quot;. Jonathan believes &quot;where&quot; should only apply for area on the basis that this where the motivation comes from in the first paragraph of section 7.3.3. The subsequent paragraphs in section 7.3.3. describe the use of &quot;where&quot; with a generic element &quot;name: ....&quot;. The compliance document clearly states that &quot;where&quot; can be used with any string.
+</em><br />
+<br />I'm sorry, I can't find that - please could you point it out? In
+<br />
+<a href="http://cfconventions.org/Data/cf-documents/requirements-recommendations/requirements-recommendations-1.6.html">http://cfconventions.org/Data/cf-documents/requirements-recommendations/requirements-recommendations-1.6.html</a>
+<br />
+regarding
+<br />
+method [where type1 [over type2]]
+<br />
+it says
+<br />
+The valid values for type1 are the name of a string-valued auxiliary or scalar
+<br />
+coordinate variable with a standard_name of area_type, or any string value
+<br />
+allowed for a variable of standard_name of area_type.
+<br />
+<br />We could generalise area_types to mean &quot;states&quot; so they can apply in time as
+<br />
+well as space. I think all the existing ones could be interpreted in this way
+<br />
+i.e. with the sense of &quot;when&quot; rather than &quot;where&quot;. Vegetation is sometimes
+<br />
+present and sometimes absent at any given spot, for instance, just as it is
+<br />
+present in some spots and not others at any given time.
+<br />
+<br />Suppose you want to calculate a radiative flux for a grid-box in cloud-free
+<br />
+air. You can do this on each instantaneous timestep for the cloud-free fraction
+<br />
+of the grid-box, and then calculate a time-mean of these timestep values i.e.
+<br />
+&quot;area: mean where clear_sky time: mean&quot;. If the input data supplies a higher
+<br />
+spatial resolution than the grid-box, so you have many timeseries, you could
+<br />
+alternatively do it the other way round, and first calculate, for each of the
+<br />
+points, the value of the flux for those timesteps when there is no cloud, then
+<br />
+calculate an area-mean of these local values i.e. &quot;time: mean where clear_sky
+<br />
+area: mean&quot;. These aren't the same because they imply different weights.
+<br />
+<br />For example, suppose you have three points within the grid-box and two times,
+<br />
+and the data is as follows:
+<br />
+<br />a  X  X
+<br />
+b  c  X
+<br />
+<br />where X means cloudy, and a, b, c are clear-sky values. According to the first
+<br />
+method, the value is a/2 + b/4 + c/4, and according to the second method it is
+<br />
+a/4 + b/4 + c/2, if I've done my sums right. There is a third method, in which
+<br />
+we consider both time and space together: &quot;time: area: mean where clear_sky&quot;.
+<br />
+In this case the value is a/3 + b/3 + c/3.
+<br />
+<br />If I'm right about this, I think we could make this generalisation and it would
+<br />
+not be problematic. However, as usual, we should only make the change if there
+<br />
+is a use-case which demands it.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Sat May 21 2016 - 03:31:41 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7629">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7630.html" title="Next message in the list">Karl Taylor: "[CF-metadata] Use of CF standard name region"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7628.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Use of CF standard name region"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7629" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7629" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7629" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7629" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:04 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7628.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7630.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

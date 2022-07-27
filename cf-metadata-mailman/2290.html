@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Cell bounds associated with coordinate variable rather than data variable from Benno Blumenthal on 2009-10-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="Benno Blumenthal (benno)" />
+<meta name="Subject" content="[CF-metadata] Cell bounds associated with coordinate variable rather than data variable" />
+<meta name="Date" content="2009-10-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2289.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2291.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Cell bounds associated with coordinate variable rather than data variable</h1>
+<!-- received="Wed Oct 28 12:58:42 2009" -->
+<!-- isoreceived="20091028125842" -->
+<!-- sent="Wed, 28 Oct 2009 14:58:42 -0400" -->
+<!-- isosent="20091028185842" -->
+<!-- name="Benno Blumenthal" -->
+<!-- email="benno" -->
+<!-- subject="[CF-metadata] Cell bounds associated with coordinate variable rather than data variable" -->
+<!-- id="179873a70910281158o72a2ce22pf911cc3cfbfb5962_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4AE0D7CF.7000709_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2290" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2291.html" accesskey="d" title="John Graybeal: &quot;[CF-metadata] Dealing with large numbers of flag values in netcdf cf (URIs ...)&quot;">Next message</a> ]
+[ <a href="./2289.html" title="Jonathan Gregory: &quot;[CF-metadata]   Sea water transparency and reflectance.&quot;">Previous message</a> ]
+[ <a href="./2261.html" title="Ethan Davis: &quot;[CF-metadata] Cell bounds associated with coordinate variable rather than data variable&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2292.html" accesskey="t" title="Ethan Davis: &quot;[CF-metadata] Cell bounds associated with coordinate variable rather than data variable&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2290" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2290" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2290" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2290" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Benno Blumenthal &lt;<a href="mailto:benno?Subject=Re%3A%20%5BCF-metadata%5D%20Cell%20bounds%20associated%20with%20coordinate%20variable%20rather%20than%20data%20variable">benno</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 28 Oct 2009 14:58:42 -0400</span><br />
+</address>
+<br />
+I have to vote for multiple dimensions here -- these are different, parallel
+<br />
+dimensions which happen to have the same number of points.
+<br />
+<br />Also, it is not true that a generic program cannot use the bounds.  Ingrid,
+<br />
+in fact, prints time almost always as an interval, e.g. Jan 1980 if the time
+<br />
+cell goes from 0000 1 Jan 1980 to 0000 1 Feb 1980, so that cell boundaries
+<br />
+are critical for time, much more important that spacially. This is because
+<br />
+in common usage when we specify a time we almost always implicitly specify
+<br />
+an interval.
+<br />
+<br />Also, it is not particularly natural to use the end point as the label for
+<br />
+the data, certainly not so natural that a program would assume that not
+<br />
+knowing anything else about the data.   It makes sense from a data
+<br />
+collection point of view, maybe, but stops there.   Most of us use center of
+<br />
+interval as default, particularly since our semantics are not good enough to
+<br />
+detect accumulation (which is the only case where end of interval is
+<br />
+natural).
+<br />
+<br />Benno
+<br />
+<br />On Thu, Oct 22, 2009 at 6:08 PM, Ethan Davis &lt;edavis at unidata.ucar.edu&gt;wrote:
+<br />
+<br /><em class="quotelev1">&gt; Hi John,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; John Caron wrote:
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; The time coordinate here means forecast time, and you are trying to
+</em><br />
+<em class="quotelev2">&gt; &gt; capture &quot;interval of accumulation&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I'm not sure I understand your point here. The forecast time is the only
+</em><br />
+<em class="quotelev1">&gt; time dimension we have. What other time coordinate would the &quot;interval
+</em><br />
+<em class="quotelev1">&gt; of accumulation&quot; be over?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; As jonathan says, you would have to create separate time coordinates for
+</em><br />
+<em class="quotelev2">&gt; &gt; each variable which has a distinct bounds.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Yes, CF is currently written so only one boundary variable can be
+</em><br />
+<em class="quotelev1">&gt; associate with one coordinate variable so this situation would require
+</em><br />
+<em class="quotelev1">&gt; multiple time coordinates. I'm wondering if CF should be extended to
+</em><br />
+<em class="quotelev1">&gt; allow multiple boundary variables to be associated with a single
+</em><br />
+<em class="quotelev1">&gt; coordinate variable.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; theoretically theres no
+</em><br />
+<em class="quotelev2">&gt; &gt; problem with that, practically it may be more confusing than just
+</em><br />
+<em class="quotelev2">&gt; &gt; documenting the bounds on the variable in a non-standard but
+</em><br />
+<em class="quotelev2">&gt; &gt; human-readable way. it seems unlikely that a generic program could do
+</em><br />
+<em class="quotelev2">&gt; &gt; anything useful with those coordinate bounds.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree that multiple time coordinates would do nothing for clarity.
+</em><br />
+<em class="quotelev1">&gt; Which is why I'm wondering about extending CF to allow for a clearer,
+</em><br />
+<em class="quotelev1">&gt; programmatically useful representation of this data.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Ethan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><br /><pre>
+-- 
+Dr. M. Benno Blumenthal          benno at iri.columbia.edu
+International Research Institute for climate and society
+The Earth Institute at Columbia University
+Lamont Campus, Palisades NY 10964-8000   (845) 680-4450
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20091028/57756af2/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20091028/57756af2/attachment-0002.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Oct 28 2009 - 12:58:42 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2290">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2291.html" title="Next message in the list">John Graybeal: "[CF-metadata] Dealing with large numbers of flag values in netcdf cf (URIs ...)"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2289.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]   Sea water transparency and reflectance."</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2261.html" title="Message to which this message replies">Ethan Davis: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2292.html" title="Next message in this discussion thread">Ethan Davis: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2292.html" title="Message sent in reply to this message">Ethan Davis: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2290" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2290" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2290" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2290" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:23 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2289.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2291.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] axis attribute from Jonathan Gregory on 2006-11-21 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] axis attribute" />
+<meta name="Date" content="2006-11-21" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0469.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0471.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] axis attribute</h1>
+<!-- received="Tue Nov 21 11:03:39 2006" -->
+<!-- isoreceived="20061121110339" -->
+<!-- sent="Tue, 21 Nov 2006 18:03:39 +0000" -->
+<!-- isosent="20061121180339" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] axis attribute" -->
+<!-- id="20061121180339.GA1823_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start470" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0471.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] new standard_names for variables concerning sea surface waves&quot;">Next message</a> ]
+[ <a href="./0469.html" title="Bob Drach: &quot;[CF-metadata] axis attribute&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg470" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg470" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg470" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg470" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20axis%20attribute">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 21 Nov 2006 18:03:39 +0000</span><br />
+</address>
+<br />
+Dear all
+<br />
+<br />I don't think we intended axis to be used for auxiliary coord vars. It doesn't
+<br />
+say this explicitly in the document, but &quot;axis&quot; would be an odd name for a 2D
+<br />
+grid, and auxiliary coord vars are introduced in CF 5, whereas axis is in CF 4.
+<br />
+<br />Yes, I still think we should after all restrict X and Y to genuine 1D lon and
+<br />
+lat coord variables. As Simon correctly says, the axis attribute in this case
+<br />
+is not necessary, because you can identify lon and lat from units, which are
+<br />
+mandatory, and standard_name, if present. We certainly had discussions about
+<br />
+this redundancy when we introduced the axis attribute.
+<br />
+<br />The redundancy arises because we continue to support COARDS. Suppose that one
+<br />
+day we didn't insist on COARDS conventions. In that case it might be natural
+<br />
+to use units of degrees for lon and lat, as we do for rotated lon and lat. The
+<br />
+use of degrees_east etc. arises because COARDS depends on units to identify the
+<br />
+axes. We could identify lon and lat by standard name, if we made the standard
+<br />
+name mandatory. We did not make it mandatory because of COARDS compatibility. 
+<br />
+However, for the vertical, the standard name would not be sufficient because
+<br />
+there are many possible vertical coordinates. The COARDS convention is to
+<br />
+identify an axis as vertical if it has units of pressure or a positive
+<br />
+attribute, and CF upholds that too. But in a non-COARDS convention, I'd suggest
+<br />
+it would be simpler to make the axis=&quot;Z&quot; attribute mandatory. Similarly, it is
+<br />
+easier to identify a time axis by axis=&quot;T&quot; than by parsing it to see whether it
+<br />
+has units of time; standard name is not sufficient again because there is more
+<br />
+than one possible standard name for time. This paragraph may seem like a
+<br />
+digression, but the conclusion of it is that I think the axis attribute is a
+<br />
+good thing to have because it is what we would use to identify 1D axes if we
+<br />
+departed from COARDS compatibility. That's not a strong argument.
+<br />
+<br />There already exists data where X and Y have been used for coord vars which are
+<br />
+not 1D lon and lat. If we restrict the use of it now, the implication is that
+<br />
+new CF-compliant applications would be entitled to assume that any coord var
+<br />
+labelled X is actually 1D longitude, even though it might not be if it was old
+<br />
+data. They should therefore test the Conventions attribute before making this
+<br />
+assumption to check the version of CF. Existing CF-compliant applications
+<br />
+would not make this assumption; they should instead be using the units or
+<br />
+standard_name to identify lon and lat axes. There will be no problems for them
+<br />
+with new data written using the restricted meaning of X and Y.
+<br />
+<br />Cheers
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Nov 21 2006 - 11:03:39 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start470">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0471.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] new standard_names for variables concerning sea surface waves"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0469.html" title="Previous message in the list">Bob Drach: "[CF-metadata] axis attribute"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg470" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg470" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg470" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg470" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:50 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0469.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0471.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

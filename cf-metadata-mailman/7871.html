@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Handling time when date is &quot;missing&quot; from Seth McGinnis on 2016-10-25 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] Handling time when date is &quot;missing&quot;" />
+<meta name="Date" content="2016-10-25" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7870.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7872.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Handling time when date is &quot;missing&quot;</h1>
+<!-- received="Tue Oct 25 14:26:18 2016" -->
+<!-- isoreceived="20161025132618" -->
+<!-- sent="Tue, 25 Oct 2016 14:26:18 -0600" -->
+<!-- isosent="20161025202618" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] Handling time when date is &quot;missing&quot;" -->
+<!-- id="de53af7d-c734-96f7-9631-ebf1e35c9cff_at_ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CALqwTFOaJktJj7DqV1WvxJXh+RAw12rGfSR46ap+QR_i5Qrskw_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7871" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7872.html" accesskey="d" title="Dave Allured - NOAA Affiliate: &quot;[CF-metadata] Handling time when date is &#0034;missing&#0034;&quot;">Next message</a> ]
+[ <a href="./7870.html" title="Jim Biard: &quot;[CF-metadata] Handling time when date is &#0034;missing&#0034;&quot;">Previous message</a> ]
+[ <a href="./7869.html" title="Dave Allured - NOAA Affiliate: &quot;[CF-metadata] Handling time when date is &#0034;missing&#0034;&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7872.html" accesskey="t" title="Dave Allured - NOAA Affiliate: &quot;[CF-metadata] Handling time when date is &#0034;missing&#0034;&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7871" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7871" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7871" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7871" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20Handling%20time%20when%20date%20is%20%22missing%22">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 25 Oct 2016 14:26:18 -0600</span><br />
+</address>
+<br />
+But then the data is non-compliant, and it sounds like a valid CF
+<br />
+solution is needed.
+<br />
+<br />Two possible solutions come to my mind.  The first way would be to store
+<br />
+the undated measurements separately.  Record the normal measurements in
+<br />
+the normal way, and then record the undated measurements in a separate
+<br />
+data variable with an index coordinate instead of a time coordinate.
+<br />
+<br />The other way would be not to use time as a coordinate variable at all,
+<br />
+but only as a data variable.  Record all the measurements with an index
+<br />
+coordinate instead of a time coordinate.  Then define data variables for
+<br />
+year, month, day, and time of measurement, and just fill in what's known
+<br />
+for each one.  (It sounds like the month and year are still known even
+<br />
+if the day is not.)  This is very similar to the approach taken for
+<br />
+trajectories; see example H.12 in the spec.
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<br /><br />On 10/25/16 1:31 PM, Dave Allured - NOAA Affiliate wrote:
+<br />
+<em class="quotelev1">&gt; Ajay,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I think this is an exception to CF.  I recommend using _FillValue or
+</em><br />
+<em class="quotelev1">&gt; missing_value on the time coordinate.  Document this in a comment
+</em><br />
+<em class="quotelev1">&gt; attribute on the time coordinate variable.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Also document this somehow in another global attribute that explains you
+</em><br />
+<em class="quotelev1">&gt; made this exception to the CF conventions.  Follow CF conventions in all
+</em><br />
+<em class="quotelev1">&gt; other regards. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Then, try to remember to warn people about this when you distribute the
+</em><br />
+<em class="quotelev1">&gt; data.  CF compliant time coordinates are fundamental to many application
+</em><br />
+<em class="quotelev1">&gt; programs, and I expect they will choke or introduce subtle errors if
+</em><br />
+<em class="quotelev1">&gt; missing values are in there.  So users will need to provide special
+</em><br />
+<em class="quotelev1">&gt; handling for such files.  HTH.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; --Dave
+</em><br />
+<em class="quotelev1">&gt; (Please reply to list only)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On Tue, Oct 25, 2016 at 12:07 PM, Ajay Krishnan - NOAA Affiliate
+</em><br />
+<em class="quotelev1">&gt; &lt;ajay.krishnan at noaa.gov &lt;mailto:ajay.krishnan at noaa.gov&gt;&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     Hi All,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     I have a user that's converting some IMMA format files to CF
+</em><br />
+<em class="quotelev1">&gt;     compliant NetCDF files. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     The problem is that, we've run into several measurements where just
+</em><br />
+<em class="quotelev1">&gt;     the hour of measurement has been recorded without the corresponding
+</em><br />
+<em class="quotelev1">&gt;     &quot;date&quot;. We would prefer not to omit these data in the conversion,
+</em><br />
+<em class="quotelev1">&gt;     because they are considered valid measurements (and play a role in
+</em><br />
+<em class="quotelev1">&gt;     monthly summary statistics)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     How do we represent this in a valid CF NetCDF format since we can't
+</em><br />
+<em class="quotelev1">&gt;     use _FillValues for 'time'? Any suggestions for handling such
+</em><br />
+<em class="quotelev1">&gt;     special cases?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     Thanks,
+</em><br />
+<em class="quotelev1">&gt;     Ajay
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<span id="received"><dfn>Received on</dfn> Tue Oct 25 2016 - 14:26:18 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7871">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7872.html" title="Next message in the list">Dave Allured - NOAA Affiliate: "[CF-metadata] Handling time when date is &#0034;missing&#0034;"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7870.html" title="Previous message in the list">Jim Biard: "[CF-metadata] Handling time when date is &#0034;missing&#0034;"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7869.html" title="Message to which this message replies">Dave Allured - NOAA Affiliate: "[CF-metadata] Handling time when date is &#0034;missing&#0034;"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7872.html" title="Next message in this discussion thread">Dave Allured - NOAA Affiliate: "[CF-metadata] Handling time when date is &#0034;missing&#0034;"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7872.html" title="Message sent in reply to this message">Dave Allured - NOAA Affiliate: "[CF-metadata] Handling time when date is &#0034;missing&#0034;"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7871" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7871" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7871" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7871" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:07 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7870.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7872.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

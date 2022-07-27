@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Add new integer types to CF? from Charlie Zender on 2017-09-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Charlie Zender (zender)" />
+<meta name="Subject" content="[CF-metadata] Add new integer types to CF?" />
+<meta name="Date" content="2017-09-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8525.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8527.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Add new integer types to CF?</h1>
+<!-- received="Tue Sep 26 14:39:38 2017" -->
+<!-- isoreceived="20170926133938" -->
+<!-- sent="Tue, 26 Sep 2017 13:39:38 -0700" -->
+<!-- isosent="20170926203938" -->
+<!-- name="Charlie Zender" -->
+<!-- email="zender" -->
+<!-- subject="[CF-metadata] Add new integer types to CF?" -->
+<!-- id="7f1b67ae-eeb8-3b0c-05da-3fb0999f305f_at_uci.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8526" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8527.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] Add new integer types to CF?&quot;">Next message</a> ]
+[ <a href="./8525.html" title="Jim Biard: &quot;[CF-metadata] Add new integer types to CF?&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8527.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] Add new integer types to CF?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8526" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8526" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8526" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8526" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Charlie Zender &lt;<a href="mailto:zender?Subject=Re%3A%20%5BCF-metadata%5D%20Add%20new%20integer%20types%20to%20CF%3F">zender</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 26 Sep 2017 13:39:38 -0700</span><br />
+</address>
+<br />
+If there is strong opposition to replacing the valid_* method in
+<br />
+CF &lt;= 1.7 with the _Unsigned method in CF 1.8 then please speak-up.
+<br />
+People seem to prefer _Unsigned (as described in NUG) to the
+<br />
+previous CF standard method (valid_*) as way to allow CDF1, CDF2,
+<br />
+and netCDF4-classic to indicate unsigned integers in CF 1.8.
+<br />
+New datasets could still use the valid_* method but that would
+<br />
+restrict their CF-compliance to &lt;= 1.7. CDF1 and CDF2 and
+<br />
+netCDF4-classic datasets intended for CF 1.8 compliance would have
+<br />
+to use _Unsigned instead of valid_*.
+<br />
+<br />This plan could be enacted with wording like this:
+<br />
+<br />&quot;The netCDF data types char, byte, unsigned byte, short, unsigned
+<br />
+short, int, unsigned int, int64, unsigned int64, float or real,
+<br />
+and double are all acceptable. The char type is not intended for
+<br />
+numeric data. One byte numeric data should be stored using the byte
+<br />
+or unsigned byte data type. Unsigned types should be used for unsigned
+<br />
+data if possible. If the underlying file format does not support
+<br />
+unsigned types, integer or byte variables that are to be interpreted
+<br />
+as unsigned must have the attribute _Unsigned = &quot;true&quot;. The convention
+<br />
+explicitly distinguishes between signed and unsigned integer types
+<br />
+only where necessary. Unless otherwise noted, int is interchangeable
+<br />
+with unsigned int, int64, and unsigned int64 in this convention,
+<br />
+including examples and appendices. Similarly short is interchangable
+<br />
+with unsigned short, and byte with unsigned byte.&quot;
+<br />
+<br />Comments welcome...
+<br />
+<pre>
+-- 
+Charlie Zender, Earth System Sci. &amp; Computer Sci.
+University of California, Irvine 949-891-2429 )'(
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Sep 26 2017 - 14:39:38 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8526">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8527.html" title="Next message in the list">Jim Biard: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8525.html" title="Previous message in the list">Jim Biard: "[CF-metadata] Add new integer types to CF?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8527.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8527.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><dfn>Reply</dfn>: <a href="./8528.html" title="Message sent in reply to this message">Dave Allured - NOAA Affiliate: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><dfn>Reply</dfn>: <a href="./8529.html" title="Message sent in reply to this message">Manning, Evan M: "[CF-metadata] Add new integer types to CF?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8526" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8526" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8526" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8526" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:16 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8525.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8527.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

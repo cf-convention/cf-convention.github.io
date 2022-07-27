@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] X and Y projection coordinate (center vs corner) from John Caron on 2009-01-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] X and Y projection coordinate (center vs corner)" />
+<meta name="Date" content="2009-01-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1908.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1910.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] X and Y projection coordinate (center vs corner)</h1>
+<!-- received="Tue Jan 27 10:45:04 2009" -->
+<!-- isoreceived="20090127104504" -->
+<!-- sent="Tue, 27 Jan 2009 10:45:04 -0700" -->
+<!-- isosent="20090127174504" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] X and Y projection coordinate (center vs corner)" -->
+<!-- id="497F4820.7080806_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="497EDB39.3010900_at_met.no" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1909" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1910.html" accesskey="d" title="Frank Hage: &quot;[CF-metadata] X and Y projection coordinate (center vs corner)&quot;">Next message</a> ]
+[ <a href="./1908.html" title="Jonathan Gregory: &quot;[CF-metadata]  X and Y projection coordinate (center vs corner)&quot;">Previous message</a> ]
+[ <a href="./1907.html" title="Thomas Lavergne: &quot;[CF-metadata] X and Y projection coordinate (center vs corner)&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1910.html" accesskey="t" title="Frank Hage: &quot;[CF-metadata] X and Y projection coordinate (center vs corner)&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1909" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1909" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1909" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1909" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20X%20and%20Y%20projection%20coordinate%20(center%20vs%20corner)">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 27 Jan 2009 10:45:04 -0700</span><br />
+</address>
+<br />
+My own thinking goes along these lines:
+<br />
+<br />A grid is a discrete sampling of a continuous function. The coordinates give a location in
+<br />
+space/time, say {x(x), y(y), z(z), time(time)}, and the value of that function at that point is
+<br />
+data(time,z,y,x).
+<br />
+<br /><em class="quotelev1">&gt;From that POV, its likely to be &quot;wrong&quot; that an application would interpret the coordinate as one of
+</em><br />
+the edges of a cell, because that would make it &quot;off-by-half-point&quot; for contouring or visualization.
+<br />
+I agree with Jonathan to add such a wording for future clarity.
+<br />
+<br />IMO, you could contact the application developer and say: if you see a CF file, please interpret
+<br />
+coordinates as center-of-cell where that matters.
+<br />
+<br />Coordinate bounds allow edges to be explicit, and you could ask the application developer to look
+<br />
+for those. When not specified, I put the edges halfway between the coordinates.
+<br />
+<br />Balaji's gridspec is a solution for describing other sampling topologies, but alas, we have not yet
+<br />
+integrated it into the spec, nor does the netcdf-java library implement it yet.
+<br />
+<br />Regards,
+<br />
+John
+<br />
+<br /><br />Thomas Lavergne wrote:
+<br />
+<em class="quotelev1">&gt; Dear Jonathan,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; We should not be overly surprised by the choice made by some
+</em><br />
+<em class="quotelev1">&gt; applications. Software were designed and developed before CF conventions
+</em><br />
+<em class="quotelev1">&gt; (or even netCDF) came in place and, in the slow process of adapting to
+</em><br />
+<em class="quotelev1">&gt; new standards, need to keep backward compatibility with previous ways of
+</em><br />
+<em class="quotelev1">&gt; doing things. The (silent) standard for my application was to consider
+</em><br />
+<em class="quotelev1">&gt; &quot;corners&quot; and was not yet adapted to use the &quot;center&quot;.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Anyway, and although I agree with you that CF &quot;provides bounds to
+</em><br />
+<em class="quotelev1">&gt; describe cells&quot;, we could acknowledge that, in very particular (but not
+</em><br />
+<em class="quotelev1">&gt; rare) occasions, a spatially intensive grid coordinate system can be
+</em><br />
+<em class="quotelev1">&gt; interpreted as representative of a cell (e.g. for plotting purposes). I
+</em><br />
+<em class="quotelev1">&gt; do not think we can expect from historical applications, some handling
+</em><br />
+<em class="quotelev1">&gt; several other formats, that they start digging out &quot;cells&quot; information
+</em><br />
+<em class="quotelev1">&gt; because they happen to load a CF-compliant netCDF file. Cells are great
+</em><br />
+<em class="quotelev1">&gt; for us to specify what goes into a pixel (an average, a maximum, etc...)
+</em><br />
+<em class="quotelev1">&gt; but are an overkill when it only comes to locating the pixel before
+</em><br />
+<em class="quotelev1">&gt; plotting the field, don't you think?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; If we agree on this, one could imagine having a special paragraph in the
+</em><br />
+<em class="quotelev1">&gt; CF document for the case of a &quot;regularly spaced grid whose all cells are
+</em><br />
+<em class="quotelev1">&gt; equally sized rectangles that cover totally (and only) the area left
+</em><br />
+<em class="quotelev1">&gt; between the neighboring cells&quot;. If I am not mistaken, then the
+</em><br />
+<em class="quotelev1">&gt; projection_x&amp;y_coordinates are sufficient and their 'grid_spacing'
+</em><br />
+<em class="quotelev1">&gt; attribute defines the cell dimensions. The only degree of freedom left
+</em><br />
+<em class="quotelev1">&gt; is to decide/specify what the values in the projection_x&amp;y_coordinates
+</em><br />
+<em class="quotelev1">&gt; 1D datasets stand for (center vs border). Two solutions here :
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 1) CF demands that they hold the center of the grid cell;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 2) we come up with a syntax that allows us to code that we are giving
+</em><br />
+<em class="quotelev1">&gt; the 'center', the 'lower' or the 'upper' value of the grid cell. Then we
+</em><br />
+<em class="quotelev1">&gt; could be free to give, in one file, the 'center' on the X and Y
+</em><br />
+<em class="quotelev1">&gt; coordinates but the 'lower' limit in the Z coordinate. Why not
+</em><br />
+<em class="quotelev1">&gt; grid_reference (or grid_location...) :
+</em><br />
+<em class="quotelev1">&gt; double xc(xc) ;
+</em><br />
+<em class="quotelev1">&gt;    xc:axis = &quot;X&quot; ;
+</em><br />
+<em class="quotelev1">&gt;    xc:units = &quot;km&quot; ;
+</em><br />
+<em class="quotelev1">&gt;    xc:long_name = &quot;x coordinate of projection (eastings)&quot; ;
+</em><br />
+<em class="quotelev1">&gt;    xc:standard_name = &quot;projection_x_coordinate&quot; ;
+</em><br />
+<em class="quotelev1">&gt;    xc:grid_spacing = &quot;62.50 km&quot; ;
+</em><br />
+<em class="quotelev1">&gt;    xc:grid_location = &quot;center&quot;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I am almost certain that you do not like this, Jonathan ;-), as it mixes
+</em><br />
+<em class="quotelev1">&gt; between two distinct concepts : coordinates vs cells, intensive vs
+</em><br />
+<em class="quotelev1">&gt; extensive. But maybe it is worth having the discussion? I repeat that
+</em><br />
+<em class="quotelev1">&gt; 'cell' is a great concept but might be an overkill for some usage.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Furthermore, CF is used by many models, some with C-grid, some with
+</em><br />
+<em class="quotelev1">&gt; A-grid, some with mixed of those two... Do they all use cells or do most
+</em><br />
+<em class="quotelev1">&gt; of them silently use the 'intensive' coordinates system as a proxy for
+</em><br />
+<em class="quotelev1">&gt; their cells? And if the case, how bad is that (in the CF sense)?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I have no strong feeling about this, but I do not see how I can contact
+</em><br />
+<em class="quotelev1">&gt; the team of developers of my favorite visualization software and tell
+</em><br />
+<em class="quotelev1">&gt; them that they should decode the &quot;cell&quot; information before plotting my
+</em><br />
+<em class="quotelev1">&gt; data field. And, so far, I have no way of telling them &quot;read the CF
+</em><br />
+<em class="quotelev1">&gt; document : it is written that you should use the values as 'center'
+</em><br />
+<em class="quotelev1">&gt; coordinates&quot;.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Cheers,
+</em><br />
+<em class="quotelev1">&gt; Thomas
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear Thomas
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I think it may not be explicitly written down in the CF standard, but
+</em><br />
+<em class="quotelev2">&gt;&gt; it is
+</em><br />
+<em class="quotelev2">&gt;&gt; certainly assumed that the coordinates you give (xc yc) are the
+</em><br />
+<em class="quotelev2">&gt;&gt; gridpoints.
+</em><br />
+<em class="quotelev2">&gt;&gt; For an intensive quantity, the default interpretation of the data is that
+</em><br />
+<em class="quotelev2">&gt;&gt; it exists at particular points, which are those specified by the
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinates.
+</em><br />
+<em class="quotelev2">&gt;&gt; Your application is making a surprising assumption in taking the
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinates
+</em><br />
+<em class="quotelev2">&gt;&gt; to lie at the corner of the cell. As you say, CF provides bounds in
+</em><br />
+<em class="quotelev2">&gt;&gt; order to
+</em><br />
+<em class="quotelev2">&gt;&gt; describe cells, because that's not what coordinates are intended for.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Cheers
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Jonathan
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Tue Jan 27 2009 - 10:45:04 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1909">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1910.html" title="Next message in the list">Frank Hage: "[CF-metadata] X and Y projection coordinate (center vs corner)"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1908.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  X and Y projection coordinate (center vs corner)"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./1907.html" title="Message to which this message replies">Thomas Lavergne: "[CF-metadata] X and Y projection coordinate (center vs corner)"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1910.html" title="Next message in this discussion thread">Frank Hage: "[CF-metadata] X and Y projection coordinate (center vs corner)"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1910.html" title="Message sent in reply to this message">Frank Hage: "[CF-metadata] X and Y projection coordinate (center vs corner)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1909" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1909" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1909" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1909" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:15 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1908.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1910.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

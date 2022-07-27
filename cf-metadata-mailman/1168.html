@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] (no subject) from dan.bernie at metoffice.gov.uk on 2008-01-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="dan.bernie at metoffice.gov.uk (dan.bernie)" />
+<meta name="Subject" content="[CF-metadata] (no subject)" />
+<meta name="Date" content="2008-01-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1167.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1169.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] (no subject)</h1>
+<!-- received="Tue Jan 29 02:19:47 2008" -->
+<!-- isoreceived="20080129021947" -->
+<!-- sent="Tue, 29 Jan 2008 09:19:47 +0000" -->
+<!-- isosent="20080129091947" -->
+<!-- name="dan.bernie at metoffice.gov.uk" -->
+<!-- email="dan.bernie" -->
+<!-- subject="[CF-metadata] (no subject)" -->
+<!-- id="1201598387.8567.34.camel_at_eld269.desktop.frd.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1168" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1169.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] hydrosphere&quot;">Next message</a> ]
+[ <a href="./1167.html" title="Jonathan Gregory: &quot;[CF-metadata] standard name proposal for CCMVal - burden&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1168" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1168" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1168" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1168" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: dan.bernie at metoffice.gov.uk &lt;<a href="mailto:dan.bernie?Subject=Re%3A%20%5BCF-metadata%5D%20(no%20subject)">dan.bernie</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 29 Jan 2008 09:19:47 +0000</span><br />
+</address>
+<br />
+Hi,
+<br />
+<br />I am an occasional reader of this list and have a query/proposal about
+<br />
+the CF description of partial cells in (ocean) models with z-
+<br />
+coordinates.
+<br />
+<br />As it stands in the CF convention (as I understand it), when using
+<br />
+partial cells the different volume of cells is accounted for by
+<br />
+including  a 3-D array of the size of the full grid to describe the
+<br />
+volume of each cell as well as a cell measure attribute in the variable:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;deptht = 301 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y = 149 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x = 182 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float deptht(deptht) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deptht: long_name = ?depth? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deptht: units = ?m? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float lon(x,y) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon: long_name = ?longitude? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon: units = ?degrees_east? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float lat(x,y) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat: long_name = ?latitude? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat: units = ?degrees_north? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double volumet(y, x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;volumet :units = &quot;m3&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;volumet :long_name = &quot;volume of grid cell&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;volumet :standard_name = &quot;cell_volume?;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float votemper(deptht, y, x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;votemper:units = &quot;degC&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;votemper:long_name = &quot;Temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;votemper:coordinates = &quot;deptht lat lon&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;votemper:cell_measures = &quot;volume: volumet&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;votemper:standard_name = &quot;sea_water_potential_temperature&quot; ;
+<br />
+<br /><br />My query/suggestion is about the need for a 3-D array for the thickness
+<br />
+of the partial cell. The information on the thickness of the partial
+<br />
+cell is essentially 2-D and the &quot;volumet&quot; array in the example above is
+<br />
+almost doubling the size of the file. It would be entirely possible to
+<br />
+fully define grid cell volumes using level thickness, grid cell area and
+<br />
+information on the level and thickness of the partial cell. In the below
+<br />
+example the &quot;deptht_bounds&quot; is used to find level thickness while the
+<br />
+grid cell area is given in the 2-D array &quot;areat&quot;. These two can be used
+<br />
+for volume of every cell except the partial cells. To deal with the
+<br />
+volume of the partial cells a new cell_measure of
+<br />
+&quot;partial_cell_thickness&quot; could be used. In such a case the thickness and
+<br />
+level of the partial cell can be specifed in a single number. For
+<br />
+example of if the 24th level was the partial cell and it was 0.4 of the
+<br />
+original thickness a &quot;partial_cell_thickness&quot; of 23.4 would specify the
+<br />
+levels and thickness, i.e 23 full levels and 0.4 of the 24th. The
+<br />
+thickness of the partial cell being 0.4 of the thickness determined from
+<br />
+the 24th levels of &quot;deptht_bounds&quot; which would act as a refference. This
+<br />
+in combination with the &quot;areat&quot; array would describe the cell volumes.
+<br />
+<br />e.g. 
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;deptht = 301 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y = 149 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x = 182 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;ndepth_bounds = 2 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float deptht(deptht) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deptht: long_name = ?depth? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deptht: units = ?m? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deptht: bounds = ?deptht_bounds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float lon(x,y) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon: long_name = ?longitude? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon: units = ?degrees_east? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float lat(x,y) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat: long_name = ?latitude? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat: units = ?degrees_north? ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double deptht_bounds(deptht, ndepth_bounds) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deptht_bounds:units = &quot;m&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deptht_bounds:long_name = &quot;depth boundaries of cells&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double areat(y, x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;areat:units = &quot;m2&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;areat:long_name = &quot;area of grid cell&quot; ;
+<br />
+<br /><br />I'm aware that this would require some extra processing to calculate a
+<br />
+3-D array of cell volumes whereas keeping the 3-D volume array is
+<br />
+foolproof, but the calculation is simple and it would greatly reduce the
+<br />
+over head if many files were stored at higher vertical resolutions as in
+<br />
+the above example.
+<br />
+<br />I'd be keen to hear people opinions on this or possible alternatives if
+<br />
+I've missed something about possible ways to deal with this that are
+<br />
+already used.
+<br />
+<br />Regards
+<br />
+<br /><br /><pre>
+-- 
+Dan Bernie
+HadGEM Physical Processes and Coupling Scientist
+Met Office Hadley Centre, FitzRoy Road, Exeter, EX1 3PB
+Tel: +44 (0)1392 884862   Fax: +44 (0)1392 885681
+E-mail: dan.bernie at metoffice.gov.uk   <a href="http://www.metoffice.gov.uk">http://www.metoffice.gov.uk</a>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20080129/b0ddfa50/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20080129/b0ddfa50/attachment-0002.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Jan 29 2008 - 02:19:47 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1168">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1169.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] hydrosphere"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1167.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] standard name proposal for CCMVal - burden"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1168" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1168" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1168" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1168" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:01 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1167.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1169.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

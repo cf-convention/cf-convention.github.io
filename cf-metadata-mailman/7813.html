@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Feedback requested on proposed CF Simple	Geometries from Bert Jagers on 2016-09-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bert Jagers (Bert.Jagers)" />
+<meta name="Subject" content="[CF-metadata] Feedback requested on proposed CF Simple	Geometries" />
+<meta name="Date" content="2016-09-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7812.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7814.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Feedback requested on proposed CF Simple	Geometries</h1>
+<!-- received="Mon Sep 26 05:44:37 2016" -->
+<!-- isoreceived="20160926044437" -->
+<!-- sent="Mon, 26 Sep 2016 11:44:37 +0000" -->
+<!-- isosent="20160926114437" -->
+<!-- name="Bert Jagers" -->
+<!-- email="Bert.Jagers" -->
+<!-- subject="[CF-metadata] Feedback requested on proposed CF Simple	Geometries" -->
+<!-- id="8C2239F05BCC6A4D8A6EAC295B3B1A3D511CBDA2_at_V-EXC-C01.DIRECTORY.INTRA" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20160922162626.GA7133_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7813" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7814.html" accesskey="d" title="David Blodgett: &quot;[CF-metadata] Feedback requested on proposed CF Simple	Geometries&quot;">Next message</a> ]
+[ <a href="./7812.html" title="B&#0228;rring Lars: &quot;[CF-metadata] Metadata/standard names for variables involving thresholds (e.g. climate indices)&quot;">Previous message</a> ]
+[ <a href="./7786.html" title="Jonathan Gregory: &quot;[CF-metadata] Feedback requested on proposed CF Simple Geometries&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7814.html" accesskey="t" title="David Blodgett: &quot;[CF-metadata] Feedback requested on proposed CF Simple	Geometries&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7813" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7813" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7813" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7813" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bert Jagers &lt;<a href="mailto:Bert.Jagers?Subject=Re%3A%20%5BCF-metadata%5D%20Feedback%20requested%20on%20proposed%20CF%20Simple%09Geometries">Bert.Jagers</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 26 Sep 2016 11:44:37 +0000</span><br />
+</address>
+<br />
+Dear Jonathan, Chris, and everybody,
+<br />
+<br />Concerning the reference to UGRID:
+<br />
+<br />Yes, there are similarities between UGRID and the Simple Geometries, but there are differences as well.
+<br />
+We discussed about merging or diverging these two proposals before Ben sent his mail to this group, but it's good to hear the opinion of the broader community on this topic.
+<br />
+<br />1) As Chris indicates UGRID is about defining a mesh or grid, i.e. bunch of polygons that all share vertices. These polygons tend to be of similar order (usually 3 or 4 nodes per polygon, but 5 or 6 or even more might also occur). Since the variation in the number of nodes is usually limited, we have so far accepted that the full matrix is stored with missing values for entries that aren't needed for defining a polygon with less than the maximum number of nodes. I know that there are numerical models that use mostly triangles but accept complex elements with over 1000  nodes and for such cases the face_node_connectivity matrix becomes awfully sparse.
+<br />
+<br />2) UGRID uses an indirection layer because nodes are shared and the fact that nodes are shared is an important element of the mesh topology/connectivity. So, UGRID defines primarily node coordinates and defines edges (i.e. lines) and faces (i.e. polygons) by referring to the node indices. The current Simple Geometries proposal inherits the indirection layer from the UGRID but it is not immediately clear that this indirection is useful. If we think of an arbitrary set of polygons then nodes will be rarely shared, however in case of a coverage of the continent by complex hydrological catchments then one may expect that almost all interior nodes will be shared by two or more catchment polygons.
+<br />
+<br />3) If the polygons form the basis of a hydrological model and connectivity between these complex faces is important, then users may prefer to store the polygons using UGRID and then UGRID may have to support faces with holes and multi-part faces as well. It's a useful extension which we have considered for the results of our water quality model which tend to run on an aggregated version of the hydrodynamic mesh. In this case the hydrodynamic mesh is composed of simple polygons (typically 3-6 nodes), while the water quality data is defined on complex aggregates thereof (20 node polygons) with possibly holes but multiple parts are seldom (although the shared edges between such complex polygons may be composed of multiple (disconnected) edges). By keeping Simple Geometries aligned with UGRID one could make the full list of features available to numerical modellers. Since the indirection is an important part of UGRID, this would for consistency be included in Simple Geometries as well although it adds little val<br />
+ue and looks like overhead as indicated by Jonathan.
+<br />
+<br />4) The other alternative as given by Jonathan would be to link this to the bounds definition. I would like to remark that the current Cell Boundaries section doesn't say anything about the storing cells with a varying number of nodes. In UGRID we have assumed that the missing value can be used to fill up the arrays of small polygons, but this isn't listed in the CF conventions as an option. Anyway, this option looks more natural if the sharing of nodes is seldom or not important. In this case one loses the option to mark the outer and inner boundaries using flags, but there are alternative methods as already proposed (in such case we would need to check how the inside/outside flag variable is referenced from the bounds). However, this would not solve the need for such features in UGRID and by diverging away from UGRID's indirection the solution couldn't be reused inside UGRID as needed.
+<br />
+<br />5) Besides inventing our own storage format (either in line with UGRID or CF), a third way was discussed namely: to store the simple geometry shapes as ascii or binary blobs in an extended format NetCDF 4 file. Since there are good starting points within UGRID and CF for storing polygons, we haven't really considered this third option yet since it would be less easily readable without using GIS libraries like GDAL. However, the main strength of this approach would be that other standard simple features such as circles, donuts, and circular arcs would be automatically covered consistently by this method.
+<br />
+<br />6) Actually, I have a related use case for storing a network of polylines (rather than straight edges) in UGRID compatible format for 1D hydraulic models. In this case I need to store polylines representing river branches: their connectivity at bifurcations and confluences is important, but so is their overall length - river chainage - and hence I can't split them into the base edges. This network defines basically the 1D coordinate system to be used by the actual 1D (UGRID) simulation mesh which will be defined on top of this channel network. Because of the link to 1D numerical modelling, this will be discussed in a separate thread in the UGRID community first.
+<br />
+<br />Best regards,
+<br />
+<br />Bert
+<br />
+<br />-----Original Message-----
+<br />
+From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Jonathan Gregory
+<br />
+Sent: 22 September 2016 18:26
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] Feedback requested on proposed CF Simple Geometries
+<br />
+<br />Dear Chris
+<br />
+<br /><em class="quotelev2">&gt; &gt; If the regions were irregular
+</em><br />
+<em class="quotelev2">&gt; &gt; polygons in latitude and longitude, nv would be the number of
+</em><br />
+<em class="quotelev2">&gt; &gt; vertices and the lat and lon bounds would trace the outline of the
+</em><br />
+<em class="quotelev2">&gt; &gt; polygon e.g. nv=3,
+</em><br />
+<em class="quotelev2">&gt; &gt; lat=0,90,0
+</em><br />
+<em class="quotelev2">&gt; &gt; and lon=0,0,90 describes the eighth of the sphere which is bounded
+</em><br />
+<em class="quotelev2">&gt; &gt; by the meridians at 0E and 90E and the Equator. I think, therefore,
+</em><br />
+<em class="quotelev2">&gt; &gt; we do not need an additional convention for points or polygonal
+</em><br />
+<em class="quotelev2">&gt; &gt; regions.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; this seems fine for this simple example, but burying a bunch of
+</em><br />
+<em class="quotelev1">&gt; coordinates of a complex polygon in a text string in an attribute is
+</em><br />
+<em class="quotelev1">&gt; really not a good idea -- the coordinates of a polygon should be in
+</em><br />
+<em class="quotelev1">&gt; the array data one way or another, rather than having to parse out attribute strings.
+</em><br />
+<br />To avoid confusion:
+<br />
+<br />I didn't suggest parsing attribute strings. The same numbers that Ben would put in his x and y auxiliary coordinate variables for a single polygon can appear in coordinate bounds variables according to the existing convention.
+<br />
+<br /><em class="quotelev1">&gt; * I suspect that geometries of this kind can be described by the ugrid
+</em><br />
+<em class="quotelev2">&gt; &gt; convention <a href="http://ugrid-conventions.github.io/ugrid-conventions">http://ugrid-conventions.github.io/ugrid-conventions</a>,
+</em><br />
+<em class="quotelev2">&gt; &gt; which is compliant with CF. Their purpose is to describe a set of
+</em><br />
+<em class="quotelev2">&gt; &gt; connected points, edges or faces at which values are given,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I'm not so sure -- UGRID is about defining a bunch of polygons that
+</em><br />
+<em class="quotelev1">&gt; all share vertices, and are all of the same order (usually all
+</em><br />
+<em class="quotelev1">&gt; triangles, or quads, or maybe hexes). if they are a mixture, you still
+</em><br />
+<em class="quotelev1">&gt; store the full set (say, six vertices), while marking some as unused.
+</em><br />
+<em class="quotelev1">&gt; But it's not that well set up for a bunch of polygons of different order.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Not too bad if there are only one or two complex polygons, but it
+</em><br />
+<em class="quotelev1">&gt; would be a bit weird -- you'd have vertices and boundaries, but no
+</em><br />
+<em class="quotelev1">&gt; faces. And you'd lose t order of the vertices (thought that could
+</em><br />
+<em class="quotelev1">&gt; probably be added to the UGRID standard)
+</em><br />
+<br />OK. I didn't investigate this, but it would be good to know about it. If ugrid can do something like this, but not all of it, maybe ugrid could be extended. If ugrid seems too complicated for these cases, maybe a &quot;light&quot;
+<br />
+version of ugrid could be proposed for them. I think we should avoid having two partially overlapping conventions.
+<br />
+<br /><em class="quotelev1">&gt; * So far CF does not say anything about the use of netCDF-4 features (i.e.
+</em><br />
+<em class="quotelev2">&gt; &gt; not
+</em><br />
+<em class="quotelev2">&gt; &gt; the classic model). We have often discussed allowing them but the
+</em><br />
+<em class="quotelev2">&gt; &gt; general argument is also made that there has to be a compelling case
+</em><br />
+<em class="quotelev2">&gt; &gt; for providing a new way to do something which can already be done.
+</em><br />
+<em class="quotelev2">&gt; &gt; (Steve Hankin often made this argument, but since he's mostly
+</em><br />
+<em class="quotelev2">&gt; &gt; retired I'll make it now in his name
+</em><br />
+<em class="quotelev2">&gt; &gt; :-)
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Maybe it's time to embrace netcdf4? It's been a while! Though maybe
+</em><br />
+<em class="quotelev1">&gt; for CF
+</em><br />
+<em class="quotelev1">&gt; 2.* -- any movement on that?
+</em><br />
+<br />I think, as we generally do, that we should adopt netCDF-4 features if there is a definite need to do so. I mean something you can't do with an existing mechanism, or which is done so much more easily with a new mechanism that it justifies the extra effort of requiring alternatives to be programmed in software. I'm not arguing against it in general, but I think it has to be argued for each specific need within the convention.
+<br />
+<br />CF2 is not well-defined. I have to admit to being nervous about that. I am very much opposed to an idea of &quot;starting all over again&quot; and maintaining two conventions in parallel (since old data would continue to exist for a long time and so the old CF would have to be supported), and I also think backwards- incompability has to be strongly justified. So I favour step-by-step evolution.
+<br />
+Another idea we've discussed, which I'm comfortable with, is of defining &quot;strict&quot; compliance to the convention, which a data-writer could optionally adhere to. This could exclude older features we wanted to deprecate. However this is really not the subject of the discussion - it's another thread.
+<br />
+<br /><em class="quotelev1">&gt; I think the ragged array option ins fine -- though I haven't looked at
+</em><br />
+<em class="quotelev1">&gt; vlen arrays enough to know if they offer a compelling alternative. One
+</em><br />
+<em class="quotelev1">&gt; issue is that the programming environments that we use to work with
+</em><br />
+<em class="quotelev1">&gt; the data may not have an equivalent of vlen arrays.
+</em><br />
+<br />That's a good point, and a reason why we have to be cautious in general about adopting netCDF-4 features.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+DISCLAIMER: This message is intended exclusively for the addressee(s) and may contain confidential and privileged information. If you are not the intended recipient please notify the sender immediately and destroy this message. Unauthorized use, disclosure or copying of this message is strictly prohibited. The foundation 'Stichting Deltares', which has its seat at Delft, The Netherlands, Commercial Registration Number 41146461, is not liable in any way whatsoever for consequences and/or damages resulting from the improper, incomplete and untimely dispatch, receipt and/or content of this e-mail.
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Sep 26 2016 - 05:44:37 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7813">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7814.html" title="Next message in the list">David Blodgett: "[CF-metadata] Feedback requested on proposed CF Simple	Geometries"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7812.html" title="Previous message in the list">B&#0228;rring Lars: "[CF-metadata] Metadata/standard names for variables involving thresholds (e.g. climate indices)"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7786.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] Feedback requested on proposed CF Simple Geometries"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7814.html" title="Next message in this discussion thread">David Blodgett: "[CF-metadata] Feedback requested on proposed CF Simple	Geometries"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7814.html" title="Message sent in reply to this message">David Blodgett: "[CF-metadata] Feedback requested on proposed CF Simple	Geometries"</a></li>
+<li><dfn>Reply</dfn>: <a href="./7818.html" title="Message sent in reply to this message">Chris Barker: "[CF-metadata] Feedback requested on proposed CF Simple Geometries"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7813" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7813" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7813" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7813" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:06 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7812.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7814.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF2 and standard names from Gross, Tom on 2006-02-08 (cf-metadata-mailman)</title>
+<meta name="Author" content="Gross, Tom (grosst)" />
+<meta name="Subject" content="[CF-metadata] CF2 and standard names" />
+<meta name="Date" content="2006-02-08" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0023.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0025.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF2 and standard names</h1>
+<!-- received="Wed Feb  8 08:30:18 2006" -->
+<!-- isoreceived="20060208083018" -->
+<!-- sent="Wed, 8 Feb 2006 10:30:18 -0500" -->
+<!-- isosent="20060208153018" -->
+<!-- name="Gross, Tom" -->
+<!-- email="grosst" -->
+<!-- subject="[CF-metadata] CF2 and standard names" -->
+<!-- id="AAFAD24F4220B04CA8F7C805460409B2098625_at_SI-ECL01.US.SINET.SI.EDU" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start24" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0025.html" accesskey="d" title="Elke Keup: &quot;[CF-metadata] request for new netCDF standart names&quot;">Next message</a> ]
+[ <a href="./0023.html" title="John Caron: &quot;[CF-metadata] Announce: Common Data Model Coordinate System validation&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg24" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg24" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg24" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg24" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Gross, Tom &lt;<a href="mailto:grosst?Subject=Re%3A%20%5BCF-metadata%5D%20CF2%20and%20standard%20names">grosst</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 8 Feb 2006 10:30:18 -0500</span><br />
+</address>
+<br />
+At the NOAA Coast Survey Development Laboratory, we have been developing
+<br />
+a tool to transform between different vertical datums such as Sea Level,
+<br />
+Mean Lower Low Water, NAD-83, NAVD 88 etc. etc.
+<br />
+<a href="http://nauticalcharts.noaa.gov/csdl/Vdatum.htm">http://nauticalcharts.noaa.gov/csdl/Vdatum.htm</a> 
+<br />
+Given the wealth of datums available, I am of the opinion that a surface
+<br />
+such as, &quot;sea_surface_height&quot;, should not include the datum in the
+<br />
+standard name.  It is an attribute of the variable.  I would much rather
+<br />
+have a codified attribute sea_surface_height:Datum=&quot;sea_level&quot; .  This
+<br />
+affords the ability to include the datum transformation variable to be
+<br />
+included elsewhere in the netcdf file
+<br />
+Variable ZETA(time,nx,ny)
+<br />
+&nbsp;&nbsp;&nbsp;ZETA:Datum=&quot;sea_level&quot;
+<br />
+Variable MLLW(nx,ny)
+<br />
+&nbsp;&nbsp;&nbsp;MLLW:Standard_Name=&quot;Mean_Lower_Low_Water&quot;
+<br />
+&nbsp;&nbsp;&nbsp;MLLW:Datum=&quot;sea_level&quot; 
+<br />
+Variable NAD83(nx,ny)
+<br />
+&nbsp;&nbsp;&nbsp;NAD83:Standard_Name=&quot;NAD_83&quot;
+<br />
+&nbsp;&nbsp;&nbsp;NAD83:Datum=&quot;sea_level&quot;
+<br />
+This allows the user to transform ZETA out of &quot;sea_level&quot; to MLLW or
+<br />
+NAD_83 by a subtraction.  
+<br />
+PS  It is a very important fact that the MLLW datum is not spatially
+<br />
+constant.  This is the whole problem with creating coherent digital
+<br />
+elevation models that join the NOAA/OCS hydrography with USGS topography
+<br />
+data.  
+<br />
+<br />Tom Gross
+<br />
+Chesapeake Community Model Program
+<br />
+ccmp.chesapeake.org
+<br />
+Chesapeake Research Consortium
+<br />
+P.O. Box 28
+<br />
+645 Contees Wharf Road
+<br />
+Edgewater, MD    
+<br />
+temporary Phone: 443 482 2200 x2490
+<br />
+410-798-1283 
+<br />
+&nbsp;
+<br />
+or on Monday and Tuesdays
+<br />
+tom.gross at noaa.gov
+<br />
+NOAA/NOS/Coast Survey Development Lab.
+<br />
+Silver Spring, MD  (301) 713-2809 x139
+<br />
+&nbsp;
+<br />
+<br />-----Original Message-----
+<br />
+From: cf-metadata-bounces at cgd.ucar.edu
+<br />
+[mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Jonathan Gregory
+<br />
+Sent: Tuesday, February 07, 2006 2:47 PM
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: [CF-metadata] CF2 and standard names
+<br />
+<br />Dear Bert
+<br />
+<br />Thanks for your questions.
+<br />
+<br /><em class="quotelev1">&gt; when it comes to the use of standard names, I'm still not certain what
+</em><br />
+to do.
+<br />
+<br />Standard names, like most features of CF, are optional. You don't have
+<br />
+to use
+<br />
+them if you don't think they will help you.
+<br />
+<br /><em class="quotelev1">&gt; some kind of standardisation can
+</em><br />
+<em class="quotelev1">&gt; be helpful for users to understand model output from various sources
+</em><br />
+and as
+<br />
+<em class="quotelev1">&gt; such it may be a valuable source of information when setting up a
+</em><br />
+coupling
+<br />
+<em class="quotelev1">&gt; between model components of different origin
+</em><br />
+<br />That is the first reason to your question
+<br />
+<em class="quotelev1">&gt; (1) what are the main reasons for using standard names
+</em><br />
+It's not only for coupling, but for any activity where data from
+<br />
+different
+<br />
+sources is to be brought together, for example in the comparative
+<br />
+analysis of
+<br />
+data from various climate models. The second reason is that within a
+<br />
+data
+<br />
+source, standard names may be a convenient and precise help in
+<br />
+distinguishing
+<br />
+among quantities.
+<br />
+<br /><em class="quotelev1">&gt; I feel a bit uneasy about
+</em><br />
+<em class="quotelev1">&gt; introducing the standard name &quot;sea_surface_height_above_sea_level&quot; in
+</em><br />
+the
+<br />
+<em class="quotelev1">&gt; output of modelling systems that have so far been using &quot;water level&quot;
+</em><br />
+or
+<br />
+<em class="quotelev1">&gt; similarly simple looking phrasings.
+</em><br />
+<br />You know what you mean by &quot;water level&quot; in the context of your own
+<br />
+model, but
+<br />
+the standard name is a more precise description of a particular
+<br />
+quantity.
+<br />
+However, it may not be the quantity you want, or precise enough for your
+<br />
+purposes. We should introduce further standard names which are more
+<br />
+appropriate
+<br />
+for other kinds of application, as they arise. There is an awkwardness
+<br />
+about
+<br />
+&quot;lake&quot;, &quot;sea&quot; and &quot;river&quot; which we haven't properly dealt with yet. The
+<br />
+choice
+<br />
+of &quot;sea&quot; reflects the origin of the standard names. Some word was needed
+<br />
+to
+<br />
+distinguish water in the atmosphere (as cloud or vapour) from water in
+<br />
+the
+<br />
+ocean.
+<br />
+<br /><em class="quotelev1">&gt; reference level is not everywhere the same: a
+</em><br />
+<em class="quotelev1">&gt; river in Tibet may be modelled using a completely different reference
+</em><br />
+level
+<br />
+<em class="quotelev1">&gt; than a lowland river like the Rhine or the Mississippi.
+</em><br />
+<br />Quite right. It has previously been proposed that we should have a
+<br />
+facility,
+<br />
+via a standard name parameter, to specify the reference surface. This is
+<br />
+not
+<br />
+necessary in all applications (for instance in climate models, which
+<br />
+have
+<br />
+idealised Earth geometry), so it should be optional. Different kinds of
+<br />
+application require different levels of precision, so standard naming
+<br />
+has to
+<br />
+offer such levels.
+<br />
+<br /><em class="quotelev1">&gt; (3) or, wouldn't it be better to define a name space and some mapping
+</em><br />
+as has
+<br />
+<em class="quotelev1">&gt; been suggested in relation to CF2 standards
+</em><br />
+<br />If sufficiently precise names exist in other domains, we could devise
+<br />
+some way
+<br />
+of mapping them into the standard name space. This would save effort and
+<br />
+duplication in the community. However we have to be careful that in
+<br />
+doing this
+<br />
+we don't accidentally allow different domains to give alternative names
+<br />
+to the
+<br />
+same quantity without the equivalence being noted, because if that
+<br />
+happened the
+<br />
+names would not be useful for their original purpose of indicating which
+<br />
+data
+<br />
+are comparable.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Feb 08 2006 - 08:30:18 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start24">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0025.html" title="Next message in the list">Elke Keup: "[CF-metadata] request for new netCDF standart names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0023.html" title="Previous message in the list">John Caron: "[CF-metadata] Announce: Common Data Model Coordinate System validation"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg24" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg24" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg24" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg24" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:43 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0023.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0025.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

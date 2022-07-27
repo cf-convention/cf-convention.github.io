@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] new standard_names for variables concerning sea surface	waves from Richard Gorman on 2006-11-16 (cf-metadata-mailman)</title>
+<meta name="Author" content="Richard Gorman (r.gorman)" />
+<meta name="Subject" content="[CF-metadata] new standard_names for variables concerning sea surface	waves" />
+<meta name="Date" content="2006-11-16" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0443.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0445.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] new standard_names for variables concerning sea surface	waves</h1>
+<!-- received="Wed Nov 15 23:24:33 2006" -->
+<!-- isoreceived="20061115232433" -->
+<!-- sent="Thu, 16 Nov 2006 19:24:33 +1300" -->
+<!-- isosent="20061116062433" -->
+<!-- name="Richard Gorman" -->
+<!-- email="r.gorman" -->
+<!-- subject="[CF-metadata] new standard_names for variables concerning sea surface	waves" -->
+<!-- id="455C0421.2070804_at_niwa.co.nz" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20061111135945.GA4073_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start444" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0445.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] axis attribute&quot;">Next message</a> ]
+[ <a href="./0443.html" title="Simon Wood: &quot;[CF-metadata] axis attribute&quot;">Previous message</a> ]
+[ <a href="./0412.html" title="Jonathan Gregory: &quot;[CF-metadata] new standard_names for variables concerning sea surface waves&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0446.html" accesskey="t" title="Simon Wood: &quot;[CF-metadata] new standard_names for variables concerning sea surface waves&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg444" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg444" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg444" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg444" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Richard Gorman &lt;<a href="mailto:r.gorman?Subject=Re%3A%20%5BCF-metadata%5D%20new%20standard_names%20for%20variables%20concerning%20sea%20surface%09waves">r.gorman</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 16 Nov 2006 19:24:33 +1300</span><br />
+</address>
+<br />
+Hi,
+<br />
+<br />I'm also coming to grips with CF-compliance for wave data and model 
+<br />
+products, so think I should comment.
+<br />
+<br />The various quantities Heinz and Beate describe are all derived from the 
+<br />
+directional spectrum. In the most general case (and explicitly so inside 
+<br />
+a spectral wave model) this is a function S(t,x,y,f,theta) of five 
+<br />
+dimensions:
+<br />
+t = time,
+<br />
+x,y = spatial coordinates (e.g. longitude &amp; latitude)
+<br />
+f = frequency
+<br />
+theta = direction
+<br />
+<br />S has the standard name 
+<br />
+&quot;sea_surface_wave_directional_variance_spectral_density&quot;
+<br />
+<br />Integrating over direction:
+<br />
+S1 = integral[S d(theta)], with the standard name 
+<br />
+&quot;sea_surface_wave_variance_spectral_density&quot;
+<br />
+<br />The parameters of interest can be derived from moments of the spectra, 
+<br />
+i.e. if
+<br />
+M(n) = integral[S1*f^n df]
+<br />
+<br />then the various definitions of mean period are
+<br />
+Tm-1 = M(-1)/M(0)
+<br />
+Tm1 = M(0)/M(1)
+<br />
+Tm2 = sqrt(M(0)/M(2))
+<br />
+<br />Also:
+<br />
+Hm0 = 4*sqrt(M(0)) = &quot;sea_surface_wave_significant_height&quot;
+<br />
+while &quot;mean direction&quot; and &quot;directional spread&quot; come from various 
+<br />
+directional moments of S, e.g.
+<br />
+integral[[S cos(theta) df] d(theta)]
+<br />
+<br />Now the problem is how to describe these variables where the frequency 
+<br />
+and directional dimensions are not necessarily explicitly present: i.e. 
+<br />
+our data are Hm0(t,x,y), etc. These may come from a model which has 
+<br />
+derived them from spectra, or from satellite data where the spectrum 
+<br />
+hasn't been used explicitly at all.
+<br />
+<br />If we accept that these quantities are well defined in terms of these 
+<br />
+accepted definitions, we could just give them standard names as Heinz 
+<br />
+and Beate propose (except I'd suggest
+<br />
+<em class="quotelev2"> &gt;&gt; for the periods from the moment of order 2:
+</em><br />
+<em class="quotelev2"> &gt;&gt; sea_surface_wave_tm2_period;s
+</em><br />
+<em class="quotelev2"> &gt;&gt; sea_surface_wind_tm2_peak_period;s
+</em><br />
+<em class="quotelev2"> &gt;&gt; sea_surface_swell_tm2_peak_period;s
+</em><br />
+should read:
+<br />
+sea_surface_wave_tm2_period;s
+<br />
+sea_surface_wind_wave_tm2_period;s
+<br />
+sea_surface_swell_wave_tm2_period;s
+<br />
+for consistency).
+<br />
+<br />But in some cases it could be helpful to spell out how these are 
+<br />
+derived. For example, ideally the frequency range is 0 to infinity, but 
+<br />
+in practice a limited frequency range might have been used, especially 
+<br />
+if we are distinguishing swell and wind waves. Then we could give 
+<br />
+explicit frequency bounds, and use a cell method description, e.g. for Tm1:
+<br />
+<br />standard_name = &quot;sea_surface_wave_tm1_period&quot;
+<br />
+cell_method = &quot;sea_surface_wave_variance_spectral_density: normalised 
+<br />
+inverse of first frequency moment&quot; or similar.
+<br />
+<br />Unfortunately it's rather wordy, and that's one of the simpler ones: 
+<br />
+directional spread would be quite messy to define in words!
+<br />
+<br />Regards,
+<br />
+Richard
+<br />
+<br />On 12/11/2006 2:59 a.m., Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Heinz and Beate
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; we propose new standard_names for serveral variables concerning wave 
+</em><br />
+<em class="quotelev2">&gt;&gt; periods deduced from the one dimensional frequency wave spectrum:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; These concepts look to me like different statistical methods for characterising
+</em><br />
+<em class="quotelev1">&gt; the spectrum, and as such, can they be expressed by cell_methods? For instance,
+</em><br />
+<em class="quotelev1">&gt; if we define a standard name of
+</em><br />
+<em class="quotelev1">&gt; probability_density_function_of_sea_surface_wind_wave_period
+</em><br />
+<em class="quotelev1">&gt; we can express the &quot;peak&quot; period (I presume this is the mode of the pdf - is
+</em><br />
+<em class="quotelev1">&gt; that right?) with a standard name of sea_surface_wind_wave_period and a
+</em><br />
+<em class="quotelev1">&gt; cell_methods of
+</em><br />
+<em class="quotelev1">&gt; &quot;probability_density_function_of_sea_surface_wind_wave_period: maximum&quot;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I imagine that something like that could done for the others, but I am not
+</em><br />
+<em class="quotelev1">&gt; clear what the &quot;mean&quot; is over, or what &quot;tm&quot; means. &quot;spread&quot; also sounds like
+</em><br />
+<em class="quotelev1">&gt; a statistic of some kind, that would need definition, or is it perhaps a
+</em><br />
+<em class="quotelev1">&gt; standard deviation?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<br /><pre>
+-- 
+=========================================================
+Richard Gorman
+National Institute of Water and Atmospheric Research
+PO Box 11-115, Hamilton, 3251, New Zealand
+Tel: +64 7 856 1736 Mob: 021 074 7490 Fax: +64 7 856 0151
+Email: r.gorman at niwa.co.nz   Web: <a href="http://www.niwa.co.nz">http://www.niwa.co.nz</a>
+=========================================================
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Nov 15 2006 - 23:24:33 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start444">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0445.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] axis attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0443.html" title="Previous message in the list">Simon Wood: "[CF-metadata] axis attribute"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0412.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] new standard_names for variables concerning sea surface waves"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0446.html" title="Next message in this discussion thread">Simon Wood: "[CF-metadata] new standard_names for variables concerning sea surface waves"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0446.html" title="Message sent in reply to this message">Simon Wood: "[CF-metadata] new standard_names for variables concerning sea surface waves"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg444" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg444" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg444" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg444" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:50 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0443.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0445.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED] from Etienne Tourigny on 2012-07-31 (cf-metadata-mailman)</title>
+<meta name="Author" content="Etienne Tourigny (etourigny.dev)" />
+<meta name="Subject" content="[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]" />
+<meta name="Date" content="2012-07-31" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4628.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4630.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]</h1>
+<!-- received="Mon Jul 30 20:10:25 2012" -->
+<!-- isoreceived="20120730191025" -->
+<!-- sent="Mon, 30 Jul 2012 23:10:25 -0300" -->
+<!-- isosent="20120731021025" -->
+<!-- name="Etienne Tourigny" -->
+<!-- email="etourigny.dev" -->
+<!-- subject="[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]" -->
+<!-- id="CA+TxYvOOHGzKz12sJiVEhCRT0hpYF49Goe3d1QcN5kqK9HHSJg_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="86343BB013AEA542ABCC04CF41E7D2B1069DE9B416FD_at_BOM-VMBX-HO.bom.gov.au" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4629" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4630.html" accesskey="d" title="Timothy Hume: &quot;[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]&quot;">Next message</a> ]
+[ <a href="./4628.html" title="Etienne Tourigny: &quot;[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]&quot;">Previous message</a> ]
+[ <a href="./4626.html" title="Timothy Hume: &quot;[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4629" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4629" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4629" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4629" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Etienne Tourigny &lt;<a href="mailto:etourigny.dev?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20include%20EPSG%20codes%20or%20WKT%20information%20in%20a%20CF%20file%20%5BSEC%3DUNCLASSIFIED%5D">etourigny.dev</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 30 Jul 2012 23:10:25 -0300</span><br />
+</address>
+<br />
+Hi Timothy,
+<br />
+<br />Disclaimer: I am the author of ticket #80, and also the maintainer of
+<br />
+the netcdf/cf driver in the GDAL geospatial library (<a href="http://gdal.org">http://gdal.org</a>)
+<br />
+<br />On Mon, Jul 30, 2012 at 10:34 PM, Timothy Hume &lt;T.Hume at bom.gov.au&gt; wrote:
+<br />
+<em class="quotelev1">&gt; Hi Jonathan,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks for the help. I can see that option 80 is probably better, but option 69 is a lot easier for software developers to bolt onto existing NetCDF files. Most of the people I talk to don't see why anyone is interested in anything other than latitudes and longitudes on a spherical Earth; all the stuff about shape of the Earth etc is irrelevant to their needs. The truth is, because most of the NWP data I use is on a rather coarse grid, the grid mapping information is not that important; two coordinate variables with the longitudes and latitudes is sufficient for most purposes.
+</em><br />
+<br />You are right that for many cases, latitude/longitude are sufficient,
+<br />
+and there is no need to get picky about geodesy when you have a 2deg
+<br />
+grid. However, when you are dealing with projected coordinate systems
+<br />
+you absolutely need to define the coordinate reference system (CRS).
+<br />
+Hence the need to include all the needed parameters that are missing
+<br />
+in the CF spec currently.
+<br />
+<br />I fail to see how ticket #69 and 80 are different from this point of
+<br />
+view - both ways require knowledge of CRS representations.
+<br />
+If you look at the provided examples, it is quite straight-forward to
+<br />
+translate to/from CF and WKT.
+<br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Therefore, the path of least resistance is option 69 (with all its potential pit falls); I think option 80 will be too much, and a lot of data writers will simply decide to add no grid mapping information at all, a worse situation than option 69.
+</em><br />
+<br />Actually ticket #80 is the path of least resistance  - in terms of CF
+<br />
+- because it uses most of existing CF descriptors.  Ticket #69
+<br />
+introduces the entire WKT structure which is very different - although
+<br />
+admittedly a better-known standard.
+<br />
+And the adoption of ticket #69 has been hampered by quite a few
+<br />
+differences in opinion, and the most important barrier is the need to
+<br />
+reconcile any inconsistencies between the CF definitions (which take
+<br />
+precedence) and the WKT definitions.
+<br />
+<br />Your approach (basically that proposed by ticket 69) is the same that
+<br />
+many have been using for some time, and unfortunately there is no way
+<br />
+of knowing if &quot;other software&quot; can read this, as it is not standard.
+<br />
+For example, the GDAL library (gdal.org) has been using this approach
+<br />
+in order to export netcdf files and read back the complete WKT
+<br />
+definition - because if you use CF-only strings you loose things like
+<br />
+datum and TOWGS84 transformation patterns.
+<br />
+<br />But it's unlikely other programs do not read it as there is no
+<br />
+&quot;standard&quot; tag for the WKT string in the CF syntax.
+<br />
+And the approach is not really satisfactory, because I had to re-write
+<br />
+conflict-detection and it is not 100% reliable.
+<br />
+<br />My advice as to which format use depends on who will use the data (and
+<br />
+what software will be used), if you want it published and conform to a
+<br />
+standard, you should wait for the CF standard to be upgraded.  If you
+<br />
+want something more pragmatic and immediate, embed the WKT string
+<br />
+which would be more readily supported by &quot;others&quot;.  There are a number
+<br />
+of examples (e.g. NARRCAP project) of organizations publishing their
+<br />
+RCM grids with complex CF metadata.
+<br />
+<br />What do you need to represent that is not in the CF-1.6 standard?
+<br />
+<br />Regards,
+<br />
+Etienne
+<br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Tim Hume
+</em><br />
+<em class="quotelev1">&gt; Bureau of Meteorology
+</em><br />
+<em class="quotelev1">&gt; ________________________________________
+</em><br />
+<em class="quotelev1">&gt; From: CF-metadata [cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Jonathan Gregory [j.m.gregory at reading.ac.uk]
+</em><br />
+<em class="quotelev1">&gt; Sent: Monday, 30 July 2012 7:10 PM
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: [CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear Tim
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There are two open CF trac tickets that relate to this issue, proposing to
+</em><br />
+<em class="quotelev1">&gt; add new conventions to store OGC information in different ways in CF. Ticket
+</em><br />
+<em class="quotelev1">&gt; 80 <a href="https://cf-pcmdi.llnl.gov/trac/ticket/80">https://cf-pcmdi.llnl.gov/trac/ticket/80</a> proposes several new attributes
+</em><br />
+<em class="quotelev1">&gt; which correspond to WKT elements that currently do not have grid_mapping
+</em><br />
+<em class="quotelev1">&gt; equivalents. Ticket 69 <a href="https://cf-pcmdi.llnl.gov/trac/ticket/69">https://cf-pcmdi.llnl.gov/trac/ticket/69</a> proposed to
+</em><br />
+<em class="quotelev1">&gt; add an attribute to record the WKT information without translation. Personally
+</em><br />
+<em class="quotelev1">&gt; I prefer the former because I am concerned about duplication and possible
+</em><br />
+<em class="quotelev1">&gt; inconsistency of information, but please have a look at the tickets and form
+</em><br />
+<em class="quotelev1">&gt; your own view, and add comments if you like. So the answer to your question
+</em><br />
+<em class="quotelev1">&gt; is that there is not yet a CF standard way to do it, but there will be.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Forwarded message from Timothy Hume &lt;T.Hume at bom.gov.au&gt; -----
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Date: Mon, 30 Jul 2012 11:36:19 +1000
+</em><br />
+<em class="quotelev2">&gt;&gt; From: Timothy Hume &lt;T.Hume at bom.gov.au&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; To: &quot;cf-metadata at cgd.ucar.edu&quot; &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: [CF-metadata] How to include EPSG codes or WKT information in a CF
+</em><br />
+<em class="quotelev2">&gt;&gt;       file [SEC=UNCLASSIFIED]
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Hi,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I am adding grid mapping information to my NetCDF files. My data are on a lon-lat grid on a spherical Earth. I can put in the standard CF attributes, grid_mapping_name etc, but also want to include the EPSG and WKT codes to help software applications that might want these. I have not been able to find out how this is done in NetCDF-CF, so am using this format:
+</em><br />
+<em class="quotelev2">&gt;&gt; =
+</em><br />
+<em class="quotelev2">&gt;&gt; int crs ;
+</em><br />
+<em class="quotelev2">&gt;&gt;                 crs:grid_mapping_name = &quot;latitude_longitude&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;                 crs:earth_radius = 6371007.0 ;
+</em><br />
+<em class="quotelev2">&gt;&gt;                 crs:prime_meridian = 0.0 ;
+</em><br />
+<em class="quotelev2">&gt;&gt;                 crs:epsg_code = 4047 ;
+</em><br />
+<em class="quotelev2">&gt;&gt;                 crs:wkt = &quot;GEOGCS[\&quot;Unspecified datum based upon the GRS 1980 Authalic Sphere\&quot;,DATUM[\&quot;Not_specified_based_on
+</em><br />
+<em class="quotelev2">&gt;&gt; _GRS_1980_Authalic_Sphere\&quot;,SPHEROID[\&quot;GRS 1980 Authalic Sphere\&quot;,6371007,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7048\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;6047\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4047\&quot;]]&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; What do other people do when including this extra grid information?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Cheers,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Tim Hume
+</em><br />
+<em class="quotelev2">&gt;&gt; Centre for Australian Weather and Climate Research
+</em><br />
+<em class="quotelev2">&gt;&gt; Bureau of Meteorology
+</em><br />
+<em class="quotelev2">&gt;&gt; Melbourne
+</em><br />
+<em class="quotelev2">&gt;&gt; Australia
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Jul 30 2012 - 20:10:25 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4629">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4630.html" title="Next message in the list">Timothy Hume: "[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4628.html" title="Previous message in the list">Etienne Tourigny: "[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4626.html" title="Message to which this message replies">Timothy Hume: "[CF-metadata] How to include EPSG codes or WKT information in a CF file [SEC=UNCLASSIFIED]"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4629" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4629" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4629" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4629" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:05 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4628.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4630.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

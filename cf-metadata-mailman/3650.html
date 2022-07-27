@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Is there a convention defining day offsets to use for monthly average time series? from Bert Jagers on 2011-08-16 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bert Jagers (bert.jagers)" />
+<meta name="Subject" content="[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?" />
+<meta name="Date" content="2011-08-16" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3649.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3651.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?</h1>
+<!-- received="Tue Aug 16 01:09:23 2011" -->
+<!-- isoreceived="20110816000923" -->
+<!-- sent="Tue, 16 Aug 2011 09:09:23 +0200" -->
+<!-- isosent="20110816070923" -->
+<!-- name="Bert Jagers" -->
+<!-- email="bert.jagers" -->
+<!-- subject="[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?" -->
+<!-- id="4E4A17A3.6090802_at_deltares.nl" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20110815150911.GF18666_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3650" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3651.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?&quot;">Next message</a> ]
+[ <a href="./3649.html" title="Jonathan Gregory: &quot;[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?&quot;">Previous message</a> ]
+[ <a href="./3649.html" title="Jonathan Gregory: &quot;[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3650" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3650" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3650" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3650" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bert Jagers &lt;<a href="mailto:bert.jagers?Subject=Re%3A%20%5BCF-metadata%5D%20Is%20there%20a%20convention%20defining%20day%20offsets%20to%20use%20for%20monthly%20average%20time%20series%3F">bert.jagers</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 16 Aug 2011 09:09:23 +0200</span><br />
+</address>
+<br />
+Thanks Jonathan,
+<br />
+<br />I didn't think of that dependency. So, if
+<br />
+<br />varN:coordinates = &quot;lat lon&quot;;
+<br />
+varN:cell_methods = &quot;lat: point lon: point&quot;;
+<br />
+<br />for *all* variables 'varN' that relate to 'lat' and 'lon' as 
+<br />
+coordinates, then the 'bounds' attributes on 'lat' and 'lon' are 
+<br />
+superfluous and can be skipped. If any one of the variables refers to 
+<br />
+'lat'/'lon' by means of a cell method other than 'point', e.g. 'mean', 
+<br />
+then it must be specified what range/cell the cell_method relates to 
+<br />
+i.e. 'bounds' should be required. That seems more like a consistency 
+<br />
+*requirement* than merely a recommendation. If 'cell_methods' is not 
+<br />
+specified on one or more variables, then the need for 'bounds' becomes 
+<br />
+more fuzzy. The discussion on the default interpretation for 
+<br />
+'cell_methods' in Section 7.3 suggests that one might distinguish 
+<br />
+between extensive quantities like 'cloud_area_fraction' and intensive 
+<br />
+quantities like 'sea_surface_height'. The former might require it, 
+<br />
+whereas it would be optional in the latter case. However, in order to 
+<br />
+avoid too complex logic, I would agree with a general recommendation to 
+<br />
+include 'bounds' when 'cell_methods' is missing on one or more variables.
+<br />
+<br />Best regards,
+<br />
+<br />Bert
+<br />
+--------
+<br />
+Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Bert
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree that it is important to distinguish whether values are points or
+</em><br />
+<em class="quotelev1">&gt; averages. This distinction is made in CF by cell_methods, which indicates
+</em><br />
+<em class="quotelev1">&gt; the interpretation for each axis. We already recommend that cell_methods be
+</em><br />
+<em class="quotelev1">&gt; included for all spatiotemporal axes, so I suppose the checker should warn
+</em><br />
+<em class="quotelev1">&gt; if this is not so. Furthermore, we already have a recommendation that bounds
+</em><br />
+<em class="quotelev1">&gt; should be included unless cell_methods says the data applies to grid-points;
+</em><br />
+<em class="quotelev1">&gt; that answers Karl's comment, I think. (I'd forgotten this recommendation.)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   
+</em><br />
+<br /><br />&nbsp;
+<br />
+<br />DISCLAIMER: This message is intended exclusively for the addressee(s) and may contain confidential and privileged information. If you are not the intended recipient please notify the sender immediately and destroy this message. Unauthorized use, disclosure or copying of this message is strictly prohibited.
+<br />
+The foundation 'Stichting Deltares', which has its seat at Delft, The Netherlands, Commercial Registration Number 41146461, is not liable in any way whatsoever for consequences and/or damages resulting from the improper, incomplete and untimely dispatch, receipt and/or content of this e-mail.
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Aug 16 2011 - 01:09:23 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3650">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3651.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3649.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3649.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3650" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3650" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3650" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3650" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:49 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3649.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3651.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

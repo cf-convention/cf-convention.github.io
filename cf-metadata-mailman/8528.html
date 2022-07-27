@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Add new integer types to CF? from Dave Allured - NOAA Affiliate on 2017-09-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Dave Allured - NOAA Affiliate (dave.allured)" />
+<meta name="Subject" content="[CF-metadata] Add new integer types to CF?" />
+<meta name="Date" content="2017-09-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8527.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8529.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Add new integer types to CF?</h1>
+<!-- received="Tue Sep 26 16:12:37 2017" -->
+<!-- isoreceived="20170926151237" -->
+<!-- sent="Tue, 26 Sep 2017 16:12:37 -0600" -->
+<!-- isosent="20170926221237" -->
+<!-- name="Dave Allured - NOAA Affiliate" -->
+<!-- email="dave.allured" -->
+<!-- subject="[CF-metadata] Add new integer types to CF?" -->
+<!-- id="CALqwTFO_W2bgMKKT5Nachtc8ObBav_1gLgSWd4qg4yXx0-hb_Q_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="7f1b67ae-eeb8-3b0c-05da-3fb0999f305f_at_uci.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8528" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8529.html" accesskey="d" title="Manning, Evan M: &quot;[CF-metadata] Add new integer types to CF?&quot;">Next message</a> ]
+[ <a href="./8527.html" title="Jim Biard: &quot;[CF-metadata] Add new integer types to CF?&quot;">Previous message</a> ]
+[ <a href="./8526.html" title="Charlie Zender: &quot;[CF-metadata] Add new integer types to CF?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8529.html" accesskey="t" title="Manning, Evan M: &quot;[CF-metadata] Add new integer types to CF?&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8528" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8528" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8528" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8528" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Dave Allured - NOAA Affiliate &lt;<a href="mailto:dave.allured?Subject=Re%3A%20%5BCF-metadata%5D%20Add%20new%20integer%20types%20to%20CF%3F">dave.allured</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 26 Sep 2017 16:12:37 -0600</span><br />
+</address>
+<br />
+Charlie et al,
+<br />
+<br />There are unresolved issues for _Unsigned and type equivalence.  I request
+<br />
+progress on the numeric types, and deal with the other issues separately.
+<br />
+<br />--------------------------
+<br />
+Current CF 1.8 draft (currently unchanged from CF 1.7):
+<br />
+<br />2.2. Data Types
+<br />
+<br />The netCDF data types char, byte, short, int, float or real, and double are
+<br />
+all acceptable. The char type is not intended for numeric data. One byte
+<br />
+numeric data should be stored using the byte data type. All integer types
+<br />
+are treated by the netCDF interface as signed. It is possible to treat the
+<br />
+byte type as unsigned by using the NUG convention of indicating the
+<br />
+unsigned range using the valid_min, valid_max, or valid_range attributes.
+<br />
+<br />[Second paragraph on strings, not to be changed]
+<br />
+<br />-------------------------
+<br />
+Here is my alternate proposal with almost minimal changes from the current
+<br />
+version.  I hope the new subtitles will aid future discussions:
+<br />
+<br />2.2.  Data Types
+<br />
+<br />The netCDF data types char, byte, unsigned byte, short, unsigned short,
+<br />
+int, unsigned int, int64, unsigned int64, float or real, and double are all
+<br />
+acceptable.  The char type is not intended for numeric data.  One byte
+<br />
+numeric data should be stored using the byte or unsigned byte data types.
+<br />
+<br />2.2.1  Unsigned Integers
+<br />
+<br />It is possible to treat the byte type as unsigned by using the NUG
+<br />
+convention of indicating the unsigned range using the valid_min, valid_max,
+<br />
+or valid_range attributes.
+<br />
+<br />2.2.2  Character Strings
+<br />
+<br />[Former paragraph on strings, unchanged]
+<br />
+<br />Comments are welcome.
+<br />
+<br />--Dave
+<br />
+<br /><br />On Tue, Sep 26, 2017 at 2:39 PM, Charlie Zender &lt;zender at uci.edu&gt; wrote:
+<br />
+<br /><em class="quotelev1">&gt; If there is strong opposition to replacing the valid_* method in
+</em><br />
+<em class="quotelev1">&gt; CF &lt;= 1.7 with the _Unsigned method in CF 1.8 then please speak-up.
+</em><br />
+<br /><br />&lt;snip&gt;
+<br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170926/4703c00f/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170926/4703c00f/attachment.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Sep 26 2017 - 16:12:37 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8528">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8529.html" title="Next message in the list">Manning, Evan M: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8527.html" title="Previous message in the list">Jim Biard: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8526.html" title="Message to which this message replies">Charlie Zender: "[CF-metadata] Add new integer types to CF?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8529.html" title="Next message in this discussion thread">Manning, Evan M: "[CF-metadata] Add new integer types to CF?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8528" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8528" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8528" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8528" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:16 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8527.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8529.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

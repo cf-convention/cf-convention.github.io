@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF conventions for storing weather system track data. from John Caron on 2009-10-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] CF conventions for storing weather system track data." />
+<meta name="Date" content="2009-10-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2235.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2237.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF conventions for storing weather system track data.</h1>
+<!-- received="Mon Oct  5 11:45:02 2009" -->
+<!-- isoreceived="20091005104502" -->
+<!-- sent="Mon, 05 Oct 2009 11:45:02 -0600" -->
+<!-- isosent="20091005174502" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] CF conventions for storing weather system track data." -->
+<!-- id="4ACA309E.5020507_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4ACA29B3.8070607_at_llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2236" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2237.html" accesskey="d" title="John Caron: &quot;[CF-metadata] CF conventions for storing weather system track data.&quot;">Next message</a> ]
+[ <a href="./2235.html" title="Karl Taylor: &quot;[CF-metadata] CF conventions for storing weather system track data.&quot;">Previous message</a> ]
+[ <a href="./2235.html" title="Karl Taylor: &quot;[CF-metadata] CF conventions for storing weather system track data.&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2236" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2236" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2236" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2236" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20conventions%20for%20storing%20weather%20system%20track%20data.">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 05 Oct 2009 11:45:02 -0600</span><br />
+</address>
+<br />
+Hi Kevin:
+<br />
+<br />It looks like your use case would be covered by these proposed conventions:
+<br />
+<br /><a href="https://cf-pcmdi.llnl.gov/trac/wiki/PointObservationConventions">https://cf-pcmdi.llnl.gov/trac/wiki/PointObservationConventions</a>
+<br />
+<br />This proposal would classify your data as &quot;trajectory data&quot;, and it looks like you are using the &quot;contiguous ragged array&quot; encoding. The &quot;ragged array&quot; allows multiple trajectories with different lengths in the same file. The &quot;contiguous&quot; stores all the data for each trajectory next to each other, to optimize reading all the data for one trajectory. 
+<br />
+<br />So Im thinking that it could be handled by section 5.8.3.3. You could also use 5.8.3.4  &quot;Ragged array (non-contiguous)&quot; if its not possible or important to group the trajectory data together. It looks like you may already be doing that with your index(record) variable, assuming that has the track index in it.
+<br />
+<br />We are currently finalizing this proposal, so your feedback now would be timely.
+<br />
+<br />Other feedback:
+<br />
+<br />CF would encourage you to use more descriptive variable names if possible, and also to add units, long-name and standard_name attributes to each data variable. The coordinate variable must have units and should have description and standard_name. There's probably some other details to iron out also.
+<br />
+<br />John Caron
+<br />
+Unidata
+<br />
+<br /><br /><br /><br />Karl Taylor wrote:
+<br />
+<em class="quotelev1">&gt; Hi all,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Here is an inquiry from Kevin Hodges.  I think CF would treat these 
+</em><br />
+<em class="quotelev1">&gt; something like weather balloons.  Can anyone help?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; thanks,
+</em><br />
+<em class="quotelev1">&gt; Karl
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; p.s. please copy Kevin kih at mail.nerc-essc.ac.uk because I think he's not 
+</em><br />
+<em class="quotelev1">&gt; on our list.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;       I was wondering if you know of anyone who has thought about a netcdf
+</em><br />
+<em class="quotelev1">&gt;    convention for weather systems tracks. I know there are various 
+</em><br />
+<em class="quotelev1">&gt; conventions
+</em><br />
+<em class="quotelev1">&gt;    for chemical tracer trajectories but these are not really suitable for
+</em><br />
+<em class="quotelev1">&gt;    weather system tracks.
+</em><br />
+<em class="quotelev1">&gt;       I have been giving this some thought and have produced something like
+</em><br />
+<em class="quotelev1">&gt;    the following CDL produced from one of my track files. This could off 
+</em><br />
+<em class="quotelev1">&gt; coarse    be fleshed out further with more attributes. It would be nice 
+</em><br />
+<em class="quotelev1">&gt; to tie this
+</em><br />
+<em class="quotelev1">&gt;    to the ability to display weather system tracks in software such as 
+</em><br />
+<em class="quotelev1">&gt; vcdat.
+</em><br />
+<em class="quotelev1">&gt;    I've seen GEON IDV can display tracks but again the format is not really
+</em><br />
+<em class="quotelev1">&gt;    very suitable for weather system tracks where you can have multiple 
+</em><br />
+<em class="quotelev1">&gt; tracks
+</em><br />
+<em class="quotelev1">&gt;    of different lengths and a wide range of information associated with 
+</em><br />
+<em class="quotelev1">&gt; the    tracks.
+</em><br />
+<em class="quotelev1">&gt;    netcdf ff_trs.nctrack {
+</em><br />
+<em class="quotelev1">&gt; dimensions:
+</em><br />
+<em class="quotelev1">&gt;     tracks = 497 ;
+</em><br />
+<em class="quotelev1">&gt;     record = UNLIMITED ; // (9706 currently)
+</em><br />
+<em class="quotelev1">&gt; variables:
+</em><br />
+<em class="quotelev1">&gt;     int TRACK_ID(tracks) ;
+</em><br />
+<em class="quotelev1">&gt;         TRACK_ID:add_fld_num = 7 ;
+</em><br />
+<em class="quotelev1">&gt;         TRACK_ID:tot_add_fld_num = 21 ;
+</em><br />
+<em class="quotelev1">&gt;         TRACK_ID:loc_flags = 1, 1, 1, 1, 1, 1, 1 ;
+</em><br />
+<em class="quotelev1">&gt;     int FIRST_PT(tracks) ;
+</em><br />
+<em class="quotelev1">&gt;     int NUM_PTS(tracks) ;
+</em><br />
+<em class="quotelev1">&gt;     int index(record) ;
+</em><br />
+<em class="quotelev1">&gt;     int time(record) ;
+</em><br />
+<em class="quotelev1">&gt;     float longitude(record) ;
+</em><br />
+<em class="quotelev1">&gt;     float latitude(record) ;
+</em><br />
+<em class="quotelev1">&gt;     float intensity(record) ;
+</em><br />
+<em class="quotelev1">&gt;     float long_1(record) ;
+</em><br />
+<em class="quotelev1">&gt;         long_1:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float lat_1(record) ;
+</em><br />
+<em class="quotelev1">&gt;         lat_1:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float addfld_1(record) ;
+</em><br />
+<em class="quotelev1">&gt;         addfld_1:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float long_2(record) ;
+</em><br />
+<em class="quotelev1">&gt;         long_2:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float lat_2(record) ;
+</em><br />
+<em class="quotelev1">&gt;         lat_2:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float addfld_2(record) ;
+</em><br />
+<em class="quotelev1">&gt;         addfld_2:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float long_3(record) ;
+</em><br />
+<em class="quotelev1">&gt;         long_3:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float lat_3(record) ;
+</em><br />
+<em class="quotelev1">&gt;         lat_3:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float addfld_3(record) ;
+</em><br />
+<em class="quotelev1">&gt;         addfld_3:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float long_4(record) ;
+</em><br />
+<em class="quotelev1">&gt;         long_4:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float lat_4(record) ;
+</em><br />
+<em class="quotelev1">&gt;         lat_4:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float addfld_4(record) ;
+</em><br />
+<em class="quotelev1">&gt;         addfld_4:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float long_5(record) ;
+</em><br />
+<em class="quotelev1">&gt;         long_5:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float lat_5(record) ;
+</em><br />
+<em class="quotelev1">&gt;         lat_5:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float addfld_5(record) ;
+</em><br />
+<em class="quotelev1">&gt;         addfld_5:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float long_6(record) ;
+</em><br />
+<em class="quotelev1">&gt;         long_6:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float lat_6(record) ;
+</em><br />
+<em class="quotelev1">&gt;         lat_6:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float addfld_6(record) ;
+</em><br />
+<em class="quotelev1">&gt;         addfld_6:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float long_7(record) ;
+</em><br />
+<em class="quotelev1">&gt;         long_7:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float lat_7(record) ;
+</em><br />
+<em class="quotelev1">&gt;         lat_7:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt;     float addfld_7(record) ;
+</em><br />
+<em class="quotelev1">&gt;         addfld_7:missing_value = 1.e+12f ;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Oct 05 2009 - 11:45:02 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2236">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2237.html" title="Next message in the list">John Caron: "[CF-metadata] CF conventions for storing weather system track data."</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2235.html" title="Previous message in the list">Karl Taylor: "[CF-metadata] CF conventions for storing weather system track data."</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2235.html" title="Message to which this message replies">Karl Taylor: "[CF-metadata] CF conventions for storing weather system track data."</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2236" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2236" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2236" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2236" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:22 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2235.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2237.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

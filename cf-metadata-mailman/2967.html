@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] point observation data in CF 1.4 from CJ Beegle-Krause on 2010-11-04 (cf-metadata-mailman)</title>
+<meta name="Author" content="CJ Beegle-Krause (CJ.Beegle-Krause)" />
+<meta name="Subject" content="[CF-metadata] point observation data in CF 1.4" />
+<meta name="Date" content="2010-11-04" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2966.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2968.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] point observation data in CF 1.4</h1>
+<!-- received="Thu Nov  4 13:57:44 2010" -->
+<!-- isoreceived="20101104135744" -->
+<!-- sent="Thu, 04 Nov 2010 12:57:44 -0700" -->
+<!-- isosent="20101104195744" -->
+<!-- name="CJ Beegle-Krause" -->
+<!-- email="CJ.Beegle-Krause" -->
+<!-- subject="[CF-metadata] point observation data in CF 1.4" -->
+<!-- id="4CD31038.2050807_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4CD2DC76.7060702_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2967" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2968.html" accesskey="d" title="Yilmaz Arslanoglu: &quot;[CF-metadata] interpreting time and vertical axis&quot;">Next message</a> ]
+[ <a href="./2966.html" title="Ben Hetland: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Previous message</a> ]
+[ <a href="./2965.html" title="Christopher Barker: &quot;[CF-metadata] point observation data in CF 1.4&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2967" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2967" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2967" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2967" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: CJ Beegle-Krause &lt;<a href="mailto:CJ.Beegle-Krause?Subject=Re%3A%20%5BCF-metadata%5D%20point%20observation%20data%20in%20CF%201.4">CJ.Beegle-Krause</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 04 Nov 2010 12:57:44 -0700</span><br />
+</address>
+<br />
+Christopher Barker wrote:
+<br />
+<em class="quotelev1">&gt; On 11/3/10 7:19 PM, John Caron wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) It seems clear that at each time step, you need to write out the data
+</em><br />
+<em class="quotelev2">&gt;&gt; for whatever particles currently exist. I assume that if you wanted to
+</em><br />
+<em class="quotelev2">&gt;&gt; break up the data for a very long run, you would partition by time, ie
+</em><br />
+<em class="quotelev2">&gt;&gt; time steps 1-1000, 1001-2000, etc. would be in seperate files.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; probably, yes.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) Apparently the common read pattern is to retrieve the set of
+</em><br />
+<em class="quotelev2">&gt;&gt; particles at a given time step. If so, that makes things easier.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; yes -- or a sequence of time steps, but also easy.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 3) I assume that you want to be able to figure out an individual
+</em><br />
+<em class="quotelev2">&gt;&gt; particle's trajectory, even if that doesnt need to be optimized for 
+</em><br />
+<em class="quotelev2">&gt;&gt; speed.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It should be possible, yes, but correct, that is the less common use 
+</em><br />
+<em class="quotelev1">&gt; case, and thus less important for good performance. And with particles 
+</em><br />
+<em class="quotelev1">&gt; coming and going, a mess anyway.
+</em><br />
+There are a number of cases other than time steps, none of which is more 
+<br />
+common than getting a time slice, but should be considered
+<br />
+-Particles that have passed through a particle space (area or volume)
+<br />
+-Particles that have changed status at some time during their pathway
+<br />
+-Particles that have a particular age
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) is the avg number (Navg) of particles that exist much smaller, or
+</em><br />
+<em class="quotelev2">&gt;&gt; approx the same as the max number (Nmax) that exist at one time step?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think this is very use-case dependent -- how would that change what 
+</em><br />
+<em class="quotelev1">&gt; we might want to do?
+</em><br />
+Examples
+<br />
+1 Single release trajectory - so all particles start at same time
+<br />
+2.Continuous release trajectory - particles start at same or traveling 
+<br />
+location, and then the particles are followed
+<br />
+3 Variation in release points - so looking at grouping by end points or 
+<br />
+pathway (e.g. evaluation of particle receptors, and where particles come 
+<br />
+from that contact those receptors)
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) How much data is associated with each particle at a given time step
+</em><br />
+<em class="quotelev2">&gt;&gt; (just an estimate needed here - 10 bytes? 1000 bytes?)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; For us, it's currently about 40 bytes, but we'll be adding an unknown 
+</em><br />
+<em class="quotelev1">&gt; amount in the future -- maybe up to a couple hundred.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; A more nasty example could be to represent an oil slick's shape and
+</em><br />
+<em class="quotelev2">&gt;&gt; position with a polygon. The number of vertices of that polygon would be
+</em><br />
+<em class="quotelev2">&gt;&gt; highly variable through time. (This is a typical GIS-like 
+</em><br />
+<em class="quotelev2">&gt;&gt; representation.)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think that is an entirely different use-case -- and one probably bet 
+</em><br />
+<em class="quotelev1">&gt; handles with GIS format -- although GIS does time (and 3d) really badly.
+</em><br />
+Agreed.
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; How one decides to partition I think can depend a lot on the
+</em><br />
+<em class="quotelev2">&gt;&gt; application. Sometimes splitting them on data type can be more
+</em><br />
+<em class="quotelev2">&gt;&gt; appropriate. In a recent case I had, the data were to be transferred to
+</em><br />
+<em class="quotelev2">&gt;&gt; a client computer over the Internet for viewing locally. In that case
+</em><br />
+<em class="quotelev2">&gt;&gt; reducing the content of the file to the absolute minimum set of
+</em><br />
+<em class="quotelev2">&gt;&gt; properties (that the client needed in order to visualize) became
+</em><br />
+<em class="quotelev2">&gt;&gt; paramount. Even a fast Internet connection does have bandwidth
+</em><br />
+<em class="quotelev2">&gt;&gt; limitations... :-)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think that's a little different than partitioning -- it's more 
+</em><br />
+<em class="quotelev1">&gt; subsetting the data, and yes, I think we would often want to only put 
+</em><br />
+<em class="quotelev1">&gt; the relevant data for a given application in a given file.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; My thought is that there would be very few required variables (but 
+</em><br />
+<em class="quotelev1">&gt; hopefully some standard names for many more!)
+</em><br />
+It seems like we're missing something in generalizing the coordinate 
+<br />
+from thinking so much about (x.y) or (x.y.z) as now subordinate to 
+<br />
+time.  With trajectories, time is the prime coordinate, and in 
+<br />
+geophysical applications, depth/height z seems like the next most 
+<br />
+important - data is more likely to be on same or similar z levels than 
+<br />
+change z levels in many applications.  Then come the x,y coordiate at 
+<br />
+tertiary.
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 3) I assume that you want to be able to figure out an individual
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; particle's trajectory, even if that doesnt need to be optimized
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; for speed.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Not my primary need, but if an object is &quot;tracked&quot; like that it would
+</em><br />
+<em class="quotelev2">&gt;&gt; not be unlikely that the trajectory might need to be accessed
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;interactively&quot;, eg. while a user is viewing a visualization of the data
+</em><br />
+<em class="quotelev2">&gt;&gt; directly on screen. Does that count as &quot;optimized for speed&quot;?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; well, yes. IIUC, then if we group by time step, then you'd essentially 
+</em><br />
+<em class="quotelev1">&gt; have to read all the data to follow a single particle through time. If 
+</em><br />
+<em class="quotelev1">&gt; that was a common need, then the data should be arranged differently. 
+</em><br />
+<em class="quotelev1">&gt; But then, the already-proposed standard for &quot;trajectories&quot; would work 
+</em><br />
+<em class="quotelev1">&gt; well for that already.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; It also wouldn't be very atypical if
+</em><br />
+<em class="quotelev2">&gt;&gt; this amount is then to be multiplied by say 20000 particles per time 
+</em><br />
+<em class="quotelev2">&gt;&gt; step.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; or more -- we use 1000 typically for surface trajectories, and 10,000 
+</em><br />
+<em class="quotelev1">&gt; for 3-d at a minimum -- if it's a long term spill, it could be a lot 
+</em><br />
+<em class="quotelev1">&gt; more (i.e.  the event in the Gulf this summer?)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think we're converging on something here.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I just got some sample Sintef files sent to me, and I've been working 
+</em><br />
+<em class="quotelev1">&gt; on my own sample -- I'll see if I can reconcile those, and post 
+</em><br />
+<em class="quotelev1">&gt; something here.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; By the way -- it would be nice to have something that could 
+</em><br />
+<em class="quotelev1">&gt; accommodate ASA's models, too -- is there anyone from ASA on this list 
+</em><br />
+<em class="quotelev1">&gt; and paying attention?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -Chris
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<span id="received"><dfn>Received on</dfn> Thu Nov 04 2010 - 13:57:44 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2967">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2968.html" title="Next message in the list">Yilmaz Arslanoglu: "[CF-metadata] interpreting time and vertical axis"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2966.html" title="Previous message in the list">Ben Hetland: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2965.html" title="Message to which this message replies">Christopher Barker: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2967" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2967" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2967" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2967" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2966.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2968.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

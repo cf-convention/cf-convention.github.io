@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] same attribute name in variable and in global from Bärring Lars on 2019-03-15 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bärring Lars (Lars.Barring)" />
+<meta name="Subject" content="[CF-metadata] same attribute name in variable and in global" />
+<meta name="Date" content="2019-03-15" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9617.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9619.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] same attribute name in variable and in global</h1>
+<!-- received="Fri Mar 15 06:48:26 2019" -->
+<!-- isoreceived="20190315064826" -->
+<!-- sent="Fri, 15 Mar 2019 12:48:26 +0000" -->
+<!-- isosent="20190315124826" -->
+<!-- name="Bärring Lars" -->
+<!-- email="Lars.Barring" -->
+<!-- subject="[CF-metadata] same attribute name in variable and in global" -->
+<!-- id="02047865DE893F45802A039AA761834E018F550432_at_WINVMSERV463.ad.smhi.se" -->
+<!-- charset="Windows-1252" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9618" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9619.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] same attribute name in variable and in global&quot;">Next message</a> ]
+[ <a href="./9617.html" title="Jonathan Gregory: &quot;[CF-metadata] Proposal for new standard names&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./9619.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] same attribute name in variable and in global&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9618" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9618" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9618" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9618" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bärring Lars &lt;<a href="mailto:Lars.Barring?Subject=Re%3A%20%5BCF-metadata%5D%20same%20attribute%20name%20in%20variable%20and%20in%20global">Lars.Barring</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 15 Mar 2019 12:48:26 +0000</span><br />
+</address>
+<br />
+Dear all,
+<br />
+<br />I have come across many CMIP5 files that have the same attribute [name] attached to the data variable as found in the globals.
+<br />
+<br />In particular it seems that CMOR was writing variable processing history attached to the variable, and more general file processing in the global history.
+<br />
+<br />I have also seen that &quot;comment&quot; sometimes occur both as global and as variable attribute.
+<br />
+<br />If such a duplication occurs, CF writes:
+<br />
+&quot;When an attribute appears both globally and as a variable attribute, the variable?s version has precedence.&quot;
+<br />
+<br />My interpretation of this is that if there are contradictory information then the variable's attribute has precedence, but otherwise it does not invalidate or overshadows what is in the global attribute.
+<br />
+<br />However, the data model presented in the GMD paper (<a href="https://www.geosci-model-dev.net/10/4619/2017/">https://www.geosci-model-dev.net/10/4619/2017/</a> page 4629, [page 11], under &quot;4.1 The field construct&quot;) presents a more restrictive interpretation:
+<br />
+&quot;In the data model, we consider that netCDF global file attributes apply to every data variable in the file, except where they are superseded by netCDF data variable attributes with the same name.&quot;
+<br />
+<br />I understand this to mean that if the same attributes (e.g. comment or history) is present both as global and variable attribute, then the global attribute is overshadowed (as if it did not exist at all)?
+<br />
+<br />Is this correct? If so, is this the best solution?
+<br />
+<br />Would not concatenating the information contained in each (putting the variable text first) be a more appropriate way to resolve the situation (and thus specify in the data model)?
+<br />
+<br /><br />Kind regards,
+<br />
+Lars
+<br />
+<br /><pre>
+--
+Lars B?rring
+FDr, Forskare
+PhD, Research Scientist
+SMHI  /  Swedish Meteorological and Hydrological Institute
+Rossby Centre
+SE - 601 76 NORRK?PING
+<a href="http://www.smhi.se">http://www.smhi.se</a>&lt;<a href="http://www.smhi.se/">http://www.smhi.se/</a>&gt;
+E-post / Email: lars.barring at smhi.se&lt;mailto:lars.barring at smhi.se&gt;
+Tel / Phone: +46 (0)11 495 8604
+Fax: +46 (0)11 495 8001
+Bes?ksadress / Visiting address: Folkborgsv?gen 17
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20190315/11add3df/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20190315/11add3df/attachment.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Mar 15 2019 - 06:48:26 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9618">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9619.html" title="Next message in the list">Jim Biard: "[CF-metadata] same attribute name in variable and in global"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9617.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Proposal for new standard names"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./9619.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] same attribute name in variable and in global"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./9619.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] same attribute name in variable and in global"</a></li>
+<li><dfn>Reply</dfn>: <a href="./9632.html" title="Message sent in reply to this message">David Hassell: "[CF-metadata] same attribute name in variable and in global"</a></li>
+<li><dfn>Reply</dfn>: <a href="./9646.html" title="Message sent in reply to this message">Chris Barker - NOAA Federal: "[CF-metadata] same attribute name in variable and in global"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9618" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9618" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9618" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9618" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:34 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9617.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9619.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

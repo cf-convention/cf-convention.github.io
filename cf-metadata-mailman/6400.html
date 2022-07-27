@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] normalized_radar_backscatter_coefficient from Jonathan Gregory on 2014-07-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] normalized_radar_backscatter_coefficient" />
+<meta name="Date" content="2014-07-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6399.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6401.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] normalized_radar_backscatter_coefficient</h1>
+<!-- received="Wed Jul 30 07:23:00 2014" -->
+<!-- isoreceived="20140730062300" -->
+<!-- sent="Wed, 30 Jul 2014 14:23:00 +0100" -->
+<!-- isosent="20140730132300" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] normalized_radar_backscatter_coefficient" -->
+<!-- id="20140730132300.GC12231_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6400" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6401.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  volume integral&quot;">Next message</a> ]
+[ <a href="./6399.html" title="Hedley, Mark: &quot;[CF-metadata] volume integral&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6400" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6400" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6400" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6400" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20normalized_radar_backscatter_coefficient">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 30 Jul 2014 14:23:00 +0100</span><br />
+</address>
+<br />
+Dear John
+<br />
+<br /><em class="quotelev1">&gt; As the radiation wavelength and incidence angle cannot vary over the image
+</em><br />
+<em class="quotelev1">&gt; to obtain reliable measurements, the radiation_wavelength and
+</em><br />
+<em class="quotelev1">&gt; nominal_incidence_angle should be specified as attributes.
+</em><br />
+<br />That would of course be possible in netCDF, but it is not consistent with the
+<br />
+approach of CF. CF uses attributes to describe the structure of the data
+<br />
+storage, and to point to variables which contain geophysical metadata
+<br />
+(especially coordinates of various kinds), but CF attributes do not contain
+<br />
+geophysical information (see Appendix A). CF always uses coordinates for
+<br />
+geophysical information, even if single-valued. There are various reasons for
+<br />
+that which maybe have already come up in this discussion, including:
+<br />
+<br />* It keeps the convention simple by limiting the number of attributes that are
+<br />
+defined by CF. Names of geophysical quantities (like radiation_wavelength and
+<br />
+nominal_incidence_angle) are entries in a lexicon (the standard name table)
+<br />
+rather than being defined by the convention itself.
+<br />
+<br />* Geophysical quantities (including radiation_wavelength and
+<br />
+nominal_incidence_angle) have units. An attribute can't have an attribute,
+<br />
+and it is inflexible if the units have to be defined, rather than allowing
+<br />
+any physically equivalent unit for a quantity. (We have this inflexibility
+<br />
+in the grid_mapping attributes of Appendix F, unfortunately.)
+<br />
+<br />* In most cases, there may arise a need for them to be multivalued. In some
+<br />
+cases it is obvious. We could use an attribute for the height above the ground,
+<br />
+for example, if it is was single-valued, but it's obvious that we also need
+<br />
+multivalued coordinate variables for this, and it's simpler to use the same
+<br />
+machinery in both cases. I'm sure you're right that in your application you
+<br />
+don't need these quantities to be multivalued, but why rule it out? Other
+<br />
+related applications might want them to be multivalued.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Jul 30 2014 - 07:23:00 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6400">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6401.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  volume integral"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6399.html" title="Previous message in the list">Hedley, Mark: "[CF-metadata] volume integral"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6400" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6400" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6400" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6400" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:45 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6399.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6401.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to represent &quot;6-hourly diurnal monthly means&quot; in CF ? from John Caron on 2012-02-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] How to represent &quot;6-hourly diurnal monthly means&quot; in CF ?" />
+<meta name="Date" content="2012-02-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4162.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4164.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to represent &quot;6-hourly diurnal monthly means&quot; in CF ?</h1>
+<!-- received="Mon Feb 20 10:27:34 2012" -->
+<!-- isoreceived="20120220102734" -->
+<!-- sent="Mon, 20 Feb 2012 10:27:34 -0700" -->
+<!-- isosent="20120220172734" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] How to represent &quot;6-hourly diurnal monthly means&quot; in CF ?" -->
+<!-- id="4F428286.6050704_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4163" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4164.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] How to represent &#0034;6-hourly diurnal monthly means&#0034; in CF ?&quot;">Next message</a> ]
+[ <a href="./4162.html" title="Egil St&#0248;ren: &quot;[CF-metadata] When are the units attribute mandatory?&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4164.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] How to represent &#0034;6-hourly diurnal monthly means&#0034; in CF ?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4163" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4163" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4163" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4163" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20represent%20%226-hourly%20diurnal%20monthly%20means%22%20in%20CF%20%3F">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 20 Feb 2012 10:27:34 -0700</span><br />
+</address>
+<br />
+Im working with NOAA's CFSR dataset, reading it into the CDM, which 
+<br />
+essentially means converting GRIB into CF/netCDF.
+<br />
+<br />ref:
+<br />
+<a href="http://nomads.ncdc.noaa.gov/data.php#cfs-reanal-data">http://nomads.ncdc.noaa.gov/data.php#cfs-reanal-data</a>
+<br />
+<a href="http://dss.ucar.edu/datasets/ds093.2/">http://dss.ucar.edu/datasets/ds093.2/</a>
+<br />
+<br />from NCAR's DSS page:
+<br />
+<br />&nbsp;&nbsp;&quot;CFSR monthly atmospheric, oceanic and land surface output products 
+<br />
+are available as 6-hourly diurnal monthly means (00Z, 06Z, 12Z, and 18Z)&quot;
+<br />
+<br />If I understand this correctly, the monthly mean data is as follows:
+<br />
+<br />&nbsp;&nbsp;&nbsp;for each month:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for each day of the month:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compute separate averages of the data at the 0,6,12, and 18Z 
+<br />
+time coordinate.
+<br />
+<br />So one ends up with 4 time coordinates per month, and the data 
+<br />
+represents the average for that month at that time. The time coordinate 
+<br />
+is not a real calendar date, for example for the month 2008-08, the time 
+<br />
+coordinate is not really
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;2008-08-01T00:00:00.000Z
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;2008-08-01T06:00:00.000Z
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;2008-08-01T12:00:00.000Z
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;2008-08-01T18:00:00.000Z
+<br />
+<br />but more like:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;2008-08-*T00:00:00.000Z
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;2008-08-*T06:00:00.000Z
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;2008-08-*T12:00:00.000Z
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;2008-08-*T18:00:00.000Z
+<br />
+<br />where the * indicates an average over the days in that month.
+<br />
+<br />&nbsp;From
+<br />
+<br /><a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/cf-conventions.html#climatological-statistics">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/cf-conventions.html#climatological-statistics</a>
+<br />
+<br />It appears that CF would represent this as:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;time=4;
+<br />
+&nbsp;&nbsp;&nbsp;nv=2;
+<br />
+<br />&nbsp;&nbsp;variables:
+<br />
+&nbsp;&nbsp;&nbsp;float temperature(time,lat,lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature:long_name=&quot;surface air temperature&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature:cell_methods=&quot;time: point within days time: mean over days&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature:units=&quot;K&quot;;
+<br />
+<br />&nbsp;&nbsp;double time(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:climatology=&quot;climatology_bounds&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units=&quot;days since 2008-01-01&quot;;
+<br />
+<br />&nbsp;&nbsp;double climatology_bounds(time,nv);
+<br />
+<br />data: 
+<br />
+&nbsp;&nbsp;&nbsp;time=&quot;2008-08-01T00:00Z&quot;,&quot;2008-08-01T06:00Z&quot;,&quot;2008-08-01T12:00Z&quot;,&quot;2008-08-01T18:00Z&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;climatology_bounds=&quot;2008-08-01T00:00Z&quot;, &quot;2008-08-31T00:00Z&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;2008-08-01T06:00Z&quot;, &quot;2008-08-31T06:00Z&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;2008-08-01T12:00Z&quot;, &quot;2008-08-31T12:00Z&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;2008-08-01T18:00Z&quot;, &quot;2008-08-31T18:00Z&quot; ;
+<br />
+<br />Using &quot;point within days&quot; because  we have an instantaneous quantity.
+<br />
+<br />However, im not sure what this sentence in 7.4 means: &quot;When considering 
+<br />
+intervals within days, if the earlier time of day is equal to the later 
+<br />
+time of day, then the method is applied to a full 24 hour day.&quot;
+<br />
+<br /><br />Another case is when the data are on time intervals, for example &quot;Total 
+<br />
+Precipitation Accumulation&quot;. In this case, the original data are on time 
+<br />
+intervals which i represent as (start,end) dates:
+<br />
+<br />2008-08-01T00:00:00.000Z, 2008-08-01T00:00:06.000Z
+<br />
+2008-08-01T06:00:00.000Z, 2008-08-01T00:00:12.000Z
+<br />
+2008-08-01T12:00:00.000Z, 2008-08-01T00:00:18.000Z
+<br />
+2008-08-01T18:00:00.000Z, 2008-08-01T00:00:24.000Z
+<br />
+2008-08-02T00:00:00.000Z, 2008-08-02T00:00:06.000Z
+<br />
+2008-08-02T06:00:00.000Z, 2008-08-02T00:00:12.000Z
+<br />
+2008-08-02T12:00:00.000Z, 2008-08-02T00:00:18.000Z
+<br />
+2008-08-02T18:00:00.000Z, 2008-08-02T00:00:24.000Z
+<br />
+2008-08-03T00:00:00.000Z, 2008-08-03T00:00:06.000Z
+<br />
+...
+<br />
+<br />which are are averaged over days, giving 4 averages for each month, 
+<br />
+which i denote as:
+<br />
+<br />2008-08-*T00:00:00.000Z, 2008-08-*T00:00:06.000Z
+<br />
+2008-08-*T06:00:00.000Z, 2008-08-*T00:00:12.000Z
+<br />
+2008-08-*T12:00:00.000Z, 2008-08-*T00:00:18.000Z
+<br />
+2008-08-*T18:00:00.000Z, 2008-08-*T00:00:24.000Z
+<br />
+<br />So perhaps this is:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;time=4;
+<br />
+&nbsp;&nbsp;&nbsp;nv=2;
+<br />
+<br />&nbsp;&nbsp;variables:
+<br />
+&nbsp;&nbsp;&nbsp;float precipitation(time,lat,lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precipitation:long_name=&quot;surface air temperature&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precipitation:cell_methods=&quot;time: sum within days time: mean over days&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precipitation:units=&quot;K&quot;;
+<br />
+<br />&nbsp;&nbsp;double time(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:climatology=&quot;climatology_bounds&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units=&quot;days since 2008-01-01&quot;;
+<br />
+<br />&nbsp;&nbsp;double climatology_bounds(time,nv);
+<br />
+<br />data: 
+<br />
+&nbsp;&nbsp;&nbsp;time=&quot;2008-08-01T03:00Z&quot;,&quot;2008-08-01T09:00Z&quot;,&quot;2008-08-01T15:00Z&quot;,&quot;2008-08-01T21:00Z&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;climatology_bounds=&quot;2008-08-01T00:00Z&quot;, &quot;2008-08-31T06:00Z&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;2008-08-01T06:00Z&quot;, &quot;2008-08-31T12:00Z&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;2008-08-01T12:00Z&quot;, &quot;2008-08-31T18:00Z&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;2008-08-01T18:00Z&quot;, &quot;2008-08-31T24:00Z&quot; ;
+<br />
+<br />??
+<br />
+<br /><br /><br /><br />thanks for any insights,
+<br />
+&nbsp;&nbsp;John
+<br />
+<br /><br /><br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20120220/06f778dd/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20120220/06f778dd/attachment.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Feb 20 2012 - 10:27:34 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4163">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4164.html" title="Next message in the list">Jim Biard: "[CF-metadata] How to represent &#0034;6-hourly diurnal monthly means&#0034; in CF ?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4162.html" title="Previous message in the list">Egil St&#0248;ren: "[CF-metadata] When are the units attribute mandatory?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4164.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] How to represent &#0034;6-hourly diurnal monthly means&#0034; in CF ?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4164.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] How to represent &#0034;6-hourly diurnal monthly means&#0034; in CF ?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4163" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4163" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4163" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4163" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:58 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4162.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4164.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

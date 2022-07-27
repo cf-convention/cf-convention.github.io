@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python from Nan Galbraith on 2012-06-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="Nan Galbraith (ngalbraith)" />
+<meta name="Subject" content="[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python" />
+<meta name="Date" content="2012-06-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4559.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4561.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python</h1>
+<!-- received="Wed Jun 20 14:01:11 2012" -->
+<!-- isoreceived="20120620130111" -->
+<!-- sent="Wed, 20 Jun 2012 16:01:11 -0400" -->
+<!-- isosent="20120620200111" -->
+<!-- name="Nan Galbraith" -->
+<!-- email="ngalbraith" -->
+<!-- subject="[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python" -->
+<!-- id="4FE22C07.1080303_at_whoi.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="075.53977fc8c12e9a3793977a9239d82fad_at_lists.llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4560" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4561.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] new standard names for surface aerosol optical properties&quot;">Next message</a> ]
+[ <a href="./4559.html" title="Lauret Olivier: &quot;[CF-metadata] Standard names for sea level change&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4560" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4560" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4560" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4560" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Nan Galbraith &lt;<a href="mailto:ngalbraith?Subject=Re%3A%20%5BCF-metadata%5D%20%5BCF%20Metadata%5D%20%2368%3A%20CF%20data%20model%20and%20reference%20implementation%20in%20Python">ngalbraith</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 20 Jun 2012 16:01:11 -0400</span><br />
+</address>
+<br />
+Hi David  -
+<br />
+<br />I moved to email to avoid cluttering up the ticket.
+<br />
+<br />My CDL files are so ridiculously long that I'll just include the relevant
+<br />
+snippets - please let me know if you'd rather see the actual CDL.
+<br />
+<br />In this file, 'inst' is a dimensionless variable that points (by way of the
+<br />
+ancillary variables attribute) to the variables that contain the 
+<br />
+information
+<br />
+about the instruments. I'm putting this metadata into variables instead
+<br />
+of attributes because I need the depth dimension; I think this is becoming
+<br />
+more widely used as a way to document in situ data.
+<br />
+<br />Formerly, I'd have tied 'inst'  to the data variable (temp) as an ancillary
+<br />
+variable, but the new NODC templates have introduced the 'instrument'
+<br />
+attribute, so I'm using that instead.
+<br />
+<br />I don't consider any of the instrument variables to be auxiliary 
+<br />
+coordinates
+<br />
+in any sense - they're ancillary variables containing metadata.
+<br />
+<br />Thanks -
+<br />
+Nan
+<br />
+<br />netcdf OS_Stratus_2001_D_T300Sec {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time = 105883 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth = 12 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude = 1 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude = 1 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strlen1 = 20 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strlen2 = 6 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strlen3 = 90 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double depth(depth) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth:standard_name = &quot;depth&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double latitude(latitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:standard_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double longitude(longitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:standard_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double temp(time, depth) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp:standard_name = &quot;sea_water_temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp:coordinates = &quot;time depth latitude longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp:instrument= &quot;inst&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int inst ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst:long_name = &quot;instruments&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst:ancillary_variables = &quot;inst_mfgr inst_mod inst_sn inst_url&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char inst_mfgr(depth, strlen1) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst_mfgr:long_name = &quot;instrument manufacturer&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char inst_model(depth, strlen2) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst_model:long_name = &quot;instrument model name&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int inst_sn(depth) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst_sn:long_name = &quot;instrument serial number&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst_sn:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char inst_url(depth, strlen3) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst_url:long_name = &quot;instrument reference url&quot; ;
+<br />
+<br /><br /><br /><br /><br /><br />On 6/20/12 6:17 AM, David Hassell wrote:
+<br />
+<em class="quotelev1">&gt; #68: CF data model and reference implementation in Python
+</em><br />
+<em class="quotelev1">&gt; -----------------------------+----------------------------------------------
+</em><br />
+<em class="quotelev1">&gt;    Reporter:  jonathan        |       Owner:  cf-conventions at lists.llnl.gov
+</em><br />
+<em class="quotelev1">&gt;        Type:  enhancement     |      Status:  new
+</em><br />
+<em class="quotelev1">&gt;    Priority:  medium          |   Milestone:
+</em><br />
+<em class="quotelev1">&gt;   Component:  cf-conventions  |     Version:
+</em><br />
+<em class="quotelev1">&gt; Resolution:                  |    Keywords:
+</em><br />
+<em class="quotelev1">&gt; -----------------------------+----------------------------------------------
+</em><br />
+<em class="quotelev1">&gt; Comment (by davidhassell):
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   Replying to [comment:13 ngalbraith]:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   Hello Nan,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   Thanks for the question. I don't believe that it was our intention to
+</em><br />
+<em class="quotelev1">&gt;   limit the use of variables without data arrays.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   It would, however, be very useful to see the CDL of your example, as I
+</em><br />
+<em class="quotelev1">&gt;   fear that I don't yet undertstand it - is the instrument variable 'data'
+</em><br />
+<em class="quotelev1">&gt;   or 'metadata'? Are the ancillary variables (of serial numbers,
+</em><br />
+<em class="quotelev1">&gt;   manufacturer, etc.) in some sense auxiliary coordinates? (not independent
+</em><br />
+<em class="quotelev1">&gt;   questions!). I'm sure the full CDL of would clear it up for me.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   All the best,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   David
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><pre>
+-- 
+*******************************************************
+* Nan Galbraith                        (508) 289-2444 *
+* Upper Ocean Processes Group            Mail Stop 29 *
+* Woods Hole Oceanographic Institution                *
+* Woods Hole, MA 02543                                *
+*******************************************************
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Jun 20 2012 - 14:01:11 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4560">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4561.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] new standard names for surface aerosol optical properties"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4559.html" title="Previous message in the list">Lauret Olivier: "[CF-metadata] Standard names for sea level change"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4560" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4560" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4560" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4560" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:04 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4559.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4561.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

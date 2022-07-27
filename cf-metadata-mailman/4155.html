@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] MSG CPP standard names, projection and WMS service from plieger on 2012-02-01 (cf-metadata-mailman)</title>
+<meta name="Author" content="plieger (plieger)" />
+<meta name="Subject" content="[CF-metadata] MSG CPP standard names, projection and WMS service" />
+<meta name="Date" content="2012-02-01" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4154.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4156.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] MSG CPP standard names, projection and WMS service</h1>
+<!-- received="Wed Feb  1 08:39:51 2012" -->
+<!-- isoreceived="20120201083951" -->
+<!-- sent="Wed, 1 Feb 2012 16:39:51 +0100" -->
+<!-- isosent="20120201153951" -->
+<!-- name="plieger" -->
+<!-- email="plieger" -->
+<!-- subject="[CF-metadata] MSG CPP standard names, projection and WMS service" -->
+<!-- id="4F295CC7.3010803_at_knmi.nl" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4F1F4736.2030500_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4155" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4156.html" accesskey="d" title="Etienne Tourigny: &quot;[CF-metadata] query related to mercator projection parameter&quot;">Next message</a> ]
+[ <a href="./4154.html" title="Etienne Tourigny: &quot;[CF-metadata] query related to mercator projection parameter&quot;">Previous message</a> ]
+[ <a href="./4121.html" title="John Caron: &quot;[CF-metadata] MSG CPP standard names, projection and WMS service&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4124.html" accesskey="t" title="Martin Raspaud: &quot;[CF-metadata] MSG CPP standard names, projection and WMS service&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4155" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4155" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4155" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4155" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: &lt;<a href="mailto:plieger?Subject=Re%3A%20%5BCF-metadata%5D%20MSG%20CPP%20standard%20names%2C%20projection%20and%20WMS%20service">plieger</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 1 Feb 2012 16:39:51 +0100</span><br />
+</address>
+<br />
+Hi John,
+<br />
+<br /><em class="quotelev1">&gt; How did you generate your projection coordinates and your lat/lon coordinates?
+</em><br />
+<br />This is extracted code, but it demonstrates how we calculate our projection coordinates:
+<br />
+double cellSizeX=3.0004032;
+<br />
+double cellSizeY=-3.0004032;
+<br />
+double offsetX=-1856;
+<br />
+double offsetY=-1856;
+<br />
+size_t dimXLen=3712;
+<br />
+size_t dimYLen=3712;
+<br />
+<br />for(size_t j=0;j&lt;dimXLen;j++){
+<br />
+&nbsp;&nbsp;double x=(offsetX+double(j))*cellSizeX+cellSizeX/2;
+<br />
+&nbsp;&nbsp;((double*)varX-&gt;data)[j]=x;
+<br />
+}
+<br />
+for(size_t j=0;j&lt;dimYLen;j++){
+<br />
+&nbsp;&nbsp;double y=(offsetY+float(j))*cellSizeY+cellSizeY/2;
+<br />
+&nbsp;&nbsp;((double*)varY-&gt;data)[j]=y;
+<br />
+}
+<br />
+<br />We calculate the lat/lon coordinates usually with the proj4 library using the following string:
+<br />
+&quot;+proj=geos +lon_0=0.000000 +lat_0=0 +h=35807.414063 +a=6378.169 +b=6356.5838&quot;
+<br />
+<br />But in case of MSGCPP these fields are already present in the source files we create our data from.
+<br />
+<br />Regards,
+<br />
+Maarten
+<br />
+<br /><br />On 01/25/2012 01:05 AM, John Caron wrote:
+<br />
+<em class="quotelev1">&gt; On 1/24/2012 3:12 AM, plieger wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Hi John and Martin,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; John: Thanks a lot for the information. I put the MSGnavigation properties in the file, and the
+</em><br />
+<em class="quotelev2">&gt;&gt; projection now fits much better than the vertical perspective projection. Attached you will see a
+</em><br />
+<em class="quotelev2">&gt;&gt; screenshot of the longitude variable with this projection. At the edges of the globe I still see a
+</em><br />
+<em class="quotelev2">&gt;&gt; small offset of 0-0.1 degrees, but this is changing more or less where you query.
+</em><br />
+<em class="quotelev2">&gt;&gt; I tinkered a little bit with the height_from_earth_center and the semi_major and semi_minor axis,
+</em><br />
+<em class="quotelev2">&gt;&gt; but did not result in a noticable change of the projection. The 2D latitude and longitude fields are
+</em><br />
+<em class="quotelev2">&gt;&gt; always provided with these files so the projection can be verified with these fields.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; char projection
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    projection:proj4_params = &quot;+proj=geos +lon_0=0.000000 +lat_0=0 +h=35807.414063 +a=6378.169
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; +b=6356.5838&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    projection:grid_mapping_name = &quot;MSGnavigation&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    projection:longitude_of_projection_origin = 0.f ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    projection:latitude_of_projection_origin = 0.f ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    projection:semi_major_axis = 6356584.f ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    projection:semi_minor_axis = 6378169.f ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    projection:height_from_earth_center = 4.216397e+07f ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    projection:scale_x = 35785.83f ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    projection:scale_y = -35785.83f ;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Hi Maarten:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Yes, it seems as good as Ive seen.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; How did you generate your projection coordinates and your lat/lon coordinates?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; John
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<br /><pre>
+-- 
+Maarten Plieger
+KNMI, R&amp;D Information and Observation Technology, De Bilt
+(t) +31 30 2206330
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Feb 01 2012 - 08:39:51 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4155">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4156.html" title="Next message in the list">Etienne Tourigny: "[CF-metadata] query related to mercator projection parameter"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4154.html" title="Previous message in the list">Etienne Tourigny: "[CF-metadata] query related to mercator projection parameter"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4121.html" title="Message to which this message replies">John Caron: "[CF-metadata] MSG CPP standard names, projection and WMS service"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4124.html" title="Next message in this discussion thread">Martin Raspaud: "[CF-metadata] MSG CPP standard names, projection and WMS service"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4155" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4155" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4155" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4155" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:57 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4154.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4156.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] date and time from Nan Galbraith on 2008-10-25 (cf-metadata-mailman)</title>
+<meta name="Author" content="Nan Galbraith (ngalbraith)" />
+<meta name="Subject" content="[CF-metadata] date and time" />
+<meta name="Date" content="2008-10-25" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1677.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1679.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] date and time</h1>
+<!-- received="Fri Oct 24 17:37:24 2008" -->
+<!-- isoreceived="20081024163724" -->
+<!-- sent="Fri, 24 Oct 2008 20:37:24 -0300" -->
+<!-- isosent="20081024233724" -->
+<!-- name="Nan Galbraith" -->
+<!-- email="ngalbraith" -->
+<!-- subject="[CF-metadata] date and time" -->
+<!-- id="49025C34.1010202_at_whoi.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="1322922A-4486-4CA1-8DFF-45AB1D7CF0CE_at_mbari.org" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1678" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1679.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]   date and time&quot;">Next message</a> ]
+[ <a href="./1677.html" title="John Graybeal: &quot;[CF-metadata] date and time&quot;">Previous message</a> ]
+[ <a href="./1673.html" title="John Graybeal: &quot;[CF-metadata] date and time&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1678" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1678" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1678" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1678" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Nan Galbraith &lt;<a href="mailto:ngalbraith?Subject=Re%3A%20%5BCF-metadata%5D%20date%20and%20time">ngalbraith</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 24 Oct 2008 20:37:24 -0300</span><br />
+</address>
+<br />
+For the case where there are multiple variables with different sensor times
+<br />
+in a NetCDF file, the 'sensor time' standard name somehow needs to be
+<br />
+tied to the data variable produced by that sensor - can this be a compound
+<br />
+term that includes the standard name of another variable?
+<br />
+<em class="quotelev3">&gt;&gt; &gt; time_from_device: time reported by some device (data source)
+</em><br />
+<em class="quotelev2">&gt;&gt;     
+</em><br />
+<em class="quotelev1">&gt; Somehow this seems a bit unsatisfying to me. It doesn't really suggest that
+</em><br />
+<em class="quotelev1">&gt; this time might not be true time. 
+</em><br />
+I'm not sure that it's been determined that the sensor time is *not* the 
+<br />
+true
+<br />
+time.
+<br />
+<em class="quotelev1">&gt; The two cases you outline seem pretty similar to me, but maybe I'm 
+</em><br />
+<em class="quotelev1">&gt; missing something.
+</em><br />
+In one case, the sensor_time can be used to get a more exact time for
+<br />
+a particular measurement. The time variable (in the CF sense) provides
+<br />
+a 'good enough' t-axis, and allows you to combine data from different
+<br />
+sensors on a single time base; the param_sensor_time would preserve a set
+<br />
+of more exact sensor times for specific measurements, possibly one for
+<br />
+each of several sensors.
+<br />
+<br />We routinely include sensors with different sample schemes on a single
+<br />
+logger, so that one sensor spot-samples at the start of the minute and
+<br />
+another takes its measurement sometime later... etc.  We also telemeter
+<br />
+subsampled and/or averaged data where different variables can be from
+<br />
+different times within the record interval.  It's not feasible to 
+<br />
+represent this
+<br />
+in a standard way in CF, as far as I know.
+<br />
+<br />The second use of sensor_time would document sensor clock drift, and
+<br />
+would mainly be interesting to us as a data provider, or to someone who
+<br />
+is initiating commands to a sensor in the field using that sensor's clock.
+<br />
+<br />As a data user, though, it would be fairly important to know which of these
+<br />
+types of sensor_time was which - I'd want to use one, but not the other.
+<br />
+<em class="quotelev1">&gt; As a general observation, the question 'how are you going to use this' 
+</em><br />
+<em class="quotelev1">&gt; reflects an assumption that the only (or primary) use of the netCDF 
+</em><br />
+<em class="quotelev1">&gt; files and the standard names is purposeful and anticipatory.  In fact, 
+</em><br />
+<em class="quotelev1">&gt; especially if you are dealing with observation data, both can be 
+</em><br />
+<em class="quotelev1">&gt; strictly documentary; and of course the data can be used in unintended 
+</em><br />
+<em class="quotelev1">&gt; ways.  So it shouldn't matter how the data will be used; I just want 
+</em><br />
+<em class="quotelev1">&gt; to know how to document what I have.
+</em><br />
+The standard names are only useful to the extent that their meanings are
+<br />
+agreed upon, so how you're going to use this term is not an unreasonable
+<br />
+question.
+<br />
+<em class="quotelev2">&gt;&gt; I agree that it would be useful to have a standard name to indicate a
+</em><br />
+<em class="quotelev2">&gt;&gt; sensor time,  but it would be a good idea to discuss the purpose a 
+</em><br />
+<em class="quotelev2">&gt;&gt; little
+</em><br />
+<em class="quotelev2">&gt;&gt; more.  Is it going to be used to indicate a clock drift, i.e. that 
+</em><br />
+<em class="quotelev2">&gt;&gt; the time
+</em><br />
+<em class="quotelev2">&gt;&gt; in 'DateTime' (or, in CF, time) is an absolute, or at least a 
+</em><br />
+<em class="quotelev2">&gt;&gt; 'corrected'
+</em><br />
+<em class="quotelev2">&gt;&gt; time, and this sensor_time is an indication of clock drift in an 
+</em><br />
+<em class="quotelev2">&gt;&gt; instrument?
+</em><br />
+<em class="quotelev2">&gt;&gt; Or would it be used for data where there's a nominal time base and 
+</em><br />
+<em class="quotelev2">&gt;&gt; multiple
+</em><br />
+<em class="quotelev2">&gt;&gt; sensors that actually have a separate, valid sample time?  Does one 
+</em><br />
+<em class="quotelev2">&gt;&gt; standard
+</em><br />
+<em class="quotelev2">&gt;&gt; name cover both of those cases?
+</em><br />
+<br />Regards - Nan
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Oct 24 2008 - 17:37:24 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1678">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1679.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]   date and time"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1677.html" title="Previous message in the list">John Graybeal: "[CF-metadata] date and time"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./1673.html" title="Message to which this message replies">John Graybeal: "[CF-metadata] date and time"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1678" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1678" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1678" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1678" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:11 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1677.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1679.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

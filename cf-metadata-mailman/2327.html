@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF point observation Conventions ready for review from Sara Haines on 2009-11-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="Sara Haines (sara_haines)" />
+<meta name="Subject" content="[CF-metadata] CF point observation Conventions ready for review" />
+<meta name="Date" content="2009-11-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2326.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2328.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF point observation Conventions ready for review</h1>
+<!-- received="Fri Nov 13 15:51:59 2009" -->
+<!-- isoreceived="20091113155159" -->
+<!-- sent="Fri, 13 Nov 2009 17:51:59 -0500" -->
+<!-- isosent="20091113225159" -->
+<!-- name="Sara Haines" -->
+<!-- email="sara_haines" -->
+<!-- subject="[CF-metadata] CF point observation Conventions ready for review" -->
+<!-- id="4AFDE30F.7040608_at_unc.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4AFDCECF.50508_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2327" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2328.html" accesskey="d" title="Lowry, Roy K: &quot;[CF-metadata] CF point observation Conventions ready for review&quot;">Next message</a> ]
+[ <a href="./2326.html" title="John Caron: &quot;[CF-metadata] CF point observation Conventions ready for review&quot;">Previous message</a> ]
+[ <a href="./2326.html" title="John Caron: &quot;[CF-metadata] CF point observation Conventions ready for review&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2340.html" accesskey="t" title="John Caron: &quot;[CF-metadata] CF point observation Conventions ready for review&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2327" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2327" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2327" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2327" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Sara Haines &lt;<a href="mailto:sara_haines?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20point%20observation%20Conventions%20ready%20for%20review">sara_haines</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 13 Nov 2009 17:51:59 -0500</span><br />
+</address>
+<br />
+Dear Nan and John:
+<br />
+<br />I've been monitoring this conversation for just a short period.  So I 
+<br />
+apologize ahead for chiming in so late in the game.
+<br />
+<br />It is very important for observational data model to represent the 
+<br />
+actual system that is deployed.  The point that Nan and others have 
+<br />
+raised is a need for a container to represent multiple measurement 
+<br />
+heights for several sensors at a station (e.g.  met above the ocean 
+<br />
+surface, near-surface and near-bottom ocean temperature and salinity).
+<br />
+<br />You all seem in agreement on this and that it is not a simple side-bar 
+<br />
+case. Similar to what Nan described was kludged in the SEACOOS CDL v2.0 
+<br />
+netcdf format because no case like moorings and buoys with multiple 
+<br />
+point measurements was covered in CF-conventions back in 2004.  We 
+<br />
+defined the requirement that the point-measurement sensors be associated 
+<br />
+with the same location or site.  SEACOOS CDL v2.0 was adopted by SECOORA 
+<br />
+but most definitely needs revisiting.  It looks like this:
+<br />
+<br />netcdf  fixed-point {
+<br />
+<br />// This is a fixed-point station with dependent variables
+<br />
+// measured by sensors at different heights.
+<br />
+//
+<br />
+// All sensors are sampling at the same time.
+<br />
+//    (1) x and y and sensor-specific z are repeated for each time.
+<br />
+//    (2) Assign z dimension equal to number of z measurement levels
+<br />
+//    (3) Assign values for z levels in the data section
+<br />
+//    (4) Use variable attribute called &quot;z&quot; under dependent variable to
+<br />
+//             associate specific z of point measurement
+<br />
+//    (5) Use z variable to describe all the required attributes
+<br />
+//             without having to repeat under each dependent variable
+<br />
+<br />dimensions:
+<br />
+time = 4;
+<br />
+lon = 1;
+<br />
+lat = 1;
+<br />
+z = 3;
+<br />
+<br />variables:
+<br />
+<br />// INDEPENDENT VARIABLES
+<br />
+long time(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time: standard_name = &quot;time&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time: units = &quot;sec since 1970-1-1 00:00:00&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time: axis = &quot;T&quot;;
+<br />
+float lon(lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon: standard_name = &quot;longitude&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon: units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon: reference = &quot;geographical coordinates&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon: axis = &quot;X&quot;;
+<br />
+float lat(lat);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat: standard_name = &quot;latitude&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat: units = &quot;degrees_east&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat: reference = &quot;geographical coordinates&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat: axis = &quot;Y&quot;;
+<br />
+float z(z);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z: standard_name = &quot;height&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z: units = &quot;m&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z: reference = &quot;mean sea level (MSL)&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z: positive = &quot;up&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z: axis = &quot;Z&quot;;
+<br />
+<br />// DEPENDENT VARIABLES
+<br />
+float wspd(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wspd: long_name = &quot;Wind Speed&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wspd: standard_name = &quot;wind_speed&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wspd: units = &quot;m s-1&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wspd: z = 45;
+<br />
+float wdir(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wdir: long_name= &quot;Wind Direction (from)&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wdir: standard_name = &quot;wind_from_direction&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wdir: units = &quot;degrees&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wdir: reference = &quot;clockwise from true north&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wdir: valid_range = 0.,360.;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wdir: z = 45;
+<br />
+float atemp(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atemp: long_name = &quot;Air temperature&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atemp: standard_name = &quot;air_temperature&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atemp: units = &quot;degrees Celsius&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atemp: z = 24;
+<br />
+float SST(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SST: long_name = &quot;Sea Surface Temperature&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SST: standard_name = &quot;sea_surface_temperature&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SST: units = &quot;degrees Celsius&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SST: z = -5;
+<br />
+<br />// global attributes:
+<br />
+// (use all for adopted SEACOOS CDL v2.0)
+<br />
+:format_category = &quot;fixed-point&quot;;
+<br />
+<br />data:
+<br />
+<br />time = 1062804600,1062808200,1062810000,1062811800;
+<br />
+lon = -82.543;
+<br />
+lat = 18.462702;
+<br />
+z = 45, 24, -5;
+<br />
+<br />wspd =   9.80, 12.63, 16.52, 18.97;
+<br />
+wdir =  88.8,103.6,112.7,105.0;
+<br />
+atemp =  27.00, 27.23, 27.05, 26.97;
+<br />
+SST =  28.11, 28.17, 28.17, 28.35;
+<br />
+<br />}
+<br />
+<br />I understand your points about making lat and lon scalars.  So ignore 
+<br />
+that for just now.  (Remember: This was developed 5 years ago!)
+<br />
+<br />The variable attribute above (&quot;SST: z = -5&quot;) should probably be an index 
+<br />
+to the z variable to be less confusing.  But I think you get the idea.
+<br />
+<br />There is something workable for conventions of Point Observation Data 
+<br />
+without being cobbling something together.  I like many of the ideas in 
+<br />
+this proposed convention, for example, multiple deployments at the same 
+<br />
+site.  It addresses most short-comings in previous CF-conventions for 
+<br />
+non-gridded data and what is kludged in the Southeast Region.
+<br />
+<br />I would most enjoy discussing this further.  It will help me understand 
+<br />
+what is being proposed.  Right now, I'm mostly chiming in to underscore 
+<br />
+Nan's need and the need to address it in this round of the review.
+<br />
+<br />Thanks,
+<br />
+Sara
+<br />
+<br /><pre>
+-- 
+   *******************************************************
+   * Sara Haines                   * 919-962-1253 (off)  *
+   * Department of Marine Sciences * 919-962-1254 (fax)  *
+   * University of North Carolina  * sara_haines at unc.edu *
+   * Chapel Hill, NC 27599-3300    *                     *
+   *******************************************************
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Nov 13 2009 - 15:51:59 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2327">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2328.html" title="Next message in the list">Lowry, Roy K: "[CF-metadata] CF point observation Conventions ready for review"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2326.html" title="Previous message in the list">John Caron: "[CF-metadata] CF point observation Conventions ready for review"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2326.html" title="Message to which this message replies">John Caron: "[CF-metadata] CF point observation Conventions ready for review"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2340.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] CF point observation Conventions ready for review"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2340.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] CF point observation Conventions ready for review"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2327" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2327" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2327" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2327" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:24 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2326.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2328.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

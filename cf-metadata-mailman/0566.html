@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach) from Bert Jagers on 2006-12-07 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bert Jagers (Bert.Jagers)" />
+<meta name="Subject" content="[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach)" />
+<meta name="Date" content="2006-12-07" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0565.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0567.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach)</h1>
+<!-- received="Thu Dec  7 02:00:07 2006" -->
+<!-- isoreceived="20061207020007" -->
+<!-- sent="Thu, 7 Dec 2006 10:00:07 +0100" -->
+<!-- isosent="20061207090007" -->
+<!-- name="Bert Jagers" -->
+<!-- email="Bert.Jagers" -->
+<!-- subject="[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach)" -->
+<!-- id="07b401c719de$180bf760$22e40991_at_wl06377" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4576F8EE.8050002&#64;noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start566" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0567.html" accesskey="d" title="Pamment, JA: &quot;[CF-metadata] Standard names status update&quot;">Next message</a> ]
+[ <a href="./0565.html" title="Steve Hankin: &quot;[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach)&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0584.html" accesskey="t" title="John Caron: &quot;[CF-metadata] curvilinear cartesian coordinates case	(service-oriented approach)&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg566" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg566" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg566" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg566" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bert Jagers &lt;<a href="mailto:Bert.Jagers?Subject=Re%3A%20%5BCF-metadata%5D%20curvilinear%20cartesian%20coordinates%20case%20(service-oriented%20approach)">Bert.Jagers</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 7 Dec 2006 10:00:07 +0100</span><br />
+</address>
+<br />
+Hi Steve,
+<br />
+&nbsp;&nbsp;So the OGC community has (at least so far) decided that explicit translations between coordinate reference systems do not belong inside of their data representations.
+<br />
+This doesn't surprise me. GIS systems should be able to convert between different coordinate reference systems. I would not worry about reading netCDF files containing lat/lon coordinates into a GIS package. I was more thinking of all the other tools that are used. For instance MATLAB won't do automatic on the fly conversion between coordinate reference systems. Although, with MATLAB you can either use The MathWorks' or Rich Pawlowicz's mapping toolbox to do the conversion manually once you have figured out what the appropriate transformations are. Several other visualisation program's, however, are neither GIS product nor are they as programmable as MATLAB. For such programs it would be good to have the appropriate coordinate data already in the file.
+<br />
+&nbsp;&nbsp;CF has already gone one step beyond this (and adds value in doing so).  But I believe that keeping CF &quot;lean and mean&quot; will pay off over the long term, so we should carefully consider alternative solutions outside of CF before adding further complexity to the standard. (Sorry if I'm sledge hammering this point.)
+<br />
+I agree, lean and mean is best in general.
+<br />
+&nbsp;&nbsp;[some TDS and NcML information]
+<br />
+Okay, all immutable data is stored only once. Separate grid files for local coordinates. Local TDS server required to combine the files based on NcML XML file. I will investigate this line further, but that will take some time.
+<br />
+&nbsp;&nbsp;If it is local files that your community really needs, and the service-oriented aspects of TDS do not add any value, then (as you have said) you don't need OPeNDAP.  In fact, there is plenty of richness in the netCDF utilities that already exist (e.g. nco), so that you can create German and Dutch flavors of your files using nothing but simple scripts to do the same things that are described from TDS above.   No changes to CF are required.  And it would not be a particularly messy data management task.
+<br />
+Thanks for the information. I will have a look at the NCO tools.
+<br />
+&nbsp;&nbsp;In the footnote I was assuming that the theoretical discussion was of grid objects that described both horizontal and vertical and files that mixed 2D and 3D spatial grids.  There are plenty of subtleties in the vertical, too, particularly for hybrid coordinate models.  Sorry for opening up this distracting point.
+<br />
+I agree that grids in the vertical direction are far from trivial. It seems that keeping horizontal and vertical coordinates separated as much as possible (maybe have anisotropic grid objects).
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thanks for your patience with this process - Steve
+<br />
+Thank you for your comments and ideas.
+<br />
+<br />Best regards,
+<br />
+<br />Bert
+<br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20061207/c18c2c91/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20061207/c18c2c91/attachment-0002.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Dec 07 2006 - 02:00:07 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start566">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0567.html" title="Next message in the list">Pamment, JA: "[CF-metadata] Standard names status update"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0565.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach)"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0584.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] curvilinear cartesian coordinates case	(service-oriented approach)"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0584.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] curvilinear cartesian coordinates case	(service-oriented approach)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg566" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg566" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg566" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg566" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0565.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0567.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

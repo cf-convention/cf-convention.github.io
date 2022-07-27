@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Re: GDAL NetCDF driver and projection. from John Caron on 2006-04-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] Re: GDAL NetCDF driver and projection." />
+<meta name="Date" content="2006-04-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0128.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0130.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Re: GDAL NetCDF driver and projection.</h1>
+<!-- received="Wed Apr 26 15:15:19 2006" -->
+<!-- isoreceived="20060426141519" -->
+<!-- sent="Wed, 26 Apr 2006 15:15:19 -0600" -->
+<!-- isosent="20060426211519" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] Re: GDAL NetCDF driver and projection." -->
+<!-- id="444FE2E7.8050404_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="304163b00604260840j3b5d9c5oad77c39f5d4b009f_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start129" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0130.html" accesskey="d" title="Denis Nadeau: &quot;[CF-metadata] Re: GDAL NetCDF driver and projection.&quot;">Next message</a> ]
+[ <a href="./0128.html" title="Beate.Geyer at gkss.de: &quot;[CF-metadata] new standard names&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0130.html" accesskey="t" title="Denis Nadeau: &quot;[CF-metadata] Re: GDAL NetCDF driver and projection.&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg129" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg129" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg129" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg129" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20Re%3A%20GDAL%20NetCDF%20driver%20and%20projection.">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 26 Apr 2006 15:15:19 -0600</span><br />
+</address>
+<br />
+Hi Denis:
+<br />
+<br />1) CF has unfortunately not yet dealt with datum and spheroid encoding (not sure what &quot;authority&quot; is), but its on our list to tackle. CF does specify a list of known projections and how to encode those (Appendix F).
+<br />
+<br />2) You can, of course, add any metadata you want, eg GeoTransform values, from the CF POV, which CF readers are likely to ignore.
+<br />
+<br />3) Frank Warmerdam and I talked a while ago about using WKT to encode projection info. At the moment, it seems as good as any, with the proviso that the CF group may decide to do it another way (when we eventually decide).
+<br />
+<br />4) Calculating the lat,lon arrays for projections is currently required under CF. I have proposed that this requirement be relaxed, perhaps as a CF profile, for the case where this is unneeded and burdonsome. Issues like this are awaiting a new CF governence structure.
+<br />
+<br />5) Unidata's software maps OPeNDAP datasets into the NetCDF data model (aka &quot;Common Data Model&quot;), so we strongly encourage everyone to use the NetCDF metadata conventions such as CF in their OPeNDAP Servers. We think of OPeNDAP datasets as remote NetCDF datasets, and make access to them as transparent as possible.
+<br />
+<br />6) BTW, CF is an organization independent of Unidata. It grew out of &quot;climate and forecasting&quot; modelers using NetCDF files, but is now broader than that, and is an exemplar &quot;community of practice&quot; around scientific metadata. 
+<br />
+<br />I am cc'ing to the CF list in case anyone there wants to add more, and so the list can hear about what you are trying to do. In case anyone doenst know, GDAL is an excellent C library for geospatial work, kind of a &quot;Common Data Model&quot; for C .
+<br />
+<br /><br />Denis Nadeau wrote:
+<br />
+<em class="quotelev1">&gt; Hi,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I have looked at the DODS OpeNDAP site and I could use the same metadata 
+</em><br />
+<em class="quotelev1">&gt; structure to store NetCDF projection information.  This way if somebody 
+</em><br />
+<em class="quotelev1">&gt; needs to convert from GTIFF to NetCDF, all projecton information could 
+</em><br />
+<em class="quotelev1">&gt; be used by GRADS, Openev or other applications. I guess my main problem 
+</em><br />
+<em class="quotelev1">&gt; is related on how the CF-1 convention from Unidata handle projections.   
+</em><br />
+<em class="quotelev1">&gt; This bring me to a main question:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; What are the needs for projections in the GALEON projects?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I am the current GDAL NetCDF driver programmer, and would like to make 
+</em><br />
+<em class="quotelev1">&gt; the driver as useful as it can be to the community.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thanks,
+</em><br />
+<em class="quotelev1">&gt; Denis
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     Here are some notes on what was planned for storing projection, etc in
+</em><br />
+<em class="quotelev1">&gt;     other parts of GDAL drivers.  To my knowledge, the never really
+</em><br />
+<em class="quotelev1">&gt;     propogated
+</em><br />
+<em class="quotelev1">&gt;     through to the OPeNDAP driver.  If the NetCDF or HDF direct access GDAL
+</em><br />
+<em class="quotelev1">&gt;     driver is updated that those changes propogate through to the OPeNDAP
+</em><br />
+<em class="quotelev1">&gt;     driver so that the same NetCDF/HDF datasets are accessible via native
+</em><br />
+<em class="quotelev1">&gt;     OPeNDAP server, Grads GDS and THREDDS.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     At this point, a lot more support is there for local NetCDF/HDF
+</em><br />
+<em class="quotelev1">&gt;     files than
+</em><br />
+<em class="quotelev1">&gt;     for support of those files through OPeNDAP.   Its on my rather large
+</em><br />
+<em class="quotelev1">&gt;     to do
+</em><br />
+<em class="quotelev1">&gt;     list, but somewhere in the 2 year timeframe.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     <a href="http://home.gdal.org/~warmerda/gdal_opendap_design.html">http://home.gdal.org/~warmerda/gdal_opendap_design.html</a> (GeoTiff)
+</em><br />
+<em class="quotelev1">&gt;     <a href="http://gdal.maptools.org/frmt_dods.html">http://gdal.maptools.org/frmt_dods.html</a>
+</em><br />
+<em class="quotelev1">&gt;     &lt;<a href="http://gdal.maptools.org/frmt_dods.html">http://gdal.maptools.org/frmt_dods.html</a>&gt; (DODS/OPeNDAP)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     Thanks!
+</em><br />
+<em class="quotelev1">&gt;     Rob
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     On Wed, April 26, 2006 5:32 am, Denis Nadeau wrote:
+</em><br />
+<em class="quotelev2">&gt;      &gt; Hi All,
+</em><br />
+<em class="quotelev2">&gt;      &gt;
+</em><br />
+<em class="quotelev2">&gt;      &gt; I would like to have suggestions from the community on the
+</em><br />
+<em class="quotelev1">&gt;     current needs
+</em><br />
+<em class="quotelev2">&gt;      &gt; for the GDAL NetCDF driver.  I am currently writing the CreateCopy
+</em><br />
+<em class="quotelev1">&gt;     method to
+</em><br />
+<em class="quotelev2">&gt;      &gt; allow people to convert from any GDAL supported format to NetCDF CF-1
+</em><br />
+<em class="quotelev2">&gt;      &gt; convention format.
+</em><br />
+<em class="quotelev2">&gt;      &gt;
+</em><br />
+<em class="quotelev2">&gt;      &gt; At this point I am stuck with projection issues.  How should I handle
+</em><br />
+<em class="quotelev2">&gt;      &gt; DATUM,
+</em><br />
+<em class="quotelev2">&gt;      &gt; SPHEROID and AUTHORITY?  I can produce a lat lon arrays to
+</em><br />
+<em class="quotelev1">&gt;     reproject the
+</em><br />
+<em class="quotelev2">&gt;      &gt; projected coordinates to lat/lon space but that may be expensive
+</em><br />
+<em class="quotelev1">&gt;     in cpu
+</em><br />
+<em class="quotelev2">&gt;      &gt; and
+</em><br />
+<em class="quotelev2">&gt;      &gt; space.
+</em><br />
+<em class="quotelev2">&gt;      &gt;
+</em><br />
+<em class="quotelev2">&gt;      &gt; I am thinking as well to create an array containning the
+</em><br />
+<em class="quotelev1">&gt;     GeoTransform
+</em><br />
+<em class="quotelev2">&gt;      &gt; values
+</em><br />
+<em class="quotelev2">&gt;      &gt; if found in the source file.
+</em><br />
+<em class="quotelev2">&gt;      &gt;
+</em><br />
+<em class="quotelev2">&gt;      &gt;      adfGeoTransform[0] /* top left x */
+</em><br />
+<em class="quotelev2">&gt;      &gt;      adfGeoTransform[1] /* w-e pixel resolution */
+</em><br />
+<em class="quotelev2">&gt;      &gt;      adfGeoTransform[2] /* rotation, 0 if image is &quot;north up&quot; */
+</em><br />
+<em class="quotelev2">&gt;      &gt;      adfGeoTransform[3] /* top left y */
+</em><br />
+<em class="quotelev2">&gt;      &gt;      adfGeoTransform[4] /* rotation, 0 if image is &quot;north up&quot; */
+</em><br />
+<em class="quotelev2">&gt;      &gt;      adfGeoTransform[5] /* n-s pixel resolution */
+</em><br />
+<em class="quotelev2">&gt;      &gt;
+</em><br />
+<em class="quotelev2">&gt;      &gt;
+</em><br />
+<em class="quotelev2">&gt;      &gt; Thanks for your suggestion,
+</em><br />
+<em class="quotelev2">&gt;      &gt;
+</em><br />
+<em class="quotelev2">&gt;      &gt; Best Regards,
+</em><br />
+<em class="quotelev2">&gt;      &gt; Denis Nadeau
+</em><br />
+<em class="quotelev2">&gt;      &gt;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     --
+</em><br />
+<em class="quotelev1">&gt;     Alaska Ocean Observing System
+</em><br />
+<em class="quotelev1">&gt;     Database Manager
+</em><br />
+<em class="quotelev1">&gt;     907-474-7948
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     ===============================================================================
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     To unsubscribe galeon, visit:
+</em><br />
+<em class="quotelev1">&gt;     <a href="http://www.unidata.ucar.edu/mailing-list-delete-form.html">http://www.unidata.ucar.edu/mailing-list-delete-form.html</a>
+</em><br />
+<em class="quotelev1">&gt;     ===============================================================================
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<span id="received"><dfn>Received on</dfn> Wed Apr 26 2006 - 15:15:19 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start129">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0130.html" title="Next message in the list">Denis Nadeau: "[CF-metadata] Re: GDAL NetCDF driver and projection."</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0128.html" title="Previous message in the list">Beate.Geyer at gkss.de: "[CF-metadata] new standard names"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0130.html" title="Next message in this discussion thread">Denis Nadeau: "[CF-metadata] Re: GDAL NetCDF driver and projection."</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0130.html" title="Message sent in reply to this message">Denis Nadeau: "[CF-metadata] Re: GDAL NetCDF driver and projection."</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg129" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg129" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg129" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg129" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:44 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0128.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0130.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

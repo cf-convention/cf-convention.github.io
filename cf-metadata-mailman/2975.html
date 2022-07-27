@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Particle Track Feature Type (was: Re: point observation data in CF 1.4) from John Caron on 2010-11-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] Particle Track Feature Type (was: Re: point observation data in CF 1.4)" />
+<meta name="Date" content="2010-11-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2974.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2976.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Particle Track Feature Type (was: Re: point observation data in CF 1.4)</h1>
+<!-- received="Thu Nov 18 20:15:35 2010" -->
+<!-- isoreceived="20101118201535" -->
+<!-- sent="Thu, 18 Nov 2010 20:15:35 -0700" -->
+<!-- isosent="20101119031535" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] Particle Track Feature Type (was: Re: point observation data in CF 1.4)" -->
+<!-- id="4CE5EBD7.6030705_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2975" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2976.html" accesskey="d" title="stephen.pascoe at stfc.ac.uk: &quot;[CF-metadata] FW: [Go-essp-tech] NetCDF-CF compliance checker available for download&quot;">Next message</a> ]
+[ <a href="./2974.html" title="stephen.pascoe at stfc.ac.uk: &quot;[CF-metadata] FW: [Go-essp-tech] NetCDF-CF compliance checker available for download&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2980.html" accesskey="t" title="Christopher Barker: &quot;[CF-metadata] Particle Track Feature Type (was: Re: point observation data in CF 1.4)&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2975" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2975" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2975" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2975" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20Particle%20Track%20Feature%20Type%20(was%3A%20Re%3A%20point%20observation%20data%20in%20CF%201.4)">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 18 Nov 2010 20:15:35 -0700</span><br />
+</address>
+<br />
+Im thinking that we need a new feature type for this. Im calling it 
+<br />
+&quot;particleTrack&quot; but theres probably a better name.
+<br />
+<br />My reasoning is that the nested table representation of trajectories is:
+<br />
+<br />Table {
+<br />
+&nbsp;&nbsp;&nbsp;traj_id;
+<br />
+&nbsp;&nbsp;&nbsp;Table {
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat, lon, z;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data;
+<br />
+&nbsp;&nbsp;&nbsp;}
+<br />
+}
+<br />
+<br />but this case has the inner and outer table inverted:
+<br />
+<br />Table {
+<br />
+&nbsp;&nbsp;&nbsp;time;
+<br />
+&nbsp;&nbsp;&nbsp;Table {
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;particle_id;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat, lon, z;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data2;
+<br />
+&nbsp;&nbsp;&nbsp;}
+<br />
+}
+<br />
+<br />So, following that line of thought, the possibilities in CDL are:
+<br />
+<br />1) If avg number of particles ~ max number of particles at any time 
+<br />
+step, then one could use multdimensional arrays:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;maxParticles = 1000 ;
+<br />
+&nbsp;&nbsp;&nbsp;time = 7777 ; // may be UNLIMITED
+<br />
+<br />variables:
+<br />
+<br />&nbsp;&nbsp;&nbsp;double time(time) ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;int particle_id(time, maxParticles) ;
+<br />
+&nbsp;&nbsp;&nbsp;float lon(time, maxParticles) ;
+<br />
+&nbsp;&nbsp;&nbsp;float lat(time, maxParticles) ;
+<br />
+&nbsp;&nbsp;&nbsp;float z(time, maxParticles) ;
+<br />
+&nbsp;&nbsp;&nbsp;float data(time, maxParticles) ;
+<br />
+<br />attributes:
+<br />
+&nbsp;&nbsp;&nbsp;:featureType = &quot;particleTrack&quot;;
+<br />
+<br />note maxParticles is the max number of particles at any one time step, 
+<br />
+not total particle tracks. The particle trajectories have to be found by 
+<br />
+examining the values of particle_id(time, maxParticles).
+<br />
+<br />2) The CDL of the ragged case would look like:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;obs = 500000; // UNLIMITED
+<br />
+&nbsp;&nbsp;&nbsp;time = 7777 ;
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;&nbsp;int time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;int rowSize(time) ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;int particle_id(obs) ;
+<br />
+&nbsp;&nbsp;&nbsp;float lon(obs) ;
+<br />
+&nbsp;&nbsp;&nbsp;float lat(obs) ;
+<br />
+&nbsp;&nbsp;&nbsp;float z(obs) ;
+<br />
+&nbsp;&nbsp;&nbsp;float data(obs) ;
+<br />
+<br />attributes:
+<br />
+&nbsp;&nbsp;&nbsp;:featureType = &quot;particleTrack&quot;;
+<br />
+<br />in this case, you dont have to know the max number of particles at any 
+<br />
+one time step, but you do need to know the number of time steps 
+<br />
+beforehand. The particle trajectories have to be found by examining the 
+<br />
+values of particle_id(obs). The particles at time step i are contained 
+<br />
+in the obs variables between start(i) to start(i) + rowSize(i).
+<br />
+<br />these layouts are optimized for processing all particles at a given 
+<br />
+time, and for sequentially processing time steps. If one wanted to 
+<br />
+process particle trajectories, that will be much slower. If you needed 
+<br />
+to do it a lot, you might want to rewrite the file. a more sophisticated 
+<br />
+application, possibly a server, could write an index to speed it up.
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Nov 18 2010 - 20:15:35 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2975">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2976.html" title="Next message in the list">stephen.pascoe at stfc.ac.uk: "[CF-metadata] FW: [Go-essp-tech] NetCDF-CF compliance checker available for download"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2974.html" title="Previous message in the list">stephen.pascoe at stfc.ac.uk: "[CF-metadata] FW: [Go-essp-tech] NetCDF-CF compliance checker available for download"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2980.html" title="Next message in this discussion thread">Christopher Barker: "[CF-metadata] Particle Track Feature Type (was: Re: point observation data in CF 1.4)"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2980.html" title="Message sent in reply to this message">Christopher Barker: "[CF-metadata] Particle Track Feature Type (was: Re: point observation data in CF 1.4)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2975" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2975" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2975" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2975" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2974.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2976.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

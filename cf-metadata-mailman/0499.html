@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] curvilinear cartesian coordinates case from Brian Eaton on 2006-11-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="Brian Eaton (eaton)" />
+<meta name="Subject" content="[CF-metadata] curvilinear cartesian coordinates case" />
+<meta name="Date" content="2006-11-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0498.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0500.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] curvilinear cartesian coordinates case</h1>
+<!-- received="Mon Nov 27 14:27:08 2006" -->
+<!-- isoreceived="20061127142708" -->
+<!-- sent="Mon, 27 Nov 2006 14:27:08 -0700" -->
+<!-- isosent="20061127212708" -->
+<!-- name="Brian Eaton" -->
+<!-- email="eaton" -->
+<!-- subject="[CF-metadata] curvilinear cartesian coordinates case" -->
+<!-- id="20061127212708.GE16920_at_ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="030401c71257$3674afa0$22e40991_at_wl06377" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start499" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0500.html" accesskey="d" title="Simon Wood: &quot;[CF-metadata] Need help writing point netCDF 3 dataset&quot;">Next message</a> ]
+[ <a href="./0498.html" title="Bert Jagers: &quot;[CF-metadata] curvilinear cartesian coordinates case&quot;">Previous message</a> ]
+[ <a href="./0498.html" title="Bert Jagers: &quot;[CF-metadata] curvilinear cartesian coordinates case&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg499" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg499" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg499" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg499" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Brian Eaton &lt;<a href="mailto:eaton?Subject=Re%3A%20%5BCF-metadata%5D%20curvilinear%20cartesian%20coordinates%20case">eaton</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 27 Nov 2006 14:27:08 -0700</span><br />
+</address>
+<br />
+Hi Bert,
+<br />
+<br />Thanks for the clarification.  We had not envisioned the case of the
+<br />
+projection coordinates being represented by auxiliary coordinate variables.
+<br />
+To support this use case I agree with your recommendation to move the
+<br />
+grid_mapping attribute to the appropriate auxiliary coordinate variables.
+<br />
+If this were done then the coordinates attribute of data variables can
+<br />
+point to all applicable coordinates.  For example:
+<br />
+<br />&nbsp;float waterlevel(TIME,M,N);
+<br />
+&nbsp;&nbsp;&nbsp;waterlevel:long_name = &quot;water level&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;waterlevel:units = &quot;M&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;waterlevel:standard_name = &quot;sea_surface_height&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;waterlevel:positive = &quot;up&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;waterlevel:coordinates = &quot;z_lat z_lon zgrid_y_nl zgrid_x_nl zgrid_y_de zgrid_x_de&quot;;
+<br />
+<br />and the projection coordinates are explicity associated with the
+<br />
+appropriate mapping, for example
+<br />
+<br />&nbsp;double zgrid_x_nl(M,N);
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_x_nl:long_name = &quot;grid cell centres, x-coordinate, EPSG19914&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_x_nl:units = &quot;M&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_x_nl:standard_name = &quot;projection_x_coordinate&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_x_nl:grid_mapping = &quot;EPSG19914&quot; ;
+<br />
+&nbsp;double zgrid_y_nl(M,N);
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_y_nl:long_name = &quot;grid cell centres, y-coordinate, EPSG19914&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_y_nl:units = &quot;M&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_y_nl:standard_name = &quot;projection_y_coordinate&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_y_nl:grid_mapping = &quot;EPSG19914&quot; ;
+<br />
+&nbsp;double zgrid_x_de(M,N);
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_x_de:long_name = &quot;grid cell centres, x-coordinate, EPSG16362&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_x_de:units = &quot;M&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_x_de:standard_name = &quot;projection_x_coordinate&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_x_de:grid_mapping = &quot;EPSG16362&quot; ;
+<br />
+&nbsp;double zgrid_y_de(M,N);
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_y_de:long_name = &quot;grid cell centres, y-coordinate, EPSG16362&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_y_de:units = &quot;M&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_y_de:standard_name = &quot;projection_y_coordinate&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;zgrid_y_de:grid_mapping = &quot;EPSG16362&quot; ;
+<br />
+<br /><em class="quotelev1">&gt; By the way should x_sea_water_velocity and y_sea_water_velocity be velocity 
+</em><br />
+<em class="quotelev1">&gt; components in lat, lon directions or projection_x_coordinate and 
+</em><br />
+<em class="quotelev1">&gt; projection_y_coordinate directions? I guess the former, if so, I would 
+</em><br />
+<em class="quotelev1">&gt; suggest renaming the components to east_sea_water_velocity and 
+</em><br />
+<em class="quotelev1">&gt; north_sea_water_velocity.
+</em><br />
+<br />The x/y vector components refer to some rectangular grid other than a
+<br />
+lat/lon grid.  Since you've provided multiple projection coordinates for
+<br />
+the same values of the vector components I would guess that the vector
+<br />
+component are relative to lat/lon coordinates rather than relative to one
+<br />
+of the two projection coordinates.  In this case the appropriate standard
+<br />
+names are eastward_sea_water_velocity and westward_sea_water_velocity (but
+<br />
+westward_sea_water_velocity is missing from the standard name table).  Note
+<br />
+also that the names x_sea_water_velocity and y_sea_water_velocity have been
+<br />
+updated to sea_water_x_velocity and sea_water_y_velocity.
+<br />
+<br />Brian
+<br />
+<br /><br /><br /><br />On Mon, Nov 27, 2006 at 08:06:58PM +0100, Bert Jagers wrote:
+<br />
+<em class="quotelev1">&gt; Hi Brian,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;Could you please provide a CDL example that shows how the association
+</em><br />
+<em class="quotelev2">&gt; &gt;between the projection_x/y_coordinate and related grid_mapping is lost 
+</em><br />
+<em class="quotelev2">&gt; &gt;when
+</em><br />
+<em class="quotelev2">&gt; &gt;the grid_mapping is attached to the data variable.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; This is an example of a river model at the boundary of the Netherlands and 
+</em><br />
+<em class="quotelev1">&gt; Germany. In the Netherlands, Rijksdriehoek coordinates (EPSG19914) are 
+</em><br />
+<em class="quotelev1">&gt; commonly used, whereas in Germany one of the Gauss-Kruger projections 
+</em><br />
+<em class="quotelev1">&gt; should be used. The grid_mappings indicated below are my best guess and I 
+</em><br />
+<em class="quotelev1">&gt; know that oblique_stereographic is not a valid mapping name (and I'm not 
+</em><br />
+<em class="quotelev1">&gt; sure whether I can just replace it by accepted name stereographic). Anyway, 
+</em><br />
+<em class="quotelev1">&gt; since the model results will be used by both Dutch and German governmental 
+</em><br />
+<em class="quotelev1">&gt; institutes both coordinate systems would be appropriate on the data file. 
+</em><br />
+<em class="quotelev1">&gt; However, I can only refer to either the Dutch or the German coordinates 
+</em><br />
+<em class="quotelev1">&gt; using the coordinates attribute of the quantities (x_sea_water_velocity, 
+</em><br />
+<em class="quotelev1">&gt; y_sea_water_velocity and sea_surface_height). Furthermore, there is no 
+</em><br />
+<em class="quotelev1">&gt; relation between the grid_mapping EPSG19914 and the auxiliary coordinate 
+</em><br />
+<em class="quotelev1">&gt; variables zgrid_x_nl, zgrid_y_nl except for the order in which the 
+</em><br />
+<em class="quotelev1">&gt; quantities are specified (similar for EPSG16362 and zgrid_x_de, 
+</em><br />
+<em class="quotelev1">&gt; zgrid_y_de). If the visualisation program were to scan for auxiliary 
+</em><br />
+<em class="quotelev1">&gt; coordinate variables with compatible dimensions, it could mix them up. It 
+</em><br />
+<em class="quotelev1">&gt; would be preferable if the grid_mappings would refer to the auxiliary 
+</em><br />
+<em class="quotelev1">&gt; coordinate variables, or vice versa.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; dimensions:
+</em><br />
+<em class="quotelev1">&gt; Layer = 5 ;
+</em><br />
+<em class="quotelev1">&gt; M = 89;
+</em><br />
+<em class="quotelev1">&gt; N = 236;
+</em><br />
+<em class="quotelev1">&gt; TIME = UNLIMITED ; (6 currently)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; variables:
+</em><br />
+<em class="quotelev1">&gt; double TIME(TIME);
+</em><br />
+<em class="quotelev1">&gt;   TIME:units = &quot;seconds since 2006-08-05 00:00:00&quot;
+</em><br />
+<em class="quotelev1">&gt; float velocity_x(TIME,Layer,M,N);
+</em><br />
+<em class="quotelev1">&gt;   velocity_x:long_name = &quot;velocity, x-component&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   velocity_x:units = &quot;M/S&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   velocity_x:standard_name = &quot;x_sea_water_velocity&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   velocity_x:coordinates = &quot;zgrid_y_nl zgrid_x_nl&quot; ;
+</em><br />
+<em class="quotelev1">&gt; float velocity_y(TIME,Layer,M,N);
+</em><br />
+<em class="quotelev1">&gt;   velocity_y:long_name = &quot;velocity, y-component&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   velocity_y:units = &quot;M/S&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   velocity_y:standard_name = &quot;y_sea_water_velocity&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   velocity_y:coordinates = &quot;zgrid_y_nl zgrid_x_nl&quot; ;
+</em><br />
+<em class="quotelev1">&gt; float waterlevel(TIME,M,N);
+</em><br />
+<em class="quotelev1">&gt;   waterlevel:long_name = &quot;water level&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   waterlevel:units = &quot;M&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   waterlevel:standard_name = &quot;sea_surface_height&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   waterlevel:positive = &quot;up&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   waterlevel:coordinates = &quot;zgrid_y_nl zgrid_x_nl&quot;;
+</em><br />
+<em class="quotelev1">&gt; int EPSG19914; // Dutch Rijksdriehoek
+</em><br />
+<em class="quotelev1">&gt;    EPSG19914:grid_mapping_name = &quot;oblique_stereographic&quot;; // not valid
+</em><br />
+<em class="quotelev1">&gt;    EPSG19914:longitude_of_projection_origin = 5.38763;
+</em><br />
+<em class="quotelev1">&gt;    EPSG19914:latitude_of_projection_origin = 52.15617;
+</em><br />
+<em class="quotelev1">&gt;    EPSG19914:scale_factor_at_projection_origin = 0.9999079;
+</em><br />
+<em class="quotelev1">&gt;    EPSG19914:false_easting = 155000;
+</em><br />
+<em class="quotelev1">&gt;    EPSG19914:false_northing = 463000;
+</em><br />
+<em class="quotelev1">&gt; double zgrid_x_nl(M,N);
+</em><br />
+<em class="quotelev1">&gt;   zgrid_x_nl:long_name = &quot;grid cell centres, x-coordinate, EPSG19914&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   zgrid_x_nl:units = &quot;M&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   zgrid_x_nl:standard_name = &quot;projection_x_coordinate&quot; ;
+</em><br />
+<em class="quotelev1">&gt; double zgrid_y_nl(M,N);
+</em><br />
+<em class="quotelev1">&gt;   zgrid_y_nl:long_name = &quot;grid cell centres, y-coordinate, EPSG19914&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   zgrid_y_nl:units = &quot;M&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   zgrid_y_nl:standard_name = &quot;projection_y_coordinate&quot; ;
+</em><br />
+<em class="quotelev1">&gt; int EPSG16362; // German Gauss-Kruger CM 6E, zone 2N
+</em><br />
+<em class="quotelev1">&gt;    EPSG16362:grid_mapping_name = &quot;transverse_mercator&quot;;
+</em><br />
+<em class="quotelev1">&gt;    EPSG16362:longitude_of_central_meridian = 6;
+</em><br />
+<em class="quotelev1">&gt;    EPSG16362:latitude_of_projection_origin = 0;
+</em><br />
+<em class="quotelev1">&gt;    EPSG16362:scale_factor_at_central_meridian = 1;
+</em><br />
+<em class="quotelev1">&gt;    EPSG16362:false_easting = 500000;
+</em><br />
+<em class="quotelev1">&gt;    EPSG16362:false_northing = 0;
+</em><br />
+<em class="quotelev1">&gt; double zgrid_x_de(M,N);
+</em><br />
+<em class="quotelev1">&gt;   zgrid_x_de:long_name = &quot;grid cell centres, x-coordinate, EPSG16362&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   zgrid_x_de:units = &quot;M&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   zgrid_x_de:standard_name = &quot;projection_x_coordinate&quot; ;
+</em><br />
+<em class="quotelev1">&gt; double zgrid_y_de(M,N);
+</em><br />
+<em class="quotelev1">&gt;   zgrid_y_de:long_name = &quot;grid cell centres, y-coordinate, EPSG16362&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   zgrid_y_de:units = &quot;M&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   zgrid_y_de:standard_name = &quot;projection_y_coordinate&quot; ;
+</em><br />
+<em class="quotelev1">&gt; double z_lat(M,N);
+</em><br />
+<em class="quotelev1">&gt;   z_lat:long_name = &quot;grid cell centres, latitude coordinate, WGS84&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   z_lat:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   z_lat:standard_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt; double z_lon(M,N);
+</em><br />
+<em class="quotelev1">&gt;   z_lon:long_name = &quot;grid cell centres, longitude coordinate, WGS84&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   z_lon:units = &quot;degrees_east&quot; ;
+</em><br />
+<em class="quotelev1">&gt;   z_lon:standard_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; By the way should x_sea_water_velocity and y_sea_water_velocity be velocity 
+</em><br />
+<em class="quotelev1">&gt; components in lat, lon directions or projection_x_coordinate and 
+</em><br />
+<em class="quotelev1">&gt; projection_y_coordinate directions? I guess the former, if so, I would 
+</em><br />
+<em class="quotelev1">&gt; suggest renaming the components to east_sea_water_velocity and 
+</em><br />
+<em class="quotelev1">&gt; north_sea_water_velocity.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Best regards,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Bert 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Nov 27 2006 - 14:27:08 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start499">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0500.html" title="Next message in the list">Simon Wood: "[CF-metadata] Need help writing point netCDF 3 dataset"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0498.html" title="Previous message in the list">Bert Jagers: "[CF-metadata] curvilinear cartesian coordinates case"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0498.html" title="Message to which this message replies">Bert Jagers: "[CF-metadata] curvilinear cartesian coordinates case"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg499" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg499" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg499" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg499" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:51 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0498.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0500.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

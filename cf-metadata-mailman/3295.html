@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] udunits handling of fuzzy time units from John Caron on 2011-03-15 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] udunits handling of fuzzy time units" />
+<meta name="Date" content="2011-03-15" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3294.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3296.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] udunits handling of fuzzy time units</h1>
+<!-- received="Tue Mar 15 10:24:05 2011" -->
+<!-- isoreceived="20110315102405" -->
+<!-- sent="Tue, 15 Mar 2011 10:24:05 -0600" -->
+<!-- isosent="20110315162405" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] udunits handling of fuzzy time units" -->
+<!-- id="4D7F92A5.5020404_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="D38DCA8842FECD4585C8DE16D602ABF40F6D40_at_VIME-MBX2.rdg.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3295" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3296.html" accesskey="d" title="Christopher Barker: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Next message</a> ]
+[ <a href="./3294.html" title="Steve Hankin: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Previous message</a> ]
+[ <a href="./3292.html" title="Jon Blower: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3307.html" accesskey="t" title="tim.nightingale at stfc.ac.uk: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3295" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3295" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3295" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3295" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20udunits%20handling%20of%20fuzzy%20time%20units">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 15 Mar 2011 10:24:05 -0600</span><br />
+</address>
+<br />
+On 3/15/2011 7:14 AM, Jon Blower wrote:
+<br />
+<em class="quotelev1">&gt; I think it's good to remove the dependence on UDUNITS from the CDM for date handling.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; However, although &quot;date&quot; is not a unit of measure, &quot;seconds&quot; is, and so is &quot;month&quot; in the definition of UDUNITS.
+</em><br />
+<br />yes, some of the confusion is that &quot;time&quot; _is_ a unit of measure and 
+<br />
+&quot;month&quot; and &quot;year&quot; are well defined in that context. As long as your 
+<br />
+units are dimensionally equivalent to &quot;secs&quot; then theres no problem.
+<br />
+<br />the problem is that &quot;date&quot; is not a dimensional unit, its a different 
+<br />
+animal. And the &quot;time coordinate&quot; is a date. And dates ought to 
+<br />
+correspond to our usual meaning of date, but &quot;month&quot; and &quot;year&quot; skewer that.
+<br />
+<br /><em class="quotelev1">&gt; Since CF defines that we use the UDUNITS interpretation of month/year, it would seem dangerous to change this assumption for backward compatibility?
+</em><br />
+<br />We could handle backwards compatibility with the version number of CF.
+<br />
+<br /><em class="quotelev1">&gt; (It's not just that months are of variable lengths within a year, but also that there are different definitions of a &quot;month&quot;.  UDUNITS uses a fixed year-length (not a calendar year length) and a month is year/12.)
+</em><br />
+<em class="quotelev1">&gt; BTW, the various calendars are implemented in ncWMS at <a href="http://www.resc.rdg.ac.uk/trac/ncWMS/browser/trunk/src/java/uk/ac/rdg/resc/edal/time">http://www.resc.rdg.ac.uk/trac/ncWMS/browser/trunk/src/java/uk/ac/rdg/resc/edal/time</a>.
+</em><br />
+<br />thanks, ill check that out
+<br />
+<br /><em class="quotelev1">&gt; I even wrote half-decent unit tests - aren't I a good boy? ;-)
+</em><br />
+<br />the Overlords will be pleased when They arrive ;^)
+<br />
+<br /><em class="quotelev1">&gt; Jon
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: cf-metadata-bounces at cgd.ucar.edu [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of John Caron
+</em><br />
+<em class="quotelev1">&gt; Sent: 15 March 2011 13:02
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] udunits handling of fuzzy time units
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 3/15/2011 5:03 AM, Karl Taylor wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; I agree with Jon.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; By definition, I think, a &quot;unit of measure&quot; must not vary; hence month
+</em><br />
+<em class="quotelev2">&gt;&gt; is not a proper unit and not only depends on month of year, but also
+</em><br />
+<em class="quotelev2">&gt;&gt; on assumed calendar (and similarly for year).  Therefore, I think
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;months since&quot; and &quot;years since&quot; should not be allowed in CF.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Karl
+</em><br />
+<em class="quotelev1">&gt; Hi Karl:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; so if currently we cant actually use months and years, because of the
+</em><br />
+<em class="quotelev1">&gt; way udunits handles them, why not redefine how they should be understood
+</em><br />
+<em class="quotelev1">&gt; when you do use them, namely as setting the month or year field in a
+</em><br />
+<em class="quotelev1">&gt; date calculation.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; this eases the burden on data writers, and makes the metadata human
+</em><br />
+<em class="quotelev1">&gt; readable, at the cost of a small increase in the complexity of libraries
+</em><br />
+<em class="quotelev1">&gt; that read data.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; one more comment: a date is not a unit of measure, and therein lies all
+</em><br />
+<em class="quotelev1">&gt; the trouble. IMO, date handling should be removed from the udunits
+</em><br />
+<em class="quotelev1">&gt; package, which is what im doing now in the CDM (not removing date
+</em><br />
+<em class="quotelev1">&gt; handling from udunits, just not using udunits anymore to handle dates).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; John
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Tue Mar 15 2011 - 10:24:05 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3295">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3296.html" title="Next message in the list">Christopher Barker: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3294.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3292.html" title="Message to which this message replies">Jon Blower: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3307.html" title="Next message in this discussion thread">tim.nightingale at stfc.ac.uk: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3307.html" title="Message sent in reply to this message">tim.nightingale at stfc.ac.uk: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3295" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3295" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3295" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3295" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:42 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3294.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3296.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

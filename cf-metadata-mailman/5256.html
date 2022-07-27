@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Ancillary Data from Hedley, Mark on 2013-04-04 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hedley, Mark (mark.hedley)" />
+<meta name="Subject" content="[CF-metadata] Ancillary Data" />
+<meta name="Date" content="2013-04-04" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5255.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5257.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Ancillary Data</h1>
+<!-- received="Thu Apr  4 03:10:30 2013" -->
+<!-- isoreceived="20130404021030" -->
+<!-- sent="Thu, 4 Apr 2013 09:10:30 +0000" -->
+<!-- isosent="20130404091030" -->
+<!-- name="Hedley, Mark" -->
+<!-- email="mark.hedley" -->
+<!-- subject="[CF-metadata] Ancillary Data" -->
+<!-- id="7819C496F4E10E47BCEFBE74551AAC9603FDAA_at_EXXCMPD1DAG3.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="709D3A93-F529-43D4-BEEF-FBB8518DC762_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5256" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5257.html" accesskey="d" title="Kenneth S. Casey - NOAA Federal: &quot;[CF-metadata] [cf-satellite] Consistent standard_names for satellite derived radiance quantities&quot;">Next message</a> ]
+[ <a href="./5255.html" title="Aleksandar Jelenak - NOAA Affiliate: &quot;[CF-metadata] New CoordinateType: Spectral?&quot;">Previous message</a> ]
+[ <a href="./5079.html" title="Jim Biard: &quot;[CF-metadata] Ancillary Data&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5259.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] Ancillary Data&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5256" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5256" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5256" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5256" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hedley, Mark &lt;<a href="mailto:mark.hedley?Subject=Re%3A%20%5BCF-metadata%5D%20Ancillary%20Data">mark.hedley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 4 Apr 2013 09:10:30 +0000</span><br />
+</address>
+<br />
+Hello Jim et al.
+<br />
+<br />I have been considering your example and the implication of it some more, it has been most helpful.
+<br />
+<br />I still find some attraction in the proposal I have put forward in <a href="https://cf-pcmdi.llnl.gov/trac/ticket/98">https://cf-pcmdi.llnl.gov/trac/ticket/98</a>
+<br />
+<br />Additionally, I wonder whether the umbrella variables, proposed in <a href="https://cf-pcmdi.llnl.gov/trac/ticket/79">https://cf-pcmdi.llnl.gov/trac/ticket/79</a> as a method to provide collections of data variables as part of a larger entity may bring functionality to meet your use case rather neatly.
+<br />
+<br />That said, I have also been considering how to meet you requirement as stated for use of ancillary data whilst addressing potential issues with the current specification.
+<br />
+<br />I am interested in providing the required functionality for users of ancillary variables, but I have concerns that the current loose definition essentially allows anything to be defined as ancillary data for anything else and this seems wrong to me; it brings significant complications for downstream applications that I am not convinced are worth addressing.
+<br />
+<br />I wonder if I can use the following terms as I define them here:
+<br />
+<br />&nbsp;&nbsp;- Domain:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;- the physical and theoretical phenomena that the data is defined with respect to;
+<br />
+&nbsp;&nbsp;- Sampling:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;- the regime of identified cells within the domain where data and metadata are defined;
+<br />
+<br />then apply this to CF as follows:
+<br />
+<br />&nbsp;&nbsp;The definitions of the collection of Coordinates and Auxiliary Coordinates define a domain which the Data Variable is sampled from: 'definition' in this case refers to the attributes of the coord including standard_name, units, coordinate_reference_system etc.
+<br />
+<br />&nbsp;&nbsp;The dimensionality, size and values of the Coordinate and Auxiliary Coordinate arrays define the sampling regime from this domain.
+<br />
+<br />&nbsp;&nbsp;Thus a CF data variable defines a phenomenon and a domain and sampling upon which data values for that phenomenon are provided.
+<br />
+<br />Such a terminology set would allow a constraint to be placed on the ancillary data that it must be from the domain or a subset of the domain of the referencing data variable, although the sampling may differ.
+<br />
+<br />I think this would allow the case you have presented, where the domain is shared but the sampling differs, while limiting some of the potentially impractical cases from being encoded.
+<br />
+<br />I think the statement in the conventions:
+<br />
+&nbsp;&nbsp;'The nature of the relationship between variables associated via ancillary_variables must be determined by other attributes.'
+<br />
+is important, i think there should be enough guidance to enable this to occur.  I would like to see some text detailing what the allowable 'relationships' should be and a statement that there should be a relationship.
+<br />
+<br />Am I keen to mandate that cases such as a data variable defined with respect to latitude and longitude only doesn't have an ancillary variable defined with respect to time only; no relationship may be determined between these, but the conventions do not say anything about this not being allowed.
+<br />
+<br />What do you think?
+<br />
+<br />many thanks for your input on this topic
+<br />
+<br />mark
+<br />
+<br /><br />________________________________
+<br />
+From: Jim Biard [jim.biard at noaa.gov]
+<br />
+Sent: 15 March 2013 12:58
+<br />
+To: Hedley, Mark
+<br />
+Cc: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] Ancillary Data
+<br />
+<br />Mark,
+<br />
+<br />I'm looking at this from the standpoint of the use of an ancillary variable to provide &quot;metadata about the individual values of another data variable&quot;.  The way I think of it, the atmosphere profile used to produce a given &lt;energy deposited&gt; value falls under the category of metadata for the &lt;energy deposited&gt; value.  I don't see any need to restrict this metadata to be a scalar value per primary variable value.  So, in my example, there is a model atmosphere density profile that can be associated with each value of the &lt;energy deposited&gt; variable.  I feel that the profile provides information about the &lt;energy deposited&gt; value.  In fact, we already do this sort of thing with bounds variables, which to my mind are specializations of ancillary variables.
+<br />
+<br />If there is no driving reason to restrict the definition of ancillary variables, I'd encourage folks to leave it as is.  I think that with proper attention to use of names and coordinates, an ancillary variable that has multiple values for each primary variable can be made easily understandable.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />Jim Biard
+<br />
+Research Scholar
+<br />
+Cooperative Institute for Climate and Satellites
+<br />
+Remote Sensing and Applications Division
+<br />
+National Climatic Data Center
+<br />
+151 Patton Ave, Asheville, NC 28801-5001
+<br />
+<br />jim.biard at noaa.gov&lt;mailto:jim.biard at noaa.gov&gt;
+<br />
+828-271-4900
+<br />
+<br />On Mar 15, 2013, at 7:37 AM, &quot;Hedley, Mark&quot; &lt;mark.hedley at metoffice.gov.uk&lt;mailto:mark.hedley at metoffice.gov.uk&gt;&gt; wrote:
+<br />
+<br />Hello Jim
+<br />
+<br />you present an interesting case, thank you
+<br />
+<br />I can see how  I can relate
+<br />
+&nbsp;&nbsp;&nbsp;&lt;energy deposited&gt;(x,y,z,t)
+<br />
+to an ancillary variable of
+<br />
+&nbsp;&nbsp;&nbsp;&lt;model atmosphere density profile&gt;(x,y,z)
+<br />
+<br />In this case, for any value in my &lt;energy deposited&gt; data array I can retrieve an appropriate value for my ancillary variable, &lt;model atmosphere density profile&gt;.
+<br />
+<br />I am assuming that I can aggregate (integrate?) my &lt;energy deposited&gt; data over z,to result in the total energy deposited as a function of x, y and t.
+<br />
+<br />The atmosphere density profile was an input to this calculation, I believe.
+<br />
+<br />If i try to store this as an ancillary variable for my result I am no longer able to reference an appropriate value in the &lt;model atmosphere density profile&gt; data array for a given value in the &lt;energy deposited&gt;.
+<br />
+<br />The conventions state
+<br />
+&nbsp;&nbsp;&nbsp;'The nature of the relationship between variables associated via ancillary_variables must be determined by other attributes.'
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/ch03s04.html">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/ch03s04.html</a>)
+<br />
+<br />I am worried that in this case I can no longer understand this association.  The ancillary variable is defined with respect to a different domain from the data variable.
+<br />
+<br />I might happily choose to ship two data variables in the same file, but do I really mean that the &lt;model atmosphere density profile&gt; is an intrinsic part of my &lt;energy deposited&gt; dataset?
+<br />
+<br />what do you think?
+<br />
+<br />mark
+<br />
+<br /><br />________________________________
+<br />
+From: CF-metadata [cf-metadata-bounces at cgd.ucar.edu&lt;mailto:cf-metadata-bounces at cgd.ucar.edu&gt;] on behalf of Jim Biard [jim.biard at noaa.gov&lt;mailto:jim.biard at noaa.gov&gt;]
+<br />
+Sent: 14 March 2013 13:51
+<br />
+To: cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+<br />
+Subject: Re: [CF-metadata] Ancillary Data
+<br />
+<br />Mark,
+<br />
+<br />I've been following this thread silently, but your statement in your last posting has prompted me to speak up.  I can easily imagine a situation in which I might desire to have one variable reference another variable in which not all dimensions are shared.  As an example,  let's say that I have a variable a[X,Y,T], which contains the total energy deposited per day into the atmosphere by charged particles (from the solar wind &amp; Van Allen belts) on a lon/lat grid as a function of time.  (Something I used to work on many years ago.)  Let's then say that I have another variable, b[X,Y,Z], which represents the model atmosphere density profile on the same lon/lat grid as a function of altitude.  This density profile was used in the calculation of the energy deposition values stored in variable a.  Variable b is clearly valid as an ancillary variable for a, isn't it?
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />Jim Biard
+<br />
+Research Scholar
+<br />
+Cooperative Institute for Climate and Satellites
+<br />
+Remote Sensing and Applications Division
+<br />
+National Climatic Data Center
+<br />
+151 Patton Ave, Asheville, NC 28801-5001
+<br />
+<br />jim.biard at noaa.gov&lt;mailto:jim.biard at noaa.gov&gt;
+<br />
+828-271-4900
+<br />
+<br />On Mar 14, 2013, at 7:53 AM, &quot;Hedley, Mark&quot; &lt;mark.hedley at metoffice.gov.uk&lt;mailto:mark.hedley at metoffice.gov.uk&gt;&gt; wrote:
+<br />
+<br />Thank you for the responses on this topic.
+<br />
+<br />So far I have not found an example of ancillary variable use where
+<br />
+<br />&nbsp;the ancillary variable references file dimensions which are not referenced by the data variable with the referencing ancillary_variables attribute.
+<br />
+<br />I do not think this should be valid, as it is not practical to relate the ancillary variable data to the data variable.  However, I do not think the Conventions are clear enough in banning this.
+<br />
+<br />I have raised a trac ticket:
+<br />
+<a href="https://cf-pcmdi.llnl.gov/trac/ticket/98">https://cf-pcmdi.llnl.gov/trac/ticket/98</a>,
+<br />
+which requires a moderator; please may someone volunteer to moderate this ticket?
+<br />
+<br />thank you
+<br />
+mark
+<br />
+<br />________________________________________
+<br />
+From: CF-metadata [cf-metadata-bounces at cgd.ucar.edu&lt;mailto:cf-metadata-bounces at cgd.ucar.edu&gt;] on behalf of Hedley, Mark [mark.hedley at metoffice.gov.uk&lt;mailto:mark.hedley at metoffice.gov.uk&gt;]
+<br />
+Sent: 18 February 2013 10:45
+<br />
+To: andrew walsh
+<br />
+Cc: cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+<br />
+Subject: Re: [CF-metadata] Ancillary Data
+<br />
+<br />Hello Andrew
+<br />
+<br />thank you for the response, my reading of your cases is that they are all 'a' or 'b' in the terms I stated.
+<br />
+<br />There are no ancillary variables which reference a dimension of the netCDF file not referenced by the data variable with the ancillary_variables attribute.
+<br />
+<br />I think these are types of case I am particularly concerned to find examples of, or, preferably, discount explicitly.
+<br />
+<br />much obliged
+<br />
+mark
+<br />
+<br />On 2/13/13 12:15 PM, Hedley, Mark wrote:
+<br />
+&nbsp;&nbsp;a. reference the same file dimensions as the data variable with the
+<br />
+ancillary_variables attribute references
+<br />
+<br />&nbsp;&nbsp;b. reference a subset of the file dimensions referenced by the data
+<br />
+variable with the ancillary_variables attribute
+<br />
+<br />&nbsp;&nbsp;c. reference file dimensions which are not referenced by the data variable
+<br />
+with the ancillary_variables attribute
+<br />
+<br />-----Original Message-----
+<br />
+From: andrew walsh [mailto:awalsh at metoc.gov.au&lt;<a href="http://metoc.gov.au">http://metoc.gov.au</a>&gt;]
+<br />
+Sent: Fri 2/15/2013 3:20 AM
+<br />
+To: Hedley, Mark
+<br />
+Cc: ngalbraith at whoi.edu&lt;mailto:ngalbraith at whoi.edu&gt;; cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+<br />
+Subject: Re: [CF-metadata] Ancillary Data
+<br />
+<br />Hi Mark,
+<br />
+<br />We are using the ancilliary_variables attribute in a real world case for CTD
+<br />
+profile data
+<br />
+(1 netCDF per CTD profile). Not sure if our use case fits with with your
+<br />
+examples a,b,c but here is a abbreviated CDL version:-
+<br />
+<br />dimensions:
+<br />
+<br />pressure = UNLIMITED ; // (9 currently)
+<br />
+<br />variables:
+<br />
+double time ;
+<br />
+&nbsp;time:standard_name = &quot;time&quot; ;
+<br />
+....
+<br />
+byte time_qc_flag;
+<br />
+&nbsp;time_qc_flag:long_name = &quot;quality control flag for time (Level 1 flag)&quot; ;
+<br />
+....
+<br />
+<br />double latitude ;
+<br />
+&nbsp;latitude:standard_name = &quot;latitude&quot; ;
+<br />
+...
+<br />
+<br />double longitude ;
+<br />
+&nbsp;longitude:standard_name = &quot;longitude&quot; ;
+<br />
+...
+<br />
+<br />byte position_qc_flag;
+<br />
+&nbsp;position_qc_flag:long_name = &quot;quality control flag for position (Level 1
+<br />
+flag)&quot; ;
+<br />
+....
+<br />
+<br />double pressure(pressure) ;
+<br />
+&nbsp;pressure:standard_name = &quot;sea_water_pressure&quot; ;
+<br />
+...
+<br />
+<br />double temperature(pressure) ;
+<br />
+&nbsp;temperature:_FillValue = -99.99 ;
+<br />
+&nbsp;temperature:standard_name = &quot;sea_water_temperature&quot; ;
+<br />
+&nbsp;temperature:units = &quot;degrees_C&quot; ;
+<br />
+&nbsp;temperature:valid_min = -2 ;
+<br />
+&nbsp;temperature:valid_max = 40 ;
+<br />
+&nbsp;temperature:ancillary_variables = &quot;temperature_whole_profile_flag
+<br />
+temperature_qc_flag temperature_sd_test&quot;  ;
+<br />
+&nbsp;temperature:coordinates = &quot;time latitude longitude pressure&quot; ;
+<br />
+<br />byte temperature_whole_profile_flag ;
+<br />
+&nbsp;temperature_whole_profile_flag:long_name = &quot;qc flag for whole temperature
+<br />
+profile (primary L1 flag)&quot; ;
+<br />
+&nbsp;temperature_whole_profile_flag:quality_control_convention = &quot;Proposed IODE qc
+<br />
+scheme March 2012&quot; ;
+<br />
+&nbsp;temperature_whole_profile_flag:valid_min = 1 ;
+<br />
+&nbsp;temperature_whole_profile_flag:valid_max = 9 ;
+<br />
+&nbsp;temperature_whole_profile_flag:flag_values = 1b, 2b, 3b, 4b, 9b ;
+<br />
+&nbsp;temperature_whole_profile_flag:flag_meanings = &quot;good not_evaluated_or_unknown
+<br />
+suspect bad missing&quot; ;
+<br />
+<br />byte temperature_qc_flag(pressure) ;
+<br />
+&nbsp;temperature_qc_flag:long_name = &quot;quality control flag for temperature (primary
+<br />
+Level 1 flag)&quot; ;
+<br />
+&nbsp;temperature_qc_flag:standard_name = &quot;sea_water_temperature status_flag&quot; ;
+<br />
+&nbsp;temperature_qc_flag:quality_control_convention = &quot;Proposed IODE qc scheme
+<br />
+March 2012&quot; ;
+<br />
+&nbsp;temperature_qc_flag:valid_min = 1 ;
+<br />
+&nbsp;temperature_qc_flag:valid_max = 9 ;
+<br />
+&nbsp;temperature_qc_flag:flag_values = 1b, 2b, 3b, 4b, 9b ;
+<br />
+&nbsp;temperature_qc_flag:flag_meanings = &quot;good not_evaluated_or_unknown suspect bad
+<br />
+missing&quot; ;
+<br />
+&nbsp;temperature_qc_flag:coordinates = &quot;time latitude longitude pressure&quot; ;
+<br />
+<br />byte temperature_sd_test(pressure) ;
+<br />
+&nbsp;temperature_sd_test:long_name = &quot;qc flag for monthly temperature standard
+<br />
+deviation test (secondary L2 flag)&quot;
+<br />
+&nbsp;temperature_sd_test:quality_control_convention = &quot;Proposed IODE qc scheme
+<br />
+March 2012&quot; ;
+<br />
+&nbsp;temperature_sd_test:valid_min = 0 ;
+<br />
+&nbsp;temperature_sd_test:valid_max = 2 ;
+<br />
+&nbsp;temperature_sd_test:flag_values = 0b, 1b, 2b ;
+<br />
+&nbsp;temperature_sd_test:flag_meanings = &quot;passed failed unknown&quot; ;
+<br />
+&nbsp;temperature_sd_test:coordinates = &quot;time latitude longitude pressure&quot; ;
+<br />
+<br />double salinity(pressure) ;
+<br />
+&nbsp;salinity:_FillValue = -99.99 ;
+<br />
+&nbsp;salinity:standard_name = &quot;sea_water_practical_salinity&quot; ;
+<br />
+&nbsp;salinity:units = &quot;psu&quot; ;
+<br />
+&nbsp;salinity:valid_min = 0 ;
+<br />
+&nbsp;salinity:valid_max = 45 ;
+<br />
+&nbsp;salinity:ancillary_variables = &quot;salinity_whole_profile_flag salinity_qc_flag
+<br />
+salinity_sd_test&quot;
+<br />
+&nbsp;salinity:coordinates = &quot;time latitude longitude pressure&quot; ;
+<br />
+<br />byte salinity_whole_profile_flag ;
+<br />
+&nbsp;salinity_whole_profile_flag:long_name = &quot;qc flag for whole salinity profile
+<br />
+(primary L1 flag)&quot; ;
+<br />
+&nbsp;salinity_whole_profile_flag:quality_control_convention = &quot;Proposed IODE qc
+<br />
+scheme March 2012&quot; ;
+<br />
+&nbsp;salinity_whole_profile_flag:valid_min = 1 ;
+<br />
+&nbsp;salinity_whole_profile_flag:valid_max = 9 ;
+<br />
+&nbsp;salinity_whole_profile_flag:flag_values = 1b, 2b, 3b, 4b, 9b ;
+<br />
+&nbsp;salinity_whole_profile_flag:flag_meanings = &quot;good not_evaluated_or_unknown
+<br />
+suspect bad missing&quot; ;
+<br />
+<br />byte salinity_qc_flag(pressure) ;
+<br />
+&nbsp;salinity_qc_flag:long_name = &quot;quality control flag for salinity (primary Level
+<br />
+1 flag)&quot; ;
+<br />
+&nbsp;salinity_qc_flag:standard_name = &quot;sea_water_practical_salinity status_flag&quot; ;
+<br />
+&nbsp;salinity_qc_flag:quality_control_convention = &quot;Proposed IODE qc scheme March
+<br />
+2012&quot; ;
+<br />
+&nbsp;salinity_qc_flag:valid_min = 1 ;
+<br />
+&nbsp;salinity_qc_flag:valid_max = 9 ;
+<br />
+&nbsp;salinity_qc_flag:flag_values = 1b, 2b, 3b, 4b, 9b ;
+<br />
+&nbsp;salinity_qc_flag:flag_meanings = &quot;good not_evaluated_or_unknown suspect bad
+<br />
+missing&quot; ;
+<br />
+&nbsp;salinity_qc_flag:coordinates = &quot;time latitude longitude pressure&quot; ;
+<br />
+<br />byte salinity_sd_test(pressure) ;
+<br />
+&nbsp;salinity_sd_test:long_name = &quot;qc flag for monthly salinity standard deviation
+<br />
+test (secondary L2 flag)&quot;
+<br />
+&nbsp;salinity_sd_test:quality_control_convention = &quot;Proposed IODE qc scheme March
+<br />
+2012&quot; ;
+<br />
+&nbsp;salinity_sd_test:valid_min = 0 ;
+<br />
+&nbsp;salinity_sd_test:valid_max = 2 ;
+<br />
+&nbsp;salinity_sd_test:flag_values = 0b, 1b, 2b ;
+<br />
+&nbsp;salinity_sd_test:flag_meanings = &quot;passed failed unknown&quot; ;
+<br />
+&nbsp;salinity_sd_test:coordinates = &quot;time latitude longitude pressure&quot; ;
+<br />
+<br />int profile ; //Unique integer to identify each profile
+<br />
+&nbsp;profile:long_name = &quot;profile identifier&quot;
+<br />
+....
+<br />
+<br />Andrew Walsh
+<br />
+<br />----- Original Message -----
+<br />
+From: &quot;Hedley, Mark&quot; &lt;mark.hedley at metoffice.gov.uk&lt;mailto:mark.hedley at metoffice.gov.uk&gt;&gt;
+<br />
+To: &lt;ngalbraith at whoi.edu&lt;mailto:ngalbraith at whoi.edu&gt;&gt;; &lt;cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;&gt;
+<br />
+Sent: Thursday, February 14, 2013 10:40 PM
+<br />
+Subject: Re: [CF-metadata] Ancillary Data
+<br />
+<br /><br />Hi Nan
+<br />
+<br />I think I understand you approach, it seems logical and helpful to me.
+<br />
+<br />It feels like all your examples are in my category b:
+<br />
+<br />b. reference a subset of the file dimensions referenced by the data variable
+<br />
+with the ancillary_variables attribute
+<br />
+<br />and thus relate to the data variable in the same way auxiliary_coordinates do,
+<br />
+just with different inferred semantics.
+<br />
+<br />many thanks for the feedback
+<br />
+<br />mark
+<br />
+<br />-----Original Message-----
+<br />
+From: CF-metadata on behalf of Nan Galbraith
+<br />
+Sent: Wed 13/02/2013 19:55
+<br />
+To: cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+<br />
+Subject: Re: [CF-metadata] Ancillary Data
+<br />
+<br />I use a singleton variable to record the magnetic correction that's been
+<br />
+applied to my wind and/or current variables; it's dim(1) and is listed  as
+<br />
+an ancillary to any variables that have been affected by the rotation.
+<br />
+<br />It could be an attribute of each of those variables, but making it a
+<br />
+free-standing
+<br />
+variable lets me give it units and attributes. That's important because I
+<br />
+record the model name and version date, the URL of the NGDC calculator
+<br />
+site,
+<br />
+the inputs to the model (date and location for which the calculation was
+<br />
+done)
+<br />
+and the estimated rate of change.
+<br />
+<br />Maybe this is just a technicality - but I also use an empty 'container'
+<br />
+variable for
+<br />
+instruments, which has ancillary variables with a depth dimension for
+<br />
+manufacturer,
+<br />
+model, serial number, and reference URL.  The instrument variable is
+<br />
+tied to 'obs data'
+<br />
+variables via NODC's 'instrument' attribute, but has no dimensions of
+<br />
+its own; the
+<br />
+individual component variables (like serial number) have a dimension
+<br />
+that matches
+<br />
+the depth dimension of the obs data variables.
+<br />
+<br />- Nan
+<br />
+<br />On 2/13/13 12:15 PM, Hedley, Mark wrote:
+<br />
+Hello CF community
+<br />
+<br />I have been perusing the CF conventions again, particularly the section on
+<br />
+Ancillary Data
+<br />
+<a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/ch03s04.html">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/ch03s04.html</a>
+<br />
+<br />The conventions make the statement:
+<br />
+<br />&nbsp;&nbsp;The nature of the relationship between variables associated via
+<br />
+ancillary_variables must be determined by other attributes.
+<br />
+<br />The example given provides data variables which reference the same dimensions
+<br />
+in the file: thus they data arrays are the same size.  However, the
+<br />
+conventions do not seem to mandate this.
+<br />
+<br />I am interested in the use of the
+<br />
+&nbsp;&nbsp;ancillary_variables
+<br />
+attribute in real world datasets.
+<br />
+<br />Do people have examples they can share of ancillary datasets which:
+<br />
+<br />&nbsp;&nbsp;a. reference the same file dimensions as the data variable with the
+<br />
+ancillary_variables attribute references
+<br />
+<br />&nbsp;&nbsp;b. reference a subset of the file dimensions referenced by the data
+<br />
+variable with the ancillary_variables attribute
+<br />
+<br />&nbsp;&nbsp;c. reference file dimensions which are not referenced by the data variable
+<br />
+with the ancillary_variables attribute
+<br />
+<br />I am particularly interested in examples of case c, as I feel this is
+<br />
+markedly different from cases a and b and requires a different kind of
+<br />
+support if it is in use.
+<br />
+<br />many thanks
+<br />
+mark
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<br /><br /><br /><pre>
+--
+*******************************************************
+* Nan Galbraith        Information Systems Specialist *
+* Upper Ocean Processes Group            Mail Stop 29 *
+* Woods Hole Oceanographic Institution                *
+* Woods Hole, MA 02543                 (508) 289-2444 *
+*******************************************************
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130404/695e7b22/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130404/695e7b22/attachment-0001.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Apr 04 2013 - 03:10:30 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5256">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5257.html" title="Next message in the list">Kenneth S. Casey - NOAA Federal: "[CF-metadata] [cf-satellite] Consistent standard_names for satellite derived radiance quantities"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5255.html" title="Previous message in the list">Aleksandar Jelenak - NOAA Affiliate: "[CF-metadata] New CoordinateType: Spectral?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5079.html" title="Message to which this message replies">Jim Biard: "[CF-metadata] Ancillary Data"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5259.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] Ancillary Data"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5259.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] Ancillary Data"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5256" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5256" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5256" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5256" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:18 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5255.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5257.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Conventions for use of local solar time in gridded climate data from Mitchelson, Joel on 2016-07-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="Mitchelson, Joel (joel.mitchelson)" />
+<meta name="Subject" content="[CF-metadata] Conventions for use of local solar time in gridded climate data" />
+<meta name="Date" content="2016-07-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7725.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7727.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Conventions for use of local solar time in gridded climate data</h1>
+<!-- received="Fri Jul 29 04:52:55 2016" -->
+<!-- isoreceived="20160729035255" -->
+<!-- sent="Fri, 29 Jul 2016 10:52:55 +0000" -->
+<!-- isosent="20160729105255" -->
+<!-- name="Mitchelson, Joel" -->
+<!-- email="joel.mitchelson" -->
+<!-- subject="[CF-metadata] Conventions for use of local solar time in gridded climate data" -->
+<!-- id="3172B8DB656FE7409F1A0D003A41D2160766DA7F_at_EXXCMPD1DAG2.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="7edecfe1-7470-a47f-ca00-3cfe8683116a_at_ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7726" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7727.html" accesskey="d" title="Ethan Davis: &quot;[CF-metadata] Reminder: AGU session on netCDF-CF - submission deadline 3 August&quot;">Next message</a> ]
+[ <a href="./7725.html" title="Seth McGinnis: &quot;[CF-metadata] Conventions for use of local solar time in gridded climate data&quot;">Previous message</a> ]
+[ <a href="./7725.html" title="Seth McGinnis: &quot;[CF-metadata] Conventions for use of local solar time in gridded climate data&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7726" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7726" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7726" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7726" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Mitchelson, Joel &lt;<a href="mailto:joel.mitchelson?Subject=Re%3A%20%5BCF-metadata%5D%20Conventions%20for%20use%20of%20local%20solar%20time%20in%20gridded%20climate%20data">joel.mitchelson</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 29 Jul 2016 10:52:55 +0000</span><br />
+</address>
+<br />
+Hi Jim, David, Seth,
+<br />
+<br />Many thanks indeed for all of the kind thought that's gone into this.
+<br />
+<br />It seems the balance we are looking for is a solution that is close to end-user expectations (including working nicely with lots of existing software packages) whilst minimising the risk that the information can be misinterpreted.
+<br />
+<br />The localtime(time, longitude) construct looks like a good fit to that, except for the issue that was raised regarding cell_methods.
+<br />
+<br />If we used this construct together with the latest suggestion of:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;short tas(time, latitude, longitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:coordinates = &quot;localtime&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:cell_methods = &quot;time: mean (over localtime bounds)&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br />Can we say if this use of cell_methods is:
+<br />
+&nbsp;A. Non-compliant with CF?
+<br />
+&nbsp;B. Compliant with CF but conveys the wrong meaning?
+<br />
+&nbsp;C. Compliant with CF but ambiguous in meaning?
+<br />
+<br />If the answer is C then this is actually not a bad place to begin, as we could clarify the meaning both in our documentation and later (if CF convention authors were willing) in the CF convention document.
+<br />
+<br />Seth would you still have a concern that users would find the above difficult to use and/or that it would break lots of software tools?  As an alternative I can see that the use of time:ancillary_variables = &quot;local_offset&quot; is even closer to some established examples, but until the CF convention is updated I wonder if the interpretation of the time bounds for each grid box would actually be wrong as opposed to just ambiguous.
+<br />
+<br />Further thoughts/advice much appreciated.  Thanks for all the effort so far!
+<br />
+<br />Kind regards,
+<br />
+Joel.
+<br />
+<br />-----Original Message-----
+<br />
+From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Seth McGinnis
+<br />
+Sent: 28 July 2016 22:18
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] Conventions for use of local solar time in gridded climate data
+<br />
+<br />Hi David,
+<br />
+<br />I have argued myself back and forth into a couple different positions, but I have two major thoughts to contribute:
+<br />
+<br />1) I think using the axis attribute may help.
+<br />
+<br />2) Much of the observational data that's out there already is probably actually doing the thing that you're describing and using local time instead of UTC, and just not mentioning it.  In particular, for datasets based on station data, observations are typically taken during the local day and are not synchronized to UTC.  So if you took Jim's example and left out the localtime variable, that's what a lot of the data out there looks like.  I find myself therefore inclined towards a  solution of that general form simply on the grounds that it's in line with end-user expectations.  You're doing what everyone is used to, just adding a little extra information to be more explicit about what's happening with time.
+<br />
+<br />I agree with you that you can't re-use the units and standard_name for time in the localtime variable, though.  What if instead of localtime, you just recorded the offset from UTC?  Then you it's a pure function of longitude and you can link the two through an ancillary_variables attribute.  We'd also need a new standard_name for the offset, of course.
+<br />
+<br /><br />So:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;float time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;days since 1850-1-1 0:0:0&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:long_name = &quot;Time (days)&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:calendar = &quot;gregorian&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:bounds = &quot;time_bnds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:axis = &quot;T&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:ancillary_variables = &quot;local_offset&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;float time_bnds(time, bounds) ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;float local_offset(longitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;local_offset:units = &quot;hours&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;local_offset:long_name = &quot;Local offset from UTC&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;local_offset:standard_name = &quot;local_time_offset&quot; ;
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<br /><br />On 7/28/16 1:50 PM, Jim Biard wrote:
+<br />
+<em class="quotelev1">&gt; David,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; That's a good point about the cell_methods. Perhaps an addition to the 
+</em><br />
+<em class="quotelev1">&gt; cell_methods convention is in order.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; In order to use the word time in a generic sense (as a standard name, 
+</em><br />
+<em class="quotelev1">&gt; not a coordinate) the time dimension and coordinate names would have 
+</em><br />
+<em class="quotelev1">&gt; to be named something else, perhaps 'notional_time' or 't'. We could 
+</em><br />
+<em class="quotelev1">&gt; then use the comment option to write
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; cell_methods = &quot;time: mean (over localtime bounds)&quot; ;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; but that is somewhat ambiguous.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; We could propose an extension of the cell_methods attribute. What we 
+</em><br />
+<em class="quotelev1">&gt; would like to formalize is the way in which the dimensions of 
+</em><br />
+<em class="quotelev1">&gt; localtime are to be handled. We want to indicate that a mean over the 
+</em><br />
+<em class="quotelev1">&gt; time boundaries of localtime was applied at each latitude and 
+</em><br />
+<em class="quotelev1">&gt; longitude, with the longitude of localtime changing with the longitude 
+</em><br />
+<em class="quotelev1">&gt; of the data variable. Ways we could write this that come to my mind are:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;   * localtime: mean
+</em><br />
+<em class="quotelev1">&gt;   * localtime(time): mean
+</em><br />
+<em class="quotelev1">&gt;   * time(localtime): mean
+</em><br />
+<em class="quotelev1">&gt;   * localtime: mean over time at longitude
+</em><br />
+<em class="quotelev1">&gt;   * localtime: mean (over time at longitude)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; In every case, it's assumed that such a construction is only allowed 
+</em><br />
+<em class="quotelev1">&gt; because localtime has a standard_name of 'time'. In the first case, 
+</em><br />
+<em class="quotelev1">&gt; variation over the axes is assumed. In the second case and third 
+</em><br />
+<em class="quotelev1">&gt; cases, the time aspect is explicitly declared, with the word 'time' 
+</em><br />
+<em class="quotelev1">&gt; interpreted as a standard name, not as a dimension. The fourth and 
+</em><br />
+<em class="quotelev1">&gt; fifth cases explicitly indicate the dimensional relationship, making 
+</em><br />
+<em class="quotelev1">&gt; it clear that the mean is in the time dimension. Putting the 
+</em><br />
+<em class="quotelev1">&gt; parentheses around the expression in the fifth case is to keep people 
+</em><br />
+<em class="quotelev1">&gt; from confusing this with a climatology cell_methods.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I personally like the first, second, and third options the best.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Further thoughts, anyone?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Grace and peace,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jim
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On 7/28/16 2:29 PM, David Hassell wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Hello Joel, Jim,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I quite like the &quot;float localtime(time, longitude)&quot; construction.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; There is an issue with the cell method, though - we can't have 
+</em><br />
+<em class="quotelev2">&gt;&gt; 'tas:cell_methods = &quot;localtime: mean&quot;' because localtime is a 2-d 
+</em><br />
+<em class="quotelev2">&gt;&gt; auxiliary coordinate variable. Would 'tas:cell_methods = &quot;time: mean&quot;'
+</em><br />
+<em class="quotelev2">&gt;&gt; give the correct meaning? In this case &quot;time&quot; is acting as the name 
+</em><br />
+<em class="quotelev2">&gt;&gt; of a coordinate variable (and therefore dimension).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; All the best,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; David
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 28 July 2016 at 18:18, Jim Biard &lt;jbiard at cicsnc.org 
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:jbiard at cicsnc.org&gt;&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     Joel,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     There is no current standard for dealing with Local Solar Time
+</em><br />
+<em class="quotelev2">&gt;&gt;     (LST). I assume that the time and timebounds values would be
+</em><br />
+<em class="quotelev2">&gt;&gt;     elapsed times represented as fractions of days in quasi-UTC (the
+</em><br />
+<em class="quotelev2">&gt;&gt;     time at longitude 0). This is valid netCDF, but I'm not at all
+</em><br />
+<em class="quotelev2">&gt;&gt;     sure what existing software packages would do with it. Time is the
+</em><br />
+<em class="quotelev2">&gt;&gt;     one dimension that most software packages assume to be
+</em><br />
+<em class="quotelev2">&gt;&gt;     1-dimensional. Another possible approach would be to have a
+</em><br />
+<em class="quotelev2">&gt;&gt;     notional 1-D time variable that would be set to noon UTC of each
+</em><br />
+<em class="quotelev2">&gt;&gt;     day and rename your time variable in your example to localtime. It
+</em><br />
+<em class="quotelev2">&gt;&gt;     would look something like this:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     dimensions:
+</em><br />
+<em class="quotelev2">&gt;&gt;         time = UNLIMITED ; // (1 currently)
+</em><br />
+<em class="quotelev2">&gt;&gt;         latitude = 720 ;
+</em><br />
+<em class="quotelev2">&gt;&gt;         longitude = 1440 ;
+</em><br />
+<em class="quotelev2">&gt;&gt;         bounds = 2 ;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     variables:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;         float time(time) ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             time:units = &quot;days since 1850-1-1 0:0:0&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             time:long_name = &quot;Time (days)&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             time:standard_name = &quot;time&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             time:calendar = &quot;gregorian&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;         float localtime(time, longitude) ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             time:units = &quot;days since 1850-1-1 0:0:0&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             time:long_name = &quot;Time (days)&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             time:standard_name = &quot;time&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             time:bounds = &quot;timebounds&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             time:calendar = &quot;gregorian&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;         float timebounds(time, longitude, bounds)
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;         float latitude(latitude) ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             latitude:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             latitude:long_name = &quot;Latitude (deg)&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             latitude:standard_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;         float longitude(longitude) ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             longitude:units = &quot;degrees_east&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             longitude:long_name = &quot;Longitude (deg)&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             longitude:standard_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;         short tas(time, latitude, longitude) ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             tas:units = &quot;K&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             tas:long_name = &quot;Mean daily surface air temperature (K)&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             tas:standard_name = &quot;air_temperature&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             tas:coordinates = &quot;localtime&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             tas:cell_methods = &quot;localtime: mean&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             tas:_FillValue = -32768s ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             tas:scale_factor = 0.002 ;
+</em><br />
+<em class="quotelev2">&gt;&gt;             tas:add_offset = 273.15 ;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     This provides an unambiguous, if notional, time dimension, and
+</em><br />
+<em class="quotelev2">&gt;&gt;     still associates the local time values with the data values.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     Grace and peace,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     Jim
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     On 7/28/16 7:58 AM, Mitchelson, Joel wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     Dear cf-metadata community,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     We are working on new high resolution daily data sets of climate observations as part of the EUSTACE project ( <a href="http://www.eustaceproject.eu/">http://www.eustaceproject.eu/</a> ), where fields such as surface air temperature are presented on global grids, and the sampling period for each grid box is from midnight to midnight in local solar time. In other words, the UTC time period of each grid box depends on longitude.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     It seems that within CF conventions there might be several possible approaches to expressing this, though no specific example appears to be given in the conventions documents (versions 1.6 or 1.7). It would be desirable if our chosen method works nicely with as many existing software tools as possible; and uses established conventions if they exist.  
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     Do conventions for this already exist?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     If not, is the example CDL fragment below likely to be easy to use within many existing software tools for working with gridded fields of climate data, or might there be a more widely compatible method?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     Many thanks in advance for your kind attention.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     Joel.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     --
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     Dr. Joel R. Mitchelson  Observational Climate Data Software Specialist
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     Met Office Hadley Centre  FitzRoy Road  Exeter  Devon  EX1 3PB  
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; United Kingdom
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     --
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     // Example CDL fragment representing a single day of data in one NetCDF file.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     // To represent more than one day multiple files could be used, 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     // or else a single file with the localtime dimension set to equal the number of days.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     dimensions:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         localtime = UNLIMITED ; // (1 currently)
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         latitude = 720 ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         longitude = 1440 ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         bounds = 2 ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     variables:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         float time(localtime, longitude) ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             time:units = &quot;days since 1850-1-1 0:0:0&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             time:long_name = &quot;Time (days)&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             time:standard_name = &quot;time&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             time:bounds = &quot;timebounds&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             time:calendar = &quot;gregorian&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         float timebounds(localtime, longitude, bounds)
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         float latitude(latitude) ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             latitude:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             latitude:long_name = &quot;Latitude (deg)&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             latitude:standard_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         float longitude(longitude) ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             longitude:units = &quot;degrees_east&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             longitude:long_name = &quot;Longitude (deg)&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             longitude:standard_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         short tas(localtime, latitude, longitude) ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             tas:units = &quot;K&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             tas:long_name = &quot;Mean daily surface air temperature (K)&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             tas:standard_name = &quot;air_temperature&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             tas:coordinates = &quot;time&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             tas:cell_methods = &quot;time: mean&quot; ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             tas:_FillValue = -32768s ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             tas:scale_factor = 0.002 ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             tas:add_offset = 273.15 ;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     -- 
+</em><br />
+<em class="quotelev2">&gt;&gt;     CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+</em><br />
+<em class="quotelev2">&gt;&gt;     Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+</em><br />
+<em class="quotelev2">&gt;&gt;     *Research Scholar*
+</em><br />
+<em class="quotelev2">&gt;&gt;     Cooperative Institute for Climate and Satellites NC
+</em><br />
+<em class="quotelev2">&gt;&gt;     &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     NOAA National Centers for Environmental Information
+</em><br />
+<em class="quotelev2">&gt;&gt;     &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     /formerly NOAA's National Climatic Data Center/
+</em><br />
+<em class="quotelev2">&gt;&gt;     151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev2">&gt;&gt;     e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     o: +1 828 271 4900 &lt;tel:%2B1%20828%20271%204900&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     /Connect with us on Facebook for climate
+</em><br />
+<em class="quotelev2">&gt;&gt;     &lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and
+</em><br />
+<em class="quotelev2">&gt;&gt;     geophysics &lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     information, and follow us on Twitter at _at_NOAANCEIclimate
+</em><br />
+<em class="quotelev2">&gt;&gt;     &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and _at_NOAANCEIocngeo
+</em><br />
+<em class="quotelev2">&gt;&gt;     &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt;     CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt;     CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; David Hassell
+</em><br />
+<em class="quotelev2">&gt;&gt; National Centre for Atmospheric Science Department of Meteorology, 
+</em><br />
+<em class="quotelev2">&gt;&gt; University of Reading, Earley Gate, PO Box 243, Reading RG6 6BB
+</em><br />
+<em class="quotelev2">&gt;&gt; Tel: +44 118 378 5613
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://www.met.reading.ac.uk/">http://www.met.reading.ac.uk/</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+</em><br />
+<em class="quotelev1">&gt; Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+</em><br />
+<em class="quotelev1">&gt; *Research Scholar*
+</em><br />
+<em class="quotelev1">&gt; Cooperative Institute for Climate and Satellites NC 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt; North Carolina State University 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt; NOAA National Centers for Environmental Information 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt; /formerly NOAA's National Climatic Data 
+</em><br />
+<em class="quotelev1">&gt; Center/
+</em><br />
+<em class="quotelev1">&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev1">&gt; e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev1">&gt; o: +1 828 271 4900
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; /Connect with us on Facebook for climate 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us 
+</em><br />
+<em class="quotelev1">&gt; on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; 
+</em><br />
+<em class="quotelev1">&gt; and _at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Jul 29 2016 - 04:52:55 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7726">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7727.html" title="Next message in the list">Ethan Davis: "[CF-metadata] Reminder: AGU session on netCDF-CF - submission deadline 3 August"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7725.html" title="Previous message in the list">Seth McGinnis: "[CF-metadata] Conventions for use of local solar time in gridded climate data"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7725.html" title="Message to which this message replies">Seth McGinnis: "[CF-metadata] Conventions for use of local solar time in gridded climate data"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7726" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7726" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7726" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7726" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:05 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7725.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7727.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

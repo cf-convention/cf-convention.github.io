@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] why not use attributes instead of scalar variables for terms in dimensionless vertical coordinates... from Ed Hartnett on 2006-10-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Ed Hartnett (ed)" />
+<meta name="Subject" content="[CF-metadata] why not use attributes instead of scalar variables for terms in dimensionless vertical coordinates..." />
+<meta name="Date" content="2006-10-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0280.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0282.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] why not use attributes instead of scalar variables for terms in dimensionless vertical coordinates...</h1>
+<!-- received="Thu Oct  5 08:30:38 2006" -->
+<!-- isoreceived="20061005073038" -->
+<!-- sent="Thu, 05 Oct 2006 08:30:38 -0600" -->
+<!-- isosent="20061005143038" -->
+<!-- name="Ed Hartnett" -->
+<!-- email="ed" -->
+<!-- subject="[CF-metadata] why not use attributes instead of scalar variables for terms in dimensionless vertical coordinates..." -->
+<!-- id="wrx64ey3kdt.fsf_at_shecky.unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start281" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0282.html" accesskey="d" title="Manuel Fuentes: &quot;[CF-metadata] question and time and standard_name...&quot;">Next message</a> ]
+[ <a href="./0280.html" title="Christiane Textor: &quot;[CF-metadata] standard names for aerosols and chemistry&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0290.html" accesskey="t" title="Brian Eaton: &quot;[CF-metadata] why not use attributes instead of scalar variables for terms in dimensionless vertical coordinates...&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg281" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg281" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg281" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg281" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Ed Hartnett &lt;<a href="mailto:ed?Subject=Re%3A%20%5BCF-metadata%5D%20why%20not%20use%20attributes%20instead%20of%20scalar%20variables%20for%20terms%20in%20dimensionless%20vertical%20coordinates...">ed</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 05 Oct 2006 08:30:38 -0600</span><br />
+</address>
+<br />
+Howdy all!
+<br />
+<br />I am in the midst of writing some functions to handle reading and
+<br />
+writing the dimensionless vertical coordinates listed in appendix D of
+<br />
+the CF document.
+<br />
+<br />Many of these use scalar variables to hold reference values. For
+<br />
+example:
+<br />
+<br />&nbsp;&nbsp;&nbsp;standard_name = &quot;atmosphere_sigma_coordinate&quot;
+<br />
+<br />&nbsp;&nbsp;&nbsp;Definition:
+<br />
+<br />&nbsp;&nbsp;&nbsp;p(n,k,j,i) = ptop + sigma(k)*(ps(n,j,i)-ptop)
+<br />
+<br />&nbsp;&nbsp;&nbsp;where p(n,k,j,i) is the pressure at gridpoint (n,k,j,i), ptop is
+<br />
+&nbsp;&nbsp;&nbsp;the pressure at the top of the model, sigma(k) is the dimensionless
+<br />
+&nbsp;&nbsp;&nbsp;coordinate at vertical gridpoint (k), and ps(n,j,i) is the surface
+<br />
+&nbsp;&nbsp;&nbsp;pressure at horizontal gridpoint (j,i) and time (n).
+<br />
+<br />&nbsp;&nbsp;&nbsp;The format for the formula_terms attribute is
+<br />
+<br />&nbsp;&nbsp;&nbsp;formula_terms = &quot;sigma: var1 ps: var2 ptop: var3&quot;
+<br />
+<br />In this case, PTOP is a scalar value. 
+<br />
+<br />If this were an attribute and not a variable, libcf could do more for
+<br />
+the user.
+<br />
+<br />When setting up a sigma coordinate file with libcf, I do this:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Create a file and define four coordinate varibles, lat, lon,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* sigma level, and time. */
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (nc_create(FILE_NAME, 0, &amp;ncid)) ERR;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (nccf_def_latitude(ncid, NLAT, NC_FLOAT, &amp;lat_did, &amp;lat_vid)) ERR;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (nccf_def_longitude(ncid, NLON, NC_FLOAT, &amp;lat_did, &amp;lat_vid)) ERR;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Before we can define a sigma level coordinate var/dim, we
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* need to define two variables, the surface pressure and PTOP
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* (a scalar).*/
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dimids[0] = lat_did;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dimids[1] = lon_did;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (nc_def_var(ncid, &quot;ps&quot;, NC_FLOAT, 2, dimids, &amp;ps_vid)) ERR;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (nc_def_var(ncid, &quot;PTOP&quot;, NC_FLOAT, 0, NULL, &amp;ptop_vid)) ERR;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Now define sigma level coordinage var and dim. */
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (nccf_def_lvl_sigma(ncid, &quot;sigma&quot;, NC_FLOAT, NLVL, ps_vid, ptop_vid, 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;lvl_did, &amp;lvl_vid)) ERR;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Now define the time coordinate. */
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (nccf_def_time(ncid, &quot;time&quot;, NC_UNLIMITED, NC_FLOAT, TIME_UNITS, 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;time&quot;, &amp;lat_did, &amp;lat_vid)) ERR;
+<br />
+<br /><br />As you can see, the function nccf_def_lvl_sigma takes the variable IDs
+<br />
+of the surface pressure variable (ps_vid), and the PTOP variable
+<br />
+(ptop_vid).
+<br />
+<br />This works fine, but it is still up to the user to first create the
+<br />
+PTOP scalar variable, and then to remember to write a value to it
+<br />
+later, after leaving define mode.
+<br />
+<br />If the PTOP were stored in an attribute, which I think would be more
+<br />
+natural in netCDF, then my function nccf_def_lvl_sigma could accept
+<br />
+the value itself, and write it into an attribute. Then the whole thing
+<br />
+could be better hidden from the user.
+<br />
+<br />Can CF be adjusted to accept attribute names in addition to variable
+<br />
+names for the variables listed in formula_terms?
+<br />
+<br />The ocean double sigma coordinate, for example, uses 4 scalar
+<br />
+variables.
+<br />
+<br />Using attributes would simplify the implementation. Also, I think that
+<br />
+these values would fall under the category of attribute data rather
+<br />
+than variable data, in the netCDF model.
+<br />
+<br />Thanks,
+<br />
+<br />Ed
+<br />
+<br /><pre>
+-- 
+Ed Hartnett  -- ed at unidata.ucar.edu
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Oct 05 2006 - 08:30:38 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start281">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0282.html" title="Next message in the list">Manuel Fuentes: "[CF-metadata] question and time and standard_name..."</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0280.html" title="Previous message in the list">Christiane Textor: "[CF-metadata] standard names for aerosols and chemistry"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0290.html" title="Next message in this discussion thread">Brian Eaton: "[CF-metadata] why not use attributes instead of scalar variables for terms in dimensionless vertical coordinates..."</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0290.html" title="Message sent in reply to this message">Brian Eaton: "[CF-metadata] why not use attributes instead of scalar variables for terms in dimensionless vertical coordinates..."</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg281" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg281" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg281" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg281" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:47 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0280.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0282.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

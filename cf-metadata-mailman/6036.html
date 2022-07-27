@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to handle a forecast model with non-monotonic coordinate variables from Seth McGinnis on 2014-02-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] How to handle a forecast model with non-monotonic coordinate variables" />
+<meta name="Date" content="2014-02-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6035.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6037.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to handle a forecast model with non-monotonic coordinate variables</h1>
+<!-- received="Wed Feb  5 14:09:25 2014" -->
+<!-- isoreceived="20140205140925" -->
+<!-- sent="Wed, 05 Feb 2014 14:09:25 -0700" -->
+<!-- isosent="20140205210925" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] How to handle a forecast model with non-monotonic coordinate variables" -->
+<!-- id="52F2A885.7010401_at_ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CAFhraUyb3baWEx+RBiSmj4QcU2pHXPy59MfrOtkTJ3hqLheZ1A_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6036" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6037.html" accesskey="d" title="Bodas-Salcedo, Alejandro: &quot;[CF-metadata] New standard name: volume_extinction_coefficient_in_air_due_to_cloud&quot;">Next message</a> ]
+[ <a href="./6035.html" title="Signell, Richard: &quot;[CF-metadata] How to handle a forecast model with non-monotonic coordinate variables&quot;">Previous message</a> ]
+[ <a href="./6035.html" title="Signell, Richard: &quot;[CF-metadata] How to handle a forecast model with non-monotonic coordinate variables&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6036" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6036" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6036" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6036" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20handle%20a%20forecast%20model%20with%20non-monotonic%20coordinate%20variables">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 05 Feb 2014 14:09:25 -0700</span><br />
+</address>
+<br />
+In this dataset, lat and lon aren't coordinate variables, they're
+<br />
+auxiliary coordinate variables.  There's no requirement that auxiliary
+<br />
+coordinate variables be monotonic or lacking in missing_values.  Your
+<br />
+coordinate variables will be the ones associated with the I and J
+<br />
+dimensions of the arrays.
+<br />
+<br />To make this data CF compliant, I believe all you'll have to do is:
+<br />
+<br />1) Make sure there are coordinate variables for the I and J dimensions.
+<br />
+&nbsp;(These can just have nondimensional dummy values.)
+<br />
+<br />2) List the lat and lon variables in the coordinate attribute of each
+<br />
+data variable.
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<br /><br />On 2/5/14 1:49 PM, Signell, Richard wrote:
+<br />
+<em class="quotelev1">&gt; CF folks,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Many ocean models have curvilinear grids, but most of the ones I've
+</em><br />
+<em class="quotelev1">&gt; encountered have 2D coordinate variables lon,lat that are monotonic
+</em><br />
+<em class="quotelev1">&gt; and have no missing_values.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The NOAA forecast model for the St. Johns River Operational Forecast
+</em><br />
+<em class="quotelev1">&gt; System, however, has a complex geometry, and used a grid generator
+</em><br />
+<em class="quotelev1">&gt; that allowed for &quot;cuts&quot; in the grid, so that in the resulting grid
+</em><br />
+<em class="quotelev1">&gt; system lthe coordinate variables on/lat are not monotonic and  have
+</em><br />
+<em class="quotelev1">&gt; missing values.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I did an experiment to see if I could fill in the missing lon/lat
+</em><br />
+<em class="quotelev1">&gt; values via interpolation, but this exercise only made it clear that
+</em><br />
+<em class="quotelev1">&gt; this cannot work, as the data being interpolated are not monotonic.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Check out the first figure here to see the issue:
+</em><br />
+<em class="quotelev1">&gt; <a href="https://www.wakari.io/sharing/bundle/rsignell/SJROFS">https://www.wakari.io/sharing/bundle/rsignell/SJROFS</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Is there any way this operational forecast data could be made to be CF
+</em><br />
+<em class="quotelev1">&gt; compliant?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thanks,
+</em><br />
+<em class="quotelev1">&gt; Rich
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<span id="received"><dfn>Received on</dfn> Wed Feb 05 2014 - 14:09:25 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6036">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6037.html" title="Next message in the list">Bodas-Salcedo, Alejandro: "[CF-metadata] New standard name: volume_extinction_coefficient_in_air_due_to_cloud"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6035.html" title="Previous message in the list">Signell, Richard: "[CF-metadata] How to handle a forecast model with non-monotonic coordinate variables"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6035.html" title="Message to which this message replies">Signell, Richard: "[CF-metadata] How to handle a forecast model with non-monotonic coordinate variables"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6036" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6036" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6036" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6036" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:36 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6035.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6037.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

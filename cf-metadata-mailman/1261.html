@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]   CF Addition Proposal: bitmap values from Greg Rappa on 2008-03-21 (cf-metadata-mailman)</title>
+<meta name="Author" content="Greg Rappa (gregr)" />
+<meta name="Subject" content="[CF-metadata]   CF Addition Proposal: bitmap values" />
+<meta name="Date" content="2008-03-21" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1260.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1262.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]   CF Addition Proposal: bitmap values</h1>
+<!-- received="Fri Mar 21 10:25:57 2008" -->
+<!-- isoreceived="20080321102557" -->
+<!-- sent="Fri, 21 Mar 2008 12:25:57 -0400" -->
+<!-- isosent="20080321162557" -->
+<!-- name="Greg Rappa" -->
+<!-- email="gregr" -->
+<!-- subject="[CF-metadata]   CF Addition Proposal: bitmap values" -->
+<!-- id="47E3E195.1030702_at_ll.mit.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="mailman.990.1206109398.6638.cf-metadata_at_cgd.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1261" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1262.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]   CF Addition Proposal: bitmap values&quot;">Next message</a> ]
+[ <a href="./1260.html" title="Denis Nadeau: &quot;[CF-metadata] Difficulties to display Swath files form NetCDF.&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1261" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1261" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1261" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1261" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Greg Rappa &lt;<a href="mailto:gregr?Subject=Re%3A%20%5BCF-metadata%5D%20%20%20CF%20Addition%20Proposal%3A%20bitmap%20values">gregr</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 21 Mar 2008 12:25:57 -0400</span><br />
+</address>
+<br />
+Jonathon,
+<br />
+<br />I like your idea about simply modifying the existing flag notation,
+<br />
+since adding an alternative to &quot;flag&quot; did seem a bit over the top to
+<br />
+me.  However, taking your suggestion one step further, we could
+<br />
+combine the use of flag_masks and flag_values to support
+<br />
+multiple-bit notation.  While formulating my original bitmap_values
+<br />
+proposal, I was pondering the multi-bit issue but didn't want to
+<br />
+overly-complicate the proposal.  However, if the CF group is willing
+<br />
+to explore the option, let's got for it!  This way, we would solve
+<br />
+two issues with the simple addition of the flag_masks attribute.
+<br />
+<br />Here's what I'd propose:
+<br />
+<br />For single bit status flags, the flag_masks and flag_meanings lists
+<br />
+would define the necessary Boolean conditions as you suggest:
+<br />
+<br />byte precip_qc(time, z0, y0, x0) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:long_name = &quot;Precipitation status bit field&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:grid_mapping = &quot;grid_mapping0&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:_FillValue = 0b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:valid_range = 1b, 15b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:flag_masks = 1b, 2b, 4b, 8b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:flag_meanings = &quot;no_coverage impaired phase_mixed 
+<br />
+phase_snow&quot;;
+<br />
+<br />Without a flag_values attribute, a NetCDF reader would simply AND
+<br />
+the flag_masks codes with the data variable and check for non-zero
+<br />
+results in order to detect a status condition.
+<br />
+<br />However, for multiple-bit status flags, the flag_values and
+<br />
+flag_masks lists would, together, define the bitwise mask and the
+<br />
+expected result that would express a status condition.  For example:
+<br />
+<br />byte precip_qc(time, z0, y0, x0) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:long_name = &quot;Precipitation status bit field&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:grid_mapping = &quot;grid_mapping0&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:_FillValue = 0b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:valid_range = 1b, 15b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:flag_masks = 1b, 2b, 12b, 12b, 12b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:flag_values = 1b, 2b, 4b, 8b, 12b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:flag_meanings = &quot;no_coverage impaired rain mixed snow&quot;;
+<br />
+<br />In this case, the least significant bit indicates no coverage, the
+<br />
+next bit indicates sensor impairment, and the following two bits
+<br />
+describe the precipitation phase observed at the corresponding grid
+<br />
+location (an implied zero value indicates no precipitation at all).
+<br />
+<br />Thus, for multiple-bit status, a repeated flag_masks code would be
+<br />
+required for every matching flag_values code.  A NetCDF reader
+<br />
+application would perform a bitwise AND operation of the variable
+<br />
+value and each flag_mask before comparing the results with the
+<br />
+corresponding flag_values code.  It would probably be a good thing
+<br />
+for the CF compliance checker to verify that the number of
+<br />
+flag_masks and flag_values match and that all flag_values codes for
+<br />
+a flag_masks code are unique.
+<br />
+<br />In a sense, the current flag_values definition implies a default
+<br />
+flag_masks of repeated instances of the data type with all bits
+<br />
+set to one, specifically, 255b for byte, 65535s for short, etc.
+<br />
+Example 3.3 in the CF document:
+<br />
+<br />byte current_speed_qc(time, depth, lat, lon) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;current_speed_qc:long_name = &quot;Current Speed Quality&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;current_speed_qc:_FillValue = -128b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;current_speed_qc:valid_range = -127b, 127b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;current_speed_qc:flag_values = 0b, 1b, 2b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;current_speed_qc:flag_meanings = &quot;quality_good sensor_nonfunctional
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outside_valid_range&quot; ;
+<br />
+<br />... could equivalently, though not necessarily, be expressed as:
+<br />
+<br />byte current_speed_qc(time, depth, lat, lon) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;current_speed_qc:long_name = &quot;Current Speed Quality&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;current_speed_qc:_FillValue = -128b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;current_speed_qc:valid_range = -127b, 127b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;current_speed_qc:flag_masks = -1b, -1b, -1b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;current_speed_qc:flag_values = 0b, 1b, 2b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;current_speed_qc:flag_meanings = &quot;quality_good sensor_nonfunctional
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outside_valid_range&quot; ;
+<br />
+<br />If this seems like a reasonable proposal you to (and others), I'd
+<br />
+be happy submit the proposal to the CF trac Website as you suggested.
+<br />
+<br />Greg.
+<br />
+<br /><br />cf-metadata-request at cgd.ucar.edu wrote:
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Message: 4
+</em><br />
+<em class="quotelev1">&gt; Date: Thu, 20 Mar 2008 19:59:13 -0400
+</em><br />
+<em class="quotelev1">&gt; From: Greg Rappa &lt;gregr at ll.mit.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; Subject: [CF-metadata] CF Addition Proposal: bitmap values
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Message-ID: &lt;47E2FA51.8030101 at ll.mit.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; Content-Type: text/plain; charset=&quot;us-ascii&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; An HTML attachment was scrubbed...
+</em><br />
+<em class="quotelev1">&gt; URL: <a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20080320/b72a9d0a/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20080320/b72a9d0a/attachment-0001.html</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Message: 5
+</em><br />
+<em class="quotelev1">&gt; Date: Fri, 21 Mar 2008 08:08:14 +0000
+</em><br />
+<em class="quotelev1">&gt; From: Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; Subject: [CF-metadata]  CF Addition Proposal: bitmap values
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Message-ID: &lt;20080321080814.GB8184 at met.reading.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; Content-Type: text/plain; charset=us-ascii
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear Greg
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree that flag values are quite often generated in the way you describe,
+</em><br />
+<em class="quotelev1">&gt; by logical OR of bit values. While this could be described using the current
+</em><br />
+<em class="quotelev1">&gt; convention, by enumerating the translation for all the possible distinct ORed
+</em><br />
+<em class="quotelev1">&gt; combinations, that would obviously be very inefficient! I would suggest that
+</em><br />
+<em class="quotelev1">&gt; rather than introduce an alternative to &quot;flag&quot;, we could modify it, thus:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; byte precip_qc(time, z0, y0, x0) ;
+</em><br />
+<em class="quotelev1">&gt;      precip_qc:long_name = &quot;Precipitation status bit field&quot; ;
+</em><br />
+<em class="quotelev1">&gt;      precip_qc:grid_mapping = &quot;grid_mapping0&quot; ;
+</em><br />
+<em class="quotelev1">&gt;      precip_qc:_FillValue = 0b ;
+</em><br />
+<em class="quotelev1">&gt;      precip_qc:valid_range = 1b, 15b ;
+</em><br />
+<em class="quotelev1">&gt;      precip_qc:flag_masks = 1b, 2b, 4b, 8b ;
+</em><br />
+<em class="quotelev1">&gt;      precip_qc:flag_meanings = &quot;no_coverage impaired phase_mixed phase_snow&quot;;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; where the use of flag_masks instead of flag_values implies that the values
+</em><br />
+<em class="quotelev1">&gt; can be ORed, rather than being mutually exclusive. What do you think?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I also wonder whether a more general treatment would be helpful, because a flag
+</em><br />
+<em class="quotelev1">&gt; value could be a logical OR of codes which may occupy more than one bit e.g.
+</em><br />
+<em class="quotelev1">&gt; a flag might be defined as an OR of bits 0-1 (with four possible values),
+</em><br />
+<em class="quotelev1">&gt; bit 2 (with two) and bit 3-5 (with eight). Is that likely to be useful? It is
+</em><br />
+<em class="quotelev1">&gt; a combination of the two approaches.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; To propose a change to the convention, you start a new ticket on the CF trac
+</em><br />
+<em class="quotelev1">&gt; website under <a href="http://cf-pcmdi.llnl.gov/">http://cf-pcmdi.llnl.gov/</a>, using the template provided. The
+</em><br />
+<em class="quotelev1">&gt; proposal should say exactly what text should be changed (as you did) and also
+</em><br />
+<em class="quotelev1">&gt; what changes are needed to the conformance document.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; End of CF-metadata Digest, Vol 60, Issue 9
+</em><br />
+<em class="quotelev1">&gt; ******************************************
+</em><br />
+<em class="quotelev1">&gt;   
+</em><br />
+<span id="received"><dfn>Received on</dfn> Fri Mar 21 2008 - 10:25:57 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1261">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1262.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]   CF Addition Proposal: bitmap values"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1260.html" title="Previous message in the list">Denis Nadeau: "[CF-metadata] Difficulties to display Swath files form NetCDF."</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1261" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1261" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1261" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1261" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:03 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1260.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1262.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

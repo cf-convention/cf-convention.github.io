@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] point observation data in CF 1.4 from Rich Signell on 2010-10-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="Rich Signell (rsignell)" />
+<meta name="Subject" content="[CF-metadata] point observation data in CF 1.4" />
+<meta name="Date" content="2010-10-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2858.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2860.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] point observation data in CF 1.4</h1>
+<!-- received="Wed Oct 13 05:30:36 2010" -->
+<!-- isoreceived="20101013043036" -->
+<!-- sent="Wed, 13 Oct 2010 07:30:36 -0400" -->
+<!-- isosent="20101013113036" -->
+<!-- name="Rich Signell" -->
+<!-- email="rsignell" -->
+<!-- subject="[CF-metadata] point observation data in CF 1.4" -->
+<!-- id="AANLkTikdQCX1aeDMZmn9=9S7dKM8eYrHsehCT-KSxj9r_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="FAD360E1D1C8BA43AE9EE0CA9FB4C1C4220494DACD_at_SINTEFEXMBX01.sintef.no" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2859" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2860.html" accesskey="d" title="Ute Br&#0246;nner: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Next message</a> ]
+[ <a href="./2858.html" title="Jonathan Gregory: &quot;[CF-metadata] Seeking new CF standard names (9) for sea surface wave parameters&quot;">Previous message</a> ]
+[ <a href="./2856.html" title="Ute Br&#0246;nner: &quot;[CF-metadata] point observation data in CF 1.4&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2860.html" accesskey="t" title="Ute Br&#0246;nner: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2859" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2859" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2859" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2859" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Rich Signell &lt;<a href="mailto:rsignell?Subject=Re%3A%20%5BCF-metadata%5D%20point%20observation%20data%20in%20CF%201.4">rsignell</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 13 Oct 2010 07:30:36 -0400</span><br />
+</address>
+<br />
+Folks,
+<br />
+<br /><em class="quotelev1">&gt; 2. I think trajectory is when you follow a set of &quot;things&quot;, boats, a person. But at each time step they are identical, maybe not the same number because of missing data. I could assume that I have a trajectory but actually I can't be sure if my particles are the same as before. Therefore I chose not to take that convention.
+</em><br />
+<br />Let me attempt to clarify what I think Ute is talking about.
+<br />
+<br />Typical producers of this kind of data are numerical particle tracking
+<br />
+models.  These codes step through time, following the (x,y,t) or
+<br />
+(x,y,z,t) trajectories of individual particles.  At each time step,
+<br />
+more particles may be introduced to be tracked, while other particles
+<br />
+stop being tracked because they leave the domain, hit the boundary, or
+<br />
+whatever.
+<br />
+<br />Thus at each time step there are a known number of particle being
+<br />
+tracked, but this varies as the run proceeds in time.   So each
+<br />
+particle trajectory may have different start and end times.  There may
+<br />
+be thousands or tens of thousands of particles, so it's not feasible
+<br />
+to write each trajectory into a separate file.
+<br />
+<br />We want a featureType that will allow us to write the entire
+<br />
+collection of particles at each time step into a single file, and that
+<br />
+will allow us to extract all the particles at a single time step, as
+<br />
+well as extract individual particle trajectories by their ID.    It
+<br />
+didn't seem like the existing pointFeature types work for this case.
+<br />
+<br />-Rich
+<br />
+<pre>
+-- 
+Dr. Richard P. Signell   (508) 457-2229
+USGS, 384 Woods Hole Rd.
+Woods Hole, MA 02543-1598
+&gt; I'll be happy to contribute to the discussion as well as good as I can!
+&gt;
+&gt; Best regards,
+&gt; Ute
+&gt;
+&gt; Ute Br?nner
+&gt; www.sintef.com/marine_environment
+&gt;
+&gt; ? ?Consider the environment before printing
+&gt;
+&gt; -----Original Message-----
+&gt; From: John Caron [mailto:caron at unidata.ucar.edu]
+&gt; Sent: Dienstag, 12. Oktober 2010 19:31
+&gt; To: Rich Signell
+&gt; Cc: Ute Br?nner; Jonathan Gregory; cf-metadata at cgd.ucar.edu
+&gt; Subject: Re: [CF-metadata] point observation data in CF 1.4
+&gt;
+&gt; ?Hi Ute:
+&gt;
+&gt; 1. ?im not sure what this means: &quot; I now finally find out that the new
+&gt; approaches of Netcdf 4 are not implemented in the Java API, yet.&quot;
+&gt;
+&gt; 2. I would have thought &quot;3D particle tracking&quot; would be a trajectory.
+&gt; how is it different?
+&gt;
+&gt; John
+&gt;
+&gt; On 10/11/2010 4:24 AM, Rich Signell wrote:
+&gt;&gt; Ute,
+&gt;&gt;
+&gt;&gt; I was thinking that you could use the proposed convention in 9.3.2 as
+&gt;&gt; a workaround, with the &quot;station&quot; being each record. ? But I see now
+&gt;&gt; that the coordinate variables for lon, lat need to be a function of
+&gt;&gt; station, so as you say, that won't work.
+&gt;&gt;
+&gt;&gt; Clearly there is a need for another Point Convention type to handle
+&gt;&gt; the output from particle tracking models like this. ?I can think of at
+&gt;&gt; least four models that would benefit from this convention right now,
+&gt;&gt; including the NSF RAPID grant we are working on for 3D particle
+&gt;&gt; tracking using LTRANS for the Deepwater Horizon Spill.
+&gt;&gt;
+&gt;&gt; _at_Jonathan, Caron&amp; ?Hankin: Can we revive your discussion? ?I'd be
+&gt;&gt; happy to participate.
+&gt;&gt;
+&gt;&gt; -Rich
+&gt;&gt;
+&gt;&gt; On Mon, Oct 11, 2010 at 4:05 AM, Ute Br?nner&lt;Ute.Broenner at sintef.no&gt; ?wrote:
+&gt;&gt;&gt; Hei Rich,
+&gt;&gt;&gt;
+&gt;&gt;&gt; I found that convention before, this was what I mentioned to Jonathan.
+&gt;&gt;&gt; But first of all, this is not convention, yet, and secondly I have no stations but a varying set of observations per timestep (neither stations nor trajectories). I now write the data with redundant time as a limited dimension, and records(time, latitude, longitude) and have
+&gt;&gt;&gt; mass (record), radius(record) etc.
+&gt;&gt;&gt;
+&gt;&gt;&gt; Thanks anyway,
+&gt;&gt;&gt; Ute
+&gt;&gt;&gt;
+&gt;&gt;&gt; Ute Br?nner
+&gt;&gt;&gt; www.sintef.com/marine_environment
+&gt;&gt;&gt;
+&gt;&gt;&gt; ? ?Consider the environment before printing
+&gt;&gt;&gt;
+&gt;&gt;&gt; -----Original Message-----
+&gt;&gt;&gt; From: rsignell at gmail.com [mailto:rsignell at gmail.com] On Behalf Of Rich Signell
+&gt;&gt;&gt; Sent: Freitag, 8. Oktober 2010 13:59
+&gt;&gt;&gt; To: Ute Br?nner
+&gt;&gt;&gt; Cc: Jonathan Gregory; cf-metadata at cgd.ucar.edu; John Caron
+&gt;&gt;&gt; Subject: Re: [CF-metadata] point observation data in CF 1.4
+&gt;&gt;&gt;
+&gt;&gt;&gt; Ute,
+&gt;&gt;&gt;
+&gt;&gt;&gt; On this page:
+&gt;&gt;&gt; <a href="https://cf-pcmdi.llnl.gov/trac/wiki/PointObservationConventions">https://cf-pcmdi.llnl.gov/trac/wiki/PointObservationConventions</a>
+&gt;&gt;&gt;
+&gt;&gt;&gt; It appears that your case *might* be handled by:
+&gt;&gt;&gt;
+&gt;&gt;&gt; 9.3.2 Ragged array (contiguous) representation
+&gt;&gt;&gt;
+&gt;&gt;&gt; I'm pretty sure that this &quot;ragged_row_count&quot; feature *is* included in
+&gt;&gt;&gt; NetCDF-Java, but John Caron (cc'd here) could confirm.
+&gt;&gt;&gt;
+&gt;&gt;&gt; Please report back to this group if you find success (or perhaps even
+&gt;&gt;&gt; if you don't!)
+&gt;&gt;&gt;
+&gt;&gt;&gt; Thanks,
+&gt;&gt;&gt; -Rich
+&gt;&gt;&gt;
+&gt;&gt;&gt; On Thu, Oct 7, 2010 at 3:15 AM, Ute Br?nner&lt;Ute.Broenner at sintef.no&gt; ?wrote:
+&gt;&gt;&gt;&gt; Jonathan,
+&gt;&gt;&gt;&gt; thanks for your answer! My troubles were related to shape and dimensions.
+&gt;&gt;&gt;&gt; I now finally find out that the new approaches of Netcdf 4 are not implemented in the Java API, yet.
+&gt;&gt;&gt;&gt; I now use a record dimension which is unlimited and a limited time dimension. Hope that works, otherwise, I have your address now :-)
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; Best regards,
+&gt;&gt;&gt;&gt; Ute
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; Ute Br?nner
+&gt;&gt;&gt;&gt; www.sintef.com/marine_environment
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; ? ?Consider the environment before printing
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; -----Original Message-----
+&gt;&gt;&gt;&gt; From: Jonathan Gregory [mailto:jonathan at met.reading.ac.uk] On Behalf Of Jonathan Gregory
+&gt;&gt;&gt;&gt; Sent: Mittwoch, 6. Oktober 2010 19:13
+&gt;&gt;&gt;&gt; To: Ute Br?nner
+&gt;&gt;&gt;&gt; Cc: cf-metadata at cgd.ucar.edu
+&gt;&gt;&gt;&gt; Subject: [CF-metadata] point observation data in CF 1.4
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; Dear Ute
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; You are right, the convention for timeseries of different lengths being
+&gt;&gt;&gt;&gt; contained in one variable is not yet agreed. Some months ago John Caron, Steve
+&gt;&gt;&gt;&gt; Hankin and I discussed it at length but did not quite manage to finish it,
+&gt;&gt;&gt;&gt; unfortunately. So there isn't a CF convention for it at the moment.
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt;&gt; but I have some trouble in writing the data.
+&gt;&gt;&gt;&gt; What kind of trouble?
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; Best wishes
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; Jonathan
+&gt;&gt;&gt;&gt; _______________________________________________
+&gt;&gt;&gt;&gt; CF-metadata mailing list
+&gt;&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+&gt;&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; --
+&gt;&gt;&gt; Dr. Richard P. Signell ? (508) 457-2229
+&gt;&gt;&gt; USGS, 384 Woods Hole Rd.
+&gt;&gt;&gt; Woods Hole, MA 02543-1598
+&gt;&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;
+&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Oct 13 2010 - 05:30:36 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2859">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2860.html" title="Next message in the list">Ute Br&#0246;nner: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2858.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Seeking new CF standard names (9) for sea surface wave parameters"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2856.html" title="Message to which this message replies">Ute Br&#0246;nner: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2860.html" title="Next message in this discussion thread">Ute Br&#0246;nner: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2860.html" title="Message sent in reply to this message">Ute Br&#0246;nner: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><dfn>Reply</dfn>: <a href="./2861.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2859" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2859" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2859" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2859" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:33 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2858.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2860.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

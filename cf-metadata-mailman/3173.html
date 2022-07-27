@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time from Janine Goldstein Aquino on 2011-02-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="Janine Goldstein Aquino (janine)" />
+<meta name="Subject" content="[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time" />
+<meta name="Date" content="2011-02-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3172.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3174.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time</h1>
+<!-- received="Thu Feb  3 14:11:21 2011" -->
+<!-- isoreceived="20110203141121" -->
+<!-- sent="Thu, 03 Feb 2011 14:11:21 -0700" -->
+<!-- isosent="20110203211121" -->
+<!-- name="Janine Goldstein Aquino" -->
+<!-- email="janine" -->
+<!-- subject="[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time" -->
+<!-- id="4D4B19F9.9040004_at_ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="C9709CF0.A333%tim.nightingale_at_stfc.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3173" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3174.html" accesskey="d" title="Steve Hankin: &quot;[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time&quot;">Next message</a> ]
+[ <a href="./3172.html" title="tim.nightingale at stfc.ac.uk: &quot;[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time&quot;">Previous message</a> ]
+[ <a href="./3172.html" title="tim.nightingale at stfc.ac.uk: &quot;[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3174.html" accesskey="t" title="Steve Hankin: &quot;[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3173" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3173" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3173" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3173" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Janine Goldstein Aquino &lt;<a href="mailto:janine?Subject=Re%3A%20%5BCF-metadata%5D%20MSG%20CPP%20standard%20name%20for%20time_offset_of_observation%20%2F%20pixel_delta_time">janine</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 03 Feb 2011 14:11:21 -0700</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />At NCAR/RAF we have netCDF files with multiple time frequencies in the 
+<br />
+same file:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time = 18421;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sps1 = 1;        // samples per second
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sps25 = 25;    // samples per second
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Time(Time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float var1(Time, sps1);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float var2(Time, sps25);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br />This is not CF compliant and we are concerned that users will not know 
+<br />
+to look
+<br />
+for the subsecond dimension and recognize it as time.
+<br />
+<br />Reading your suggestion below, I can see us implementing another use for 
+<br />
+the
+<br />
+attribute &quot;coordinate_offset&quot;. I took a stab at the udunits compatible 
+<br />
+&quot;units&quot; value.
+<br />
+Not quite sure how that would work...
+<br />
+<br />&nbsp;&nbsp;&nbsp;dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time = 18421;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sps25 = 25;
+<br />
+&nbsp;&nbsp;&nbsp;variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int time(Time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:standard_name = &quot;time&quot;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;seconds since 2010-08-15 10:09:00 +0000&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int sps25(Sps25) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:standard_name = &quot;coordinate_offset&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ref_coordinate = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;1/25 seconds since time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float var2(Time,sps25);
+<br />
+<br />All of Tim's comments about how to implement the :coordinates attribute
+<br />
+apply here as well.
+<br />
+<br />Regards,
+<br />
+Janine
+<br />
+<br /><pre>
+-- 
+Janine Aquino
+NCAR/EOL/CDS&amp;  RAF
+303-497-8691
+On 2/3/11 12:18 PM, tim.nightingale at stfc.ac.uk wrote:
+&gt; Hello All,
+&gt;
+&gt;    I would love to see a time coordinate offset. Another use could be
+&gt; for rastered data, such as that generated by some scanning satellite
+&gt; instruments, where the along-track time stamp and the across-track
+&gt; time offsets can be separated. In these cases the time and time_offset
+&gt; variables could have completely different indices:
+&gt;
+&gt;    dimensions:
+&gt;      i = 40000;      // along-track index
+&gt;      j = 1000;       // across-reack index
+&gt;    variables:
+&gt;      double time(i) ;
+&gt;        :standard_name = &quot;time&quot;
+&gt;        ...
+&gt;      double delta_t(j) ;
+&gt;        :standard_name = &quot;time_offset&quot; ;
+&gt;        :ref_coordinate = &quot;time&quot; ;
+&gt;        ...
+&gt;      double pixel(i,j)
+&gt;
+&gt;
+&gt; on the assumption that pixel_time(i,j) = time(i) + delta_t(j). This
+&gt; would be somewhat more efficient than the conventional:
+&gt;
+&gt;    dimensions:
+&gt;      i = 40000;      // along-track index
+&gt;      j = 1000;       // across-track index
+&gt;    variables:
+&gt;      double time(i,j) ;
+&gt;        :standard_name = &quot;time&quot;
+&gt;        ...
+&gt;      double pixel(i,j)
+&gt;
+&gt; for storage space and would be a natural use for a coordinate offset.
+&gt;
+&gt;    I'm not completely clear how any of the offset schemes should couple
+&gt; the coordinate/coordinate_offset pair to the :coordinates attribute of
+&gt; subsequent data variables, as both the data variable and coordinate
+&gt; offset would refer upwards to the base coordinate. Should we:
+&gt;
+&gt; a) trust the reading software to identify any associated offsets for
+&gt;     a coordinate variable? (What happens if there's more than one?)
+&gt;
+&gt; b) add :coordinate_offsets attributes or similar to data variables,
+&gt;     listing all relevant coordinate offsets, in analogy to the
+&gt;     :coordinates attribute? (To avoid possible ambiguity/duplication,
+&gt;     should we then leave out the corresponding :coordinates entry, as
+&gt;     the offset :ref_coordinate attribute identifies this for us?)
+&gt;
+&gt; c) where appropriate, include the coordinate offset, and not the base
+&gt;     coordinate, in the :coordinates attribute, as the reading software
+&gt;     can then work its way unambiguously up the chain of references?
+&gt;     (You could conceivably also have offsets of offsets of coordinates,
+&gt;     with delta_delta_t:ref_coordinate = &quot;delta_t&quot;, and so on!)
+&gt;
+&gt; d) something else?
+&gt;
+&gt;   Regards,
+&gt;
+&gt;    Tim.
+&gt;
+&gt; --------------------------------------------------------------------
+&gt;   Tim Nightingale
+&gt;    RAL Space
+&gt;     STFC Rutherford Appleton Laboratory
+&gt;      Harwell Oxford
+&gt;       Didcot                      Phone: +44/0 1235 445914
+&gt;        OX11 0QX                   Fax:   +44/0 1235 445848
+&gt;         United Kingdom            Email: tim.nightingale at stfc.ac.uk
+&gt; --------------------------------------------------------------------
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt; On 03/02/2011 12:20, &quot;Bentley, Philip&quot;&lt;philip.bentley at metoffice.gov.uk&gt;
+&gt; wrote:
+&gt;
+&gt;&gt; Hi folks,
+&gt;&gt;
+&gt;&gt; I wonder if there isn't a more generic pattern sitting behind these
+&gt;&gt; proposals. On the assumption that people are likely to want to use
+&gt;&gt; similar offsets for other coordinate  variables - e.g. x_offset,
+&gt;&gt; y_offset, z_offset, lat_offset, lon_offset, and so on - would there be
+&gt;&gt; any merit in specifying the more general-purpose standard_name of
+&gt;&gt; 'coordinate_offset', which would then be used in association with a new
+&gt;&gt; attribute called, say, 'base_coordinate' or 'ref_coordinate' (comparable
+&gt;&gt; to Jonathan's proposed 'relative_to' attribute) which would define the
+&gt;&gt; reference/datum coordinate variable?
+&gt;&gt;
+&gt;&gt; Then, in CDL, we'd have something like...
+&gt;&gt;
+&gt;&gt; variables:
+&gt;&gt;   double time(time) ;
+&gt;&gt;     :standard_name = &quot;time&quot; ;
+&gt;&gt;     ...
+&gt;&gt;   double delta_t(time) ;
+&gt;&gt;     :standard_name = &quot;coordinate_offset&quot; ;   # or just plain &quot;offset&quot; ?
+&gt;&gt;     :ref_coordinate = &quot;time&quot; ;
+&gt;&gt;
+&gt;&gt;     ...
+&gt;&gt;
+&gt;&gt; (In some cases, of course, the time coordinate might be a scalar
+&gt;&gt; coordinate, in which case the dimensions of the above two variables
+&gt;&gt; would be different).
+&gt;&gt;
+&gt;&gt; Adopting an approach along these lines would seem to confer the
+&gt;&gt; advantage of avoiding a proliferation of standard names of the form
+&gt;&gt; 'X_offset'. That said, however, there are probably some CF nuances that
+&gt;&gt; I've not thought of :-)
+&gt;&gt;
+&gt;&gt; Regards,
+&gt;&gt; Phil
+&gt;&gt;
+&gt;&gt;&gt; -----Original Message-----
+&gt;&gt;&gt; From: cf-metadata-bounces at cgd.ucar.edu
+&gt;&gt;&gt; [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of plieger
+&gt;&gt;&gt; Sent: 03 February 2011 09:14
+&gt;&gt;&gt; To: Jonathan Gregory
+&gt;&gt;&gt; Cc: CF metadata
+&gt;&gt;&gt; Subject: Re: [CF-metadata] MSG CPP standard name for
+&gt;&gt;&gt; time_offset_of_observation / pixel_delta_time
+&gt;&gt;&gt;
+&gt;&gt;&gt; Dear Jonathan,
+&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; Do you think the standard name alone is sufficient? Proposing a new
+&gt;&gt;&gt;&gt; attribute is more work than proposing a standard_name,
+&gt;&gt;&gt; since it means
+&gt;&gt;&gt;&gt; amending the CF standard. I can see there could be value in a
+&gt;&gt;&gt;&gt; relative_to attribute, but it might be an unnecessary
+&gt;&gt;&gt; complexity. I wonder what you and others think.
+&gt;&gt;&gt;
+&gt;&gt;&gt; The standard name alone is sufficient for our case. I agree
+&gt;&gt;&gt; with you that we should not add unnecessary complexity to the
+&gt;&gt;&gt; CF standard. I think we will use the standard name 'time_offset'.
+&gt;&gt;&gt;
+&gt;&gt;&gt; Best regards,
+&gt;&gt;&gt; Maarten
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; On 02/02/2011 05:15 PM, Jonathan Gregory wrote:
+&gt;&gt;&gt;&gt; Dear Maarten
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; What you write about pixeltime as an aux coord var (y,x) and your
+&gt;&gt;&gt;&gt; ncdump look sensible to me. I think that's all fine.
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt;&gt; The standard_name time_offset (s) seems good to me. In the
+&gt;&gt;&gt; long name
+&gt;&gt;&gt;&gt;&gt; we can add an explanation that this variable deals with the time
+&gt;&gt;&gt;&gt;&gt; offset for each pixel.
+&gt;&gt;&gt;&gt; OK. So that is a definite proposal for a new standard name.
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; Do you think the standard name alone is sufficient? Proposing a new
+&gt;&gt;&gt;&gt; attribute is more work than proposing a standard_name,
+&gt;&gt;&gt; since it means
+&gt;&gt;&gt;&gt; amending the CF standard. I can see there could be value in a
+&gt;&gt;&gt;&gt; relative_to attribute, but it might be an unnecessary
+&gt;&gt;&gt; complexity. I wonder what you and others think.
+&gt;&gt;&gt;&gt; Best wishes
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; Jonathan
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; --
+&gt;&gt;&gt; Maarten Plieger
+&gt;&gt;&gt; KNMI, R&amp;D Information and Observation Technology, De Bilt
+&gt;&gt;&gt; (t) +31 30 2206330
+&gt;&gt;&gt; _______________________________________________
+&gt;&gt;&gt; CF-metadata mailing list
+&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+&gt;&gt;&gt;
+&gt;&gt; _______________________________________________
+&gt;&gt; CF-metadata mailing list
+&gt;&gt; CF-metadata at cgd.ucar.edu
+&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Feb 03 2011 - 14:11:21 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3173">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3174.html" title="Next message in the list">Steve Hankin: "[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3172.html" title="Previous message in the list">tim.nightingale at stfc.ac.uk: "[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3172.html" title="Message to which this message replies">tim.nightingale at stfc.ac.uk: "[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3174.html" title="Next message in this discussion thread">Steve Hankin: "[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3174.html" title="Message sent in reply to this message">Steve Hankin: "[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3173" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3173" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3173" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3173" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:39 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3172.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3174.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

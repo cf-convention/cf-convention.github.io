@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] ensemble dimension from Jennifer Adams on 2010-03-16 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jennifer Adams (jma)" />
+<meta name="Subject" content="[CF-metadata] ensemble dimension" />
+<meta name="Date" content="2010-03-16" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2513.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2515.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] ensemble dimension</h1>
+<!-- received="Tue Mar 16 12:36:03 2010" -->
+<!-- isoreceived="20100316123603" -->
+<!-- sent="Tue, 16 Mar 2010 14:36:03 -0400" -->
+<!-- isosent="20100316183603" -->
+<!-- name="Jennifer Adams" -->
+<!-- email="jma" -->
+<!-- subject="[CF-metadata] ensemble dimension" -->
+<!-- id="5F9F329A-C3D4-4C9C-8794-4BCEA381D01C_at_cola.iges.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20100316172209.GC13911_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2514" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2515.html" accesskey="d" title="Tomas Kral: &quot;[CF-metadata] new standard names for momentum fluxes&quot;">Next message</a> ]
+[ <a href="./2513.html" title="Jonathan Gregory: &quot;[CF-metadata] ensemble dimension&quot;">Previous message</a> ]
+[ <a href="./2513.html" title="Jonathan Gregory: &quot;[CF-metadata] ensemble dimension&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2518.html" accesskey="t" title="John Caron: &quot;[CF-metadata] ensemble dimension&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2514" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2514" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2514" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2514" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jennifer Adams &lt;<a href="mailto:jma?Subject=Re%3A%20%5BCF-metadata%5D%20ensemble%20dimension">jma</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 16 Mar 2010 14:36:03 -0400</span><br />
+</address>
+<br />
+In the absence of a standard, I have also made some choices about how  
+<br />
+to handle ensemble metadata with GrADS and the GDS. Below is a  
+<br />
+shortened example of the ncdump output from a GFS ensemble data set  
+<br />
+behind GDS. I put the metadata that GrADS needs in customized  
+<br />
+attributes (e.g. grads_name, grads_dim, etc.) I steered clear of using  
+<br />
+data or coordinate variables of type 'char', because I feel attributes  
+<br />
+are the better place for this kind of metadata, and GrADS and the GDS  
+<br />
+have no interface for handing data variables that are not numeric. I  
+<br />
+have always assumed it would be necessary to add more metadata to make  
+<br />
+this data set CF compliant, but in the meanwhile, the ensemble axis is  
+<br />
+a plain old linear dimension.  --Jennifer
+<br />
+<pre>
+--
+Jennifer M. Adams
+IGES/COLA
+4041 Powder Mill Road, Suite 302
+Calverton, MD 20705
+jma at cola.iges.org
+# ncdump -c <a href="http://monsoondata.org:9090/dods/gfsens/gfsens.2010031612">http://monsoondata.org:9090/dods/gfsens/gfsens.2010031612</a>
+netcdf gfsens {
+dimensions:
+         ens = 22 ;
+         lat = 181 ;
+         lev = 7 ;
+         lon = 360 ;
+         time = 31 ;
+variables:
+         double ens(ens) ;
+                 ens:grads_name =  
+&quot;avg 
+,c00 
+,p01 
+,p02 
+,p03 
+,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20&quot; ;
+                 ens:grads_length =  
+&quot;31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31&quot; ;
+                 ens:grads_tinit =  
+&quot;1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&quot; ;
+                 ens:avg = &quot;unweighted mean of all members&quot; ;
+                 ens:c00 = &quot;unperturbed control forecast&quot; ;
+                 ens:p01 = &quot;positively perturbed forecast&quot; ;
+                 ens:p02 = &quot;positively perturbed forecast&quot; ;
+&lt;additional attributes snipped&gt;
+                 ens:p19= &quot;positively perturbed forecast&quot; ;
+                 ens:p20 = &quot;positively perturbed forecast&quot; ;
+                 ens:grads_dim = &quot;e&quot; ;
+                 ens:grads_size = &quot;22&quot; ;
+                 ens:grads_mapping = &quot;null&quot; ;
+                 ens:units = &quot;count&quot; ;
+                 ens:long_name = &quot;ensemble member&quot; ;
+         double time(time) ;
+                 time:grads_dim = &quot;t&quot; ;
+                 time:grads_mapping = &quot;linear&quot; ;
+                 time:grads_size = &quot;31&quot; ;
+                 time:grads_min = &quot;12z16mar2010&quot; ;
+                 time:grads_step = &quot;6hr&quot; ;
+                 time:units = &quot;days since 1-1-1 00:00:0.0&quot; ;
+                 time:long_name = &quot;time&quot; ;
+                 time:minimum = &quot;12z16mar2010&quot; ;
+                 time:maximum = &quot;00z24mar2010&quot; ;
+                 time:resolution = 0.25f ;
+&lt;other coordinate variables snipped&gt;
+         float t(ens, time, lev, lat, lon) ;
+                 t:_FillValue = -9.99e+33f ;
+                 t:missing_value = -9.99e+33f ;
+                 t:long_name = &quot;temperature [k] &quot; ;
+&lt;other variables snipped&gt;
+data:
+  ens = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,  
+19, 20,
+     21, 22 ;
+  time = 733848.5, 733848.75, 733849, 733849.25, 733849.5, 733849.75,  
+733850,
+     733850.25, 733850.5, 733850.75, 733851, 733851.25, 733851.5,  
+733851.75,
+     733852, 733852.25, 733852.5, 733852.75, 733853, 733853.25,  
+733853.5,
+     733853.75, 733854, 733854.25, 733854.5, 733854.75, 733855,  
+733855.25,
+     733855.5, 733855.75, 733856 ;
+}
+On Mar 16, 2010, at 1:22 PM, Jonathan Gregory wrote:
+&gt; Dear John
+&gt;
+&gt;&gt; Im not sure if we ever converged on how to write ensemble files.
+&gt; No, we didn't. If I remember correctly, we couldn't agree on the  
+&gt; relationship
+&gt; between attributes and coordinates, and that was a sticking-point. I  
+&gt; thought
+&gt; that we ought to allow multivalued auxiliary coord variables for  
+&gt; ensemble
+&gt; axes, corresponding to attributes that might be used to describe a  
+&gt; single
+&gt; model. I would give these standard_names to identify them. Paco  
+&gt; started the
+&gt; discussion, and in the end he made his own decisions for what to do  
+&gt; for the
+&gt; ENSEMBLES project (because CF had not concluded), so he might  
+&gt; comment on it.
+&gt;
+&gt;&gt; Particularly, how does software recognize the ensemble dimension?
+&gt; We didn't agree. But at the end of the discussion, Steve also  
+&gt; suggested that
+&gt; it could be identified by an axis attribute, just as you have. I  
+&gt; like that
+&gt; idea too. But it could also be given a standard name, like other  
+&gt; coordinate
+&gt; variables e.g. ensemble_member_identifier. I suppose the values of  
+&gt; this
+&gt; coord var might be either numeric or strings, though it your example  
+&gt; it is
+&gt; integer. I haven't looked at the trac ticket to see if we discussed  
+&gt; these
+&gt; points before.
+&gt;
+&gt;&gt; Perhaps we should add :axis = &quot;Ensemble&quot; to the model coordinate  
+&gt;&gt; variable?
+&gt; I'd suggest lower case, like most CF keywords. The other axis  
+&gt; attributes are
+&gt; all single letters (X Y Z T) but I don't think it would be a problem  
+&gt; to use
+&gt; a word.
+&gt;
+&gt; Best wishes
+&gt;
+&gt; Jonathan
+&gt; _______________________________________________
+&gt; CF-metadata mailing list
+&gt; CF-metadata at cgd.ucar.edu
+&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20100316/dbc32b62/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20100316/dbc32b62/attachment-0002.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Mar 16 2010 - 12:36:03 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2514">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2515.html" title="Next message in the list">Tomas Kral: "[CF-metadata] new standard names for momentum fluxes"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2513.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] ensemble dimension"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2513.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] ensemble dimension"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2518.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] ensemble dimension"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2518.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] ensemble dimension"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2514" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2514" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2514" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2514" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:26 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2513.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2515.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

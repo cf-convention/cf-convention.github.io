@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Pre-proposal for &quot;charset&quot; from Bob Simons - NOAA Federal on 2017-02-22 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bob Simons - NOAA Federal (bob.simons)" />
+<meta name="Subject" content="[CF-metadata] Pre-proposal for &quot;charset&quot;" />
+<meta name="Date" content="2017-02-22" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8031.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8033.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Pre-proposal for &quot;charset&quot;</h1>
+<!-- received="Wed Feb 22 13:08:24 2017" -->
+<!-- isoreceived="20170222130824" -->
+<!-- sent="Wed, 22 Feb 2017 12:08:24 -0800" -->
+<!-- isosent="20170222200824" -->
+<!-- name="Bob Simons - NOAA Federal" -->
+<!-- email="bob.simons" -->
+<!-- subject="[CF-metadata] Pre-proposal for &quot;charset&quot;" -->
+<!-- id="CAG=jf3f90S3=amTukth4PX6Ym=t8UZeNpzY=ywej+kPAGdV3AQ_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8032" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8033.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  Pre-proposal for &#0034;charset&#0034;&quot;">Next message</a> ]
+[ <a href="./8031.html" title="Bob Simons - NOAA Federal: &quot;[CF-metadata] Pre-proposal for &#0034;charset&#0034;&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8048.html" accesskey="t" title="Chris Barker: &quot;[CF-metadata] Pre-proposal for &#0034;charset&#0034;&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8032" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8032" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8032" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8032" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bob Simons - NOAA Federal &lt;<a href="mailto:bob.simons?Subject=Re%3A%20%5BCF-metadata%5D%20Pre-proposal%20for%20%22charset%22">bob.simons</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 22 Feb 2017 12:08:24 -0800</span><br />
+</address>
+<br />
+I don't like &quot;ASCII&quot; because it only applies to 7 bits even though chars
+<br />
+have 8 bits. So specifying &quot;ASCII&quot; still leaves ambiguity if any of the
+<br />
+chars have the 8th bit set. The file writer may know the variable will only
+<br />
+have 7 bit values, but it is safer for the reader to read the variable with
+<br />
+a decoder that handles 8 bit values. &quot;ASCII&quot; is trouble, so there is no
+<br />
+reason to encourage it, especially when there are compatible alternatives
+<br />
+like ISO-8859-1.
+<br />
+<br />I do like ISO-8859-1, because
+<br />
+* It is compatible with ASCII for chars 0-127, which is all that ASCII
+<br />
+specifies.
+<br />
+* Any variable that has just 7bit ASCII chars can be labelled
+<br />
+&quot;charset=ISO-8859-1&quot;.
+<br />
+* It is the most commonly used single-page 8bit charset for supporting the
+<br />
+European languages.
+<br />
+* It is widely used and supported.
+<br />
+<br />I do like UTF-8 because it is the only charset that supports full Unicode
+<br />
+(all UTF-16/UCS-4/UTF-32 characters) in an 8bit encoding (since that is all
+<br />
+we have for characters in netcdf-3 files: 8bit chars). And it is incredibly
+<br />
+widely used and supported in software.
+<br />
+<br />UTF-16/UTF-32/UCS-4 are not possible options because netcdf-3 files only
+<br />
+have an 8bit char data type, not 16 or 32bit chars. If we want to support
+<br />
+more than 255 different characters in a given char variable, UTF-8 is
+<br />
+really the only option (which is fine because it is a good option).
+<br />
+<br />So my proposal is: charset can specify any single-page (8bit) character
+<br />
+set, but the two recommended charsets would be &quot;ISO-8859-1&quot; (for most
+<br />
+simple cases) and &quot;UTF-8&quot; (for harder cases / full Unicode).
+<br />
+<br /><br /><br /><br />On Wed, Feb 22, 2017 at 11:06 AM, Chris Barker &lt;chris.barker at noaa.gov&gt;
+<br />
+wrote:
+<br />
+<br /><em class="quotelev1">&gt; On Wed, Feb 22, 2017 at 10:38 AM, Bob Simons - NOAA Federal &lt;
+</em><br />
+<em class="quotelev1">&gt; bob.simons at noaa.gov&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; As for needing a different subject for the email: I'm lumping together 2
+</em><br />
+<em class="quotelev2">&gt;&gt; new related attribute names: &quot;charset=...&quot; and &quot;data_type=string|char&quot; so
+</em><br />
+<em class="quotelev2">&gt;&gt; that the information stored in char variables in netcdf-3 files can be
+</em><br />
+<em class="quotelev2">&gt;&gt; easily and unambiguously interpreted.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; somehow it got smashed in with the thread about geometries.. maybe that
+</em><br />
+<em class="quotelev1">&gt; was my email client. But anyway, away we go!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; You are correct. My proposal is for netcdf-3 files since they only
+</em><br />
+<em class="quotelev2">&gt;&gt; support chars, not true strings.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; so maybe make it clear that for netcdf4, one should use strings? I'm not
+</em><br />
+<em class="quotelev1">&gt; sure if there is anything in CF now that is 3 vs 4 specific...
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; As for &quot;encoding&quot; vs &quot;charset&quot;, I'm open to different names. I chose
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;charset&quot; because that is the name used in HTML and is widely used in other
+</em><br />
+<em class="quotelev2">&gt;&gt; places. Yes, XML uses &quot;encoding&quot;. To me, the word &quot;charset&quot; seems
+</em><br />
+<em class="quotelev2">&gt;&gt; preferable because it is more specific than &quot;encoding&quot; (which also has a
+</em><br />
+<em class="quotelev2">&gt;&gt; more general purpose meaning).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; not a biggie -- +0 for encoding from me.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; As for full Unicode support via UTF-8 vs UTF-16:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; well, UTF-16 is the worst option -- let's never use that! UCS-4 is the way
+</em><br />
+<em class="quotelev1">&gt; to go if you want full unicode support and constant bytes per charactor.
+</em><br />
+<em class="quotelev1">&gt; though &quot;wastes&quot; space.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Since netcdf-3 only supports 8bit chars, the 16bit UTF-16 is not an
+</em><br />
+<em class="quotelev2">&gt;&gt; option.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; well, sure, but at the binary level a CHAR is simply an unsigned 8-bit
+</em><br />
+<em class="quotelev1">&gt; integer -- so you could stuff any encoding into an array of CHAR.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;  But UTF-8 is the only way I know of to support full Unicode using only
+</em><br />
+<em class="quotelev2">&gt;&gt; 8bit chars for the underlying storage.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; see above, but:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; It is very widely used. Every modern piece of software that can read or
+</em><br />
+<em class="quotelev2">&gt;&gt; write text files supports it. It is the default for both XML and HTML 5.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; yeah, it really is the best compromise -- and becoming the universal form
+</em><br />
+<em class="quotelev1">&gt; for data interchange.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; If the file writer doesn't need full Unicode, they can use &quot;ISO-8859-1&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt; (which is compatible with 7bit ASCII)
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I'd vote for ASCII and ISO-8859-1 as the only options (Or the HIGHLY
+</em><br />
+<em class="quotelev1">&gt; RECOMMENDED options, at least).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -CHB
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Christopher Barker, Ph.D.
+</em><br />
+<em class="quotelev1">&gt; Oceanographer
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Emergency Response Division
+</em><br />
+<em class="quotelev1">&gt; NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+</em><br />
+<em class="quotelev1">&gt; 7600 Sand Point Way NE   (206) 526-6329   fax
+</em><br />
+<em class="quotelev1">&gt; Seattle, WA  98115       (206) 526-6317   main reception
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Chris.Barker at noaa.gov
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><br /><pre>
+-- 
+Sincerely,
+Bob Simons
+IT Specialist
+Environmental Research Division
+NOAA Southwest Fisheries Science Center
+99 Pacific St., Suite 255A      (New!)
+Monterey, CA 93940               (New!)
+Phone: (831)333-9878            (New!)
+Fax:   (831)648-8440
+Email: bob.simons at noaa.gov
+The contents of this message are mine personally and
+do not necessarily reflect any position of the
+Government or the National Oceanic and Atmospheric Administration.
+&lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt;
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170222/294e8699/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170222/294e8699/attachment.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Feb 22 2017 - 13:08:24 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8032">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8033.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  Pre-proposal for &#0034;charset&#0034;"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8031.html" title="Previous message in the list">Bob Simons - NOAA Federal: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8048.html" title="Next message in this discussion thread">Chris Barker: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8048.html" title="Message sent in reply to this message">Chris Barker: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8032" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8032" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8032" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8032" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:09 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8031.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8033.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

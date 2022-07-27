@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Karl Taylor on 2015-07-14 (cf-metadata-mailman)</title>
+<meta name="Author" content="Karl Taylor (taylor13)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-07-14" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7221.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7223.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Tue Jul 14 16:15:55 2015" -->
+<!-- isoreceived="20150714151555" -->
+<!-- sent="Tue, 14 Jul 2015 15:15:55 -0700" -->
+<!-- isosent="20150714221555" -->
+<!-- name="Karl Taylor" -->
+<!-- email="taylor13" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="55A58A1B.4080401_at_llnl.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20150714174814.GA7814_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7222" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7223.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./7221.html" title="Nan Galbraith: &quot;[CF-metadata] A few descriptions seem &#0039;off&#0039;&quot;">Previous message</a> ]
+[ <a href="./7220.html" title="Jonathan Gregory: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7222" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7222" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7222" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7222" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Karl Taylor &lt;<a href="mailto:taylor13?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">taylor13</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 14 Jul 2015 15:15:55 -0700</span><br />
+</address>
+<br />
+Dear Jonathan,
+<br />
+<br />I think we will make it more difficult on users to write and interpret 
+<br />
+CF data  if the calendar attribute is too complicated and the meaning of 
+<br />
+&quot;gregorian&quot; changes from what it meant in the past. In the past we got 
+<br />
+away with a single &quot;gregorian&quot; option, and I suspect all the 
+<br />
+CF-compliant model output and nearly all the observational data stored 
+<br />
+under CF would be correctly interpreted if the definition of &quot;gregorian&quot; 
+<br />
+included the following sentences:
+<br />
+<br />----------------------------------
+<br />
+Under the &quot;gregorian&quot; calendar the length of the solar day can be 
+<br />
+assumed to be exactly 86400 seconds long (i.e., there are no leap 
+<br />
+seconds).  This means that for models where this assumption almost 
+<br />
+invariably is valid, conversion from elapsed time to clock time is 
+<br />
+straight-forward and exact, whereas for observations, conversion to 
+<br />
+clock time may introduce errors as large as 16 seconds because it is 
+<br />
+unknown whether the UTC or GPS time system has been used in specifying 
+<br />
+the reference times (appearing in the time units attribute), and it is 
+<br />
+also unknown whether leap seconds have been properly accounted for in 
+<br />
+converting UTC clock times to elapsed time.
+<br />
+----------------------------------
+<br />
+<br />Interpreted as above, the &quot;gregorian&quot; calendar would make it possible 
+<br />
+for users to invariably decode *model* output and not encounter the 
+<br />
+problems you discussed in your first paragraph.  Of course with 
+<br />
+*observations*, they might encounter such problems, but that's because 
+<br />
+the observationalist storing the data is apparently o.k. with errors of 
+<br />
+up to 16 seconds (otherwise they would rewrite their data with one of 
+<br />
+the newly proposed calendars specifying UTC or GPS).
+<br />
+<br />In the future, I think we should interpret &quot;gregorian&quot; the same as we 
+<br />
+have in the past, but we would also offer two new calendars 
+<br />
+(gregorian_utc and gregorian_gps) for those who need to indicate that 
+<br />
+their reference times are defined by a specific time system, and one 
+<br />
+more calendar (gregorian_utc_nls) for those who choose not to properly 
+<br />
+account for leap seconds in converting from UTC clock time to elapsed 
+<br />
+time.   These new calendars would mostly be used for observations, but 
+<br />
+conceivably there might be a model initialized from observations  (and 
+<br />
+subsequently compared against observations perhaps only a few seconds 
+<br />
+later), where one would want to precisely record whether the reference 
+<br />
+time (included in the units) follows the UTC or GPS time system, just as 
+<br />
+in the observational data set it is being compared with.  In these 
+<br />
+(rare) cases, the calendar would be indicated as being either 
+<br />
+gregorian_utc or gregorian_gps for the model output, just as in the 
+<br />
+observational data set.
+<br />
+<br />You argue that interpretation of &quot;gregorian&quot; depends on whether it 
+<br />
+describes observations or model output.  That's true, and apparently 
+<br />
+that has always been the case.  We can't change that, and why should we 
+<br />
+change it going forward?
+<br />
+<br />I don't see a case for including gregorian_nls (for models), unless we 
+<br />
+decide to redefine &quot;gregorian&quot; to mean:
+<br />
+<br />&quot;a calendar that: 1) might or might not account for leap seconds, 2) 
+<br />
+might or might not assume the length of the solar day is exactly 86400 
+<br />
+seconds long, and 3) might express the reference time according to 
+<br />
+either UTC or GPS&quot;
+<br />
+<br />This definition would also be consistent with past usage of &quot;gregorian&quot; 
+<br />
+but would make virtually all the model data stored already under CF with 
+<br />
+calendar=&quot;gregorian&quot; seem to be imprecise in specifying the 
+<br />
+time-coordinates, even though the coordinates are in fact defined such 
+<br />
+that they can be converted to wall clock time assuming the solar day is 
+<br />
+exactly 86400 seconds long.  If you want to adopt this alternative 
+<br />
+definition (rather than the one I suggest in the 2nd paragraph above), 
+<br />
+then we should probably introduce &quot;gregorian_nls&quot; as a calendar/time 
+<br />
+system for which the length of the solar day is exactly 86400 seconds 
+<br />
+long&quot;.    In the future gregorian_nls would probably be used (instead of 
+<br />
+&quot;gregorian&quot;) in all but a few model-produced datasets.
+<br />
+<br />best regards,
+<br />
+Karl
+<br />
+<br /><br />On 7/14/15 10:48 AM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Karl
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thank you for your useful summary, which I think is quite right. That will
+</em><br />
+<em class="quotelev1">&gt; provide some good text for the standard document.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; You suggest merging gregorian_nls (for models, exactly 86400-second days)
+</em><br />
+<em class="quotelev1">&gt; into gregorian (imprecise about which calendar is used and how encoded),
+</em><br />
+<em class="quotelev1">&gt; distinguishing them according to whether the data is model or observational.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I'm not comfortable with that. I can't think of another case in CF where the
+</em><br />
+<em class="quotelev1">&gt; metadata is designed to be interpreted differently for models and observations,
+</em><br />
+<em class="quotelev1">&gt; and it would not be easy to do, because there's no metadata that is guaranteed
+</em><br />
+<em class="quotelev1">&gt; to be present in a standard form to tell you if it's model or observational.
+</em><br />
+<em class="quotelev1">&gt; Yet I think this distinction must be made. It would not be satisfactory if
+</em><br />
+<em class="quotelev1">&gt; users interpreted the imprecision of &quot;gregorian&quot; to mean they could decode
+</em><br />
+<em class="quotelev1">&gt; model data e.g. from CMIP using the UTC calendar, and found days that appear to
+</em><br />
+<em class="quotelev1">&gt; start 16 seconds different from midnight. I am sure this would cause problems
+</em><br />
+<em class="quotelev1">&gt; e.g. wrong months selected. That's why I think we need gregorian_nls as a model
+</em><br />
+<em class="quotelev1">&gt; calendar, to be used instead of gregorian in future where applicable. We need
+</em><br />
+<em class="quotelev1">&gt; to be able to assert that the 86400-second day definitely applies.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree with Jim that there is a distinction between gregorian_utc_nls and
+</em><br />
+<em class="quotelev1">&gt; gregorian too. Some people supplying observational data don't require the
+</em><br />
+<em class="quotelev1">&gt; precision of specifying UTC (or GPS), so they don't want to choose gregorian_
+</em><br />
+<em class="quotelev1">&gt; utc or gregorian_gps. Nan argued this case. Others however may wish to be
+</em><br />
+<em class="quotelev1">&gt; precise about UTC timestamps, but choose to encode it without leap seconds.
+</em><br />
+<em class="quotelev1">&gt; So I think we need the meaning of gregorian_utc_nls.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; However, on reflection I convinced myself (at least! - but not Jim) that the
+</em><br />
+<em class="quotelev1">&gt; distinction between gregorian_nls (for models) and gregorian_utc_nls (for
+</em><br />
+<em class="quotelev1">&gt; the real world) is too subtle to make reliably, so I suggested we should use
+</em><br />
+<em class="quotelev1">&gt; gregorian_nls for both, and say that *if* it is observational data, it must
+</em><br />
+<em class="quotelev1">&gt; be UTC. That's not quite the same as your suggestion, because the timestamps
+</em><br />
+<em class="quotelev1">&gt; can be exactly recovered without knowing if it's model or observational, but
+</em><br />
+<em class="quotelev1">&gt; you would need to know in order to tell whether the elapsed times are accurate
+</em><br />
+<em class="quotelev1">&gt; (as they are for model data) or perhaps not accurate (for real world data).
+</em><br />
+<em class="quotelev1">&gt; Whereas I regard timestamps as more important, Jim tends to regard elapsed
+</em><br />
+<em class="quotelev1">&gt; times as more important, so I guess this second issue would count more for him.
+</em><br />
+<em class="quotelev1">&gt; If it is crucial, then we need both gregorian_nls and gregorian_utc_nls. The
+</em><br />
+<em class="quotelev1">&gt; distinction is whether it is model or real-world time. My concern is that when
+</em><br />
+<em class="quotelev1">&gt; when models are used to simulate events that happened in real-world time, data-
+</em><br />
+<em class="quotelev1">&gt; producers may often find it hard to decide between these alternatives, and it's
+</em><br />
+<em class="quotelev1">&gt; unclear whether it's useful to do so anyway.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Tue Jul 14 2015 - 16:15:55 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7222">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7223.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7221.html" title="Previous message in the list">Nan Galbraith: "[CF-metadata] A few descriptions seem &#0039;off&#0039;"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7220.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7222" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7222" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7222" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7222" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:58 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7221.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7223.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Convention attribute from Hedley, Mark on 2011-12-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hedley, Mark (mark.hedley)" />
+<meta name="Subject" content="[CF-metadata] Convention attribute" />
+<meta name="Date" content="2011-12-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4071.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4073.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Convention attribute</h1>
+<!-- received="Thu Dec 29 06:27:05 2011" -->
+<!-- isoreceived="20111229062705" -->
+<!-- sent="Thu, 29 Dec 2011 13:27:05 -0000" -->
+<!-- isosent="20111229132705" -->
+<!-- name="Hedley, Mark" -->
+<!-- email="mark.hedley" -->
+<!-- subject="[CF-metadata] Convention attribute" -->
+<!-- id="8AC4893FB411FA4AA8CFECD9C8913B660B095344_at_EXXMAIL01.desktop.frd.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4072" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4073.html" accesskey="d" title="Hedley, Mark: &quot;[CF-metadata] Convention attribute&quot;">Next message</a> ]
+[ <a href="./4071.html" title="Lowry, Roy K.: &quot;[CF-metadata] Convention attribute&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4072" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4072" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4072" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4072" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hedley, Mark &lt;<a href="mailto:mark.hedley?Subject=Re%3A%20%5BCF-metadata%5D%20Convention%20attribute">mark.hedley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 29 Dec 2011 13:27:05 -0000</span><br />
+</address>
+<br />
+I think this represents a sensible approach.  I think that the name_spacing is implicit and will have to remain so.
+<br />
+<br />I think a strong statement detailing the responsibility placed on the data provider to have checked that the metadata is unambiguously consistent with all standards stated in the 'Conventions' global attribute would be useful alongside any statement that multiple conventions may be defined for a data file
+<br />
+<br />cheers
+<br />
+<br />mark
+<br />
+<br /><br />Dear Mark and Dave
+<br />
+<br />I agree with Dave's answers. If two conventions are used together, it is the
+<br />
+responsibility of the data-writer to guarantee that the metadata supplied is
+<br />
+consistent if there are any overlaps in meaning. A particular case of that is
+<br />
+if the two conventions define attributes with the same names. It has been
+<br />
+suggested that conventions could signal their own name-spaces e.g. CF
+<br />
+attributes could all be prefixed with &quot;cf_&quot; (like the cf_role attribute, which
+<br />
+has been introduced in the new CF section 9). That could help with preventing
+<br />
+collisions of namespaces, but
+<br />
+<br />* it would be cumbersome for writers of files that adhere to only one
+<br />
+convention, which is the usual case, and awkward for programs that read files,
+<br />
+since they would have to check for every attribute by two different names
+<br />
+(with and without the prefix, considering all the data that already exists
+<br />
+without prefixes).
+<br />
+<br />* it doesn't help if the two conventions are inconsistent in their metadata,
+<br />
+whether or not they use similarly named attributes, and this is the more
+<br />
+serious problem, I would argue.
+<br />
+<br />Therefore I don't think this is really a magic solution to get rid of the
+<br />
+potential difficulty. Rather, the writers of conventions have to be aware of
+<br />
+other netCDF conventions that might be used with theirs, and try to use ones
+<br />
+that already exist instead of defining new ones for a given purpose.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+Mark,
+<br />
+<br />That is an important question.  I suggest that there is only one
+<br />
+practical interpretation for multiple conventions: 100 percent
+<br />
+compiance with the requirements of each listed convention.  This leads
+<br />
+to immediate answers for your questions, as follows.
+<br />
+<br />On Wed, Dec 28, 2011 at 9:59 AM, Hedley, Mark
+<br />
+&lt;mark.hedley at metoffice.gov.uk&gt; wrote:
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I am interested in the implications for defining multiple conventions in the same file.  As a data creator, what am I asserting by defining my file with multiple conventions?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It could be said that the conventions attribute provides an implicit name space for the controlled terms it defines.  This enables a data consumer to assign meaning to the terms defined by the convention which exist within a particular file.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If I have one convention, I can pattern match all the attributes and explicitly link them to a convention.  All the ones that don't match are user defined, and not part of the convention.  Does this scale to having multiple conventions defined?
+</em><br />
+<br />Yes, assuming that there are no incompatibilities between attributes
+<br />
+in use in any given file.
+<br />
+<br /><em class="quotelev1">&gt; Do conventions maintain mutually exclusive vocabularies? I don't think they do.
+</em><br />
+<br />Agreed.  Each shared term must be used in a mutually compatible way,
+<br />
+or else it must not be used in the context of two incompatible
+<br />
+definitions.
+<br />
+<br /><em class="quotelev1">&gt; Where vocabularies share terms, is there oversight that ensures that shared terms are defined the same way?
+</em><br />
+<br />Only good judgement on the part of convention designers.  In my
+<br />
+limited experience, there are a few popular conventions that have had
+<br />
+considerable influence on the development of other conventions.  This
+<br />
+helps to engender conforming usage of attributes.  Such conventions
+<br />
+include Unidata's attribute recommendations (mainly User's Guide
+<br />
+appendix B), COARDS, and CF; perhaps others.
+<br />
+<br /><em class="quotelev1">&gt; If I assert that two conventions are being used, does that mean that I have checked that my file contains no attributes which are ambiguously defined?
+</em><br />
+<br />Not necessarily that checks were actually performed, but only that you
+<br />
+are asserting full compliance with each convention.
+<br />
+<br /><em class="quotelev1">&gt; If I want to use a term which is ambiguously defined, can I do this effectively?
+</em><br />
+<br />By &quot;ambiguously defined&quot; do you mean defined incompatibly between two
+<br />
+conventions?  I would say No, this would not be allowed if your goal
+<br />
+is to have the term interpreted unambiguously by all possible readers.
+<br />
+<br /><em class="quotelev1">&gt; There seems to be significant potential for confusion here; I think care is required.
+</em><br />
+<br />Requiring independent conformance with each listed convention should
+<br />
+alleviate confusion.
+<br />
+<br />--Dave
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Dec 29 2011 - 06:27:05 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4072">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4073.html" title="Next message in the list">Hedley, Mark: "[CF-metadata] Convention attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4071.html" title="Previous message in the list">Lowry, Roy K.: "[CF-metadata] Convention attribute"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4072" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4072" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4072" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4072" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:56 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4071.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4073.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

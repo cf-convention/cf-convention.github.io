@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Cell bounds associated with coordinate variable rather than data variable from John Caron on 2009-11-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] Cell bounds associated with coordinate variable rather than data variable" />
+<meta name="Date" content="2009-11-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2321.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2323.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Cell bounds associated with coordinate variable rather than data variable</h1>
+<!-- received="Fri Nov 13 07:11:10 2009" -->
+<!-- isoreceived="20091113071110" -->
+<!-- sent="Fri, 13 Nov 2009 07:11:10 -0700" -->
+<!-- isosent="20091113141110" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] Cell bounds associated with coordinate variable rather than data variable" -->
+<!-- id="4AFD68FE.8020808_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4AFC746C.9010308_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2322" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2323.html" accesskey="d" title="Nan Galbraith: &quot;[CF-metadata] CF point observation Conventions ready for review&quot;">Next message</a> ]
+[ <a href="./2321.html" title="Thomas Lavergne: &quot;[CF-metadata] Cell bounds associated with coordinate variable rather than data variable&quot;">Previous message</a> ]
+[ <a href="./2320.html" title="Steve Hankin: &quot;[CF-metadata] Cell bounds associated with coordinate variable rather than data variable&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2336.html" accesskey="t" title="Benno Blumenthal: &quot;[CF-metadata] Cell bounds associated with coordinate variable rather than data variable&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2322" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2322" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2322" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2322" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20Cell%20bounds%20associated%20with%20coordinate%20variable%20rather%20than%20data%20variable">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 13 Nov 2009 07:11:10 -0700</span><br />
+</address>
+<br />
+Hi Steve:
+<br />
+<br />Sorry, I see that my thinking isnt very clear. Thanks for reformulating the question as &quot;the case where the boundaries of cell values is clearly understood, but it is unclear what coordinate value best to use for the grid point.&quot;
+<br />
+<br />I think Seth's argument to keep the time coordinates the same for model output is correct. So my statement that &quot;time coordinates want to use the end-point&quot; is misleading, the KISS principle is that variables on the same time grid should have the same time coordinate. In model output, the time grid is &quot;forecast time&quot;, not &quot;midpoint of calculation period&quot;. The CDM's Forecast Model Run Collection (FMRC) processing, for example, depends on this. This may be much ado about nothing - we probably would agree on what to do about any specific example.
+<br />
+<br />(It was probably a mistake to bring in other data types like point obs - they just use the time of measurement, end of story.)
+<br />
+<br />&quot;If one has a mixture of model variables to output and the interpretations of their time coordinates needs to be different, then placing two different time axes into the file is the only way to eliminate the confusion.&quot;
+<br />
+<br />I think another possibility is to put the bounds information on the &quot;continuous integral&quot; data variables, rather than on the time coordinate. Otherwise we have this proliferation of time coordinates, which confuses things. 
+<br />
+<br />Steve Hankin wrote:
+<br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; John Caron wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; 1. The CDM library uses the bounds if they are present. If only the 
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinate values are present, the CDM generates bounds. These grids 
+</em><br />
+<em class="quotelev2">&gt;&gt; bounds are used by ncWMS and other visualization software to draw 
+</em><br />
+<em class="quotelev2">&gt;&gt; color filled images.   The IDV (I think) uses a contouring algorithm 
+</em><br />
+<em class="quotelev2">&gt;&gt; with just the coordinate values.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 2. Spatial coordinates probably want to use midpoint values.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 3. I think theres a good argument that time coordinates want to use 
+</em><br />
+<em class="quotelev2">&gt;&gt; the end-point. Seth makes the argument for numerical models. In this 
+</em><br />
+<em class="quotelev2">&gt;&gt; case, all the output variables should have the same time coordinate. 
+</em><br />
+<em class="quotelev2">&gt;&gt; Im trying to think of a case where thats not true (point observations, 
+</em><br />
+<em class="quotelev2">&gt;&gt; radar data etc), and im not thinking of any.
+</em><br />
+<em class="quotelev1">&gt; Hi John,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I'm not understanding the logic that suggests using midpoints for 
+</em><br />
+<em class="quotelev1">&gt; spatial coordinates, but endpoints for times.  Whenever an applications 
+</em><br />
+<em class="quotelev1">&gt; sees a particular reason to place the grid point at something other than 
+</em><br />
+<em class="quotelev1">&gt; the midpoint (on whatever axis) of course it should do so.  That may 
+</em><br />
+<em class="quotelev1">&gt; lead to placing the grid point at the start, middle or end of the 
+</em><br />
+<em class="quotelev1">&gt; interval.  But the question that is before us is to say what the default 
+</em><br />
+<em class="quotelev1">&gt; should be for the case where the boundaries of cell values is clearly 
+</em><br />
+<em class="quotelev1">&gt; understood, but it is unclear what coordinate value best to use for the 
+</em><br />
+<em class="quotelev1">&gt; grid point.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; All other things being equal using a consistent strategy for space and 
+</em><br />
+<em class="quotelev1">&gt; time is the simpler, &quot;KISS&quot;, approach.  Both instantaneous and 
+</em><br />
+<em class="quotelev1">&gt; time-interval-averaged values are most naturally encoded using midpoint 
+</em><br />
+<em class="quotelev1">&gt; representation (disagreeing with both Seth's conclusion and your 
+</em><br />
+<em class="quotelev1">&gt; speculation.  Are we using terms differently?).  The compelling case for 
+</em><br />
+<em class="quotelev1">&gt; a time endpoint may be continuous integrals (e.g. accumulated 
+</em><br />
+<em class="quotelev1">&gt; precipitation).  If one has a mixture of model variables to output and 
+</em><br />
+<em class="quotelev1">&gt; the interpretations of their time coordinates needs to be different, 
+</em><br />
+<em class="quotelev1">&gt; then placing two different time axes into the file is the only way to 
+</em><br />
+<em class="quotelev1">&gt; eliminate the confusion.  Arbitrarily shifting the grid point locations 
+</em><br />
+<em class="quotelev1">&gt; by 1/2 time cell will not eliminate confusion, will it?  It seems like 
+</em><br />
+<em class="quotelev1">&gt; it would merely hide the confusion and increase the chances of 
+</em><br />
+<em class="quotelev1">&gt; misinterpretation.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; (To be frank, although I have seen many CF datasets using both midpoint 
+</em><br />
+<em class="quotelev1">&gt; and start-point times, I have never encountered one previously that uses 
+</em><br />
+<em class="quotelev1">&gt; the end point of the time interval.  It seems possible that as a 
+</em><br />
+<em class="quotelev1">&gt; practical matter this choice may introduce confusion rather than reduce 
+</em><br />
+<em class="quotelev1">&gt; it.)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    - Steve
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; =====================
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Seth's argument about confusion remains the same if one
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 4. Perhaps &quot;interval of accumulation&quot; is different enough that one 
+</em><br />
+<em class="quotelev2">&gt;&gt; should just encode it in a separate attribute or auxiliary coordinate 
+</em><br />
+<em class="quotelev2">&gt;&gt; on the data variable. Numerical models can have different variables 
+</em><br />
+<em class="quotelev2">&gt;&gt; with different intervals, possibly overlapping. This is perhaps not 
+</em><br />
+<em class="quotelev2">&gt;&gt; really the same as the bounds on the coordinate, they just share the 
+</em><br />
+<em class="quotelev2">&gt;&gt; same codomain (time). An advantage of this approach is that you dont 
+</em><br />
+<em class="quotelev2">&gt;&gt; have to create new coordinate variables for each data variable, which 
+</em><br />
+<em class="quotelev2">&gt;&gt; seems like more trouble than its worth.
+</em><br />
+<span id="received"><dfn>Received on</dfn> Fri Nov 13 2009 - 07:11:10 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2322">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2323.html" title="Next message in the list">Nan Galbraith: "[CF-metadata] CF point observation Conventions ready for review"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2321.html" title="Previous message in the list">Thomas Lavergne: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2320.html" title="Message to which this message replies">Steve Hankin: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2336.html" title="Next message in this discussion thread">Benno Blumenthal: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2336.html" title="Message sent in reply to this message">Benno Blumenthal: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2322" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2322" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2322" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2322" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:24 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2321.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2323.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

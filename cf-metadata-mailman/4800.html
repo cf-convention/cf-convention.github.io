@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] [CF Metadata] #94: Proposal for a CF String Syntax (CFSS) from Chris Barker on 2012-11-02 (cf-metadata-mailman)</title>
+<meta name="Author" content="Chris Barker (chris.barker)" />
+<meta name="Subject" content="[CF-metadata] [CF Metadata] #94: Proposal for a CF String Syntax (CFSS)" />
+<meta name="Date" content="2012-11-02" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4799.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4801.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] [CF Metadata] #94: Proposal for a CF String Syntax (CFSS)</h1>
+<!-- received="Fri Nov  2 10:08:46 2012" -->
+<!-- isoreceived="20121102100846" -->
+<!-- sent="Fri, 2 Nov 2012 09:08:46 -0700" -->
+<!-- isosent="20121102160846" -->
+<!-- name="Chris Barker" -->
+<!-- email="chris.barker" -->
+<!-- subject="[CF-metadata] [CF Metadata] #94: Proposal for a CF String Syntax (CFSS)" -->
+<!-- id="CALGmxEK59T-dGj2XnvjCg0tUqcjknzNtN1_14nyNn1KA+-9JJQ_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="066.af8b9f6712d9152656951f5ec2cef629_at_lists.llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4800" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4801.html" accesskey="d" title="Cecelia DeLuca: &quot;[CF-metadata] [CF Metadata] #94: Proposal for a CF String Syntax (CFSS)&quot;">Next message</a> ]
+[ <a href="./4799.html" title="Steve Hankin: &quot;[CF-metadata] Ambiguous standard_name representation?: surface_carbon_dioxide_partial_pressure_difference_between_sea_water_and_air&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4801.html" accesskey="t" title="Cecelia DeLuca: &quot;[CF-metadata] [CF Metadata] #94: Proposal for a CF String Syntax (CFSS)&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4800" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4800" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4800" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4800" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Chris Barker &lt;<a href="mailto:chris.barker?Subject=Re%3A%20%5BCF-metadata%5D%20%5BCF%20Metadata%5D%20%2394%3A%20Proposal%20for%20a%20CF%20String%20Syntax%20(CFSS)">chris.barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 2 Nov 2012 09:08:46 -0700</span><br />
+</address>
+<br />
+I know I should be commenting in TRAC, but I don't think I have a login...
+<br />
+<br />First -- if this is already well established, and simply being
+<br />
+codified here, then &quot;never mind&quot; but if there is still room for
+<br />
+discussion:
+<br />
+<br /><em class="quotelev1">&gt;  CFSS strings are structured as follows:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;  {{{
+</em><br />
+<em class="quotelev1">&gt;  &lt;standard name of data 1&gt;, &lt;standard name of data 2&gt;, ... ,&lt;standard name
+</em><br />
+<em class="quotelev1">&gt;  of data n&gt;
+</em><br />
+<em class="quotelev1">&gt;  &lt;standard name of coordinate or cell method 1&gt;: &lt;value 1&gt; [&lt;unit 1&gt;]
+</em><br />
+<em class="quotelev1">&gt;  &lt;standard name of coordinate or cell method 2&gt;: &lt;value 2&gt; [&lt;unit 2&gt;] ...
+</em><br />
+<em class="quotelev1">&gt;  &lt;standard name of coordinate or cell method m&gt;: &lt;value m&gt; [&lt;unit m&gt;]
+</em><br />
+<em class="quotelev1">&gt;  }}}
+</em><br />
+<br /><em class="quotelev1">&gt;  Examples of compliant strings using CFSS are:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;  x_wind
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;  x_wind height: 10 m
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;  x_wind height: 10 m time: mean region: atlantic_ocean
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;  x_wind, y_wind height: 10 m time: mean region: atlantic_ocean
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;  height: 10 m time: mean region: atlantic_ocean
+</em><br />
+<br />These strick me as being a pain to parse. For example:
+<br />
+<br />&quot;x_wind, y_wind height: 10 m time: mean region: atlantic_ocean&quot;
+<br />
+<br />there are three delimiters there, commas, colons and whitespace. But
+<br />
+whitespace can also be used to separate the units from the value.
+<br />
+Also, can there be white space in any of the values (probably not
+<br />
+names). To parse this, I guess I would:
+<br />
+<br />look for colons
+<br />
+look for whitespace before the colon, what's between is the cell name?
+<br />
+look at what's at the beginning, before the whitespace, before the cell name.
+<br />
+split that on commas, giving me the variable names.
+<br />
+look for the next colon, then look before that for whitespace.
+<br />
+between the whitespace and the colon is the next cell name.
+<br />
+between the previous colon and the cell name is the value and units.
+<br />
+...
+<br />
+<br />I'm sure there is a smarter way to write that code, but I even find it
+<br />
+hard to parse with my eyes.
+<br />
+<br />So I suggest another delimiter -- does netcdf allow line feeds?
+<br />
+<br />{{{
+<br />
+x_wind, y_wind
+<br />
+&nbsp;&nbsp;height: 10 m
+<br />
+&nbsp;&nbsp;time: mean
+<br />
+&nbsp;&nbsp;region: atlantic_ocean
+<br />
+}}}
+<br />
+<br />or maybe semi-colons?
+<br />
+<br />{{{
+<br />
+&quot;x_wind, y_wind; height: 10 m; time: mean; region: atlantic_ocean&quot;
+<br />
+}}}
+<br />
+<br />If I've split that example up wrong, then it really proves my point!
+<br />
+<br />Just my $0.2
+<br />
+<br /><br />-Chris
+<br />
+<br /><br /><br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Nov 02 2012 - 10:08:46 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4800">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4801.html" title="Next message in the list">Cecelia DeLuca: "[CF-metadata] [CF Metadata] #94: Proposal for a CF String Syntax (CFSS)"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4799.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] Ambiguous standard_name representation?: surface_carbon_dioxide_partial_pressure_difference_between_sea_water_and_air"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4801.html" title="Next message in this discussion thread">Cecelia DeLuca: "[CF-metadata] [CF Metadata] #94: Proposal for a CF String Syntax (CFSS)"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4801.html" title="Message sent in reply to this message">Cecelia DeLuca: "[CF-metadata] [CF Metadata] #94: Proposal for a CF String Syntax (CFSS)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4800" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4800" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4800" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4800" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:10 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4799.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4801.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables from Upendra Dadi on 2011-11-01 (cf-metadata-mailman)</title>
+<meta name="Author" content="Upendra Dadi (Upendra.Dadi)" />
+<meta name="Subject" content="[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables" />
+<meta name="Date" content="2011-11-01" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3888.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3890.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables</h1>
+<!-- received="Tue Nov  1 10:44:49 2011" -->
+<!-- isoreceived="20111101104449" -->
+<!-- sent="Tue, 01 Nov 2011 12:44:49 -0400" -->
+<!-- isosent="20111101164449" -->
+<!-- name="Upendra Dadi" -->
+<!-- email="Upendra.Dadi" -->
+<!-- subject="[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables" -->
+<!-- id="4EB02201.7060603_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20111101153830.GB31920_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3889" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3890.html" accesskey="d" title="Armstrong, Edward M: &quot;[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables&quot;">Next message</a> ]
+[ <a href="./3888.html" title="Jonathan Gregory: &quot;[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables&quot;">Previous message</a> ]
+[ <a href="./3888.html" title="Jonathan Gregory: &quot;[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3890.html" accesskey="t" title="Armstrong, Edward M: &quot;[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3889" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3889" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3889" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3889" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Upendra Dadi &lt;<a href="mailto:Upendra.Dadi?Subject=Re%3A%20%5BCF-metadata%5D%20%5Bcf-satellite%5D%20Sharing%20quality%20flags%20among%20multiple%20variables">Upendra.Dadi</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 01 Nov 2011 12:44:49 -0400</span><br />
+</address>
+<br />
+Hi Jonathan,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;I wasn't very clear in the earlier mail. Actually, the quality flags 
+<br />
+are different, but the attributes flag_values and flag_meanings are same 
+<br />
+for all the flag variables.  These attributes are being repeated within 
+<br />
+each quality flag variable instead of perhaps having a single 
+<br />
+&quot;definition&quot; of the flag_values and flag_meanings.
+<br />
+<br />One solution we looked at is to have a &quot;container variable&quot; for flag 
+<br />
+definitions which will be referred to by each of the flag variables, 
+<br />
+something like this:
+<br />
+<br />&nbsp;&nbsp;&nbsp;float temperature(z);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature:ancillary_variables = &quot;temperature_WODflag&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;int temperature_WODflag(z);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature:flag_definitions = &quot;WOD_flag_definitions&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;float salinity(z);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salinity:ancillary_variables = &quot;salinity_WODflag&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;int salinity_WODflag(z);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salinity:flag_definitions = &quot;WOD_flag_definitions&quot;;
+<br />
+<br />&lt;similarly for other other variables&gt;
+<br />
+<br />&nbsp;&nbsp;&nbsp;int WOD_flag_definitions;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WOD_flag_definitions:flag_values = &quot;0, 1, 2, 3, 4, 5, 6, 7, 8, 9&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WOD_flag_definitions:flag_meanings = &quot;accepted_value range_outlier 
+<br />
+failed_inversion_check failed_gradient_check 
+<br />
+observed_level_bullseye_flag_and_zero_gradient_check combined_gradient
+<br />
+_and_inversion_checks failed_range_and_inversion_checks 
+<br />
+failed_range_and_gradient_checks 
+<br />
+failed_range_and_questionable_data_checks 
+<br />
+failed_range_and_combined_gradient_and_inversion_checks&quot; ;
+<br />
+<br /><br />Of course, flag_definitions is not a CF attribute and the above solution 
+<br />
+wouldn't work with CF based software.  Is there a way around within the 
+<br />
+ambit of CF other than to repeat the flag definitions?
+<br />
+<br />Upendra
+<br />
+<br /><br />On 11/1/2011 11:38 AM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Upendra
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 11/1/2011 10:47 AM, Upendra Dadi wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; The same issue occurs with World Ocean Database which consists of
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; mainly profile data. Each profile typically consists of several
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; variables measured along the depth. The quality flags used for all
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; the variable are same.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; On 10/31/2011 12:12 PM, Randy Horne wrote:
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; The current CF conventions dictate that quality flags are
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; attached to specific variables.  The implication is that
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; comforming with CF conventions would require the same quality
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; flags to be stored multiple times in our NetCDF product files.
+</em><br />
+<em class="quotelev1">&gt; Quality flags are attached to variables using the ancillary_variables att of
+</em><br />
+<em class="quotelev1">&gt; the data variable. If several data variables had the same quality flags and
+</em><br />
+<em class="quotelev1">&gt; dimensions, they could all point to the same quality variable. Perhaps the
+</em><br />
+<em class="quotelev1">&gt; problem is that the different variables have different standard names, and
+</em><br />
+<em class="quotelev1">&gt; this means the quality variables would also have different standard names
+</em><br />
+<em class="quotelev1">&gt; (and therefore could not be the same variable)? If that is the problem, perhaps
+</em><br />
+<em class="quotelev1">&gt; we could find a way round it. Or have I missed the point?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20111101/e7b92288/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20111101/e7b92288/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Nov 01 2011 - 10:44:49 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3889">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3890.html" title="Next message in the list">Armstrong, Edward M: "[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3888.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3888.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3890.html" title="Next message in this discussion thread">Armstrong, Edward M: "[CF-metadata] [cf-satellite] Sharing quality flags among multiple variables"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3889" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3889" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3889" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3889" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:53 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3888.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3890.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

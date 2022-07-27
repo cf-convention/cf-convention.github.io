@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Using cell methods for statistics associated with gridded observation data from rhorne at excaliburlabs.com on 2013-07-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="rhorne at excaliburlabs.com (rhorne)" />
+<meta name="Subject" content="[CF-metadata] Using cell methods for statistics associated with gridded observation data" />
+<meta name="Date" content="2013-07-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5598.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5600.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Using cell methods for statistics associated with gridded observation data</h1>
+<!-- received="Wed Jul  3 08:43:02 2013" -->
+<!-- isoreceived="20130703074302" -->
+<!-- sent="Wed, 3 Jul 2013 10:43:02 -0400" -->
+<!-- isosent="20130703144302" -->
+<!-- name="rhorne at excaliburlabs.com" -->
+<!-- email="rhorne" -->
+<!-- subject="[CF-metadata] Using cell methods for statistics associated with gridded observation data" -->
+<!-- id="7ac6e1a9$7bc00872$29b66195$_at_excaliburlabs.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5599" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5600.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Using cell methods for statistics associated with gridded observation data&quot;">Next message</a> ]
+[ <a href="./5598.html" title="Jonathan Gregory: &quot;[CF-metadata]   Non-real-world calendars&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5599" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5599" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5599" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5599" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: rhorne at excaliburlabs.com &lt;<a href="mailto:rhorne?Subject=Re%3A%20%5BCF-metadata%5D%20Using%20cell%20methods%20for%20statistics%20associated%20with%20gridded%20observation%20data">rhorne</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 3 Jul 2013 10:43:02 -0400</span><br />
+</address>
+<br />
+Dear Jonathan:   Thanks for taking the time to look at my long-winded post. 
+<br />
+&nbsp;You posed a question I would like to answer:   Is &quot;sum&quot; really the right 
+<br />
+cell_method? I would have expected &quot;mean&quot;.
+<br />
+&nbsp;The cell method &quot;sum&quot; is applied to the &quot;time&quot;  and &quot;y&quot; and &quot;x&quot; coordinate 
+<br />
+variables   The reason &quot;sum&quot; is used for the &quot;time&quot; coordinate variable is 
+<br />
+that the sensing of a region (i.e.cell) occurs over a several minute 
+<br />
+period.  The sensing associated with a particular observation/pixel in the 
+<br />
+region (i.e. cell) happens in less than a second.  Statistics associated 
+<br />
+this cell in time are really an accumulation over the several minute 
+<br />
+sensing period.   The use of &quot;sum&quot; for &quot;area&quot; in the example below is a 
+<br />
+mistake.  The example wss supposed to show the minimum AOD value for the 
+<br />
+region (i.e. cell) that was sensed over a several minute period.  I should 
+<br />
+have used &quot;minimum&quot;.   
+<br />
+<br />Here is the correction to the declaration of the cell_methods attribute: 
+<br />
+<br />&nbsp;&nbsp;
+<br />
+<br />cell_methods = &quot;time: sum area: minimum (interval: 2 km 
+<br />
+comment:solar_zenith_angle and platform_zenith_angle conforming pixels 
+<br />
+only)&quot; ; 
+<br />
+<br />&nbsp;&nbsp;
+<br />
+<br />&nbsp;&nbsp;
+<br />
+<br />very respectfully, 
+<br />
+<br />&nbsp;&nbsp;
+<br />
+<br />randy
+<br />
+<br />----------------------------------------
+<br />
+&nbsp;From: &quot;Jonathan Gregory&quot; &lt;j.m.gregory at reading.ac.uk&gt;
+<br />
+Sent: Wednesday, July 03, 2013 10:03 AM
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: [CF-metadata] Using cell methods for statistics associated with 
+<br />
+gridded observation data
+<br />
+<br />Dear Randy
+<br />
+<br /><em class="quotelev1">&gt; The GOES-R ground system generates level 2+ products such as aerosol 
+</em><br />
+optical depth, for the hemispheric, continental US, and mesocale (100 km x 
+<br />
+1000 km) regions.
+<br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The NetCDF product files need to contain statistics (min, max, mean, and 
+</em><br />
+standard deviation) associated with ALL the gridded data associated with a 
+<br />
+region.
+<br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; It would seem the use of cell methods to express these statistics in the 
+</em><br />
+product file makes sense even though there is only one cell (i.e. the one 
+<br />
+cell that captures the statistic for the entire region).
+<br />
+<br />Yes, I agree.
+<br />
+<br /><em class="quotelev1">&gt; It is stated in the first sentence of CF standard para. 7.3.3 that the 
+</em><br />
+statistical method is evaluated over the entire horizontal area of the 
+<br />
+cell. In the case of our level 2+ products, this is not always the case, so 
+<br />
+we have a need to somehow express that the statistic is associated with a 
+<br />
+subset of the cell.
+<br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; For example, in the case of the Aerosol Optical Depth (AOD) product, the 
+</em><br />
+algorithm that generates the gridded data is has solar zenith angle and 
+<br />
+platform zenith angle constraints.
+<br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Essentially, these statistics apply to a portion of the single cell. 
+</em><br />
+Unfortunately, the &quot;where &lt;area_type&gt;&quot; features discussed in CF standard 
+<br />
+para. 7.3.3 do not work for us because the AOD product constraints are 
+<br />
+associated with the solar zenith angle and platform zenith angle at the 
+<br />
+time of observation, not one of the area_types.
+<br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Given the currently available cell method constructs, which allow for 
+</em><br />
+capturing the original spacing of the gridded data elements and the ability 
+<br />
+to include non-standardized information, we have applied the existing CF 
+<br />
+cell_method constructs as follow:
+<br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; float minimum_AOD_for_region ;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; coordinates = &quot;solar_zenith_angle platform_zenith_angle time y x&quot; ;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; cell_methods = &quot;time: sum area: sum (interval: 2 km 
+</em><br />
+comment:solar_zenith_angle and platform_zenith_angle conforming pixels 
+<br />
+only)&quot; ;
+<br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Is the way we are applying cell methods consistent with the CF standard 
+</em><br />
+?
+<br />
+<br />Yes, I think that is fine, if it's OK for you to use non-standardised
+<br />
+information. This sort of application was the intention of the standard.
+<br />
+<br />Is &quot;sum&quot; really the right cell_method? I would have expected &quot;mean&quot;.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<br /><br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130703/cb263473/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130703/cb263473/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Jul 03 2013 - 08:43:02 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5599">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5600.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Using cell methods for statistics associated with gridded observation data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5598.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]   Non-real-world calendars"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5599" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5599" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5599" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5599" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:26 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5598.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5600.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

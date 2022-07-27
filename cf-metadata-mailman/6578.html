@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] realization | x of n from Jim Biard on 2014-10-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] realization | x of n" />
+<meta name="Date" content="2014-10-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6577.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6579.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] realization | x of n</h1>
+<!-- received="Fri Oct  3 08:30:52 2014" -->
+<!-- isoreceived="20141003073052" -->
+<!-- sent="Fri, 03 Oct 2014 10:30:52 -0400" -->
+<!-- isosent="20141003143052" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] realization | x of n" -->
+<!-- id="542EB31C.40507_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="7819C496F4E10E47BCEFBE74551AAC9606F33DC4_at_EXXCMPD1DAG3.cmpd1.metoffice.gov.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6578" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6579.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] string valued coordinates&quot;">Next message</a> ]
+[ <a href="./6577.html" title="Ben Hetland: &quot;[CF-metadata] string valued coordinates&quot;">Previous message</a> ]
+[ <a href="./6574.html" title="Hedley, Mark: &quot;[CF-metadata] realization | x of n&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6578" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6578" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6578" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6578" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20realization%20%7C%20x%20of%20n">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 03 Oct 2014 10:30:52 -0400</span><br />
+</address>
+<br />
+Mark,
+<br />
+<br />I don't think there is any real need for a number_of_realizations 
+<br />
+attribute or standard name. The size of the dimension associated with 
+<br />
+the coordinate variable associated with the 'realization' standard name 
+<br />
+provides the number of realizations. If the coordinate variable with 
+<br />
+this standard name is a scalar, then the number is, by implication, one. 
+<br />
+Here are a couple of examples:
+<br />
+<br />1)
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;realize = 3;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strlen = 50;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat = 720;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon = 1440;
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float meas(realize, lat, lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat(lat);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon(lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char realize(realize, strlen);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;standard_name = &quot;realization&quot;;
+<br />
+<br />2)
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strlen = 50;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat = 720;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon = 1440;
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float meas(lat, lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordinates = &quot;realize&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat(lat);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon(lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char realize(strlen);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;standard_name = &quot;realization&quot;;
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 10/3/14, 6:52 AM, Hedley, Mark wrote:
+<br />
+<em class="quotelev1">&gt; Hello CF
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The standard name
+</em><br />
+<em class="quotelev1">&gt;   realization
+</em><br />
+<em class="quotelev1">&gt; is available for use:
+</em><br />
+<em class="quotelev1">&gt;   Realization is used to label a dimension that can be thought of asa 
+</em><br />
+<em class="quotelev1">&gt; statistical sample, e.g., labelling members of a model ensemble.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It is common practice in forecasting and some forecasting formats to 
+</em><br />
+<em class="quotelev1">&gt; explicitly state the number of members an ensemble contained.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; This would be generally be expected to be a single value across an 
+</em><br />
+<em class="quotelev1">&gt; ensemble collection.  As such I am not sure that a standard name and a 
+</em><br />
+<em class="quotelev1">&gt; coordinate would be the most useful way to encode this piece of 
+</em><br />
+<em class="quotelev1">&gt; information.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thus, we could look to provide a new data variable attribute, 
+</em><br />
+<em class="quotelev1">&gt; something like
+</em><br />
+<em class="quotelev1">&gt;   number_of_realizations
+</em><br />
+<em class="quotelev1">&gt; to store this metadata.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; However it is not impossible for this to vary across some coherent 
+</em><br />
+<em class="quotelev1">&gt; data set so perhaps a standard_name of
+</em><br />
+<em class="quotelev1">&gt;   number_of_realizations
+</em><br />
+<em class="quotelev1">&gt; would be a sensible approach, even if in most cases this would be a 
+</em><br />
+<em class="quotelev1">&gt; scalar coordinate
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Please may I ask for some opinions on this matter?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; thank you
+</em><br />
+<em class="quotelev1">&gt; mark
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA's National Climatic Data Center &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org
+o: +1 828 271 4900
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20141003/63736fd4/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20141003/63736fd4/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: gfejffhe.png
+Type: image/png
+Size: 11847 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20141003/63736fd4/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20141003/63736fd4/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Oct 03 2014 - 08:30:52 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6578">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6579.html" title="Next message in the list">Jim Biard: "[CF-metadata] string valued coordinates"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6577.html" title="Previous message in the list">Ben Hetland: "[CF-metadata] string valued coordinates"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6574.html" title="Message to which this message replies">Hedley, Mark: "[CF-metadata] realization | x of n"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6578" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6578" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6578" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6578" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:48 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6577.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6579.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

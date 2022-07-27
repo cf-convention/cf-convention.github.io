@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Two-variable integer Time in CF? from Rich Signell on 2007-11-01 (cf-metadata-mailman)</title>
+<meta name="Author" content="Rich Signell (rsignell)" />
+<meta name="Subject" content="[CF-metadata] Two-variable integer Time in CF?" />
+<meta name="Date" content="2007-11-01" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1084.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1086.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Two-variable integer Time in CF?</h1>
+<!-- received="Thu Nov  1 13:04:13 2007" -->
+<!-- isoreceived="20071101130413" -->
+<!-- sent="Thu, 1 Nov 2007 15:04:13 -0400" -->
+<!-- isosent="20071101190413" -->
+<!-- name="Rich Signell" -->
+<!-- email="rsignell" -->
+<!-- subject="[CF-metadata] Two-variable integer Time in CF?" -->
+<!-- id="61033b870711011204o6eeddcdcx6d84992e6fa0d3f9_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1085" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1086.html" accesskey="d" title="Rich Signell: &quot;[CF-metadata] Two-variable integer Time in CF?&quot;">Next message</a> ]
+[ <a href="./1084.html" title="Jonathan Gregory: &quot;[CF-metadata]  statistic indices&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1088.html" accesskey="t" title="V. Balaji: &quot;[CF-metadata] Two-variable integer Time in CF?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1085" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1085" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1085" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1085" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Rich Signell &lt;<a href="mailto:rsignell?Subject=Re%3A%20%5BCF-metadata%5D%20Two-variable%20integer%20Time%20in%20CF%3F">rsignell</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 1 Nov 2007 15:04:13 -0400</span><br />
+</address>
+<br />
+CF-folk,
+<br />
+<br />I'd like to find out what the community thinks of adding a
+<br />
+two-variable integer representation as an acceptable way of
+<br />
+representing time in CF.
+<br />
+<br />In our Marine Time Series database at the USGS here in Woods Hole, we
+<br />
+have always represented &quot;time&quot; with two integer variables:   one
+<br />
+integer variable to represent the days from a time origin that starts
+<br />
+at midnight, one integer variable to represent the number of
+<br />
+milliseconds since midnight:
+<br />
+<br />netcdf 2651-A1H {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time = 1726 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth = 1 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat = 1 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon = 1 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;days since 1968-05-23 00:00 UTC&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:aux_time = &quot;time2&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int time2(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time2:units = &quot;milliseconds since 00:00 UTC&quot; ;
+<br />
+<br />So a floating point time would be constructed as:
+<br />
+time_float = time + time2/1000/3600/24
+<br />
+<br />There are at least two advantages to this format over the standard
+<br />
+float or double representation with a single variable:
+<br />
+<br />- you can use integer arithmetic on time, avoiding round off problems
+<br />
+where you get 23:59:59 instead of 00:00:00.
+<br />
+<br />- you can have millisecond precision over millennia, so you can do
+<br />
+things like paleo earthquake simulations.
+<br />
+<br />I was speaking yesterday with David Stuebe from the FVCOM modeling
+<br />
+group, and then use the same two-integer representation for their
+<br />
+unstructured mesh model results.  They also include a floating point
+<br />
+time representation so that CF-compliant tools will work.
+<br />
+<br />If nobody thinks this is a bad idea, we can go ahead with a proposal
+<br />
+on the Conventions Wiki, along with demonstration files and examples
+<br />
+of how it could be used, following the CF standards process.
+<br />
+<br />-Rich
+<br />
+<br /><pre>
+-- 
+Dr. Richard P. Signell   (508) 457-2229
+USGS, 384 Woods Hole Rd.
+Woods Hole, MA 02543-1598
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Nov 01 2007 - 13:04:13 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1085">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1086.html" title="Next message in the list">Rich Signell: "[CF-metadata] Two-variable integer Time in CF?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1084.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  statistic indices"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1088.html" title="Next message in this discussion thread">V. Balaji: "[CF-metadata] Two-variable integer Time in CF?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1088.html" title="Message sent in reply to this message">V. Balaji: "[CF-metadata] Two-variable integer Time in CF?"</a></li>
+<li><dfn>Reply</dfn>: <a href="./1089.html" title="Message sent in reply to this message">Frank Hage: "[CF-metadata] Two-variable integer Time in CF?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1085" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1085" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1085" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1085" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:00 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1084.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1086.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

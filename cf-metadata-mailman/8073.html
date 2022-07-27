@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Pre-proposal for &quot;charset&quot; from Chris Barker on 2017-03-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="Chris Barker (chris.barker)" />
+<meta name="Subject" content="[CF-metadata] Pre-proposal for &quot;charset&quot;" />
+<meta name="Date" content="2017-03-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8072.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8074.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Pre-proposal for &quot;charset&quot;</h1>
+<!-- received="Mon Mar  6 10:41:44 2017" -->
+<!-- isoreceived="20170306104144" -->
+<!-- sent="Mon, 6 Mar 2017 09:41:44 -0800" -->
+<!-- isosent="20170306174144" -->
+<!-- name="Chris Barker" -->
+<!-- email="chris.barker" -->
+<!-- subject="[CF-metadata] Pre-proposal for &quot;charset&quot;" -->
+<!-- id="CALGmxELuB3MEcHTO4Y4dU5sh4Lna3g8hUb2aXTH-sXbuJYB-Kw_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20170217174645.GA9244_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8073" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8074.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Pre-proposal for &#0034;charset&#0034;&quot;">Next message</a> ]
+[ <a href="./8072.html" title="Signell, Richard: &quot;[CF-metadata] Best representation of wire-crawling profiler&quot;">Previous message</a> ]
+[ <a href="./8013.html" title="Jonathan Gregory: &quot;[CF-metadata] Pre-proposal for &#0034;charset&#0034;&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8073" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8073" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8073" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8073" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Chris Barker &lt;<a href="mailto:chris.barker?Subject=Re%3A%20%5BCF-metadata%5D%20Pre-proposal%20for%20%22charset%22">chris.barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 6 Mar 2017 09:41:44 -0800</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />I tried to post this note last week, in response to the TRAC ticket, but it
+<br />
+doesn't seem to have gone through. Sorry if this is a repeat.
+<br />
+<br />Note that it seems Bob has lost momentum on this one, and closed the
+<br />
+ticket. However, the fact that the OP is dropping out doesn't mean it's
+<br />
+still not a good idea. For my part, I think it IS a good idea, though I'm
+<br />
+also not motivated enough to push it through. Hopefully someone is
+<br />
+motivated enough to iron out the last details -- I think we are close.
+<br />
+<br />TL;DR:
+<br />
+<br />It is clear (to me, anyway) that an array of chars and an array of string
+<br />
+are different things, so it makes enormous sense for CF to have a way to
+<br />
+clearly specify the distinction.
+<br />
+<br />However, it is not clear whether there are enough use-cases in the wild (or
+<br />
+future?) that use arrays of chars as arrays of char, rather than as
+<br />
+strings. If there are not, then there isn't much point this thi proposal
+<br />
+(though not much of a downside, either....)
+<br />
+<br />What I intended to post last week:
+<br />
+<br />I'm not sure if I can comment on a TRAC ticket (I don't seem to be able to)
+<br />
+so I'm putting this note here.
+<br />
+<br />&nbsp;I think _Encoding is good. I've just consulted the netCDF user guide, and
+<br />
+<em class="quotelev1">&gt;  I see they don't include _Encoding as one of their attribute conventions
+</em><br />
+<em class="quotelev1">&gt;  there. Yet the use of the underscore should imply it means something
+</em><br />
+<em class="quotelev1">&gt;  special to the netCDF library, according to their conventions
+</em><br />
+<br /><br />Ahh! I was wondering about that. Some searching has revealed:
+<br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+&quot;&quot;&quot;
+<br />
+<br /><em class="quotelev1">&gt; Note on char data: Although the characters used in netCDF names must be
+</em><br />
+encoded as UTF-8, character data may use other encodings. The variable
+<br />
+attribute ?_Encoding? is reserved for this purpose in future
+<br />
+implementations.
+<br />
+<br /><em class="quotelev1">&gt; &quot;&quot;&quot;
+</em><br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+in:
+<br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+<a href="http://www.unidata.ucar.edu/software/netcdf/netcdf-4/">http://www.unidata.ucar.edu/software/netcdf/netcdf-4/</a>
+<br />
+newdocs/netcdf/Classic-Format-Spec.html
+<br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+So I think yes, _Encoding is special to netcdf, and thus the correct
+<br />
+spelling.
+<br />
+<br />&nbsp;I see you've combined your two tickets, and the choice between charset or
+<br />
+<em class="quotelev1">&gt;  _Encoding indicates whether it's char or string data. I'm not convinced
+</em><br />
+<em class="quotelev1">&gt;  still that we need this distinction. On the email list we are discussing
+</em><br />
+<em class="quotelev1">&gt;  Example H4.
+</em><br />
+<br /><br />IIUC, that was simply an example ( and I have not been following the
+<br />
+discussion ) of an ambiguous case -- not the only driver behind this idea.
+<br />
+<br /><br /><em class="quotelev1">&gt;  Are there any other cases
+</em><br />
+<em class="quotelev1">&gt;  where CF is ambiguous about whether a variable is a char array or a
+</em><br />
+<em class="quotelev1">&gt;  string?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br />It seems patently obvious to me that if a CHAR is a data type, then an ND
+<br />
+array of char type is a perfectly reasonable entity to use.
+<br />
+<br />And if there is no STRING data type then a file reader has no idea whether
+<br />
+a 2D array of char is actually a 2D array of scalar char types or a 1D
+<br />
+array of strings, and yes, they would be read and used differently.
+<br />
+<br />This gets particularly tricky if you want to convert from netcdf3 (no
+<br />
+string type) to netcdf4(string type) -- do you convert the char array to a
+<br />
+string type?
+<br />
+<br />This is not a specious example -- if I read a netcdf file with an
+<br />
+intelligent reader, I will likely convert a ND char array to a (N-1)D array
+<br />
+of strings in the &quot;native&quot; format. (say a numpy array of strings).
+<br />
+<br />Then if I write that array out to a netcdf4 file, it would get written as a
+<br />
+String array. If the char array was intended to be an array of Strings,
+<br />
+this is great. If it was intended to be an array of individual chars, then
+<br />
+I will have just inadvertently changed the semantics of the data.
+<br />
+<br />There is also the issue of specifying an encoding -- if you want to specify
+<br />
+an encoding for those chars without turning them into strings -- what do
+<br />
+you do?
+<br />
+<br />All this being said -- the key question remains:
+<br />
+<br />Are there any files out in the wild that DO use ND arrays of NC_CHAR that
+<br />
+are not intended to be interpreted as a (N-1)D array of Strings?
+<br />
+<br />Prior art:
+<br />
+<br />I just whipped up a little Python script to play with this (see enclosed).
+<br />
+If I create a netcdf3 file with a (6,4) array of char, then ncdump it, it
+<br />
+looks like this:
+<br />
+<br />$ ncdump char_test.nc
+<br />
+<br />netcdf char_test {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;first = 6 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;second = 4 ;
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;char a_char_array(first, second) ;
+<br />
+<br />data:
+<br />
+&nbsp;a_char_array =
+<br />
+&nbsp;&nbsp;&quot;ABCD&quot;,
+<br />
+&nbsp;&nbsp;&quot;EFGH&quot;,
+<br />
+&nbsp;&nbsp;&quot;IJKL&quot;,
+<br />
+&nbsp;&nbsp;&quot;MNOP&quot;,
+<br />
+&nbsp;&nbsp;&quot;QRST&quot;,
+<br />
+&nbsp;&nbsp;&quot;UVWX&quot; ;
+<br />
+}
+<br />
+<br />So ncdump (i.e. CDL) is pretty much interpreting it as an array of strings.
+<br />
+Actually,l not quite -- it is a 2D array of CHAR that you &quot;write&quot; as 1D
+<br />
+array of strings...
+<br />
+<br />However, if you load it via the Python netCDF4library, you get a 2D array
+<br />
+of individual characters.
+<br />
+<br />Size of array is: (6, 4)
+<br />
+datatype of array is: |S1
+<br />
+contents of array is:
+<br />
+<br />[['A' 'B' 'C' 'D']
+<br />
+&nbsp;['E' 'F' 'G' 'H']
+<br />
+&nbsp;['I' 'J' 'K' 'L']
+<br />
+&nbsp;['M' 'N' 'O' 'P']
+<br />
+&nbsp;['Q' 'R' 'S' 'T']
+<br />
+&nbsp;['U' 'V' 'W' 'X']]
+<br />
+<br />(note that numpy does not have a char type -- so it is represented as a
+<br />
+String of length-1 (one-byte-per-char string)
+<br />
+<br />You convert it into an array of strings if you want:
+<br />
+<br />arr = np.fromstring(arr.tostring(), dtype='S%i' % arr.shape[1])
+<br />
+<br />size of array is: (6,)
+<br />
+datatype of array is: |S4
+<br />
+contents of array is:
+<br />
+<br />['ABCD' 'EFGH' 'IJKL' 'MNOP' 'QRST' 'UVWX']
+<br />
+<br />But you'd need to know the intent of the data, to know that you need to do
+<br />
+that.
+<br />
+<br />I haven't looked to see what a CF-aware library (Like Iris or maybe
+<br />
+netcdf-Java) does with 2D arrays of characters.
+<br />
+<br />In the end, in the Python world, we say that &quot;explicit is better than
+<br />
+implicit&quot; -- so while we probably need to say the default is for a ND array
+<br />
+of CHAR to be interpreted a (N-1)D array of strings, having a way to say &quot;I
+<br />
+really want this to be a char array&quot; seems like a good idea to me -- what's
+<br />
+the downside?
+<br />
+<br />-CHB
+<br />
+<br /><br /><br /><br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170306/dcacaab6/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170306/dcacaab6/attachment.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: test_char.py
+Type: text/x-python-script
+Size: 1028 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170306/dcacaab6/attachment.bin">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170306/dcacaab6/attachment.bin</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Mar 06 2017 - 10:41:44 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8073">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8074.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8072.html" title="Previous message in the list">Signell, Richard: "[CF-metadata] Best representation of wire-crawling profiler"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8013.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8073" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8073" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8073" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8073" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:10 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8072.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8074.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

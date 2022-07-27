@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  fixed sensors, depth, datum from Jonathan Gregory on 2008-09-15 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  fixed sensors, depth, datum" />
+<meta name="Date" content="2008-09-15" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1535.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1537.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  fixed sensors, depth, datum</h1>
+<!-- received="Mon Sep 15 11:32:28 2008" -->
+<!-- isoreceived="20080915103228" -->
+<!-- sent="Mon, 15 Sep 2008 18:32:28 +0100" -->
+<!-- isosent="20080915173228" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  fixed sensors, depth, datum" -->
+<!-- id="20080915173228.GB2166_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1536" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1537.html" accesskey="d" title="Ethan Davis: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Next message</a> ]
+[ <a href="./1535.html" title="Steve Hankin: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1540.html" accesskey="t" title="olivier lauret: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1536" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1536" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1536" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1536" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20fixed%20sensors%2C%20depth%2C%20datum">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 15 Sep 2008 18:32:28 +0100</span><br />
+</address>
+<br />
+Dear all
+<br />
+<br />Referring to Dale's list of requirements
+<br />
+<br />- height relative to the ellipsoid
+<br />
+- height relative to the geoid
+<br />
+In my opinion these are distinct geophysical quantities. As Dale pointed out,
+<br />
+we already have the standard name of &quot;altitude&quot; for the second of them, and
+<br />
+the first should probably have the name height_above_reference_ellipsoid for
+<br />
+consistency with other standard names. That would need to be proposed to this
+<br />
+email list.
+<br />
+<br />- name of the ellipsoid
+<br />
+- name of the geoid
+<br />
+These could be added as possible attributes to the grid_mapping variable.
+<br />
+That is a conventions change that would need a trac ticket to propose and
+<br />
+discuss. In fact Phil Bentley did propose to have such attributes in his
+<br />
+CRS ticket. We had discussions in which I expressed my usual disquiet about
+<br />
+redundancy. What if the name of the ellipsoid is not consistent with the
+<br />
+parameters of the ellipsoid that have been supplied, if they have been? I
+<br />
+am not sure how to resolve that. This concern does not apply to the geoid,
+<br />
+because it is not practical to specify it in detail as part of CF metadata;
+<br />
+we can only identify it by name. If the ellipsoid_name is a grid_mapping
+<br />
+attribute too, it simplifies Dale's example, as it doesn't have to appear
+<br />
+in its own dummy variable.
+<br />
+<br />- altitude of (offset to) other common datums (e.g. MLLW) 
+<br />
+Dale's offsets are single numbers, but they could in some circumstances be
+<br />
+(lon,lat) fields, as Ethan says. In either case, they can be data variables,
+<br />
+so I see no problem that that. The other common datums are tidal datums, for
+<br />
+instance. Again, I think the various tidal levels are distinct geophysical
+<br />
+variables, and need different standard names to be proposed
+<br />
+e.g. altitude_of_mean_lower_low_water and altitude_of_mean_low_water.
+<br />
+<br />I think I don't properly understand how these concepts relate to concepts
+<br />
+like &quot;Australian height datum&quot;, which Ethan mentions. What does that mean
+<br />
+exactly, can someone explain? I suspect it must mean the designation of a
+<br />
+particular geoid, and saying that a particular location has a certain altitude
+<br />
+wrt that geoid. By specifying a geoid, a location and an altitude you would
+<br />
+thereby define altitude for everywhere else in the world. Is that right?
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Sep 15 2008 - 11:32:28 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1536">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1537.html" title="Next message in the list">Ethan Davis: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1535.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1540.html" title="Next message in this discussion thread">olivier lauret: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1540.html" title="Message sent in reply to this message">olivier lauret: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><dfn>Reply</dfn>: <a href="./1541.html" title="Message sent in reply to this message">Jon Blower: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1536" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1536" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1536" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1536" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:08 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1535.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1537.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

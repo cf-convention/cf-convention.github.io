@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] udunits handling of fuzzy time units from Jon Blower on 2011-03-16 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jon Blower (j.d.blower)" />
+<meta name="Subject" content="[CF-metadata] udunits handling of fuzzy time units" />
+<meta name="Date" content="2011-03-16" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3321.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3323.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] udunits handling of fuzzy time units</h1>
+<!-- received="Wed Mar 16 11:13:42 2011" -->
+<!-- isoreceived="20110316111342" -->
+<!-- sent="Wed, 16 Mar 2011 17:13:42 +0000" -->
+<!-- isosent="20110316171342" -->
+<!-- name="Jon Blower" -->
+<!-- email="j.d.blower" -->
+<!-- subject="[CF-metadata] udunits handling of fuzzy time units" -->
+<!-- id="D38DCA8842FECD4585C8DE16D602ABF40FB369_at_VIME-MBX2.rdg.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4D80EC8F.3060803_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3322" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3323.html" accesskey="d" title="John Caron: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Next message</a> ]
+[ <a href="./3321.html" title="John Caron: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Previous message</a> ]
+[ <a href="./3321.html" title="John Caron: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3288.html" accesskey="t" title="John Caron: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3322" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3322" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3322" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3322" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jon Blower &lt;<a href="mailto:j.d.blower?Subject=Re%3A%20%5BCF-metadata%5D%20udunits%20handling%20of%20fuzzy%20time%20units">j.d.blower</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 16 Mar 2011 17:13:42 +0000</span><br />
+</address>
+<br />
+How about the following: if we want to add fixed durations to the temporal datum, we use the current syntax:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&quot;duration since datum&quot;
+<br />
+<br />as we do currently.  But if we want to add calendar fields to the datum we use:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&quot;field_name since datum by calendar field&quot;
+<br />
+<br />or something similar?  So:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&quot;days since 1800-1-1&quot;
+<br />
+<br />would be a standard time axis adding multiples of 24*60*60 seconds to the datum.  But
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&quot;days since 1800-1-1 by calendar field&quot;
+<br />
+<br />would simply increment the days field of the calendar in question (they could be different because of leap seconds in UTC).  It's possible that a &quot;by calendar field&quot; time axis would be constrained to integer values as John suggests, but I haven't thought this through.
+<br />
+<br />This proposal keeps backward compatibility with UDUNITS and the current interpretations in CF, and doesn't require us to allow string values in time coordinates.
+<br />
+<br /><br />As others have pointed out we also need to think about temporal resolution.  Perhaps we could adopt a convention whereby the number of fields in the temporal datum string indicates the resolution?  So
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;years since 1800&quot;
+<br />
+<br />would implicitly be at yearly resolution.
+<br />
+<br /><br />Sorry, two ideas in one there, but they are related.
+<br />
+<br />Jon
+<br />
+<br /><br />-----Original Message-----
+<br />
+From: cf-metadata-bounces at cgd.ucar.edu [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of John Caron
+<br />
+Sent: 16 March 2011 17:00
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] udunits handling of fuzzy time units
+<br />
+<br />On 3/16/2011 9:39 AM, John Caron wrote:
+<br />
+<em class="quotelev1">&gt; On 3/15/2011 1:30 PM, tim.nightingale at stfc.ac.uk wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear All,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;    At the nit-picking level, &quot;day&quot; (and &quot;hour&quot; and &quot;minute&quot;) are not
+</em><br />
+<em class="quotelev2">&gt;&gt; necessarily stable units either, because of the occasional appearance
+</em><br />
+<em class="quotelev2">&gt;&gt; of leap seconds. While this won't be of much concern for many users,
+</em><br />
+<em class="quotelev2">&gt;&gt; it can be important for precisely timed data.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi Tim:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; My understanding is that there are some calendars that handle this 
+</em><br />
+<em class="quotelev1">&gt; better than &quot;standard&quot;. the java packages im looking at refers to UTC 
+</em><br />
+<em class="quotelev1">&gt; and TAI as more accurate possibilities:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; <a href="http://en.wikipedia.org/wiki/Coordinated_Universal_Time">http://en.wikipedia.org/wiki/Coordinated_Universal_Time</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; <a href="http://en.wikipedia.org/wiki/International_Atomic_Time">http://en.wikipedia.org/wiki/International_Atomic_Time</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; im not clear on the issues, but it seems like we could add those 
+</em><br />
+<em class="quotelev1">&gt; calendars if needed.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; John
+</em><br />
+<br />I think that this has more implications than i realized.
+<br />
+<br />Suppose we added the UTC_Calendar to CF, which tracks leap seconds etc. 
+<br />
+So if one had the time coordinate &quot;days since 1800-01-01&quot; with values = 
+<br />
+&quot;0,1,2,3...&quot; and we need the resulting coordinates to be &quot;1800-01-01&quot;, 
+<br />
+&quot;1800-01-02&quot;, &quot;1800-01-03&quot;, &quot;1800-01-04&quot;,.... which in this calendar 
+<br />
+gives an uneven number of seconds between coordinates.
+<br />
+<br />So all timeUnits (except seconds) now mean &quot;increment the calendar 
+<br />
+field&quot;, not &quot;add x secs to base&quot;, that is, its calendar dependent if any 
+<br />
+timeUnit implies a fixed number of seconds.
+<br />
+<br />In that case, then fractional values may not make sense(?)
+<br />
+<br />_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Mar 16 2011 - 11:13:42 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3322">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3323.html" title="Next message in the list">John Caron: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3321.html" title="Previous message in the list">John Caron: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3321.html" title="Message to which this message replies">John Caron: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3288.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3288.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3322" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3322" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3322" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3322" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:42 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3321.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3323.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

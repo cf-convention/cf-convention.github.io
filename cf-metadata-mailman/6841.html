@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Overlapping time_bounds (running mean data) from Durack, Paul J. on 2015-03-12 (cf-metadata-mailman)</title>
+<meta name="Author" content="Durack, Paul J. (durack1)" />
+<meta name="Subject" content="[CF-metadata] Overlapping time_bounds (running mean data)" />
+<meta name="Date" content="2015-03-12" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6840.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6842.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Overlapping time_bounds (running mean data)</h1>
+<!-- received="Wed Mar 11 18:24:46 2015" -->
+<!-- isoreceived="20150311182446" -->
+<!-- sent="Thu, 12 Mar 2015 00:24:46 +0000" -->
+<!-- isosent="20150312002446" -->
+<!-- name="Durack, Paul J." -->
+<!-- email="durack1" -->
+<!-- subject="[CF-metadata] Overlapping time_bounds (running mean data)" -->
+<!-- id="D1262AD5.F3F4%durack1_at_llnl.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6841" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6842.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] Overlapping time_bounds (running mean data)&quot;">Next message</a> ]
+[ <a href="./6840.html" title="Lowry, Roy K.: &quot;[CF-metadata] Request for new standard-name: apparent_oxygen_utilization&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6842.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] Overlapping time_bounds (running mean data)&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6841" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6841" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6841" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6841" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Durack, Paul J. &lt;<a href="mailto:durack1?Subject=Re%3A%20%5BCF-metadata%5D%20Overlapping%20time_bounds%20(running%20mean%20data)">durack1</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 12 Mar 2015 00:24:46 +0000</span><br />
+</address>
+<br />
+Hi folks,
+<br />
+<br />I?m generating a file which contains annual pentadal averaged data - so
+<br />
+effectively a 5-year running mean saved with an annual time step. The file
+<br />
+looks like:
+<br />
+<br /><pre>
+---
+dimensions:        
+                   
+        time = UNLIMITED ; // (56 currently)
+                   
+        bound = 2 ;
+                   
+        level = 26 ;
+        latitude = 180 ;
+        longitude = 360 ;
+variables:
+        float time(time) ;
+                time:bounds = &quot;bounds_time&quot; ;
+                time:units = &quot;days since 1955-1-1 0:0:0.0&quot; ;
+                time:long_name = &quot;time&quot; ;
+                time:standard_name = &quot;time&quot; ;
+                time:calendar = &quot;gregorian&quot; ;
+                time:axis = &quot;T&quot; ;
+        float bounds_time(time, bound) ;
+...
+data:
+time = 913, 1278.5, 1644, 2009, 2374, 2739.5, 3105, 3470, 3835, 4200.5,
+    4566, 4931, 5296, 5661.5, 6027, 6392, 6757, 7122.5, 7488, 7853, 8218,
+    8583.5, 8949, 9314, 9679, 10044.5, 10410, 10775, 11140, 11505.5, 11871,
+    12236, 12601, 12966.5, 13332, 13697, 14062, 14427.5, 14793, 15158,
+15523,
+    15888.5, 16254, 16619, 16984, 17349.5, 17715, 18080, 18445, 18810.5,
+    19176, 19541, 19906, 20271.5, 20637, 21002 ;
+bounds_time =
+  0, 1826,
+  365, 2192,
+  731, 2557,
+  1096, 2922,
+...
+---
+I?m wondering what the most CF-like way of creating these bounds?
+Currently the bounds are specified as:
+Index 1:2
+1955-1-1 0:0:0.0 -&gt; 1959-12-31 12:59:59.0
+1956-1-1 0:0:0.0 -&gt; 1960-12-31 12:59:59.0
+And time values as above:
+Index 1:2
+1957-7-2 0:0:0.0
+1958-7-2 12:0:0.0
+When I try and load the file using Ferret, this throws a warning.. Which
+makes me think I?m not doing things correctly:
+Ferret v6.93
+yes? use file.nc
+ *** NOTE: Axis definition error on axis: time. Bounds describe cells that
+overlap one another
+ *** NOTE: Error in bounds &quot;bounds_time&quot; or bounds do not enclose point on
+axis time
+ *** NOTE: Substituting coordinate midpoints
+Are there any tips for me regarding this, I wasn?t able to find anything
+clear (at least to me) in the v1.7.2 Draft CF document.
+Cheers,
+P
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Mar 11 2015 - 18:24:46 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6841">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6842.html" title="Next message in the list">Jim Biard: "[CF-metadata] Overlapping time_bounds (running mean data)"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6840.html" title="Previous message in the list">Lowry, Roy K.: "[CF-metadata] Request for new standard-name: apparent_oxygen_utilization"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6842.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] Overlapping time_bounds (running mean data)"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6842.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] Overlapping time_bounds (running mean data)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6841" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6841" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6841" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6841" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:53 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6840.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6842.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

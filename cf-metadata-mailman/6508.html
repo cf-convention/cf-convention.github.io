@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Why &quot;surface_altitude&quot; instead of &quot;platform_altitude&quot;? from Jonathan Gregory on 2014-09-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Why &quot;surface_altitude&quot; instead of &quot;platform_altitude&quot;?" />
+<meta name="Date" content="2014-09-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6507.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6509.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Why &quot;surface_altitude&quot; instead of &quot;platform_altitude&quot;?</h1>
+<!-- received="Fri Sep 19 07:37:01 2014" -->
+<!-- isoreceived="20140919063701" -->
+<!-- sent="Fri, 19 Sep 2014 14:37:01 +0100" -->
+<!-- isosent="20140919133701" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Why &quot;surface_altitude&quot; instead of &quot;platform_altitude&quot;?" -->
+<!-- id="20140919133701.GA23046_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6508" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6509.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Days of rain&quot;">Next message</a> ]
+[ <a href="./6507.html" title="Markus Fiebig: &quot;[CF-metadata] IAGOS-CARIBIC parameters&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6510.html" accesskey="t" title="Signell, Richard: &quot;[CF-metadata] Why &#0034;surface_altitude&#0034; instead of &#0034;platform_altitude&#0034;?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6508" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6508" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6508" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6508" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Why%20%22surface_altitude%22%20instead%20of%20%22platform_altitude%22%3F">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 19 Sep 2014 14:37:01 +0100</span><br />
+</address>
+<br />
+Dear John and Rich
+<br />
+<br />I think platform_altitude would be fine as a standard name. Altitude means
+<br />
+above the geoid. CF does not define a default geoid. At present it is not
+<br />
+possible to specify what geoid is being used (if you wish to be precise) but
+<br />
+we have discussed this a few times before. I append some stuff which I wrote
+<br />
+in an email to Rich and others in May. To implement this would require a trac
+<br />
+ticket, proposing to define a geoid_name attribute in Appendix F for the
+<br />
+grid_mapping variable. I will propose the ticket if you'd support it.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br />* Vertical coordinate variables generally have CF standard_name attributes
+<br />
+(standard_names are recommended, though not mandatory). The standard_name
+<br />
+defines the vertical coordinate relative to a geophysically described surface
+<br />
+e.g. geoid, ellipsoid, mean sea level, surface (= bottom of atmosphere). Hence
+<br />
+it would be redundant to identify the vertical datum in a geophysical way in
+<br />
+any other part of CF metadata. I mean, for instance, CF does *not* have
+<br />
+vertical coordinate variables of &quot;height&quot; generically. The &quot;height&quot; is always
+<br />
+defined as being wrt a geophysical surface. (The standard_name of height
+<br />
+means specifically height above the surface i.e. land or sea surface.)
+<br />
+<br />* Some of these special surfaces, especially ellipsoid and geoid, need more
+<br />
+precise definitions for some purposes. The existing CF grid_mapping mechanism
+<br />
+can define the ellipsoid in terms which translate obviously to WKT terms (see
+<br />
+ticket 80 <a href="http://kitt.llnl.gov/trac/ticket/80">http://kitt.llnl.gov/trac/ticket/80</a>. (This ticket is agreed but not
+<br />
+yet implemented in the CF standard document.) It would be easy, and I think
+<br />
+logical, to add an attribute of geoid_name to identify the geoid.
+<br />
+<br /><br />----- Forwarded message from John Caron &lt;caron at ucar.edu&gt; -----
+<br />
+<br /><em class="quotelev1">&gt; Date: Thu, 18 Sep 2014 14:01:15 -0600
+</em><br />
+<em class="quotelev1">&gt; From: John Caron &lt;caron at ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; To: &quot;Signell, Richard&quot; &lt;rsignell at usgs.gov&gt;
+</em><br />
+<em class="quotelev1">&gt; CC: CF Metadata List &lt;cf-metadata at cgd.ucar.edu&gt;, John Graybeal
+</em><br />
+<em class="quotelev1">&gt; 	&lt;john.graybeal at marinexplore.com&gt;
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] Why &quot;surface_altitude&quot; instead of
+</em><br />
+<em class="quotelev1">&gt; 	&quot;platform_altitude&quot;?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; As I recall, the original proposal was for station_altitude. We decided to
+</em><br />
+<em class="quotelev1">&gt; change &quot;station&quot; to &quot;platform&quot;. At the same time it was thought that the
+</em><br />
+<em class="quotelev1">&gt; existing standard name of &quot;surface altitude&quot; would be synonymous. I at
+</em><br />
+<em class="quotelev1">&gt; least was thinking of ground stations. So I think we make a mistake there
+</em><br />
+<em class="quotelev1">&gt; and &quot;platform_altitude&quot; would be the right correction.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; An altitude of course needs a datum, and I think we have not been clear
+</em><br />
+<em class="quotelev1">&gt; enough on that. I think we should review our use or non-use of vertical
+</em><br />
+<em class="quotelev1">&gt; datum. A quick look seems to imply that &quot;WGS 84&quot; is assumed (?)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On Thu, Sep 18, 2014 at 1:42 PM, Signell, Richard &lt;rsignell at usgs.gov&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; John,
+</em><br />
+<em class="quotelev2">&gt; &gt; So then the surface needs to be defined relative to some known datum, no?
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; Maybe we need platform_altitude_above_datum  and a specification of
+</em><br />
+<em class="quotelev2">&gt; &gt; the vertical datum (EPSG:5701 (MSL), EPSG:5703 (NAVD88), etc)
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; On Thu, Sep 18, 2014 at 1:47 PM, John Graybeal
+</em><br />
+<em class="quotelev2">&gt; &gt; &lt;john.graybeal at marinexplore.com&gt; wrote:
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; I assume surface_altitude is an important variable for providing the
+</em><br />
+<em class="quotelev2">&gt; &gt; vertical location of measurements relative to a surface (as opposed to
+</em><br />
+<em class="quotelev2">&gt; &gt; relative to a geoid -- notwithstanding the definition issue).
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt;
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; John
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt;
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; On Sep 18, 2014, at 08:30, Signell, Richard &lt;rsignell at usgs.gov&gt; wrote:
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt;
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt; Maybe a simpler approach would be to just adopt &quot;platform_altitude&quot; as
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt; an alias for &quot;surface_altitude&quot; and suggest deprecating the use of
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt; &quot;surface_altitude&quot;?
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt; On Thu, Sep 18, 2014 at 11:15 AM, John Graybeal
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt; &lt;john.graybeal at marinexplore.com&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt; Interesting that there is so little discussion of this language in the
+</em><br />
+<em class="quotelev2">&gt; &gt; mail list, only in John Caron's 2011.09.16 mail on standard names for
+</em><br />
+<em class="quotelev2">&gt; &gt; stations (which refers to words already in draft 1.6, I think) -- which
+</em><br />
+<em class="quotelev2">&gt; &gt; came at the tail end of a long thread on platform names/IDs.
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt; From those words, I infer that the original drafter thought
+</em><br />
+<em class="quotelev2">&gt; &gt; surface_altitude was just as good for describing platform location, as it
+</em><br />
+<em class="quotelev2">&gt; &gt; was for describing observation location. I suspect the assumption was that
+</em><br />
+<em class="quotelev2">&gt; &gt; any corresponding observations were at the same location as the platform.
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt; Since this is not always true, I'm with you that there should be a
+</em><br />
+<em class="quotelev2">&gt; &gt; term platform altitude, and it should be the one used in this sentence.
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt; I hereby propose the standard name platform_surface_altitude (m),
+</em><br />
+<em class="quotelev2">&gt; &gt; &quot;Standard names for platform describe the motion and orientation of the
+</em><br />
+<em class="quotelev2">&gt; &gt; vehicle from which observations are made e.g. aeroplane, ship or satellite.
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt; The surface called &quot;surface&quot; means the lower boundary of the
+</em><br />
+<em class="quotelev2">&gt; &gt; atmosphere. Altitude is the (geometric) height above the horizontal
+</em><br />
+<em class="quotelev2">&gt; &gt; reference surface.&quot;
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt; Note I've changed the standard wording of the _altitude definition,
+</em><br />
+<em class="quotelev2">&gt; &gt; which generally says &quot;.. above the geoid, which is the reference
+</em><br />
+<em class="quotelev2">&gt; &gt; geopotential surface. The geoid is similar to mean sea level.&quot; This seems
+</em><br />
+<em class="quotelev2">&gt; &gt; clearly in conflict with the definition of surface_altitude and this new
+</em><br />
+<em class="quotelev2">&gt; &gt; term, and I think it should be changed in surface_altitude's definition too.
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt; I suppose if people agree with you and me, we need to do a Trac ticket
+</em><br />
+<em class="quotelev2">&gt; &gt; for the corresponding change to the standard.
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt; John
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt; On Sep 18, 2014, at 06:40, Signell, Richard &lt;rsignell at usgs.gov&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; In the CF-1.6 and CF-1.7 draft doc, in section H.2, we have:
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; &quot;It is recommended that there should be station variables with
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; standard_name attributes &quot; platform_name &quot;, &quot; surface_altitude &quot; and ???
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; platform_id ??? when applicable.&quot;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; Why is this &quot;surface_altitude&quot; instead of &quot;platform_altitude&quot;?
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; In the ocean, we have lots of upward-looking Acoustic Doppler Current
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; Profilers (ADCP), where the instrument with transducer and other
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; sensors is located some distance below the ocean surface.   While
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; velocity and other properties are measured in vertical bins above the
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; instrument (timeSeriesProfile), other properties like pressure and
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; temperature are measured at the instrument.
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; Since the instrument is not at the surface, it seems misleading to use
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; the standard_name &quot;surface_altitude&quot; instead of &quot;platform_altitude&quot;,
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; particularly when we already have &quot;platform_name&quot; and &quot;platform_id&quot;.
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; In this example CF_1.6 ADCP dataset:
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="http://geoport.whoi.edu/thredds/dodsC/usgs/data2/rsignell/data/adcp/7201adc-a_cf16.nc.html">http://geoport.whoi.edu/thredds/dodsC/usgs/data2/rsignell/data/adcp/7201adc-a_cf16.nc.html</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; the variable &quot;platform_altitude&quot; has a value of -10.4522 m:
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="http://geoport.whoi.edu/thredds/dodsC/usgs/data2/rsignell/data/adcp/7201adc-a_cf16.nc.ascii?platform_altitude">http://geoport.whoi.edu/thredds/dodsC/usgs/data2/rsignell/data/adcp/7201adc-a_cf16.nc.ascii?platform_altitude</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; but we are forced to use a standard_name of &quot;surface_altitude&quot;.
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; Why not &quot;platform_altitude&quot;?
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; Thanks,
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; Rich
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; Dr. Richard P. Signell   (508) 457-2229
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; USGS, 384 Woods Hole Rd.
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; Woods Hole, MA 02543-1598
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; &gt;&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; &gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt; --
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt; Dr. Richard P. Signell   (508) 457-2229
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt; USGS, 384 Woods Hole Rd.
+</em><br />
+<em class="quotelev4">&gt; &gt; &gt;&gt; Woods Hole, MA 02543-1598
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; --
+</em><br />
+<em class="quotelev2">&gt; &gt; Dr. Richard P. Signell   (508) 457-2229
+</em><br />
+<em class="quotelev2">&gt; &gt; USGS, 384 Woods Hole Rd.
+</em><br />
+<em class="quotelev2">&gt; &gt; Woods Hole, MA 02543-1598
+</em><br />
+<em class="quotelev2">&gt; &gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<br /><em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><br />----- End forwarded message -----
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Sep 19 2014 - 07:37:01 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6508">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6509.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Days of rain"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6507.html" title="Previous message in the list">Markus Fiebig: "[CF-metadata] IAGOS-CARIBIC parameters"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6510.html" title="Next message in this discussion thread">Signell, Richard: "[CF-metadata] Why &#0034;surface_altitude&#0034; instead of &#0034;platform_altitude&#0034;?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6510.html" title="Message sent in reply to this message">Signell, Richard: "[CF-metadata] Why &#0034;surface_altitude&#0034; instead of &#0034;platform_altitude&#0034;?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6508" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6508" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6508" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6508" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:47 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6507.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6509.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Cell bounds associated with coordinate variable rather than data variable from Thomas Lavergne on 2009-11-12 (cf-metadata-mailman)</title>
+<meta name="Author" content="Thomas Lavergne (thomasl)" />
+<meta name="Subject" content="[CF-metadata] Cell bounds associated with coordinate variable rather than data variable" />
+<meta name="Date" content="2009-11-12" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2310.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2312.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Cell bounds associated with coordinate variable rather than data variable</h1>
+<!-- received="Thu Nov 12 07:18:00 2009" -->
+<!-- isoreceived="20091112071800" -->
+<!-- sent="Thu, 12 Nov 2009 14:18:00 +0000 (UTC)" -->
+<!-- isosent="20091112141800" -->
+<!-- name="Thomas Lavergne" -->
+<!-- email="thomasl" -->
+<!-- subject="[CF-metadata] Cell bounds associated with coordinate variable rather than data variable" -->
+<!-- id="381143119.2523761258035480833.JavaMail.root_at_imap1a" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="11928933.2523351258035019605.JavaMail.root_at_imap1a" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2311" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2312.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Cell bounds associated with coordinate variable rather than data variable&quot;">Next message</a> ]
+[ <a href="./2310.html" title="Karl Taylor: &quot;[CF-metadata] Cell bounds associated with coordinate variable rather than data variable&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2312.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] Cell bounds associated with coordinate variable rather than data variable&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2311" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2311" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2311" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2311" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Thomas Lavergne &lt;<a href="mailto:thomasl?Subject=Re%3A%20%5BCF-metadata%5D%20Cell%20bounds%20associated%20with%20coordinate%20variable%20rather%20than%20data%20variable">thomasl</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 12 Nov 2009 14:18:00 +0000 (UTC)</span><br />
+</address>
+<br />
+Dear Jonathan,
+<br />
+<br />Thank you for rapid answer. I agree that the mid-point is the most obvious choice, BUT:
+<br />
+<br />Shouldn't we start by identifying what kind of variables we are referring to? Forgive me if my semantic is not accurate:
+<br />
+<br />1) intensive variables : for those there is no problem, since bounds are not needed, nor relevant.
+<br />
+<br />2) extensive variables which are average values : mid-point is the obvious choice (like giving the center point of the grid cell in spatial coordinates).
+<br />
+<br />3) extensive variables which are accumulated quantities: that is where I am slightly uncertain. Of course, mid-point can be justified. But (gut feeling) an accumulated value is not truely achieved before the end of the interval.
+<br />
+<br />Take again the case of sea ice motion as derived from satellite images (sorry, that is what I know best...). If my variable was the &quot;average x and y velocities of the drift *during* the interval between start and stop time&quot;, I would use the mid-point, no problem. But again, my ice particle is not arrived at its destination before the time interval is finished, so why not using stop time? IMO, mid-time is worse than stop-time. Even start-time would be better than mid-point. 
+<br />
+<br />Are accumulated variables different from average variables?
+<br />
+<br />And what are we trying to achieve? Wouldn't the most correct choice be to have a fillvalue in the axis to force user's/software to use the cell bounds? But we are not allowed to do this because of Unidata/COARDS, correct?
+<br />
+<br />I am almost ready to give up and say mid-point is best for all practical purposes but wanted to hear if others in the CF community gave a thought to these things. It all started with someone proposing/metioning the end-time to be used for &quot;accumulated precipitation&quot;.
+<br />
+<br />Cheers,
+<br />
+Thomas
+<br />
+&nbsp;&nbsp;
+<br />
+<br />----- &quot;Jonathan Gregory&quot; &lt;j.m.gregory at reading.ac.uk&gt; wrote:
+<br />
+<br /><em class="quotelev1">&gt; Dear Thomas
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The reason for the asymmetry is that point coordinates are required by
+</em><br />
+<em class="quotelev1">&gt; Unidata
+</em><br />
+<em class="quotelev1">&gt; and COARDS conventions, whereas cell bounds were introduced by CF.
+</em><br />
+<em class="quotelev1">&gt; Most of the
+</em><br />
+<em class="quotelev1">&gt; new features introduced by CF are not mandatory, only recommended.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I agree that it would be helpful if we made a definite recommendation
+</em><br />
+<em class="quotelev1">&gt; for the
+</em><br />
+<em class="quotelev1">&gt; values of the point coordinates, for the case where the data-writer
+</em><br />
+<em class="quotelev1">&gt; does not
+</em><br />
+<em class="quotelev1">&gt; know what to choose. It is important that sensible coord values should
+</em><br />
+<em class="quotelev1">&gt; be
+</em><br />
+<em class="quotelev1">&gt; provided, since generic applications may not consult the bounds. We
+</em><br />
+<em class="quotelev1">&gt; could
+</em><br />
+<em class="quotelev1">&gt; put a recommendation at the end of the preamble to Sect 4.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I'd say the mid-point is the obvious choice. What do you think?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Thu Nov 12 2009 - 07:18:00 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2311">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2312.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2310.html" title="Previous message in the list">Karl Taylor: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2312.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2312.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2311" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2311" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2311" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2311" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:23 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2310.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2312.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

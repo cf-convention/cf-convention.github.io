@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF-1.6 Conformance Requirements/Recommendations from Jonathan Gregory on 2012-03-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] CF-1.6 Conformance Requirements/Recommendations" />
+<meta name="Date" content="2012-03-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4290.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4292.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF-1.6 Conformance Requirements/Recommendations</h1>
+<!-- received="Wed Mar 28 08:51:31 2012" -->
+<!-- isoreceived="20120328075131" -->
+<!-- sent="Wed, 28 Mar 2012 15:51:31 +0100" -->
+<!-- isosent="20120328145131" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] CF-1.6 Conformance Requirements/Recommendations" -->
+<!-- id="20120328145131.GC7379_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4291" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4292.html" accesskey="d" title="John Caron: &quot;[CF-metadata] CF-1.6 Conformance Requirements/Recommendations&quot;">Next message</a> ]
+[ <a href="./4290.html" title="Jim Biard: &quot;[CF-metadata] CF-1.6 Conformance Requirements/Recommendations&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4291" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4291" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4291" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4291" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20CF-1.6%20Conformance%20Requirements%2FRecommendations">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 28 Mar 2012 15:51:31 +0100</span><br />
+</address>
+<br />
+Dear Jim
+<br />
+<br /><em class="quotelev1">&gt; The only thing that designates a variable as an auxiliary coordinate
+</em><br />
+<em class="quotelev1">&gt; variable is the presence of the variable name in a coordinates attribute on
+</em><br />
+<em class="quotelev1">&gt; another variable.
+</em><br />
+<br />Formally, that is right. By definition, a CF aux coord var is one which is
+<br />
+named by a coordinates attribute. The *purpose* of aux coord vars, like
+<br />
+1D coord vars, is to provide independent variables of which the data is a
+<br />
+dependent variable. Usually, these independent variables are spatial location.
+<br />
+There is no other formal distinction among variables in the file which
+<br />
+have the same dimensions as our data variable. For instance temperature(y,x),
+<br />
+latitude(y,x) and precipitation(y,x) all look formally similar. However, we
+<br />
+don't list precipitation as an aux coord var in the coordinates attribute of
+<br />
+the temperature data variable because it does not locate the temperature data.
+<br />
+<br />Therefore if we decide to impose restrictions on aux coord vars, it relates to
+<br />
+whether they serve their purpose of locating the data (or providing other
+<br />
+non-spatiotemporal variables of which the data is a function).
+<br />
+<br /><em class="quotelev1">&gt; Can someone provide a real-world example of why allowing auxiliary
+</em><br />
+<em class="quotelev1">&gt; coordinate variables to deviate from the true coordinate variable
+</em><br />
+<em class="quotelev1">&gt; restrictions poses a problem great enough that it should be forbidden?
+</em><br />
+<br />If a variable is listed as an aux coord var, it is very likely than a generic
+<br />
+application will use it to locate the data on a plot, or to calculate some
+<br />
+other derived quantity from it, for instance differentiating or integrating it.
+<br />
+This is what you generally expect to do with coordinates. If there is missing
+<br />
+data in it, it won't serve the purpose. That will be a problem. The question
+<br />
+is whether it's great enough a problem for us not to permit it. How many
+<br />
+applications would be broken by this problem?
+<br />
+<br />It is not a problem if the data is also missing where the aux coord var is
+<br />
+missing, however.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Mar 28 2012 - 08:51:31 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4291">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4292.html" title="Next message in the list">John Caron: "[CF-metadata] CF-1.6 Conformance Requirements/Recommendations"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4290.html" title="Previous message in the list">Jim Biard: "[CF-metadata] CF-1.6 Conformance Requirements/Recommendations"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4291" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4291" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4291" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4291" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:59 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4290.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4292.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

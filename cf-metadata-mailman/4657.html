@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Quality flag values for missing data from andrew walsh on 2012-08-24 (cf-metadata-mailman)</title>
+<meta name="Author" content="andrew walsh (awalsh)" />
+<meta name="Subject" content="[CF-metadata] Quality flag values for missing data" />
+<meta name="Date" content="2012-08-24" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4656.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4658.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Quality flag values for missing data</h1>
+<!-- received="Fri Aug 24 01:27:29 2012" -->
+<!-- isoreceived="20120824002729" -->
+<!-- sent="Fri, 24 Aug 2012 17:27:29 +1000" -->
+<!-- isosent="20120824072729" -->
+<!-- name="andrew walsh" -->
+<!-- email="awalsh" -->
+<!-- subject="[CF-metadata] Quality flag values for missing data" -->
+<!-- id="876A6FE036DB4B85B92FB2631A680BD2_at_awalsh1" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="201208231437.AA11141378_at_excaliburlabs.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4657" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4658.html" accesskey="d" title="Lowry, Roy K.: &quot;[CF-metadata] Quality flag values for missing data&quot;">Next message</a> ]
+[ <a href="./4656.html" title="Randy Horne: &quot;[CF-metadata] Quality flag values for missing data&quot;">Previous message</a> ]
+[ <a href="./4656.html" title="Randy Horne: &quot;[CF-metadata] Quality flag values for missing data&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4659.html" accesskey="t" title="John Graybeal: &quot;[CF-metadata] Quality flag values for missing data&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4657" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4657" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4657" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4657" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: andrew walsh &lt;<a href="mailto:awalsh?Subject=Re%3A%20%5BCF-metadata%5D%20Quality%20flag%20values%20for%20missing%20data">awalsh</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 24 Aug 2012 17:27:29 +1000</span><br />
+</address>
+<br />
+Randy,
+<br />
+<br />The oceanographic community uses a set of integer QC flags (0 to 9)
+<br />
+See document <a href="http://www.nodc.noaa.gov/GTSPP/document/qcmans/MG22rev1.pdf">http://www.nodc.noaa.gov/GTSPP/document/qcmans/MG22rev1.pdf</a>
+<br />
+and section 2 'Quality Flagging'.
+<br />
+<br />One of the flags is for a 'missing value' = 9. Would that suit your fill value 
+<br />
+case?
+<br />
+<br />A netCDF sample in CDL is:
+<br />
+<br />&nbsp;double TEMP(TIME, DEPTH, LATITUDE, LONGITUDE) ;
+<br />
+&nbsp;&nbsp;TEMP:standard_name = &quot;sea_water_temperature&quot; ;
+<br />
+&nbsp;&nbsp;TEMP:units = &quot;Celsius&quot; ;
+<br />
+&nbsp;&nbsp;TEMP:_FillValue = -99.99 ;
+<br />
+&nbsp;&nbsp;TEMP:valid_min = -2. ;
+<br />
+&nbsp;&nbsp;TEMP:valid_max = 40. ;
+<br />
+&nbsp;&nbsp;TEMP:quality_control_set = 1. ;
+<br />
+&nbsp;&nbsp;TEMP:ancillary_variables = &quot;TEMP_quality_control&quot; ;
+<br />
+&nbsp;byte TEMP_quality_control(TIME, DEPTH, LATITUDE, LONGITUDE) ;
+<br />
+&nbsp;&nbsp;TEMP_quality_control:long_name = &quot;quality control flag for temperature&quot; ;
+<br />
+&nbsp;&nbsp;TEMP_quality_control:standard_name = &quot;sea_water_temperature status_flag&quot; ;
+<br />
+&nbsp;&nbsp;TEMP_quality_control:quality_control_convention = &quot;IMOS standard using IODE 
+<br />
+flags&quot; ;
+<br />
+&nbsp;&nbsp;TEMP_quality_control:_FillValue = -9b ;
+<br />
+&nbsp;&nbsp;TEMP_quality_control:valid_min = 0 ;
+<br />
+&nbsp;&nbsp;TEMP_quality_control:valid_max = 9 ;
+<br />
+&nbsp;&nbsp;TEMP_quality_control:flag_values = 0b, 1b, 2b, 3b, 4b, 5b, 6b, 7b, 8b, 9b ;
+<br />
+&nbsp;&nbsp;TEMP_quality_control:flag_meanings = &quot;no_qc_performed good_data 
+<br />
+probably_good_data bad_data_that_are_potentially_correctable bad_data 
+<br />
+value_changed not_used not_used interpolated_values missing_values&quot; ;
+<br />
+<br />HTH,
+<br />
+<br />Andrew Walsh
+<br />
+<br />----- Original Message ----- 
+<br />
+From: &quot;Randy Horne&quot; &lt;rhorne at excaliburlabs.com&gt;
+<br />
+To: &lt;cf-metadata at cgd.ucar.edu&gt;
+<br />
+Cc: &lt;aschut01 at harris.com&gt;; &lt;rhorne99 at harris.com&gt;; &lt;ekennell at aer.com&gt;
+<br />
+Sent: Friday, August 24, 2012 4:37 AM
+<br />
+Subject: [CF-metadata] Quality flag values for missing data
+<br />
+<br /><br /><em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; What is the &quot;generally accepted&quot; approach for how a specific quality flag 
+</em><br />
+<em class="quotelev1">&gt; value should be assigned for a corresponding data value (in the corresponding 
+</em><br />
+<em class="quotelev1">&gt; data variable) that has a _FillValue ?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Is it sufficient that, because the data variable value is _FillValue, the 
+</em><br />
+<em class="quotelev1">&gt; corresponding quality flag value can be undefined ?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ..............End of Message ...............................--&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<span id="received"><dfn>Received on</dfn> Fri Aug 24 2012 - 01:27:29 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4657">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4658.html" title="Next message in the list">Lowry, Roy K.: "[CF-metadata] Quality flag values for missing data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4656.html" title="Previous message in the list">Randy Horne: "[CF-metadata] Quality flag values for missing data"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4656.html" title="Message to which this message replies">Randy Horne: "[CF-metadata] Quality flag values for missing data"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4659.html" title="Next message in this discussion thread">John Graybeal: "[CF-metadata] Quality flag values for missing data"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4659.html" title="Message sent in reply to this message">John Graybeal: "[CF-metadata] Quality flag values for missing data"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4657" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4657" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4657" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4657" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:06 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4656.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4658.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] some concerns about the &quot;ensemble axis&quot; proposal from Jennifer Adams on 2007-03-07 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jennifer Adams (jma)" />
+<meta name="Subject" content="[CF-metadata] some concerns about the &quot;ensemble axis&quot; proposal" />
+<meta name="Date" content="2007-03-07" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0742.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0744.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] some concerns about the &quot;ensemble axis&quot; proposal</h1>
+<!-- received="Wed Mar  7 12:55:32 2007" -->
+<!-- isoreceived="20070307125532" -->
+<!-- sent="Wed, 7 Mar 2007 14:55:32 -0500" -->
+<!-- isosent="20070307195532" -->
+<!-- name="Jennifer Adams" -->
+<!-- email="jma" -->
+<!-- subject="[CF-metadata] some concerns about the &quot;ensemble axis&quot; proposal" -->
+<!-- id="7D75C520-473E-48F1-B5FE-E8DBAE71F863_at_cola.iges.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="1173288920.15588.15.camel_at_localhost.localdomain" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start743" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0744.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  some concerns about the &#0034;ensemble axis&#0034; proposal&quot;">Next message</a> ]
+[ <a href="./0742.html" title="Jon Blower: &quot;[CF-metadata] some concerns about the &#0034;ensemble axis&#0034; proposal&quot;">Previous message</a> ]
+[ <a href="./0740.html" title="Bryan Lawrence: &quot;[CF-metadata] some concerns about the &#0034;ensemble axis&#0034; proposal&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0745.html" accesskey="t" title="Steve Hankin: &quot;[CF-metadata] some concerns about the &#0034;ensemble axis&#0034; proposal&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg743" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg743" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg743" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg743" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jennifer Adams &lt;<a href="mailto:jma?Subject=Re%3A%20%5BCF-metadata%5D%20some%20concerns%20about%20the%20%22ensemble%20axis%22%20proposal">jma</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 7 Mar 2007 14:55:32 -0500</span><br />
+</address>
+<br />
+This discussion is getting juicy!
+<br />
+<br />I am the GrADS and GDS developer working on an interface for 5- 
+<br />
+dimensional data sets. Ensembles are one example of how the 5th  
+<br />
+dimension might be used, but there are others (e.g. EOFs), so we are  
+<br />
+trying to make it as general as possible while still being practical  
+<br />
+and usable. GrADS is written in C and handles data in a variety of  
+<br />
+formats. Data file aggregation over time, and now over the &quot;e&quot;  
+<br />
+dimension, is possible but not required.
+<br />
+<br />Currently, we are not building an interface for multi-model ensembles  
+<br />
+on different grids. The elephant in Steve's living room will not  
+<br />
+allowed to play in our yard. Fast and easy interpolation between data  
+<br />
+sets on different grids was omitted from GrADS by design and that is  
+<br />
+not likely to change with the addition of a new grid dimension. If  
+<br />
+users want to lump data sets on different grids together, they must  
+<br />
+handle the interpolation explicitly in a way that is best suited to  
+<br />
+their needs and in a way that they know will best preserve the  
+<br />
+information in the data they wish to extract.
+<br />
+<br />Ensembles that are on the same grid will be handled by GrADS. For  
+<br />
+metadata, we are taking a minimalist approach -- the ensemble axis is  
+<br />
+linear, and members have a unique name (&lt;16 characters) and are  
+<br />
+numbered from 1 to n. We don't require that all members have the same  
+<br />
+start time or length, so those pieces of metadata are also required.  
+<br />
+This information is generally provided in a data descriptor file, an  
+<br />
+external metadata source written by the user after poring over the  
+<br />
+output from ncdump or wgrib or similar routine.
+<br />
+<br />If I am handed a single netcdf file with multi-model-different-grid  
+<br />
+ensembles in it from ECMWF or GFDL, I'm going to write a set of  
+<br />
+descriptor files, each one describing the subset of variables on a  
+<br />
+common 5D grid. I'll have one descriptor file per grid, all pointing  
+<br />
+at the same data file. Now I'm set to do my analysis in GrADS,  
+<br />
+beginning with careful interpolation between the different grids.
+<br />
+<br />When I put my 5D data sets behind a GDS and serve them to the world  
+<br />
+of OPeNDAP clients (including GrADS), it becomes a special case:  a  
+<br />
+5D netcdf file that doesn't require a descriptor file, a file that  
+<br />
+has all the metadata GrADS needs packaged in just the right way. For  
+<br />
+the time being, my approach works because I'm writing the code for  
+<br />
+the client and the server, I'm not worrying about any other client  
+<br />
+trying to read my 5D GDS data set, and I'm not trying to be CF- 
+<br />
+compliant. Here's what it's going to look like:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon = 9 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat = 9 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lev = 9 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time = 9 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ens = 9 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string16 = 16 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float lon(lon) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float lat(lat) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float lev(lev) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lev:units = &quot;level&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;days since 0001-01-01 00:00:00&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float ens(ens) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ens:grads_dim = &quot;e&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char ens_name(ens, string16) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ens_name:long_name = &quot;ensemble name&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int ens_length(ens) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ens_length:long_name = &quot;ensemble length&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int ens_tinit(ens) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ens_tinit:long_name = &quot;ensemble initial time index&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float var(ens, time, lev, lat, lon) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var:long_name = &quot;test variable&quot; ;
+<br />
+<br />When more metadata is required to bring my GDS data set into CF  
+<br />
+compliance, or to make it readable by other open source clients, I'll  
+<br />
+add it. As long as GrADS users have the means to keep up with the  
+<br />
+data sets being generated by CFS, IPCC, TIGGE, or whatever, then I'm  
+<br />
+not concerned.
+<br />
+<br />It took me a long time to write out this email -- I lost most of an  
+<br />
+afternoon trying to phrase everything properly. I have been reading  
+<br />
+this thread with interest, but I just can't keep up this kind of  
+<br />
+lengthy correspondence on a regular basis. Please keep me in mind as  
+<br />
+one of the silent listeners who still cares about the outcome.
+<br />
+<br />Jennifer
+<br />
+<br /><pre>
+--
+Jennifer M. Adams
+IGES/COLA
+4041 Powder Mill Road, Suite 302
+Calverton, MD 20705
+jma at cola.iges.org
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20070307/0bb198a6/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20070307/0bb198a6/attachment-0002.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Mar 07 2007 - 12:55:32 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start743">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0744.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  some concerns about the &#0034;ensemble axis&#0034; proposal"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0742.html" title="Previous message in the list">Jon Blower: "[CF-metadata] some concerns about the &#0034;ensemble axis&#0034; proposal"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0740.html" title="Message to which this message replies">Bryan Lawrence: "[CF-metadata] some concerns about the &#0034;ensemble axis&#0034; proposal"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0745.html" title="Next message in this discussion thread">Steve Hankin: "[CF-metadata] some concerns about the &#0034;ensemble axis&#0034; proposal"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0745.html" title="Message sent in reply to this message">Steve Hankin: "[CF-metadata] some concerns about the &#0034;ensemble axis&#0034; proposal"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg743" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg743" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg743" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg743" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0742.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0744.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

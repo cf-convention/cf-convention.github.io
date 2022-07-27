@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] point observation data in CF 1.4 from Ute Brönner on 2010-10-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Ute Brönner (Ute.Broenner)" />
+<meta name="Subject" content="[CF-metadata] point observation data in CF 1.4" />
+<meta name="Date" content="2010-10-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2833.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2835.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] point observation data in CF 1.4</h1>
+<!-- received="Tue Oct  5 05:02:52 2010" -->
+<!-- isoreceived="20101005040252" -->
+<!-- sent="Tue, 5 Oct 2010 13:02:52 +0200" -->
+<!-- isosent="20101005110252" -->
+<!-- name="Ute Brönner" -->
+<!-- email="Ute.Broenner" -->
+<!-- subject="[CF-metadata] point observation data in CF 1.4" -->
+<!-- id="FAD360E1D1C8BA43AE9EE0CA9FB4C1C42204824E5C_at_SINTEFEXMBX01.sintef.no" -->
+<!-- charset="iso-8859-1" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2834" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2835.html" accesskey="d" title="Aleksandar Jelenak: &quot;[CF-metadata] Multidimensional variables as discrete sampling geometry data?&quot;">Next message</a> ]
+[ <a href="./2833.html" title="alison.pamment at stfc.ac.uk: &quot;[CF-metadata] Standard name table update&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2836.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata]  point observation data in CF 1.4&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2834" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2834" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2834" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2834" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Ute Brönner &lt;<a href="mailto:Ute.Broenner?Subject=Re%3A%20%5BCF-metadata%5D%20point%20observation%20data%20in%20CF%201.4">Ute.Broenner</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 5 Oct 2010 13:02:52 +0200</span><br />
+</address>
+<br />
+Hei from Norway,
+<br />
+<br />I want to write data observed at different points at different time steps in netCDF with CF1.4. I read something in chapter 9 but was told that this isn't convention, yet.
+<br />
+I have a unknown amount of timesteps and per timestep a different amount of observation data.
+<br />
+As an example I have
+<br />
+time =
+<br />
+&nbsp;&nbsp;{0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75}
+<br />
+number_records_per_timestep =
+<br />
+&nbsp;&nbsp;{0, 24, 48, 65, 74, 97, 83, 52, 43, 66, 63, 71}
+<br />
+&nbsp;and tried
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;time = UNLIMITED;   // (12 currently)
+<br />
+&nbsp;variables:
+<br />
+&nbsp;&nbsp;&nbsp;double time(time=12);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:long_name = &quot;forecast time after simulation start&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:standard_name = &quot;forecast_reference_time&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;days since 2010-05-25&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:calendar = &quot;gregorian&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;int number_records_per_timestep(time=12);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;1&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:long_name = &quot;number spillets per current timestep&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:CF:ragged_row_count = &quot;time&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;float latitude(time=12);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:long_name = &quot;spillet latitude&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:standard_name = &quot;latitude&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;degrees_north&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;float longitude(time=12);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:long_name = &quot;spillet longitude&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:standard_name = &quot;longitude&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;degrees_east&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;float radius_of_droplet_cloud_on_sea_surface(time=12);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:long_name = &quot;spillet radius&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:standard_name = &quot;effective_radius_of_convective_cloud_liquid_water_particle&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;m&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:_FillValue = NaNf; // float
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:coordinates = &quot;time latitude longitude&quot;;
+<br />
+<br />but I have some trouble in writing the data.
+<br />
+Can you help?
+<br />
+<br />Best regards,
+<br />
+Ute
+<br />
+<br />Ute Br?nner
+<br />
+<br />SINTEF Materials &amp; Chemistry
+<br />
+Department of Marine Environmental Technology
+<br />
+<br />Direct phone (+47) 998 98 987
+<br />
+Visiting: Bratt?rkaia 17C
+<br />
+Post: Postbox 4760 Sluppen, N-7465 Trondheim
+<br />
+<br />www.sintef.com/marine_environment&lt;<a href="http://www.sintef.com/marine_environment">http://www.sintef.com/marine_environment</a>&gt;
+<br />
+<br />*  Consider the environment before printing
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Oct 05 2010 - 05:02:52 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2834">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2835.html" title="Next message in the list">Aleksandar Jelenak: "[CF-metadata] Multidimensional variables as discrete sampling geometry data?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2833.html" title="Previous message in the list">alison.pamment at stfc.ac.uk: "[CF-metadata] Standard name table update"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2836.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata]  point observation data in CF 1.4"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2836.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata]  point observation data in CF 1.4"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2834" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2834" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2834" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2834" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:32 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2833.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2835.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

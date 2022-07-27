@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  CF feature types and definitions from Jonathan Gregory on 2010-12-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  CF feature types and definitions" />
+<meta name="Date" content="2010-12-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3089.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3091.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  CF feature types and definitions</h1>
+<!-- received="Thu Dec 30 08:02:21 2010" -->
+<!-- isoreceived="20101230080221" -->
+<!-- sent="Thu, 30 Dec 2010 15:02:21 +0000" -->
+<!-- isosent="20101230150221" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  CF feature types and definitions" -->
+<!-- id="20101230150221.GG18608_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3090" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3091.html" accesskey="d" title="Rich Signell: &quot;[CF-metadata] Request for standard_name=&#0034;sea_binary_mask&#0034;&quot;">Next message</a> ]
+[ <a href="./3089.html" title="Rich Signell: &quot;[CF-metadata] CF feature types and definitions&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3090" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3090" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3090" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3090" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20CF%20feature%20types%20and%20definitions">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 30 Dec 2010 15:02:21 +0000</span><br />
+</address>
+<br />
+Dear Nan, Roy and Rich
+<br />
+<br />John Caron, Steve Hankin and I are working on the featureType proposal. I
+<br />
+think we'll publish a new draft soon. In the current version, timeSeries,
+<br />
+Profile and timeSeriesProfile are all distinguished. Personally I find it
+<br />
+helpful to define the featureTypes in terms of dimensionality:
+<br />
+<br />timeSeries: a series of data points at the same spatial location with
+<br />
+monotonically varying time
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data(i,o)	x(i) y(i) z(i) t(i,o) 	   must have t coordinate
+<br />
+profile: an ordered set of data points along a vertical line at a fixed
+<br />
+horizontal position and fixed time
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data(i,o)	x(i) y(i) z(i,o) t(i) 	   must have z coordinate
+<br />
+timeSeriesProfile: a series of profiles at the same horizontal position with
+<br />
+monotonically varying time
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data(i,p,o)	x(i) y(i) z(i,p,o) t(i,p)  must have z and t coords
+<br />
+<br />Here, i is the subscript of the feature, and o and p are subscripts of the
+<br />
+elements within the feature. Thus, the ith timeSeries has single-valued x y
+<br />
+and z coords associated with it, and a set of t coords. However, x y and z are
+<br />
+all optional, so a single timeSeries feature could have a 2D location (x,y) or
+<br />
+a 3D location (x,y,z). The only coord it must have is time.
+<br />
+<br />The timeSeries from sensors at different depths could be contained in a single
+<br />
+data variable of the timeSeries feature type, each with its 3D location. But
+<br />
+that wouldn't indicate they were actually at the same (x,y) location, because
+<br />
+they'd all have different x and y coords (with the same values). For this, a
+<br />
+timeSeriesProfile would be better. A single feature of this type has single x
+<br />
+and y coords, a set of time coords t(p) and a set of depth coords z(p,o),
+<br />
+where p is the profile subscript and o the time subscript.  If the depths are
+<br />
+the same at all times, the depth coord can be just z(o).
+<br />
+<br />But I'm not sure that this addresses Nan's concern, &quot;There's a big difference
+<br />
+between a series of profiles at a single x-y location and a time series of
+<br />
+data taken at the same x-y location by different instruments at different
+<br />
+depths.&quot; Both of these can be written as a timeSeriesProfile, so they aren't
+<br />
+structurally different - unless the problem is that you would like each depth
+<br />
+to have its own set of times, which isn't allowed above? Please could you
+<br />
+say more to clarify the problem?
+<br />
+<br />In the current draft, the order of dimensions is not prescribed. It doesn't
+<br />
+matter which way round they are. Flexibility is needed because you might want
+<br />
+any one of them to be the netCDF unlimited dimension.
+<br />
+<br />However, in the current draft the featureType is a global attribute, not a
+<br />
+variable attribute. That is because John's software cannot currently deal with
+<br />
+files that mix feature types. Of course you could have a mixture of feature
+<br />
+types in the file, but you wouldn't be able to specify the featureType
+<br />
+attribute or to use the proposed conventions for incompletely filled and
+<br />
+ragged arrays. In the document we say that a future version of CF might allow
+<br />
+a different feature type for each data variable. Is this too restrictive? If
+<br />
+so, a possible way forward would be to allow this flexibility now, but
+<br />
+recognise that John's software, which at the moment is the only implementation
+<br />
+of the new conventions, will not be able to process all conforming files.
+<br />
+<br />Happy 2011
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Dec 30 2010 - 08:02:21 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3090">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3091.html" title="Next message in the list">Rich Signell: "[CF-metadata] Request for standard_name=&#0034;sea_binary_mask&#0034;"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3089.html" title="Previous message in the list">Rich Signell: "[CF-metadata] CF feature types and definitions"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3090" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3090" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3090" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3090" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:38 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3089.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3091.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

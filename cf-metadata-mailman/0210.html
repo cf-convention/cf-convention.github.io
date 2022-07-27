@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF and the CDM from Simon Wood on 2006-09-14 (cf-metadata-mailman)</title>
+<meta name="Author" content="Simon Wood (simon.wood)" />
+<meta name="Subject" content="[CF-metadata] CF and the CDM" />
+<meta name="Date" content="2006-09-14" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0209.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0211.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF and the CDM</h1>
+<!-- received="Wed Sep 13 22:04:47 2006" -->
+<!-- isoreceived="20060913210447" -->
+<!-- sent="Thu, 14 Sep 2006 16:04:47 +1200" -->
+<!-- isosent="20060914040447" -->
+<!-- name="Simon Wood" -->
+<!-- email="simon.wood" -->
+<!-- subject="[CF-metadata] CF and the CDM" -->
+<!-- id="4508D4DF.7000607_at_niwa.co.nz" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start210" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0211.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] CF and the CDM&quot;">Next message</a> ]
+[ <a href="./0209.html" title="Steve Hankin: &quot;[CF-metadata] The Final Version of the Futures of CF Paper&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0212.html" accesskey="t" title="John Caron: &quot;[CF-metadata] CF and the CDM&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg210" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg210" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg210" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg210" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Simon Wood &lt;<a href="mailto:simon.wood?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20and%20the%20CDM">simon.wood</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 14 Sep 2006 16:04:47 +1200</span><br />
+</address>
+<br />
+Hi,
+<br />
+<br />As part of upgrading our satellite data reception systems we are 
+<br />
+planning to change how we store our remote sensing data.  Currently an 
+<br />
+in-house binary file format is used to store remote sensing data at 
+<br />
+various levels of processing from raw swaths to composite gridded 
+<br />
+datasets.  Some of it comes from locally received HRPT streams, whilst 
+<br />
+some of it comes from indirect sources (mostly in HDF-EOS formats). 
+<br />
+We'd like to store all these internally using a common data format.  In 
+<br />
+some cases we'd like to be able to integrate with forecast model outputs 
+<br />
+too.
+<br />
+<br />Our current thinking tends towards standardising on netCDF (4) with 
+<br />
+something like CF for metadata, though I am aware that CF is based on 
+<br />
+the netCDF-3 data model and I don't see much discussion on how CF is 
+<br />
+expected to evolve to embrace the netCDF-4 data model.
+<br />
+<br />Reading up on netCDF-4 I see lots of references to the Common Data Model 
+<br />
+(CDM) and the prototype implementation in NJ22.  This seems to offer all 
+<br />
+that CF does in the way of coordinate systems etc plus some higher level 
+<br />
+datatypes specifically for things like swaths and grids (I guess 
+<br />
+conceptually similar to the HDF-EOS types of the same name), though I 
+<br />
+note that most of these are either not implemented or tagged 
+<br />
+'experimental'.  I also note that NJ22 includes a CF reader to extract 
+<br />
+coordinate system data from CF files, but no other explicit references 
+<br />
+to CF metadata that I can see.
+<br />
+<br />And so to some specific questions:
+<br />
+<br />- Is there a plan for extending CF to exploit the netCDF-4 data model?
+<br />
+<br />- What advice do people have on the use of netCDF-4 with CF?  (is the 
+<br />
+use of features from the netCDF-4 data model allowed in a CF compliant 
+<br />
+dataset? or should we stick to netCDF-4 *classic*?)
+<br />
+<br />- what exactly is the relationship between CF and the CDM?  Where they 
+<br />
+cover the same functionality (eg coordinate systems) are they 
+<br />
+consistent?  (If not then what happens when netCDF-4.1 includes these 
+<br />
+elements of the CDM as part of the netCDF standard?)
+<br />
+<br />- Is there any intention to include the higher level data types from the 
+<br />
+CDM as part of CF?
+<br />
+<br />Sorry for the long post and list of questions; any insight would be most 
+<br />
+gratefully received.
+<br />
+<br />kind regards
+<br />
+Simon
+<br />
+<br /><pre>
+-- 
+Simon Wood
+Scientific Programmer
+Meteorology &amp; Remote Sensing
+National Institute of Water and Atmospheric Research (NIWA)
+Wellington
+New Zealand
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Sep 13 2006 - 22:04:47 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start210">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0211.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] CF and the CDM"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0209.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] The Final Version of the Futures of CF Paper"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0212.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] CF and the CDM"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0212.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] CF and the CDM"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg210" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg210" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg210" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg210" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:46 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0209.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0211.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

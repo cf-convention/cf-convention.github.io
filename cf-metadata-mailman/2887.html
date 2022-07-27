@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] New standard names for satellite obs data from John Graybeal on 2010-10-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Graybeal (jbgraybeal)" />
+<meta name="Subject" content="[CF-metadata] New standard names for satellite obs data" />
+<meta name="Date" content="2010-10-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2886.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2888.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] New standard names for satellite obs data</h1>
+<!-- received="Tue Oct 19 18:56:55 2010" -->
+<!-- isoreceived="20101019175655" -->
+<!-- sent="Tue, 19 Oct 2010 17:56:55 -0700" -->
+<!-- isosent="20101020005655" -->
+<!-- name="John Graybeal" -->
+<!-- email="jbgraybeal" -->
+<!-- subject="[CF-metadata] New standard names for satellite obs data" -->
+<!-- id="5281A8FF-764D-4DFC-A48C-5321CF437A3A_at_mindspring.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="DDB20D8288D53E4D811673C30FAB857D018B36F5983C_at_NSPEXMBX-B.the-lab.llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2887" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2888.html" accesskey="d" title="Lowry, Roy K: &quot;[CF-metadata] New standard names for satellite obs data&quot;">Next message</a> ]
+[ <a href="./2886.html" title="Aleksandar Jelenak: &quot;[CF-metadata] New standard names for satellite obs data&quot;">Previous message</a> ]
+[ <a href="./2884.html" title="Cameron-smith, Philip: &quot;[CF-metadata] New standard names for satellite obs data&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2885.html" accesskey="t" title="Aleksandar Jelenak: &quot;[CF-metadata] New standard names for satellite obs data&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2887" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2887" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2887" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2887" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Graybeal &lt;<a href="mailto:jbgraybeal?Subject=Re%3A%20%5BCF-metadata%5D%20New%20standard%20names%20for%20satellite%20obs%20data">jbgraybeal</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 19 Oct 2010 17:56:55 -0700</span><br />
+</address>
+<br />
+<em class="quotelev1">&gt; Sometimes these instruments are also flown on aircraft, so do we want to hardwire 'satellite' into the standard_name?  It is a bit of a mouthful, but would 'remote_sensing_instrument_' work?
+</em><br />
+<br />According to the definition, there is nothing related to the satellite in instrument_scan_angle:  &quot;The angle between the line of sight from an instrument and its reference scan position.&quot;  We don't know whether the reference scan position is defined relative to the host platform, to the earth, to the sky, or to the instrument's frame.  It would only be appropriate to add a platform reference if the relationship to it is clear in the context of the definition.
+<br />
+<br />More generally, there is another concern, with the definition of line of sight. If the 'instrument_x_angle is changed to satellite_x_angle or platform_x_angle (or 'y_x_angle' :-&gt;), the question becomes, how is the line of sight of the satellite (platform, y) defined?  Some satellites/platforms have multiple instruments with different lines of sight, so it is not always obvious. A recommendation here is to define the line of sight in CF as the &quot;primary viewing direction, or a defined primary reference axis for the system&quot;, and expect that to be defined for the hardware item in question in the description of the variable.
+<br />
+<br />More generally still, from OGC Sensor Web Enablement (and other) work, it is apparent there can be multiple instances nested within each other -- a sensor within an instrument within another instrument within a platform, to pick an example.  A more systematic approach references all of these with a single term ('system' is used in SWE, and works reasonably well). Alas,  if you want all of those in one data set, you will have multiple variables with the same standard_name.  But that will also be true if sensor, instrument, platform are the 3 prefixes (since at least two of those concepts nest).  
+<br />
+<br />But (hopefully I recall this correctly) there is nothing that says a standard_name can only be used once in a data set, so from that perspective I would propose 'system' as the noun, backfilled by 'sensor', 'instrument', or 'platform' if particular communities need/want that.  
+<br />
+<br />Bear in mind that, to the extent we want CF to represent data that is readily interoperable, the use of any of these standard names will not promise interoperability for the corresponding data, since my sensor may be your instrument, and someone else's platform, just by virtue of our own already divergent use of those terms.  But they are quite useful in context, so I hope we still get to use them.
+<br />
+<br />john
+<br />
+<br /><br />On Oct 19, 2010, at 16:44, Cameron-smith, Philip wrote:
+<br />
+<br /><em class="quotelev1">&gt; Hi Jonathan,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Sometimes these instruments are also flown on aircraft, so do we want to hardwire 'satellite' into the standard_name?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; It is a bit of a mouthful, but would 'remote_sensing_instrument_' work?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Best wishes,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    Philip
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; -----------------------------------------------------------------------
+</em><br />
+<em class="quotelev1">&gt; Dr Philip Cameron-Smith, pjc at llnl.gov, Lawrence Livermore National Lab.
+</em><br />
+<em class="quotelev1">&gt; -----------------------------------------------------------------------
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; -----Original Message-----
+</em><br />
+<em class="quotelev2">&gt;&gt; From: cf-metadata-bounces at cgd.ucar.edu [mailto:cf-metadata-
+</em><br />
+<em class="quotelev2">&gt;&gt; bounces at cgd.ucar.edu] On Behalf Of Jonathan Gregory
+</em><br />
+<em class="quotelev2">&gt;&gt; Sent: Tuesday, October 19, 2010 6:40 AM
+</em><br />
+<em class="quotelev2">&gt;&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: Re: [CF-metadata] New standard names for satellite obs data
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear Evan et al.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; I agree with this:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  instrument_zenith_angle -&gt; satellite_zenith_angle
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  instrument_azimuth_angle -&gt; satellite_azimuth_angle
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  satellite_scan_angle -&gt; satellite_view_angle
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; And add:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  instrument_scan_angle
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    The angle between the line of sight from an instrument and its
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    reference scan position.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Could you put &quot;satellite&quot; in there too as well somehow? &quot;Instrument&quot; is
+</em><br />
+<em class="quotelev2">&gt;&gt; a very
+</em><br />
+<em class="quotelev2">&gt;&gt; general word and it may not obvious what the phrase refers to without
+</em><br />
+<em class="quotelev2">&gt;&gt; mentioning &quot;satellite&quot;.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Cheers
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Jonathan
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://BLOCKEDmailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://BLOCKEDmailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><br /><br />John Graybeal   &lt;mailto:jgraybeal at ucsd.edu&gt; 
+<br />
+phone: 858-534-2162
+<br />
+System Development Manager
+<br />
+Ocean Observatories Initiative Cyberinfrastructure Project: <a href="http://ci.oceanobservatories.org">http://ci.oceanobservatories.org</a>
+<br />
+Marine Metadata Interoperability Project: <a href="http://marinemetadata.org">http://marinemetadata.org</a>   
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Oct 19 2010 - 18:56:55 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2887">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2888.html" title="Next message in the list">Lowry, Roy K: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2886.html" title="Previous message in the list">Aleksandar Jelenak: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2884.html" title="Message to which this message replies">Cameron-smith, Philip: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2885.html" title="Next message in this discussion thread">Aleksandar Jelenak: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2887" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2887" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2887" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2887" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:34 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2886.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2888.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

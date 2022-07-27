@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jonathan Gregory on 2015-06-25 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-06-25" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7143.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7145.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Thu Jun 25 00:57:50 2015" -->
+<!-- isoreceived="20150624235750" -->
+<!-- sent="Thu, 25 Jun 2015 08:57:50 +0200" -->
+<!-- isosent="20150625065750" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="20150625065750.GA28253_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="5582FD71.1030601_at_cicsnc.org" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7144" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7145.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./7143.html" title="Chris Barker: &quot;[CF-metadata] Changes shown in documents&quot;">Previous message</a> ]
+[ <a href="./7137.html" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7145.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7144" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7144" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7144" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7144" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 25 Jun 2015 08:57:50 +0200</span><br />
+</address>
+<br />
+Dear Jim
+<br />
+<br />Thank you for your detailed argument. I suspect we almost agree now, though I
+<br />
+hesitate because I haven't quite followed your reasoning in a couple of places,
+<br />
+and it may turn out from this that I have misunderstood something.
+<br />
+<br />If the calendar for the reference timestamp is GPS, the input timestamp is
+<br />
+UTC, and the encoding algorithm is UTC, you say there is no error. Wouldn't
+<br />
+the UTC algorithm assume that the reference timestamp is UTC? In that case
+<br />
+there could be an error. Perhaps you think that in this case the reference
+<br />
+timestamp would first be converted to UTC, before the encoding? If that were
+<br />
+done, there would be no error.
+<br />
+<br /><em class="quotelev1">&gt; The GPS timestamp to elapsed time encoding algorithm is (apart from epoch date
+</em><br />
+<em class="quotelev1">&gt; &amp; time) the same as the POSIX algorithm assuming you haven't enabled POSIX leap
+</em><br />
+<em class="quotelev1">&gt; second sensitivity (which is possible, but almost no one does it). It handles
+</em><br />
+<em class="quotelev1">&gt; Gregorian leap days, but not leap seconds.
+</em><br />
+<br />Yes. This is the same as the NLS algorithm. The reference time is not part of
+<br />
+the algorithm. The function of the algorithm is to compute the elapsed time
+<br />
+between the ref timestamp and the input timestamp.
+<br />
+<br /><em class="quotelev1">&gt; The only thing that affects the contents of the time variable is whether or
+</em><br />
+<em class="quotelev1">&gt; not the encoding algorithm matched the input timestamp calendar
+</em><br />
+<br />Yes, I think so, except that the encoding algorithm assumes that the ref
+<br />
+timestamp is in the same calendar as the input timestamps i.e. the calendar
+<br />
+of the algorithm.
+<br />
+<br />+-----------------------------------------------------------------------------+
+<br />
+| Calendar          | Definition                                              |
+<br />
+|-------------------+---------------------------------------------------------|
+<br />
+| gregorian_utc     | Reference timestamp expressed in Gregorian calendar     |
+<br />
+|                   | with UTC time system. Elapsed times are free of leap    |
+<br />
+|                   | second errors.                                          |
+<br />
+|-------------------+---------------------------------------------------------|
+<br />
+| gregorian_utc_lse | gregorian_utc, but elapsed times are not necessarily    |
+<br />
+|                   | free of leap second errors. There is no exact           |
+<br />
+|                   | conversion between this and other calendars.            |
+<br />
+|-------------------+---------------------------------------------------------|
+<br />
+| gregorian_gps     | Reference timestamp expressed in Gregorian calendar     |
+<br />
+|                   | with GPS time system. Elapsed times are free of leap    |
+<br />
+|                   | second errors.                                          |
+<br />
+|-------------------+---------------------------------------------------------|
+<br />
+| gregorian_nls     | Reference timestamp expressed in Gregorian calendar     |
+<br />
+|                   | with generic time system having 86400 seconds per day   |
+<br />
+|                   | based at longitude 0 degrees. There is no exact         |
+<br />
+|                   | conversion available between this and other calendars.  |
+<br />
++-----------------------------------------------------------------------------+
+<br />
+<br />gregorian_utc and gregorian_gps are fine.
+<br />
+<br />I am not sure of the distinction between gregorian_utc_lse and gregorian_nls,
+<br />
+unless it's a degree of vagueness. In practice, input timestamps
+<br />
+from the real world are usually are UTC. I think if you were using GPS or TAI
+<br />
+time instead, you would be well aware of it. The case to be described is the
+<br />
+one where the reference and input timestamps are actually UTC, but they are
+<br />
+interpreted as belonging to a calendar which has no leap seconds, and hence
+<br />
+encoded with the NLS calendar. As you say, this calendar can't be converted
+<br />
+exactly to the real world, and the time coordinates may have small differences
+<br />
+from real-world elapsed times. It is useful to recognise, as you do, that
+<br />
+gregorian_nls is not a real-world calendar, but it is a near enough approx
+<br />
+for many purposes.
+<br />
+<br /><em class="quotelev1">&gt; If we changed the definition of the 'gregorian' calendar to be the same as the
+</em><br />
+<em class="quotelev1">&gt; 'gregorian_nls' calendar above and included some text warning people that
+</em><br />
+<em class="quotelev1">&gt; resolutions of &lt; 1 minute are suspect, then we'd have a backward compatibility
+</em><br />
+<em class="quotelev1">&gt; path.
+</em><br />
+<br />Yes, I agree.
+<br />
+<br /><em class="quotelev1">&gt; In fact, we could just use 'gregorian' to cover the 'gregorian_utc_lse'
+</em><br />
+<em class="quotelev1">&gt; case.
+</em><br />
+<br />Please could you help me to understand what this case is?
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Jun 25 2015 - 00:57:50 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7144">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7145.html" title="Next message in the list">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7143.html" title="Previous message in the list">Chris Barker: "[CF-metadata] Changes shown in documents"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7137.html" title="Message to which this message replies">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7145.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7145.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7144" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7144" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7144" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7144" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:57 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7143.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7145.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

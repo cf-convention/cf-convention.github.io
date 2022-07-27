@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF Conventions and NetCDF4 string attributes from stephen.pascoe at stfc.ac.uk on 2014-01-22 (cf-metadata-mailman)</title>
+<meta name="Author" content="stephen.pascoe at stfc.ac.uk (stephen.pascoe)" />
+<meta name="Subject" content="[CF-metadata] CF Conventions and NetCDF4 string attributes" />
+<meta name="Date" content="2014-01-22" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6001.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6003.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF Conventions and NetCDF4 string attributes</h1>
+<!-- received="Wed Jan 22 09:15:37 2014" -->
+<!-- isoreceived="20140122091537" -->
+<!-- sent="Wed, 22 Jan 2014 16:15:37 +0000" -->
+<!-- isosent="20140122161537" -->
+<!-- name="stephen.pascoe at stfc.ac.uk" -->
+<!-- email="stephen.pascoe" -->
+<!-- subject="[CF-metadata] CF Conventions and NetCDF4 string attributes" -->
+<!-- id="4C353E6E4A08AE4792B350DAA392B5215B0CD650_at_EXCHMBX01.fed.cclrc.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6002" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6003.html" accesskey="d" title="Schultz, Martin: &quot;[CF-metadata] HTAP2 Final proposal = 102 CF Standard Names&quot;">Next message</a> ]
+[ <a href="./6001.html" title="Mike Grant: &quot;[CF-metadata] Conventions server down?&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6002" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6002" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6002" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6002" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: stephen.pascoe at stfc.ac.uk &lt;<a href="mailto:stephen.pascoe?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20Conventions%20and%20NetCDF4%20string%20attributes">stephen.pascoe</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 22 Jan 2014 16:15:37 +0000</span><br />
+</address>
+<br />
+To my knowledge CF have so far not of how the conventions will be interpreted in NetCDF4 files.  This is a big subject and it will take a long time to work through the many innovations in NetCDF4.  However, we have recently received a NetCDF4 file which illustrates a small corner case I would like clarified.
+<br />
+<br />The file is a full NetCDF4 file not NetCDF4-classic (i.e. it does not contain the hidden HDF5 flag indicating it is NetCDF4-classic).  However, it does use a flat data model and looks almost identical to a classic model file.  The one difference is that it uses NC_STRING as the type of it's string attributes.  E.g.
+<br />
+<br />netcdf4 {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time = 108031 ;
+<br />
+...
+<br />
+// global attributes:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string :Conventions = &quot;CF-1.5 ACDD-1.0&quot; ;
+<br />
+...
+<br />
+}
+<br />
+<br />This file was produced by a recent version of IDL which does not appear to support the NetCDF4-classic format [1].  In the IDL interface it is possible to create attributes of type NC_CHAR and be equivilent to arrays of chars in NetCDF-classic model.  However, it is very easy to create attributes of NC_STRING in IDL so we can expect many further examples of this type of file in the future.
+<br />
+<br />Strict interpretation of the CF-conventions seem to suggest this file is not compliant because of section 2.2 of the conventions:
+<br />
+<br />2.2. Data Types
+<br />
+The netCDF data types char, byte, short, int, float or real, and double are all acceptable. [...]
+<br />
+<br />NetCDF does not support a character string type, so these must be represented as character arrays. In this document, a one dimensional array of character data is simply referred to as a &quot;string&quot;. An n-dimensional array of strings must be implemented as a character array of dimension (n,max_string_length), with the last (most rapidly varying) dimension declared large enough to contain the longest string in the array. All the strings in a given array are therefore defined to be equal in length. For example, an array of strings containing the names of the months would be dimensioned (12,9) in order to accommodate &quot;September&quot;, the month with the longest name.
+<br />
+<br />IMO this section needs to be updated to refer to NetCDF4 in order to remove ambiguity.
+<br />
+<br />There is a further complication that the current official cf-checker cannot read this file becauseit cannot handle attributes of type NC_STRING.  This sort of problem is exactly what NetCDF4-classic was intended to mittigate.  We can fix the tool but in the mean time it would help if the CF document was crystal clear.
+<br />
+<br />I suggest the following options:
+<br />
+<br />1.       We state that CF compliant files MUST be NetCDF3 or NetCDF4-classic format (i.e. &quot;ncdump -k&quot; returns &quot;classic&quot; &quot;64-bit offset&quot; or &quot;netCDF-4 classic model&quot;)
+<br />
+<br />2.       We state that CF compliant files MUST only use the types described in section 2.2 and update the text to make referenct to NetCDF4 types that are not allowed.  A warning about string attributes would be helpful.
+<br />
+<br />3.       We state that an attribute with a value of a length-1 array of types NC_STRING is equivilent to an array of NC_CHAR in CF, and therefore the example above is acceptable.
+<br />
+<br /><br />Thanks,
+<br />
+Stephen.
+<br />
+<br />[1] <a href="http://www.exelisvis.com/docs/ncdf_create.html#netCDF_2618656010_1006152">http://www.exelisvis.com/docs/ncdf_create.html#netCDF_2618656010_1006152</a>
+<br />
+<br /><br /><br /><pre>
+---
+Stephen Pascoe  +44 (0)1235 445980
+Centre of Environmental Data Archival
+STFC Rutherford Appleton Laboratory, Harwell Oxford, Didcot OX11 0QX, UK
+-- 
+Scanned by iCritical.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140122/175023aa/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140122/175023aa/attachment.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Jan 22 2014 - 09:15:37 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6002">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6003.html" title="Next message in the list">Schultz, Martin: "[CF-metadata] HTAP2 Final proposal = 102 CF Standard Names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6001.html" title="Previous message in the list">Mike Grant: "[CF-metadata] Conventions server down?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6002" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6002" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6002" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6002" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6001.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6003.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

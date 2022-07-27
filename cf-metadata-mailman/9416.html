@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] 'months since' and 'years since' time units from Bärring Lars on 2018-10-18 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bärring Lars (Lars.Barring)" />
+<meta name="Subject" content="[CF-metadata] 'months since' and 'years since' time units" />
+<meta name="Date" content="2018-10-18" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9415.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9417.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] 'months since' and 'years since' time units</h1>
+<!-- received="Thu Oct 18 07:31:10 2018" -->
+<!-- isoreceived="20181018063110" -->
+<!-- sent="Thu, 18 Oct 2018 13:31:10 +0000" -->
+<!-- isosent="20181018133110" -->
+<!-- name="Bärring Lars" -->
+<!-- email="Lars.Barring" -->
+<!-- subject="[CF-metadata] 'months since' and 'years since' time units" -->
+<!-- id="02047865DE893F45802A039AA761834E018F4EA26A_at_WINVMSERV463.ad.smhi.se" -->
+<!-- charset="Windows-1252" -->
+<!-- inreplyto="CD08485C-284F-4C2A-997B-F1F5907142AD_at_usgs.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9416" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9417.html" accesskey="d" title="David Blodgett: &quot;[CF-metadata] [EXTERNAL] SV: &#0039;months since&#0039; and &#0039;years since&#0039; time units&quot;">Next message</a> ]
+[ <a href="./9415.html" title="Martin Juckes - UKRI STFC: &quot;[CF-metadata] &#0039;months since&#0039; and &#0039;years since&#0039; time units&quot;">Previous message</a> ]
+[ <a href="./9413.html" title="David Blodgett: &quot;[CF-metadata] &#0039;months since&#0039; and &#0039;years since&#0039; time units&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./9417.html" accesskey="t" title="David Blodgett: &quot;[CF-metadata] [EXTERNAL] SV: &#0039;months since&#0039; and &#0039;years since&#0039; time units&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9416" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9416" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9416" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9416" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bärring Lars &lt;<a href="mailto:Lars.Barring?Subject=Re%3A%20%5BCF-metadata%5D%20'months%20since'%20and%20'years%20since'%20time%20units">Lars.Barring</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 18 Oct 2018 13:31:10 +0000</span><br />
+</address>
+<br />
+Dear Martin, David, all,
+<br />
+<br />As Klaus points out, the aim of my suggestion is to make software using CF aware of the fact that the unit &quot;year&quot; is different depending on which calendar the model is implementing. To give an example:
+<br />
+If I want to know when the global average temperature has increased by 1.5C, or 4C, above pre-industrial time in the CMIP5 ensemble I will get  answers as a timedelta in days. As this is not really helpful I might feel inclined to convert this to years, but now UDUNITS definition of year is not helpful for those models having a 360_day or 365_day calendar. However, with the calendar-aware definition of year such a calculation would be supported without having to deal with it manually.
+<br />
+<br />Now, on to the discussion about months. Before my previous post I quickly read through extensive exchange on this list back in 2011, so I really appreciate David's comment that it is a complex subject. And that is the reason for why I suggested is always month is always a year / 12. So, here is an attempt to summarise the suggestion in a different way:
+<br />
+<br />* standard and proleptic_gregorian calendars (status quo):
+<br />
+&nbsp;&nbsp;o the number of days in a month is not an integer
+<br />
+&nbsp;&nbsp;o same issue with respect to ordinary (western) world months.
+<br />
+<br />* 365_day calendar:
+<br />
+&nbsp;&nbsp;+ the number of seconds in a month would change from being &quot;ill-defined (?)&quot; as 84600 * 365.242198781 / 12 = 2574957.50141, to more properly 84600 * 365 / 12 = 2573250
+<br />
+&nbsp;&nbsp;o same issue with respect to ordinary (western) world months.
+<br />
+<br />* 360_calendar:
+<br />
+&nbsp;&nbsp;+ the number of seconds in a month would change from being &quot;very ill-defined (?)&quot; as 84600 * 365.242198781 / 12 = 2574957.50141, to more properly 84600 * 360 / 12 = 2538000
+<br />
+&nbsp;&nbsp;+ the number of days in a month is an integer; 12 * 30 * 84600 = 2538000
+<br />
+&nbsp;&nbsp;+ the definition of a month is consistent with what is expected in the &quot;360_day world&quot;
+<br />
+&nbsp;&nbsp;o same issue with respect to ordinary (western) world months.
+<br />
+<br />That is, even though the suggestion certainly do not solve everything (of course!), the only argument against it, that I can see, is the work to tease out the details and implement it in software packages. As was extensively discussed in the 2011 threads, the real problem is the varying length of the western world calendar months. But that is the topic for another thread.
+<br />
+<br /><br />Kind regards,
+<br />
+Lars
+<br />
+<br />________________________________
+<br />
+Fr?n: CF-metadata [cf-metadata-bounces at cgd.ucar.edu] f?r David Blodgett [dblodgett at usgs.gov]
+<br />
+Skickat: den 18 oktober 2018 13:58
+<br />
+Till: Ryan Abernathey
+<br />
+Kopia: cf-metadata at cgd.ucar.edu
+<br />
+?mne: Re: [CF-metadata] 'months since' and 'years since' time units
+<br />
+<br />Dear Ryan, All,
+<br />
+<br />I hesitate to chime in on this thread as I know just how fraught this topic can be, but then I think I know how fraught it can be so may have something to offer. My experience is at the intersection of climatological models and landscape models that are calibrated with &quot;real&quot; data. I've worked with daily and monthly time series model output and interpolated weather products that needs to match up to observations but uses a noleap or 360 calendar. It's an enormous pain and we as a community should do better. -- so the business case for taking this complexity head on is there!
+<br />
+<br />One resource I've found useful over the years is the [CDM implementation](<a href="https://www.unidata.ucar.edu/software/thredds/current/netcdf-java/CDM/CalendarDateTime.html">https://www.unidata.ucar.edu/software/thredds/current/netcdf-java/CDM/CalendarDateTime.html</a>)
+<br />
+<br />There are two factors at play.
+<br />
+<br />1) Adding &quot;calendar&quot; to a udunits string avoids conversion to a number of shorter time increments for long time increments (e.g. seconds per month). It keeps things in the declared time units so you hit the precise date boundaries you would expect.
+<br />
+2) The &quot;calendar&quot; attribute gets you to how to interpret the datum of the time axis.
+<br />
+<br />Especially relevant to this thread is:
+<br />
+<br />&nbsp;&nbsp;*   uniform30day or 360_day = All years are 360 days divided into 30 day months.
+<br />
+<br />With these two, I think the problems here are solved. However, inevitably, people will omit the addition attribute for calendar or fall back on normal &quot;months since ...&quot; when they actually mean &quot;calendar months since ...&quot; and tell us 'why would you interpret my data that way it makes no sense?!?' This is perfectly parallel to spatial coordinates where people don't declare a datum for their latitude/longidute coordinates. Without that information one can not use the information with a level of precision that some use cases require.
+<br />
+<br />What I'm getting at is that CF should probably:
+<br />
+1) adopt enough attribute precision to fully describe what we are trying to convey
+<br />
+2) make said attributes required or declare sensible defaults that reduce ambiguity when users come knocking.
+<br />
+<br />That said, I've had no success pushing the community to accept that there should be a default lat/lon datum for software developers to go on and I would not doubt that the same will be true here as ambiguity and uncertainty is better than dead wrong in many cases. My stance is that we should all be dead wrong for the same reason rather than each implementor making an arbitrary decision so we all get different answers (more ambiguity) from our software du-jour.
+<br />
+<br />All the best,
+<br />
+<br />Dave
+<br />
+<br /><br />On Oct 18, 2018, at 6:08 AM, Martin Juckes - UKRI STFC &lt;martin.juckes at stfc.ac.uk&lt;mailto:martin.juckes at stfc.ac.uk&gt;&gt; wrote:
+<br />
+<br />Hello All,
+<br />
+<br /><br />I think the UNIDATA pull request referenced Jeff (<a href="https://github.com/Unidata/cftime/pull/69">https://github.com/Unidata/cftime/pull/69</a>) is mis-quoting the CF Convention. As far as I can see, Unidata says that a month is exactly one 12th of a year, and CF inherits this -- with the statement &quot;For similar reasons the unit month, which is defined in udunits.dat&lt;<a href="http://www.unidata.ucar.edu/software/udunits/">http://www.unidata.ucar.edu/software/udunits/</a>&gt; to be exactly year/12, should also be used with caution.&quot;
+<br />
+<br /><br />I can't see the difference between Lars's suggestion and the status quo. In UNIDATA a day is clearly defined as &quot;period of time equal to 24 hours&quot;, which gives 84600 seconds.
+<br />
+<br />regards,
+<br />
+Martin
+<br />
+<br /><br /><br />________________________________
+<br />
+From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu&lt;mailto:cf-metadata-bounces at cgd.ucar.edu&gt;&gt; on behalf of B?rring Lars &lt;Lars.Barring at smhi.se&lt;mailto:Lars.Barring at smhi.se&gt;&gt;
+<br />
+Sent: 18 October 2018 09:29:50
+<br />
+To: Ryan Abernathey; whitaker.jeffrey at gmail.com&lt;mailto:whitaker.jeffrey at gmail.com&gt;; cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+<br />
+Subject: Re: [CF-metadata] 'months since' and 'years since' time units
+<br />
+<br />Hi,
+<br />
+<br />I have have come to think about this from a somewhat different perspective. For some analyses, as well as when calculating certain derived climatological statistics (aka climate indices), using datasets based on different calendars the problem becomes obvious.
+<br />
+<br />In the model world of a 365-day GCM one year _is_ 365 days, and in a 360_day GCM a year _is_ 360 days. In the case of a gregorian/standard calendar GCM I am not sure whether it is 365.25 or 365.242198781 but this is in practice less of a problem.
+<br />
+<br />For datasets based non-standard calendars imposing the current UDUNITS definition of a year leads to complications that require workarounds if one is interested in for example the time elapsed until something happens or the duration of some (long-lasting) events. One way to partly mitigate these issues would be to use the time unit of years_since_START or months_since_START, but this is warned against in the CF Conventions and may software tools do not support it .
+<br />
+<br />The fundamental issue is the inconsistency between the GCM year and the UDUNITS year. So I would like to call on the wisdom of this list to see whether the CF Convention could include a modification to the definition of a year and month:
+<br />
+<br />* standard calendar (no change)
+<br />
+1 day = 84600 seconds
+<br />
+1 year = 365.242198781 days
+<br />
+1 month = 365.242198781 / 12 days
+<br />
+<br />* 365_day calendar
+<br />
+1 day = 84600 seconds
+<br />
+1 year = 365 days
+<br />
+1 month = 365 / 12 days
+<br />
+<br />* 360_day calendar
+<br />
+1 day = 84600 seconds
+<br />
+1 year = 360 days
+<br />
+1 month = 360 / 12 days
+<br />
+<br />That is, the seconds per day ratio is not changed thus maintaining the consistency to other SI units. And, for the 360_day calendar month follows the suggestion by Ryan and Jeffrey.
+<br />
+<br /><br />Kind regards,
+<br />
+Lars
+<br />
+<br /><pre>
+--
+Lars B?rring
+FDr, Forskare
+PhD, Research Scientist
+SMHI  /  Swedish Meteorological and Hydrological Institute
+Rossby Centre
+SE - 601 76 NORRK?PING
+Tel / Phone: +46 (0)11 495 8604
+Fax: +46 (0)11 495 8001
+Bes?ksadress / Visiting address: Folkborgsv?gen 17
+________________________________
+Fr?n: CF-metadata [cf-metadata-bounces at cgd.ucar.edu&lt;mailto:cf-metadata-bounces at cgd.ucar.edu&gt;] f?r Ryan Abernathey [ryan.abernathey at gmail.com&lt;mailto:ryan.abernathey at gmail.com&gt;]
+Skickat: den 17 oktober 2018 21:22
+Till: whitaker.jeffrey at gmail.com&lt;mailto:whitaker.jeffrey at gmail.com&gt;
+Kopia: cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+?mne: Re: [CF-metadata] 'months since' and 'years since' time units
+Hi everyone,
+I am that user, and I'm new to this mailing list. Thank you all for your work on CF conventions. It's such a valuable effort!
+I want to note that this was inspired by the proliferation of datasets in the wild that use &quot;month&quot; as their units. For example, nearly all of the IRI Data Library does this, in conjunction with a 3&quot;60_day&quot; calendar (example: <a href="https://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.surface/.temp/">https://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.surface/.temp/</a>).
+My impression from talking to data providers is that no one is using &quot;360_day&quot; calendar and &quot;months&quot; as units, and then expecting &quot;months&quot; to be interpreted as 365.242198781/12 days. They all expect it to be interpreted as 30 days. While there are various workarounds that can be used at different levels of the software stack, the best solution, IMHO, is to explicitly allow in CF conventions what Jeff proposed: &quot;months and years be interpreted as calendar months and years for those calendars where they have a fixed length&quot;. I don't think this will break existing applications.
+Thanks,
+Ryan
+On Wed, Oct 17, 2018 at 3:06 PM Jeffrey Whitaker &lt;whitaker.jeffrey at gmail.com&lt;mailto:whitaker.jeffrey at gmail.com&gt;&lt;mailto:whitaker.jeffrey at gmail.com&gt;&gt; wrote:
+Hi:  I'm a developer of the 'cftime' python package (<a href="https://github.com/Unidata/cftime">https://github.com/Unidata/cftime</a>).  A user submitted a pull request (<a href="https://github.com/Unidata/cftime/pull/69">https://github.com/Unidata/cftime/pull/69</a>) that implements support for a 30-day calendar month time unit for the '360_day' CF calendar.  Although using a 'month' time unit is a tricky proposition in general, for this calendar it seems straightforward since every month has the same length.  However, in the discussion of the pull request it was pointed out that CF expects  that &quot;the value of the units attribute is a string that can be recognized by UNIDATA?s Udunits package&quot;, and that UDUNITS defines a month as 365.242198781/12 days.    My question is this - is it reasonable for our python package to make an exception to this rule for the 360_day calendar?  More generally, can months and years be interpreted as calendar months and years for those calendars where they have a fixed length, or will this deviate from the existing CF conventions and break existing applications?
+Regards, Jeff
+--
+Jeffrey S. Whitaker
+NOAA/OAR/PSD  R/PSD1
+325 Broadway, Boulder, CO, 80305-3328
+Phone: (303)497-6313
+FAX: (303)497-6449
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20181018/4635616f/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20181018/4635616f/attachment-0001.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Oct 18 2018 - 07:31:10 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9416">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9417.html" title="Next message in the list">David Blodgett: "[CF-metadata] [EXTERNAL] SV: &#0039;months since&#0039; and &#0039;years since&#0039; time units"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9415.html" title="Previous message in the list">Martin Juckes - UKRI STFC: "[CF-metadata] &#0039;months since&#0039; and &#0039;years since&#0039; time units"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./9413.html" title="Message to which this message replies">David Blodgett: "[CF-metadata] &#0039;months since&#0039; and &#0039;years since&#0039; time units"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./9417.html" title="Next message in this discussion thread">David Blodgett: "[CF-metadata] [EXTERNAL] SV: &#0039;months since&#0039; and &#0039;years since&#0039; time units"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./9417.html" title="Message sent in reply to this message">David Blodgett: "[CF-metadata] [EXTERNAL] SV: &#0039;months since&#0039; and &#0039;years since&#0039; time units"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9416" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9416" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9416" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9416" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:30 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9415.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9417.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF and multi-forecast system ensemble data from Bryan Lawrence on 2006-10-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bryan Lawrence (b.n.lawrence)" />
+<meta name="Subject" content="[CF-metadata] CF and multi-forecast system ensemble data" />
+<meta name="Date" content="2006-10-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0373.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0375.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF and multi-forecast system ensemble data</h1>
+<!-- received="Fri Oct 27 03:22:58 2006" -->
+<!-- isoreceived="20061027022258" -->
+<!-- sent="Fri, 27 Oct 2006 10:22:58 +0100" -->
+<!-- isosent="20061027092258" -->
+<!-- name="Bryan Lawrence" -->
+<!-- email="b.n.lawrence" -->
+<!-- subject="[CF-metadata] CF and multi-forecast system ensemble data" -->
+<!-- id="1161940978.4780.89.camel_at_localhost.localdomain" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4541501C.2070003_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start374" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0375.html" accesskey="d" title="Kyle Halliday: &quot;[CF-metadata] CF discussion board beta test&quot;">Next message</a> ]
+[ <a href="./0373.html" title="Kettleborough, Jamie: &quot;[CF-metadata] CF and multi-forecast system ensemble data&quot;">Previous message</a> ]
+[ <a href="./0372.html" title="John Caron: &quot;[CF-metadata] CF and multi-forecast system ensemble data&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0377.html" accesskey="t" title="Kettleborough, Jamie: &quot;[CF-metadata] CF and multi-forecast system ensemble data&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg374" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg374" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg374" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg374" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bryan Lawrence &lt;<a href="mailto:b.n.lawrence?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20and%20multi-forecast%20system%20ensemble%20data">b.n.lawrence</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 27 Oct 2006 10:22:58 +0100</span><br />
+</address>
+<br />
+Hi Folks
+<br />
+<br />It seems that there are two threads to the massive email from
+<br />
+Jamie,Paco, Jonathan that we've seen (and which is not included
+<br />
+below :-).
+<br />
+<br />The first is how to expedite aggregation, which is the point John has
+<br />
+picked up on, and the second is how to deal with the special case of
+<br />
+ensemble metadata. In this email I'm going to try and boil down what I
+<br />
+think the issues are. 
+<br />
+<br />The suggestion proposed, as far as I can see reduces to:
+<br />
+&nbsp;
+<br />
+a) we should create some standard names which exactly correspond to
+<br />
+some recommended global variables, and model integrations should use
+<br />
+global variables where they contain exactly one realization to indicate
+<br />
+these.
+<br />
+<br />b) upon aggregation, one should use the realization dimension (called
+<br />
+joinDim by John and realization by the triumvirate) as both a dimension
+<br />
+on the aggregated variable and a key to the metadata about the
+<br />
+realizations which is extracted from global variables and populates some
+<br />
+new variables which are essentially metadata variables. (This automatic
+<br />
+extraction would be based on a correspondence between standard names and
+<br />
+global attribute names)
+<br />
+<br />At this point if we take the word model from point a) and the constraint
+<br />
+on realization, then what we have is a rule for how to construct global
+<br />
+metadata into aggregated netcdf files. 
+<br />
+<br />Note that CF doesn't *require* any global attributes (2.6.2), so no code
+<br />
+can rely on them being present, nor does it *limit* global attributes to
+<br />
+only those defined. (Which is good, because I think those defined are
+<br />
+not precise enough for me, nor for Paco, judging by the discussion).
+<br />
+<br />I would have thought it makes sense that in producing any aggregation,
+<br />
+that any of the original metadata which distinguishes the original files
+<br />
+(and their contents) should appear in metadata associated with the join
+<br />
+dimension. From a coding point of view the problem will arise in the
+<br />
+join when the individual files don't all have the appropriate global
+<br />
+attributes (trust me, it'll happen). Anyway from a CF point of view this
+<br />
+produces CF issue A: What is the best method of providing metadata on an
+<br />
+aggregation dimension and indicating that's what has been done?
+<br />
+<br />(Issue B: might be to make sure our solution works when we aggregate two
+<br />
+files that have already been aggregated).
+<br />
+<br />I'm sure John has thought more than most (especially me) about this, so
+<br />
+I'll shut up about aggregation for now ...
+<br />
+<br />At this point there is no necessity for any modifications of standard
+<br />
+names, the discussion thus far is simply about how to use what
+<br />
+attributes we have, but:
+<br />
+<br />Issue C: should we have a standard name modifier associated with a
+<br />
+variable on the aggregation dimension to show that it was produced by
+<br />
+aggregating file attributes?
+<br />
+<br />They also got into what I would call the specifics of variable metadata
+<br />
+needed to distinguish ensemble member identity and characteristics.
+<br />
+These may or may not need standard names, but let's start with the
+<br />
+principle. Are these not simply special cases of variable metadata? With
+<br />
+the possible exception of ensemble_weight, all the others are intended
+<br />
+to be either character strings or url links to information about
+<br />
+variable metadata. In principle we could want exactly the same
+<br />
+facilities for any variables (e.g. a bunch of station data in one file,
+<br />
+we might want to have a lot more characteristics of each station linked
+<br />
+by the station dimension in exactly the same way as the  realization
+<br />
+dimension could be used).
+<br />
+<br />So, I think what we have here is a discussion about what are the
+<br />
+variable attributes (metadata) required to distinguish ensemble members
+<br />
+(or model integrations)? This could go way beyond what we have seen in
+<br />
+the email. Jamie has referred to our work on NumSim
+<br />
+(<a href="http://proj.badc.rl.ac.uk/ndg/wiki/NumSim">http://proj.badc.rl.ac.uk/ndg/wiki/NumSim</a>), and there is also the work
+<br />
+on Numerical Model Metadata
+<br />
+(<a href="http://www.cgam.nerc.ac.uk/pmwiki/NMM/index.php/">http://www.cgam.nerc.ac.uk/pmwiki/NMM/index.php/</a>). Similarly, the
+<br />
+metadata one *might* want to attach to any observation goes way beyond
+<br />
+what one can mandate in the CF file (e.g. SensorML etc).
+<br />
+<br />So there is a continuum of information one could have about a variable
+<br />
+(indexed by station or realization or whatever), ranging from simply
+<br />
+identity (e.g. item number in the sequence) to it's source, to the
+<br />
+entire content of one these external schema.
+<br />
+<br />CF has a number of ways of actually adding such information, we can use
+<br />
+labels (6.1), Ancillary Data etc ... and so without going into the
+<br />
+specifics of the triumvirate discussion, the issue really is:
+<br />
+<br />Issue-D: how far should CF go into providing standard names for
+<br />
+describing variable metadata?
+<br />
+<br />Quite clearly there is utility in new standard names, but in doing so
+<br />
+are we not straying into the governance territory of others - (e.g.
+<br />
+SensorML). I've argued quite strongly that we shouldn't do any more of
+<br />
+this, because every time we do, we add to the CF maintenance problem
+<br />
+(e.g. I think we already have problems with gazeteers). 
+<br />
+<br />Now I know (because I talked to Jamie on the phone) that triumvirate
+<br />
+could argue that in the case of model metadata, it would be helpful for
+<br />
+CF to mandate this stuff at least for the numerical model community. 
+<br />
+<br />Now we can do that ... but ...
+<br />
+<br />I didn't want to make a proposal in this email, but, I think we should
+<br />
+have a standard mechanism of indicating that a specific characterstring
+<br />
+variable set comes from an external vocabulary indicated by a URI:,
+<br />
+something like:
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;float temperature(realization,...);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature:coordinates=&quot;realization ...&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature:ancillary_variables = &quot;metadata&quot;;
+<br />
+&nbsp;&nbsp;char metadata(realization,len80);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metadata:external_dictionary='<a href="http://someExternalGovernanceBody">http://someExternalGovernanceBody</a>';
+<br />
+(i.e. a new modifier).
+<br />
+<br />Then, IPCC, or WMO or whoever, could come up with the dictionaries they
+<br />
+want, and the cf file would still be self-describing, cf-software could
+<br />
+still manipulate it, but communities could write software that made use
+<br />
+of these extra characteristics, without CF having to govern everything
+<br />
+(and add all the components of these external schema to CF, piece by
+<br />
+piece, with detailed arguments for each one to go in the standard name
+<br />
+table). 
+<br />
+<br />Obviously my mechanism could be extended for any characteristic of a
+<br />
+variable that we didn't want to put in a standard name, so the real
+<br />
+policy issue is Issue-D, and it comes back to the scope of CF, which
+<br />
+needs some decision.
+<br />
+<br />Thus far we have held a line on standard names, but I feel the
+<br />
+Paco,Jamie,Jonathan proposal takes us into new territory. We will take
+<br />
+on having to discuss and approve a whole new class of standard names
+<br />
+(and all the work that goes with that). It's fine if it's a community
+<br />
+decision to go there, but we need our eyes open :-), and some realistic
+<br />
+appreciation of how we can actually do it. 
+<br />
+<br />My opinion: better to push it off onto the communities who care, and
+<br />
+keep CF focused.
+<br />
+<br />Cheers
+<br />
+Bryan
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Oct 27 2006 - 03:22:58 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start374">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0375.html" title="Next message in the list">Kyle Halliday: "[CF-metadata] CF discussion board beta test"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0373.html" title="Previous message in the list">Kettleborough, Jamie: "[CF-metadata] CF and multi-forecast system ensemble data"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0372.html" title="Message to which this message replies">John Caron: "[CF-metadata] CF and multi-forecast system ensemble data"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0377.html" title="Next message in this discussion thread">Kettleborough, Jamie: "[CF-metadata] CF and multi-forecast system ensemble data"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0377.html" title="Message sent in reply to this message">Kettleborough, Jamie: "[CF-metadata] CF and multi-forecast system ensemble data"</a></li>
+<li><dfn>Reply</dfn>: <a href="./0379.html" title="Message sent in reply to this message">Francisco Doblas-Reyes: "[CF-metadata] CF and multi-forecast system ensemble data"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg374" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg374" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg374" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg374" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:49 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0373.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0375.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

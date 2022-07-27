@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] time as ISO strings from Benno Blumenthal on 2010-11-01 (cf-metadata-mailman)</title>
+<meta name="Author" content="Benno Blumenthal (benno)" />
+<meta name="Subject" content="[CF-metadata] time as ISO strings" />
+<meta name="Date" content="2010-11-01" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2958.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2960.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] time as ISO strings</h1>
+<!-- received="Mon Nov  1 15:15:18 2010" -->
+<!-- isoreceived="20101101151518" -->
+<!-- sent="Mon, 1 Nov 2010 17:15:18 -0400" -->
+<!-- isosent="20101101211518" -->
+<!-- name="Benno Blumenthal" -->
+<!-- email="benno" -->
+<!-- subject="[CF-metadata] time as ISO strings" -->
+<!-- id="AANLkTima5L1K9KwjUdtkMOh-upyZnp6+mb-6r1pfv+Qu_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4CCEFA94.5020500_at_sintef.no" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2959" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2960.html" accesskey="d" title="Wright, Bruce: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Next message</a> ]
+[ <a href="./2958.html" title="Ben Hetland: &quot;[CF-metadata] time	as ISO strings&quot;">Previous message</a> ]
+[ <a href="./2958.html" title="Ben Hetland: &quot;[CF-metadata] time	as ISO strings&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2883.html" accesskey="t" title="Mike Grant: &quot;[CF-metadata] New standard names for satellite obs data&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2959" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2959" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2959" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2959" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Benno Blumenthal &lt;<a href="mailto:benno?Subject=Re%3A%20%5BCF-metadata%5D%20time%20as%20ISO%20strings">benno</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 1 Nov 2010 17:15:18 -0400</span><br />
+</address>
+<br />
+Hi Ben,
+<br />
+<br />First of all, you are spending a lot of time talking about what many
+<br />
+of us think as the parsing of the offset in the units string when it
+<br />
+is passed to udunits, which makes it seem like a side issue, probably
+<br />
+unfairly.
+<br />
+<br />ISO8601, as pointed out before, is not designed as a science standard,
+<br />
+it is a business exchange standard, so they can get away with
+<br />
+<br />1) first deciding to skip year 0000, then changing their minds and
+<br />
+insisting on year zero (Note that xSchema dateTime was based on the
+<br />
+earlier choice, so it continues to skip year zero).
+<br />
+<br />2) ISO8601, according to <a href="http://en.wikipedia.org/wiki/ISO_8601">http://en.wikipedia.org/wiki/ISO_8601</a>, is
+<br />
+proleptic_gregorian, by mutual agreement.  Also, one can put more
+<br />
+digits in the year, again b y mutual agreement. That is not exactly
+<br />
+what one expects from a time representation standard for science,
+<br />
+which needs things stately clearly or left undetermined.  They do say,
+<br />
+however, that time should be continuous at the day granularity, which
+<br />
+forces the conclusion, mutual agreement or not.
+<br />
+<br />Note that XML Schema merely says there is no year 0000
+<br />
+<a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/">http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/</a>.  Whether they
+<br />
+mean by this is that earlier times should be represented by year -2
+<br />
+when ISO8601 says year -1, or they mean you cannot represent just year
+<br />
+0000, or you cannot represent times before year 0000, is hard to say.
+<br />
+Aren't commercial standards wonderful?
+<br />
+<br />So it would seem that conforming to ISO8601 would require proleptic
+<br />
+gregorian calendar support, not in the concrete sense of parsing a
+<br />
+udunits string but in the more general sense of a continuous numeric
+<br />
+representation of time corresponding to ISO8601.  And the &quot;standard&quot;
+<br />
+calendar in udunits is not actually the &quot;standard&quot; calendar of
+<br />
+ISO8601.  So it would seem that at least proleptic_gregorian support
+<br />
+in udunits is essential for future ease of use.
+<br />
+<br />Benno
+<br />
+<br /><br /><br />On Mon, Nov 1, 2010 at 1:36 PM, Ben Hetland &lt;ben.a.hetland at sintef.no&gt; wrote:
+<br />
+<em class="quotelev1">&gt; On 30.10.2010 01:35, John Caron wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) no one is suggesting to replace the udunits convention; the
+</em><br />
+<em class="quotelev2">&gt;&gt; original suggestion a few years back was to allow ISO 8601
+</em><br />
+<em class="quotelev2">&gt;&gt; formatted time strings in addition.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) Udunits accepts ISO Strings for the date part, AFAIU, but
+</em><br />
+<em class="quotelev2">&gt;&gt; allows more variations I think.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Yes, or at least this would be a good principle to follow. Alas, Udunits
+</em><br />
+<em class="quotelev1">&gt; lacks a bit to fully accept any ISO 8601 timestamp, even if only the
+</em><br />
+<em class="quotelev1">&gt; date part is considered. For example, a date like &quot;20101101&quot; is accepted
+</em><br />
+<em class="quotelev1">&gt; neither as DATE nor as TIMSTAMP (sic) according to the referenced
+</em><br />
+<em class="quotelev1">&gt; Udunits-2 unit grammar, AFAICT.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I suppose this is also a question of amending the Udunits library itself
+</em><br />
+<em class="quotelev1">&gt; so that full ISO 8601 compliance is achieved. This is something that
+</em><br />
+<em class="quotelev1">&gt; would also make it more suitable in a number of other applications
+</em><br />
+<em class="quotelev1">&gt; besides the netCDF-related ones, I suppose.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; The formal grammar is here:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://www.unidata.ucar.edu/software/udunits/udunits-2/udunits2lib.html#Grammar">http://www.unidata.ucar.edu/software/udunits/udunits-2/udunits2lib.html#Grammar</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks for the link!
+</em><br />
+<em class="quotelev1">&gt; (I was aware of it, but wasn't sure whether it applied to Udunits-2
+</em><br />
+<em class="quotelev1">&gt; only, or just Udunits in general...)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 3) ?The problem with udunits time handling is that it doesnt handle
+</em><br />
+<em class="quotelev2">&gt;&gt; anything other than the default Calendar. So, it cant be used as the
+</em><br />
+<em class="quotelev2">&gt;&gt; reference implementation for non-standard Calendars.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I believe the same &quot;problem&quot; exists with ISO 8601 as well.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I also think that adding calendar support is an issue that should be
+</em><br />
+<em class="quotelev1">&gt; introduced with great caution. Calendars are location and culture
+</em><br />
+<em class="quotelev1">&gt; specific, and even when dealing with historical or culture-specific
+</em><br />
+<em class="quotelev1">&gt; dates (how applicable is that to CF?) one needs quite a bit of
+</em><br />
+<em class="quotelev1">&gt; additional meta information to clearly deal with such a &quot;calendar time
+</em><br />
+<em class="quotelev1">&gt; scale&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; For scientific usage, I would claim that while any such time scale can
+</em><br />
+<em class="quotelev1">&gt; definitely be useful, one would still sooner or later need to convert
+</em><br />
+<em class="quotelev1">&gt; that &quot;time unit&quot; into something that can be related to _other_ time
+</em><br />
+<em class="quotelev1">&gt; scales, at least if sharing and reuse of data is a concern (which it
+</em><br />
+<em class="quotelev1">&gt; should, IMHO!). To me, it seems that the only internationally accepted
+</em><br />
+<em class="quotelev1">&gt; common standard, or de facto &quot;reference time scale&quot;, is the current
+</em><br />
+<em class="quotelev1">&gt; Gregorian calendar. It is often used in parallel with other calendars.
+</em><br />
+<em class="quotelev1">&gt; If data in _other_ calendars (i.e. &quot;time scales&quot;) were to be specifiable
+</em><br />
+<em class="quotelev1">&gt; in CF, then at least some means of unambiguously mapping them to
+</em><br />
+<em class="quotelev1">&gt; &quot;Gregorian ISO 8601&quot; would need to be settled.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; Regards,
+</em><br />
+<em class="quotelev1">&gt; ? ? ? ?-+-Ben-+-
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Opinions expressed are my own, not necessarily those of my employer.
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><br /><pre>
+-- 
+Dr. M. Benno Blumenthal? ? ? ? ? benno at iri.columbia.edu
+International Research Institute for climate and society
+The Earth Institute at Columbia University
+Lamont Campus, Palisades NY 10964-8000?? (845) 680-4450
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Nov 01 2010 - 15:15:18 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2959">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2960.html" title="Next message in the list">Wright, Bruce: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2958.html" title="Previous message in the list">Ben Hetland: "[CF-metadata] time	as ISO strings"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2958.html" title="Message to which this message replies">Ben Hetland: "[CF-metadata] time	as ISO strings"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2883.html" title="Next message in this discussion thread">Mike Grant: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2959" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2959" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2959" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2959" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2958.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2960.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] high sample rate (seismic) data conventions from Seth McGinnis on 2017-04-10 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] high sample rate (seismic) data conventions" />
+<meta name="Date" content="2017-04-10" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8247.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8249.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] high sample rate (seismic) data conventions</h1>
+<!-- received="Mon Apr 10 11:54:18 2017" -->
+<!-- isoreceived="20170410105418" -->
+<!-- sent="Mon, 10 Apr 2017 11:54:18 -0600" -->
+<!-- isosent="20170410175418" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] high sample rate (seismic) data conventions" -->
+<!-- id="8b9bfadb-d72b-2ca2-9f8c-1ac83f6a6a8d_at_ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4DD44D81-F87A-4DE7-8232-90F378FB0BFF_at_lanl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8248" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8249.html" accesskey="d" title="Lowry, Roy K.: &quot;[CF-metadata] high sample rate (seismic) data conventions&quot;">Next message</a> ]
+[ <a href="./8247.html" title="Jonathan Gregory: &quot;[CF-metadata] axis attribute&quot;">Previous message</a> ]
+[ <a href="./8246.html" title="Maccarthy, Jonathan K: &quot;[CF-metadata] high sample rate (seismic) data conventions&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8250.html" accesskey="t" title="Maccarthy, Jonathan K: &quot;[CF-metadata] high sample rate (seismic) data conventions&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8248" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8248" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8248" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8248" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20high%20sample%20rate%20(seismic)%20data%20conventions">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 10 Apr 2017 11:54:18 -0600</span><br />
+</address>
+<br />
+Hi Jonathan,
+<br />
+<br />Oh, climate model outputs are also supposed to have a uniform sample
+<br />
+rate for the whole time series -- emphasis on *SUPPOSED TO*.  To my
+<br />
+dismay, I have encountered multiple cases where something went wrong
+<br />
+with the generation of the data files, resulting in missing or repeated
+<br />
+or weirdly-spaced timesteps, and sorting out the resulting problems is
+<br />
+how I came to appreciate the value of the explicit coordinate...
+<br />
+<br />As far as I know, you are correct that CF does not have a standardized
+<br />
+way to represent a coordinate solely in terms of a formula without
+<br />
+reference to a corresponding coordinate variable.
+<br />
+<br />However, that doesn't mean you couldn't do it and still have the file be
+<br />
+CF-compliant.  As far as I am aware (and somebody correct me if I'm
+<br />
+wrong), coordinate variables are not actually mandatory.
+<br />
+<br />So if, for reasons of feasibility, you found it necessary to do
+<br />
+something like the following, I believe that strictly speaking it would
+<br />
+be not just allowed but fully CF-compliant:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;time = UNLIMITED; // (1892160000 currently)
+<br />
+variables:
+<br />
+&nbsp;&nbsp;double acceleration(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;acceleration:long_name = &quot;ground acceleration&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;acceleration:units = &quot;m s-2&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;acceleration:start_time = &quot;2017-01-01 00:00:00.01667&quot;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;acceleration:sampling_rate = &quot;60 hz&quot;
+<br />
+data:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;acceleration = 1.324145e-6, ...
+<br />
+<br /><br />I actually have some files without any coordinate variables sitting
+<br />
+around from the intermediate stage of some processing I did; I checked
+<br />
+one with Rosalyn Hatcher's cf-checker, and it didn't complain, so I
+<br />
+think it is technically legal.  It's kind of a letter-of-the-law rather
+<br />
+than spirit-of-the-law thing, but it's at least theoretically compliant.
+<br />
+&nbsp;Up to you whether that would count as sufficiently suitable for your
+<br />
+use case.
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<br /><br /><br />On 4/10/17 10:54 AM, Maccarthy, Jonathan K wrote:
+<br />
+<em class="quotelev1">&gt; Hi Seth,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thanks for the very helpful response.  I can understand the argument for
+</em><br />
+<em class="quotelev1">&gt; explicit coordinates, as opposed to using formulae; I think it solves
+</em><br />
+<em class="quotelev1">&gt; several problems.  The assumption of a uniform sample rate for the
+</em><br />
+<em class="quotelev1">&gt; length of a continuous time series is deeply engrained in most seismic
+</em><br />
+<em class="quotelev1">&gt; software, however.  Changing that assumption may lead to other problems
+</em><br />
+<em class="quotelev1">&gt; (but maybe not!).  Data volumes for a single channel can be 40-100
+</em><br />
+<em class="quotelev1">&gt; 4-byte samples per second, which is something like 5-12 GB per channel
+</em><br />
+<em class="quotelev1">&gt; per year uncompressed.  Commonly, dozens of channels are used at once,
+</em><br />
+<em class="quotelev1">&gt; though some of them may share time coordinates.  It sounds like this
+</em><br />
+<em class="quotelev1">&gt; use-case is similar in volume to what you've used, and may be worth
+</em><br />
+<em class="quotelev1">&gt; trying out.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Just to be clear, however, would I be correct in saying that CF has no
+</em><br />
+<em class="quotelev1">&gt; accepted way of representing the data as I've described?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thanks again,
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; On Apr 7, 2017, at 4:43 PM, Seth McGinnis &lt;mcginnis at ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:mcginnis at ucar.edu&gt;&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Hi Jonathan,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I would interpret the CF stance as being that the value in having
+</em><br />
+<em class="quotelev2">&gt;&gt; explicit coordinate variables and other ancillary data to accompany the
+</em><br />
+<em class="quotelev2">&gt;&gt; data outweighs the cost of increased storage.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; There are some cases where CF bends away from that for the sake of
+</em><br />
+<em class="quotelev2">&gt;&gt; practicality (see, e.g., the discussion about external file references
+</em><br />
+<em class="quotelev2">&gt;&gt; for cell_bounds in CMIP5), but overall, my sense is that the community
+</em><br />
+<em class="quotelev2">&gt;&gt; feels that it's better to have things explicitly written out in the file
+</em><br />
+<em class="quotelev2">&gt;&gt; than it is to provide them implicitly via a formula to calculate them.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Based on my personal experiences, I think this is the right approach.
+</em><br />
+<em class="quotelev2">&gt;&gt; (In fact, I take it even further: I prefer to avoid data compression
+</em><br />
+<em class="quotelev2">&gt;&gt; entirely and to keep like data with like as much as possible, rather
+</em><br />
+<em class="quotelev2">&gt;&gt; than splitting big files into smaller pieces.)
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I have endured far, far more suffering and toil from (a) trying to
+</em><br />
+<em class="quotelev2">&gt;&gt; figure out what's wrong with a file that violates some implicit
+</em><br />
+<em class="quotelev2">&gt;&gt; assumption (like &quot;there are never gaps in the time coordinate&quot;) and (b)
+</em><br />
+<em class="quotelev2">&gt;&gt; dealing with the complications of various tactics for keeping file sizes
+</em><br />
+<em class="quotelev2">&gt;&gt; small than I ever have from storing and working with very large files.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; YMMV, of course.  What are your data volumes like?  I'm working at the
+</em><br />
+<em class="quotelev2">&gt;&gt; terabyte scale, and as long as my file sizes stay under a few dozen GB,
+</em><br />
+<em class="quotelev2">&gt;&gt; I don't really even bother thinking about anything that affects the file
+</em><br />
+<em class="quotelev2">&gt;&gt; size by less than an order of magnitude.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Cheers,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Seth McGinnis
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ----
+</em><br />
+<em class="quotelev2">&gt;&gt; NARCCAP / NA-CORDEX Data Manager
+</em><br />
+<em class="quotelev2">&gt;&gt; RISC - IMAGe - CISL - NCAR
+</em><br />
+<em class="quotelev2">&gt;&gt; ----
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 4/7/17 9:55 AM, Maccarthy, Jonathan K wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Hi all,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; I?m curious about the suitability of CF metadata conventions for
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; seismic sensor data.  I?ve done a bit of searching, but can?t find
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; any mention of how CF conventions would store high sample-rate data
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; sensor data.  I do see descriptions of time series conventions, where
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; hourly or daily sensor data samples are stored along with their
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; timestamps, but storing individual timestamps for each sample of a
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; high sample rate sensor would unnecessarily double the storage.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Seismic formats typically don?t store time vectors, but instead just
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; store vectors of samples with an associated start time and sampling
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; rate.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Could someone please point me towards a discussion or existing
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; conventions on this topic?  Any help or suggestion is appreciated.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Best, Jon _______________________________________________ CF-metadata
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; mailing list CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Apr 10 2017 - 11:54:18 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8248">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8249.html" title="Next message in the list">Lowry, Roy K.: "[CF-metadata] high sample rate (seismic) data conventions"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8247.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] axis attribute"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8246.html" title="Message to which this message replies">Maccarthy, Jonathan K: "[CF-metadata] high sample rate (seismic) data conventions"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8250.html" title="Next message in this discussion thread">Maccarthy, Jonathan K: "[CF-metadata] high sample rate (seismic) data conventions"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8250.html" title="Message sent in reply to this message">Maccarthy, Jonathan K: "[CF-metadata] high sample rate (seismic) data conventions"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8248" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8248" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8248" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8248" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:13 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8247.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8249.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Fix Geostationary projection, including proposal for two new standard names from Martin Juckes - UKRI STFC on 2018-04-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="Martin Juckes - UKRI STFC (martin.juckes)" />
+<meta name="Subject" content="[CF-metadata] Fix Geostationary projection, including proposal for two new standard names" />
+<meta name="Date" content="2018-04-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8893.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8895.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Fix Geostationary projection, including proposal for two new standard names</h1>
+<!-- received="Fri Apr 20 07:41:29 2018" -->
+<!-- isoreceived="20180420064129" -->
+<!-- sent="Fri, 20 Apr 2018 13:41:29 +0000" -->
+<!-- isosent="20180420134129" -->
+<!-- name="Martin Juckes - UKRI STFC" -->
+<!-- email="martin.juckes" -->
+<!-- subject="[CF-metadata] Fix Geostationary projection, including proposal for two new standard names" -->
+<!-- id="4a5b80be81da4db6a2546fa109394a8a_at_stfc.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4F55739F-9D8D-444B-B97F-0778D64C5D08_at_excaliburlabs.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8894" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8895.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] Fix Geostationary projection, including proposal for two new standard names&quot;">Next message</a> ]
+[ <a href="./8893.html" title="Daniel Lee: &quot;[CF-metadata] Fix Geostationary projection, including proposal for two new standard names&quot;">Previous message</a> ]
+[ <a href="./8892.html" title="Randy Horne: &quot;[CF-metadata] Fix Geostationary projection, including proposal for two new standard names&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8895.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] Fix Geostationary projection, including proposal for two new standard names&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8894" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8894" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8894" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8894" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Martin Juckes - UKRI STFC &lt;<a href="mailto:martin.juckes?Subject=Re%3A%20%5BCF-metadata%5D%20Fix%20Geostationary%20projection%2C%20including%20proposal%20for%20two%20new%20standard%20names">martin.juckes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 20 Apr 2018 13:41:29 +0000</span><br />
+</address>
+<br />
+Hello Randy,
+<br />
+<br /><br />thanks, that clears up a lot of my confusion.
+<br />
+<br /><br />Since the coordinates are N/S and E/W aligned, at least at the origin, it may be better to include this in the names. &quot;x&quot; and &quot;y&quot; are generally used for coordinates which have an arbitrary orientation relative to the Earth's axis which then needs to be specified in additional attribute values.
+<br />
+<br /><br />Your answer does not completely define the angles for me. If we consider a point (A) which is, for example, at 45N at the same longitude, then it angular distance in the N/S direction is uniquely defined, but if we take another point (B) 45degrees to the east,  then we have two angles and their values will depend on the definition of the coordinate system.
+<br />
+<br /><br />I've found some documentation on geostationary satellites which suggests that the viewing angles are related to the gimbal system, with an outer &quot;sweep&quot; axis and an inner &quot;fixed-angle&quot; axis (this is from proj4.org/projections/geos.html).  Relating this back to the mathematical terminology of spherical coordinates that I'm familiar with, I believe the angle of rotation around the sweep axis is the azimuthal angle and the rotation around the fixed axis is the polar angle. I.e. we have a spherical coordinate system relative to the sweep axis.
+<br />
+<br /><br />The proj4.org document also states that the GEOS series have the sweep axis aligned E/W, which would imply that  projection_y_angular is an azimuthal angle and projection_x_angular is a polar angle. With this information (and the height of the satellite) I would be able to calculate the two angles for point B. I'll get a different answer if projection_y_angular is the polar angle and projection_x_angular is azimuthal, so it is important to know which is which. Perhaps projection_polar_angle, projection_azimuthal_angle would be better?
+<br />
+<br /><br />The calculation would indeed be complicated, as has already been emphasized below, but I think it is worth going back to the fundamentals here, and stating the underlying assumptions behind the coordinate system. E.g. the fact that it is defined relative to a fixed point above the Earth's surface which corresponds to an ideal satellite position.
+<br />
+<br /><br />regards,
+<br />
+<br />Martin
+<br />
+<br /><br /><br />________________________________
+<br />
+From: Randy Horne &lt;rhorne at excaliburlabs.com&gt;
+<br />
+Sent: 20 April 2018 13:56
+<br />
+To: Juckes, Martin (STFC,RAL,RALSP)
+<br />
+Cc: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] Fix Geostationary projection, including proposal for two new standard names
+<br />
+<br />Hi Martin:
+<br />
+<br />RE: I agree with Jim that a little more basic information is needed about what the angles are. I may be misinterpreting the discussion, but I had imagined that the angles as components of a spherical coordinate system centred on the satellite, with the nadir at (0,0) ... is that correct?
+<br />
+<br />The projection_x_angular_coordinate and projection_y_angular coordinates are the angular distances from the satellite?s nadir in the E/W an N/S direction, respectively, from the ideal location of the imaging instrument in geostationary orbit.
+<br />
+<br /><br />v/r
+<br />
+<br />randy
+<br />
+<br /><br /><br /><em class="quotelev1">&gt; On Apr 20, 2018, at 4:06 AM, Martin Juckes - UKRI STFC &lt;martin.juckes at stfc.ac.uk&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree with Jim that a little more basic information is needed about what the angles are. I may be misinterpreting the discussion, but I had imagined that the angles as components of a spherical coordinate system centred on the satellite, with the nadir at (0,0) ... is that correct?
+</em><br />
+<br />_____________________________________
+<br />
+<br />Randy C Horne (rhorne at excaliburlabs.com)
+<br />
+Principal Engineer, Excalibur Laboratories Inc.
+<br />
+voice &amp; fax: (321) 952.5100
+<br />
+cell: (321) 693.1074
+<br />
+url: <a href="http://www.excaliburlabs.com">http://www.excaliburlabs.com</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Apr 20 2018 - 07:41:29 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8894">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8895.html" title="Next message in the list">Jim Biard: "[CF-metadata] Fix Geostationary projection, including proposal for two new standard names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8893.html" title="Previous message in the list">Daniel Lee: "[CF-metadata] Fix Geostationary projection, including proposal for two new standard names"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8892.html" title="Message to which this message replies">Randy Horne: "[CF-metadata] Fix Geostationary projection, including proposal for two new standard names"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8895.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] Fix Geostationary projection, including proposal for two new standard names"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8895.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] Fix Geostationary projection, including proposal for two new standard names"</a></li>
+<li><dfn>Reply</dfn>: <a href="./8896.html" title="Message sent in reply to this message">Daniel Lee: "[CF-metadata] Fix Geostationary projection, including proposal for two new standard names"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8894" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8894" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8894" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8894" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:21 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8893.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8895.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

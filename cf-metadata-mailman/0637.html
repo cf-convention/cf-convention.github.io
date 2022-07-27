@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] representing subgrid variation from Jonathan Gregory on 2006-12-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] representing subgrid variation" />
+<meta name="Date" content="2006-12-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0636.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0638.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] representing subgrid variation</h1>
+<!-- received="Sat Dec 30 11:26:57 2006" -->
+<!-- isoreceived="20061230112657" -->
+<!-- sent="Sat, 30 Dec 2006 18:26:57 +0000" -->
+<!-- isosent="20061230182657" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] representing subgrid variation" -->
+<!-- id="20061230182657.GA10916_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start637" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0638.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Standard names for wave model data.&quot;">Next message</a> ]
+[ <a href="./0636.html" title="CJ Beegle-Krause: &quot;[CF-metadata] Getting back to ensembles&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg637" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg637" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg637" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg637" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20representing%20subgrid%20variation">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sat, 30 Dec 2006 18:26:57 +0000</span><br />
+</address>
+<br />
+Dear all
+<br />
+<br />I'd like to make a proposal about an issue we discussed two years ago and
+<br />
+didn't really settle. I think it needs a resolution because what we currently
+<br />
+have is ambiguous, and this will create problems of interpretation for data
+<br />
+that is being produced now. (To get round this for the IPCC AR4 database, Karl
+<br />
+Taylor supplemented CF with explicit definitions of how the calculations
+<br />
+should be done.) For history, see
+<br />
+<a href="http://www.cgd.ucar.edu/pipermail/cf-metadata/2005/000536.html">http://www.cgd.ucar.edu/pipermail/cf-metadata/2005/000536.html</a> and subsequent
+<br />
+postings. My proposal here isn't quite what I suggested then. It has to be
+<br />
+said that this is a complicated business. However, the complexity comes from
+<br />
+real practical cases, so cannot be avoided! But naturally it would be most
+<br />
+welcome if simpler ways can be proposed to deal with it.
+<br />
+<br />Requirement: To indicate the portion of a cell over which a statistic has been
+<br />
+calculated, in situations where there is a need to distinguish between
+<br />
+statistics calculated for the same quantity over different portions of the
+<br />
+cell, or where the quantity might be considered to be undefined over some of
+<br />
+the cell.
+<br />
+<br />Examples: The statistic is usually a mean or a sum. The situation most often
+<br />
+arises with cells in the horizontal, where the &quot;portions&quot; are different types
+<br />
+of surface that don't have defined geographical boundaries. Some examples:
+<br />
+<br />(a) sea_ice_thickness averaged over the area of sea ice, the area of sea, or
+<br />
+the entire area of the cell including land. These can all be written as A/B,
+<br />
+where A is the total volume of sea ice in the cell, and B is the area of sea
+<br />
+ice, the area of sea or the area of the cell. Over the ice-free parts of the
+<br />
+sea, one could say that the sea-ice thickness is zero; over the land, it is
+<br />
+not really meaningful.
+<br />
+<br />(b) surface_upward_sensible_heat_flux averaged over different surface types
+<br />
+within the cell e.g. land, sea, land_ice, forest. These might similarly be
+<br />
+written as A/B, A (in W) being the area-integral of the flux applying to the
+<br />
+given surface type, and B (in m2) either the area occupied by that type, or
+<br />
+the cell area.  Alternatively, this means the flux (W m-2) is expressed either
+<br />
+per unit area of the particular surface type, or per unit area of the grid
+<br />
+cell. When the values for different types are given per unit area of the cell,
+<br />
+the sum of these values over all types is the mean for the cell as a whole.
+<br />
+Unlike sea-ice thickness, sensible heat flux exists everywhere, but takes
+<br />
+different values in different portions of the cell.
+<br />
+<br />(c) surface_temperature averaged over different surface types within the cell.
+<br />
+This is only likely to be given as a average value for each surface type i.e.
+<br />
+formally where B is the area of that type e.g. the temperature is 300 K over
+<br />
+the land portion of the cell. Supposing the land is one-third of the cell,
+<br />
+you could say the land temperature contributes 100 K to the temperature
+<br />
+averaged over the cell (like you might for sensible heat flux) but I've not
+<br />
+come across such a statistic.
+<br />
+<br />(d) surface_snow_mass (kg - this is not currently a standard name) in the
+<br />
+cell, or on the land only within the cell, or on the sea-ice. This is a sum,
+<br />
+rather than a mean.
+<br />
+<br />(e) surface_downward_heat_flux_in_air calculated for sea areas and averaged
+<br />
+over the world. This can be expressed per unit area of the sea or per unit
+<br />
+area of the world. Both are useful in different contexts; the former is more
+<br />
+natural when considering the heat budget of the ocean, the latter if the heat
+<br />
+budget of the planet.
+<br />
+<br />In the standard_name guidelines, this issue is partly addressed by using
+<br />
+where-phrases. However, this approach is unclear and inadequate. It can't
+<br />
+indicate, for instance, whether the sensible heat flux applying to the land
+<br />
+portion of the box is expressed per unit area of land or per unit area of the
+<br />
+cell. There are only 8 standard names at present with where-phrases, so I
+<br />
+don't think it's too late to think again.
+<br />
+<br />This whole issue concerns the calculation of statistics for subgrid variation,
+<br />
+which should properly be indicated by coordinates and cell_methods, I think.
+<br />
+Taking that approach instead of where-phrases in standard names will also
+<br />
+reduce the number of standard names we need to add.
+<br />
+<br />Proposal:
+<br />
+<br />(1) If there is no cell_methods specified, the default interpretation for an
+<br />
+intensive quantity is &quot;point&quot;, which means a local value in area or an
+<br />
+instantaneous value in time, and &quot;sum&quot; for an extensive quantity, meaning the
+<br />
+sum over area or time in the cell. No change is proposed to this, because it
+<br />
+is unproblematic, since point values and integrals do not involve dividing by
+<br />
+anything. It is undefined what value should be given if the quantity does not
+<br />
+exist e.g. sea_ice_thickness where there is no sea ice; the value could be
+<br />
+zero or missing.
+<br />
+<br />(2) Delete the existing standard names with where-phrases, making them aliases
+<br />
+of names without the where-phrases.
+<br />
+<br />(3) A cell_methods entry is generically of the form &quot;NAME: [NAME: ...]
+<br />
+METHOD&quot; (see CF 7.3), where NAMEs are the names of dimensions, scalar
+<br />
+coordinate variables, or standard_names. Horizontal area-means are indicated
+<br />
+by &quot;lat: lon: mean&quot;, if &quot;lat&quot; and &quot;lon&quot; are the latitude and longitude
+<br />
+dimensions. I propose to introduce a special NAME of &quot;area&quot; to indicate
+<br />
+horizontal area, so an area-mean can be written &quot;area: mean&quot;.  Apart from
+<br />
+being more obvious in the usual lat-lon case, I suggest this is necessary in
+<br />
+cases where the horizontal coordinates are not lat and lon. As discussed in
+<br />
+another thread, there is no guaranteed way to identify which are the
+<br />
+horizontal dimensions in such cases, so a generic application might not be
+<br />
+able to identify the cell_methods entry applying to horizontal area.
+<br />
+<br />(4) To indicate that a quantity should be evaluated over a particular portion
+<br />
+of a cell, because it could have different values for different portions of
+<br />
+the cell, one of two conventions may be used:
+<br />
+<br />(i) a string-valued coordinate variable or scalar coordinate variable
+<br />
+indicating the portion of the cell.  Variables with standard_names of
+<br />
+land_cover and surface_cover would be suitable. I propose also a new
+<br />
+standard_name of area_type, whose values could be any of the surface_cover
+<br />
+types as well as any distinctions of horizontal area which are not surface
+<br />
+types, such as &quot;cloud&quot;. A coordinate variable with dimension greater than one
+<br />
+allows values of a quantity e.g. specific_humidity, surface_temperature,
+<br />
+surface_upward_sensible_heat_flux to be given for various area types in one
+<br />
+data variable, as is often needed in land surface models especially, since
+<br />
+they deal with many types. The cell_methods entry would be of the form &quot;NAME:
+<br />
+METHOD&quot; as usual, where NAME could be &quot;area&quot;, given point (3).
+<br />
+<br />(ii) a cell_methods entry may be given of the form &quot;NAME: METHOD where TYPE&quot;
+<br />
+where TYPE may be one of a small set of types explicitly listed in the CF
+<br />
+standard: I propose land, sea, sea_ice. The phrase &quot;where TYPE&quot; should be
+<br />
+interpreted as exactly equivalent to supplying a scalar or size-one coordinate
+<br />
+variable of area_type with value TYPE. It is proposed as a shorthand for the
+<br />
+commonest cases. Since separate models exist for land, sea and sea_ice, the
+<br />
+output from these models might have many or all variables requiring this
+<br />
+qualification; I think the shorthand would be an encouragement to modellers to
+<br />
+provide it, as well as a convenience to everyone else.
+<br />
+<br />If neither of these conventions is used, the statistical METHOD specified by
+<br />
+cell_methods (mean, maximum, etc.) is assumed to apply to the entire cell.
+<br />
+With either of these conventions, the statistical METHOD applies to the
+<br />
+selected portion of the cell only.
+<br />
+<br />In either case, other coordinate variables may also implicitly restrict the
+<br />
+portion of the cell considered by the statistical METHOD. For example, the
+<br />
+horizontal area of the ocean decreases with increasing depth. An area-mean as
+<br />
+a function of depth in the ocean is therefore formed over different areas at
+<br />
+different depths. If there is a coordinate of sea_ice_thickness which
+<br />
+specifies ranges, as would be done by a model that deals with thickness
+<br />
+categories, data variables with this coordinate would contain values
+<br />
+calculated within those categories, which implies a varying area as a function
+<br />
+of thickness.
+<br />
+<br />(5) If the METHOD is &quot;mean&quot;, the cell_methods entry may be further
+<br />
+supplemented by the phrase &quot;over TYPE2&quot;, where TYPE2 can be land, sea or all.
+<br />
+This indicates that the mean is calculated by summing over the selected
+<br />
+portion of the cell, and then dividing by the area of TYPE2 in the cell, where
+<br />
+&quot;all&quot; means the entire area of the cell, rather than by the area of the
+<br />
+portion alone.
+<br />
+<br />Examples:
+<br />
+<br />(a) sea_ice_thickness averaged over the area of sea ice, the area of sea, or
+<br />
+the entire area of the cell including land. The cell_methods entry would be
+<br />
+&quot;area: mean where sea_ice&quot; in the first case, with &quot;over sea&quot; and &quot;over all&quot;
+<br />
+appended in the second and third.
+<br />
+<br />(b) surface_upward_sensible_heat_flux averaged over different surface types
+<br />
+within the cell e.g. land, sea, land_ice, forest. This would have a coordinate
+<br />
+variable of e.g. surface_cover to distinguish the types. The cell_methods
+<br />
+entry would be &quot;area: mean&quot; if averaged over the type, or &quot;area: mean over
+<br />
+all&quot; if expressed by unit area of the grid cell.
+<br />
+<br />(c) surface_temperature averaged over different surface types within the cell.
+<br />
+This would likewise have &quot;area: mean&quot;.
+<br />
+<br />(d) surface_snow_mass in the cell, or on the land only within the cell, or on
+<br />
+the sea-ice. The cell_methods entry would be &quot;area: sum&quot; in the first case,
+<br />
+with &quot;where land&quot; and &quot;where sea-ice&quot; in the second and third.
+<br />
+<br />(e) surface_downward_heat_flux_in_air calculated for sea areas and averaged
+<br />
+over the world. The cell_methods would have &quot;area: mean where sea&quot; if the
+<br />
+result is expressed per unit area of sea, and &quot;area: mean where sea over all&quot;
+<br />
+if per unit area of the world. The bounds of the horizontal coordinates in
+<br />
+this case indicate that &quot;area&quot; means the whole world, or instead of &quot;area:&quot;
+<br />
+we could have &quot;latitude: longitude:&quot;, which is a special syntax (in CF 7.3)
+<br />
+indicating the entire range of latitude and longitude.
+<br />
+<br />(f) surface_snow_thickness averaged over the area of snow on land. No
+<br />
+where-phrase is proposed for this case. It would be done by including a scalar
+<br />
+coordinate variable of e.g. area_type, with the value snow_on_land, and the
+<br />
+cell_methods entry would be &quot;area: mean&quot;, which would implicitly apply to the
+<br />
+area of snow_on_land.  To indicate that the land-snow thickness should be
+<br />
+averaged over the grid cell area, &quot;over all&quot; would be appended. To indicate
+<br />
+the average thickness of snow on land, not just in the snow-covered parts of
+<br />
+the box, the area_type variable would be &quot;land&quot;, or it could be omitted and
+<br />
+the cell_methods entry given as &quot;area: mean where land&quot;.
+<br />
+<br />Cheers
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Sat Dec 30 2006 - 11:26:57 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start637">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0638.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Standard names for wave model data."</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0636.html" title="Previous message in the list">CJ Beegle-Krause: "[CF-metadata] Getting back to ensembles"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg637" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg637" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg637" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg637" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:53 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0636.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0638.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

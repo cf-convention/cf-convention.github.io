@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Recording &quot;day of year on which something happens&quot; from Jon Blower on 2017-03-21 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jon Blower (j.d.blower)" />
+<meta name="Subject" content="[CF-metadata] Recording &quot;day of year on which something happens&quot;" />
+<meta name="Date" content="2017-03-21" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8130.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8132.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Recording &quot;day of year on which something happens&quot;</h1>
+<!-- received="Tue Mar 21 10:15:09 2017" -->
+<!-- isoreceived="20170321101509" -->
+<!-- sent="Tue, 21 Mar 2017 16:15:09 +0000" -->
+<!-- isosent="20170321161509" -->
+<!-- name="Jon Blower" -->
+<!-- email="j.d.blower" -->
+<!-- subject="[CF-metadata] Recording &quot;day of year on which something happens&quot;" -->
+<!-- id="D1B1CD1C-0104-40E6-813D-3A899CDAED26_at_reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4fb4a917-13cb-60d5-16c8-9c7f10f9bea4_at_cicsnc.org" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8131" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8132.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  geoid, sea surface, height, and standard names&quot;">Next message</a> ]
+[ <a href="./8130.html" title="Elodie Fernandez: &quot;[CF-metadata] Wave periods sub-proposal&quot;">Previous message</a> ]
+[ <a href="./8124.html" title="Jim Biard: &quot;[CF-metadata] Recording &#0034;day of year on which something happens&#0034;&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8131" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8131" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8131" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8131" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jon Blower &lt;<a href="mailto:j.d.blower?Subject=Re%3A%20%5BCF-metadata%5D%20Recording%20%22day%20of%20year%20on%20which%20something%20happens%22">j.d.blower</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 21 Mar 2017 16:15:09 +0000</span><br />
+</address>
+<br />
+Dear all,
+<br />
+<br />Many thanks indeed for all the replies to this thread. It seems that there are a few issues here that lots of people would like to resolve! I?m going to try to summarise my take on the discussions here. I?m aware I?m probably missing some important contributions ? apologies if so, I?m having trouble keeping up with all the replies.
+<br />
+<br />&nbsp;1. Our specific use case is to record the day of the year on which a given number of ?growing degree days? are reached within the year. There are a few ways of calculating GDDs, as this page [1] explains, but it?s essentially some kind of integral of temperature over time. I?m not sure how best to record the exact method used, since I don?t think there are snappy names for the various options that can be captured in a standard name. I guess that we could use a fairly generic standard name (see point 4 below) and use documentation to explain the exact derivation we used.
+<br />
+<br />&nbsp;2. The NetCDF file might record days of year for several ?threshold? values of GDD, so I would probably use a dimension to hold all the possible thresholds. (So we can find the day of the year on which 100, 200, 1000 GDDs were reached, etc.)
+<br />
+<br />&nbsp;3. The variable itself would probably be the day of the year, expressed as an integer between 1 (January 1st) and 366. I note the helpful warnings not to refer to this as a ?Julian Day? (I?ve made that mistake before!) and I also note Nan?s comment that the Navy might regard day of year as a fractional quantity (so noon on Jan 1st is ?1.5?). But I think it?s simplest just to regard the day of the year as an integer number, starting at 1. Doing something else would probably surprise the users (mainly crop growers).
+<br />
+<br />&nbsp;4. So a reasonable standard name, following the precedents cited by Antonio, might be ?day_of_year_when_growing_degree_days_exceeds_threshold?. I would imagine that this would be unitless? A comment could contain more information about the method used.
+<br />
+<br />&nbsp;5. Alternatively, we could record the date on which the degree days exceed threshold by using a time variable (with units of ?days since X?), meaning that each year?s measurements would contain a different range of data values (year 1 would be [1:365], year 2 would be [366:730] etc. However, this would make it a little harder for users to compare measurements from year to year, which would be a very common phenological use case, so I would tend to prefer the ?day of year? option. (I think Nan made a point essentially agreeing with this.)
+<br />
+<br />&nbsp;5. We need a dimension representing the year of measurement. Nothing greater than yearly precision is meaningful here. It seems that the ?CF way? of doing this would be to use a ?nominal date? within the year of, say, 1st July and record time_bounds that span the length of each year, as was suggested by Jim. But, to be honest, it would be simpler to record the year as a number, without further precision being involved (so the axis values would simply be integers, 2015, 2016, 2017 etc). Also, this would make it much easier for users to ?slice out? the year(s) they are interested in using simple scripts, without first needing to figure out what the ?nominal date? is within the year. Thoughts? (The question of time precision must have come up before!)
+<br />
+<br />&nbsp;6. Finally, there?s the question of cell_methods for the time axis bounds (if we use them). Jonathan suggested that ?if it?s not ?point? it should be ?sum??. But in this case, although GDD is a kind of sum, the quantity we are expressing (day of year) is not a sum ? it?s the day on which the sum reached a certain value. So, I?m still not sure which cell_method might be appropriate.
+<br />
+<br /><br />Apologies for the long email, but thanks for listening, and any comments would be much appreciated. 
+<br />
+<br />Best wishes,
+<br />
+Jon
+<br />
+<br /><br />[1] <a href="https://en.wikipedia.org/wiki/Growing_degree-day">https://en.wikipedia.org/wiki/Growing_degree-day</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Mar 21 2017 - 10:15:09 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8131">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8132.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  geoid, sea surface, height, and standard names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8130.html" title="Previous message in the list">Elodie Fernandez: "[CF-metadata] Wave periods sub-proposal"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8124.html" title="Message to which this message replies">Jim Biard: "[CF-metadata] Recording &#0034;day of year on which something happens&#0034;"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8131" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8131" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8131" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8131" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:11 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8130.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8132.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

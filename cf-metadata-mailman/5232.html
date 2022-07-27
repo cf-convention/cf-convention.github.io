@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Fwd: Re: Question from NODC about interplay of standard name modifiers, cell_methods, etc. from Jonathan Gregory on 2013-03-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Fwd: Re: Question from NODC about interplay of standard name modifiers, cell_methods, etc." />
+<meta name="Date" content="2013-03-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5231.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5233.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Fwd: Re: Question from NODC about interplay of standard name modifiers, cell_methods, etc.</h1>
+<!-- received="Sat Mar 30 07:19:56 2013" -->
+<!-- isoreceived="20130330071956" -->
+<!-- sent="Sat, 30 Mar 2013 13:19:56 +0000" -->
+<!-- isosent="20130330131956" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Fwd: Re: Question from NODC about interplay of standard name modifiers, cell_methods, etc." -->
+<!-- id="20130330131956.GA16342_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5232" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5233.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Question from NODC about interplay of standard name modifiers, cell_methods, etc.&quot;">Next message</a> ]
+[ <a href="./5231.html" title="Cameron-smith, Philip: &quot;[CF-metadata] Question from NODC about interplay of standard name modifiers, cell_methods, etc.&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5232" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5232" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5232" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5232" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Fwd%3A%20Re%3A%20Question%20from%20NODC%20about%20interplay%20of%20standard%20name%20modifiers%2C%20cell_methods%2C%20etc.">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sat, 30 Mar 2013 13:19:56 +0000</span><br />
+</address>
+<br />
+Dear Ken
+<br />
+<br />This email is about your specific question relating to the use of the CF
+<br />
+standard as it currently is. By the way, I applaud your efforts to provide
+<br />
+CF-compliant datasets from NODC and to help others in the ocean data world to
+<br />
+make CF-compliant datasets.
+<br />
+<br />I am about to make another posting about the more general question.
+<br />
+<br />I don't think the CF standard gives any instruction about what the
+<br />
+cell_methods should be when the standard_name contains a modifier. I would say
+<br />
+that, because the standard_error values belong with the data values, the
+<br />
+ancillary variable that contains the standard_error should have all the same
+<br />
+metadata as the data variable, except for the addition of the standard_name
+<br />
+modifier. So I would put
+<br />
+<br />&nbsp;&nbsp;t_an:standard_name = &quot;sea_water_temperature standard_error&quot; ;
+<br />
+&nbsp;&nbsp;t_an:cell_methods = &quot;area: mean depth: mean time: mean&quot; ;
+<br />
+<br />for the ancillary variable of standard error, if the data variable has &quot;area:
+<br />
+mean depth: mean time: mean&quot;. This means the SE variable is completely
+<br />
+self-describing.
+<br />
+<br />If the ancillary variable were seen as entirely dependent on the data
+<br />
+variable, you could argue that it didn't need any metadata such as
+<br />
+standard_name and cell_methods, because it would implicitly inherit all the
+<br />
+metadata of its data variable. For this kind of reason, bounds variables
+<br />
+actually do not need units or standard names; they are regarded as dependent
+<br />
+on the coordinate variables they belong to. However in the case of ancillary
+<br />
+variables, CF doesn't make such a strong link. The ancillary_variables
+<br />
+attribute is a kind of convenience or courtesy feature, which allows the user
+<br />
+to locate the ancillary variables more easily, but those variables are
+<br />
+themselves independent variables, rather than subservient. One reason for
+<br />
+that design is that the ancillary variables might be in different netCDF
+<br />
+files from the variables to which they are ancillary e.g. you might have a
+<br />
+file for the temperatures, another file for their standard errors, and another
+<br />
+for the number of observations. If this is the case, they need to be able to
+<br />
+describe themselves properly.
+<br />
+<br />By the way, in my version of udunits, degrees_celsius is not legal. It will
+<br />
+accept only degree_Celsius out of the four variants singular/plural c/C. Maybe
+<br />
+this is a difference between udunits 1 (which I have) and udunits 2.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Sat Mar 30 2013 - 07:19:56 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5232">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5233.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Question from NODC about interplay of standard name modifiers, cell_methods, etc."</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5231.html" title="Previous message in the list">Cameron-smith, Philip: "[CF-metadata] Question from NODC about interplay of standard name modifiers, cell_methods, etc."</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5232" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5232" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5232" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5232" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:18 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5231.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5233.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] string valued coordinates (unitless quantities) from Schultz, Martin on 2014-11-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Schultz, Martin (m.schultz)" />
+<meta name="Subject" content="[CF-metadata] string valued coordinates (unitless quantities)" />
+<meta name="Date" content="2014-11-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6632.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6634.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] string valued coordinates (unitless quantities)</h1>
+<!-- received="Wed Nov  5 00:57:12 2014" -->
+<!-- isoreceived="20141105005712" -->
+<!-- sent="Wed, 5 Nov 2014 07:57:12 +0000" -->
+<!-- isosent="20141105075712" -->
+<!-- name="Schultz, Martin" -->
+<!-- email="m.schultz" -->
+<!-- subject="[CF-metadata] string valued coordinates (unitless quantities)" -->
+<!-- id="4A980E5ADF859E4E9007AA5514CF9C8E3641C28E_at_MBX2010-E01.ad.fz-juelich.de" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6633" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6634.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]   realization | x of n&quot;">Next message</a> ]
+[ <a href="./6632.html" title="Jim Biard: &quot;[CF-metadata] string valued coordinates&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6642.html" accesskey="t" title="Hedley, Mark: &quot;[CF-metadata] string valued coordinates (unitless quantities)&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6633" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6633" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6633" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6633" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Schultz, Martin &lt;<a href="mailto:m.schultz?Subject=Re%3A%20%5BCF-metadata%5D%20string%20valued%20coordinates%20(unitless%20quantities)">m.schultz</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 5 Nov 2014 07:57:12 +0000</span><br />
+</address>
+<br />
+Dear Mark and all,
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thanks for this discussion and the motion to approach udunits to advance this issue. Reading through the posts on this, I have two comments, one question, and one afterthought:
+<br />
+<br />1. Why &quot;no_unit&quot; and not simply &quot;none&quot;? &quot;no_unit&quot; could also be &quot;no_units&quot; (in fact the attribute name is unit*s*, so the missing &quot;s&quot; in &quot;no_unit&quot; may be confusing). Being a Python fan, I like Python's concept of None as a value that indicates that there is no value; just what we want here.
+<br />
+<br />2. When you revise the respective section of the CF convention: in light of the &quot;CF 2&quot; discussions we should think about making the units attribute mandatory. Alternatively, I would suggest that a missing units attribute should mean &quot;none&quot; rather than &quot;1&quot; and/or the units attribute should become mandatory for numerical fields (a string array, for example of station names, may indeed not require a units attribute).
+<br />
+<br />3. Would you regard &quot;&quot; (empty string) as a valid alternative to &quot;none&quot;?   [I may have overlooked this in the previous discussions but wasn't sure if there was a consensus view]
+<br />
+<br />4. Coming back to the old &quot;kg/kg&quot; or &quot;mole/mole&quot; discussion: I guess it would help if udunits would accept &quot;terms that evaluate as '1' &quot; with the understanding that they ae equivalent to &quot;1&quot; as unit. Many (most) atmospheric chemistry modelers are still operating in the grey zone with units attributes of &quot;nmole mole-1&quot; which are a lot more readable than &quot;1.e-9&quot; and make a lot of sense to them. Only if you enforce a CF checker on them they will abide, but keep grunting. If one doesn't want to be too generic here, at least &quot;kg/kg&quot; and &quot;mole/mole&quot; should be added to the udunits collection.
+<br />
+<br />Best regards,
+<br />
+<br />Martin
+<br />
+<br /><br /><br /><br /><br />-----Original Message-----
+<br />
+From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of cf-metadata-request at cgd.ucar.edu
+<br />
+Sent: Tuesday, November 04, 2014 5:38 PM
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: CF-metadata Digest, Vol 139, Issue 4
+<br />
+<br />Send CF-metadata mailing list submissions to
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cf-metadata at cgd.ucar.edu
+<br />
+<br /><br /><br />Message: 2
+<br />
+Date: Tue, 4 Nov 2014 16:38:12 +0000
+<br />
+From: &quot;Hedley, Mark&quot; &lt;mark.hedley at metoffice.gov.uk&gt;
+<br />
+To: Jim Biard &lt;jbiard at cicsnc.org&gt;, &quot;cf-metadata at cgd.ucar.edu&quot;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;cf-metadata at cgd.ucar.edu&gt;
+<br />
+Subject: Re: [CF-metadata] string valued coordinates
+<br />
+Message-ID:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;7819C496F4E10E47BCEFBE74551AAC9606F401DA at EXXCMPD1DAG3.cmpd1.metoffice.gov.uk&gt;
+<br />
+<br />Content-Type: text/plain; charset=&quot;windows-1252&quot;
+<br />
+<br />Hello Jim
+<br />
+<br /><em class="quotelev1">&gt; A variable with no units attribute at all is also pretty unambiguously a marker for something that isn't intended to be a even a pure number.
+</em><br />
+<br />If only this were the case.  CF conventions state that:
+<br />
+Units are not required for dimensionless quantities. A variable with no units attribute is assumed to be dimensionless. However, a units attribute specifying a dimensionless unit may optionally be included.
+<br />
+<a href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html#units">http://cfconventions.org/Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.html#units</a>
+<br />
+<br />Thus, the absence of a unit is to be interpreted identically to a statement that units = '1'
+<br />
+<br />This is the current situation and it is likely that there is lots of data like this around.
+<br />
+<br /><em class="quotelev1">&gt; Do we really need something more than a disambiguation of units = '1' vs no units attribute present?
+</em><br />
+<br />Yes, I think we do: this situation is not ambiguous in CF, they are the same thing.
+<br />
+<br />What I believe we require is a udunits entity which is clearly 'there is no unit of measure here, this is not dimensioned and not dimensionless'
+<br />
+<br />The udunits value
+<br />
+''
+<br />
+delivers this functionality (I think), but it does not read very well, hence my suggestion that we ask for a new entry in udunits, 'no_unit'
+<br />
+which is hopefully clear in its meaning and interpretation and which behaves the same as '' : failing all udunits processing attempts and operating as 'not a unit'
+<br />
+<br />all the best
+<br />
+mark
+<br />
+<br />________________________________
+<br />
+From: CF-metadata [cf-metadata-bounces at cgd.ucar.edu] on behalf of Jim Biard [jbiard at cicsnc.org]
+<br />
+Sent: 31 October 2014 15:18
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] string valued coordinates
+<br />
+<br />Mark,
+<br />
+<br />I'm not clear on what you are suggesting that udunits do with 'no_unit' or '?'.
+<br />
+<br />I had thought that the desire was to be able to differentiate between a pure number (as you mention below) and a value (whether a string or a bit pattern) that should not be interpreted as any number at all.
+<br />
+<br />As the situation stands, a units value of '1' is pretty unambiguously a marker for a pure number. We may need to modify docs to make this clearer, but I don't think that poses a problem. A variable with no units attribute at all is also pretty unambiguously a marker for something that isn't intended to be a even a pure number. Again, we may need to modify docs to make this clearer. Because these two concepts are somewhat conflated in the current documentation and usage (area_type being an example), there is the issue of other places where cleanup would be good going forward, but even if you have a units value of '1' on a non-number, it doesn't hurt anything in practice.
+<br />
+<br />Do we really need something more than a disambiguation of units = '1' vs no units attribute present?
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 10/31/14, 11:04 AM, Hedley, Mark wrote:
+<br />
+Thank you for all the responses, it sounds like 'all of the above' is the preferred response to my suggestions of plausible next steps.  I will pursue all of these.
+<br />
+<br />Eizi's point about having no_unit in udunits is sound; I suggest we request udunits use
+<br />
+&nbsp;&nbsp;'no_unit'
+<br />
+as a representation of
+<br />
+'?'
+<br />
+such that the behaviour is consistent; 'no_unit' should always raise an exception when used in the udunits processing rules, exactly as '?' does.
+<br />
+<br />With regard to meaning, I have found the wikipedia entry useful:
+<br />
+<a href="http://en.wikipedia.org/wiki/Dimensionless_quantity">http://en.wikipedia.org/wiki/Dimensionless_quantity</a>
+<br />
+`In dimensional analysis&lt;<a href="http://en.wikipedia.org/wiki/Dimensional_analysis">http://en.wikipedia.org/wiki/Dimensional_analysis</a>&gt;, a dimensionless quantity or quantity of dimension one is a quantity&lt;<a href="http://en.wikipedia.org/wiki/Quantity">http://en.wikipedia.org/wiki/Quantity</a>&gt; without an associated physical dimension&lt;<a href="http://en.wikipedia.org/wiki/Dimensional_analysis">http://en.wikipedia.org/wiki/Dimensional_analysis</a>&gt;. It is thus a &quot;pure&quot; number, and as such always has a dimension of 1.[1]&lt;<a href="http://en.wikipedia.org/wiki/Dimensionless_quantity#cite_note-1">http://en.wikipedia.org/wiki/Dimensionless_quantity#cite_note-1</a>&gt;'
+<br />
+which it has sourced from
+<br />
+&quot;1.8 (1.6) quantity of dimension one dimensionless quantity&quot;&lt;<a href="http://www.iso.org/sites/JCGM/VIM/JCGM_200e_FILES/MAIN_JCGM_200e/01_e.html#L_1_8">http://www.iso.org/sites/JCGM/VIM/JCGM_200e_FILES/MAIN_JCGM_200e/01_e.html#L_1_8</a>&gt;. International vocabulary of metrology ? Basic and general concepts and associated terms (VIM). ISO&lt;<a href="http://en.wikipedia.org/wiki/International_Organization_for_Standardization">http://en.wikipedia.org/wiki/International_Organization_for_Standardization</a>&gt;. 2008. Retrieved 2011-03-22.
+<br />
+<br />This is a good enough source for me.
+<br />
+<br />I will wait to give space for more comments, then,  if people are content, I will raise a change request with udunits.
+<br />
+Assuming this is accepted and processed I will raise a change request for CF to add some text to 3.1.
+<br />
+Finally I will request a change for any standard_names which appear not to follow this approach (I have only 'area_type' so far).
+<br />
+<br />I hope this seems like a reasonable response.
+<br />
+<br />[...]
+<br />
+<br /><br />------------------------------------------------------------------------------------------------
+<br />
+------------------------------------------------------------------------------------------------
+<br />
+Forschungszentrum Juelich GmbH
+<br />
+52425 Juelich
+<br />
+Sitz der Gesellschaft: Juelich
+<br />
+Eingetragen im Handelsregister des Amtsgerichts Dueren Nr. HR B 3498
+<br />
+Vorsitzender des Aufsichtsrats: MinDir Dr. Karl Eugen Huthmacher
+<br />
+Geschaeftsfuehrung: Prof. Dr.-Ing. Wolfgang Marquardt (Vorsitzender),
+<br />
+Karsten Beneke (stellv. Vorsitzender), Prof. Dr.-Ing. Harald Bolt,
+<br />
+Prof. Dr. Sebastian M. Schmidt
+<br />
+------------------------------------------------------------------------------------------------
+<br />
+------------------------------------------------------------------------------------------------
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Nov 05 2014 - 00:57:12 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6633">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6634.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]   realization | x of n"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6632.html" title="Previous message in the list">Jim Biard: "[CF-metadata] string valued coordinates"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6642.html" title="Next message in this discussion thread">Hedley, Mark: "[CF-metadata] string valued coordinates (unitless quantities)"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6642.html" title="Message sent in reply to this message">Hedley, Mark: "[CF-metadata] string valued coordinates (unitless quantities)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6633" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6633" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6633" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6633" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:49 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6632.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6634.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

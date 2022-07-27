@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Is &quot;psu&quot; a valid cf unit? from martin.juckes at stfc.ac.uk on 2017-07-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="martin.juckes at stfc.ac.uk (martin.juckes)" />
+<meta name="Subject" content="[CF-metadata] Is &quot;psu&quot; a valid cf unit?" />
+<meta name="Date" content="2017-07-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8414.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8416.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Is &quot;psu&quot; a valid cf unit?</h1>
+<!-- received="Wed Jul 19 03:39:20 2017" -->
+<!-- isoreceived="20170719023920" -->
+<!-- sent="Wed, 19 Jul 2017 09:39:20 +0000" -->
+<!-- isosent="20170719093920" -->
+<!-- name="martin.juckes at stfc.ac.uk" -->
+<!-- email="martin.juckes" -->
+<!-- subject="[CF-metadata] Is &quot;psu&quot; a valid cf unit?" -->
+<!-- id="E21FBC3F00D7304687CB46529F9676D701029A045E_at_exchmbx01" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="ABDC90D8-E21F-4393-8711-8B1FD2B391F5_at_llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8415" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8416.html" accesskey="d" title="Lowry, Roy K.: &quot;[CF-metadata] Is &#0034;psu&#0034; a valid cf unit?&quot;">Next message</a> ]
+[ <a href="./8414.html" title="Durack, Paul J.: &quot;[CF-metadata] Is &#0034;psu&#0034; a valid cf unit?&quot;">Previous message</a> ]
+[ <a href="./8414.html" title="Durack, Paul J.: &quot;[CF-metadata] Is &#0034;psu&#0034; a valid cf unit?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8416.html" accesskey="t" title="Lowry, Roy K.: &quot;[CF-metadata] Is &#0034;psu&#0034; a valid cf unit?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8415" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8415" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8415" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8415" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: martin.juckes at stfc.ac.uk &lt;<a href="mailto:martin.juckes?Subject=Re%3A%20%5BCF-metadata%5D%20Is%20%22psu%22%20a%20valid%20cf%20unit%3F">martin.juckes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 19 Jul 2017 09:39:20 +0000</span><br />
+</address>
+<br />
+Hello All,
+<br />
+<br />This appears to have stirred up quite a lot.
+<br />
+<br />I think Balaji is raising a point that has not been picked up: if we have a physical quantity which varies in a small range around 35, then reporting the full value (e.g. 35.346) is going to give less precision than reporting an anomaly (e.g 0.34689). I think this issue of precision can be covered by the use of scale_factor and add_offset as described in section 8.1 of the CF Convention, which states that the units declared in the units attribute should be for the &quot;unpacked&quot; data .. i.e. the data values after the scaling and offset have been inverted to get back the full value. There is a possible confusion when the user community actually want to use the scaled and offset version in their applications, rather than treating it as a purely technical thing going on inside the NetCDF library. In CMIP5, models reported near surface salinity with values in the range 0 to 66, so it doesn't look as if there is a case for scaling there. Some models reported values a factor of 1000 smaller, so there is a need for cle<br />
+arer communication -- but I don't think that needs to be addressed by CF: for the CMIP6 data request I can address this by setting an &quot;ok_min_mean_abs&quot; value (a CMIP term ... with no CF meaning) of 28.
+<br />
+<br />I'm afraid I don't understand Paul's point. It looks as though the idea of psu as salinity units has been discussed by the CF list, the UNIDATA issue tracker, and various oceanography standards bodies and there is a broad and clear consensus across all these places that psu should not be treated as a unit of measure.
+<br />
+<br />regards,
+<br />
+Martin
+<br />
+<br />________________________________
+<br />
+From: Durack, Paul J. [durack1 at llnl.gov]
+<br />
+Sent: 18 July 2017 23:38
+<br />
+To: Pamment, Alison (STFC,RAL,RALSP)
+<br />
+Cc: cf-metadata at cgd.ucar.edu; Juckes, Martin (STFC,RAL,RALSP); v.balaji at noaa.gov; rkl at bodc.ac.uk; Stephen Griffies - NOAA Federal; Gokhan Danabasoglu; simon.marsland at csiro.au
+<br />
+Subject: Re: [CF-metadata] Is &quot;psu&quot; a valid cf unit?
+<br />
+<br />Hi folks, I?ll chime in here.
+<br />
+<br />There are two issues, labeling salinity in models (which is the focus of much of this thread) and observed quantities, which should both be considered when standardizing the standard_name definitions and units.
+<br />
+<br />For a trip down memory lane, ?salinity? has been discussed repeatedly in the CF-list since back to at least 2009 (see <a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2009/047515.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2009/047515.html</a>). In 2011, I proposed a number of new names that brought the CF names up-to-date with TEOS-10 (see <a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2011/055094.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2011/055094.html</a>). For those interested, search for ?salinity? on <a href="http://cfconventions.org/Data/cf-standard-names/45/build/cf-standard-name-table.html">http://cfconventions.org/Data/cf-standard-names/45/build/cf-standard-name-table.html</a>, with a particular focus on the names ?sea_surface_salinity?, ?sea_water_absolute_salinity?, ?sea_water_cox_salinity?, ?sea_water_knudsen_salinity? and ?sea_water_practical_salinity? and take a look at the descriptions for each. The reasons all these names were included was more for history than utility, as the evolution of observed ?salinity? needs to be captured somewhere. It also provided all the required salinity ?boxes? in the case that older data were digitized.
+<br />
+<br />The ?state of the art? oceanographic guidelines (which are very observationally-focused) are documented in the TEOS-10 manual (for interested folks the description of Absolute Salinity is a good place to start: <a href="http://teos-10.org/pubs/Getting_Started.pdf#page=7">http://teos-10.org/pubs/Getting_Started.pdf#page=7</a>). In this document, the summary (spoiler alert) is to maintain consistency with historical databases, observed salinity will continue to be measured (using conductivity) on the Practical Salinity Scale 1978 (abbreviated to PSS-78). The ?unit? PSU is strongly encouraged to be dropped (as Martin pointed out below with the Millero, 1993 ref), this is also repeated in the TEOS-10 supporting documentation. I note that PSS-78, based on conductivity measurements has a valid range of 2 to 42.
+<br />
+<br />For models, things are considerably simpler. No model (that I know of) has implemented Absolute Salinity, as to do so it would need to consider many more tracer fields that are not particularly well observationally constrained, and Absolute Salinity is affected by uncertain chemical and biological processes. A point to note here is that all ocean models are originally initialized from an observational estimate, and most of these are related somehow to one or more versions of the World Ocean Atlas (1994 to 2013v2), which have always been stored as a ?unitless? quantity on the PSS-78 (with values ranging from 5 to 40). I would also note that most CMIP5 contributing models provided data in the range 2-42 (with units of 1e-3, the ?unit? prior to changes in 2015), however one modeling center took this ?unit? literally and provided scaled data in the range 0.002-0.042. I do not believe that there are any range limitations for modeled salinity, and have seen values in excess of 50 in CMIP5, with models variously re<br />
+porting ?psu? and ?1? as salinity ?units?.
+<br />
+<br />For all these reasons, it is useful to revisit salinity units. As Sean noted below, I attempted to get ?salinity? recognized by the UDUNITS package back in 2014 (<a href="https://github.com/Unidata/UDUNITS-2/issues/27">https://github.com/Unidata/UDUNITS-2/issues/27</a>), at this time my request was rejected, and I was pointed to ?Physical Quantity? packages as the solution. We have implemented a ?units? convertor in CMOR (<a href="https://github.com/PCMDI/cmor/issues/12">https://github.com/PCMDI/cmor/issues/12</a>) that attempts to get around these issues, but it would be my preference that UDUNITS handled this. It would be great if the weight of CF/CMIP could be added to my existing issue (see github link at the top of this para) so the issue can be revisited.
+<br />
+<br />For CMIP6, I think the label ?PSS-78? would be appropriate, however I defer to other folks who may have a different perspective (I have cc?d Steve, Gokhan and Simon as the Ocean Model Development Panel contacts to this chain).
+<br />
+<br />Cheers, and happy to hear other perspectives.
+<br />
+<br />P
+<br />
+<br />From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu&gt; on behalf of V Balaji - NOAA Affiliate &lt;v.balaji at noaa.gov&gt;
+<br />
+Date: Tuesday, July 18, 2017 at 7:00 AM
+<br />
+To: &quot;Lowry, Roy K.&quot; &lt;rkl at bodc.ac.uk&gt;
+<br />
+Cc: &quot;cf-metadata at cgd.ucar.edu&quot; &lt;cf-metadata at cgd.ucar.edu&gt;, &quot;martin.juckes at stfc.ac.uk&quot; &lt;martin.juckes at stfc.ac.uk&gt;
+<br />
+Subject: Re: [CF-metadata] Is &quot;psu&quot; a valid cf unit?
+<br />
+<br />Oh sorry, Roy. I assumed one was without -35 and /1000
+<br />
+<br />From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu&gt; on behalf of &quot;alison.pamment at stfc.ac.uk&quot; &lt;alison.pamment at stfc.ac.uk&gt;
+<br />
+Date: Tuesday, July 18, 2017 at 6:56 AM
+<br />
+To: &quot;rkl at bodc.ac.uk&quot; &lt;rkl at bodc.ac.uk&gt;, &quot;v.balaji at noaa.gov&quot; &lt;v.balaji at noaa.gov&gt;
+<br />
+Cc: &quot;cf-metadata at cgd.ucar.edu&quot; &lt;cf-metadata at cgd.ucar.edu&gt;, &quot;martin.juckes at stfc.ac.uk&quot; &lt;martin.juckes at stfc.ac.uk&gt;
+<br />
+Subject: Re: [CF-metadata] Is &quot;psu&quot; a valid cf unit?
+<br />
+<br />Dear Balaji, Roy, Martin
+<br />
+<br />I agree completely with what Roy is saying ? that labelling something as psu or dimensionless in the units string should have no bearing whatsoever on the storage precision of the numerical value.
+<br />
+<br />However, regarding the scaling, the CF standard name table currently lists the units of practical salinity as ?1?. Up to and including version 28 of the standard name table we had the units of sea_water_practical_salinity and change_over_time_in_sea_water_practical_salinity listed as ?1e-3? which is still a dimensionless number, but scaled. There are two things to say about this:
+<br />
+<br />&nbsp;&nbsp;1.  This change was only made after considerable debate on the CF mailing list in 2015, starting with <a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2015/058205.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2015/058205.html</a>;
+<br />
+&nbsp;&nbsp;2.  Although the decision was taken to change the scaling in the canonical units to ?1?, this does not in any way prevent 1e-3 being used in individual data files, if that helps with storage precision, because the two differ only by a scale factor and are in all other aspects equivalent.
+<br />
+<br /><br /><br />Therefore, I don?t see the need to have ?psu? as a unit in UDunits. It?s a matter for the data provider to choose the scaling in his or her data files. Martin is correct that ?psu? is not a unit ? it refers to a dimensionless number on a calibrated scale.
+<br />
+<br /><br /><br />Best wishes,
+<br />
+<br />Alison
+<br />
+<br />------
+<br />
+Alison Pamment                                                       Tel: +44 1235 778065
+<br />
+Centre for Environmental Data Analysis         Email: alison.pamment at stfc.ac.uk&lt;mailto:J.A.Pamment at rl.ac.uk&gt;
+<br />
+STFC Rutherford Appleton Laboratory
+<br />
+R25, 2.22
+<br />
+Harwell Campus, Didcot, OX11 0QX, U.K.
+<br />
+<br />On 7/18/17, 6:50 AM, &quot;CF-metadata on behalf of martin.juckes at stfc.ac.uk&quot; &lt;cf-metadata-bounces at cgd.ucar.edu on behalf of martin.juckes at stfc.ac.uk&gt; wrote:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;Hello All,
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;After some hunting, I found a copy of a letter from Frank Millero (1993 - &quot;What is PSU&quot;) ( <a href="http://www.marbef.org/wiki/Salinity_sensors">http://www.marbef.org/wiki/Salinity_sensors</a>  -- box on right) which is adamant that PSU is not a unit and the &quot;Joint Panel on Oceanographic Tables and Standards&quot; has made this clear in their definition of the international equation of state.
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;There is perhaps a parallel here with &quot;Decibel&quot;, which is accepted by cf-python and rejected by Udunits. There has been discussion on unidata pages, the outcome of which, I think, is that Decibel is a reference to a methodolgy used to arrive at a non-dimensional number, not a unit of measure.
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;The CF Standard Name list now has distinct standard names for salinities defined by different algorithms (e.g. sea_water_practical_salinity, sea_water_cox_salinity).
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;One compromise might be to add some recognised standard methodological keywords and define a way of placing them in NetCDF files,
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;regards,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;Martin
+<br />
+<br /><br />From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Lowry, Roy K.
+<br />
+Sent: 18 July 2017 14:37
+<br />
+To: V. Balaji - NOAA Affiliate
+<br />
+Cc: cf-metadata at cgd.ucar.edu; Juckes, Martin (STFC,RAL,RALSP)
+<br />
+Subject: Re: [CF-metadata] Is &quot;psu&quot; a valid cf unit?
+<br />
+<br /><br />Dear Balaji,
+<br />
+<br /><br /><br />I think there are some crossed wires here. The dimensionless Practical Salinity and a Practical Salinity in PSU are exact numeric equivalents. The only difference is the name that's given to the unit of measure - that's why to make this crystal clear CF includes the scaling factor of 10^-3. So I don't think that this can affect storage precision.
+<br />
+<br /><br /><br />Cheers, Roy.
+<br />
+<br /><br /><br />Please note that I partially retired on 01/11/2015. I am now only working 7.5 hours a week and can only guarantee e-mail response on Wednesdays, my day in the office. All vocabulary queries should be sent to enquiries at bodc.ac.uk&lt;mailto:enquiries at bodc.ac.uk&gt;. Please also use this e-mail if your requirement is urgent.
+<br />
+<br />On 7/18/17, 6:35 AM, &quot;CF-metadata on behalf of Sean Arms&quot; &lt;cf-metadata-bounces at cgd.ucar.edu on behalf of sarms at ucar.edu&gt; wrote:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;There was a github issue opened on UDUNITS2 a few years back (still
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;open, btw) regarding the support for PSU in the package:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/Unidata/UDUNITS-2/issues/27">https://github.com/Unidata/UDUNITS-2/issues/27</a>
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;An interesting point is made regarding units and physical quantities.
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;Sean
+<br />
+<br />________________________________
+<br />
+From: V. Balaji - NOAA Affiliate &lt;v.balaji at noaa.gov&lt;mailto:v.balaji at noaa.gov&gt;&gt;
+<br />
+Sent: 18 July 2017 14:12
+<br />
+To: Lowry, Roy K.
+<br />
+Cc: martin.juckes at stfc.ac.uk&lt;mailto:martin.juckes at stfc.ac.uk&gt;; cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;; d.c.hassell at reading.ac.uk&lt;mailto:d.c.hassell at reading.ac.uk&gt;; r.s.hatcher at reading.ac.uk&lt;mailto:r.s.hatcher at reading.ac.uk&gt;
+<br />
+Subject: Re: [CF-metadata] Is &quot;psu&quot; a valid cf unit?
+<br />
+<br />The ocean modeling community is adamant that they will continue to use PSUs for salinity: it's this unit, rather than its SI or dimensionless equivalent, that gives the maximum digits of precision in a floating-point representation of salinity.
+<br />
+<br />It's a valid concern, and CF should perhaps reconsider, with a new discussion giving weight to the views of modelers as well as physical oceanographers.
+<br />
+<br />Thanks,
+<br />
+<br />On 7/18/17, 6:11 AM, &quot;CF-metadata on behalf of martin.juckes at stfc.ac.uk&quot; &lt;cf-metadata-bounces at cgd.ucar.edu on behalf of martin.juckes at stfc.ac.uk&gt; wrote:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;Thanks Roy,
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;David, Ros: do you accept Roy's answer? If so, cf-python and the cf-checker should presumably be updated to flag &quot;psu&quot; as an invalid unit?
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;regards,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;Martin
+<br />
+<br /><br />Lowry, Roy K. writes:
+<br />
+<br /><em class="quotelev1">&gt; Hello Martin,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; This topic has been debated at length in CF. To cut a long story short, the term 'Practical Salinity Unit' was coined when the 1978 Practical Salinity scale was devised. However, the term fell out of favour with the physical oceanographic community whose current recommended practice is that Practical Salinity - a ratio - should be a dimensionless number.  CF followed this recommendation and so PSU is not a part of CF.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Have a dig around in the mailing list archive if you want to find out more.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers, Roy.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Please note that I partially retired on 01/11/2015. I am now only working 7.5 hours a week and can only guarantee e-mail response on Wednesdays, my day in the office. All vocabulary queries should be sent to enquiries at bodc.ac.uk&lt;mailto:enquiries at bodc.ac.uk&gt;. Please also use this e-mail if your requirement is urgent.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ________________________________
+</em><br />
+<em class="quotelev1">&gt; From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu&lt;mailto:cf-metadata-bounces at cgd.ucar.edu&gt;&gt; on behalf of martin.juckes at stfc.ac.uk&lt;mailto:martin.juckes at stfc.ac.uk&gt; &lt;martin.juckes at stfc.ac.uk&lt;mailto:martin.juckes at stfc.ac.uk&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; Sent: 18 July 2017 13:43
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;; d.c.hassell at reading.ac.uk&lt;mailto:d.c.hassell at reading.ac.uk&gt;; r.s.hatcher at reading.ac.uk&lt;mailto:r.s.hatcher at reading.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; Subject: [CF-metadata] Is &quot;psu&quot; a valid cf unit?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hello David, all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Is &quot;psu&quot; a valus CF unit? It is not in Udunits, but it is added in cf-python as a unit alias and also appears to be accpeted by the cf-checker. I can't see any mention of it in the CF Convention document: the latter only lists level, layer, and sigma_level permitted departures from Udunits,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; regards,
+</em><br />
+<em class="quotelev1">&gt; Martin
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+CF-metadata Info Page - University Corporation for ...&lt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>&gt;
+<br />
+mailman.cgd.ucar.edu
+<br />
+This is an unmoderated list for discussions about interpretation, clarification, and proposals for extensions or change to the CF conventions.
+<br />
+<br /><br /><br /><em class="quotelev1">&gt; CF-metadata Info Page - University Corporation for ...&lt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>&gt;
+</em><br />
+CF-metadata Info Page - University Corporation for ...&lt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>&gt;
+<br />
+mailman.cgd.ucar.edu
+<br />
+This is an unmoderated list for discussions about interpretation, clarification, and proposals for extensions or change to the CF conventions.
+<br />
+<br /><br /><br /><em class="quotelev1">&gt; mailman.cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; This is an unmoderated list for discussions about interpretation, clarification, and proposals for extensions or change to the CF conventions.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ________________________________
+</em><br />
+<em class="quotelev1">&gt; This message (and any attachments) is for the recipient only. NERC is subject to the Freedom of Information Act 2000 and the contents of this email and any reply you make may be disclosed by NERC unless it is exempt from release under the Act. Any material supplied to NERC may be stored in an electronic records management system.
+</em><br />
+<em class="quotelev1">&gt; ________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><pre>
+--
+V. Balaji                               Office:  +1-609-452-6516
+Head, Modeling Systems Group, GFDL      Mobile:  +1-917-273-9824
+Princeton University                    Email: v.balaji at noaa.gov&lt;mailto:v.balaji at noaa.gov&gt;
+<a href="https://www.gfdl.noaa.gov/v-balaji-homepage">https://www.gfdl.noaa.gov/v-balaji-homepage</a>
+v-balaji-homepage ? Geophysical Fluid Dynamics Laboratory&lt;<a href="https://www.gfdl.noaa.gov/v-balaji-homepage">https://www.gfdl.noaa.gov/v-balaji-homepage</a>&gt;
+www.gfdl.noaa.gov&lt;<a href="http://www.gfdl.noaa.gov">http://www.gfdl.noaa.gov</a>&gt;
+Bio Dr. V. Balaji is affiliated with Princeton University's Cooperative Institute on Climate Sciences. He has headed the Modeling Systems Group at NOAA's Geophysical ...
+________________________________
+This message (and any attachments) is for the recipient only. NERC is subject to the Freedom of Information Act 2000 and the contents of this email and any reply you make may be disclosed by NERC unless it is exempt from release under the Act. Any material supplied to NERC may be stored in an electronic records management system.
+________________________________
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Jul 19 2017 - 03:39:20 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8415">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8416.html" title="Next message in the list">Lowry, Roy K.: "[CF-metadata] Is &#0034;psu&#0034; a valid cf unit?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8414.html" title="Previous message in the list">Durack, Paul J.: "[CF-metadata] Is &#0034;psu&#0034; a valid cf unit?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8414.html" title="Message to which this message replies">Durack, Paul J.: "[CF-metadata] Is &#0034;psu&#0034; a valid cf unit?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8416.html" title="Next message in this discussion thread">Lowry, Roy K.: "[CF-metadata] Is &#0034;psu&#0034; a valid cf unit?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8416.html" title="Message sent in reply to this message">Lowry, Roy K.: "[CF-metadata] Is &#0034;psu&#0034; a valid cf unit?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8415" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8415" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8415" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8415" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:15 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8414.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8416.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

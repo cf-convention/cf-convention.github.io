@@ -4,7 +4,7 @@ title: Training
 group: "navigation"
 ---
 
-# CF training materials and workshops
+# CF Training Materials and Workshops
 
 ## CF training workshops
 

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jonathan Gregory on 2015-05-12 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-05-12" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6967.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6969.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Tue May 12 11:12:18 2015" -->
+<!-- isoreceived="20150512101218" -->
+<!-- sent="Tue, 12 May 2015 18:12:18 +0100" -->
+<!-- isosent="20150512171218" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="20150512171218.GA7488_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6968" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6969.html" accesskey="d" title="alison.pamment at stfc.ac.uk: &quot;[CF-metadata] New standard name requests for TSI and SSI&quot;">Next message</a> ]
+[ <a href="./6967.html" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6968" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6968" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6968" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6968" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 12 May 2015 18:12:18 +0100</span><br />
+</address>
+<br />
+Dear Jim, Chris, Ben
+<br />
+<br />I haven't copied the whole of the email thread this time because it's getting
+<br />
+so long. See <a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2015/058150.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2015/058150.html</a>
+<br />
+if you want to read it all.
+<br />
+<br />I agree with Chris, and I am puzzled by Jim's view on his point 3. I think that
+<br />
+the calculator is used to encode and decode a date-time as an elapsed time
+<br />
+relative to an epoch (reference date-time). The calculation uses the epoch in
+<br />
+the units attribute of the time coordinate and the calendar attribute of the
+<br />
+time coordinate; the calendar attribute indicates which algorithm to use. There
+<br />
+is no good reason why a different calendar would be used to encode and decode,
+<br />
+because it's stated which one should be used in the calendar attribute (or it's
+<br />
+defaulted, in the present convention). That problem should not arise (if it
+<br />
+does, it is a mistake by the user of the data). Hence we solve 3 by clarifying
+<br />
+the calendar (whether it has leap seconds or not). Point 2 seems to me not a
+<br />
+problem because the epoch is a timestamp; it doesn't indicate or depend on the
+<br />
+calendar.
+<br />
+<br />I considered gregorian_noleapseconds but didn't suggest it because it's longer,
+<br />
+although it's OK with me if that's the majority preference. What would you say
+<br />
+to gregorian_nls? That is the same length as the alternative gregorian_utc. But
+<br />
+because the difference between these two varieties of gregorian is small, as
+<br />
+Chris and Jim agree, I tend to think we don't need to enforce the pain of
+<br />
+making data-writers change gregorian to gregorian_nls, and break existing
+<br />
+data-reading software thereby.  As Ben says, we can blame it on careless
+<br />
+writers (or readers) if we simply redefine gregorian at CF1.7. That wouldn't be
+<br />
+ambiguous nor invalidate existing data.
+<br />
+<br />There is little difference in practice between parsing &quot;X Y&quot; (blank-separated)
+<br />
+and &quot;X_Y&quot;, but the former is slightly more awkward because there might be any
+<br />
+number of blanks, and whitespace is sometimes accidentally not really spaces.
+<br />
+The only place we use modifiers is the standard_names, and it's not been a
+<br />
+great success there (but that's a semantic problem rather than a syntactic
+<br />
+one). The format &quot;X_Y&quot; looks more CF-like to me and consistency of style makes
+<br />
+the convention more memorable and user-friendly, I think.
+<br />
+<br />Yes, different countries changed to the Gregorian calendar on different dates
+<br />
+but I think we are safe enough if we state which one we are using viz 1582,
+<br />
+when it was invented in Italy. That's what udunits and CF presently use.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Tue May 12 2015 - 11:12:18 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6968">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6969.html" title="Next message in the list">alison.pamment at stfc.ac.uk: "[CF-metadata] New standard name requests for TSI and SSI"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6967.html" title="Previous message in the list">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6968" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6968" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6968" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6968" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6967.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6969.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

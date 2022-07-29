@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Cell bounds associated with coordinate variable rather than data variable from Thomas Lavergne on 2009-11-12 (cf-metadata-mailman)</title>
+<meta name="Author" content="Thomas Lavergne (thomasl)" />
+<meta name="Subject" content="[CF-metadata] Cell bounds associated with coordinate variable rather than data variable" />
+<meta name="Date" content="2009-11-12" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2307.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2309.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Cell bounds associated with coordinate variable rather than data variable</h1>
+<!-- received="Thu Nov 12 03:48:06 2009" -->
+<!-- isoreceived="20091112034806" -->
+<!-- sent="Thu, 12 Nov 2009 10:48:06 +0000 (UTC)" -->
+<!-- isosent="20091112104806" -->
+<!-- name="Thomas Lavergne" -->
+<!-- email="thomasl" -->
+<!-- subject="[CF-metadata] Cell bounds associated with coordinate variable rather than data variable" -->
+<!-- id="963738594.2503581258022886743.JavaMail.root_at_imap1a" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="1989455716.2503071258022518355.JavaMail.root_at_imap1a" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2308" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2309.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Cell bounds associated with coordinate variable rather than data variable&quot;">Next message</a> ]
+[ <a href="./2307.html" title="John Caron: &quot;[CF-metadata] [CF Metadata] #37: Conventions for Point	Observation Data&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2309.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] Cell bounds associated with coordinate variable rather than data variable&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2308" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2308" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2308" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2308" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Thomas Lavergne &lt;<a href="mailto:thomasl?Subject=Re%3A%20%5BCF-metadata%5D%20Cell%20bounds%20associated%20with%20coordinate%20variable%20rather%20than%20data%20variable">thomasl</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 12 Nov 2009 10:48:06 +0000 (UTC)</span><br />
+</address>
+<br />
+Dear all,
+<br />
+<br />I would like to push the discussion a bit further on those cell bounds. 
+<br />
+<br />We agree that some variables are intensive, others are extensive. For coping equally well with both types of variable, the CF convention offers the notion of coordinates (axis) and cell bounds. 
+<br />
+<br />However, there seem to be a bias here, since bounds cannot be defined without an axis. This leads to the issues that was raise earlier in this thread, namely &quot;what axis value is representative for my cell?&quot;. It is common to use the central value but, as we have seen for accumulated precipitations, other choices might be relevant.
+<br />
+<br />Yet, as far as I understand this, CF does not give the answer. CF advises us to provide cell bounds for extensive variables but we are free to choose the axis value associated to each cell. It could even be outside the bounds, am I correct? Could it be a &quot;missing value&quot;? 
+<br />
+<br />Now, we cannot assume that a (visualization) software will care about our cell boundaries. It will most probably use the axis value, trusting the data provider, and this choice is not without consequences. 
+<br />
+<br />So the questions are: 
+<br />
+1) should we aim at community consensus outside CF (the community of accumulated precipitation would agree on using the end date, etc...)? 
+<br />
+2) Should CF propose guidelines on what value to use?
+<br />
+3) Should CF mention that there is an ambiguity here? 
+<br />
+4) Did I miss a point?
+<br />
+<br />I have the example of a sea ice motion dataset which is a time-extensive variable, defined as a Lagragian accumulation between a start and a stop time. This aspect is reflected in my time_bounds. But what should I put as the time axis: start time? stop time? mid-time? 
+<br />
+<br />Any suggestions/comments are welcome.
+<br />
+<br />Cheers,
+<br />
+Thomas
+<br />
+<br /><br />----- &quot;Ethan Davis&quot; &lt;edavis at unidata.ucar.edu&gt; wrote:
+<br />
+<br /><em class="quotelev1">&gt; Hi Benno,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Benno Blumenthal wrote:
+</em><br />
+<em class="quotelev2">&gt; &gt; Also, it is not particularly natural to use the end point as the
+</em><br />
+<em class="quotelev1">&gt; label
+</em><br />
+<em class="quotelev2">&gt; &gt; for the data, certainly not so natural that a program would assume
+</em><br />
+<em class="quotelev1">&gt; that
+</em><br />
+<em class="quotelev2">&gt; &gt; not knowing anything else about the data.   It makes sense from a
+</em><br />
+<em class="quotelev1">&gt; data
+</em><br />
+<em class="quotelev2">&gt; &gt; collection point of view, maybe, but stops there.   Most of us use
+</em><br />
+<em class="quotelev2">&gt; &gt; center of interval as default, particularly since our semantics are
+</em><br />
+<em class="quotelev1">&gt; not
+</em><br />
+<em class="quotelev2">&gt; &gt; good enough to detect accumulation (which is the only case where end
+</em><br />
+<em class="quotelev1">&gt; of
+</em><br />
+<em class="quotelev2">&gt; &gt; interval is natural).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The accumulated precipitation data from these models is currently
+</em><br />
+<em class="quotelev1">&gt; labeled by the end points of the accumulation intervals (i.e., they
+</em><br />
+<em class="quotelev1">&gt; are
+</em><br />
+<em class="quotelev1">&gt; all on the forecast time dimension). I'm trying to add the semantics
+</em><br />
+<em class="quotelev1">&gt; to
+</em><br />
+<em class="quotelev1">&gt; make it possible to detect that this data is an accumulation without
+</em><br />
+<em class="quotelev1">&gt; breaking backwards compatibility.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Since, as you say, accumulation &quot;is the only case where the end of
+</em><br />
+<em class="quotelev1">&gt; interval is natural&quot;, adding the cell bounds information while using
+</em><br />
+<em class="quotelev1">&gt; the
+</em><br />
+<em class="quotelev1">&gt; same forecast time dimension seems natural for this case.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Ethan
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Benno Blumenthal wrote:
+</em><br />
+<em class="quotelev2">&gt; &gt; I have to vote for multiple dimensions here -- these are different,
+</em><br />
+<em class="quotelev2">&gt; &gt; parallel dimensions which happen to have the same number of points.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Also, it is not true that a generic program cannot use the bounds. 
+</em><br />
+<em class="quotelev2">&gt; &gt; Ingrid, in fact, prints time almost always as an interval, e.g. Jan
+</em><br />
+<em class="quotelev1">&gt; 1980
+</em><br />
+<em class="quotelev2">&gt; &gt; if the time cell goes from 0000 1 Jan 1980 to 0000 1 Feb 1980, so
+</em><br />
+<em class="quotelev1">&gt; that
+</em><br />
+<em class="quotelev2">&gt; &gt; cell boundaries are critical for time, much more important that
+</em><br />
+<em class="quotelev2">&gt; &gt; spacially. This is because in common usage when we specify a time
+</em><br />
+<em class="quotelev1">&gt; we
+</em><br />
+<em class="quotelev2">&gt; &gt; almost always implicitly specify an interval.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Also, it is not particularly natural to use the end point as the
+</em><br />
+<em class="quotelev1">&gt; label
+</em><br />
+<em class="quotelev2">&gt; &gt; for the data, certainly not so natural that a program would assume
+</em><br />
+<em class="quotelev1">&gt; that
+</em><br />
+<em class="quotelev2">&gt; &gt; not knowing anything else about the data.   It makes sense from a
+</em><br />
+<em class="quotelev1">&gt; data
+</em><br />
+<em class="quotelev2">&gt; &gt; collection point of view, maybe, but stops there.   Most of us use
+</em><br />
+<em class="quotelev2">&gt; &gt; center of interval as default, particularly since our semantics are
+</em><br />
+<em class="quotelev1">&gt; not
+</em><br />
+<em class="quotelev2">&gt; &gt; good enough to detect accumulation (which is the only case where end
+</em><br />
+<em class="quotelev1">&gt; of
+</em><br />
+<em class="quotelev2">&gt; &gt; interval is natural).
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Benno
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; On Thu, Oct 22, 2009 at 6:08 PM, Ethan Davis
+</em><br />
+<em class="quotelev1">&gt; &lt;edavis at unidata.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; &lt;mailto:edavis at unidata.ucar.edu&gt;&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;     Hi John,
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;     John Caron wrote:
+</em><br />
+<em class="quotelev3">&gt; &gt;     &gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;     &gt; The time coordinate here means forecast time, and you are
+</em><br />
+<em class="quotelev1">&gt; trying to
+</em><br />
+<em class="quotelev3">&gt; &gt;     &gt; capture &quot;interval of accumulation&quot;.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;     I'm not sure I understand your point here. The forecast time is
+</em><br />
+<em class="quotelev1">&gt; the only
+</em><br />
+<em class="quotelev2">&gt; &gt;     time dimension we have. What other time coordinate would the
+</em><br />
+<em class="quotelev1">&gt; &quot;interval
+</em><br />
+<em class="quotelev2">&gt; &gt;     of accumulation&quot; be over?
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev3">&gt; &gt;     &gt; As jonathan says, you would have to create separate time
+</em><br />
+<em class="quotelev2">&gt; &gt;     coordinates for
+</em><br />
+<em class="quotelev3">&gt; &gt;     &gt; each variable which has a distinct bounds.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;     Yes, CF is currently written so only one boundary variable can
+</em><br />
+<em class="quotelev1">&gt; be
+</em><br />
+<em class="quotelev2">&gt; &gt;     associate with one coordinate variable so this situation would
+</em><br />
+<em class="quotelev1">&gt; require
+</em><br />
+<em class="quotelev2">&gt; &gt;     multiple time coordinates. I'm wondering if CF should be
+</em><br />
+<em class="quotelev1">&gt; extended to
+</em><br />
+<em class="quotelev2">&gt; &gt;     allow multiple boundary variables to be associated with a
+</em><br />
+<em class="quotelev1">&gt; single
+</em><br />
+<em class="quotelev2">&gt; &gt;     coordinate variable.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev3">&gt; &gt;     &gt; theoretically theres no
+</em><br />
+<em class="quotelev3">&gt; &gt;     &gt; problem with that, practically it may be more confusing than
+</em><br />
+<em class="quotelev1">&gt; just
+</em><br />
+<em class="quotelev3">&gt; &gt;     &gt; documenting the bounds on the variable in a non-standard but
+</em><br />
+<em class="quotelev3">&gt; &gt;     &gt; human-readable way. it seems unlikely that a generic program
+</em><br />
+<em class="quotelev1">&gt; could do
+</em><br />
+<em class="quotelev3">&gt; &gt;     &gt; anything useful with those coordinate bounds.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;     I agree that multiple time coordinates would do nothing for
+</em><br />
+<em class="quotelev1">&gt; clarity.
+</em><br />
+<em class="quotelev2">&gt; &gt;     Which is why I'm wondering about extending CF to allow for a
+</em><br />
+<em class="quotelev1">&gt; clearer,
+</em><br />
+<em class="quotelev2">&gt; &gt;     programmatically useful representation of this data.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;     Ethan
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;     _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt;     CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt;     CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;     <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; -- 
+</em><br />
+<em class="quotelev2">&gt; &gt; Dr. M. Benno Blumenthal          benno at iri.columbia.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; &lt;mailto:benno at iri.columbia.edu&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; International Research Institute for climate and society
+</em><br />
+<em class="quotelev2">&gt; &gt; The Earth Institute at Columbia University
+</em><br />
+<em class="quotelev2">&gt; &gt; Lamont Campus, Palisades NY 10964-8000   (845) 680-4450
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------------------------------------------------------------
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; -- 
+</em><br />
+<em class="quotelev1">&gt; Ethan R. Davis                                Telephone: (303)
+</em><br />
+<em class="quotelev1">&gt; 497-8155
+</em><br />
+<em class="quotelev1">&gt; Software Engineer                             Fax:       (303)
+</em><br />
+<em class="quotelev1">&gt; 497-8690
+</em><br />
+<em class="quotelev1">&gt; UCAR Unidata Program Center                   E-mail:   
+</em><br />
+<em class="quotelev1">&gt; edavis at ucar.edu
+</em><br />
+<em class="quotelev1">&gt; P.O. Box 3000
+</em><br />
+<em class="quotelev1">&gt; Boulder, CO  80307-3000                      
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.unidata.ucar.edu/">http://www.unidata.ucar.edu/</a>
+</em><br />
+<em class="quotelev1">&gt; ---------------------------------------------------------------------------
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Thu Nov 12 2009 - 03:48:06 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2308">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2309.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2307.html" title="Previous message in the list">John Caron: "[CF-metadata] [CF Metadata] #37: Conventions for Point	Observation Data"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2309.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2309.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<li><dfn>Reply</dfn>: <a href="./2310.html" title="Message sent in reply to this message">Karl Taylor: "[CF-metadata] Cell bounds associated with coordinate variable rather than data variable"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2308" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2308" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2308" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2308" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:23 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2307.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2309.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

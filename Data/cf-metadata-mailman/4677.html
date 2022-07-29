@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] support for multiple auxulary coordinate variables from Randy Horne on 2012-09-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="Randy Horne (rhorne)" />
+<meta name="Subject" content="[CF-metadata] support for multiple auxulary coordinate variables" />
+<meta name="Date" content="2012-09-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4676.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4678.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] support for multiple auxulary coordinate variables</h1>
+<!-- received="Mon Sep  3 10:25:00 2012" -->
+<!-- isoreceived="20120903092500" -->
+<!-- sent="Mon, 3 Sep 2012 12:25:00 -0400" -->
+<!-- isosent="20120903162500" -->
+<!-- name="Randy Horne" -->
+<!-- email="rhorne" -->
+<!-- subject="[CF-metadata] support for multiple auxulary coordinate variables" -->
+<!-- id="F44C9FA7-EF43-4EE8-9C1C-3AF71B91790B_at_excaliburlabs.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20120903101733.GC24280_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4677" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4678.html" accesskey="d" title="Randy Horne: &quot;[CF-metadata] support for multiple auxulary coordinate variables&quot;">Next message</a> ]
+[ <a href="./4676.html" title="Jonathan Gregory: &quot;[CF-metadata] Dimensionality of Label Variables&quot;">Previous message</a> ]
+[ <a href="./4675.html" title="Jonathan Gregory: &quot;[CF-metadata]  support for multiple auxulary coordinate variables&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4678.html" accesskey="t" title="Randy Horne: &quot;[CF-metadata] support for multiple auxulary coordinate variables&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4677" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4677" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4677" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4677" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Randy Horne &lt;<a href="mailto:rhorne?Subject=Re%3A%20%5BCF-metadata%5D%20support%20for%20multiple%20auxulary%20coordinate%20variables">rhorne</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 3 Sep 2012 12:25:00 -0400</span><br />
+</address>
+<br />
+Jonathan:
+<br />
+<br />Thanks for the follow-up !
+<br />
+<br />I am currently working level 1b space weather products. 
+<br />
+<br />These products are derived from instruments in orbit.  These instruments have have one or more sensing apertures that point out into space.  these instruments sniff for energetic particles.  The field of view of these instruments is angular and have a field of view that is typically a circular cone.
+<br />
+<br />One of the coordinates for these these products is the instrument aperture's boresight.  The boresight angle is best described with a unit vector with 3 components (x,y, and z), in a 3D coordinate system where all the axes are orthogonal.
+<br />
+<br />The users of these products need the coordinates of this boresight angle in more than one coordinate systems.  They will need the coordinates in a &quot;celestial&quot; coordinate system, such as a J2000 ECI unit vector.  They will also need it in a local / spacecraft-centric coordinate system, such as a body reference frame coordinate system unit vector where the origin and coordinate system axes are understood.
+<br />
+<br />So, for the same data value, there is a need to be able to associate two different coordinates from different systems.
+<br />
+<br />I went back and looked over the CF conventions.  In the beginning of chapter 5 it says ?.&quot;Note that it is permissible, but optional, to list coordinate variables as well as auxiliary coordinate variables in the coordinates attribute.&quot;.
+<br />
+<br />The implication being that I could include all of the unit vector x,y, and z component coordinate variables for J2000 ECI and body reference frame in the coordinate attribute of the data variable.
+<br />
+<br />But, it goes on to say &quot;However, it is not permissible for a data variable to have both a coordinate variable and an auxiliary coordinate variable, or more than one of either type of variable, having an axis attribute with any given value e.g. there must be no more than one axis attribute for X for any data variable. Note that if the axis attribute is not specified for an auxiliary coordinate variable, it may still be possible to determine if it is a spatiotemporal dimension from its own units or standard_name, or from the units and standard_name of the coordinate variable corresponding to its dimensions (see Chapter 4, Coordinate Types ).&quot;.
+<br />
+<br />The use of the axis attribute with each of the x,y, and z components of both the J2000 ECI and body reference frame unit vector component coordinate variables is desirable.  But, as suggested in the same narrative, the standard name could be used by the end user applications in lieu of the axis attribute.
+<br />
+<br />Does all/any of this make sense ?
+<br />
+<br />very respectfully,
+<br />
+<br />randy
+<br />
+<br /><br /><br />On Sep 3, 2012, at 6:17 AM, Jonathan Gregory wrote:
+<br />
+<br /><em class="quotelev1">&gt; Dear Randy
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; I have a situation where there is value in including multiple auxiliary coordinate variablles for the same data variable.  Specifically, I would like to communicate that there are two distinct three dimensional cartesian coordinates for each data value.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Do the current CF conventions provide such a capability ?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; There is no limit on the use of auxiliary coordinate variables for a given
+</em><br />
+<em class="quotelev1">&gt; data variable, so that is fine. However, if they are going to be useful they
+</em><br />
+<em class="quotelev1">&gt; will have to be distinguishable in some way. Could you describe this more
+</em><br />
+<em class="quotelev1">&gt; specifically? i.e. what are these two sets of coordinates?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<br /><br />____________________________________
+<br />
+<br />Randy C. Horne (rhorne at excaliburlabs.com)
+<br />
+Principal Engineer, Excalibur Laboratories Inc.
+<br />
+voice &amp; fax: (321) 952.5100
+<br />
+url: <a href="http://www.excaliburlabs.com">http://www.excaliburlabs.com</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Sep 03 2012 - 10:25:00 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4677">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4678.html" title="Next message in the list">Randy Horne: "[CF-metadata] support for multiple auxulary coordinate variables"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4676.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Dimensionality of Label Variables"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4675.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata]  support for multiple auxulary coordinate variables"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4678.html" title="Next message in this discussion thread">Randy Horne: "[CF-metadata] support for multiple auxulary coordinate variables"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4678.html" title="Message sent in reply to this message">Randy Horne: "[CF-metadata] support for multiple auxulary coordinate variables"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4677" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4677" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4677" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4677" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:06 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4676.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4678.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

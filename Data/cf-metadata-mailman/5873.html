@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] cf standards for probabilities from Vegard Bønes on 2013-11-18 (cf-metadata-mailman)</title>
+<meta name="Author" content="Vegard Bønes (vegard.bones)" />
+<meta name="Subject" content="[CF-metadata] cf standards for probabilities" />
+<meta name="Date" content="2013-11-18" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5872.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5874.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] cf standards for probabilities</h1>
+<!-- received="Sun Nov 17 23:40:56 2013" -->
+<!-- isoreceived="20131117234056" -->
+<!-- sent="Mon, 18 Nov 2013 06:40:56 +0000 (UTC)" -->
+<!-- isosent="20131118064056" -->
+<!-- name="Vegard Bønes" -->
+<!-- email="vegard.bones" -->
+<!-- subject="[CF-metadata] cf standards for probabilities" -->
+<!-- id="1659293775.297852.1384756856821.JavaMail.root_at_imap1b" -->
+<!-- charset="utf-8" -->
+<!-- inreplyto="972917496.297842.1384756708137.JavaMail.root_at_imap1b" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5873" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5874.html" accesskey="d" title="Gary Meehan: &quot;[CF-metadata] new standard names: fire area, fire temperature, fire radiative power&quot;">Next message</a> ]
+[ <a href="./5872.html" title="&#0216;ystein God&#0248;y: &quot;[CF-metadata] UV-index in CF compliant files&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5873" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5873" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5873" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5873" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Vegard Bønes &lt;<a href="mailto:vegard.bones?Subject=Re%3A%20%5BCF-metadata%5D%20cf%20standards%20for%20probabilities">vegard.bones</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 18 Nov 2013 06:40:56 +0000 (UTC)</span><br />
+</address>
+<br />
+Hi, all!
+<br />
+<br />The cf metadata standard lacks specifications for dealing with probabilities. To amend this, we would like to propose the following additions to the cf metadata standard. This proposal is largely based on an old discussion on this list, from 2011. The discussion is in the archive, with the first message here: <a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2011/049412.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2011/049412.html</a>
+<br />
+<br />This suggestion consists of three separate parts: A new standard_name modifier, a new standard_name, and conventions for handling more complex cases.
+<br />
+<br /><br />1) A new standard name modifier: confidence
+<br />
+<br />The simplest cases may be expressed using a new standard name modifier, confidence. It changes the variable's meaning to say something about our confidence of another variable's correctness. Appending this to a variable always changes its units to 1 or something equivalent. In this case, 1 means high confidence, and 0 means no confidence.
+<br />
+<br />The modifier may be used like this:
+<br />
+<br />float wind_speed(time, latitude, longitude) ;
+<br />
+&nbsp;&nbsp;wind_speed:units = &quot;m/s&quot; ;
+<br />
+&nbsp;&nbsp;wind_speed:standard_name = &quot;wind_speed&quot; ;
+<br />
+&nbsp;&nbsp;wind_speed:ancillary_variables = &quot;wind_speed_confidence&quot; ;
+<br />
+<br />float wind_speed_confidence(time, latitude, longitude) ;
+<br />
+&nbsp;&nbsp;wind_speed_confidence:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;wind_speed_confidence:standard_name = &quot;wind_speed confidence&quot; ;
+<br />
+<br />In the second variable, the units have changed from &quot;m/s&quot; to &quot;1&quot;, and the standard_name contains the new modifier. This means that the data expresses confidence that wind_speed is correct for each time and grid point. Note that in this case, we do not explicitly specify what we mean by &quot;correct&quot;.
+<br />
+<br /><br />2) A new standard_name: cumulative_distribution_function_over_realization
+<br />
+<br />This is intended to be used when specifying various scenarios as percentiles for data. It is a list of quantiles of some sort (such as percentiles), which may be used as dimensions for other variables. It may for example look like this:
+<br />
+<br />float percentile(percentile) ;  
+<br />
+&nbsp;&nbsp;percentile:units = &quot;%&quot; ;
+<br />
+&nbsp;&nbsp;percentile:standard_name = &quot;cumulative_distribution_function_over_realization&quot; ;
+<br />
+&nbsp;&nbsp;
+<br />
+float air_temperature_percentiles(time, percentile, latitude, longitude) ;
+<br />
+&nbsp;&nbsp;air_temperature_percentiles:units = &quot;K&quot; ;
+<br />
+&nbsp;&nbsp;air_temperature_percentiles:standard_name = &quot;air_temperature&quot; ;
+<br />
+<br />The percentile dimension may for example contain these values: 10, 25, 50, 75, 90. air_temperature_percentiles would then contain data for five different cases.
+<br />
+<br /><br />3) Conventions for intervals
+<br />
+<br />In some cases, it may be necessary to be more specific when stating confidence of a given value. What do we mean when we say that we are 79% certain that air temperature will be 16 degrees? In this case, we may want to be more specific. We may for instance want to say that we are 79% certain that temperature will be between +/- 1 degrees of 16 degrees, and 93% certain that temperature will be between +/- 2 degrees of that. For this purpose we introduce a convention for specifying this: intervals.
+<br />
+<br />Using intervals does not require any new standard names or modifiers. Instead, we use bounds to specify the ranges for data. Here is an example, using air_temperature, where we give confidence that a temperature forecast is within +/- 1.5 or +/- 2.5 degrees:
+<br />
+<br />float temperature_bounds(interval_of_air_temperature, confidence_bounds) ; [-1.5, 1.5, -2.5, 2.5]
+<br />
+&nbsp;&nbsp;temperature_bounds:long_name = &quot;bounds of temperature - for confidence variables&quot; ;
+<br />
+<br />float interval_of_air_temperature(interval_of_air_temperature) ; [1.5, 2.5]
+<br />
+&nbsp;&nbsp;interval_of_air_temperature:bounds = &quot;temperature_bounds&quot; ;
+<br />
+&nbsp;&nbsp;interval_of_air_temperature:units = &quot;K&quot; ;
+<br />
+&nbsp;&nbsp;interval_of_air_temperature:long_name = &quot;air_temperature offset from a given value (in either direction)&quot; ;
+<br />
+<br />float air_temperature_confidence(time, interval_of_air_temperature, latitude, longitude) ;
+<br />
+&nbsp;&nbsp;air_temperature_confidence:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;air_temperature_confidence:standard_name = &quot;air_temperature confidence&quot; ;
+<br />
+&nbsp;&nbsp;air_temperature_confidence:long_name = &quot;probability of air_temperature within +/- interval_of_air_temperature&quot; ;
+<br />
+<br />float air_temperature(time, latitude, longitude) ;
+<br />
+&nbsp;&nbsp;air_temperature:units = &quot;K&quot; ;
+<br />
+&nbsp;&nbsp;air_temperature:standard_name = &quot;air_temperature&quot; ;
+<br />
+&nbsp;&nbsp;air_temperature:ancillary_variables = &quot;air_temperature_confidence&quot; ;
+<br />
+<br />There are many things to note here.
+<br />
+<br />&nbsp;&nbsp;* air_temperature_confidence uses the new standard name modifier, confidence.
+<br />
+&nbsp;&nbsp;* air_temperature_confidence has an extra dimension, interval_of_air_temperature. This specifies what range of air temperature, relative to the forecast, we specify our confidence for.
+<br />
+&nbsp;&nbsp;* interval_of_air_temperature, in turn, specifies a bounds variable, which gives the exact temperature offset in each direction. 
+<br />
+<br /><br />Specifying lower limits of precipitation
+<br />
+<br />We may also want to express chances that some value will be above or below a certain threshold. A similar construct may be used for this. Here is an example, where we express confidence that the amount of rain for a period will be above a certain threshold:
+<br />
+<br />float precipitation_bounds(lower_limit_of_precipitation, confidence_bounds) ; [0.1,inf, 0.2,inf, 0.5,inf, 1,inf, 2,inf, 5,inf]
+<br />
+&nbsp;&nbsp;precipitation_bounds:long_name = &quot;bounds of precipitation - for confidence variables&quot; ;
+<br />
+<br />float lower_limit_of_precipitation(lower_limit_of_precipitation) ; [0.1, 0.2, 0.5, 1, 2, 5]
+<br />
+&nbsp;&nbsp;lower_limit_of_precipitation:bounds = &quot;precipitation_bounds&quot; ;
+<br />
+&nbsp;&nbsp;lower_limit_of_air_temperature:units = &quot;kg/m2&quot; ;
+<br />
+&nbsp;&nbsp;lower_limit_of_precipitation:long_name = &quot;lower limit of precipitation&quot; ;
+<br />
+<br />float precipitation_limit_confidence(time, lower_limit_of_precipitation, latitude, longitude) ;
+<br />
+&nbsp;&nbsp;precipitation_limit_confidence:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;precipitation_limit_confidence:standard_name = &quot;precipitation_amount confidence&quot; ;
+<br />
+&nbsp;&nbsp;precipitation_limit_confidence:long_name = &quot;probability of precipitation_amount above precipitation_limit&quot; ;
+<br />
+&nbsp;&nbsp;precipitation_limit_confidence:cell_methods = &quot;time: sum&quot; ;
+<br />
+<br />I this case, we use infinity as upper bounds for precipitation. In cases where bounds type does not have a special infinity value, such as int, that variable's max value should be used.
+<br />
+<br />Any comments?
+<br />
+<br /><br />-- Vegard
+<br />
+<span id="received"><dfn>Received on</dfn> Sun Nov 17 2013 - 23:40:56 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5873">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5874.html" title="Next message in the list">Gary Meehan: "[CF-metadata] new standard names: fire area, fire temperature, fire radiative power"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5872.html" title="Previous message in the list">&#0216;ystein God&#0248;y: "[CF-metadata] UV-index in CF compliant files"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5873" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5873" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5873" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5873" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:32 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5872.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5874.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

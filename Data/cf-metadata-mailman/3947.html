@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] FW: netcdf for particle trajectories from Ute Brönner on 2011-11-25 (cf-metadata-mailman)</title>
+<meta name="Author" content="Ute Brönner (Ute.Broenner)" />
+<meta name="Subject" content="[CF-metadata] FW: netcdf for particle trajectories" />
+<meta name="Date" content="2011-11-25" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3946.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3948.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] FW: netcdf for particle trajectories</h1>
+<!-- received="Fri Nov 25 06:01:32 2011" -->
+<!-- isoreceived="20111125060132" -->
+<!-- sent="Fri, 25 Nov 2011 14:01:32 +0100" -->
+<!-- isosent="20111125130132" -->
+<!-- name="Ute Brönner" -->
+<!-- email="Ute.Broenner" -->
+<!-- subject="[CF-metadata] FW: netcdf for particle trajectories" -->
+<!-- id="FAD360E1D1C8BA43AE9EE0CA9FB4C1C44B8546AE4A_at_SINTEFEXMBX01.sintef.no" -->
+<!-- charset="iso-8859-1" -->
+<!-- inreplyto="CAO4M2uMhFHLp0+tDAon5cZWg-k16aKaem1HmZXtdK=_z9wxN+g&#64;mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3947" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3948.html" accesskey="d" title="Etienne Tourigny: &quot;[CF-metadata] FW: netcdf for particle trajectories&quot;">Next message</a> ]
+[ <a href="./3946.html" title="Lorenzo Bigagli: &quot;[CF-metadata]  standards for probabilities&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3948.html" accesskey="t" title="Etienne Tourigny: &quot;[CF-metadata] FW: netcdf for particle trajectories&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3947" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3947" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3947" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3947" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Ute Brönner &lt;<a href="mailto:Ute.Broenner?Subject=Re%3A%20%5BCF-metadata%5D%20FW%3A%20netcdf%20for%20particle%20trajectories">Ute.Broenner</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 25 Nov 2011 14:01:32 +0100</span><br />
+</address>
+<br />
+Hi folks,
+<br />
+<br />I kind of lost track of our latest discussions and had the feeling that this was partly outside the mailing group; so I will try to sum up what we were discussing.
+<br />
+My latest try was to produce NetCDF for particle trajectory trying to write out the concentration grid which resulted in a 11GB netFCDF3 file :-(
+<br />
+<br />So we have different motivations for discussion particle trajectory and netcdf4.
+<br />
+<br />First question: 
+<br />
+Does anybody know if and if yes, when writing netCDF4 will be incorporated into the NetCDF Java library? Or will we use Python with the help of Jython etc. (<a href="http://www.slideshare.net/onyame/mixing-python-and-java">http://www.slideshare.net/onyame/mixing-python-and-java</a>) to write netCDF4?
+<br />
+<br />Second question:
+<br />
+Is there a de facto standard / proposal for writing Particle Trajectory Data which could be CF:featureType: &lt;whatever we agree on&gt;? The suggestion below is not suitable because:
+<br />
+1) we don't track a particle the whole time, it may disappear and show up again later, but if I have 1000 particles in time step 1 and 1000 in time step 2 we cannot be sure these 1000 are the same as before.
+<br />
+2) I cannot know the number of time steps in advance.
+<br />
+<br />I would like sth. like
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;particle = UNLIMITED; //because it may change each time step
+<br />
+&nbsp;&nbsp;&nbsp;time = UNLIMITED; // because I don't know
+<br />
+<br />then every variable is like 
+<br />
+latitude (particle, time)
+<br />
+longitude (particle, time)
+<br />
+<br />and I might have
+<br />
+int number_particles_per_timestep(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;1&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:long_name = &quot;number particles per current timestep&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:CF:ragged_row_count = &quot;particle&quot;;
+<br />
+<br />That some of you need to know which spill a particle came from, may be solved with a 3rd dimension spill
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;spill = 3; // or how many one has
+<br />
+&nbsp;&nbsp;&nbsp;particle = UNLIMITED; //because it may change each time step
+<br />
+&nbsp;&nbsp;&nbsp;time = UNLIMITED; // because I don't know
+<br />
+<br />particle (spill, time)
+<br />
+<br />then every variable is like 
+<br />
+latitude (particle)
+<br />
+longitude (particle)
+<br />
+<br />how would one write this? With coordinates or as hierarchical data structure?
+<br />
+At least we need the ability to use several unlimited dimensions and the ragged-array feature.
+<br />
+<br />Third question:
+<br />
+How can we compress big netCDF3 files? Or is it smarter to go for netCDF4 directly with hierarchical data. As in my example above I would need to write out a 11 GB file and then deflate it like described here <a href="http://www.unidata.ucar.edu/mailing_lists/archives/netcdf-java/2010/msg00095.html">http://www.unidata.ucar.edu/mailing_lists/archives/netcdf-java/2010/msg00095.html</a>  or with Rich's script; but is that really necessary?
+<br />
+<br /><br />Hoping to get up the discussion again and that we agree on a standard quite soon!
+<br />
+Have a nice weekend!
+<br />
+<br />Best,
+<br />
+Ute
+<br />
+<br />-------- Original Message --------
+<br />
+Subject: [CF-metadata] Particle Track Feature Type (was: Re: point observation data in CF 1.4)
+<br />
+Date: Fri, 19 Nov 2010 04:15:35 +0100
+<br />
+From: John Caron &lt;caron at unidata.ucar.edu&gt;
+<br />
+To: cf-metadata at cgd.ucar.edu &lt;cf-metadata at cgd.ucar.edu&gt;
+<br />
+<br />Im thinking that we need a new feature type for this. Im calling it &quot;particleTrack&quot; but theres probably a better name.
+<br />
+<br />My reasoning is that the nested table representation of trajectories is:
+<br />
+<br />Table {
+<br />
+&nbsp;&nbsp;&nbsp;traj_id;
+<br />
+&nbsp;&nbsp;&nbsp;Table {
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat, lon, z;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data;
+<br />
+&nbsp;&nbsp;&nbsp;}
+<br />
+}
+<br />
+<br />but this case has the inner and outer table inverted:
+<br />
+<br />Table {
+<br />
+&nbsp;&nbsp;&nbsp;time;
+<br />
+&nbsp;&nbsp;&nbsp;Table {
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;particle_id;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat, lon, z;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data2;
+<br />
+&nbsp;&nbsp;&nbsp;}
+<br />
+}
+<br />
+<br />So, following that line of thought, the possibilities in CDL are:
+<br />
+<br />1) If avg number of particles ~ max number of particles at any time step, then one could use multdimensional arrays:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;maxParticles = 1000 ;
+<br />
+&nbsp;&nbsp;&nbsp;time = 7777 ; // may be UNLIMITED
+<br />
+<br />variables:
+<br />
+<br />&nbsp;&nbsp;&nbsp;double time(time) ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;int particle_id(time, maxParticles) ;
+<br />
+&nbsp;&nbsp;&nbsp;float lon(time, maxParticles) ;
+<br />
+&nbsp;&nbsp;&nbsp;float lat(time, maxParticles) ;
+<br />
+&nbsp;&nbsp;&nbsp;float z(time, maxParticles) ;
+<br />
+&nbsp;&nbsp;&nbsp;float data(time, maxParticles) ;
+<br />
+<br />attributes:
+<br />
+&nbsp;&nbsp;&nbsp;:featureType = &quot;particleTrack&quot;;
+<br />
+<br />note maxParticles is the max number of particles at any one time step, not total particle tracks. The particle trajectories have to be found by examining the values of particle_id(time, maxParticles).
+<br />
+<br />2) The CDL of the ragged case would look like:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;obs = 500000; // UNLIMITED
+<br />
+&nbsp;&nbsp;&nbsp;time = 7777 ;
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;&nbsp;int time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;int rowSize(time) ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;int particle_id(obs) ;
+<br />
+&nbsp;&nbsp;&nbsp;float lon(obs) ;
+<br />
+&nbsp;&nbsp;&nbsp;float lat(obs) ;
+<br />
+&nbsp;&nbsp;&nbsp;float z(obs) ;
+<br />
+&nbsp;&nbsp;&nbsp;float data(obs) ;
+<br />
+<br />attributes:
+<br />
+&nbsp;&nbsp;&nbsp;:featureType = &quot;particleTrack&quot;;
+<br />
+<br />in this case, you dont have to know the max number of particles at any one time step, but you do need to know the number of time steps beforehand. The particle trajectories have to be found by examining the values of particle_id(obs). The particles at time step i are contained in the obs variables between start(i) to start(i) + rowSize(i).
+<br />
+<br />these layouts are optimized for processing all particles at a given time, and for sequentially processing time steps. If one wanted to process particle trajectories, that will be much slower. If you needed to do it a lot, you might want to rewrite the file. a more sophisticated application, possibly a server, could write an index to speed it up.
+<br />
+<br /><br />_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<br /><br />-----Original Message-----
+<br />
+From: rsignell at gmail.com [mailto:rsignell at gmail.com] On Behalf Of Rich Signell
+<br />
+Sent: Donnerstag, 18. August 2011 19:04
+<br />
+To: Christopher Barker
+<br />
+Cc: Ute Br?nner; Ben Hetland; Mark Reed; Nils Rune Bodsberg; CJ Beegle-Krause; Caitlin O'Connor; Alex Hadjilambris; Rob Hetland
+<br />
+Subject: Re: netcdf for particle trajectories
+<br />
+<br />Chris,
+<br />
+<br /><br /><em class="quotelev3">&gt;&gt;&gt; so I'll make part of my homework to deliver you a Python script 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; using Whitaker's NetCDF4 that writes a sample file.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; How did this go, Rich?
+</em><br />
+<br />Yes, I took Rob Hetland's Python short course, and yes, I wrote a small example showing how to take NetCDF3 particle tracking output and create a compressed NetCDF4 file with chunking.  I just forgot to send it.  ;-)
+<br />
+<br />Note: You can get a OpenDAP-enabled NetCDF4 Python module for both 32 and 64 bit windows from:
+<br />
+<a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a>
+<br />
+<br />-Rich
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; We're getting closer to a prototype file (i.e. we've got GNOME writing 
+</em><br />
+<em class="quotelev1">&gt; something, but it still needs some tweaking). I'll sent out an example 
+</em><br />
+<em class="quotelev1">&gt; when I think we're close.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; One new issue:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In GNOME, we have the concept of any number of &quot;spills&quot; -- each spill 
+</em><br />
+<em class="quotelev1">&gt; is a set of particles that usually share some properties.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; So we're trying to figure out how to capture that. Two ideas:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 1) each spill is a unique set of data -- but I think that it would ony 
+</em><br />
+<em class="quotelev1">&gt; be possible to do this by using a convension on teh variable names:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; data_1
+</em><br />
+<em class="quotelev1">&gt; particle_count_1
+</em><br />
+<em class="quotelev1">&gt; longitude_1
+</em><br />
+<em class="quotelev1">&gt; latitude_1
+</em><br />
+<em class="quotelev1">&gt; ...
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; data_2
+</em><br />
+<em class="quotelev1">&gt; particle_count_2
+</em><br />
+<em class="quotelev1">&gt; longitude_2
+</em><br />
+<em class="quotelev1">&gt; latitude_2
+</em><br />
+<em class="quotelev1">&gt; ...
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; That seems pretty ugly. Could netcdf4's &quot;hierarchical data&quot; help us here?
+</em><br />
+<em class="quotelev1">&gt; Maybe this provides the motivation to use it.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Option two:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; put all the particles in one big array, but identify the different &quot;spills&quot;
+</em><br />
+<em class="quotelev1">&gt; by particle ID:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ID_range_1 = 0-1000
+</em><br />
+<em class="quotelev1">&gt; ID_range_2 = 1000-2000
+</em><br />
+<em class="quotelev1">&gt; ...
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; then they could get split up by the client software, if desired, or 
+</em><br />
+<em class="quotelev1">&gt; the separate spills could be ignored, and it could all be treated as one.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -- thoughts?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; Christopher Barker, Ph.D.
+</em><br />
+<em class="quotelev1">&gt; Oceanographer
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Emergency Response Division
+</em><br />
+<em class="quotelev1">&gt; NOAA/NOS/OR&amp;R ? ? ? ? ? ?(206) 526-6959 ? voice
+</em><br />
+<em class="quotelev1">&gt; 7600 Sand Point Way NE ? (206) 526-6329 ? fax Seattle, WA ?98115
+</em><br />
+<em class="quotelev1">&gt; (206) 526-6317 ? main reception
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Chris.Barker at noaa.gov
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><br /><pre>
+--
+Dr. Richard P. Signell?? (508) 457-2229
+USGS, 384 Woods Hole Rd.
+Woods Hole, MA 02543-1598
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Nov 25 2011 - 06:01:32 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3947">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3948.html" title="Next message in the list">Etienne Tourigny: "[CF-metadata] FW: netcdf for particle trajectories"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3946.html" title="Previous message in the list">Lorenzo Bigagli: "[CF-metadata]  standards for probabilities"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3948.html" title="Next message in this discussion thread">Etienne Tourigny: "[CF-metadata] FW: netcdf for particle trajectories"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3948.html" title="Message sent in reply to this message">Etienne Tourigny: "[CF-metadata] FW: netcdf for particle trajectories"</a></li>
+<li><dfn>Reply</dfn>: <a href="./3954.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] FW: netcdf for particle trajectories"</a></li>
+<li><dfn>Reply</dfn>: <a href="./3957.html" title="Message sent in reply to this message">Chris Barker: "[CF-metadata] FW: netcdf for particle trajectories"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3947" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3947" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3947" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3947" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:54 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3946.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3948.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

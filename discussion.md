@@ -54,8 +54,7 @@ on the [CF Metadata Trac](Data/trac.html) site.
 [website]: https://cfconventions.org
 [trac]: Data/trac.html
 [about]: about-trac.html
-[mail]: http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata
-[archives]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
+[archives]: Data/cf-metadata-mailman
 [current]: http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter
 [proposals]: http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter
 [github_issues]: https://guides.github.com/features/issues

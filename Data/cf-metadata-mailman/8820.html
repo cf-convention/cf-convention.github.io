@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Units of projection_x_coordinate values in &quot;Geospatial projection&quot; from Ethan Davis on 2018-04-09 (cf-metadata-mailman)</title>
+<meta name="Author" content="Ethan Davis (edavis)" />
+<meta name="Subject" content="[CF-metadata] Units of projection_x_coordinate values in &quot;Geospatial projection&quot;" />
+<meta name="Date" content="2018-04-09" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8819.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8821.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Units of projection_x_coordinate values in &quot;Geospatial projection&quot;</h1>
+<!-- received="Mon Apr  9 13:54:34 2018" -->
+<!-- isoreceived="20180409125434" -->
+<!-- sent="Mon, 9 Apr 2018 13:54:34 -0600" -->
+<!-- isosent="20180409195434" -->
+<!-- name="Ethan Davis" -->
+<!-- email="edavis" -->
+<!-- subject="[CF-metadata] Units of projection_x_coordinate values in &quot;Geospatial projection&quot;" -->
+<!-- id="CAFVnN=MTG4nu1MmjF35YSygP+vCYOsoKYO54MNygkr+NRK1SaA_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8820" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8821.html" accesskey="d" title="Sebastien Villaume: &quot;[CF-metadata] how to	use ocean_mixed_layer_thickness_defined_by_*&quot;">Next message</a> ]
+[ <a href="./8819.html" title="Martin Juckes - UKRI STFC: &quot;[CF-metadata] CMIP6 data request: Precipitation of solid phase water&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8823.html" accesskey="t" title="Randy Horne: &quot;[CF-metadata] Units of projection_x_coordinate values in &#0034;Geospatial projection&#0034;&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8820" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8820" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8820" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8820" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Ethan Davis &lt;<a href="mailto:edavis?Subject=Re%3A%20%5BCF-metadata%5D%20Units%20of%20projection_x_coordinate%20values%20in%20%22Geospatial%20projection%22">edavis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 9 Apr 2018 13:54:34 -0600</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />The &quot;Geostationary projection&quot; section of Appendix F &quot;Grid Mappings&quot; says
+<br />
+<br />The x (abscissa) and y (ordinate) rectangular coordinates are identified by
+<br />
+the standard_name attribute values projection_x_coordinate and
+<br />
+projection_y_coordinate respectively. In the case of this projection, the
+<br />
+projection coordinates in this projection are directly related to the
+<br />
+scanning angle of the satellite instrument, and their units are radians.
+<br />
+<br /><br />To more explicitly fit CF expectations for units of variables with a
+<br />
+standard_name attribute, I believe the last bit should read:
+<br />
+<br />... and their *canonical* units are radians.
+<br />
+<br /><br />This came up because the GOES-16 Full Disk data (example below [1]) is
+<br />
+stored with the projection_{x|y}_coordinate values in microradians and, it
+<br />
+turns out, the netCDF-Java code didn't like that as it expected radians.
+<br />
+(Oops!)
+<br />
+<br />Unless anyone disagrees, I will open a CF Trac ticket for this change later
+<br />
+this week.
+<br />
+<br />Thanks,
+<br />
+<br />Ethan
+<br />
+<br />[1]
+<br />
+<a href="http://thredds-test.unidata.ucar.edu/thredds/dodsC/satellite/goes16/GOES16/FullDisk/Channel08/20180406/GOES16_FullDisk_20180406_201540_6.19_6km_0.0S_75.0W.nc4.html">http://thredds-test.unidata.ucar.edu/thredds/dodsC/satellite/goes16/GOES16/FullDisk/Channel08/20180406/GOES16_FullDisk_20180406_201540_6.19_6km_0.0S_75.0W.nc4.html</a>
+<br />
+<br />netcdf GOES16_FullDisk_20180406_201540_6.19_6km_0.0S_75.0W {
+<br />
+<br />dimensions:
+<br />
+<br />x = 1808 ;
+<br />
+<br />y = 1808 ;
+<br />
+<br />variables:
+<br />
+<br />int time ;
+<br />
+<br />time:units = &quot;seconds since 2017-01-01&quot; ;
+<br />
+<br />time:standard_name = &quot;time&quot; ;
+<br />
+<br />time:long_name = &quot;The start date / time that the satellite began capturing
+<br />
+the scene&quot; ;
+<br />
+<br />time:axis = &quot;T&quot; ;
+<br />
+<br />time:calendar = &quot;standard&quot; ;
+<br />
+<br />short y(y) ;
+<br />
+<br />y:standard_name = &quot;projection_y_coordinate&quot; ;
+<br />
+<br />y:units = &quot;microradian&quot; ;
+<br />
+<br />y:scale_factor = -167.999999999971 ;
+<br />
+<br />y:add_offset = 151788. ;
+<br />
+<br />short x(x) ;
+<br />
+<br />x:standard_name = &quot;projection_x_coordinate&quot; ;
+<br />
+<br />x:units = &quot;microradian&quot; ;
+<br />
+<br />x:scale_factor = 167.999999999971 ;
+<br />
+<br />x:add_offset = -151788. ;
+<br />
+<br />int fixedgrid_projection ;
+<br />
+<br />fixedgrid_projection:grid_mapping_name = &quot;geostationary&quot; ;
+<br />
+<br />fixedgrid_projection:latitude_of_projection_origin = 0. ;
+<br />
+<br />fixedgrid_projection:longitude_of_projection_origin = -75. ;
+<br />
+<br />fixedgrid_projection:semi_major = 6378137. ;
+<br />
+<br />fixedgrid_projection:semi_major_axis = 6378137. ;
+<br />
+<br />fixedgrid_projection:semi_minor = 6356752.31414 ;
+<br />
+<br />fixedgrid_projection:semi_minor_axis = 6356752.31414 ;
+<br />
+<br />fixedgrid_projection:perspective_point_height = 35785831. ;
+<br />
+<br />fixedgrid_projection:sweep_angle_axis = &quot;x&quot; ;
+<br />
+<br />short Sectorized_CMI(y, x) ;
+<br />
+<br />Sectorized_CMI:_FillValue = 0s ;
+<br />
+<br />Sectorized_CMI:standard_name = &quot;brightness_temperature&quot; ;
+<br />
+<br />Sectorized_CMI:units = &quot;kelvin&quot; ;
+<br />
+<br />Sectorized_CMI:grid_mapping = &quot;fixedgrid_projection&quot; ;
+<br />
+<br />Sectorized_CMI:add_offset = 138.05f ;
+<br />
+<br />Sectorized_CMI:scale_factor = 0.04224986f ;
+<br />
+<br />Sectorized_CMI:valid_min = 0s ;
+<br />
+<br />Sectorized_CMI:valid_max = 4095s ;
+<br />
+<br />Sectorized_CMI:coordinates = &quot;time y x&quot; ;
+<br />
+<br /><br />// global attributes:
+<br />
+<br />:title = &quot;Sectorized Cloud and Moisture Imagery for the EFD region.&quot; ;
+<br />
+<br />:ICD_version = &quot;GROUND SEGMENT (GS) TO ADVANCED WEATHER INTERACTIVE
+<br />
+PROCESSING SYSTEM (AWIPS) INTERFACE CONTROL DOCUMENT (ICD) Revision B&quot; ;
+<br />
+<br />:Conventions = &quot;CF-1.6&quot; ;
+<br />
+<br />:channel_id = 8 ;
+<br />
+<br />:central_wavelength = 6.19f ;
+<br />
+<br />:abi_mode = 3 ;
+<br />
+<br />:source_scene = &quot;FullDisk&quot; ;
+<br />
+<br />:periodicity = 15.f ;
+<br />
+<br />:production_location = &quot;RBU&quot; ;
+<br />
+<br />:product_name = &quot;EFD-060-B12-M3C08&quot; ;
+<br />
+<br />:satellite_id = &quot;GOES-16&quot; ;
+<br />
+<br />:product_center_latitude = 0. ;
+<br />
+<br />:product_center_longitude = -75. ;
+<br />
+<br />:projection = &quot;Fixed Grid&quot; ;
+<br />
+<br />:bit_depth = 12 ;
+<br />
+<br />:source_spatial_resolution = 2.f ;
+<br />
+<br />:request_spatial_resolution = 6.f ;
+<br />
+<br />:start_date_time = &quot;2018096201540&quot; ;
+<br />
+<br />:number_product_tiles = 4 ;
+<br />
+<br />:product_tile_width = 1024 ;
+<br />
+<br />:product_tile_height = 1024 ;
+<br />
+<br />:product_rows = 1808 ;
+<br />
+<br />:product_columns = 1808 ;
+<br />
+<br />:pixel_x_size = 6. ;
+<br />
+<br />:pixel_y_size = 6. ;
+<br />
+<br />:satellite_latitude = 0. ;
+<br />
+<br />:satellite_longitude = -75. ;
+<br />
+<br />:satellite_altitude = 35785831. ;
+<br />
+<br />:created_by = &quot;ldm-alchemy&quot; ;
+<br />
+<br />:product_tiles_received = 4 ;
+<br />
+<br />}
+<br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20180409/a4155dcc/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20180409/a4155dcc/attachment.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Apr 09 2018 - 13:54:34 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8820">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8821.html" title="Next message in the list">Sebastien Villaume: "[CF-metadata] how to	use ocean_mixed_layer_thickness_defined_by_*"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8819.html" title="Previous message in the list">Martin Juckes - UKRI STFC: "[CF-metadata] CMIP6 data request: Precipitation of solid phase water"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8823.html" title="Next message in this discussion thread">Randy Horne: "[CF-metadata] Units of projection_x_coordinate values in &#0034;Geospatial projection&#0034;"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8823.html" title="Message sent in reply to this message">Randy Horne: "[CF-metadata] Units of projection_x_coordinate values in &#0034;Geospatial projection&#0034;"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8820" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8820" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8820" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8820" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:20 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8819.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8821.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

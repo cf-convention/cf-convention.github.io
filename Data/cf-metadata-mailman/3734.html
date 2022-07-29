@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Ragged Arrays? from Chris.Barker on 2011-09-09 (cf-metadata-mailman)</title>
+<meta name="Author" content="Chris.Barker (Chris.Barker)" />
+<meta name="Subject" content="[CF-metadata] Ragged Arrays?" />
+<meta name="Date" content="2011-09-09" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3733.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3735.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Ragged Arrays?</h1>
+<!-- received="Fri Sep  9 10:00:21 2011" -->
+<!-- isoreceived="20110909090021" -->
+<!-- sent="Fri, 09 Sep 2011 09:00:21 -0700" -->
+<!-- isosent="20110909160021" -->
+<!-- name="Chris.Barker" -->
+<!-- email="Chris.Barker" -->
+<!-- subject="[CF-metadata] Ragged Arrays?" -->
+<!-- id="4E6A3815.4000003_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3734" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3735.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Request for a region standard_name&quot;">Next message</a> ]
+[ <a href="./3733.html" title="Jim Biard: &quot;[CF-metadata] Request for a region standard_name&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3747.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] Ragged Arrays?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3734" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3734" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3734" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3734" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: &lt;<a href="mailto:Chris.Barker?Subject=Re%3A%20%5BCF-metadata%5D%20Ragged%20Arrays%3F">Chris.Barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 09 Sep 2011 09:00:21 -0700</span><br />
+</address>
+<br />
+Hi folks,
+<br />
+<br />I'm working on a format for storing the output from a particle tracking 
+<br />
+model. Once we're happy with it, we'll post here for feedback, but for 
+<br />
+the moment a question:
+<br />
+<br />As many particle tracking models create and destroy particles as the run 
+<br />
+goes on, we have decided that a &quot;ragged array&quot; representation is the way 
+<br />
+to go. But I'm having trouble figure out the &quot;standard&quot; way to represent 
+<br />
+ragged arrays. An minimal example:
+<br />
+<br /><br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time = 24 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = UNLIMITED ; // (240 currently)
+<br />
+<br />## The data dimension describes the &quot;ragged array&quot; -- it is stored as a 
+<br />
+1-d array
+<br />
+<br />## time is straightforward.
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;seconds since 1970-01-01 0:00:00&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:long_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int particle_count(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;particle_count:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;particle_count:long_name = &quot;number of particles in a given timestep&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;particle_count:CF:ragged_row_count = &quot;data&quot; ;
+<br />
+<br />## here is the question. particle_count is the number of particles at 
+<br />
+each time step -- this describes how long each &quot;row&quot; of the ragged array 
+<br />
+is. For each time step, it gives the number of particles at that time.
+<br />
+<br />I also found this in the CDM implementation of CF discrete sampling 
+<br />
+features (DRAFT):
+<br />
+<br />&quot;ragged_row_count is an alias for sample_dimension standard name&quot;
+<br />
+<br />so should we be using &quot;sample_dimension&quot; instead? ( I like 
+<br />
+ragged_row_count better, this isn't a sample )
+<br />
+<br />Is the the way to specify a &quot;ragged array?&quot;
+<br />
+<br />-Chris
+<br />
+<br /><br /><br /><br /><br /><br /><br /><br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Sep 09 2011 - 10:00:21 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3734">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3735.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Request for a region standard_name"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3733.html" title="Previous message in the list">Jim Biard: "[CF-metadata] Request for a region standard_name"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3747.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] Ragged Arrays?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3747.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] Ragged Arrays?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3734" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3734" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3734" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3734" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:50 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3733.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3735.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

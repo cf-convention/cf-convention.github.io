@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jim Biard on 2015-05-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-05-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7006.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7008.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Wed May 20 14:43:49 2015" -->
+<!-- isoreceived="20150520134349" -->
+<!-- sent="Wed, 20 May 2015 16:43:49 -0400" -->
+<!-- isosent="20150520204349" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="555CF205.5020205_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CALGmxEKDvChSVBYuBEFTjcGbojF67vDpWPduRft-pJZDCJx0Cw_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7007" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7008.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./7006.html" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+[ <a href="./6998.html" title="Chris Barker: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6999.html" accesskey="t" title="Karl Taylor: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7007" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7007" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7007" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7007" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 20 May 2015 16:43:49 -0400</span><br />
+</address>
+<br />
+Chris,
+<br />
+<br />While I agree that the elapsed time *should* be correct, I think it's 
+<br />
+highly likely that there are files &quot;in the wild&quot; that don't have correct 
+<br />
+elapsed times. I know that until I started digging into this I would 
+<br />
+have naively used the *nix timegm function to produce elapsed times from 
+<br />
+UTC timestamps.
+<br />
+<br />What I'm advocating is a way to allow the large majority of data 
+<br />
+producers who have time resolutions that are coarse enough that leap 
+<br />
+seconds don't matter to continue to work without having to do anything 
+<br />
+extra, while providing a positive mechanism for those who have fine time 
+<br />
+resolutions to signal to their users that they can trust the elapsed 
+<br />
+time values. I'd say that what is special about this one is that it 
+<br />
+involves a coordinate variable, as opposed to a data variable, and that 
+<br />
+the number and kinds of pitfalls in moving between timestamps and 
+<br />
+elapsed times warrant the extra attention.
+<br />
+<br />The more I think about 'gregorian_nls' though, the more I think it is 
+<br />
+not useful. If you have GPS time values (perhaps as elapsed times since 
+<br />
+the GPS epoch of 1980-01-06 00:00:00 UTC) as your input, and you wanted 
+<br />
+to use a GPS timestamp in your reference time (which for today is 
+<br />
+currently 16 seconds off from UTC), you would need to have a way to 
+<br />
+state that the timestamp is in the GPS time system. Similarly, if you 
+<br />
+have TAI time values (elapsed times since the TAI epoch of 1958-01-01 
+<br />
+00:00:00 UTC) and wanted to use a TAI timestamp in your reference time 
+<br />
+(which for today is currently 35 seconds off from UTC), you would need 
+<br />
+to have a way to state that the timestamp is in the TAI time system. The 
+<br />
+gregorian_nls calendar is too generic. And then there's the Loran time 
+<br />
+system (and others).
+<br />
+<br />As an example, the date and time stamps as I'm writing this in the 
+<br />
+different systems are:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* TAI 2015-05-20 20:21:00
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* GPS 2015-05-20 20:21:16
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* UTC 2015-05-20 20:21:35
+<br />
+<br />How about this?
+<br />
+<br />Redefine 'gregorian' to remove reference to UTC as Jonathan has 
+<br />
+described, and state that presence or absence of leap second artifacts 
+<br />
+in the reference timestamp and elapsed time values is not known for a 
+<br />
+time variable that names this calendar. This is backward compatible.
+<br />
+<br />Define 'gregorian_utc' as using the Gregorian calendar and the UTC time 
+<br />
+system in the reference date and time in the units attribute. Specify 
+<br />
+that the elapsed times *must* be free of leap second offsets or 
+<br />
+discontinuities. Data producers that have GPS times as inputs (for 
+<br />
+example) must be sure to obtain a proper UTC timestamp, but are 
+<br />
+otherwise unconstrained. Data producers that have UTC timestamps as 
+<br />
+inputs must be sure to properly handle conversion from UTC timestamps to 
+<br />
+elapsed times so that leap second problems are not introduced. Data 
+<br />
+consumers, if they read the section on time in the CF Conventions, will 
+<br />
+understand how to make proper use of the time variable reference 
+<br />
+timestamp and elapsed time values.
+<br />
+<br />And we could also define 'gregorian_gps', 'gregorian_tai', etc. Or we 
+<br />
+could define just one of them (it doesn't have to be gregorian_utc) and 
+<br />
+say that this is what you use with CF. For folks with input time data 
+<br />
+that is free of leap seconds (either time stamps or elapsed times), the 
+<br />
+most they will have to do is convert the reference time to the chosen 
+<br />
+time system. It's going to be more work for people with UTC timestamps 
+<br />
+as inputs no matter what.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 5/20/15 11:44 AM, Chris Barker wrote:
+<br />
+<em class="quotelev1">&gt; On Wed, May 20, 2015 at 7:43 AM, John Graybeal 
+</em><br />
+<em class="quotelev1">&gt; &lt;jbgraybeal at mindspring.com &lt;mailto:jbgraybeal at mindspring.com&gt;&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;     Without fully appreciating _all_ the particulars (sorry!), I think
+</em><br />
+<em class="quotelev1">&gt;     Jonathan's diagnostic (that people would tend to keep using
+</em><br />
+<em class="quotelev1">&gt;     gregorian) is correct. 
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; agreed.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;     I like the idea of a warning against that practice, with a
+</em><br />
+<em class="quotelev1">&gt;     recommendation to use gregorian_nls if that's appropriate (and of
+</em><br />
+<em class="quotelev1">&gt;     course a pointer to the relevant sections of the standard).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; But I'm not sure that we need to lighten the spec. Let's say that 
+</em><br />
+<em class="quotelev1">&gt; &quot;gregorian&quot; in no CF-1.7+ compliant. Yes, people will still use it, so 
+</em><br />
+<em class="quotelev1">&gt; they will have slightly non-compliant files, but folks will still be 
+</em><br />
+<em class="quotelev1">&gt; able to use them.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; But people are more likely to do the right thing if is officially 
+</em><br />
+<em class="quotelev1">&gt; non-=compliant than if it is simply against recommendations.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If the goal is to get as many files as possible to use gregorian_nls 
+</em><br />
+<em class="quotelev1">&gt; (when appropriate) then it probably should be the standard.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Note that I'm still a bit confused about the particulars here:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It seems to me that the calendar describes what the epoch in a time 
+</em><br />
+<em class="quotelev1">&gt; variable means.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; the elapsed time _should_ be correct. period. If it says X seconds 
+</em><br />
+<em class="quotelev1">&gt; since the epoch, then it should be X seconds since the epoch.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I understand that someone may have made a mistake/used an 
+</em><br />
+<em class="quotelev1">&gt; inappropriate library, etc, such that there may be an off 
+</em><br />
+<em class="quotelev1">&gt; by-a-couple-seconds error in the elapse time. But are we really trying 
+</em><br />
+<em class="quotelev1">&gt; to include something in the standard to accommodate that?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There could be errors / lack of precision in ANY variable in a file -- 
+</em><br />
+<em class="quotelev1">&gt; what's so special about this one?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Or maybe I'm mis-interpreting the plan here.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -Chris
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;     john
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;     On May 20, 2015, at 07:16, Jonathan Gregory
+</em><br />
+<em class="quotelev1">&gt;     &lt;j.m.gregory at reading.ac.uk &lt;mailto:j.m.gregory at reading.ac.uk&gt;&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;     &gt; Dear Jim
+</em><br />
+<em class="quotelev2">&gt;     &gt;
+</em><br />
+<em class="quotelev2">&gt;     &gt; If instead we decided not to redefine gregorian, but to replace
+</em><br />
+<em class="quotelev1">&gt;     it with
+</em><br />
+<em class="quotelev2">&gt;     &gt; gregorian_nls, that would be a more definite indication that
+</em><br />
+<em class="quotelev1">&gt;     action had been
+</em><br />
+<em class="quotelev2">&gt;     &gt; taken to use the right code, wouldn't it. Would you be content
+</em><br />
+<em class="quotelev1">&gt;     with that?
+</em><br />
+<em class="quotelev2">&gt;     &gt;
+</em><br />
+<em class="quotelev2">&gt;     &gt; This isn't my favourite option, as you know. While it doesn't
+</em><br />
+<em class="quotelev1">&gt;     seem onerous,
+</em><br />
+<em class="quotelev2">&gt;     &gt; I'm not sure it's realistic. I suspect that people might continue to
+</em><br />
+<em class="quotelev2">&gt;     &gt; code calendar=&quot;gregorian&quot; anyway, even if the CF checker
+</em><br />
+<em class="quotelev1">&gt;     reported it as an
+</em><br />
+<em class="quotelev2">&gt;     &gt; error, but perhaps I am too pessimistic! A compromise would be
+</em><br />
+<em class="quotelev1">&gt;     to *recommend*
+</em><br />
+<em class="quotelev2">&gt;     &gt; coding gregorian_nls, meaning the same as (redefined) gregorian,
+</em><br />
+<em class="quotelev1">&gt;     but indicating
+</em><br />
+<em class="quotelev2">&gt;     &gt; more definitely that there were no leap seconds in the encoding,
+</em><br />
+<em class="quotelev1">&gt;     in order to
+</em><br />
+<em class="quotelev2">&gt;     &gt; reassure the user it had been done correctly. If we took that
+</em><br />
+<em class="quotelev1">&gt;     course, the CF
+</em><br />
+<em class="quotelev2">&gt;     &gt; checker would give a warning if gregorian was coded, and
+</em><br />
+<em class="quotelev1">&gt;     recommend that it
+</em><br />
+<em class="quotelev2">&gt;     &gt; should be changed to gregorian_nls. This is a bit like your idea
+</em><br />
+<em class="quotelev1">&gt;     of having an
+</em><br />
+<em class="quotelev2">&gt;     &gt; extra attribute, but it's implied by the existing attribute. I
+</em><br />
+<em class="quotelev1">&gt;     would be
+</em><br />
+<em class="quotelev2">&gt;     &gt; comfortable with this compromise. What do you and others think?
+</em><br />
+<em class="quotelev2">&gt;     &gt;
+</em><br />
+<em class="quotelev2">&gt;     &gt; Best wishes
+</em><br />
+<em class="quotelev2">&gt;     &gt;
+</em><br />
+<em class="quotelev2">&gt;     &gt; Jonathan
+</em><br />
+<em class="quotelev2">&gt;     &gt;
+</em><br />
+<em class="quotelev2">&gt;     &gt; ----- Forwarded message from Jim Biard &lt;jbiard at cicsnc.org
+</em><br />
+<em class="quotelev1">&gt;     &lt;mailto:jbiard at cicsnc.org&gt;&gt; -----
+</em><br />
+<em class="quotelev2">&gt;     &gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; Date: Wed, 20 May 2015 09:15:01 -0400
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; From: Jim Biard &lt;jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; To: cf-metadata at cgd.ucar.edu &lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; Subject: Re: [CF-metadata] How to define time coordinate in GPS?
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:31.0)
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt;      Gecko/20100101 Thunderbird/31.7.0
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; Jonathan,
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; Given the direction we have taken of using a new calendar name to
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; capture the other aspect, we are limited in our options. We could
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; specify an attribute that, if present, could be taken as a
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; &quot;guarantee&quot; (although people admittedly could set the attribute and
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; still do it wrong). The attribute name could be time_encoding with
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; values of 'true_elapsed' and 'unknown'. The value of 'unknown'
+</em><br />
+<em class="quotelev1">&gt;     would
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; be the default, so if the attribute was not specified, the
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; assumption would be that you can't be sure. Most data producers
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; would have no need to specify the attribute, since their time
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; resolutions are not so fine as to make them sensitive to the
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; potential problems.
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; Other than your suggestion about 1.7 implying greater care taken,
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; that's what comes to mind.
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; Grace and peace,
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; Jim
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; On 5/19/15 5:23 PM, Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; Dear Jim
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt; We are definitely getting much closer to full agreement. I
+</em><br />
+<em class="quotelev1">&gt;     continue
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt; to think that a separate time_system (or some such) attribute
+</em><br />
+<em class="quotelev1">&gt;     would
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt; be a much better way to handle this than modifying the calendar
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt; attribute, and that space-separated calendar modifiers would
+</em><br />
+<em class="quotelev1">&gt;     be next
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt; best after that, but I will bow to the apparent majority and
+</em><br />
+<em class="quotelev1">&gt;     agree
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt; to your proposal for modified definitions of the general
+</em><br />
+<em class="quotelev1">&gt;     reference
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt; time and Gregorian calendar, the addition of a new gregorian_utc
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt; calendar, etc, as you just outlined.
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; That is good news. I am glad that we understand things in a
+</em><br />
+<em class="quotelev1">&gt;     compatible way now
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; thanks to this discussion, and I am grateful for your
+</em><br />
+<em class="quotelev1">&gt;     flexibility and willing-
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; ness to compromise on the implementation.
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt; There are two remaining things that I would like to see.
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt; 1. A section that explains the importance for data producers and
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   consumers of using the right time handling routines for the
+</em><br />
+<em class="quotelev1">&gt;     input
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   time data and the calendar chosen if your time resolution
+</em><br />
+<em class="quotelev1">&gt;     makes you
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   sensitive to errors on the order of 1-30 seconds, pointing
+</em><br />
+<em class="quotelev1">&gt;     out (for
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   example) that using the standard *nix time functions with
+</em><br />
+<em class="quotelev1">&gt;     sets of
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   correct UTC timestamps will produce incorrect elapsed time
+</em><br />
+<em class="quotelev1">&gt;     values
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   under the right conditions. Such a section would also point
+</em><br />
+<em class="quotelev1">&gt;     out to
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   data consumers that if errors on this level are significant
+</em><br />
+<em class="quotelev1">&gt;     to them,
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   they shouldn't assume that existing observational datasets
+</em><br />
+<em class="quotelev1">&gt;     are free
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   of these errors.
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; That's a good idea. I am in favour of it. We can do that in
+</em><br />
+<em class="quotelev1">&gt;     the section where
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; we describe the calendars.
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt; 2. A standard mechanism for data producers to indicate that
+</em><br />
+<em class="quotelev1">&gt;     they have,
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   in fact, taken the extra care with their time calculations,
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   whichever calendar they may have chosen - that is, the
+</em><br />
+<em class="quotelev1">&gt;     elapsed time
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   values are guaranteed to be free of any leap second related
+</em><br />
+<em class="quotelev1">&gt;     offsets
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   or discontinuities. This would give data consumers greater
+</em><br />
+<em class="quotelev1">&gt;     &gt;&gt;&gt;&gt;   confidence in cases where such errors matter.
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; Yes, I see the value in that. I wonder how we would do it.
+</em><br />
+<em class="quotelev1">&gt;     What comes to mind
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; is to suggest that they are making that guarantee by
+</em><br />
+<em class="quotelev1">&gt;     specifying CF-1.7 (I hope
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; - or whichever version contains this change) rather than any
+</em><br />
+<em class="quotelev1">&gt;     earlier version,
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; which means in particular that the calendar will no longer
+</em><br />
+<em class="quotelev1">&gt;     have a default. If
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; they have changed their software to write CF-1.7 in the
+</em><br />
+<em class="quotelev1">&gt;     Conventions attribute,
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; we can hope that they have also changed it to be consistent
+</em><br />
+<em class="quotelev1">&gt;     with the new and
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; more precise definition of the calendar attribute. The changes
+</em><br />
+<em class="quotelev1">&gt;     made are listed
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; in an appendix to the standard (it will be Appendix Z in
+</em><br />
+<em class="quotelev1">&gt;     CF-1.7) and the
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; implication of this change should be made clear there. What
+</em><br />
+<em class="quotelev1">&gt;     else could we do?
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; Best wishes
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; Jonathan
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev4">&gt;     &gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; --
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt;   *Jim Biard*
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; *Research Scholar*
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; Cooperative Institute for Climate and Satellites NC
+</em><br />
+<em class="quotelev1">&gt;     &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; NOAA National Centers for Environmental Information
+</em><br />
+<em class="quotelev1">&gt;     &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; /formerly NOAA?s National Climatic Data Center/
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev1">&gt;     &lt;mailto:jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; o: +1 828 271 4900 &lt;tel:%2B1%20828%20271%204900&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; /We will be updating our social media soon. Follow our current
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; Facebook (NOAA National Climatic Data Center
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; &lt;<a href="https://www.facebook.com/NOAANationalClimaticDataCenter">https://www.facebook.com/NOAANationalClimaticDataCenter</a>&gt; and NOAA
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; National Oceanographic Data Center
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; &lt;<a href="https://www.facebook.com/noaa.nodc">https://www.facebook.com/noaa.nodc</a>&gt;) and Twitter (_at_NOAANCDC
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; &lt;<a href="https://twitter.com/NOAANCDC">https://twitter.com/NOAANCDC</a>&gt; and _at_NOAAOceanData
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; &lt;<a href="https://twitter.com/NOAAOceanData">https://twitter.com/NOAAOceanData</a>&gt;) accounts for the latest
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; information./
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;     &gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev3">&gt;     &gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;     &gt;
+</em><br />
+<em class="quotelev2">&gt;     &gt;
+</em><br />
+<em class="quotelev2">&gt;     &gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev2">&gt;     &gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;     &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;     &gt; CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;     &gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;     _______________________________________________
+</em><br />
+<em class="quotelev1">&gt;     CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt;     CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt;     <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -- 
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Christopher Barker, Ph.D.
+</em><br />
+<em class="quotelev1">&gt; Oceanographer
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Emergency Response Division
+</em><br />
+<em class="quotelev1">&gt; NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+</em><br />
+<em class="quotelev1">&gt; 7600 Sand Point Way NE   (206) 526-6329   fax
+</em><br />
+<em class="quotelev1">&gt; Seattle, WA  98115       (206) 526-6317   main reception
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Chris.Barker at noaa.gov &lt;mailto:Chris.Barker at noaa.gov&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/We will be updating our social media soon. Follow our current Facebook 
+(NOAA National Climatic Data Center 
+&lt;<a href="https://www.facebook.com/NOAANationalClimaticDataCenter">https://www.facebook.com/NOAANationalClimaticDataCenter</a>&gt; and NOAA 
+National Oceanographic Data Center &lt;<a href="https://www.facebook.com/noaa.nodc">https://www.facebook.com/noaa.nodc</a>&gt;) 
+and Twitter (_at_NOAANCDC &lt;<a href="https://twitter.com/NOAANCDC">https://twitter.com/NOAANCDC</a>&gt; and @NOAAOceanData 
+&lt;<a href="https://twitter.com/NOAAOceanData">https://twitter.com/NOAAOceanData</a>&gt;) accounts for the latest information./
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150520/3470282e/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150520/3470282e/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150520/3470282e/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150520/3470282e/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed May 20 2015 - 14:43:49 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7007">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7008.html" title="Next message in the list">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7006.html" title="Previous message in the list">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6998.html" title="Message to which this message replies">Chris Barker: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6999.html" title="Next message in this discussion thread">Karl Taylor: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7007" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7007" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7007" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7007" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7006.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7008.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

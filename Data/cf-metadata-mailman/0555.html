@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] curvilinear cartesian coordinates case from Bert Jagers on 2006-12-04 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bert Jagers (Bert.Jagers)" />
+<meta name="Subject" content="[CF-metadata] curvilinear cartesian coordinates case" />
+<meta name="Date" content="2006-12-04" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0554.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0556.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] curvilinear cartesian coordinates case</h1>
+<!-- received="Mon Dec  4 13:05:58 2006" -->
+<!-- isoreceived="20061204130558" -->
+<!-- sent="Mon, 4 Dec 2006 21:05:58 +0100" -->
+<!-- isosent="20061204200558" -->
+<!-- name="Bert Jagers" -->
+<!-- email="Bert.Jagers" -->
+<!-- subject="[CF-metadata] curvilinear cartesian coordinates case" -->
+<!-- id="036f01c717df$9d753ac0$22e40991_at_wl06377" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20061204090828.GA17830_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start555" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0556.html" accesskey="d" title="Godin, Michael: &quot;[CF-metadata] Proposed standard names for biological model outputs&quot;">Next message</a> ]
+[ <a href="./0554.html" title="Steve Emmerson: &quot;[CF-metadata] Proposed standard names for biological model outputs&quot;">Previous message</a> ]
+[ <a href="./0542.html" title="Jonathan Gregory: &quot;[CF-metadata] curvilinear cartesian coordinates case&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0557.html" accesskey="t" title="Steve Hankin: &quot;[CF-metadata] curvilinear cartesian coordinates case&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg555" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg555" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg555" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg555" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bert Jagers &lt;<a href="mailto:Bert.Jagers?Subject=Re%3A%20%5BCF-metadata%5D%20curvilinear%20cartesian%20coordinates%20case">Bert.Jagers</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 4 Dec 2006 21:05:58 +0100</span><br />
+</address>
+<br />
+Dear Jonathan and others,
+<br />
+<br />Thanks for all comments and suggestions; sorry I wasn't able to respond the 
+<br />
+last couple of days. Let me indicate the context of my request.
+<br />
+<br />I work in the field of hydraulics, morphodynamics, water quality and 
+<br />
+ecology. Our modelling system is used for simulations from the scale of 
+<br />
+metres (flume experiments) through all length scales (detailed flow around 
+<br />
+groynes, dredging studies, flooding, river models from 10-100 km, estuaries) 
+<br />
+to coastal/sea/ocean applications (storm surges, residual transports, tidal 
+<br />
+predictions, tsunami). We want our model in- and output to be stored in an 
+<br />
+international standardized file format such that users all over the world 
+<br />
+can easily use the system and process the results. NetCDF with the outlook 
+<br />
+of netCDF4/HDF5 seems to be the most appropriate candidate. But netCDF by 
+<br />
+itself is just a generic data container (slightly better, but not much 
+<br />
+better, than distributing our own file format together with reading 
+<br />
+routines). So, we need to standardise the way in which data is written to 
+<br />
+the netCDF file; the CF standard seems to be the only logical choice for 
+<br />
+that. As I see it now, I have to find solutions for the following CF-related 
+<br />
+challenges:
+<br />
+<br />1- lat/lon and local coordinates. See below.
+<br />
+2- 1D model data, 2D/3D mosaic model data and also unstructured grid model 
+<br />
+data.
+<br />
+3- staggered data C-type grid with different locations for water levels and 
+<br />
+velocity components in grid directions.
+<br />
+<br />Topics 2 and 3 will be addressed in a different setting. I will continue 
+<br />
+with topic 1 below.
+<br />
+<br />As some have indicated it is possible to write non-standardized data in 
+<br />
+netCDF file. Well, that is probably the state that we are in right now. I 
+<br />
+write out 2D/3D data in a netCDF format that is similar to CF conventions, 
+<br />
+that was intended to be CF compliant, but unfortunately is not CF compliant. 
+<br />
+So far, I have said to users that it is CF compliant (because I was made to 
+<br />
+believe that it was indeed so) and have heard about no problems (only about 
+<br />
+initially lacking standard names). However, I do not like this situation now 
+<br />
+that I know that something is wrong, and I would like to really adhere to 
+<br />
+the CF conventions. What else is a standard good for?
+<br />
+<br />The applications on the largest scales (coastal/sea/ocean) are generally 
+<br />
+formulated in lat/lon coordinates, so, that is fine. I can imagine that 
+<br />
+ocean and atmospheric models are generally posed in generic lat/lon 
+<br />
+coordinates and that is, thus, logical for climate and forecast standard 
+<br />
+associated with such models to assume lat/lon coordinates to be known (for 
+<br />
+reasons of scale, positioning or nesting of models). However, many of the 
+<br />
+more local models for which the curvature of the earth is not relevant are 
+<br />
+based on local coordinates; this holds definitely for most of our river 
+<br />
+models. Even though the exact transformation to lat/lon coordinates may not 
+<br />
+be known, the model runs just fine; however, in such cases we cannot store 
+<br />
+the data in a CF compliant way because the lat/lon coordinates are unkown. I 
+<br />
+recognize and thus accept that lat/lon is the preferred way to store 
+<br />
+coordinate information and we, therefore, need to adjust our pre- and 
+<br />
+postprocessing software to deal with such cases. Luckily, the introduction 
+<br />
+of GIS has made coordinate transformations easier once you know the exact 
+<br />
+characteristics of the local coordinate system. However, although GIS is 
+<br />
+spreading,  many non-GIS-based local data supply and processing tools often 
+<br />
+do not include coordinate transformation facilities and, therefore, they 
+<br />
+require the coordinates to be given also in the local coordinate system. The 
+<br />
+auxiliary coordinates option and grid_mapping feature offers the 
+<br />
+functionality to support one such local system, but due to the growing 
+<br />
+demand on water the number of projects at international boundaries is 
+<br />
+increasing. In such cases, there is not one local coordinate but more (in 
+<br />
+most cases two). Although in such cases the model may be formulated in 
+<br />
+lat/lon coordinates, the data supply should use the local coordinate 
+<br />
+systems. Since this request is related to the local coordinate systems of 
+<br />
+the countries in the considered model area, I think that is highly unlikely 
+<br />
+that after the data has been produced the number of coordinates is to be 
+<br />
+extended (question by Steve). However, as Jonathan indicates in the mail 
+<br />
+below one could always extend such files. It would, however, be possible for 
+<br />
+a large model to touch on three countries and thus require three coordinate 
+<br />
+systems, but such models would do so from the start.
+<br />
+<br />Instead of creating one output file with the grid specified in multiple 
+<br />
+coordinate systems, one could of course generate multiple copies of the 
+<br />
+output file with one auxiliary coordinate system each, but I do not like 
+<br />
+this approach. I am not against grids in different files as Steve proposed 
+<br />
+in the (CF provisional standards thread) but I my experience with such 
+<br />
+implementations from postprocessing is not so good (either no reference to 
+<br />
+other files, or external files missing or located in different directories). 
+<br />
+Steve's idea is more in line with John Caron's concept of a grid object with 
+<br />
+the difference that John keeps all coordinate systems in one file. I like 
+<br />
+the grid object concept because is close to the object oriented concepts in 
+<br />
+model coupling: OpenMI, a european standard on model coupling, uses element 
+<br />
+sets on which data sets are defined, the ESMF framework is also working in 
+<br />
+this grid object direction.  By the way, I have modified John's example on 
+<br />
+<a href="http://cf-pcmdi.llnl.gov/trac/wiki/MultipleProjections">http://cf-pcmdi.llnl.gov/trac/wiki/MultipleProjections</a> to refer to Dutch and 
+<br />
+German coordinateSystems instead of Dutch and Belgium coordinate systems to 
+<br />
+reflect the coordinate systems defined. I have not yet read the Coordinate 
+<br />
+System Object Model page that John referred to, but I would be tempted to 
+<br />
+say that quantities are defined (at some staggered locations) on grids or 
+<br />
+meshes (or on no spatial data set at all), grids and meshes are specified in 
+<br />
+some coordinate system (one of which is WGS84 lat/lon), and coordinate 
+<br />
+systems can be mapped onto each other using something that is called 
+<br />
+grid_mapping in the CF convention.
+<br />
+<br />To reassure Steve, as indicated above I first need to get consistent 
+<br />
+transformation information into our pre- and postprocessing software 
+<br />
+otherwise I do not have the required lat/lon coordinate representation. So, 
+<br />
+we don't need to rush into a final solution yet. However, I did feel the 
+<br />
+need to raise this matter since I know that I will need it in the end.
+<br />
+<br />By the way: Unfortunately, different countries do not only use different 
+<br />
+local coordinate systems, but they often also use different vertical 
+<br />
+reference systems (couple of cm difference between Netherlands, Belgium and 
+<br />
+Germany). Such differences in vertical reference systems are harder to 
+<br />
+correct for; I do not want to store bed levels and surface elevations in 
+<br />
+different vertical reference systems.
+<br />
+<br />Best regards,
+<br />
+<br />Bert
+<br />
+<br />----- Original Message ----- 
+<br />
+From: &quot;Jonathan Gregory&quot; &lt;j.m.gregory at reading.ac.uk&gt;
+<br />
+To: &lt;cf-metadata at cgd.ucar.edu&gt;
+<br />
+Sent: Monday, December 04, 2006 10:08 AM
+<br />
+Subject: [CF-metadata] curvilinear cartesian coordinates case
+<br />
+<br /><br /><em class="quotelev1">&gt; Dear Steve and Bert
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;    Can someone weigh in
+</em><br />
+<em class="quotelev2">&gt;&gt;    regarding the benefit side of this requirement?  Will it be
+</em><br />
+<em class="quotelev2">&gt;&gt;    commonplace to require multiple grid mappings in some communities?  In
+</em><br />
+<em class="quotelev2">&gt;&gt;    those communities are we confident that the number of alternative grid
+</em><br />
+<em class="quotelev2">&gt;&gt;    mappings will remain fixed?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I presume that Bert has a definite need to store multiple grid mappings.
+</em><br />
+<em class="quotelev1">&gt; I don't think any of the solutions proposed requires the number to be 
+</em><br />
+<em class="quotelev1">&gt; fixed
+</em><br />
+<em class="quotelev1">&gt; i.e. the file could be modified to add another one, using any of the 
+</em><br />
+<em class="quotelev1">&gt; solutions.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;    As you know I believe personally that the cost of  added complexity,
+</em><br />
+<em class="quotelev2">&gt;&gt;    of muddying concepts, etc. in CF is not given enough weight in our
+</em><br />
+<em class="quotelev2">&gt;&gt;    discussions.  Often we have a pressing need to create new files, but a
+</em><br />
+<em class="quotelev2">&gt;&gt;    much vaguer future intention to create software to read those files,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Bert, do you have a definite intention to read these 2D projection coords
+</em><br />
+<em class="quotelev1">&gt; from the files? Is there a community of users for them?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; !DSPAM:27,4573e6ab48712053120893!
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Dec 04 2006 - 13:05:58 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start555">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0556.html" title="Next message in the list">Godin, Michael: "[CF-metadata] Proposed standard names for biological model outputs"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0554.html" title="Previous message in the list">Steve Emmerson: "[CF-metadata] Proposed standard names for biological model outputs"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0542.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] curvilinear cartesian coordinates case"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0557.html" title="Next message in this discussion thread">Steve Hankin: "[CF-metadata] curvilinear cartesian coordinates case"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0557.html" title="Message sent in reply to this message">Steve Hankin: "[CF-metadata] curvilinear cartesian coordinates case"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg555" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg555" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg555" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg555" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0554.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0556.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

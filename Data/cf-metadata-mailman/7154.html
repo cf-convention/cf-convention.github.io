@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jonathan Gregory on 2015-06-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-06-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7153.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7155.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Fri Jun 26 11:10:59 2015" -->
+<!-- isoreceived="20150626101059" -->
+<!-- sent="Fri, 26 Jun 2015 19:10:59 +0200" -->
+<!-- isosent="20150626171059" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="20150626171059.GA5608_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7154" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7155.html" accesskey="d" title="Aaron Sweeney: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./7153.html" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7156.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7154" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7154" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7154" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7154" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 26 Jun 2015 19:10:59 +0200</span><br />
+</address>
+<br />
+Dear Nan
+<br />
+<br />Thanks for your comment and for keeping up with the discussion. So do you think
+<br />
+we should distinguish these cases:
+<br />
+<br />gregorian_nls. The timestamps are the real-world UTC but encoded without leap
+<br />
+seconds (all days of 86400 s), so not quite accurate for elapsed times, but
+<br />
+decoding the time coordinates will give exactly the timestamps the data-
+<br />
+producer intended.
+<br />
+<br />gregorian. The timestamps might be GPS or UTC, and they might be encoded with
+<br />
+or without leap seconds, but this information is not specified, because the
+<br />
+data producer doesn't think that such precision is needed. In that case the
+<br />
+decoded timestamps will not necessarily be accurately what the data-producer
+<br />
+intended, because it's not recorded how the encoding was done.
+<br />
+<br />I think it would be good not to have a default. At present sec 4.4.1 recommends
+<br />
+that the calendar is specified, but I see that we haven't included that in the
+<br />
+conformance doc. We should have done so, and the CF checker should produce a
+<br />
+warning if the calendar attribute is absent on a time coordinate variable.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br /><br />----- Forwarded message from Nan Galbraith &lt;ngalbraith at whoi.edu&gt; -----
+<br />
+<br /><em class="quotelev1">&gt; Date: Fri, 26 Jun 2015 10:36:44 -0400
+</em><br />
+<em class="quotelev1">&gt; From: Nan Galbraith &lt;ngalbraith at whoi.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] How to define time coordinate in GPS?
+</em><br />
+<em class="quotelev1">&gt; User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:31.0)
+</em><br />
+<em class="quotelev1">&gt; 	Gecko/20100101 Thunderbird/31.7.0
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Hi all -
+</em><br />
+<em class="quotelev2">&gt; &gt;I am sure that everyone else is quite tired of listening to us by
+</em><br />
+<em class="quotelev2">&gt; &gt;now, if they still are. :-)
+</em><br />
+<em class="quotelev1">&gt; I've been following this thread, but have not spoken up before because
+</em><br />
+<em class="quotelev1">&gt; the tiny offsets in the time coordinate that are being discussed are so
+</em><br />
+<em class="quotelev1">&gt; far below the noise level in my time word as to be meaningless. And,
+</em><br />
+<em class="quotelev1">&gt; something tells me, I'm not the only one.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Most in situ data is measured at different points, or for different
+</em><br />
+<em class="quotelev1">&gt; durations,
+</em><br />
+<em class="quotelev1">&gt; within a nominal sample window; in my case, that window is usually between
+</em><br />
+<em class="quotelev1">&gt; a minute and an hour. Instrument clocks drift for minutes, every
+</em><br />
+<em class="quotelev1">&gt; year they're
+</em><br />
+<em class="quotelev1">&gt; in the field. So, for a lot of in situ data, leap seconds are truly
+</em><br />
+<em class="quotelev1">&gt; beside the point.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Maybe this is what you mean by 'playing fast and loose with time'? If
+</em><br />
+<em class="quotelev1">&gt; that's what your instruments do, I'm thinking your data shouldn't try to
+</em><br />
+<em class="quotelev1">&gt; nail things down too much more tightly.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I understand that for some data sets, an accurate description of the
+</em><br />
+<em class="quotelev1">&gt; time is
+</em><br />
+<em class="quotelev1">&gt; critical - but when you implement a standard that accommodates that need,
+</em><br />
+<em class="quotelev1">&gt; you shouldn't make it too much more complicated for those with other kinds
+</em><br />
+<em class="quotelev1">&gt; of data sets.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; So my request is to keep it simple for the many CF users who will
+</em><br />
+<em class="quotelev1">&gt; not be aware
+</em><br />
+<em class="quotelev1">&gt; that the calendar they're using (by default, or explicitly) is
+</em><br />
+<em class="quotelev1">&gt; different from what
+</em><br />
+<em class="quotelev1">&gt; a GPS-enabled device would provide. Please keep gregorian as an option, and
+</em><br />
+<em class="quotelev1">&gt; as the default calendar. If a user goes with this, instead of the
+</em><br />
+<em class="quotelev1">&gt; more specific
+</em><br />
+<em class="quotelev1">&gt; terms you're proposing, that tells you what you need to know about
+</em><br />
+<em class="quotelev1">&gt; their time
+</em><br />
+<em class="quotelev1">&gt; word.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I do use the calendar attribute in my data.  Maybe it's not 'accurate in the
+</em><br />
+<em class="quotelev1">&gt; real world' - but neither is the time word in a lot of my data. It's
+</em><br />
+<em class="quotelev1">&gt; a good fit.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Cheers - Nan
+</em><br />
+<span id="received"><dfn>Received on</dfn> Fri Jun 26 2015 - 11:10:59 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7154">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7155.html" title="Next message in the list">Aaron Sweeney: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7153.html" title="Previous message in the list">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7156.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7156.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7154" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7154" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7154" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7154" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:57 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7153.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7155.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

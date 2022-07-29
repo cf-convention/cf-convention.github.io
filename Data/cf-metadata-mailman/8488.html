@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] grid cells with a varying number of cell bounds from Jonathan Gregory on 2017-09-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] grid cells with a varying number of cell bounds" />
+<meta name="Date" content="2017-09-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8487.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8489.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] grid cells with a varying number of cell bounds</h1>
+<!-- received="Wed Sep  6 11:39:27 2017" -->
+<!-- isoreceived="20170906103927" -->
+<!-- sent="Wed, 6 Sep 2017 18:39:27 +0100" -->
+<!-- isosent="20170906173927" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] grid cells with a varying number of cell bounds" -->
+<!-- id="20170906173927.GA8669_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8488" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8489.html" accesskey="d" title="Painter, Jeff: &quot;[CF-metadata] CF Conventions 1.7 is released&quot;">Next message</a> ]
+[ <a href="./8487.html" title="Karl Taylor: &quot;[CF-metadata] grid cells with a varying number of cell bounds&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8491.html" accesskey="t" title="Karl Taylor: &quot;[CF-metadata] grid cells with a varying number of cell bounds&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8488" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8488" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8488" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8488" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20grid%20cells%20with%20a%20varying%20number%20of%20cell%20bounds">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 6 Sep 2017 18:39:27 +0100</span><br />
+</address>
+<br />
+Dear Karl
+<br />
+<br /><em class="quotelev1">&gt; I certainly always envisaged the possibility of cells of different
+</em><br />
+<em class="quotelev1">&gt; shapes, and we imply that this might be the case in the description
+</em><br />
+<em class="quotelev1">&gt; of cell bounds with the explicit mention of &quot;maximum&quot;:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; /&quot;A boundary variable will have one more dimension than its
+</em><br />
+<em class="quotelev1">&gt; associated coordinate or auxiliary coordinate variable./ The
+</em><br />
+<em class="quotelev1">&gt; additional dimension should be the most rapidly varying one, and its
+</em><br />
+<em class="quotelev1">&gt; size is the maximum number of cell vertices.&quot;
+</em><br />
+<br />That's true. Nonetheless we didn't provide for it later on in the document!
+<br />
+<br />Well, now we have a choice. Dave Blodgett's proposal has been debated and
+<br />
+revised over many months, and I support it in its current form. That is a
+<br />
+more general solution, which allows not only mixtures of different sorts of
+<br />
+polygons, but also sets of discontiguous polygons (for each cell), polygons
+<br />
+with holes in them, and lines. It does not require missing data to be stored
+<br />
+in the bounds, because it has a count of how many vertices belong to each cell.
+<br />
+Permitting missing data in polygon bounds in sect 7.1 would be a different
+<br />
+way of describing a mixture of different sorts of polygons. Providing more
+<br />
+than one method to do this would introduce unnecessary complexity. How do you
+<br />
+and others think we should choose?
+<br />
+<br /><em class="quotelev1">&gt; Concerning missing values being permitted for &quot;unused elements in
+</em><br />
+<em class="quotelev1">&gt; discrete sampling geometries&quot;, I agree when a variable is not
+</em><br />
+<em class="quotelev1">&gt; formally a function of time (as in examples H.3, H.16, and H.18,
+</em><br />
+<em class="quotelev1">&gt; H.20, and H.21), then time may have missing_values, but not when the
+</em><br />
+<em class="quotelev1">&gt; variable is formally a function of time as in H.4 and H.5, where
+</em><br />
+<em class="quotelev1">&gt; time is actually a coordinate variable.   I think in fact that the
+</em><br />
+<em class="quotelev1">&gt; NUG forbids missing values in coordinate variables.
+</em><br />
+<br />OK, sorry, I had overlooked that in this case there is a single timeseries,
+<br />
+so it's not one of the storage methods which could containing missing data
+<br />
+in coordinates. I agree, this is not allowed in (Unidata) coordinate vars,
+<br />
+and the document should be corrected in H.4 and H.5.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Sep 06 2017 - 11:39:27 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8488">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8489.html" title="Next message in the list">Painter, Jeff: "[CF-metadata] CF Conventions 1.7 is released"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8487.html" title="Previous message in the list">Karl Taylor: "[CF-metadata] grid cells with a varying number of cell bounds"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8491.html" title="Next message in this discussion thread">Karl Taylor: "[CF-metadata] grid cells with a varying number of cell bounds"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8491.html" title="Message sent in reply to this message">Karl Taylor: "[CF-metadata] grid cells with a varying number of cell bounds"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8488" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8488" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8488" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8488" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:16 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8487.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8489.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

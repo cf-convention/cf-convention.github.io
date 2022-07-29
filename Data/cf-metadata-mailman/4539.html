@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] how to represent a &quot;pft&quot; dimension from Etienne Tourigny on 2012-05-31 (cf-metadata-mailman)</title>
+<meta name="Author" content="Etienne Tourigny (etourigny.dev)" />
+<meta name="Subject" content="[CF-metadata] how to represent a &quot;pft&quot; dimension" />
+<meta name="Date" content="2012-05-31" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4538.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4540.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] how to represent a &quot;pft&quot; dimension</h1>
+<!-- received="Thu May 31 06:36:22 2012" -->
+<!-- isoreceived="20120531053622" -->
+<!-- sent="Thu, 31 May 2012 09:36:22 -0300" -->
+<!-- isosent="20120531123622" -->
+<!-- name="Etienne Tourigny" -->
+<!-- email="etourigny.dev" -->
+<!-- subject="[CF-metadata] how to represent a &quot;pft&quot; dimension" -->
+<!-- id="CA+TxYvO20NbOG=Q3Y6obu94p3OmABS9VA_Za689PKdqp2LZFUA_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4539" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4540.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  how to represent a &#0034;pft&#0034; dimension&quot;">Next message</a> ]
+[ <a href="./4538.html" title="Hedley, Mark: &quot;[CF-metadata] cf data model | Terms of Reference&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4539" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4539" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4539" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4539" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Etienne Tourigny &lt;<a href="mailto:etourigny.dev?Subject=Re%3A%20%5BCF-metadata%5D%20how%20to%20represent%20a%20%22pft%22%20dimension">etourigny.dev</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 31 May 2012 09:36:22 -0300</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />I would like to know how one would specify a &quot;pft&quot; dimensionless
+<br />
+coordinate in order to be CF-compliant and supported by most software.
+<br />
+<br />Here is an example which uses the &quot;pft&quot; dimension variable, with
+<br />
+axis='E' (for ensemble):
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double pft(pft) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pft:long_name = &quot;plant functional type&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pft:units = &quot;none&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pft:axis = &quot;E&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double npp(time, pft, latitude, longitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npp:long_name = &quot;npp of carbon for each pft&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npp:units = &quot;kg m-2 year-1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npp:_FillValue = 8.99999982852418e+20 ;
+<br />
+<br /><br />GRADS accepts it, but cdo replaces the axis='E' with axis='Z',
+<br />
+presumably because it is not a CF/COARDS standard.
+<br />
+<br />axis='Z' represents a vertical coordinate, and is supported by most
+<br />
+software. However, it does not fully represents the concept of pft
+<br />
+(because it is not formally a vertical axis).
+<br />
+<br /><br />thanks,
+<br />
+Etienne
+<br />
+<span id="received"><dfn>Received on</dfn> Thu May 31 2012 - 06:36:22 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4539">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4540.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  how to represent a &#0034;pft&#0034; dimension"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4538.html" title="Previous message in the list">Hedley, Mark: "[CF-metadata] cf data model | Terms of Reference"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4539" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4539" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4539" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4539" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:04 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4538.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4540.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

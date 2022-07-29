@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF checker question from Rosalyn Hatcher on 2019-04-16 (cf-metadata-mailman)</title>
+<meta name="Author" content="Rosalyn Hatcher (rosalyn.hatcher)" />
+<meta name="Subject" content="[CF-metadata] CF checker question" />
+<meta name="Date" content="2019-04-16" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9663.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9665.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF checker question</h1>
+<!-- received="Tue Apr 16 15:11:57 2019" -->
+<!-- isoreceived="20190416141157" -->
+<!-- sent="Tue, 16 Apr 2019 22:11:57 +0100" -->
+<!-- isosent="20190416211157" -->
+<!-- name="Rosalyn Hatcher" -->
+<!-- email="rosalyn.hatcher" -->
+<!-- subject="[CF-metadata] CF checker question" -->
+<!-- id="35c2aab0-ddf6-aed0-6cb3-02e913a451a4_at_ncas.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="0caeb6dd-9cd2-0040-c42d-de182affee15_at_llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9664" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9665.html" accesskey="d" title="Alison Pamment - UKRI STFC: &quot;[CF-metadata] New halocarbon standard name requests&quot;">Next message</a> ]
+[ <a href="./9663.html" title="Taylor, Karl E.: &quot;[CF-metadata] CF checker question&quot;">Previous message</a> ]
+[ <a href="./9663.html" title="Taylor, Karl E.: &quot;[CF-metadata] CF checker question&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9664" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9664" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9664" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9664" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Rosalyn Hatcher &lt;<a href="mailto:rosalyn.hatcher?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20checker%20question">rosalyn.hatcher</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 16 Apr 2019 22:11:57 +0100</span><br />
+</address>
+<br />
+Hi Karl,
+<br />
+<br />That looks like a bug to me!? From my quick look, I think there is a 
+<br />
+missing check on whether the interval endpoints are ordered consistently 
+<br />
+with the associated coordinate and it's therefore done lev_bnd[i][0] &lt;= 
+<br />
+lev &lt;= lev_bnd[1][0] rather than a decreasing check.? I'm all set to 
+<br />
+make a bug fix release straight after Easter, assuming all agree, I'll 
+<br />
+raise an issue and fix this on my return first.? Surprised this hasn't 
+<br />
+shown up before now.? Thanks for querying it.
+<br />
+<br />Regards,
+<br />
+Ros
+<br />
+<br /><br /><br />On 16/04/2019 20:38, Taylor, Karl E. wrote:
+<br />
+<em class="quotelev1">&gt; Hi All,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I have run a file through the CF-checker version 3.1.0 at 
+</em><br />
+<em class="quotelev1">&gt; <a href="http://pumatest.nerc.ac.uk/cgi-bin/cf-checker.pl">http://pumatest.nerc.ac.uk/cgi-bin/cf-checker.pl</a> and it returns some 
+</em><br />
+<em class="quotelev1">&gt; errors &amp; warnings (see below).? As I understand it, the error (4.3.3) 
+</em><br />
+<em class="quotelev1">&gt; is raised because the checker has not yet been updated to be fully 
+</em><br />
+<em class="quotelev1">&gt; able to handle CF-1.7 (in particular it says: &quot;*Note:*This version 
+</em><br />
+<em class="quotelev1">&gt; currently does not include the new cell boundary cross checks detailed 
+</em><br />
+<em class="quotelev1">&gt; in CF section 7.1 which will follow in due course.&quot;).? I hope someone 
+</em><br />
+<em class="quotelev1">&gt; will tell me if my understanding is incorrect about this.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The 3rd warning below indicates that &quot;Data for variable lev lies 
+</em><br />
+<em class="quotelev1">&gt; outside cell boundaries&quot;, but my ncdump of the file suggests that all 
+</em><br />
+<em class="quotelev1">&gt; &quot;lev&quot; values lie between the corresponding &quot;lev_bnd&quot; values. (See 2nd 
+</em><br />
+<em class="quotelev1">&gt; dump below.).? Could someone please tell me if there is an explanation 
+</em><br />
+<em class="quotelev1">&gt; for this warning other than it is incorrect?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; thanks and best regards,
+</em><br />
+<em class="quotelev1">&gt; Karl
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------------------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; *Output of CF-Checker follows...*
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; *----------------------------------------------------------------------------*
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; /home/ros/software/cf-checker/lib/python2.7/site-packages/cfchecker-3.1.0-py2.7.egg/cfchecker/cfchecks.py:1768: FutureWarning: Conversion of the second argument of issubdtype from `int` to `np.signedinteger` is deprecated. In future, it will be treated as `np.int64 == np.dtype(int).type`.
+</em><br />
+<em class="quotelev1">&gt;    elif numpy.issubdtype(attrType, numpy.int) or numpy.issubdtype(attrType, numpy.float):
+</em><br />
+<em class="quotelev1">&gt; /home/ros/software/cf-checker/lib/python2.7/site-packages/cfchecker-3.1.0-py2.7.egg/cfchecker/cfchecks.py:1768: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+</em><br />
+<em class="quotelev1">&gt;    elif numpy.issubdtype(attrType, numpy.int) or numpy.issubdtype(attrType, numpy.float):
+</em><br />
+<em class="quotelev1">&gt; CHECKING NetCDF FILE: /tmp/9066.nc
+</em><br />
+<em class="quotelev1">&gt; =====================
+</em><br />
+<em class="quotelev1">&gt; Using CF Checker Version 3.1.0
+</em><br />
+<em class="quotelev1">&gt; Checking against CF Version CF-1.7
+</em><br />
+<em class="quotelev1">&gt; Using Standard Name Table Version 65 (2019-04-09T13:32:32Z)
+</em><br />
+<em class="quotelev1">&gt; Using Area Type Table Version 9 (07 August 2018)
+</em><br />
+<em class="quotelev1">&gt; Using Standardized Region Name Table Version 4 (18 December 2018)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; WARN: (7.1): Boundary var lev_bnds should not have attribute units
+</em><br />
+<em class="quotelev1">&gt; WARN: (7.1): Boundary var lev_bnds should not have attribute standard_name
+</em><br />
+<em class="quotelev1">&gt; WARN: (7.1): Data for variable lev lies outside cell boundaries
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: time
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: time_bnds
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: lev
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: lev_bnds
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; INFO: attribute formula_terms is being used in a non-standard way
+</em><br />
+<em class="quotelev1">&gt; ERROR: (4.3.3): formula_terms attribute only allowed on coordinate variables
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: p0
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: a
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; INFO: (3.1): No units attribute set.  Please consider adding a units attribute for completeness.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: b
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; INFO: (3.1): No units attribute set.  Please consider adding a units attribute for completeness.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: ps
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: a_bnds
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; INFO: (3.1): No units attribute set.  Please consider adding a units attribute for completeness.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: b_bnds
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; INFO: (3.1): No units attribute set.  Please consider adding a units attribute for completeness.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: lat
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: lat_bnds
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: lon
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: lon_bnds
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; Checking variable: cl
+</em><br />
+<em class="quotelev1">&gt; ------------------
+</em><br />
+<em class="quotelev1">&gt; INFO: attribute history is being used in a non-standard way
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ERRORS detected: 1
+</em><br />
+<em class="quotelev1">&gt; WARNINGS given: 3
+</em><br />
+<em class="quotelev1">&gt; INFORMATION messages: 6
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------------------------------
+</em><br />
+<em class="quotelev1">&gt; *ncdump of file ............*
+</em><br />
+<em class="quotelev1">&gt; --------------------------------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; netcdf cl_Amon_INM-CM5-0_historical_r1i1p1f1_gr1_203001-203002 {
+</em><br />
+<em class="quotelev1">&gt; dimensions:
+</em><br />
+<em class="quotelev1">&gt;          time = UNLIMITED ; // (2 currently)
+</em><br />
+<em class="quotelev1">&gt;          lev = 5 ;
+</em><br />
+<em class="quotelev1">&gt;          lat = 3 ;
+</em><br />
+<em class="quotelev1">&gt;          lon = 4 ;
+</em><br />
+<em class="quotelev1">&gt;          bnds = 2 ;
+</em><br />
+<em class="quotelev1">&gt; variables:
+</em><br />
+<em class="quotelev1">&gt;          double time(time) ;
+</em><br />
+<em class="quotelev1">&gt;                  time:bounds = &quot;time_bnds&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  time:units = &quot;days since 2030-1-1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  time:calendar = &quot;365_day&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  time:axis = &quot;T&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  time:long_name = &quot;time&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  time:standard_name = &quot;time&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          double time_bnds(time, bnds) ;
+</em><br />
+<em class="quotelev1">&gt;          double lev(lev) ;
+</em><br />
+<em class="quotelev1">&gt;                  lev:bounds = &quot;lev_bnds&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lev:units = &quot;1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lev:axis = &quot;Z&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lev:positive = &quot;down&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lev:long_name = &quot;hybrid sigma pressure coordinate&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lev:standard_name = &quot;atmosphere_hybrid_sigma_pressure_coordinate&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lev:formula = &quot;p = a*p0 + b*ps&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lev:formula_terms = &quot;p0: p0 a: a b: b ps: ps&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          double lev_bnds(lev, bnds) ;
+</em><br />
+<em class="quotelev1">&gt;                  lev_bnds:formula = &quot;p = a*p0 + b*ps&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lev_bnds:standard_name = &quot;atmosphere_hybrid_sigma_pressure_coordinate&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lev_bnds:units = &quot;1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lev_bnds:formula_terms = &quot;p0: p0 a: a_bnds b: b_bnds ps: ps&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          double p0 ;
+</em><br />
+<em class="quotelev1">&gt;                  p0:long_name = &quot;vertical coordinate formula term: reference pressure&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  p0:units = &quot;Pa&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          double a(lev) ;
+</em><br />
+<em class="quotelev1">&gt;                  a:long_name = &quot;vertical coordinate formula term: a(k)&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          double b(lev) ;
+</em><br />
+<em class="quotelev1">&gt;                  b:long_name = &quot;vertical coordinate formula term: b(k)&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          float ps(time, lat, lon) ;
+</em><br />
+<em class="quotelev1">&gt;                  ps:long_name = &quot;Surface Air Pressure&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  ps:units = &quot;Pa&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          double a_bnds(lev, bnds) ;
+</em><br />
+<em class="quotelev1">&gt;                  a_bnds:long_name = &quot;vertical coordinate formula term: a(k+1/2)&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          double b_bnds(lev, bnds) ;
+</em><br />
+<em class="quotelev1">&gt;                  b_bnds:long_name = &quot;vertical coordinate formula term: b(k+1/2)&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          double lat(lat) ;
+</em><br />
+<em class="quotelev1">&gt;                  lat:bounds = &quot;lat_bnds&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lat:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lat:axis = &quot;Y&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lat:long_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lat:standard_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          double lat_bnds(lat, bnds) ;
+</em><br />
+<em class="quotelev1">&gt;          double lon(lon) ;
+</em><br />
+<em class="quotelev1">&gt;                  lon:bounds = &quot;lon_bnds&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lon:units = &quot;degrees_east&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lon:axis = &quot;X&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lon:long_name = &quot;Longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  lon:standard_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          double lon_bnds(lon, bnds) ;
+</em><br />
+<em class="quotelev1">&gt;          float cl(time, lev, lat, lon) ;
+</em><br />
+<em class="quotelev1">&gt;                  cl:standard_name = &quot;cloud_area_fraction_in_atmosphere_layer&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  cl:long_name = &quot;Cloud Area Fraction&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  cl:comment = &quot;Percentage cloud cover, including both large-scale and convective cloud.&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  cl:units = &quot;%&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  cl:original_name = &quot;CLOUD&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  cl:cell_methods = &quot;area: time: mean (interval: 20 minutes)&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  cl:cell_measures = &quot;area: areacella&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  cl:history = &quot;2019-04-12T14:28:43Z altered by CMOR: replaced missing value flag (1e+28) with standard missing value (1e+20). 2019-04-12T14:28:43Z altered by CMOR: Inverted axis: lev. 2019-04-12T14:28:43Z altered by CMOR: Inverted axis: lat.&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  cl:missing_value = 1.e+20f ;
+</em><br />
+<em class="quotelev1">&gt;                  cl:_FillValue = 1.e+20f ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; // global attributes:
+</em><br />
+<em class="quotelev1">&gt;                  :Conventions = &quot;CF-1.7 CMIP-6.2&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :activity_id = &quot;CMIP&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :branch_method = &quot;standard&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :branch_time_in_child = 0. ;
+</em><br />
+<em class="quotelev1">&gt;                  :branch_time_in_parent = 90885. ;
+</em><br />
+<em class="quotelev1">&gt;                  :contact = &quot;Evgeny Volodin (volodinev at gmail.com)&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :creation_date = &quot;2019-04-12T14:28:43Z&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :data_specs_version = &quot;01.00.27&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :experiment = &quot;all-forcing simulation of the recent past&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :experiment_id = &quot;historical&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :external_variables = &quot;areacella&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :forcing_index = 1 ;
+</em><br />
+<em class="quotelev1">&gt;                  :frequency = &quot;mon&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :further_info_url =&quot;<a href="https://furtherinfo.es-doc.org/CMIP6.INM.INM-CM5-0.historical.none.r1i1p1f1">https://furtherinfo.es-doc.org/CMIP6.INM.INM-CM5-0.historical.none.r1i1p1f1</a>&quot;  ;
+</em><br />
+<em class="quotelev1">&gt;                  :grid = &quot;gs2x1.5&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :grid_label = &quot;gr1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :history = &quot;2019-04-12T14:28:43Z ;rewrote data to be consistent with CMIP for variable cl found in table Amon.&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :initialization_index = 1 ;
+</em><br />
+<em class="quotelev1">&gt;                  :institution = &quot;Institute for Numerical Mathematics, Russian Academy of Science, Moscow 119991, Russia&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :institution_id = &quot;INM&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :mip_era = &quot;CMIP6&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :nominal_resolution = &quot;100 km&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :parent_activity_id = &quot;CMIP&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :parent_experiment_id = &quot;piControl&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :parent_mip_era = &quot;CMIP6&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :parent_source_id = &quot;INM-CM5-0&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :parent_time_units = &quot;days since 1850-01-01&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :parent_variant_label = &quot;r1i1p1f1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :physics_index = 1 ;
+</em><br />
+<em class="quotelev1">&gt;                  :product = &quot;model-output&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :realization_index = 1 ;
+</em><br />
+<em class="quotelev1">&gt;                  :realm = &quot;atmos&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :references = &quot;Clim. Dyn., 2017, 3715-3734)\'&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :run_variant = &quot;standard&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :source = &quot;INM-CM5-0 (2016): \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                          &quot;aerosol: INM-AER1\n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                          &quot;atmos: INM-AM5-0 (2x1.5; 180 x 120 longitude/latitude; 73 levels; top level sigma = 0.0002)\n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                          &quot;atmosChem: none\n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                          &quot;land: INM-LND1\n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                          &quot;landIce: none\n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                          &quot;ocean: INM-OM5 (North Pole shifted to 60N, 90E. 0.5x0.25; 720 x 720 longitude/latitude; 40 levels; vertical sigma coordinate)\n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                          &quot;ocnBgchem: none\n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                          &quot;seaIce: INM-ICE1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :source_id = &quot;INM-CM5-0&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :source_type = &quot;AOGCM AER&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :sub_experiment = &quot;none&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :sub_experiment_id = &quot;none&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :table_id = &quot;Amon&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :table_info = &quot;Creation Date:(30 July 2018) MD5:fa9bc503f57fb067bf398cab2c4ba77e&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :title = &quot;INM-CM5-0 output prepared for CMIP6&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :tracking_id = &quot;hdl:21.14100/8645a6fa-b7f3-4ece-ad8e-4541cee008ea&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :variable_id = &quot;cl&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :variant_label = &quot;r1i1p1f1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :license = &quot;CMIP6 model data produced by Lawrence Livermore PCMDI is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (<a href="https://creativecommons.org/licenses">https://creativecommons.org/licenses</a>). Consult<a href="https://pcmdi.llnl.gov/CMIP6/TermsOfUse">https://pcmdi.llnl.gov/CMIP6/TermsOfUse</a>  for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and at<a href="https:///pcmdi.llnl.gov/">https:///pcmdi.llnl.gov/</a>. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                  :cmor_version = &quot;3.3.2&quot; ;
+</em><br />
+<em class="quotelev1">&gt; data:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   time = 15, 45 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   time_bnds =
+</em><br />
+<em class="quotelev1">&gt;    0, 30,
+</em><br />
+<em class="quotelev1">&gt;    30, 60 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   lev = 0.899999976158142, 0.699999988079071, 0.550000011920929,
+</em><br />
+<em class="quotelev1">&gt;      0.300000011920929, 0.100000001490116 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   lev_bnds =
+</em><br />
+<em class="quotelev1">&gt;    1, 0.800000011920929,
+</em><br />
+<em class="quotelev1">&gt;    0.800000011920929, 0.620000004768372,
+</em><br />
+<em class="quotelev1">&gt;    0.620000004768372, 0.419999986886978,
+</em><br />
+<em class="quotelev1">&gt;    0.419999986886978, 0.200000002980232,
+</em><br />
+<em class="quotelev1">&gt;    0.200000002980232, 0 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   p0 = 100000 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   a = 0.100000001490116, 0.219999998807907, 0.300000011920929,
+</em><br />
+<em class="quotelev1">&gt;      0.200000002980232, 0.100000001490116 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   b = 0.800000011920929, 0.5, 0.200000002980232, 0.100000001490116, 0 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   ps =
+</em><br />
+<em class="quotelev1">&gt;    94100, 94500, 94900, 95300,
+</em><br />
+<em class="quotelev1">&gt;    95700, 96100, 96500, 96900,
+</em><br />
+<em class="quotelev1">&gt;    97300, 97700, 98100, 98500,
+</em><br />
+<em class="quotelev1">&gt;    94200, 94600, 95000, 95400,
+</em><br />
+<em class="quotelev1">&gt;    95800, 96200, 96600, 97000,
+</em><br />
+<em class="quotelev1">&gt;    97400, 97800, 98200, 98600 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   a_bnds =
+</em><br />
+<em class="quotelev1">&gt;    0, 0.159999996423721,
+</em><br />
+<em class="quotelev1">&gt;    0.159999996423721, 0.25,
+</em><br />
+<em class="quotelev1">&gt;    0.25, 0.25,
+</em><br />
+<em class="quotelev1">&gt;    0.25, 0.150000005960464,
+</em><br />
+<em class="quotelev1">&gt;    0.150000005960464, 0 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   b_bnds =
+</em><br />
+<em class="quotelev1">&gt;    1, 0.649999976158142,
+</em><br />
+<em class="quotelev1">&gt;    0.649999976158142, 0.349999994039536,
+</em><br />
+<em class="quotelev1">&gt;    0.349999994039536, 0.150000005960464,
+</em><br />
+<em class="quotelev1">&gt;    0.150000005960464, 0.0500000007450581,
+</em><br />
+<em class="quotelev1">&gt;    0.0500000007450581, 0 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   lat = 10, 20, 30 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   lat_bnds =
+</em><br />
+<em class="quotelev1">&gt;    5, 15,
+</em><br />
+<em class="quotelev1">&gt;    15, 25,
+</em><br />
+<em class="quotelev1">&gt;    25, 35 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   lon = 0, 90, 180, 270 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   lon_bnds =
+</em><br />
+<em class="quotelev1">&gt;    -45, 45,
+</em><br />
+<em class="quotelev1">&gt;    45, 135,
+</em><br />
+<em class="quotelev1">&gt;    135, 225,
+</em><br />
+<em class="quotelev1">&gt;    225, 315 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   cl =
+</em><br />
+<em class="quotelev1">&gt;    25.78, 25.86, 25.94, 26.02,
+</em><br />
+<em class="quotelev1">&gt;    25.46, 25.54, 25.62, 25.7,
+</em><br />
+<em class="quotelev1">&gt;    25.14, 25.22, 25.3, 25.38,
+</em><br />
+<em class="quotelev1">&gt;    24.5, 24.58, 24.66, 24.74,
+</em><br />
+<em class="quotelev1">&gt;    24.18, 24.26, 24.34, 24.42,
+</em><br />
+<em class="quotelev1">&gt;    23.86, 23.94, 24.02, 24.1,
+</em><br />
+<em class="quotelev1">&gt;    23.22, 23.3, 23.38, 23.46,
+</em><br />
+<em class="quotelev1">&gt;    22.9, 22.98, 23.06, 23.14,
+</em><br />
+<em class="quotelev1">&gt;    22.58, 22.66, 22.74, 22.82,
+</em><br />
+<em class="quotelev1">&gt;    21.94, 22.02, 22.1, 22.18,
+</em><br />
+<em class="quotelev1">&gt;    21.62, 21.7, 21.78, 21.86,
+</em><br />
+<em class="quotelev1">&gt;    21.3, 21.38, 21.46, 21.54,
+</em><br />
+<em class="quotelev1">&gt;    20.66, 20.74, 20.82, 20.9,
+</em><br />
+<em class="quotelev1">&gt;    20.34, 20.42, 20.5, 20.58,
+</em><br />
+<em class="quotelev1">&gt;    20.02, 20.1, 20.18, 20.26,
+</em><br />
+<em class="quotelev1">&gt;    25.8, 25.88, 25.96, 26.04,
+</em><br />
+<em class="quotelev1">&gt;    25.48, 25.56, 25.64, 25.72,
+</em><br />
+<em class="quotelev1">&gt;    25.16, 25.24, 25.32, 25.4,
+</em><br />
+<em class="quotelev1">&gt;    24.52, 24.6, 24.68, 24.76,
+</em><br />
+<em class="quotelev1">&gt;    24.2, 24.28, 24.36, 24.44,
+</em><br />
+<em class="quotelev1">&gt;    23.88, 23.96, 24.04, 24.12,
+</em><br />
+<em class="quotelev1">&gt;    23.24, 23.32, 23.4, 23.48,
+</em><br />
+<em class="quotelev1">&gt;    22.92, 23, 23.08, 23.16,
+</em><br />
+<em class="quotelev1">&gt;    22.6, 22.68, 22.76, 22.84,
+</em><br />
+<em class="quotelev1">&gt;    21.96, 22.04, 22.12, 22.2,
+</em><br />
+<em class="quotelev1">&gt;    21.64, 21.72, 21.8, 21.88,
+</em><br />
+<em class="quotelev1">&gt;    21.32, 21.4, 21.48, 21.56,
+</em><br />
+<em class="quotelev1">&gt;    20.68, 20.76, 20.84, 20.92,
+</em><br />
+<em class="quotelev1">&gt;    20.36, 20.44, 20.52, 20.6,
+</em><br />
+<em class="quotelev1">&gt;    20.04, 20.12, 20.2, 20.28 ;
+</em><br />
+<em class="quotelev1">&gt; }
+</em><br />
+<em class="quotelev1">&gt;   
+</em><br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20190416/5ab13ad9/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20190416/5ab13ad9/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Apr 16 2019 - 15:11:57 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9664">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9665.html" title="Next message in the list">Alison Pamment - UKRI STFC: "[CF-metadata] New halocarbon standard name requests"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9663.html" title="Previous message in the list">Taylor, Karl E.: "[CF-metadata] CF checker question"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./9663.html" title="Message to which this message replies">Taylor, Karl E.: "[CF-metadata] CF checker question"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9664" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9664" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9664" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9664" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:34 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9663.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9665.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  CDM calendar date handling from Jonathan Gregory on 2011-08-24 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  CDM calendar date handling" />
+<meta name="Date" content="2011-08-24" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3684.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3686.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  CDM calendar date handling</h1>
+<!-- received="Wed Aug 24 06:23:20 2011" -->
+<!-- isoreceived="20110824052320" -->
+<!-- sent="Wed, 24 Aug 2011 13:23:20 +0100" -->
+<!-- isosent="20110824122320" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  CDM calendar date handling" -->
+<!-- id="20110824122320.GA19880_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4E5428E6.8090101_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3685" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3686.html" accesskey="d" title="John Caron: &quot;[CF-metadata] CDM calendar date handling&quot;">Next message</a> ]
+[ <a href="./3684.html" title="John Caron: &quot;[CF-metadata] CDM calendar date handling&quot;">Previous message</a> ]
+[ <a href="./3683.html" title="John Caron: &quot;[CF-metadata] CDM calendar date handling&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3686.html" accesskey="t" title="John Caron: &quot;[CF-metadata] CDM calendar date handling&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3685" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3685" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3685" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3685" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20CDM%20calendar%20date%20handling">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 24 Aug 2011 13:23:20 +0100</span><br />
+</address>
+<br />
+Dear John
+<br />
+<br /><em class="quotelev1">&gt; It seems to me it would be better to somehow denote the &quot;epoch&quot;
+</em><br />
+<em class="quotelev1">&gt; seperately, because its kind of silly keeping track of # millisecs
+</em><br />
+<em class="quotelev1">&gt; between two dates separated by 50 million years. plus its hard.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; what about:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; &quot;01-01-01 12:00 epoch 50m BCE&quot;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; where the &quot;epoch 50m BCE&quot; is probably just carried along in the
+</em><br />
+<em class="quotelev1">&gt; string representation of the date.
+</em><br />
+<br />I agree that that's a sensible way to do it for dates which are separated
+<br />
+by relatively short periods in an epoch which is a long time ago. However
+<br />
+it could be useful if the epoch wasn't just a string. If it was a longinteger
+<br />
+number of calendar years (relative to the normal year 1) you would be able
+<br />
+to interconvert dates expressed relative to different epochs. That is, you
+<br />
+could tell that 10 calendar Myears since 01-01-01 epoch 20M BCE means the 
+<br />
+same as 0 calendar years since 01-01-01 epoch 10M BCE. This conversion would
+<br />
+be accurate provided the time unit in calendar years is stored as an integer.
+<br />
+Accuracy is lost if it is turned into floating-point milliseconds, I suppose.
+<br />
+<br />The other kind of example of palaeoclimate is the
+<br />
+one where large periods of time are spanned by the time axis e.g. if you
+<br />
+had a timeseries whose time axis spanned all the geological periods since
+<br />
+600 Myear ago. (That would probably not be from a GCM! - but it could be from
+<br />
+geological data or other Earth system models.) That sort of axis would like
+<br />
+to use units of calendar Myear and they need to be stored accurately.
+<br />
+<br />About the multiples of calendar units: You have said they should be integers.
+<br />
+However, perhaps fractions could be rather useful. For example, we have the
+<br />
+recurrent question of where the time coordinate should be positioned in the
+<br />
+interval if the data actually applies to the interval rather than the instant.
+<br />
+It's a bit arbitrary and the usual advice is to put it in the middle. For this
+<br />
+it would be convenient to have time-bounds for a cell of e.g. &quot;1 calendar month
+<br />
+since reference&quot; and &quot;2 calendar months since reference&quot;, with the time-coord
+<br />
+of &quot;1.5 calendar months since reference&quot;.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Aug 24 2011 - 06:23:20 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3685">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3686.html" title="Next message in the list">John Caron: "[CF-metadata] CDM calendar date handling"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3684.html" title="Previous message in the list">John Caron: "[CF-metadata] CDM calendar date handling"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3683.html" title="Message to which this message replies">John Caron: "[CF-metadata] CDM calendar date handling"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3686.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] CDM calendar date handling"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3686.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] CDM calendar date handling"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3685" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3685" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3685" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3685" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:50 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3684.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3686.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

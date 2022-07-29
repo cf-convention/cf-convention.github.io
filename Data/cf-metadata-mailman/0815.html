@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF from Jon Blower on 2007-04-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jon Blower (jdb)" />
+<meta name="Subject" content="[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF" />
+<meta name="Date" content="2007-04-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0814.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0816.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF</h1>
+<!-- received="Fri Apr 27 10:37:59 2007" -->
+<!-- isoreceived="20070427093759" -->
+<!-- sent="Fri, 27 Apr 2007 17:37:59 +0100" -->
+<!-- isosent="20070427163759" -->
+<!-- name="Jon Blower" -->
+<!-- email="jdb" -->
+<!-- subject="[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF" -->
+<!-- id="2bb6ee950704270937i64595a93j8ac32ddddceb7428_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20070427162139.GA8750_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start815" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0816.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF&quot;">Next message</a> ]
+[ <a href="./0814.html" title="Jonathan Gregory: &quot;[CF-metadata]  vector quantities (e.g. velocities) in CF-NetCDF&quot;">Previous message</a> ]
+[ <a href="./0814.html" title="Jonathan Gregory: &quot;[CF-metadata]  vector quantities (e.g. velocities) in CF-NetCDF&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0820.html" accesskey="t" title="John Graybeal: &quot;[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg815" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg815" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg815" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg815" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jon Blower &lt;<a href="mailto:jdb?Subject=Re%3A%20%5BCF-metadata%5D%20vector%20quantities%20(e.g.%20velocities)%20in%20CF-NetCDF">jdb</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 27 Apr 2007 17:37:59 +0100</span><br />
+</address>
+<br />
+Thanks Jonathan.
+<br />
+<br />Here's a brief description of my use case.  I have a collection of
+<br />
+NetCDF files (ocean forecast and analysis) and I have written a Web
+<br />
+Map Service that largely configures itself, based on the contents of
+<br />
+the (CF) metadata in the files.  I want to avoid, as far as possible,
+<br />
+manual configuration of the server.
+<br />
+<br />Most variables (i.e. WMS layers) are scalar quantities, but I'd like
+<br />
+my software to be able to automatically detect those layers that
+<br />
+represent the components of a vector quantity.  Then I can present,
+<br />
+through the WMS, a new &quot;virtual&quot; layer that is rendered by default as
+<br />
+vectors (arrows).
+<br />
+<br />As a particular example, many of the NetCDF files in question have
+<br />
+component variables called &quot;northward_sea_water_velocity&quot; and
+<br />
+&quot;eastward_sea_water_velocity&quot;.  I'd like to present these through the
+<br />
+WMS as a single layer called &quot;sea_water_velocity&quot; that is rendered as
+<br />
+a vector field.
+<br />
+<br />There are also examples that use magnitude and direction, e.g.
+<br />
+&quot;wind_from_direction&quot; and &quot;wind_speed&quot;.
+<br />
+<br />No doubt there will also be examples that give the components of the
+<br />
+velocity along the grid unit vectors rather than &quot;northward&quot; and
+<br />
+&quot;eastward&quot;.
+<br />
+<br />I have only considered horizontal 2-D fields (for display on maps) but
+<br />
+no doubt there will be cases where software will need to detect and
+<br />
+display 3-D vector fields.
+<br />
+<br />Jon
+<br />
+<br />On 4/27/07, Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt; wrote:
+<br />
+<em class="quotelev1">&gt; Dear Jon
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There is no way to do this at present in CF, but this is not the first time
+</em><br />
+<em class="quotelev1">&gt; the question has been asked. It could be done by introducing new standard
+</em><br />
+<em class="quotelev1">&gt; names which did not specify the component, and having a dimension running over
+</em><br />
+<em class="quotelev1">&gt; components, with values such as eastward, northward, x and y. I expect other
+</em><br />
+<em class="quotelev1">&gt; approaches are possible.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It would be helpful if you could describe a particular use-case.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; As you know, vector quanties such as velocities are often represented
+</em><br />
+<em class="quotelev2">&gt; &gt; in CF-NetCDF as two separate component fields (e.g.
+</em><br />
+<em class="quotelev2">&gt; &gt; &quot;northward_sea_water_velocity&quot; and &quot;eastward_sea_water_velocity&quot;).  Is
+</em><br />
+<em class="quotelev2">&gt; &gt; there a standard way in CF to represent vector quantities?  E.g. in
+</em><br />
+<em class="quotelev2">&gt; &gt; the above case could the two component fields be combined to give a
+</em><br />
+<em class="quotelev2">&gt; &gt; single two-component variable called &quot;horizontal_sea_water_velocity&quot;
+</em><br />
+<em class="quotelev2">&gt; &gt; or whatever the best standard name is?  Is there any way to
+</em><br />
+<em class="quotelev2">&gt; &gt; unambiguously represent the fact that two or more fields in a NetCDF
+</em><br />
+<em class="quotelev2">&gt; &gt; file represent the components of a vector quantity (other than by
+</em><br />
+<em class="quotelev2">&gt; &gt; interpreting the standard name)?
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><pre>
+-- 
+--------------------------------------------------------------
+Dr Jon Blower              Tel: +44 118 378 5213 (direct line)
+Technical Director         Tel: +44 118 378 8741 (ESSC)
+Reading e-Science Centre   Fax: +44 118 378 6413
+ESSC                       Email: jdb at mail.nerc-essc.ac.uk
+University of Reading
+3 Earley Gate
+Reading RG6 6AL, UK
+--------------------------------------------------------------
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Apr 27 2007 - 10:37:59 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start815">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0816.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0814.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  vector quantities (e.g. velocities) in CF-NetCDF"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0814.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata]  vector quantities (e.g. velocities) in CF-NetCDF"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0820.html" title="Next message in this discussion thread">John Graybeal: "[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0820.html" title="Message sent in reply to this message">John Graybeal: "[CF-metadata] vector quantities (e.g. velocities) in CF-NetCDF"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg815" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg815" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg815" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg815" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:56 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0814.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0816.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

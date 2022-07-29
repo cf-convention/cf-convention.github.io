@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  Multiple file datasets from Jonathan Gregory on 2009-11-22 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  Multiple file datasets" />
+<meta name="Date" content="2009-11-22" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2370.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2372.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  Multiple file datasets</h1>
+<!-- received="Sun Nov 22 14:20:10 2009" -->
+<!-- isoreceived="20091122142010" -->
+<!-- sent="Sun, 22 Nov 2009 21:20:10 +0000" -->
+<!-- isosent="20091122212010" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  Multiple file datasets" -->
+<!-- id="20091122212010.GA10655_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4B06D596.1050303_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2371" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2372.html" accesskey="d" title="John Caron: &quot;[CF-metadata] Swath observational data&quot;">Next message</a> ]
+[ <a href="./2370.html" title="Steve Hankin: &quot;[CF-metadata] Multiple file datasets&quot;">Previous message</a> ]
+[ <a href="./2370.html" title="Steve Hankin: &quot;[CF-metadata] Multiple file datasets&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2373.html" accesskey="t" title="John Caron: &quot;[CF-metadata] Multiple file datasets&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2371" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2371" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2371" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2371" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20Multiple%20file%20datasets">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sun, 22 Nov 2009 21:20:10 +0000</span><br />
+</address>
+<br />
+Dear all
+<br />
+<br />Using metadata to describe a file internally is much more robust than encoding
+<br />
+filenames in a file, and therefore seems preferable to me. I am concerned that
+<br />
+the gridspec proposal suggests using relative filenames in an attribute in the
+<br />
+file (associate_files). If I understand correctly, that would mean it would be
+<br />
+broken if you chosen to give your local copies of CMIP5 files different names
+<br />
+or store them in a different directory arrangement from the one they have in
+<br />
+the archive. (I don't keep my CMIP3 data in the same arrangement as it is held
+<br />
+in PCMDI.)
+<br />
+<br />I assume that CMIP5 CF-netCDF files will have other metadata in them
+<br />
+identifying the institution and so on, as global attributes, along the lines
+<br />
+that Steve mentions. But to make life easier for software which wants to verify
+<br />
+the relationship of the files, a UUID or a URL would be useful, wouldn't it?
+<br />
+I would suggest that those responsible for archiving and distributing CMIP5
+<br />
+data (PCMDI and others) could assign a unique identifier for each model-
+<br />
+scenario-ensemble_member as the data is made available by the modelling centre.
+<br />
+These are data-spaces within which CF metadata will distinguish every datum,
+<br />
+but the data-spaces themselves need to be distinguished. A unique identifier
+<br />
+would be more robust than a combination of more descriptive metadata, as well
+<br />
+as easier to process, I would say.
+<br />
+<br />Tagged with a unique identifier (UUID or URL), there should be no need for
+<br />
+a checksum on the file. There should be only one file having the right gridspec
+<br />
+details for a given UUID. References within the file to variables in other
+<br />
+files can be just by variable name, without any extended _at_ syntax. But it is
+<br />
+too restrictive to insist that variable names can't be repeated within the
+<br />
+group of files sharing a UUID, since often they will be: if the files are
+<br />
+organised by time ranges, for instance, there will be many time coord variables
+<br />
+and data variables with part of the data, and it would be a great nuisance to
+<br />
+have to give them all unique variable names. I suggest that the rule should be,
+<br />
+when a variable is referred to by name,
+<br />
+<br />* if a variable of that name exists within the same file, it is the one meant.
+<br />
+<br />* if it doesn't exist in the file, there must be only one variable with this
+<br />
+name anywhere in the set of files.
+<br />
+<br />However, I also think that using unique identifiers to define groups will
+<br />
+sometimes be too restrictive. I would like it to be possible to treat any
+<br />
+set of files I choose as a single dataset. For example, since a file with
+<br />
+cell measures like area and volume, or a gridspec file, will often be the same
+<br />
+for many or all experiments using a given model, I may wish to have only one
+<br />
+copy of it, and use it for all the different datasets, even though they have
+<br />
+different unique identifiers. Another example is that I might wish to treat
+<br />
+data from different ensemble members of an experiment as part of the same
+<br />
+dataset, so I can aggregate it with an ensemble axis and then compute stats
+<br />
+by collapsing that axis. This flexibility can easily be achieved simply by
+<br />
+allowing the option of ignoring the unique identifier, but still allowing
+<br />
+references from one file to another by variable name alone. In this more
+<br />
+flexible case, how the group of files is identified depends on the software
+<br />
+being used, of course. This is the principle of the cdms cdscan tool, for
+<br />
+example, which will treat any arbitrary group of files as a single dataset.
+<br />
+<br />To summarise, therefore, I suggest that
+<br />
+* a CF attribute should be defined to store a unique identifier for a dataset
+<br />
+spread across an arbitrary set of files. Within the dataset, other CF metadata
+<br />
+must be sufficient to identify each datum uniquely.
+<br />
+* CMIP5 should assign such an identifier for each run submitted and CMOR should
+<br />
+be able to record it in the files generated. I think these unique IDs would
+<br />
+actually be quite handy for keeping track of CMIP5 data.
+<br />
+* gridspec could refer to variables by name alone, with no associated_files
+<br />
+attribute or checksum being required, as the unique id will serve those
+<br />
+purposes.
+<br />
+* CF should permit variables to be referred to by name alone in another file,
+<br />
+subject to rules (such as proposed above). It is a decision of the data user
+<br />
+whether the associated files should be required to have the same unique ID.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Sun Nov 22 2009 - 14:20:10 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2371">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2372.html" title="Next message in the list">John Caron: "[CF-metadata] Swath observational data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2370.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] Multiple file datasets"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2370.html" title="Message to which this message replies">Steve Hankin: "[CF-metadata] Multiple file datasets"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2373.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] Multiple file datasets"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2373.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] Multiple file datasets"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2371" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2371" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2371" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2371" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:25 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2370.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2372.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

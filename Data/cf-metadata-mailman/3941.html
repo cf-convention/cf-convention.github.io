@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Ang.: Making a proposal for the addition of the geosprojection from Randy Horne on 2011-11-23 (cf-metadata-mailman)</title>
+<meta name="Author" content="Randy Horne (rhorne)" />
+<meta name="Subject" content="[CF-metadata] Ang.: Making a proposal for the addition of the geosprojection" />
+<meta name="Date" content="2011-11-23" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3940.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3942.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Ang.: Making a proposal for the addition of the geosprojection</h1>
+<!-- received="Wed Nov 23 08:27:06 2011" -->
+<!-- isoreceived="20111123082706" -->
+<!-- sent="Wed, 23 Nov 2011 10:27:06 -0500" -->
+<!-- isosent="20111123152706" -->
+<!-- name="Randy Horne" -->
+<!-- email="rhorne" -->
+<!-- subject="[CF-metadata] Ang.: Making a proposal for the addition of the geosprojection" -->
+<!-- id="7ADC9DC9-5991-4186-BD0F-EA224E538333_at_excaliburlabs.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="930C3DBF-07D6-4D06-8E13-F0BAA69C587C_at_smhi.se" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3941" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3942.html" accesskey="d" title="Thomas Lavergne: &quot;[CF-metadata] Proposal for better handling vector quantities in CF&quot;">Next message</a> ]
+[ <a href="./3940.html" title="Raspaud Martin: &quot;[CF-metadata] Ang.: Making a proposal for the addition of the geosprojection&quot;">Previous message</a> ]
+[ <a href="./3940.html" title="Raspaud Martin: &quot;[CF-metadata] Ang.: Making a proposal for the addition of the geosprojection&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3941" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3941" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3941" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3941" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Randy Horne &lt;<a href="mailto:rhorne?Subject=Re%3A%20%5BCF-metadata%5D%20Ang.%3A%20Making%20a%20proposal%20for%20the%20addition%20of%20the%20geosprojection">rhorne</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 23 Nov 2011 10:27:06 -0500</span><br />
+</address>
+<br />
+Martin:
+<br />
+<br />Thanks for getting back to me !
+<br />
+<br />If I may be so bold as to better explain what we are doing in GOES-R GS with the hope you will continue to provide us with valuable insights ?
+<br />
+<br />Unlike previous generations of GOES, the level 1b and 2 products generated from the imager will exist on a idealized fixed grid.  What this means is that the products will remain in the satellite's projection space, but any jitter caused by the fact the satellite's navigation is imperfect will be corrected in level 1 processing.  The origin of this idealized fixed grid will be at the intersection of the equator and the designated longitude for the particular satellite.  (GOES has an active east and west satellite.
+<br />
+<br />The CF conventions currently require lat/lon coordinates in the product file.  This is a problem for us.  This topic was discussed on the CF metadata message board in the August time-frame of this year.  I think the way it ended was that the NetCDF development team, specifically John, took an action to figure out what to do.
+<br />
+<br />In the NetCDF files we produce, we (typically) will generate two dimensional arrays on this idealized fixed grid.  As a result, we want  a CF conventions compliant grid mapping that will allow users of our product files to easily map the (x,y) coordinates of the NetCDF data variables we generate to lat/lon coordinates.
+<br />
+<br />very respectfully,
+<br />
+<br />randy
+<br />
+<br /><br /><em class="quotelev1">&gt; Hi Randy,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Funny that you bring this up, since the proposal I want to make originates from a discussion with Tom Rink, which apparently works also on GOES-R and netCDF/CF...
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Anyhow, the difference between geos and vertical perspective is that the former is directly linked to the scanning angle, while the latter is related to the distance between pixels on a projection plane.
+</em><br />
+<em class="quotelev1">&gt; For example, in order to get the lon/lat with geos from the scanning angle alpha in radians from a satellite at height h, the projection coordinates to provide would simply be something like h*alpha. Instead, the vertical perspective would require something along the lines of h*tan(alpha) as projection coordinates. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Snyder is right of course when he says that vertical perspective is how the earth is viewed from space. The geos is actually distorted to that regard, since it's dependent on the viewing geometry of the satellite instrument. But that is the way we receive the data, and geos makes it easier to compute lon/lats from there, hence my proposal. For more technical details about geos, see the CGMS 03 document I cite in the original post.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Don't hesitate to ask more if I wasn't clear !
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Best regards,
+</em><br />
+<em class="quotelev1">&gt; Martin
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ----- Reply message -----
+</em><br />
+<em class="quotelev1">&gt; Fr?n: &quot;Randy Horne&quot; &lt;rhorne at excaliburlabs.com&gt;
+</em><br />
+<em class="quotelev1">&gt; Till: &quot;cf-metadata at cgd.ucar.edu&quot; &lt;cf-metadata at cgd.ucar.edu&gt;, &quot;Raspaud Martin&quot; &lt;martin.raspaud at smhi.se&gt;
+</em><br />
+<em class="quotelev1">&gt; Kopia: &quot;cf-satellite at unidata.ucar.edu&quot; &lt;cf-satellite at unidata.ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; Rubrik: [CF-metadata] Making a proposal for the addition of the geosprojection
+</em><br />
+<em class="quotelev1">&gt; Datum: tis, nov 22, 2011 22:36
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Martin:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I am working the GOES-R program (next generation geostationary weather satellite program).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; It is our plan to generate CF convention compliant NetCDF product files that are projected from the idealized scanning  imager on the satellite.  We had thought the vertical perspective was the appropriate projection.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I went back and read through the &quot;vertical perspective projection&quot; in John Snyder's document (Map projections- A Working Manual), and it it unclear why this existing projection in the CF conventions is not applicable.  It is true that the GOES-R satellite imager (i.e. camera) does not precisely faces the center of the Earth because it is scanning in approximately 500 km N-S swaths from west to east, but I am confused how this characteristic changes the projection geometry.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Could you augment the explanation you have already provided ?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; very respectfully,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; randy
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ---------- Original Message ----------------------------------
+</em><br />
+<em class="quotelev1">&gt; From: Martin Raspaud &lt;martin.raspaud at smhi.se&gt;
+</em><br />
+<em class="quotelev1">&gt; Date:  Tue, 22 Nov 2011 13:28:32 +0100
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;-----BEGIN PGP SIGNED MESSAGE-----
+</em><br />
+<em class="quotelev2">&gt; &gt;Hash: SHA1
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;Hi all,
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;There seems to be a need from the weather satellite folk to add the
+</em><br />
+<em class="quotelev2">&gt; &gt;&quot;geos&quot; projection to the list of projections in the CF metadata.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;&quot;geos&quot; stands for geostationary. The projection is described in detail
+</em><br />
+<em class="quotelev2">&gt; &gt;in the &quot;CGMS 03, LRIT/HRIT Global specification&quot; document.
+</em><br />
+<em class="quotelev2">&gt; &gt;(see here also: <a href="http://remotesensing.org/geotiff/proj_list/geos.html">http://remotesensing.org/geotiff/proj_list/geos.html</a> )
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;My question is thus: how do we make a proposal for the addition of the
+</em><br />
+<em class="quotelev2">&gt; &gt;projection ?
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;On a side note, it looks like &quot;Vertical perspective&quot; and &quot;geos&quot; are
+</em><br />
+<em class="quotelev2">&gt; &gt;mixed up in the current version of the conventions (the link to &quot;geos&quot;
+</em><br />
+<em class="quotelev2">&gt; &gt;is provided under &quot;Vertical perspective&quot;). The difference is that the
+</em><br />
+<em class="quotelev2">&gt; &gt;geos projection is related to scanning angles of the satellite, so that
+</em><br />
+<em class="quotelev2">&gt; &gt;the projection is done on a piece of a sphere, while the vertical
+</em><br />
+<em class="quotelev2">&gt; &gt;perspective is a kind of orthographic projection.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;Here comes a possible text for this projection:
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;Geostationary
+</em><br />
+<em class="quotelev2">&gt; &gt;- -------------
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;grid_mapping_name = geos
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;Map parameters:
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;        latitude_of_projection_origin
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;        longitude_of_projection_origin
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;        perspective_point_height
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;        false_easting
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;        false_northing
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;Map coordinates:
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;    The x (abscissa) and y (ordinate) rectangular coordinates are
+</em><br />
+<em class="quotelev2">&gt; &gt;identified by the standard_name attribute value projection_x_coordinate
+</em><br />
+<em class="quotelev2">&gt; &gt;and projection_y_coordinate respectively.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;Notes:
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;    Notes on using the PROJ.4 software packages for computing the
+</em><br />
+<em class="quotelev2">&gt; &gt;mapping may be found at
+</em><br />
+<em class="quotelev2">&gt; &gt;<a href="http://www.remotesensing.org/geotiff/proj_list/geos.html">http://www.remotesensing.org/geotiff/proj_list/geos.html</a> . These notes
+</em><br />
+<em class="quotelev2">&gt; &gt;assume the point of observation is directly over the equator.
+</em><br />
+<em class="quotelev2">&gt; &gt;==============================
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;Thanks a lot !
+</em><br />
+<em class="quotelev2">&gt; &gt;Best regards,
+</em><br />
+<em class="quotelev2">&gt; &gt;Martin
+</em><br />
+<br /><br />____________________________________
+<br />
+<br />Randy C. Horne (rhorne at excaliburlabs.com)
+<br />
+Principal Engineer, Excalibur Laboratories Inc.
+<br />
+voice &amp; fax: (321) 952.5100
+<br />
+url: <a href="http://www.excaliburlabs.com">http://www.excaliburlabs.com</a>
+<br />
+<br /><br /><br /><br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20111123/0f6a9769/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20111123/0f6a9769/attachment.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Nov 23 2011 - 08:27:06 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3941">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3942.html" title="Next message in the list">Thomas Lavergne: "[CF-metadata] Proposal for better handling vector quantities in CF"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3940.html" title="Previous message in the list">Raspaud Martin: "[CF-metadata] Ang.: Making a proposal for the addition of the geosprojection"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3940.html" title="Message to which this message replies">Raspaud Martin: "[CF-metadata] Ang.: Making a proposal for the addition of the geosprojection"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3941" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3941" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3941" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3941" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:54 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3940.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3942.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] daily maximum of running 8-hour means from Cameron-smith, Philip on 2011-10-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="Cameron-smith, Philip (cameronsmith1)" />
+<meta name="Subject" content="[CF-metadata] daily maximum of running 8-hour means" />
+<meta name="Date" content="2011-10-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3862.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3864.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] daily maximum of running 8-hour means</h1>
+<!-- received="Thu Oct 20 13:53:25 2011" -->
+<!-- isoreceived="20111020125325" -->
+<!-- sent="Thu, 20 Oct 2011 12:53:25 -0700" -->
+<!-- isosent="20111020195325" -->
+<!-- name="Cameron-smith, Philip" -->
+<!-- email="cameronsmith1" -->
+<!-- subject="[CF-metadata] daily maximum of running 8-hour means" -->
+<!-- id="DDB20D8288D53E4D811673C30FAB857D01AFE8ED3B65_at_NSPEXMBX-B.the-lab.llnl.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20111020173956.GA25122_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3863" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3864.html" accesskey="d" title="Patrick Sunter: &quot;[CF-metadata] CF-1 map projections export/import from GDAL - update &#0038; request for help with Polar stereographic&quot;">Next message</a> ]
+[ <a href="./3862.html" title="Schultz, Martin: &quot;[CF-metadata] daily maximum of running 8-hour means&quot;">Previous message</a> ]
+[ <a href="./3861.html" title="Jonathan Gregory: &quot;[CF-metadata] daily maximum of running 8-hour means&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3863" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3863" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3863" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3863" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Cameron-smith, Philip &lt;<a href="mailto:cameronsmith1?Subject=Re%3A%20%5BCF-metadata%5D%20daily%20maximum%20of%20running%208-hour%20means">cameronsmith1</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 20 Oct 2011 12:53:25 -0700</span><br />
+</address>
+<br />
+Hi Jonathan, et al.,
+<br />
+<br />Legal air-quality standards often apply to multiple time-averaging lengths simultaneously, eg in California the law imposes both a 1-hour limit of 0.09ppm, and an 8-hour limit of 0.07ppm (see <a href="http://www.arb.ca.gov/research/aaqs/aaqs2.pdf">http://www.arb.ca.gov/research/aaqs/aaqs2.pdf</a>).  The UK also uses multiple averaging times, 1-hour, 8-hour, and annual (see <a href="http://uk-air.defra.gov.uk/documents/National_air_quality_objectives.pdf">http://uk-air.defra.gov.uk/documents/National_air_quality_objectives.pdf</a>).  Hence, it is likely that there will be different averaging times in a file for the same chemical.
+<br />
+<br />Hence, there is a need in principle to be able to specify the three relevant time quantities: 
+<br />
+<br />1) the length of the running-mean kernel (1-hour, 8-hour, annual),
+<br />
+<br />2) the time interval within which the maximum of the running mean is searched for (daily, monthly, yearly),
+<br />
+<br />3) the point/time in the running-mean kernel that is used to decide whether an 8-hour mean falls within the time interval for #2, since an 8-hour mean will often include values from outside the time interval.
+<br />
+<br />In practice #3 is often not mentioned because there is usually a diurnal cycle to air-quality that helps to avoid confusion in given instances (ozone peaks in the afternoon, and smoke particles peak at night).
+<br />
+<br />I assume that similar issues apply to daily temperature maximums and peak precipitation rates, which could be important when comparing data and models with different time-steps.   Although in these cases I expect people implicitly rely on information about the model timestep to implicitly describe the averaging kernel.
+<br />
+<br />Best wishes,
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Philip
+<br />
+<br /><br />-----------------------------------------------------------------------
+<br />
+Dr Philip Cameron-Smith, pjc at llnl.gov, Lawrence Livermore National Lab.
+<br />
+-----------------------------------------------------------------------
+<br />
+<br /><br /><br /><em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: cf-metadata-bounces at cgd.ucar.edu [mailto:cf-metadata-
+</em><br />
+<em class="quotelev1">&gt; bounces at cgd.ucar.edu] On Behalf Of Jonathan Gregory
+</em><br />
+<em class="quotelev1">&gt; Sent: Thursday, October 20, 2011 10:40 AM
+</em><br />
+<em class="quotelev1">&gt; To: Schultz, Martin
+</em><br />
+<em class="quotelev1">&gt; Cc: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] daily maximum of running 8-hour means
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Dear Martin
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Yes, I agree, &quot;interval&quot; is an ambiguous word, unfortunately.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; YES - there will be a need for this. Current air quality data bases -
+</em><br />
+<em class="quotelev1">&gt; the largest are probably the American AQS and the European AirBase
+</em><br />
+<em class="quotelev1">&gt; systems - do store hourly data and &quot;daily max 8-hour mean&quot; values, and
+</em><br />
+<em class="quotelev1">&gt; you want to be able to differentiate between those automatically
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; OK. The distinction between those two can already be made like this:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; - hourly data have coordinates spaced hourly, and cell_methods with
+</em><br />
+<em class="quotelev1">&gt; &quot;mean&quot;
+</em><br />
+<em class="quotelev1">&gt; or &quot;point&quot; (depending on wheher they were hourly time-means or
+</em><br />
+<em class="quotelev1">&gt; instantaneous
+</em><br />
+<em class="quotelev1">&gt; values at hourly intervals).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; - daily max of running means have coordinates spaced daily, and
+</em><br />
+<em class="quotelev1">&gt; cell_methods
+</em><br />
+<em class="quotelev1">&gt; with &quot;maximum&quot;.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; What we *can't* record in a standardised way is the extra information
+</em><br />
+<em class="quotelev1">&gt; that the
+</em><br />
+<em class="quotelev1">&gt; maximum was calculated from running means. We need to do this if there
+</em><br />
+<em class="quotelev1">&gt; are also
+</em><br />
+<em class="quotelev1">&gt; daily maxima calculated from other kinds of subdaily data.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I apologise if this is frustrating. I am trying only to clarify what is
+</em><br />
+<em class="quotelev1">&gt; needed
+</em><br />
+<em class="quotelev1">&gt; in practice!
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Thu Oct 20 2011 - 13:53:25 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3863">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3864.html" title="Next message in the list">Patrick Sunter: "[CF-metadata] CF-1 map projections export/import from GDAL - update &#0038; request for help with Polar stereographic"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3862.html" title="Previous message in the list">Schultz, Martin: "[CF-metadata] daily maximum of running 8-hour means"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3861.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] daily maximum of running 8-hour means"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3863" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3863" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3863" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3863" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3862.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3864.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Getting back to ensembles from Jonathan Gregory on 2006-11-23 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Getting back to ensembles" />
+<meta name="Date" content="2006-11-23" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0482.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0484.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Getting back to ensembles</h1>
+<!-- received="Wed Nov 22 17:03:27 2006" -->
+<!-- isoreceived="20061122170327" -->
+<!-- sent="Thu, 23 Nov 2006 00:03:27 +0000" -->
+<!-- isosent="20061123000327" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Getting back to ensembles" -->
+<!-- id="20061123000327.GA24633_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start483" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0484.html" accesskey="d" title="John Caron: &quot;[CF-metadata] Getting back to ensembles&quot;">Next message</a> ]
+[ <a href="./0482.html" title="Richard Gorman: &quot;[CF-metadata] new standard_names for variables concerning sea surface	waves&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0484.html" accesskey="t" title="John Caron: &quot;[CF-metadata] Getting back to ensembles&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg483" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg483" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg483" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg483" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Getting%20back%20to%20ensembles">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 23 Nov 2006 00:03:27 +0000</span><br />
+</address>
+<br />
+Dear Bryan, John, Paco, Brian, et al.
+<br />
+<br />I think we are all happy with the idea of a realization dimension and
+<br />
+auxiliary string coordinate variables (labels) with this dimension that
+<br />
+contain the various metadata.
+<br />
+<br />John said that he would require one of these variables to have unique values
+<br />
+(no repeats) so it could be used for selection. Brian pointed out that the
+<br />
+current CF (6) provision for label coordinates doesn't have such a restriction.
+<br />
+However, unique values are required for coordinate variables for the same
+<br />
+reason that John wants them in this case. If we could regard a realization
+<br />
+variable as a coordinate variable rather than as alternative label information,
+<br />
+the uniqueness requirement would be natural. In netCDF string-valued
+<br />
+arrays have to be 2D character variables, because there isn't support for
+<br />
+true arrays of strings, but this is a restriction of the file format, and
+<br />
+netCDF-4 does have strings (I believe). In netCDF-4 it would be natural, I
+<br />
+think, to have a 1D array of strings whose name was the same as the name of
+<br />
+its dimension e.g. realization(realization) i.e. a coordinate variable. We
+<br />
+can't do this now: it has to be realization(realization,stringlength) and we
+<br />
+even recommend against having a multidimensional array whose name matches the
+<br />
+name of a dimension, so that it is not misidentified as a coordinate variable.
+<br />
+But for strings it isn't &quot;logically&quot; multidimensional. So I would propose:
+<br />
+<br />* If a 2D auxiliary coordinate variable is of char type and its name is the
+<br />
+same as the name of its first dimension, it should be regarded as a string-
+<br />
+valued coordinate variable, and its string values should all be distinct.
+<br />
+Coordinate variables are also required to be monotonic. Do you want to make
+<br />
+this requirement too for string-valued ones? I can't see the need for it
+<br />
+myself, because you don't perform operations on string-valued variables or
+<br />
+use them for plotting positions, like you do with numeric ones.
+<br />
+<br />* If it has any other name, it should be regarded as a label/alternative
+<br />
+coordinate variable as currently in CF 6, and the restriction does not apply.
+<br />
+<br />In either case the nature of the metadata needs to be identified. Bryan says
+<br />
+he &quot;strongly disagrees&quot; with my suggestion. I'm not sure which one of them he
+<br />
+dislikes :-) but it might be my proposal that new standard names for these
+<br />
+things (such as institution) should be the same as the new or existing names
+<br />
+for global and data variable attributes. It seems sensible to me to make them
+<br />
+the same names, so probably the objectionable bit is their designation as
+<br />
+standard names.
+<br />
+<br />Bryan proposes that instead of standard names they should be some new
+<br />
+attribute, because standard names are for physical quantities and we should
+<br />
+know what is physical. John may also see an advantage in this. I can see there
+<br />
+is a sort of difference, but I don't really think it's clear-cut. We already
+<br />
+have standard names for some things that aren't really physical quantities in
+<br />
+Bryan's sense e.g. land_cover and region (string-valued), and various platform_
+<br />
+names (describing the observation platform rather than any quantity which is
+<br />
+observed). I suspect there are grey areas. Why should we make a functional
+<br />
+distinction, for instance, between the ensemble member number and the analysis
+<br />
+time for various forecasts made for the same verification time? I think Bryan
+<br />
+would put these in different categories. Moreover, the standard_name and the
+<br />
+new attribute will have to be searched for in the same kind of way, and the
+<br />
+values of the coordinates they label have to be treated in the same ways
+<br />
+(selection, labelling axes, etc.); it complicates the software to have to
+<br />
+do this with two different attributes and two different tables to look them up
+<br />
+in rather than one. It seems simpler to me to make them standard names. If
+<br />
+there is a need for a distinction, we could make it with some additional
+<br />
+attribute. What different treatments are needed that should be flagged?
+<br />
+<br />I believe we agree that it's useful to have an attribute that points to an
+<br />
+external dictionary. This could be useful for string-valued existing standard-
+<br />
+named quantities such as region. I agree that it would be good if these tables
+<br />
+weren't maintained by us, but I don't think we can do that (as I've said
+<br />
+before) without an agreement with the dictionary-maintainer about the format
+<br />
+and content of the dictionary. Do others think the same?
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Nov 22 2006 - 17:03:27 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start483">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0484.html" title="Next message in the list">John Caron: "[CF-metadata] Getting back to ensembles"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0482.html" title="Previous message in the list">Richard Gorman: "[CF-metadata] new standard_names for variables concerning sea surface	waves"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0484.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] Getting back to ensembles"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0484.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] Getting back to ensembles"</a></li>
+<li><dfn>Reply</dfn>: <a href="./0504.html" title="Message sent in reply to this message">Francisco Doblas-Reyes: "[CF-metadata] Getting back to ensembles"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg483" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg483" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg483" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg483" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:51 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0482.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0484.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Getting back to ensembles from Jonathan Gregory on 2006-12-16 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Getting back to ensembles" />
+<meta name="Date" content="2006-12-16" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0584.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0586.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Getting back to ensembles</h1>
+<!-- received="Sat Dec 16 03:02:19 2006" -->
+<!-- isoreceived="20061216030219" -->
+<!-- sent="Sat, 16 Dec 2006 10:02:19 +0000" -->
+<!-- isosent="20061216100219" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Getting back to ensembles" -->
+<!-- id="20061216100219.GA8341_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start585" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0586.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] curvilinear cartesian coordinates case?&quot;">Next message</a> ]
+[ <a href="./0584.html" title="John Caron: &quot;[CF-metadata] curvilinear cartesian coordinates case	(service-oriented approach)&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0591.html" accesskey="t" title="Steve Hankin: &quot;[CF-metadata] Getting back to ensembles&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg585" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg585" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg585" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg585" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Getting%20back%20to%20ensembles">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sat, 16 Dec 2006 10:02:19 +0000</span><br />
+</address>
+<br />
+Dear all
+<br />
+<br />I think Steve is right that when making a proposal for change we have to start
+<br />
+with a requirement. This is of course normally done in some informal way as a
+<br />
+motivation, but sometimes being more explicit would help. I would suggest this
+<br />
+as a requirement:
+<br />
+<br />A data variable may have a dimension which serves as an index over the members
+<br />
+of an ensemble, in which the ensemble members are derived from different
+<br />
+models, integrations, institutions supplying the data, etc., and the data from
+<br />
+each ensemble member is a function of the same spatiotemporal coordinates
+<br />
+and/or other physical independent variables. A means is needed to provide
+<br />
+metadata identifying the ensemble members. This metadata serves as the
+<br />
+coordinate data for the index dimension over ensemble members.
+<br />
+<br />Here's my summary of how we have proposed to meet this requirement:
+<br />
+<br />We propose to allow auxiliary coordinate variables with the ensemble index
+<br />
+dimension to contain metadata identifying the institution, source,
+<br />
+experiment_id and realization of the data. institution and source are strings,
+<br />
+with the same meaning as the attributes of those names (CF 2.6.2).
+<br />
+experiment_id is a string describing the design or intent of the
+<br />
+integration. realization is either numeric or a string, and it distinguishes
+<br />
+integrations of a model which in other respects are identically specified and
+<br />
+constitute members of a statistical sample. Since these are auxiliary
+<br />
+coordinate variables, their values do not have to be unique or ordered.
+<br />
+<br />(Ensemble members might also be distinguished by different analysis or
+<br />
+verification times, in the forecasting sense of these terms. These can be
+<br />
+supplied as auxiliary coordinate variables with standard_names of
+<br />
+forecast_reference_time and time, and could be dimensioned with the ensemble
+<br />
+index dimension. This is not a new convention.)
+<br />
+<br />For consistency and completeness, I would propose also to allow experiment_id
+<br />
+and realization as attributes of data variables and as global attributes (i.e.
+<br />
+include them in CF 2.6.2), with the same meanings as they have for auxiliary
+<br />
+coordinate variables.
+<br />
+<br />The string-valued metadata should be as intelligible to humans, since the file
+<br />
+should be self-describing. If the purposes for which the data are intended
+<br />
+require the values of the string-valued metadata to be chosen from a standard
+<br />
+set, a table specifying the possible set should be made publicly available,
+<br />
+and a string-valued &quot;vocabulary&quot; attribute of the auxiliary coordinate
+<br />
+variable should supply its URL.
+<br />
+<br />Do we want to mandate the form of this table?
+<br />
+<br />I think/hope the above is agreeable to all in general, though there may be
+<br />
+some details in dispute. The main outstanding issue, as Alison and others have
+<br />
+said, is whether institution, source, and experiment_id should be the
+<br />
+standard_names of their auxiliary coordinate variables, or recorded in a new
+<br />
+attribute. I'd say the case that Steve has raised concerning names
+<br />
+for structural aspects of the grid is not part of this requirement for
+<br />
+identifying ensemble members; it's a different question.
+<br />
+<br />I think they should be standard_names, because
+<br />
+<br />* I can't think of a good distinction to be drawn between this kind of
+<br />
+information and other coordinate variables, so I suspect we would end up
+<br />
+spending time trying to draw an illusory distinction which can't be made
+<br />
+consistently. Referring to Steve's idea, it doesn't seem to me that the
+<br />
+requirement indicates they should be treated differently from realization,
+<br />
+forecast_reference_time and time, which are already allowed as standard_names.
+<br />
+<br />* if we use a different attribute, it means that software will have to look at
+<br />
+both alternatives, although it's usually going to treat the contents in the
+<br />
+same way.
+<br />
+<br />Here are some distinctions which *don't* seem to work well:
+<br />
+<br />* We could say string-valued things are not given standard names. But we have
+<br />
+region as a standard name with string values, identifying geographical areas
+<br />
+such as atlantic_ocean, for labelling the ocean overturning streamfunction.
+<br />
+This function is very similar to numerical geographical coordinates. It would
+<br />
+be strange to use standard name for latitude and longitude to describe a
+<br />
+rectangular region, but to say that the label for a non-rectangular region is
+<br />
+not a standard name. Similarly, land cover types have standard names. They are
+<br />
+labelling parts of gridboxes which aren't geographically delineated, so again
+<br />
+are acting as a sort of spatial coordinate.
+<br />
+<br />* Things which you aren't going to &quot;operate&quot; on are not standard names i.e.
+<br />
+they're just labels. However, possibly the commonest thing to do with the
+<br />
+numerical spatiotemporal coordinates is to subset them, and you may well do
+<br />
+that with the ensemble metadata too. It is also possibly you might combine
+<br />
+them or process them in other ways.
+<br />
+<br />* Quantities which could never be data variables should not be given standard
+<br />
+names. It does seem quite unlikely that source, institution and experiment_id
+<br />
+might form the contents of a data variable. (In fact it would be hard to do
+<br />
+until netCDF-4, since they are string-valued, but it could be done using
+<br />
+flag_values and flag_meanings.) But I don't think it's impossible. I can
+<br />
+imagine constructing a lat-lon field which indicates which model, at each
+<br />
+point, had the most realistic value of a quantity, for example.
+<br />
+<br />But perhaps someone can think of a better distinction which would naturally
+<br />
+seem part of the requirement.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Sat Dec 16 2006 - 03:02:19 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start585">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0586.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] curvilinear cartesian coordinates case?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0584.html" title="Previous message in the list">John Caron: "[CF-metadata] curvilinear cartesian coordinates case	(service-oriented approach)"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0591.html" title="Next message in this discussion thread">Steve Hankin: "[CF-metadata] Getting back to ensembles"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0591.html" title="Message sent in reply to this message">Steve Hankin: "[CF-metadata] Getting back to ensembles"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg585" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg585" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg585" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg585" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0584.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0586.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

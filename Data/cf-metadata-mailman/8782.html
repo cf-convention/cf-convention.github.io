@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] how to use ocean_mixed_layer_thickness_defined_by_* from Sebastien Villaume on 2018-04-04 (cf-metadata-mailman)</title>
+<meta name="Author" content="Sebastien Villaume (sebastien.villaume)" />
+<meta name="Subject" content="[CF-metadata] how to use ocean_mixed_layer_thickness_defined_by_*" />
+<meta name="Date" content="2018-04-04" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8781.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8783.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] how to use ocean_mixed_layer_thickness_defined_by_*</h1>
+<!-- received="Wed Apr  4 07:04:42 2018" -->
+<!-- isoreceived="20180404060442" -->
+<!-- sent="Wed, 4 Apr 2018 13:04:42 +0000 (GMT-00:00)" -->
+<!-- isosent="20180404130442" -->
+<!-- name="Sebastien Villaume" -->
+<!-- email="sebastien.villaume" -->
+<!-- subject="[CF-metadata] how to use ocean_mixed_layer_thickness_defined_by_*" -->
+<!-- id="221093176.937613.1522847082898.JavaMail.zimbra_at_ecmwf.int" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8782" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8783.html" accesskey="d" title="Burkhardt Rockel: &quot;[CF-metadata] Proposal for new standard names&quot;">Next message</a> ]
+[ <a href="./8781.html" title="Jones, Chris D: &quot;[CF-metadata] New standard names for C4MIP - part 2&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8798.html" accesskey="t" title="Sebastien Villaume: &quot;[CF-metadata] how to use ocean_mixed_layer_thickness_defined_by_*&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8782" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8782" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8782" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8782" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Sebastien Villaume &lt;<a href="mailto:sebastien.villaume?Subject=Re%3A%20%5BCF-metadata%5D%20how%20to%20use%20ocean_mixed_layer_thickness_defined_by_*">sebastien.villaume</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 4 Apr 2018 13:04:42 +0000 (GMT-00:00)</span><br />
+</address>
+<br />
+Dear list,
+<br />
+<br />I have a question regarding the use of the standard names of the form ocean_mixed_layer_thickness_defined_by_*
+<br />
+<br />the definition from the official standard name table is:
+<br />
+<br />&quot;The ocean mixed layer is the upper part of the ocean, regarded as being well-mixed. The base of the mixed layer defined by temperature, sigma or sigma_theta is the level at which the quantity indicated differs from its surface value by a certain amount.&quot;
+<br />
+<br /><em class="quotelev1">&gt;From what I understand, in the case of ocean_mixed_layer_thickness_defined_by_temperature, I should specify some quantity as a scalar (Z axis), but it is actually a temperature difference that I need to encode, not a plain temperature : temp_surf - temp_base_level = temp_delta_defining_mixed_layer_thickness
+</em><br />
+<br />if it was simply a temperature I would maybe use:
+<br />
+<br />float swpt ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;swpt:standard_name = &quot;sea_water_potential_temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;swpt:units = &quot;degC&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;swpt:axis = &quot;Z&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;swpt:positive = &quot;down&quot; ;
+<br />
+<br />but what I really want to encode is a temperature difference. How can I specify that? Is &quot;sea_water_potential_temperature&quot; the correct standard name to use?
+<br />
+<br /><br />same question for ocean_mixed_layer_thickness_defined_by_sigma_theta, how do I encode a &quot;difference&quot; in sigma_theta?
+<br />
+<br />thanks,
+<br />
+<br />____________________________________
+<br />
+<br />Dr. S?bastien Villaume
+<br />
+<br />M.A.R.S. Analyst
+<br />
+ECMWF Data Governance facilitator
+<br />
+<br />ECMWF 
+<br />
+Shinfield Park,
+<br />
+Reading RG2 9AX, UK
+<br />
++44 (0)118 949 9301
+<br />
++44 (0)7825 521592
+<br />
+sebastien.villaume at ecmwf.int
+<br />
+____________________________________
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Apr 04 2018 - 07:04:42 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8782">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8783.html" title="Next message in the list">Burkhardt Rockel: "[CF-metadata] Proposal for new standard names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8781.html" title="Previous message in the list">Jones, Chris D: "[CF-metadata] New standard names for C4MIP - part 2"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8798.html" title="Next message in this discussion thread">Sebastien Villaume: "[CF-metadata] how to use ocean_mixed_layer_thickness_defined_by_*"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8798.html" title="Message sent in reply to this message">Sebastien Villaume: "[CF-metadata] how to use ocean_mixed_layer_thickness_defined_by_*"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8782" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8782" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8782" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8782" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:20 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8781.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8783.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

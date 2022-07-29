@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jim Biard on 2015-06-10 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-06-10" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7102.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7104.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Wed Jun 10 10:38:21 2015" -->
+<!-- isoreceived="20150610093821" -->
+<!-- sent="Wed, 10 Jun 2015 12:38:21 -0400" -->
+<!-- isosent="20150610163821" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="557867FD.9010900_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20150610151857.GA3975_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7103" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7104.html" accesskey="d" title="Chris Barker: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./7102.html" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+[ <a href="./7100.html" title="Jonathan Gregory: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7104.html" accesskey="t" title="Chris Barker: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7103" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7103" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7103" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7103" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 10 Jun 2015 12:38:21 -0400</span><br />
+</address>
+<br />
+Jonathan,
+<br />
+<br />I appreciate your willingness to continue this attempt to find a meeting 
+<br />
+of the minds about all of this. I hope you will forgive me if I am not 
+<br />
+always completely clear in my attempts to express myself or fail to 
+<br />
+understand you.
+<br />
+<br />And now, back to the &quot;struggle&quot;.
+<br />
+<br />As a data consumer, all I have to do is convert the reference time from 
+<br />
+the stated calendar to my desired calender, then use that as the basis 
+<br />
+for producing timestamps from the elapsed times in the variable (using 
+<br />
+the correct set of time functions, of course). Expressing the elapsed 
+<br />
+times as timestamps in one calendar and then converting those timestamps 
+<br />
+to another is another way that you could do it, but one which adds 
+<br />
+unneeded steps. I don't see any reason to assume that data consumers 
+<br />
+would work in one particular way.
+<br />
+<br />The reference timestamp in the units attribute is what anchors the 
+<br />
+elapsed time values into history. That's all that is needed. If you 
+<br />
+modify a time variable by giving the calendar attribute a new value and 
+<br />
+changing the timestamp in the units attribute from the original calendar 
+<br />
+to the new calendar, the contents of the altered time variable will 
+<br />
+still refer to the same points in history. The elapsed time values 
+<br />
+stored in the variable are unaffected. The purpose of the calendar 
+<br />
+attribute is to tell you how to interpret the reference epoch timestamp, 
+<br />
+not to tell you how to interpret the elapsed time values.
+<br />
+<br />I think that CF conventions sections about the calendar attribute should 
+<br />
+say something along the lines of:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;4.4.1 Calendar
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;In order to know what point in history has been measured by a given
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;base date, base time, and time increment, one must know what
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;calendar was used for the base date and time. The calendar attribute
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;defines the particular date and time system that was used to express
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;the reference time string found in the units attribute, and is
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;assigned to the time coordinate variable. The values currently
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;defined for calendar are:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />
+<br /><br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 6/10/15 11:18 AM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Jim
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree about your kg example. Units conversion alone is something the user is
+</em><br />
+<em class="quotelev1">&gt; free to do. I also agree that nothing prevents a user from converting the xy
+</em><br />
+<em class="quotelev1">&gt; coords to another system. The data-producer's intention is not altered by
+</em><br />
+<em class="quotelev1">&gt; that, and so long as the coordinates have been properly described it will be
+</em><br />
+<em class="quotelev1">&gt; possible for the user to do this. Time is a similar case. If it makes sense to
+</em><br />
+<em class="quotelev1">&gt; convert between systems (between real-world Gregorian or Julian, or real-world
+</em><br />
+<em class="quotelev1">&gt; UTC and GPS) then it's fine to do so. I think the user will do this by first
+</em><br />
+<em class="quotelev1">&gt; decoding the time coordinate into the timestamps in the calendar which the
+</em><br />
+<em class="quotelev1">&gt; data-producer recorded, and then converting them to another set of timestamps
+</em><br />
+<em class="quotelev1">&gt; in the chosen calendar.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; So I agree with your statement:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; it is crucial that I
+</em><br />
+<em class="quotelev2">&gt;&gt; know where the elapsed time values stored in my time variable are
+</em><br />
+<em class="quotelev2">&gt;&gt; anchored in history, and that is what we should be trying to make
+</em><br />
+<em class="quotelev2">&gt;&gt; clear with the units and calendar attributes (and any other
+</em><br />
+<em class="quotelev2">&gt;&gt; time-related attributes that might arise).
+</em><br />
+<em class="quotelev1">&gt; I believe that's what we would be doing still in my proposals. The encoded
+</em><br />
+<em class="quotelev1">&gt; values are elapsed time values, so they can be manipulated as such, and they
+</em><br />
+<em class="quotelev1">&gt; can be anchored in history by decoding them into timestamps (probably not
+</em><br />
+<em class="quotelev1">&gt; string-valued timestamps, but numerical components of time), using the stated
+</em><br />
+<em class="quotelev1">&gt; calendar. The components of time are, in most cases, the original information
+</em><br />
+<em class="quotelev1">&gt; which the data-producer had. This is why I think it's correct to view our
+</em><br />
+<em class="quotelev1">&gt; treatment of time coordinates as an encoding.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Therefore I find I'm still not clear why you disagree with my statement:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Clarify that in the CF convention the choice of &quot;calendar&quot; implies the
+</em><br />
+<em class="quotelev2">&gt;&gt; particular set of rules that is used to convert between date-times (YYYY-MM-DD
+</em><br />
+<em class="quotelev2">&gt;&gt; hh:mm:ss i.e. sets of six numbers) and time coordinates in units of elapsed
+</em><br />
+<em class="quotelev2">&gt;&gt; time since a reference time.
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Forwarded message from Jim Biard &lt;jbiard at cicsnc.org&gt; -----
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Date: Wed, 10 Jun 2015 09:51:21 -0400
+</em><br />
+<em class="quotelev2">&gt;&gt; From: Jim Biard &lt;jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: Re: [CF-metadata] How to define time coordinate in GPS?
+</em><br />
+<em class="quotelev2">&gt;&gt; User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:31.0)
+</em><br />
+<em class="quotelev2">&gt;&gt; 	Gecko/20100101 Thunderbird/31.7.0
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Jonathan,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I didn't see your initial statement that you reference as enforcing
+</em><br />
+<em class="quotelev2">&gt;&gt; anything on data consumers, or I would have raised this earlier.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Let's think about this in a simpler context. If I, as a data
+</em><br />
+<em class="quotelev2">&gt;&gt; producer, store values in a data variable in units of kilograms and
+</em><br />
+<em class="quotelev2">&gt;&gt; designate it as such with the units attribute, that doesn't mean
+</em><br />
+<em class="quotelev2">&gt;&gt; every data consumer should feel like they must display the values as
+</em><br />
+<em class="quotelev2">&gt;&gt; kilograms. They are free to select the units they prefer and, as
+</em><br />
+<em class="quotelev2">&gt;&gt; long as they do the conversion correctly, that is completely fine.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; In a more complex and somewhat analogous case, if I as a data
+</em><br />
+<em class="quotelev2">&gt;&gt; producer store my geographic coordinates in latitudes and
+</em><br />
+<em class="quotelev2">&gt;&gt; longitudes, and properly designate the units and the reference datum
+</em><br />
+<em class="quotelev2">&gt;&gt; that I used, data consumers can display my data using those
+</em><br />
+<em class="quotelev2">&gt;&gt; latitudes and longitudes, or they can display my data using a
+</em><br />
+<em class="quotelev2">&gt;&gt; projected coordinate system where they have converted my latitudes
+</em><br />
+<em class="quotelev2">&gt;&gt; and longitudes into X and Y values, or whatever else they choose
+</em><br />
+<em class="quotelev2">&gt;&gt; (and I hope that whatever else they might do is valid!). What I must
+</em><br />
+<em class="quotelev2">&gt;&gt; do as a data producer is accurately identify the geographic
+</em><br />
+<em class="quotelev2">&gt;&gt; Coordinate Reference System that is the basis for my geographic
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinate values (and then make sure that my coordinate values are
+</em><br />
+<em class="quotelev2">&gt;&gt; correct if I started in some different CRS).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; A properly formed time variable needs to have contents that are
+</em><br />
+<em class="quotelev2">&gt;&gt; metric (by that I mean that you can do differencing math with the
+</em><br />
+<em class="quotelev2">&gt;&gt; values), and if it contains real-world time observations it needs to
+</em><br />
+<em class="quotelev2">&gt;&gt; be anchored to a recognizable point in history. The system we have
+</em><br />
+<em class="quotelev2">&gt;&gt; in place using elapsed time values with a reference epoch does just
+</em><br />
+<em class="quotelev2">&gt;&gt; that.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; The decision about how to represent the time values as timestamps
+</em><br />
+<em class="quotelev2">&gt;&gt; for display purposes should be left up to the data consumer. You may
+</em><br />
+<em class="quotelev2">&gt;&gt; have used a reference epoch expressed using the Proleptic Gregorian
+</em><br />
+<em class="quotelev2">&gt;&gt; calendar, but if I would rather express timestamps on my plots using
+</em><br />
+<em class="quotelev2">&gt;&gt; the Julian calendar, that's my business. Perhaps the discipline I am
+</em><br />
+<em class="quotelev2">&gt;&gt; working in has a convention of using Modified Julian Days, so I am
+</em><br />
+<em class="quotelev2">&gt;&gt; going to convert everything to days since 1858-11-17 00:00:00.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Whatever my choice of output form for times, it is crucial that I
+</em><br />
+<em class="quotelev2">&gt;&gt; know where the elapsed time values stored in my time variable are
+</em><br />
+<em class="quotelev2">&gt;&gt; anchored in history, and that is what we should be trying to make
+</em><br />
+<em class="quotelev2">&gt;&gt; clear with the units and calendar attributes (and any other
+</em><br />
+<em class="quotelev2">&gt;&gt; time-related attributes that might arise).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Grace and peace,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Jim
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 6/9/15 1:21 PM, Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Dear Jim
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; You wrote
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; The calendar only specifies how the reference date and time
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; are to be interpreted. It says nothing about either the time
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; variable values or the decoding that should be used to turn those
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; elapsed time values into dates and times. That choice is entirely up
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; to the data consumer. If a data producer started with a set of
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Julian calendar dates and created a time variable, and a data user
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; prefers to use Proleptic Gregorian dates, there is no problem. One
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; is not more correct than the other.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; You are right to point to this as a point of disagreement. I thought we had
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; discussed this earlier e.g. in
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2015/058224.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2015/058224.html</a>
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; I wrote
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Clarify that in the CF convention the choice of &quot;calendar&quot; implies the
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; particular set of rules that is used to convert between date-times (YYYY-MM-DD
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; hh:mm:ss i.e. sets of six numbers) and time coordinates in units of elapsed
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; time since a reference time.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; and I believe that this arose from an earlier discussion about this being a
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-specific use of the term &quot;calendar&quot;. Maybe I have misunderstood you now.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; I think the data producer is the person who decides what the data means. If
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; the producer has Julian calendar timestamps and encodes with Julian rules
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; as a time coordinate variable, the data-user is wrong to decode them with
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; any other rules into timestamps or interpret them as being in any other
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; calendar. Why would that be a useful thing to do? I agree with your earlier
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; posting and email that there is a range of timestamps which refer to the same
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; points in time in the Gregorian and Julian calendars (long ago, before they
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; drifted apart) so for that range of dates it would not matter if the data-
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; user changed the calendar, since they're indistinguishable. But that is a
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; special case. If you come up to present, a given time-stamp refers to a
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; different instance in time in the Gregorian and Julian calendars, just like
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; it does between UTC and GPS calendars. For model calendars, it would be
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; nonsense for time coordinates encoded in the 360-day calendar to be decoded
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; in the proleptic Gregorian calendar, for example.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Perhaps we view time coordinates in different ways? I think the timestamps
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; are the primary information, and the time coordinates are an encoded version.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; We do it like that for efficiency of storage, and convenience and robustness
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; of processing, since string-valued timestamps are relatively awkward. It has
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; also the great advantage that the encoded time coordinate is also an elapsed
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; time variable, so it can be used to check monotonicity and for calculations.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; This is a common need, since time is a continuous coordinate.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Best wishes
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Jonathan
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; -- 
+</em><br />
+<em class="quotelev2">&gt;&gt; CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+</em><br />
+<em class="quotelev2">&gt;&gt; Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+</em><br />
+<em class="quotelev2">&gt;&gt; *Research Scholar*
+</em><br />
+<em class="quotelev2">&gt;&gt; Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; /formerly NOAA?s National Climatic Data Center/
+</em><br />
+<em class="quotelev2">&gt;&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev2">&gt;&gt; e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; o: +1 828 271 4900
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; /Connect with us on Facebook for climate
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow
+</em><br />
+<em class="quotelev2">&gt;&gt; us on Twitter at _at_NOAANCEIclimate
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and _at_NOAANCEIocngeo
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/Connect with us on Facebook for climate 
+&lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+&lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us 
+on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and 
+_at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150610/719dba9c/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150610/719dba9c/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150610/719dba9c/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150610/719dba9c/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Jun 10 2015 - 10:38:21 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7103">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7104.html" title="Next message in the list">Chris Barker: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7102.html" title="Previous message in the list">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7100.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7104.html" title="Next message in this discussion thread">Chris Barker: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7104.html" title="Message sent in reply to this message">Chris Barker: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Reply</dfn>: <a href="./7105.html" title="Message sent in reply to this message">Ben Hetland: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Reply</dfn>: <a href="./7109.html" title="Message sent in reply to this message">Timothy Patterson: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7103" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7103" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7103" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7103" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:56 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7102.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7104.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

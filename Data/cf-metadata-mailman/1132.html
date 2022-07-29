@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to pack data using scale_factor and add_offset? from John Stark on 2007-12-11 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Stark (john.stark)" />
+<meta name="Subject" content="[CF-metadata] How to pack data using scale_factor and add_offset?" />
+<meta name="Date" content="2007-12-11" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1131.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1133.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to pack data using scale_factor and add_offset?</h1>
+<!-- received="Tue Dec 11 08:26:02 2007" -->
+<!-- isoreceived="20071211082602" -->
+<!-- sent="Tue, 11 Dec 2007 15:26:02 +0000" -->
+<!-- isosent="20071211152602" -->
+<!-- name="John Stark" -->
+<!-- email="john.stark" -->
+<!-- subject="[CF-metadata] How to pack data using scale_factor and add_offset?" -->
+<!-- id="1197386762.25164.195.camel_at_eld334.desktop.frd.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1132" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1133.html" accesskey="d" title="Karl Taylor: &quot;[CF-metadata] How to pack data using scale_factor and add_offset?&quot;">Next message</a> ]
+[ <a href="./1131.html" title="Olivier Lauret: &quot;[CF-metadata] Standard names for ocean parameters&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1133.html" accesskey="t" title="Karl Taylor: &quot;[CF-metadata] How to pack data using scale_factor and add_offset?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1132" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1132" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1132" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1132" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Stark &lt;<a href="mailto:john.stark?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20pack%20data%20using%20scale_factor%20and%20add_offset%3F">john.stark</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 11 Dec 2007 15:26:02 +0000</span><br />
+</address>
+<br />
+Hello,
+<br />
+<br />When scale_factor + add_offset is used how should the data be 'rounded'
+<br />
+to integers?
+<br />
+<br />I had a look at the CF conventions and NUG but couldn't find the
+<br />
+a definitive answer.
+<br />
+<br />I had implicitly assumed that 'nearest integer' [NINT] is assumed (i.e.
+<br />
+to best represent the unpacked data), but this is not what the NetCDF
+<br />
+library would do if you passed floating point data. It would do
+<br />
+the machine default (truncation or INT) I think. Other options include
+<br />
+FLOOR / CEIL.
+<br />
+<br />For example, I have temperature, sst, which I want to pack into value iv
+<br />
+using scale_factor=0.01, add_offset=273.15 . 
+<br />
+<br />Method 1) [ What the netcdf library would do? ]
+<br />
+iv = INT( ( sst - add_offset ) / scale_factor )
+<br />
+<br />Method 2) [ NINT instead of truncation ]
+<br />
+iv = NINT( (sst - add_offset) / scale_factor )
+<br />
+<br />Method 3) [ To reduce the number of divisions] 
+<br />
+iv = NINT( sst * (1./scale_factor)  - (add_offset/scale_factor) )
+<br />
+<br />Method 4) [Using FLOOR with offset 0.5 instead of NINT]
+<br />
+iv = FLOOR( sst * (1./scale_factor) - (add_offset/scale_factor) +0.5)
+<br />
+<br />I prefer the use of 'FLOOR(X + 0.5)' since the rounding of the (integer
+<br />
++half) values is always in the same direction, and avoids 'double-
+<br />
+counting' issues near zero. This is since (zero + add_offset) may have
+<br />
+no special meaning in the unpacked data.
+<br />
+<br />If the sst is not close to the interval edges, then we get the same for
+<br />
+all methods except truncation. (Each line represents a packing method,
+<br />
+see code at end of message). e.g. : 
+<br />
+sst=[-3,-2,-1,0,1,2,3] * 0.01d0 -0.0025d0 + add_offset
+<br />
+1)      -3      -2      -1       0       0       1       2
+<br />
+2)      -3      -2      -1       0       1       2       3
+<br />
+3)      -3      -2      -1       0       1       2       3
+<br />
+4)      -3      -2      -1       0       1       2       3
+<br />
+<br />If sst is very close to the intervals we get some numerical artifacts,
+<br />
+the mathematically equivalent 2) and 3) differ:
+<br />
+sst=[-3,-2,-1,0,1,2,3] * 0.01d0 -0.005d0 + add_offset
+<br />
+1)      -3      -2      -1       0       0       1       2
+<br />
+2)      -4      -2      -1       0       0       1       2
+<br />
+3)      -4      -2      -1       0       1       2       3
+<br />
+4)      -3      -2      -1       0       1       2       3
+<br />
+<br />The problem is that if the same data is repeatedly read, unpacked,
+<br />
+modified and then re-packed, these small differences can get amplified
+<br />
+(especially using truncation). Can we specify _exactly_ how the packing
+<br />
+should be done in CF? 
+<br />
+<br />John
+<br />
+<br />[PV-Wave / IDL code]
+<br />
+add_offset = 273.15d0
+<br />
+scale_factor = 0.01d0
+<br />
+iv1 = FIX( ( sst - add_offset ) / scale_factor )
+<br />
+iv2 = NINT( (sst - add_offset) / scale_factor )
+<br />
+iv3 = NINT( sst * (1.d0/scale_factor)  - (add_offset/scale_factor) )
+<br />
+iv4 = FLOOR( sst * (1.d0/scale_factor) - (add_offset/scale_factor)
+<br />
++0.5d0)
+<br />
+print,iv1,iv2,iv3,iv4,Format='(7(i8))'      
+<br />
+<br /><pre>
+-- 
+John Stark                            SST and Sea Ice Scientist
+Met Office, Fitzroy Road, Exeter, Devon, EX1 3PB United Kingdom
+Telephone: +44 (0)1392 885059           Fax: +44 (0)1392 885681
+E-mail: john.stark at metoffice.gov.uk <a href="http://www.metoffice.gov.uk">http://www.metoffice.gov.uk</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Dec 11 2007 - 08:26:02 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1132">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1133.html" title="Next message in the list">Karl Taylor: "[CF-metadata] How to pack data using scale_factor and add_offset?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1131.html" title="Previous message in the list">Olivier Lauret: "[CF-metadata] Standard names for ocean parameters"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1133.html" title="Next message in this discussion thread">Karl Taylor: "[CF-metadata] How to pack data using scale_factor and add_offset?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1133.html" title="Message sent in reply to this message">Karl Taylor: "[CF-metadata] How to pack data using scale_factor and add_offset?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1132" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1132" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1132" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1132" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:01 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1131.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1133.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

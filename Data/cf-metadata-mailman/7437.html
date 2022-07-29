@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] vertical coordinate for bed stratigraphy /	sediment layers from Bert Jagers on 2016-02-25 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bert Jagers (Bert.Jagers)" />
+<meta name="Subject" content="[CF-metadata] vertical coordinate for bed stratigraphy /	sediment layers" />
+<meta name="Date" content="2016-02-25" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7436.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7438.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] vertical coordinate for bed stratigraphy /	sediment layers</h1>
+<!-- received="Thu Feb 25 05:44:36 2016" -->
+<!-- isoreceived="20160225054436" -->
+<!-- sent="Thu, 25 Feb 2016 12:44:36 +0000" -->
+<!-- isosent="20160225124436" -->
+<!-- name="Bert Jagers" -->
+<!-- email="Bert.Jagers" -->
+<!-- subject="[CF-metadata] vertical coordinate for bed stratigraphy /	sediment layers" -->
+<!-- id="8C2239F05BCC6A4D8A6EAC295B3B1A3D51066F62_at_V-EXC-C02.DIRECTORY.INTRA" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="VI1PR06MB12797FF0D8239A87DDD8FD1099A60_at_VI1PR06MB1279.eurprd06.prod.outlook.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7437" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7438.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] vertical coordinate for bed stratigraphy / sediment layers&quot;">Next message</a> ]
+[ <a href="./7436.html" title="Jonathan Gregory: &quot;[CF-metadata] ice mass change standard name&quot;">Previous message</a> ]
+[ <a href="./7435.html" title="Lowry, Roy K.: &quot;[CF-metadata] vertical coordinate for bed stratigraphy /	sediment layers&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7437" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7437" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7437" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7437" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bert Jagers &lt;<a href="mailto:Bert.Jagers?Subject=Re%3A%20%5BCF-metadata%5D%20vertical%20coordinate%20for%20bed%20stratigraphy%20%2F%09sediment%20layers">Bert.Jagers</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 25 Feb 2016 12:44:36 +0000</span><br />
+</address>
+<br />
+Hi Rich,
+<br />
+<br />Yes, that's true. Isn't that great? That's what I'm trying to model and capture in CF compliant NetCDF.
+<br />
+<br />We are also likely to use this name/convention to store computational layers for biochemistry: layers of only a few mm's thick to capture the transition from oxygen-based to nitrate-based to sulphate-based biochemistry in the bed.
+<br />
+<br />Like Roy, I don't see the time variation of the reference surface as a new issue since this holds also for vertical coordinates with standard names such as &quot;height_above_sea_floor&quot; (same reference surface although name is less generic) and &quot;depth&quot; (the water surface also varies over time). More about this further down.
+<br />
+<br />What I would like to store is
+<br />
+<br />DP_BEDLYR(TIME,NLYR,N,M):
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;DP_BEDLYR:standard_name = &quot;depth_below_...&quot; (latest proposal: depth_below_soil_surface)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;DP_BEDLYR:unit = &quot;m&quot;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;DP_BEDLYR:axis = &quot;Z&quot;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;DP_BEDLYR:positive = &quot;down&quot;
+<br />
+<br />An additional attribute &quot;soil_surface&quot; (or whatever name we decide on for the reference surface) could point to the variable to be used as vertical offset for visualization.
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;DP_BEDLYR:soil_surface = &quot;Z_BED&quot;
+<br />
+<br />and then the variable Z_BED could be
+<br />
+Z_BED(TIME,N,M)
+<br />
+&nbsp;&nbsp;&nbsp;Z_BED:standard_name = &quot; sea_floor_depth_below_geoid&quot;
+<br />
+&nbsp;&nbsp;&nbsp;Z_BED:unit = &quot;m&quot;
+<br />
+in case I'm interested only in layers below the sea_floor, or I may use a more generic name such as &quot;soil_surface_height_above_geoid&quot; (positive up for convenience outside the oceans).
+<br />
+<br />Since the layers may be very thin (as in the case of biochemistry) I don't want to include the vertical offset (i.e. the elevation of the soil_surface) directly in the position of the layers: in deep oceans and high mountains, this would severely limit the accuracy. Hence, my desire for a relative depth relative to a reference surface that may indeed move over time. I have always assumed that in e.g. the definition z(n,k,j,i) = eta(n,j,i) + sigma(k)*(depth(j,i)+eta(n,j,i)) of the ocean_sigma_coordinate the ocean floor &quot;depth&quot; may vary with time n as well as the water surface even though this is not explicitly indicated in the formula. I hope that CF is non-restrictive in this aspect.
+<br />
+<br />Cheers,
+<br />
+<br />Bert
+<br />
+<br />-----Original Message-----
+<br />
+From: Lowry, Roy K. [mailto:rkl at bodc.ac.uk]
+<br />
+Sent: 25 February 2016 10:25
+<br />
+To: Signell, Richard; Bert Jagers
+<br />
+Cc: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] vertical coordinate for bed stratigraphy / sediment layers
+<br />
+<br />Hello Rich,
+<br />
+<br />I don't see this as being an issue. This is a reference level for human understanding rather than a CRS datum in exactly the same way as we have 'surface' for the base of the atmosphre - another moveable feast.
+<br />
+<br />Cheers, Roy.
+<br />
+<br />Please note that I partially retired on 01/11/2015. I am now only working 7.5 hours a week and can only guarantee e-mail response on Wednesdays, my day in the office. All vocabulary queries should be sent to enquiries at bodc.ac.uk. Please also use this e-mail if your requirement is urgent.
+<br />
+<br />________________________________________
+<br />
+From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu&gt; on behalf of Signell, Richard &lt;rsignell at usgs.gov&gt;
+<br />
+Sent: 24 February 2016 16:13
+<br />
+To: Bert Jagers
+<br />
+Cc: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] vertical coordinate for bed stratigraphy /   sediment layers
+<br />
+<br />All,
+<br />
+I think there could be an additional problem here:
+<br />
+In the environments these sediment transport models are simulating, there might be bedrock, and on top of that some gravel, then some
+<br />
+layers of sand, silt and mud.   All of this sediment moves around,
+<br />
+changing the morphology.   So the sea_floor depth is actually changing
+<br />
+with time, right?
+<br />
+<br />-Rich
+<br />
+<br />On Wed, Feb 24, 2016 at 11:00 AM, Bert Jagers &lt;Bert.Jagers at deltares.nl&gt; wrote:
+<br />
+<em class="quotelev1">&gt; Dear Roy, Reyna, All,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thank you for your input.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Within Deltares (at least the modelling groups) we also refer to this surface as the &quot;bed&quot; and refer to the elevation as &quot;bed level&quot;. From a hydrodynamic modelling point of view the &quot;bed_surface&quot; would be attractive, however this doesn't sound generic enough for broader applications.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; As Roy indicates this surface should be more generic than &quot;sea_floor&quot;, unless we accept that in a world with changing sea level we are all walking on the sea floor.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I discussed this topic with a geomorphologist of Utrecht university and he indicated that &quot;crust&quot; is typically associated with the bedrock on top of which the alluvial sediments and biota forming soil are located. Since we are mostly interested in the alluvial sediments, this would suggest that &quot;top_of_crust&quot; doesn't quite fit the purpose. Although soil is typically only used for sediment mixed with material of biological origin (and in our models such components are still absent most of the time), he suggested to use &quot;soil_surface&quot; as it is more generic moving towards the future and is compatible with most field observations. The use of soil in the standard name table seems to be consistent with this use. Any objections against this name?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best regards,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Bert
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: Reyna Jenkyns [mailto:reyna at uvic.ca]
+</em><br />
+<em class="quotelev1">&gt; Sent: 24 February 2016 14:49
+</em><br />
+<em class="quotelev1">&gt; To: Lowry, Roy K.; Bert Jagers; cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] vertical coordinate for bed stratigraphy /
+</em><br />
+<em class="quotelev1">&gt; sediment layers
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Joining in on this, because we have instrumentation taking measurements in seafloor boreholes that I've been unable to put in CF convention to this point. We refer to their depth referenced from the seafloor as well. That's what we are typically able to know at deployment. Similarly when we are doing sediment cores, we know the depth of the core in the sediment. Personally, I would prefer sea_floor to top_of_crust.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Reyna Jenkyns | Data Stewardship Team Lead - Digital Infrastructure
+</em><br />
+<em class="quotelev1">&gt; Ocean Networks Canada | T 250 853 3908 | oceannetworks.ca University
+</em><br />
+<em class="quotelev1">&gt; of Victoria PO Box 1700 STN CSC 2300 McKenzie Avenue Victoria, BC V8W
+</em><br />
+<em class="quotelev1">&gt; 2Y2
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ________________________________________
+</em><br />
+<em class="quotelev1">&gt; From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu&gt; on behalf of
+</em><br />
+<em class="quotelev1">&gt; Lowry, Roy K. &lt;rkl at bodc.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; Sent: Wednesday, February 24, 2016 2:07 AM
+</em><br />
+<em class="quotelev1">&gt; To: Bert Jagers; cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] vertical coordinate for bed stratigraphy /   sediment        layers
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear All,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Bert is raising an interesting issue which is a result of the historical extension of CF from atmospheric science, through oceanography and now into geology.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; What we're talking about is a reference plane that is synonymous to 'surface' for the base of the atmosphere, but instead refers to the top of the crust. To date this layer has been labelled 'sea_floor' in CF, which is a portion of this reference plane that happens to be overlain by salt water. In my organisation we have started to call it the 'bed' (although we still have some historical references to seafloor) because we deal with estuaries, rivers and lakes in addition to seas and oceans and don't want to worry about the salinity of the overlying water when discussing a spatial reference. We also accept that the 'bed' can be dry at times because the tide comes in and out. It therefore makes perfect sense to continue this reference onto land where it becomes known to a terrestrial geologist as 'soil_surface'.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; This reference would be used as the reference for measurements of distances to 'things' below the surface of the crust, such as layer boundaries or location of a captured burrowing animal. However, this reference is also something whose variation as a function of time at a given point may be measured relative to another 'fixed' reference such as the geoid.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Assuming we agree that such a global continuum reference in the Standard Name vocabulary, the $64,000 question is what should it be called? It could be done by redefining what we mean by 'sea_floor', but I can see that being somewhat unpopular!! How about something like 'top_of_crust'?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Note that I don't feel that introducing such a name would necessarily force the abandonment of 'sea_floor' - I don't see a problem with having sea_floor as a specialisation of top_of_crust (i.e. top_of_crust overlain by salt water or even just water).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Other thoughts and opinions?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers, Roy.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf
+</em><br />
+<em class="quotelev1">&gt; Of Bert Jagers
+</em><br />
+<em class="quotelev1">&gt; Sent: 22 February 2016 13:35
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: [CF-metadata] vertical coordinate for bed stratigraphy /
+</em><br />
+<em class="quotelev1">&gt; sediment layers
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Follow-up of Nov 2015 thread: &quot;standard names and vertical coordinate for bed stratigraphy / sediment layers&quot;
+</em><br />
+<em class="quotelev1">&gt; ----------------------------------------------------------------------
+</em><br />
+<em class="quotelev1">&gt; ----------------------------------------------------------------------
+</em><br />
+<em class="quotelev1">&gt; --------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear Jonathan, Roy, Steve, all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I've finally again time to focus on this issue. The feedback that I got from Roy and Jonathan is to store the depth rather than trying to define a formula for computing the depth from layer thicknesses (and nobody suggested anything else). So, what I'll need is a name for the quantity that stores the (minimum/maximum/...) depths of the sedimentation layers.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; To summarize the comments made earlier:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The discussion with Roy Lowry hinted at standard names for the vertical coordinate at:
+</em><br />
+<em class="quotelev1">&gt; * depth_below_seabed, or
+</em><br />
+<em class="quotelev1">&gt; * depth_below_sea_floor
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In the context of defining a standard name for the thickness of sediment layers, Jonathan asked whether the phrase &quot;below_sea_floor&quot; would be necessary in the initially suggested name &quot;thickness_of_sediment_layers_below_sea_floor&quot;. I fully agree with Jonathan that it would much better to simply refer to &quot;thickness_of_sediment_layers&quot; without any addition since I'm actually interested in sediment layers that could be below land or water (rivers, lakes, estuaries, seas, ...). BTW. I'm indeed primarily interested in active sedimentation (and erosion) processes, such that this will usually exclude sedimentary rock (although the base layer of the alluvial sediment layers will typically be equal to the top of the sedimentary rock - if such a clear distinction can be made).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; So, can we come up with a name for the vertical coordinate without reference to &quot;below_sea_floor&quot;? The existing standard name &quot;depth&quot; refers to the vertical distance below the surface where I assume 'surface' should be read as &quot;the lower boundary of the atmosphere&quot; as in other quantities. That's not the surface I'm looking for. I would be looking for the surface consisting of the land surface and the river/lake/eastuary/sea/ocean floor. Would this be the earth_surface or would you interpret the earth_surface as equivalent to the &quot;the lower boundary of the atmosphere&quot;. Another alternative could possibly be soil_surface. A more generic approach could be to define a standard_name &quot;depth_below_reference_surface&quot; (with unit m) which would then need a reference surface which in our case could be either the sea_floor_depth_below_geoid and/or the land surface. However, I don't see any previous case setting a convention for defining reference plane. There are two exiting examples of !
+</em><br />
+<em class="quotelev1">&gt;  reference
+</em><br />
+<em class="quotelev1">&gt;   surfaces:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; (1)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; * geoid_height_above_reference_ellipsoid,
+</em><br />
+<em class="quotelev1">&gt; * height_above_reference_ellipsoid,
+</em><br />
+<em class="quotelev1">&gt; *
+</em><br />
+<em class="quotelev1">&gt; histogram_of_backscattering_ratio_over_height_above_reference_ellipsoi
+</em><br />
+<em class="quotelev1">&gt; d,
+</em><br />
+<em class="quotelev1">&gt; *
+</em><br />
+<em class="quotelev1">&gt; histogram_of_equivalent_reflectivity_factor_over_height_above_referenc
+</em><br />
+<em class="quotelev1">&gt; e_ellipsoid, and
+</em><br />
+<em class="quotelev1">&gt; * sea_surface_height_above_reference_ellipsoid
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; all refer to a reference_ellipsoid. However, there doesn't seem to be a way of defining the reference_ellipsoid (at least no reference is made to a description of how this ellipsoid should be defined), and furthermore the ellipsoid would be too generic for our application where we really need the local topography (or bathymetry) as reference surface.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; (2)
+</em><br />
+<em class="quotelev1">&gt; * water_surface_height_above_reference_datum
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; is defined relative to a reference surface with the explicit name:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; * water_surface_reference_datum_altitude
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; which makes it impossible to reuse an already existing quantity (such as sea_floor_depth_below_geoid).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Can we define a standard_name &quot;depth_below_reference_surface&quot; which would require an explicit attribute 'reference_surface' that points to any depth or altitude variable?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best regards,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Bert
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf
+</em><br />
+<em class="quotelev1">&gt; Of Jonathan Gregory
+</em><br />
+<em class="quotelev1">&gt; Sent: 10 November 2015 15:50
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: [CF-metadata] standard names and vertical coordinate for bed
+</em><br />
+<em class="quotelev1">&gt; stratigraphy / sediment layers
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear Bert
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; * thickness_of_sediment_layers_below_sea_floor
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Is below_sea_floor necessary in this name? If the aim is to indicate what sediment you mean, would thickness_of_sea_floor_sediment_layer be OK?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; We came up with the &quot;below_sea_floor&quot; phrase since we considered to use this variable as a vertical coordinate as explained in the mail. Roy Lowry suggested (in a partially offline discussion) to replace the thickness variable with the proposed formula by an explicit neutral vertical coordinate &quot;depth_below_sea_floor&quot; and subsequently specify both maximum and minimum values per layer. This would be consistent with observation data but it would no longer be clear that the layers are consecutive (or you would have to check whether the minimum depth of one layer matches the maximum depth of the other layer). On the other hand I would love to get rid of the &quot;below_sea_floor&quot; addition since the layers could be in rivers, lakes, or below dry land as well.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think it might be better to separate your two purposes of naming quantities and constructing coordinates. This quantity is one which could be used in other situations where it's not a coordinate, and below_sea_floor would then be confusing. Would just thickness_of_sediment_layer be OK? Can sediment mean anything else in geoscientific terminology? Below dry land, are you thinking of sedimentary rock? - that is different, I would say. Sediments are at the bottom of liquid, in my understanding (although I appreciate that sedimentary rock started like that). I note that due_to_sedimentation appears in the stdname table, and I think it's the same meaning of sedimentation.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; In using mass_content you are following other standard names, I know, but it might not be clear what it means, and I wonder if mass_per_unit_area might be better, which is also in use.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Mass_per_unit_area sounds better to me as well
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; OK.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree that &quot;areic&quot; is not a well-known word (I hadn't heard it before) and since it is not used in CF already I'd rather not introduce it. I think &quot;mass content&quot; makes sense in the context of atmosphere_mass_content_of_X, where is it most often used, and it's also the sense in soil_moisture_content.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; * mass_content_of_sediment_fraction_in_sediment_layer
+</em><br />
+<em class="quotelev2">&gt;&gt; * volume_fraction_of_sediment_fraction_in_sediment_layer
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; sediment_fraction_of_sediment_layer sounds odd to me. Isn't it 100%?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Yes, the name did feel odd to me as well, but it isn't 100%. In the model we can include any number of sediment fractions (think gravel, sand, silt, clay, but the sediment classes can be subdivided further or grouped differently dependent on the use case, so predefined enumeration is not an option). So, I would explain the term as the mass_content or volume_fraction of a particular sediment fraction (likely to be an array dimension to be associated with a string valued scalar coordinate containing sediment fraction names and auxiliary sediment fraction properties such as fraction specific minimum, median, and maximum grain size, specific density, etc.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I see. Just as there are many atmosphere_mass_content_of_X names, you could have several mass_per_unit_area_of_X_in_sediment_layer for various X. That would be clearer than using sediment in two senses. If you want to have a coordinate variable which runs over X, I agree that you need a generic name.
+</em><br />
+<em class="quotelev1">&gt; Maybe it could be sediment_type, like area_type?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt; Could &quot;layer&quot; be omitted from the volume_fraction? - it's an intensive quantity, not dependent on layer thickness.
+</em><br />
+<em class="quotelev2">&gt;&gt; Yes, probably it can. Was trying to make names similar.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Yes, I understand, but it would be more generally useful without.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Our model is not the only model to use multiple sediment layers, so I do think that it is not very specific to our own use case. However, there seems as Roy indicated some discussion how to store it most generically. There are a couple of options:
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) would be to specify a regular CF coordinate for the centres of the N layers and then upper and lower bounds of the N layers, but I consider this to be too verbose (and also there is currently no CF bounds formulation that would allow us to do precisely this): 3N values.
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) define per layer the maximum and minimum depth: 2N values. This still duplicates data, but seems to be consistent with observation data practices of SeaDataNet. Also separate minimum and maximum values suggest that layers may not be consecutive; there could be gaps; or layers may overlap. I'm interested in just a simple stack of layers.
+</em><br />
+<em class="quotelev2">&gt;&gt; 3) define the N thicknesses of the layers and define how to determine the vertical coordinate using some formula (this is what I tried).
+</em><br />
+<em class="quotelev2">&gt;&gt; 4) define the N+1 layer interfaces and use this as a coordinate for
+</em><br />
+<em class="quotelev2">&gt;&gt; the quantities in the N layers. The CF conventions don't have any
+</em><br />
+<em class="quotelev2">&gt;&gt; feature to support this. Following the UGRID development we worked a
+</em><br />
+<em class="quotelev2">&gt;&gt; bit in this direction with SGRID:
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="https://publicwiki.deltares.nl/display/NETCDF/Deltares+proposal+for+S">https://publicwiki.deltares.nl/display/NETCDF/Deltares+proposal+for+S</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; t
+</em><br />
+<em class="quotelev2">&gt;&gt; aggered+Grid+data+model+%28SGRID%29
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I like (2) best, especially if it's been used before, because it's most like CF bounds and is more general. You could avoid defining standard names for the maximum and minimum depth if you had some notional vertical 1D coordinate variable (say VERTICAL). In that case the max and min depths could be auxiliary coord variables that were also data variables in their own right, distinguished by cell_methods that contain &quot;VERTICAL: maximum&quot; and &quot;VERTICAL: minimum&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Alternatively we could define some new CF bounds convention for this sort of case. CF presently does not have a convention which adds a single dimension of size 2 to a multidimensional bounds variable. The convention would have to indicate which spatial dimension the 2 applies to. E.g. you might have data variables (vertical,lat,lon) and a bounds variable (vertical,lat,lon,2) or upper and lower vertical bounds that depend on (vertical,lat,lon). I am sure that such a mechanism would be needed by other applications. In fact I recall some related discussion on email before.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; DISCLAIMER: This message is intended exclusively for the addressee(s) and may contain confidential and privileged information. If you are not the intended recipient please notify the sender immediately and destroy this message. Unauthorized use, disclosure or copying of this message is strictly prohibited. The foundation 'Stichting Deltares', which has its seat at Delft, The Netherlands, Commercial Registration Number 41146461, is not liable in any way whatsoever for consequences and/or damages resulting from the improper, incomplete and untimely dispatch, receipt and/or content of this e-mail.
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; ________________________________
+</em><br />
+<em class="quotelev1">&gt;  This message (and any attachments) is for the recipient only. NERC is subject to the Freedom of Information Act 2000 and the contents of this email and any reply you make may be disclosed by NERC unless it is exempt from release under the Act. Any material supplied to NERC may be stored in an electronic records management system.
+</em><br />
+<em class="quotelev1">&gt; ________________________________
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; DISCLAIMER: This message is intended exclusively for the addressee(s) and may contain confidential and privileged information. If you are not the intended recipient please notify the sender immediately and destroy this message. Unauthorized use, disclosure or copying of this message is strictly prohibited. The foundation 'Stichting Deltares', which has its seat at Delft, The Netherlands, Commercial Registration Number 41146461, is not liable in any way whatsoever for consequences and/or damages resulting from the improper, incomplete and untimely dispatch, receipt and/or content of this e-mail.
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><br /><br /><pre>
+--
+Dr. Richard P. Signell   (508) 457-2229
+USGS, 384 Woods Hole Rd.
+Woods Hole, MA 02543-1598
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+________________________________
+ This message (and any attachments) is for the recipient only. NERC is subject to the Freedom of Information Act 2000 and the contents of this email and any reply you make may be disclosed by NERC unless it is exempt from release under the Act. Any material supplied to NERC may be stored in an electronic records management system.
+________________________________
+DISCLAIMER: This message is intended exclusively for the addressee(s) and may contain confidential and privileged information. If you are not the intended recipient please notify the sender immediately and destroy this message. Unauthorized use, disclosure or copying of this message is strictly prohibited. The foundation 'Stichting Deltares', which has its seat at Delft, The Netherlands, Commercial Registration Number 41146461, is not liable in any way whatsoever for consequences and/or damages resulting from the improper, incomplete and untimely dispatch, receipt and/or content of this e-mail.
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Feb 25 2016 - 05:44:36 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7437">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7438.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] vertical coordinate for bed stratigraphy / sediment layers"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7436.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] ice mass change standard name"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7435.html" title="Message to which this message replies">Lowry, Roy K.: "[CF-metadata] vertical coordinate for bed stratigraphy /	sediment layers"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7437" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7437" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7437" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7437" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:01 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7436.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7438.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

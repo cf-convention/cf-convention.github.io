@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] New standard name: datetime_iso8601 from Hattersley, Richard on 2013-03-15 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hattersley, Richard (richard.hattersley)" />
+<meta name="Subject" content="[CF-metadata] New standard name: datetime_iso8601" />
+<meta name="Date" content="2013-03-15" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5076.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5078.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] New standard name: datetime_iso8601</h1>
+<!-- received="Fri Mar 15 04:30:44 2013" -->
+<!-- isoreceived="20130315043044" -->
+<!-- sent="Fri, 15 Mar 2013 10:30:44 +0000" -->
+<!-- isosent="20130315103044" -->
+<!-- name="Hattersley, Richard" -->
+<!-- email="richard.hattersley" -->
+<!-- subject="[CF-metadata] New standard name: datetime_iso8601" -->
+<!-- id="21A2C87797FA6042B162A8A0A11A15DB025ED0_at_EXXCMPD1DAG2.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="512A64DC.2000208_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5077" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5078.html" accesskey="d" title="Hedley, Mark: &quot;[CF-metadata] Ancillary Data&quot;">Next message</a> ]
+[ <a href="./5076.html" title="Seth McGinnis: &quot;[CF-metadata] brand new user&quot;">Previous message</a> ]
+[ <a href="./5037.html" title="Steve Hankin: &quot;[CF-metadata] New standard name: datetime_iso8601&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5081.html" accesskey="t" title="John Caron: &quot;[CF-metadata] New standard name: datetime_iso8601&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5077" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5077" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5077" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5077" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hattersley, Richard &lt;<a href="mailto:richard.hattersley?Subject=Re%3A%20%5BCF-metadata%5D%20New%20standard%20name%3A%20datetime_iso8601">richard.hattersley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 15 Mar 2013 10:30:44 +0000</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />I think Steve has got to the heart of the issue with his comment, &quot;IMHO it is the client libraries that hold the answer to this question.&quot;
+<br />
+<br />However you choose to peer into your netCDF files you are seeing them through the lens of a &quot;client library&quot;. And it's worth noting that date/times aren't special in this regard, this is just as true for floating point numbers.
+<br />
+<br />With the Iris library(*), we are working towards improving the readability and usability of date/times because we recognise that simply displaying &quot;35246 hours since 1970-01-01&quot; is essentially meaningless to a human. From what I've seen, I think we can all agree on that! So we want our users to be able to see date/times in a human-readable form, but that certainly doesn't mean we will represent them that way internally.
+<br />
+<br />The only real benefit I can see for the string representation is that _some_ date/time values can be made more human-readable when viewed through client libraries which don't support the machine-readable-to-human-readable conversion. But if the library can't do machine-to-human then it probably can't do human-to-machine. In which case there's very little you can actually _do_ with the date/time values (e.g. determine ordering or compute intervals). If the library is that limited then adding the string representation to CF isn't really fixing the right problem. If you'll excuse the analogy, it's like taking the engine out of a car because the brakes don't work.
+<br />
+<br />In short, I am against the addition of a string representation for date/times.
+<br />
+<br />*) Iris - a candidate reference implementation of CF implemented in Python (<a href="http://scitools.org.uk/">http://scitools.org.uk/</a>).
+<br />
+<br />Richard Hattersley  Iris Benevolent Dictator
+<br />
+Met Office  FitzRoy Road  Exeter  Devon  EX1 3PB  United Kingdom
+<br />
+Tel: +44 (0)1392 885702
+<br />
+Email: richard.hattersley at metoffice.gov.uk&lt;mailto:richard.hattersley at metoffice.gov.uk&gt;  Web: www.metoffice.gov.uk&lt;<a href="http://www.metoffice.gov.uk/">http://www.metoffice.gov.uk/</a>&gt;
+<br />
+<br /><br />________________________________
+<br />
+From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Steve Hankin
+<br />
+Sent: 24 February 2013 19:07
+<br />
+To: John Caron
+<br />
+Cc: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] New standard name: datetime_iso8601
+<br />
+<br /><br />On 2/23/2013 1:41 PM, John Caron wrote:
+<br />
+Hi Chris, and all:
+<br />
+<br />On 1/11/2013 2:37 PM, Chris Barker - NOAA Federal wrote:
+<br />
+On Fri, Jan 11, 2013 at 9:00 AM, Aleksandar Jelenak - NOAA Affiliate
+<br />
+&lt;aleksandar.jelenak at noaa.gov&gt;&lt;mailto:aleksandar.jelenak at noaa.gov&gt; wrote:
+<br />
+<br />Here's the modified proposal for the datetime_iso8601 standard name:
+<br />
+...
+<br />
+String representing date-time information according to the ISO
+<br />
+8601:2004(E) standard.
+<br />
+<br />I think we should NOT adopt a string option for datetime variables.
+<br />
+<br />To quote Jonathan Gregory:
+<br />
+<br />&quot;&quot;&quot;
+<br />
+In CF we have always applied the
+<br />
+principle that we only add to CF when there is a need to do so, i.e. there is
+<br />
+a use-case for something which cannot already be represented in CF
+<br />
+&quot;&quot;&quot;
+<br />
+<br />We already have a way to encode datetimes in CF-netcdf.
+<br />
+<br />Yes, but &lt;time since date&gt; is not as good as &lt;date&gt; as an encoding. The &lt;time since date&gt; is a result of cramming calendar handling into a units package.
+<br />
+<br />I would advocate both should be allowed.
+<br />
+<br />Hi John,
+<br />
+<br />The bell is ringing, &quot;round three&quot; on the ISO dates issue.
+<br />
+<br />The arguments for supporting ISO dates are:
+<br />
+<br />&nbsp;&nbsp;1.  they are the clear standard for date/time interoperability and deserve support of some kind in CF
+<br />
+&nbsp;&nbsp;2.  they offer good human readability
+<br />
+&nbsp;&nbsp;3.  there are widely available support libraries (though with problems as articulated below)
+<br />
+<br />The arguments against are:
+<br />
+<br />&nbsp;&nbsp;1.  introducing a new encoding information that is already fully supported is a clear loss of interoperability that won't get ironed out of CF for years -- until older applications are updated to support it
+<br />
+&nbsp;&nbsp;2.  introducing two encodings for the same information is a clear increase in complexity
+<br />
+&nbsp;&nbsp;3.  ISO dates cannot handle all of the situations the CF commonly encounters -- climatologies, non-leap calendars, etc.  This requires non-standard extensions which are much less well supported than the base ISO standard.  Extra complexity.
+<br />
+&nbsp;&nbsp;4.  The base ISO date standard is overly complex for CF needs.  CF would need to profile it down. More complexity.
+<br />
+&nbsp;&nbsp;5.  ISO dates are in fact *NOT* a good encoding for the needs of a coordinate axis.  They are a good external representation and a good interchange format.  They make nice metadata representations of dates.  They muddy the simplicity of time as a measurable, computable quantity that monotonically increments like other coordinates.  ISO dates are not, themselves, typically encoded as ISO date strings in their internal representation in code (nor should they be in CF).
+<br />
+<br />==&gt; All of the advantages of ISO dates can be build into CF if we add just a couple of tools in the CF support libraries
+<br />
+<br />&nbsp;&nbsp;*   add easy ability for an application program to convert between ISO dates and CF representations ==&gt; simple code
+<br />
+&nbsp;&nbsp;*   easy ability for humans to read units-since-T0 encodings in CF ==&gt; already included in ncdump today
+<br />
+<br />IMHO it is the client libraries that hold the answer to this question.  They give CF all of the advantages without increasing complexity or compromising interoperability.
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;- Steve
+<br />
+<br /><br /><br /><br />I believe this proposal resulted from the discussion about adding a
+<br />
+more flexible approach to datetimes in the CF Data Model. I think
+<br />
+that's a good idea, but separate from what encoding is used in
+<br />
+CF-netcdf. ( see my recent note for more detail about the difference
+<br />
+between and encoding and a data model ).
+<br />
+<br />1) Having multiple ways to encode the same data in file format adds
+<br />
+complication to all client code -- client code would need a way to
+<br />
+process both ISO strings and &quot;time_unit since datetime&quot;
+<br />
+<br />client code already has to parse the &quot;date&quot; in &quot;time since date&quot;. So theres no extra code involved.
+<br />
+<br /><br /><br />2) Any client code that can process ISO strings is likely to need to
+<br />
+convert them to a client-specific datetime representation anyway, in
+<br />
+order to plot, calculate with, etc  them.
+<br />
+<br />3) Any client library that can process ISO strings is very likely to
+<br />
+be able to also work with &quot;time_unit since datetime&quot; encoded data
+<br />
+anyway -- and it had better, as that encoding is part of the standard
+<br />
+anyway.
+<br />
+<br />As a result, we would be complicating client code, and getting no new
+<br />
+functionality.
+<br />
+<br />We get new functionality in that &quot;date&quot; is clearer than &quot;time since date&quot;, and more likely to be correctly understood by non CF specific software and users of our data in 100 years when theres no more CF discussion group to help people out.
+<br />
+<br />when you have non-standard calendars, the difficulty is compounded many times over. How many seconds since 1970 is April 3, 2045 at 1:13 am in the no-leap calendar? Are you sure? What if you could just put into your file &quot;2045-04-03T01:13:00&quot; ?? Even rocket scientists can do that ;^)
+<br />
+<br /><br />The one advantage I can see at the moment is that simple, non-CF-aware
+<br />
+clients, like ncdump, could easily present a nice human-readable
+<br />
+format. But I don't think that is worth the additional complication.
+<br />
+<br />Ideally file encodings should be as independent as possible from libraries and applications. We have historically had an unfortunate dependence on the udunits reference library for date parsing. We are slowly unwinding that dependence. I think in this case widening the allowed encoding for datetimes is well worth the complication.
+<br />
+<br />Regards,
+<br />
+<br />John
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130315/cb7ca52b/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20130315/cb7ca52b/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Mar 15 2013 - 04:30:44 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5077">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5078.html" title="Next message in the list">Hedley, Mark: "[CF-metadata] Ancillary Data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5076.html" title="Previous message in the list">Seth McGinnis: "[CF-metadata] brand new user"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5037.html" title="Message to which this message replies">Steve Hankin: "[CF-metadata] New standard name: datetime_iso8601"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5081.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] New standard name: datetime_iso8601"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5081.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] New standard name: datetime_iso8601"</a></li>
+<li><dfn>Reply</dfn>: <a href="./5119.html" title="Message sent in reply to this message">Chris Barker - NOAA Federal: "[CF-metadata] New standard name: datetime_iso8601"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5077" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5077" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5077" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5077" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:15 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5076.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5078.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

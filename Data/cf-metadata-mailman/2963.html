@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] point observation data in CF 1.4 from Ben Hetland on 2010-11-04 (cf-metadata-mailman)</title>
+<meta name="Author" content="Ben Hetland (ben.a.hetland)" />
+<meta name="Subject" content="[CF-metadata] point observation data in CF 1.4" />
+<meta name="Date" content="2010-11-04" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2962.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2964.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] point observation data in CF 1.4</h1>
+<!-- received="Thu Nov  4 05:50:55 2010" -->
+<!-- isoreceived="20101104055055" -->
+<!-- sent="Thu, 04 Nov 2010 12:50:55 +0100" -->
+<!-- isosent="20101104115055" -->
+<!-- name="Ben Hetland" -->
+<!-- email="ben.a.hetland" -->
+<!-- subject="[CF-metadata] point observation data in CF 1.4" -->
+<!-- id="4CD29E1F.5070601_at_sintef.no" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4CD21836.3050900_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2963" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2964.html" accesskey="d" title="John Caron: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Next message</a> ]
+[ <a href="./2962.html" title="John Caron: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Previous message</a> ]
+[ <a href="./2962.html" title="John Caron: &quot;[CF-metadata] point observation data in CF 1.4&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2964.html" accesskey="t" title="John Caron: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2963" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2963" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2963" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2963" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Ben Hetland &lt;<a href="mailto:ben.a.hetland?Subject=Re%3A%20%5BCF-metadata%5D%20point%20observation%20data%20in%20CF%201.4">ben.a.hetland</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 04 Nov 2010 12:50:55 +0100</span><br />
+</address>
+<br />
+Hello List,
+<br />
+<br />Since I'm also dealing a bit with data sets holding &quot;particle
+<br />
+collections&quot; through time, I'd like to contribute some thoughts
+<br />
+regarding this. Our primary use here at SINTEF is for inputs to and
+<br />
+results from oil drift simulations, so we're dealing mostly at the sea
+<br />
+surface and below, although it appears to me that similar data sets are
+<br />
+just as applicable up in the atmosphere as well. (Particle collections
+<br />
+and bounding polygons for the ash cloud from the Eyjafjallaj?kull
+<br />
+eruption springs to mind as a fairly recent example.)
+<br />
+<br /><br />On 04.11.2010 03:19, John Caron wrote:
+<br />
+<em class="quotelev1">&gt; 1) It seems clear that at each time step, you need to write out the
+</em><br />
+<em class="quotelev1">&gt; data for whatever particles currently exist.
+</em><br />
+<br />This is a very fair assessment in our case. One could generalize a bit
+<br />
+more: We have data organized as a series of time steps (as the primary
+<br />
+dimension). At each time step we have a number of &quot;data&quot; to store, and
+<br />
+they are of various sizes and types. Particles are but one of these
+<br />
+kinds of objects. Most of them may probably be treated similar to
+<br />
+particles, though, where a fixed set of properties describing each
+<br />
+object can simply be represented by a separate netCDF variable per property.
+<br />
+<br />A more nasty example could be to represent an oil slick's shape and
+<br />
+position with a polygon. The number of vertices of that polygon would be
+<br />
+highly variable through time. (This is a typical GIS-like representation.)
+<br />
+<br /><br /><em class="quotelev1">&gt; I assume that if you wanted to break up the data for a very
+</em><br />
+<em class="quotelev1">&gt; long run, you would partition by time, ie time steps 1-1000,
+</em><br />
+<em class="quotelev1">&gt; 1001-2000, etc. would be in seperate files.
+</em><br />
+<br />How one decides to partition I think can depend a lot on the
+<br />
+application. Sometimes splitting them on data type can be more
+<br />
+appropriate. In a recent case I had, the data were to be transferred to
+<br />
+a client computer over the Internet for viewing locally. In that case
+<br />
+reducing the content of the file to the absolute minimum set of
+<br />
+properties (that the client needed in order to visualize) became
+<br />
+paramount. Even a fast Internet connection does have bandwidth
+<br />
+limitations... :-)
+<br />
+<br /><br /><em class="quotelev1">&gt; 2) Apparently the common read pattern is to retrieve the set of
+</em><br />
+<em class="quotelev1">&gt; particles at a given time step. If so, that makes things easier.
+</em><br />
+<br />Yes, often sequentially by time as well.
+<br />
+<br /><br /><em class="quotelev1">&gt; 3) I assume that you want to be able to figure out an individual
+</em><br />
+<em class="quotelev1">&gt; particle's trajectory, even if that doesnt need to be optimized
+</em><br />
+<em class="quotelev1">&gt; for speed.
+</em><br />
+<br />Not my primary need, but if an object is &quot;tracked&quot; like that it would
+<br />
+not be unlikely that the trajectory might need to be accessed
+<br />
+&quot;interactively&quot;, eg. while a user is viewing a visualization of the data
+<br />
+directly on screen. Does that count as &quot;optimized for speed&quot;?
+<br />
+<br /><br /><em class="quotelev1">&gt; 1) is the avg number (Navg) of particles that exist much smaller,
+</em><br />
+<em class="quotelev1">&gt; or approx the same as the max number (Nmax) that exist at one time
+</em><br />
+<em class="quotelev1">&gt; step?
+</em><br />
+<br />This varies a lot. Sometimes it is like you suggest, but sometimes maybe
+<br />
+only a few. Sometimes there isn't any defined Nmax either (dynamic
+<br />
+implementations), or such a limit can be difficult to know beforehand.
+<br />
+<br />Even where an Nmax is set, would it be unreasonable to require the
+<br />
+_same_ value to be used every time if the netCDF dataset was accumulated
+<br />
+through _multiple_ simulation runs?
+<br />
+<br /><br /><em class="quotelev1">&gt; 2)  How much data is associated with each particle at a given
+</em><br />
+<em class="quotelev1">&gt; time step (just an estimate needed here - 10 bytes? 1000 bytes?)
+</em><br />
+<br />In our case this varies a lot with type of particle, and how the
+<br />
+simulation was set up. A quick assessment indicates that some are only
+<br />
+16 bytes per particle, while others may currently require up to 824
+<br />
+bytes. (This does not account for shared info like the time itself,
+<br />
+which we don't store per particle.) It also wouldn't be very atypical if
+<br />
+this amount is then to be multiplied by say 20000 particles per time step.
+<br />
+<br /><br />Hope that provides some useful ideas of the real-life needs!
+<br />
+:-)
+<br />
+<pre>
+-- 
+Regards,  -+- Ben Hetland &lt;ben.a.hetland at sintef.no&gt; -+-
+Opinions expressed are my own, not necessarily those of my employer.
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Nov 04 2010 - 05:50:55 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2963">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2964.html" title="Next message in the list">John Caron: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2962.html" title="Previous message in the list">John Caron: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2962.html" title="Message to which this message replies">John Caron: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2964.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2964.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2963" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2963" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2963" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2963" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2962.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2964.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

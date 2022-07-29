@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Dealing with large numbers of flag values	innetcdf cf from John Caron on 2009-10-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] Dealing with large numbers of flag values	innetcdf cf" />
+<meta name="Date" content="2009-10-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2270.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2272.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Dealing with large numbers of flag values	innetcdf cf</h1>
+<!-- received="Tue Oct 27 07:08:25 2009" -->
+<!-- isoreceived="20091027070825" -->
+<!-- sent="Tue, 27 Oct 2009 07:08:25 -0600" -->
+<!-- isosent="20091027130825" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] Dealing with large numbers of flag values	innetcdf cf" -->
+<!-- id="4AE6F0C9.7090202_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="EB1E7CB92F5B35459E0B926D2A614DB605E099C3_at_EXCHANGE19.fed.cclrc.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2271" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2272.html" accesskey="d" title="John Caron: &quot;[CF-metadata] Dealing with large numbers of flag	values	innetcdf cf&quot;">Next message</a> ]
+[ <a href="./2270.html" title="Lowry, Roy K: &quot;[CF-metadata] Dealing with large numbers of flag valuesinnetcdf cf&quot;">Previous message</a> ]
+[ <a href="./2267.html" title="martin.juckes at stfc.ac.uk: &quot;[CF-metadata] Dealing with large numbers of flag values innetcdf cf&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2265.html" accesskey="t" title="John Caron: &quot;[CF-metadata] Dealing with large numbers of flag values in netcdf cf&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2271" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2271" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2271" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2271" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20Dealing%20with%20large%20numbers%20of%20flag%20values%09innetcdf%20cf">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 27 Oct 2009 07:08:25 -0600</span><br />
+</address>
+<br />
+martin.juckes at stfc.ac.uk wrote:
+<br />
+<em class="quotelev1">&gt; Thanks for the responses.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Seth is right, I was looking for an alternative to having a gigantic &quot;flag_meanings&quot; attribute. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I have tried Seth's approach, but can?t get it past the cf-checker. There appears to be a character set restriction: I can get the first 547 flag_meaning strings accepted if I remove all the &quot;-&quot;, &quot;.&quot; and &quot;,&quot; characters. I'm reasonably sure there are no control characters in the following strings which could be responsible for the error message that I get (ERROR (3.5): Invalid syntax for 'flag_meanings' attribute) when I increase the number of flag_meanings to 550. Could it be something to do with the string length (16472 characters)?
+</em><br />
+<br />That seems to be an error in the cf-checker (?) I think attribute values should be any UTF-8 encoded Unicode characters (aka UTF-8 string).
+<br />
+<br /><br /><em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I could try abbreviating the flag_meanings, but this would either be tedious work by hand or liable to create confusion if done automatically. If you could point me to some information about exactly what string format is acceptable, that would be very helpful.
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; To answer John's question: I'm currently using netcdf 3, in IDL -- I'm not sure what the options for upgrading to netcdf 4 are.
+</em><br />
+<br />I mention netcdf-4 because it has enum types - which would be a nice solution for this class of problems, at least when you want to include the meanings of the flags in the file.
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Oct 27 2009 - 07:08:25 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2271">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2272.html" title="Next message in the list">John Caron: "[CF-metadata] Dealing with large numbers of flag	values	innetcdf cf"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2270.html" title="Previous message in the list">Lowry, Roy K: "[CF-metadata] Dealing with large numbers of flag valuesinnetcdf cf"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2267.html" title="Message to which this message replies">martin.juckes at stfc.ac.uk: "[CF-metadata] Dealing with large numbers of flag values innetcdf cf"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2265.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] Dealing with large numbers of flag values in netcdf cf"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2271" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2271" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2271" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2271" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:23 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2270.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2272.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

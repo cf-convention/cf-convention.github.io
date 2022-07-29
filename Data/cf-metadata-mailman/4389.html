@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] a flag variable questions from andrew walsh on 2012-04-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="andrew walsh (awalsh)" />
+<meta name="Subject" content="[CF-metadata] a flag variable questions" />
+<meta name="Date" content="2012-04-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4388.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4390.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] a flag variable questions</h1>
+<!-- received="Wed Apr 18 17:09:19 2012" -->
+<!-- isoreceived="20120418160919" -->
+<!-- sent="Thu, 19 Apr 2012 09:09:19 +1000" -->
+<!-- isosent="20120418230919" -->
+<!-- name="andrew walsh" -->
+<!-- email="awalsh" -->
+<!-- subject="[CF-metadata] a flag variable questions" -->
+<!-- id="91BAE56BE4604B2CB3B4E937DB8CA1C5_at_awalsh1" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20120418085330.GG10259&#64;met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4389" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4390.html" accesskey="d" title="Dave Allured: &quot;[CF-metadata] Juelich checker&quot;">Next message</a> ]
+[ <a href="./4388.html" title="Hedley, Mark: &quot;[CF-metadata] identification of vector components&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4407.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] a flag variable questions&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4389" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4389" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4389" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4389" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: andrew walsh &lt;<a href="mailto:awalsh?Subject=Re%3A%20%5BCF-metadata%5D%20a%20flag%20variable%20questions">awalsh</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 19 Apr 2012 09:09:19 +1000</span><br />
+</address>
+<br />
+Hi Jonathon and CF list,
+<br />
+<br />So I guess this would mean we need  a 'coordinates' attribute on an ancilliary 
+<br />
+variable
+<br />
+like say the 'temperature_qc_flag' below i.e. ?
+<br />
+<br />dimensions:
+<br />
+&nbsp;time = 1 ;
+<br />
+&nbsp;pressure = UNLIMITED ; // (9 currently)
+<br />
+&nbsp;latitude = 1 ;
+<br />
+&nbsp;longitude = 1 ;
+<br />
+<br />variables:
+<br />
+&nbsp;double time(time) ;
+<br />
+....
+<br />
+double latitude(latitude) ;
+<br />
+.....
+<br />
+double longitude(longitude) ;
+<br />
+.....
+<br />
+double pressure(pressure) ;
+<br />
+.......
+<br />
+<br />&nbsp;double temperature(pressure) ;
+<br />
+&nbsp;&nbsp;temperature:_FillValue = -99.99 ;
+<br />
+&nbsp;&nbsp;temperature:standard_name = &quot;sea_water_temperature&quot; ;
+<br />
+&nbsp;&nbsp;temperature:units = &quot;degrees_C&quot; ;
+<br />
+&nbsp;&nbsp;temperature:valid_min = -2 ;
+<br />
+&nbsp;&nbsp;temperature:valid_max = 40 ;
+<br />
+&nbsp;&nbsp;temperature:ancillary_variables = &quot;temperature_qc_flag&quot; ;
+<br />
+&nbsp;&nbsp;temperature:coordinates = &quot;time latitude longitude pressure&quot; ;
+<br />
+<br />&nbsp;byte temperature_qc_flag(pressure) ;
+<br />
+&nbsp;&nbsp;temperature_qc_flag:long_name = &quot;quality control flag for temperature (primary 
+<br />
+Level 1 flag)&quot; ;
+<br />
+&nbsp;&nbsp;temperature_qc_flag:standard_name = &quot;sea_water_temperature status_flag&quot; ;
+<br />
+&nbsp;&nbsp;temperature_qc_flag:quality_control_convention = &quot;IODE qc scheme March 2012&quot; ;
+<br />
+&nbsp;&nbsp;temperature_qc_flag:valid_min = 1 ;
+<br />
+&nbsp;&nbsp;temperature_qc_flag:valid_max = 9 ;
+<br />
+&nbsp;&nbsp;temperature_qc_flag:flag_values = 1b, 2b, 3b, 4b, 9b ;
+<br />
+&nbsp;&nbsp;temperature_qc_flag:flag_meanings = &quot;good not_evaluated_or_unknown suspect bad 
+<br />
+missing&quot; ;
+<br />
+&nbsp;&nbsp;temperature_qc_flag:coordinates = &quot;time latitude longitude pressure&quot; ;
+<br />
+<br /><br />Andrew
+<br />
+----- Original Message ----- 
+<br />
+From: &quot;Jonathan Gregory&quot; &lt;j.m.gregory at reading.ac.uk&gt;
+<br />
+To: &lt;cf-metadata at cgd.ucar.edu&gt;
+<br />
+Sent: Wednesday, April 18, 2012 6:53 PM
+<br />
+Subject: Re: [CF-metadata] a flag variable questions
+<br />
+<br /><br /><em class="quotelev2">&gt;&gt; Should flag variables, which are associated with data variables that have 
+</em><br />
+<em class="quotelev2">&gt;&gt; explicit coordinates and grid mapping attributes, explicitly specify these 
+</em><br />
+<em class="quotelev2">&gt;&gt; same coordinates and grid mapping attributes  ?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Yes, I think so. Ancillary variables are data variables, and therefore need to
+</em><br />
+<em class="quotelev1">&gt; provide all the necessary metadata independently. Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<span id="received"><dfn>Received on</dfn> Wed Apr 18 2012 - 17:09:19 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4389">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4390.html" title="Next message in the list">Dave Allured: "[CF-metadata] Juelich checker"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4388.html" title="Previous message in the list">Hedley, Mark: "[CF-metadata] identification of vector components"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4407.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] a flag variable questions"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4407.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] a flag variable questions"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4389" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4389" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4389" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4389" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:01 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4388.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4390.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

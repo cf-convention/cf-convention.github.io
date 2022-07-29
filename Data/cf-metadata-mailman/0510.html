@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] curvilinear cartesian coordinates case from Jonathan Gregory on 2006-11-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] curvilinear cartesian coordinates case" />
+<meta name="Date" content="2006-11-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0509.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0511.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] curvilinear cartesian coordinates case</h1>
+<!-- received="Wed Nov 29 01:14:55 2006" -->
+<!-- isoreceived="20061129011455" -->
+<!-- sent="Wed, 29 Nov 2006 08:14:55 +0000" -->
+<!-- isosent="20061129081455" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] curvilinear cartesian coordinates case" -->
+<!-- id="20061129081455.GA24146_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start510" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0511.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] CF provisional standards&quot;">Next message</a> ]
+[ <a href="./0509.html" title="Ethan Davis: &quot;[CF-metadata] Need help writing point netCDF 3 dataset&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg510" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg510" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg510" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg510" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20curvilinear%20cartesian%20coordinates%20case">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 29 Nov 2006 08:14:55 +0000</span><br />
+</address>
+<br />
+Dear Brian and Bert
+<br />
+<br /><em class="quotelev1">&gt; But adding
+</em><br />
+<em class="quotelev1">&gt; auxiliary coordinate names to the grid_mapping attribute is a duplication
+</em><br />
+<em class="quotelev1">&gt; of information.
+</em><br />
+That's a good point.
+<br />
+<br /><em class="quotelev1">&gt; Of course we could decide *not* to put the projection
+</em><br />
+<em class="quotelev1">&gt; coordinates in the &quot;coordinates&quot; attribute, and instead to only put them in
+</em><br />
+<em class="quotelev1">&gt; the grid_mapping attribute.
+</em><br />
+I suppose there would be logic in that, which would resemble how we treat
+<br />
+formula_terms, wouldn't it? formula_terms is the only place we name the
+<br />
+&quot;components&quot; of coordinate variables. We do not put them in the coordinates
+<br />
+attribute, although they are rather like auxiliary coordinate variables.
+<br />
+Thus, we could make it optional to list projection coordinates in the
+<br />
+coordinates attribute if they are instead listed in an extended-format
+<br />
+grid_mapping attribute.
+<br />
+<br /><em class="quotelev1">&gt; But I still like Bert's original suggestion best. It seems quite natural to
+</em><br />
+<em class="quotelev1">&gt; me to attach the grid_mapping directly to
+</em><br />
+<em class="quotelev1">&gt; the coordinates that use that mapping -- even if it needs to be specified
+</em><br />
+<em class="quotelev1">&gt; in two variables.  This actually makes the description of the projection
+</em><br />
+<em class="quotelev1">&gt; coordinates more self contained, rather than relying on some data variable
+</em><br />
+<em class="quotelev1">&gt; to make the connection between the auxiliary coordinate variables and a
+</em><br />
+<em class="quotelev1">&gt; grid_mapping variable.
+</em><br />
+Yes, I see that advantage too. However, you could equally argue that there
+<br />
+is no need for the association of the projection coordinates and the grid
+<br />
+mapping in the absence of a data variable. I don't like the repetition of the
+<br />
+grid_mapping attribute, but I agree that the projection coordinates and the
+<br />
+grid mapping belong together (as in my suggestion).
+<br />
+<br />I'm not being deliberately awkward :-) - just exploring possibilities.
+<br />
+<br />Digression: this is an instance of how we have generally developed conventions
+<br />
+by discussion. It is not obvious to me that trial implementations would help.
+<br />
+We have written examples of both schemes, and as humans we have no difficulty
+<br />
+in interpreting them. Hence programs could be written to interpret them. The
+<br />
+problem is sufficiently simple it seems unlikely we have made a fundamental
+<br />
+error. As you say, Brian, opinions about which is &quot;easier&quot; depend partly on
+<br />
+taste, rather than more objective criteria.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Nov 29 2006 - 01:14:55 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start510">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0511.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] CF provisional standards"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0509.html" title="Previous message in the list">Ethan Davis: "[CF-metadata] Need help writing point netCDF 3 dataset"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg510" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg510" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg510" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg510" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:51 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0509.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0511.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

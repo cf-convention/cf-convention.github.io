@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Handling data from land surface models with sub grid scale tiling from Martin Dix on 2008-03-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="Martin Dix (Martin.Dix)" />
+<meta name="Subject" content="[CF-metadata] Handling data from land surface models with sub grid scale tiling" />
+<meta name="Date" content="2008-03-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1241.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1243.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Handling data from land surface models with sub grid scale tiling</h1>
+<!-- received="Wed Mar 12 19:29:46 2008" -->
+<!-- isoreceived="20080312192946" -->
+<!-- sent="Thu, 13 Mar 2008 12:29:46 +1100" -->
+<!-- isosent="20080313012946" -->
+<!-- name="Martin Dix" -->
+<!-- email="Martin.Dix" -->
+<!-- subject="[CF-metadata] Handling data from land surface models with sub grid scale tiling" -->
+<!-- id="47D8838A.3090806_at_csiro.au" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1242" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1243.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Handling data from land surface models with sub grid scale tiling&quot;">Next message</a> ]
+[ <a href="./1241.html" title="Jonathan Gregory: &quot;[CF-metadata]  new standard names for ECHAM5/CLM/ERA&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1242" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1242" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1242" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1242" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Martin Dix &lt;<a href="mailto:Martin.Dix?Subject=Re%3A%20%5BCF-metadata%5D%20Handling%20data%20from%20land%20surface%20models%20with%20sub%20grid%20scale%20tiling">Martin.Dix</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 13 Mar 2008 12:29:46 +1100</span><br />
+</address>
+<br />
+Many land surface models include sub-grid scale tiling to represent 
+<br />
+surface heterogeneity. Each grid box is divided into a number of tiles 
+<br />
+of different surface characteristics. The relative areas of each type 
+<br />
+vary from point to point and they have no definite location within the 
+<br />
+grid box.
+<br />
+<br />CF doesn't seem to say anything about how best to specify such variables 
+<br />
+and I couldn't find any other useful conventions either.  We've been 
+<br />
+using something like
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;lat = 192 ;
+<br />
+&nbsp;&nbsp;lon = 96 ;
+<br />
+&nbsp;&nbsp;tile = 9
+<br />
+&nbsp;&nbsp;time = UNLIMITED ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;float time(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;days since 2000-01-01 00:00&quot; ;
+<br />
+&nbsp;&nbsp;float tile(tile)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;tile:long_name = &quot;tile index&quot;
+<br />
+&nbsp;&nbsp;float lon(lon) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lon:standard_name = &quot;longitude&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lon:units = &quot;degrees_east&quot;;
+<br />
+&nbsp;&nbsp;float lat(lat) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lat:standard_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lat:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;float tile_frac(tile,lat,lon)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;tile_frac:long = &quot;tile fractional area&quot; ;
+<br />
+&nbsp;&nbsp;float ts(time,tile,lat,lon)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;ts:standard_name = &quot;surface_temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;ts:units = &quot;K&quot; ;
+<br />
+<br />though we've sometimes been inconsistent and used (lat,lon,tile) too. A 
+<br />
+further complication is that one of my colleagues is contemplating using 
+<br />
+tiling for soil temperature and moisture, so we'll have something like
+<br />
+&nbsp;tsoil(time,depth,tile,lat,lon) (or some not quite random permutation).
+<br />
+<br />Does anyone have any advice on this? Is it something that should be 
+<br />
+included in CF?
+<br />
+<br />Regards
+<br />
+<br />Martin Dix
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Mar 12 2008 - 19:29:46 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1242">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1243.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Handling data from land surface models with sub grid scale tiling"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1241.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  new standard names for ECHAM5/CLM/ERA"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1242" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1242" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1242" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1242" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:02 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1241.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1243.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

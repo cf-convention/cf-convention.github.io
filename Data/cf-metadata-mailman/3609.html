@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file from Jonathan Gregory on 2011-08-04 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file" />
+<meta name="Date" content="2011-08-04" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3608.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3610.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file</h1>
+<!-- received="Thu Aug  4 01:23:08 2011" -->
+<!-- isoreceived="20110804002308" -->
+<!-- sent="Thu, 4 Aug 2011 08:23:08 +0100" -->
+<!-- isosent="20110804072308" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file" -->
+<!-- id="20110804072308.GD27348_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3609" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3610.html" accesskey="d" title="Jon Blower: &quot;[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file&quot;">Next message</a> ]
+[ <a href="./3608.html" title="Heiko Klein: &quot;[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3610.html" accesskey="t" title="Jon Blower: &quot;[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3609" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3609" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3609" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3609" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20the%20need%20to%20store%20lat%2Flon%20coordinates%20in%20a%20CF-compliant%20netCDF%20file">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 4 Aug 2011 08:23:08 +0100</span><br />
+</address>
+<br />
+Dear all
+<br />
+<br />I agree with Balaji about this:
+<br />
+<em class="quotelev1">&gt; It is perfectly possible to configure a GCM out of components with
+</em><br />
+<em class="quotelev1">&gt; inconsistent datums.
+</em><br />
+...
+<br />
+<em class="quotelev1">&gt; I still feel my principal objection to specifying the datum is the
+</em><br />
+<em class="quotelev1">&gt; implication of precision that does not exist.
+</em><br />
+This kind of argument may apply more to models, but it appears from the
+<br />
+comments that it might apply to obs datasets as well, for instance when they
+<br />
+have been assembled from various sources, which could be poorly documented.
+<br />
+<br />Hence in terms of John's questions, I think this is good:
+<br />
+<br /><em class="quotelev1">&gt; 1) possible recommendations by CF to always include the datum, and
+</em><br />
+<em class="quotelev1">&gt; making sure we have the right metadata to do so.
+</em><br />
+<br />We could make a recommendation in the standard document to include the
+<br />
+grid_mapping, if there is an applicable one, whenever there are horizontal
+<br />
+coordinates. The CF checker would then produce a warning if the grid_mapping
+<br />
+was absent. But I don't think it is the role of CF to include:
+<br />
+<br /><em class="quotelev1">&gt; 2) possible recommendations by CF as to what to do if the datum is not
+</em><br />
+<em class="quotelev1">&gt; present, or is only partially specified.
+</em><br />
+<br />CF is a convention for allowing metadata to be provided. Its purpose is not
+<br />
+to prescribe or guess what the metadata should be. There is lots of important
+<br />
+metadata which is optional, such as standard names and bounds, and we do not
+<br />
+recommend what should be done when they are missing.
+<br />
+<br />Cheers
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Aug 04 2011 - 01:23:08 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3609">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3610.html" title="Next message in the list">Jon Blower: "[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3608.html" title="Previous message in the list">Heiko Klein: "[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3610.html" title="Next message in this discussion thread">Jon Blower: "[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3610.html" title="Message sent in reply to this message">Jon Blower: "[CF-metadata] the need to store lat/lon coordinates in a CF-compliant netCDF file"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3609" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3609" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3609" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3609" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:48 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3608.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3610.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

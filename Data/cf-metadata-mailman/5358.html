@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Groups in netCDF4 files and CF from Andreas Hilboll on 2013-05-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Andreas Hilboll (lists)" />
+<meta name="Subject" content="[CF-metadata] Groups in netCDF4 files and CF" />
+<meta name="Date" content="2013-05-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5357.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5359.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Groups in netCDF4 files and CF</h1>
+<!-- received="Sun May 19 09:50:34 2013" -->
+<!-- isoreceived="20130519085034" -->
+<!-- sent="Sun, 19 May 2013 17:50:34 +0200" -->
+<!-- isosent="20130519155034" -->
+<!-- name="Andreas Hilboll" -->
+<!-- email="lists" -->
+<!-- subject="[CF-metadata] Groups in netCDF4 files and CF" -->
+<!-- id="5198F4CA.4050302_at_hilboll.de" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5358" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5359.html" accesskey="d" title="rhorne at excaliburlabs.com: &quot;[CF-metadata]  new standard_name: lwe_thickness_of_water_vapor&quot;">Next message</a> ]
+[ <a href="./5357.html" title="Cameron-smith, Philip: &quot;[CF-metadata] new standard name: lifted_index&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5363.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] Groups in netCDF4 files and CF&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5358" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5358" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5358" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5358" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Andreas Hilboll &lt;<a href="mailto:lists?Subject=Re%3A%20%5BCF-metadata%5D%20Groups%20in%20netCDF4%20files%20and%20CF">lists</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sun, 19 May 2013 17:50:34 +0200</span><br />
+</address>
+<br />
+Dear Dr. Schmunk, dear CF experts,
+<br />
+<br />I'm wondering if CF concentions say anything about the grouping within a
+<br />
+netCDF4 file, and if PanoplyJ can handle files with different groups? I
+<br />
+couldn't find anything in the documentation, but wanted to make sure.
+<br />
+<br />I'm having issues using PanoplyJ
+<br />
+(<a href="http://www.giss.nasa.gov/tools/panoply/">http://www.giss.nasa.gov/tools/panoply/</a>) with a file  where data and
+<br />
+coordinate variables are in different groups. For example, the data
+<br />
+variable of this file cannot be plotted with Panoply:
+<br />
+<br />---8&lt;-------
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon = 5760 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat = 2880 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time = UNLIMITED ; // (204 currently)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nv = 2 ;
+<br />
+<br />group: coordinates {
+<br />
+&nbsp;&nbsp;variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double lon(lon) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon:standard_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon:bounds = &quot;lon_bnds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double lon_bnds(lon, nv) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double lat(lat) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat:standard_name = &quot;lat&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat:bounds = &quot;lat_bnds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double lat_bnds(lat, nv) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;hours since 1994-01-01 00:00:00 +0:00&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:calendar = &quot;gregorian&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:bounds = &quot;time_bnds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int time_bnds(time, nv) ;
+<br />
+&nbsp;&nbsp;} // group coordinates
+<br />
+<br />group: data {
+<br />
+<br />&nbsp;&nbsp;group: VCDtrop_NO2 {
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;group: SCIAMACHY {
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float sciamachy_vcdtrop-no2_v4(time, lon, lat) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sciamachy_vcdtrop-no2_v4:_FillValue = NaNf ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sciamachy_vcdtrop-no2_v4:least_significant_digit = 5L ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} // group SCIAMACHY
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} // group VCDtrop_NO2
+<br />
+&nbsp;&nbsp;} // group data
+<br />
+}
+<br />
+---8&lt;-------
+<br />
+<br />However, when collapsed so that all variables are in the rootgrp, the
+<br />
+file is plotted correctly:
+<br />
+<br />---8&lt;-------
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon = 5760 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nv = 2 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat = 2880 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time = UNLIMITED ; // (204 currently)
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double lon(lon) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon:standard_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lon:bounds = &quot;lon_bnds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double lon_bnds(lon, nv) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double lat(lat) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat:standard_name = &quot;lat&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lat:bounds = &quot;lat_bnds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double lat_bnds(lat, nv) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;hours since 1994-01-01 00:00:00 +0:00&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:calendar = &quot;gregorian&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:bounds = &quot;time_bnds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int time_bnds(time, nv) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double sciamachy_vcdtrop-no2_v4(time, lon, lat) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sciamachy_vcdtrop-no2_v4:_FillValue = NaN ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sciamachy_vcdtrop-no2_v4:least_significant_digit = 5L ;
+<br />
+---8&lt;-------
+<br />
+<br />So my question is: is this a bug in PanoplyJ, or is Panoply doing the
+<br />
+right thing and I don't understand the CF conventions correctly?
+<br />
+<br />Your help is greatly appreciated!
+<br />
+Andreas.
+<br />
+<br /><br />-- Andreas.
+<br />
+<span id="received"><dfn>Received on</dfn> Sun May 19 2013 - 09:50:34 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5358">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5359.html" title="Next message in the list">rhorne at excaliburlabs.com: "[CF-metadata]  new standard_name: lwe_thickness_of_water_vapor"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5357.html" title="Previous message in the list">Cameron-smith, Philip: "[CF-metadata] new standard name: lifted_index"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5363.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] Groups in netCDF4 files and CF"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5363.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] Groups in netCDF4 files and CF"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5358" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5358" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5358" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5358" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:21 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5357.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5359.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

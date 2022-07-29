@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] udunits time unit question from V. Balaji on 2011-03-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="V. Balaji (V.Balaji)" />
+<meta name="Subject" content="[CF-metadata] udunits time unit question" />
+<meta name="Date" content="2011-03-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3391.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3393.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] udunits time unit question</h1>
+<!-- received="Mon Mar 28 11:01:54 2011" -->
+<!-- isoreceived="20110328100154" -->
+<!-- sent="Mon, 28 Mar 2011 13:01:54 -0400 (EDT)" -->
+<!-- isosent="20110328170154" -->
+<!-- name="V. Balaji" -->
+<!-- email="V.Balaji" -->
+<!-- subject="[CF-metadata] udunits time unit question" -->
+<!-- id="alpine.LRH.2.00.1103281253030.4628_at_vb" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4D90B7F3.8050307_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3392" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3393.html" accesskey="d" title="Christopher Barker: &quot;[CF-metadata] udunits time unit question&quot;">Next message</a> ]
+[ <a href="./3391.html" title="Steve Hankin: &quot;[CF-metadata] udunits time unit question&quot;">Previous message</a> ]
+[ <a href="./3391.html" title="Steve Hankin: &quot;[CF-metadata] udunits time unit question&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3388.html" accesskey="t" title="John Caron: &quot;[CF-metadata] udunits time unit question&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3392" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3392" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3392" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3392" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: V. Balaji &lt;<a href="mailto:V.Balaji?Subject=Re%3A%20%5BCF-metadata%5D%20udunits%20time%20unit%20question">V.Balaji</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 28 Mar 2011 13:01:54 -0400 (EDT)</span><br />
+</address>
+<br />
+Hi all, I've stayed out of this for a long while, but this is bringing
+<br />
+back fond memories of the early days of ESMF:-). Ah, that ESMF time
+<br />
+manager... it was a thing of beauty.
+<br />
+<br />I think the issue is that &quot;time instants&quot; and &quot;time intervals&quot; are
+<br />
+different quantities.
+<br />
+<br />Time instants can have a reference time instant (hence, the &quot;since&quot;), a
+<br />
+calendar, and calendar-dependent units, such as &quot;month&quot;.
+<br />
+<br />Time intervals can only have SI units (seconds, minutes, hours). Days
+<br />
+and years introduce difficulties once you take on the requirement of
+<br />
+accommodating other planets in your software. Months of course are a
+<br />
+problem. (The expectation that you can add and subtract the same
+<br />
+interval from an instant and get back to the original is violated with
+<br />
+months).
+<br />
+<br />Don't all our difficulties arise out of trying to describe intervals and
+<br />
+instants using the single thing called &quot;time&quot;?
+<br />
+<br />Steve Hankin writes:
+<br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 3/26/2011 9:11 AM, Karl Taylor wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear all,
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; I think &quot;3 days since 1970-01-01&quot; is a sensible statement, with &quot;3&quot; being 
+</em><br />
+<em class="quotelev2">&gt;&gt; the number and &quot;days since 1970-01-01&quot; being the units.  Would anybody 
+</em><br />
+<em class="quotelev2">&gt;&gt; normally interpret &quot;5 3 days since 1970-01-01&quot; as meaning &quot;15 days since 
+</em><br />
+<em class="quotelev2">&gt;&gt; 1970-01-01&quot;?  If not, then I don't think we should allow a unit of &quot;3 days 
+</em><br />
+<em class="quotelev2">&gt;&gt; since 1970-01-01&quot;.  This would be just as confusing as allowing a unit of 
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;3 meters&quot; and interpreting &quot;5 3 meters&quot; as &quot;15 meters&quot;.  Since we don't 
+</em><br />
+<em class="quotelev2">&gt;&gt; allow &quot;3 meters&quot; as a unit, why should we allow &quot;3 days since 1970-01-01&quot; 
+</em><br />
+<em class="quotelev2">&gt;&gt; as a unit?
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi All,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Karl has challenged us to think about a broader (and difficult) question.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; CF has not been as thorough as it needed to be in standardizing time units. 
+</em><br />
+<em class="quotelev1">&gt; It merely appealed to udunits, despite known limitations.  This has resulted 
+</em><br />
+<em class="quotelev1">&gt; over time in various encodings that were not properly considered in the 
+</em><br />
+<em class="quotelev1">&gt; formulation of CF
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   * the use of *multiple calendars* -- after discussions this resulted
+</em><br />
+<em class="quotelev1">&gt;     in enhancements to CF document ... and thereby implicit conflicts
+</em><br />
+<em class="quotelev1">&gt;     with udunits, since it does not support the calendars
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; and
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;  1. the *use of &quot;months&quot; as a unit of measure*, with the intention
+</em><br />
+<em class="quotelev1">&gt;     that this refer to calendar months of varying length  ... not a
+</em><br />
+<em class="quotelev1">&gt;     &quot;unit of measure&quot; by the normal meaning of that word
+</em><br />
+<em class="quotelev1">&gt;  2. *pre-pending a number to some units* in order to create custom
+</em><br />
+<em class="quotelev1">&gt;     units -- e.g. &quot;3 days since 1970-01-01&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The question before us is, does the fact that there are some existing &quot;CF&quot; 
+</em><br />
+<em class="quotelev1">&gt; files that utilize these encodings, require that those encodings be 
+</em><br />
+<em class="quotelev1">&gt; formalized into CF?  It is hard to say &quot;no&quot; in such cases, because doing so 
+</em><br />
+<em class="quotelev1">&gt; creates inconvenience for our colleagues and their users.  Next time around 
+</em><br />
+<em class="quotelev1">&gt; we could find ourselves on the wrong side of the &quot;no&quot; answer and be 
+</em><br />
+<em class="quotelev1">&gt; inconvenienced ourselves.  On the other hand, we need to recognize this 
+</em><br />
+<em class="quotelev1">&gt; impulse as a problem, itself.  It is one of the &quot;design by committee&quot; 
+</em><br />
+<em class="quotelev1">&gt; impulses that leads standards to grow bloated and inconsistent over time. 
+</em><br />
+<em class="quotelev1">&gt; Quote Henning &lt;<a href="http://queue.acm.org/detail.cfm?id=1142044">http://queue.acm.org/detail.cfm?id=1142044</a>&gt;, 'To create 
+</em><br />
+<em class="quotelev1">&gt; quality software [or standards], the ability to say &quot;no&quot; is usually far more 
+</em><br />
+<em class="quotelev1">&gt; important than the ability to say &quot;yes.&quot;'
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Karl's example illustrates the community problem.  An encoding of times with 
+</em><br />
+<em class="quotelev1">&gt; units of &quot;3 days since 1970-01-01&quot; may be convenient and readable to the 
+</em><br />
+<em class="quotelev1">&gt; project that performed a 3-day measurement cycle and created the file, but 
+</em><br />
+<em class="quotelev1">&gt; what about the generic application reading the file?  How should software 
+</em><br />
+<em class="quotelev1">&gt; label the time axis of a plot?  Should it have tic marks spaced at 3 day 
+</em><br />
+<em class="quotelev1">&gt; intervals documented as intervals of &quot;3 days since 1970-01-01&quot;?  How 
+</em><br />
+<em class="quotelev1">&gt; peculiar!   If the software takes the more conventional approach of labeling 
+</em><br />
+<em class="quotelev1">&gt; the time in days or in calendar formatting, seeing the plot marks at 3 day 
+</em><br />
+<em class="quotelev1">&gt; intervals will convey the contents of the data very effectively.  In which 
+</em><br />
+<em class="quotelev1">&gt; case, what has CF gained by allowing units of &quot;3 days since 1970-01-01&quot;?  And 
+</em><br />
+<em class="quotelev1">&gt; what has it lost?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; We should look at each of these questions from the point of view of the 
+</em><br />
+<em class="quotelev1">&gt; complexity of the software *reading* the file.   From our colleague Bryan 
+</em><br />
+<em class="quotelev1">&gt; Lawrence, &quot;In general my rule of thumb is organise the data for the 
+</em><br />
+<em class="quotelev1">&gt; consumers, not the providers!&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;    - Steve
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ==============================
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Best regards,
+</em><br />
+<em class="quotelev2">&gt;&gt; Karl
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; On 3/26/11 6:46 AM, Don Murray wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; John-
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; On 3/25/11 4:54 PM, John Caron wrote:
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; On 3/22/2011 6:53 AM, John Caron wrote:
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; Consider:
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; int time(sample=1001);
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; :long_name = &quot;Measurement time&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; :standard_name = &quot;time&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; :units = &quot;days since 1970-01-01&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; vs
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; int time(sample=1001);
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; :long_name = &quot;Measurement time&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; :standard_name = &quot;time&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; :units = &quot;3 days since 1970-01-01&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; values = 1, 2, 3, ...
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; are these equivalent or does the second one mean every 3 days ? Is the
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; second one illegal ?
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Im am going to assume that the second form is illegal, that is, you may
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; not have a number in front of the unit in a &quot;time coordinate unit&quot; (CF
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; section 4.4)
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; I agree with Beno that it should be legal.  GrADS gives their units in
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; terms of N (minutes, hours, days, months, years) from a reference time.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;    When I wrote the GrADS IOSP, I originally was using this syntax,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; because then your time coordinate values are 0,1,2,.....  However, 3mo
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; intervals came up with the problems that you have shown here, so I
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; converted everything to hours since the base date.  But, if we had a
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; library that would compute 3mo since 2011-04-01 as 2011-07-01, I would
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; revert to that syntax because it is closer to the original GrADS 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; definition.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Don
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><pre>
+-- 
+V. Balaji                               Office:  +1-609-452-6516
+Head, Modeling Systems Group, GFDL      Home:    +1-212-253-6662
+Princeton University                    Email: v.balaji at noaa.gov
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Mar 28 2011 - 11:01:54 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3392">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3393.html" title="Next message in the list">Christopher Barker: "[CF-metadata] udunits time unit question"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3391.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] udunits time unit question"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3391.html" title="Message to which this message replies">Steve Hankin: "[CF-metadata] udunits time unit question"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3388.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] udunits time unit question"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3392" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3392" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3392" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3392" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:43 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3391.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3393.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] point observation data in CF 1.4 from Wright, Bruce on 2010-11-02 (cf-metadata-mailman)</title>
+<meta name="Author" content="Wright, Bruce (bruce.wright)" />
+<meta name="Subject" content="[CF-metadata] point observation data in CF 1.4" />
+<meta name="Date" content="2010-11-02" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2959.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2961.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] point observation data in CF 1.4</h1>
+<!-- received="Tue Nov  2 07:09:31 2010" -->
+<!-- isoreceived="20101102070931" -->
+<!-- sent="Tue, 2 Nov 2010 13:09:31 -0000" -->
+<!-- isosent="20101102130931" -->
+<!-- name="Wright, Bruce" -->
+<!-- email="bruce.wright" -->
+<!-- subject="[CF-metadata] point observation data in CF 1.4" -->
+<!-- id="8AC4893FB411FA4AA8CFECD9C8913B660A014881_at_EXXMAIL01.desktop.frd.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2960" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2961.html" accesskey="d" title="Christopher Barker: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Next message</a> ]
+[ <a href="./2959.html" title="Benno Blumenthal: &quot;[CF-metadata] time as ISO strings&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2961.html" accesskey="t" title="Christopher Barker: &quot;[CF-metadata] point observation data in CF 1.4&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2960" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2960" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2960" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2960" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Wright, Bruce &lt;<a href="mailto:bruce.wright?Subject=Re%3A%20%5BCF-metadata%5D%20point%20observation%20data%20in%20CF%201.4">bruce.wright</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 2 Nov 2010 13:09:31 -0000</span><br />
+</address>
+<br />
+All,
+<br />
+<br />Sorry for a late follow-up (and once again breaking the thread), but
+<br />
+below is some feedback from our guys running the particle trajectory
+<br />
+models at the Met Office, which I think highlight the difficulties
+<br />
+storing particle trajectories efficiently.
+<br />
+<pre>
+----
+Its good to see this being thought about. Here are some immediate
+comments.
+In a long (multi-year) air quality or risk assessment run, the total
+number of particles followed could be a thousand times the maximum
+number existing at any one time (and this factor could change if one
+decides to do a longer run than originally intended). That suggests that
+padding out arrays to the total number of particles is not a sensible
+option. On the other hand, a particle's storage space could be reused at
+later times once the particle has vanished, provided it was clearly
+identified as a different particle. This is similar to the way particles
+are stored within our dispersion model. But it's a bit inelegant as the
+structure has redundant features which don't correspond to reality (in
+that it links particles arbitrarily according to whether they reuse the
+same space).
+An alternative is, at each time, to store the particle data and for this
+to include a particle id, without attempting to link particles at
+different times. However retrieving a trajectory is then difficult as
+will have to search each time for the particle id required. Storing
+start and end time for each particle id would help, but restoring a
+complete trajectory would still be inefficient. One can think of ways
+round this: in a computer language one would have an array for each
+particle id giving the indices in each time slice corresponding to the
+particle (these arrays could be offset relative to the particle start
+time so they would not have to be very long), and then an array of such
+structures, one for each particle id. Can NetCDF do that?
+To make things more difficult it might also be useful to store
+trajectories with different length time-steps for different
+trajectories. I don't think this is important for any applications we
+have in mind at present, but it would be nice to think if it could be
+done.
+For very long runs, one would probably not want to be forced to store
+everything in one very large file.
+I think it would be acceptable to have more than one format for storing
+data with different methods being efficient for different retrieval
+types, together with (slow) utilities for converting between these
+formats. Indeed that might be preferable if it enables things to be kept
+simple conceptually.
+----
+Regards, 
+Bruce 
+-- 
+Bruce Wright  Expert Strategic Advisor
+Met Office FitzRoy Road Exeter EX1 3PB United Kingdom 
+Tel: +44 (0)1392 886481 Fax: +44 (0)1392 885681
+E-mail: bruce.wright at metoffice.gov.uk <a href="http://www.metoffice.gov.uk">http://www.metoffice.gov.uk</a>
+&lt;<a href="http://www.metoffice.gov.uk/">http://www.metoffice.gov.uk/</a>&gt;  
+-----
+Hi Steve
+&gt; That's the narrow technical perspective.  The &quot;social&quot; question is
+&gt; whether there is a significant benefit to the community from defining
+&gt; is a single approach that is general enough to handle the necessary
+&gt; range of model-generated tracer particle clouds.   How commonly does
+&gt; one want to share trajectory files between models?  
+How common is it to want to share software for handling trajectory 
+output? In my experience, common enough to justify getting this right.
+Bryan
+&gt; Is it worth the
+&gt; effort to reach agreement on a new convention?   I've cc'ed Al
+&gt; Hermann here, who comes to mind as another modeler who might be
+&gt; interested in discussing this question.
+&gt; 
+&gt;      - Steve
+&gt; 
+&gt; ==========================================
+&gt; 
+&gt; On 10/14/2010 4:22 PM, Christopher Barker wrote:
+&gt; &gt; Hi folks,
+&gt; &gt; 
+&gt; &gt; I just joined the list, so I apologize for breaking the threading,
+&gt; &gt; and being out of the loop, but Rich Signell alerted me that you
+&gt; &gt; were discussing a format for particle tracking models, and we'd
+&gt; &gt; like to be involved.
+&gt; &gt; 
+&gt; &gt; A couple introductory comments:
+&gt; &gt; 
+&gt; &gt; We (NOAA Emergency Response Division) have a particle tracking
+&gt; &gt; model (GNOME) we use for oil, chemical, and random-other-stuff
+&gt; &gt; spills. For the most part, our output is in our own special
+&gt; &gt; formats, and doesn't interact well with other tools -- we'd like
+&gt; &gt; to change that, and we're going to netcdf for everything else, so
+&gt; &gt; we want to use it for this, too.
+&gt; &gt; 
+&gt; &gt; We use netcdf from C/C++ and Python, so would rather not do
+&gt; &gt; anything supported only in the Java libs. We're also on netcdf3 at
+&gt; &gt; this point, though we can upgrade to netcdf4 if there is a
+&gt; &gt; compelling reason.
+&gt; &gt; 
+&gt; &gt; Our model, at this point, keeps the number of particles constant
+&gt; &gt; (though some may be flagged as &quot;not released&quot; or &quot;off map&quot;, or
+&gt; &gt; &quot;evaporated&quot; or what have you. As a result, the &quot;natural&quot; way that
+&gt; &gt; we have stored the results (in netcdf and other) is in
+&gt; &gt; (num_timesteps X num_particles) arrays.
+&gt; &gt; 
+&gt; &gt; We then have arrays for latitude, longitude, mass, various flags,
+&gt; &gt; etc.
+&gt; &gt; 
+&gt; &gt; As discussed here, other folks' models change the number of
+&gt; &gt; particles as time goes on, so such a simple block storage won't
+&gt; &gt; work. Our case is a subset of the more general case, to it should
+&gt; &gt; be easy to support the simple case anyway (and we may well add
+&gt; &gt; variable particle numbers in the future as well)
+&gt; &gt; 
+&gt; &gt; When looking at the docs for PointObservationConventions, it didn't
+&gt; &gt; seem to fit quite right. One key point is that for the most part,
+&gt; &gt; we think of the collection of particles as an entity -- we are far
+&gt; &gt; more likely to be interested in the whole collection at one point
+&gt; &gt; in time, than the path of a particular particle over time. In
+&gt; &gt; fact, it's rare the we care at all about the ID of a particular
+&gt; &gt; particle -- we simply want to know its properties at a given time
+&gt; &gt; -- so it would be nice if the data storage could do that
+&gt; &gt; efficiently.
+&gt; &gt; 
+&gt; &gt; We'd generally want time to be the unlimited dimension, as well, as
+&gt; &gt; we tend to run the models and analysis forward in time, and might
+&gt; &gt; well want to incrementally output the data.
+&gt; &gt; 
+&gt; &gt; It seems ragged arrays are called for, though I've never tried to
+&gt; &gt; do that in netcdf, so I don't know what the issues are. Are ragged
+&gt; &gt; arrays a netcdf4-only feature?
+&gt; &gt; 
+&gt; &gt; Of course, another option is to allocate the full amount of space
+&gt; &gt; required to store the maximum number, and then mask off the invalid
+&gt; &gt; ones. With compression, that may not be too bad a way to go.
+&gt; &gt; 
+&gt; &gt; A few specific comments:
+&gt; &gt;&gt; I now write the data with redundant time as
+&gt; &gt;&gt; a limited dimension, and records(time, latitude, longitude) and
+&gt; &gt;&gt; have mass (record), radius(record) etc.
+&gt; &gt;&gt; 
+&gt; &gt; &gt; Thanks anyway,
+&gt; &gt; &gt; Ute
+&gt; &gt; 
+&gt; &gt; Do you have an example output file for that you could share?
+&gt; &gt; 
+&gt; &gt;&gt; Clearly there is a need for another Point Convention type to
+&gt; &gt;&gt; handle the output from particle tracking models like this.
+&gt; &gt; 
+&gt; &gt; I think so too -- it really is a different use case.
+&gt; &gt; 
+&gt; &gt;&gt; 2. I think trajectory is when you follow a set of &quot;things&quot;, boats,
+&gt; &gt;&gt; a person. But at each time step they are identical, maybe not the
+&gt; &gt;&gt; same number because of missing data. I could assume that I have a
+&gt; &gt;&gt; trajectory but actually I can't be sure if my particles are the
+&gt; &gt;&gt; same as before. Therefore I chose not to take that convention.
+&gt; &gt; 
+&gt; &gt; hmm -- it sounds like this is similar to what I was talking about
+&gt; &gt; above -- the collection of particles at a given time is what's
+&gt; &gt; important -- not the path of any given particle.
+&gt; &gt; 
+&gt; &gt; As a not, we've been working some with the CDOG (deepwater blowout
+&gt; &gt; model), and it doesn't keep track of which particles are which as
+&gt; &gt; they are added an removed, either -- so it's a pretty common use
+&gt; &gt; case.
+&gt; &gt; 
+&gt; &gt;&gt; There may
+&gt; &gt;&gt; be thousands or tens of thousands of particles, so it's not
+&gt; &gt;&gt; feasible to write each trajectory into a separate file.
+&gt; &gt; 
+&gt; &gt; nor does that fit that natural data model -- one file per timestep
+&gt; &gt; would make more sense.
+&gt; &gt; 
+&gt; &gt;&gt; We want a featureType that will allow us to write the entire
+&gt; &gt;&gt; collection of particles at each time step into a single file, and
+&gt; &gt;&gt; that will allow us to extract all the particles at a single time
+&gt; &gt;&gt; step, as well as extract individual particle trajectories by
+&gt; &gt;&gt; their ID.
+&gt; &gt; 
+&gt; &gt; well said.
+&gt; &gt; 
+&gt; &gt;&gt; whereas as you describe it the time coord is common to all
+&gt; &gt;&gt; trajectories
+&gt; &gt; 
+&gt; &gt; yup.
+&gt; &gt; 
+&gt; &gt;&gt;  To arrange this, an indirection could be
+&gt; &gt;&gt; 
+&gt; &gt;&gt; used on
+&gt; &gt;&gt; 
+&gt; &gt;&gt; the time dimension:
+&gt; &gt;&gt;   data(i,o)     x(i,o) y(i,o) z(i,o) t(tindex(i,o))
+&gt; &gt;&gt; 
+&gt; &gt;&gt; where i is the instance (which of the trajectories), o is the
+&gt; &gt;&gt; point along that
+&gt; &gt;&gt; trajectory, t is the coordinate vector of common times, and tindex
+&gt; &gt;&gt; is an index
+&gt; &gt;&gt; to t. For example, we might have these two trajectories (x,t)
+&gt; &gt;&gt; (omitting y and
+&gt; &gt;&gt; z for simplicity)
+&gt; &gt;&gt; 
+&gt; &gt;&gt;   (0,10) (1,11) (2,12)
+&gt; &gt;&gt;   
+&gt; &gt;&gt;          (3,11) (2,12) (1,13) (0,14)
+&gt; &gt;&gt; 
+&gt; &gt;&gt; Then t would be [10,11,12,13,14] (all the times). For the first
+&gt; &gt;&gt; trajectory
+&gt; &gt;&gt; 
+&gt; &gt;&gt;   x=[0,1,2] tindex=[0,1,2]
+&gt; &gt;&gt; 
+&gt; &gt;&gt; and for the second
+&gt; &gt;&gt; 
+&gt; &gt;&gt;   x=[3,2,1,0] tindex=[1,2,3,4]
+&gt; &gt;&gt; 
+&gt; &gt;&gt; Is that right? Perhaps/probably there's a neater or more natural
+&gt; &gt;&gt; way to do it.
+&gt; &gt; 
+&gt; &gt; I'm having trouble following that -- but yes, it does not seem
+&gt; &gt; natural.
+&gt; &gt; 
+&gt; &gt;&gt; The synchronization of coordinates opens a potential door to great
+&gt; &gt;&gt; simplicity of representation.
+&gt; &gt;&gt; 
+&gt; &gt;&gt;     metadata(i)    data(i,o)     x(i,o) y(i,o) z(i,o) t(o)
+&gt; &gt;&gt; 
+&gt; &gt;&gt; where i is the instance (which of the trajectories), o is simply
+&gt; &gt;&gt; the time index.  The possible costs are proliferation in numbers
+&gt; &gt;&gt; of ways to represent similar things and file size.   The question
+&gt; &gt;&gt; that I'd be inclined to ask of Ute and Rich would be a judgment
+&gt; &gt;&gt; call on the cost in file size that would result from filling
+&gt; &gt;&gt; missing values at the start/end of each individual trajectory.
+&gt; &gt; 
+&gt; &gt; If you're going to do that, you could just store it as one big
+&gt; &gt; rectangular array, with missing values marked (see above). Which
+&gt; &gt; sure would be easy but costly in storage space.
+&gt; &gt; 
+&gt; &gt; Another problem -- you may not know the maximum number of particles
+&gt; &gt; at time zero -- so you can't know how much space to allocate when
+&gt; &gt; you start writing the file -- that may kill that approach.
+&gt; &gt; 
+&gt; &gt;&gt;  Optionally the metadata could include
+&gt; &gt;&gt;  
+&gt; &gt;&gt;     tstart_index(i)   tend_index(i)
+&gt; &gt;&gt; 
+&gt; &gt;&gt; This representation seems _the simplest from the standpoint of
+&gt; &gt;&gt; application code (reading)_.  Synoptic view are simply projection
+&gt; &gt;&gt; at fixed &quot;o&quot; index;  the history of an individual trajectory is
+&gt; &gt;&gt; simply a projection at a fixed &quot;i&quot; index.
+&gt; &gt; 
+&gt; &gt; How do you do this with a ragged array? I'm missing something.
+&gt; &gt; 
+&gt; &gt;&gt;  Does the
+&gt; &gt;&gt; 
+&gt; &gt;&gt; saving of space through not padding the trajectories justify the
+&gt; &gt;&gt; complexity?
+&gt; &gt;&gt; I don't know.
+&gt; &gt; 
+&gt; &gt; Do you have a choice if you don't know what your maximum number of
+&gt; &gt; particles is at the start?
+&gt; &gt; 
+&gt; &gt; Thanks all for working on this.
+&gt; &gt; 
+&gt; &gt; -Chris
+&gt; 
+&gt; _______________________________________________
+&gt; CF-metadata mailing list
+&gt; CF-metadata at cgd.ucar.edu
+&lt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>&gt; 
+&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+Bryan Lawrence
+Director of Environmental Archival and Associated Research
+(NCAS/British Atmospheric Data Centre and NCEO/NERC NEODC)
+STFC, Rutherford Appleton Laboratory
+Phone +44 1235 445012; Fax ... 5848; 
+Web: home.badc.rl.ac.uk/lawrence
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20101102/70e27a25/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20101102/70e27a25/attachment-0001.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Nov 02 2010 - 07:09:31 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2960">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2961.html" title="Next message in the list">Christopher Barker: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2959.html" title="Previous message in the list">Benno Blumenthal: "[CF-metadata] time as ISO strings"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2961.html" title="Next message in this discussion thread">Christopher Barker: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2961.html" title="Message sent in reply to this message">Christopher Barker: "[CF-metadata] point observation data in CF 1.4"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2960" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2960" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2960" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2960" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2959.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2961.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

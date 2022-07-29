@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  New CoordinateType: Spectral? from Jonathan Gregory on 2013-04-07 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  New CoordinateType: Spectral?" />
+<meta name="Date" content="2013-04-07" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5259.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5261.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  New CoordinateType: Spectral?</h1>
+<!-- received="Sun Apr  7 15:24:08 2013" -->
+<!-- isoreceived="20130407142408" -->
+<!-- sent="Sun, 7 Apr 2013 22:24:08 +0100" -->
+<!-- isosent="20130407212408" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  New CoordinateType: Spectral?" -->
+<!-- id="20130407212408.GA4619_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5260" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5261.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Consistent standard_names for satellite derived radiance quantities&quot;">Next message</a> ]
+[ <a href="./5259.html" title="Jim Biard: &quot;[CF-metadata] Ancillary Data&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5260" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5260" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5260" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5260" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20New%20CoordinateType%3A%20Spectral%3F">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sun, 7 Apr 2013 22:24:08 +0100</span><br />
+</address>
+<br />
+Dear Aleksandar
+<br />
+<br /><em class="quotelev1">&gt; I know this will likely end up as a trac ticket but would like first
+</em><br />
+<em class="quotelev1">&gt; to gauge the community's opinion about defining a new coordinate type.
+</em><br />
+<em class="quotelev1">&gt; Satellite data originates as measurements at a number of intervals of
+</em><br />
+<em class="quotelev1">&gt; the electromagnetic spectrum. These intervals are commonly referred to
+</em><br />
+<em class="quotelev1">&gt; as bands or channels. Deciding on how to store the band information is
+</em><br />
+<em class="quotelev1">&gt; one of the key issues toward a standardized representation for
+</em><br />
+<em class="quotelev1">&gt; satellite data.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The convention seems to allow storing of band information either as a
+</em><br />
+<em class="quotelev1">&gt; numerical coordinate variable or as a string auxiliary coordinate
+</em><br />
+<em class="quotelev1">&gt; variable.
+</em><br />
+<br />Yes, the CF standard could handle both of those, without any modification.
+<br />
+A trac ticket may not be needed. I certainly think there is no problem at
+<br />
+all for a numerical coordinate of band wavelength. You need only to propose
+<br />
+a new standard name for it, if one is needed. There is already a generic
+<br />
+standard name of radiation_wavelength, included for use as a coord variable
+<br />
+just as in your first example. If you need something more specific, I would
+<br />
+suggest sensor_radiation_wavelength. The coord values for this would be the
+<br />
+central wavelengths, and you could also supply bounds specifying the range
+<br />
+of wavelengths covered by the sensor.
+<br />
+<br />Although string-valued auxiliary coordinate variables are possible already,
+<br />
+as used in your second example, I would argue they are less useful as
+<br />
+metadata than numerical ranges. That is because the main use of CF is to
+<br />
+support intercomparison of datasets, which is better-defined if numbers are
+<br />
+used. If there are widely used definitions of named wavelength bands,
+<br />
+required for intercomparison of many datasets, a standard_name could be
+<br />
+defined with a number of permitted string values. I think this extension
+<br />
+could probably be seen as a new standard_name, not requiring a change to
+<br />
+the conventions, although it could be explicitly mentioned in section 6 like
+<br />
+Roy is proposing for biological taxa.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Sun Apr 07 2013 - 15:24:08 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5260">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5261.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Consistent standard_names for satellite derived radiance quantities"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5259.html" title="Previous message in the list">Jim Biard: "[CF-metadata] Ancillary Data"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5260" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5260" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5260" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5260" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:18 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5259.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5261.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

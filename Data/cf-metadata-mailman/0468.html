@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] axis attribute from Brian Eaton on 2006-11-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="Brian Eaton (eaton)" />
+<meta name="Subject" content="[CF-metadata] axis attribute" />
+<meta name="Date" content="2006-11-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0467.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0469.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] axis attribute</h1>
+<!-- received="Mon Nov 20 14:25:33 2006" -->
+<!-- isoreceived="20061120142533" -->
+<!-- sent="Mon, 20 Nov 2006 14:25:33 -0700" -->
+<!-- isosent="20061120212533" -->
+<!-- name="Brian Eaton" -->
+<!-- email="eaton" -->
+<!-- subject="[CF-metadata] axis attribute" -->
+<!-- id="20061120212533.GE3170_at_ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="5DB3D7FB-F821-4168-94C5-304A0D0353BB_at_llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start468" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0469.html" accesskey="d" title="Bob Drach: &quot;[CF-metadata] axis attribute&quot;">Next message</a> ]
+[ <a href="./0467.html" title="Bryan Lawrence: &quot;[CF-metadata] Getting back to ensembles&quot;">Previous message</a> ]
+[ <a href="./0466.html" title="Bob Drach: &quot;[CF-metadata] axis attribute&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0469.html" accesskey="t" title="Bob Drach: &quot;[CF-metadata] axis attribute&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg468" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg468" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg468" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg468" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Brian Eaton &lt;<a href="mailto:eaton?Subject=Re%3A%20%5BCF-metadata%5D%20axis%20attribute">eaton</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 20 Nov 2006 14:25:33 -0700</span><br />
+</address>
+<br />
+Hi Bob,
+<br />
+<br />I agree that your interpretation was our original intent when the axis
+<br />
+attribute was included in CF.  However I'm afraid we opened Pandora's Box
+<br />
+by allowing axis to be used for &quot;generic spatial coordinates&quot;, as described
+<br />
+in the 3rd paragraph of section 4.  In this relaxed interpretation it does
+<br />
+make sense to use axis=&quot;X&quot; on a coordinate with the standard_name
+<br />
+projection_x_coordinate.  In retrospect I'm starting to think that this was
+<br />
+not one of our better ideas :-)  By allowing axis to refer to generic
+<br />
+coordinates you loose the ability to know that axis=&quot;X&quot;, when present, does
+<br />
+in fact identify a longitude coordinate.  In its current state the only
+<br />
+information that can be derived from the axis attribute is that is provides
+<br />
+a hint to the processor about how a coordinate might be plotted.
+<br />
+<br />It should probably be returned to it's original interpretation which you
+<br />
+described.  That was also the opinion voiced by Karl, and Jonathan too (I
+<br />
+think, I've lost track of some of this thread).
+<br />
+<br />Brian
+<br />
+<br /><br /><br />On Mon, Nov 20, 2006 at 12:45:25PM -0800, Bob Drach wrote:
+<br />
+<em class="quotelev1">&gt; CDAT uses the axis attribute to identify the spatio-temporal type of  
+</em><br />
+<em class="quotelev1">&gt; axis. (Since the axis attribute is optional, CDAT also checks the  
+</em><br />
+<em class="quotelev1">&gt; units). My interpretation of the standard is that, if the axis is a  
+</em><br />
+<em class="quotelev1">&gt; longitude, then axis=&quot;X&quot; is appropriate, and this applies to  
+</em><br />
+<em class="quotelev1">&gt; auxiliary longitude coordinate axes as well as 1-D lon(lon)  
+</em><br />
+<em class="quotelev1">&gt; coordinate variables. However, it would not apply to  
+</em><br />
+<em class="quotelev1">&gt; projection_x_coordinate, if I understand that attribute correctly.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Bob
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On Nov 19, 2006, at 6:05 PM, Simon Wood wrote:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;Karl, Jonathan and others,
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;I'll reiterate what I said earlier (but I think somehow the email  
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;didn't get distributed).  I'm in favor of eliminating the  
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;apparently contradictory statements.  Of the two choices, perhaps  
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;least confusion would result from adopting Jonathan's suggestion:  
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;restrict X and Y to genuine longitude and latitude coordinates.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;By 'genuine longitude and latitude coordinates' would you intend to  
+</em><br />
+<em class="quotelev2">&gt; &gt;exclude auxiliary (lat/lon) coordinates (eg lat(y,x) and lon(y,x)),  
+</em><br />
+<em class="quotelev2">&gt; &gt;and allow only for datasets with lat lon dimensions (and hence lat 
+</em><br />
+<em class="quotelev2">&gt; &gt;(lat) and lon(lon) coordinate variables)?
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;I'm a bit confused since I originally interpreted CF 4 to mean that  
+</em><br />
+<em class="quotelev2">&gt; &gt;the axis attribute as an extra way of identifying a coordinate  
+</em><br />
+<em class="quotelev2">&gt; &gt;variable.  I  assumed it would be good to use it with auxiliary  
+</em><br />
+<em class="quotelev2">&gt; &gt;coordinate variables for datasets using x,y dimensions and, say,  
+</em><br />
+<em class="quotelev2">&gt; &gt;lambert conformal projection.  But then by analogy to the  
+</em><br />
+<em class="quotelev2">&gt; &gt;discussion about rotated pole projections on the earlier part of  
+</em><br />
+<em class="quotelev2">&gt; &gt;this thread I got to thinking that maybe the axis attribute should  
+</em><br />
+<em class="quotelev2">&gt; &gt;be associated with the x(x) and y(y) 'projection_x/y_coordinate'  
+</em><br />
+<em class="quotelev2">&gt; &gt;variables instead (ie so it can be used as a hint to the plot  
+</em><br />
+<em class="quotelev2">&gt; &gt;orientation).
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;However, it seems to me that restricting the attribute to only be  
+</em><br />
+<em class="quotelev2">&gt; &gt;used for 'proper' coordinate variables (ie lat(lat), lon(lon)) is a  
+</em><br />
+<em class="quotelev2">&gt; &gt;bit drastic (and it doesn't really add much value to these  
+</em><br />
+<em class="quotelev2">&gt; &gt;variables does it?).  All thats really needed is to resolve the  
+</em><br />
+<em class="quotelev2">&gt; &gt;ambiguity in intended usage (ie is it to hint at plot orientation  
+</em><br />
+<em class="quotelev2">&gt; &gt;or to help identify coordinate variables including auxiliary  
+</em><br />
+<em class="quotelev2">&gt; &gt;coordinate variables).  Of course if both interpretations are in  
+</em><br />
+<em class="quotelev2">&gt; &gt;common use then it gets a bit trickier...
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;The reason I was intending to use the axis attribute was just in an  
+</em><br />
+<em class="quotelev2">&gt; &gt;attempt to include as much metadata as possible so that (hopefully)  
+</em><br />
+<em class="quotelev2">&gt; &gt;a wider range of data readers would be able to understand our data;  
+</em><br />
+<em class="quotelev2">&gt; &gt;I guess if its just going to add confusion I won't use it.  Does  
+</em><br />
+<em class="quotelev2">&gt; &gt;anybody know of data readers that currently rely on the axis  
+</em><br />
+<em class="quotelev2">&gt; &gt;attribute in any way?
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;regards
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;Simon
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;-- 
+</em><br />
+<em class="quotelev2">&gt; &gt;Simon Wood
+</em><br />
+<em class="quotelev2">&gt; &gt;National Institute of Water and Atmospheric Research, Wellington, NZ	
+</em><br />
+<em class="quotelev2">&gt; &gt;simon.wood at niwa.co.nz
+</em><br />
+<em class="quotelev2">&gt; &gt;<a href="http://www.niwa.co.nz">http://www.niwa.co.nz</a>
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;_______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt;CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt;CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt;<a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Nov 20 2006 - 14:25:33 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start468">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0469.html" title="Next message in the list">Bob Drach: "[CF-metadata] axis attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0467.html" title="Previous message in the list">Bryan Lawrence: "[CF-metadata] Getting back to ensembles"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0466.html" title="Message to which this message replies">Bob Drach: "[CF-metadata] axis attribute"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0469.html" title="Next message in this discussion thread">Bob Drach: "[CF-metadata] axis attribute"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0469.html" title="Message sent in reply to this message">Bob Drach: "[CF-metadata] axis attribute"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg468" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg468" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg468" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg468" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:50 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0467.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0469.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time from Jonathan Gregory on 2011-01-31 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time" />
+<meta name="Date" content="2011-01-31" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3147.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3149.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time</h1>
+<!-- received="Mon Jan 31 06:44:12 2011" -->
+<!-- isoreceived="20110131064412" -->
+<!-- sent="Mon, 31 Jan 2011 13:44:12 +0000" -->
+<!-- isosent="20110131134412" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time" -->
+<!-- id="20110131134412.GA17419_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20110131133608.GA16567_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3148" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3149.html" accesskey="d" title="John Caron: &quot;[CF-metadata] ESRI implementation of ellipsoidal-earth&quot;">Next message</a> ]
+[ <a href="./3147.html" title="Jonathan Gregory: &quot;[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time&quot;">Previous message</a> ]
+[ <a href="./3147.html" title="Jonathan Gregory: &quot;[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3152.html" accesskey="t" title="plieger: &quot;[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3148" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3148" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3148" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3148" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20MSG%20CPP%20standard%20name%20for%20time_offset_of_observation%20%2F%20pixel_delta_time">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 31 Jan 2011 13:44:12 +0000</span><br />
+</address>
+<br />
+PS to my last posting.
+<br />
+<br />An alternative to using a time offset would be to store the pixel time as an
+<br />
+absolute time as well e.g.
+<br />
+<br /><em class="quotelev1">&gt;   float obs(scan,pixel); // data variable
+</em><br />
+<em class="quotelev1">&gt;     coordinates=&quot;pixeltime&quot;;
+</em><br />
+<em class="quotelev1">&gt;   double scan(scan); // time of scan start
+</em><br />
+<em class="quotelev1">&gt;     scan:units=&quot;seconds since 2011-1-31&quot;;
+</em><br />
+<em class="quotelev1">&gt;     scan:standard_name=&quot;time&quot;;
+</em><br />
+<em class="quotelev1">&gt;   double pixeltime(scan,pixel);
+</em><br />
+<em class="quotelev1">&gt;     pixeltime:units=&quot;seconds since 2011-1-31&quot;;
+</em><br />
+<em class="quotelev1">&gt;     pixeltime:standard_name=&quot;time&quot;;
+</em><br />
+<br />This means each observation has two times: one for the start of its scan, and
+<br />
+one for its pixel. You can obviously compute offsets by subtracting the scan-
+<br />
+start time from the pixel-time. It depends on which you need more often,
+<br />
+I suppose.
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Jan 31 2011 - 06:44:12 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3148">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3149.html" title="Next message in the list">John Caron: "[CF-metadata] ESRI implementation of ellipsoidal-earth"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3147.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3147.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3152.html" title="Next message in this discussion thread">plieger: "[CF-metadata] MSG CPP standard name for time_offset_of_observation / pixel_delta_time"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3148" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3148" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3148" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3148" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:39 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3147.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3149.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

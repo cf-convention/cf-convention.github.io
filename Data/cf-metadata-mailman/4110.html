@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] MSG CPP standard names, projection and WMS service from Martin Raspaud on 2012-01-24 (cf-metadata-mailman)</title>
+<meta name="Author" content="Martin Raspaud (martin.raspaud)" />
+<meta name="Subject" content="[CF-metadata] MSG CPP standard names, projection and WMS service" />
+<meta name="Date" content="2012-01-24" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4109.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4111.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] MSG CPP standard names, projection and WMS service</h1>
+<!-- received="Tue Jan 24 02:26:21 2012" -->
+<!-- isoreceived="20120124022621" -->
+<!-- sent="Tue, 24 Jan 2012 10:26:21 +0100" -->
+<!-- isosent="20120124092621" -->
+<!-- name="Martin Raspaud" -->
+<!-- email="martin.raspaud" -->
+<!-- subject="[CF-metadata] MSG CPP standard names, projection and WMS service" -->
+<!-- id="4F1E793D.2040804_at_smhi.se" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4F1D9B8A.30305_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4110" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4111.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] mailing list and trac tickets&quot;">Next message</a> ]
+[ <a href="./4109.html" title="TOYODA Eizi: &quot;[CF-metadata] Regions, Gazetteer, etc&quot;">Previous message</a> ]
+[ <a href="./4107.html" title="John Caron: &quot;[CF-metadata] MSG CPP standard names, projection and WMS service&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4113.html" accesskey="t" title="plieger: &quot;[CF-metadata] MSG CPP standard names, projection and WMS service&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4110" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4110" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4110" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4110" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Martin Raspaud &lt;<a href="mailto:martin.raspaud?Subject=Re%3A%20%5BCF-metadata%5D%20MSG%20CPP%20standard%20names%2C%20projection%20and%20WMS%20service">martin.raspaud</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 24 Jan 2012 10:26:21 +0100</span><br />
+</address>
+<br />
+-----BEGIN PGP SIGNED MESSAGE-----
+<br />
+Hash: SHA1
+<br />
+<br />On 23/01/12 18:40, John Caron wrote:
+<br />
+<em class="quotelev1">&gt; On 1/23/2012 10:00 AM, plieger wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear All,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; We are struggling with finding the correct CF projection parameters for this data. The data is in
+</em><br />
+<em class="quotelev2">&gt;&gt; satellite view projection, with the current settings we see a slight shift in IDV at the borders of
+</em><br />
+<em class="quotelev2">&gt;&gt; the disc (internally we use proj4_params, which is not a CF standard):
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;   char projection ;
+</em><br />
+<em class="quotelev2">&gt;&gt;     projection:proj4_params = &quot;+proj=geos +lon_0=0.000000 +lat_0=0 +h=35807.414063 +a=6378.169
+</em><br />
+<em class="quotelev2">&gt;&gt; +b=6356.5838&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;     projection:long_name = &quot;Projection information&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;     projection:grid_mapping_name = &quot;vertical_perspective&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;     projection:latitude_of_projection_origin = 0.000000f ;
+</em><br />
+<em class="quotelev2">&gt;&gt;     projection:longitude_of_projection_origin = 0.000000f ;
+</em><br />
+<em class="quotelev2">&gt;&gt;     projection:perspective_point_height = 35807416.000000f ;
+</em><br />
+<em class="quotelev2">&gt;&gt;     projection:height_above_earth = 35807.414062f ;
+</em><br />
+<em class="quotelev2">&gt;&gt;     projection:false_easting = 0.000000f ;
+</em><br />
+<em class="quotelev2">&gt;&gt;     projection:false_northing = 0.000000f ;
+</em><br />
+<em class="quotelev2">&gt;&gt;     projection:EPSG_code = &quot;none&quot; ;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Has anyone a suggestion regarding this issue? When opening these files in IDV you should set the
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;Data Source Type&quot; to &quot;Image Files (GINI)&quot;, otherwise you will have to wait a bit. When you open the
+</em><br />
+<em class="quotelev2">&gt;&gt; variables latitude and longitude you will see that there is a slight shift which increases near the
+</em><br />
+<em class="quotelev2">&gt;&gt; borders.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Please let me know what you think!
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Thanks,
+</em><br />
+<em class="quotelev2">&gt;&gt; Maarten
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Hi Martin:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The IDV/CDM code uses a special projection for MSG, because (I think)
+</em><br />
+<em class="quotelev1">&gt; the vertical_perspective is not the exact
+</em><br />
+<em class="quotelev1">&gt; right projection, as you see by the pixels being a bit off.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The MSG projection looks like:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;   char Projection;
+</em><br />
+<em class="quotelev1">&gt;      :*grid_mapping_name* = &quot;MSGnavigation&quot;;
+</em><br />
+<em class="quotelev1">&gt;      :*longitude_of_projection_origin* = 0.0; // double
+</em><br />
+<em class="quotelev1">&gt;      :*latitude_of_projection_origin* = 0.0; // double
+</em><br />
+<em class="quotelev1">&gt;      :*semi_major_axis* = 6356755.5; // double
+</em><br />
+<em class="quotelev1">&gt;      :*semi_minor_axis* = 6378140.0; // double
+</em><br />
+<em class="quotelev1">&gt;      :*height_from_earth_center* = 4.2163970098E7; // double
+</em><br />
+<em class="quotelev1">&gt;      :*scale_x* = 35785.830098; // double
+</em><br />
+<em class="quotelev1">&gt;      :*scale_y* = -35785.830098; // double
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; details are here:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.unidata.ucar.edu/software/netcdf-java/reference/StandardCoordinateTransforms.html#MSG">http://www.unidata.ucar.edu/software/netcdf-java/reference/StandardCoordinateTransforms.html#MSG</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The tricky part is to get the projection coordinate x,y values correct.
+</em><br />
+<em class="quotelev1">&gt; The scale_x and scale_y are instrument specific, although Im not sure if
+</em><br />
+<em class="quotelev1">&gt; there
+</em><br />
+<em class="quotelev1">&gt; is more than one instrument.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I kind of made this projection up based on
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.eumetsat.int/idcplg?IdcService=GET_FILE&amp;dDocName=PDF_CGMS_03&amp;RevisionSelectionMethod=LatestReleased">http://www.eumetsat.int/idcplg?IdcService=GET_FILE&amp;dDocName=PDF_CGMS_03&amp;RevisionSelectionMethod=LatestReleased</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; and code ported from
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  <a href="http://www.eumetsat.int/idcplg?IdcService=GET_FILE&amp;dDocName=zip_tools_msg_nav_c&amp;RevisionSelectionMethod=LatestReleased">http://www.eumetsat.int/idcplg?IdcService=GET_FILE&amp;dDocName=zip_tools_msg_nav_c&amp;RevisionSelectionMethod=LatestReleased</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Id be happy for some experts to review what Ive done and suggest changes
+</em><br />
+<em class="quotelev1">&gt; if needed.
+</em><br />
+<br />Hi all,
+<br />
+<br />For information, I pushed a proposal to add the &quot;GEOS&quot; projection to the
+<br />
+CF conventions, so that MSG would be supported.
+<br />
+<br />And as opposed to what is written in the Conventions,
+<br />
+&quot;vertical_perspective&quot; is NOT the MSG native projection.
+<br />
+<br />Best regards,
+<br />
+Martin
+<br />
+-----BEGIN PGP SIGNATURE-----
+<br />
+Version: GnuPG v2.0.14 (GNU/Linux)
+<br />
+Comment: Using GnuPG with Red Hat - <a href="http://enigmail.mozdev.org/">http://enigmail.mozdev.org/</a>
+<br />
+<br />iQEcBAEBAgAGBQJPHnk9AAoJEBdvyODiyJI4X6gIANQAVRFdyaZIvRNpvwzS2tEp
+<br />
+eVQIL5BMkhY9mWAzzHoHyviLFhcxXnb8t2jltsanJFPsVG5ndU7/z2vh/CTzEflx
+<br />
+7b0xC/bYou5cUhNV6jc4N9lleGiHyFxUwHG0EfLQAr6Bi6cqYOYCz26+ux8iZVUt
+<br />
+RnBpHK8baLbunzaZMfBiQzzS1cmrvV5LI6Eb9Yv5yb7sdmbwFigr2v4Im64xcySF
+<br />
+y+N3LBP5mR4vWNOaHImvxzhgvehrzr2z2NKcii8p6iOS6V14SLCiGHxBx3KcdzgM
+<br />
+70K+B6K8prLnkTe+x5P+v3T3+c9iYlxc+0434bM4cX+lr4FFc/6Rupd+9vZGQIc=
+<br />
+=dM1O
+<br />
+-----END PGP SIGNATURE-----
+<br />
+-------------- next part --------------
+<br />
+A non-text attachment was scrubbed...
+<br />
+Name: martin_raspaud.vcf
+<br />
+Type: text/x-vcard
+<br />
+Size: 292 bytes
+<br />
+Desc: not available
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20120124/a5258a9c/attachment.vcf">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20120124/a5258a9c/attachment.vcf</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Jan 24 2012 - 02:26:21 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4110">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4111.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] mailing list and trac tickets"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4109.html" title="Previous message in the list">TOYODA Eizi: "[CF-metadata] Regions, Gazetteer, etc"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4107.html" title="Message to which this message replies">John Caron: "[CF-metadata] MSG CPP standard names, projection and WMS service"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4113.html" title="Next message in this discussion thread">plieger: "[CF-metadata] MSG CPP standard names, projection and WMS service"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4113.html" title="Message sent in reply to this message">plieger: "[CF-metadata] MSG CPP standard names, projection and WMS service"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4110" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4110" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4110" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4110" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:57 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4109.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4111.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

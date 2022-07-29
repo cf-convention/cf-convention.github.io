@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Conventions for use of local solar time in gridded climate data from Jim Biard on 2016-07-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] Conventions for use of local solar time in gridded climate data" />
+<meta name="Date" content="2016-07-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7722.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7724.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Conventions for use of local solar time in gridded climate data</h1>
+<!-- received="Thu Jul 28 11:18:14 2016" -->
+<!-- isoreceived="20160728101814" -->
+<!-- sent="Thu, 28 Jul 2016 13:18:14 -0400" -->
+<!-- isosent="20160728171814" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] Conventions for use of local solar time in gridded climate data" -->
+<!-- id="33a9d708-72da-1107-8cbe-758bd899c05b_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="3172B8DB656FE7409F1A0D003A41D2160766D7E3_at_EXXCMPD1DAG2.cmpd1.metoffice.gov.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7723" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7724.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] Conventions for use of local solar time in gridded climate data&quot;">Next message</a> ]
+[ <a href="./7722.html" title="Mitchelson, Joel: &quot;[CF-metadata] Conventions for use of local solar time in gridded climate data&quot;">Previous message</a> ]
+[ <a href="./7721.html" title="Mitchelson, Joel: &quot;[CF-metadata] Conventions for use of local solar time in gridded climate data&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7723" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7723" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7723" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7723" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20Conventions%20for%20use%20of%20local%20solar%20time%20in%20gridded%20climate%20data">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 28 Jul 2016 13:18:14 -0400</span><br />
+</address>
+<br />
+Joel,
+<br />
+<br />There is no current standard for dealing with Local Solar Time (LST). I 
+<br />
+assume that the time and timebounds values would be elapsed times 
+<br />
+represented as fractions of days in quasi-UTC (the time at longitude 0). 
+<br />
+This is valid netCDF, but I'm not at all sure what existing software 
+<br />
+packages would do with it. Time is the one dimension that most software 
+<br />
+packages assume to be 1-dimensional. Another possible approach would be 
+<br />
+to have a notional 1-D time variable that would be set to noon UTC of 
+<br />
+each day and rename your time variable in your example to localtime. It 
+<br />
+would look something like this:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time = UNLIMITED ; // (1 currently)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude = 720 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude = 1440 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bounds = 2 ;
+<br />
+<br />variables:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;days since 1850-1-1 0:0:0&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:long_name = &quot;Time (days)&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:calendar = &quot;gregorian&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float localtime(time, longitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;days since 1850-1-1 0:0:0&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:long_name = &quot;Time (days)&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:bounds = &quot;timebounds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:calendar = &quot;gregorian&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float timebounds(time, longitude, bounds)
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float latitude(latitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:long_name = &quot;Latitude (deg)&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:standard_name = &quot;latitude&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float longitude(longitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:long_name = &quot;Longitude (deg)&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:standard_name = &quot;longitude&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;short tas(time, latitude, longitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:units = &quot;K&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:long_name = &quot;Mean daily surface air temperature (K)&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:standard_name = &quot;air_temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:coordinates = &quot;localtime&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:cell_methods = &quot;localtime: mean&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:_FillValue = -32768s ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:scale_factor = 0.002 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:add_offset = 273.15 ;
+<br />
+<br />This provides an unambiguous, if notional, time dimension, and still 
+<br />
+associates the local time values with the data values.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 7/28/16 7:58 AM, Mitchelson, Joel wrote:
+<br />
+<em class="quotelev1">&gt; Dear cf-metadata community,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; We are working on new high resolution daily data sets of climate observations as part of the EUSTACE project ( <a href="http://www.eustaceproject.eu/">http://www.eustaceproject.eu/</a> ), where fields such as surface air temperature are presented on global grids, and the sampling period for each grid box is from midnight to midnight in local solar time. In other words, the UTC time period of each grid box depends on longitude.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It seems that within CF conventions there might be several possible approaches to expressing this, though no specific example appears to be given in the conventions documents (versions 1.6 or 1.7). It would be desirable if our chosen method works nicely with as many existing software tools as possible; and uses established conventions if they exist.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Do conventions for this already exist?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If not, is the example CDL fragment below likely to be easy to use within many existing software tools for working with gridded fields of climate data, or might there be a more widely compatible method?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Many thanks in advance for your kind attention.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Joel.
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; Dr. Joel R. Mitchelson  Observational Climate Data Software Specialist
+</em><br />
+<em class="quotelev1">&gt; Met Office Hadley Centre  FitzRoy Road  Exeter  Devon  EX1 3PB  United Kingdom
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; // Example CDL fragment representing a single day of data in one NetCDF file.
+</em><br />
+<em class="quotelev1">&gt; // To represent more than one day multiple files could be used,
+</em><br />
+<em class="quotelev1">&gt; // or else a single file with the localtime dimension set to equal the number of days.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; dimensions:
+</em><br />
+<em class="quotelev1">&gt;      localtime = UNLIMITED ; // (1 currently)
+</em><br />
+<em class="quotelev1">&gt;      latitude = 720 ;
+</em><br />
+<em class="quotelev1">&gt;      longitude = 1440 ;
+</em><br />
+<em class="quotelev1">&gt;      bounds = 2 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; variables:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      float time(localtime, longitude) ;
+</em><br />
+<em class="quotelev1">&gt;          time:units = &quot;days since 1850-1-1 0:0:0&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          time:long_name = &quot;Time (days)&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          time:standard_name = &quot;time&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          time:bounds = &quot;timebounds&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          time:calendar = &quot;gregorian&quot; ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      float timebounds(localtime, longitude, bounds)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      float latitude(latitude) ;
+</em><br />
+<em class="quotelev1">&gt;          latitude:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          latitude:long_name = &quot;Latitude (deg)&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          latitude:standard_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      float longitude(longitude) ;
+</em><br />
+<em class="quotelev1">&gt;          longitude:units = &quot;degrees_east&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          longitude:long_name = &quot;Longitude (deg)&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          longitude:standard_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      short tas(localtime, latitude, longitude) ;
+</em><br />
+<em class="quotelev1">&gt;          tas:units = &quot;K&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          tas:long_name = &quot;Mean daily surface air temperature (K)&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          tas:standard_name = &quot;air_temperature&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          tas:coordinates = &quot;time&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          tas:cell_methods = &quot;time: mean&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          tas:_FillValue = -32768s ;
+</em><br />
+<em class="quotelev1">&gt;          tas:scale_factor = 0.002 ;
+</em><br />
+<em class="quotelev1">&gt;          tas:add_offset = 273.15 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/Connect with us on Facebook for climate 
+&lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+&lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us 
+on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and 
+_at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160728/ed1262e3/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160728/ed1262e3/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160728/ed1262e3/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160728/ed1262e3/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Jul 28 2016 - 11:18:14 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7723">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7724.html" title="Next message in the list">Jim Biard: "[CF-metadata] Conventions for use of local solar time in gridded climate data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7722.html" title="Previous message in the list">Mitchelson, Joel: "[CF-metadata] Conventions for use of local solar time in gridded climate data"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7721.html" title="Message to which this message replies">Mitchelson, Joel: "[CF-metadata] Conventions for use of local solar time in gridded climate data"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7723" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7723" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7723" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7723" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:05 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7722.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7724.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

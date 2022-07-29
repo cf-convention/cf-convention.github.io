@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jim Biard on 2015-06-11 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-06-11" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7105.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7107.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Thu Jun 11 07:14:31 2015" -->
+<!-- isoreceived="20150611061431" -->
+<!-- sent="Thu, 11 Jun 2015 09:14:31 -0400" -->
+<!-- isosent="20150611131431" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="557989B7.8050900_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="C691EC42-9AC8-44A3-993A-DEF0D8A713EC_at_sintef.no" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7106" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7107.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./7105.html" title="Ben Hetland: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+[ <a href="./7105.html" title="Ben Hetland: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7109.html" accesskey="t" title="Timothy Patterson: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7106" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7106" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7106" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7106" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 11 Jun 2015 09:14:31 -0400</span><br />
+</address>
+<br />
+Ben,
+<br />
+<br />The problem you mention with the 360 day calendar is a real one. The 
+<br />
+problem is that there is no valid transformation between the 360-day 
+<br />
+calendar and the Gregorian calendar. The 360-day calendar has no point 
+<br />
+at which it is tied into history, and it is not defined relative to the 
+<br />
+real Earth, but some theoretical planet that is closer to a theoretical 
+<br />
+Sun than the real Earth is. You see this same problem with certain 
+<br />
+geographic coordinate systems, particularly with vertical datums. There 
+<br />
+are cases where you can't transform from one to another.
+<br />
+<br />Your example nicely points out another aspect to the calendar attribute 
+<br />
+value. If you wish to express the time coordinate values as timestamps 
+<br />
+using a different calendar than the one named in the variable, then you 
+<br />
+have to be sure that there is a valid transform. The transformation 
+<br />
+still only has to be applied to the reference timestamp, but 
+<br />
+transforming a 360-day calendar date into a Gregorian calendar date is 
+<br />
+not valid. You can do some sort of adjustment to map your model (I 
+<br />
+assume) times into something approximating a real-world calendar, but 
+<br />
+you still don't have real-world dates when you are done. And it's fine 
+<br />
+to do that if that is what you need to do. I could try and tell you what 
+<br />
+you can or can't do as a data consumer all day long, but you are going 
+<br />
+to do whatever it is you want and need to do to get your job done.
+<br />
+<br />I think the calendars can make the &quot;units&quot; well-defined. In fact, apart 
+<br />
+from the time system (UTC, TAI, etc) question, I'd say that the 
+<br />
+calendars pretty well accomplish that already. We are used to being able 
+<br />
+to convert quantities like gallons to liters or Kelvin to degrees 
+<br />
+Celsius, and we assume that we should be able to convert any calendar to 
+<br />
+any other calendar. The problem isn't in the calendars, it is in our 
+<br />
+assumption that all of them are interchangeble. They aren't. Gregorian 
+<br />
+and Julian dates are transformable because a common basis has been 
+<br />
+defined. UTC and GPS times are transformable for the same reason. 
+<br />
+360_day calendar dates are not transformable to anything else because 
+<br />
+there is no common basis with anything else. The same goes for no_leap 
+<br />
+and all_leap calendars.
+<br />
+<br />Perhaps it would be good to add some words to the calendar section to 
+<br />
+warn users about the fact that times in some calendars can't be 
+<br />
+transformed into other calendars. Particularly, we could add warnings to 
+<br />
+each of the different non-physical calendars pointing out that times in 
+<br />
+these calendars can't be validly transformed into times in physical 
+<br />
+calendars, and vice versa.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 6/10/15 6:40 PM, Ben Hetland wrote:
+<br />
+<em class="quotelev1">&gt; Jim,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; You wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; As a data consumer, all I have to do is convert the reference time from the stated calendar to my desired calender, then use that as the basis for producing timestamps from the elapsed times in the variable (using the correct set of time functions, of course). Expressing the elapsed times as timestamps in one calendar and then converting those timestamps to another is another way that you could do it, but one which adds unneeded steps. I don't see any reason to assume that data consumers would work in one particular way.
+</em><br />
+<em class="quotelev1">&gt; Suppose then, for the sake of argument and since somebody already introduced the concept of a 360-day model calendar, that I have this model that produces data in &quot;days&quot; since 2012-01-01 of this simplified calendar (where every month also has 30 days). For my convenience as the data producer I then indicate that kind of calendar in the NetCDF, and &quot;days since&quot; makes sense because that is also my internal time axis coordinates. The dates can perhaps be interpreted such that they are just to be roughly the same date in the Gregorian calendar. So when I get to 2013-01-01 in my model I just store the time as 360.0 &quot;days&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Turning to the consumer side, it might be simple in my own little viewer tool that just uses the &quot;simplistic&quot; calendar calculations to show monthly values as, say, 2012/dec and 2013/jan for the 330 and 360 day entries respectively. However, another reader might have implemented more accurate calendar support, and it correctly converts the ref. timestamp from 360-d into gregorian. If the reader now gives no further thought to just that peculiar &quot;days&quot; unit, but just adds the day counts on the Gregorian timescale, then the aforementioned two data values will end up at 2012/nov and 2012/dec instead.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; OK, so if it was a bad idea to do it that way, should the reader just scale the time values by eg. (365.2425/360.0)? Still my 360-value would become 2012-12-31T05:49 because it was a leap year. Still other conversions could be weird if we have models where every .0 time is at midnight and the .5 fractions are at noon, because now they will just end up at all times of day on the Gregorian scale...
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The core of the problem here, as with the leap seconds, is that either the length of the units are not the same in all reference systems (such as the days vs months vs year above), or they are not really constant or have discontinuies across two reference systems (here: the calendars). The latter has already been well illustrated in this discussion thread regarding the leap seconds, I think, so further elaborations appear unnecessary.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; The reference timestamp in the units attribute is what anchors the     elapsed time values into history.
+</em><br />
+<em class="quotelev1">&gt; Yes.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; That's all that is needed.
+</em><br />
+<em class="quotelev1">&gt; Only if the &quot;units&quot; are well-defined (see above), which unfortunately in the case of calendars seems not to be the case.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; If you modify a time variable by giving the calendar attribute a new value and changing the timestamp in the units attribute from the original calendar to the new calendar, the contents of the altered time variable will still refer to the same points in history.
+</em><br />
+<em class="quotelev1">&gt; Not if it had been converted into &quot;elapsed time&quot; using the inherent assumptions tied with one calendar system, and then we use different assumptions from the new calendar system to back-convert into a timestamp. Again a &quot;hidden&quot; scaling/ modification happens when switching the &quot;system&quot;. I suppose other things than time/calendar are affected by this too, like monetary values involving two or more currencies for instance. (&quot;Which reference rate.&quot;)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/Connect with us on Facebook for climate 
+&lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+&lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us 
+on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and 
+_at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150611/b3480e1f/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150611/b3480e1f/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150611/b3480e1f/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150611/b3480e1f/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Jun 11 2015 - 07:14:31 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7106">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7107.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7105.html" title="Previous message in the list">Ben Hetland: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7105.html" title="Message to which this message replies">Ben Hetland: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7109.html" title="Next message in this discussion thread">Timothy Patterson: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7106" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7106" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7106" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7106" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:56 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7105.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7107.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

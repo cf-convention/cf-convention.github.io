@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] scalar coordinates from Jonathan Gregory on 2013-06-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] scalar coordinates" />
+<meta name="Date" content="2013-06-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5470.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5472.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] scalar coordinates</h1>
+<!-- received="Wed Jun  5 07:11:41 2013" -->
+<!-- isoreceived="20130605061141" -->
+<!-- sent="Wed, 5 Jun 2013 14:11:41 +0100" -->
+<!-- isosent="20130605131141" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] scalar coordinates" -->
+<!-- id="20130605131141.GA25225_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5471" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5472.html" accesskey="d" title="John Graybeal: &quot;[CF-metadata] new standard name for primary productivity of carbon per unit volume&quot;">Next message</a> ]
+[ <a href="./5470.html" title="Jonathan Gregory: &quot;[CF-metadata] CF-1.6 DSG clarification: time series &#0038; lat/lon coordinates&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5471" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5471" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5471" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5471" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20scalar%20coordinates">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 5 Jun 2013 14:11:41 +0100</span><br />
+</address>
+<br />
+Dear Mark
+<br />
+<br />We still have a difference in our interpretation of scalar coordinates. Maybe
+<br />
+this is irreconcilable, but I am reluctant to reach that conclusion. The
+<br />
+reason why this is hard to settle is that, as we have agreed, it has no
+<br />
+implication at all for the netCDF file. It is just a matter of interpretation.
+<br />
+It's hard to decide because we are not constrained by the file format. The
+<br />
+constraints come from what you do with the data, and what design you would
+<br />
+like for data analysis software.
+<br />
+<br />Our difference is about whether scalar coordinate variables represent a CF
+<br />
+construct of their own, or whether they are a convenient way of representing
+<br />
+size-one dimension coordinate constructs and size-one string-valued auxiliary
+<br />
+coordinate constructs, which are normally stored respectively as (Unidata
+<br />
+convention) coordinate variables and (CF) string-valued auxiliary coordinate
+<br />
+variables. As discussed, I don't recall an intention, when scalar coordinates
+<br />
+were introduced, that they would be a new kind of thing; they were intended to
+<br />
+be handy way of encoding an existing kind of thing, and that is what the words
+<br />
+in the standard document still suggest to me.
+<br />
+<br />Therefore I think we need only two concepts and scalar coordinates are not a
+<br />
+third concept. I argue for this because it's simpler (applying Occam's razor,
+<br />
+if you like). We need only those two concepts to describe coordinate variables
+<br />
+in CF-netCDF files.
+<br />
+<br />That means you have to decide which kind a scalar coordinate variable is
+<br />
+representing. I think the convention (up to CF 1.5 - see DSG email) implies
+<br />
+that if it's a numeric scalar, it's a size-one dimension coordinate construct,
+<br />
+and if it's a single string, it's a size-one auxiliary coordinate construct.
+<br />
+<br />You are concerned this restricts your flexibility. I see why you say that, of
+<br />
+course, but practically speaking I don't think it does. You can't leave it
+<br />
+undecided what a scalar coordinate means (according to my view), but nothing
+<br />
+prevents you from following a different interpretation to the above when you
+<br />
+read the file. That may mean you have adopted a different view from the person
+<br />
+who created the file, but if that person did not *want* to make it clear what
+<br />
+sort it was (which is what you suggest) then surely he or she does not mind
+<br />
+which interpretation you adopt. Equally, you can read the file with one
+<br />
+interpretation, and then change your mind when it's in memory, by converting
+<br />
+dimension coordinate constructs to auxiliaries or vice-versa, creating or
+<br />
+dropping size-one dimensions. This is all easy to do in memory. The data is
+<br />
+completely unaffected, apart from being possibly reshaped by the insertion or
+<br />
+removal of size-one dimensions. It just shuffles the metadata around.
+<br />
+<br />It matters when you come to aggregate different variables, within a file or
+<br />
+from different files. For instance, you can't aggregate two variables that have
+<br />
+different scalar values of both experiment_id and ensemble_member_number unless
+<br />
+you decide that these are both auxiliary coordinate variables of the same
+<br />
+(omitted) size-one dimension. On the other hand, if you have four data
+<br />
+variables, showing all the possible combinations of two scalars,
+<br />
+(experiment_id 1, ensemble_member_number 1)
+<br />
+(experiment_id 1, ensemble_member_number 2)
+<br />
+(experiment_id 2, ensemble_member_number 1)
+<br />
+(experiment_id 2, ensemble_member_number 2)
+<br />
+you may wish to aggregate them with two size-2 dimensions. Thus, you may need
+<br />
+to change the interpretation of scalars, in order to enable the aggregation or
+<br />
+determine how it's done. But to get that flexibility doesn't require that
+<br />
+initially you were undecided about what the scalars mean. It only needs you to
+<br />
+be able change your mind about what they mean, which is easy to do (last
+<br />
+paragraph).  Aggregation of data variables is *not* part of the CF standard
+<br />
+(at the moment).  Therefore what you do about this lies in the realm of
+<br />
+software design, which can adopt its own rules, which the writer of the data
+<br />
+can't influence.
+<br />
+<br />Once the data is in memory, you can do what you like. You might wish to be
+<br />
+flexible about interpretation of multi-valued coordinates, not just
+<br />
+scalars. For instance, you might want to combine two data variables (lat,lon)
+<br />
+with different lat and lon coordinate variables and dimensions, by flattening
+<br />
+them both, to make lat and lon auxiliaries of a discrete (index) axis. That's
+<br />
+not how the data was written, but so what? It might be convenient for the use
+<br />
+of the data. It doesn't imply the coordinate variables to be of unspecific
+<br />
+meaning in the first place.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Jun 05 2013 - 07:11:41 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5471">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5472.html" title="Next message in the list">John Graybeal: "[CF-metadata] new standard name for primary productivity of carbon per unit volume"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5470.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] CF-1.6 DSG clarification: time series &#0038; lat/lon coordinates"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5471" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5471" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5471" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5471" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:23 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5470.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5472.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

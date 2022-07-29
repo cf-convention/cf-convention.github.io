@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] code that does semantic checking of CF headers from Seth McGinnis on 2012-04-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] code that does semantic checking of CF headers" />
+<meta name="Date" content="2012-04-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4405.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4407.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] code that does semantic checking of CF headers</h1>
+<!-- received="Thu Apr 19 15:31:59 2012" -->
+<!-- isoreceived="20120419143159" -->
+<!-- sent="Thu, 19 Apr 2012 15:31:59 -0600" -->
+<!-- isosent="20120419213159" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] code that does semantic checking of CF headers" -->
+<!-- id="web-39890440_at_mail.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="D38DCA8842FECD4585C8DE16D602ABF42DDD34B7_at_vime-mbx1.rdg.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4406" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4407.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] a flag variable questions&quot;">Next message</a> ]
+[ <a href="./4405.html" title="Jon Blower: &quot;[CF-metadata] code that does semantic checking of CF headers&quot;">Previous message</a> ]
+[ <a href="./4405.html" title="Jon Blower: &quot;[CF-metadata] code that does semantic checking of CF headers&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4414.html" accesskey="t" title="Jon Blower: &quot;[CF-metadata] code that does semantic checking of CF headers&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4406" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4406" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4406" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4406" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20code%20that%20does%20semantic%20checking%20of%20CF%20headers">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 19 Apr 2012 15:31:59 -0600</span><br />
+</address>
+<br />
+Ah, I see.  Interesting.  Maybe that's an argument for recommending that
+<br />
+valid_min/max be used sparingly and only when necessary, and not as generic
+<br />
+prophylaxis?  
+<br />
+<br />At least with regard to things like lat/lon coordinates, this example has me
+<br />
+thinking that it's more likely that one would encounter problems due to a
+<br />
+mis-specification of the valid range than that one would avoid problems because
+<br />
+there were known bad values in the file that got properly ignored because they
+<br />
+were outside the valid range...
+<br />
+<br />If anyone knows of a scenario where it's known a priori that certain values of
+<br />
+coordinate-type variables are bad, but likely to end up in the file anyway,
+<br />
+please share.  I think it would be illuminating for thinking about the
+<br />
+real-world practicalities of standards compliance.
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<br /><br />On Thu, 19 Apr 2012 20:28:38 +0000
+<br />
+&nbsp;Jon Blower &lt;j.d.blower at reading.ac.uk&gt; wrote:
+<br />
+<em class="quotelev1">&gt;Hi Seth, all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Sean did mean valid_min/max, not actual_min/max.  His situation was a
+</em><br />
+<em class="quotelev1">&gt;curvilinear grid which requires latitude and longitude 2D data variables.  The
+</em><br />
+<em class="quotelev1">&gt;valid_min/max should have been -90:90 for the latitude data variable, but were
+</em><br />
+<em class="quotelev1">&gt;set incorrectly (not by Sean) to a narrower range, meaning that Java-NetCDF
+</em><br />
+<em class="quotelev1">&gt;interpreted all latitude coordinate values outside this range to be &quot;missing
+</em><br />
+<em class="quotelev1">&gt;values&quot;.  Hence the georeferencing screwed up completely.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;It would seem fairly easy for an automated checker to check that valid_min/max
+</em><br />
+<em class="quotelev1">&gt;(if they exist) seemed reasonable according to the actual data contents,
+</em><br />
+<em class="quotelev1">&gt;although a checker could never be sure that they are right.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;HTH,
+</em><br />
+<em class="quotelev1">&gt;Jon
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;-----Original Message-----
+</em><br />
+<em class="quotelev1">&gt;From: cf-metadata-bounces at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt;[mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Seth McGinnis
+</em><br />
+<em class="quotelev1">&gt;Sent: 19 April 2012 21:05
+</em><br />
+<em class="quotelev1">&gt;To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt;Subject: Re: [CF-metadata] code that does semantic checking of CF headers
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Hi Sean,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;From your description, it sounds like you're confusing valid_min and 
+</em><br />
+<em class="quotelev2">&gt;&gt;valid_max
+</em><br />
+<em class="quotelev1">&gt;with actual_min and actual_max.  The former attributes define theoretical
+</em><br />
+<em class="quotelev1">&gt;extrema, beyond which data is considered invalid (e.g., latitude &gt; 90 degrees
+</em><br />
+<em class="quotelev1">&gt;or precipitation &lt; 0).  The latter are what modelers would include if they
+</em><br />
+<em class="quotelev1">&gt;were providing information to assist with visualizations.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Personally, I dislike actual_min and actual_max, because I don't think you can
+</em><br />
+<em class="quotelev1">&gt;trust them to be correct.  But if you want to take advantage of visualization
+</em><br />
+<em class="quotelev1">&gt;hints in metadata, those are the attributes to reference.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Cheers,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;--Seth
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;====
+</em><br />
+<em class="quotelev1">&gt;Seth McGinnis
+</em><br />
+<em class="quotelev1">&gt;NARCCAP Data Manager
+</em><br />
+<em class="quotelev1">&gt;Associate Scientist
+</em><br />
+<em class="quotelev1">&gt;IMAGe / NCAR
+</em><br />
+<em class="quotelev1">&gt;=====
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;On Thu, 19 Apr 2012 16:13:51 +0100
+</em><br />
+<em class="quotelev1">&gt; &quot;Gaffney, Sean P.&quot; &lt;sgaf at bodc.ac.uk&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;Hi all,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;My name is Sean Gaffney, from the British Oceanographic Data Centre, 
+</em><br />
+<em class="quotelev2">&gt;&gt;and I'm working on a project dealing with numerical model data that are 
+</em><br />
+<em class="quotelev2">&gt;&gt;in CF compliant NetCDF, so I thought I'd sign up to the community.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt;The project I am working on aims to develop a web-based delivery system 
+</em><br />
+<em class="quotelev2">&gt;&gt;for oceanographic numerical model data and has a module which allows 
+</em><br />
+<em class="quotelev2">&gt;&gt;visualisation of the data. We've been using test CF data to fine-tune 
+</em><br />
+<em class="quotelev2">&gt;&gt;some of the technical aspects of this visualisation.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;I have a particular issue at the moment which I hope someone out there 
+</em><br />
+<em class="quotelev2">&gt;&gt;might be able to assist me with.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;My problem started when I found that the test CF data were passing the 
+</em><br />
+<em class="quotelev2">&gt;&gt;BADC CF compliance checker, but not visualising properly. A check with 
+</em><br />
+<em class="quotelev2">&gt;&gt;the people who developed the visualisation module led to the discovery 
+</em><br />
+<em class="quotelev2">&gt;&gt;that, while the CF metadata were formatted correctly, the actual values 
+</em><br />
+<em class="quotelev2">&gt;&gt;within the metadata were incorrect e.g. the valid_min and valid_max 
+</em><br />
+<em class="quotelev2">&gt;&gt;attributes for both the latitude and longitude and dimensional 
+</em><br />
+<em class="quotelev2">&gt;&gt;variables had values which did not reflect the actual range of data in 
+</em><br />
+<em class="quotelev2">&gt;&gt;the file. The visualisation was setting itself up based on the values 
+</em><br />
+<em class="quotelev2">&gt;&gt;stored in the attributes and was therefore not displaying any data.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;Has anyone in the CF community come across this sort of issue before 
+</em><br />
+<em class="quotelev2">&gt;&gt;and if so, what solutions would you recommend? My initial thoughts were 
+</em><br />
+<em class="quotelev2">&gt;&gt;that I'd have to develop some sort of code which interrogates the data 
+</em><br />
+<em class="quotelev2">&gt;&gt;file and compares the entries in the CF metadata header against the 
+</em><br />
+<em class="quotelev2">&gt;&gt;actual data values in the file, but I'd be interested to see what 
+</em><br />
+<em class="quotelev2">&gt;&gt;people think. Please bear in mind that I won't actually be generating 
+</em><br />
+<em class="quotelev2">&gt;&gt;model runs myself, but will be receiving data from people that have 
+</em><br />
+<em class="quotelev2">&gt;&gt;done so and need to know that I'm being given valid data and metadata.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;Sorry for making my first message to the CF community so long.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;Looking forward to your responses
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;Yours
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;Sean Gaffney
+</em><br />
+<em class="quotelev2">&gt;&gt;BODC    
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;-----------------------------------------------------------------------
+</em><br />
+<em class="quotelev2">&gt;&gt;---------
+</em><br />
+<em class="quotelev2">&gt;&gt;Sean Gaffney
+</em><br />
+<em class="quotelev2">&gt;&gt;Data Scientist
+</em><br />
+<em class="quotelev2">&gt;&gt;British Oceanographic Data Centre
+</em><br />
+<em class="quotelev2">&gt;&gt;Joseph Proudman Building
+</em><br />
+<em class="quotelev2">&gt;&gt;6 Brownlow Street
+</em><br />
+<em class="quotelev2">&gt;&gt;Liverpool
+</em><br />
+<em class="quotelev2">&gt;&gt;L3 5DA
+</em><br />
+<em class="quotelev2">&gt;&gt;UK
+</em><br />
+<em class="quotelev2">&gt;&gt;+44 (0)151 795 4950
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;--
+</em><br />
+<em class="quotelev2">&gt;&gt;This message (and any attachments) is for the recipient only. NERC is 
+</em><br />
+<em class="quotelev2">&gt;&gt;subject to the Freedom of Information Act 2000 and the contents of this 
+</em><br />
+<em class="quotelev2">&gt;&gt;email and any reply you make may be disclosed by NERC unless it is 
+</em><br />
+<em class="quotelev2">&gt;&gt;exempt from release under the Act. Any material supplied to NERC may be 
+</em><br />
+<em class="quotelev2">&gt;&gt;stored in an electronic records management system.
+</em><br />
+<em class="quotelev2">&gt;&gt;_______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt;CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt;CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;_______________________________________________
+</em><br />
+<em class="quotelev1">&gt;CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt;CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Thu Apr 19 2012 - 15:31:59 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4406">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4407.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] a flag variable questions"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4405.html" title="Previous message in the list">Jon Blower: "[CF-metadata] code that does semantic checking of CF headers"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4405.html" title="Message to which this message replies">Jon Blower: "[CF-metadata] code that does semantic checking of CF headers"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4414.html" title="Next message in this discussion thread">Jon Blower: "[CF-metadata] code that does semantic checking of CF headers"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4414.html" title="Message sent in reply to this message">Jon Blower: "[CF-metadata] code that does semantic checking of CF headers"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4406" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4406" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4406" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4406" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:02 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4405.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4407.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

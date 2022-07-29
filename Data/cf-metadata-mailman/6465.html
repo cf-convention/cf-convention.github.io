@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Daily mean temperature from Hollis, Dan on 2014-09-11 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hollis, Dan (dan.hollis)" />
+<meta name="Subject" content="[CF-metadata] Daily mean temperature" />
+<meta name="Date" content="2014-09-11" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6464.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6466.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Daily mean temperature</h1>
+<!-- received="Thu Sep 11 08:59:34 2014" -->
+<!-- isoreceived="20140911075934" -->
+<!-- sent="Thu, 11 Sep 2014 14:59:34 +0000" -->
+<!-- isosent="20140911145934" -->
+<!-- name="Hollis, Dan" -->
+<!-- email="dan.hollis" -->
+<!-- subject="[CF-metadata] Daily mean temperature" -->
+<!-- id="D7D1372D480AEE41B3C1276C9A15404B07EDEFBD_at_EXXCMPD1DAG1.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="5410E259.1000708_at_llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6465" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6466.html" accesskey="d" title="Hollis, Dan: &quot;[CF-metadata] Return periods&quot;">Next message</a> ]
+[ <a href="./6464.html" title="John Caron: &quot;[CF-metadata] CF Conventions and netCDF-4 enhanced model&quot;">Previous message</a> ]
+[ <a href="./6461.html" title="Karl Taylor: &quot;[CF-metadata] Daily mean temperature&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6475.html" accesskey="t" title="Karl Taylor: &quot;[CF-metadata] Daily mean temperature&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6465" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6465" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6465" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6465" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hollis, Dan &lt;<a href="mailto:dan.hollis?Subject=Re%3A%20%5BCF-metadata%5D%20Daily%20mean%20temperature">dan.hollis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 11 Sep 2014 14:59:34 +0000</span><br />
+</address>
+<br />
+Hi Karl,
+<br />
+<br />Thanks for your suggestions.
+<br />
+<br />The complicating factor is that, as a result of crediting the maximum temperature to the previous day (but crediting the minimum temperature to the current day), the mean temperature is actually the average of values from two *different* 24-hour periods. For example, the mean for today will be the average of a) the minimum for the 24-hour period *ending* at 09:00 this morning, and b) the maximum for the 24-hour period *starting* at 09:00 this morning (a value which will only be recorded tomorrow morning and then credited to the previous day i.e. today). See also the example in my original posting.
+<br />
+<br />It may seem a strange method but it makes sense when you consider that the max will typically occur mid-afternoon whereas the min will generally occur around dawn i.e. the process of 'throwing back' the maximum temperature (only) ensures that most of the time you will be computing the average of a min and a max that occurred within the same calendar (midnight-to-midnight) day.
+<br />
+<br />Given the calculation method, setting the bounds to either one of the two constituent 24-hour periods would be arbitrary and inaccurate, and to give the bounds as a 48-hour period would probably be even worse. Consequently midnight-to-midnight seemed like the only viable option for mean temperature, but with the downside that the three temperature variables would then be dealt with in different ways (with the possibility for confusion this implies).
+<br />
+<br />I hope that helps to clarify the issue. Regarding the solution, we had some further discussion here yesterday and concluded that Seth's suggestion to set the bounds to midnight-to-midnight for all three temperature variables (and with a time coordinate of midday) is a better option. However your idea to give more information in brackets is a good one and could be used for max and min as well e.g.
+<br />
+<br />cell_methods = &quot;time: maximum (observing period is 0900 on day D to 0900 on day D+1)
+<br />
+cell_methods = &quot;time: minimum (observing period is 0900 on day D-1 to 0900 on day D)
+<br />
+<br />The only thing we are still wondering about is whether to use 0900-0900 or midnight-to-midnight for daily precipitation (the former being the true observing period). For temperature the diurnal cycle means that the 0900-0900 observations are a pretty good estimate of the true calendar-day max or min (in many cases the values would be identical). The same is not true for a cumulative variable such as precipitation, so we think that sticking to the true bounds of 0900-0900 may be a better option, even though it would be slightly at odds with the approach for temperature. To ensure at least some consistency I suspect we would still specify a time coordinate of midday (the same as for temperature).
+<br />
+<br />If you/anyone else has further comments or ideas then please let me know.
+<br />
+<br />Thanks,
+<br />
+<br />Dan
+<br />
+<br /><br /><br />________________________________
+<br />
+From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Karl Taylor
+<br />
+Sent: 11 September 2014 00:44
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] Daily mean temperature
+<br />
+<br />Hi Dan, Seth, and all,
+<br />
+<br />I'm not sure I understand what the practice is; do you calculate the daily mean from the max and min temperature that you read at 0900 GMT.  If so, then I think it is straight-forward:  the max and min temperatures occurred in the 24 hour period ending at 0900 GMT, and the &quot;daily mean&quot; is the mean of those 2 temperatures by definition and would apply to the same interval.  I would simply indicate, as provided for by CF, that the mean is computed as the mean of only the max and min values recorded.  So
+<br />
+<br />cell_methods = &quot;time: mean (estimated from mean of the maximum and minimum temperature observed)&quot;
+<br />
+<br />All measurements would have the same bounds. So, for example, a measurement recorded on 13 August 2013 would have bounds for both the max and min temperature of: 2013-08-12 09:00, 2013-08-13 09:00. The coordinate value should be somewhere within the closed interval defined by the bounds, and if you choose the mid-point, then you'd record 2013-08-12 21:00, but you could also choose noon of that day if you like (or any other time).
+<br />
+<br />I wouldn't worry too much about which day the WMO &quot;credits&quot; the temperature measurement to.  I would record the information correctly (as above).  I would say this describes your estimate of daily mean with complete accuracy.
+<br />
+<br />For monthly means, I would record the bounds as beginning at 0900 of the first day of the month and extending through 0900 of the first day of the next month.  Again this is an accurate description of what the mean represents (within the limitations of computing a mean over 24 hours from the max. and min. found in that period).    This interval would also apply to daily tmin and tmax.
+<br />
+<br />Does this make sense?
+<br />
+<br />Karl
+<br />
+<br /><br />On 9/3/14, 3:50 AM, Hollis, Dan wrote:
+<br />
+<br />Hi Seth,
+<br />
+<br />Many thanks for your comments and good advice.
+<br />
+<br />On the one hand I was keen to use the cell methods and bounds to describe the data as accurately as possible, but on the other hand I want to be sure that users can find the data they need easily and unambiguously. Given that it seems impossible to describe our daily mean temperatures with complete accuracy some compromise is going to be inevitable. I'm now swayed by your argument that inconsistency is dangerous and that we can use the comment attribute to flag up the true nature of the data. Using midnight-to-midnight bounds will also be less confusing for our monthly means of daily tmax and tmin (if I use 0900-0900 bounds for the daily values the month will end up starting and ending 24 hours earlier for tmin compared with tmax).
+<br />
+<br />I'll wait to see if anyone else has alternative suggestions and will also discuss this again with my colleagues. I'll let you know what we decide.
+<br />
+<br />Dan
+<br />
+<br /><br />-----Original Message-----
+<br />
+From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Seth McGinnis
+<br />
+Sent: 29 August 2014 19:53
+<br />
+To: cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+<br />
+Subject: Re: [CF-metadata] Daily mean temperature
+<br />
+<br />Hi Dan,
+<br />
+<br />Your proposed solution is consistent with regard to the time
+<br />
+coordinates, but inconsistent with regard to how that coordinate relates
+<br />
+to the time bounds, and I think that's dangerous.
+<br />
+<br />Users are going to assume that these files all have the same
+<br />
+representation, and will treat them as identical when they run them
+<br />
+through various processing tools.  If the time coordinate is at the
+<br />
+beginning of the period for one variable and the end for another, then
+<br />
+when you run something like &quot;ncks -d time,2013-08-01,2013-09-01&quot; on
+<br />
+those files, you'll get back different sets of days for Tmin and Tmax.
+<br />
+<br />Ambiguity is also a problem with time representation, and for that
+<br />
+reason I recommend always putting the time coordinate somewhere in the
+<br />
+interior of the time_bounds period, not at one of the ends.  If it's in
+<br />
+the middle, you generally don't have to worry about it, but if it's at
+<br />
+the end, you have to remember which end, and it's just too easy to get
+<br />
+it wrong.  (And when it does go wrong, it can go invisibly but
+<br />
+catastrophically wrong.  I once generated a climatology where one of the
+<br />
+&quot;years&quot; being averaged over was actually a single 3-hour timestep
+<br />
+because of this problem...)
+<br />
+<br />I think your colleague is correct.  Although the reporting period runs
+<br />
+0900-0900, by following the WMO guidance you're implicitly adjusting
+<br />
+your data to match the calendar day, i.e., to have a midnight-midnight
+<br />
+period.
+<br />
+<br />So putting all that together, my recommendation would be to set
+<br />
+time_bnds to run midnight-midnight, and to set the time coordinate to
+<br />
+noon on the corresponding day for both Tmin and Tmax.  Plus that solves
+<br />
+the problem of what to do about Tavg - it's also at noon.
+<br />
+<br />(Note that the Tmax record will now start a day earlier than the Tmin
+<br />
+record; personally, I would also trim off the first day of Tmax and the
+<br />
+last day of Tmin so that they're identical in that regard, too.  Because
+<br />
+a lot of users don't look at time *or* time_bnds, they just count array
+<br />
+indices from the beginning of the file...)
+<br />
+<br />If you want to record the fact that the original reporting period was
+<br />
+9AM-9AM, I would do it in a human-readable global comment.  There's no
+<br />
+standard governing that,  but the CMIP requirements use an attribute
+<br />
+named &quot;comment&quot; for this kind of thing.  So something like:
+<br />
+<br />&nbsp;&nbsp;&nbsp;:comment = &quot;Original reporting period was 9am-9am GMT, but following
+<br />
+WMO guidance effectively adjusts this to 0Z-0Z.&quot;
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<br /><pre>
+----
+Seth McGinnis
+NARCCAP Data Manager
+Associate Scientist III
+RISC / IMAGe / NCAR
+----
+On 8/29/14 6:19 AM, Hollis, Dan wrote:
+Hi all,
+Here is the third in a series of questions relating to our work on
+converting gridded UK observations data to NetCDF...
+As many of you will know, climatological observations made in the UK
+have traditionally been gathered at 0900 GMT. These include maximum
+temperature, minimum temperature and precipitation amount.
+We follow the guidance given in the WMO Guide to Climatological
+Practices which states:
+&quot;Precipitation amounts and maximum temperatures noted at an early
+morning observation should be credited to the previous calendar day&quot; (p2-13)
+The implication is that minimum temperatures should be credited to the
+calendar day of the observation. This all makes sense as the max will
+typically occur mid-afternoon whereas the min will generally occur
+around dawn.
+So, for an arbitrary calendar day (e.g. 13 August 2013) the cell bounds
+would be:
+Minimum temperature: 2013-08-12 09:00, 2013-08-13 09:00 (cell_method:
+minimum)
+Max temp and precip: 2013-08-13 09:00, 2013-08-14 09:00 (cell_method:
+maximum and sum respectively)
+We also follow the WMO guidance regarding the calculation of daily mean
+temperatures:
+&quot;the recommended methodology for calculating average daily temperature
+is to take the mean of the daily maximum and minimum temperatures&quot; (p4-18)
+The problem we have is how to describe the daily mean temperature, given
+that it is the mean of values from two different 24-hour periods.
+One possibility is to simply interpret it as an estimate of the true
+mean temperature for the calendar day in question, and thus specify the
+bounds as midnight-midnight i.e.
+2013-08-13 00:00, 2013-08-14 00:00 (cell_method: mean)
+For consistency we propose specifying the value of the time coordinate
+to be the same for all variables i.e. 2013-08-13 09:00 (which is 09:00
+on the calendar day to which the observations are credited - it is the
+end point of the minimum temperature bounds, the start point of the
+maximum temperature bounds, and part way through the proposed mean
+temperature bounds).
+One colleague wondered whether it would be better (less confusing to the
+user) to consider all of the values to be estimates for the calendar day
+and therefore give all of the variables (max, min, mean and precip) the
+same midnight-to-midnight bounds (even though the actual observation
+period is different to this).
+If anyone else has had to tackle this type of issue I would be very
+interested to know what approach you followed. Alternatively if anyone
+can give advice on how to correctly describe a mean value calculated in
+the way I have described that would be much appreciated.
+Thanks,
+Dan
+PS We will also need to store monthly means and climatological averages
+of all these variables. I thought I'd start by asking about the daily
+quantities and see where the discussion led...
+Dan Hollis   Climatologist
+*Met Office*   Hadley Centre   FitzRoy Road   Exeter   Devon   EX1 3PB
+United Kingdom
+Tel: +44 (0)1392 886780   Fax: +44 (0)1392 885681
+E-mail: dan.hollis at metoffice.gov.uk&lt;mailto:dan.hollis at metoffice.gov.uk&gt;   Website: _<a href="http://www.metoffice.gov.uk">http://www.metoffice.gov.uk</a>_
+For UK climate and past weather information, visit
+_<a href="http://www.metoffice.gov.uk/climate">http://www.metoffice.gov.uk/climate</a>_
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+_______________________________________________
+CF-metadata mailing list
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140911/452b7470/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140911/452b7470/attachment-0001.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Sep 11 2014 - 08:59:34 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6465">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6466.html" title="Next message in the list">Hollis, Dan: "[CF-metadata] Return periods"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6464.html" title="Previous message in the list">John Caron: "[CF-metadata] CF Conventions and netCDF-4 enhanced model"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6461.html" title="Message to which this message replies">Karl Taylor: "[CF-metadata] Daily mean temperature"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6475.html" title="Next message in this discussion thread">Karl Taylor: "[CF-metadata] Daily mean temperature"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6475.html" title="Message sent in reply to this message">Karl Taylor: "[CF-metadata] Daily mean temperature"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6465" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6465" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6465" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6465" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:46 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6464.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6466.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

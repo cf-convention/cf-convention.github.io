@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Clarifications on latitude_longitude from Eizi TOYODA on 2014-06-25 (cf-metadata-mailman)</title>
+<meta name="Author" content="Eizi TOYODA (toyoda)" />
+<meta name="Subject" content="[CF-metadata] Clarifications on latitude_longitude" />
+<meta name="Date" content="2014-06-25" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6323.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6325.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Clarifications on latitude_longitude</h1>
+<!-- received="Tue Jun 24 20:48:14 2014" -->
+<!-- isoreceived="20140624194814" -->
+<!-- sent="Wed, 25 Jun 2014 11:48:14 +0900" -->
+<!-- isosent="20140625024814" -->
+<!-- name="Eizi TOYODA" -->
+<!-- email="toyoda" -->
+<!-- subject="[CF-metadata] Clarifications on latitude_longitude" -->
+<!-- id="CAEDreLktAR0x4F1-MAzbJZCQsNC9BW3SuPX1CyvU5nmZmWJtsw_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6324" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6325.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Clarifications on latitude_longitude&quot;">Next message</a> ]
+[ <a href="./6323.html" title="John Graybeal: &quot;[CF-metadata] cloud amounts&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6326.html" accesskey="t" title="Brigitte Koffi: &quot;[CF-metadata] String attribute syntax&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6324" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6324" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6324" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6324" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Eizi TOYODA &lt;<a href="mailto:toyoda?Subject=Re%3A%20%5BCF-metadata%5D%20Clarifications%20on%20latitude_longitude">toyoda</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 25 Jun 2014 11:48:14 +0900</span><br />
+</address>
+<br />
+Hi Jim and all,
+<br />
+<br />(Sorry for delayed response - I found this thread in while digging a huge
+<br />
+pile of emails.)
+<br />
+<br />Yes the default is the spherical latitude and longitude.  But practically
+<br />
+we often compare locations in such datasets with locations in common
+<br />
+ellipsoidal CRS such as WGS84.  If a default CRS is to be defined that
+<br />
+should be WGS84. I don't think anybody want automatic conversion of
+<br />
+latitudes from spherical to ellipsoidal - that means 20 km of shift in
+<br />
+midlatitudes.
+<br />
+<br />When a NWP modeller says the coordinates are spherical, that simply means
+<br />
+the equation of motion is derived from spherical setting.  Surface
+<br />
+elevation and observations are given in coordinates in ellipsoidal CRS.
+<br />
+That may sound odd, but that is what we actually doing.  So it is natural
+<br />
+to compare the model forecasts with location in WGS84.
+<br />
+<br />Defaulting WGS84 might be no good for observational data given in CRS
+<br />
+different from WGS84.  I hope most of observation switched to WGS84 before
+<br />
+storing of observation data in netCDF became popular recently.  It is good
+<br />
+thing to clarify the default CRS ASAP in that regard too.
+<br />
+<br />Best Regards,
+<br />
+<pre>
+--
+Eiji (aka Eizi) TOYODA
+<a href="http://www.google.com/profiles/toyoda.eizi">http://www.google.com/profiles/toyoda.eizi</a>
+On Sat, May 31, 2014 at 4:01 AM, Jim Biard &lt;jbiard at cicsnc.org&gt; wrote:
+&gt;  Maik,
+&gt;
+&gt; I think it would be good to make a CRS specification a requirement for
+&gt; every variable with geographic coordinates. Backward compatibility requires
+&gt; that we allow a default in the case that nothing was specified. This is all
+&gt; further complicated by numerous data sets which have been produced with
+&gt; physical latitudes and longitudes, but no CRS was specified. So it's a
+&gt; messy situation.
+&gt;
+&gt; Your example looks good to me.
+&gt;
+&gt; Grace and peace,
+&gt;
+&gt; Jim
+&gt;
+&gt;
+&gt;
+&gt; On 5/30/14, 11:37 AM, Maik Riechert wrote:
+&gt;
+&gt; Hi Jim
+&gt;
+&gt; Thanks for the detailed explanations.
+&gt;
+&gt; If a spherical earth (of a certain radius) is the default, shouldn't it
+&gt; be defined as such? Otherwise, having latitude and longitude coordinates
+&gt; without a datum, as in example 5.2, would represent (partially) useless
+&gt; data, quoting ISO: &quot;without the full specification of the coordinate
+&gt; reference system, coordinates (that is latitude and longitude) are
+&gt; ambiguous at best and meaningless at worst&quot;.
+&gt;
+&gt; As for the coordinate variables, just to be sure, let's visualize it a bit:<a href="http://eol.jsc.nasa.gov/sseop/images/ESC/large/ISS030/ISS030-E-84614.JPG">http://eol.jsc.nasa.gov/sseop/images/ESC/large/ISS030/ISS030-E-84614.JPG</a>
+&gt;
+&gt; Let's assume for each pixel center I know the latitude and longitude --
+&gt; for those pixels covering the earth. That gives me each an auxiliary 2D
+&gt; coordinate array for latitude and longitude. It is an irregular grid of
+&gt; course. I would model this data as:
+&gt;
+&gt; dimensions:
+&gt; xc = 4256 ;
+&gt; yc = 2832 ;
+&gt; band = 3 ; // red, green, blue
+&gt; variables:
+&gt; byte img(yc,xc,band) ;
+&gt; img:long_name = &quot;color intensity&quot; ;
+&gt; img:units = &quot;unitless&quot; ;
+&gt; img:valid_min = 0 ;
+&gt; img:valid_max = 255 ;
+&gt; img:coordinates = &quot;lon lat&quot; ;
+&gt; img:grid_mapping = &quot;crs&quot;;
+&gt; float lon(yc,xc) ;
+&gt; lon:standard_name = &quot;longitude&quot; ;
+&gt; lon:long_name = &quot;longitude&quot; ;
+&gt; lon:units = &quot;degrees_east&quot; ;
+&gt; float lat(yc,xc) ;
+&gt; lat:standard_name = &quot;latitude&quot; ;
+&gt; lat:long_name = &quot;latitude&quot; ;
+&gt; lat:units = &quot;degrees_north&quot; ;
+&gt; int crs ;
+&gt; crs:grid_mapping_name = &quot;latitude_longitude&quot;;
+&gt; crs:semi_major_axis = 6378137.0 ;
+&gt; crs:inverse_flattening = 298.257223563 ;
+&gt;
+&gt; Is that correct? I am new to the field so please don't hesitate to give
+&gt; any kind of suggestion :)
+&gt;
+&gt; Cheers
+&gt; Maik
+&gt;
+&gt; Am 30.05.2014 16:20, schrieb Jim Biard:
+&gt;
+&gt;  Maik,
+&gt;
+&gt; You have wandered into an area that has a few hot-button topics
+&gt; associated with it. I'll see if I can help clarify without riling anyone
+&gt; else. :)
+&gt;
+&gt; Here we go, in order of your questions:
+&gt;
+&gt; The spherical Earth is a default. It harkens back to CF's origins in the
+&gt; modeling community, where they often use a spherical Earth.
+&gt;
+&gt; The latitude and longitude coordinates variables, if they are true
+&gt; coordinate variables (and not auxiliary coordinate variables) must each
+&gt; be monotonic. If they are auxiliary coordinate variables, I don't think
+&gt; there is any constraint.
+&gt;
+&gt; The naming &quot;grid_mapping&quot; is (personally) a less-than-perfect choice.
+&gt; The variable named by the grid_mapping attribute contains Coordinate
+&gt; Reference System (CRS) information. Even a latitude-longitude CRS needs
+&gt; to be declared, as there are a number of these. (Their differences are
+&gt; largely ignorable if you are working on 2.5 degree centers, but that is
+&gt; an assumption that may not be warranted with observation data.) The
+&gt; variable named by the grid_mapping attribute contains the declaration of
+&gt; the horizontal datum, whether it is for a projected CRS or a
+&gt; latitude-longitude CRS. Declarations of the vertical datum are still
+&gt; being ironed out.
+&gt;
+&gt; Depending on what you were wanting to do, you should be able to use the
+&gt; contents of the variable named by the grid_mapping attribute, along with
+&gt; a geographic coordinate system package, to convert the values in
+&gt; variables containing X-Y coordinates or latitude-longitude coordinates
+&gt; into any other reachable CRS. (Not all CRSs are reachable from all other
+&gt; CRSs, but that's a different problem.) If you have both X-Y and
+&gt; latitude-longitude coordinates in your file, the software can use
+&gt; whichever it chooses, and can convert to another CRS however it choses.
+&gt; If you only have latitude-longitude coordinates in your file, the
+&gt; software can use those straight, or can convert to another CRS, but for
+&gt; precise conversion you need to know which ellipsoid to use (and where
+&gt; the origin is located, etc) for the latitudes and longitudes in the file.
+&gt;
+&gt; Does that help?
+&gt;
+&gt; Grace and peace,
+&gt;
+&gt; Jim
+&gt;
+&gt; On 5/29/14, 6:30 PM, Maik Riechert wrote:
+&gt;
+&gt;  Hi,
+&gt;
+&gt; I am confused about the following sentence in CF 1.6 under the
+&gt; Latitude-Longitude heading in appendix F:
+&gt;
+&gt; &quot;This grid mapping defines the canonical 2D geographical coordinate
+&gt; system based upon latitude and longitude coordinates on a spherical Earth.&quot;
+&gt;
+&gt; First, why &quot;spherical&quot;? In example 5.9 it is used with WGS84.
+&gt;
+&gt; Then, does the first sentence refer to a grid which must be regular? Can
+&gt; it also be rectilinear? Or even irregular?
+&gt;
+&gt; I think my main confusion is that latitude_longitude and
+&gt; rotated_latitude_longitude are probably not projections but the rest of
+&gt; the grid mappings is. Yet there is no clear differentiation between the
+&gt; two types in appendix F.
+&gt;
+&gt; I think the term &quot;grid mapping&quot; also adds to my confusion. To me, it
+&gt; means that I define a mapping from my data array (the grid) to
+&gt; latitude/longitude coordinates in a descriptive way, that is, as an
+&gt; implicit transformation operation described by the parameters of the
+&gt; grid mapping variable. In the case of the projections it makes sense.
+&gt; You can completely ignore the latitude/longitude arrays and just use the
+&gt; grid mapping to recompute the latitudes/longitudes (if you were a
+&gt; software that draws the data on a map). Right? But for
+&gt; latitude_longitude and rotated_latitude_longitude, this is not the case.
+&gt; Here the software would be required to use the latitude/longitude
+&gt; arrays. Is this right? If yes, then should I consider latitude_longitude
+&gt; as a datum definition with an unknown projection?
+&gt;
+&gt; I hope I could explain my confusion while not confusing you too.
+&gt;
+&gt; Thanks for your time,
+&gt; Maik
+&gt; _______________________________________________
+&gt; CF-metadata mailing listCF-metadata at cgd.ucar.edu<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+&gt;
+&gt;  --
+&gt; CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+&gt; Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+&gt; *Research Scholar*
+&gt; Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt; &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+&gt; North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt; &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+&gt; NOAA's National Climatic Data Center &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt; &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+&gt; 151 Patton Ave, Asheville, NC 28801
+&gt; e: jbiard at cicsnc.org
+&gt; o: +1 828 271 4900
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt; --
+&gt;       [image: CICS-NC] &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+&gt;  Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt;   *Jim Biard*
+&gt; *Research Scholar*
+&gt;  Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+&gt;  North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+&gt;  NOAA's National Climatic Data Center &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+&gt; 151 Patton Ave, Asheville, NC 28801
+&gt; e: jbiard at cicsnc.org
+&gt; o: +1 828 271 4900
+&gt;
+&gt;
+&gt;
+&gt;
+&gt; _______________________________________________
+&gt; CF-metadata mailing list
+&gt; CF-metadata at cgd.ucar.edu
+&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+&gt;
+&gt;
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140625/aff396f1/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140625/aff396f1/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: aahjehcc.png
+Type: image/png
+Size: 11847 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140625/aff396f1/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140625/aff396f1/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Jun 24 2014 - 20:48:14 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6324">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6325.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Clarifications on latitude_longitude"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6323.html" title="Previous message in the list">John Graybeal: "[CF-metadata] cloud amounts"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6326.html" title="Next message in this discussion thread">Brigitte Koffi: "[CF-metadata] String attribute syntax"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6326.html" title="Message sent in reply to this message">Brigitte Koffi: "[CF-metadata] String attribute syntax"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6324" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6324" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6324" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6324" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:43 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6323.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6325.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

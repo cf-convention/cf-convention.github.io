@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] udunits handling of fuzzy time units from Schultz, Martin on 2011-03-18 (cf-metadata-mailman)</title>
+<meta name="Author" content="Schultz, Martin (m.schultz)" />
+<meta name="Subject" content="[CF-metadata] udunits handling of fuzzy time units" />
+<meta name="Date" content="2011-03-18" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3332.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3334.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] udunits handling of fuzzy time units</h1>
+<!-- received="Fri Mar 18 04:11:54 2011" -->
+<!-- isoreceived="20110318041154" -->
+<!-- sent="Fri, 18 Mar 2011 11:11:54 +0100" -->
+<!-- isosent="20110318101154" -->
+<!-- name="Schultz, Martin" -->
+<!-- email="m.schultz" -->
+<!-- subject="[CF-metadata] udunits handling of fuzzy time units" -->
+<!-- id="5B141CC6507E4944995EAFDF6298A2F8B6459DF40F_at_MBX-CLUSTER01.ad.fz-juelich.de" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="mailman.12.1300407639.9969.cf-metadata_at_cgd.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3333" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3334.html" accesskey="d" title="Christopher Barker: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Next message</a> ]
+[ <a href="./3332.html" title="John Caron: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3335.html" accesskey="t" title="Steve Emmerson: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3333" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3333" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3333" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3333" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Schultz, Martin &lt;<a href="mailto:m.schultz?Subject=Re%3A%20%5BCF-metadata%5D%20udunits%20handling%20of%20fuzzy%20time%20units">m.schultz</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 18 Mar 2011 11:11:54 +0100</span><br />
+</address>
+<br />
+Dear all,
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;in our work, we have often been confronted with the current limitations where the only times allowed by CF are &quot;real&quot; times using the &quot;days since date&quot; syntax and assuming the Gregorian calendar. We often have &quot;climatological&quot; fields as model input data, where monthly variation is included, but we don't care whether the field is valid for the 14th or 15th of February. Also, much of our output is analyzed as monthly means and we happily accept that some Februaries contain an extra day. It's still a month, and variations in weather patterns don't change with leap year anyhow.
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;In my opinion, Steve hit the nail on the head when he writes:
+<br />
+<br /><em class="quotelev1">&gt; There are two ways in which dimensions (positions and
+</em><br />
+<em class="quotelev1">&gt; intervals) can be handled.  Each of them is self-consistent:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;    1. *represent positions as strings*.
+</em><br />
+<em class="quotelev1">&gt;           * Then create special functions to compute the implied
+</em><br />
+<em class="quotelev1">&gt;             distance between those string representations.  In this
+</em><br />
+<em class="quotelev1">&gt;             outlook units must be specified when the interval is computed.
+</em><br />
+<em class="quotelev1">&gt;    2. *represent positions with a zero reference, and an offset value.
+</em><br />
+<em class="quotelev1">&gt;           * Then create special functions to generate formatted strings
+</em><br />
+<em class="quotelev1">&gt;             representing positions along the axis.  In this outlook
+</em><br />
+<em class="quotelev1">&gt;             units must be stored with the representation.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;So, if new calendars are defined/introduced, they must come with a self-consistent (and complete) set of rules how to compute differences and how to map one unit (days, weeks, months, years) onto the other. Within these rules you can of course disallow certain units (see Python's timedelta), that's erfectly legal. Once these rules are clear, it would be no problem to deal with any kind of calendar (even including the poor person who models the atmosphere on Venus or Mars which have very different calendars). You can then even transform data from one calendar into the other and you know what you will get (this is helpful if you construct such climatologies from daily model output, for example). It doesn't necessarily mean that the transformation must work &quot;bidirectional&quot; (can't find the correct english word for what I want to say here), i.e. &quot;February 12 of year 203&quot; in a &quot;360 days&quot; calendar (as often used in paleo studies) can be translated into &quot;February 12, 1834&quot; (if you define that your base year was <br />
+1631, which will be somewhat arbitrary), but &quot;February 12, 1834&quot; might not necessarily be converted back into &quot;February 12, 1834&quot;, but could be some other date. Indeed, this is the &quot;fuzziness&quot; of the subject - here is where it comes in. Within each calendar, there should not be any ambiguities.
+<br />
+<br />Hope, this is useful,
+<br />
+<br />Martin
+<br />
+<br />PS: I do disagree with Christopher when he says ''&quot;30 days since 31 Jan 2008&quot; is perfectly well defined.'' - do you refer to 00 UTC or 12 UTC on 31 Jan 2008? Or even 00:00 UTC or 01:02:30.3625132 h UTC? OK: if you define an &quot;oceanographic calendar&quot; (where anything shorter than a day doesn't matter), you could have a rule that all hours, minutes, seconds, milliseconds, etc. are mapped onto one value (say 00:00:00 h UTC). But you will need to define this rule in order to give a meaning to your calendar.
+<br />
+<br /><br />= Dr. Martin G. Schultz, IEK-8, Forschungszentrum J?lich  =
+<br />
+= D-52425 J?lich, Germany                                 =
+<br />
+= ph: +49 (0)2461 61 2831, fax: +49 (0)2461 61 8131       =
+<br />
+= email: m.schultz at fz-juelich.de                          =
+<br />
+= web: <a href="http://www.fz-juelich.de/icg/icg-2/m_schultz">http://www.fz-juelich.de/icg/icg-2/m_schultz</a>       =
+<br />
+<br /><br />------------------------------------------------------------------------------------------------
+<br />
+------------------------------------------------------------------------------------------------
+<br />
+Forschungszentrum Juelich GmbH
+<br />
+52425 Juelich
+<br />
+Sitz der Gesellschaft: Juelich
+<br />
+Eingetragen im Handelsregister des Amtsgerichts Dueren Nr. HR B 3498
+<br />
+Vorsitzender des Aufsichtsrats: MinDirig Dr. Karl Eugen Huthmacher
+<br />
+Geschaeftsfuehrung: Prof. Dr. Achim Bachem (Vorsitzender),
+<br />
+Dr. Ulrich Krafft (stellv. Vorsitzender), Prof. Dr.-Ing. Harald Bolt,
+<br />
+Prof. Dr. Sebastian M. Schmidt
+<br />
+------------------------------------------------------------------------------------------------
+<br />
+------------------------------------------------------------------------------------------------
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Mar 18 2011 - 04:11:54 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3333">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3334.html" title="Next message in the list">Christopher Barker: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3332.html" title="Previous message in the list">John Caron: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3335.html" title="Next message in this discussion thread">Steve Emmerson: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3335.html" title="Message sent in reply to this message">Steve Emmerson: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><dfn>Reply</dfn>: <a href="./3342.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3333" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3333" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3333" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3333" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:43 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3332.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3334.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

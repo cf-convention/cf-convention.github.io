@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Logarithmic scaling and CF-Convention from Stephen Emsley on 2010-09-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="Stephen Emsley (SEmsley)" />
+<meta name="Subject" content="[CF-metadata] Logarithmic scaling and CF-Convention" />
+<meta name="Date" content="2010-09-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2822.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2824.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Logarithmic scaling and CF-Convention</h1>
+<!-- received="Mon Sep 27 09:45:47 2010" -->
+<!-- isoreceived="20100927084547" -->
+<!-- sent="Mon, 27 Sep 2010 16:45:47 +0100" -->
+<!-- isosent="20100927154547" -->
+<!-- name="Stephen Emsley" -->
+<!-- email="SEmsley" -->
+<!-- subject="[CF-metadata] Logarithmic scaling and CF-Convention" -->
+<!-- id="5B828D1373752F43A43240B3EBF08FF301437B5253_at_SVR-SBS2008.sbsnetwork.local" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20100927073328.GA6827_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2823" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2824.html" accesskey="d" title="Mike Grant: &quot;[CF-metadata] Logarithmic scaling and CF-Convention&quot;">Next message</a> ]
+[ <a href="./2822.html" title="Jonathan Gregory: &quot;[CF-metadata]  CMIP5 carbon cycle standard names&quot;">Previous message</a> ]
+[ <a href="./2820.html" title="Jonathan Gregory: &quot;[CF-metadata] Logarithmic scaling and CF-Convention&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2824.html" accesskey="t" title="Mike Grant: &quot;[CF-metadata] Logarithmic scaling and CF-Convention&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2823" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2823" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2823" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2823" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Stephen Emsley &lt;<a href="mailto:SEmsley?Subject=Re%3A%20%5BCF-metadata%5D%20Logarithmic%20scaling%20and%20CF-Convention">SEmsley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 27 Sep 2010 16:45:47 +0100</span><br />
+</address>
+<br />
+Dear John/Jonathan
+<br />
+<br /><br /><br />Thank you for your replies.
+<br />
+<br /><br />I had thought that something as ubiquitous as log scaling a variable would already have a CF-convention treatment. However, if I am interpreting the replies correctly this is not the case. There are two scenarios that have been addressed:
+<br />
+<br />(a) how to store a geophysical variable that is defined as a logarithm, e.g. dB.
+<br />
+(b) how to pack a float as a logarithm with scale_factor &amp; add_offset to cast it to a byte.
+<br />
+<br />Case (b) describes our scenario, e.g. to store chlorophyll concentration in sea water as a log scaled values? My understanding now is:
+<br />
+<br /><br /><br />1. If log(chlorophyll) is stored it cannot have the standard_name &quot;chlorophyll_concentration_in_sea_water&quot;.
+<br />
+<br />2. Units mg/m3 are incorrect as the log(chlorophyll) is dimensionless.
+<br />
+<br />3. Creating a base attribute is OK but is not a standard CF attribute, so not useful to 3rd party software.
+<br />
+<br /><br /><br />To remain CF-convention compliant, the relevant CDL could be:
+<br />
+<br /><br /><br />byte chl(latitude, longitude) ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;chl:long_name = &quot;Logarithm (base 10) of chlorophyll-a concentration [mg/m3]&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;chl:scale_factor = &quot;0.0150000&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;chl:add_offset = &quot;-2.00000&quot; ;
+<br />
+<br /><br /><br />Would this be the recommended approach?
+<br />
+<br /><br /><br /><br /><br />As a future modification of the convention would it be possible to leverage the cell_methods attribute by adding 'log10' as a keyword? Or is it already possible using the 'comment' modifier e.g.
+<br />
+<br /><br /><br />&nbsp;&nbsp;chl:cell_methods = &quot;lat: lon: point comment: log10 scaled&quot;;
+<br />
+<br /><br /><br />NOTE: is it necessity to include a bounds attribute if the cell_method is defined as a point measurement?
+<br />
+<br /><br /><br />Kind Regards
+<br />
+<br />Steve
+<br />
+<br /><br /><br /><pre>
+--
+Dr Stephen Emsley                                                      T: +44 (0)1752 764 295
+  ARGANS Limited                                                       M: +44 (0)7912 515 418
+-----Original Message-----
+From: Jonathan Gregory [mailto:jonathan at met.reading.ac.uk] On Behalf Of Jonathan Gregory
+Sent: 27 September 2010 08:33
+To: John Graybeal
+Cc: Stephen Emsley; cf-metadata at cgd.ucar.edu; ludovic.bourg at acri-st.fr; Samantha Lavender
+Subject: Re: [CF-metadata] Logarithmic scaling and CF-Convention
+Dear John and Steve
+Any conversion to logarithmic units requires a reference value, because the
+quantity computed is log(value/reference). The base of the logarithm (10 or e)
+also has to be specified. If this conversion is used for packing, those two
+numbers could be recorded as attributes and the transformation could be
+reversed. If the conversion is done to produce a new geophysical quantity, the
+reference level and logarithm base are part of the definition of the quantity
+and could be recorded in the standard_name definition. For instance, &quot;acoustic
+intensity level&quot; in decibels is the logarithm of the &quot;acoustic intensity&quot; in
+W m-2, with a reference of 1e-12 W m-2 according to wikipedia.
+Cheers
+Jonathan
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20100927/98b42301/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20100927/98b42301/attachment-0002.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Sep 27 2010 - 09:45:47 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2823">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2824.html" title="Next message in the list">Mike Grant: "[CF-metadata] Logarithmic scaling and CF-Convention"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2822.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  CMIP5 carbon cycle standard names"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2820.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] Logarithmic scaling and CF-Convention"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2824.html" title="Next message in this discussion thread">Mike Grant: "[CF-metadata] Logarithmic scaling and CF-Convention"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2824.html" title="Message sent in reply to this message">Mike Grant: "[CF-metadata] Logarithmic scaling and CF-Convention"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2823" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2823" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2823" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2823" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:32 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2822.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2824.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

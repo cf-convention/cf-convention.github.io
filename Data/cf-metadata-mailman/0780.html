@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] identifying horizontal coordinate variables using the axis attribute from Jonathan Gregory on 2007-03-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] identifying horizontal coordinate variables using the axis attribute" />
+<meta name="Date" content="2007-03-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0779.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0781.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] identifying horizontal coordinate variables using the axis attribute</h1>
+<!-- received="Wed Mar 28 11:17:05 2007" -->
+<!-- isoreceived="20070328101705" -->
+<!-- sent="Wed, 28 Mar 2007 18:17:05 +0100" -->
+<!-- isosent="20070328171705" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] identifying horizontal coordinate variables using the axis attribute" -->
+<!-- id="20070328171705.GA7614_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start780" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0781.html" accesskey="d" title="Jon Blower: &quot;[CF-metadata] attributes for min/max data values for visualization&quot;">Next message</a> ]
+[ <a href="./0779.html" title="Jonathan Gregory: &quot;[CF-metadata] Fwd: Re: approval of standard_names for aerosols and chemistry for HTAP&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg780" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg780" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg780" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg780" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20identifying%20horizontal%20coordinate%20variables%20using%20the%20axis%20attribute">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 28 Mar 2007 18:17:05 +0100</span><br />
+</address>
+<br />
+Dear all
+<br />
+<br />I have posted my proposal to make the application of the axis attribute more
+<br />
+precise and useful (I hope) as a new thread on the Trac section of the PCMDI
+<br />
+CF website (under development). I have used the template Kyle has set up, and
+<br />
+Russ has kindly agreed to moderate the discussion. In fact I hope this will
+<br />
+be a fairly easy test case for the system being developed, since the discussion
+<br />
+mostly took place last year on the email list, and appeared to reach a happy
+<br />
+conclusion. However, please post further comments. I think it remains to be
+<br />
+seen what is the most convenient way to do this; you could add them to the
+<br />
+Trac ticket, or send them to the usual email list (this one). Trac should send
+<br />
+any new entries to the ticket out to the email list. However, something went
+<br />
+wrong when I opened the ticket, so the proposal itself did not get sent out by
+<br />
+email. I have therefore copied it below. You can read it at
+<br />
+<a href="http://cf-pcmdi.llnl.gov/trac/ticket/8">http://cf-pcmdi.llnl.gov/trac/ticket/8</a>
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br /><br />1. Title
+<br />
+<br />Identifying horizontal coordinate variables using the axis attribute
+<br />
+<br />2. Moderator
+<br />
+<br />Russ Rew
+<br />
+<br />3. Requirement
+<br />
+<br />A method is needed to identify which are the horizontal coordinate axes of a
+<br />
+data variable
+<br />
+<br />4. Initial Statement of Technical Proposal
+<br />
+<br />The axis attribute of coordinate variables (1D, in the Unidata sense) is
+<br />
+optional. The value axis=&quot;X&quot; can be used on a longitude coordinate variable
+<br />
+(CF 4.2), and axis=&quot;Y&quot; on a latitude coordinate variable (CF 4.1)
+<br />
+(case-insensitive). CF is ambiguous about its use on other coordinate
+<br />
+variables. The introduction of CF 4 states that the axis attribute is
+<br />
+recommended for other kinds of spatial coordinate, but without giving an
+<br />
+interpretation to its values. However in CF 4.1 and 4.2 it is prohibited for
+<br />
+coordinate variables of rotated latitude and longitude. This proposal aims to
+<br />
+clarify the use of the axis attribute for horizontal coordinate variables.
+<br />
+<br />The proposal is
+<br />
+<br />* to modify the sentence &quot;We attach no specific meaning ...&quot; in the
+<br />
+introduction to CF 4 with: &quot;The values X and Y for the axis attribute should
+<br />
+be used to identify horizontal coordinate variables. If both X- and Y-axis are
+<br />
+identified, X-Y-up should define a right-handed coordinate system
+<br />
+i.e. rotation from the positive X direction to the positive Y direction is
+<br />
+anticlockwise if viewed from above.&quot;
+<br />
+<br />* to delete the prohibition on the axis attribute for rotated latitude in CF
+<br />
+4.1, and rotated longitude in CF 4.2.
+<br />
+<br />* to append the following to the paragraph beginning &quot;The use of coordinate
+<br />
+variables&quot; in the introduction to CF 5: &quot;The axis attribute is not allowed for
+<br />
+auxiliary coordinate variables. Auxiliary coordinate variables which lie on
+<br />
+the horizontal surface can be identified as such by their dimensions being
+<br />
+horizontal, which can in turn be inferred from their having an axis attribute
+<br />
+of X or Y, or from their units in the case of latitude and longitude (see
+<br />
+section 4).&quot;
+<br />
+<br />* to append the following to the paragraph beginning &quot;If the coordinate
+<br />
+variables&quot; in the introduction to CF 5: &quot;The use of the axis attribute with
+<br />
+values X and Y is recommended for the coordinate variables (see section 4).&quot;
+<br />
+<br />5. Benefits
+<br />
+<br />The axis attribute, thus redefined, provides a clear way to identify
+<br />
+horizontal coordinate variables and horizontal auxiliary coordinate variables.
+<br />
+<br />As an example, we can modify the one in CF 5.2:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;xc = 128 ;
+<br />
+&nbsp;&nbsp;yc = 64 ;
+<br />
+&nbsp;&nbsp;lev = 18 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;float T(lev,yc,xc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;T:long_name = &quot;temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;T:units = &quot;K&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;T:coordinates = &quot;lon lat&quot; ;
+<br />
+&nbsp;&nbsp;float xc(xc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;xc:axis=&quot;X&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;xc:long_name = &quot;x-coordinate in Cartesian system&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;xc:units = &quot;m&quot; ;
+<br />
+&nbsp;&nbsp;float yc(yc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;yc:axis=&quot;Y&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;yc:long_name = &quot;y-coordinate in Cartesian system&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;yc:units = &quot;m&quot; ;
+<br />
+&nbsp;&nbsp;float lev(lev) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lev:long_name = &quot;pressure level&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lev:units = &quot;hPa&quot; ;
+<br />
+&nbsp;&nbsp;float lon(yc,xc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lon:long_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lon:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;float lat(yc,xc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lat:long_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lat:units = &quot;degrees_north&quot; ;
+<br />
+<br />The axis attributes identify xc and yc as horizontal dimensions, and indicate
+<br />
+that xc-yc-up is right-handed. Because xc and yc are the dimensions of lon and
+<br />
+lat, these auxiliary coordinate variables are also implied to be
+<br />
+horizontal. In this case, we can also deduce that from the fact that they are
+<br />
+identifiable as longitude and latitude, but for a general 2D coordinate
+<br />
+variable it might not be obvious.
+<br />
+<br />There is no backward incompatibility because the redefinition permits the axis
+<br />
+attribute in cases where it was formerly not allowed, but does not change its
+<br />
+meaning in existing cases.
+<br />
+<br />6. Status Quo
+<br />
+<br />With the CF standard as it is, latitude and longitude coordinate variables can
+<br />
+be identified by their units or standard_name, and they are well known to be
+<br />
+horizontal. Other horizontal coordinate variables can be identified only by
+<br />
+recognising specific standard_names e.g. those in Appendix F on map
+<br />
+projections. The axis attribute is a more general solution that works without
+<br />
+any knowledge of the possible choices of horizontal grid.
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Mar 28 2007 - 11:17:05 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start780">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0781.html" title="Next message in the list">Jon Blower: "[CF-metadata] attributes for min/max data values for visualization"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0779.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Fwd: Re: approval of standard_names for aerosols and chemistry for HTAP"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg780" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg780" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg780" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg780" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0779.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0781.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

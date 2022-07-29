@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Dealing with large numbers of flag values innetcdf cf from martin.juckes at stfc.ac.uk on 2009-10-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="martin.juckes at stfc.ac.uk (martin.juckes)" />
+<meta name="Subject" content="[CF-metadata] Dealing with large numbers of flag values innetcdf cf" />
+<meta name="Date" content="2009-10-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2266.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2268.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Dealing with large numbers of flag values innetcdf cf</h1>
+<!-- received="Tue Oct 27 04:44:52 2009" -->
+<!-- isoreceived="20091027044452" -->
+<!-- sent="Tue, 27 Oct 2009 10:44:52 -0000" -->
+<!-- isosent="20091027104452" -->
+<!-- name="martin.juckes at stfc.ac.uk" -->
+<!-- email="martin.juckes" -->
+<!-- subject="[CF-metadata] Dealing with large numbers of flag values innetcdf cf" -->
+<!-- id="EB1E7CB92F5B35459E0B926D2A614DB605E099C3_at_EXCHANGE19.fed.cclrc.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="web-27264493_at_mail.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2267" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2268.html" accesskey="d" title="Lowry, Roy K: &quot;[CF-metadata] Dealing with large numbers of flag values	innetcdf cf&quot;">Next message</a> ]
+[ <a href="./2266.html" title="olivier lauret: &quot;[CF-metadata] Sea water transparency and reflectance.&quot;">Previous message</a> ]
+[ <a href="./2264.html" title="Seth McGinnis: &quot;[CF-metadata] Dealing with large numbers of flag values in	netcdf cf&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2268.html" accesskey="t" title="Lowry, Roy K: &quot;[CF-metadata] Dealing with large numbers of flag values	innetcdf cf&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2267" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2267" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2267" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2267" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: martin.juckes at stfc.ac.uk &lt;<a href="mailto:martin.juckes?Subject=Re%3A%20%5BCF-metadata%5D%20Dealing%20with%20large%20numbers%20of%20flag%20values%20innetcdf%20cf">martin.juckes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 27 Oct 2009 10:44:52 -0000</span><br />
+</address>
+<br />
+Thanks for the responses.
+<br />
+<br />Seth is right, I was looking for an alternative to having a gigantic &quot;flag_meanings&quot; attribute. 
+<br />
+<br />I have tried Seth's approach, but can?t get it past the cf-checker. There appears to be a character set restriction: I can get the first 547 flag_meaning strings accepted if I remove all the &quot;-&quot;, &quot;.&quot; and &quot;,&quot; characters. I'm reasonably sure there are no control characters in the following strings which could be responsible for the error message that I get (ERROR (3.5): Invalid syntax for 'flag_meanings' attribute) when I increase the number of flag_meanings to 550. Could it be something to do with the string length (16472 characters)?
+<br />
+<br />I could try abbreviating the flag_meanings, but this would either be tedious work by hand or liable to create confusion if done automatically. If you could point me to some information about exactly what string format is acceptable, that would be very helpful.
+<br />
+&nbsp;
+<br />
+To answer John's question: I'm currently using netcdf 3, in IDL -- I'm not sure what the options for upgrading to netcdf 4 are.
+<br />
+<br />Cheers,
+<br />
+Matin
+<br />
+<br /><em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: Seth McGinnis [mailto:mcginnis at ucar.edu]
+</em><br />
+<em class="quotelev1">&gt; Sent: 26 October 2009 23:13
+</em><br />
+<em class="quotelev1">&gt; To: John Graybeal; Juckes, Martin (STFC,RAL,SSTD)
+</em><br />
+<em class="quotelev1">&gt; Cc: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] Dealing with large numbers of flag values
+</em><br />
+<em class="quotelev1">&gt; innetcdf cf
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On Mon, 26 Oct 2009 12:16:17 -0700
+</em><br />
+<em class="quotelev1">&gt;  John Graybeal &lt;graybeal at marinemetadata.org&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt; &gt;Love the question! :-&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;Are you saying every map location has one index value, which is one of
+</em><br />
+<em class="quotelev1">&gt; the
+</em><br />
+<em class="quotelev2">&gt; &gt;numbers from 1 to 827?  So these are mutually exclusive?  Or are
+</em><br />
+<em class="quotelev1">&gt; there 827
+</em><br />
+<em class="quotelev2">&gt; &gt;flag values assigned independently for each map location?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; It sounds to me like it's the former case, and the problem is that
+</em><br />
+<em class="quotelev1">&gt; concatenating 827 flag values into a single string attribute makes
+</em><br />
+<em class="quotelev1">&gt; something that is easy for a machine to interpret, but impenetrable to
+</em><br />
+<em class="quotelev1">&gt; the human reader.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; As I read section 3.5, there are no other options for encoding the
+</em><br />
+<em class="quotelev1">&gt; information according to spec; a gigantic flag_meanings attribute is
+</em><br />
+<em class="quotelev1">&gt; the right answer.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; But if the issue is really usability, I think the answer is not to do
+</em><br />
+<em class="quotelev1">&gt; it differently, but just to add an extra attribute that presents the
+</em><br />
+<em class="quotelev1">&gt; same information in a more user-friendly format.  You could add an
+</em><br />
+<em class="quotelev1">&gt; attribute named something descriptive, like &quot;category_legend&quot;, and
+</em><br />
+<em class="quotelev1">&gt; pair the values &amp; meanings up, one per line.  Then you'd end up with
+</em><br />
+<em class="quotelev1">&gt; something that looks like this:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; float landtype(yc, xc) ;
+</em><br />
+<em class="quotelev1">&gt;         landtype:long_name =&quot;Land cover type&quot; ;
+</em><br />
+<em class="quotelev1">&gt;         landtype:standard_name =&quot;land_cover&quot; ;
+</em><br />
+<em class="quotelev1">&gt;         landtype:flag_values = 1.f, 2.f, 3.f, 4.f, 5.f, 6.f, 7.f, 8.f,
+</em><br />
+<em class="quotelev1">&gt; 9.f,
+</em><br />
+<em class="quotelev1">&gt; 10.f, 11.f, 12.f, 13.f, 14.f, 15.f, 16.f, 17.f, 18.f, 19.f, 20.f, 21.f,
+</em><br />
+<em class="quotelev1">&gt; 22.f,
+</em><br />
+<em class="quotelev1">&gt; 23.f, 24 .f;
+</em><br />
+<em class="quotelev1">&gt;         landtype:flag_meanings =&quot;Urban_and_Built-up_Land
+</em><br />
+<em class="quotelev1">&gt; Dryland_Cropland_and_Pasture Irrigated_Cropland_and_Pasture
+</em><br />
+<em class="quotelev1">&gt; Mixed_Dryland/Irrigated_Cropland_and_Pasture Cropland/Grassland_Mosaic
+</em><br />
+<em class="quotelev1">&gt; Cropland/Woodland_Mosaic Grassland Shrubland Mixed_Shrubland/Grassland
+</em><br />
+<em class="quotelev1">&gt; Savanna
+</em><br />
+<em class="quotelev1">&gt; Deciduous_Broadleaf_Forest Deciduous_Needleleaf_Forest
+</em><br />
+<em class="quotelev1">&gt; Evergreen_Broadleaf
+</em><br />
+<em class="quotelev1">&gt; Evergreen_Needleleaf Mixed_Forest Water_Bodies Herbaceous_Wetland
+</em><br />
+<em class="quotelev1">&gt; Wooden_Wetland Barren_or_Sparsely_Vegetated Herbaceous_Tundra
+</em><br />
+<em class="quotelev1">&gt; Wooded_Tundra
+</em><br />
+<em class="quotelev1">&gt; Mixed_Tundra Bare_Ground_Tundra Snow_or_Ice&quot; ;
+</em><br />
+<em class="quotelev1">&gt;         landtype:category_legend =&quot;\n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;1: Urban and Built-up Land \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;2: Dryland Cropland and Pasture \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;3: Irrigated Cropland and Pasture \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;4: Mixed Dryland/Irrigated Cropland and Pasture \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;5: Cropland/Grassland Mosaic \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;6: Cropland/Woodland Mosaic \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;7: Grassland \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;8: Shrubland \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;9: Mixed Shrubland/Grassland \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;10: Savanna \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;11: Deciduous Broadleaf Forest \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;12: Deciduous Needleleaf Forest \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;13: Evergreen Broadleaf \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;14: Evergreen Needleleaf \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;15: Mixed Forest \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;16: Water Bodies \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;17: Herbaceous Wetland \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;18: Wooden Wetland \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;19: Barren or Sparsely Vegetated \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;20: Herbaceous Tundra \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;21: Wooded Tundra \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;22: Mixed Tundra \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;23: Bare Ground Tundra \n&quot;,
+</em><br />
+<em class="quotelev1">&gt;                &quot;24: Snow or Ice&quot; ;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; (Sorry for the length, but it gives a real sense of what I mean.)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The flag_values and flag_meanings attributes are still a mess to look
+</em><br />
+<em class="quotelev1">&gt; at, but they're easy to deal with programmatically, while end-users
+</em><br />
+<em class="quotelev1">&gt; can easily look at category_legend and figure out what cover type 22
+</em><br />
+<em class="quotelev1">&gt; is if that's all they're after.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Fundamentally, this is the same issue as the question of how to record
+</em><br />
+<em class="quotelev1">&gt; the grid mapping, and the underlying problem is that while attributes
+</em><br />
+<em class="quotelev1">&gt; allow you to associate key-value pairs with a variable, there's no way
+</em><br />
+<em class="quotelev1">&gt; to nest another associative array within an attribute; the best you
+</em><br />
+<em class="quotelev1">&gt; can do is reference a dummy container variable and look at *its*
+</em><br />
+<em class="quotelev1">&gt; attributes.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; (Which is an approach that works well enough for the grid mapping
+</em><br />
+<em class="quotelev1">&gt; problem. It may be worth formalizing / regularizing it and applying it
+</em><br />
+<em class="quotelev1">&gt; to any attribute sets that are grouped together and have a tendency
+</em><br />
+<em class="quotelev1">&gt; toward being composed of long lists of elements...)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Cheers,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; --Seth
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ----
+</em><br />
+<em class="quotelev1">&gt; Seth McGinnis
+</em><br />
+<em class="quotelev1">&gt; mcginnis at ucar.edu
+</em><br />
+<em class="quotelev1">&gt; NARCCAP Data Manager
+</em><br />
+<em class="quotelev1">&gt; IMAGe / ISP / NCAR
+</em><br />
+<em class="quotelev1">&gt; ----
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;On Oct 26, 2009, at 0710, &lt;martin.juckes at stfc.ac.uk&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Hello,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; I wonder if anyone can help with this problem:
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; I have a file with a map of index values, ranging from 1 to 827. The
+</em><br />
+<em class="quotelev1">&gt; flag
+</em><br />
+<em class="quotelev2">&gt; &gt;meanings range from ?Admiralty Islands lowland rain forests? to
+</em><br />
+<em class="quotelev1">&gt; ?Zambezian
+</em><br />
+<em class="quotelev2">&gt; &gt;halophytics?. I?m reluctant to combine all 827 flag  meanings into a
+</em><br />
+<em class="quotelev1">&gt; single
+</em><br />
+<em class="quotelev2">&gt; &gt;string for the ?flag_meanings? attribute ? is  there a better way?
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Note that this is not my dataset, so that while suggestions for
+</em><br />
+<em class="quotelev1">&gt; presenting
+</em><br />
+<em class="quotelev2">&gt; &gt;the data in a different way may be useful, they won?t  solve my
+</em><br />
+<em class="quotelev1">&gt; current
+</em><br />
+<em class="quotelev2">&gt; &gt;problem. The dataset is a eco-region analysis  distributed by the WWF
+</em><br />
+<em class="quotelev1">&gt; and has
+</em><br />
+<em class="quotelev2">&gt; &gt;wide usage in its present form.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Sincerely,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Martin Juckes
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; --
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Scanned by iCritical.
+</em><br />
+<span id="received"><dfn>Received on</dfn> Tue Oct 27 2009 - 04:44:52 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2267">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2268.html" title="Next message in the list">Lowry, Roy K: "[CF-metadata] Dealing with large numbers of flag values	innetcdf cf"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2266.html" title="Previous message in the list">olivier lauret: "[CF-metadata] Sea water transparency and reflectance."</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2264.html" title="Message to which this message replies">Seth McGinnis: "[CF-metadata] Dealing with large numbers of flag values in	netcdf cf"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2268.html" title="Next message in this discussion thread">Lowry, Roy K: "[CF-metadata] Dealing with large numbers of flag values	innetcdf cf"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2268.html" title="Message sent in reply to this message">Lowry, Roy K: "[CF-metadata] Dealing with large numbers of flag values	innetcdf cf"</a></li>
+<li><dfn>Reply</dfn>: <a href="./2271.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] Dealing with large numbers of flag values	innetcdf cf"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2267" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2267" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2267" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2267" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:22 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2266.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2268.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

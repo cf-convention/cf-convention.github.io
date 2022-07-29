@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Daily climatology? from Seth McGinnis on 2014-06-02 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] Daily climatology?" />
+<meta name="Date" content="2014-06-02" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6304.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6306.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Daily climatology?</h1>
+<!-- received="Mon Jun  2 15:52:05 2014" -->
+<!-- isoreceived="20140602145205" -->
+<!-- sent="Mon, 02 Jun 2014 15:52:05 -0600" -->
+<!-- isosent="20140602215205" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] Daily climatology?" -->
+<!-- id="538CF205.20909_at_ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="538CCD42.7010106_at_cicsnc.org" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6305" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6306.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Daily climatology?&quot;">Next message</a> ]
+[ <a href="./6304.html" title="Jim Biard: &quot;[CF-metadata] Daily climatology?&quot;">Previous message</a> ]
+[ <a href="./6304.html" title="Jim Biard: &quot;[CF-metadata] Daily climatology?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6306.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] Daily climatology?&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6305" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6305" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6305" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6305" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20Daily%20climatology%3F">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 02 Jun 2014 15:52:05 -0600</span><br />
+</address>
+<br />
+Jim,
+<br />
+<br />Hmm, good question.  Looking at the examples in section 7.4 in more
+<br />
+detail, I'm no longer certain about my proposed cell_methods string.
+<br />
+<br />If you were using option 3, I do think 'point' would be the method to go
+<br />
+in the 'over days' slot.  That method describes how values are
+<br />
+aggregated over days and months, and it says in Appendix E that the
+<br />
+'point' method indicates that the values are &quot;representative of points
+<br />
+in time and space&quot;, which I take to mean that at that scale they are not
+<br />
+aggregated at all.
+<br />
+<br />However, I think your description of how the option 1 case would work
+<br />
+makes a lot of sense, also.
+<br />
+<br />I guess the ambiguity creeps in because there are two natural cycles
+<br />
+that we can construct climatologies over: the daily cycle and the annual
+<br />
+cycle.  Option 1 is for annual-cycle climatologies, option 2 is for the
+<br />
+daily cycle, and option 3 is for both.  You're dealing with both cycles,
+<br />
+but since you're averaging over the entire day, your climatology is
+<br />
+degenerate in the daily cycle.  So it's analogous to having a singleton
+<br />
+dimension, and the question is, do you leave it in as a placeholder
+<br />
+(option 3), or drop it (option 1)?
+<br />
+<br />My opinion is that it would probably be valid to do it either way, but
+<br />
+when in doubt, one should go for the simpler option.  So I'll abandon my
+<br />
+previous recommendation and say use option 1 as you have described it
+<br />
+here.  That seems like it is the mostly likely to be interpreted
+<br />
+correctly anyway.
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<br /><br />On 6/2/14 1:15 PM, Jim Biard wrote:
+<br />
+<em class="quotelev1">&gt; Seth,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I missed the fact that I must fit one of the listed options for 
+</em><br />
+<em class="quotelev1">&gt; climatology cell_methods. So, if I must try to fit in the third 
+</em><br />
+<em class="quotelev1">&gt; option:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; time: mean within days time: point over days time: mean over years
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; is &quot;point&quot; the right answer for the second method? Since the starting
+</em><br />
+<em class="quotelev1">&gt; and ending month values are identical in the climatology bounds,
+</em><br />
+<em class="quotelev1">&gt; doesn't that imply that the point operation is applied over a full
+</em><br />
+<em class="quotelev1">&gt; year? Is there some place in the Conventions where this use for point
+</em><br />
+<em class="quotelev1">&gt; is defined/explained?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Or, should I use the first option:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; time: mean within years time: mean over years
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; since my first time interval (for the first cell) is specified to be 
+</em><br />
+<em class="quotelev1">&gt; Jan 1 00:00:00 to Jan 2 00:00:00, which is applied within each 
+</em><br />
+<em class="quotelev1">&gt; individual year, and then the set of means for Jan 1 for each year 
+</em><br />
+<em class="quotelev1">&gt; are averaged.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Grace and peace,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jim
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On 6/2/14, 2:32 PM, Seth McGinnis wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Jim--
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Section 7.4 covers climatologies.  My understanding of it is:
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) Those are the right bounds values, but you should reference them
+</em><br />
+<em class="quotelev2">&gt;&gt; using a &quot;climatology&quot; attribute instead of a &quot;bounds&quot; attribute.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; I would think the cell_methods string for a daily climatology
+</em><br />
+<em class="quotelev2">&gt;&gt; ought to be &quot;time: mean within days time: mean over years&quot;, but
+</em><br />
+<em class="quotelev2">&gt;&gt; that doesn't follow one of the three allowed forms for
+</em><br />
+<em class="quotelev2">&gt;&gt; climatologies.  I guess the way to make it fit the schema is to use
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;point&quot; to indicate a no-op for how you're aggregating days within
+</em><br />
+<em class="quotelev2">&gt;&gt; the annual cycle, which gives you:
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;time: mean within days time: point over days time: mean over 
+</em><br />
+<em class="quotelev2">&gt;&gt; years&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) Quite a conundrum, isn't it?  Probably why we don't see more 
+</em><br />
+<em class="quotelev2">&gt;&gt; daily climatologies...  My inclination would be to simply discard 
+</em><br />
+<em class="quotelev2">&gt;&gt; the leap days and use a noleap calendar for your climatology.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; (Another approach is to normalize time by multiplying it by 
+</em><br />
+<em class="quotelev2">&gt;&gt; 360/yearlength, so that you're basically working with orbital 
+</em><br />
+<em class="quotelev2">&gt;&gt; position instead of days since some starting point.  I find that 
+</em><br />
+<em class="quotelev2">&gt;&gt; useful for comparisons across different calendars, but it's a bit 
+</em><br />
+<em class="quotelev2">&gt;&gt; unorthodox, and would likely be confusing in a published data 
+</em><br />
+<em class="quotelev2">&gt;&gt; product.)
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; In any case, I don't think there's really a standard &quot;best&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt; answer, so the most important thing is to document your choice
+</em><br />
+<em class="quotelev2">&gt;&gt; thoroughly. As long as the end-user can easily figure out how you
+</em><br />
+<em class="quotelev2">&gt;&gt; handled leap days, I think it's reasonable for you to deal with the
+</em><br />
+<em class="quotelev2">&gt;&gt; issue in whatever way you find most convenient.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Cheers,
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; --Seth
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; ---- Seth McGinnis mcginnis at ucar.edu NARCCAP Data Manager RISC / 
+</em><br />
+<em class="quotelev2">&gt;&gt; IMAGe / NCAR ----
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; On 6/2/14 8:20 AM, Jim Biard wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Hi.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; We have a dataset that contains a climatology giving the daily 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; average temperature over 30 years. (So, it has the average 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; temperature for January 1 over the period from 1981 - 2010.) I 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; have two questions about this.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 1) How exactly should that be represented, both with the bounds 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; and with the cell_methods? Should the  bounds be (for example) 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 00:00:00, Jan 1, 1981 and 00:00:00 Jan 2, 2010? Should the 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; cell_methods be &quot;time: mean over days time: mean over years&quot;?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 2) How should we handle February 29?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Grace and peace,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Jim
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; -- CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on Facebook 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard* *Research Scholar*
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;  Cooperative Institute for Climate and Satellites NC 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt; North Carolina State University 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt; NOAA's National Climatic Data Center 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt; 151 Patton Ave, Asheville, NC 28801 e: 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; jbiard at cicsnc.org o: +1 828 271 4900
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; _______________________________________________ CF-metadata 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; mailing list CF-metadata at cgd.ucar.edu 
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________ CF-metadata
+</em><br />
+<em class="quotelev2">&gt;&gt; mailing list CF-metadata at cgd.ucar.edu 
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; -- CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on Facebook 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard* *Research Scholar* 
+</em><br />
+<em class="quotelev1">&gt; Cooperative Institute for Climate and Satellites NC 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt; North Carolina State University 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt; NOAA's National Climatic Data Center 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt; 151 Patton Ave, Asheville, NC 28801 e: 
+</em><br />
+<em class="quotelev1">&gt; jbiard at cicsnc.org o: +1 828 271 4900
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Jun 02 2014 - 15:52:05 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6305">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6306.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Daily climatology?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6304.html" title="Previous message in the list">Jim Biard: "[CF-metadata] Daily climatology?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6304.html" title="Message to which this message replies">Jim Biard: "[CF-metadata] Daily climatology?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6306.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] Daily climatology?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6305" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6305" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6305" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6305" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:43 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6304.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6306.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

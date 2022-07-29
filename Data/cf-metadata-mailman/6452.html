@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Return periods from Jonathan Gregory on 2014-09-09 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Return periods" />
+<meta name="Date" content="2014-09-09" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6451.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6453.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Return periods</h1>
+<!-- received="Tue Sep  9 04:27:32 2014" -->
+<!-- isoreceived="20140909032732" -->
+<!-- sent="Tue, 9 Sep 2014 11:27:32 +0100" -->
+<!-- isosent="20140909102732" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Return periods" -->
+<!-- id="20140909102732.GA1411_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6452" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6453.html" accesskey="d" title="Timothy Patterson: &quot;[CF-metadata] CF Conventions and netCDF-4 enhanced model&quot;">Next message</a> ]
+[ <a href="./6451.html" title="Hollis, Dan: &quot;[CF-metadata] Return periods&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6466.html" accesskey="t" title="Hollis, Dan: &quot;[CF-metadata] Return periods&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6452" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6452" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6452" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6452" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Return%20periods">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 9 Sep 2014 11:27:32 +0100</span><br />
+</address>
+<br />
+Dear Dan
+<br />
+<br />Yes, I see what you mean regarding the aux coord, and it's a neat idea, but
+<br />
+it doesn't seem quite right to me. Aux coords are alternative or additional
+<br />
+information. The lat(x,y) and lon(x,y) coordinates provide an alternative way
+<br />
+to locate the point (x,y), in a different coordinate system. The precipitation
+<br />
+probability, however, would determine the precipitation entirely. There isn't
+<br />
+any coordinate information which would give you the precipitation amount. That
+<br />
+is why I don't think the probability can be an aux coord. Does that make sense?
+<br />
+<br /><em class="quotelev1">&gt; You are right regarding the calculation - we are using a statistical model of the relationship between monthly rainfall and return period that was developed many years ago by a colleague from an analysis of 60 years of historical data. The model uses values of the coefficients of variation and skewness to describe the distribution of monthly rainfall (assumed to be log-normal). To capture how the shape of the distribution varies with location we have pre-calculated values of these coefficients available at each point on a 5 km grid.
+</em><br />
+<br />Right. So it is reasonable to describe it as a conversion of precipitation
+<br />
+amount to probability, I think.
+<br />
+<br /><em class="quotelev1">&gt; If a new standard name is required then I'm happy to take your advice on a suitable choice.
+</em><br />
+<br />It would be useful to know if anyone else reading this has a view on my
+<br />
+suggestion of precipitation_amount_converted_to_cumulative_probability.
+<br />
+<br /><em class="quotelev1">&gt; What is still not clear to me is how I maintain a clear link between the two fields without storing some of the information twice. Is it simply a case of storing two variables in the same NetCDF file (so that they share coordinates)?
+</em><br />
+<br />If they are in the same file, indeed it is obvious if the fields have the same
+<br />
+spatiotemporal coordinates, because they share the coord vars, as you say. If
+<br />
+they are in different files, the data-user has to check whether the coords are
+<br />
+the same. There is no convention which would allow one to be sure about that
+<br />
+without checking. CF does not rely on variable names, for instance. This is a
+<br />
+very common situation, in fact. For instance, in the CMIP archives each
+<br />
+quantity is in a separate file, and the data variables in many files typically
+<br />
+have the same spatiotemporal coordinates, but analysis software cannot be sure
+<br />
+of that without checking.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Sep 09 2014 - 04:27:32 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6452">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6453.html" title="Next message in the list">Timothy Patterson: "[CF-metadata] CF Conventions and netCDF-4 enhanced model"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6451.html" title="Previous message in the list">Hollis, Dan: "[CF-metadata] Return periods"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6466.html" title="Next message in this discussion thread">Hollis, Dan: "[CF-metadata] Return periods"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6466.html" title="Message sent in reply to this message">Hollis, Dan: "[CF-metadata] Return periods"</a></li>
+<li><dfn>Reply</dfn>: <a href="./6503.html" title="Message sent in reply to this message">Ben Hetland: "[CF-metadata] Return periods"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6452" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6452" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6452" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6452" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:45 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6451.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6453.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

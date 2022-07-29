@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF calendars (was: problem with times in PSD dataset) from Seth McGinnis on 2012-12-10 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] CF calendars (was: problem with times in PSD dataset)" />
+<meta name="Date" content="2012-12-10" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4874.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4876.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF calendars (was: problem with times in PSD dataset)</h1>
+<!-- received="Mon Dec 10 15:17:50 2012" -->
+<!-- isoreceived="20121210151750" -->
+<!-- sent="Mon, 10 Dec 2012 15:17:50 -0700" -->
+<!-- isosent="20121210221750" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] CF calendars (was: problem with times in PSD dataset)" -->
+<!-- id="web-43710422_at_mail.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="7021DD495090AB4283DC3A92ED0CDD6C093E2734_at_vime-mbx5.rdg.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4875" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4876.html" accesskey="d" title="Ansley Manke: &quot;[CF-metadata] Fwd: Re:  CF calendars&quot;">Next message</a> ]
+[ <a href="./4874.html" title="Steve Hankin: &quot;[CF-metadata] CF calendars (was: problem with times in PSD dataset)&quot;">Previous message</a> ]
+[ <a href="./4869.html" title="Jon Blower: &quot;[CF-metadata] CF calendars (was: problem with times in PSD dataset)&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4870.html" accesskey="t" title="Cathy Smith: &quot;[CF-metadata] CF calendars (was: problem with times in PSD dataset)&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4875" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4875" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4875" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4875" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20calendars%20(was%3A%20problem%20with%20times%20in%20PSD%20dataset)">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 10 Dec 2012 15:17:50 -0700</span><br />
+</address>
+<br />
+The datum should always be interpreted according to the calendar system
+<br />
+specified in the file.
+<br />
+<br />That's how the time coordinate is handled in the output from every model 
+<br />
+that I've seen (which is at least a dozen), so I'd say do it that way just for
+<br />
+the sake of backwards compatibility.  But it's not clear to me that any 
+<br />
+alternative is even possible.  What would it mean to say that my time
+<br />
+coordinate uses a 360-day calendar, but that the start date is Jan 1, 1900
+<br />
+in the mixed gregorian calendar?  Or worse, if the start date was Jan 31?
+<br />
+It doesn't really make any sense.
+<br />
+<br />Likewise, units of months and years should also be interpreted according
+<br />
+to the specified calendar.
+<br />
+<br />Using months and years as units is cautioned against in the spec, but if one 
+<br />
+were to do it, I'd say the expectation of nearly every end user and data 
+<br />
+provider would be that they would be in the same units as the calendar.  
+<br />
+Certainly, if you had a file of monthly data with a units attribute of &quot;months&quot;
+<br />
+<br />on the time variable, it would be obvious what was meant if the time 
+<br />
+coordinate went 1-2-3-4-5, and very confusing if it had some kind of non-
+<br />
+integer spacing that corresponded to (days in month)*12/365.25...
+<br />
+<br />Cheers,
+<br />
+<br />--Seth 
+<br />
+<br /><br />On Sun, 9 Dec 2012 19:55:39 +0000
+<br />
+&nbsp;Jon Blower &lt;j.d.blower at reading.ac.uk&gt; wrote:
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Also, there are a couple of ambiguities in CF, which have also been brought up
+</em><br />
+<em class="quotelev1">&gt;before but not resolved.  Time axes are recorded as a sequence of numbers
+</em><br />
+<em class="quotelev1">&gt;representing a certain number of intervals since a specified datum.  The datum
+</em><br />
+<em class="quotelev1">&gt;is part of the units string of the time axis and is recorded in a kind of
+</em><br />
+<em class="quotelev1">&gt;pseudo-ISO format (e.g. &quot;1970-1-1 0:0:0&quot;).  Should the datum always be
+</em><br />
+<em class="quotelev1">&gt;interpreted as a date/time in the mixed Gregorian/Julian calendar (as
+</em><br />
+<em class="quotelev1">&gt;specified by UDUNITS) or in the calendar system specified in the CF file
+</em><br />
+<em class="quotelev1">&gt;(which would probably be more sensible)?  Also, should interval lengths (e.g.
+</em><br />
+<em class="quotelev1">&gt;months and years) be interpreted as the UDUNITS lengths (this is specified in
+</em><br />
+<em class="quotelev1">&gt;CF but is not always helpful) or should these vary by calendar (which is again
+</em><br />
+<em class="quotelev1">&gt;perhaps sensible, and some data providers do this)?
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Dec 10 2012 - 15:17:50 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4875">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4876.html" title="Next message in the list">Ansley Manke: "[CF-metadata] Fwd: Re:  CF calendars"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4874.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] CF calendars (was: problem with times in PSD dataset)"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4869.html" title="Message to which this message replies">Jon Blower: "[CF-metadata] CF calendars (was: problem with times in PSD dataset)"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4870.html" title="Next message in this discussion thread">Cathy Smith: "[CF-metadata] CF calendars (was: problem with times in PSD dataset)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4875" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4875" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4875" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4875" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:11 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4874.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4876.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

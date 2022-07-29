@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF Conventions and NetCDF4 string attributes from Charlie Zender on 2014-01-24 (cf-metadata-mailman)</title>
+<meta name="Author" content="Charlie Zender (zender)" />
+<meta name="Subject" content="[CF-metadata] CF Conventions and NetCDF4 string attributes" />
+<meta name="Date" content="2014-01-24" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6005.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6007.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF Conventions and NetCDF4 string attributes</h1>
+<!-- received="Fri Jan 24 09:14:40 2014" -->
+<!-- isoreceived="20140124091440" -->
+<!-- sent="Fri, 24 Jan 2014 08:14:40 -0800" -->
+<!-- isosent="20140124161440" -->
+<!-- name="Charlie Zender" -->
+<!-- email="zender" -->
+<!-- subject="[CF-metadata] CF Conventions and NetCDF4 string attributes" -->
+<!-- id="52E29170.7060709_at_uci.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4C353E6E4A08AE4792B350DAA392B5215B0CEBDF_at_EXCHMBX01.fed.cclrc.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6006" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6007.html" accesskey="d" title="John Graybeal: &quot;[CF-metadata] vertical coordinates and positive attributes&quot;">Next message</a> ]
+[ <a href="./6005.html" title="stephen.pascoe at stfc.ac.uk: &quot;[CF-metadata] CF Conventions and NetCDF4 string attributes&quot;">Previous message</a> ]
+[ <a href="./6005.html" title="stephen.pascoe at stfc.ac.uk: &quot;[CF-metadata] CF Conventions and NetCDF4 string attributes&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6006" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6006" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6006" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6006" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Charlie Zender &lt;<a href="mailto:zender?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20Conventions%20and%20NetCDF4%20string%20attributes">zender</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 24 Jan 2014 08:14:40 -0800</span><br />
+</address>
+<br />
+Stephen,
+<br />
+<br />This feature is new to NCO as of version 4.4.0,
+<br />
+i.e., you must install the latest NCO to take advantage of it.
+<br />
+<br />zender at roulee:~$ ncgen -k netCDF-4 -b -o ~/my_string_file.nc ~/foo.cdl
+<br />
+zender at roulee:~$ ncks --cdl ~/my_string_file.nc
+<br />
+netcdf my_string_file {
+<br />
+<br />&nbsp;&nbsp;// global attributes:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;string :my_string_attribute = &quot;this is a single-valued NC_STRING
+<br />
+variable&quot; ;
+<br />
+} // group /
+<br />
+zender at roulee:~$ ncks -3 ~/my_string_file.nc ~/foo.nc
+<br />
+zender at roulee:~$ ncks --cdl ~/foo.nc
+<br />
+netcdf foo {
+<br />
+<br />&nbsp;&nbsp;// global attributes:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;:my_string_attribute = &quot;this is a single-valued NC_STRING variable&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;:history = &quot;Fri Jan 24 08:03:14 2014: ncks -3
+<br />
+/home/zender/my_string_file.nc /home/zender/foo.nc&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;:NCO = &quot;20140124&quot; ;
+<br />
+} // group /
+<br />
+<br />There is no problem mapping scalar NC_STRING attributes
+<br />
+to NC_CHAR array attributes. The difficult, messy,
+<br />
+ugly problems arise when dealing with NC_STRING arrays
+<br />
+and/or with NC_STRING variables (as opposed to attributes).
+<br />
+Fortunately NC_STRING is usually used as a scalar attribute,
+<br />
+not as a variable, so this workaround solves most real-world
+<br />
+examples of converting netCDF4-&gt;netCDF3 that I have encountered
+<br />
+so far.
+<br />
+<br />Producers of netCDF4 datasets should think twice before using
+<br />
+NC_STRING for anything except scalar attributes if they value
+<br />
+interoperability with netCDF3 applications.
+<br />
+<br />Charlie
+<br />
+<br />Le 24/01/2014 01:06, stephen.pascoe at stfc.ac.uk a ?crit :
+<br />
+<em class="quotelev1">&gt; Hi Charlie,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; However this issue is resolved, there is a workaround available now:
+</em><br />
+<em class="quotelev2">&gt;&gt; ncdismember (and ncks -3) automatically translates netCDF4 files to
+</em><br />
+<em class="quotelev2">&gt;&gt; netCDF3 files, and optionally sends them to a cfchecker. It translates scalar NC_STRING attributes to NC_CHAR arrays.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I've tried this and it doesn't seem to work with ncks version 4.3.4.  I get the same error as I would if I used &quot;nccopy -k 1&quot;:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; $ ncks -3 my_string_file.nc my_nc3_file.nc
+</em><br />
+<em class="quotelev1">&gt; nco_err_exit(): ERROR Short NCO-generated message (usually name of function that triggered error): nco_copy_att()
+</em><br />
+<em class="quotelev1">&gt; nco_err_exit(): ERROR Error code is -45. Translation into English with nc_strerror(-45) is &quot;NetCDF: Not a valid data type or _FillValue type mismatch&quot;
+</em><br />
+<em class="quotelev1">&gt; nco_err_exit(): ERROR NCO will now exit with system call exit(EXIT_FAILURE)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; where nc_string_file.nc is:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; $ ncdump my_string_file.nc 
+</em><br />
+<em class="quotelev1">&gt; netcdf my_string_file {
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; // global attributes:
+</em><br />
+<em class="quotelev1">&gt; 		string :my_string_attribute = &quot;this is a single-valued NC_STRING variable&quot; ;
+</em><br />
+<em class="quotelev1">&gt; }
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I guess in theory the attribute is a length-1 array of strings which cannot be mapped to an NC_CHAR array without some approximations.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; S.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ---
+</em><br />
+<em class="quotelev1">&gt; Stephen Pascoe  +44 (0)1235 445980
+</em><br />
+<em class="quotelev1">&gt; Centre of Environmental Data Archival
+</em><br />
+<em class="quotelev1">&gt; STFC Rutherford Appleton Laboratory, Harwell Oxford, Didcot OX11 0QX, UK
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: Charlie Zender [mailto:zender at uci.edu] 
+</em><br />
+<em class="quotelev1">&gt; Sent: 23 January 2014 17:36
+</em><br />
+<em class="quotelev1">&gt; To: CF Metadata Mail List
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] CF Conventions and NetCDF4 string attributes
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Hi Stephen,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The example you posted illustrates one of many netCDF4 features that are creeping into datasets. One of your suggestions is to explicitly loosen the rules and to allow CF to accept scalar NC_STRINGs.
+</em><br />
+<em class="quotelev1">&gt; There are trade-offs to such exceptions.
+</em><br />
+<em class="quotelev1">&gt; This might put CF on a slippery slope to greater netCDF4 acceptance (good, IMHO) yet immediately puts a whole class of CF applications in jeopardy of not working with files that are nominally CF-compliant because they have an NC_STRING the application does not understand (awkward, until application is &quot;fixed&quot;).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; However this issue is resolved, there is a workaround available now:
+</em><br />
+<em class="quotelev1">&gt; ncdismember (and ncks -3) automatically translates netCDF4 files to
+</em><br />
+<em class="quotelev1">&gt; netCDF3 files, and optionally sends them to a cfchecker. It translates scalar NC_STRING attributes to NC_CHAR arrays.
+</em><br />
+<em class="quotelev1">&gt; <a href="http://nco.sf.net/nco.html#ncdismember">http://nco.sf.net/nco.html#ncdismember</a>
+</em><br />
+<em class="quotelev1">&gt; <a href="http://nco.sf.net/nco.html#ncks">http://nco.sf.net/nco.html#ncks</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Best,
+</em><br />
+<em class="quotelev1">&gt; Charlie
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; Charlie Zender, Earth System Sci. &amp; Computer Sci.
+</em><br />
+<em class="quotelev1">&gt; University of California, Irvine 949-891-2429 )'( _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<br /><pre>
+-- 
+Charlie Zender, Earth System Sci. &amp; Computer Sci.
+University of California, Irvine 949-891-2429 )'(
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Jan 24 2014 - 09:14:40 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6006">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6007.html" title="Next message in the list">John Graybeal: "[CF-metadata] vertical coordinates and positive attributes"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6005.html" title="Previous message in the list">stephen.pascoe at stfc.ac.uk: "[CF-metadata] CF Conventions and NetCDF4 string attributes"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6005.html" title="Message to which this message replies">stephen.pascoe at stfc.ac.uk: "[CF-metadata] CF Conventions and NetCDF4 string attributes"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6006" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6006" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6006" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6006" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6005.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6007.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

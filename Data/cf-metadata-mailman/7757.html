@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Best practice to include spatial resolution for projected data from Jim Biard on 2016-08-16 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] Best practice to include spatial resolution for projected data" />
+<meta name="Date" content="2016-08-16" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7756.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7758.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Best practice to include spatial resolution for projected data</h1>
+<!-- received="Tue Aug 16 10:43:57 2016" -->
+<!-- isoreceived="20160816094357" -->
+<!-- sent="Tue, 16 Aug 2016 12:43:57 -0400" -->
+<!-- isosent="20160816164357" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] Best practice to include spatial resolution for projected data" -->
+<!-- id="782d82bb-a5c3-7abf-91ae-1f8c90f02a19_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="alpine.OSX.1.10.1608160944100.23577_at_nsidc-worsley.users.int.nsidc.org" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7757" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7758.html" accesskey="d" title="Mary Jo Brodzik: &quot;[CF-metadata] Best practice to include spatial resolution for projected data&quot;">Next message</a> ]
+[ <a href="./7756.html" title="Mary Jo Brodzik: &quot;[CF-metadata] Best practice to include spatial resolution for projected data&quot;">Previous message</a> ]
+[ <a href="./7756.html" title="Mary Jo Brodzik: &quot;[CF-metadata] Best practice to include spatial resolution for projected data&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7758.html" accesskey="t" title="Mary Jo Brodzik: &quot;[CF-metadata] Best practice to include spatial resolution for projected data&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7757" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7757" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7757" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7757" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20Best%20practice%20to%20include%20spatial%20resolution%20for%20projected%20data">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 16 Aug 2016 12:43:57 -0400</span><br />
+</address>
+<br />
+Mary Jo,
+<br />
+<br />It's a problem that doesn't currently have an official solution. The 
+<br />
+geospatial_lat/lon_resolution are from the ESIP Attribute Convention for 
+<br />
+Dataset Discovery (ACDD) &lt;<a href="http://wiki.esipfed.org/index.php/ACDD">http://wiki.esipfed.org/index.php/ACDD</a>&gt;, but 
+<br />
+they haven't thought through to a generalization yet. You could make 
+<br />
+your own attributes geospatial_resolution or geospatial_x_resolution and 
+<br />
+geospatial_y_resolution, or you could think of longitude as being ~x and 
+<br />
+latitude as ~y and use the existing attributes. You can also query the 
+<br />
+ESIP people and request that they add a new set of attributes that would 
+<br />
+handle this. I think the CF community likely considers this to be more 
+<br />
+of an ACDD issue.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 8/16/16 12:33 PM, Mary Jo Brodzik wrote:
+<br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I am producing a gridded data set using CF-1.6 conventions.  In a 
+</em><br />
+<em class="quotelev1">&gt; given file, the data are projected onto one of three possible 
+</em><br />
+<em class="quotelev1">&gt; projections: Northern or Southern Lambert Azimuthal Equal Area (LAEA), 
+</em><br />
+<em class="quotelev1">&gt; or Cylindrical Equal-Area (CEA).  With each data variable in the file, 
+</em><br />
+<em class="quotelev1">&gt; I do include the grid_mapping attribute and I am populating my 
+</em><br />
+<em class="quotelev1">&gt; grid_mapping variable with the required projection information as 
+</em><br />
+<em class="quotelev1">&gt; listed here:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; <a href="http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html">http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Also in a given file, the spatial resolution will be one of 25, 12.5, 
+</em><br />
+<em class="quotelev1">&gt; 6.25 or 3.125 km, and although this is obvious from the x and y 
+</em><br />
+<em class="quotelev1">&gt; dimension variable values, I am looking for a place to include the 
+</em><br />
+<em class="quotelev1">&gt; spatial resolution for a human who is reading the metadata.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I assume an attribute in the grid_mapping variable would be the place 
+</em><br />
+<em class="quotelev1">&gt; for this.  At first I thought it was one of the &quot;scale_factor*&quot; 
+</em><br />
+<em class="quotelev1">&gt; attributes, e.g. &quot;scale_factor_at_projection_origin&quot;, but for CEA, 
+</em><br />
+<em class="quotelev1">&gt; this would be a misnomer, since the value is the scale at true 
+</em><br />
+<em class="quotelev1">&gt; latitude, not the projection origin at all.  Also, the convention says 
+</em><br />
+<em class="quotelev1">&gt; to include &quot;either standard_parallel or 
+</em><br />
+<em class="quotelev1">&gt; scale_factor_at_projection_origin&quot;, so now I'm beginning to think 
+</em><br />
+<em class="quotelev1">&gt; these &quot;scale_factor_*&quot; attributes are not the correct place at all for 
+</em><br />
+<em class="quotelev1">&gt; this information.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I see in the NCEI template file for gridded data
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; <a href="https://www.nodc.noaa.gov/data/formats/netcdf/v2.0/grid.cdl">https://www.nodc.noaa.gov/data/formats/netcdf/v2.0/grid.cdl</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; that they recommend global attributes like &quot;geospatial_lat_resolution&quot; 
+</em><br />
+<em class="quotelev1">&gt; and &quot;geospatial_lon_resolution&quot;, with a string value of &quot;0.1 degree&quot; 
+</em><br />
+<em class="quotelev1">&gt; or &quot;100 meters&quot;  which is almost what I am looking for, but of course 
+</em><br />
+<em class="quotelev1">&gt; since I have projected data it would not be &quot;lat&quot; or &quot;lon&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Can anyone recommend a best practice for my projected data case that I 
+</em><br />
+<em class="quotelev1">&gt; can follow?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thank you,
+</em><br />
+<em class="quotelev1">&gt; Mary Jo Brodzik
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+</em><br />
+<em class="quotelev1">&gt; Mary Jo Brodzik, Senior Associate Scientist, 303-492-8263
+</em><br />
+<em class="quotelev1">&gt; NSIDC/CIRES, Univ. of Colo. at Boulder, 449 UCB, Boulder, CO 80309-0449
+</em><br />
+<em class="quotelev1">&gt; ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/Connect with us on Facebook for climate 
+&lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+&lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us 
+on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and 
+_at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160816/7189f90f/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160816/7189f90f/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160816/7189f90f/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160816/7189f90f/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Aug 16 2016 - 10:43:57 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7757">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7758.html" title="Next message in the list">Mary Jo Brodzik: "[CF-metadata] Best practice to include spatial resolution for projected data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7756.html" title="Previous message in the list">Mary Jo Brodzik: "[CF-metadata] Best practice to include spatial resolution for projected data"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7756.html" title="Message to which this message replies">Mary Jo Brodzik: "[CF-metadata] Best practice to include spatial resolution for projected data"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7758.html" title="Next message in this discussion thread">Mary Jo Brodzik: "[CF-metadata] Best practice to include spatial resolution for projected data"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7758.html" title="Message sent in reply to this message">Mary Jo Brodzik: "[CF-metadata] Best practice to include spatial resolution for projected data"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7757" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7757" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7757" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7757" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:06 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7756.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7758.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

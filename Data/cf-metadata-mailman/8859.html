@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] use of integral_wrt_depth_of_sea_water_practical_salinity from Jonathan Gregory on 2018-04-16 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (jonathan.gregory)" />
+<meta name="Subject" content="[CF-metadata] use of integral_wrt_depth_of_sea_water_practical_salinity" />
+<meta name="Date" content="2018-04-16" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8858.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8860.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] use of integral_wrt_depth_of_sea_water_practical_salinity</h1>
+<!-- received="Mon Apr 16 12:52:48 2018" -->
+<!-- isoreceived="20180416115248" -->
+<!-- sent="Mon, 16 Apr 2018 19:52:48 +0100" -->
+<!-- isosent="20180416185248" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="jonathan.gregory" -->
+<!-- subject="[CF-metadata] use of integral_wrt_depth_of_sea_water_practical_salinity" -->
+<!-- id="20180416185248.GA29723_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8859" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8860.html" accesskey="d" title="Daniel Lee: &quot;[CF-metadata] Units of projection_x_coordinate values in	&#0034;Geospatial projection&#0034;&quot;">Next message</a> ]
+[ <a href="./8858.html" title="Jonathan Gregory: &quot;[CF-metadata]  Standard Names to support Trac ticket 99&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8859" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8859" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8859" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8859" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:jonathan.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20use%20of%20integral_wrt_depth_of_sea_water_practical_salinity">jonathan.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 16 Apr 2018 19:52:48 +0100</span><br />
+</address>
+<br />
+Dear Sebastien et al.
+<br />
+<br />It's allowed to put &quot;depth: mean&quot; in cell_methods even if there is no depth
+<br />
+coordinate variable (and no bounds). This is described in sect 7.3.4 of the
+<br />
+convention. It's allowed by the &quot;first&quot; case described there, because depth
+<br />
+is a standard name. We could suit your case better if we explicitly allowed
+<br />
+the &quot;second&quot; case of 7.3.4 to apply to the vertical coordinate, meaning the
+<br />
+range over the complete vertical extent where the quantity is defined i.e.
+<br />
+from the sea surface to the sea floor for an ocean quantity. Would this be a
+<br />
+good solution?
+<br />
+<br />Since some more general issues have been raised, I'd like to comment on them.
+<br />
+<br />First, there are a number of pairs of standard names, where one of the pair is
+<br />
+for the whole vertical extent of the atmosphere or the ocean, and the other is
+<br />
+for a layer within it e.g.
+<br />
+&nbsp;&nbsp;atmosphere_mass_content_of_cloud_ice
+<br />
+&nbsp;&nbsp;mass_content_of_cloud_ice_in_atmosphere_layer
+<br />
+This is my fault or choice, I believe, but from a *long* time ago - almost 20
+<br />
+years ago. I've often thought that maybe this was a mistake, because it is the
+<br />
+sort of distinction which could be made by bounds, and perhaps this present
+<br />
+discussion indicates that we should change it. One possibility would to make
+<br />
+the in_atmosphere/ocean_layer aliases of the atmosphere/ocean_ names, and say
+<br />
+in the definition that if coordinate bounds are not specified it means the
+<br />
+entire vertical extent of the atmosphere/ocean. That is, the distinction would
+<br />
+rely on the presence of bounds. Would this be good?
+<br />
+<br />Second, Sebastien comments that, &quot;Many standard names make reference to time,
+<br />
+space, post-processing.&quot; Actually I do not think that is true. As you say,
+<br />
+the description of the processing belongs in the cell_methods. That is why we
+<br />
+don't have standard_names for daily maximum and daily mean air temperature,
+<br />
+for example, although they are common concepts. However, it does depend what
+<br />
+you regard as &quot;post-processing&quot;. The integral_wrt_X_of_Y is regarded by the
+<br />
+standard name guidelines as a &quot;transformation&quot;, which derives one quantity
+<br />
+from one or more other quantities, and not as post-processing. In this case in
+<br />
+CF terms it is clear that the new quantity is different from the old one,
+<br />
+because the units of the new one are the product of the units of X and Y,
+<br />
+whereas the units of a quantity which has been post-processed by cell_methods
+<br />
+can depend only on the units it originally had.
+<br />
+<br />Third, there have been many discussions about whether to allow lots more names
+<br />
+of a certain kind (as we did in the case of the isotopes recently, and as for
+<br />
+chemical species) or whether instead to factorise a new distinction into a
+<br />
+coordinate variable (as Roy is proposing for the biological taxa, and as for
+<br />
+area types and region names). We always consider this choice carefully! I think
+<br />
+there are good arguments for having most of the non-numeric metadata in the
+<br />
+standard name - see www.met.reading.ac.uk/~jonathan/CF_metadata/14.1/#direction
+<br />
+for my reasons.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br />----- Forwarded message from Sebastien Villaume &lt;sebastien.villaume at ecmwf.int&gt; -----
+<br />
+<br /><em class="quotelev1">&gt; Date: Mon, 16 Apr 2018 16:05:16 +0000 (GMT-00:00)
+</em><br />
+<em class="quotelev1">&gt; From: Sebastien Villaume &lt;sebastien.villaume at ecmwf.int&gt;
+</em><br />
+<em class="quotelev1">&gt; To: Martin Juckes - UKRI STFC &lt;martin.juckes at stfc.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; Cc: Karl Taylor &lt;taylor13 at llnl.gov&gt;, cf-metadata at cgd.ucar.edu, Jonathan
+</em><br />
+<em class="quotelev1">&gt; 	Gregory &lt;j.m.gregory at reading.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: use of integral_wrt_depth_of_sea_water_practical_salinity
+</em><br />
+<em class="quotelev1">&gt; X-Mailer: Zimbra 8.6.0_GA_1200 (ZimbraWebClient - FF57 (Linux)/8.6.0_GA_1200)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Hi Martin,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; This is interesting because it makes me realize that I am not the only one facing these issues with &quot;special&quot; bounds that are function of other variables...
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I like the idea of &quot;pseudo-controlled&quot; cell_method construction but in my case I would require something like:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; cell_method = &quot;depth: integral from X to Y (where Z)&quot; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; with X being &quot;surface&quot; and Y being &quot;sea_floor&quot; with eventually a &quot;where&quot; clause with Z being &quot;sea&quot;.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I think that this kind of issues should not be solved on a case-by-case basis but addressed in a general context because the case-by-case approach always leads to specific solutions...
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; /S?bastien
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message -----
+</em><br />
+<em class="quotelev2">&gt; &gt; From: &quot;Martin Juckes - UKRI STFC&quot; &lt;martin.juckes at stfc.ac.uk&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; To: &quot;Karl Taylor&quot; &lt;taylor13 at llnl.gov&gt;, &quot;Sebastien Villaume&quot; &lt;sebastien.villaume at ecmwf.int&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; Cc: cf-metadata at cgd.ucar.edu, &quot;Jonathan Gregory&quot; &lt;j.m.gregory at reading.ac.uk&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; Sent: Monday, 16 April, 2018 10:02:28
+</em><br />
+<em class="quotelev2">&gt; &gt; Subject: Re: use of integral_wrt_depth_of_sea_water_practical_salinity
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Hello Karl, Sebastien,
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; I'm not sure that I've understood the whole thread, but to me it looks as though
+</em><br />
+<em class="quotelev2">&gt; &gt; the coordinate bounds would be the natural place to deal with this, though it
+</em><br />
+<em class="quotelev2">&gt; &gt; would require a modification to the convention.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; There was a related, inconclusive, discussion in 2016 on the encoding of
+</em><br />
+<em class="quotelev2">&gt; &gt; histogram bin ranges in the case where some bins are not defined by the
+</em><br />
+<em class="quotelev2">&gt; &gt; numerical ranges that the current convention permits for coordinate bounds
+</em><br />
+<em class="quotelev2">&gt; &gt; (<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2016/059037.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2016/059037.html</a> ). The idea
+</em><br />
+<em class="quotelev2">&gt; &gt; of using flag_values and flag_meanings came up. For the current example you
+</em><br />
+<em class="quotelev2">&gt; &gt; could set the lower value of the depth coordinate bounds of the vertical
+</em><br />
+<em class="quotelev2">&gt; &gt; integral to -50000 [m] and then have flag_values=-50000,
+</em><br />
+<em class="quotelev2">&gt; &gt; flag_meanings=&quot;ocean_floor&quot;.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Alternatively, there appears to be agreement in
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="https://cf-trac.llnl.gov/trac/ticket/152">https://cf-trac.llnl.gov/trac/ticket/152</a> that the cell_methods construction
+</em><br />
+<em class="quotelev2">&gt; &gt; &quot;mean where X&quot; does not need to me restricted to horizontal spatial means. That
+</em><br />
+<em class="quotelev2">&gt; &gt; ticket discusses using it for temporal means, but it could also be used for
+</em><br />
+<em class="quotelev2">&gt; &gt; depth means, as in:
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; &quot;cell_methods = mean: depth where sea&quot;.  The idea that the CF area type &quot;sea&quot;
+</em><br />
+<em class="quotelev2">&gt; &gt; can be depth dependant was accepted in a discussion of usage in CMIP6, where we
+</em><br />
+<em class="quotelev2">&gt; &gt; have many variables which require the surface sea extent, and others which
+</em><br />
+<em class="quotelev2">&gt; &gt; require the total sea extent, including the small but significant portion
+</em><br />
+<em class="quotelev2">&gt; &gt; extending under floating ice shelves. This would make the flag_values/meanings
+</em><br />
+<em class="quotelev2">&gt; &gt; construction redundant.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Incidentally, the cell_methods string can be parsed by David Hassell's  cf
+</em><br />
+<em class="quotelev2">&gt; &gt; python library (<a href="https://pypi.python.org/pypi/cf-python">https://pypi.python.org/pypi/cf-python</a> ). This doesn't entirely
+</em><br />
+<em class="quotelev2">&gt; &gt; solve the problem because of the variable quality of the information that has
+</em><br />
+<em class="quotelev2">&gt; &gt; been encoded in the cell_methods string in the past ... but it does give us a
+</em><br />
+<em class="quotelev2">&gt; &gt; tool to use in our efforts to improve the situation.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; regards,
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Martin
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; ________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt; From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu&gt; on behalf of Sebastien
+</em><br />
+<em class="quotelev2">&gt; &gt; Villaume &lt;sebastien.villaume at ecmwf.int&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; Sent: 13 April 2018 17:30
+</em><br />
+<em class="quotelev2">&gt; &gt; To: Karl Taylor
+</em><br />
+<em class="quotelev2">&gt; &gt; Cc: cf-metadata at cgd.ucar.edu; Jonathan Gregory
+</em><br />
+<em class="quotelev2">&gt; &gt; Subject: Re: [CF-metadata] use of
+</em><br />
+<em class="quotelev2">&gt; &gt; integral_wrt_depth_of_sea_water_practical_salinity
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Hi Karl,
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; I tend to agree that this solution is far from ideal.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; The core issue is that there is no clear separation between a parameter
+</em><br />
+<em class="quotelev2">&gt; &gt; (diagnostic quantities, observables, coordinates etc.) and what you do with it
+</em><br />
+<em class="quotelev2">&gt; &gt; in CF: everything is squeezed in the standard name and in the cell_method (in a
+</em><br />
+<em class="quotelev2">&gt; &gt; non-consistent way).
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; In an ideal world, the standard names should only describe bare parameters and
+</em><br />
+<em class="quotelev2">&gt; &gt; everything related to processing should go into something else. But many
+</em><br />
+<em class="quotelev2">&gt; &gt; standard names make reference to time, space, post-processing, extra useful
+</em><br />
+<em class="quotelev2">&gt; &gt; informations, etc.
+</em><br />
+<em class="quotelev2">&gt; &gt; The cell_method attribute is in principle there to represent any
+</em><br />
+<em class="quotelev2">&gt; &gt; (post-)processing but it is not always the case, sometimes the informations are
+</em><br />
+<em class="quotelev2">&gt; &gt; in the standard name directly or sometimes the cell_method is too limited to
+</em><br />
+<em class="quotelev2">&gt; &gt; describe what needs to be described. like in my case here...
+</em><br />
+<em class="quotelev2">&gt; &gt; To maintain a strict separation, the &quot;integral_wrt_X_of_Y&quot; should be one of the
+</em><br />
+<em class="quotelev2">&gt; &gt; cell_method from the beginning.... I also never understood why &quot;difference&quot; is
+</em><br />
+<em class="quotelev2">&gt; &gt; not a valid method in the table E.1 of appendix E since &quot;sum&quot; is there.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; I noticed few months ago a thread discussing ontologies in connection with the
+</em><br />
+<em class="quotelev2">&gt; &gt; proposal of standard names for isotopes. Hundreds of new standard names were
+</em><br />
+<em class="quotelev2">&gt; &gt; added. To me this was all wrong: only few standard names should have been
+</em><br />
+<em class="quotelev2">&gt; &gt; added: mass_concentration, density, optical_depth, whatever physical property
+</em><br />
+<em class="quotelev2">&gt; &gt; you like. Each variable holding one of these standard name should point to a
+</em><br />
+<em class="quotelev2">&gt; &gt; scalar through a controlled attribute. The scalar should  name the isotope or
+</em><br />
+<em class="quotelev2">&gt; &gt; the type of particle or the chemical constituent, etc.
+</em><br />
+<em class="quotelev2">&gt; &gt; I can already see coming hundreds of new standard names each time a new useful
+</em><br />
+<em class="quotelev2">&gt; &gt; property for isotopes or molecules is required.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; You will not prevent explosion of standard names if you don't limit them to the
+</em><br />
+<em class="quotelev2">&gt; &gt; &quot;what&quot;. The &quot;when&quot; should go in the time variable(s), the &quot;where&quot; in the
+</em><br />
+<em class="quotelev2">&gt; &gt; spatial variables, and finally the &quot;how&quot; either in the cell_method with clear
+</em><br />
+<em class="quotelev2">&gt; &gt; controlled vocabulary or using a new controlled mechanism yet to define.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; /S?bastien
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; ----- Original Message -----
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; From: &quot;Karl Taylor&quot; &lt;taylor13 at llnl.gov&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; To: &quot;Sebastien Villaume&quot; &lt;sebastien.villaume at ecmwf.int&gt;, &quot;Lowry, Roy K.&quot;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; &lt;rkl at bodc.ac.uk&gt;, &quot;Jonathan Gregory&quot;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; &lt;j.m.gregory at reading.ac.uk&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Cc: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Sent: Friday, 13 April, 2018 16:32:39
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Subject: Re: [CF-metadata] use of
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; integral_wrt_depth_of_sea_water_practical_salinity
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Dear all,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; I am wary of a &quot;slippery slope&quot; if every calculation performed on a
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; quantity results in a new standard name for that quantity.  We have
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; tried to avoid that in most cases by use of the cell methods, bounds,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; and climatology attributes.  Isn't there some way to accommodate this in
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; a more general way?  I agree that use of non-controlled vocabulary is
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; not ideal, but I would be interested in the kind of use case you
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; envision where you would have to parse it? How does definition of a new
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; standard name satisfy your use case of machine interpretation?
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; best regards,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Karl
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; On 4/13/18 8:22 AM, Sebastien Villaume wrote:
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; Dear Jonathan, Roy and Karl,
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; thank you for your valuable inputs.
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; I am not very fond of the cell_method solution: I am already very reluctant
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; using it because it is not controlled vocabulary and it is a nightmare to parse
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; to extract valuable metadata automatically. Now that I am discovering that one
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; can use a standard_name with no attached bounds instead of a proper variable
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; name with associated bounds makes me even more reluctant to use it!
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; But I am not in a favour of encoding huge values of depth either...
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; ... which leaves me being in favour of proposing new standard names by prefixing
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; existing standard names with &quot;ocean_&quot; !
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; /S?bastien
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt; &gt;&gt;&gt; ----- Original Message -----
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; From: &quot;Karl Taylor&quot; &lt;taylor13 at llnl.gov&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; Sent: Wednesday, 11 April, 2018 18:45:07
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; Subject: Re: [CF-metadata] use of
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; integral_wrt_depth_of_sea_water_practical_salinity
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; Dear Sebastien,
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; One option would be to include in cell_methods the following:
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; cell_methods = &quot;depth: mean (from surface to sea floor)&quot;
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; where depth is the standard name for the vertical coordinate, as
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; provided for  in
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; <a href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#cell-methods-no-coordinates">http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#cell-methods-no-coordinates</a>
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; , and the information in parentheses is non-standard, as provided for in
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; <a href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#recording-spacing-original-data">http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#recording-spacing-original-data</a>
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; .
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; I, for one, wouldn't like to see every integral over an entire domain to
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; require a new standard_name.  the standard_names should name the
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; variable itself and not indicate &quot;method&quot;.
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; best wishes,
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; Karl
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; On 4/11/18 10:28 AM, Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; Dear Sebastien
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; There is an existing standard name of
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt;     ocean_integral_wrt_depth_of_sea_water_temperature
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; and the one you propose has the same pattern, so it would seem all right to me,
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; and appropriate for your purpose. Otherwise you could set a very large lower
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; depth boundary with the understanding that integrating below the sea floor
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; added nothing, but that's a bit ugly.
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; Best wishes
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; Jonathan
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; ----- Forwarded message from Sebastien Villaume &lt;sebastien.villaume at ecmwf.int&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; -----
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; Date: Wed, 11 Apr 2018 13:57:48 +0000
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; From: Sebastien Villaume &lt;sebastien.villaume at ecmwf.int&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; Subject: [CF-metadata] use of
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;    integral_wrt_depth_of_sea_water_practical_salinity
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; X-Mailer: Zimbra 8.6.0_GA_1200 (ZimbraWebClient - FF57 (Linux)/8.6.0_GA_1200)
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; Dear list,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; In 2016/2017, a list of new standard names for NEMO output has been proposed and
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; accepted : <a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2016/058964.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2016/058964.html</a>
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; from that initial list of standard names and after many iterations, one of the
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; accepted standard name was:
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; standard name: integral_wrt_depth_of_sea_water_practical_salinity
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; units: m
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; But the initial list of proposed standard names had actually 2 entries for this
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; standard name:
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; - one entry which is the one that eventually made it to the list (the standard
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; name above)
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; - a second entry for the case where the depth is the total depth, from surface
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; to sea floor: ocean_integral_wrt_depth_of_sea_water_practical_salinity
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; During the discussion:
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;    -  Alison argued that the 2 entries were actually identical, the second one
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;    being simply a special case of the first one, i.e. when the depth corresponds
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;    to the total depth. She proposed later on to simply dropped the second entry.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;    -  Antonio Cofino argued that in this case the reference to Axis and to bounds
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;    should be removed from the description because in the case of the total depth,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;    the bounds are not a constant (but function of lat and lon)
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; In the published description the reference to an axis and to bounds is still
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; there.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; My immediate problem is that I want to produce a parameter that is the integral
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; wrt the whole depth of the salinity and I don't know how to do this.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; for a fixed depth of 500m for instance, the metadata for the parameter would be:
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; float salinity500(t, y, x) ;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;       salinity500:standard_name = &quot;integral_wrt_depth_of_sea_water_practical_salinity&quot;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;       ;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;       salinity500:units = &quot;m&quot; ;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;       salinity500:coordinates = &quot;time dpt500 latitude longitude&quot; ;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; float dpt500 ;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;       dpt500:standard_name = &quot;depth_below_geoid&quot; ;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;       dpt500:units = &quot;m&quot; ;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;       dpt500:axis = &quot;Z&quot; ;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;       dpt500:positive = &quot;down&quot; ;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;       dpt500:bounds = dpt500_bnds ;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; float dpt500_bnds(bnds) ;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; and in the dpt500_bnds array, I have : [0., 500.]
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; for the total depth, I can't use the same mechanism, because the second value of
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; the bounds is not a constant, it is a function of lat and lon: [0., f(lat,lon)]
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; How can I solve this?
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; Is it possible to reconsider the standard name
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; ocean_integral_wrt_depth_of_sea_water_practical_salinity (or a variation of
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; it)?
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; Another approach could be to keep the existing standard name, add a new standard
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; name that represents the total water column and use it as an auxiliary
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; coordinate.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; thanks,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; ____________________________________
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; Dr. S?bastien Villaume
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; M.A.R.S. Analyst
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; ECMWF Data Governance facilitator
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; ECMWF
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; Shinfield Park,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; Reading RG2 9AX, UK
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; +44 (0)118 949 9301
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; +44 (0)7825 521592
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; sebastien.villaume at ecmwf.int
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; ____________________________________
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;&gt;&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt;&gt;&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; &gt;&gt; &gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />----- End forwarded message -----
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Apr 16 2018 - 12:52:48 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8859">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8860.html" title="Next message in the list">Daniel Lee: "[CF-metadata] Units of projection_x_coordinate values in	&#0034;Geospatial projection&#0034;"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8858.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  Standard Names to support Trac ticket 99"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8859" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8859" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8859" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8859" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:21 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8858.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8860.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

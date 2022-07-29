@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF compliant tripolar grid representation from Jim Biard on 2017-03-31 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] CF compliant tripolar grid representation" />
+<meta name="Date" content="2017-03-31" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8193.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8195.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF compliant tripolar grid representation</h1>
+<!-- received="Fri Mar 31 08:20:30 2017" -->
+<!-- isoreceived="20170331072030" -->
+<!-- sent="Fri, 31 Mar 2017 10:20:30 -0400" -->
+<!-- isosent="20170331142030" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] CF compliant tripolar grid representation" -->
+<!-- id="22f41d71-d5d5-944a-f9e6-33bddeacf1c6_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="1538834844.27815701.1490909012790.JavaMail.zimbra_at_ecmwf.int" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8194" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8195.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] CF compliant tripolar grid representation&quot;">Next message</a> ]
+[ <a href="./8193.html" title="Jon Blower: &quot;[CF-metadata] Recording &#0034;day of year on which something happens&#0034;&quot;">Previous message</a> ]
+[ <a href="./8190.html" title="Sebastien Villaume: &quot;[CF-metadata] CF compliant tripolar grid representation&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8194" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8194" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8194" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8194" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20compliant%20tripolar%20grid%20representation">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 31 Mar 2017 10:20:30 -0400</span><br />
+</address>
+<br />
+S?bastien,
+<br />
+<br />I think mesh_grid_i/j_index standard names would be good additions. The 
+<br />
+units associated with standard names in the table are not requirements, 
+<br />
+but the use of the projection_xy_coordinate standard names would be 
+<br />
+somewhat misleading, especially if there is no CRS involved. The 
+<br />
+definitions could explain, in general terms, the relationship between 
+<br />
+these and the 2D lat and lon grids. The satellite community has a 
+<br />
+similar issue for image swath data. The native 1D coordinates are often 
+<br />
+scan and sample (or names like that), which are unitless and have a 
+<br />
+complex and dynamic relationship to latitude and longitude.
+<br />
+<br />You are right to feel weird about identifying 2D lat and lon as Y and X 
+<br />
+axes. The axis attribute should never be applied to 2D variables. It is 
+<br />
+only valid for 1D &quot;true&quot; coordinate variables.
+<br />
+<br />CF compliance is a fuzzy thing. You can have next to no CF attributes in 
+<br />
+your file and still be CF compliant as long as the attributes you did 
+<br />
+put in your file are properly formed and its structure is valid. I know 
+<br />
+people are working on completeness metrics of various sorts, but I don't 
+<br />
+think we have an application that will grade a file on how full its CF 
+<br />
+implementation is.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 3/30/17 5:23 PM, Sebastien Villaume wrote:
+<br />
+<em class="quotelev1">&gt; Dear Jim and Karl,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; thank you for your quick answers.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Karl, it seems that the tripolar grid mentioned in the link you sent is defined in this paper:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Murray, R. J., 1996: Explicit generation of orthogonal grids for ocean models. Journal of Computational Physics, 126, 251-273
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; which is cited by the paper from the NEMO group (Madec et al) that I mentioned in my original question. I need to check carefully if the definition is really identical or if they simply got inspired by the &quot;Murray tripolar grid&quot; and derived something similar but not exactly identical. In that case, it means there are several types of tripolar grids...
+</em><br />
+<em class="quotelev1">&gt; One first difference I can directly identify is that the separation between the regular lat-lon and the modified part is not at the same latitude: 65N for Murray tripolar grid and 40N for the NEMO one.
+</em><br />
+<em class="quotelev1">&gt; In any case, if someone already defined tripolar grids in a CF compliant way, I can definitely start from there.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Regarding X and Y, I thought that &quot;projection_[x|y]_coordinate&quot; were used in the case of a projection on an Euclidian plane since the units of both standard names are &quot;meters&quot;.
+</em><br />
+<em class="quotelev1">&gt; What I am really after is more what you are suggesting later in your answer, i.e. mesh_grid_[i|j]_index. It feels weird to have a 2-D lat and lon as coordinates axis Y/X, this is why I need I would like to add those 1-D coordinate variables.  I also noticed the grid_latitude and grid_longitude in the standard_name table but it is explicitly for rotated grids.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Would it be possible to request mesh_grid_i_index and mesh_grid_j_index? (regardless of the feasibility of defining a proper tripolar crs)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dr. S?bastien Villaume
+</em><br />
+<em class="quotelev1">&gt; Analyst
+</em><br />
+<em class="quotelev1">&gt; ECMWF Shinfield Park,
+</em><br />
+<em class="quotelev1">&gt; Reading RG2 9AX, UK
+</em><br />
+<em class="quotelev1">&gt; +44 7825 521592
+</em><br />
+<em class="quotelev1">&gt; sebastien.villaume at ecmwf.int
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message -----
+</em><br />
+<em class="quotelev1">&gt; From: &quot;Jim Biard&quot; &lt;jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Sent: Thursday, 30 March, 2017 17:42:01
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] CF compliant tripolar grid representation
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; S?bastien,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If I'm not mistaken, we would need to propose a new grid_mapping to be added to the Conventions that would define a Tripolar Coordinate Reference System, along with any attributes that don't currently exist that are needed to complete the definition. I did a search for a standard tripolar CRS in proj4 or epsg, and was unable to find one. Is it possible to make such a definition?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Regarding the standard names for your X and Y coordinate variables, I think you could use &quot;projection_x/y_coordinate&quot; once a grid_mapping has been defined. Of course you could always leave the attribute off, since a standard_name attribute is not a requirement.
+</em><br />
+<em class="quotelev1">&gt; If making a new grid_mapping is not feasible, you could request standard names along the lines of mesh_grid_i_index and mesh_grid_j_index. These standard names would (on reading their definitions) make it clear that the measurements are on a mesh grid for which there is no CRS. At least that's what comes to mind at the moment.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Grace and peace,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jim
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 3/30/17 11:52 AM, Sebastien Villaume wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hello all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I am looking for the best approach to describe in a CF compliant way the tripolar grids usually used in NEMO configurations.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Basically, the difference with a usual bipolar grid (north pole-south pole) is that the north pole is split into 2 poles moved over Canada and Russia (to have distortions/singularities not over the ocean). A good visual representation can be found here: <a href="http://www.geomar.de/typo3temp/pics/globe_grid2_14_b8edb639ae.png">http://www.geomar.de/typo3temp/pics/globe_grid2_14_b8edb639ae.png</a> everything south of the green line (40degN) is identical to a regular grid, but everything north of it is computed using a technique described here:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Madec, G. and M. Imbard, 1996 : A global ocean mesh to overcome the north pole singularity. Clim. Dyn., 12, 381?388.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The usual NEMO output of the grid looks like this:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      float longitude(y, x) ;
+</em><br />
+<em class="quotelev1">&gt;          longitude:standard_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          longitude:units = &quot;degrees_east&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          longitude:long_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;      float latitude(y, x) ;
+</em><br />
+<em class="quotelev1">&gt;          latitude:standard_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          latitude:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          latitude:long_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Basically both latitudes and longitudes need to be specified for each grid point, hence lat and lon are 2D arrays. This is not a problem itself but I would like to give more information through maybe grid_mapping or crs so it is clear that the grid is tripolar. This is useful information if one want to project/interpolate this back to a more regular representation.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Looking at the CF conventions, I can see that grids can be fairly nicely documented but nothing for tripolar grids.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Is there some documentation/guidelines on how to derive a proper grid_mapping/crs with valid attributes for tripolar grids?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I would also like to add to my netcdf file a way to better describe axes:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      double y(y) ;
+</em><br />
+<em class="quotelev1">&gt;          y:units = &quot;1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          y:long_name = &quot;j-index of mesh grid&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          y:standard_name = ??? ;
+</em><br />
+<em class="quotelev1">&gt;      double x(x) ;
+</em><br />
+<em class="quotelev1">&gt;          x:units = &quot;1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          x:long_name = &quot;i-index of mesh grid&quot; ;
+</em><br />
+<em class="quotelev1">&gt;          x:standard_name = ??? ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; what would be the standard name of these?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dr. S?bastien Villaume
+</em><br />
+<em class="quotelev1">&gt; Analyst
+</em><br />
+<em class="quotelev1">&gt; ECMWF Shinfield Park,
+</em><br />
+<em class="quotelev1">&gt; Reading RG2 9AX, UK
+</em><br />
+<em class="quotelev1">&gt; +44 7825 521592 sebastien.villaume at ecmwf.int ____________________________________
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/Connect with us on Facebook for climate 
+&lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+&lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us 
+on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and 
+_at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170331/540fa343/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170331/540fa343/attachment.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170331/540fa343/attachment.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170331/540fa343/attachment.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Mar 31 2017 - 08:20:30 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8194">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8195.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] CF compliant tripolar grid representation"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8193.html" title="Previous message in the list">Jon Blower: "[CF-metadata] Recording &#0034;day of year on which something happens&#0034;"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8190.html" title="Message to which this message replies">Sebastien Villaume: "[CF-metadata] CF compliant tripolar grid representation"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8194" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8194" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8194" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8194" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:12 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8193.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8195.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

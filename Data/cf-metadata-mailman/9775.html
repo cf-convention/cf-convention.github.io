@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to encode &quot;not occurring&quot; as distinct from &quot;missing data&quot; from Kehoe, Kenneth E. on 2019-07-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Kehoe, Kenneth E. (kkehoe)" />
+<meta name="Subject" content="[CF-metadata] How to encode &quot;not occurring&quot; as distinct from &quot;missing data&quot;" />
+<meta name="Date" content="2019-07-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9774.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9776.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to encode &quot;not occurring&quot; as distinct from &quot;missing data&quot;</h1>
+<!-- received="Fri Jul 19 13:16:08 2019" -->
+<!-- isoreceived="20190719121608" -->
+<!-- sent="Fri, 19 Jul 2019 19:16:08 +0000" -->
+<!-- isosent="20190719191608" -->
+<!-- name="Kehoe, Kenneth E." -->
+<!-- email="kkehoe" -->
+<!-- subject="[CF-metadata] How to encode &quot;not occurring&quot; as distinct from &quot;missing data&quot;" -->
+<!-- id="ed4cfc55-d1ee-9d02-e8a9-9b85a263c174_at_ou.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20190719125742.GA17249_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9775" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9776.html" accesskey="d" title="Martin Juckes - UKRI STFC: &quot;[CF-metadata] New standard_name of quality_flag for corresponding quality control variables&quot;">Next message</a> ]
+[ <a href="./9774.html" title="Jonathan Gregory: &quot;[CF-metadata] How to encode &#0034;not occurring&#0034; as distinct from &#0034;missing data&#0034;&quot;">Previous message</a> ]
+[ <a href="./9774.html" title="Jonathan Gregory: &quot;[CF-metadata] How to encode &#0034;not occurring&#0034; as distinct from &#0034;missing data&#0034;&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9775" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9775" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9775" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9775" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Kehoe, Kenneth E. &lt;<a href="mailto:kkehoe?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20encode%20%22not%20occurring%22%20as%20distinct%20from%20%22missing%20data%22">kkehoe</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 19 Jul 2019 19:16:08 +0000</span><br />
+</address>
+<br />
+Thanks for bringing this up Lars. I had a similar question a while back 
+<br />
+(<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2015/018489.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2015/018489.html</a>) and 
+<br />
+the suggestion was to use flag_values as you have proposed. As Jonathan 
+<br />
+indicated the use of flag_values is not prohibited but does come with 
+<br />
+some possible issues. Particularly software that automatically converts 
+<br />
+values outside the valid range to NaN or a single missing value 
+<br />
+indicator. Some people use this methodology instead of using 
+<br />
+missing_value attribute. I don't know of any software that does this 
+<br />
+automatically, but it could be an issue.
+<br />
+<br />The proposal I gave was for some data that had history and could not be 
+<br />
+updated so I was looking for a solution that would work without changes. 
+<br />
+Discussions I had with others at meetings suggested using an ancillary 
+<br />
+state variable. I find that a better solution since it separates the 
+<br />
+data from metadata and would not require looping over multiple missing 
+<br />
+values (I don't know if that is supported) or run into the issue of code 
+<br />
+automatically changing data outside the valid range.
+<br />
+<br />My program uses ancillary variables to contain corresponding quality 
+<br />
+control information, and one of the pieces of information is that the 
+<br />
+data variable is set to missing value. This allows for faster quality 
+<br />
+control analysis by only needing to look at the ancillary variable to 
+<br />
+find missing data instead of looking at both quality control and data 
+<br />
+variable.
+<br />
+<br />My suggestion is to use a single missing value indicator with the data 
+<br />
+variable and then indicate the greater detail of why it is missing in 
+<br />
+the ancillary variable using flag_values. Additional quality information 
+<br />
+could be provided beyond the reason for being set to missing value. You 
+<br />
+can also provided multiple pieces (inclusive state) of information on a 
+<br />
+single value using flag_masks instead of flag_values.
+<br />
+<br />For example:
+<br />
+<br />cloud_layer_base_height(time, layer):float
+<br />
+&nbsp;??? long_name = &quot;Cloud base height of hydrometeor layers? ;
+<br />
+&nbsp;??? units = &quot;m? ;
+<br />
+&nbsp;??? missing_value = -9999.f ;
+<br />
+&nbsp;??? ancillary_varialbes = &quot;qc_cloud_layer_base_height&quot;
+<br />
+qc_cloud_layer_base_height (time, layer): short
+<br />
+&nbsp;??? long_name = &quot;Quality information for Cloud base height of 
+<br />
+hydrometeor layers&quot;
+<br />
+&nbsp;??? units = &quot;1&quot;
+<br />
+&nbsp;??? flag_values = 0, 1, 2, 3, 4
+<br />
+&nbsp;??? flag_meanings = &quot;data_available input_value_missing 
+<br />
+input_data_exists_but_the_computation_did_not_result_in_a_valid_numeric_value 
+<br />
+value_missing_because_of_birds value_was_computed_but_I_would_not_use_it&quot;
+<br />
+&nbsp;??? standard_name = &quot;status_flag&quot;
+<br />
+<br />I'm curious to hear your thoughts and others,
+<br />
+<br />Ken
+<br />
+<br /><br />On 2019-7-19 06:57, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Lars
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think that using a flag_value would be a good CF way to do this. I am not
+</em><br />
+<em class="quotelev1">&gt; sure whether it's a good idea to choose a value which is outside the valid
+</em><br />
+<em class="quotelev1">&gt; range. That's not a problem for CF (that is, it's not prohibited), but maybe
+</em><br />
+<em class="quotelev1">&gt; it might not suit some software, which could object if it wasn't aware of CF
+</em><br />
+<em class="quotelev1">&gt; flag_values.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Forwarded message from B?rring Lars &lt;Lars.Barring at smhi.se&gt; -----
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Date: Fri, 19 Jul 2019 10:20:35 +0000
+</em><br />
+<em class="quotelev2">&gt;&gt; From: B?rring Lars &lt;Lars.Barring at smhi.se&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; To: &quot;cf-metadata at cgd.ucar.edu&quot; &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: [CF-metadata] How to encode &quot;not occurring&quot; as distinct from
+</em><br />
+<em class="quotelev2">&gt;&gt; 	&quot;missing data&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear all,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; We are considering how best to store data produced by some computation where there has to be a distinction between missing input data (i.e. no input data available) and &quot;not occurring&quot; (i.e. input data exists but the computation did not result in a valid numeric value).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; In practice, the situation is reasonably similar to what was discussed back in 2017  (in the thread &quot;Recording &quot;day of year on which something happens&quot;) where Jim Biard offered a solution (<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2017/019238.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2017/019238.html</a>).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; We have considered his solution to use flag values outside the valid_range of the data variable to indicate &quot;no_occurrence&quot;. We have also considered to use a separate quality variable with flag values to use as as a mask (combined with _MissVal in the data variable).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; In this work the following questions surfaced,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; -- Is there any experience regarding how 'standard software' would handle either of these alternatives, is one more generally accepted?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; -- Is there any experience to guide us regarding which is better, or generally more &quot;in line with the CF Conventions&quot;?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; -- Is there another better approach that we have not thought of?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Many thanks,
+</em><br />
+<em class="quotelev2">&gt;&gt; Lars
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+Kenneth E. Kehoe
+   Research Associate - University of Oklahoma
+   Cooperative Institute for Mesoscale Meteorological Studies
+   ARM Climate Research Facility - Data Quality Office
+   e-mail: kkehoe at ou.edu | Office: 303-497-4754
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Jul 19 2019 - 13:16:08 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9775">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9776.html" title="Next message in the list">Martin Juckes - UKRI STFC: "[CF-metadata] New standard_name of quality_flag for corresponding quality control variables"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9774.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] How to encode &#0034;not occurring&#0034; as distinct from &#0034;missing data&#0034;"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./9774.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] How to encode &#0034;not occurring&#0034; as distinct from &#0034;missing data&#0034;"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9775" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9775" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9775" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9775" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9774.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9776.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

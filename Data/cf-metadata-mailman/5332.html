@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] scalar coordinates from Jonathan Gregory on 2013-05-10 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] scalar coordinates" />
+<meta name="Date" content="2013-05-10" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5331.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5333.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] scalar coordinates</h1>
+<!-- received="Fri May 10 10:26:29 2013" -->
+<!-- isoreceived="20130510092629" -->
+<!-- sent="Fri, 10 May 2013 17:26:29 +0100" -->
+<!-- isosent="20130510162629" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] scalar coordinates" -->
+<!-- id="20130510162629.GA19455_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5332" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5333.html" accesskey="d" title="rhorne at excaliburlabs.com: &quot;[CF-metadata] new standard_name: lwe_thickness_of_water_vapor&quot;">Next message</a> ]
+[ <a href="./5331.html" title="Steve Hankin: &quot;[CF-metadata] scalar coordinates&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5375.html" accesskey="t" title="Hedley, Mark: &quot;[CF-metadata] scalar coordinates&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5332" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5332" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5332" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5332" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20scalar%20coordinates">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 10 May 2013 17:26:29 +0100</span><br />
+</address>
+<br />
+Dear Mark et al.
+<br />
+<br />Others may not be aware we have been discussing this for a long time in ticket
+<br />
+95, about the CF data model. I think it's important to be clear that this
+<br />
+discussion is concerned with how CF-netCDF files are interpreted, in an
+<br />
+abstract sense. That has implications for the design of software which is
+<br />
+sympathetic to CF, but it doesn't affect the compliance of CF-netCDF files.
+<br />
+<br />I think that the statement in sect 5.7 is the definitive one, which you quoted.
+<br />
+&quot;When a variable has an associated coordinate which is single-valued, that
+<br />
+coordinate may be represented as a scalar variable. ... The new scalar
+<br />
+coordinate variable is a convenience feature which avoids adding size one
+<br />
+dimensions to variables. Scalar coordinate variables have the same information
+<br />
+content and can be used in the same contexts as a size one coordinate
+<br />
+variable.&quot; I think that makes it clear that a scalar coordinate variable is
+<br />
+regarded as logically equivalent to a size-one (Unidata) coordinate variable.
+<br />
+I'm certain that is what we had in mind when we wrote that text. If that is
+<br />
+what Mark's option B means, then I vote for option B. But I find option B a
+<br />
+bit unclear in saying a scalar coordinate variable &quot;...  explicitly declares a
+<br />
+dimension of size one&quot;. The point is, it does not *declare* the dimension. As
+<br />
+the rest of the sentence says, &quot;the dimension is not stated in the file&quot;.
+<br />
+<br />We intended it for just the kind of case that Seth describes e.g. air
+<br />
+temperature at 2 m height. It's convenient to record this kind of thing as a
+<br />
+scalar coordinate variable, because it means you don't have clutter up the
+<br />
+file and the data variable declaration with size-one dimensions. It's useful
+<br />
+that it is a coordinate variable, because that means it can have a
+<br />
+standard_name, units and bounds. These are equivalent in information content:
+<br />
+<br />&nbsp;&nbsp;float height; // scalar coordinate variable
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;height: standard_name=&quot;height&quot;;
+<br />
+&nbsp;&nbsp;float temp(lat,lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;temp: standard_name=&quot;air_temperature&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;temp: coordinates=&quot;height&quot;;
+<br />
+<br />&nbsp;&nbsp;float height(height);  // size-one coordinate var, with dimension height=1
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;height: standard_name=&quot;height&quot;;
+<br />
+&nbsp;&nbsp;float temp(height,lat,lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;temp: standard_name=&quot;air_temperature&quot;;
+<br />
+<br />So I think there is an implied dimension, which we're not putting in the file
+<br />
+because we don't need it. Although if this is an observational dataset, there
+<br />
+may only ever be one height, as Seth says, if it was a slice of one level out
+<br />
+of a model dataset, it's natural to think of it as having a size-one dimension
+<br />
+which is omitted from the file. If you had one-level slices in different data
+<br />
+variables, you might want to join them together and reconstruct the height
+<br />
+dimension. It doesn't make any difference to the file; it's just how you think
+<br />
+about it.
+<br />
+<br />In the example that Richard gives, there are choices which the writer of the
+<br />
+file could record concerning the time, forecast_reference_time and
+<br />
+forecast_period. Leaving out of consideration the cases where both
+<br />
+forecast_period and forecast_reference_time are multi-valued (the document
+<br />
+Steve pointed to is about that):
+<br />
+<br />(a) If there are many forecast_periods from one forecast_reference_time, then
+<br />
+forecast_reference_time could be a size-one or scalar coord var, and either
+<br />
+time or forecast_period could be a (Unidata) coord var, with the other being
+<br />
+an aux coord var of the same dimension.
+<br />
+<br />(b) If there are forecasts at the same forecast_period with various
+<br />
+forecast_reference_times, then forecast_period could be a size-one or scalar
+<br />
+coord var, and either time or forecast_reference_time a (Unidata) coord var,
+<br />
+with the other being an aux coord var of the same dimension.
+<br />
+<br />In these cases, it's well-defined how the three variables are grouped.
+<br />
+Richard is interested in the degenerate case when none of them is
+<br />
+multi-valued. That case could be written as (a) or (b). In practice, it may
+<br />
+naturally be (a) or (b), because it's a single time-slice from a system that
+<br />
+produces one or the other. If that's so, it's useful for the data-writer to
+<br />
+indicate it, I would say. In order to record that two of the size-one
+<br />
+coordinates are related, you must have an explicit dimension of size one,
+<br />
+with one of them a (Unidata) coord var and the other an auxiliary. But, as
+<br />
+Richard says, in this special case you could make all three of them coord
+<br />
+vars or scalar coord vars. I think that would be less informative, so it
+<br />
+doesn't seem better to me. But it's allowed, of course. The data-writer can
+<br />
+make a choice. The user of the data can aggregate it however he/she pleases.
+<br />
+That's not a decision which is up to the data-writer or the CF convention.
+<br />
+<br />I think the description of size-one string-valued auxiliary coordinate
+<br />
+variables in sect 6.1 is careless (that's my fault - I wrote it) because it
+<br />
+doesn't point out that coordinate variables can't be string-valued. That could
+<br />
+be amended in a defect ticket. A string-value scalar coordinate variable is a
+<br />
+1D character array (dimensioned by string length). I think it is logically
+<br />
+equivalent to a size-one string-valued auxiliary coordinate variable, which is
+<br />
+a 2D character array in which one of the dimensions is string length and the
+<br />
+other is a size-one dimension of the data variable.  Again, it's a convenience
+<br />
+feature which allows you to avoid adding a dimension to the file.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Fri May 10 2013 - 10:26:29 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5332">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5333.html" title="Next message in the list">rhorne at excaliburlabs.com: "[CF-metadata] new standard_name: lwe_thickness_of_water_vapor"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5331.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] scalar coordinates"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5375.html" title="Next message in this discussion thread">Hedley, Mark: "[CF-metadata] scalar coordinates"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5375.html" title="Message sent in reply to this message">Hedley, Mark: "[CF-metadata] scalar coordinates"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5332" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5332" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5332" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5332" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:21 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5331.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5333.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

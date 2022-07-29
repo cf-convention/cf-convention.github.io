@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF provisional standards from Steve Hankin on 2006-11-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="Steve Hankin (Steven.C.Hankin)" />
+<meta name="Subject" content="[CF-metadata] CF provisional standards" />
+<meta name="Date" content="2006-11-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0514.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0516.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF provisional standards</h1>
+<!-- received="Wed Nov 29 12:50:19 2006" -->
+<!-- isoreceived="20061129125019" -->
+<!-- sent="Wed, 29 Nov 2006 14:50:19 -0500" -->
+<!-- isosent="20061129195019" -->
+<!-- name="Steve Hankin" -->
+<!-- email="Steven.C.Hankin" -->
+<!-- subject="[CF-metadata] CF provisional standards" -->
+<!-- id="456DE47B.2030102_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20061129085521.GA27373_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start515" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0516.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] CF provisional standards&quot;">Next message</a> ]
+[ <a href="./0514.html" title="Roy Lowry: &quot;[CF-metadata] CF and SeaDataNet&quot;">Previous message</a> ]
+[ <a href="./0511.html" title="Jonathan Gregory: &quot;[CF-metadata] CF provisional standards&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg515" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg515" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg515" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg515" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Steve Hankin &lt;<a href="mailto:Steven.C.Hankin?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20provisional%20standards">Steven.C.Hankin</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 29 Nov 2006 14:50:19 -0500</span><br />
+</address>
+<br />
+Hi Jon,
+<br />
+<br />It seems to me that this is an example that may serve to illustrate the 
+<br />
+importance of implementation and testing in &quot;systems of realistic 
+<br />
+complexity&quot;.  You have pointed out that it is straightforward to see how 
+<br />
+individual applications can interpret the proposed files.  That seems a 
+<br />
+reasonable claim.  But there has not been much discussion of whether 
+<br />
+this approach will enhance or degrade community-wide interoperability 
+<br />
+over the long term.  Some exploration of that ....
+<br />
+<br />I think what has been proposed here is that a given file may contain an 
+<br />
+arbitrary number of distinct &quot;projection coordinates&quot;.  Is this the best 
+<br />
+way to achieve broad interoperability in the long term?  At first 
+<br />
+analysis, I have my doubts.  Imagine just two sets of projection 
+<br />
+coordinates &quot;A&quot; and &quot;B&quot;,  If we have three files that respectively 
+<br />
+contain projection coordinate systems &quot;A&quot;, &quot;B&quot; and &quot;A&amp;B&quot;, then neither 
+<br />
+the &quot;A&quot;-sensitive applications nor the &quot;B&quot;-sensitive applications can 
+<br />
+read all of the files.  Extending this line of reasoning to broad 
+<br />
+collections of files and many different sets of projection coordinates 
+<br />
+and we have a frustrating situation where many files are not readable by 
+<br />
+many applications.
+<br />
+<br />As an alternative, how about an approach that takes the information 
+<br />
+needed to translate between projection coordinate systems (and therefore 
+<br />
+between files) out of the individual files?  Then the translation 
+<br />
+information may be regarded as interoperability resources to support 
+<br />
+interoperability between any files that use either projection coordinate 
+<br />
+&quot;A&quot; or &quot;B&quot;. Could we envision ancillary files (somewhat in the spirit of 
+<br />
+gridspec files) that contained the translations between alternative 
+<br />
+projection coordinates?
+<br />
+<br />By the way (stating the obvious), CF already allows all sorts of 
+<br />
+non-standardized content to be put into files.  So there is nothing to 
+<br />
+prevent a group that has unique coordinate projection needs from 
+<br />
+embedding that content into the files they generate.  The discussion in 
+<br />
+this email thread is that if we are going to support projection 
+<br />
+translations as a fundamental CF concept, then how do we do it in a way 
+<br />
+that scales well to many files and many projection coordinate systems.
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;- Steve
+<br />
+<br />================================================
+<br />
+<br />Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear all
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I just made the point below in the thread about 2D projection coordinates.
+</em><br />
+<em class="quotelev1">&gt; I should not have put it there, because it complicates the threads! Sorry.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; That thread (on curvilinear Cartesian coordinates) this is an instance of how
+</em><br />
+<em class="quotelev1">&gt; we have generally developed conventions by discussion. It is not obvious to me
+</em><br />
+<em class="quotelev1">&gt; that trial implementations would help.  We have written examples of both
+</em><br />
+<em class="quotelev1">&gt; schemes, and as humans we have no difficulty in interpreting them. Hence
+</em><br />
+<em class="quotelev1">&gt; programs could be written to interpret them. The problem is sufficiently
+</em><br />
+<em class="quotelev1">&gt; simple it seems unlikely we have made a fundamental error. As you say [Brian]
+</em><br />
+<em class="quotelev1">&gt; opinions about which is &quot;easier&quot; depend partly on taste, rather than more
+</em><br />
+<em class="quotelev1">&gt; objective criteria.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I'm raising this example because I would like to get a better picture of
+</em><br />
+<em class="quotelev1">&gt; what would be done during provisional status and the benefits it would bring.
+</em><br />
+<em class="quotelev1">&gt; I can see advantages in having a period of reflection, and the necessity for
+</em><br />
+<em class="quotelev1">&gt; example files, but I'm less clear about what &quot;testing&quot; is needed.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;   
+</em><br />
+<span id="received"><dfn>Received on</dfn> Wed Nov 29 2006 - 12:50:19 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start515">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0516.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] CF provisional standards"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0514.html" title="Previous message in the list">Roy Lowry: "[CF-metadata] CF and SeaDataNet"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0511.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] CF provisional standards"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg515" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg515" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg515" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg515" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:51 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0514.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0516.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

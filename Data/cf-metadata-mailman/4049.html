@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] inconsistencies in translating projection parameters OGC WKT &lt;-&gt; CF-1.5 from John Caron on 2011-12-17 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] inconsistencies in translating projection parameters OGC WKT &lt;-&gt; CF-1.5" />
+<meta name="Date" content="2011-12-17" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4048.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4050.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] inconsistencies in translating projection parameters OGC WKT &lt;-&gt; CF-1.5</h1>
+<!-- received="Fri Dec 16 17:11:55 2011" -->
+<!-- isoreceived="20111216171155" -->
+<!-- sent="Fri, 16 Dec 2011 17:11:55 -0700" -->
+<!-- isosent="20111217001155" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] inconsistencies in translating projection parameters OGC WKT &lt;-&gt; CF-1.5" -->
+<!-- id="4EEBDE4B.10603_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CA+TxYvOFys6QtbiZ=j9-bprNtf7ZMLA6jtSRfPr=ftoBOzq4Eg_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4049" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4050.html" accesskey="d" title="Nan Galbraith: &quot;[CF-metadata] Convention attribute&quot;">Next message</a> ]
+[ <a href="./4048.html" title="John Caron: &quot;[CF-metadata] inconsistencies in translating projection parameters OGC WKT &#0060;-&#0062; CF-1.5&quot;">Previous message</a> ]
+[ <a href="./4044.html" title="Etienne Tourigny: &quot;[CF-metadata] inconsistencies in translating projection parameters OGC WKT &#0060;-&#0062; CF-1.5&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4051.html" accesskey="t" title="Etienne Tourigny: &quot;[CF-metadata] inconsistencies in translating projection parameters OGC WKT &#0060;-&#0062; CF-1.5&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4049" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4049" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4049" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4049" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20inconsistencies%20in%20translating%20projection%20parameters%20OGC%20WKT%20%3C-%3E%20CF-1.5">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 16 Dec 2011 17:11:55 -0700</span><br />
+</address>
+<br />
+On 12/15/2011 8:03 AM, Etienne Tourigny wrote:
+<br />
+<em class="quotelev1">&gt; John, thanks for your answers.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Would anyone be kind enough to point me to real files that use the
+</em><br />
+<em class="quotelev1">&gt; projections mentioned in this thread?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Answers below, but here is a quick summary of my recommendations
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 1) LCC:  calculate the missing scale_factor from other parameters (no
+</em><br />
+<em class="quotelev1">&gt; changes to CF)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 2) CEA: drop the scale_factor_at_projection_origin variant all
+</em><br />
+<em class="quotelev1">&gt; together, or add a scale_factor parameter to that variant.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 3) PS: add an optional parameter (Scale factor at natural origin) that
+</em><br />
+<em class="quotelev1">&gt; defaults to 1 if absent
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On Wed, Dec 14, 2011 at 2:21 PM, John Caron&lt;caron at unidata.ucar.edu&gt;  wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Hi Etienne:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Generally, CF has followed proj4 conventions as much as we could, and John
+</em><br />
+<em class="quotelev2">&gt;&gt; Snyder's reference book is often underneath:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://pubs.usgs.gov/pp/1395/report.pdf">http://pubs.usgs.gov/pp/1395/report.pdf</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; OGC specs tended to come from experts using the EPSG, and generally we are
+</em><br />
+<em class="quotelev2">&gt;&gt; less familiar with that.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; some specific comments below, based on my own understandings.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 12/13/2011 2:21 PM, Etienne Tourigny wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Hi all,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I am opening a seperate thread at this deals merely with the problems
+</em><br />
+<em class="quotelev2">&gt;&gt; encountered in translating projection parameters to/from OGC WKT and
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-1.5.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I would appreciate any guidance in resolving these issues.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; In summary:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) LCC (Lambert conformal): should include a scale_factor parameter in
+</em><br />
+<em class="quotelev2">&gt;&gt; the 1 standard parallel case
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) CEA (Lambert Cylindrical Equal Area): how to convert the
+</em><br />
+<em class="quotelev2">&gt;&gt; 'scale_factor_at_projection_origin' alternative to standard parallel
+</em><br />
+<em class="quotelev2">&gt;&gt; to OGC WKT?
+</em><br />
+<em class="quotelev2">&gt;&gt; 3) PS (Polar stereographic):This projection's parameters in CF-1 are
+</em><br />
+<em class="quotelev2">&gt;&gt; significantly different from OGC/PROJ.4 ,  CF-1 standard parameters
+</em><br />
+<em class="quotelev2">&gt;&gt; 'Either standard_parallel or scale_factor_at_projection_origin' is
+</em><br />
+<em class="quotelev2">&gt;&gt; incompatible with OGC WKT, which requires both
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; More detailed information (reproduced here) can be found at
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://trac.osgeo.org/gdal/wiki/NetCDF_ProjectionTestingStatus">http://trac.osgeo.org/gdal/wiki/NetCDF_ProjectionTestingStatus</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) LCC 1SP (Lambert conformal)
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; The OGC WKT 'Lambert_Conformal_Conic_2SP' maps clearly to LCC in CF-1
+</em><br />
+<em class="quotelev2">&gt;&gt; with 2 std parallels.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; The CF-1 spec claims that a 1SP version can be used, but it doesn't
+</em><br />
+<em class="quotelev2">&gt;&gt; include a 'scale_factor' as does the OGC WKT
+</em><br />
+<em class="quotelev2">&gt;&gt; 'Lambert_Conformal_Conic_1SP'.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; For import: Given discussion and example on #3324, and also support
+</em><br />
+<em class="quotelev2">&gt;&gt; from NARCCAP project: it seems the CF-1 LCC 1SP projection is a
+</em><br />
+<em class="quotelev2">&gt;&gt; 'degenerate' LCC-2SP with both SP's at the same location. Thus seems
+</em><br />
+<em class="quotelev2">&gt;&gt; we can read with both 'std_parallel' (1 value) and
+</em><br />
+<em class="quotelev2">&gt;&gt; 'latitude_of_projection_origin' mapping to latitude_of_origin (WKT)
+</em><br />
+<em class="quotelev2">&gt;&gt; and setting scale_factor=1? This is the code's current behaviour
+</em><br />
+<em class="quotelev2">&gt;&gt; (though perhaps could do more error-checking).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; yes, we handle both 1  and 2 standard parallels in the same projection. the
+</em><br />
+<em class="quotelev2">&gt;&gt; 1 parallel can be thought of as a degenerate case of the 2 parellels.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; AFAIU, the scale factor is determined by the standard parallels, so is
+</em><br />
+<em class="quotelev2">&gt;&gt; reduntant to specify, see Snyder, equation 15-4.
+</em><br />
+<em class="quotelev1">&gt; As you follow proj4 closely, it could make more sense to use the proj4
+</em><br />
+<em class="quotelev1">&gt; string for LCC1SP, as described in [1]
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   +proj=lcc   +lat_1=Latitude of natural origin
+</em><br />
+<em class="quotelev1">&gt;               +lon_0=Longitude of natural origin
+</em><br />
+<em class="quotelev1">&gt;               +k_0=Scale factor at natural origin
+</em><br />
+<em class="quotelev1">&gt;               +x_0=False Origin Easting
+</em><br />
+<em class="quotelev1">&gt;               +y_0=False Origin Northing
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; But this is another issue, I think that we can manage the CF-WKT conversion.
+</em><br />
+<br />i agree that the CF parameters are misnamed
+<br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Given the way CF stores LCC1-SP parameters, I see how to calculate k_0
+</em><br />
+<em class="quotelev1">&gt; (scale factor at natural origin), using eq. 15-4 with CF
+</em><br />
+<em class="quotelev1">&gt; standard_parallel1 and latitude_of_projection_origin .
+</em><br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; However, when converting a OGC WKT to CF grid_mapping,  I don't see
+</em><br />
+<em class="quotelev1">&gt; how to do the inverse calculation , which requires to  obtain
+</em><br />
+<em class="quotelev1">&gt; latitude_of_projection_origin from proj4 parameters above.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The example given in
+</em><br />
+<em class="quotelev1">&gt; <a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.5/cf-conventions.html#lambert-conformal-projection">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.5/cf-conventions.html#lambert-conformal-projection</a>
+</em><br />
+<em class="quotelev1">&gt; is trivial, as standard_parallel1=latitude_of_projection_origin=25.0 ,
+</em><br />
+<em class="quotelev1">&gt; therefore k_0 is 1, and the inverse is trivial
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It is my understanding from [1] that the 1SP is usually considered to
+</em><br />
+<em class="quotelev1">&gt; have a scale factor of 1, and when it is not the 2SP form is preferred
+</em><br />
+<em class="quotelev1">&gt;   (with a scale factor of 1 for each SP) .
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Therefore, would it make sense to do the following?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 1)
+</em><br />
+<em class="quotelev1">&gt; CF-&gt;WKT : calculate scale_factor using eq. 15-4 and use the 1SP form
+</em><br />
+<em class="quotelev1">&gt; WKT-&gt;CF : set standard_parallel1=latitude_of_projection_origin, but
+</em><br />
+<em class="quotelev1">&gt; return an error if scale_factor != 1
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 2)
+</em><br />
+<em class="quotelev1">&gt; Another option would be that, if a CF definition contains 1SP and the
+</em><br />
+<em class="quotelev1">&gt; computed scale_factor is not 1 (because standard_parallel1 !=
+</em><br />
+<em class="quotelev1">&gt; latitude_of_projection_origin), then use the 2SP form in WKT.
+</em><br />
+<em class="quotelev1">&gt; A conversion back to CF would then work (in a 2SP form), although the
+</em><br />
+<em class="quotelev1">&gt; SP would probably not have integer values of degrees or degrees and
+</em><br />
+<em class="quotelev1">&gt; minutes (see [1]).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I prefer the second option as it closes the loop.  Any examples of 1SP
+</em><br />
+<em class="quotelev1">&gt; with standard_parallel1 != latitude_of_projection_origin out there?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; [1] <a href="http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html">http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; its possible that the more general case is to use another constant to
+</em><br />
+<em class="quotelev2">&gt;&gt; multiply the one given in 15-4, but i have never seen that.
+</em><br />
+<em class="quotelev1">&gt; hmm which constant do you refer to?
+</em><br />
+see below
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Im not sure what #3324  refers to.
+</em><br />
+<em class="quotelev1">&gt; sorry, this refers to gdal trac #3324 at  <a href="http://trac.osgeo.org/gdal/ticket/3324">http://trac.osgeo.org/gdal/ticket/3324</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; For export: given the LCC-1SP can specifically include a scale_factor
+</em><br />
+<em class="quotelev2">&gt;&gt; to control the projection (see
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html">http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html</a>),
+</em><br />
+<em class="quotelev2">&gt;&gt; it seems this can't be directly exported to NetCDF without throwing
+</em><br />
+<em class="quotelev2">&gt;&gt; away the scale factor.
+</em><br />
+<em class="quotelev2">&gt;&gt; Perhaps the reasonable thing for now is to export the scale_factor to
+</em><br />
+<em class="quotelev2">&gt;&gt; NetCDF, so it can at least be read back in. Otherwise, we'd have to
+</em><br />
+<em class="quotelev2">&gt;&gt; try to translate the LCC-1SP to a LCC-2SP on the fly.
+</em><br />
+<br />Ok, so according to this note from 
+<br />
+<a href="http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_2sp.html">http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_2sp.html</a>:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;Sometimes however, although a one standard parallel Lambert is
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;normally considered to have unity scale factor on the standard
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;parallel, a scale factor of slightly less than unity is introduced
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;on this parallel. This is a regular feature of the mapping of some
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;former French territories and has the effect of making the scale
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;factor unity on two other parallels either side of the standard
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;parallel. The projection thus, strictly speaking, becomes a Lambert
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;Conic Conformal projection with two standard parallels. From the one
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;standard parallel and its scale factor it is possible to derive the
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;equivalent two standard parallels and then treat the projection as a
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;two standard parallel Lambert conical conformal, but this procedure
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;is seldom adopted.
+<br />
+<br />It does seem that there is an additional scale factor that CF doesnt 
+<br />
+have, with the effect as as stated. however, it appears that it is 
+<br />
+equivilent to specifying the standard parellels. I understand there is 
+<br />
+no obvious formula for this.
+<br />
+<br /><em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) CEA (Lambert Cylindrical Equal Area):
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; The CF-1 conventions claim this can be encoded with a
+</em><br />
+<em class="quotelev2">&gt;&gt; 'scale_factor_at_projection_origin' alternative to standard parallel -
+</em><br />
+<em class="quotelev2">&gt;&gt; how would this conversion be done from/to OGC WKT (which requires
+</em><br />
+<em class="quotelev2">&gt;&gt; central_meridian and standard_parallel_1)?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; It does appear at first glance that there should be a seperate scale factor.
+</em><br />
+<em class="quotelev2">&gt;&gt; I am less familiar since I havent coded this one.
+</em><br />
+<em class="quotelev2">&gt; &gt; From 10-2b and 10-2a it seems that scale_factor_at_projection_origin
+</em><br />
+<em class="quotelev1">&gt; (k0) is a simple function of standard_parallel1 and
+</em><br />
+<em class="quotelev1">&gt; latitude_of_projection_origin.
+</em><br />
+<em class="quotelev1">&gt; However, latitude_of_projection_origin is not part of that
+</em><br />
+<em class="quotelev1">&gt; projections' parameters, so there is no way to convert that variant to
+</em><br />
+<em class="quotelev1">&gt; proj4 and WKT.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Also the proj4 string does not include the scale factor.
+</em><br />
+<em class="quotelev1">&gt; +proj=cea +lon_0=Central Meridian
+</em><br />
+<em class="quotelev1">&gt;              +lat_ts=Standard Parallel
+</em><br />
+<em class="quotelev1">&gt;              +x_0=False Easting
+</em><br />
+<em class="quotelev1">&gt;              +y_0=False Northing
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Any examples using the  scale_factor_at_projection_origin?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If not I would propose to drop that variant all together, or add the
+</em><br />
+<em class="quotelev1">&gt; scale_factor to that variant.
+</em><br />
+<br />i dont have any example of this at all.
+<br />
+<br />Frankly, Im not sure why this was added to CF. I do not add a projection 
+<br />
+until I have a real example of a dataset that uses it.
+<br />
+<br /><em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 3) PS (Polar stereographic)
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; This projection's parameters in CF-1 are significantly different from
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://www.remotesensing.org/geotiff/proj_list/polar_stereographic.html">http://www.remotesensing.org/geotiff/proj_list/polar_stereographic.html</a>.
+</em><br />
+<em class="quotelev2">&gt;&gt; In particular the CF-1 equivalent for 'latitude of natural origin'
+</em><br />
+<em class="quotelev2">&gt;&gt; seems to be 'standard_parallel'.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; i agree, i dont know where these CF names came from.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; That doesn't really matter as long as we know what the mapping is.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Reading [2] more attentively, it seems that scale factor is normally
+</em><br />
+<em class="quotelev1">&gt; 1, so it would be ideal to add an optional parameter (Scale factor at
+</em><br />
+<em class="quotelev1">&gt; natural origin) that defaults to 1 if absent.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; [2] <a href="http://www.remotesensing.org/geotiff/proj_list/polar_stereographic.html">http://www.remotesensing.org/geotiff/proj_list/polar_stereographic.html</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-1 defines either standard_parallel or
+</em><br />
+<em class="quotelev2">&gt;&gt; scale_factor_at_projection_origin, which is incompatible with OGC WKT
+</em><br />
+<em class="quotelev2">&gt;&gt; (and OGR) that requires both. Note: we have verified the current
+</em><br />
+<em class="quotelev2">&gt;&gt; approach we take to mapping is the same used by at least one other
+</em><br />
+<em class="quotelev2">&gt;&gt; NetCDF CF-1 user in the UCAR NARCCAP project.
+</em><br />
+<br />snyder 21-7 gives the formula for the scale factor, which can easily be 
+<br />
+inverted to derive the &quot;standard_parallel&quot; which i think just means the 
+<br />
+latitude at which the scale factor = 1. Thats why in CF you give one or 
+<br />
+the other.  so my guess is that the OGC is specifying redundant info.
+<br />
+<br />GRIB-1 has &quot;Grid lengths are in units of metres, at the 60-degree 
+<br />
+parallel nearest to the pole on the projection plane.&quot; If one uses 21-7 
+<br />
+to compute the scale factor at the pole that makes scale factor = 1 at 
+<br />
+60 degress, one gets 0.9330127018922193. use this for GRIB-1 GDS=5, and 
+<br />
+lo! the pictures look correct. GRIB-2 allows the user to specify and 
+<br />
+wowwa! they often have 0.933.
+<br />
+<br />&quot;straight_vertical_longitude_from_pole&quot; just gives the longitude at 
+<br />
+which x = 0, as you have figured out. dunno where these names came from, 
+<br />
+no doubt historical accidents.
+<br />
+<br /><br /><em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Current implementation (as of Dec. 13) uses the following rules:
+</em><br />
+<em class="quotelev2">&gt;&gt; - WKT scale_factor maps to CF scale_factor_at_projection_origin
+</em><br />
+<em class="quotelev2">&gt;&gt; - WKT central_meridian maps to CF straight_vertical_longitude_from_pole
+</em><br />
+<em class="quotelev2">&gt;&gt; - WKT latitude_of_origin maps to WKT standard_parallel
+</em><br />
+<em class="quotelev2">&gt;&gt; - WKT to CF: if WKT latitude_of_origin is positive then CF
+</em><br />
+<em class="quotelev2">&gt;&gt; latitude_of_projection_origin is +90, else it is -90 (North vs. South
+</em><br />
+<em class="quotelev2">&gt;&gt; Pole)
+</em><br />
+<em class="quotelev2">&gt;&gt; - CF to WKT: unsupported if standard_parallel is not defined, as
+</em><br />
+<em class="quotelev2">&gt;&gt; OGRSpatialReference::SetPS() requires both CF
+</em><br />
+<em class="quotelev2">&gt;&gt; scale_factor_at_projection_origin
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Im guessing these rules may have to be specific to a projection, rather than
+</em><br />
+<em class="quotelev2">&gt;&gt; assuming you can do a global mapping of the attribute names.
+</em><br />
+<em class="quotelev1">&gt; They are indeed.  Currently we use a set or predefined mappings (for
+</em><br />
+<em class="quotelev1">&gt; any projection which is not in CF), but each CF projection has its set
+</em><br />
+<em class="quotelev1">&gt; of mappings and there is a specific algorithm for Polar Stereographic
+</em><br />
+<em class="quotelev1">&gt; (described above).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It is not formally documented but the header file for GDAL's netcdf
+</em><br />
+<em class="quotelev1">&gt; driver is pretty explicit:
+</em><br />
+<em class="quotelev1">&gt; <a href="http://trac.osgeo.org/gdal/browser/trunk/gdal/frmts/netcdf/netcdfdataset.h?format=txt">http://trac.osgeo.org/gdal/browser/trunk/gdal/frmts/netcdf/netcdfdataset.h?format=txt</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Also the page mentioned earlier outlines the problems I am discussing here:
+</em><br />
+<em class="quotelev1">&gt; <a href="http://trac.osgeo.org/gdal/wiki/NetCDF_ProjectionTestingStatus">http://trac.osgeo.org/gdal/wiki/NetCDF_ProjectionTestingStatus</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Now that you mention this, it would be nice to extend the wiki at
+</em><br />
+<em class="quotelev1">&gt; <a href="https://cf-pcmdi.llnl.gov/trac/wiki/Cf2CrsWkt">https://cf-pcmdi.llnl.gov/trac/wiki/Cf2CrsWkt</a> , but with
+</em><br />
+<em class="quotelev1">&gt; per-projection mappings.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I would like to incorporate your findings into the CDM library when I can.
+</em><br />
+<em class="quotelev1">&gt; can you point me to more information on this?
+</em><br />
+<br /><a href="http://www.unidata.ucar.edu/software/netcdf-java/reference/StandardCoordinateTransforms.html">http://www.unidata.ucar.edu/software/netcdf-java/reference/StandardCoordinateTransforms.html</a>
+<br />
+<br />regards,
+<br />
+John
+<br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20111216/4a407fd1/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20111216/4a407fd1/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Dec 16 2011 - 17:11:55 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4049">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4050.html" title="Next message in the list">Nan Galbraith: "[CF-metadata] Convention attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4048.html" title="Previous message in the list">John Caron: "[CF-metadata] inconsistencies in translating projection parameters OGC WKT &#0060;-&#0062; CF-1.5"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4044.html" title="Message to which this message replies">Etienne Tourigny: "[CF-metadata] inconsistencies in translating projection parameters OGC WKT &#0060;-&#0062; CF-1.5"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4051.html" title="Next message in this discussion thread">Etienne Tourigny: "[CF-metadata] inconsistencies in translating projection parameters OGC WKT &#0060;-&#0062; CF-1.5"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4051.html" title="Message sent in reply to this message">Etienne Tourigny: "[CF-metadata] inconsistencies in translating projection parameters OGC WKT &#0060;-&#0062; CF-1.5"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4049" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4049" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4049" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4049" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4048.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4050.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

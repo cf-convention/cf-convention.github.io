@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Using units with a scale factor from Martin Juckes - UKRI STFC on 2018-10-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="Martin Juckes - UKRI STFC (martin.juckes)" />
+<meta name="Subject" content="[CF-metadata] Using units with a scale factor" />
+<meta name="Date" content="2018-10-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9451.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9453.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Using units with a scale factor</h1>
+<!-- received="Mon Oct 29 08:45:08 2018" -->
+<!-- isoreceived="20181029084508" -->
+<!-- sent="Mon, 29 Oct 2018 14:45:08 +0000" -->
+<!-- isosent="20181029144508" -->
+<!-- name="Martin Juckes - UKRI STFC" -->
+<!-- email="martin.juckes" -->
+<!-- subject="[CF-metadata] Using units with a scale factor" -->
+<!-- id="dddbabf57d324724878c43bcbfdcc069_at_stfc.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9452" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9453.html" accesskey="d" title="Martin Juckes - UKRI STFC: &quot;[CF-metadata] Decibel units in CF standard names&quot;">Next message</a> ]
+[ <a href="./9451.html" title="Martin Juckes - UKRI STFC: &quot;[CF-metadata] [CF-metadar ata] [EXTERNAL] &#0039;months since&#0039; and &#0039;years since&#0039; time units&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./9456.html" accesskey="t" title="Taylor, Karl E.: &quot;[CF-metadata] Using units with a scale factor&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9452" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9452" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9452" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9452" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Martin Juckes - UKRI STFC &lt;<a href="mailto:martin.juckes?Subject=Re%3A%20%5BCF-metadata%5D%20Using%20units%20with%20a%20scale%20factor">martin.juckes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 29 Oct 2018 14:45:08 +0000</span><br />
+</address>
+<br />
+Hello Karl, Alison,
+<br />
+<br /><br />As part of a separate discussion on 'months since' and 'years since' in time units&lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2018/020648.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2018/020648.html</a>&gt;, Klaus pointed out the use of numerical scale factors in units strings, although allowed by Udunits, is prohibited by the CF convention in section 3.1. I'm raising this here because there are 3 standard names which make use of such scale factors in their canonical units, and a number of CMIP6 variables. The CF conformance document diverges from the standard and allows any string which is accepted by Udunits, and hence accepts such factors. The CF checker implements the version according to the conformance document, as does the cf-python code (and hence checks on the CMIP6 variables using cf-python didn't detect this problem).
+<br />
+<br /><br />The CF standard names are:
+<br />
+<br />integral_wrt_depth_of_product_of_sea_water_density_and_salinity  : 1e-3 kg m-2
+<br />
+<br />ocean_salt_x_transport, ocean_salt_y_transport: 1e-3 kg s-1
+<br />
+<br /><br />In the CMIP6 data request, we have:
+<br />
+<br />1.e6 J m-1 s-1 for atmospheric energy transport (intuadse, intvadse);
+<br />
+<br />1e-3 kg m-2 for integral wrt depth of density and salinity (somint);
+<br />
+<br />1e-6 m s-1 for saturated hydraulic conductivity;
+<br />
+<br />1e3 km3 for sea ice volumes (sivoln, sivols);
+<br />
+<br />1e6 km2 for sea ice areas (siarean, siareas, siextentn, siextents);
+<br />
+<br /><br />Should we stick to the statement in the standards document ... and bring the conformance document etc into line, or could the standards document be interpreted more loosely?
+<br />
+<br /><br />These scale factors could be replaced by prefixes, but I think there is some loss of legibility in some cases:
+<br />
+<br />1e-3 kg --&gt; g
+<br />
+<br />1e6 J --&gt; MJ
+<br />
+<br />1e-6 m --&gt; um
+<br />
+<br />1e3 km3 --&gt; hm3
+<br />
+<br />1e6 km2 --&gt; Mm2
+<br />
+<br /><br />(here &quot;um&quot; is a micrometer, &quot;hm&quot; a hectometer and &quot;Mm&quot; a megameter).
+<br />
+<br /><br />regards,
+<br />
+<br />Martin
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Oct 29 2018 - 08:45:08 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9452">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9453.html" title="Next message in the list">Martin Juckes - UKRI STFC: "[CF-metadata] Decibel units in CF standard names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9451.html" title="Previous message in the list">Martin Juckes - UKRI STFC: "[CF-metadata] [CF-metadar ata] [EXTERNAL] &#0039;months since&#0039; and &#0039;years since&#0039; time units"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./9456.html" title="Next message in this discussion thread">Taylor, Karl E.: "[CF-metadata] Using units with a scale factor"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./9456.html" title="Message sent in reply to this message">Taylor, Karl E.: "[CF-metadata] Using units with a scale factor"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9452" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9452" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9452" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9452" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:31 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9451.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9453.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

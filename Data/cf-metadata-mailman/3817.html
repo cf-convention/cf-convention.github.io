@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Question on WKT representation of CRS (Bentley, Philip) from TOYODA Eizi on 2011-10-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="TOYODA Eizi (toyoda)" />
+<meta name="Subject" content="[CF-metadata] Question on WKT representation of CRS (Bentley, Philip)" />
+<meta name="Date" content="2011-10-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3816.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3818.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Question on WKT representation of CRS (Bentley, Philip)</h1>
+<!-- received="Thu Oct  6 06:30:21 2011" -->
+<!-- isoreceived="20111006053021" -->
+<!-- sent="Thu, 6 Oct 2011 21:30:21 +0900" -->
+<!-- isosent="20111006123021" -->
+<!-- name="TOYODA Eizi" -->
+<!-- email="toyoda" -->
+<!-- subject="[CF-metadata] Question on WKT representation of CRS (Bentley, Philip)" -->
+<!-- id="3AD32B91F6C546B89C89F261421989FD_at_met.kishou.go.jp" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="8AC4893FB411FA4AA8CFECD9C8913B660C137D1B&#64;EXXMAIL01.desktop.frd.metoffice.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3817" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3818.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  new TEOS-10 standard names&quot;">Next message</a> ]
+[ <a href="./3816.html" title="Bentley, Philip: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3834.html" accesskey="t" title="Wright, Bruce: &quot;[CF-metadata] Question on WKT representation of CRS (Bentley, Philip)&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3817" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3817" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3817" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3817" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: TOYODA Eizi &lt;<a href="mailto:toyoda?Subject=Re%3A%20%5BCF-metadata%5D%20Question%20on%20WKT%20representation%20of%20CRS%20(Bentley%2C%20Philip)">toyoda</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 6 Oct 2011 21:30:21 +0900</span><br />
+</address>
+<br />
+Hello Bruce,
+<br />
+<br />Yes there is much overlap between CRS informaton and existing CF attributes 
+<br />
+for grid mapping.
+<br />
+<br />The only missing thing is identification of datum.  Shape of the 
+<br />
+sphere/spheroid is not sufficient, since the same spheroid is often used in 
+<br />
+many datums with location shift.  For example, EPSG:6277 (OSGB 1936 datum) 
+<br />
+in WKT is following:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;DATUM[&quot;OSGB_1936&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPHEROID[&quot;Airy 1830&quot;,6377563.396,299.3249646,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AUTHORITY[&quot;EPSG&quot;,&quot;7001&quot;]],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AUTHORITY[&quot;EPSG&quot;,&quot;6277&quot;]]
+<br />
+<br />All numeric parameters can be expressed by inverse_flattening and 
+<br />
+semi_major_axis, but the two attributes indicates only spheroid (Airy 1830). 
+<br />
+The name &quot;OSGB_1936&quot; is essential to distinguish the datum from (for 
+<br />
+example) Irish ones.
+<br />
+<br />You might know UKMO proposed to expand GRIB2 for UK National Grid recently. 
+<br />
+I commented the same point, and the WMO discussion converged to add datum 
+<br />
+name.  So similar approach is suggested if we take conservative approach to 
+<br />
+expand existing grid mapping attributes.
+<br />
+<br />Best,
+<br />
+Eizi
+<br />
+----- Original Message ----- 
+<br />
+From: &quot;Wright, Bruce&quot; &lt;bruce.wright at metoffice.gov.uk&gt;
+<br />
+To: &quot;Bryan Lawrence&quot; &lt;bryan.lawrence at ncas.ac.uk&gt;; &lt;cf-metadata at cgd.ucar.edu&gt;
+<br />
+Sent: Thursday, October 06, 2011 1:42 AM
+<br />
+Subject: Re: [CF-metadata] Question on WKT representation of CRS 
+<br />
+(Bentley,Philip)
+<br />
+<br /><br /><em class="quotelev1">&gt; Hi Bryan,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I suspect it probably is becoming important for weather forecast output
+</em><br />
+<em class="quotelev1">&gt; now.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; At the Met Office, we're now generating 2km post-processed forecast data
+</em><br />
+<em class="quotelev1">&gt; (from models running at up 1.5km resolution). At present, this is mainly
+</em><br />
+<em class="quotelev1">&gt; shared internally (and with a small number of 'expert' customers) using
+</em><br />
+<em class="quotelev1">&gt; bespoke data formats (which don't fully describe the CRS) . However, in
+</em><br />
+<em class="quotelev1">&gt; future I'd expect to be sharing these data more widely, ideally using
+</em><br />
+<em class="quotelev1">&gt; CF-netCDF (and GRIB2), and would feel more comfortable, it we could
+</em><br />
+<em class="quotelev1">&gt; fully characterise CRS in use, to ensure appropriate use in combination
+</em><br />
+<em class="quotelev1">&gt; with other data.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; But to echo your last comment, a CRS WKT enhancement should be optional,
+</em><br />
+<em class="quotelev1">&gt; and not replace the current CF grid description information - we don't
+</em><br />
+<em class="quotelev1">&gt; want to break existing client software, just allow a fuller description
+</em><br />
+<em class="quotelev1">&gt; of the CRS where required.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Regards,
+</em><br />
+<em class="quotelev1">&gt; Bruce
+</em><br />
+<em class="quotelev1">&gt; -- 
+</em><br />
+<em class="quotelev1">&gt; Bruce Wright  Expert IT Analyst (Data Management)
+</em><br />
+<em class="quotelev1">&gt; Met Office FitzRoy Road Exeter EX1 3PB United Kingdom
+</em><br />
+<em class="quotelev1">&gt; Tel: +44 (0)1392 886481 Fax: +44 (0)1392 885681
+</em><br />
+<em class="quotelev1">&gt; E-mail: bruce.wright at metoffice.gov.uk <a href="http://www.metoffice.gov.uk">http://www.metoffice.gov.uk</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: cf-metadata-bounces at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Bryan Lawrence
+</em><br />
+<em class="quotelev1">&gt; Sent: 05 October 2011 12:52
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] Question on WKT representation of CRS
+</em><br />
+<em class="quotelev1">&gt; (Bentley,Philip)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi Seth
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I haven't read all  the threads ... but I strongly agree with your last
+</em><br />
+<em class="quotelev1">&gt; paragraph!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I have had many conversations with folks who think that adding datums
+</em><br />
+<em class="quotelev1">&gt; will make data more usable to the impacts community, where datum errors
+</em><br />
+<em class="quotelev1">&gt; can move things by o(10)s of km ... and my protestation that no one
+</em><br />
+<em class="quotelev1">&gt; should interpret as physical any differences on those scales from a
+</em><br />
+<em class="quotelev1">&gt; (climate) model (even one run at o(km) resolution if such exists) ...
+</em><br />
+<em class="quotelev1">&gt; was simply ignored. The reality is exactly what you say, that level of
+</em><br />
+<em class="quotelev1">&gt; specificity is simply inappropriate.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I appreciate some of the arguments raised in the thread on storing
+</em><br />
+<em class="quotelev1">&gt; lat/lon coordinates, about the need for the use of one in a GIS workflow
+</em><br />
+<em class="quotelev1">&gt; - but frankly I think that's an issue about workflow metadata not source
+</em><br />
+<em class="quotelev1">&gt; data metadata.  As Balaji and others said, there might not even be *one*
+</em><br />
+<em class="quotelev1">&gt; datum appropriate for GCM work ...
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Of course observational data may well be different,  and I'm not sure
+</em><br />
+<em class="quotelev1">&gt; about NWP ... especially mesoscale models. So by all means, facilitate
+</em><br />
+<em class="quotelev1">&gt; the provision of this information, but don't make it compulsory ... and
+</em><br />
+<em class="quotelev1">&gt; I think it would be with WKT?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt; Bryan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> 
+</em><br />
+<span id="received"><dfn>Received on</dfn> Thu Oct 06 2011 - 06:30:21 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3817">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3818.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  new TEOS-10 standard names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3816.html" title="Previous message in the list">Bentley, Philip: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3834.html" title="Next message in this discussion thread">Wright, Bruce: "[CF-metadata] Question on WKT representation of CRS (Bentley, Philip)"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3834.html" title="Message sent in reply to this message">Wright, Bruce: "[CF-metadata] Question on WKT representation of CRS (Bentley, Philip)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3817" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3817" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3817" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3817" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3816.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3818.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

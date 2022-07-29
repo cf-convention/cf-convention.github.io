@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] vertical coordinates and positive attributes from Steve Hankin on 2014-02-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="Steve Hankin (steven.c.hankin)" />
+<meta name="Subject" content="[CF-metadata] vertical coordinates and positive attributes" />
+<meta name="Date" content="2014-02-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6026.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6028.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] vertical coordinates and positive attributes</h1>
+<!-- received="Mon Feb  3 10:24:31 2014" -->
+<!-- isoreceived="20140203102431" -->
+<!-- sent="Mon, 03 Feb 2014 09:24:31 -0800" -->
+<!-- isosent="20140203172431" -->
+<!-- name="Steve Hankin" -->
+<!-- email="steven.c.hankin" -->
+<!-- subject="[CF-metadata] vertical coordinates and positive attributes" -->
+<!-- id="52EFD0CF.3010103_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20140130173526.GB17426_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6027" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6028.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  vertical coordinates and positive attributes&quot;">Next message</a> ]
+[ <a href="./6026.html" title="Jonathan Gregory: &quot;[CF-metadata]  standard names linked to melt ponds on sea ice&quot;">Previous message</a> ]
+[ <a href="./6021.html" title="Jonathan Gregory: &quot;[CF-metadata] vertical coordinates and positive attributes&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6027" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6027" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6027" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6027" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Steve Hankin &lt;<a href="mailto:steven.c.hankin?Subject=Re%3A%20%5BCF-metadata%5D%20vertical%20coordinates%20and%20positive%20attributes">steven.c.hankin</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 03 Feb 2014 09:24:31 -0800</span><br />
+</address>
+<br />
+Hi Jonathan,
+<br />
+<br />A quick message here, intended as much as anything for the email 
+<br />
+archives, to make it clear that differences of viewpoint remain about 
+<br />
+the use of negative depth values.  The alternative viewpoint is that the 
+<br />
+implicit semantics in the term &quot;depth&quot; is its _realm_: the variable name 
+<br />
+&quot;depth&quot; tells us humans that one is referring to a location that lies 
+<br />
+beneath the ocean (or earth) surface.   Similarly for &quot;Altitude&quot;.  There 
+<br />
+is no implied sign convention.  Depths that are encoded as negatives 
+<br />
+because the underlying mathematical axis is assigned as positive=&quot;up&quot; 
+<br />
+are supported by CF and have been in use by oceanographers for decades.
+<br />
+<br />I believe the underlying issue is that geo-positioning variables have a 
+<br />
+level of complexity not found in other parameters. Longitudes, for 
+<br />
+example, have encoding variants, depending whether the branch point is 
+<br />
+at Greenwich or at the Dateline.  Yet CF simply calls them standard_name 
+<br />
+&quot;longitude&quot; (see *).  Time, too has many encodings, yet is simply 
+<br />
+&quot;time&quot;.   This is not the case for _dependent_ variables such as 
+<br />
+surface_net_downward_shortwave_flux. For dependent parameters, once the 
+<br />
+units have been specified, we insist on a single fixed encoding, and the 
+<br />
+sign convention is thereby captured (and great value to doing so!).
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Steve
+<br />
+<br />(*)  Further metadata to describe the longitude encoding would be a 
+<br />
+valuable addition to CF.   In discrete geometry files CF provide no 
+<br />
+metadata-level clue about where the branch point lies.  A client has to 
+<br />
+scan the longitude values looking for clues.
+<br />
+<br />=============================================================
+<br />
+<br />On 1/30/2014 9:35 AM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear all
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; For me it's an important principle that the standard names encapsulate a sign
+</em><br />
+<em class="quotelev1">&gt; convention when relevant, and that's been the case ever since we started to
+</em><br />
+<em class="quotelev1">&gt; define them 15 years ago. This is important because unclear sign conventions
+</em><br />
+<em class="quotelev1">&gt; are a real nuisance for data analysis. There hasn't been a need for an
+</em><br />
+<em class="quotelev1">&gt; explicit statement about &quot;depth&quot; because it is clear from the definition in
+</em><br />
+<em class="quotelev1">&gt; English, I would argue. We would not need two distinct standard names of depth
+</em><br />
+<em class="quotelev1">&gt; (vertical distance below the surface) and height (vertical distance above the
+</em><br />
+<em class="quotelev1">&gt; surface) if the sign convention was arbitrary, because an ambiguous sign would
+</em><br />
+<em class="quotelev1">&gt; make them synonymous. I would suggest that the inclusion of these two distinct
+</em><br />
+<em class="quotelev1">&gt; names is itself a statement that the sign is not arbitrary. It would be odd to
+</em><br />
+<em class="quotelev1">&gt; allow a height of 10 m above the ground to be encoded as -10 m. Surely no-one
+</em><br />
+<em class="quotelev1">&gt; would think that makes sense according to the definition, would they? If not,
+</em><br />
+<em class="quotelev1">&gt; it equally doesn't make sense to encode a depth of 10 m as -10 m.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There are many other standard names with implicit sign conventions e.g.
+</em><br />
+<em class="quotelev1">&gt; surface_net_downward_shortwave_flux. A positive number for that quantity
+</em><br />
+<em class="quotelev1">&gt; means a flux which is downward. It would be an error to use the opposite
+</em><br />
+<em class="quotelev1">&gt; sign convention for that quantity. Again, if the sign were arbitrary, we
+</em><br />
+<em class="quotelev1">&gt; would just have called it &quot;net flux&quot;, not &quot;net downward flux&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Isn't the purpose of the standard name is to capture the semantics of a
+</em><br />
+<em class="quotelev2">&gt;&gt; variable -- i.e. its physical interpretation?  You are suggesting that a
+</em><br />
+<em class="quotelev2">&gt;&gt; user of the file (or a search engine) should attach a different meaning to
+</em><br />
+<em class="quotelev2">&gt;&gt; the concept of &quot;DEPTH&quot; in an ocean model based upon whether it is encoded as
+</em><br />
+<em class="quotelev2">&gt;&gt; a positive or negative value.  Do we attach a different interpretation to
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;TIME&quot; because it is encoded as &quot;days&quot; versus &quot;hours&quot;?
+</em><br />
+<em class="quotelev1">&gt; Yes, I think the standard name is intended to capture the semantics (i.e.
+</em><br />
+<em class="quotelev1">&gt; the meaning) of the variable, and that includes its sign, in the case of
+</em><br />
+<em class="quotelev1">&gt; signed quantities. Height means positive upwards, depth means positive
+</em><br />
+<em class="quotelev1">&gt; downwards, temperature means warmer if the number is more positive, sea ice
+</em><br />
+<em class="quotelev1">&gt; thickness is a positive number which is bigger if the sea ice is thicker, and
+</em><br />
+<em class="quotelev1">&gt; so on. I think the user of the file should always apply the same, correct,
+</em><br />
+<em class="quotelev1">&gt; definition when interpreting numbers which have the standard_name of depth,
+</em><br />
+<em class="quotelev1">&gt; which is that, if they are positive, they refer to levels below the surface.
+</em><br />
+<em class="quotelev1">&gt; This is not a matter of units, like days versus hours. Depth is positive
+</em><br />
+<em class="quotelev1">&gt; downwards regardless of whether it is in millimetres or miles, just like
+</em><br />
+<em class="quotelev1">&gt; temperature is more positive when warmer regardless of whether it is Celsius
+</em><br />
+<em class="quotelev1">&gt; or Fahrenheit.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Ultimately standard names are for humans to interpret. I appreciate that
+</em><br />
+<em class="quotelev1">&gt; software may want to know which way up to plot the vertical axis, and the
+</em><br />
+<em class="quotelev1">&gt; positive attribute is useful for that. It is mandatory for vertical coordinate
+</em><br />
+<em class="quotelev1">&gt; variables (except pressure), so software shouldn't need to look anywhere
+</em><br />
+<em class="quotelev1">&gt; else for that information. As John said in his summary, it's not currently
+</em><br />
+<em class="quotelev1">&gt; in the standard for data variables, but we could change the convention to
+</em><br />
+<em class="quotelev1">&gt; recognise it as an optional attribute of data variables if that would help.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140203/3598b609/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140203/3598b609/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Feb 03 2014 - 10:24:31 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6027">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6028.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  vertical coordinates and positive attributes"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6026.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  standard names linked to melt ponds on sea ice"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6021.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] vertical coordinates and positive attributes"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6027" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6027" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6027" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6027" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:35 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6026.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6028.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

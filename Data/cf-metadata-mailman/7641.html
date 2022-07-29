@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  weighted time mean vs. conditional time mean. from martin.juckes at stfc.ac.uk on 2016-05-25 (cf-metadata-mailman)</title>
+<meta name="Author" content="martin.juckes at stfc.ac.uk (martin.juckes)" />
+<meta name="Subject" content="[CF-metadata]  weighted time mean vs. conditional time mean." />
+<meta name="Date" content="2016-05-25" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7640.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7642.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  weighted time mean vs. conditional time mean.</h1>
+<!-- received="Wed May 25 05:47:04 2016" -->
+<!-- isoreceived="20160525044704" -->
+<!-- sent="Wed, 25 May 2016 11:47:04 +0000" -->
+<!-- isosent="20160525114704" -->
+<!-- name="martin.juckes at stfc.ac.uk" -->
+<!-- email="martin.juckes" -->
+<!-- subject="[CF-metadata]  weighted time mean vs. conditional time mean." -->
+<!-- id="E21FBC3F00D7304687CB46529F9676D7FE18100D_at_exchmbx01" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7641" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7642.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  Wave periods sub-proposal&quot;">Next message</a> ]
+[ <a href="./7640.html" title="martin.juckes at stfc.ac.uk: &quot;[CF-metadata] weighted time mean vs. conditional time mean.&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7644.html" accesskey="t" title="alison.pamment at stfc.ac.uk: &quot;[CF-metadata] weighted time mean vs. conditional time mean.&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7641" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7641" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7641" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7641" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: martin.juckes at stfc.ac.uk &lt;<a href="mailto:martin.juckes?Subject=Re%3A%20%5BCF-metadata%5D%20%20weighted%20time%20mean%20vs.%20conditional%20time%20mean.">martin.juckes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 25 May 2016 11:47:04 +0000</span><br />
+</address>
+<br />
+Dear Jonathan,
+<br />
+<br />yes, it is absolutely clear that &quot;where&quot; can only be used with area types. It is also clear, I thought, that some of these area types may vary with time: the area type list includes &quot;fire&quot; and &quot;cloud&quot;, for example.
+<br />
+<br />7.3.3 gives a template for the cell_methods element:
+<br />
+dim1: [dim2: [dim3: ...]] method [where type1 [over type2]] [within|over days|years] [(comment)]
+<br />
+<br />and goes on to say: &quot;The valid values for dim1 [dim2[dim3 ...] ] are the names of dimensions of the data variable, names ofscalar coordinate variables of the data variable, valid standard names,or the word area.&quot; There is no stated restriction on the values of &quot;dim&quot; which can precede &quot;where ...&quot;.
+<br />
+<br />You appear to be taking a geographical interpretation of &quot;where&quot; and assuming that it can only apply to spatial information, but have been reading it from a mathematical perspective, in which it can refer to any dimension. In mathematics, statements of the form &quot;sum of A where condition B&quot; carry no implication that &quot;where&quot; has anything to do with area. From this perspective, there is no need to introduce &quot;when&quot; ..
+<br />
+<br />The use case that prompted this, from SIMIP, corresponds to your 3rd example, in which we are averaging over all points in the cell and time period covered for which the area type is valid, giving each point equal weight. This can be handled, as you and Karl have pointed out earlier, with a comment in the cell_methods string of the form &quot;(weighted by ....)&quot;, but I feel that the use case is clear enough that there is a need for it to be treated in the conventions.
+<br />
+<br />regards,
+<br />
+Martin
+<br />
+<br />##############################################################
+<br />
+<br /><br /><br />Dear Martin
+<br />
+<br />In my reading of 7.3.3 and the conformance document, it seems clear that
+<br />
+&quot;where&quot; is intended to be used with area types.
+<br />
+<br /><em class="quotelev1">&gt; There is an issue, it appears, about the use of the &quot;where&quot; modifier for cell_methods elements other than &quot;area:&quot;. Jonathan believes &quot;where&quot; should only apply for area on the basis that this where the motivation comes from in the first paragraph of section 7.3.3. The subsequent paragraphs in section 7.3.3. describe the use of &quot;where&quot; with a generic element &quot;name: ....&quot;. The compliance document clearly states that &quot;where&quot; can be used with any string.
+</em><br />
+<br />I'm sorry, I can't find that - please could you point it out? In
+<br />
+<a href="http://cfconventions.org/Data/cf-documents/requirements-recommendations/requirements-recommendations-1.6.html">http://cfconventions.org/Data/cf-documents/requirements-recommendations/requirements-recommendations-1.6.html</a>
+<br />
+regarding
+<br />
+method [where type1 [over type2]]
+<br />
+it says
+<br />
+The valid values for type1 are the name of a string-valued auxiliary or scalar
+<br />
+coordinate variable with a standard_name of area_type, or any string value
+<br />
+allowed for a variable of standard_name of area_type.
+<br />
+<br />We could generalise area_types to mean &quot;states&quot; so they can apply in time as
+<br />
+well as space. I think all the existing ones could be interpreted in this way
+<br />
+i.e. with the sense of &quot;when&quot; rather than &quot;where&quot;. Vegetation is sometimes
+<br />
+present and sometimes absent at any given spot, for instance, just as it is
+<br />
+present in some spots and not others at any given time.
+<br />
+<br />Suppose you want to calculate a radiative flux for a grid-box in cloud-free
+<br />
+air. You can do this on each instantaneous timestep for the cloud-free fraction
+<br />
+of the grid-box, and then calculate a time-mean of these timestep values i.e.
+<br />
+&quot;area: mean where clear_sky time: mean&quot;. If the input data supplies a higher
+<br />
+spatial resolution than the grid-box, so you have many timeseries, you could
+<br />
+alternatively do it the other way round, and first calculate, for each of the
+<br />
+points, the value of the flux for those timesteps when there is no cloud, then
+<br />
+calculate an area-mean of these local values i.e. &quot;time: mean where clear_sky
+<br />
+area: mean&quot;. These aren't the same because they imply different weights.
+<br />
+<br />For example, suppose you have three points within the grid-box and two times,
+<br />
+and the data is as follows:
+<br />
+<br />a X X
+<br />
+b c X
+<br />
+<br />where X means cloudy, and a, b, c are clear-sky values. According to the first
+<br />
+method, the value is a/2 + b/4 + c/4, and according to the second method it is
+<br />
+a/4 + b/4 + c/2, if I've done my sums right. There is a third method, in which
+<br />
+we consider both time and space together: &quot;time: area: mean where clear_sky&quot;.
+<br />
+In this case the value is a/3 + b/3 + c/3.
+<br />
+<br />If I'm right about this, I think we could make this generalisation and it would
+<br />
+not be problematic. However, as usual, we should only make the change if there
+<br />
+is a use-case which demands it.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Wed May 25 2016 - 05:47:04 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7641">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7642.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  Wave periods sub-proposal"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7640.html" title="Previous message in the list">martin.juckes at stfc.ac.uk: "[CF-metadata] weighted time mean vs. conditional time mean."</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7644.html" title="Next message in this discussion thread">alison.pamment at stfc.ac.uk: "[CF-metadata] weighted time mean vs. conditional time mean."</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7644.html" title="Message sent in reply to this message">alison.pamment at stfc.ac.uk: "[CF-metadata] weighted time mean vs. conditional time mean."</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7641" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7641" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7641" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7641" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:04 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7640.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7642.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

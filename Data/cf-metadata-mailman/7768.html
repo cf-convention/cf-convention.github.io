@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Feedback requested on proposed CF Simple Geometries from Ben Koziol - NOAA Affiliate on 2016-09-07 (cf-metadata-mailman)</title>
+<meta name="Author" content="Ben Koziol - NOAA Affiliate (ben.koziol)" />
+<meta name="Subject" content="[CF-metadata] Feedback requested on proposed CF Simple Geometries" />
+<meta name="Date" content="2016-09-07" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7767.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7769.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Feedback requested on proposed CF Simple Geometries</h1>
+<!-- received="Wed Sep  7 12:13:32 2016" -->
+<!-- isoreceived="20160907111332" -->
+<!-- sent="Wed, 7 Sep 2016 12:13:32 -0600" -->
+<!-- isosent="20160907181332" -->
+<!-- name="Ben Koziol - NOAA Affiliate" -->
+<!-- email="ben.koziol" -->
+<!-- subject="[CF-metadata] Feedback requested on proposed CF Simple Geometries" -->
+<!-- id="CADckZ8djSj=K0WPwfbAyx525LdvJdXvKfGAqD-qGq8zaBkK6MA_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7768" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7769.html" accesskey="d" title="Chris Barker: &quot;[CF-metadata] nitpick in time axes example&quot;">Next message</a> ]
+[ <a href="./7767.html" title="Jonathan Gregory: &quot;[CF-metadata]  radiosonde ascent rate?&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7811.html" accesskey="t" title="Hedley, Mark: &quot;[CF-metadata] Feedback requested on proposed CF Simple Geometries&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7768" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7768" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7768" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7768" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Ben Koziol - NOAA Affiliate &lt;<a href="mailto:ben.koziol?Subject=Re%3A%20%5BCF-metadata%5D%20Feedback%20requested%20on%20proposed%20CF%20Simple%20Geometries">ben.koziol</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 7 Sep 2016 12:13:32 -0600</span><br />
+</address>
+<br />
+Greetings,
+<br />
+<br /><br />As part of an EarthCube project for advancing netCDF-CF [1], we are
+<br />
+developing an approach to represent simple geometries in enhanced netCDF-4
+<br />
+with a variable length array backport for netCDF-3. Simple geometries, for
+<br />
+example, may be used to associate stream discharge with river lines or
+<br />
+surface runoff with watershed polygons. We've drafted an initial approach
+<br />
+and reference implementation on the GitHub netCDF-CF-simple-geometry
+<br />
+project [2] and would greatly appreciate feedback from the CF community.
+<br />
+We'd like to make sure our scope is appropriate and our approach is
+<br />
+acceptable.
+<br />
+<br />Scope
+<br />
+<br /><br />&nbsp;&nbsp;&nbsp;-
+<br />
+<br />&nbsp;&nbsp;&nbsp;The result of this effort will be a standard that the CF timeSeries
+<br />
+&nbsp;&nbsp;&nbsp;feature type could use to specify spatial coordinates (define a simple
+<br />
+&nbsp;&nbsp;&nbsp;geometry) for a timeSeries variable.
+<br />
+&nbsp;&nbsp;&nbsp;-
+<br />
+<br />&nbsp;&nbsp;&nbsp;For those familiar with the OGC WKT standard geometry types [3], we will
+<br />
+&nbsp;&nbsp;&nbsp;include Point, LineString, Polygon, Multipoint, MultiLineString, and
+<br />
+&nbsp;&nbsp;&nbsp;MultiPolygon (WKT primitives and multipart geometries).
+<br />
+<br /><br />We anticipate that the six chosen geometry types will cover the needs of
+<br />
+most people generating netCDF data. These types also align with other
+<br />
+geospatial data formats such as GeoJSON and ESRI Shapefile. If our approach
+<br />
+is well received by the CF community, we may later adapt it to include
+<br />
+parametric shapes such as circles and ellipses.
+<br />
+<br />Simple Geometry Encoding Method
+<br />
+<br />Driven by the possibility that different features will require different
+<br />
+numbers of coordinates to describe their geometries, our approach uses
+<br />
+variable length (VLEN) arrays in enhanced netCDF-4 and continuous ragged
+<br />
+arrays (CRAs) in netCDF-3. We describe the VLEN netCDF-4 approach first.
+<br />
+The netCDF-3 CRA description follows.
+<br />
+<br />In our approach, a VLEN coordinate_index variable which identifies the
+<br />
+indices of geometry coordinates in separate coordinate arrays. The
+<br />
+coordinate_index variable includes a coordinates attribute which stores the
+<br />
+names of the coordinate variables and a geom_type attribute to indicate the
+<br />
+geometry type.
+<br />
+<br />For multipart geometries, the coordinate index variable may include a
+<br />
+negative integer flag(s) indicating the start of each new geometry &quot;part&quot;
+<br />
+for the current feature. The first geometry part is not preceded by the
+<br />
+negative integer flag. The variable shall include an attribute named
+<br />
+multipart_break_value identifying the flag's value.
+<br />
+<br />For polygon geometries with holes (also called &quot;interiors&quot;), the coordinate
+<br />
+index values shall include a negative integer flagging the start of each
+<br />
+hole. In this case, the variable shall include a hole_break_value attribute
+<br />
+to indicate the flag value.
+<br />
+<br />Other attributes on the coordinate index variable describe clockwise or
+<br />
+anticlockwise node order for polygons and polygon closure convention. For
+<br />
+additional details, see the wiki [4]. With these concepts defined, an
+<br />
+example for multipolygons with holes is shown below. You can copy the WKT
+<br />
+description below into Wicket [5] if you'd like to see what the geometry in
+<br />
+this example looks like.
+<br />
+<br />Well-Known Text (WKT): MULTIPOLYGON(((0 0, 20 0, 20 20, 0 20, 0 0), (1 1,
+<br />
+10 5, 19 1, 1 1), (5 15, 7 19, 9 15, 5 15), (11 15, 13 19, 15 15, 11 15)),
+<br />
+((5 25, 9 25, 7 29, 5 25)), ((11 25, 15 25, 13 29, 11 25)))
+<br />
+<br />Common Data Language (CDL) for netCDF-4 VLEN Arrays:
+<br />
+<br />netcdf multipolygon_example {
+<br />
+<br />types:
+<br />
+<br />&nbsp;int64(*) geom_VLType ;
+<br />
+<br />dimensions:
+<br />
+<br />&nbsp;node = 25 ;
+<br />
+<br />&nbsp;geom = 1 ;
+<br />
+<br />variables:
+<br />
+<br />&nbsp;geom_VLType coordinate_index(geom) ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;string coordinate_index:geom_type = &quot;multipolygon&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;string coordinate_index:coordinates = &quot;x y&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;coordinate_index:multipart_break_value = -1 ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;coordinate_index:hole_break_value = -2 ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;string coordinate_index:outer_ring_order = &quot;anticlockwise&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;string coordinate_index:closure_convention = &quot;last_node_equals_first&quot; ;
+<br />
+<br />&nbsp;double x(node) ;
+<br />
+<br />&nbsp;double y(node) ;
+<br />
+<br />data:
+<br />
+<br />coordinate_index =
+<br />
+<br />&nbsp;&nbsp;&nbsp;{0, 1, 2, 3, 4, -2, 5, 6, 7, 8, -2, 9, 10, 11, 12, -2, 13, 14, 15, 16,
+<br />
+-1, 17, 18, 19, 20, -1, 21, 22, 23, 24} ;
+<br />
+<br />x = 0, 20, 20, 0, 0, 1, 10, 19, 1, 5, 7, 9, 5, 11, 13, 15, 11, 5, 9, 7, 5,
+<br />
+11, 15, 13, 11 ;
+<br />
+<br />y = 0, 0, 20, 20, 0, 1, 5, 1, 1, 15, 19, 15, 15, 15, 19, 15, 15, 25, 25,
+<br />
+29, 25, 25, 25, 29, 25 ;
+<br />
+<br />}
+<br />
+<br />You'll find additional examples for VLEN geometry storage on our wiki [6].
+<br />
+<br />Variable Length (VLEN) Arrays in NetCDF-3
+<br />
+<br />To support netCDF-3, we created a VLEN approach for netCDF-3 [7]. Inspired
+<br />
+by CF continuous ragged arrays (CRAs), our approach drops the CRA count
+<br />
+variable in favor of a stop variable that stores the stop index for each
+<br />
+geometry within an array of geometry coordinates. This improves random
+<br />
+accessibility of the CRA &quot;elements&quot; avoiding the need to sum counts
+<br />
+preceding the target element index. The stop variable includes a
+<br />
+contiguous_ragged_dimension attribute whose value is the name of the
+<br />
+dimension for which stop indices apply (similar to the CRA sample_dimension
+<br />
+attribute). An example showing how strings can be stored with this approach
+<br />
+is shown below.
+<br />
+<br />Common Data Language (CDL) for netCDF-3 CRAs:
+<br />
+<br />netcdf dwarf_planets {
+<br />
+<br />dimensions:
+<br />
+<br />dwarf_planet = 5 ;  // number of dwarf planets described in this file
+<br />
+<br />dwarf_planet_chars = 28 ;  // total number of characters for all planet
+<br />
+names
+<br />
+<br />variables:
+<br />
+<br />char dwarf_planet_name(dwarf_planet_chars) ;
+<br />
+<br />int dwarf_planet_name_stop(dwarf_planet) ;
+<br />
+<br />dwarf_planet_name_stop:contiguous_ragged_dimension = &quot;dwarf_planet_chars&quot; ;
+<br />
+<br />data:
+<br />
+<br />dwarf_planet_name = &quot;PlutoCeresErisHaumeaMakemake&quot; ;
+<br />
+<br />dwarf_planet_name_stop = 5, 10, 14, 20, 28 ;
+<br />
+<br />}
+<br />
+<br />For the above geometry example, the VLEN coordinate_index netCDF-4 array is
+<br />
+replaced by a netCDF-3 CRA.
+<br />
+<br />netcdf multipolygon_example {
+<br />
+<br />dimensions:
+<br />
+<br />&nbsp;&nbsp;&nbsp;node = 25 ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;indices = 30;
+<br />
+<br />&nbsp;&nbsp;&nbsp;geom = 1 ;
+<br />
+<br />variables:
+<br />
+<br />&nbsp;int coordinate_index(indices) ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:geom_type = &quot;multipolygon&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:coordinates = &quot;x y&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:multipart_break_value = -1 ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:hole_break_value = -2 ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:outer_ring_order = &quot;anticlockwise&quot; ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:closure_convention = &quot;last_node_equals_first&quot; ;
+<br />
+<br />&nbsp;int coordinate_index_stop(geom) ;
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index_stop:contiguous_ragged_dimension = &quot;indices&quot; ;
+<br />
+<br />&nbsp;double x(node) ;
+<br />
+<br />&nbsp;double y(node) ;
+<br />
+<br />data:
+<br />
+<br />coordinate_index = 0, 1, 2, 3, 4, -2, 5, 6, 7, 8, -2, 9, 10, 11, 12, -2,
+<br />
+13, 14, 15, 16, -1, 17, 18, 19, 20, -1, 21, 22, 23, 24 ;
+<br />
+<br />coordinate_index_stop = 30 ;
+<br />
+<br />x = 0, 20, 20, 0, 0, 1, 10, 19, 1, 5, 7, 9, 5, 11, 13, 15, 11, 5, 9, 7, 5,
+<br />
+11, 15, 13, 11 ;
+<br />
+<br />y = 0, 0, 20, 20, 0, 1, 5, 1, 1, 15, 19, 15, 15, 15, 19, 15, 15, 25, 25,
+<br />
+29, 25, 25, 25, 29, 25 ;
+<br />
+<br />}
+<br />
+<br />The CRA method could of course be used in place of VLEN in netCDF-4. See
+<br />
+our wiki page on GitHub [7] for more details and examples.
+<br />
+<br />Questions for the CF Community
+<br />
+<br /><br />&nbsp;&nbsp;&nbsp;1.
+<br />
+<br />&nbsp;&nbsp;&nbsp;Are our VLEN netCDF-3 and netCDF-4 approaches acceptable? What changes
+<br />
+&nbsp;&nbsp;&nbsp;would you recommend?
+<br />
+&nbsp;&nbsp;&nbsp;2.
+<br />
+<br />&nbsp;&nbsp;&nbsp;Are the geometry types point, line, polygon, and their multipart
+<br />
+&nbsp;&nbsp;&nbsp;equivalents sufficient for the community?
+<br />
+<br /><br />Thank you very much for considering our ideas and helping us with your
+<br />
+valuable feedback!
+<br />
+<br />[1] <a href="http://earthcube.org/group/advancing-netcdf-cf">http://earthcube.org/group/advancing-netcdf-cf</a>
+<br />
+<br />[2] <a href="https://github.com/bekozi/netCDF-CF-simple-geometry">https://github.com/bekozi/netCDF-CF-simple-geometry</a>
+<br />
+<br />[3] <a href="https://en.wikipedia.org/wiki/Well-known_text">https://en.wikipedia.org/wiki/Well-known_text</a>
+<br />
+<br />[4] <a href="https://github.com/bekozi/netCDF-CF-simple-geometry/wiki">https://github.com/bekozi/netCDF-CF-simple-geometry/wiki</a>
+<br />
+<br />[5] <a href="https://arthur-e.github.io/Wicket/sandbox-gmaps3.html">https://arthur-e.github.io/Wicket/sandbox-gmaps3.html</a>
+<br />
+<br />[6]
+<br />
+<a href="https://github.com/bekozi/netCDF-CF-simple-geometry/wiki/Examples---VLen-Ragged-Arrays">https://github.com/bekozi/netCDF-CF-simple-geometry/wiki/Examples---VLen-Ragged-Arrays</a>
+<br />
+[7]
+<br />
+<a href="https://github.com/bekozi/netCDF-CF-simple-geometry/wiki/VLEN-Arrays-in-NetCDF-3">https://github.com/bekozi/netCDF-CF-simple-geometry/wiki/VLEN-Arrays-in-NetCDF-3</a>
+<br />
+<br /><pre>
+-- 
+Ben Koziol
+NESII/CIRES/NOAA Earth System Research Laboratory
+ben.koziol at noaa.gov
+&lt;<a href="https://mail.google.com/mail/u/0/?view=cm&amp;fs=1&amp;tf=1&amp;to=ben.koziol">https://mail.google.com/mail/u/0/?view=cm&amp;fs=1&amp;tf=1&amp;to=ben.koziol</a> at noaa.gov&gt;
+802.392.4522
+<a href="http://www.esrl.noaa.gov/nesii/">http://www.esrl.noaa.gov/nesii/</a>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160907/11ef540f/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20160907/11ef540f/attachment-0001.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Sep 07 2016 - 12:13:32 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7768">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7769.html" title="Next message in the list">Chris Barker: "[CF-metadata] nitpick in time axes example"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7767.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  radiosonde ascent rate?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7811.html" title="Next message in this discussion thread">Hedley, Mark: "[CF-metadata] Feedback requested on proposed CF Simple Geometries"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7811.html" title="Message sent in reply to this message">Hedley, Mark: "[CF-metadata] Feedback requested on proposed CF Simple Geometries"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7768" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7768" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7768" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7768" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:06 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7767.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7769.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Vertical coordinates &amp; boundaries from Maarten Sneep on 2015-02-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Maarten Sneep (maarten.sneep)" />
+<meta name="Subject" content="[CF-metadata] Vertical coordinates &amp; boundaries" />
+<meta name="Date" content="2015-02-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6802.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6804.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Vertical coordinates &amp; boundaries</h1>
+<!-- received="Thu Feb 19 08:56:56 2015" -->
+<!-- isoreceived="20150219085656" -->
+<!-- sent="Thu, 19 Feb 2015 16:56:56 +0100" -->
+<!-- isosent="20150219155656" -->
+<!-- name="Maarten Sneep" -->
+<!-- email="maarten.sneep" -->
+<!-- subject="[CF-metadata] Vertical coordinates &amp; boundaries" -->
+<!-- id="54E607C8.4040707_at_knmi.nl" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6803" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6804.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] Vertical coordinates &#0038; boundaries&quot;">Next message</a> ]
+[ <a href="./6802.html" title="Hattersley, Richard: &quot;[CF-metadata] Editing/publishing workflow update&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6804.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] Vertical coordinates &#0038; boundaries&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6803" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6803" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6803" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6803" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Maarten Sneep &lt;<a href="mailto:maarten.sneep?Subject=Re%3A%20%5BCF-metadata%5D%20Vertical%20coordinates%20%26%20boundaries">maarten.sneep</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 19 Feb 2015 16:56:56 +0100</span><br />
+</address>
+<br />
+Hi,
+<br />
+<br />A colleague has a question that left me without an answer. He writes:
+<br />
+<br />I have a 3D ozone field with n_lon elements in longitude direction,
+<br />
+n_lat elements in latitude direction and n_layer elements in the
+<br />
+vertical direction. The corresponding pressure grid has the same number
+<br />
+of elements in longitude and latitude directions, but since the pressure
+<br />
+is given on the layer interfaces, the number of elements in the vertical
+<br />
+direction is one more than for my ozone field. The dimensions of both
+<br />
+fields are therefore:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O3  = [ n_lon, n_lat, n_layer ]
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hPa = [ n_lon, n_lat, n_layer+1 ]
+<br />
+<br />I have looked at the CF-conventions 1.6 document, but
+<br />
+<br />* it's not clear to me if I could use a &quot;boundary variable&quot; (section 7).
+<br />
+* the pressure field is irregular, so a hybrid solution
+<br />
+&nbsp;&nbsp;&nbsp;(P = hyb_a + hyb_b*P_surf) is not an option (appendix D).
+<br />
+<br />The question is how to write these fields as two datasets to a netCDF
+<br />
+file in a CF-compliant way, so that it is clear that the pressure field
+<br />
+gives the vertical extent of the layers of the ozone field. I have
+<br />
+thought of the following options:
+<br />
+<br />* use 4 dimensions (lon, lat, layers, layers+1), but in that case, the
+<br />
+&nbsp;&nbsp;&nbsp;ozone and pressure datasets have a different third coordinate, while
+<br />
+&nbsp;&nbsp;&nbsp;they are obviously linked.
+<br />
+* separate the pressure field into a surface pressure field and all
+<br />
+&nbsp;&nbsp;&nbsp;higher levels, but then you have two dataset for the air pressure.
+<br />
+<br />What is the preferred way of storing data with a vertical coordinate 
+<br />
+that is specified on the interfaces rather than on the layers 
+<br />
+themselves, ans where a coordinate variable doesn't provide the detail 
+<br />
+we need?
+<br />
+<br />Kind regards,
+<br />
+<br />Maarten Sneep
+<br />
+<pre>
+-- 
+KNMI
+T: 030 2206747
+E: maarten.sneep at knmi.nl
+R: A2.14
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Feb 19 2015 - 08:56:56 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6803">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6804.html" title="Next message in the list">Jim Biard: "[CF-metadata] Vertical coordinates &#0038; boundaries"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6802.html" title="Previous message in the list">Hattersley, Richard: "[CF-metadata] Editing/publishing workflow update"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6804.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] Vertical coordinates &#0038; boundaries"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6804.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] Vertical coordinates &#0038; boundaries"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6803" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6803" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6803" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6803" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6802.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6804.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

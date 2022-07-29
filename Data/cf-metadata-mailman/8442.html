@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] JSON representation based on CF from Chris Barker on 2017-07-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="Chris Barker (chris.barker)" />
+<meta name="Subject" content="[CF-metadata] JSON representation based on CF" />
+<meta name="Date" content="2017-07-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8441.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8443.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] JSON representation based on CF</h1>
+<!-- received="Wed Jul 26 18:12:52 2017" -->
+<!-- isoreceived="20170726171252" -->
+<!-- sent="Wed, 26 Jul 2017 17:12:52 -0700" -->
+<!-- isosent="20170727001252" -->
+<!-- name="Chris Barker" -->
+<!-- email="chris.barker" -->
+<!-- subject="[CF-metadata] JSON representation based on CF" -->
+<!-- id="CALGmxE+R9ON0sthRgBMOQGf=2G5UU_xhoYnDNMTRuf=TPU5N5g_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="C4ECE41B-D117-49E7-AAE4-1004A15613C4_at_reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8442" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8443.html" accesskey="d" title="Chris Barker: &quot;[CF-metadata] JSON representation based on CF&quot;">Next message</a> ]
+[ <a href="./8441.html" title="Ethan Davis: &quot;[CF-metadata] Advancing netCDF-CF workshop on 6-8 Sept 2017 in Boulder, CO USA&quot;">Previous message</a> ]
+[ <a href="./8438.html" title="Jon Blower: &quot;[CF-metadata] JSON representation based on CF&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8443.html" accesskey="t" title="Chris Barker: &quot;[CF-metadata] JSON representation based on CF&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8442" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8442" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8442" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8442" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Chris Barker &lt;<a href="mailto:chris.barker?Subject=Re%3A%20%5BCF-metadata%5D%20JSON%20representation%20based%20on%20CF">chris.barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 26 Jul 2017 17:12:52 -0700</span><br />
+</address>
+<br />
+At a really quick glance, it looks like CovJSON has a different mission
+<br />
+that &quot;CF-json&quot; or &quot;netcdf-json&quot;. But they do sure overlap, so I hope we can
+<br />
+not have TOO many overlapping yet different JSON specs out there.
+<br />
+<br />None of these are very mature or widely adopted -- so now it a good time
+<br />
+(indeed the ONLY time to merge some of this.
+<br />
+<br />CF-JSON looks a little bit like a misnomer, or a maybe a different focus
+<br />
+that what I'd expect. What I&quot;ve getting at is that CF is a metadata spec
+<br />
+(and maybe a data model) -- while it is quite tied to netcdf, it ISN'T
+<br />
+netcdf per se.
+<br />
+<br />So if you what to express that kind of information in JSON, I think the
+<br />
+thing to do is specify how to map netcdf to JSON, and then simply apply the
+<br />
+same CF metadata standards.
+<br />
+<br />Which is what NCO has done.
+<br />
+<br />One couldn't of course, express the CF data model in JSON directly, without
+<br />
+specifically mapping to netcdf, though I think that would look very
+<br />
+similar, but not be as generally applicable.
+<br />
+<br />At a quick glance, NCO's JSON and the CF-JSON spec are similar -- after
+<br />
+all, they are tryn gto do teh same thing -- but there are a lot of niggling
+<br />
+details to settle on, and I can only imagine independent efforts came up
+<br />
+with different solutions.
+<br />
+<br />So I hope that the two groups (and the covjson folks) can get together and
+<br />
+converge to one thing!
+<br />
+<br />-CHB
+<br />
+<br /><br /><br /><br /><br /><br /><br />On Wed, Jul 26, 2017 at 9:13 AM, Jon Blower &lt;j.d.blower at reading.ac.uk&gt;
+<br />
+wrote:
+<br />
+<br /><em class="quotelev1">&gt; Hi all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Just to introduce myself ? I managed the project [1] that yielded CovJSON
+</em><br />
+<em class="quotelev1">&gt; [2]. It was developed mostly by my colleague Maik Riechert, with occasional
+</em><br />
+<em class="quotelev1">&gt; input from me. We managed to get it to a reasonable state of maturity, but
+</em><br />
+<em class="quotelev1">&gt; it would be great to see wider uptake ? I?m very happy to provide advice on
+</em><br />
+<em class="quotelev1">&gt; this, for example to support implementation in TDS, which would be great
+</em><br />
+<em class="quotelev1">&gt; (we already have some libraries that might help here, although they are not
+</em><br />
+<em class="quotelev1">&gt; complete).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In retrospect, I should have announced our progress on this list, although
+</em><br />
+<em class="quotelev1">&gt; it wasn?t specifically CF-related. Apologies for that. The work was done
+</em><br />
+<em class="quotelev1">&gt; partly within a joint OGC/W3C working group [3], and some members of the
+</em><br />
+<em class="quotelev1">&gt; CF/NetCDF community were part of this.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; My plan is to set up a working group for CovJSON, perhaps under the
+</em><br />
+<em class="quotelev1">&gt; auspices of the OGC?s incubator programme, with a view to ultimately
+</em><br />
+<em class="quotelev1">&gt; producing a standard. When this happens, I?ll be sure to invite members of
+</em><br />
+<em class="quotelev1">&gt; this list to participate, as it would be great to have a wider group of
+</em><br />
+<em class="quotelev1">&gt; people providing input.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; David (and indeed anyone) ? please feel free to make any comments on
+</em><br />
+<em class="quotelev1">&gt; CovJSON. You can do this via email to me, or by raising an issue on the
+</em><br />
+<em class="quotelev1">&gt; appropriate GitHub repositories [4].
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; CovJSON at the moment probably can?t cover the whole gamut of what is
+</em><br />
+<em class="quotelev1">&gt; possible with CF. Things like cell methods, climatological time and a few
+</em><br />
+<em class="quotelev1">&gt; other things are not supported. The focus was not on implementing CF in its
+</em><br />
+<em class="quotelev1">&gt; entirety, but producing a (reasonably) simple JSON format to support the
+</em><br />
+<em class="quotelev1">&gt; development of interactive websites. Some of the finer points of CF are
+</em><br />
+<em class="quotelev1">&gt; less important for this kind of application. This could be a good topic of
+</em><br />
+<em class="quotelev1">&gt; discussion in the incubator group.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There is a presentation [5] and overview slides [6], which might be a good
+</em><br />
+<em class="quotelev1">&gt; way to get an overview of this project.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hope this helps,
+</em><br />
+<em class="quotelev1">&gt; Jon
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; [1] <a href="http://www.melodiesproject.eu">http://www.melodiesproject.eu</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; [2] <a href="https://covjson.org">https://covjson.org</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; [3] <a href="https://www.w3.org/2015/spatial/wiki/Main_Page">https://www.w3.org/2015/spatial/wiki/Main_Page</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; [4] <a href="https://github.com/covjson">https://github.com/covjson</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; [5] <a href="https://ecmwf.adobeconnect.com/p6224btxzng/">https://ecmwf.adobeconnect.com/p6224btxzng/</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; [6] <a href="https://www.ecmwf.int/sites/default/files/elibrary/2017/">https://www.ecmwf.int/sites/default/files/elibrary/2017/</a>
+</em><br />
+<em class="quotelev1">&gt; 17149-building-rich-and-interactive-web-applications-coveragejson.pdf
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; *Jon Blower *| CTO, Institute for Environmental Analytics
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Follow the IEA on Twitter _at_env_analytics
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="https://twitter.com/env_analytics">https://twitter.com/env_analytics</a>&gt; and on LinkedIn The Institute for
+</em><br />
+<em class="quotelev1">&gt; Environmental Analytics (IEA)
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="https://www.linkedin.com/company/the-institute-for-environmental-analytics?trk=biz-companies-cymhttps://www.linkedin.com/company/the-institute-for-environmental-analytics?trk=biz-companies-cym">https://www.linkedin.com/company/the-institute-for-environmental-analytics?trk=biz-companies-cymhttps://www.linkedin.com/company/the-institute-for-environmental-analytics?trk=biz-companies-cym</a>&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Philip Lyle Building, University of Reading, Whiteknights Campus, Reading
+</em><br />
+<em class="quotelev1">&gt; RG6 6BX
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; *T: *+44 (0)118 378 5213 &lt;+44%20118%20378%205213&gt; *M: *+44 (0)7919 112687
+</em><br />
+<em class="quotelev1">&gt; &lt;+44%207919%20112687&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; *E: *j.blower at the-iea.org *W: *www.the-iea.org
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; *From: *CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu&gt; on behalf of David
+</em><br />
+<em class="quotelev1">&gt; Johnson &lt;d.johnson at metocean.co.nz&gt;
+</em><br />
+<em class="quotelev1">&gt; *Date: *Wednesday, 26 July 2017 02:01
+</em><br />
+<em class="quotelev1">&gt; *To: *Sean Arms &lt;sarms at ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; *Cc: *&quot;cf-metadata at cgd.ucar.edu&quot; &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; *Subject: *Re: [CF-metadata] JSON representation based on CF
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi Sean,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks very much for that reference. CovJSON looks really good, and fairly
+</em><br />
+<em class="quotelev1">&gt; mature. Pity we weren't aware of this and didn't check this out a couple of
+</em><br />
+<em class="quotelev1">&gt; months ago!.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think this would probably provide a full one-to-one mapping to
+</em><br />
+<em class="quotelev1">&gt; CF-NetCDF, which I think some will want. And seems to cover all the needs
+</em><br />
+<em class="quotelev1">&gt; we were trying to address with CF-JSON. And more besides.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hopefully we will see widespread uptake and community acceptance. Getting
+</em><br />
+<em class="quotelev1">&gt; into TDS would certainly be a step in the right direction.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; This is good and exactly what these kinds of lists are for. And one less
+</em><br />
+<em class="quotelev1">&gt; project to worry about. We will focus on our Javascript NetCDF reader
+</em><br />
+<em class="quotelev1">&gt; instead:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; www.github.com/metocean/netcdfjs
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Unless of course somewhere is aware of another project dealing with that!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers, Dave
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On Wed, Jul 26, 2017 at 12:21 PM, Sean Arms &lt;sarms at ucar.edu&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hello Dave,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I've been considering adding support for CoverageJSON to the TDS:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; <a href="https://www.w3.org/TR/covjson-overview/">https://www.w3.org/TR/covjson-overview/</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; (Github page <a href="https://github.com/covjson/specification">https://github.com/covjson/specification</a>)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The spec specifically mentions CF-netCDF here:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; <a href="https://www.w3.org/TR/covjson-overview/#netcdf">https://www.w3.org/TR/covjson-overview/#netcdf</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Sean
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On Tue, Jul 25, 2017 at 1:20 PM David Johnson &lt;d.johnson at metocean.co.nz&gt;
+</em><br />
+<em class="quotelev1">&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hello All,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Apologies if this is wrong place to post this. But I would like to draw
+</em><br />
+<em class="quotelev1">&gt; your attention to an open source initiative we have started:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; cf-json.org.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The intention of this is to develop a standard around online exchange of
+</em><br />
+<em class="quotelev1">&gt; climate and weather data. Based firmly on CF conventions for NetCDF. This
+</em><br />
+<em class="quotelev1">&gt; was in response to the lack of any obvious standards for JSON. The transfer
+</em><br />
+<em class="quotelev1">&gt; of weather data via RESTful services is now widespread and JSON is a common
+</em><br />
+<em class="quotelev1">&gt; format for this. The geospatial community have geojson so we figured we
+</em><br />
+<em class="quotelev1">&gt; need something similar. We are using this internally, but would be happy to
+</em><br />
+<em class="quotelev1">&gt; see wider adoption.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Pleased to have any feedback and/or knowledge of other existing efforts in
+</em><br />
+<em class="quotelev1">&gt; this space.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best regards,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dave
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; [image: mage removed by sender. MetOcean Solutions Ltd]
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://www.metocean.co.nz/">http://www.metocean.co.nz/</a>&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; *Dr David Johnson*
+</em><br />
+<em class="quotelev1">&gt; Technical Director
+</em><br />
+<em class="quotelev1">&gt; t: +64 7 825 0540 ext.1 &lt;<a href="http://+6467585035/">http://+6467585035/</a>&gt;02
+</em><br />
+<em class="quotelev1">&gt; m: +64 2 &lt;<a href="http://+64276853473/">http://+64276853473/</a>&gt;1 057 1058
+</em><br />
+<em class="quotelev1">&gt; www.metocean.co.nz
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; [image: mage removed by sender. MetOcean Solutions Ltd]
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://www.metocean.co.nz/">http://www.metocean.co.nz/</a>&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; *Dr David Johnson*
+</em><br />
+<em class="quotelev1">&gt; Technical Director
+</em><br />
+<em class="quotelev1">&gt; t: +64 7 825 0540 ext.1 &lt;<a href="http://+6467585035/">http://+6467585035/</a>&gt;02
+</em><br />
+<em class="quotelev1">&gt; m: +64 2 &lt;<a href="http://+64276853473/">http://+64276853473/</a>&gt;1 057 1058
+</em><br />
+<em class="quotelev1">&gt; www.metocean.co.nz
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170726/a405a9df/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170726/a405a9df/attachment.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Jul 26 2017 - 18:12:52 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8442">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8443.html" title="Next message in the list">Chris Barker: "[CF-metadata] JSON representation based on CF"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8441.html" title="Previous message in the list">Ethan Davis: "[CF-metadata] Advancing netCDF-CF workshop on 6-8 Sept 2017 in Boulder, CO USA"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8438.html" title="Message to which this message replies">Jon Blower: "[CF-metadata] JSON representation based on CF"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8443.html" title="Next message in this discussion thread">Chris Barker: "[CF-metadata] JSON representation based on CF"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8443.html" title="Message sent in reply to this message">Chris Barker: "[CF-metadata] JSON representation based on CF"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8442" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8442" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8442" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8442" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:15 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8441.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8443.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

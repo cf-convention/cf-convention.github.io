@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] rotated pole projection from Plieger, Maarten on 2012-04-25 (cf-metadata-mailman)</title>
+<meta name="Author" content="Plieger, Maarten (maarten.plieger)" />
+<meta name="Subject" content="[CF-metadata] rotated pole projection" />
+<meta name="Date" content="2012-04-25" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4441.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4443.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] rotated pole projection</h1>
+<!-- received="Wed Apr 25 02:39:40 2012" -->
+<!-- isoreceived="20120425013940" -->
+<!-- sent="Wed, 25 Apr 2012 10:39:40 +0200" -->
+<!-- isosent="20120425083940" -->
+<!-- name="Plieger, Maarten" -->
+<!-- email="maarten.plieger" -->
+<!-- subject="[CF-metadata] rotated pole projection" -->
+<!-- id="67434F46678F6346BA905A99731B7E7E018F346E_at_BCSXTC.knmi.nl" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="619F937D-F3B0-42B4-A389-0652F4AC3B78&#64;me.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4442" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4443.html" accesskey="d" title="Sissy IONA: &quot;[CF-metadata] [sdn2-tech] Re: Ocean CTD data following CF Conventions v1.6&quot;">Next message</a> ]
+[ <a href="./4441.html" title="TOYODA Eizi: &quot;[CF-metadata] Standard_name for cloud-cover by phenomenon&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4431.html" accesskey="t" title="Burkhardt Rockel: &quot;[CF-metadata] rotated pole projection&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4442" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4442" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4442" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4442" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Plieger, Maarten &lt;<a href="mailto:maarten.plieger?Subject=Re%3A%20%5BCF-metadata%5D%20rotated%20pole%20projection">maarten.plieger</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 25 Apr 2012 10:39:40 +0200</span><br />
+</address>
+<br />
+Hi,
+<br />
+<br />We have a dataset with rotated pole in which the projection definition has an unexpected 180 degrees shift if you compare it to the proj definition. 
+<br />
+<br />Our WMS derives proj strings for projection from CF projection metadata. In order to visualise CF rotated pole I had to shift grid_north_pole_longitude by 180 degrees, see the following mapping:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float rotated_pole ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotated_pole:grid_mapping_name = &quot;rotated_latitude_longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotated_pole:units = &quot;degrees&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotated_pole:grid_north_pole_latitude = 47.000000f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotated_pole:grid_north_pole_longitude = -165.000000f ;
+<br />
+<br />equals to:
+<br />
+<br />&quot;+proj=ob_tran +o_proj=longlat +lon_0=15 +o_lat_p=47 +o_lon_p=0 +a=6378.140 +b=6356.750 +x_0=0 +y_0=0 +no_defs&quot;
+<br />
+<br />Here is a DAP URL if you would like have another example dataset:
+<br />
+<a href="http://opendap.nmdc.eu/knmi/thredds/dodsC/RACMO/experiments/RLOTOS50/ndlotos-cy33r1_nmdc-opendap/3Hourly_data/tsurf.KNMI-2011.RLOTOS50.ndlotos-cy33r1_nmdc-opendap.nc">http://opendap.nmdc.eu/knmi/thredds/dodsC/RACMO/experiments/RLOTOS50/ndlotos-cy33r1_nmdc-opendap/3Hourly_data/tsurf.KNMI-2011.RLOTOS50.ndlotos-cy33r1_nmdc-opendap.nc</a>
+<br />
+<br />Is this 180 degree shift not supposed to be needed?
+<br />
+<br />Cheers,
+<br />
+Maarten
+<br />
+<br /><br />-----Oorspronkelijk bericht-----
+<br />
+Van: cf-metadata-bounces at cgd.ucar.edu namens Burkhardt Rockel
+<br />
+Verzonden: di 24-4-2012 21:11
+<br />
+Aan: Don.Murray at noaa.gov
+<br />
+CC: cf-metadata at cgd.ucar.edu
+<br />
+Onderwerp: Re: [CF-metadata] rotated pole projection
+<br />
+&nbsp;
+<br />
+Hi Don,
+<br />
+<br />this is not a problem in the grid definition, but a problem of the code. This is not just a problem in your Java code, but also in the Fortran code that is used in regional climate models (and the output files in the link you provided are from the Danish regional climate model). It may well be that the Java version was derived from the Fortran version. 
+<br />
+This strange thing happens, when the geographic pole and the rotated pole are the same or the rotation is just along the equator. In your case you may either set grid_north_pole_longitude=180. before entering your Java routine or just ignore the rotated pole at all since in this special case it is rlon = geographical longitude  and rlat = geographical latitude.
+<br />
+<br />Regards
+<br />
+Burkhardt
+<br />
+<br />Am 24.04.2012 um 18:50 schrieb Don Murray:
+<br />
+<br /><em class="quotelev1">&gt; Hi-
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I have some climate files that have a rotated-pole projection defined as:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;        char rotated_pole ;
+</em><br />
+<em class="quotelev1">&gt;                rotated_pole:grid_mapping_name = &quot;rotated_latitude_longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;                rotated_pole:grid_north_pole_latitude = 90.f ;
+</em><br />
+<em class="quotelev1">&gt;                rotated_pole:grid_north_pole_longitude = 0.f ;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; When I read this through the netCDF-Java library, the data end up 180 degrees off from where it is supposed to be (African data is over Hawaii).  I talked to John Caron at Unidata and he doesn't know if it is a problem with the grid definition or the rotated-pole code in netCDF-Java.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Does anyone on this list have a pointer to the equations for the rotated pole and or know if there anything wrong with the grid mapping definition?  Should the above imply a unity transformation?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Sample files are at:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; <a href="http://dods-testbed.ictp.it/aap/ENSEMBLES_AMMA/ERAIN/Daily/">http://dods-testbed.ictp.it/aap/ENSEMBLES_AMMA/ERAIN/Daily/</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; thanks for the help!
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Don
+</em><br />
+<em class="quotelev1">&gt; -- 
+</em><br />
+<em class="quotelev1">&gt; Don Murray
+</em><br />
+<em class="quotelev1">&gt; NOAA/ESRL/PSD and CIRES
+</em><br />
+<em class="quotelev1">&gt; 303-497-3596
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.esrl.noaa.gov/psd/people/don.murray/">http://www.esrl.noaa.gov/psd/people/don.murray/</a>
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Apr 25 2012 - 02:39:40 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4442">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4443.html" title="Next message in the list">Sissy IONA: "[CF-metadata] [sdn2-tech] Re: Ocean CTD data following CF Conventions v1.6"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4441.html" title="Previous message in the list">TOYODA Eizi: "[CF-metadata] Standard_name for cloud-cover by phenomenon"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4431.html" title="Next message in this discussion thread">Burkhardt Rockel: "[CF-metadata] rotated pole projection"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4431.html" title="Message sent in reply to this message">Burkhardt Rockel: "[CF-metadata] rotated pole projection"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4442" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4442" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4442" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4442" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:02 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4441.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4443.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

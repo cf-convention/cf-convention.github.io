@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Decibel units in CF standard names from Martin Juckes - UKRI STFC on 2018-11-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="Martin Juckes - UKRI STFC (martin.juckes)" />
+<meta name="Subject" content="[CF-metadata] Decibel units in CF standard names" />
+<meta name="Date" content="2018-11-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9469.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9471.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Decibel units in CF standard names</h1>
+<!-- received="Tue Nov  6 02:55:08 2018" -->
+<!-- isoreceived="20181106025508" -->
+<!-- sent="Tue, 6 Nov 2018 09:55:08 +0000" -->
+<!-- isosent="20181106095508" -->
+<!-- name="Martin Juckes - UKRI STFC" -->
+<!-- email="martin.juckes" -->
+<!-- subject="[CF-metadata] Decibel units in CF standard names" -->
+<!-- id="187f36f2231c4953adf42267d7097b57_at_stfc.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20181105210054.GA31357_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9470" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9471.html" accesskey="d" title="Chris Barker: &quot;[CF-metadata] Discussion of changes?&quot;">Next message</a> ]
+[ <a href="./9469.html" title="Jonathan Gregory: &quot;[CF-metadata] Decibel units in CF standard names&quot;">Previous message</a> ]
+[ <a href="./9469.html" title="Jonathan Gregory: &quot;[CF-metadata] Decibel units in CF standard names&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9470" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9470" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9470" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9470" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Martin Juckes - UKRI STFC &lt;<a href="mailto:martin.juckes?Subject=Re%3A%20%5BCF-metadata%5D%20Decibel%20units%20in%20CF%20standard%20names">martin.juckes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 6 Nov 2018 09:55:08 +0000</span><br />
+</address>
+<br />
+Dear Jonathan,
+<br />
+<br /><br />Interesting that your version of udunits has bel &amp; decibel ... mine (udunits2 which I installed on Oct. 17th) does not have these (*&quot;udunits2: Don't recognize &quot;bel&quot;* it tells me), but does had dBz, dBW, dBV, dBv and a few others. There is a different udunits unit for every reference level. Do you know which version of udunits you are using?
+<br />
+<br /><br />cfunits, on the other hand, which uses the udunits2 library, does have bel and decibel added, and has them equivalent to '1'. The list of changes that cfunits makes relative to udunits is copied below (from the cfunits.Units help text), with changes that are not mentioned in the convention highlighted:
+<br />
+<br /><br />&nbsp;|  =======================  ======  ============  ==============
+<br />
+&nbsp;|  Unit name                Symbol  Definition    Status
+<br />
+&nbsp;|  =======================  ======  ============  ==============
+<br />
+&nbsp;|  practical_salinity_unit  psu     1e-3          New unit
+<br />
+&nbsp;|  level                            1             New unit
+<br />
+&nbsp;|  sigma_level                      1             New unit
+<br />
+&nbsp;|  layer                            1             New unit
+<br />
+&nbsp;|  decibel                  dB      1             New unit
+<br />
+&nbsp;|  bel                              10 dB         New unit
+<br />
+&nbsp;|  sverdrup                 Sv      1e6 m3 s-1    Added symbol
+<br />
+&nbsp;|  sievert                          J kg-1        Removed symbol
+<br />
+&nbsp;|  =======================  ======  ============  ==============
+<br />
+<br /><br />There appear to be two options: to diverge from UDUNITS in the approach taken for decibels, or not.
+<br />
+<br />If we diverge, and use &quot;dB&quot; for multiple reference levels, this needs to be expressed more clearly in the convention.  This should include specifying whether &quot;dB&quot; is conformant with &quot;1&quot;. Both us have some objections to this idea, but it may be that we need to accept that conformance of units is a fuzzy idea.
+<br />
+<br />If we follow UDUNITS, I'm afraid &quot;dB&quot; as a unit has to go.
+<br />
+<br />regards,
+<br />
+Martin
+<br />
+<br />________________________________
+<br />
+From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu&gt; on behalf of Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt;
+<br />
+Sent: 05 November 2018 21:00
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] Decibel units in CF standard names
+<br />
+<br />Dear Martin
+<br />
+<br /><em class="quotelev1">&gt; The discussion of a machine-readable document with details of rules related to specific standard names is here: <a href="https://cf-trac.llnl.gov/trac/ticket/153">https://cf-trac.llnl.gov/trac/ticket/153</a> . It has been quiet for some time. The dB issues could be covered there, as you say. There is a difference in that the rules discussed in ticket 153 are about specifying what needs to be in the data file, so that it is possible to check that file meta-data is as complete as intended by the convention. Your suggestion would entail adding information that would not be in the data file.
+</em><br />
+<br />Yes, I agree, that's a bit different. The rules file would provide the info.
+<br />
+It's a convenient place to put it.
+<br />
+<br /><em class="quotelev1">&gt; You also suggest that alternative reference levels could be specified in an attribute, but that does not appear to be allowed by current standard name definitions,
+</em><br />
+<br />I admit that I didn't check the definitions of these standard names! But there
+<br />
+are standard names which refer to a value with a default that can be overridden
+<br />
+by a coordinate variable or scalar coordinate variable (not an attribute). If
+<br />
+there is a use-case for different reference values for any of the dB instances
+<br />
+you mention, we should provide for it using that mechanism by amending the
+<br />
+definitions of the standard names, I suggest.
+<br />
+<br /><em class="quotelev1">&gt; It is true that dB is dimensionless, like &quot;1&quot;, but we would create huge confusion if dB data values were multiplied by 100 and presented as &quot;%&quot; ... a sound_intensity_level_in_water with a value of 25% might be technically equivalent to 0.25dB, but not very useful to users. I'm not sure how to deal with this, but I'm not comfortable with the idea that dB is fully equivalent to &quot;1&quot; as a unit.
+</em><br />
+<br />I find that in my version of udunits, bel and decibel are units, and they are
+<br />
+not convertible to dimensionless numbers. I think that's consistent with what
+<br />
+you say and I agree it makes sense like that.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Nov 06 2018 - 02:55:08 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9470">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9471.html" title="Next message in the list">Chris Barker: "[CF-metadata] Discussion of changes?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9469.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Decibel units in CF standard names"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./9469.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] Decibel units in CF standard names"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9470" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9470" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9470" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9470" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:31 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9469.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9471.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

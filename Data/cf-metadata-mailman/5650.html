@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Use of number_of_days_with_air_temperature_below_threshold from Jonathan Gregory on 2013-08-09 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Use of number_of_days_with_air_temperature_below_threshold" />
+<meta name="Date" content="2013-08-09" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5649.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5651.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Use of number_of_days_with_air_temperature_below_threshold</h1>
+<!-- received="Fri Aug  9 09:47:34 2013" -->
+<!-- isoreceived="20130809084734" -->
+<!-- sent="Fri, 9 Aug 2013 16:47:34 +0100" -->
+<!-- isosent="20130809154734" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Use of number_of_days_with_air_temperature_below_threshold" -->
+<!-- id="20130809154734.GA1208_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5650" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5651.html" accesskey="d" title="Heiko Klein: &quot;[CF-metadata] Standard name for fog as area fraction&quot;">Next message</a> ]
+[ <a href="./5649.html" title="David Hassell: &quot;[CF-metadata] Standard name for fog as area fraction&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5650" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5650" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5650" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5650" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Use%20of%20number_of_days_with_air_temperature_below_threshold">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 9 Aug 2013 16:47:34 +0100</span><br />
+</address>
+<br />
+Dear Martin
+<br />
+<br />When these names were introduced, we took the view that the application of the
+<br />
+threshold is an operation which creates a new geophysical quantity. In that
+<br />
+respect it is analogous to the transformations mentioned in the standard name
+<br />
+guidelines, such as differentiation, integration, and calculating a histogram
+<br />
+or probability density function. Hence this operation does not have to be
+<br />
+described by the cell_methods, which makes it simpler. I think the number_of_
+<br />
+days data are quantities that have simple time bounds that specify the time
+<br />
+interval within which the number of days is calculated. They are extensive in
+<br />
+time i.e. they apply to the time interval as a whole, not to a point in time.
+<br />
+Hence the cell_methods should be just &quot;time: sum&quot;. In fact this would be the
+<br />
+default for an extensive quantity, but CF recommends that cell_methods should
+<br />
+always be explicitly stated.
+<br />
+<br />I hope this looks sensible to you, or at least acceptable.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br />----- Forwarded message from martin.juckes at stfc.ac.uk -----
+<br />
+<br /><em class="quotelev1">&gt; I just wanted to check on the usage of the standard name &quot;number_of_days_with_air_temperature_below_threshold&quot; for &quot;frost day&quot; and &quot;ice day&quot; counts. The definition of this standard name implies, I think, that cell_methods should be specified as &quot;time: minimum within days time: sum over days&quot; for frost days and &quot;time: maximum within days time: sum over days&quot;. This usage would convey some of the relevant information, but  I'm not sure it is consistent with the usage of cell_methods described in the CF standard itself.  In the standard it is implied that a variable with cell_methods=&quot;time: maximum within days time: sum over days&quot; would be the sum of the daily maxima. Here there is a thresholding operation in between which is omitted from the description only because &quot;threshold&quot; is not an available operation in table e.1.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; If &quot;threshold&quot; was added to table e.1 of the standard I suppose that &quot;number_of_days_with_air_temperature_below_threshold&quot; would become redundant and we could use &quot;air_temperature&quot; with cell_methods=&quot;time: minimum within days time: threshold within days time: sum over days&quot;. This would also allow us to deal with other indices (dry days, windy days) without creating new standard names. An additional attribute would be needed to describe the threshold in some way.
+</em><br />
+<span id="received"><dfn>Received on</dfn> Fri Aug 09 2013 - 09:47:34 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5650">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5651.html" title="Next message in the list">Heiko Klein: "[CF-metadata] Standard name for fog as area fraction"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5649.html" title="Previous message in the list">David Hassell: "[CF-metadata] Standard name for fog as area fraction"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5650" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5650" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5650" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5650" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:28 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5649.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5651.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

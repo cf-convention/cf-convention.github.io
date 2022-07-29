@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] same attribute name in variable and in global from John Graybeal on 2019-10-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Graybeal (jbgraybeal)" />
+<meta name="Subject" content="[CF-metadata] same attribute name in variable and in global" />
+<meta name="Date" content="2019-10-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9850.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9852.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] same attribute name in variable and in global</h1>
+<!-- received="Wed Oct  2 21:44:43 2019" -->
+<!-- isoreceived="20191002204443" -->
+<!-- sent="Wed, 2 Oct 2019 20:44:43 -0700" -->
+<!-- isosent="20191003034443" -->
+<!-- name="John Graybeal" -->
+<!-- email="jbgraybeal" -->
+<!-- subject="[CF-metadata] same attribute name in variable and in global" -->
+<!-- id="CCCB13E5-9513-44AD-956D-D8FF6983CB87_at_mindspring.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CALGmxEKNx9PMXY6GfNPWFdQqt9+tu9qtvxna+utSx+gTzJH+qg_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9851" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9852.html" accesskey="d" title="Lowry, Roy K.: &quot;[CF-metadata] new variable name request&quot;">Next message</a> ]
+[ <a href="./9850.html" title="John Graybeal: &quot;[CF-metadata] Adding sensor_elevation_angle to standard_name&quot;">Previous message</a> ]
+[ <a href="./9646.html" title="Chris Barker - NOAA Federal: &quot;[CF-metadata] same attribute name in variable and in global&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9851" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9851" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9851" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9851" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Graybeal &lt;<a href="mailto:jbgraybeal?Subject=Re%3A%20%5BCF-metadata%5D%20same%20attribute%20name%20in%20variable%20and%20in%20global">jbgraybeal</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 2 Oct 2019 20:44:43 -0700</span><br />
+</address>
+<br />
+Chris,
+<br />
+<br />I think your approach (keeping the distinction) is the way it is meant to work, in that both can exist. I think people were looking for a way to say which value a client should use if both exist. The language ?overwrite? applies only in the ?local memory? sense of which value to use, not whether the model still contains both variables.
+<br />
+<br />For example, in the simple example of when a variable was last updated, it is tempting to say ?use variable attribute if there, and global attribute if no variable attribute??except that?s quite often untrue for that type of attribute, for example because some variable-level update times weren?t captured.
+<br />
+<br />I concur that keeping both is best, and that if we want to specify which takes precedence, we should do so thoughtfully for every attribute in the standard, and document it in a more precise way. Since I?m not volunteering to take that on, a grain of salt is probably in order.
+<br />
+<br />John
+<br />
+<br /><br />---------------------------------------
+<br />
+John Graybeal
+<br />
+<br /><br /><em class="quotelev1">&gt; On Apr 4, 2019, at 18:44, Chris Barker - NOAA Federal &lt;chris.barker at noaa.gov&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Maybe it?s way too late now, but why does the data model have to allow only one attribute: global or variable? 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Why not simply keep the distinction between variable and global attributes? That is, global attributes apply to the entire dataset, and variable attributes apply to each variable. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; So if there is a global attribute ?global1?, it applies to variable_a, but you don?t say that variable_a has that attribute at all. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; -CHB
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On Mar 15, 2019, at 5:48 AM, B?rring Lars &lt;Lars.Barring at smhi.se &lt;mailto:Lars.Barring at smhi.se&gt;&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear all,
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; I have come across many CMIP5 files that have the same attribute [name] attached to the data variable as found in the globals. 
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; In particular it seems that CMOR was writing variable processing history attached to the variable, and more general file processing in the global history.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; I have also seen that &quot;comment&quot; sometimes occur both as global and as variable attribute.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; If such a duplication occurs, CF writes: 
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;When an attribute appears both globally and as a variable attribute, the variable?s version has precedence.&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; My interpretation of this is that if there are contradictory information then the variable's attribute has precedence, but otherwise it does not invalidate or overshadows what is in the global attribute.
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; However, the data model presented in the GMD paper (<a href="https://www.geosci-model-dev.net/10/4619/2017/">https://www.geosci-model-dev.net/10/4619/2017/</a> &lt;<a href="https://www.geosci-model-dev.net/10/4619/2017/">https://www.geosci-model-dev.net/10/4619/2017/</a>&gt; page 4629, [page 11], under &quot;4.1 The field construct&quot;) presents a more restrictive interpretation: 
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;In the data model, we consider that netCDF global file attributes apply to every data variable in the file, except where they are superseded by netCDF data variable attributes with the same name.&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; I understand this to mean that if the same attributes (e.g. comment or history) is present both as global and variable attribute, then the global attribute is overshadowed (as if it did not exist at all)?
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Is this correct? If so, is this the best solution? 
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Would not concatenating the information contained in each (putting the variable text first) be a more appropriate way to resolve the situation (and thus specify in the data model)?
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Kind regards,
+</em><br />
+<em class="quotelev2">&gt;&gt; Lars
+</em><br />
+<em class="quotelev2">&gt;&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; Lars B?rring
+</em><br />
+<em class="quotelev2">&gt;&gt;  
+</em><br />
+<em class="quotelev2">&gt;&gt; FDr, Forskare
+</em><br />
+<em class="quotelev2">&gt;&gt; PhD, Research Scientist
+</em><br />
+<em class="quotelev2">&gt;&gt;  
+</em><br />
+<em class="quotelev2">&gt;&gt; SMHI  /  Swedish Meteorological and Hydrological Institute
+</em><br />
+<em class="quotelev2">&gt;&gt; Rossby Centre 
+</em><br />
+<em class="quotelev2">&gt;&gt; SE - 601 76 NORRK?PING 
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://www.smhi.se">http://www.smhi.se</a> &lt;<a href="http://www.smhi.se/">http://www.smhi.se/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;  
+</em><br />
+<em class="quotelev2">&gt;&gt; E-post / Email: lars.barring at smhi.se &lt;mailto:lars.barring at smhi.se&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Tel / Phone: +46 (0)11 495 8604  
+</em><br />
+<em class="quotelev2">&gt;&gt; Fax: +46 (0)11 495 8001 
+</em><br />
+<em class="quotelev2">&gt;&gt; Bes?ksadress / Visiting address: Folkborgsv?gen 17
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> &lt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20191002/9b1547e3/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20191002/9b1547e3/attachment.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Oct 02 2019 - 21:44:43 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9851">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9852.html" title="Next message in the list">Lowry, Roy K.: "[CF-metadata] new variable name request"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9850.html" title="Previous message in the list">John Graybeal: "[CF-metadata] Adding sensor_elevation_angle to standard_name"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./9646.html" title="Message to which this message replies">Chris Barker - NOAA Federal: "[CF-metadata] same attribute name in variable and in global"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9851" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9851" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9851" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9851" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:37 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9850.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9852.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

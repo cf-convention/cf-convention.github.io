@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Is it possible to associate different attribute values with different array elements? from Simon Wood on 2006-11-10 (cf-metadata-mailman)</title>
+<meta name="Author" content="Simon Wood (simon.wood)" />
+<meta name="Subject" content="[CF-metadata] Is it possible to associate different attribute values with different array elements?" />
+<meta name="Date" content="2006-11-10" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0404.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0406.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Is it possible to associate different attribute values with different array elements?</h1>
+<!-- received="Thu Nov  9 20:46:16 2006" -->
+<!-- isoreceived="20061109204616" -->
+<!-- sent="Fri, 10 Nov 2006 16:46:16 +1300" -->
+<!-- isosent="20061110034616" -->
+<!-- name="Simon Wood" -->
+<!-- email="simon.wood" -->
+<!-- subject="[CF-metadata] Is it possible to associate different attribute values with different array elements?" -->
+<!-- id="4553F608.4040406_at_niwa.co.nz" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start405" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0406.html" accesskey="d" title="Steve Hankin: &quot;[CF-metadata] CF and multi-forecast system ensemble data&quot;">Next message</a> ]
+[ <a href="./0404.html" title="Ed Armstrong: &quot;[CF-metadata] Satellite community use of netCDF CF (GHRSST-PP)&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg405" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg405" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg405" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg405" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Simon Wood &lt;<a href="mailto:simon.wood?Subject=Re%3A%20%5BCF-metadata%5D%20Is%20it%20possible%20to%20associate%20different%20attribute%20values%20with%20different%20array%20elements%3F">simon.wood</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 10 Nov 2006 16:46:16 +1300</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />We are in the process of designing new file formats for our earth 
+<br />
+observation satellite datasets (raw satellite data through to derived 
+<br />
+products eg SST, Chlorophyll etc).  Since many of the satellite 
+<br />
+instruments have multiple channels (ie different wavelength bands) it 
+<br />
+seems sensible, at least for lower levels of processing, to use a 
+<br />
+3-dimensional array with the outer dimension being the 'channel' number, eg:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;channel = 6;
+<br />
+&nbsp;&nbsp;&nbsp;x, y;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;float avhrr_raw_counts(channel, y, x);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;avhrr_raw_counts:log_name=&quot;raw sensor counts for each channel&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;avhrr_raw_counts:units=&quot;1&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;avhrr_raw_counts:coordinates = &quot;lon lat channel&quot;;
+<br />
+<br />&nbsp;&nbsp;&nbsp;float channel(channel);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel:standard_name=&quot;radiation_wavelength&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel:units=&quot;m&quot;;
+<br />
+<br />or even just:
+<br />
+&nbsp;&nbsp;&nbsp;int 	channel(channel);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel:long_name=&quot;channel identifier&quot;;  // 1, 2, ..., 6
+<br />
+<br /><br />However we seem to run in to problems when we move up to even low levels 
+<br />
+of processing (eg calibrated radiances/reflectances) and start to want 
+<br />
+different attribute values associated with each channel -- particularly 
+<br />
+different 'standard_name', 'long_name' and 'units' values.
+<br />
+<br />There is quite strong feeling here that we want to do it this way rather 
+<br />
+than separating out each channel into its own variable, however I cannot 
+<br />
+see how to associate such attributes *in a CF compliant way*.  Is this 
+<br />
+possible?  How could/should such a dataset be structured?
+<br />
+<br />[BTW one motivator for this preference is anticipation of some new 
+<br />
+satellite instruments which will have vastly more channels than the 6 
+<br />
+I've suggested above (eg AIRS ~2000 channels).]
+<br />
+<br />Any thoughts?
+<br />
+<br />Thanks
+<br />
+<br />Simon Wood
+<br />
+<br /><pre>
+-- 
+Simon Wood
+Scientific Programmer
+Meteorology &amp; Remote Sensing, NIWA, NZ
+simon.wood at niwa.co.nz
+<a href="http://www.niwa.co.nz">http://www.niwa.co.nz</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Nov 09 2006 - 20:46:16 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start405">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0406.html" title="Next message in the list">Steve Hankin: "[CF-metadata] CF and multi-forecast system ensemble data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0404.html" title="Previous message in the list">Ed Armstrong: "[CF-metadata] Satellite community use of netCDF CF (GHRSST-PP)"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg405" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg405" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg405" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg405" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:49 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0404.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0406.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

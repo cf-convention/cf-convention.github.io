@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] cell_methods question from rhorne at excaliburlabs.com on 2013-11-21 (cf-metadata-mailman)</title>
+<meta name="Author" content="rhorne at excaliburlabs.com (rhorne)" />
+<meta name="Subject" content="[CF-metadata] cell_methods question" />
+<meta name="Date" content="2013-11-21" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5886.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5888.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] cell_methods question</h1>
+<!-- received="Thu Nov 21 15:10:53 2013" -->
+<!-- isoreceived="20131121151053" -->
+<!-- sent="Thu, 21 Nov 2013 17:10:53 -0500" -->
+<!-- isosent="20131121221053" -->
+<!-- name="rhorne at excaliburlabs.com" -->
+<!-- email="rhorne" -->
+<!-- subject="[CF-metadata] cell_methods question" -->
+<!-- id="6c749f36$416a3798$38ada34$_at_excaliburlabs.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5887" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5888.html" accesskey="d" title="alison.pamment at stfc.ac.uk: &quot;[CF-metadata] new standard names for CIN, LFC,LCL; update to CAPE&quot;">Next message</a> ]
+[ <a href="./5886.html" title="Chris Barker: &quot;[CF-metadata] cell_methods question&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5887" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5887" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5887" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5887" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: rhorne at excaliburlabs.com &lt;<a href="mailto:rhorne?Subject=Re%3A%20%5BCF-metadata%5D%20cell_methods%20question">rhorne</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 21 Nov 2013 17:10:53 -0500</span><br />
+</address>
+<br />
+Jim:
+<br />
+I agree with Chris. I would say the value calculated is an average of the cell.  However, I think the complete syntax should be
+<br />
+cell_methods = &quot;time: mean area: mean&quot;
+<br />
+v/r
+<br />
+rh
+<br />
+<br />----------------------------------------
+<br />
+From: &quot;Chris Barker&quot; &lt;chris.barker at noaa.gov&gt;
+<br />
+Sent: Thursday, November 21, 2013 5:00 PM
+<br />
+To: &quot;Jim Biard&quot; &lt;jbiard at cicsnc.org&gt;
+<br />
+Cc: &quot;cf-metadata at cgd.ucar.edu&quot; &lt;cf-metadata at cgd.ucar.edu&gt;
+<br />
+Subject: Re: [CF-metadata] cell_methods question
+<br />
+<br />On Thu, Nov 21, 2013 at 1:03 PM, Jim Biard &lt;jbiard at cicsnc.org&gt; wrote:
+<br />
+&nbsp;&nbsp;The data is a global grid that has a value for every cell.  The values were obtained by fitting a function to a set of irregularly spaced points and then sampling the function at the center of each cell.  
+<br />
+<br />got it -- sorry for the confusion, that is pretty much what you said the first time... 
+<br />
+But: at a theoretical level you have a continuous field -- it was sampled at irregular discrete points. You then constructed a regular grid of points by fitting the sample points. So the values you have for each cell is an estimate of the value at the point it was computed. Do its lat-lon is that point, i.e. the lat-lon of the center of the cell.  
+<br />
+If that's essentially a point value, then you're done. If that's say, a average of the cell, then you would want cell_method: mean
+<br />
+But the original points are irrelevant to the this. Of course, you probably want to express that these are results from an interpolation, but I don't know that there's a way to do that in CF -- but it's not cell_methods.  
+<br />
+-Chris
+<br />
+<br />&nbsp;&nbsp;&nbsp;Jim 
+<br />
+<br />&nbsp;&nbsp;Visit us on
+<br />
+&nbsp;Facebook	 Jim Biard
+<br />
+&nbsp;Research Scholar
+<br />
+Cooperative Institute for Climate and Satellites NC
+<br />
+North Carolina State University
+<br />
+&nbsp;NOAA's National Climatic Data Center
+<br />
+151 Patton Ave, Asheville, NC 28801
+<br />
+e: jbiard at cicsnc.org
+<br />
+&nbsp;o: +1 828 271 4900
+<br />
+<br />On Nov 21, 2013, at 3:59 PM, Chris Barker &lt;Chris.Barker at noaa.gov&gt; wrote:
+<br />
+&nbsp;&nbsp;On Thu, Nov 21, 2013 at 9:05 AM, Jim Biard &lt;jbiard at cicsnc.org&gt; wrote:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;I have a variable that contains a time average of gridded temperature measurements.  The grid is produced by a fit of irregularly-spaced point data (weather stations), and any given cell might not contain an actual measurement point.  I understand that I should have a cell_method of &quot;time: mean&quot; for the time axis, but what should I do for the lat/lon dimensions?  
+<br />
+Maybe I misunderstand your data, but I think that for this purpose, the &quot;cell&quot; is only in the time dimension -- it is still point data in the lat/lon dimensions. So each value of a given variable is still associated with a single lat and long. So you do the same thing as usual for that.  
+<br />
+HTH,  -Chris
+<br />
+<br />&nbsp;&nbsp;&nbsp;
+<br />
+Grace and peace,
+<br />
+Jim
+<br />
+<br />&nbsp;&nbsp;Visit us on
+<br />
+&nbsp;Facebook	 Jim Biard
+<br />
+&nbsp;Research Scholar
+<br />
+Cooperative Institute for Climate and Satellites NC
+<br />
+North Carolina State University
+<br />
+&nbsp;NOAA's National Climatic Data Center
+<br />
+151 Patton Ave, Asheville, NC 28801
+<br />
+e: jbiard at cicsnc.org
+<br />
+&nbsp;o: +1 828 271 4900
+<br />
+<br />_______________________________________________
+<br />
+&nbsp;CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+ 7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+-- 
+Christopher Barker, Ph.D.
+ Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20131121/60e7cd25/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20131121/60e7cd25/attachment-0001.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Nov 21 2013 - 15:10:53 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5887">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5888.html" title="Next message in the list">alison.pamment at stfc.ac.uk: "[CF-metadata] new standard names for CIN, LFC,LCL; update to CAPE"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5886.html" title="Previous message in the list">Chris Barker: "[CF-metadata] cell_methods question"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5887" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5887" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5887" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5887" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:33 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5886.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5888.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  string valued coordinates from Jonathan Gregory on 2014-11-08 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  string valued coordinates" />
+<meta name="Date" content="2014-11-08" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6657.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6659.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  string valued coordinates</h1>
+<!-- received="Sat Nov  8 15:06:50 2014" -->
+<!-- isoreceived="20141108150650" -->
+<!-- sent="Sat, 8 Nov 2014 23:06:50 +0100" -->
+<!-- isosent="20141108220650" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  string valued coordinates" -->
+<!-- id="20141108220650.GA7008_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6658" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6659.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Classification of a &#0034;trajectory&#0034; with asynchronous time coordinates&quot;">Next message</a> ]
+[ <a href="./6657.html" title="Jonathan Gregory: &quot;[CF-metadata] CF FAQ&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6658" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6658" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6658" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6658" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20string%20valued%20coordinates">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sat, 8 Nov 2014 23:06:50 +0100</span><br />
+</address>
+<br />
+Dear Martin
+<br />
+<br /><em class="quotelev1">&gt;      Deprecating the units attribute for string and char variables (perhaps int, too?) sounds like a good idea. Yet, I would still second Marc to at least allow for a &quot;None&quot; value in the units attribute - as far as I understand this wouldn't break the compatibility.
+</em><br />
+<br />I agree, it would be backward-compatible to allow a None unit, but it would
+<br />
+not be if it were compulsory to use it in some cases. I understand the idea,
+<br />
+but I'm not convinced that it would help. If None is needed only for char/
+<br />
+string values, isn't it just as simple to say that these don't have meaningful
+<br />
+units, and that the units att should be ignored? Unless we made None mandatory
+<br />
+to use, software would have to be able to make the test based on data type
+<br />
+anyway, so the treatment would be more complicated (having two alternatives),
+<br />
+rather than less.
+<br />
+<br /><em class="quotelev1">&gt;     But, in my view even more important, is the  issue of making the units attribute mandatory in CF-2. We had this discussion earlier, and I sensed some support for the general idea of &quot;cleaning&quot; CF in the sense that our applications can rely on certain things to be there, because this clearly enhances the resilience of interoperable systems. If people submit their test files to a CF check and get a message back that they are supposed to add a units attribute, they may do so. If the CF checker doesn't tell them this (because it is valid CF to have variables without a units attribute), then they will most certainly not do so. Of course, in light of the new discussion, we would have to carefully draft the rules for when the units attribute is indeed mandatory.
+</em><br />
+<br />The units att is already required for dimensional data. The problem is that
+<br />
+compliance cannot be checked because the checker does not know if the data is
+<br />
+dimensional or dimensionless. I think it would be fine to recommend that the
+<br />
+units att should be used (rather than rely on the default of dimensionless)
+<br />
+for all numeric data. Then its absence would provoke a warning (although not
+<br />
+an error). Would that help?
+<br />
+<br />If there is a standard_name for a dimensional quantity, the checker should
+<br />
+already give an error if the units are absent. However we can't require
+<br />
+the standard_name since the data-writer might need a new one to be defined,
+<br />
+which can't be done instantly, and it might not be agreed that a standard_name
+<br />
+should be defined (if the application was too specific).
+<br />
+<br />I would, I think, advocate a backward-incompatible change to drop support for
+<br />
+the COARDS non-udunits dimensionless units level, layer, and sigma_level. I
+<br />
+suspect that these are obsolete. I have never seen them used in CF. But perhaps
+<br />
+they are in use - comments welcome.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Sat Nov 08 2014 - 15:06:50 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6658">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6659.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Classification of a &#0034;trajectory&#0034; with asynchronous time coordinates"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6657.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] CF FAQ"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6658" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6658" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6658" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6658" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:49 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6657.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6659.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

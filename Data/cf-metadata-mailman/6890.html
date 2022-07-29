@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Julien Demaria on 2015-04-24 (cf-metadata-mailman)</title>
+<meta name="Author" content="Julien Demaria (Julien.Demaria)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-04-24" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6889.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6891.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Fri Apr 24 10:14:13 2015" -->
+<!-- isoreceived="20150424091413" -->
+<!-- sent="Fri, 24 Apr 2015 16:14:13 +0000" -->
+<!-- isosent="20150424161413" -->
+<!-- name="Julien Demaria" -->
+<!-- email="Julien.Demaria" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="3B970FB76033264EB34479EC8A365E1101BA32AE31_at_vwiexc030.acri.local" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="DC6567808739F54EAE9CCE07BD3AABB5022DBBA7_at_ap-embx-sp30.RES.AD.JPL" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6890" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6891.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./6889.html" title="Jonathan Gregory: &quot;[CF-metadata]  CF region_names&quot;">Previous message</a> ]
+[ <a href="./6887.html" title="Manning, Evan M: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6892.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6890" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6890" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6890" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6890" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Julien Demaria &lt;<a href="mailto:Julien.Demaria?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">Julien.Demaria</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 24 Apr 2015 16:14:13 +0000</span><br />
+</address>
+<br />
+Hi,
+<br />
+<br />Thanks a lot for all your accurate answers!
+<br />
+<br />With all these information, for the moment we think the best way to represent our time in CF is to convert the time stamp of the units attribute from GPS to UTC.
+<br />
+We cannot change it for the GPS beginning 1980-01-06 so we must transform the 2000-01-01 from GPS to UTC to be more CF compliant.
+<br />
+We also specify GPS in the long name and in a new non standard time_reference attribute :
+<br />
+<br />int64 time_stamp(rows) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time_stamp:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time_stamp:units = &quot;microseconds since 2000-01-01 00:00:13 UTC&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time_stamp:long_name = &quot;Elapsed time since 01 Jan 2000 0h GPS&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time_stamp:time_reference = &quot;GPS&quot;
+<br />
+<br />I think with this solution a CF compliant software (which not support leap second) should interpret time &quot;correctly&quot;.
+<br />
+Let me know if I missed something.
+<br />
+<br />Thanks,
+<br />
+<br />Julien
+<br />
+<br />De : Manning, Evan M (398B) [mailto:Evan.M.Manning at jpl.nasa.gov]
+<br />
+Envoy? : vendredi 24 avril 2015 14:30
+<br />
+? : Chris Barker; Julien Demaria
+<br />
+Cc : Jonathan Gregory; cf-metadata at cgd.ucar.edu
+<br />
+Objet : RE: [CF-metadata] How to define time coordinate in GPS?
+<br />
+<br />It's probably overkill but for Suomi NPP CrIS and ATMS we are planning to provide
+<br />
+timestamps for each obs in both TAI and UTC.
+<br />
+<br />TAI is the true time dimension, but UTC gives users a correct UTC if that's what they want and should minimize the temptation for them to do TAI to UTC conversions using tools which don't understand leap seconds.
+<br />
+<br />&nbsp;&nbsp;-- Evan
+<br />
+________________________________
+<br />
+From: Chris Barker [chris.barker at noaa.gov]
+<br />
+Sent: Thursday, April 23, 2015 4:48 PM
+<br />
+To: Julien Demaria
+<br />
+Cc: Jonathan Gregory; cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+<br />
+Subject: Re: [CF-metadata] How to define time coordinate in GPS?
+<br />
+On Thu, Apr 23, 2015 at 7:19 AM, Julien Demaria &lt;Julien.Demaria at acri-st.fr&lt;mailto:Julien.Demaria at acri-st.fr&gt;&gt; wrote:
+<br />
+I'm also not an expert on this:
+<br />
+&quot;GPS, Global Positioning System time, is the atomic time scale implemented by the atomic clocks in the GPS ground control stations and the GPS satellites themselves. GPS time was zero at 0h 6-Jan-1980 and since it is not perturbed by leap seconds GPS is now ahead of UTC by 16 seconds.&quot;
+<br />
+<br />It seems to me then, that the &quot;right&quot; way is to express this time as:
+<br />
+<br />time_unit since 1908-01-06T00:00:00Z
+<br />
+<br />since that is technically exactly correct.
+<br />
+<br />clients are likely to translate to year-month-day-hour-minute-second using UTC, but maybe not. And as others have pointed out, most libs don't do leap seconds anyway, so are using &quot;GPS time&quot; whether they specify it or not.
+<br />
+<br />I guess what I am saying is that this isn't really a &quot;how to encode it in CF&quot; question -- if you use that epoch, then it becomes entirely up to the client what time it wants to translate to.
+<br />
+<br />-Chris
+<br />
+<br /><br /><br /><br /><a href="http://www.leapsecond.com/java/gpsclock.htm">http://www.leapsecond.com/java/gpsclock.htm</a>
+<br />
+a more detailed explanation:
+<br />
+<a href="https://confluence.qps.nl/display/KBE/UTC+to+GPS+Time+Correction">https://confluence.qps.nl/display/KBE/UTC+to+GPS+Time+Correction</a>
+<br />
+<br />Thanks in advance,
+<br />
+<br />Julien
+<br />
+<br /><em class="quotelev1">&gt;Jonathan Gregory j.m.gregory at reading.ac.uk&lt;<a href="http://reading.ac.uk">http://reading.ac.uk</a>&gt;
+</em><br />
+<em class="quotelev1">&gt;Thu Apr 23 07:58:09 MDT 2015
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Dear Julien
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Could you explain what the difference is between GPS time and UTC (for a non-
+</em><br />
+<em class="quotelev1">&gt;expert such as me)?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Thanks
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Jonathan
+</em><br />
+<br />De : Julien Demaria
+<br />
+Envoy? : jeudi 23 avril 2015 14:51
+<br />
+? : 'cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;'
+<br />
+Objet : How to define time coordinate in GPS?
+<br />
+<br />Hi,
+<br />
+<br />I need to define a time coordinate variable which use the GPS time referential instead of UTC, but I did not found how to specify this.
+<br />
+For the moment my variable look like this :
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int64 time_stamp(rows) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time_stamp:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time_stamp:units = &quot;microseconds since 2000-01-01 00:00:00&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time_stamp:_FillValue = -1L ;
+<br />
+<br />Thanks in advance,
+<br />
+<br />Julien
+<br />
+<br /><br />_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<br /><br /><br /><pre>
+--
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov&lt;mailto:Chris.Barker at noaa.gov&gt;
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150424/3fe51f4e/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150424/3fe51f4e/attachment-0001.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Apr 24 2015 - 10:14:13 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6890">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6891.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6889.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  CF region_names"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6887.html" title="Message to which this message replies">Manning, Evan M: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6892.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6892.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6890" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6890" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6890" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6890" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:53 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6889.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6891.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

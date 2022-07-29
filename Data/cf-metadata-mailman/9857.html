@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Question to Parametric Vertical Coordinates from Daniel Neumann on 2019-10-15 (cf-metadata-mailman)</title>
+<meta name="Author" content="Daniel Neumann (daniel.neumann)" />
+<meta name="Subject" content="[CF-metadata] Question to Parametric Vertical Coordinates" />
+<meta name="Date" content="2019-10-15" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9856.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9858.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Question to Parametric Vertical Coordinates</h1>
+<!-- received="Tue Oct 15 09:04:44 2019" -->
+<!-- isoreceived="20191015080444" -->
+<!-- sent="Tue, 15 Oct 2019 17:04:44 +0200" -->
+<!-- isosent="20191015150444" -->
+<!-- name="Daniel Neumann" -->
+<!-- email="daniel.neumann" -->
+<!-- subject="[CF-metadata] Question to Parametric Vertical Coordinates" -->
+<!-- id="a8afeb37-f70b-b9c9-c935-9f7da43d69f3_at_dkrz.de" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9857" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9858.html" accesskey="d" title="Daniel Neumann: &quot;[CF-metadata] Clarification of what content is allowed to be in a single file&quot;">Next message</a> ]
+[ <a href="./9856.html" title="Marcelo Andrioni: &quot;[CF-metadata] Suggestion for standard names for bottom current and due to tides and Stokes drift&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9857" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9857" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9857" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9857" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Daniel Neumann &lt;<a href="mailto:daniel.neumann?Subject=Re%3A%20%5BCF-metadata%5D%20Question%20to%20Parametric%20Vertical%20Coordinates">daniel.neumann</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 15 Oct 2019 17:04:44 +0200</span><br />
+</address>
+<br />
+Dear List,
+<br />
+<br />I am not sure if I interprete the word &quot;parametric&quot; correctly.
+<br />
+<br />Does &quot;Parametric Vertical Coordinates&quot; mean that there is a mathematical 
+<br />
+function, which describes the relation between the relevant (auxiliary) 
+<br />
+coordinate variables and the parametric vertical coordinate?
+<br />
+<br />Speaking in terms of the example provided further below: Value of `depth` is a 
+<br />
+`f(time, lev, lat, lon)`, whereas `f` is a mathematical function with 
+<br />
+considerably less parameters than `depth` has values. Then `depth` is a 
+<br />
+parametric vertical coordinate.
+<br />
+<br />Formulated the other way arond: Is `depth` NOT a parametric vertical coordinate 
+<br />
+if its values are somehow set by hand (by a human), calculated by some nested 
+<br />
+if-clause, or by some iterative procedure?
+<br />
+<br />If `depth` is not a parametric vertical coordinate in this sense, am I allowed 
+<br />
+to use it in a CF-compliant file?
+<br />
+<br />Example:
+<br />
+<br />...
+<br />
+int lev(lev):
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lev:standard_name = &quot;model_level_number&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lev:long_name = &quot;model_level_number&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lev:positive = &quot;down&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lev:units = &quot;1&quot; ;
+<br />
+double depth(time, lev, lat, lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth:long_name = &quot;depth&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth:positive = &quot;down&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth:standard_name = &quot;depth&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth:units = &quot;m&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth:axis = &quot;Z&quot; ;
+<br />
+float some_data_variable(time, lev, lat, lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;some_data_variable:standard_name = &quot;some_standard_name&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;some_data_variable:units = &quot;some_unit&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;some_data_variable:coordinates = &quot;depth&quot;
+<br />
+...
+<br />
+<br /><br />Cheers,
+<br />
+Daniel
+<br />
+<br /><br /><pre>
+-- 
+Dr. Daniel Neumann
+Abteilung Datenmanagement
+Deutsches Klimarechenzentrum GmbH (DKRZ)
+Bundesstra?e 45a ? D-20146 Hamburg ? Germany
+Phone: +49 40 460094-120
+FAX:   +49 40 460094-270
+Email: daniel.neumann at dkrz.de
+URL:   www.dkrz.de
+Gesch?ftsf?hrer: Prof. Dr. Thomas Ludwig
+Sitz der Gesellschaft: Hamburg
+Amtsgericht Hamburg HRB 39784
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: smime.p7s
+Type: application/pkcs7-signature
+Size: 5352 bytes
+Desc: S/MIME Cryptographic Signature
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20191015/ecb6a08d/attachment-0001.p7s">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20191015/ecb6a08d/attachment-0001.p7s</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Oct 15 2019 - 09:04:44 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9857">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9858.html" title="Next message in the list">Daniel Neumann: "[CF-metadata] Clarification of what content is allowed to be in a single file"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9856.html" title="Previous message in the list">Marcelo Andrioni: "[CF-metadata] Suggestion for standard names for bottom current and due to tides and Stokes drift"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9857" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9857" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9857" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9857" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:37 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9856.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9858.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

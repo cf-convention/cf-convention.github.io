@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF and a representation of probalistic forecasts from Kettleborough, Jamie on 2007-02-07 (cf-metadata-mailman)</title>
+<meta name="Author" content="Kettleborough, Jamie (jamie.kettleborough)" />
+<meta name="Subject" content="[CF-metadata] CF and a representation of probalistic forecasts" />
+<meta name="Date" content="2007-02-07" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0688.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0690.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF and a representation of probalistic forecasts</h1>
+<!-- received="Wed Feb  7 03:48:41 2007" -->
+<!-- isoreceived="20070207034841" -->
+<!-- sent="Wed, 07 Feb 2007 10:48:41 +0000" -->
+<!-- isosent="20070207104841" -->
+<!-- name="Kettleborough, Jamie" -->
+<!-- email="jamie.kettleborough" -->
+<!-- subject="[CF-metadata] CF and a representation of probalistic forecasts" -->
+<!-- id="1170845322.1512.55.camel_at_eld408.desktop.frd.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20070121115556.GB11085_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start689" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0690.html" accesskey="d" title="Karl Taylor: &quot;[CF-metadata] CF and a representation of probalistic forecasts&quot;">Next message</a> ]
+[ <a href="./0688.html" title="Philip Bentley: &quot;[CF-metadata] Question about Coordinate System&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0690.html" accesskey="t" title="Karl Taylor: &quot;[CF-metadata] CF and a representation of probalistic forecasts&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg689" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg689" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg689" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg689" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Kettleborough, Jamie &lt;<a href="mailto:jamie.kettleborough?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20and%20a%20representation%20of%20probalistic%20forecasts">jamie.kettleborough</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 07 Feb 2007 10:48:41 +0000</span><br />
+</address>
+<br />
+Hello Jonathan,
+<br />
+<br />I would be more than happy to drop the idea of a standard name modifier
+<br />
+in this case and just introduce the standard name 'realization_weight'.
+<br />
+I had thought that if you were using ancillary_variables this meant you
+<br />
+had to use a standard name modifier - but I think I misread CF1.0 sec
+<br />
+3.4.
+<br />
+<br />This is clearly a special handling of a fifth dimension: how do we
+<br />
+expect applications that are CF1.0 compliant to support the addition of
+<br />
+the standard names 'realization' and 'realization_weight'?  Should they
+<br />
+treat them as special standard names (as latitude, longitude and
+<br />
+vertical coordinate types are in spatially referencing the data)? In
+<br />
+this case this dimension is special in that it allows you to calculate
+<br />
+statistics across the realizations.  (In that sense 'realization_weight'
+<br />
+is a little bit like a cell measure - though I'm not sure we'd want to
+<br />
+go this way 'realization' doesn't really have a scale/units).
+<br />
+<br />You pointed out that I had not standardised the way in which you might
+<br />
+distinguish different realization_weights present in the same file. I
+<br />
+think there are two parts to this problem.
+<br />
+<br />1) identifying which realization_weights can be used with which
+<br />
+variables (temperature, pressure, or both) - this is dealt with through
+<br />
+the ancillary_variable references of 'temperature', 'pressure' etc.
+<br />
+2) provenance information on how the realization_weights have been
+<br />
+derived.
+<br />
+<br />The two are not entirely independent - you may take the philosophical
+<br />
+position that to form a pdf of forecast temperature (point 1) you need
+<br />
+to base this on realization_weights derived on a uniform prior in
+<br />
+forecast temperature (point 2).  But for purpose of representation I
+<br />
+think you can treat them as being separate.  I think I'd not try and
+<br />
+standardise point 2 yet - but use 'source' to describe the provenance in
+<br />
+the level of detail needed to make sense to a human user (this is all
+<br />
+reminiscent of the problems representing ensemble provenance).  
+<br />
+<br />I think given this change has larger implications than just the addition
+<br />
+of a couple of standard names it is probably a candidate for
+<br />
+'provisional' status?  And a period of testing?
+<br />
+<br />Jamie
+<br />
+<br /><br />On Sun, 2007-01-21 at 11:55 +0000, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Jamie
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thank you for resurrecting this. Although they are linked, I think we should
+</em><br />
+<em class="quotelev1">&gt; keep this as separate from the ensemble metadata, for ease of discussion.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I presume that this proposal is agreed in principle from the last discussion
+</em><br />
+<em class="quotelev1">&gt; of it, but we have to draft exactly what it means in the standard before
+</em><br />
+<em class="quotelev1">&gt; deciding.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; The thing I missed in the original posting is that the pdfs can be
+</em><br />
+<em class="quotelev2">&gt; &gt; multivariate involving two (or more) quantities with different standard
+</em><br />
+<em class="quotelev2">&gt; &gt; names.  This means we may have to support standard names of the form
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt;    weight:standard_name=&quot;air_temperature precipitation_amount
+</em><br />
+<em class="quotelev2">&gt; &gt; realization_weight&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; This is a new syntax and I would suggest it implies that things are getting a
+</em><br />
+<em class="quotelev1">&gt; bit too complicated. You already admit the need for alternative sets of weights
+</em><br />
+<em class="quotelev1">&gt; but don't provide any standardised way of describing them.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; What would you think of simplifying the proposal to introduce a standard_name
+</em><br />
+<em class="quotelev1">&gt; of realization_weight instead of a standard_name modifier? You can still use
+</em><br />
+<em class="quotelev1">&gt; the ancillary_variables attribute to point to the appropriate weights, which
+</em><br />
+<em class="quotelev1">&gt; will help in cases where there's more than one set. In many cases there is only
+</em><br />
+<em class="quotelev1">&gt; one set for all quantities, if the ensemble members have been weighted by some
+</em><br />
+<em class="quotelev1">&gt; overall metric, and then it doesn't seem appropriate to name the weights as a
+</em><br />
+<em class="quotelev1">&gt; modifier of a particular standard name.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; For more complicated cases, one could either devise a project-specific
+</em><br />
+<em class="quotelev1">&gt; convention, or we could do something more general, but I'd say we should do
+</em><br />
+<em class="quotelev1">&gt; that when we have a real use case to consider.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Wed Feb 07 2007 - 03:48:41 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start689">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0690.html" title="Next message in the list">Karl Taylor: "[CF-metadata] CF and a representation of probalistic forecasts"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0688.html" title="Previous message in the list">Philip Bentley: "[CF-metadata] Question about Coordinate System"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0690.html" title="Next message in this discussion thread">Karl Taylor: "[CF-metadata] CF and a representation of probalistic forecasts"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0690.html" title="Message sent in reply to this message">Karl Taylor: "[CF-metadata] CF and a representation of probalistic forecasts"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg689" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg689" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg689" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg689" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:54 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0688.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0690.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

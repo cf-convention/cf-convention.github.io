@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] longitude wrapping creates non-monotonic coordinate values from Steve Hankin on 2010-04-12 (cf-metadata-mailman)</title>
+<meta name="Author" content="Steve Hankin (Steven.C.Hankin)" />
+<meta name="Subject" content="[CF-metadata] longitude wrapping creates non-monotonic coordinate values" />
+<meta name="Date" content="2010-04-12" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2578.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2580.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] longitude wrapping creates non-monotonic coordinate values</h1>
+<!-- received="Mon Apr 12 16:28:24 2010" -->
+<!-- isoreceived="20100412152824" -->
+<!-- sent="Mon, 12 Apr 2010 15:28:24 -0700" -->
+<!-- isosent="20100412222824" -->
+<!-- name="Steve Hankin" -->
+<!-- email="Steven.C.Hankin" -->
+<!-- subject="[CF-metadata] longitude wrapping creates non-monotonic coordinate values" -->
+<!-- id="4BC39E88.6040205_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4BC38FB9.4000002_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2579" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2580.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] longitude wrapping creates non-monotonic coordinate values&quot;">Next message</a> ]
+[ <a href="./2578.html" title="John Caron: &quot;[CF-metadata] longitude wrapping creates non-monotonic coordinate values&quot;">Previous message</a> ]
+[ <a href="./2578.html" title="John Caron: &quot;[CF-metadata] longitude wrapping creates non-monotonic coordinate values&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2580.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] longitude wrapping creates non-monotonic coordinate values&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2579" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2579" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2579" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2579" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Steve Hankin &lt;<a href="mailto:Steven.C.Hankin?Subject=Re%3A%20%5BCF-metadata%5D%20longitude%20wrapping%20creates%20non-monotonic%20coordinate%20values">Steven.C.Hankin</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 12 Apr 2010 15:28:24 -0700</span><br />
+</address>
+<br />
+Yes indeed -- the question arises in one form or another often.  My take 
+<br />
+would be exactly what you have suggested -- that t_o define a contiguous 
+<br />
+grid one should define a monotonic longitude coordinate encoding._  The 
+<br />
+360 degree discontinuity (branch point) should be placed at the boundary 
+<br />
+of the grid.
+<br />
+<br />The CF 1.4 document states that coordinate axes must be monotonic.  I 
+<br />
+would interpret that intention to mean &quot;numerically monotonic&quot;.  I don't 
+<br />
+believe there is any loss of generality in following this approach.
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;- Steve
+<br />
+<br />----------------------------------------
+<br />
+<br />John Caron wrote:
+<br />
+<em class="quotelev1">&gt;  I have a file with a longitude coordinate variable whose values stay 
+</em><br />
+<em class="quotelev1">&gt; withhin [0,360] and therefore are not monotonic:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   double lon(lon=359);
+</em><br />
+<em class="quotelev1">&gt;      :units = &quot;degrees_east&quot;;
+</em><br />
+<em class="quotelev1">&gt;      :long_name = &quot;longitude coordinate&quot;;
+</em><br />
+<em class="quotelev1">&gt;      :standard_name = &quot;longitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; lon =
+</em><br />
+<em class="quotelev1">&gt;   {258.0, 259.0, 260.0, 261.0, 262.0, 263.0, 264.0, 265.0, 266.0, 
+</em><br />
+<em class="quotelev1">&gt; 267.0, 268.0, 269.0, 270.0, 271.0, 272.0, 273.0, 274.0, 275.0, 276.0, 
+</em><br />
+<em class="quotelev1">&gt; 277.0, 278.0, 279.0, 280.0, 281.0, 282.0, 283.0, 284.0, 285.0, 286.0, 
+</em><br />
+<em class="quotelev1">&gt; 287.0, 288.0, 289.0, 290.0, 291.0, 292.0, 293.0, 294.0, 295.0, 296.0, 
+</em><br />
+<em class="quotelev1">&gt; 297.0, 298.0, 299.0, 300.0, 301.0, 302.0, 303.0, 304.0, 305.0, 306.0, 
+</em><br />
+<em class="quotelev1">&gt; 307.0, 308.0, 309.0, 310.0, 311.0, 312.0, 313.0, 314.0, 315.0, 316.0, 
+</em><br />
+<em class="quotelev1">&gt; 317.0, 318.0, 319.0, 320.0, 321.0, 322.0, 323.0, 324.0, 325.0, 326.0, 
+</em><br />
+<em class="quotelev1">&gt; 327.0, 328.0, 329.0, 330.0, 331.0, 332.0, 333.0, 334.0, 335.0, 336.0, 
+</em><br />
+<em class="quotelev1">&gt; 337.0, 338.0, 339.0, 340.0, 341.0, 342.0, 343.0, 344.0, 345.0, 346.0, 
+</em><br />
+<em class="quotelev1">&gt; 347.0, 348.0, 349.0, 350.0, 351.0, 352.0, 353.0, 354.0, 355.0, 356.0, 
+</em><br />
+<em class="quotelev1">&gt; 357.0, 358.0, 359.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 
+</em><br />
+<em class="quotelev1">&gt; 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 
+</em><br />
+<em class="quotelev1">&gt; 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 31.0, 
+</em><br />
+<em class="quotelev1">&gt; 32.0, 33.0, 34.0, 35.0, 36.0, 37.0, 38.0, 39.0, 40.0, 41.0, 42.0, 
+</em><br />
+<em class="quotelev1">&gt; 43.0, 44.0, 45.0, 46.0, 47.0, 48.0, 49.0, 50.0, 51.0, 52.0, 53.0, 
+</em><br />
+<em class="quotelev1">&gt; 54.0, 55.0, 56.0, 57.0, 58.0, 59.0, 60.0, 61.0, 62.0, 63.0, 64.0, 
+</em><br />
+<em class="quotelev1">&gt; 65.0, 66.0, 67.0, 68.0, 69.0, 70.0, 71.0, 72.0, 73.0, 74.0, 75.0, 
+</em><br />
+<em class="quotelev1">&gt; 76.0, 77.0, 78.0, 79.0, 80.0, 81.0, 82.0, 83.0, 84.0, 85.0, 86.0, 
+</em><br />
+<em class="quotelev1">&gt; 87.0, 88.0, 89.0, 90.0, 91.0, 92.0, 93.0, 94.0, 95.0, 96.0, 97.0, 
+</em><br />
+<em class="quotelev1">&gt; 98.0, 99.0, 100.0, 101.0, 102.0, 103.0, 104.0, 105.0, 106.0, 107.0, 
+</em><br />
+<em class="quotelev1">&gt; 108.0, 109.0, 110.0, 111.0, 112.0, 113.0, 114.0, 115.0, 116.0, 117.0, 
+</em><br />
+<em class="quotelev1">&gt; 118.0, 119.0, 120.0, 121.0, 122.0, 123.0, 124.0, 125.0, 126.0, 127.0, 
+</em><br />
+<em class="quotelev1">&gt; 128.0, 129.0, 130.0, 131.0, 132.0, 133.0, 134.0, 135.0, 136.0, 137.0, 
+</em><br />
+<em class="quotelev1">&gt; 138.0, 139.0, 140.0, 141.0, 142.0, 143.0, 144.0, 145.0, 146.0, 147.0, 
+</em><br />
+<em class="quotelev1">&gt; 148.0, 149.0, 150.0, 151.0, 152.0, 153.0, 154.0, 155.0, 156.0, 157.0, 
+</em><br />
+<em class="quotelev1">&gt; 158.0, 159.0, 160.0, 161.0, 162.0, 163.0, 164.0, 165.0, 166.0, 167.0, 
+</em><br />
+<em class="quotelev1">&gt; 168.0, 169.0, 170.0, 171.0, 172.0, 173.0, 174.0, 175.0, 176.0, 177.0, 
+</em><br />
+<em class="quotelev1">&gt; 178.0, 179.0, 180.0, 181.0, 182.0, 183.0, 184.0, 185.0, 186.0, 187.0, 
+</em><br />
+<em class="quotelev1">&gt; 188.0, 189.0, 190.0, 191.0, 192.0, 193.0, 194.0, 195.0, 196.0, 197.0, 
+</em><br />
+<em class="quotelev1">&gt; 198.0, 199.0, 200.0, 201.0, 202.0, 203.0, 204.0, 205.0, 206.0, 207.0, 
+</em><br />
+<em class="quotelev1">&gt; 208.0, 209.0, 210.0, 211.0, 212.0, 213.0, 214.0, 215.0, 216.0, 217.0, 
+</em><br />
+<em class="quotelev1">&gt; 218.0, 219.0, 220.0, 221.0, 222.0, 223.0, 224.0, 225.0, 226.0, 227.0, 
+</em><br />
+<em class="quotelev1">&gt; 228.0, 229.0, 230.0, 231.0, 232.0, 233.0, 234.0, 235.0, 236.0, 237.0, 
+</em><br />
+<em class="quotelev1">&gt; 238.0, 239.0, 240.0, 241.0, 242.0, 243.0, 244.0, 245.0, 246.0, 247.0, 
+</em><br />
+<em class="quotelev1">&gt; 248.0, 249.0, 250.0, 251.0, 252.0, 253.0, 254.0, 255.0, 256.0}
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; my code considers this a defective file, and im considering 
+</em><br />
+<em class="quotelev1">&gt; workarounds. I have in the past recomended that the writer change the 
+</em><br />
+<em class="quotelev1">&gt; file to go from 258 to 616 (or -102 to 256).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; should CF consider this file valid or not? Its probably a common 
+</em><br />
+<em class="quotelev1">&gt; enough problem.
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+Steve Hankin, NOAA/PMEL -- Steven.C.Hankin at noaa.gov
+7600 Sand Point Way NE, Seattle, WA 98115-0070
+ph. (206) 526-6080, FAX (206) 526-6744
+&quot;The only thing necessary for the triumph of evil is for good men
+to do nothing.&quot; -- Edmund Burke
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20100412/fa7fc82e/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20100412/fa7fc82e/attachment-0002.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Apr 12 2010 - 16:28:24 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2579">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2580.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] longitude wrapping creates non-monotonic coordinate values"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2578.html" title="Previous message in the list">John Caron: "[CF-metadata] longitude wrapping creates non-monotonic coordinate values"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2578.html" title="Message to which this message replies">John Caron: "[CF-metadata] longitude wrapping creates non-monotonic coordinate values"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2580.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] longitude wrapping creates non-monotonic coordinate values"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2579" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2579" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2579" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2579" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:27 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2578.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2580.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

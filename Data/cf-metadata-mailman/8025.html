@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Pre-proposal for &quot;charset&quot; from Chris Barker on 2017-02-22 (cf-metadata-mailman)</title>
+<meta name="Author" content="Chris Barker (chris.barker)" />
+<meta name="Subject" content="[CF-metadata] Pre-proposal for &quot;charset&quot;" />
+<meta name="Date" content="2017-02-22" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8024.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8026.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Pre-proposal for &quot;charset&quot;</h1>
+<!-- received="Wed Feb 22 11:03:48 2017" -->
+<!-- isoreceived="20170222110348" -->
+<!-- sent="Wed, 22 Feb 2017 10:03:48 -0800" -->
+<!-- isosent="20170222180348" -->
+<!-- name="Chris Barker" -->
+<!-- email="chris.barker" -->
+<!-- subject="[CF-metadata] Pre-proposal for &quot;charset&quot;" -->
+<!-- id="CALGmxEJGWUJ0J1XM6EoDUnbuhJc-=Y1=PkTrm3WYcCYySXEkvg_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8025" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8026.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Pre-proposal for &#0034;charset&#0034;&quot;">Next message</a> ]
+[ <a href="./8024.html" title="Bob Simons - NOAA Federal: &quot;[CF-metadata] Pre-proposal for &#0034;charset&#0034;&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8027.html" accesskey="t" title="Bob Simons - NOAA Federal: &quot;[CF-metadata] Pre-proposal for &#0034;charset&#0034;&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8025" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8025" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8025" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8025" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Chris Barker &lt;<a href="mailto:chris.barker?Subject=Re%3A%20%5BCF-metadata%5D%20Pre-proposal%20for%20%22charset%22">chris.barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 22 Feb 2017 10:03:48 -0800</span><br />
+</address>
+<br />
+**
+<br />
+NOTE: this looks like it got tacked on to another thread -- please start a
+<br />
+new thread for a new topic. (or gamil messed up...)
+<br />
+**
+<br />
+<br />Sorry for being dense here, but I'm confused. I see in the netCDF(4) spec:
+<br />
+<br />&quot;&quot;&quot;
+<br />
+The atomic external types supported by the netCDF interface are:
+<br />
+...
+<br />
+NC_CHAR 8-bit character byte
+<br />
+...
+<br />
+NC_STRING variable length character string *
+<br />
+...
+<br />
+&quot;&quot;&quot;
+<br />
+<br />So shouldn't one use a 2-D (or higher dim) array of NC_CHAR type if that's
+<br />
+indeed what you have?
+<br />
+<br />Or is this about supporting netcdf3, which doesn't (I don't think) have a
+<br />
+string type?
+<br />
+<br />It does have a BYTE type, which I would be inclined to use for a CHAR. But
+<br />
+then I suppose you'd need to tell readers that it was intended to be a
+<br />
+character...
+<br />
+<br />Other notes:
+<br />
+<br />Do folks want/need to support full Unicode characters? If so I think you'd
+<br />
+need a 4 byte type -- cal it NC_UCHAR? -- and anything else would be
+<br />
+variable-length, which would kind of kill the whole point of a character
+<br />
+type...
+<br />
+<br />Small note: I'd prefer &quot;encoding&quot; to &quot;charset&quot; -- at least if you want to
+<br />
+support &quot;full&quot; unicode, rather than only one-byte-per-char encodings.
+<br />
+<br /><em class="quotelev2">&gt; &gt; The only charsets which are recommended are &quot;ISO-8859-1&quot; and &quot;UTF-8&quot;.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+UTF-8 is problematic because it uses a variable number of bytes per
+<br />
+character (codepoint?).
+<br />
+<br />If we want to support proper Unicode, then we need to either:
+<br />
+<br />use a variable-length string type (the netcdf 4 NC_STRING type?)
+<br />
+<br />or
+<br />
+<br />Use 4 bytes per char.
+<br />
+<br />Since UTF-* is a superset of ascii, it can be dangerous -- folks can say
+<br />
+&quot;this is UTF-*&quot;, and if they only happen to use the ASCII subset, al works
+<br />
+fine, and then someone goes and tries to put a weird high-codepoint
+<br />
+character in there, and all goes to heck.
+<br />
+<br />I see that netcdf4 supports UTF-8 for names within the file (variable
+<br />
+names, dimension names, etc), but that works because the number of bytes is
+<br />
+known and constant once created.
+<br />
+<br />Again, I'm maybe speaking from ignorance, I haven't dug into Unicode and CF
+<br />
+And netcdf in any depth at all.
+<br />
+<br /><em class="quotelev2">&gt; &gt; --- An Example: Encoding three Strings: &quot;It&quot;, &quot;Book&quot;, and &quot;5 &amp;euro;&quot;.
+</em><br />
+<br /><em class="quotelev3">&gt; &gt; &gt; The Unicode code point for the Euro symbol is 20AC (in hexadecimal),
+</em><br />
+<em class="quotelev4">&gt;&gt; &gt; &gt; which is 8364 (in decimal).
+</em><br />
+<em class="quotelev4">&gt;&gt; &gt; &gt; The Euro symbol is encoded in UTF-8 as 3 bytes: E2 82 AC (in
+</em><br />
+<em class="quotelev2">&gt;&gt; hexadecimal).
+</em><br />
+<em class="quotelev4">&gt;&gt; &gt; &gt; So a file would store these strings in a char array as:
+</em><br />
+<em class="quotelev4">&gt;&gt; &gt; &gt;   dimensions
+</em><br />
+<em class="quotelev4">&gt;&gt; &gt; &gt;     words = 3;
+</em><br />
+<em class="quotelev4">&gt;&gt; &gt; &gt;     strLen = 5;
+</em><br />
+<em class="quotelev4">&gt;&gt; &gt; &gt;   char myWords[words][strLen] = &quot;It[0][0][0]&quot;, &quot;Book[0]&quot;, &quot;5
+</em><br />
+<em class="quotelev2">&gt;&gt; [E2][82][AC]&quot;;
+</em><br />
+<em class="quotelev4">&gt;&gt; &gt; &gt;     charset = &quot;UTF-8&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+this is tough -- how do you know what strLen should be? You could get UTF-8
+<br />
+characters chopped off if it was too short.
+<br />
+<br />Though I suppose that's a problem for the file writer to figure out.
+<br />
+<br />-CHB
+<br />
+<br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170222/8a3fb45f/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170222/8a3fb45f/attachment.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Feb 22 2017 - 11:03:48 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8025">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8026.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8024.html" title="Previous message in the list">Bob Simons - NOAA Federal: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8027.html" title="Next message in this discussion thread">Bob Simons - NOAA Federal: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8027.html" title="Message sent in reply to this message">Bob Simons - NOAA Federal: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8025" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8025" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8025" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8025" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:09 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8024.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8026.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

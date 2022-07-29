@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] standard way to store lookuptables from Karl Taylor on 2010-01-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="Karl Taylor (taylor13)" />
+<meta name="Subject" content="[CF-metadata] standard way to store lookuptables" />
+<meta name="Date" content="2010-01-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2386.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2388.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] standard way to store lookuptables</h1>
+<!-- received="Wed Jan 20 06:29:45 2010" -->
+<!-- isoreceived="20100120062945" -->
+<!-- sent="Wed, 20 Jan 2010 05:29:45 -0800" -->
+<!-- isosent="20100120132945" -->
+<!-- name="Karl Taylor" -->
+<!-- email="taylor13" -->
+<!-- subject="[CF-metadata] standard way to store lookuptables" -->
+<!-- id="4B570549.30405_at_llnl.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="116eb44a1001200020x422ae2adlc2f3a52e08bb127_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2387" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2388.html" accesskey="d" title="Egil St&#0248;ren: &quot;[CF-metadata] The Conventions attribute&quot;">Next message</a> ]
+[ <a href="./2386.html" title="andrea antonello: &quot;[CF-metadata] standard way to store lookuptables&quot;">Previous message</a> ]
+[ <a href="./2386.html" title="andrea antonello: &quot;[CF-metadata] standard way to store lookuptables&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2387" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2387" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2387" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2387" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Karl Taylor &lt;<a href="mailto:taylor13?Subject=Re%3A%20%5BCF-metadata%5D%20standard%20way%20to%20store%20lookuptables">taylor13</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 20 Jan 2010 05:29:45 -0800</span><br />
+</address>
+<br />
+Dear all,
+<br />
+<br />Note that if you use the new netCDF4 library, there is a compression 
+<br />
+option that allows for efficient automatic compression of data in the 
+<br />
+files containing lots of contiguous common numbers (like &quot;missing&quot; or 
+<br />
+0.).  If you stick to the so-called classical data model (and with CF 
+<br />
+there is no reason not to), then most software can be easily built with 
+<br />
+netCDF4, so reading these files is not impaired.
+<br />
+<br />Best regards,
+<br />
+Karl
+<br />
+<br />On 20-Jan-10 12:20 AM, andrea antonello wrote:
+<br />
+<em class="quotelev1">&gt; Hi Janine,
+</em><br />
+<em class="quotelev1">&gt; thanks for the reply.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;    
+</em><br />
+<em class="quotelev2">&gt;&gt; I am very familiar with the problem you are having and have run into this
+</em><br />
+<em class="quotelev2">&gt;&gt; many times, and yes, you have to create timeSize*100, not timeSize*2. I
+</em><br />
+<em class="quotelev2">&gt;&gt; would use the _fillValue attribute to set a value to fill all the missing
+</em><br />
+<em class="quotelev2">&gt;&gt; temperatures. That way there will be no confusion that 0.0 is a measurement
+</em><br />
+<em class="quotelev2">&gt;&gt; value.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; If I understand correctly, the missing stations will be compressed in memory
+</em><br />
+<em class="quotelev2">&gt;&gt; to a value (0.0) and a repetition (100), so it doesn't take as much memory
+</em><br />
+<em class="quotelev2">&gt;&gt; as you think. But check the online documentation to confirm that.
+</em><br />
+<em class="quotelev2">&gt;&gt;      
+</em><br />
+<em class="quotelev1">&gt; That is one of the things I was guessing. In my understanding that
+</em><br />
+<em class="quotelev1">&gt; helps to save disk space. Another issue would be heap memory. I assume
+</em><br />
+<em class="quotelev1">&gt; that when the ArrayDoubles are read into memory, the are uncompressed.
+</em><br />
+<em class="quotelev1">&gt; Is there any documentation that coveres that kind of doubts or is it
+</em><br />
+<em class="quotelev1">&gt; something more to be looked in the javadoc? Any link would be
+</em><br />
+<em class="quotelev1">&gt; appreciated.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks,
+</em><br />
+<em class="quotelev1">&gt; Andrea
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;    
+</em><br />
+<em class="quotelev2">&gt;&gt; Janine
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; andrea antonello wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;      
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Dear Jonathan,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; thanks for your reply.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;        
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; I don't know whether the problem is lack of memory. That would depend on
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; the software you are using, rather than on netCDF or the CF convention,
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; so
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; I'm not sure what to suggest really. You could try creating an empty file
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; of the right size by writing it in CDL and using ncgen, to test that it
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; can be done. Sorry not to be more helpful.
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;          
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; At the moment I have no problem with the memory overload really. I
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; just would like to understand if I am implementing the proposed CF way
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; properly.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Can you confirm me that in the above example with 2 stations of
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; interest for the temperature variable (from 100) I am right in
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; creating a variable with  timeSize*100 instead of
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; timeSize*2, which brings an 80% of 0.0 values of overload? Where
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; overload here really means never used. And if yes, should those unused
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; values stay 0.0 or be somehow flagged?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; I would love to do this the CF way and I am just wondering if someone
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; stumbled into this doubt also.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Best regards,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Andrea
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;        
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Best wishes
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Jonathan
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;          
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://*mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://*mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;        
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; Janine Aquino (Goldstein)
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;   &quot;Life is a comedy for those who think... and a tragedy for
+</em><br />
+<em class="quotelev2">&gt;&gt;   those who feel.&quot; - Horace Walpole
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;      
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://*mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://*mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;    
+</em><br />
+<span id="received"><dfn>Received on</dfn> Wed Jan 20 2010 - 06:29:45 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2387">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2388.html" title="Next message in the list">Egil St&#0248;ren: "[CF-metadata] The Conventions attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2386.html" title="Previous message in the list">andrea antonello: "[CF-metadata] standard way to store lookuptables"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2386.html" title="Message to which this message replies">andrea antonello: "[CF-metadata] standard way to store lookuptables"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2387" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2387" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2387" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2387" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:25 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2386.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2388.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

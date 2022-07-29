@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF conventions and netCDF4 groups from Maarten Sneep on 2018-03-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Maarten Sneep (maarten.sneep)" />
+<meta name="Subject" content="[CF-metadata] CF conventions and netCDF4 groups" />
+<meta name="Date" content="2018-03-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8750.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8752.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF conventions and netCDF4 groups</h1>
+<!-- received="Mon Mar 26 09:33:46 2018" -->
+<!-- isoreceived="20180326083346" -->
+<!-- sent="Mon, 26 Mar 2018 17:33:46 +0200" -->
+<!-- isosent="20180326153346" -->
+<!-- name="Maarten Sneep" -->
+<!-- email="maarten.sneep" -->
+<!-- subject="[CF-metadata] CF conventions and netCDF4 groups" -->
+<!-- id="db2e1b42-2841-4a18-799c-b5e0031834f7_at_knmi.nl" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="alpine.DEB.2.20.1803261054230.11729_at_shaman" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8751" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8752.html" accesskey="d" title="Karl Taylor: &quot;[CF-metadata] bounds variable &#0038; closed-open intervals&quot;">Next message</a> ]
+[ <a href="./8750.html" title="V. Balaji: &quot;[CF-metadata] CF conventions and netCDF4 groups&quot;">Previous message</a> ]
+[ <a href="./8750.html" title="V. Balaji: &quot;[CF-metadata] CF conventions and netCDF4 groups&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8751" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8751" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8751" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8751" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Maarten Sneep &lt;<a href="mailto:maarten.sneep?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20conventions%20and%20netCDF4%20groups">maarten.sneep</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 26 Mar 2018 17:33:46 +0200</span><br />
+</address>
+<br />
+On 26/03/18 16:57, V. Balaji wrote:
+<br />
+<em class="quotelev1">&gt; Groups can have quite significant performance issues when the datasets are large...
+</em><br />
+<em class="quotelev1">&gt; something to keep in mind while designing standards or conventions that _require_ the
+</em><br />
+<em class="quotelev1">&gt; use of netCDF4 groups. It's a last resort, in my opinion... to be used only if
+</em><br />
+<em class="quotelev1">&gt; there's simply no other way to express what you want.
+</em><br />
+<br />That is a bug in the netCDF4 library. When you use the HDF-5 library directly (and
+<br />
+still set the appropriate attributes), then groups have no performance impact at all.
+<br />
+On the other hand you'll still have a significant performance degradation if the
+<br />
+number of variables is large.
+<br />
+<br />As far as I understand the issue is that a linear search is performed in the netCDF
+<br />
+library, where an appropriate algorithm (likely a hash) would have been more appropriate.
+<br />
+<br />Kind regards,
+<br />
+<br />Maarten
+<br />
+<br /><br /><br /><em class="quotelev1">&gt; Erik Quaeghebeur writes:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear list,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I have not come across any mention of netCDF4 groups (and other netCDF4 features)
+</em><br />
+<em class="quotelev2">&gt;&gt; in the CF conventions. I was wondering if there are nevertheless standard ways to
+</em><br />
+<em class="quotelev2">&gt;&gt; use groups.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; For example, I have repackaged some statistics data (csv files) from met masts in
+</em><br />
+<em class="quotelev2">&gt;&gt; netCDF4. I've been trying to apply the CF conventions, but bump into issues, e.g.,
+</em><br />
+<em class="quotelev2">&gt;&gt; of duplication.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Currently, the structure I use is:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; root level:
+</em><br />
+<em class="quotelev2">&gt;&gt; * time dimension/variable
+</em><br />
+<em class="quotelev2">&gt;&gt; * per-instrument-type groups
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; instrument level:
+</em><br />
+<em class="quotelev2">&gt;&gt; * height (of instrument) dimension/variable
+</em><br />
+<em class="quotelev2">&gt;&gt; * instrument metadata attributes (not covered by CF conventions)
+</em><br />
+<em class="quotelev2">&gt;&gt; * signal groups (some instruments measure more than one signal) signal level:
+</em><br />
+<em class="quotelev2">&gt;&gt; * signal specific metadata, e.g., units (covered by CF conventions, but for variables)
+</em><br />
+<em class="quotelev2">&gt;&gt; * signal statistics variables
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; statistics variables:
+</em><br />
+<em class="quotelev2">&gt;&gt; * data
+</em><br />
+<em class="quotelev2">&gt;&gt; * some statistic-specific attributes like cell_methods
+</em><br />
+<em class="quotelev2">&gt;&gt; * should I duplicate the signal metadata such as unit here?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; The group structure is helpful, because its structure improves
+</em><br />
+<em class="quotelev2">&gt;&gt; self-descriptiveness, I feel. I guess the structure is also a form of metadata. But
+</em><br />
+<em class="quotelev2">&gt;&gt; perhaps it is considered out-of-scope for the CF conventions?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Best,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Erik
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<br /><br />Maarten Sneep
+<br />
+<pre>
+-- 
+KNMI
+T: 030 2206747
+E: maarten.sneep at knmi.nl
+R: A2.14
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Mar 26 2018 - 09:33:46 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8751">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8752.html" title="Next message in the list">Karl Taylor: "[CF-metadata] bounds variable &#0038; closed-open intervals"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8750.html" title="Previous message in the list">V. Balaji: "[CF-metadata] CF conventions and netCDF4 groups"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8750.html" title="Message to which this message replies">V. Balaji: "[CF-metadata] CF conventions and netCDF4 groups"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8751" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8751" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8751" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8751" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:20 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8750.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8752.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

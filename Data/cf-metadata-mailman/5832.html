@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] cell_methods for monthly climatologies from Alexander Barth on 2013-11-08 (cf-metadata-mailman)</title>
+<meta name="Author" content="Alexander Barth (a.barth)" />
+<meta name="Subject" content="[CF-metadata] cell_methods for monthly climatologies" />
+<meta name="Date" content="2013-11-08" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5831.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5833.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] cell_methods for monthly climatologies</h1>
+<!-- received="Fri Nov  8 04:48:05 2013" -->
+<!-- isoreceived="20131108044805" -->
+<!-- sent="Fri, 08 Nov 2013 12:48:05 +0100" -->
+<!-- isosent="20131108114805" -->
+<!-- name="Alexander Barth" -->
+<!-- email="a.barth" -->
+<!-- subject="[CF-metadata] cell_methods for monthly climatologies" -->
+<!-- id="527CCF75.9040000_at_ulg.ac.be" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="527CCE47.2030800_at_ulg.ac.be" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5832" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5833.html" accesskey="d" title="Hedley, Mark: &quot;[CF-metadata] Cell methods when there are no coordinates&quot;">Next message</a> ]
+[ <a href="./5831.html" title="alison.pamment at stfc.ac.uk: &quot;[CF-metadata] new standard names for CIN, LFC,LCL; update to CAPE&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5840.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata]  cell_methods for monthly climatologies&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5832" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5832" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5832" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5832" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Alexander Barth &lt;<a href="mailto:a.barth?Subject=Re%3A%20%5BCF-metadata%5D%20cell_methods%20for%20monthly%20climatologies">a.barth</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 08 Nov 2013 12:48:05 +0100</span><br />
+</address>
+<br />
+Dear all,
+<br />
+<br />I have a question on the time variable of a monthly climatologies collecting e.g. all data from
+<br />
+1900-01-01 to 2000-12-31.
+<br />
+As I understand the standard
+<br />
+(<a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/cf-conventions.html#climatological-statistics">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/cf-conventions.html#climatological-statistics</a>),
+<br />
+I should use the following:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;time=12;
+<br />
+&nbsp;&nbsp;nv=2;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;float temperature(time,lat,lon);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;temperature:cell_methods=&quot;*time: mean within years time: mean over years*&quot;;
+<br />
+&nbsp;&nbsp;double time(time);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time:climatology=&quot;climatology_bounds&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time:units=&quot;days since 1900-1-1&quot;;
+<br />
+&nbsp;&nbsp;double climatology_bounds(time,nv);
+<br />
+data:  // time coordinates translated to date/time format
+<br />
+&nbsp;&nbsp;time=&quot;1900-1-16&quot;, &quot;1900-2-16&quot;, &quot;1900-3-16&quot;, &quot;1900-4-16&quot;, ... &quot;1900-12-16&quot;;
+<br />
+&nbsp;&nbsp;climatology_bounds=&quot;1900-1-1&quot;,  &quot;2000-2-1&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;1900-2-1&quot;,  &quot;2000-3-1&quot;,
+<br />
+&nbsp;....
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;1900-11-1&quot;,  &quot;2001-12-1&quot;;
+<br />
+<br /><br />I use the standard Gregorian calendar. Can you confirm that the used cell_methods and
+<br />
+climatology_bounds are correct?
+<br />
+<br />I am not so sure about the cell method since the WOA 2009 climatology uses &quot;time:mean within
+<br />
+*months* time:mean over *months*&quot; for monthly climatologies
+<br />
+(<a href="http://data.nodc.noaa.gov/thredds/dodsC/woa/WOA09/NetCDFdata/temperature_monthly_1deg.nc.info">http://data.nodc.noaa.gov/thredds/dodsC/woa/WOA09/NetCDFdata/temperature_monthly_1deg.nc.info</a>).
+<br />
+<br />I am wondering if it would not have been easier to define climatology_bounds as an array with the
+<br />
+starting and end dates of *all *subintervals (not just the start for the first and the end of the
+<br />
+last subinterval). It would be simpler to find out to which time slice of the climatological
+<br />
+variable an individual observation would relate to. It would also allow to make climatologies over
+<br />
+other cycles (e.g. tides) or non-periodic processes (e.g. ENSO).
+<br />
+<br />Thank you for your help!
+<br />
+<br />Alex
+<br />
+<br /><br /><pre>
+-- 
+Alexander Barth
+GeoHydrodynamics and Environment Research, MARE, AGO
+University of Li?ge, Sart-Tilman B5, 
+4000 Li?ge, Belgium
+Phone: +32-4-3663664
+Fax: +32-4-3669729
+Email: a.barth at ulg.ac.be
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20131108/7a7c995c/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20131108/7a7c995c/attachment.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Nov 08 2013 - 04:48:05 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5832">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5833.html" title="Next message in the list">Hedley, Mark: "[CF-metadata] Cell methods when there are no coordinates"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5831.html" title="Previous message in the list">alison.pamment at stfc.ac.uk: "[CF-metadata] new standard names for CIN, LFC,LCL; update to CAPE"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5840.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata]  cell_methods for monthly climatologies"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5840.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata]  cell_methods for monthly climatologies"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5832" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5832" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5832" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5832" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:31 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5831.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5833.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

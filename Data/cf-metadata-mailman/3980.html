@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] FW: netcdf for particle trajectories from Chris Barker on 2011-12-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="Chris Barker (Chris.Barker)" />
+<meta name="Subject" content="[CF-metadata] FW: netcdf for particle trajectories" />
+<meta name="Date" content="2011-12-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3979.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3981.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] FW: netcdf for particle trajectories</h1>
+<!-- received="Fri Dec  2 19:10:25 2011" -->
+<!-- isoreceived="20111202191025" -->
+<!-- sent="Fri, 02 Dec 2011 18:10:25 -0800" -->
+<!-- isosent="20111203021025" -->
+<!-- name="Chris Barker" -->
+<!-- email="Chris.Barker" -->
+<!-- subject="[CF-metadata] FW: netcdf for particle trajectories" -->
+<!-- id="4ED98511.3030905_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20111202093732.GA29947_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3980" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3981.html" accesskey="d" title="Lorenzo Bigagli: &quot;[CF-metadata] standards for probabilities&quot;">Next message</a> ]
+[ <a href="./3979.html" title="Jonathan Gregory: &quot;[CF-metadata] Proposal for better handling vector quantities in CF&quot;">Previous message</a> ]
+[ <a href="./3977.html" title="Jonathan Gregory: &quot;[CF-metadata] FW: netcdf for particle trajectories&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3980" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3980" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3980" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3980" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Chris Barker &lt;<a href="mailto:Chris.Barker?Subject=Re%3A%20%5BCF-metadata%5D%20FW%3A%20netcdf%20for%20particle%20trajectories">Chris.Barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 02 Dec 2011 18:10:25 -0800</span><br />
+</address>
+<br />
+Sorry I haven't send what I promise yet -- I've been home sick.
+<br />
+<br />On 12/2/11 1:37 AM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; I agree, this is a case for a ragged array, with two unlimited dimensions,
+</em><br />
+<em class="quotelev1">&gt; logically speaking. However such a thing can be accommodated in the new
+</em><br />
+<em class="quotelev1">&gt; discrete geometry conventions
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.unidata.ucar.edu/staff/caron/public/CFch9-may10.pdf">http://www.unidata.ucar.edu/staff/caron/public/CFch9-may10.pdf</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; This describes two ragged array representations, which are intended for this
+</em><br />
+<em class="quotelev1">&gt; purpose. Only one netCDF unlimited dimension is used; the two logical axes are
+</em><br />
+<em class="quotelev1">&gt; combined into one netCDF axis.
+</em><br />
+<br /><em class="quotelev1">&gt; int row_size(time) ;
+</em><br />
+<em class="quotelev1">&gt;    row_size:long_name = &quot;number of particles for this time&quot;;
+</em><br />
+<em class="quotelev1">&gt;    row_size:sample_dimension = &quot;obs&quot; ;
+</em><br />
+<em class="quotelev1">&gt; double time(obs) ;
+</em><br />
+<em class="quotelev1">&gt;    time:standard_name = &quot;time&quot;;
+</em><br />
+<em class="quotelev1">&gt;    time:units = &quot;days since 1970-01-01 00:00:00&quot; ;
+</em><br />
+<em class="quotelev1">&gt; int particle(obs)
+</em><br />
+<em class="quotelev1">&gt;    particle:long_name=&quot;particle number&quot;;
+</em><br />
+<em class="quotelev1">&gt; float quantity(obs) ;
+</em><br />
+<em class="quotelev1">&gt;    quantity:long_name=&quot;one of the physical properties of the particle&quot;
+</em><br />
+<em class="quotelev1">&gt;    quantity:coordinates = &quot;lat lon alt particle&quot; ;
+</em><br />
+<br />I'm sorry, I wasn't quite clear -- what you give below is pretty much 
+<br />
+what we've arrived at, but I had already considered combining the &quot;two 
+<br />
+logical axis&quot; into one unlimited dimension.
+<br />
+<br />The conflict Ute presented what that he doesn't know at the start of the 
+<br />
+model run the number of time steps that are required. So he'd like the 
+<br />
+time dimension to be unlimited as well -- thus two unlimited dimensions.
+<br />
+<br />The only place the time dimension is used is for the time and row_size 
+<br />
+variables, so I can't help thinking there could be a work around. Rich 
+<br />
+Signell suggested you could just use a as-big-as-you-might-need time 
+<br />
+coordinate -- which is one option.
+<br />
+<br />If I ever feel better -- more later, but I think we are close.
+<br />
+<br /><br /><em class="quotelev1">&gt; If there is also
+</em><br />
+<em class="quotelev1">&gt; invariant information for each particle, a large enough particle dimension
+</em><br />
+<em class="quotelev1">&gt; would also be needed and various auxiliary coord vars of this dimension.
+</em><br />
+<br />That would be a trick if you don't know how many particles you're 
+<br />
+starting with -- another nice use for an unlimited dimension...
+<br />
+<br />Thanks,
+<br />
+&nbsp;&nbsp;&nbsp;-Chris
+<br />
+<br /><br /><br /><br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Dec 02 2011 - 19:10:25 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3980">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3981.html" title="Next message in the list">Lorenzo Bigagli: "[CF-metadata] standards for probabilities"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3979.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Proposal for better handling vector quantities in CF"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3977.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] FW: netcdf for particle trajectories"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3980" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3980" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3980" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3980" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3979.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3981.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

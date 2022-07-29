@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season from Hollis, Dan on 2016-02-15 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hollis, Dan (dan.hollis)" />
+<meta name="Subject" content="[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season" />
+<meta name="Date" content="2016-02-15" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7414.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7416.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season</h1>
+<!-- received="Mon Feb 15 05:02:04 2016" -->
+<!-- isoreceived="20160215050204" -->
+<!-- sent="Mon, 15 Feb 2016 12:02:04 +0000" -->
+<!-- isosent="20160215120204" -->
+<!-- name="Hollis, Dan" -->
+<!-- email="dan.hollis" -->
+<!-- subject="[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season" -->
+<!-- id="D7D1372D480AEE41B3C1276C9A15404B3577EF25_at_EXXCMPD1DAG1.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="56BCF3F1.6040407_at_llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7415" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7416.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season&quot;">Next message</a> ]
+[ <a href="./7414.html" title="Karl Taylor: &quot;[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season&quot;">Previous message</a> ]
+[ <a href="./7414.html" title="Karl Taylor: &quot;[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7416.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7415" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7415" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7415" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7415" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hollis, Dan &lt;<a href="mailto:dan.hollis?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20build%20CF-compliant%20seasonal%20climatology%20when%20data%20begins%20within%20a%20season">dan.hollis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 15 Feb 2016 12:02:04 +0000</span><br />
+</address>
+<br />
+Hi Karl,
+<br />
+<br />This is a real use case for us too. And not just for short climatologies. When we compute our 30-year normals we use only the data from those 30 calendar years e.g. for 1981-2010 normals we use data from Jan 1981 to Dec 2010. Like you we create monthly normals first and then combine these to create seasonal normals. I'd not come up with a way to describe the result in a CF-compliant way so I was interested to see your question.
+<br />
+<br />Using daily maximum temperature as an example, I guess what we are doing is something like this:
+<br />
+<br />time: maximum within days   time: mean over days   time: mean over years   time: mean over months
+<br />
+<br />where 'mean over days' means over the days within each calendar month
+<br />
+and 'mean over months' means over the months within a season
+<br />
+<br />I cannot immediately see how to extend/adapt the convention to allow for this possibility.
+<br />
+<br />Regards,
+<br />
+<br />Dan
+<br />
+<br /><br /><br /><br /><br />-----Original Message-----
+<br />
+From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Karl Taylor
+<br />
+Sent: 11 February 2016 20:50
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season
+<br />
+<br />Hi Jonathan,
+<br />
+<br />Our thinking is the same on this.  Thanks.
+<br />
+<br />By the way it is a real use case and I think it is scientifically
+<br />
+defensible:  I have 11 full years of data and I first compute a climatological annual cycle, yielding 12 climatological months. Then I compute the climatology for each of the seasons from the monthly climatology.  This allows me to use all the data in the 11 years.  I especially would want to do it this way if I only had 2 or 3 years of data because I wouldn't want to omit any of it.
+<br />
+<br />[Of course you wouldn't be able to do this if you were calculating say a trend of individual seasons; in that case you clearly wouldn't want to consider partial seasons.]
+<br />
+<br />best wishes,
+<br />
+Karl
+<br />
+<br />On 2/11/16 12:20 PM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Karl
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree with Seth that this isn't anticipated by the design of the 
+</em><br />
+<em class="quotelev1">&gt; convention, which assumes that the mean over seasons is composed of a 
+</em><br />
+<em class="quotelev1">&gt; number of complete seasons. Is this a real use-case, with a DJF mean 
+</em><br />
+<em class="quotelev1">&gt; made by including JF from one NH winter and D from another? It seems a 
+</em><br />
+<em class="quotelev1">&gt; bit odd to me. I wouldn't compute a monthly mean of anything if 2/3 of 
+</em><br />
+<em class="quotelev1">&gt; the days were missing in the month. But, following this logic, your 
+</em><br />
+<em class="quotelev1">&gt; original choice of &quot;1999-12-1&quot; to &quot;2011-3-1&quot; is OK, and it &quot;just 
+</em><br />
+<em class="quotelev1">&gt; happens&quot; that Dec 1999 and Jan-Feb 2011 are actually not included, as 
+</em><br />
+<em class="quotelev1">&gt; if they were missing data. Their omission is not recorded by the 
+</em><br />
+<em class="quotelev1">&gt; climatology bounds but, equally, if Dec 2005 or Jan-Feb 2008 (for 
+</em><br />
+<em class="quotelev1">&gt; example) were missing when computing the mean you would not know about it from the climatology bounds.  So perhaps it doesn't matter.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; To spell out exactly which months were used, it would be necessary to 
+</em><br />
+<em class="quotelev1">&gt; record also the time coordinate and bounds before the collapse. In 
+</em><br />
+<em class="quotelev1">&gt; various tickets we have discussed but not agreed a convention for doing that, as extra info.
+</em><br />
+<em class="quotelev1">&gt; Alternatively you could record it as unstandardised info as a comment 
+</em><br />
+<em class="quotelev1">&gt; in () in the cell_methods, as you note.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Forwarded message from Karl Taylor &lt;taylor13 at llnl.gov&gt; -----
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Date: Wed, 10 Feb 2016 15:37:01 -0800
+</em><br />
+<em class="quotelev2">&gt;&gt; From: Karl Taylor &lt;taylor13 at llnl.gov&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: [CF-metadata] How to build CF-compliant seasonal climatology when
+</em><br />
+<em class="quotelev2">&gt;&gt; 	data begins within a season
+</em><br />
+<em class="quotelev2">&gt;&gt; User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:38.0)
+</em><br />
+<em class="quotelev2">&gt;&gt; 	Gecko/20100101 Thunderbird/38.5.1
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear CF community,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; In representing the seasonal climatology based on data available for 
+</em><br />
+<em class="quotelev2">&gt;&gt; the period January 1, 2000 through December 31 2010, what would be 
+</em><br />
+<em class="quotelev2">&gt;&gt; the correct climatology_bounds?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; climatology_bounds = &quot;1999-12-1&quot;, &quot;2011-3-1&quot;,
+</em><br />
+<em class="quotelev2">&gt;&gt;                                      &quot;2000-3-1&quot;, &quot;2010-6-1&quot;,
+</em><br />
+<em class="quotelev2">&gt;&gt;                                      &quot;2000-6-1&quot;, &quot;2010-9-1&quot;,
+</em><br />
+<em class="quotelev2">&gt;&gt;                                      &quot;2000-9-1&quot;, &quot;2010-12-1&quot;  ????
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I would note that this seems to capture the idea that we are 
+</em><br />
+<em class="quotelev2">&gt;&gt; reporting seasonal means, but it also seems to indicate that this is 
+</em><br />
+<em class="quotelev2">&gt;&gt; based in part on data from Dec. 1999 and Jan.-Feb. 2011, when it 
+</em><br />
+<em class="quotelev2">&gt;&gt; isn't.  Is this the best I can do?  [Of course the convention can 
+</em><br />
+<em class="quotelev2">&gt;&gt; never tell us if data are complete in forming a climatology.  If 1 
+</em><br />
+<em class="quotelev2">&gt;&gt; year were missing, this would not affect the attributes.]
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I suppose the in the cell_methods attribute (&quot;time:  mean over days
+</em><br />
+<em class="quotelev2">&gt;&gt; time: mean over years&quot;  I could add non-standardized information (as 
+</em><br />
+<em class="quotelev2">&gt;&gt; permitted by CF), for example:  &quot;time:  mean over days  time: mean 
+</em><br />
+<em class="quotelev2">&gt;&gt; over years (with data from the period 2000-1-1 to 2011-1-1)&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; thanks for any suggestions,
+</em><br />
+<em class="quotelev2">&gt;&gt; Karl
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Feb 15 2016 - 05:02:04 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7415">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7416.html" title="Next message in the list">Jim Biard: "[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7414.html" title="Previous message in the list">Karl Taylor: "[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7414.html" title="Message to which this message replies">Karl Taylor: "[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7416.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7416.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] How to build CF-compliant seasonal climatology when data begins within a season"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7415" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7415" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7415" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7415" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:01 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7414.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7416.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

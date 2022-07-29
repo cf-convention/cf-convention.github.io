@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Best practice to include spatial resolution for projected data from Mary Jo Brodzik on 2016-08-16 (cf-metadata-mailman)</title>
+<meta name="Author" content="Mary Jo Brodzik (brodzik)" />
+<meta name="Subject" content="[CF-metadata] Best practice to include spatial resolution for projected data" />
+<meta name="Date" content="2016-08-16" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7755.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7757.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Best practice to include spatial resolution for projected data</h1>
+<!-- received="Tue Aug 16 10:33:58 2016" -->
+<!-- isoreceived="20160816093358" -->
+<!-- sent="Tue, 16 Aug 2016 10:33:58 -0600 (MDT)" -->
+<!-- isosent="20160816163358" -->
+<!-- name="Mary Jo Brodzik" -->
+<!-- email="brodzik" -->
+<!-- subject="[CF-metadata] Best practice to include spatial resolution for projected data" -->
+<!-- id="alpine.OSX.1.10.1608160944100.23577_at_nsidc-worsley.users.int.nsidc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7756" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7757.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] Best practice to include spatial resolution for projected data&quot;">Next message</a> ]
+[ <a href="./7755.html" title="Jonathan Gregory: &quot;[CF-metadata] string variables and netCDF4&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7757.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] Best practice to include spatial resolution for projected data&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7756" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7756" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7756" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7756" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Mary Jo Brodzik &lt;<a href="mailto:brodzik?Subject=Re%3A%20%5BCF-metadata%5D%20Best%20practice%20to%20include%20spatial%20resolution%20for%20projected%20data">brodzik</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 16 Aug 2016 10:33:58 -0600 (MDT)</span><br />
+</address>
+<br />
+I am producing a gridded data set using CF-1.6 conventions.  In a given 
+<br />
+file, the data are projected onto one of three possible projections: 
+<br />
+Northern or Southern Lambert Azimuthal Equal Area (LAEA), or Cylindrical 
+<br />
+Equal-Area (CEA).  With each data variable in the file, I do include the 
+<br />
+grid_mapping attribute and I am populating my grid_mapping variable with 
+<br />
+the required projection information as listed here:
+<br />
+<br /><a href="http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html">http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html</a>
+<br />
+<br />Also in a given file, the spatial resolution will be one of 25, 12.5, 6.25 
+<br />
+or 3.125 km, and although this is obvious from the x and y dimension 
+<br />
+variable values, I am looking for a place to include the spatial 
+<br />
+resolution for a human who is reading the metadata.
+<br />
+<br />I assume an attribute in the grid_mapping variable would be the place for 
+<br />
+this.  At first I thought it was one of the &quot;scale_factor*&quot; attributes, 
+<br />
+e.g. &quot;scale_factor_at_projection_origin&quot;, but for CEA, this would be a 
+<br />
+misnomer, since the value is the scale at true latitude, not the 
+<br />
+projection origin at all.  Also, the convention says to include &quot;either 
+<br />
+standard_parallel or scale_factor_at_projection_origin&quot;, so now I'm 
+<br />
+beginning to think these &quot;scale_factor_*&quot; attributes are not the correct 
+<br />
+place at all for this information.
+<br />
+<br />I see in the NCEI template file for gridded data
+<br />
+<br /><a href="https://www.nodc.noaa.gov/data/formats/netcdf/v2.0/grid.cdl">https://www.nodc.noaa.gov/data/formats/netcdf/v2.0/grid.cdl</a>
+<br />
+<br />that they recommend global attributes like &quot;geospatial_lat_resolution&quot; and 
+<br />
+&quot;geospatial_lon_resolution&quot;, with a string value of &quot;0.1 degree&quot; or &quot;100 
+<br />
+meters&quot;  which is almost what I am looking for, but of course since I have 
+<br />
+projected data it would not be &quot;lat&quot; or &quot;lon&quot;.
+<br />
+<br />Can anyone recommend a best practice for my projected data case that I 
+<br />
+can follow?
+<br />
+<br />Thank you,
+<br />
+Mary Jo Brodzik
+<br />
+<br />^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<br />
+Mary Jo Brodzik, Senior Associate Scientist, 303-492-8263
+<br />
+NSIDC/CIRES, Univ. of Colo. at Boulder, 449 UCB, Boulder, CO 80309-0449
+<br />
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Aug 16 2016 - 10:33:58 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7756">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7757.html" title="Next message in the list">Jim Biard: "[CF-metadata] Best practice to include spatial resolution for projected data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7755.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] string variables and netCDF4"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7757.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] Best practice to include spatial resolution for projected data"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7757.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] Best practice to include spatial resolution for projected data"</a></li>
+<li><dfn>Reply</dfn>: <a href="./7759.html" title="Message sent in reply to this message">Seth McGinnis: "[CF-metadata] Best practice to include spatial resolution for projected data"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7756" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7756" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7756" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7756" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:06 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7755.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7757.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

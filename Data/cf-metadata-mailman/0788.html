@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] attributes for min/max data values for	visualization from Steve Hankin on 2007-03-31 (cf-metadata-mailman)</title>
+<meta name="Author" content="Steve Hankin (Steven.C.Hankin)" />
+<meta name="Subject" content="[CF-metadata] attributes for min/max data values for	visualization" />
+<meta name="Date" content="2007-03-31" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0787.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0789.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] attributes for min/max data values for	visualization</h1>
+<!-- received="Fri Mar 30 17:54:38 2007" -->
+<!-- isoreceived="20070330165438" -->
+<!-- sent="Fri, 30 Mar 2007 16:54:38 -0700" -->
+<!-- isosent="20070330235438" -->
+<!-- name="Steve Hankin" -->
+<!-- email="Steven.C.Hankin" -->
+<!-- subject="[CF-metadata] attributes for min/max data values for	visualization" -->
+<!-- id="460DA33E.6060206_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="2bb6ee950703290228vbc6cf57p6995888e3e9c4b48_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start788" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0789.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] attributes for min/max data values for?visualization&quot;">Next message</a> ]
+[ <a href="./0787.html" title="Ansley Manke: &quot;[CF-metadata]  representing model times in climate models&quot;">Previous message</a> ]
+[ <a href="./0781.html" title="Jon Blower: &quot;[CF-metadata] attributes for min/max data values for visualization&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0790.html" accesskey="t" title="Stephen Pascoe: &quot;[CF-metadata] attributes for min/max data values	for	visualization&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg788" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg788" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg788" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg788" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Steve Hankin &lt;<a href="mailto:Steven.C.Hankin?Subject=Re%3A%20%5BCF-metadata%5D%20attributes%20for%20min%2Fmax%20data%20values%20for%09visualization">Steven.C.Hankin</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 30 Mar 2007 16:54:38 -0700</span><br />
+</address>
+<br />
+Hi Jon,
+<br />
+<br />Can you really get away with simple attributes to contain the guidance 
+<br />
+on extrema?  For example, if this is 3D data (has a Z axis) and you are 
+<br />
+interested in visualizations at different depths (heights), then the 
+<br />
+&quot;recommended&quot; contour ranges might well need to be different for each 
+<br />
+depth (illustrating why we have tended to back away from this problem 
+<br />
+for such a long time).
+<br />
+<br />Might it make sense to think more in terms of min/max values stored in 
+<br />
+new variables and identified by standard names.  Here is a conceptual 
+<br />
+example for discussion (not a formal proposal, so please cut me slack):
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float temperature(time,pres,lat,lon) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float temp_min(pres) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp_min:parent = &quot;temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp_min:standard_name = &quot;minimum_over_domain&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float temp_max(pres) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp_max:parent = &quot;temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp_max:standard_name = &quot;maximum_over_domain&quot; ;
+<br />
+<br />This approach offers a lot more flexibility.  Does the scope of the 
+<br />
+problem that needs to be solved require this flexibility?
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;- Steve
+<br />
+<br />==================================================
+<br />
+<br />Jon Blower wrote:
+<br />
+<em class="quotelev1">&gt; Dear Jonathan,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; OK, that sounds fine too.  How do we move forward to incorporate this
+</em><br />
+<em class="quotelev1">&gt; into the CF standard?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks, Jon
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 3/28/07, Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;   
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear Jon and Phil
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I'd suggest actual_min and actual_max, because they would complement the
+</em><br />
+<em class="quotelev2">&gt;&gt; already defined (Unidata standard) valid_min and valid_max.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Cheers
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Jonathan
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   
+</em><br />
+<br /><pre>
+-- 
+Steve Hankin, NOAA/PMEL -- Steven.C.Hankin at noaa.gov
+7600 Sand Point Way NE, Seattle, WA 98115-0070
+ph. (206) 526-6080, FAX (206) 526-6744
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20070330/adbcf602/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20070330/adbcf602/attachment-0002.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Mar 30 2007 - 17:54:38 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start788">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0789.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] attributes for min/max data values for?visualization"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0787.html" title="Previous message in the list">Ansley Manke: "[CF-metadata]  representing model times in climate models"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0781.html" title="Message to which this message replies">Jon Blower: "[CF-metadata] attributes for min/max data values for visualization"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0790.html" title="Next message in this discussion thread">Stephen Pascoe: "[CF-metadata] attributes for min/max data values	for	visualization"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0790.html" title="Message sent in reply to this message">Stephen Pascoe: "[CF-metadata] attributes for min/max data values	for	visualization"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg788" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg788" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg788" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg788" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0787.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0789.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

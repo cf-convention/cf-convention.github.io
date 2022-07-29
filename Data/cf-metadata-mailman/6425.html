@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Daily mean temperature from Hollis, Dan on 2014-08-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hollis, Dan (dan.hollis)" />
+<meta name="Subject" content="[CF-metadata] Daily mean temperature" />
+<meta name="Date" content="2014-08-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6424.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6426.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Daily mean temperature</h1>
+<!-- received="Fri Aug 29 06:19:09 2014" -->
+<!-- isoreceived="20140829051909" -->
+<!-- sent="Fri, 29 Aug 2014 12:19:09 +0000" -->
+<!-- isosent="20140829121909" -->
+<!-- name="Hollis, Dan" -->
+<!-- email="dan.hollis" -->
+<!-- subject="[CF-metadata] Daily mean temperature" -->
+<!-- id="D7D1372D480AEE41B3C1276C9A15404B07EC7FE8_at_EXXCMPD1DAG1.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6425" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6426.html" accesskey="d" title="Seth McGinnis: &quot;[CF-metadata] Daily mean temperature&quot;">Next message</a> ]
+[ <a href="./6424.html" title="Hollis, Dan: &quot;[CF-metadata] Days of rain&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6426.html" accesskey="t" title="Seth McGinnis: &quot;[CF-metadata] Daily mean temperature&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6425" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6425" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6425" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6425" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hollis, Dan &lt;<a href="mailto:dan.hollis?Subject=Re%3A%20%5BCF-metadata%5D%20Daily%20mean%20temperature">dan.hollis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 29 Aug 2014 12:19:09 +0000</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />Here is the third in a series of questions relating to our work on converting gridded UK observations data to NetCDF...
+<br />
+<br />As many of you will know, climatological observations made in the UK have traditionally been gathered at 0900 GMT. These include maximum temperature, minimum temperature and precipitation amount.
+<br />
+<br />We follow the guidance given in the WMO Guide to Climatological Practices which states:
+<br />
+<br />&quot;Precipitation amounts and maximum temperatures noted at an early morning observation should be credited to the previous calendar day&quot; (p2-13)
+<br />
+<br />The implication is that minimum temperatures should be credited to the calendar day of the observation. This all makes sense as the max will typically occur mid-afternoon whereas the min will generally occur around dawn.
+<br />
+<br />So, for an arbitrary calendar day (e.g. 13 August 2013) the cell bounds would be:
+<br />
+<br />Minimum temperature: 2013-08-12 09:00, 2013-08-13 09:00 (cell_method: minimum)
+<br />
+Max temp and precip: 2013-08-13 09:00, 2013-08-14 09:00 (cell_method: maximum and sum respectively)
+<br />
+<br />We also follow the WMO guidance regarding the calculation of daily mean temperatures:
+<br />
+<br />&quot;the recommended methodology for calculating average daily temperature is to take the mean of the daily maximum and minimum temperatures&quot; (p4-18)
+<br />
+<br />The problem we have is how to describe the daily mean temperature, given that it is the mean of values from two different 24-hour periods.
+<br />
+<br />One possibility is to simply interpret it as an estimate of the true mean temperature for the calendar day in question, and thus specify the bounds as midnight-midnight i.e.
+<br />
+<br />2013-08-13 00:00, 2013-08-14 00:00 (cell_method: mean)
+<br />
+<br />For consistency we propose specifying the value of the time coordinate to be the same for all variables i.e. 2013-08-13 09:00 (which is 09:00 on the calendar day to which the observations are credited - it is the end point of the minimum temperature bounds, the start point of the maximum temperature bounds, and part way through the proposed mean temperature bounds).
+<br />
+<br />One colleague wondered whether it would be better (less confusing to the user) to consider all of the values to be estimates for the calendar day and therefore give all of the variables (max, min, mean and precip) the same midnight-to-midnight bounds (even though the actual observation period is different to this).
+<br />
+<br />If anyone else has had to tackle this type of issue I would be very interested to know what approach you followed. Alternatively if anyone can give advice on how to correctly describe a mean value calculated in the way I have described that would be much appreciated.
+<br />
+<br />Thanks,
+<br />
+<br />Dan
+<br />
+<br />PS We will also need to store monthly means and climatological averages of all these variables. I thought I'd start by asking about the daily quantities and see where the discussion led...
+<br />
+<br /><br /><br />Dan Hollis   Climatologist
+<br />
+Met Office   Hadley Centre   FitzRoy Road   Exeter   Devon   EX1 3PB   United Kingdom
+<br />
+Tel: +44 (0)1392 886780   Fax: +44 (0)1392 885681
+<br />
+E-mail: dan.hollis at metoffice.gov.uk   Website: <a href="http://www.metoffice.gov.uk">http://www.metoffice.gov.uk</a>
+<br />
+For UK climate and past weather information, visit <a href="http://www.metoffice.gov.uk/climate">http://www.metoffice.gov.uk/climate</a>
+<br />
+<br /><br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140829/af7ea155/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140829/af7ea155/attachment.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Aug 29 2014 - 06:19:09 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6425">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6426.html" title="Next message in the list">Seth McGinnis: "[CF-metadata] Daily mean temperature"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6424.html" title="Previous message in the list">Hollis, Dan: "[CF-metadata] Days of rain"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6426.html" title="Next message in this discussion thread">Seth McGinnis: "[CF-metadata] Daily mean temperature"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6426.html" title="Message sent in reply to this message">Seth McGinnis: "[CF-metadata] Daily mean temperature"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6425" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6425" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6425" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6425" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:45 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6424.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6426.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

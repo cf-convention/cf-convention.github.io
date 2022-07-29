@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Attributes to describe precision resulting from lossy compression? from Charlie Zender on 2015-02-18 (cf-metadata-mailman)</title>
+<meta name="Author" content="Charlie Zender (zender)" />
+<meta name="Subject" content="[CF-metadata] Attributes to describe precision resulting from lossy compression?" />
+<meta name="Date" content="2015-02-18" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6800.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6802.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Attributes to describe precision resulting from lossy compression?</h1>
+<!-- received="Wed Feb 18 11:27:42 2015" -->
+<!-- isoreceived="20150218112742" -->
+<!-- sent="Wed, 18 Feb 2015 10:27:42 -0800" -->
+<!-- isosent="20150218182742" -->
+<!-- name="Charlie Zender" -->
+<!-- email="zender" -->
+<!-- subject="[CF-metadata] Attributes to describe precision resulting from lossy compression?" -->
+<!-- id="54E4D99E.3070305_at_uci.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6801" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6802.html" accesskey="d" title="Hattersley, Richard: &quot;[CF-metadata] Editing/publishing workflow update&quot;">Next message</a> ]
+[ <a href="./6800.html" title="Jonathan Gregory: &quot;[CF-metadata]  Editing/publishing workflow update&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6801" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6801" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6801" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6801" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Charlie Zender &lt;<a href="mailto:zender?Subject=Re%3A%20%5BCF-metadata%5D%20Attributes%20to%20describe%20precision%20resulting%20from%20lossy%20compression%3F">zender</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 18 Feb 2015 10:27:42 -0800</span><br />
+</address>
+<br />
+Dear All,
+<br />
+<br />The latest version (4.4.8) of NCO contains a Precision-Preserving
+<br />
+Compression (PPC) feature that might benefit from wider discussion
+<br />
+before its associated metadata are finalized. If you are interested
+<br />
+in precision, compression, or just procrastination, please join a
+<br />
+discussion on changes or improvements to the scheme I've devised.
+<br />
+<br />More documentation on PPC algorithms and performance details is at
+<br />
+<a href="http://nco.sf.net/nco.html#ppc">http://nco.sf.net/nco.html#ppc</a>
+<br />
+However, I think any changes to CF would focus on definitions (of
+<br />
+precision) and implementation. For data that are rounded (quantized),
+<br />
+users want to know what that means, not necessarily how it was
+<br />
+performed.
+<br />
+<br />The meaning of data precision, and thus what is means for data to
+<br />
+be &quot;rounded&quot; or &quot;quantized&quot; could be clarified in CF with something
+<br />
+like the text drafted below. These changes adequately represent, I
+<br />
+think, an existing metadata annotation for precision used in nc3tonc4
+<br />
+by Jeff Whitaker, which NCO has adopted (called DSD below), as well
+<br />
+as an annotation for a new method of quantization (called NSD below)
+<br />
+introduced in NCO. You will see that it boils down to adding an
+<br />
+attribute that indicates the type and degree of imposed precision.
+<br />
+A possibility that I considered before discarding was to specify the
+<br />
+absolute precision in units of the stored variable (rather than the
+<br />
+number of significant digits). There are arguments both ways...
+<br />
+<br />The suggested CF changes below are a minimal way of specifying how
+<br />
+data have been quantized. A more general metadata framework for
+<br />
+precision might include distinctions for intrinsic precision of
+<br />
+measurement/model (in addition to precision due to post-processing or
+<br />
+rounding), notations helpful for propagating errors, and how to
+<br />
+specify precision lost due to packing/unpacking. None of that is
+<br />
+in the below draft, which simply extends CF to cover precision imposed
+<br />
+by NSD and DSD quantization. If you want or don't want CF to recommend
+<br />
+attributes describing precision and/or lossy compression then please
+<br />
+comment...
+<br />
+<br />Best,
+<br />
+Charlie
+<br />
+<br />Current CF:
+<br />
+<a href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html#packed-data">http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.html#packed-data</a>
+<br />
+&quot;Methods for reducing the total volume of data include both packing
+<br />
+and compression. Packing reduces the data volume by reducing the
+<br />
+precision of the stored numbers. It is implemented using the
+<br />
+attributes add_offset and scale_factor which are defined in the
+<br />
+NUG. Compression on the other hand loses no precision, but reduces the
+<br />
+volume by not storing missing data. The attribute compress is defined
+<br />
+for this purpose.&quot;
+<br />
+<br />Proposed CF:
+<br />
+&quot;Methods for reducing the total volume of data include packing,
+<br />
+rounding, and compression. Packing reduces the data volume by reducing
+<br />
+the range and precision of the stored numbers. It is implemented using
+<br />
+the attributes add_offset and scale_factor which are defined in the
+<br />
+NUG. Rounding preserves data values to a specified level of precision,
+<br />
+with no required loss in range. It is implemented using bitmasking or
+<br />
+other quantization techniques. Compression on the other hand loses no
+<br />
+precision, but reduces the volume by not storing missing data. The
+<br />
+attribute compress is defined for this purpose.&quot;
+<br />
+<br />...
+<br />
+<br />&quot;Packing quantizes data from a floating point representation into an
+<br />
+integer representation within a limited range that requires only
+<br />
+one-half or one-quarter of the number of floating-point bytes.
+<br />
+For values that occupy a limited range, typically about five orders of
+<br />
+magnitude, packing yields an efficient tradeoff between precision and
+<br />
+size because all bits are dedicated to precision, not to exponents.
+<br />
+A limitation of packing is that unpacking data stored as integers
+<br />
+into the linear range defined by scale_factor and add_offset rapidly
+<br />
+loses precision outside of a narrow range of floating point values.
+<br />
+Variables packed as NC_SHORT, for example, can represent only about
+<br />
+64000 discrete values in the range -32768*scale_factor+add_offset to
+<br />
+32767*scale_factor+add_offset. The precision of packed data equals the
+<br />
+value of scale_factor, and scale_factor must be chosen to span the
+<br />
+range of valid data, not to represent the intrinsic or desired
+<br />
+precision of the values. Values that were packed and then unpacked
+<br />
+have lost precision, although there is no standard way of recording
+<br />
+this other than recording the history of the data processing. [One
+<br />
+solution to this would be to record the former scale_factor of
+<br />
+unpacked data in a precision attribute, e.g., &quot;maximum_precision&quot;.
+<br />
+Any champions for this?]
+<br />
+<br />Rounding allows per-variable specification of precision in terms
+<br />
+of significant digits valid across the entire range of the floating
+<br />
+point representation. The precision specification may take one of
+<br />
+two forms, either the total number of significant digits (NSD), or
+<br />
+the number of decimal significant digits (DSD), i.e., digits following
+<br />
+(positive) or preceding (negative) the decimal point. The attributes
+<br />
+&quot;number_of_significant_digits&quot; and &quot;least_significant_digit&quot; indicate
+<br />
+that the variable has been rounded to the specifed precision using NSD
+<br />
+or DSD definitions, respectively. The quantized values stored with
+<br />
+these attributes are guaranteed to be within one-half of a unit
+<br />
+increment in the value of the least significant digit. Consider, for
+<br />
+example, a true value of 1776.0704. Approximations valid to a
+<br />
+precision of NSD=2 (or DSD=-2) include 1800.0 and 1750.123, both of
+<br />
+which are within 50 (one-half a unit increment in the hundreds digit)
+<br />
+of the true value.  Approximations valid to a precision of NSD=5 (or
+<br />
+DSD=1) include 1776.1 and 1776.03, both of which are within 0.05
+<br />
+(one-half a unit increment in the tenths digit) of the true value.
+<br />
+<br />8.2 ...
+<br />
+<pre>
+-- 
+Charlie Zender, Earth System Sci. &amp; Computer Sci.
+University of California, Irvine 949-891-2429 )'(
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Feb 18 2015 - 11:27:42 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6801">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6802.html" title="Next message in the list">Hattersley, Richard: "[CF-metadata] Editing/publishing workflow update"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6800.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  Editing/publishing workflow update"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6801" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6801" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6801" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6801" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6800.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6802.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

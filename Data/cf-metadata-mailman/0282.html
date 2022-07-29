@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] question and time and standard_name... from Manuel Fuentes on 2006-10-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Manuel Fuentes (Manuel.Fuentes)" />
+<meta name="Subject" content="[CF-metadata] question and time and standard_name..." />
+<meta name="Date" content="2006-10-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0281.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0283.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] question and time and standard_name...</h1>
+<!-- received="Thu Oct  5 09:06:35 2006" -->
+<!-- isoreceived="20061005080635" -->
+<!-- sent="Thu, 05 Oct 2006 16:06:35 +0100" -->
+<!-- isosent="20061005150635" -->
+<!-- name="Manuel Fuentes" -->
+<!-- email="Manuel.Fuentes" -->
+<!-- subject="[CF-metadata] question and time and standard_name..." -->
+<!-- id="45251F7B.7090606_at_ecmwf.int" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="AAFAD24F4220B04CA8F7C805460409B28FA120_at_SI-ECL01.US.SINET.SI.EDU" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start282" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0283.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] standard names for aerosols and chemistry&quot;">Next message</a> ]
+[ <a href="./0281.html" title="Ed Hartnett: &quot;[CF-metadata] why not use attributes instead of scalar variables for terms in dimensionless vertical coordinates...&quot;">Previous message</a> ]
+[ <a href="./0278.html" title="Gross, Tom: &quot;[CF-metadata] question and time and standard_name...&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg282" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg282" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg282" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg282" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Manuel Fuentes &lt;<a href="mailto:Manuel.Fuentes?Subject=Re%3A%20%5BCF-metadata%5D%20question%20and%20time%20and%20standard_name...">Manuel.Fuentes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 05 Oct 2006 16:06:35 +0100</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />ECMWF produces hindcasts as part of our operational system. These 
+<br />
+hindcasts refer to a specific forecast run. For example, today's 
+<br />
+forecast has associated a set of hindcasts. Tomorrow's forecast will 
+<br />
+have a different set. So our hindcasts have 2 dates:
+<br />
+- the base date of the hindcast run (we call it DATE)
+<br />
+- the base date of the forecast they refer to (we call it REFDATE)
+<br />
+<br />We have discovered that such naming convention was a mistake, because it 
+<br />
+requires REFDATE to have the same treatment as DATE. We plan to migrate 
+<br />
+to the following terms:
+<br />
+DATE=base date of the forecast they refer to
+<br />
+HINDCASTDATE=base date of the hindcast run
+<br />
+<br />This way, HINDCASTDATE doesn't need to be treated as a DATE, it can just 
+<br />
+be yet another attribute.
+<br />
+<br /><br />Hope this is clear and useful.
+<br />
+Manuel
+<br />
+<br />Gross, Tom wrote:
+<br />
+<em class="quotelev1">&gt; If we wanted to contain in a single file the results of a model run from 
+</em><br />
+<em class="quotelev1">&gt; the past, through the present and into the future, I would use a single 
+</em><br />
+<em class="quotelev1">&gt; variable, &quot;time&quot; to give the time coordinate to all time slices, valid 
+</em><br />
+<em class="quotelev1">&gt; times.  Presumably the application wants to use all of these as one 
+</em><br />
+<em class="quotelev1">&gt; continuous run, or they would have been split into different files.  The 
+</em><br />
+<em class="quotelev1">&gt; extra information of when those different segments were launched should 
+</em><br />
+<em class="quotelev1">&gt; be  contained in extra variables which represent the times of launching 
+</em><br />
+<em class="quotelev1">&gt; the runs.  These datums, like &quot;forecast_reference_time&quot;  would contain a 
+</em><br />
+<em class="quotelev1">&gt; single date.  But to introduce three time coordinate variables would be 
+</em><br />
+<em class="quotelev1">&gt; a real headache.
+</em><br />
+<em class="quotelev1">&gt; Opps, there I go again argueing that datums are a necessary part of 
+</em><br />
+<em class="quotelev1">&gt; metadata, in the same sense as units.
+</em><br />
+<em class="quotelev1">&gt; Tom Gross
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt;  *From:* ] *On Behalf Of *CJ Beegle-Krause
+</em><br />
+<em class="quotelev1">&gt; *Sent:* Wednesday, October 04, 2006 6:18 PM
+</em><br />
+<em class="quotelev1">&gt; *To:* John Caron
+</em><br />
+<em class="quotelev1">&gt; *Cc:* Ed Hartnett; cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; *Subject:* Re: [CF-metadata] question and time and standard_name...
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; There is a need to distinguish whole or parts of model runs, for example 
+</em><br />
+<em class="quotelev1">&gt; hindcast, nowcast and forecast could be sections of the same individual 
+</em><br />
+<em class="quotelev1">&gt; model run.  It would also be good to agree on what each of those terms 
+</em><br />
+<em class="quotelev1">&gt; could mean.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; John Caron wrote:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt;&gt;     another one is &quot;forecast_reference_time&quot;, the base time a model
+</em><br />
+<em class="quotelev2">&gt;&gt;     run was made from.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     Ed Hartnett wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     Howdy all!
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     The CF document says that standard_name may be used for time
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     coordinate variables.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     But the standard name table gives only one valid standard_name for a
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     time variable: &quot;time&quot;.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     Can I assume then that there are no other standard names for time
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     coordinate variables?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     Thanks!
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     Ed
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt;     CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt;     CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt;     <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     -- 
+</em><br />
+<em class="quotelev1">&gt;     CJ Beegle-Krause, Ph.D.
+</em><br />
+<em class="quotelev1">&gt;     NOAA/NOS/ORR/Hazmat
+</em><br />
+<em class="quotelev1">&gt;     7600 Sand Point Way NE
+</em><br />
+<em class="quotelev1">&gt;     Seattle, WA  98115
+</em><br />
+<em class="quotelev1">&gt;          voice:  (206) 526-6961
+</em><br />
+<em class="quotelev1">&gt;          fax:  (206) 526-6329
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;          &lt;:}}}}}&gt;&lt;
+</em><br />
+<em class="quotelev1">&gt;                                &lt;:}}}}}&gt;&lt;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;     \!/ \!/      \!/  &gt;^&lt;**&gt;^&lt;     \!/   \!/ \!/
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ------------------------------------------------------------------------
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Thu Oct 05 2006 - 09:06:35 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start282">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0283.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] standard names for aerosols and chemistry"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0281.html" title="Previous message in the list">Ed Hartnett: "[CF-metadata] why not use attributes instead of scalar variables for terms in dimensionless vertical coordinates..."</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0278.html" title="Message to which this message replies">Gross, Tom: "[CF-metadata] question and time and standard_name..."</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg282" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg282" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg282" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg282" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:47 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0281.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0283.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

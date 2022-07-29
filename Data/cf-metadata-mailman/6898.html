@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jim Biard on 2015-04-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-04-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6897.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6899.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Tue Apr 28 09:35:16 2015" -->
+<!-- isoreceived="20150428083516" -->
+<!-- sent="Tue, 28 Apr 2015 11:35:16 -0400" -->
+<!-- isosent="20150428153516" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="553FA8B4.8000006_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20150427170739.GA7214_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6898" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6899.html" accesskey="d" title="Little, Chris: &quot;[CF-metadata] Calendars labels and temporal notation. Was: CF-metadata Digest, Vol 144, Issue 14&quot;">Next message</a> ]
+[ <a href="./6897.html" title="Jonathan Gregory: &quot;[CF-metadata]  How to define time coordinate in GPS?&quot;">Previous message</a> ]
+[ <a href="./6897.html" title="Jonathan Gregory: &quot;[CF-metadata]  How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6898" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6898" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6898" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6898" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 28 Apr 2015 11:35:16 -0400</span><br />
+</address>
+<br />
+Jonathan,
+<br />
+<br />I see where you are coming from, and there's validity in that line of 
+<br />
+thought. Leap seconds represent a finer-grained adjustment to the 
+<br />
+overall date/time system being used. I still think it makes good sense 
+<br />
+to add a new attribute to declare whether or not leap second handling 
+<br />
+was used or strengthen our standards for time variables so that problems 
+<br />
+are averted.
+<br />
+<br />&nbsp;From a human understandability perspective, a calendar attribute of 
+<br />
+&quot;GPS&quot; or &quot;UTC&quot; will be somewhat confusing. In my experience, people 
+<br />
+don't speak of the UTC calendar, it's UTC time. Further, TAI and GPS 
+<br />
+time don't really concern themselves with anything but counts of seconds 
+<br />
+since an epoch date &amp; time. People convert the counts to time stamps for 
+<br />
+convenience, but they are actually more equivalent to the Julian Day 
+<br />
+Number (JDN) than they are to the Gregorian or Julian calendar. TAI and 
+<br />
+GPS time have different epochs, and TAI is more accurate, but they both 
+<br />
+are running counts of seconds that aren't tied to the motions of the 
+<br />
+Earth. As a result, I think that it's improper to talk about a GPS 
+<br />
+calendar or TAI calendar.
+<br />
+<br />What is being exposed by this discussion is the reality that any of us 
+<br />
+(myself included) have often ignored or been unaware of the fact that 
+<br />
+the time calculators (time handling software) we used when filling our 
+<br />
+time variables with elapsed times weren't giving us true counts of 
+<br />
+seconds since the epochs we wrote into our units attributes. If you are 
+<br />
+working at a resolution of days or hours, this will probably never cause 
+<br />
+a problem. If you are working at a resolution of minutes or less and 
+<br />
+working over a time span of greater than two years, it may well have 
+<br />
+caused at least occasional small problems. If you are working with 
+<br />
+full-resolution polar-orbiting satellite data, one second represents ~7 
+<br />
+km of satellite motion, so such errors can produce significant 
+<br />
+geolocation errors.
+<br />
+<br />A set of elapsed seconds since a Gregorian/UTC epoch that were 
+<br />
+calculated from Gregorian/UTC time stamps without regard for leap 
+<br />
+seconds and which crossed a leap second boundary are not &quot;GPS&quot; seconds. 
+<br />
+Nor are they &quot;UTC&quot; seconds. They are, strictly speaking, elapsed times 
+<br />
+into which one or more step errors have been introduced. As I mentioned 
+<br />
+in a previous email, as long as you use the same time calculator to 
+<br />
+extract time stamps as you did to get elapsed times from input time 
+<br />
+stamps, you won't notice anything. You may notice a problem if you are 
+<br />
+taking differences between elapsed times and a leap second boundary gets 
+<br />
+involved.
+<br />
+<br />As I've considered all of this more, I'm tending to favor the second 
+<br />
+option I suggested.
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;We could also be more strict, and say the epoch time stamp in the units
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;attribute must always be in UTC. The question would then be reduced to
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;whether or not leap seconds were counted into the elapsed times stored
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;in the time variable. In this case, we could add a &quot;leap_seconds&quot;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;attribute which would have a value of &quot;UTC&quot; if UTC leap seconds were
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;counted into the elapsed times, and &quot;none&quot; if not. This would also allow
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;for some other system of leap seconds to be used. (I don't know if there
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;are others.) For backward compatibility, considering history, the
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;default value for this attribute would probably be &quot;UTC&quot;.
+<br />
+<br />Clearly, having epoch time stamps with time zone offsets from UTC, as 
+<br />
+described in the CF conventions, would be OK as well. I'm also open to 
+<br />
+other namings for the new attribute and for its possible values. The 
+<br />
+leap seconds only become an issue in certain rather specific instances, 
+<br />
+so I think that such an attribute, along with a bit of discussion in the 
+<br />
+document, would likely be sufficient to warn those people that may find 
+<br />
+themselves negatively affected by improper leap second handling.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br /><br />On 4/27/15 1:07 PM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Jim
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I don't think calendars are the right place to encode this. We could
+</em><br />
+<em class="quotelev2">&gt;&gt; add a new &quot;time_system&quot; attribute where you would declare whether
+</em><br />
+<em class="quotelev2">&gt;&gt; your time stamps and elapsed times were based on UTC, GPS, TAI, etc.
+</em><br />
+<em class="quotelev2">&gt;&gt; If we take this route, we should require the elapsed times to encode
+</em><br />
+<em class="quotelev2">&gt;&gt; leap seconds if the time system is UTC, and state that the default
+</em><br />
+<em class="quotelev2">&gt;&gt; time system is UTC.
+</em><br />
+<em class="quotelev1">&gt; I think this is a calendar issue because the calendar is the set of rules
+</em><br />
+<em class="quotelev1">&gt; which translate between components of time (YMDhms) and elapsed time (in
+</em><br />
+<em class="quotelev1">&gt; fixed time units) since the reference time. Your later email seems to me
+</em><br />
+<em class="quotelev1">&gt; to be consistent with that. In the real world, the elapsed interval (expressed
+</em><br />
+<em class="quotelev1">&gt; e.g. as the number of seconds) between the ref YMDhms and the actual YMDhs
+</em><br />
+<em class="quotelev1">&gt; depends on whether your calendar includes leap seconds (UTC) or not (GPS).
+</em><br />
+<em class="quotelev1">&gt; It seems that GPS is the calendar likely to have been assumed in existing
+</em><br />
+<em class="quotelev1">&gt; CF datasets, so it would be logical to say that the default is the real-
+</em><br />
+<em class="quotelev1">&gt; world calendar without leap seconds. Have I misunderstood something? If we
+</em><br />
+<em class="quotelev1">&gt; regard this as a property of the calendar, we don't need a new attribute.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/We will be updating our social media soon. Follow our current Facebook 
+(NOAA National Climatic Data Center 
+&lt;<a href="https://www.facebook.com/NOAANationalClimaticDataCenter">https://www.facebook.com/NOAANationalClimaticDataCenter</a>&gt; and NOAA 
+National Oceanographic Data Center &lt;<a href="https://www.facebook.com/noaa.nodc">https://www.facebook.com/noaa.nodc</a>&gt;) 
+and Twitter (_at_NOAANCDC &lt;<a href="https://twitter.com/NOAANCDC">https://twitter.com/NOAANCDC</a>&gt; and @NOAAOceanData 
+&lt;<a href="https://twitter.com/NOAAOceanData">https://twitter.com/NOAAOceanData</a>&gt;) accounts for the latest information./
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150428/2f99a006/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150428/2f99a006/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CicsLogoTiny.png
+Type: image/png
+Size: 15784 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150428/2f99a006/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150428/2f99a006/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Apr 28 2015 - 09:35:16 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6898">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6899.html" title="Next message in the list">Little, Chris: "[CF-metadata] Calendars labels and temporal notation. Was: CF-metadata Digest, Vol 144, Issue 14"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6897.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  How to define time coordinate in GPS?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6897.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata]  How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6898" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6898" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6898" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6898" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:54 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6897.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6899.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

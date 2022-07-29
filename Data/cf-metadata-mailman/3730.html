@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] [WCS.swg] [gdal-dev] NetCDF and datum handling suggestion from Baumann, Peter on 2011-09-08 (cf-metadata-mailman)</title>
+<meta name="Author" content="Baumann, Peter (p.baumann)" />
+<meta name="Subject" content="[CF-metadata] [WCS.swg] [gdal-dev] NetCDF and datum handling suggestion" />
+<meta name="Date" content="2011-09-08" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3729.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3731.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] [WCS.swg] [gdal-dev] NetCDF and datum handling suggestion</h1>
+<!-- received="Thu Sep  8 07:36:57 2011" -->
+<!-- isoreceived="20110908063657" -->
+<!-- sent="Thu, 8 Sep 2011 13:36:57 +0000" -->
+<!-- isosent="20110908133657" -->
+<!-- name="Baumann, Peter" -->
+<!-- email="p.baumann" -->
+<!-- subject="[CF-metadata] [WCS.swg] [gdal-dev] NetCDF and datum handling suggestion" -->
+<!-- id="ABC99FE09544C04ABD549BE2D57400101E4E0EDB_at_SXCHMB01.jacobs.jacobs-university.de" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4E68C135.5070808_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3730" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3731.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Mapping from internal data conventions to CF	conventions&quot;">Next message</a> ]
+[ <a href="./3729.html" title="Jim Biard: &quot;[CF-metadata] Mapping from internal data conventions to CF	conventions&quot;">Previous message</a> ]
+[ <a href="./3727.html" title="Matthew Austin: &quot;[CF-metadata] [WCS.swg] [gdal-dev] NetCDF and datum handling suggestion&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3730" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3730" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3730" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3730" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Baumann, Peter &lt;<a href="mailto:p.baumann?Subject=Re%3A%20%5BCF-metadata%5D%20%5BWCS.swg%5D%20%5Bgdal-dev%5D%20NetCDF%20and%20datum%20handling%20suggestion">p.baumann</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 8 Sep 2011 13:36:57 +0000</span><br />
+</address>
+<br />
+Matt,
+<br />
+<br />interesting discussions going on indeed. My perspective, having to model CRS request parameters for transformation etc and to establish a CRS URL resolver, is to understand a sufficiently general slate of concepts. Some of the issues of representation do not directly apply for my task (my - possibly wrong - understanding is that it also addresses redundant short-hand information), however this still is interesting for me in the sense that I can get the gist of CRS handling in the communities' practice.
+<br />
+<br />-Peter
+<br />
+<br />________________________________________
+<br />
+From: wcs.swg-bounces+p.baumann=jacobs-university.de at lists.opengeospatial.org [wcs.swg-bounces+p.baumann=jacobs-university.de at lists.opengeospatial.org] on behalf of Matthew Austin [Matthew.Austin at noaa.gov]
+<br />
+Sent: Thursday, September 08, 2011 3:20 PM
+<br />
+To: wcs.swg at lists.opengeospatial.org; cf-metadata at cgd.ucar.edu; gdal-dev at lists.osgeo.org
+<br />
+Subject: Re: [WCS.swg] [gdal-dev] NetCDF and datum handling suggestion
+<br />
+<br />Peter,
+<br />
+<br />There has been much discussion about projections in the CF-Community
+<br />
+recently.  I'm following up with Etienne's recommendation to engage the
+<br />
+CF-Community in this discussion of how to handle projection information
+<br />
+in CF.
+<br />
+<br />Matt
+<br />
+<br />On 9/8/2011 2:17 AM, Peter Baumann wrote:
+<br />
+<em class="quotelev1">&gt; Hi WCSers,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; this is to inform you about some interesting discussion going on in
+</em><br />
+<em class="quotelev1">&gt; the GDAL community. It directly relates to our current work on
+</em><br />
+<em class="quotelev1">&gt; redesigning OGC's CRS handling for coverages (and beyond).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; cheers,
+</em><br />
+<em class="quotelev1">&gt; Peter
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 09/07/2011 10:49 PM, Etienne Tourigny wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Thanks for the info Even
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I can see that there is not yet &quot;One standard to rule them all&quot;...
+</em><br />
+<em class="quotelev2">&gt;&gt; Correct me if I am wrong: is WKT the preferred way GDAL stores the
+</em><br />
+<em class="quotelev2">&gt;&gt; information?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; There was a proposal some time ago in the CF trac to add descriptive
+</em><br />
+<em class="quotelev2">&gt;&gt; variables such as crs_id (EPSG code),  crs_name and crs_wkt.
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="https://cf-pcmdi.llnl.gov/trac/ticket/18">https://cf-pcmdi.llnl.gov/trac/ticket/18</a> (pointed out by Patrick)
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="https://cf-pcmdi.llnl.gov/trac/ticket/9">https://cf-pcmdi.llnl.gov/trac/ticket/9</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="https://cf-pcmdi.llnl.gov/trac/ticket/27">https://cf-pcmdi.llnl.gov/trac/ticket/27</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; However, these were dropped because of disagreement between the
+</em><br />
+<em class="quotelev2">&gt;&gt; participants and the simpler and current approach was adopted (specify
+</em><br />
+<em class="quotelev2">&gt;&gt; the numeric values of the projection and datum).
+</em><br />
+<em class="quotelev2">&gt;&gt; Unfortunately, the issue has not been discussed since.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I think our solution should address the following
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 1) Storing projection and datum in the netcdf file with 100% CF
+</em><br />
+<em class="quotelev2">&gt;&gt; compliance.
+</em><br />
+<em class="quotelev2">&gt;&gt; 2) Storing complete information so that it can be retrieved later by
+</em><br />
+<em class="quotelev2">&gt;&gt; GDAL, This is already done by writing and reading the WKT.
+</em><br />
+<em class="quotelev2">&gt;&gt; 3) Making sure that the CF and WKT are not contradictory, in the case
+</em><br />
+<em class="quotelev2">&gt;&gt; that the projection was modified by another program, but left the WKT
+</em><br />
+<em class="quotelev2">&gt;&gt; intact.
+</em><br />
+<em class="quotelev2">&gt;&gt; 4) Reading CF-compliant projection information and translating that
+</em><br />
+<em class="quotelev2">&gt;&gt; into WKT (this could eliminate the need for 2 and 3)
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Perhaps 4 can be achieved with another tool external to GDAL (as
+</em><br />
+<em class="quotelev2">&gt;&gt; suggested in the CF discussions).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Is there anyone who would be inclined to engage in a discussion within
+</em><br />
+<em class="quotelev2">&gt;&gt; the CF community so that any or all of proj4, epsg and wkt be included
+</em><br />
+<em class="quotelev2">&gt;&gt; as a CF standard?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Regards, Etienne
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On Wed, Sep 7, 2011 at 4:54 PM, Even Rouault
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;even.rouault at mines-paris.org&gt;  wrote:
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; How important is this information?  Assuming we drop all the citation
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; strings, or authority names and codes, but retain the important
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; parameters of each projection (in CF and proj format), are we missing
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; anything important numerically?
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; In other words, are there any show-stopper issues that would keep us
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; from using proj4 instead of wkt?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Generally not. You indeed mentionned a significant word,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; &quot;numerically&quot;, which
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; indicates that you are interested more in the information for
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; reprojection
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; purposes, than strict (not to say pedantic ;-)) identification of
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; the SRS. If
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; the software that process the dataset all use proj4 and the proj4
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; string is an
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; adequate representation of the SRS, then it is a perfect fit.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; There are situations where 2 distincts SRS from the EPSG database will
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; translate into identical proj4 string. For example, just looking at
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; the very
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; beginning of the epsg file provided with proj4, I can see :
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; # TWD97
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; &lt;3824&gt;  +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs&lt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; # IGRS
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; &lt;3889&gt;  +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs&lt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; The corresponding WKT (given by using gdal utility 'testepsg
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; EPSG:XXXX') are :
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; GEOGCS[&quot;TWD97&quot;,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     DATUM[&quot;Taiwan_Datum_1997&quot;,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         SPHEROID[&quot;GRS 1980&quot;,6378137,298.257222101,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             AUTHORITY[&quot;EPSG&quot;,&quot;7019&quot;]],
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         TOWGS84[0,0,0,0,0,0,0],
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         AUTHORITY[&quot;EPSG&quot;,&quot;1026&quot;]],
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     PRIMEM[&quot;Greenwich&quot;,0,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     UNIT[&quot;degree&quot;,0.0174532925199433,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     AUTHORITY[&quot;EPSG&quot;,&quot;3824&quot;]]
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; GEOGCS[&quot;IGRS&quot;,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     DATUM[&quot;Iraqi_Geospatial_Reference_System&quot;,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         SPHEROID[&quot;GRS 1980&quot;,6378137,298.257222101,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;             AUTHORITY[&quot;EPSG&quot;,&quot;7019&quot;]],
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         TOWGS84[0,0,0,0,0,0,0],
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         AUTHORITY[&quot;EPSG&quot;,&quot;1029&quot;]],
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     PRIMEM[&quot;Greenwich&quot;,0,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     UNIT[&quot;degree&quot;,0.0174532925199433,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;         AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;     AUTHORITY[&quot;EPSG&quot;,&quot;3889&quot;]]
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Are the Taiwan_Datum_1997 and Iraqi_Geospatial_Reference_System
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; really the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; same, or is it because we haven't captured the difference, or it is
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; too subtle
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; to be modelled with proj4, or it would require some grids that are not
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; available, etc... I have no idea.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Also you should be aware that some SRS have no translation into
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; proj4 strings
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; due to unsupported projection methods for example.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Using proj4 strings is not a total heresy however. Postgis is a
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; famous and
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; widespread example of the use of proj4 strings. Although in the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Postgis case,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; the spatial_ref_sys table includes authority names and code columns,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; and the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; SRID is used as a key in the geometry_columns table. So you can fix
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; proj4
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; strings in a centralized way if needed.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Another point to have in mind is that the proj4 strings (at least
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; the ones
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; provided in the epsg file that comes with proj4) are generally
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; derived from the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; EPSG database, and there can be imperfections in the way they are
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; translated,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; or later improvements. A recent proj4 change has added for example
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; TOWGS84
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; statements in a lot of cases where they were missing before.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; You can look at the following page which gives details on how GDAL,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; proj4,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; libtiff and postgis SRS databases are built from the EPSG database :
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://svn.osgeo.org/metacrs/geotiff/trunk/libgeotiff/csv/README">http://svn.osgeo.org/metacrs/geotiff/trunk/libgeotiff/csv/README</a>
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Some could also say that proj4 strings are not a very formal
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; definition, and
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; that WKT has a better potential to act as a standard. However, reading
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://home.gdal.org/projects/opengis/wktproblems.html">http://home.gdal.org/projects/opengis/wktproblems.html</a> might be
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; enlightning.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; (Note : apparently the page has been written quite some time ago,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; and some
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; statements do no longer apply, for example the one about PostGIS.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; PostGIS has
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; used proj4 strings and not WKT for a long time. But most of the rest
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; still
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; apply however.)
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Not sure to really have helped you. There are issues with either
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; using WKT or
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; proj4 strings.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; gdal-dev mailing list
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; gdal-dev at lists.osgeo.org
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; <a href="http://lists.osgeo.org/mailman/listinfo/gdal-dev">http://lists.osgeo.org/mailman/listinfo/gdal-dev</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; gdal-dev mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; gdal-dev at lists.osgeo.org
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://lists.osgeo.org/mailman/listinfo/gdal-dev">http://lists.osgeo.org/mailman/listinfo/gdal-dev</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+_______________________________________________
+<br />
+WCS.swg mailing list
+<br />
+WCS.swg at lists.opengeospatial.org
+<br />
+<a href="https://lists.opengeospatial.org/mailman/listinfo/wcs.swg">https://lists.opengeospatial.org/mailman/listinfo/wcs.swg</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Sep 08 2011 - 07:36:57 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3730">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3731.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Mapping from internal data conventions to CF	conventions"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3729.html" title="Previous message in the list">Jim Biard: "[CF-metadata] Mapping from internal data conventions to CF	conventions"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3727.html" title="Message to which this message replies">Matthew Austin: "[CF-metadata] [WCS.swg] [gdal-dev] NetCDF and datum handling suggestion"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3730" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3730" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3730" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3730" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:50 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3729.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3731.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

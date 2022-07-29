@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] standard names for variables in raw?engineering units from Jonathan Gregory on 2009-04-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] standard names for variables in raw?engineering units" />
+<meta name="Date" content="2009-04-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2013.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2015.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] standard names for variables in raw?engineering units</h1>
+<!-- received="Mon Apr 13 01:40:53 2009" -->
+<!-- isoreceived="20090413004053" -->
+<!-- sent="Mon, 13 Apr 2009 08:40:53 +0100" -->
+<!-- isosent="20090413074053" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] standard names for variables in raw?engineering units" -->
+<!-- id="20090413074053.GA23355_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2014" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2015.html" accesskey="d" title="olivier lauret: &quot;[CF-metadata] Proposal for additional CF biogeochemistry attributes&quot;">Next message</a> ]
+[ <a href="./2013.html" title="Roy Lowry: &quot;[CF-metadata] standard names for variables in raw	engineering units&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2014" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2014" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2014" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2014" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20standard%20names%20for%20variables%20in%20raw%3Fengineering%20units">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 13 Apr 2009 08:40:53 +0100</span><br />
+</address>
+<br />
+Dear Roy
+<br />
+<br />The space is deliberate. The standard_name attribute consists of a standard
+<br />
+name followed optionally by a modifier. We introduced this syntax to allow us
+<br />
+to define ancillary data of various sorts e.g. a quality flag or a standard
+<br />
+error, without requiring a new set of standard names. See CF standard section
+<br />
+3.3. Perhaps we should have put it in a different attribute; this decision was
+<br />
+made years ago and I can't remember the discussion.
+<br />
+<br />I made the raw_data suggestion thinking that, in the case where you have a
+<br />
+geophysical quantity, and you also want to save the raw data (perhaps that is
+<br />
+the case Nan describes), the raw data could be regarded as ancillary
+<br />
+information (a bit like a standard error). This mechanism, with a standard
+<br />
+name modifier and perhaps using ancillary_variables to point to it (CF 3.4),
+<br />
+might be suitable then. The modifier implies the units of the standard name
+<br />
+have been transformed in a certain way. We could therefore specify them to be
+<br />
+dimensionless for raw data, as that is a special case of transformation i.e.
+<br />
+replace units u with 1. They could be in the same units as the geophysical
+<br />
+quantity; that would need a different standard name modifier, which might be
+<br />
+appropriate for uncalibrated data. However they could not be in different
+<br />
+units, not related to those of the geophysical quantity.
+<br />
+<br />This suggestion doesn't give enough information for the data to be processed.
+<br />
+It's just a way of labelling raw data as such.
+<br />
+<br />If you want to identify the raw data as being a specific output from a
+<br />
+particular kind of instrument, I think it's much better to give a standard name
+<br />
+that indicates precisely what it is i.e. more specific than &quot;rain gauge
+<br />
+raw data&quot;. Then the user could work out how to process it.
+<br />
+<br />Cheers
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Apr 13 2009 - 01:40:53 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2014">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2015.html" title="Next message in the list">olivier lauret: "[CF-metadata] Proposal for additional CF biogeochemistry attributes"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2013.html" title="Previous message in the list">Roy Lowry: "[CF-metadata] standard names for variables in raw	engineering units"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2014" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2014" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2014" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2014" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:18 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2013.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2015.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Accumulation since timestep 0, cell-method from Heiko Klein on 2008-08-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Heiko Klein (Heiko.Klein)" />
+<meta name="Subject" content="[CF-metadata] Accumulation since timestep 0, cell-method" />
+<meta name="Date" content="2008-08-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1456.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1458.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Accumulation since timestep 0, cell-method</h1>
+<!-- received="Tue Aug  5 05:34:20 2008" -->
+<!-- isoreceived="20080805043420" -->
+<!-- sent="Tue, 05 Aug 2008 13:34:20 +0200" -->
+<!-- isosent="20080805113420" -->
+<!-- name="Heiko Klein" -->
+<!-- email="Heiko.Klein" -->
+<!-- subject="[CF-metadata] Accumulation since timestep 0, cell-method" -->
+<!-- id="48983ABC.3050405_at_met.no" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1457" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1458.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  Accumulation since timestep 0, cell-method&quot;">Next message</a> ]
+[ <a href="./1456.html" title="Heiko Klein: &quot;[CF-metadata] Usage of integral_of_Y_wrt_X&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1457" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1457" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1457" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1457" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Heiko Klein &lt;<a href="mailto:Heiko.Klein?Subject=Re%3A%20%5BCF-metadata%5D%20Accumulation%20since%20timestep%200%2C%20cell-method">Heiko.Klein</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 05 Aug 2008 13:34:20 +0200</span><br />
+</address>
+<br />
+Some of our models write out precipitation data as accumulated 
+<br />
+precipitation starting at time-step 0. E.g.
+<br />
+<br />Time:   0  3  6  9  12  15
+<br />
+Precip: 0 15 15 25  26  26
+<br />
+<br />meaning that there was no precipitation between 3 and 6, and no 
+<br />
+precipitation between 12 and 15.
+<br />
+<br />One solution would be to define Time:bounds as
+<br />
+Time:bounds: 0,0, 0,3, 0,6, 0,9, 0,12, 0,15 but then I would need to 
+<br />
+declare different times for the other paramters since Time:bounds belong 
+<br />
+to Time and not to precipitation. Therefore I would prefer to give 
+<br />
+precipitation a cell_method attribute, e.g.
+<br />
+percip:cell_method: &quot;time: sum since time(0)&quot;
+<br />
+<br />Does there exist such a cell_method? Or is this a very uncommon case?
+<br />
+<br />Best regards,
+<br />
+<br />Heiko
+<br />
+<br /><pre>
+-- 
+Dr. Heiko Klein                              Tel. + 47 22 96 32 58
+Development Section / IT Department          Fax. + 47 22 69 63 55
+Norwegian Meteorological Institute           <a href="http://www.met.no">http://www.met.no</a>
+P.O. Box 43 Blindern  0313 Oslo NORWAY
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Aug 05 2008 - 05:34:20 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1457">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1458.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  Accumulation since timestep 0, cell-method"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1456.html" title="Previous message in the list">Heiko Klein: "[CF-metadata] Usage of integral_of_Y_wrt_X"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1457" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1457" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1457" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1457" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:06 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1456.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1458.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

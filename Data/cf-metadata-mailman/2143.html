@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Namespaces &amp; multiple conventions from Ethan Davis on 2009-07-23 (cf-metadata-mailman)</title>
+<meta name="Author" content="Ethan Davis (edavis)" />
+<meta name="Subject" content="[CF-metadata] Namespaces &amp; multiple conventions" />
+<meta name="Date" content="2009-07-23" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2142.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2144.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Namespaces &amp; multiple conventions</h1>
+<!-- received="Thu Jul 23 08:25:48 2009" -->
+<!-- isoreceived="20090723072548" -->
+<!-- sent="Thu, 23 Jul 2009 08:25:48 -0600" -->
+<!-- isosent="20090723142548" -->
+<!-- name="Ethan Davis" -->
+<!-- email="edavis" -->
+<!-- subject="[CF-metadata] Namespaces &amp; multiple conventions" -->
+<!-- id="4A6872EC.8010600_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="E7EF5BBF2666854B896473086F52964C169EB8_at_svr-arg-dc.Argans.local" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2143" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2144.html" accesskey="d" title="Brown, Jennifer: &quot;[CF-metadata] Cell methods - depth mean&quot;">Next message</a> ]
+[ <a href="./2142.html" title="Craig Donlon: &quot;[CF-metadata] Check out my photos on Facebook&quot;">Previous message</a> ]
+[ <a href="./2141.html" title="Stephen Emsley: &quot;[CF-metadata] Namespaces &#0038; multiple conventions&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2143" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2143" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2143" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2143" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Ethan Davis &lt;<a href="mailto:edavis?Subject=Re%3A%20%5BCF-metadata%5D%20Namespaces%20%26%20multiple%20conventions">edavis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 23 Jul 2009 08:25:48 -0600</span><br />
+</address>
+<br />
+Hi Stephen,
+<br />
+<br />It is hard to give concrete advice on this as attribute namespace use is
+<br />
+not yet part of the CF specification and there are a number of issues
+<br />
+surrounding it that need to be resolved before it becomes part of CF.
+<br />
+<br />I have volunteered to moderate ticket #27 and have been working on a
+<br />
+summary of the ticket for the last few days. I'll be posting that in the
+<br />
+next day or two. So hopefully we'll have some active discussion on it
+<br />
+and can come to some decisions, write a proposal, and get it folded into CF.
+<br />
+<br />If you don't have a looming deadline, it would probably be worth waiting
+<br />
+for some decisions on the various issues so that your data files won't
+<br />
+need to be changed to be CF compliant. (And, of course, your involvement
+<br />
+in the discussion would be most welcome.)
+<br />
+<br />On the other hand, there seems to be agreement on the general need for
+<br />
+and form of this proposal. The main issues are backward compatibility
+<br />
+and resolving semantic conflict/overlap between conventions.
+<br />
+<br />So, if you need to move forward, I think the main potentially moving
+<br />
+target for your use case is how to declare a namespace.
+<br />
+&lt;opinion&gt;
+<br />
+Currently, I am leaning towards keeping the declaration separate from
+<br />
+the existing framework. So, to me the &quot;namespaces&quot; global attribute
+<br />
+looks pretty good as does the namespace declaration container variable.
+<br />
+But the decision that will come out of the CF discussion is no clear.
+<br />
+&lt;/opinion&gt;
+<br />
+<br />The issue of escaping the colon (&quot;:&quot;) separating the namespace prefix
+<br />
+from the attribute name is only an issue for CDL. In a netCDF file, a
+<br />
+colon is just a colon. So, there is no need to deal with colon escaping
+<br />
+in code using the netCDF API. If you use ncdump, you will see colons
+<br />
+escaped with a backslash (&quot;\:&quot;). And if you write CDL from which to
+<br />
+generate files you will need to escape the colons.
+<br />
+<br />Regards,
+<br />
+<br />Ethan
+<br />
+<br />Stephen Emsley wrote:
+<br />
+<em class="quotelev1">&gt; Hi All
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I am considering data formats for an ESA Sentinel satellite ground
+</em><br />
+<em class="quotelev1">&gt; processor. It will be based on netCDF-CF files packaged within SAFE , a
+</em><br />
+<em class="quotelev1">&gt; common format for archiving to ensure long-term preservation of EO data
+</em><br />
+<em class="quotelev1">&gt; holdings (earth.esa.int/SAFE). I would like to be able to include SAFE
+</em><br />
+<em class="quotelev1">&gt; attributes within the netCDF-CF in order to simplify packaging.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I came across CF-Metadata Trac ticket #27 : ?Using namespace tags to
+</em><br />
+<em class="quotelev1">&gt; include other conventions...? which discussed using the Conventions
+</em><br />
+<em class="quotelev1">&gt; attribute to declare an association between a prefix and namespace or
+</em><br />
+<em class="quotelev1">&gt; using a ?namespace? attribute. Several alternative syntax were proposed.
+</em><br />
+<em class="quotelev1">&gt; For instance,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Conventions = &quot;CF-1.4&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;   namespaces =&quot;safe=<a href="http://earth.esa.int/SAFE/">http://earth.esa.int/SAFE/</a>&lt;S3_schema&gt;/&quot;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  or
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Conventions = &quot;CF-1.4, safe=<a href="http://earth.esa.int/SAFE/">http://earth.esa.int/SAFE/</a>&lt;s3_schema&gt;/&quot;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; In addition, there was discussion regarding the necessity of not of
+</em><br />
+<em class="quotelev1">&gt; escaping the additional colon in the use of the namespace prefix e.g.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; var:safe\:attrib = &quot;value&quot; ; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; or
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; var:safe:attrib = ?value? ;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; This use of namespaces would enable middleware to ingest netCDF-CF files
+</em><br />
+<em class="quotelev1">&gt; and easily extract the mandatory SAFE attributes from the headers.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Ticket #27 is a year old and I have found no more recent discussion
+</em><br />
+<em class="quotelev1">&gt; regarding this proposal. Overloading the Conventions attribute to
+</em><br />
+<em class="quotelev1">&gt; declare additional namespaces is fine (as was discussed in the Trac
+</em><br />
+<em class="quotelev1">&gt; ticket). However, the usage of the prefix in netCDF files was undecided.
+</em><br />
+<em class="quotelev1">&gt; I would be grateful for guidance regarding the recommended use of
+</em><br />
+<em class="quotelev1">&gt; namespaces with respect to CF Conventions.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Kind Regards
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Steve
+</em><br />
+<span id="received"><dfn>Received on</dfn> Thu Jul 23 2009 - 08:25:48 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2143">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2144.html" title="Next message in the list">Brown, Jennifer: "[CF-metadata] Cell methods - depth mean"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2142.html" title="Previous message in the list">Craig Donlon: "[CF-metadata] Check out my photos on Facebook"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2141.html" title="Message to which this message replies">Stephen Emsley: "[CF-metadata] Namespaces &#0038; multiple conventions"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2143" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2143" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2143" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2143" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:20 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2142.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2144.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Ocean CTD data following CF Conventions v1.6 from Nan Galbraith on 2012-04-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="Nan Galbraith (ngalbraith)" />
+<meta name="Subject" content="[CF-metadata] Ocean CTD data following CF Conventions v1.6" />
+<meta name="Date" content="2012-04-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4340.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4342.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Ocean CTD data following CF Conventions v1.6</h1>
+<!-- received="Tue Apr  3 07:27:26 2012" -->
+<!-- isoreceived="20120403062726" -->
+<!-- sent="Tue, 03 Apr 2012 09:27:26 -0400" -->
+<!-- isosent="20120403132726" -->
+<!-- name="Nan Galbraith" -->
+<!-- email="ngalbraith" -->
+<!-- subject="[CF-metadata] Ocean CTD data following CF Conventions v1.6" -->
+<!-- id="4F7AFABE.10206_at_whoi.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="E0D57B53BF474899B615C9B7E75B3AAA_at_awalsh1" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4341" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4342.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Ocean CTD data following CF Conventions v1.6&quot;">Next message</a> ]
+[ <a href="./4340.html" title="Lowry, Roy K.: &quot;[CF-metadata] Ocean CTD data following CF Conventions v1.6&quot;">Previous message</a> ]
+[ <a href="./4335.html" title="andrew walsh: &quot;[CF-metadata] Ocean CTD data following CF Conventions v1.6&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4341" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4341" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4341" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4341" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Nan Galbraith &lt;<a href="mailto:ngalbraith?Subject=Re%3A%20%5BCF-metadata%5D%20Ocean%20CTD%20data%20following%20CF%20Conventions%20v1.6">ngalbraith</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 03 Apr 2012 09:27:26 -0400</span><br />
+</address>
+<br />
+Hi Andrew -
+<br />
+<em class="quotelev1">&gt; I am not sure if I should have TEMPERATURE and SALINITY arrays with 4 
+</em><br />
+<em class="quotelev1">&gt; dimensions
+</em><br />
+<em class="quotelev1">&gt; like TEMPERATURE(TIME,LATITUDE,LONGITUDE,PRESSURE) or just 1 dimension
+</em><br />
+<em class="quotelev1">&gt; like I have above i.e. TEMPERATURE(PRESSURE). ? 
+</em><br />
+<br />While we don't store profile data in OceanSITES, we are working on our 
+<br />
+coordinates
+<br />
+to make them conform more to published standards, so I've been reading 
+<br />
+the docs
+<br />
+on this lately. So, it's fresh in my mind - fresh, if not exactly clear.
+<br />
+<br />The NetCDF Best Practices page 
+<br />
+(unidata.ucar.edu/software/netcdf/docs/BestPractices.html)
+<br />
+recommends:
+<br />
+<em class="quotelev1">&gt; Make coordinate variables for every dimension possible (except for 
+</em><br />
+<em class="quotelev1">&gt; string length dimensions).
+</em><br />
+And the CF manual has this recommendation about the order of the coordinates
+<br />
+and the use of scalar coordinates as dimensions, in section 2.4:
+<br />
+<br /><em class="quotelev1">&gt; If any or all of the dimensions of a variable have the interpretations 
+</em><br />
+<em class="quotelev1">&gt; of &quot;date or time&quot; (|T|), &quot;height or depth&quot; (|Z|), &quot;latitude&quot; (|Y|), or 
+</em><br />
+<em class="quotelev1">&gt; &quot;longitude&quot; (|X|) then we recommend, but do not require (see 
+</em><br />
+<em class="quotelev1">&gt; Section 1.4, &quot;Relationship to the COARDS Conventions&quot; 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/cf-conventions.html#coards-relationship">http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/cf-conventions.html#coards-relationship</a>&gt;), 
+</em><br />
+<em class="quotelev1">&gt; those dimensions to appear in the relative order |T|, then |Z|, then 
+</em><br />
+<em class="quotelev1">&gt; |Y|, then |X| in the CDL definition corresponding to the file. All 
+</em><br />
+<em class="quotelev1">&gt; other dimensions should, whenever possible, be placed to the left of 
+</em><br />
+<em class="quotelev1">&gt; the spatiotemporal dimensions.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dimensions may be of any size, including unity. When a single value of 
+</em><br />
+<em class="quotelev1">&gt; some coordinate applies to all the values in a variable, the 
+</em><br />
+<em class="quotelev1">&gt; recommended means of attaching this information to the variable is by 
+</em><br />
+<em class="quotelev1">&gt; use of a dimension of size unity with a one-element coordinate variable.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br />These 2 recommendations would lead me to suggest that, *IF* your 
+<br />
+pressure is
+<br />
+monotonic, you'd want to use:
+<br />
+TEMPERATURE(TIME,PRESSURE,LATITUDE,LONGITUDE)
+<br />
+<br />If your pressure isn't monotonic, and so can't be a coordinate variable, 
+<br />
+I don't know
+<br />
+whether it's preferable to demote ALL the coordinates to auxiliary 
+<br />
+coordinate variable
+<br />
+status,
+<br />
+TEMPERATURE: coordinates = &quot;TIME,PRESSURE,LATITUDE,LONGITUDE&quot; ;
+<br />
+<br />Cheers -
+<br />
+Nan
+<br />
+<br />On 4/3/12 1:15 AM, andrew walsh wrote:
+<br />
+<em class="quotelev1">&gt; Hi Roy/All,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Agree totally it would be good to get this CTD netCDF done in an 
+</em><br />
+<em class="quotelev1">&gt; interoperable way.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Regarding having pressure vs. depth. We liked to use pressure because:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 1) It is the thing that is measured, let us store just that and 
+</em><br />
+<em class="quotelev1">&gt; calculate depth if needed.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 2) Depth can later be easily be calculated on the fly
+</em><br />
+<em class="quotelev1">&gt; using the 'Pressure to Depth' algorithm in  &quot;UNESCO (1983) Techinical
+</em><br />
+<em class="quotelev1">&gt; Papers in Marine Science 44, Algorithms for Computation of fundamental 
+</em><br />
+<em class="quotelev1">&gt; properties
+</em><br />
+<em class="quotelev1">&gt; of Seawater. One can use the python seawater library (see 
+</em><br />
+<em class="quotelev1">&gt; <a href="http://packages.python.org/seawater/">http://packages.python.org/seawater/</a> )
+</em><br />
+<em class="quotelev1">&gt; and seawater.csiro.depth(p, lat) to get depth from pressure and 
+</em><br />
+<em class="quotelev1">&gt; seawater.csiro.pres(depth, lat)
+</em><br />
+<em class="quotelev1">&gt; to get pressure from depth.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 3) I noted that the ARGO project (10000's CTD like profiles) and 
+</em><br />
+<em class="quotelev1">&gt; others like
+</em><br />
+<em class="quotelev1">&gt; CSIRO Oceanography in Aust. make data available with just pressure.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 4) It makes our processing and QC a whole lot simpler. We don't
+</em><br />
+<em class="quotelev1">&gt; have to worry about calculating and managing the extra 'depth' variable.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Is  there any problem with having the &quot;pressure&quot; as a co-ordinate 
+</em><br />
+<em class="quotelev1">&gt; which isn't really a &quot;dimensional&quot;
+</em><br />
+<em class="quotelev1">&gt; quantity like depth (z) in the 4-D sense i.e x,y,z,t ?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; However I note that pressure (decibar) is allowed as a vertical axis 
+</em><br />
+<em class="quotelev1">&gt; e.g see section
+</em><br />
+<em class="quotelev1">&gt; 4.3. Vertical (Height or Depth) Coordinate of CF v1.6 conventions 
+</em><br />
+<em class="quotelev1">&gt; document which says:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; &quot;A vertical coordinate will be identifiable by:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; . units of pressure; or
+</em><br />
+<em class="quotelev1">&gt; . the presence of the positive attribute with a value of up or down 
+</em><br />
+<em class="quotelev1">&gt; (case insensitive).
+</em><br />
+<em class="quotelev1">&gt; &quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; AND
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; section 4.3.1. &quot;Dimensional Vertical Coordinate&quot; which says:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; &quot;The units attribute for dimensional coordinates will be a string 
+</em><br />
+<em class="quotelev1">&gt; formatted as per the udunits.dat3 file. The
+</em><br />
+<em class="quotelev1">&gt; acceptable units for vertical (depth or height) coordinate variables are:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; . units of pressure as listed in the file udunits.dat. For vertical 
+</em><br />
+<em class="quotelev1">&gt; axes the most commonly used of these include
+</em><br />
+<em class="quotelev1">&gt; include bar, millibar, decibar, atmosphere (atm), pascal (Pa), and hPa.
+</em><br />
+<em class="quotelev1">&gt; ...
+</em><br />
+<em class="quotelev1">&gt; ...&quot;?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Regards,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Andrew
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message ----- From: Lowry, Roy K.
+</em><br />
+<em class="quotelev1">&gt; To: andrew walsh
+</em><br />
+<em class="quotelev1">&gt; Cc: Jim Biard ; Upendra Dadi ; cf-metadata at cgd.ucar.edu ; Luke Callcut 
+</em><br />
+<em class="quotelev1">&gt; ; greg at metoc.gov.au ; sdn2-tech at seadatanet.org
+</em><br />
+<em class="quotelev1">&gt; Sent: Tuesday, April 03, 2012 2:16 PM
+</em><br />
+<em class="quotelev1">&gt; Subject: RE: [CF-metadata] Ocean CTD data following CF Conventions v1.6
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi Andrew,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; SeaDataNet will very soon be considering how it is going to encode 
+</em><br />
+<em class="quotelev1">&gt; data, including single CTD casts, in CF-compliant NetCDF and so I 
+</em><br />
+<em class="quotelev1">&gt; think the time is ripe for agreeing how the significant numbers of us 
+</em><br />
+<em class="quotelev1">&gt; who indulge in this practice for whatever reason do it.  That way 
+</em><br />
+<em class="quotelev1">&gt; we'll end up with interoperable data.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think there are a number of people on this list who have already 
+</em><br />
+<em class="quotelev1">&gt; encoded single CTDs into NetCDF and so it would be useful to start by 
+</em><br />
+<em class="quotelev1">&gt; asking for descriptions (like Andrew's examples) of how this has been 
+</em><br />
+<em class="quotelev1">&gt; done and what tools are dependent upon that encoding.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The z co-ordinate parameter (pressure/depth) is also an issue worth 
+</em><br />
+<em class="quotelev1">&gt; resolving. Whilst interconversions are relatively straightforward, 
+</em><br />
+<em class="quotelev1">&gt; agreement would make life much easier.  My preference leans dowards 
+</em><br />
+<em class="quotelev1">&gt; having depth as the dimension with pressure as an optional variable. 
+</em><br />
+<em class="quotelev1">&gt; That way we interoperate with other kinds of oceanographic profile 
+</em><br />
+<em class="quotelev1">&gt; data such as bottle data.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If we can get that far, we can then look at how to aggregate multiple 
+</em><br />
+<em class="quotelev1">&gt; CTDs into a file according to the CF point data conventions.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers, Roy.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; From: andrew walsh [awalsh at metoc.gov.au]
+</em><br />
+<em class="quotelev1">&gt; Sent: 03 April 2012 04:39
+</em><br />
+<em class="quotelev1">&gt; To: Lowry, Roy K.
+</em><br />
+<em class="quotelev1">&gt; Cc: Jim Biard; Upendra Dadi; cf-metadata at cgd.ucar.edu; Luke Callcut; 
+</em><br />
+<em class="quotelev1">&gt; greg at metoc.gov.au
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] Ocean CTD data following CF Conventions v1.6
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hello Roy, Upendra, Jim and CF list,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks for all your feedbacks.
+</em><br />
+<em class="quotelev1">&gt; My proposal relates to single CTD profile data (a vertical profile of 
+</em><br />
+<em class="quotelev1">&gt; pressure, Temp. Salinity)
+</em><br />
+<em class="quotelev1">&gt; not a trajectory in x,y,z,t and I have put :featureType = &quot;profile&quot; as 
+</em><br />
+<em class="quotelev1">&gt; recommended in the global
+</em><br />
+<em class="quotelev1">&gt; attributes section. As Roy has mentioned to Jim CTD data is usually 
+</em><br />
+<em class="quotelev1">&gt; processed and QC'ed
+</em><br />
+<em class="quotelev1">&gt; as a single profile per netCDF file so that's why I am doing it this way.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Aggregations using multiple CTD profiles per netCDF file
+</em><br />
+<em class="quotelev1">&gt; may be constructed later at say national/international data centres 
+</em><br />
+<em class="quotelev1">&gt; and these aggregrations
+</em><br />
+<em class="quotelev1">&gt; would follow the CF conventions v1.6, Chapter 9 - Discrete Sampling 
+</em><br />
+<em class="quotelev1">&gt; geometries
+</em><br />
+<em class="quotelev1">&gt; and also the new netCDF templates provided by NODC, thanks NODC -:)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Roy,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The recent NODC netCDF templates don't have an aggregation example for 
+</em><br />
+<em class="quotelev1">&gt; CTD
+</em><br />
+<em class="quotelev1">&gt; however the &quot;Profile/World Ocean Database Observed Level&quot; example 
+</em><br />
+<em class="quotelev1">&gt; comes close
+</em><br />
+<em class="quotelev1">&gt; (see <a href="http://www.nodc.noaa.gov/data/formats/netcdf/">http://www.nodc.noaa.gov/data/formats/netcdf/</a>) and click on
+</em><br />
+<em class="quotelev1">&gt; Profile/World Ocean Database Observed Level link. This example appears
+</em><br />
+<em class="quotelev1">&gt; to be for ocean station/bottle samples with vertical dimension of 
+</em><br />
+<em class="quotelev1">&gt; depth (z) (m) rather
+</em><br />
+<em class="quotelev1">&gt; than case of CTD which would use pressure (dbar) as the vertical (z) 
+</em><br />
+<em class="quotelev1">&gt; dimension.
+</em><br />
+<em class="quotelev1">&gt; It would be useful I think to have a NODC netCDF template for an 
+</em><br />
+<em class="quotelev1">&gt; aggregation of
+</em><br />
+<em class="quotelev1">&gt; CTD casts.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Upendra,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Based on your responses and what I have seen at NODC and other places
+</em><br />
+<em class="quotelev1">&gt; it seems there are 2 methods to do this:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 1) You can have dimensions for lat, long time i.e an array
+</em><br />
+<em class="quotelev1">&gt; with a single value. That is:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; dimensions:
+</em><br />
+<em class="quotelev1">&gt; TIME=1
+</em><br />
+<em class="quotelev1">&gt; PRESSURE=729
+</em><br />
+<em class="quotelev1">&gt; LATITUDE=1
+</em><br />
+<em class="quotelev1">&gt; LONGITUDE=1
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; variables:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double TIME(TIME) ;
+</em><br />
+<em class="quotelev1">&gt; + std. attrs.
+</em><br />
+<em class="quotelev1">&gt; double LATITUDE(LATITUDE) ;
+</em><br />
+<em class="quotelev1">&gt; + std. attrs.
+</em><br />
+<em class="quotelev1">&gt; double LONGITUDE(LONGITUDE) ;
+</em><br />
+<em class="quotelev1">&gt; + std. attrs.
+</em><br />
+<em class="quotelev1">&gt; double PRESSURE(PRESSURE) ;
+</em><br />
+<em class="quotelev1">&gt; + std. attrs.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double TEMPERATURE(PRESSURE) ;
+</em><br />
+<em class="quotelev1">&gt; + std. attrs.
+</em><br />
+<em class="quotelev1">&gt; TEMPERATURE:coordinates=&quot;TIME LATITUDE LONGITUDE PRESSURE&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double SALINITY(PRESSURE) ;
+</em><br />
+<em class="quotelev1">&gt; + std. attrs.
+</em><br />
+<em class="quotelev1">&gt; SALINITY:coordinates=&quot;TIME LATITUDE LONGITUDE PRESSURE&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; (2) Other way is to have Lat, long and time are single valued scalars:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; dimensions:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; PRESSURE=729
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; variables:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double LATITUDE ;
+</em><br />
+<em class="quotelev1">&gt; + std attrs
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double LONGITUDE ;
+</em><br />
+<em class="quotelev1">&gt; + std attrs
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double TIME ;
+</em><br />
+<em class="quotelev1">&gt; +std attrs
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double PRESSURE(PRESSURE) ;
+</em><br />
+<em class="quotelev1">&gt; + std. attrs.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double TEMPERATURE(PRESSURE) ;
+</em><br />
+<em class="quotelev1">&gt; + std. attrs.
+</em><br />
+<em class="quotelev1">&gt; TEMPERATURE:coordinates=&quot;TIME LATITUDE LONGITUDE PRESSURE&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double SALINITY(PRESSURE) ;
+</em><br />
+<em class="quotelev1">&gt; + std. attrs.
+</em><br />
+<em class="quotelev1">&gt; SALINITY:coordinates=&quot;TIME LATITUDE LONGITUDE PRESSURE&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I can see Method 2 above is much simpler and I would prefer to use
+</em><br />
+<em class="quotelev1">&gt; this.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; However I have another small concern about all of this. Given there is 
+</em><br />
+<em class="quotelev1">&gt; more than
+</em><br />
+<em class="quotelev1">&gt; 1 way to treat dimensions does the netCDF plotting and visualising 
+</em><br />
+<em class="quotelev1">&gt; sofware out
+</em><br />
+<em class="quotelev1">&gt; there understand both approaches. That is can we expect something like
+</em><br />
+<em class="quotelev1">&gt; ncBrowse, IDV or ODV? give me a plot of say salinity vs. pressure
+</em><br />
+<em class="quotelev1">&gt; and work OK with BOTH approaches to coding the netCDF?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks and Regards All,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Andrew Walsh
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message ----- From: Lowry, Roy K.
+</em><br />
+<em class="quotelev1">&gt; To: Upendra Dadi ; andrew walsh
+</em><br />
+<em class="quotelev1">&gt; Cc: Luke Callcut ; cf-metadata at cgd.ucar.edu ; sdn2-tech at seadatanet.org
+</em><br />
+<em class="quotelev1">&gt; Sent: Tuesday, April 03, 2012 9:31 AM
+</em><br />
+<em class="quotelev1">&gt; Subject: RE: [CF-metadata] Ocean CTD data following CF Conventions v1.6
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi Upendra,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I like the idea of a station dimension.  It goes a long way to 
+</em><br />
+<em class="quotelev1">&gt; resolving the issue raised in my response to Jim which was based on 
+</em><br />
+<em class="quotelev1">&gt; the tunnel vision of having pressure/depth as a dimension.  I have yet 
+</em><br />
+<em class="quotelev1">&gt; to look at the recently published NODC NetCDF templates.  Is this CTD 
+</em><br />
+<em class="quotelev1">&gt; encoding included in them?  If so, I'll bump up looking at them on my 
+</em><br />
+<em class="quotelev1">&gt; 'todo' list. I'd also recommend that Andrew and my colleagues in 
+</em><br />
+<em class="quotelev1">&gt; SeaDataNet take a look.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers, Roy.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; From: cf-metadata-bounces at cgd.ucar.edu 
+</em><br />
+<em class="quotelev1">&gt; [cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Upendra Dadi 
+</em><br />
+<em class="quotelev1">&gt; [upendra.dadi at noaa.gov]
+</em><br />
+<em class="quotelev1">&gt; Sent: 02 April 2012 17:21
+</em><br />
+<em class="quotelev1">&gt; To: andrew walsh
+</em><br />
+<em class="quotelev1">&gt; Cc: Luke Callcut; cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] Ocean CTD data following CF Conventions v1.6
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi Andrew,
+</em><br />
+<em class="quotelev1">&gt;  Either way it should be okay as far as CF compliance is concerned. 
+</em><br />
+<em class="quotelev1">&gt; But the dimensions - latitude, longitude and time are not really 
+</em><br />
+<em class="quotelev1">&gt; required.  If it is required to indicate that there is only one 
+</em><br />
+<em class="quotelev1">&gt; station(profile) in the file, there could be a dimension for number of 
+</em><br />
+<em class="quotelev1">&gt; stations instead, with a value of 1. Also, using a station dimension 
+</em><br />
+<em class="quotelev1">&gt; is the way to go if storing a collection of profiles in a single file. 
+</em><br />
+<em class="quotelev1">&gt; Here at NODC, we took the approach that we would use the same 
+</em><br />
+<em class="quotelev1">&gt; consistent representation whether there is a single instance or a 
+</em><br />
+<em class="quotelev1">&gt; collection in a file.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Upendra
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On Mon, Apr 2, 2012 at 2:51 AM, andrew walsh &lt;awalsh at metoc.gov.au&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi CF lis
+</em><br />
+<em class="quotelev1">&gt; We are working on coding up some 1000's netCDF files off CTD
+</em><br />
+<em class="quotelev1">&gt; instruments and want to make usre we are following the
+</em><br />
+<em class="quotelev1">&gt; latest netCDF conventions (v1.6) OK. As background the CTD records
+</em><br />
+<em class="quotelev1">&gt; a profile pressure, temperature and salinity.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Here is a summarised CDL version (not all attributes+variables+qc 
+</em><br />
+<em class="quotelev1">&gt; flags there, just majors for now)
+</em><br />
+<em class="quotelev1">&gt; of what we propose:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; dimensions:
+</em><br />
+<em class="quotelev1">&gt; TIME=1
+</em><br />
+<em class="quotelev1">&gt; PRESSURE=729
+</em><br />
+<em class="quotelev1">&gt; LATITUDE=1
+</em><br />
+<em class="quotelev1">&gt; LONGITUDE=1
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; variables:
+</em><br />
+<em class="quotelev1">&gt; double TIME(TIME) ;
+</em><br />
+<em class="quotelev1">&gt; TIME:standard_name = &quot;time&quot; ;
+</em><br />
+<em class="quotelev1">&gt; TIME:units = &quot;days since 1950-01-01 00:00:00Z&quot; ;
+</em><br />
+<em class="quotelev1">&gt; TIME:axis = &quot;T&quot; ;
+</em><br />
+<em class="quotelev1">&gt; TIME:valid_min = 0. ;
+</em><br />
+<em class="quotelev1">&gt; TIME:valid_max = 999999. ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double LATITUDE(LATITUDE) ;
+</em><br />
+<em class="quotelev1">&gt; LATITUDE:standard_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt; LATITUDE:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev1">&gt; LATITUDE:axis = &quot;Y&quot; ;
+</em><br />
+<em class="quotelev1">&gt; LATITUDE:valid_min = -90. ;
+</em><br />
+<em class="quotelev1">&gt; LATITUDE:valid_max = 90. ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double LONGITUDE(LONGITUDE) ;
+</em><br />
+<em class="quotelev1">&gt; LONGITUDE:standard_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt; LONGITUDE:units = &quot;degrees_east&quot; ;
+</em><br />
+<em class="quotelev1">&gt; LONGITUDE:axis = &quot;X&quot; ;
+</em><br />
+<em class="quotelev1">&gt; LONGITUDE:valid_min = -180. ;
+</em><br />
+<em class="quotelev1">&gt; LONGITUDE:valid_max = 180. ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double PRESSURE(PRESSURE) ;
+</em><br />
+<em class="quotelev1">&gt; PRESSURE:standard_name = &quot;sea_water_pressure&quot; ;
+</em><br />
+<em class="quotelev1">&gt; PRESSURE:units = &quot;decibars&quot; ;
+</em><br />
+<em class="quotelev1">&gt; PRESSURE:axis = &quot;Z&quot; ;
+</em><br />
+<em class="quotelev1">&gt; PRESSURE:valid_min = 0. ;
+</em><br />
+<em class="quotelev1">&gt; PRESSURE:valid_max = 12000. ;
+</em><br />
+<em class="quotelev1">&gt; PRESSURE:positive = &quot;down&quot; ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double TEMPERATURE(PRESSURE) ;
+</em><br />
+<em class="quotelev1">&gt; TEMPERATURE:standard_name = &quot;sea_water_temperature&quot; ;
+</em><br />
+<em class="quotelev1">&gt; TEMPERATURE:units = &quot;degrees_C&quot; ;
+</em><br />
+<em class="quotelev1">&gt; TEMPERATURE:_FillValue = -99.99 ;
+</em><br />
+<em class="quotelev1">&gt; TEMPERATURE:valid_min = -2. ;
+</em><br />
+<em class="quotelev1">&gt; TEMPERATURE:valid_max = 40. ;
+</em><br />
+<em class="quotelev1">&gt; TEMPERATURE:coordinates=&quot;TIME LATITUDE LONGITUDE PRESSURE&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double SALINITY(PRESSURE) ;
+</em><br />
+<em class="quotelev1">&gt; SALINITY:standard_name = &quot;sea_water_salinity&quot; ;
+</em><br />
+<em class="quotelev1">&gt; SALINITY:units = &quot;psu&quot; ;
+</em><br />
+<em class="quotelev1">&gt; SALINITY:_FillValue = -99.99 ;
+</em><br />
+<em class="quotelev1">&gt; SALINITY:valid_min = 0. ;
+</em><br />
+<em class="quotelev1">&gt; SALINITY:valid_max = 40. ;
+</em><br />
+<em class="quotelev1">&gt; SALINITY:coordinates=&quot;TIME LATITUDE LONGITUDE PRESSURE&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; // global attributes:
+</em><br />
+<em class="quotelev1">&gt; :conventions = &quot;CF-1.6&quot; ;
+</em><br />
+<em class="quotelev1">&gt; :featureType = &quot;profile&quot;
+</em><br />
+<em class="quotelev1">&gt; :cdm_data_type = &quot;profile&quot;
+</em><br />
+<em class="quotelev1">&gt; + several other attributes later for ISO19115 metadata generation
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I am not sure  if I should have TEMPERATURE and SALINITY arrays with 4 
+</em><br />
+<em class="quotelev1">&gt; dimensions
+</em><br />
+<em class="quotelev1">&gt; like TEMPERATURE(TIME,LATITUDE,LONGITUDE,PRESSURE) or just 1 dimension
+</em><br />
+<em class="quotelev1">&gt; like I have above i.e. TEMPERATURE(PRESSURE). ?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Any feedback on the above is greatly appreciated.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Andrew Walsh
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><pre>
+-- 
+*******************************************************
+* Nan Galbraith        Information Systems Specailist *
+* Upper Ocean Processes Group            Mail Stop 29 *
+* Woods Hole Oceanographic Institution                *
+* Woods Hole, MA 02543                 (508) 289-2444 *
+*******************************************************
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20120403/5c33e064/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20120403/5c33e064/attachment-0001.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Apr 03 2012 - 07:27:26 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4341">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4342.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Ocean CTD data following CF Conventions v1.6"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4340.html" title="Previous message in the list">Lowry, Roy K.: "[CF-metadata] Ocean CTD data following CF Conventions v1.6"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4335.html" title="Message to which this message replies">andrew walsh: "[CF-metadata] Ocean CTD data following CF Conventions v1.6"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4341" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4341" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4341" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4341" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:01 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4340.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4342.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

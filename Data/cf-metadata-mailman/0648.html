@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Indicating data lineage or provenance from Godin, Michael on 2007-01-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Godin, Michael (Godin)" />
+<meta name="Subject" content="[CF-metadata] Indicating data lineage or provenance" />
+<meta name="Date" content="2007-01-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0647.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0649.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Indicating data lineage or provenance</h1>
+<!-- received="Thu Jan  4 17:31:58 2007" -->
+<!-- isoreceived="20070104173158" -->
+<!-- sent="Thu, 4 Jan 2007 16:31:58 -0800" -->
+<!-- isosent="20070105003158" -->
+<!-- name="Godin, Michael" -->
+<!-- email="Godin" -->
+<!-- subject="[CF-metadata] Indicating data lineage or provenance" -->
+<!-- id="DA82364018466D4D842186D5356746B1D7CA42_at_ice.shore.mbari.org" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start648" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0649.html" accesskey="d" title="John Graybeal: &quot;[CF-metadata] Indicating data lineage or provenance&quot;">Next message</a> ]
+[ <a href="./0647.html" title="Christiane Textor: &quot;[CF-metadata] aerosol and chemistry names - continuation&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0649.html" accesskey="t" title="John Graybeal: &quot;[CF-metadata] Indicating data lineage or provenance&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg648" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg648" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg648" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg648" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Godin, Michael &lt;<a href="mailto:Godin?Subject=Re%3A%20%5BCF-metadata%5D%20Indicating%20data%20lineage%20or%20provenance">Godin</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 4 Jan 2007 16:31:58 -0800</span><br />
+</address>
+<br />
+I am heartened by all the work this group has put into standardizing the metadata for representing multiple models as an ensemble.  However, a particularly thorny issue has been for the most part ignored (I think it has been called a &quot;nightmare&quot;), so I'd like to see if some of the list participants would be willing to work together to form a proposal for indicating the provenance of derived data (for example, initial conditions, larger nested grids, and assimilated data that go into models).
+<br />
+&nbsp;
+<br />
+So here are the (draft) requirements that I believe need to be addressed:
+<br />
+- derived data users need to be provided the information they need to understand the differences between data (covering the same temporal/spatial region) from different models and different realizations of the same model.
+<br />
+- skeptics (public, governmental, other modelers, observationalists) should be able to request specific observational data that went into a model realization (granted, the request may be for data that would not otherwise be made publicly available).
+<br />
+- the specification of source data should not only indicate the source data files (or URLs) and variables, but also the temporal/spatial/realization bounds on the supplied data. 
+<br />
+&nbsp;
+<br />
+I don't know if such a set of requirements can be addressed in a netCDF file, or if it would require a link to an external XML (or other format) file.  I am also unsure if any other community has solved the above set of requirements - both the OGC's Layer definition within their Web Map Context Document standard, and the FGDC's Lineage definition within their Content Standard for Digital Geospatial Metadata allow one to specify a lot of metadata about lineage and provenance, but neither really meets the requirements above.  
+<br />
+&nbsp;
+<br />
+My initial thought for doing this within a netCDF file would be to specify a global multi-line string attribute called something like &quot;lineage&quot; or &quot;provenance&quot; and populate it with a series of DAP2.0-like URIs (of course, this would not be global in the case of ensembles -- it would have to be a 3D set of strings!).  The DAP2.0 URIs would not have to be publicly accessible, and the syntax would have to allow combinations of hyperslab operators and queries -- which I do not believe any DAP server actually allows -- but would allow one to specify precise data ranges.  
+<br />
+&nbsp;
+<br />
+Thanks for your consideration,
+<br />
+Mike
+<br />
+<br />_____________________________________________
+<br />
+<br />Michael A. Godin
+<br />
+<br />Software Engineer
+<br />
+<br />Monterey Bay Aquarium Research Institute
+<br />
+<br />Phone: 831-775-2063  <a href="http://www.mbari.org">http://www.mbari.org</a> &lt;<a href="http://www.mbari.org/">http://www.mbari.org/</a>&gt; 
+<br />
+<br />&nbsp;
+<br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20070104/f671ef20/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20070104/f671ef20/attachment-0002.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Jan 04 2007 - 17:31:58 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start648">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0649.html" title="Next message in the list">John Graybeal: "[CF-metadata] Indicating data lineage or provenance"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0647.html" title="Previous message in the list">Christiane Textor: "[CF-metadata] aerosol and chemistry names - continuation"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0649.html" title="Next message in this discussion thread">John Graybeal: "[CF-metadata] Indicating data lineage or provenance"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0649.html" title="Message sent in reply to this message">John Graybeal: "[CF-metadata] Indicating data lineage or provenance"</a></li>
+<li><dfn>Reply</dfn>: <a href="./0650.html" title="Message sent in reply to this message">Bryan Lawrence: "[CF-metadata] Indicating data lineage or provenance"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg648" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg648" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg648" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg648" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:53 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0647.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0649.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

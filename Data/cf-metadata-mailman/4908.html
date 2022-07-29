@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  Cell methods for any combinations of dimensions from Jonathan Gregory on 2012-12-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  Cell methods for any combinations of dimensions" />
+<meta name="Date" content="2012-12-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4907.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4909.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  Cell methods for any combinations of dimensions</h1>
+<!-- received="Thu Dec 20 01:01:26 2012" -->
+<!-- isoreceived="20121220010126" -->
+<!-- sent="Thu, 20 Dec 2012 08:01:26 +0000" -->
+<!-- isosent="20121220080126" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  Cell methods for any combinations of dimensions" -->
+<!-- id="20121220080126.GC18084_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4908" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4909.html" accesskey="d" title="Andreas Hilboll: &quot;[CF-metadata] Proposal for standard names: tropospheric trace gas column amounts&quot;">Next message</a> ]
+[ <a href="./4907.html" title="Jonathan Gregory: &quot;[CF-metadata]  Monotonic coordinates&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4908" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4908" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4908" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4908" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20Cell%20methods%20for%20any%20combinations%20of%20dimensions">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 20 Dec 2012 08:01:26 +0000</span><br />
+</address>
+<br />
+Dear Bangyou
+<br />
+<br />Yes, CF has conventions for this. See Section 7.3 on &quot;Cell methods&quot;. However,
+<br />
+I'm sorry to say I don't understand your example - I must have misunderstood
+<br />
+something elementary. For instance, if you average over two of the dimensions,
+<br />
+such as sites and sowing, won't there be 3*3=9 values, not 54? Such an average
+<br />
+would be stored in CF as
+<br />
+<br />&nbsp;&nbsp;dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;meansites = 1;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;meansowing = 1;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;water = 3;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;genotype = 3;
+<br />
+&nbsp;&nbsp;float meanyield(meansites, meansowing, water, genotype);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;meanyield:cell_methods=&quot;meansites: mean meansowing: mean&quot;;
+<br />
+&nbsp;
+<br />
+However this does not indicate what the meansites and meansowing axes are.
+<br />
+They should describe themselves somehow e.g.
+<br />
+<br />&nbsp;&nbsp;float meansites(meansites);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;meansites:long_name=&quot;site&quot;;
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br /><em class="quotelev1">&gt; Our data is structured as follows:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; dimensions:
+</em><br />
+<em class="quotelev1">&gt;     sites = 3;
+</em><br />
+<em class="quotelev1">&gt;     sowing = 3;
+</em><br />
+<em class="quotelev1">&gt;     water = 3;
+</em><br />
+<em class="quotelev1">&gt;     genotype = 3;
+</em><br />
+<em class="quotelev1">&gt; variables:
+</em><br />
+<em class="quotelev1">&gt;     float yield(sites, sowing, water, genotype);
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; We would like to apply a method (e.g. mean) to any combinations of
+</em><br />
+<em class="quotelev1">&gt; dimensions. For this data set, we will store mean yields for
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 1. all 81 yields: *1* value.
+</em><br />
+<em class="quotelev1">&gt; 2. average for three dimensions, sites, sowing, water and genotype: *12
+</em><br />
+<em class="quotelev1">&gt;    *values.
+</em><br />
+<em class="quotelev1">&gt; 3. average for two dimensions, sites and sowing, sites and water, sites
+</em><br />
+<em class="quotelev1">&gt;    and genotype, sowing and water, sowing and genotype, water and
+</em><br />
+<em class="quotelev1">&gt;    genotype: *54 *values
+</em><br />
+<em class="quotelev1">&gt; 4. average for one dimension: *324* values.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Do some conventions already designed? Or do we need to design some
+</em><br />
+<em class="quotelev1">&gt; new conventions? Any suggestions are welcome.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Best regards,
+</em><br />
+<em class="quotelev1">&gt; Bangyou
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; -- 
+</em><br />
+<em class="quotelev1">&gt; *Dr. Bangyou ZHENG*
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Postdoctoral Research Fellow
+</em><br />
+<em class="quotelev1">&gt; CSIRO Plant Industry
+</em><br />
+<em class="quotelev1">&gt; Queensland Bioscience Precinct
+</em><br />
+<em class="quotelev1">&gt; 306 Carmody Rd
+</em><br />
+<em class="quotelev1">&gt; St Lucia, QLD, 4067, AUSTRALIA
+</em><br />
+<em class="quotelev1">&gt; Tel: +61 (0)7 3214 2620
+</em><br />
+<em class="quotelev1">&gt; Fax: +61 (0)7 3214 2920
+</em><br />
+<em class="quotelev1">&gt; Email: Bangyou.Zheng at csiro.au
+</em><br />
+<br /><em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><br />----- End forwarded message -----
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Dec 20 2012 - 01:01:26 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4908">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4909.html" title="Next message in the list">Andreas Hilboll: "[CF-metadata] Proposal for standard names: tropospheric trace gas column amounts"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4907.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  Monotonic coordinates"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4908" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4908" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4908" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4908" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:12 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4907.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4909.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,1319 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Are ensembles a compelling use case for &quot;group-aware&quot; metadata? from Roy Mendelssohn - NOAA Federal on 2013-09-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Roy Mendelssohn - NOAA Federal (roy.mendelssohn)" />
+<meta name="Subject" content="[CF-metadata] Are ensembles a compelling use case for &quot;group-aware&quot; metadata?" />
+<meta name="Date" content="2013-09-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5748.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5750.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Are ensembles a compelling use case for &quot;group-aware&quot; metadata?</h1>
+<!-- received="Thu Sep 26 14:17:05 2013" -->
+<!-- isoreceived="20130926131705" -->
+<!-- sent="Thu, 26 Sep 2013 13:17:05 -0700" -->
+<!-- isosent="20130926201705" -->
+<!-- name="Roy Mendelssohn - NOAA Federal" -->
+<!-- email="roy.mendelssohn" -->
+<!-- subject="[CF-metadata] Are ensembles a compelling use case for &quot;group-aware&quot; metadata?" -->
+<!-- id="3606A99B-E80A-435C-84DE-7879F704CBBF_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="524270B6.6000406_at_uci.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5749" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5750.html" accesskey="d" title="Steve Hankin: &quot;[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)&quot;">Next message</a> ]
+[ <a href="./5748.html" title="Jim Biard: &quot;[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)&quot;">Previous message</a> ]
+[ <a href="./5740.html" title="Charlie Zender: &quot;[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5749" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5749" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5749" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5749" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Roy Mendelssohn - NOAA Federal &lt;<a href="mailto:roy.mendelssohn?Subject=Re%3A%20%5BCF-metadata%5D%20Are%20ensembles%20a%20compelling%20use%20case%20for%20%22group-aware%22%20metadata%3F">roy.mendelssohn</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 26 Sep 2013 13:17:05 -0700</span><br />
+</address>
+<br />
+Hi All:
+<br />
+<br />Charlie provided me with some sample files.  Below, with but two comments, is  the one line command in R for several examples, using David Pierce's wonderful ncdf4 package, to traverse the complete structure of the file. The results show the command and the resulting structure. My two comments are:
+<br />
+<br />1.  As a user, compare this to receiving multiple files with a manifest.
+<br />
+<br />2. Note that the return, as all returns from ncdf4, whether the file is flat or has groups, is a hierarchical structure.
+<br />
+<br />-Roy
+<br />
+<br />***********   Example 1 *****************
+<br />
+<br /><em class="quotelev1">&gt; testFile&lt;-nc_open('cmip5.nc')
+</em><br />
+<em class="quotelev1">&gt; str(testFile)
+</em><br />
+List of 11
+<br />
+&nbsp;$ filename  : chr &quot;cmip5.nc&quot;
+<br />
+&nbsp;$ writable  : logi FALSE
+<br />
+&nbsp;$ id        : int 65536
+<br />
+&nbsp;$ format    : chr &quot;NC_FORMAT_NETCDF4&quot;
+<br />
+&nbsp;$ groups    :List of 4
+<br />
+&nbsp;&nbsp;..$ :List of 7
+<br />
+&nbsp;&nbsp;.. ..$ id   : int 65536
+<br />
+&nbsp;&nbsp;.. ..$ name : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims: int 0
+<br />
+&nbsp;&nbsp;.. ..$ nvars: int 0
+<br />
+&nbsp;&nbsp;.. ..$ natts: int 3
+<br />
+&nbsp;&nbsp;.. ..$ dimid: int[0 (1d)] 
+<br />
+&nbsp;&nbsp;.. ..$ fqgn : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncgroup4&quot;
+<br />
+&nbsp;&nbsp;..$ :List of 7
+<br />
+&nbsp;&nbsp;.. ..$ id   : int 65537
+<br />
+&nbsp;&nbsp;.. ..$ name : chr &quot;cesm&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims: int 1
+<br />
+&nbsp;&nbsp;.. ..$ nvars: int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts: int 1
+<br />
+&nbsp;&nbsp;.. ..$ dimid: int [1(1d)] 0
+<br />
+&nbsp;&nbsp;.. ..$ fqgn : chr &quot;cesm&quot;
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncgroup4&quot;
+<br />
+&nbsp;&nbsp;..$ :List of 7
+<br />
+&nbsp;&nbsp;.. ..$ id   : int 65538
+<br />
+&nbsp;&nbsp;.. ..$ name : chr &quot;ecmwf&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims: int 1
+<br />
+&nbsp;&nbsp;.. ..$ nvars: int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts: int 1
+<br />
+&nbsp;&nbsp;.. ..$ dimid: int [1(1d)] 1
+<br />
+&nbsp;&nbsp;.. ..$ fqgn : chr &quot;ecmwf&quot;
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncgroup4&quot;
+<br />
+&nbsp;&nbsp;..$ :List of 7
+<br />
+&nbsp;&nbsp;.. ..$ id   : int 65539
+<br />
+&nbsp;&nbsp;.. ..$ name : chr &quot;giss&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims: int 1
+<br />
+&nbsp;&nbsp;.. ..$ nvars: int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts: int 1
+<br />
+&nbsp;&nbsp;.. ..$ dimid: int [1(1d)] 2
+<br />
+&nbsp;&nbsp;.. ..$ fqgn : chr &quot;giss&quot;
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncgroup4&quot;
+<br />
+&nbsp;$ ndims     : num 3
+<br />
+&nbsp;$ natts     : num 6
+<br />
+&nbsp;$ dim       :List of 3
+<br />
+&nbsp;&nbsp;..$ cesm/time :List of 10
+<br />
+&nbsp;&nbsp;.. ..$ name         : chr &quot;cesm/time&quot;
+<br />
+&nbsp;&nbsp;.. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim        : logi TRUE
+<br />
+&nbsp;&nbsp;.. ..$ group_index  : int 2
+<br />
+&nbsp;&nbsp;.. ..$ group_id     : int 65537
+<br />
+&nbsp;&nbsp;.. ..$ id           : int 0
+<br />
+&nbsp;&nbsp;.. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: int 2
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65537
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;..$ ecmwf/time:List of 10
+<br />
+&nbsp;&nbsp;.. ..$ name         : chr &quot;ecmwf/time&quot;
+<br />
+&nbsp;&nbsp;.. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim        : logi TRUE
+<br />
+&nbsp;&nbsp;.. ..$ group_index  : int 3
+<br />
+&nbsp;&nbsp;.. ..$ group_id     : int 65538
+<br />
+&nbsp;&nbsp;.. ..$ id           : int 1
+<br />
+&nbsp;&nbsp;.. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: int 3
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65538
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;..$ giss/time :List of 10
+<br />
+&nbsp;&nbsp;.. ..$ name         : chr &quot;giss/time&quot;
+<br />
+&nbsp;&nbsp;.. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim        : logi TRUE
+<br />
+&nbsp;&nbsp;.. ..$ group_index  : int 4
+<br />
+&nbsp;&nbsp;.. ..$ group_id     : int 65539
+<br />
+&nbsp;&nbsp;.. ..$ id           : int 2
+<br />
+&nbsp;&nbsp;.. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: int 4
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65539
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;$ unlimdimid: num 1
+<br />
+&nbsp;$ nvars     : num 3
+<br />
+&nbsp;$ var       :List of 3
+<br />
+&nbsp;&nbsp;..$ cesm/tas :List of 21
+<br />
+&nbsp;&nbsp;.. ..$ id          :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : num 0
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65537
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num 1
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi FALSE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ name        : chr &quot;cesm/tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims       : int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts       : int 0
+<br />
+&nbsp;&nbsp;.. ..$ size        : int 4
+<br />
+&nbsp;&nbsp;.. ..$ dimids      : int 0
+<br />
+&nbsp;&nbsp;.. ..$ prec        : chr &quot;float&quot;
+<br />
+&nbsp;&nbsp;.. ..$ units       : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ longname    : chr &quot;tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ group_index : int 2
+<br />
+&nbsp;&nbsp;.. ..$ chunksizes  : int 1
+<br />
+&nbsp;&nbsp;.. ..$ storage     : int 2
+<br />
+&nbsp;&nbsp;.. ..$ shuffle     : int 0
+<br />
+&nbsp;&nbsp;.. ..$ compression : logi NA
+<br />
+&nbsp;&nbsp;.. ..$ dims        : list()
+<br />
+&nbsp;&nbsp;.. ..$ dim         :List of 1
+<br />
+&nbsp;&nbsp;.. .. ..$ :List of 10
+<br />
+&nbsp;&nbsp;.. .. .. ..$ name         : chr &quot;cesm/time&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ unlim        : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_index  : int 2
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_id     : int 65537
+<br />
+&nbsp;&nbsp;.. .. .. ..$ id           : int 0
+<br />
+&nbsp;&nbsp;.. .. .. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_index: int 2
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_id   : int 65537
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ varsize     : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim       : logi TRUE
+<br />
+&nbsp;&nbsp;.. ..$ missval     : num 1e+30
+<br />
+&nbsp;&nbsp;.. ..$ hasAddOffset: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ hasScaleFact: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncvar4&quot;
+<br />
+&nbsp;&nbsp;..$ ecmwf/tas:List of 21
+<br />
+&nbsp;&nbsp;.. ..$ id          :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : num 0
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65538
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num 2
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi FALSE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ name        : chr &quot;ecmwf/tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims       : int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts       : int 0
+<br />
+&nbsp;&nbsp;.. ..$ size        : int 4
+<br />
+&nbsp;&nbsp;.. ..$ dimids      : int 1
+<br />
+&nbsp;&nbsp;.. ..$ prec        : chr &quot;float&quot;
+<br />
+&nbsp;&nbsp;.. ..$ units       : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ longname    : chr &quot;tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ group_index : int 3
+<br />
+&nbsp;&nbsp;.. ..$ chunksizes  : int 1
+<br />
+&nbsp;&nbsp;.. ..$ storage     : int 2
+<br />
+&nbsp;&nbsp;.. ..$ shuffle     : int 0
+<br />
+&nbsp;&nbsp;.. ..$ compression : logi NA
+<br />
+&nbsp;&nbsp;.. ..$ dims        : list()
+<br />
+&nbsp;&nbsp;.. ..$ dim         :List of 1
+<br />
+&nbsp;&nbsp;.. .. ..$ :List of 10
+<br />
+&nbsp;&nbsp;.. .. .. ..$ name         : chr &quot;ecmwf/time&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ unlim        : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_index  : int 3
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_id     : int 65538
+<br />
+&nbsp;&nbsp;.. .. .. ..$ id           : int 1
+<br />
+&nbsp;&nbsp;.. .. .. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_index: int 3
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_id   : int 65538
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ varsize     : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim       : logi TRUE
+<br />
+&nbsp;&nbsp;.. ..$ missval     : num 1e+30
+<br />
+&nbsp;&nbsp;.. ..$ hasAddOffset: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ hasScaleFact: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncvar4&quot;
+<br />
+&nbsp;&nbsp;..$ giss/tas :List of 21
+<br />
+&nbsp;&nbsp;.. ..$ id          :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : num 0
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65539
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num 3
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi FALSE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ name        : chr &quot;giss/tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims       : int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts       : int 0
+<br />
+&nbsp;&nbsp;.. ..$ size        : int 4
+<br />
+&nbsp;&nbsp;.. ..$ dimids      : int 2
+<br />
+&nbsp;&nbsp;.. ..$ prec        : chr &quot;float&quot;
+<br />
+&nbsp;&nbsp;.. ..$ units       : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ longname    : chr &quot;tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ group_index : int 4
+<br />
+&nbsp;&nbsp;.. ..$ chunksizes  : int 1
+<br />
+&nbsp;&nbsp;.. ..$ storage     : int 2
+<br />
+&nbsp;&nbsp;.. ..$ shuffle     : int 0
+<br />
+&nbsp;&nbsp;.. ..$ compression : logi NA
+<br />
+&nbsp;&nbsp;.. ..$ dims        : list()
+<br />
+&nbsp;&nbsp;.. ..$ dim         :List of 1
+<br />
+&nbsp;&nbsp;.. .. ..$ :List of 10
+<br />
+&nbsp;&nbsp;.. .. .. ..$ name         : chr &quot;giss/time&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ unlim        : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_index  : int 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_id     : int 65539
+<br />
+&nbsp;&nbsp;.. .. .. ..$ id           : int 2
+<br />
+&nbsp;&nbsp;.. .. .. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_index: int 4
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_id   : int 65539
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ varsize     : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim       : logi TRUE
+<br />
+&nbsp;&nbsp;.. ..$ missval     : num 1e+30
+<br />
+&nbsp;&nbsp;.. ..$ hasAddOffset: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ hasScaleFact: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncvar4&quot;
+<br />
+&nbsp;- attr(*, &quot;class&quot;)= chr &quot;ncdf4&quot;
+<br />
+<br /><br />******* Example 2 **********
+<br />
+<br /><em class="quotelev1">&gt; testFile&lt;-nc_open('mdl.nc')
+</em><br />
+<em class="quotelev1">&gt; str(testFile)
+</em><br />
+List of 11
+<br />
+&nbsp;$ filename  : chr &quot;mdl.nc&quot;
+<br />
+&nbsp;$ writable  : logi FALSE
+<br />
+&nbsp;$ id        : int 65536
+<br />
+&nbsp;$ format    : chr &quot;NC_FORMAT_NETCDF4&quot;
+<br />
+&nbsp;$ groups    :List of 7
+<br />
+&nbsp;&nbsp;..$ :List of 7
+<br />
+&nbsp;&nbsp;.. ..$ id   : int 65536
+<br />
+&nbsp;&nbsp;.. ..$ name : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims: int 0
+<br />
+&nbsp;&nbsp;.. ..$ nvars: int 0
+<br />
+&nbsp;&nbsp;.. ..$ natts: int 0
+<br />
+&nbsp;&nbsp;.. ..$ dimid: int[0 (1d)] 
+<br />
+&nbsp;&nbsp;.. ..$ fqgn : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncgroup4&quot;
+<br />
+&nbsp;&nbsp;..$ :List of 7
+<br />
+&nbsp;&nbsp;.. ..$ id   : int 65537
+<br />
+&nbsp;&nbsp;.. ..$ name : chr &quot;cesm&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims: int 0
+<br />
+&nbsp;&nbsp;.. ..$ nvars: int 0
+<br />
+&nbsp;&nbsp;.. ..$ natts: int 0
+<br />
+&nbsp;&nbsp;.. ..$ dimid: int[0 (1d)] 
+<br />
+&nbsp;&nbsp;.. ..$ fqgn : chr &quot;cesm&quot;
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncgroup4&quot;
+<br />
+&nbsp;&nbsp;..$ :List of 7
+<br />
+&nbsp;&nbsp;.. ..$ id   : int 65538
+<br />
+&nbsp;&nbsp;.. ..$ name : chr &quot;cesm_01&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims: int 1
+<br />
+&nbsp;&nbsp;.. ..$ nvars: int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts: int 5
+<br />
+&nbsp;&nbsp;.. ..$ dimid: int [1(1d)] 0
+<br />
+&nbsp;&nbsp;.. ..$ fqgn : chr &quot;cesm/cesm_01&quot;
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncgroup4&quot;
+<br />
+&nbsp;&nbsp;..$ :List of 7
+<br />
+&nbsp;&nbsp;.. ..$ id   : int 65539
+<br />
+&nbsp;&nbsp;.. ..$ name : chr &quot;cesm_02&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims: int 1
+<br />
+&nbsp;&nbsp;.. ..$ nvars: int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts: int 5
+<br />
+&nbsp;&nbsp;.. ..$ dimid: int [1(1d)] 1
+<br />
+&nbsp;&nbsp;.. ..$ fqgn : chr &quot;cesm/cesm_02&quot;
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncgroup4&quot;
+<br />
+&nbsp;&nbsp;..$ :List of 7
+<br />
+&nbsp;&nbsp;.. ..$ id   : int 65540
+<br />
+&nbsp;&nbsp;.. ..$ name : chr &quot;ecmwf&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims: int 0
+<br />
+&nbsp;&nbsp;.. ..$ nvars: int 0
+<br />
+&nbsp;&nbsp;.. ..$ natts: int 0
+<br />
+&nbsp;&nbsp;.. ..$ dimid: int[0 (1d)] 
+<br />
+&nbsp;&nbsp;.. ..$ fqgn : chr &quot;ecmwf&quot;
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncgroup4&quot;
+<br />
+&nbsp;&nbsp;..$ :List of 7
+<br />
+&nbsp;&nbsp;.. ..$ id   : int 65541
+<br />
+&nbsp;&nbsp;.. ..$ name : chr &quot;ecmwf_01&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims: int 1
+<br />
+&nbsp;&nbsp;.. ..$ nvars: int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts: int 5
+<br />
+&nbsp;&nbsp;.. ..$ dimid: int [1(1d)] 2
+<br />
+&nbsp;&nbsp;.. ..$ fqgn : chr &quot;ecmwf/ecmwf_01&quot;
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncgroup4&quot;
+<br />
+&nbsp;&nbsp;..$ :List of 7
+<br />
+&nbsp;&nbsp;.. ..$ id   : int 65542
+<br />
+&nbsp;&nbsp;.. ..$ name : chr &quot;ecmwf_02&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims: int 1
+<br />
+&nbsp;&nbsp;.. ..$ nvars: int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts: int 5
+<br />
+&nbsp;&nbsp;.. ..$ dimid: int [1(1d)] 3
+<br />
+&nbsp;&nbsp;.. ..$ fqgn : chr &quot;ecmwf/ecmwf_02&quot;
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncgroup4&quot;
+<br />
+&nbsp;$ ndims     : num 4
+<br />
+&nbsp;$ natts     : num 20
+<br />
+&nbsp;$ dim       :List of 4
+<br />
+&nbsp;&nbsp;..$ cesm_01/time :List of 10
+<br />
+&nbsp;&nbsp;.. ..$ name         : chr &quot;cesm_01/time&quot;
+<br />
+&nbsp;&nbsp;.. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim        : logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ group_index  : int 3
+<br />
+&nbsp;&nbsp;.. ..$ group_id     : int 65538
+<br />
+&nbsp;&nbsp;.. ..$ id           : int 0
+<br />
+&nbsp;&nbsp;.. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: int 3
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65538
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;..$ cesm_02/time :List of 10
+<br />
+&nbsp;&nbsp;.. ..$ name         : chr &quot;cesm_02/time&quot;
+<br />
+&nbsp;&nbsp;.. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim        : logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ group_index  : int 4
+<br />
+&nbsp;&nbsp;.. ..$ group_id     : int 65539
+<br />
+&nbsp;&nbsp;.. ..$ id           : int 1
+<br />
+&nbsp;&nbsp;.. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: int 4
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65539
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;..$ ecmwf_01/time:List of 10
+<br />
+&nbsp;&nbsp;.. ..$ name         : chr &quot;ecmwf_01/time&quot;
+<br />
+&nbsp;&nbsp;.. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim        : logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ group_index  : int 6
+<br />
+&nbsp;&nbsp;.. ..$ group_id     : int 65541
+<br />
+&nbsp;&nbsp;.. ..$ id           : int 2
+<br />
+&nbsp;&nbsp;.. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: int 6
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65541
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;..$ ecmwf_02/time:List of 10
+<br />
+&nbsp;&nbsp;.. ..$ name         : chr &quot;ecmwf_02/time&quot;
+<br />
+&nbsp;&nbsp;.. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim        : logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ group_index  : int 7
+<br />
+&nbsp;&nbsp;.. ..$ group_id     : int 65542
+<br />
+&nbsp;&nbsp;.. ..$ id           : int 3
+<br />
+&nbsp;&nbsp;.. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: int 7
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65542
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;$ unlimdimid: num -1
+<br />
+&nbsp;$ nvars     : num 4
+<br />
+&nbsp;$ var       :List of 4
+<br />
+&nbsp;&nbsp;..$ cesm_01/tas :List of 21
+<br />
+&nbsp;&nbsp;.. ..$ id          :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : num 0
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65538
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num 1
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi FALSE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ name        : chr &quot;cesm_01/tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims       : int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts       : int 0
+<br />
+&nbsp;&nbsp;.. ..$ size        : int 4
+<br />
+&nbsp;&nbsp;.. ..$ dimids      : int 0
+<br />
+&nbsp;&nbsp;.. ..$ prec        : chr &quot;float&quot;
+<br />
+&nbsp;&nbsp;.. ..$ units       : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ longname    : chr &quot;tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ group_index : int 3
+<br />
+&nbsp;&nbsp;.. ..$ chunksizes  : int 0
+<br />
+&nbsp;&nbsp;.. ..$ storage     : int 1
+<br />
+&nbsp;&nbsp;.. ..$ shuffle     : int 0
+<br />
+&nbsp;&nbsp;.. ..$ compression : logi NA
+<br />
+&nbsp;&nbsp;.. ..$ dims        : list()
+<br />
+&nbsp;&nbsp;.. ..$ dim         :List of 1
+<br />
+&nbsp;&nbsp;.. .. ..$ :List of 10
+<br />
+&nbsp;&nbsp;.. .. .. ..$ name         : chr &quot;cesm_01/time&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ unlim        : logi FALSE
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_index  : int 3
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_id     : int 65538
+<br />
+&nbsp;&nbsp;.. .. .. ..$ id           : int 0
+<br />
+&nbsp;&nbsp;.. .. .. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_index: int 3
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_id   : int 65538
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ varsize     : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim       : logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ missval     : num 1e+30
+<br />
+&nbsp;&nbsp;.. ..$ hasAddOffset: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ hasScaleFact: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncvar4&quot;
+<br />
+&nbsp;&nbsp;..$ cesm_02/tas :List of 21
+<br />
+&nbsp;&nbsp;.. ..$ id          :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : num 0
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65539
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num 2
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi FALSE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ name        : chr &quot;cesm_02/tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims       : int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts       : int 0
+<br />
+&nbsp;&nbsp;.. ..$ size        : int 4
+<br />
+&nbsp;&nbsp;.. ..$ dimids      : int 1
+<br />
+&nbsp;&nbsp;.. ..$ prec        : chr &quot;float&quot;
+<br />
+&nbsp;&nbsp;.. ..$ units       : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ longname    : chr &quot;tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ group_index : int 4
+<br />
+&nbsp;&nbsp;.. ..$ chunksizes  : int 0
+<br />
+&nbsp;&nbsp;.. ..$ storage     : int 1
+<br />
+&nbsp;&nbsp;.. ..$ shuffle     : int 0
+<br />
+&nbsp;&nbsp;.. ..$ compression : logi NA
+<br />
+&nbsp;&nbsp;.. ..$ dims        : list()
+<br />
+&nbsp;&nbsp;.. ..$ dim         :List of 1
+<br />
+&nbsp;&nbsp;.. .. ..$ :List of 10
+<br />
+&nbsp;&nbsp;.. .. .. ..$ name         : chr &quot;cesm_02/time&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ unlim        : logi FALSE
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_index  : int 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_id     : int 65539
+<br />
+&nbsp;&nbsp;.. .. .. ..$ id           : int 1
+<br />
+&nbsp;&nbsp;.. .. .. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_index: int 4
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_id   : int 65539
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ varsize     : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim       : logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ missval     : num 1e+30
+<br />
+&nbsp;&nbsp;.. ..$ hasAddOffset: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ hasScaleFact: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncvar4&quot;
+<br />
+&nbsp;&nbsp;..$ ecmwf_01/tas:List of 21
+<br />
+&nbsp;&nbsp;.. ..$ id          :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : num 0
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65541
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num 3
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi FALSE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ name        : chr &quot;ecmwf_01/tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims       : int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts       : int 0
+<br />
+&nbsp;&nbsp;.. ..$ size        : int 4
+<br />
+&nbsp;&nbsp;.. ..$ dimids      : int 2
+<br />
+&nbsp;&nbsp;.. ..$ prec        : chr &quot;float&quot;
+<br />
+&nbsp;&nbsp;.. ..$ units       : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ longname    : chr &quot;tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ group_index : int 6
+<br />
+&nbsp;&nbsp;.. ..$ chunksizes  : int 0
+<br />
+&nbsp;&nbsp;.. ..$ storage     : int 1
+<br />
+&nbsp;&nbsp;.. ..$ shuffle     : int 0
+<br />
+&nbsp;&nbsp;.. ..$ compression : logi NA
+<br />
+&nbsp;&nbsp;.. ..$ dims        : list()
+<br />
+&nbsp;&nbsp;.. ..$ dim         :List of 1
+<br />
+&nbsp;&nbsp;.. .. ..$ :List of 10
+<br />
+&nbsp;&nbsp;.. .. .. ..$ name         : chr &quot;ecmwf_01/time&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ unlim        : logi FALSE
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_index  : int 6
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_id     : int 65541
+<br />
+&nbsp;&nbsp;.. .. .. ..$ id           : int 2
+<br />
+&nbsp;&nbsp;.. .. .. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_index: int 6
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_id   : int 65541
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ varsize     : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim       : logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ missval     : num 1e+30
+<br />
+&nbsp;&nbsp;.. ..$ hasAddOffset: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ hasScaleFact: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncvar4&quot;
+<br />
+&nbsp;&nbsp;..$ ecmwf_02/tas:List of 21
+<br />
+&nbsp;&nbsp;.. ..$ id          :List of 5
+<br />
+&nbsp;&nbsp;.. .. ..$ id         : num 0
+<br />
+&nbsp;&nbsp;.. .. ..$ group_index: num -1
+<br />
+&nbsp;&nbsp;.. .. ..$ group_id   : int 65542
+<br />
+&nbsp;&nbsp;.. .. ..$ list_index : num 4
+<br />
+&nbsp;&nbsp;.. .. ..$ isdimvar   : logi FALSE
+<br />
+&nbsp;&nbsp;.. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ name        : chr &quot;ecmwf_02/tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ ndims       : int 1
+<br />
+&nbsp;&nbsp;.. ..$ natts       : int 0
+<br />
+&nbsp;&nbsp;.. ..$ size        : int 4
+<br />
+&nbsp;&nbsp;.. ..$ dimids      : int 3
+<br />
+&nbsp;&nbsp;.. ..$ prec        : chr &quot;float&quot;
+<br />
+&nbsp;&nbsp;.. ..$ units       : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. ..$ longname    : chr &quot;tas&quot;
+<br />
+&nbsp;&nbsp;.. ..$ group_index : int 7
+<br />
+&nbsp;&nbsp;.. ..$ chunksizes  : int 0
+<br />
+&nbsp;&nbsp;.. ..$ storage     : int 1
+<br />
+&nbsp;&nbsp;.. ..$ shuffle     : int 0
+<br />
+&nbsp;&nbsp;.. ..$ compression : logi NA
+<br />
+&nbsp;&nbsp;.. ..$ dims        : list()
+<br />
+&nbsp;&nbsp;.. ..$ dim         :List of 1
+<br />
+&nbsp;&nbsp;.. .. ..$ :List of 10
+<br />
+&nbsp;&nbsp;.. .. .. ..$ name         : chr &quot;ecmwf_02/time&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ len          : int 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ unlim        : logi FALSE
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_index  : int 7
+<br />
+&nbsp;&nbsp;.. .. .. ..$ group_id     : int 65542
+<br />
+&nbsp;&nbsp;.. .. .. ..$ id           : int 3
+<br />
+&nbsp;&nbsp;.. .. .. ..$ dimvarid     :List of 5
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ id         : int -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_index: int 7
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ group_id   : int 65542
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ list_index : num -1
+<br />
+&nbsp;&nbsp;.. .. .. .. ..$ isdimvar   : logi TRUE
+<br />
+&nbsp;&nbsp;.. .. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncid4&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ vals         : int [1:4] 1 2 3 4
+<br />
+&nbsp;&nbsp;.. .. .. ..$ units        : chr &quot;&quot;
+<br />
+&nbsp;&nbsp;.. .. .. ..$ create_dimvar: logi FALSE
+<br />
+&nbsp;&nbsp;.. .. .. ..- attr(*, &quot;class&quot;)= chr &quot;ncdim4&quot;
+<br />
+&nbsp;&nbsp;.. ..$ varsize     : int 4
+<br />
+&nbsp;&nbsp;.. ..$ unlim       : logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ missval     : num 1e+30
+<br />
+&nbsp;&nbsp;.. ..$ hasAddOffset: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..$ hasScaleFact: logi FALSE
+<br />
+&nbsp;&nbsp;.. ..- attr(*, &quot;class&quot;)= chr &quot;ncvar4&quot;
+<br />
+&nbsp;- attr(*, &quot;class&quot;)= chr &quot;ncdf4&quot;
+<br />
+<br />**********************
+<br />
+&quot;The contents of this message do not reflect any position of the U.S. Government or NOAA.&quot;
+<br />
+**********************
+<br />
+Roy Mendelssohn
+<br />
+Supervisory Operations Research Analyst
+<br />
+NOAA/NMFS
+<br />
+Environmental Research Division
+<br />
+Southwest Fisheries Science Center
+<br />
+1352 Lighthouse Avenue
+<br />
+Pacific Grove, CA 93950-2097
+<br />
+<br />e-mail: Roy.Mendelssohn at noaa.gov (Note new e-mail address)
+<br />
+voice: (831)-648-9029
+<br />
+fax: (831)-648-8440
+<br />
+www: <a href="http://www.pfeg.noaa.gov/">http://www.pfeg.noaa.gov/</a>
+<br />
+<br />&quot;Old age and treachery will overcome youth and skill.&quot;
+<br />
+&quot;From those who have been given much, much will be expected&quot; 
+<br />
+&quot;the arc of the moral universe is long, but it bends toward justice&quot; -MLK Jr.
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Sep 26 2013 - 14:17:05 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5749">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5750.html" title="Next message in the list">Steve Hankin: "[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5748.html" title="Previous message in the list">Jim Biard: "[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata? (CZ)"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5740.html" title="Message to which this message replies">Charlie Zender: "[CF-metadata] Are ensembles a compelling use case for &#0034;group-aware&#0034; metadata?"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5749" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5749" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5749" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5749" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:30 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5748.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5750.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

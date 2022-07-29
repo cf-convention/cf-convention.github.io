@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] fixed sensors, depth, datum from John Graybeal on 2008-09-11 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Graybeal (graybeal)" />
+<meta name="Subject" content="[CF-metadata] fixed sensors, depth, datum" />
+<meta name="Date" content="2008-09-11" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1523.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1525.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] fixed sensors, depth, datum</h1>
+<!-- received="Thu Sep 11 11:53:04 2008" -->
+<!-- isoreceived="20080911105304" -->
+<!-- sent="Thu, 11 Sep 2008 10:53:04 -0700" -->
+<!-- isosent="20080911175304" -->
+<!-- name="John Graybeal" -->
+<!-- email="graybeal" -->
+<!-- subject="[CF-metadata] fixed sensors, depth, datum" -->
+<!-- id="8200F0A4-27D3-4FF0-94EC-2924EFE28126_at_mbari.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="48C955E4.7020903_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1524" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1525.html" accesskey="d" title="Dale Robinson: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Next message</a> ]
+[ <a href="./1523.html" title="Dale Robinson: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Previous message</a> ]
+[ <a href="./1521.html" title="Ethan Davis: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1525.html" accesskey="t" title="Dale Robinson: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1524" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1524" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1524" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1524" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Graybeal &lt;<a href="mailto:graybeal?Subject=Re%3A%20%5BCF-metadata%5D%20fixed%20sensors%2C%20depth%2C%20datum">graybeal</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 11 Sep 2008 10:53:04 -0700</span><br />
+</address>
+<br />
+I agree that CF has enough things on its plate, and adding the ability  
+<br />
+to internally define vertical datum specifications should not be yet  
+<br />
+another one.
+<br />
+<br />And so it is important to provide the means to reference existing  
+<br />
+vertical datums.  I think a single height_above_vertical_datum as a  
+<br />
+standard name is more coherent (cogent?) than creating multiple  
+<br />
+'height_above_' parameters, whether they're referring to a vertical  
+<br />
+datum type (geoid, ellipsoid) or instance (WGS_84).
+<br />
+<br />The height_above_vertical_datum concept lends itself to two cases: (1)  
+<br />
+A vertical datum for the entire file; (2) different vertical datums  
+<br />
+for different variables. I suppose the case of a vertical datum for  
+<br />
+each measurement is fairly degenerate...).  Having both cases  
+<br />
+supported by attributes would be idea, it seems to me.
+<br />
+<br />The vertical datum reference could be specified in several forms: (a)  
+<br />
+a single URI for the vertical datum (or coordinate system  
+<br />
+incorporating a vertical datum), (b) organization name + vertical  
+<br />
+datum name or ID (note standard vocabularies often aren't defined for  
+<br />
+the organization name, so if you want computers to understand, these  
+<br />
+two terms would both need controlled vocabularies or some other unique  
+<br />
+referencing specification, like URIs or other unique IDs), (c) an  
+<br />
+internal reference to a CF-specified datum in the file, as for example  
+<br />
+the extended grid concept mentioned earlier.  (The last is only needed  
+<br />
+to support existing CF specifications that are relevant, if any;  
+<br />
+otherwise no need to worry about it.)
+<br />
+<br />I suspect (a), the best choice IMHO, will be implementable within a  
+<br />
+year if not months, but maybe is not usable today.  Conceivably  
+<br />
+attributes for both (a) and (b) could be created, and the user selects  
+<br />
+whichever is most appropriate.
+<br />
+<br />John
+<br />
+<br /><br />On Sep 11, 2008, at 10:31 AM, Ethan Davis wrote:
+<br />
+<br /><em class="quotelev1">&gt; Hi all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear Dale
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; It seems none of us who has so far contributed claims to be an  
+</em><br />
+<em class="quotelev2">&gt;&gt; expert. If any
+</em><br />
+<em class="quotelev2">&gt;&gt; experts are listening in, they are welcome to comment!
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Yes, please.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;   The recommendation is that I request a few new standard names.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;   Standard names like height_above_geoid and
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;   height_above_reference_ellipsoid seem appropriate
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Yes.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; As I understand it, a vertical datum can be based on sea levels,  
+</em><br />
+<em class="quotelev1">&gt; ellipsoids, or gravitational models. I think it would be better to  
+</em><br />
+<em class="quotelev1">&gt; add height_above_vertical_datum  rather than the two more specific  
+</em><br />
+<em class="quotelev1">&gt; terms above.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;   Can one use in any variable an
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;   attribute normally found in the crs variable such as
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;   vertical_datum_name?  For example
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;   float ht_wgs84
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;       ht_wgs84:long_name = &quot;Height referenced to WGS84&quot;;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;       ht_wgs84:standard_name = height_above_reference_ellipsoid
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;       ht_wgs84:vertical_datum_name = &quot;World Geodetic System 1984&quot;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; vertical_datum_name is not a CF attribute. CF doesn't preclude  
+</em><br />
+<em class="quotelev2">&gt;&gt; other attributes
+</em><br />
+<em class="quotelev2">&gt;&gt; being included, so that's fine, but software implementing CF would  
+</em><br />
+<em class="quotelev2">&gt;&gt; not use
+</em><br />
+<em class="quotelev2">&gt;&gt; the attribute.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; In my earlier posting, I suggested that we could define the geoid by
+</em><br />
+<em class="quotelev2">&gt;&gt; extending the grid_mapping variable (CF 5.6). There is currently  
+</em><br />
+<em class="quotelev2">&gt;&gt; not a standard
+</em><br />
+<em class="quotelev2">&gt;&gt; CF way to name the geoid or ellipsoid, but the ellipsoid can be  
+</em><br />
+<em class="quotelev2">&gt;&gt; defined
+</em><br />
+<em class="quotelev2">&gt;&gt; geometrically by the grid_mapping variable. Any solution to this  
+</em><br />
+<em class="quotelev2">&gt;&gt; would need
+</em><br />
+<em class="quotelev2">&gt;&gt; an addition to the CF standard.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Up to this point, grid mappings have only dealt with horizontal  
+</em><br />
+<em class="quotelev1">&gt; coordinates. I think the vertical datum information would fit better  
+</em><br />
+<em class="quotelev1">&gt; as attributes on vertical coordinates. That way it is closer to the  
+</em><br />
+<em class="quotelev1">&gt; actual coordinate variable and doesn't require a redirection to the  
+</em><br />
+<em class="quotelev1">&gt; grid mapping variable. This seems to more closely follow the lead of  
+</em><br />
+<em class="quotelev1">&gt; other CRS models (ISO and OGC, including Well-Known-Text) in keeping  
+</em><br />
+<em class="quotelev1">&gt; the vertical and horizontal coordinates separate. Combining a 2-D  
+</em><br />
+<em class="quotelev1">&gt; horizontal coordinate system and a 1-D vertical coordinate system to  
+</em><br />
+<em class="quotelev1">&gt; build a 3-D CRS. [With, as discussed earlier on this list I believe,  
+</em><br />
+<em class="quotelev1">&gt; an exception for the case where the 3-D CRS is fully based on an  
+</em><br />
+<em class="quotelev1">&gt; ellipsoid model of the earth. And for that we would need some way  
+</em><br />
+<em class="quotelev1">&gt; for the  vertical coordinate to reference a grid mapping variable as  
+</em><br />
+<em class="quotelev1">&gt; the place the vertical datum is defined.]
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dale you also asked:
+</em><br />
+<em class="quotelev2">&gt;&gt; In addition, there are locally derived datums that I assume are  
+</em><br />
+<em class="quotelev2">&gt;&gt; derived by observation over a specific period of time (e.g. tide  
+</em><br />
+<em class="quotelev2">&gt;&gt; datum epoch from1983-2001).  Once again one can propose specific  
+</em><br />
+<em class="quotelev2">&gt;&gt; standard names, e.g. height_above_mllw.  If there is no attribute  
+</em><br />
+<em class="quotelev2">&gt;&gt; like vertical_datum_epoch, then the epoch info could go in the  
+</em><br />
+<em class="quotelev2">&gt;&gt; comments attribute, but that does not seem satisfying.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I would rather see the definition and description of the vertical  
+</em><br />
+<em class="quotelev1">&gt; datum kept somewhere external to the data file and probably external  
+</em><br />
+<em class="quotelev1">&gt; to CF. With CF providing a place to reference the keeper of the  
+</em><br />
+<em class="quotelev1">&gt; vertical datum definition and an ID for the referenced vertical  
+</em><br />
+<em class="quotelev1">&gt; datum (maybe vertical_datum_authority and vertical_datum_name, or  
+</em><br />
+<em class="quotelev1">&gt; _id). Are there cases when a vertical datum is well defined but not  
+</em><br />
+<em class="quotelev1">&gt; used repeatedly so not worth standardizing? If so, then maybe CF  
+</em><br />
+<em class="quotelev1">&gt; should make it possible to capture that information.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Ethan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -- 
+</em><br />
+<em class="quotelev1">&gt; Ethan R. Davis                                Telephone: (303)  
+</em><br />
+<em class="quotelev1">&gt; 497-8155
+</em><br />
+<em class="quotelev1">&gt; Software Engineer                             Fax:       (303)  
+</em><br />
+<em class="quotelev1">&gt; 497-8690
+</em><br />
+<em class="quotelev1">&gt; UCAR Unidata Program Center                   E-mail:    edavis at ucar.edu
+</em><br />
+<em class="quotelev1">&gt; P.O. Box 3000
+</em><br />
+<em class="quotelev1">&gt; Boulder, CO  80307-3000                       <a href="http://www.unidata.ucar.edu/">http://www.unidata.ucar.edu/</a>
+</em><br />
+<em class="quotelev1">&gt; ---------------------------------------------------------------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><br />John
+<br />
+<br />--------------
+<br />
+John Graybeal   &lt;mailto:graybeal at mbari.org&gt;  -- 831-775-1956
+<br />
+Monterey Bay Aquarium Research Institute
+<br />
+Marine Metadata Interoperability Project: <a href="http://marinemetadata.org">http://marinemetadata.org</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Sep 11 2008 - 11:53:04 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1524">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1525.html" title="Next message in the list">Dale Robinson: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1523.html" title="Previous message in the list">Dale Robinson: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./1521.html" title="Message to which this message replies">Ethan Davis: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1525.html" title="Next message in this discussion thread">Dale Robinson: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1525.html" title="Message sent in reply to this message">Dale Robinson: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1524" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1524" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1524" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1524" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:08 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1523.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1525.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

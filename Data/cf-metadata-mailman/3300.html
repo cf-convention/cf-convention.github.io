@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] udunits handling of fuzzy time units from John Caron on 2011-03-15 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] udunits handling of fuzzy time units" />
+<meta name="Date" content="2011-03-15" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3299.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3301.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] udunits handling of fuzzy time units</h1>
+<!-- received="Mon Mar 14 18:31:18 2011" -->
+<!-- isoreceived="20110314183118" -->
+<!-- sent="Mon, 14 Mar 2011 18:31:18 -0600" -->
+<!-- isosent="20110315003118" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] udunits handling of fuzzy time units" -->
+<!-- id="4D7EB356.4000903_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3300" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3301.html" accesskey="d" title="Dave Allured: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Next message</a> ]
+[ <a href="./3299.html" title="John Caron: &quot;[CF-metadata] dimensionless vertical coordinates&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3301.html" accesskey="t" title="Dave Allured: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3300" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3300" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3300" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3300" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20udunits%20handling%20of%20fuzzy%20time%20units">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 14 Mar 2011 18:31:18 -0600</span><br />
+</address>
+<br />
+&nbsp;&nbsp;because udunits converts units like months and years to a fixed number 
+<br />
+of seconds, one cant really use things like months and years as units, 
+<br />
+since you get things like this:
+<br />
+<br />&nbsp;&nbsp;0 months since 1930-01-01 == 1930-01-01T00:00:00Z
+<br />
+&nbsp;&nbsp;1 months since 1930-01-01 == 1930-01-31T10:29:03Z
+<br />
+&nbsp;&nbsp;2 months since 1930-01-01 == 1930-03-02T20:58:07Z
+<br />
+&nbsp;&nbsp;3 months since 1930-01-01 == 1930-04-02T07:27:11Z
+<br />
+&nbsp;&nbsp;4 months since 1930-01-01 == 1930-05-02T17:56:15Z
+<br />
+&nbsp;&nbsp;5 months since 1930-01-01 == 1930-06-02T04:25:19Z
+<br />
+&nbsp;&nbsp;6 months since 1930-01-01 == 1930-07-02T14:54:22Z
+<br />
+&nbsp;&nbsp;7 months since 1930-01-01 == 1930-08-02T01:23:26Z
+<br />
+&nbsp;&nbsp;8 months since 1930-01-01 == 1930-09-01T11:52:30Z
+<br />
+&nbsp;&nbsp;9 months since 1930-01-01 == 1930-10-01T22:21:34Z
+<br />
+10 months since 1930-01-01 == 1930-11-01T08:50:38Z
+<br />
+11 months since 1930-01-01 == 1930-12-01T19:19:42Z
+<br />
+<br />&nbsp;&nbsp;0 years since 1850-01-01 == 1850-01-01T00:00:00Z
+<br />
+10 years since 1850-01-01 == 1860-01-01T10:07:39Z
+<br />
+20 years since 1850-01-01 == 1869-12-31T20:15:19Z
+<br />
+30 years since 1850-01-01 == 1880-01-01T06:22:59Z
+<br />
+40 years since 1850-01-01 == 1889-12-31T16:30:38Z
+<br />
+50 years since 1850-01-01 == 1900-01-01T02:38:18Z
+<br />
+60 years since 1850-01-01 == 1910-01-01T12:45:58Z
+<br />
+70 years since 1850-01-01 == 1920-01-01T22:53:38Z
+<br />
+80 years since 1850-01-01 == 1930-01-01T09:01:17Z
+<br />
+90 years since 1850-01-01 == 1940-01-01T19:08:57Z
+<br />
+<br />whereas you might really want:
+<br />
+<br />0 months since 1930-01-01 = 1930-01-01T00:00Z
+<br />
+1 months since 1930-01-01 = 1930-02-01T00:00Z
+<br />
+2 months since 1930-01-01 = 1930-03-01T00:00Z
+<br />
+3 months since 1930-01-01 = 1930-04-01T00:00Z
+<br />
+4 months since 1930-01-01 = 1930-05-01T00:00Z
+<br />
+5 months since 1930-01-01 = 1930-06-01T00:00Z
+<br />
+6 months since 1930-01-01 = 1930-07-01T00:00Z
+<br />
+7 months since 1930-01-01 = 1930-08-01T00:00Z
+<br />
+8 months since 1930-01-01 = 1930-09-01T00:00Z
+<br />
+9 months since 1930-01-01 = 1930-10-01T00:00Z
+<br />
+10 months since 1930-01-01 = 1930-11-01T00:00Z
+<br />
+11 months since 1930-01-01 = 1930-12-01T00:00Z
+<br />
+<br />&nbsp;&nbsp;0 years since 1850-01-01 = 1850-01-01T00:00Z
+<br />
+10 years since 1850-01-01 = 1860-01-01T00:00Z
+<br />
+20 years since 1850-01-01 = 1870-01-01T00:00Z
+<br />
+30 years since 1850-01-01 = 1880-01-01T00:00Z
+<br />
+40 years since 1850-01-01 = 1890-01-01T00:00Z
+<br />
+50 years since 1850-01-01 = 1900-01-01T00:00Z
+<br />
+60 years since 1850-01-01 = 1910-01-01T00:00Z
+<br />
+70 years since 1850-01-01 = 1920-01-01T00:00Z
+<br />
+80 years since 1850-01-01 = 1930-01-01T00:00Z
+<br />
+90 years since 1850-01-01 = 1940-01-01T00:00Z
+<br />
+<br />the solutions that occur to me are:
+<br />
+<br />1) use ISO date strings
+<br />
+2) change the way udunits works
+<br />
+3) create another syntax that can be distinguished from udunits and make 
+<br />
+it work like the above
+<br />
+4) something else i havent thought of
+<br />
+<br />any ideas?
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Mar 14 2011 - 18:31:18 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3300">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3301.html" title="Next message in the list">Dave Allured: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3299.html" title="Previous message in the list">John Caron: "[CF-metadata] dimensionless vertical coordinates"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3301.html" title="Next message in this discussion thread">Dave Allured: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3301.html" title="Message sent in reply to this message">Dave Allured: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><dfn>Reply</dfn>: <a href="./3302.html" title="Message sent in reply to this message">Jon Blower: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3300" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3300" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3300" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3300" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:42 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3299.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3301.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

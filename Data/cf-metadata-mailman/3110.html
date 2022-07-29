@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] handling time in a CF compliant fashion from Janine Goldstein Aquino on 2011-01-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Janine Goldstein Aquino (janine)" />
+<meta name="Subject" content="[CF-metadata] handling time in a CF compliant fashion" />
+<meta name="Date" content="2011-01-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3109.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3111.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] handling time in a CF compliant fashion</h1>
+<!-- received="Tue Jan  4 17:59:35 2011" -->
+<!-- isoreceived="20110104175935" -->
+<!-- sent="Tue, 04 Jan 2011 17:59:35 -0700" -->
+<!-- isosent="20110105005935" -->
+<!-- name="Janine Goldstein Aquino" -->
+<!-- email="janine" -->
+<!-- subject="[CF-metadata] handling time in a CF compliant fashion" -->
+<!-- id="4D23C277.5020703_at_ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3110" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3111.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  Ambient light [Sec=Unclassified]&quot;">Next message</a> ]
+[ <a href="./3109.html" title="Miles Jordan: &quot;[CF-metadata] Ambient light [Sec=Unclassified]&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3110" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3110" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3110" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3110" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Janine Goldstein Aquino &lt;<a href="mailto:janine?Subject=Re%3A%20%5BCF-metadata%5D%20handling%20time%20in%20a%20CF%20compliant%20fashion">janine</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 04 Jan 2011 17:59:35 -0700</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />I have multiple rates of data (1sps, 10sps, 25sps, or higher) in a 
+<br />
+single file and am trying to handle this in a CF compliant way without 
+<br />
+having to resort to a time dimension at the highest rate, leading to 
+<br />
+inordinate amounts of padding in lower rate variables. As far as I can 
+<br />
+tell, CF does not address this case directly.
+<br />
+<br />We have been using something like the following. My question is, if 
+<br />
+reading this file in an automated fashion, would you know to interpret 
+<br />
+the sps dimensions as additional time information? If not, is this 
+<br />
+something that should be addressed within CF? Is there a better way to 
+<br />
+do this?
+<br />
+<br />Any and all feedback appreciated! Thanks so much,
+<br />
+<br />Janine Aquino
+<br />
+NCAR/EOL/RAF
+<br />
+<br />netcdf ICE-Lrf01h {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time = 16081 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sps1 = 1 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sps25 = 25 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sps10 = 10 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Time(Time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time:long_name = &quot;time of measurement&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time:standard_name = &quot;time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time:units = &quot;seconds since 2007-11-07 17:54:00 +0000&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time:strptime_format = &quot;seconds since %F %T %z&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float VAR1(Time, sps1) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR1:_FillValue = -32767.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR1:units = &quot;count&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR1:long_name = &quot;Fred&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR1:SampledRate = 1 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float VAR2(Time, sps10) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR2:_FillValue = -32767.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR2:units = &quot;msec&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR2:long_name = &quot;Wilma&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR2:SampledRate = 10 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float VAR3(Time, sps25) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR3:_FillValue = -32767.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR3:units = &quot;degree&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR3:long_name = &quot;Barney&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAR3:SampledRate = 25 ;
+<br />
+// global attributes:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Source = &quot;NCAR Research Aviation Facility&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Address = &quot;P.O. Box 3000, Boulder, CO 80307-3000&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Phone = &quot;(303) 497-1030&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Conventions = &quot;NCAR-RAF/nimbus&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ConventionsURL = 
+<br />
+&quot;<a href="http://www.eol.ucar.edu/raf/Software/netCDF.html">http://www.eol.ucar.edu/raf/Software/netCDF.html</a>&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ConventionsVersion = &quot;1.3&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ProcessorRevision = &quot;4453&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ProcessorURL = &quot;<a href="http://svn/svn/raf/trunk/nimbus">http://svn/svn/raf/trunk/nimbus</a>&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:DateProcessed = &quot;2009-06-11 22:01:28 +0000&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ProjectName = &quot;ICE-L&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Platform = &quot;N130AR&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ProjectNumber = &quot;ICE-L&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:FlightNumber = &quot;rf01&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:FlightDate = &quot;11/07/2007&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:InterpolationMethod = &quot;Linear&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:coordinates = &quot;LONC LATC GGALT Time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wind_field = &quot;WSC WDC WIC&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:landmarks = &quot;39.191 -106.817 Aspen,36.407 -105.573 Taos,37.275
+<br />
+-107.879 Durango,40.7858 -111.979 Alta,38.573 -109.549 Moab,39.9088 
+<br />
+-105.117 BJC
+<br />
+,39.5701 -104.849 Centl,41.1556 -104.811 CYS,38.8058 -104.7 COS,38.9697 
+<br />
+-104.813
+<br />
+&nbsp;&nbsp;AFF,38.2891 -104.497 PUB,35.0402 -106.609 ABQ,41.312 -105.675 
+<br />
+LAR,39.8584 -104.
+<br />
+667 DEN,40.2333 -103.667 FtMpp,40.8667 -105.033 RawHpp,40.8712 -104.715 
+<br />
+Pawnee,4
+<br />
+2.908 -106.464 CPR,43.0642 -108.46 RIW,42.8375 -103.095 CDR,42.0532 
+<br />
+-102.804 AIA
+<br />
+,41.1013 -102.985 SNY,41.874 -103.596 BFF,40.4518 -105.011 FNL,40.4374 
+<br />
+-104.633
+<br />
+GXY,42.0555 -104.929 EAN,42.7972 -105.386 DGW,44.0453 -103.057 
+<br />
+RAP,42.7538 -104.
+<br />
+405 LSK,42.0645 -104.153 TOR,41.1881 -103.677 IBM&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:TimeInterval = &quot;17:54:00-22:22:00&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Categories = &quot;Position,Thermodynamic,Aircraft State,Atmos. 
+<br />
+State,Liquid Water,Uncorr\'d Raw,Wind,PMS 
+<br />
+Probe,Housekeeping,Chemistry,Radiation,Non-Standard&quot; ;
+<br />
+}
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Jan 04 2011 - 17:59:35 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3110">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3111.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  Ambient light [Sec=Unclassified]"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3109.html" title="Previous message in the list">Miles Jordan: "[CF-metadata] Ambient light [Sec=Unclassified]"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3110" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3110" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3110" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3110" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:38 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3109.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3111.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

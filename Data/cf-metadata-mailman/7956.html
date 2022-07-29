@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Composite area types in CMIP6 data from martin.juckes at stfc.ac.uk on 2017-01-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="martin.juckes at stfc.ac.uk (martin.juckes)" />
+<meta name="Subject" content="[CF-metadata] Composite area types in CMIP6 data" />
+<meta name="Date" content="2017-01-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7955.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7957.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Composite area types in CMIP6 data</h1>
+<!-- received="Fri Jan  6 05:36:03 2017" -->
+<!-- isoreceived="20170106053603" -->
+<!-- sent="Fri, 6 Jan 2017 12:36:03 +0000" -->
+<!-- isosent="20170106123603" -->
+<!-- name="martin.juckes at stfc.ac.uk" -->
+<!-- email="martin.juckes" -->
+<!-- subject="[CF-metadata] Composite area types in CMIP6 data" -->
+<!-- id="E21FBC3F00D7304687CB46529F9676D70102916A0B_at_exchmbx01" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CAEMt9PNFRG8QH1QQmyvXFVbJvQr7nZ=m9pacO9FkfS0vEdyJkw_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7956" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7957.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Composite area types in CMIP6 data&quot;">Next message</a> ]
+[ <a href="./7955.html" title="martin.juckes at stfc.ac.uk: &quot;[CF-metadata] Composite area types in CMIP6 data&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7956" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7956" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7956" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7956" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: martin.juckes at stfc.ac.uk &lt;<a href="mailto:martin.juckes?Subject=Re%3A%20%5BCF-metadata%5D%20Composite%20area%20types%20in%20CMIP6%20data">martin.juckes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 6 Jan 2017 12:36:03 +0000</span><br />
+</address>
+<br />
+Hi David,
+<br />
+<br />Yes, &quot;type&quot; and &quot;ftype&quot; are conceptually independent. &quot;pasture&quot; refers to a land usage category and &quot;C4&quot; refers to a plant functional type which can occur in and land usage category.
+<br />
+<br />cheers,
+<br />
+Martin
+<br />
+________________________________
+<br />
+From: David Hassell [david.hassell at ncas.ac.uk]
+<br />
+Sent: 06 January 2017 12:24
+<br />
+To: Juckes, Martin (STFC,RAL,RALSP)
+<br />
+Cc: Jonathan Gregory; Karl Taylor; Pamment, Alison (STFC,RAL,RALSP); chris.d.jones at metoffice.gov.uk; cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] Composite area types in CMIP6 data
+<br />
+<br />Hello Martin,
+<br />
+<br />A potential issue with specifying two scalar coordinate variables is that each one must be interpreted as spanning an independent, size 1 dimension (as clarified in #104&lt;<a href="http://cf-trac.llnl.gov/trac/ticket/104#comment:64">http://cf-trac.llnl.gov/trac/ticket/104#comment:64</a>&gt;). Is that the intention, here? To combine them onto one dimension you would have to make the scalar coordinates into 1-d coordinates:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x = 1 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float pastureFracC4(x, time, lat, lon) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pastureFracC4:coordinates = &quot;type ftpye&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pastureFracC4: standard_name = &quot;area_fraction&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;char type(x, strlen) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:long_name = &quot;Pasture Land&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:standard_name = &quot;area_type&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;char ftype(x, strlen) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftype:long_name = &quot;Plant Functional Type&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftype:standard_name = &quot;area_type&quot; ;
+<br />
+data:
+<br />
+type = &quot;patsures&quot; ;
+<br />
+ftype = &quot;c4_plant_functional_types&quot;;
+<br />
+<br />I suppose it's a question of the science that your trying to capture...
+<br />
+<br />All the best,
+<br />
+<br />David
+<br />
+<br />On 6 January 2017 at 11:43, &lt;martin.juckes at stfc.ac.uk&lt;mailto:martin.juckes at stfc.ac.uk&gt;&gt; wrote:
+<br />
+Hello,
+<br />
+<br />In CMIP6 we have a request for some data on pasture land with C4 functional type. We already have CF area types for pasture and c4 plants in general. We could construct the required information as follows:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;float pastureFracC4(time, lat, lon) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pastureFracC4:coordinates = &quot;type ftpye&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pastureFracC4: standard_name = &quot;area_fraction&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;char type(strlen) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:long_name = &quot;Pasture Land&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:standard_name = &quot;area_type&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;char ftype(strlen) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftype:long_name = &quot;Plant Functional Type&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftype:standard_name = &quot;area_type&quot; ;
+<br />
+data:
+<br />
+&nbsp;type = &quot;patsures&quot; ;
+<br />
+&nbsp;ftype = &quot;c4_plant_functional_types&quot;;
+<br />
+<br />This would provide the information that the variable pastureFracC4 refers to areas that are both &quot;pastures&quot; and &quot;c4_plant_functional_types&quot;. An altenative would be to add a new area type, but I have the feeling that the area_type list will become unmanagable if we keep adding new terms for combinations of existing terms.  Can anyone see a problem with using two area_type coordinates?
+<br />
+<br />regards,
+<br />
+Martin
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<br /><br /><br /><pre>
+--
+David Hassell
+National Centre for Atmospheric Science
+Department of Meteorology, University of Reading,
+Earley Gate, PO Box 243, Reading RG6 6BB
+Tel: +44 118 378 5613
+<a href="http://www.met.reading.ac.uk/">http://www.met.reading.ac.uk/</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Jan 06 2017 - 05:36:03 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7956">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7957.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Composite area types in CMIP6 data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7955.html" title="Previous message in the list">martin.juckes at stfc.ac.uk: "[CF-metadata] Composite area types in CMIP6 data"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7956" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7956" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7956" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7956" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:08 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7955.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7957.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

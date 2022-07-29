@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] [cf-satellite] Ang.: Making a proposal for the addition of the geos projection from Randy Horne on 2011-11-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="Randy Horne (rhorne)" />
+<meta name="Subject" content="[CF-metadata] [cf-satellite] Ang.: Making a proposal for the addition of the geos projection" />
+<meta name="Date" content="2011-11-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3959.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3961.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] [cf-satellite] Ang.: Making a proposal for the addition of the geos projection</h1>
+<!-- received="Mon Nov 28 16:24:07 2011" -->
+<!-- isoreceived="20111128162407" -->
+<!-- sent="Mon, 28 Nov 2011 18:24:07 -0500" -->
+<!-- isosent="20111128232407" -->
+<!-- name="Randy Horne" -->
+<!-- email="rhorne" -->
+<!-- subject="[CF-metadata] [cf-satellite] Ang.: Making a proposal for the addition of the geos projection" -->
+<!-- id="201111281824.AA183697666_at_excaliburlabs.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3960" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3961.html" accesskey="d" title="Trevor.Mcdougall at csiro.au: &quot;[CF-metadata] new TEOS-10 standard names&quot;">Next message</a> ]
+[ <a href="./3959.html" title="Chris Barker: &quot;[CF-metadata] FW: netcdf for particle trajectories&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3960" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3960" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3960" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3960" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Randy Horne &lt;<a href="mailto:rhorne?Subject=Re%3A%20%5BCF-metadata%5D%20%5Bcf-satellite%5D%20Ang.%3A%20Making%20a%20proposal%20for%20the%20addition%20of%20the%20geos%20projection">rhorne</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 28 Nov 2011 18:24:07 -0500</span><br />
+</address>
+<br />
+Martin:
+<br />
+<br />Discussion with our Image Navigation and Registration lead (Dr. Jim Carr) reveals that the EUMETSAT GEOS projection is not the same as the GOES-R projection (i.e. the ABI fixed grid).
+<br />
+<br />The reason has to do with the gimbaling characteristics of the two imagers.  Both of the imagers are dual gimballed.   In the case of the GEOS imager, the inner gimbal axis is in the N/S axis (i.e. the x-axis) and the outer gimbal axis is in the E/W axis (i.e. the y-axis).  In the case of the GOES-R imager, this is reversed.
+<br />
+<br />The implication is that the order of applying the x and y rotation matrices is reversed when data points are projected, and geodetic lat/lon coordinates calculated.  As a result, the location of the data points on the Earth are different between GEOS and GOES-R for specific radian values associated with the same N/S and E/W scan angles.
+<br />
+<br />As a result, the order in which the rotation matrices are applied must also be captured.
+<br />
+<br />Feel free to contact me for additional details.
+<br />
+<br />very respectfully,
+<br />
+<br />randy
+<br />
+<br /><br />Re: [cf-satellite] Ang.: Making a proposal for the addition of the geos projection
+<br />
+To: &lt;cf-satellite at xxxxxxxxxxxxxxxx&gt; 
+<br />
+Subject: Re: [cf-satellite] Ang.: Making a proposal for the addition of the geos projection 
+<br />
+From: Martin Raspaud &lt;martin.raspaud at xxxxxxx&gt; 
+<br />
+Date: Thu, 24 Nov 2011 09:08:12 +0100 
+<br />
+-----BEGIN PGP SIGNED MESSAGE-----
+<br />
+Hash: SHA1
+<br />
+<br />On 23/11/11 21:03, Tom Rink wrote:
+<br />
+<em class="quotelev1">&gt; Hi Martin,
+</em><br />
+<br />Hi Tom,
+<br />
+<br />[...]
+<br />
+<em class="quotelev2">&gt;&gt;     short x(x);
+</em><br />
+<em class="quotelev2">&gt;&gt;       :standard_name = &quot;projection_x_coordinate&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;       :add_offset = 1856
+</em><br />
+<em class="quotelev2">&gt;&gt;       :scale_factor = -208.16554260253906
+</em><br />
+<em class="quotelev2">&gt;&gt;       :units = &quot;rad&quot;
+</em><br />
+[...]
+<br />
+<br /><em class="quotelev1">&gt; This is a neat idea, that way different conventions for north-to-south
+</em><br />
+<em class="quotelev1">&gt; (GOES)
+</em><br />
+<em class="quotelev1">&gt; south-to-north (SEVIRI) could be handled, ie. if I'm understanding your
+</em><br />
+<em class="quotelev1">&gt; suggestion?
+</em><br />
+<br />Yes exactly. Putting negative scaling factors allows to reverse the
+<br />
+scanning direction so to say :)
+<br />
+<br />Best regards,
+<br />
+Martin
+<br />
+-----BEGIN PGP SIGNATURE-----
+<br />
+Version: GnuPG v2.0.14 (GNU/Linux)
+<br />
+Comment: Using GnuPG with Red Hat - <a href="http://enigmail.mozdev.org/">http://enigmail.mozdev.org/</a>
+<br />
+<br />iQEcBAEBAgAGBQJOzftsAAoJEBdvyODiyJI48DkIAJGcE8ueuOK1GdozxokVxSer
+<br />
+apYXksYgQKWwiHXInoa1EMhUoOt5Y/Hys/JIHs0EVHlDCiM9ovdD4Llg9FMpfjJu
+<br />
+VmY+Z5DQqnMOGb/1TqRFDUgbA563r8zTRzdiEFB0pWUNjVvfN/xaW+i1BQgmx8ey
+<br />
++czkyufWx24nIw+DQDECjkRjQDN6brvHmhiSKhbftIq/fBB6BrjFekhQNAulZGgo
+<br />
+rS8c2q0dtWuGzjYFsz922t08dH13FbH3bG9x0TUfz6X97byVBRYuFHekHLEX1kkO
+<br />
+hgfjVQMid6j+ChS3z0U6M9E9/vIT9xoVCHiYIctL7PKKE+bFT43QGDjvjkhfwc8=
+<br />
+=bvUc
+<br />
+-----END PGP SIGNATURE-----
+<br />
+<br />begin:vcard
+<br />
+fn:Martin Raspaud
+<br />
+n:Raspaud;Martin
+<br />
+org:SMHI
+<br />
+adr;quoted-printable;quoted-printable:;;Folkborgsv=C3=A4gen 
+<br />
+1;Norrk=C3=B6ping;;60176;Sweden
+<br />
+email;internet:martin.raspaud at xxxxxxx
+<br />
+tel;work:+46 (0)11 495 8261
+<br />
+tel;cell:+46 (0)11 495 8261
+<br />
+url:www.smhi.se
+<br />
+version:2.1
+<br />
+end:vcard
+<br />
+<br /><br />&nbsp;
+<br />
+<br />&nbsp;
+<br />
+..............End of Message ...............................--&gt;
+<br />
+<br /><br />&nbsp;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Nov 28 2011 - 16:24:07 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3960">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3961.html" title="Next message in the list">Trevor.Mcdougall at csiro.au: "[CF-metadata] new TEOS-10 standard names"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3959.html" title="Previous message in the list">Chris Barker: "[CF-metadata] FW: netcdf for particle trajectories"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3960" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3960" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3960" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3960" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:54 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3959.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3961.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

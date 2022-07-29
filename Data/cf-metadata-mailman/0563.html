@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach) from Bert Jagers on 2006-12-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bert Jagers (Bert.Jagers)" />
+<meta name="Subject" content="[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach)" />
+<meta name="Date" content="2006-12-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0562.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0564.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach)</h1>
+<!-- received="Wed Dec  6 01:53:29 2006" -->
+<!-- isoreceived="20061206015329" -->
+<!-- sent="Wed, 6 Dec 2006 09:53:29 +0100" -->
+<!-- isosent="20061206085329" -->
+<!-- name="Bert Jagers" -->
+<!-- email="Bert.Jagers" -->
+<!-- subject="[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach)" -->
+<!-- id="068f01c71914$0069c300$22e40991_at_wl06377" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4575B562.5090202&#64;noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start563" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0564.html" accesskey="d" title="Godin, Michael: &quot;[CF-metadata] Proposed standard names for biological model outputs&quot;">Next message</a> ]
+[ <a href="./0562.html" title="Roy Lowry: &quot;[CF-metadata] Proposed standard names for biological model outputs&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0565.html" accesskey="t" title="Steve Hankin: &quot;[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach)&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg563" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg563" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg563" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg563" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bert Jagers &lt;<a href="mailto:Bert.Jagers?Subject=Re%3A%20%5BCF-metadata%5D%20curvilinear%20cartesian%20coordinates%20case%20(service-oriented%20approach)">Bert.Jagers</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 6 Dec 2006 09:53:29 +0100</span><br />
+</address>
+<br />
+Hi Steve,
+<br />
+&nbsp;&nbsp;I'd like to open another outlook for this entire discussion -- an approach that might meet your goals with no changes to CF at all.
+<br />
+<br />&nbsp;&nbsp;In the detailed use cases that you presented yesterday you motivated the CF changes under discussion by pointing out that it would not be desirable to create multiple files to contain the same data, specifically  &quot;... one could of course generate multiple copies of the output file with one auxiliary coordinate system each, but I do not like this approach&quot;  What your use case has presented to us (I think) is a case of multiple &quot;views&quot; of the same data:  The data variables and their coordinates in absolute lat/lon are immutable.  But you also want to support two or three community-specific outlooks, each requiring specialized coordinate system information.
+<br />
+<br />&nbsp;&nbsp;This statement of the problem practically shouts out &quot;service oriented&quot; -- providing different flavors of the same data through multiple interfaces.  I think we can achieve that today with existing tools -- OPeNDAP and TDS.  Standard netCDF clients can &quot;simply&quot; (in quotes) be relinked to utilize the OPeNDAP service.
+<br />
+Hm, a quite different approach indeed. I have no experience yet with OPeNDAP, my approach so far has been first to get netCDF CF support implemented correctly and take the next step to OPeNDAP. I associate OPeNDAP mostly with data access through the internet. An OPeNDAP compliant reader will allow you also to access local data files, but whether all features are available I am not sure. I know that it is possible in some way to serve multiple files as one big virtual file using OPeNDAP; however, I don't know whether that works also locally and what the requirements are for combining multiple files to one virtual file. I am looking for a local option because
+<br />
+<br />1) model runs may be carried out by different project partners.
+<br />
+2) data files may be big and not easily transferred via internet.
+<br />
+<br />One thing that I am not sure about is what you exactly propose. After some text regarding the immutabel part and special attributes and variables for the two separate communities, you propose:
+<br />
+&nbsp;&nbsp;You can arrange for these views to show up neatly organized in a directory tree
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://my_institution_server/">http://my_institution_server/</a>
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Germany/
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...files...nc
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Netherlands/
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...files...nc
+<br />
+Would all data be stored in both the Germany and the Netherlands directories (only different with respect to the local grids stored in the files)? If so, that approach would be quite redundant. I don't need OPeNDAP for that and I can just generate both files and distribute them individually, or I could probably write a small conversion program to convert one file into the other using some separate grid files, or use separate grid files in addition to the data file. If the main data is stored in a central directory while community specific extensions are stored in the two subdirectories then I'm not sure how its going to work (only through internet access?, what about the variable specific grid_mapping attributes?).
+<br />
+&nbsp;&nbsp;P.S. (footnote) On the initial point about redundant &quot;grid object&quot; contents:  I was referring to situations where variables like velocities (XYZ), share the same horizontal coordinates as variables like streamFunction (XY).  The grid_mapping info for the horizontal has to be repeated in both grids ... or alternatively, complexity has to be introduced to represent parent (XY) and child (XYZ) grid objects.
+<br />
+As long as the grid_mapping data sets do not refer to variables, there is no need to duplicate the grid_mapping data. I only see the need to specify for every variable in the file the grid_mapping attribute (current situation) or coordinate_system (one of the alternatives). So far, grid_mapping is a purely horizontal transformation, so, if the velocities are stored at the same grid locations as the streamfunction and the Z dimension is a separate dimension, there is no need to duplicate the horizontal grid variables either. If the velocities are stored at different X,Y locations than the streamFunction then we need of course two grid specifications.
+<br />
+<br />Best regards,
+<br />
+<br />Bert
+<br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20061206/37ae2c56/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20061206/37ae2c56/attachment-0002.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Dec 06 2006 - 01:53:29 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start563">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0564.html" title="Next message in the list">Godin, Michael: "[CF-metadata] Proposed standard names for biological model outputs"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0562.html" title="Previous message in the list">Roy Lowry: "[CF-metadata] Proposed standard names for biological model outputs"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0565.html" title="Next message in this discussion thread">Steve Hankin: "[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach)"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0565.html" title="Message sent in reply to this message">Steve Hankin: "[CF-metadata] curvilinear cartesian coordinates case (service-oriented approach)"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg563" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg563" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg563" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg563" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0562.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0564.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

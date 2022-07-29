@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Return periods from Hollis, Dan on 2014-09-08 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hollis, Dan (dan.hollis)" />
+<meta name="Subject" content="[CF-metadata] Return periods" />
+<meta name="Date" content="2014-09-08" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6448.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6450.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Return periods</h1>
+<!-- received="Mon Sep  8 07:47:49 2014" -->
+<!-- isoreceived="20140908064749" -->
+<!-- sent="Mon, 8 Sep 2014 13:47:49 +0000" -->
+<!-- isosent="20140908134749" -->
+<!-- name="Hollis, Dan" -->
+<!-- email="dan.hollis" -->
+<!-- subject="[CF-metadata] Return periods" -->
+<!-- id="D7D1372D480AEE41B3C1276C9A15404B07EDC2E8_at_EXXCMPD1DAG1.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20140904163946.GB17684_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6449" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6450.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] Return periods&quot;">Next message</a> ]
+[ <a href="./6448.html" title="Jonathan Gregory: &quot;[CF-metadata] Return periods&quot;">Previous message</a> ]
+[ <a href="./6448.html" title="Jonathan Gregory: &quot;[CF-metadata] Return periods&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6449" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6449" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6449" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6449" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hollis, Dan &lt;<a href="mailto:dan.hollis?Subject=Re%3A%20%5BCF-metadata%5D%20Return%20periods">dan.hollis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 8 Sep 2014 13:47:49 +0000</span><br />
+</address>
+<br />
+Hi Jonathan,
+<br />
+<br />We have two 2D fields that we would like to store - the first contains precipitation amount, x, for a specific month (e.g. Aug 2014), and the second contains the return period (or probability) of the precipitation amount in the first field i.e. F(x).
+<br />
+<br />The relationship between these two fields is at the grid point level i.e. the value at any given grid point in the second field is the value of F(x) corresponding to the value of x at the same location in the first field. Note that the relationship between the two quantities varies with location i.e. the return period of 100 mm in the Scottish mountains is very different to the return period of 100 mm in southeast England.
+<br />
+<br />As x is a floating point quantity the number of unique values in the first field will essentially equal the number of grid points (i.e. approximately 10000 for the UK). If the second field were to use x as a coordinate variable then the size of this coordinate would be 10000, and for any given grid point in space there would be a value of F(x) for only one value of this coordinate i.e. the 3D field F(x,lat,lon) would be very sparse.
+<br />
+<br />Looking at it another way, if we were intending to store fields of F(x) for a small number of fixed values of x (e.g. 10 mm, 20 mm, 30 mm, 40 mm etc) then I can see that having x as a coordinate variable would make sense. However what we actually want to do is store F(x) for a single value of x, but where the value of x is different for each location.
+<br />
+<br />Does that make any sense? I think I have it clear in my own mind but I find it quite hard to describe.
+<br />
+<br />Dan
+<br />
+<br /><br /><br />-----Original Message-----
+<br />
+From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Jonathan Gregory
+<br />
+Sent: 04 September 2014 17:40
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] Return periods
+<br />
+<br />Dear Dan
+<br />
+<br />I don't think I have understood this. What is the field of precipitation
+<br />
+amount? The F(x) would actually be a 3D data variable, I think, F(x,lat,lon),
+<br />
+which gives the probability that precipitation is less than x at (lat,lon).
+<br />
+For this field, x is a 1D coord variable, not a field.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br /><br /><em class="quotelev1">&gt; Yes, that is what I had in mind. What slightly concerns me is that I would effectively end up storing the precipitation amount twice:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; - once as a data variable in its own right
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; - once as an auxilliary coordinate, with F(x) as the data variable
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Duplication, especially within the same data archive, seems like something to be avoided if possible, hence my idea to have F(x) as the auxilliary coordinate variable and precipitation amount as the data variable and not store F(x) as a separate data variable. Do you think that it would be preferable/acceptable to store the precipitation values twice?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Regards,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Dan
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Jonathan Gregory
+</em><br />
+<em class="quotelev1">&gt; Sent: 04 September 2014 14:14
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: [CF-metadata] Return periods
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Dear Dan
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I agree with you that it would be better to store F(x) than to use your sign
+</em><br />
+<em class="quotelev1">&gt; convention for return periods. However it would be fine to split the return
+</em><br />
+<em class="quotelev1">&gt; periods into the two tails in different data variables and give them distinct
+</em><br />
+<em class="quotelev1">&gt; standard names. We have some standard names for such things e.g.
+</em><br />
+<em class="quotelev1">&gt;   spell_length_of_days_with_lwe_thickness_of_precipitation_amount_above_threshold
+</em><br />
+<em class="quotelev1">&gt; and you could propose suitable ones.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; If you store F(x), I think it would be a data variable, not a coordinate or
+</em><br />
+<em class="quotelev1">&gt; ancillary variable, and it should have a standard name. I believe the guidance
+</em><br />
+<em class="quotelev1">&gt; you quote is about probability distribution functions rather than cumulative
+</em><br />
+<em class="quotelev1">&gt; (probability) distribution functions. Following a similar approach, however,
+</em><br />
+<em class="quotelev1">&gt; we could have a standard name such as
+</em><br />
+<em class="quotelev1">&gt;   cumulative_distribution_function_of_precipitation_amount
+</em><br />
+<em class="quotelev1">&gt; for F(x), where x is precipitation_amount, which would be a coordinate. Is
+</em><br />
+<em class="quotelev1">&gt; that what you have in mind?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ----- Forwarded message from &quot;Hollis, Dan&quot; &lt;dan.hollis at metoffice.gov.uk&gt; -----
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Dear all,
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Here is another question related to migrating our UK climate grids to NetCDF.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; As well as grids of the monthly rainfall total (in mm) we also generate grids of the estimated return period of the rainfall total (in years). Currently these two quantities are stored in separate files (with only the file name and location to tell us they are related). I've been trying to think how to store the return period information using CF-NetCDF and would be grateful for advice.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Some further details:
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Our existing grids contain the return period in years i.e. if the return period for a particular grid point is N years then this means that we estimate that the rainfall total for that grid point will be exceeded on average once every N years. This is equivalent to saying that each year there is a probability of 1/N of exceeding that rainfall amount i.e. the cummulative distribution function, F(x) = 1 - 1/N. For example, if N = 10 then F(x) = 0.9. Additionally, as we are also interested in droughts, we have adopted our own convention of using negative values to refer to the left (dry) tail of the rainfall distribution. For example N = -10 is used to mean that F(x) = 0.1 i.e. we estimate that rainfall amounts *less* than the observed value will occur once every 10 years on average.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; This use of positive and negative values to indicate return periods relating to the right (wet) and left (dry) tails is convenient but unconventional. My initial thought is that we should store F(x) itself and only convert to return period for the purposes of presentation e.g. creating maps.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; So, how to store F(x)? The main problem is that the value to which the return period relates (i.e. the rainfall amount) varies from one grid point to another. Two possibilities occur to me, both of which involve storing F(x) alongside the rainfall total:
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; - Store F(x) as an auxilliary coordinate
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; - Store F(x) as ancillary data
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; It's not clear to me whether one is better than the other, or even whether either approach is valid.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; The other question is what to call the F(x) values. The guidance for ancillary data says to use standard name modifiers to indicate the relationship, but there doesn't seem to be anything suitable for describing F(x).
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; The other thing I've looked at is the guidance for constructing standard names. I can't seem to locate this on the current CF web site so I've refered to the archived copy available here:
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="https://web.archive.org/web/20130728212039/http://cf-pcmdi.llnl.gov/documents/cf-standard-names/guidelines">https://web.archive.org/web/20130728212039/http://cf-pcmdi.llnl.gov/documents/cf-standard-names/guidelines</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; The section on transformations includes 'probability_distribution_of_X[_over_Z]' in the list, however it's unclear to me whether this is what I need, or even how I might use it in other circumstances. The notes state:
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; &quot;probability distribution (i.e. a number in the range 0.0-1.0 for each range of X) of variations (over Z) of X. The data variable should have an axis for X.&quot;
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; The reference to 'each range of X' is the bit I find confusing. Is the idea to store F(X1), F(X2), F(X3) etc, or is it intended to be F(X2) - F(X1), F(X3) - F(X2), F(X4) - F(X3) etc? The former doesn't quite fit the description, but the latter has the problem that the number of ranges (= the number of data values) will be one less than the number of X values. I can't see any existing names that use this transformation to use as a guide.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; If anyone can help that would be much appreciated.
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Thanks,
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Dan
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Dan Hollis   Climatologist
+</em><br />
+<em class="quotelev2">&gt; &gt; Met Office   Hadley Centre   FitzRoy Road   Exeter   Devon   EX1 3PB   United Kingdom
+</em><br />
+<em class="quotelev2">&gt; &gt; Tel: +44 (0)1392 886780   Fax: +44 (0)1392 885681
+</em><br />
+<em class="quotelev2">&gt; &gt; E-mail: dan.hollis at metoffice.gov.uk   Website: <a href="http://www.metoffice.gov.uk">http://www.metoffice.gov.uk</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; For UK climate and past weather information, visit <a href="http://www.metoffice.gov.uk/climate">http://www.metoffice.gov.uk/climate</a>
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />----- End forwarded message -----
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Sep 08 2014 - 07:47:49 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6449">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6450.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] Return periods"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6448.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Return periods"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6448.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] Return periods"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6449" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6449" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6449" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6449" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:45 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6448.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6450.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

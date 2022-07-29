@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Extension of Discrete Sampling Geometries for Simple Features from David Blodgett on 2017-02-02 (cf-metadata-mailman)</title>
+<meta name="Author" content="David Blodgett (dblodgett)" />
+<meta name="Subject" content="[CF-metadata] Extension of Discrete Sampling Geometries for Simple Features" />
+<meta name="Date" content="2017-02-02" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7991.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7993.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Extension of Discrete Sampling Geometries for Simple Features</h1>
+<!-- received="Thu Feb  2 06:57:36 2017" -->
+<!-- isoreceived="20170202065736" -->
+<!-- sent="Thu, 2 Feb 2017 07:57:36 -0600" -->
+<!-- isosent="20170202135736" -->
+<!-- name="David Blodgett" -->
+<!-- email="dblodgett" -->
+<!-- subject="[CF-metadata] Extension of Discrete Sampling Geometries for Simple Features" -->
+<!-- id="224C2828-7212-449F-8C2C-97D903F6BE1E_at_usgs.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7992" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7993.html" accesskey="d" title="Bob Simons - NOAA Federal: &quot;[CF-metadata] Extension of Discrete Sampling Geometries for Simple Features&quot;">Next message</a> ]
+[ <a href="./7991.html" title="David Blodgett: &quot;[CF-metadata] Feedback requested on proposed CF Simple Geometries&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7992" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7992" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7992" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7992" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: David Blodgett &lt;<a href="mailto:dblodgett?Subject=Re%3A%20%5BCF-metadata%5D%20Extension%20of%20Discrete%20Sampling%20Geometries%20for%20Simple%20Features">dblodgett</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 2 Feb 2017 07:57:36 -0600</span><br />
+</address>
+<br />
+Dear CF Community,
+<br />
+<br />We are pleased to submit this proposal for your consideration and review. The cover letter we've prepared below provides some background and explanation for the proposed approach. The google doc here &lt;<a href="http://goo.gl/Kq9ASq">http://goo.gl/Kq9ASq</a>&gt; is an excerpt of the CF specification with track changes turned on. Permissions for the document allow any google user to comment, so feel free to comment and ask questions in line.
+<br />
+<br />Note that I?m sharing this with you with one issue unresolved. What to do with the point featureType? Our draft suggests that it is part of a new geometry featureType, but it could be that we leave it alone and introduce a geometry featureType. This may be a minor point of discussion, but we need to be clear that this is an issue that still needs to be resolved in the proposal.
+<br />
+<br />Thank you for your time and consideration.
+<br />
+<br />Best Regards,
+<br />
+<br />David Blodgett, Tim Whiteaker, and Ben Koziol
+<br />
+<br />Proposed Extension to NetCDF-CF for Simple Geometries
+<br />
+<br />Preface
+<br />
+<br />The proposed addition to NetCDF-CF introduced below is inspired by a pre-existing data model governed by OGC and ISO as ISO 19125-1. More information on Simple Features may be found here. &lt;<a href="https://en.wikipedia.org/wiki/Simple_Features">https://en.wikipedia.org/wiki/Simple_Features</a>&gt; To the knowledge of the authors, it is consistent with ISO 19125-1 but has not been specified using the formalisms of OGC or ISO. Language used attempts to hold true to NetCDF-CF semantics while not conflicting with the existing standards baseline. While this proposal does not support the entire scope of the the simple features ecosystem, it does support the core data types in most common use around the community.
+<br />
+<br />The other existing standard to mention is UGRID convention &lt;<a href="http://ugrid-conventions.github.io/ugrid-conventions/">http://ugrid-conventions.github.io/ugrid-conventions/</a>&gt;. The authors have experience reading and writing UGRID and have designed the proposed structure in a way that is inspired by and consistent with it. 
+<br />
+<br />Terms and Definitions
+<br />
+<br />(Taken from OGC 06-103r4 OpenGIS Implementation Specification for Geographic information - Simple feature access - Part 1: Common architecture &lt;<a href="http://www.opengeospatial.org/standards/sfa">http://www.opengeospatial.org/standards/sfa</a>&gt;.)
+<br />
+<br />Feature: Abstraction of real world phenomena - typically a geospatial abstraction with associated descriptive attributes.
+<br />
+Simple Feature: A feature with all geometric attributes described piecewise by straight line or planar interpolation between point sets.
+<br />
+Geometry (geometric complex): A set of disjoint geometric primitives - one or more points, lines, or polygons that form the spatial representation of a feature.
+<br />
+Introduction
+<br />
+<br />Discrete Sampling Geometries (DSGs) handle data from one (or a collection of) timeSeries (point), Trajectory, Profile, TrajectoryProfile or timeSeriesProfile geometries. Measurements are from a point (timeSeries and Profile) or points along a trajectory. In this proposal, we reuse the core DSG timeSeries type which provides support for basic time series use cases e.g., a timeSerieswhich is measured (or modeled) at a given point.
+<br />
+<br />Changes to Existing CF Specification
+<br />
+<br />In NetCDF-CF 1.7, Discrete Sampling Geometries separate dimensions and variables into two types ? instance and element &lt;<a href="http://cfconventions.org/cf-conventions/cf-conventions.html#_collections_instances_and_elements">http://cfconventions.org/cf-conventions/cf-conventions.html#_collections_instances_and_elements</a>&gt;. Instance refers to individual points, trajectories, profiles, etc. These would sometimes be referred to as features given that they are identified entities that can have associated attributes and be related to other entities. Element dimensions describe temporal or other dimensions to describe data on a per-instance basis. This proposal extends the DSG timeSeries featuretype &lt;<a href="http://cfconventions.org/cf-conventions/cf-conventions.html#_features_and_feature_types">http://cfconventions.org/cf-conventions/cf-conventions.html#_features_and_feature_types</a>&gt; such that the geospatial coordinates of the instances can be point, multi-point, line, multi-line, polygon, or multi-polygon geometries. Rather than overload the DSG contiguous ragged array encoding, designed with timeseries in mind, a geometry ragged array encoding is introduced in a new section 9.3.5. See this google doc for specific<br />
+&nbsp;proposed changes. &lt;<a href="http://goo.gl/Kq9ASq">http://goo.gl/Kq9ASq</a>&gt;
+<br />
+Motivation
+<br />
+<br />DSGs have no system to define a geometry (polyline, polygon, etc., other than point) and an association with a time series that applies over that entire geometry e.g., The expected rainfall in this watershed polygon for some period of time is 10 mm. As suggested in the last paragraph of section 9.1, current practice is to assign a representative point or just use an ID and forgo spatial information within a NetCDF-CF file. In order to satisfy a number of environmental modeling use cases, we need a way to encode a geometry (point, line, polygon, multi-point, multi-line, or multi-polygon) that is the static spatial feature representation to which one or more timeSeries can be associated. In this proposal, we provide an encoding to define collections of simple feature geometries. It interfaces cleanly with the existing DSG specification, enabling DSGs and Simple Geometries to be used concurrently.
+<br />
+<br />Looking Forward
+<br />
+<br />This proposal is a compromise solution that attempts to stay consisten to CF ideals and fit within the structure of the existing specification with minimal disruption. Line and polygon data types often require variable length arrays. Development of this proposal has brought to light the need for a general abstraction for variable length arrays in NetCDF-CF. Such a general abstraction would necessarily be reusable for character arrays, ragged arrays of time series, and ragged arrays of geometry nodes, as well as any other ragged data structures that may come up in the future. This proposal does not introduce such a general ragged array abstraction but does not preclude such a development in the future.
+<br />
+<br />Three Alternative Approaches
+<br />
+<br />Respecting the human readability ideal of NetCDF-CF, the development of this proposal started from a human readable format for geometries known as Well Known Text &lt;<a href="https://en.wikipedia.org/wiki/Well-known_text">https://en.wikipedia.org/wiki/Well-known_text</a>&gt;. We considered three high level design approaches while developing this proposal.
+<br />
+<br />Direct use of Well-Known Text (WKT). In this approach, well known text strings would be encoded using character arrays following a contiguous ragged array approach to index the character array by geometry (or instance in DSG parlance).
+<br />
+Implement the WKT approach using a NetCDF binary array. In this approach, well known text separators (brackets, commas and spaces) for multipoint, multiline, multipolygon, and polygon holes, would be encoded as break type separator values like -1 for multiparts and -2 for holes.
+<br />
+Implement the fundamental dimensions of geometry data in NetCDF. In this approach, additional dimensions and variables along those dimensions would be introduced to represent geometries, geometry parts, geometry nodes, and unique (potentially shared) coordinate locations for nodes to reference.
+<br />
+Selected Approach
+<br />
+<br />The first approach was seen as too opaque to stay true to the CF ideal of complete self-description. The third approach seemed needlessly verbose and difficult to implement. The second approach was selected for the following reasons:
+<br />
+<br />The second approach is just as or more human-readable than the third.
+<br />
+Use of break values keeps geometries relatively atomic.
+<br />
+Will be familiar to developers who are familiar with the WKT geometry format.
+<br />
+Character arrays, which are needed for options one and three, are cumbersome to use in some programming languages in common use with NetCDF.
+<br />
+Break values replace the need for extraneous variables related to multi-part and polygon holes (interiors). Multi-part geometries are generally an exception and excessive instrumentation to support them should be discounted.
+<br />
+Example: Representation of WKT-Style Polygons in a NetCDF-3 timeSeriesfeatureType
+<br />
+<br />Below is sample CDL demonstrating how polygons are encoded in NetCDF-3 using a continuous ragged array-like encoding. There are three details to note in the example below.
+<br />
+<br />The attribute contiguous_ragged_dimension with value of a dimension in the file.
+<br />
+The geom_coordinates attribute with a value containing a space separated string of variable names.
+<br />
+The cf_role geometry_x_node and geometry_y_node.
+<br />
+These three attributes form a system to fully describe collections of multi-polygon feature geometries. Any variable that has the continuous_ragged_dimension attribute contains integers that indicate the 0-indexed starting position of each geometry along the instance dimension. Any variable that uses the dimension referenced in the continuous_ragged_dimension attribute can be interpreted using the values in the variable containing the contiguous_ragged_dimension attribute. The variables referenced in the geom_coordinates attribute describe spatial coordinates of geometries. These variables can also be identified by the cf_roles geometry_x_node and geometry_y_node. Note that the example below also includes a mechanism to handle multi-polygon features that also contain holes.
+<br />
+<br />netcdf multipolygon_example {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;node = 47 ;
+<br />
+&nbsp;&nbsp;indices = 55 ;
+<br />
+&nbsp;&nbsp;instance = 3 ;
+<br />
+&nbsp;&nbsp;time = 5 ;
+<br />
+&nbsp;&nbsp;strlen = 5 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;char instance_name(instance, strlen) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;instance_name:cf_role = &quot;timeseries_id&quot; ;
+<br />
+&nbsp;&nbsp;int coordinate_index(indices) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:geom_type = &quot;multipolygon&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:geom_coordinates = &quot;x y&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:multipart_break_value = -1 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:hole_break_value = -2 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:outer_ring_order = &quot;anticlockwise&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index:closure_convention = &quot;last_node_equals_first&quot; ;
+<br />
+&nbsp;&nbsp;int coordinate_index_start(instance) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index_start:long_name = &quot;index of first coordinate in each instance geometry&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;coordinate_index_start:contiguous_ragged_dimension = &quot;indices&quot; ;
+<br />
+&nbsp;&nbsp;double x(node) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x:standard_name = &quot;longitude&quot; ; // or projection_x_coordinate
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;X:cf_role = &quot;geometry_x_node&quot; ;
+<br />
+&nbsp;&nbsp;double y(node) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y:standard_name = ?latitude? ; // or projection_y_coordinate
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y:cf_role = &quot;geometry_y_node&quot;
+<br />
+&nbsp;&nbsp;double someVariable(instance) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;someVariable:long_name = &quot;a variable describing a single-valued attribute of a polygon&quot; ;
+<br />
+&nbsp;&nbsp;int time(time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time:units = &quot;days since 2000-01-01&quot; ;
+<br />
+&nbsp;&nbsp;double someData(instance, time) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;someData:coordinates = &quot;time x y&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;someData:featureType = &quot;timeSeries&quot; ;
+<br />
+// global attributes:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;:Conventions = &quot;CF-1.8&quot; ;
+<br />
+<br />data:
+<br />
+<br />&nbsp;instance_name =
+<br />
+&nbsp;&nbsp;&quot;flash&quot;,
+<br />
+&nbsp;&nbsp;&quot;bang&quot;,
+<br />
+&nbsp;&nbsp;&quot;pow&quot; ;
+<br />
+<br />&nbsp;coordinate_index = 0, 1, 2, 3, 4, -2, 5, 6, 7, 8, -2, 9, 10, 11, 12, -2, 13, 14, 15, 16,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;-1, 17, 18, 19, 20, -1, 21, 22, 23, 24, 25, 26, 27, 28, -1, 29, 30, 31, 32, 33,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;34, -2, 35, 36, 37, 38, 39, 40, 41, 42, -1, 43, 44, 45, 46 ;
+<br />
+<br />&nbsp;coordinate_index_start = 0, 30, 46 ;
+<br />
+<br />&nbsp;x = 0, 20, 20, 0, 0, 1, 10, 19, 1, 5, 7, 9, 5, 11, 13, 15, 11, 5, 9, 7,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;5, 11, 15, 13, 11, -40, -20, -45, -40, -20, -10, -10, -30, -45, -20, -30, -20, -20, -30, 30, 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;45, 10, 30, 25, 50, 30, 25 ;
+<br />
+<br />&nbsp;y = 0, 0, 20, 20, 0, 1, 5, 1, 1, 15, 19, 15, 15, 15, 19, 15, 15, 25, 25, 29, 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;25, 25, 25, 29, 25, -40, -45, -30, -40, -35, -30, -10, -5, -20, -35, -20, -15, -25, -20, 20,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;40, 40, 20, 5, 10, 15, 5 ;
+<br />
+<br />&nbsp;someVariable = 1, 2, 3 ;
+<br />
+<br />&nbsp;time = 1, 2, 3, 4, 5 ;
+<br />
+<br />&nbsp;someData =
+<br />
+&nbsp;&nbsp;1, 2, 3, 4, 5,
+<br />
+&nbsp;&nbsp;1, 2, 3, 4, 5,
+<br />
+&nbsp;&nbsp;1, 2, 3, 4, 5 ;
+<br />
+}
+<br />
+How To Interpret
+<br />
+<br />Starting from the timeSeries variables:
+<br />
+<br />See CF-1.8 conventions.
+<br />
+See the timeSeries featureType.
+<br />
+Find the timeseries_id cf_role.
+<br />
+Find the coordinates attribute of data variables.
+<br />
+See that the variables indicated by the coordinates attribute have a cf_role geometry_x_nodeand geometry_y_node to determine that these are geometries according to this new specification.
+<br />
+Find the coordinate index variable with geom_coordinates that point to the nodes.
+<br />
+Find the variable with contiguous_ragged_dimension pointing to the dimension of the coordinate index variable to determine how to index into the coordinate index.
+<br />
+Iterate over polygons, parsing out geometries using the contiguous ragged start variable and coordinate index variable to interpret the coordinate data variables.
+<br />
+Or, without reference to timeSeries:
+<br />
+<br />See CF-1.8 conventions.
+<br />
+See the geom_type of multipolygon.
+<br />
+Find the variable with a contiguous_ragged_dimension matching the coordinate index variable?s dimension.
+<br />
+See the geom_coordinates of x y.
+<br />
+Using the contiguous ragged start variable found in 3 and the coordinate index variable found in 2, geometries can be parsed out of the coordinate index variable and parsed using the hole and break values in it.
+<br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170202/4ce5b42f/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170202/4ce5b42f/attachment.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Feb 02 2017 - 06:57:36 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7992">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7993.html" title="Next message in the list">Bob Simons - NOAA Federal: "[CF-metadata] Extension of Discrete Sampling Geometries for Simple Features"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7991.html" title="Previous message in the list">David Blodgett: "[CF-metadata] Feedback requested on proposed CF Simple Geometries"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7992" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7992" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7992" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7992" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:09 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7991.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7993.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

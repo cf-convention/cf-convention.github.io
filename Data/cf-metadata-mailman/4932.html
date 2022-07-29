@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python from Chris Barker - NOAA Federal on 2013-01-10 (cf-metadata-mailman)</title>
+<meta name="Author" content="Chris Barker - NOAA Federal (chris.barker)" />
+<meta name="Subject" content="[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python" />
+<meta name="Date" content="2013-01-10" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4931.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4933.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python</h1>
+<!-- received="Thu Jan 10 11:26:54 2013" -->
+<!-- isoreceived="20130110112654" -->
+<!-- sent="Thu, 10 Jan 2013 10:26:54 -0800" -->
+<!-- isosent="20130110182654" -->
+<!-- name="Chris Barker - NOAA Federal" -->
+<!-- email="chris.barker" -->
+<!-- subject="[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python" -->
+<!-- id="CALGmxELXC3tHyhd1JQnqAYeqdP=ip9fvAdDMgbvSZieyBQgtGQ_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="075.24bcb33d4f09c02d3135f1c56fb4f778_at_lists.llnl.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4932" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4933.html" accesskey="d" title="Chris Barker - NOAA Federal: &quot;[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python&quot;">Next message</a> ]
+[ <a href="./4931.html" title="Lowry, Roy K.: &quot;[CF-metadata] sea_water_pressure&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4933.html" accesskey="t" title="Chris Barker - NOAA Federal: &quot;[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4932" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4932" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4932" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4932" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Chris Barker - NOAA Federal &lt;<a href="mailto:chris.barker?Subject=Re%3A%20%5BCF-metadata%5D%20%5BCF%20Metadata%5D%20%2368%3A%20CF%20data%20model%20and%20reference%20implementation%20in%20Python">chris.barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 10 Jan 2013 10:26:54 -0800</span><br />
+</address>
+<br />
+Folks,
+<br />
+<br />I'm posting this to the list, rather than the ticket, as the ticket
+<br />
+had gotten huge, and it looks like it may be closed/restarted/split up
+<br />
+anyway. Also, this, perhaps, a more general question/thought.
+<br />
+<br /><em class="quotelev2">&gt;  &gt; This illustrates my point.  I am not advocating a discussion here on how
+</em><br />
+<em class="quotelev1">&gt;  to represent time, instead I am advocating that the data model does not
+</em><br />
+<em class="quotelev1">&gt;  take on this question at all, it is for implementations to deal with.
+</em><br />
+<br />My idea/confusion is about what the difference is between a data
+<br />
+model, and a particular implimentation -- i.e in this case, we have
+<br />
+the netcdf CF standard -- that is an implimentation of (theoretically)
+<br />
+a CF data model.
+<br />
+<br />But if we define the data model and netcdf implementation to be
+<br />
+identical, then there is no point in having a data model as a unique
+<br />
+concept.
+<br />
+<br />But I do like having a data model, and the original title of this
+<br />
+ticket outlines why -- with an independently defined data model, we
+<br />
+can have implementation in Python, or your language of choice, that is
+<br />
+independent of the specific storage format, etc. Ideally, that would
+<br />
+mean that one coudl work with such an implementation in a nice natural
+<br />
+way.
+<br />
+<br />So on to an example -- for axes -- datetime is a common axis to want
+<br />
+to use for the kind of data we're trying to deal with here -- working
+<br />
+with an abstraction of a data model, I want to work with the time axis
+<br />
+in a natural way -- that would be a datetime type of some sort -- in
+<br />
+fact, pretty much the first thing I ever do when reading in a netcdf
+<br />
+CF file, isto convertt eh time axis to python datetime -- I don't want
+<br />
+my client code to have to deal with whether the units are seconds or
+<br />
+days, or ??? -- that's what a datetime type is for.
+<br />
+<br />So I think the data model, in this case, should define the concept of
+<br />
+a time axis, which has datetime types of some sort -- they are
+<br />
+sortable, differentiable, etc. in Python, for instance, they might be
+<br />
+an array of numpy datetime64 types, or a python list of
+<br />
+datetime,datetime objects.
+<br />
+<br />But in CF-netcdf, we have &quot;timedelta since datetime&quot; as the standard
+<br />
+-- so we can store datetime axis with standard numerical types. fine,
+<br />
+but is that the data model? or is that a particular encoding for a
+<br />
+particular file format? I think the later.
+<br />
+<br />Example: unicode provides a data model for text -- a set of code
+<br />
+points, etc. With a modern programing language, you can work with text
+<br />
+in unicode objects -- a sequence of characters, etc. You don't need to
+<br />
+know about how they are internally encoded. However, when you want to
+<br />
+do I/O, you do need to know about encoding. So a file format
+<br />
+specification, and the tools to work with that format, need to specify
+<br />
+and handle the encoding/decoding for you.
+<br />
+<br />I think we should take a similar approach to netcdf-CF -- in a netcdf
+<br />
+file, time axes are encoded as &quot;timedelta since datetime&quot;, but in the
+<br />
+data model, they are an abstract datetime type. In other formats that
+<br />
+support the data model, one might well choose a different &quot;encoding&quot;.
+<br />
+(maybe iso strings, but I rather NOT have that in netcdf files --
+<br />
+leave it to libraries to convert different encodings for you)
+<br />
+<br />I've focused on time axes -- I do think that datetimes are a common
+<br />
+enough case that special treatment is warranted, but maybe there are
+<br />
+others, or a generalization that could be used.
+<br />
+<br />Another example:
+<br />
+<br />This is a bit of a side issue, but may be relvant. On the numpy list
+<br />
+there is discussion about casting rules -- when to upcast, for
+<br />
+example, an 8-bit integer to a larger integer. One driving example is
+<br />
+HDF files -- apparently it' s common to store data in small integers,
+<br />
+along with a scale and offset that will transform the the natural data
+<br />
+coordinates. (this is done in CF, too, yes?) The problem arrises when
+<br />
+you load up an array of 8 bit integers, then multiply and add the
+<br />
+scale and offset -- you can very easily end up overflowing your data
+<br />
+type if you're not careful.
+<br />
+<br />My thoughts on this is that the &quot;small integer plus shift and scale&quot;
+<br />
+should be thought of like an encoding, and should be hidden from the
+<br />
+user end -- the data model should reflect the real values, and the I/O
+<br />
+library should handle the encoding/decoding for you -- i.e. user code
+<br />
+should be able to get, for instance, the voltage from a sensor, in an
+<br />
+appropriate type, with the scaling/shifting applied, and not have to
+<br />
+know or care about how it was stored in the file.
+<br />
+<br />Of course, it should also be possible to access the raw data as
+<br />
+stored, but that should require explicit  access, and can assume that
+<br />
+the user knows what they are doing.
+<br />
+<br />So: in short -- the CF data model should be more general, and deal
+<br />
+with data concepts, separate from encoding of those data. File formats
+<br />
+should specify encoding, and libraries should handle
+<br />
+encoding/decoding.
+<br />
+<br />-Chris
+<br />
+<br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Jan 10 2013 - 11:26:54 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4932">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4933.html" title="Next message in the list">Chris Barker - NOAA Federal: "[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4931.html" title="Previous message in the list">Lowry, Roy K.: "[CF-metadata] sea_water_pressure"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4933.html" title="Next message in this discussion thread">Chris Barker - NOAA Federal: "[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4933.html" title="Message sent in reply to this message">Chris Barker - NOAA Federal: "[CF-metadata] [CF Metadata] #68: CF data model and reference implementation in Python"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4932" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4932" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4932" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4932" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:12 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4931.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4933.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

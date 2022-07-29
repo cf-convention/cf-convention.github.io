@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Fwd: Re: Request for a new standard_name : surface_snow_extent from Jonathan Gregory on 2013-08-14 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Fwd: Re: Request for a new standard_name : surface_snow_extent" />
+<meta name="Date" content="2013-08-14" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5655.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5657.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Fwd: Re: Request for a new standard_name : surface_snow_extent</h1>
+<!-- received="Wed Aug 14 08:55:05 2013" -->
+<!-- isoreceived="20130814075505" -->
+<!-- sent="Wed, 14 Aug 2013 15:55:05 +0100" -->
+<!-- isosent="20130814145505" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Fwd: Re: Request for a new standard_name : surface_snow_extent" -->
+<!-- id="20130814145504.GA10577_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5656" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5657.html" accesskey="d" title="Karl Taylor: &quot;[CF-metadata] misleading sentence on coordinate attribute&quot;">Next message</a> ]
+[ <a href="./5655.html" title="Thomas Lavergne: &quot;[CF-metadata] Request for a new standard_name : surface_snow_extent&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5656" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5656" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5656" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5656" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Fwd%3A%20Re%3A%20Request%20for%20a%20new%20standard_name%20%3A%20surface_snow_extent">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 14 Aug 2013 15:55:05 +0100</span><br />
+</address>
+<br />
+Dear Thomas
+<br />
+<br /><em class="quotelev1">&gt; Would that mean something like:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; float snow_extent(time) ;
+</em><br />
+<em class="quotelev1">&gt;    snow_extent:standard_name = &quot;surface_snow_extent&quot; ;
+</em><br />
+<em class="quotelev1">&gt;    snow_extent:cell_methods = &quot;area: sum where land&quot; ;
+</em><br />
+<br />Yes, that's right. Also
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;snow_extent:units=&quot;m2&quot;; // or equivalent
+<br />
+<br /><em class="quotelev1">&gt; To define such a threshold might be tricky :) Intuitively it should be a threshold on area_fraction, but maybe not always. In our processing, we compute a &quot;probability of snow&quot;, and apply a threshold on this probability for deciding on snow/no-snow. This probability and how we compute it in the first place has nothing standardized.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; But let's take the sea_ice_extent as an example. Sea ice extent is (usually) the area of sea ice where sea_ice_area_fraction is more than 0.15. How should we properly define a ice_extent variable that specifies the threshold?
+</em><br />
+<br />We already have a standard_name of sea_ice_extent, as you pointed out, and
+<br />
+I think its definition should include the threshold to define what defines
+<br />
+the ice edge, as a default. However if you wanted to state the threshold
+<br />
+explicitly, I'd do it like this:
+<br />
+<br />float ice_extent(time) ; 
+<br />
+&nbsp;&nbsp;ice_extent:standard_name = &quot;sea_ice_extent&quot;; // the existing stdname
+<br />
+&nbsp;&nbsp;ice_extent:cell_methods = &quot;area: sum&quot;;
+<br />
+&nbsp;&nbsp;ice_extent:coordinates = &quot;threshold&quot;; // time is a Unidata coord var
+<br />
+&nbsp;&nbsp;ice_extent:units = &quot;m^2&quot;
+<br />
+<br />float threshold;
+<br />
+&nbsp;&nbsp;threshold:standard_name = &quot;sea_ice_area_fraction&quot;
+<br />
+&nbsp;&nbsp;threshold:long_name = &quot;scalar value to separate ice-covered from ice-free area&quot;
+<br />
+<br />int time(time);
+<br />
+&nbsp;&nbsp;time:units = &quot;seconds since xxxx&quot;
+<br />
+<br />That's essentially what you said, but we don't need &quot;where&quot; in this case,
+<br />
+I think, because the sea ice extent can only apply where there is sea ice,
+<br />
+unlike the snow extent.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Aug 14 2013 - 08:55:05 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5656">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5657.html" title="Next message in the list">Karl Taylor: "[CF-metadata] misleading sentence on coordinate attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5655.html" title="Previous message in the list">Thomas Lavergne: "[CF-metadata] Request for a new standard_name : surface_snow_extent"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5656" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5656" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5656" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5656" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:28 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5655.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5657.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

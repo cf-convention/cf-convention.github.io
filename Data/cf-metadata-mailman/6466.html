@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Return periods from Hollis, Dan on 2014-09-11 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hollis, Dan (dan.hollis)" />
+<meta name="Subject" content="[CF-metadata] Return periods" />
+<meta name="Date" content="2014-09-11" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6465.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6467.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Return periods</h1>
+<!-- received="Thu Sep 11 09:34:35 2014" -->
+<!-- isoreceived="20140911083435" -->
+<!-- sent="Thu, 11 Sep 2014 15:34:35 +0000" -->
+<!-- isosent="20140911153435" -->
+<!-- name="Hollis, Dan" -->
+<!-- email="dan.hollis" -->
+<!-- subject="[CF-metadata] Return periods" -->
+<!-- id="D7D1372D480AEE41B3C1276C9A15404B07EDEFD6_at_EXXCMPD1DAG1.cmpd1.metoffice.gov.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20140909102732.GA1411_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6466" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6467.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata]  downward_air_velocity&quot;">Next message</a> ]
+[ <a href="./6465.html" title="Hollis, Dan: &quot;[CF-metadata] Daily mean temperature&quot;">Previous message</a> ]
+[ <a href="./6452.html" title="Jonathan Gregory: &quot;[CF-metadata] Return periods&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6499.html" accesskey="t" title="Hollis, Dan: &quot;[CF-metadata] Return periods&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6466" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6466" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6466" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6466" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hollis, Dan &lt;<a href="mailto:dan.hollis?Subject=Re%3A%20%5BCF-metadata%5D%20Return%20periods">dan.hollis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 11 Sep 2014 15:34:35 +0000</span><br />
+</address>
+<br />
+Hi Jonathan,
+<br />
+<br />Following our brief chat earlier this week I think I have a better understanding of the right way to tackle this. For the record here are the key points:
+<br />
+<br />As described previously, the probability is a conversion of the precipitation amount. To store both quantities _could_ be seen as redundancy. However the conversion process is non-trivial hence it is justified to store both.
+<br />
+<br />We _could_ store both quantities in the same file (as suggested below) however this, of itself, does not establish any special link between the variables (other than making it easy to see that they share coordinates). As we plan to store all our other variables (temperature, wind speed, sunshine etc) in separate files it makes sense to do the same for the precipitation probability (rather than create an exception for one variable).
+<br />
+<br />Your proposed standard name of &quot;precipitation_amount_converted_to_cumulative_probability&quot; might lead the user to ask 'which precipitation amount?'. Your recommendation is for the precipitation probability variable to have the same time bounds and cell method as the precipitation amount variable e.g. bounds = &quot;2014-08-01 09:00, 2014-09-01 09:00&quot; (for Aug 2014) and cell_methods = &quot;time: sum&quot;. The idea is that this would be sufficient to define which precipitation amount the probability relates to (although the user would have to seek out the precipitation amount field itself if they needed to know the actual values). I guess it would be important to declare in the definition that the cell method is applied *before* the conversion to cumulative probability.
+<br />
+<br />Does this agree with what you had in mind?
+<br />
+<br />Regarding standard names, I shall request the name you suggested unless anyone else has other ideas. However, I also have two general questions related to this:
+<br />
+<br />Given that cumulative probabilities may be of general interest to other users, would it be helpful to add &quot;X_converted_to_cumulative_probability&quot; to the list of transformations in the Guidelines for Standard Names?
+<br />
+<br />Given that the meaning of each transformation is defined in the Guidelines, is it necessary to request a new standard name if I am simply combining an existing transformation with an existing standard name?
+<br />
+<br />The reason for my second question is that I can see many examples of standard names that incorporate transformations (e.g. change_over_time_in_X, direction_of_X, divergence_of_X etc). Would it not be better practice to define only untransformed quantities, and then allow users to combine these with any of the defined transformations without needing to add to the standard name table?
+<br />
+<br />Regards,
+<br />
+<br />Dan
+<br />
+<br /><br /><br />-----Original Message-----
+<br />
+From: CF-metadata [mailto:cf-metadata-bounces at cgd.ucar.edu] On Behalf Of Jonathan Gregory
+<br />
+Sent: 09 September 2014 11:28
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Subject: Re: [CF-metadata] Return periods
+<br />
+<br />Dear Dan
+<br />
+<br />Yes, I see what you mean regarding the aux coord, and it's a neat idea, but
+<br />
+it doesn't seem quite right to me. Aux coords are alternative or additional
+<br />
+information. The lat(x,y) and lon(x,y) coordinates provide an alternative way
+<br />
+to locate the point (x,y), in a different coordinate system. The precipitation
+<br />
+probability, however, would determine the precipitation entirely. There isn't
+<br />
+any coordinate information which would give you the precipitation amount. That
+<br />
+is why I don't think the probability can be an aux coord. Does that make sense?
+<br />
+<br /><em class="quotelev1">&gt; You are right regarding the calculation - we are using a statistical model of the relationship between monthly rainfall and return period that was developed many years ago by a colleague from an analysis of 60 years of historical data. The model uses values of the coefficients of variation and skewness to describe the distribution of monthly rainfall (assumed to be log-normal). To capture how the shape of the distribution varies with location we have pre-calculated values of these coefficients available at each point on a 5 km grid.
+</em><br />
+<br />Right. So it is reasonable to describe it as a conversion of precipitation
+<br />
+amount to probability, I think.
+<br />
+<br /><em class="quotelev1">&gt; If a new standard name is required then I'm happy to take your advice on a suitable choice.
+</em><br />
+<br />It would be useful to know if anyone else reading this has a view on my
+<br />
+suggestion of precipitation_amount_converted_to_cumulative_probability.
+<br />
+<br /><em class="quotelev1">&gt; What is still not clear to me is how I maintain a clear link between the two fields without storing some of the information twice. Is it simply a case of storing two variables in the same NetCDF file (so that they share coordinates)?
+</em><br />
+<br />If they are in the same file, indeed it is obvious if the fields have the same
+<br />
+spatiotemporal coordinates, because they share the coord vars, as you say. If
+<br />
+they are in different files, the data-user has to check whether the coords are
+<br />
+the same. There is no convention which would allow one to be sure about that
+<br />
+without checking. CF does not rely on variable names, for instance. This is a
+<br />
+very common situation, in fact. For instance, in the CMIP archives each
+<br />
+quantity is in a separate file, and the data variables in many files typically
+<br />
+have the same spatiotemporal coordinates, but analysis software cannot be sure
+<br />
+of that without checking.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Sep 11 2014 - 09:34:35 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6466">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6467.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata]  downward_air_velocity"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6465.html" title="Previous message in the list">Hollis, Dan: "[CF-metadata] Daily mean temperature"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6452.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] Return periods"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6499.html" title="Next message in this discussion thread">Hollis, Dan: "[CF-metadata] Return periods"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6499.html" title="Message sent in reply to this message">Hollis, Dan: "[CF-metadata] Return periods"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6466" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6466" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6466" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6466" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:46 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6465.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6467.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

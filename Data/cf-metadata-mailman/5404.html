@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes from Signell, Richard on 2013-05-23 (cf-metadata-mailman)</title>
+<meta name="Author" content="Signell, Richard (rsignell)" />
+<meta name="Subject" content="[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes" />
+<meta name="Date" content="2013-05-23" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5403.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5405.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes</h1>
+<!-- received="Thu May 23 08:00:36 2013" -->
+<!-- isoreceived="20130523070036" -->
+<!-- sent="Thu, 23 May 2013 10:00:36 -0400" -->
+<!-- isosent="20130523140036" -->
+<!-- name="Signell, Richard" -->
+<!-- email="rsignell" -->
+<!-- subject="[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes" -->
+<!-- id="CAFhraUx6c+Fz99mA81B3=LRr3dXF_SyzEnE-02aPTOV98VfVMw_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="web-46129132_at_mail.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5404" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5405.html" accesskey="d" title="Ellyn Montgomery: &quot;[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes&quot;">Next message</a> ]
+[ <a href="./5403.html" title="Seth McGinnis: &quot;[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes&quot;">Previous message</a> ]
+[ <a href="./5403.html" title="Seth McGinnis: &quot;[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5400.html" accesskey="t" title="Ellyn Montgomery: &quot;[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5404" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5404" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5404" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5404" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Signell, Richard &lt;<a href="mailto:rsignell?Subject=Re%3A%20%5BCF-metadata%5D%20use%20of%20_FillValue%20vs%20valid_range%2C%20and%20minimum%20and%20maximum%20variable%20attributes">rsignell</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 23 May 2013 10:00:36 -0400</span><br />
+</address>
+<br />
+Seth,
+<br />
+<br />On Thu, May 23, 2013 at 9:51 AM, Seth McGinnis &lt;mcginnis at ucar.edu&gt; wrote:
+<br />
+<em class="quotelev3">&gt;&gt;&gt;  Computing the min &amp; max on the fly is cheap, and approximating it is even
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; cheaper, so why introduce the uncertainty?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;...  but computing min &amp; max on the fly can also be very expensive.
+</em><br />
+<em class="quotelev2">&gt;&gt;We have aggregated model output datasets where each variable is more
+</em><br />
+<em class="quotelev2">&gt;&gt;than 1TB!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Sure, I can see that that's useful metadata about the dataset, and that
+</em><br />
+<em class="quotelev1">&gt; there's value in caching it somewhere.  I just don't think it belongs with
+</em><br />
+<em class="quotelev1">&gt; the metadata inside the netcdf file. What's the use case for storing it
+</em><br />
+<em class="quotelev1">&gt; there?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Because the problem remains that, unless you're storing and serving
+</em><br />
+<em class="quotelev1">&gt; that dataset as a single 1 TB file that never gets modified or subset,
+</em><br />
+<em class="quotelev1">&gt; as soon as anything at all happens to the file, those min and max
+</em><br />
+<em class="quotelev1">&gt; values become tainted and unreliable, and ought to be recomputed.
+</em><br />
+<br />That's a great point.  Funny, because I've been making the same
+<br />
+arguments against storing time and space extents in the netcdf file,
+<br />
+which was first suggested here:
+<br />
+<a href="http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html">http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html</a>
+<br />
+and now being revisited here:
+<br />
+<a href="http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery_%28ACDD%29_Working">http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery_%28ACDD%29_Working</a>
+<br />
+<br />Thanks for snapping me back to reality!
+<br />
+<br />-Rich
+<br />
+<pre>
+--
+Dr. Richard P. Signell   (508) 457-2229
+USGS, 384 Woods Hole Rd.
+Woods Hole, MA 02543-1598
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu May 23 2013 - 08:00:36 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5404">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5405.html" title="Next message in the list">Ellyn Montgomery: "[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5403.html" title="Previous message in the list">Seth McGinnis: "[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./5403.html" title="Message to which this message replies">Seth McGinnis: "[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5400.html" title="Next message in this discussion thread">Ellyn Montgomery: "[CF-metadata] use of _FillValue vs valid_range, and minimum and maximum variable attributes"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5404" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5404" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5404" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5404" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:22 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5403.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5405.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

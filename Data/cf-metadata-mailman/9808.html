@@ -1,0 +1,1850 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] New standard_name of quality_flag for corresponding quality control variables from Andrew Barna on 2019-07-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Andrew Barna (abarna)" />
+<meta name="Subject" content="[CF-metadata] New standard_name of quality_flag for corresponding quality control variables" />
+<meta name="Date" content="2019-07-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./9807.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9809.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] New standard_name of quality_flag for corresponding quality control variables</h1>
+<!-- received="Fri Jul 26 14:05:59 2019" -->
+<!-- isoreceived="20190726130559" -->
+<!-- sent="Fri, 26 Jul 2019 13:05:59 -0700" -->
+<!-- isosent="20190726200559" -->
+<!-- name="Andrew Barna" -->
+<!-- email="abarna" -->
+<!-- subject="[CF-metadata] New standard_name of quality_flag for corresponding quality control variables" -->
+<!-- id="CAGPbRPaqD6PuC-tC1cPyRsVE84ut0YoKE5NuyqHRCsCoS7gYiA_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="7df22f40-ded0-046c-39f0-57a7806cf396_at_ou.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start9808" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./9809.html" accesskey="d" title="Kehoe, Kenneth E.: &quot;[CF-metadata] New standard_name of quality_flag for corresponding quality control variables&quot;">Next message</a> ]
+[ <a href="./9807.html" title="Andrew Barna: &quot;[CF-metadata] New standard_name of quality_flag for corresponding quality control variables&quot;">Previous message</a> ]
+[ <a href="./9803.html" title="Kehoe, Kenneth E.: &quot;[CF-metadata] New standard_name of quality_flag for corresponding quality control variables&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./9810.html" accesskey="t" title="Kehoe, Kenneth E.: &quot;[CF-metadata] New standard_name of quality_flag for corresponding quality control variables&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9808" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9808" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9808" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9808" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Andrew Barna &lt;<a href="mailto:abarna?Subject=Re%3A%20%5BCF-metadata%5D%20New%20standard_name%20of%20quality_flag%20for%20corresponding%20quality%20control%20variables">abarna</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 26 Jul 2019 13:05:59 -0700</span><br />
+</address>
+<br />
+Hi Everyone,
+<br />
+<br />I've been re reading all these emails and having some long conversations
+<br />
+with colleagues about this proposal and still I can't seem to convince
+<br />
+myself that it is a good idea.
+<br />
+<br />The initial request seemed to be motivated by wanting to distinguish
+<br />
+&quot;quality&quot; from &quot;status&quot; based on standard name alone. This distinction can
+<br />
+currently be accomplished by using the &quot;flag_meanings&quot; attribute. This name
+<br />
+is hardly unique in needing additional information, many of the radiation
+<br />
+names need (often optional) wavelength coordinates. If you are doing any
+<br />
+custom calendars or grids, all these need additional attributes or
+<br />
+information to properly interpret the data in the variable.
+<br />
+<br />Having multiple flag variables in a file shouldn't be a problem, WOCE did
+<br />
+it for &quot;originator&quot; vs  &quot;expert&quot; QC. If you really don't want more than one
+<br />
+flag variable, the flag_masks attribute allows for combining all these
+<br />
+states together, combing that further with flag_meanings even allows you to
+<br />
+define which combinations are valid. My group is considering having
+<br />
+multiple flag schemes in the file (WOCE and ARGO), so you can just use the
+<br />
+one that you like best.
+<br />
+<br />My colleagues expressed concern that this would cause significant confusion
+<br />
+to new users who are trying to adopt CF as to which &quot;flag&quot; name to use for
+<br />
+their data. And also the added complication of needing to look for more
+<br />
+than one name when looking for flag information.
+<br />
+<br />I feel that this issue is best resolved with some clarifying updates to the
+<br />
+CF document itself, especially some new examples to show how flags can be
+<br />
+used, and not with a new name for this metadata variable.
+<br />
+<br />-Barna
+<br />
+<br /><br /><br />On Wed, Jul 24, 2019 at 2:20 PM Kehoe, Kenneth E. &lt;kkehoe at ou.edu&gt; wrote:
+<br />
+<br /><em class="quotelev1">&gt; Barna,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I plan to propose some updates to CF document once this name is in the
+</em><br />
+<em class="quotelev1">&gt; standard name list. It will be a lot easier to have my proposed changed
+</em><br />
+<em class="quotelev1">&gt; accepted if the standard name is already accepted.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Ken
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 2019-7-24 13:21, Andrew Barna wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I've never personally liked the name &quot;status_flag&quot; and have always
+</em><br />
+<em class="quotelev1">&gt; interpreted it to be the &quot;CF way&quot; of saying &quot;these values are either an
+</em><br />
+<em class="quotelev1">&gt; associative array or bit field or some combination of both&quot;. It is also a
+</em><br />
+<em class="quotelev1">&gt; special case of standard names in that two variables with the standard name
+</em><br />
+<em class="quotelev1">&gt; &quot;status_flag&quot; may not be comparable, a situation which will not change with
+</em><br />
+<em class="quotelev1">&gt; an added &quot;quality_flag&quot;, that is, two variables with the standard name of
+</em><br />
+<em class="quotelev1">&gt; &quot;quality_flag&quot; also may not be comparable.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Since the actual meaning of the values contained in a variable with the
+</em><br />
+<em class="quotelev1">&gt; standard name &quot;status_flag&quot; would need to be derived from the various other
+</em><br />
+<em class="quotelev1">&gt; flag_* attributes, I saw this proposal as an added complication. When
+</em><br />
+<em class="quotelev1">&gt; looking at a variable with the standard name &quot;quality_flag&quot;, I would still
+</em><br />
+<em class="quotelev1">&gt; would not know the meanings of the values until interpreting the various
+</em><br />
+<em class="quotelev1">&gt; other flag_* attributes.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think adding this new name would also require some updates to the CF
+</em><br />
+<em class="quotelev1">&gt; document itself, section 3.5 and probably Appendix C, to note that there
+</em><br />
+<em class="quotelev1">&gt; are would now be multiple names which trigger the interpretation of the
+</em><br />
+<em class="quotelev1">&gt; values as per that section.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On Wed, Jul 24, 2019 at 11:40 AM John Graybeal &lt;jgraybeal at stanford.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I support the point about defining 'status' and 'quality'. Yes, there are
+</em><br />
+<em class="quotelev2">&gt;&gt; cases when we define terms that are re-used, but I don't think these terms
+</em><br />
+<em class="quotelev2">&gt;&gt; are reused, they appear only in these flags. Just defining the standard
+</em><br />
+<em class="quotelev2">&gt;&gt; name should do.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Ken, I did like the qualifying text about status_flag but maybe that's
+</em><br />
+<em class="quotelev2">&gt;&gt; because I always thought status_flag could be used that way, as a status of
+</em><br />
+<em class="quotelev2">&gt;&gt; instruments. Looking at the definition (
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mmisw.org/cfsn/#/search/status">http://mmisw.org/cfsn/#/search/status</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mmisw.org_cfsn_-23_search_status&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=t2KpUQnNrF4eJoiygFuC7iQ1NSsuwhjQXku4Nvu5XdU&amp;e">https://urldefense.proofpoint.com/v2/url?u=http-3A__mmisw.org_cfsn_-23_search_status&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=t2KpUQnNrF4eJoiygFuC7iQ1NSsuwhjQXku4Nvu5XdU&amp;e</a>=&gt;) it
+</em><br />
+<em class="quotelev2">&gt;&gt; doesn't say that, does it?  It's all about the data. I even searched the
+</em><br />
+<em class="quotelev2">&gt;&gt; archives, I was so sure people talked about it in another way, but I can't
+</em><br />
+<em class="quotelev2">&gt;&gt; find any evidence of that.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; So I conclude equipment status is not included in the model currently
+</em><br />
+<em class="quotelev2">&gt;&gt; supported by status flag, and we shouldn't try to fix that here. What do
+</em><br />
+<em class="quotelev2">&gt;&gt; you think?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; John
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On Jul 24, 2019, at 10:34 AM, Kehoe, Kenneth E. &lt;kkehoe at ou.edu&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Daniel,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Thanks for the information. At some point we should chat about how our
+</em><br />
+<em class="quotelev2">&gt;&gt; two organizations think about and perform quality analysis.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Martin,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I'm confused about your suggestion to include definitions of status and
+</em><br />
+<em class="quotelev2">&gt;&gt; quality. I guess we could define those terms better in the general standard
+</em><br />
+<em class="quotelev2">&gt;&gt; name table, but that is not my intention. My concern is that the definition
+</em><br />
+<em class="quotelev2">&gt;&gt; of those terms is larger than the scope of what I wanted to propose. I
+</em><br />
+<em class="quotelev2">&gt;&gt; would prefer to just work on the definitions of the status_flag and
+</em><br />
+<em class="quotelev2">&gt;&gt; quality_flag.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Looking at your suggestion to numerically order the values suggests I
+</em><br />
+<em class="quotelev2">&gt;&gt; think we have a different notion of how to use quality_flag. A quality_flag
+</em><br />
+<em class="quotelev2">&gt;&gt; is not intend to indicate severity or ranking of tests. It is just a state
+</em><br />
+<em class="quotelev2">&gt;&gt; field. My program had discussions to do something like that in the past and
+</em><br />
+<em class="quotelev2">&gt;&gt; it did not end well.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; If we want to add terminology along the lines of &quot;The variable with
+</em><br />
+<em class="quotelev2">&gt;&gt; standard name quality_flag refers to an assessed quality of the
+</em><br />
+<em class="quotelev2">&gt;&gt; corresponding data.&quot; that is OK with me. Your expanded definition of status
+</em><br />
+<em class="quotelev2">&gt;&gt; does not help me to better understand status. I think it's the statement of
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;may&quot; that confuses me. I see a definition needing to be more definitive.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I don't see the addition of quality_flag as changing status_flag. I see
+</em><br />
+<em class="quotelev2">&gt;&gt; quality_flag as a more narrow sub-class of status_flag. I would prefer to
+</em><br />
+<em class="quotelev2">&gt;&gt; not change much with status_flag since it has such a long history with CF.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I think we have these definitions:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; status_flag: A variable with the standard name of status_flag contains an
+</em><br />
+<em class="quotelev2">&gt;&gt; indication of quality or other status of another data variable. The linkage
+</em><br />
+<em class="quotelev2">&gt;&gt; between the data variable and the variable with the standard name of
+</em><br />
+<em class="quotelev2">&gt;&gt; status_flag is achieved using the ancillary_variables attribute. A variable
+</em><br />
+<em class="quotelev2">&gt;&gt; which contains purely quality information may use the standard name of
+</em><br />
+<em class="quotelev2">&gt;&gt; quality_flag to provided an assessed quality of the corresponding data.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; quality_flag = A variable with the standard name of quality_flag contains
+</em><br />
+<em class="quotelev2">&gt;&gt; an indication of assessed quality information of another data variable. The
+</em><br />
+<em class="quotelev2">&gt;&gt; linkage between the data variable and the variable or variables with the
+</em><br />
+<em class="quotelev2">&gt;&gt; standard_name of quality_flag is achieved using the ancillary_variables
+</em><br />
+<em class="quotelev2">&gt;&gt; attribute.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Thanks,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Ken
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 2019-7-24 03:40, Daniel Neumann wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear Ken, Martin, John, Roy and Barna,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I/we thought about submitting a similar proposal to add some extended
+</em><br />
+<em class="quotelev2">&gt;&gt; model quality information to netCDF files. The suggested description of
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;quality_flag&quot; and the modified description of &quot;status_flag&quot; fit well into
+</em><br />
+<em class="quotelev2">&gt;&gt; our project.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I am just writing this to show that there are more people in the
+</em><br />
+<em class="quotelev2">&gt;&gt; community who are interested in this.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Cheers,
+</em><br />
+<em class="quotelev2">&gt;&gt; Daniel
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Am 24.07.2019 um 10:49 schrieb Martin Juckes - UKRI STFC:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear John, Roy,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; OK, I'm happy to drop the line about ordering of quality flags if it
+</em><br />
+<em class="quotelev2">&gt;&gt; doesn't work. This is consistent with Roy's suggested definitions (posted 2
+</em><br />
+<em class="quotelev2">&gt;&gt; minutes before John's reply), which also drop this sentence, and add a
+</em><br />
+<em class="quotelev2">&gt;&gt; broader description of valid usage of the status flag (I've copied them her
+</em><br />
+<em class="quotelev2">&gt;&gt; to get the discussion back in a single thread):
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Status: The value of a variable with standard name status_flag may refer
+</em><br />
+<em class="quotelev2">&gt;&gt; to the status of the instrument or process which generated the
+</em><br />
+<em class="quotelev2">&gt;&gt; corresponding data, or it may refer to the data itself. This may include
+</em><br />
+<em class="quotelev2">&gt;&gt; information about data quality, particularly in legacy data sets.
+</em><br />
+<em class="quotelev2">&gt;&gt; 'quality_flag' should be used if data quality is the only type of
+</em><br />
+<em class="quotelev2">&gt;&gt; information contained in the variable.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Quality: The value of a variable with standard name quality_flag refers
+</em><br />
+<em class="quotelev2">&gt;&gt; to an assessed quality of the corresponding data.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; regards,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Martin
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; From: John Graybeal &lt;jgraybeal at stanford.edu&gt; &lt;jgraybeal at stanford.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Sent: 24 July 2019 09:20
+</em><br />
+<em class="quotelev2">&gt;&gt; To: Juckes, Martin (STFC,RAL,RALSP)
+</em><br />
+<em class="quotelev2">&gt;&gt; Cc: Andrew Barna; Kehoe, Kenneth E.; CF Metadata List
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: Re: [CF-metadata] New standard_name of quality_flag for
+</em><br />
+<em class="quotelev2">&gt;&gt; corresponding quality control variables
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; +1 Martin, just what I was thinking also, it creates the opening but does
+</em><br />
+<em class="quotelev2">&gt;&gt; not preclude mixing status and quality flags in a single status_flag, which
+</em><br />
+<em class="quotelev2">&gt;&gt; I think is important.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Um, I don't think you can dictate that &quot;Numeric values of the quality
+</em><br />
+<em class="quotelev2">&gt;&gt; flag should be ordered, such the lowest value corresponds to the poorest
+</em><br />
+<em class="quotelev2">&gt;&gt; quality and the highest value to the best quality.&quot; Some people will be
+</em><br />
+<em class="quotelev2">&gt;&gt; documenting their own flags which are whatever they are.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Responding to an earlier possible misconception, I want to emphasize
+</em><br />
+<em class="quotelev2">&gt;&gt; (read: confirm) these are the standard names, which are used to
+</em><br />
+<em class="quotelev2">&gt;&gt; characterize the attributes. They are not the variable names, so you can
+</em><br />
+<em class="quotelev2">&gt;&gt; have multiple different variables that express different status_flags or
+</em><br />
+<em class="quotelev2">&gt;&gt; different quality_flags.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; John
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On Jul 24, 2019, at 12:46 AM, Martin Juckes - UKRI STFC &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; martin.juckes at stfc.ac.uk&lt;mailto:martin.juckes at stfc.ac.uk&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;martin.juckes at stfc.ac.uk&gt;&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear Ken, Barna,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I agree that we should keep things simple as far as possible, but I still
+</em><br />
+<em class="quotelev2">&gt;&gt; think we need to say something about the difference between &quot;status&quot; and
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;quality&quot;.  The proposed definitions do not, as far as I can see, say
+</em><br />
+<em class="quotelev2">&gt;&gt; anything about this. This could lead to confusion, as different data
+</em><br />
+<em class="quotelev2">&gt;&gt; providers may make different choices, so that user software has to check
+</em><br />
+<em class="quotelev2">&gt;&gt; both flags and be prepared for arbitrary usage patterns.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Here is an attempt at a simple definitions of the two words, which could
+</em><br />
+<em class="quotelev2">&gt;&gt; be appended to your proposed definitions (significant words used in the
+</em><br />
+<em class="quotelev2">&gt;&gt; standard name table have canned definitions which are added to the
+</em><br />
+<em class="quotelev2">&gt;&gt; definitions of all standard names using those words).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; status: The value of a variable with standard name status_flag may refer
+</em><br />
+<em class="quotelev2">&gt;&gt; to the status of the instrument or process which generated the
+</em><br />
+<em class="quotelev2">&gt;&gt; corresponding data, or it may refer to the data itself. If the data
+</em><br />
+<em class="quotelev2">&gt;&gt; variable also has a quality_flag, the status_flag should be restricted to
+</em><br />
+<em class="quotelev2">&gt;&gt; properties of the instrument or process.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; quality: The value of a variable with standard name quality_flag refers
+</em><br />
+<em class="quotelev2">&gt;&gt; to an assessed quality of the corresponding data. Numeric values of the
+</em><br />
+<em class="quotelev2">&gt;&gt; quality flag should be ordered, such the lowest value corresponds to the
+</em><br />
+<em class="quotelev2">&gt;&gt; poorest quality and the highest value to the best quality.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I've suggested &quot;assessed&quot; rather than &quot;subjective&quot;, because quality could
+</em><br />
+<em class="quotelev2">&gt;&gt; be estimated using an algorithm which some would call objective. I've also
+</em><br />
+<em class="quotelev2">&gt;&gt; added in the idea that &quot;quality&quot; should in some sense be a scale from
+</em><br />
+<em class="quotelev2">&gt;&gt; poorest to best: this is the case for the examples we have discussed, and I
+</em><br />
+<em class="quotelev2">&gt;&gt; think it makes a clear distinction between the two flags. Are there any
+</em><br />
+<em class="quotelev2">&gt;&gt; potential uses of the quality flag which are not consistent with the idea
+</em><br />
+<em class="quotelev2">&gt;&gt; of a quality scale?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Specifying that the &quot;status_flag&quot; has a more restricted usage when the
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;quality_flag&quot; is present may be a way of getting around compatibility
+</em><br />
+<em class="quotelev2">&gt;&gt; issues, allowing people to continue mixed usage of &quot;status_flag&quot;. The CF
+</em><br />
+<em class="quotelev2">&gt;&gt; Convention is supposed to apply with the latest standard name table, so
+</em><br />
+<em class="quotelev2">&gt;&gt; people don't have the option of referring to an earlier version of the
+</em><br />
+<em class="quotelev2">&gt;&gt; table, even if they specify an earlier version of the Convention.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; regards,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Martin
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:cf-metadata-bounces at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;cf-metadata-bounces at cgd.ucar.edu&gt;&gt; on behalf of Andrew Barna &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; abarna at ucsd.edu&lt;mailto:abarna at ucsd.edu&gt; &lt;abarna at ucsd.edu&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Sent: 23 July 2019 22:56:19
+</em><br />
+<em class="quotelev2">&gt;&gt; To: Kehoe, Kenneth E.
+</em><br />
+<em class="quotelev2">&gt;&gt; Cc: cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: Re: [CF-metadata] New standard_name of quality_flag for
+</em><br />
+<em class="quotelev2">&gt;&gt; corresponding quality control variables
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Looks good to me.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I took the &quot;subjective&quot; part from how Martin was asking about quality vs
+</em><br />
+<em class="quotelev2">&gt;&gt; status.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; -Barna
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On Tue, Jul 23, 2019 at 2:40 PM Kehoe, Kenneth E. &lt;kkehoe at ou.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt;&lt;mailto:kkehoe at ou.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;kkehoe at ou.edu&gt;&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Barna,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; OK your definition is fine. I suggest one small change, drop the word
+</em><br />
+<em class="quotelev2">&gt;&gt; subjective.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; status_flag: A variable with the standard name of status_flag contains an
+</em><br />
+<em class="quotelev2">&gt;&gt; indication of quality or other status of another data variable. The linkage
+</em><br />
+<em class="quotelev2">&gt;&gt; between the data variable and the variable with the standard_name of
+</em><br />
+<em class="quotelev2">&gt;&gt; status_flag is achieved using the ancillary_variables attribute. A variable
+</em><br />
+<em class="quotelev2">&gt;&gt; which contains purely quality information may use the standard_name of
+</em><br />
+<em class="quotelev2">&gt;&gt; quality_flag.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Ken
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 2019-7-23 15:28, Andrew Barna wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Ken,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I think I'm confused by the text of the proposed change to the definition
+</em><br />
+<em class="quotelev2">&gt;&gt; of status_flag.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; In your proposed change the &quot;quality&quot; wording of the status_flag
+</em><br />
+<em class="quotelev2">&gt;&gt; definition was dropped. Here is the first sentence of each:
+</em><br />
+<em class="quotelev2">&gt;&gt; Current: A variable with the standard name of status_flag contains an
+</em><br />
+<em class="quotelev2">&gt;&gt; indication of quality or other status of another data variable.
+</em><br />
+<em class="quotelev2">&gt;&gt; Proposed: A variable with the standard name of status_flag contains an
+</em><br />
+<em class="quotelev2">&gt;&gt; indication of status of another data variable.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Perhaps the following for &quot;status_flag&quot;:
+</em><br />
+<em class="quotelev2">&gt;&gt; A variable with the standard name of status_flag contains an indication
+</em><br />
+<em class="quotelev2">&gt;&gt; of quality or other status of another data variable. The linkage between
+</em><br />
+<em class="quotelev2">&gt;&gt; the data variable and the variable with the standard_name of status_flag is
+</em><br />
+<em class="quotelev2">&gt;&gt; achieved using the ancillary_variables attribute. A variable which contains
+</em><br />
+<em class="quotelev2">&gt;&gt; purely subjective quality information may use the standard_name of
+</em><br />
+<em class="quotelev2">&gt;&gt; quality_flag.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; That is, keep the current definition, but also inform of a more
+</em><br />
+<em class="quotelev2">&gt;&gt; restrictive option. I don't see any way around not reading the
+</em><br />
+<em class="quotelev2">&gt;&gt; flag_meanings with any of these options.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; -Barna
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On Tue, Jul 23, 2019 at 1:03 PM Kehoe, Kenneth E. &lt;kkehoe at ou.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt;&lt;mailto:kkehoe at ou.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;kkehoe at ou.edu&gt;&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Barna,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I see this as an optional addition to narrow the standard. It does not
+</em><br />
+<em class="quotelev2">&gt;&gt; prohibit someone from using status_flag (as a standard_name or a
+</em><br />
+<em class="quotelev2">&gt;&gt; standard_name modifier) from a previous convention version
+</em><br />
+<em class="quotelev2">&gt;&gt; implementation nor invalidate that use from a previous convention
+</em><br />
+<em class="quotelev2">&gt;&gt; version. In your example the use of status_flag is a mixture of state
+</em><br />
+<em class="quotelev2">&gt;&gt; and quality. I see this new name as a way to improve things going
+</em><br />
+<em class="quotelev2">&gt;&gt; forward. Since the historical WOCE example uses state and quality with
+</em><br />
+<em class="quotelev2">&gt;&gt; some additional rules not listed in the CF standard it would be up to
+</em><br />
+<em class="quotelev2">&gt;&gt; the user to understand how to use the variable. Without seeing the WOCE
+</em><br />
+<em class="quotelev2">&gt;&gt; data I can't make a specific suggestion.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I don't know about any rules regarding a restriction. I think the
+</em><br />
+<em class="quotelev2">&gt;&gt; general concept of CF is to set the minimum rules. Additional rules
+</em><br />
+<em class="quotelev2">&gt;&gt; applied by another group on top of CF is allowed. For example my
+</em><br />
+<em class="quotelev2">&gt;&gt; organization uses additional attributes not defined in CF. I see
+</em><br />
+<em class="quotelev2">&gt;&gt; quality_flag as a narrowing of the rules of status_flag not replace it.
+</em><br />
+<em class="quotelev2">&gt;&gt; status_flag can still have a mixture of state and quality if the data
+</em><br />
+<em class="quotelev2">&gt;&gt; provider prefers to do it that way. quality_flag can only have quality
+</em><br />
+<em class="quotelev2">&gt;&gt; information. The determination of what is quality information is
+</em><br />
+<em class="quotelev2">&gt;&gt; actually up to the data provider to decide.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Ken
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 2019-7-23 13:33, Andrew Barna wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Ken,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Ok I see how this can be useful. Two more questions:
+</em><br />
+<em class="quotelev2">&gt;&gt; * How would you deal with &quot;legacy&quot; flag schemes which mix &quot;status&quot; and
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;quality&quot; already? I'm thinking of WOCE CTD as an example where &quot;7&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt; means Despiked (a status) and &quot;3&quot; means Questionable measurement (a
+</em><br />
+<em class="quotelev2">&gt;&gt; quality). The way my seagoing group have dealt with both is by having
+</em><br />
+<em class="quotelev2">&gt;&gt; the &quot;quality&quot; override &quot;status&quot; if the quality is anything other than
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;good&quot;, e.g. a questionable measurement which has been despiked gets
+</em><br />
+<em class="quotelev2">&gt;&gt; flag 3.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; * Are there rules in CF regarding restricting an existing definition?
+</em><br />
+<em class="quotelev2">&gt;&gt; I imagine there are many datasets already using the &quot;status_flag&quot; name
+</em><br />
+<em class="quotelev2">&gt;&gt; as either a stand alone standard name or a standard name modifier.
+</em><br />
+<em class="quotelev2">&gt;&gt; This change seems to be &quot;breaking&quot; in that previously compliant
+</em><br />
+<em class="quotelev2">&gt;&gt; datasets would now have quality information in a purely status field.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Thanks
+</em><br />
+<em class="quotelev2">&gt;&gt; -Barna
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On Tue, Jul 23, 2019 at 10:08 AM Kehoe, Kenneth E. &lt;kkehoe at ou.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt;&lt;mailto:kkehoe at ou.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;kkehoe at ou.edu&gt;&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Martin,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Thanks for your reply. I would prefer to keep the proposal simple. My
+</em><br />
+<em class="quotelev2">&gt;&gt; example of a weighted mean was just one I created off the top of my head. I
+</em><br />
+<em class="quotelev2">&gt;&gt; don't see it as something to actually look into implementing.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I need a way to indicate a variable is a quality status field. The
+</em><br />
+<em class="quotelev2">&gt;&gt; distinction that the status field only contains quality information is the
+</em><br />
+<em class="quotelev2">&gt;&gt; important distinction. The variable indicated with quality_flag will need
+</em><br />
+<em class="quotelev2">&gt;&gt; to also use flag_meanings, same as status_flag. Hence my reason for
+</em><br />
+<em class="quotelev2">&gt;&gt; choosing quality_flag to follow a similar naming pattern.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Barna,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Without a distinction that the entire variable is a quality variable the
+</em><br />
+<em class="quotelev2">&gt;&gt; user is forced to parse the flag_meanings to see if the variable applies.
+</em><br />
+<em class="quotelev2">&gt;&gt; This would also encourage a data provider to mix quality with source or
+</em><br />
+<em class="quotelev2">&gt;&gt; instrument state or something else in the same variable. That would be very
+</em><br />
+<em class="quotelev2">&gt;&gt; difficult to understand.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; As Martin points out quality is more subjective than other status
+</em><br />
+<em class="quotelev2">&gt;&gt; information. A user may need to choose what parts of the quality variable
+</em><br />
+<em class="quotelev2">&gt;&gt; to apply. I would prefer we not conflate absolute information with
+</em><br />
+<em class="quotelev2">&gt;&gt; subjective information. But we need a way to distinguish the variable
+</em><br />
+<em class="quotelev2">&gt;&gt; contains absolute information vs a variable that contains more subjective
+</em><br />
+<em class="quotelev2">&gt;&gt; information.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; To expand on Martin's example imagine a profiling instrument that has a
+</em><br />
+<em class="quotelev2">&gt;&gt; shutter to protect the laser from rain. The laser will always send out
+</em><br />
+<em class="quotelev2">&gt;&gt; pulses and the receiver will always be on receiving the return from laser
+</em><br />
+<em class="quotelev2">&gt;&gt; pulse. To know when the shutter is in the open state where the instrument
+</em><br />
+<em class="quotelev2">&gt;&gt; is profiling we would use a state variable with a simple flag_values
+</em><br />
+<em class="quotelev2">&gt;&gt; method.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; short shutter (time)
+</em><br />
+<em class="quotelev2">&gt;&gt;    shutter:long_name = &quot;Shutter state&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;    shutter:units = '1'
+</em><br />
+<em class="quotelev2">&gt;&gt;    shutter:flag_values = 0, 1
+</em><br />
+<em class="quotelev2">&gt;&gt;    shutter:flag_meanings = &quot;closed open&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;    shutter:standard_name = &quot;status_flag&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; This variable is just indicating the position of the shutter. There is no
+</em><br />
+<em class="quotelev2">&gt;&gt; ambiguity with it's use. If a user wants to use the data for atmospheric
+</em><br />
+<em class="quotelev2">&gt;&gt; reasons they should filter to only use data where profiling. In fact we can
+</em><br />
+<em class="quotelev2">&gt;&gt; implement this variable into our code by only using data where shutter is
+</em><br />
+<em class="quotelev2">&gt;&gt; set to open.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Here is an example of more subjective quality variable.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; short quality_variable (time)
+</em><br />
+<em class="quotelev2">&gt;&gt;    quality_variable:long_name = &quot;Quality variable for linked data
+</em><br />
+<em class="quotelev2">&gt;&gt; variable&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;    quality_variable:units = '1'
+</em><br />
+<em class="quotelev2">&gt;&gt;    quality_variable:flag_masks= 1, 2, 4, 8, 16, 32
+</em><br />
+<em class="quotelev2">&gt;&gt;    quality_variable:flag_meanings = &quot;Shutter_not_open
+</em><br />
+<em class="quotelev2">&gt;&gt;      Laser_below_80_percent_power
+</em><br />
+<em class="quotelev2">&gt;&gt;      Laser_below_60_percent_power
+</em><br />
+<em class="quotelev2">&gt;&gt;      Laser_below_40_percent_power
+</em><br />
+<em class="quotelev2">&gt;&gt;      Bird_poop_may_be_on_sensor
+</em><br />
+<em class="quotelev2">&gt;&gt;      Bird_poop_is_on_sensor&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;    quality_variable:flag_meanings = &quot;Bad Suspect Suspect Bad Suspect Bad&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;    quality_variable:standard_name = &quot;quality_flag&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; In this example there are three indications when the laser is less than
+</em><br />
+<em class="quotelev2">&gt;&gt; 100%. It would be up to the user to decide what percentage is the limit
+</em><br />
+<em class="quotelev2">&gt;&gt; where they do not want to use the data. This is more subjective and
+</em><br />
+<em class="quotelev2">&gt;&gt; dependent on the research techniques to determine if the issue a problem or
+</em><br />
+<em class="quotelev2">&gt;&gt; not. It is also up to the user to determine if the chance of bird poop on
+</em><br />
+<em class="quotelev2">&gt;&gt; the sensor is an issue or if they are OK with the risk of using the data.
+</em><br />
+<em class="quotelev2">&gt;&gt; And to be nice to the user we have also pulled in information from the
+</em><br />
+<em class="quotelev2">&gt;&gt; shutter variable so the user can decided to only use the quality_variable
+</em><br />
+<em class="quotelev2">&gt;&gt; instead of using both shutter and quality_variable. This is up to the data
+</em><br />
+<em class="quotelev2">&gt;&gt; provider to decide. Some providers see the state of the shutter as quality
+</em><br />
+<em class="quotelev2">&gt;&gt; information, some would not. There is no requirements put on the quality
+</em><br />
+<em class="quotelev2">&gt;&gt; variable as to how it is used. It is just a quality information variable
+</em><br />
+<em class="quotelev2">&gt;&gt; following the same rules as a CF state variable.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I have also included an attribute that I am not currently proposing
+</em><br />
+<em class="quotelev2">&gt;&gt; called flag_assessment. This is a subjective statement from the data
+</em><br />
+<em class="quotelev2">&gt;&gt; provider on their opinion of the quality of the data. A user can search for
+</em><br />
+<em class="quotelev2">&gt;&gt; the word &quot;Bad&quot;  and then exclude only that data from analysis where the
+</em><br />
+<em class="quotelev2">&gt;&gt; mask is set. This would take all the guess work of quality away from the
+</em><br />
+<em class="quotelev2">&gt;&gt; user if they decided to take the opinion of the data provider. I'm not
+</em><br />
+<em class="quotelev2">&gt;&gt; currently proposing the addition of flag_meanings, this is just an example
+</em><br />
+<em class="quotelev2">&gt;&gt; of how quality can be expanded to be more simple for a user but not take
+</em><br />
+<em class="quotelev2">&gt;&gt; away the user's ability to make their own decision. Everyone has strong
+</em><br />
+<em class="quotelev2">&gt;&gt; opinions on quality of data.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Thanks,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Ken
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 2019-7-23 06:50, Martin Juckes - UKRI STFC wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear Ken,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; thanks for your response to me below.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Would it be fair to suggest that &quot;status&quot; should, as far as possible,
+</em><br />
+<em class="quotelev2">&gt;&gt; reflect a generic objective classification, with terms such as
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;sensor_nonfunctional&quot; which have a comparable meaning for all datasets,
+</em><br />
+<em class="quotelev2">&gt;&gt; while &quot;quality&quot; is a subjective *measure* with a meaning that may from
+</em><br />
+<em class="quotelev2">&gt;&gt; dataset to dataset? E.g. if dataset A has a maximum &quot;quality&quot; of 11 and
+</em><br />
+<em class="quotelev2">&gt;&gt; dataset B only goes up to 10, it doesn't necessarily imply that dataset A
+</em><br />
+<em class="quotelev2">&gt;&gt; is in any sense better and B.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; If you want to use it in weighted means, perhaps it should be
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;quality_measure&quot; rather than &quot;quality_flag&quot;? With &quot;status_flag&quot; the order
+</em><br />
+<em class="quotelev2">&gt;&gt; of integer values does not have any meaning, but with quality perhaps it
+</em><br />
+<em class="quotelev2">&gt;&gt; would make more sense have some concept of a sequence of quality settings
+</em><br />
+<em class="quotelev2">&gt;&gt; (so that, for example &quot;1&quot; always indicates a quality between &quot;0&quot; and &quot;2&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt; within a dataset, but could have different meanings in different datasets).
+</em><br />
+<em class="quotelev2">&gt;&gt; Could the quality also be expressed as a floating point number without any
+</em><br />
+<em class="quotelev2">&gt;&gt; flag meanings?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Responding to a point Barna raised: it is certainly possible to have more
+</em><br />
+<em class="quotelev2">&gt;&gt; than one &quot;status_flag&quot; variable, but I don't think it is ideal: if
+</em><br />
+<em class="quotelev2">&gt;&gt; information needs to be split across multiple variables we generally like
+</em><br />
+<em class="quotelev2">&gt;&gt; to describe the difference between the variables in the standard name or in
+</em><br />
+<em class="quotelev2">&gt;&gt; other metadata. In this case, I think there is a good case for using a new
+</em><br />
+<em class="quotelev2">&gt;&gt; standard name.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; regards,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Martin
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:cf-metadata-bounces at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;cf-metadata-bounces at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:cf-metadata-bounces at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;cf-metadata-bounces at cgd.ucar.edu&gt;&gt; on behalf of Andrew Barna &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; abarna at ucsd.edu&lt;mailto:abarna at ucsd.edu&gt; &lt;abarna at ucsd.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:abarna at ucsd.edu&gt; &lt;abarna at ucsd.edu&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Sent: 23 July 2019 00:23
+</em><br />
+<em class="quotelev2">&gt;&gt; To: Kehoe, Kenneth E.
+</em><br />
+<em class="quotelev2">&gt;&gt; Cc: cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;cf-metadata at cgd.ucar.edu&gt;&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: Re: [CF-metadata] New standard_name of quality_flag for
+</em><br />
+<em class="quotelev2">&gt;&gt; corresponding quality control variables
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Ken,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I guess, I don't see this proposed change as necessary since the
+</em><br />
+<em class="quotelev2">&gt;&gt; distinction between the terms &quot;quality&quot; and &quot;status&quot; is really done in
+</em><br />
+<em class="quotelev2">&gt;&gt; the &quot;flag_meanings&quot; attribute and is basically free form/uncontrolled.
+</em><br />
+<em class="quotelev2">&gt;&gt; These attributes need to be used by this new name as well.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Let me rephrase my suggestion/question:
+</em><br />
+<em class="quotelev2">&gt;&gt; If this proposal is not adopted, but an example of how to use a
+</em><br />
+<em class="quotelev2">&gt;&gt; variable, with the standard name of &quot;status_flag&quot;, to only indicate
+</em><br />
+<em class="quotelev2">&gt;&gt; data quality is included in the document, would that help?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; -Barna
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On Mon, Jul 22, 2019 at 1:22 PM Kehoe, Kenneth E. &lt;kkehoe at ou.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt;&lt;mailto:kkehoe at ou.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;kkehoe at ou.edu&gt;&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Barna,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Yes an update to the CF document should follow after the new
+</em><br />
+<em class="quotelev2">&gt;&gt; standard_name is implemented. I think multiple examples are needed since
+</em><br />
+<em class="quotelev2">&gt;&gt; status_flag covers many different types of state variables.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Ken
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 2019-7-22 10:35, Andrew Barna wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Hi Martin, Ken,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Is there anything wrong with including multiple &quot;status_flag&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt; variables to capture all separate state you wish? The CF document
+</em><br />
+<em class="quotelev2">&gt;&gt; unfortunately only includes an example of how to encode the status of
+</em><br />
+<em class="quotelev2">&gt;&gt; a sensor, but the actual meanings of the flag values are entirely up
+</em><br />
+<em class="quotelev2">&gt;&gt; to you, and this will not change with this proposal. Perhaps the CF
+</em><br />
+<em class="quotelev2">&gt;&gt; document would benefit from additional examples (e.g. one that only
+</em><br />
+<em class="quotelev2">&gt;&gt; shows data quality flags).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; -Barna
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On Mon, Jul 22, 2019 at 9:04 AM Kehoe, Kenneth E. &lt;kkehoe at ou.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt;&lt;mailto:kkehoe at ou.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;kkehoe at ou.edu&gt;&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Hi Martin,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I see status encompassing multiple metadata pieces of information. For
+</em><br />
+<em class="quotelev2">&gt;&gt; example it could be a state of the instrument as it cycles through a
+</em><br />
+<em class="quotelev2">&gt;&gt; pre-programed routine (Look at calibration target, look at sky, look at
+</em><br />
+<em class="quotelev2">&gt;&gt; ground, look at second calibration target, repeat...). Or the sources of
+</em><br />
+<em class="quotelev2">&gt;&gt; the inputs for a model where the availability or some other reason could
+</em><br />
+<em class="quotelev2">&gt;&gt; require making a decision on what source(s) to use. For provenance this
+</em><br />
+<em class="quotelev2">&gt;&gt; source information is important to report on a time step basis. Or the
+</em><br />
+<em class="quotelev2">&gt;&gt; status could be a data providers method to provide uncertainty
+</em><br />
+<em class="quotelev2">&gt;&gt; information (I see this as incorrect but some people do see it this
+</em><br />
+<em class="quotelev2">&gt;&gt; way). Each of these are important metadata but the method of use is
+</em><br />
+<em class="quotelev2">&gt;&gt; different than a strictly quality variable. A quality variable provides
+</em><br />
+<em class="quotelev2">&gt;&gt; information indicating if the data should be used or possibly could be
+</em><br />
+<em class="quotelev2">&gt;&gt; used in a weighted mean method to favor high quality data over low
+</em><br />
+<em class="quotelev2">&gt;&gt; quality data. The way the metadata is used is different depending on the
+</em><br />
+<em class="quotelev2">&gt;&gt; metadata type. A state of the instrument would be used for sub-setting
+</em><br />
+<em class="quotelev2">&gt;&gt; calibration vs. data. There is no ambiguity in this as data from a
+</em><br />
+<em class="quotelev2">&gt;&gt; calibration target is not used in a weather research analysis. But
+</em><br />
+<em class="quotelev2">&gt;&gt; quality is more subjective and is decided by the data user. If the
+</em><br />
+<em class="quotelev2">&gt;&gt; quality variable has 20 different quality tests the user would need to
+</em><br />
+<em class="quotelev2">&gt;&gt; decided if all 20 test results should be used or only a subset. Also,
+</em><br />
+<em class="quotelev2">&gt;&gt; the code for applying the quality is different than the state of the
+</em><br />
+<em class="quotelev2">&gt;&gt; instrument view (in my example above).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; It is possible to have a quality test result from the state of the
+</em><br />
+<em class="quotelev2">&gt;&gt; instrument, but not the other way around (typically). So I need a way to
+</em><br />
+<em class="quotelev2">&gt;&gt; distinguish the two for automated or semi-automated tools. Hence my
+</em><br />
+<em class="quotelev2">&gt;&gt; point of quality_flag essentially being a subset of status_flag
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Ken
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 2019-7-22 02:57, Martin Juckes - UKRI STFC wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear Ken,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Can you expand on the distinction between &quot;quality&quot; and &quot;status&quot;? I
+</em><br />
+<em class="quotelev2">&gt;&gt; understand that they are different in principle, but, in order to support
+</em><br />
+<em class="quotelev2">&gt;&gt; this new standard name I think we need a clear objective statement of how
+</em><br />
+<em class="quotelev2">&gt;&gt; we would want to distinguish between them in CF.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; The conventions section on flags (3.5) mixes the two up (
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://cfconventions.org/cf-conventions/cf-conventions.html#flags">http://cfconventions.org/cf-conventions/cf-conventions.html#flags</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__cfconventions.org_cf-2Dconventions_cf-2Dconventions.html-23flags&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=eL0N4oiV_7sTehSUWx">https://urldefense.proofpoint.com/v2/url?u=http-3A__cfconventions.org_cf-2Dconventions_cf-2Dconventions.html-23flags&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=eL0N4oiV_7sTehSUWx</a>RA5r3zJw7U9WyG5Xwvxy8GIzc&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__cfconventions.org_cf-2Dconventions_cf-2Dconventions.html-23flags&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=NVXr_3U_yIRDQSgpD1">https://urldefense.proofpoint.com/v2/url?u=http-3A__cfconventions.org_cf-2Dconventions_cf-2Dconventions.html-23flags&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=NVXr_3U_yIRDQSgpD1</a>aJpW7HG3d4-OGt43w08zZQBk8&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__cfconventions.org_cf-2Dconventions_cf-2Dconventions.html-23flags&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=NVXr_3U_yIRDQSgpD1">https://urldefense.proofpoint.com/v2/url?u=http-3A__cfconventions.org_cf-2Dconventions_cf-2Dconventions.html-23flags&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=NVXr_3U_yIRDQSgpD1</a>aJpW7HG3d4-OGt43w08zZQBk8&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ), so some re-wording of the document would also be needed,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; regards,
+</em><br />
+<em class="quotelev2">&gt;&gt; Martin
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; From: CF-metadata &lt;cf-metadata-bounces at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:cf-metadata-bounces at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;cf-metadata-bounces at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:cf-metadata-bounces at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;cf-metadata-bounces at cgd.ucar.edu&gt;&gt; on behalf of Kehoe, Kenneth E. &lt;
+</em><br />
+<em class="quotelev2">&gt;&gt; kkehoe at ou.edu&lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt;&lt;mailto:kkehoe at ou.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;kkehoe at ou.edu&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Sent: 19 July 2019 06:42
+</em><br />
+<em class="quotelev2">&gt;&gt; To: cf-metadata at cgd.ucar.edu&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;cf-metadata at cgd.ucar.edu&gt;&lt;mailto:cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Subject: [CF-metadata] New standard_name of quality_flag for
+</em><br />
+<em class="quotelev2">&gt;&gt; corresponding quality control variables
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear CF,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I am proposing a new standard name of &quot;quality_flag&quot; to indicate a
+</em><br />
+<em class="quotelev2">&gt;&gt; variable is purely a quality control variable. A quality control variable
+</em><br />
+<em class="quotelev2">&gt;&gt; would use flag_values or flag_masks along with flag_meanings to allow
+</em><br />
+<em class="quotelev2">&gt;&gt; declaring levels of quality or results from quality indicating tests of the
+</em><br />
+<em class="quotelev2">&gt;&gt; data variable. This variable be a subset of the more general &quot;status_flag&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt; standard name. Currently the definition of &quot;status_flag&quot; is:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; - A variable with the standard name of status_flag contains an indication
+</em><br />
+<em class="quotelev2">&gt;&gt; of quality or other status of another data variable. The linkage between
+</em><br />
+<em class="quotelev2">&gt;&gt; the data variable and the variable with the standard_name of status_flag is
+</em><br />
+<em class="quotelev2">&gt;&gt; achieved using the ancillary_variables attribute.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; This definition includes a variable used to define the state or other
+</em><br />
+<em class="quotelev2">&gt;&gt; status information of a variable and can not be distinguished by standard
+</em><br />
+<em class="quotelev2">&gt;&gt; name alone from a state of the instrument, processing decision, source
+</em><br />
+<em class="quotelev2">&gt;&gt; information, needed metadata about the data variable or other ancillary
+</em><br />
+<em class="quotelev2">&gt;&gt; variable type. Since there is no other way to define a purely quality
+</em><br />
+<em class="quotelev2">&gt;&gt; control variable, the use of &quot;status_flag&quot; is too general for strictly
+</em><br />
+<em class="quotelev2">&gt;&gt; quality control variables. By having a method to define a variable as
+</em><br />
+<em class="quotelev2">&gt;&gt; strictly quality control the results of quality control tests can be
+</em><br />
+<em class="quotelev2">&gt;&gt; applied to the data with a software tool based on requests by the user.
+</em><br />
+<em class="quotelev2">&gt;&gt; This would not affect current datasets that do use &quot;status_flag&quot; nor
+</em><br />
+<em class="quotelev2">&gt;&gt; require a change to the definition outside of the indication that
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;quality_flag&quot; standard name is available and a better use for pure quality
+</em><br />
+<em class="quotelev2">&gt;&gt; control variables.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Proposed addition:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; quality_flag = A variable with the standard name of quality_flag contains
+</em><br />
+<em class="quotelev2">&gt;&gt; an indication of quality information of another data variable. The linkage
+</em><br />
+<em class="quotelev2">&gt;&gt; between the data variable and the variable or variables with the
+</em><br />
+<em class="quotelev2">&gt;&gt; standard_name of quality_flag is achieved using the ancillary_variables
+</em><br />
+<em class="quotelev2">&gt;&gt; attribute.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Proposed change:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; status_flag = A variable with the standard name of status_flag contains
+</em><br />
+<em class="quotelev2">&gt;&gt; an indication of status of another data variable. The linkage between the
+</em><br />
+<em class="quotelev2">&gt;&gt; data variable and the variable with the standard_name of status_flag is
+</em><br />
+<em class="quotelev2">&gt;&gt; achieved using the ancillary_variables attribute. For data quality
+</em><br />
+<em class="quotelev2">&gt;&gt; information use quality_flag.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Thanks,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Ken
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; Kenneth E. Kehoe
+</em><br />
+<em class="quotelev2">&gt;&gt;      Research Associate - University of Oklahoma
+</em><br />
+<em class="quotelev2">&gt;&gt;      Cooperative Institute for Mesoscale Meteorological Studies
+</em><br />
+<em class="quotelev2">&gt;&gt;      ARM Climate Research Facility - Data Quality Office
+</em><br />
+<em class="quotelev2">&gt;&gt;      e-mail: kkehoe at ou.edu&lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt;&lt;mailto:kkehoe at ou.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;kkehoe at ou.edu&gt;&lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt;&gt; | Office:
+</em><br />
+<em class="quotelev2">&gt;&gt; 303-497-4754
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; Kenneth E. Kehoe
+</em><br />
+<em class="quotelev2">&gt;&gt;      Research Associate - University of Oklahoma
+</em><br />
+<em class="quotelev2">&gt;&gt;      Cooperative Institute for Mesoscale Meteorological Studies
+</em><br />
+<em class="quotelev2">&gt;&gt;      ARM Climate Research Facility - Data Quality Office
+</em><br />
+<em class="quotelev2">&gt;&gt;      e-mail: kkehoe at ou.edu&lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt; | Office: 303-497-4754
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;CF-metadata at cgd.ucar.edu&gt;&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El</a>tfQFm7wf7CO4&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP</a>j4Yt-T5zAkmE&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP</a>j4Yt-T5zAkmE&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; Kenneth E. Kehoe
+</em><br />
+<em class="quotelev2">&gt;&gt;     Research Associate - University of Oklahoma
+</em><br />
+<em class="quotelev2">&gt;&gt;     Cooperative Institute for Mesoscale Meteorological Studies
+</em><br />
+<em class="quotelev2">&gt;&gt;     ARM Climate Research Facility - Data Quality Office
+</em><br />
+<em class="quotelev2">&gt;&gt;     e-mail: kkehoe at ou.edu&lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt; |
+</em><br />
+<em class="quotelev2">&gt;&gt; Office: 303-497-4754
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El</a>tfQFm7wf7CO4&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP</a>j4Yt-T5zAkmE&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP</a>j4Yt-T5zAkmE&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El</a>tfQFm7wf7CO4&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP</a>j4Yt-T5zAkmE&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP</a>j4Yt-T5zAkmE&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; Kenneth E. Kehoe
+</em><br />
+<em class="quotelev2">&gt;&gt;    Research Associate - University of Oklahoma
+</em><br />
+<em class="quotelev2">&gt;&gt;    Cooperative Institute for Mesoscale Meteorological Studies
+</em><br />
+<em class="quotelev2">&gt;&gt;    ARM Climate Research Facility - Data Quality Office
+</em><br />
+<em class="quotelev2">&gt;&gt;    e-mail: kkehoe at ou.edu&lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt; | Office:
+</em><br />
+<em class="quotelev2">&gt;&gt; 303-497-4754
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El</a>tfQFm7wf7CO4&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP</a>j4Yt-T5zAkmE&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP</a>j4Yt-T5zAkmE&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; Kenneth E. Kehoe
+</em><br />
+<em class="quotelev2">&gt;&gt;    Research Associate - University of Oklahoma
+</em><br />
+<em class="quotelev2">&gt;&gt;    Cooperative Institute for Mesoscale Meteorological Studies
+</em><br />
+<em class="quotelev2">&gt;&gt;    ARM Climate Research Facility - Data Quality Office
+</em><br />
+<em class="quotelev2">&gt;&gt;    e-mail: kkehoe at ou.edu&lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt; | Office: 303-497-4754
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;CF-metadata at cgd.ucar.edu&gt;&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El</a>tfQFm7wf7CO4&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP</a>j4Yt-T5zAkmE&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=f8kQJDfPUHt7Yr0QWW9IT5PssWjH9plqdlgx0zbzbmU&amp;s=faPyR9aIDWaBnEUvf-Fr_KcFOMNmAbP</a>j4Yt-T5zAkmE&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; Kenneth E. Kehoe
+</em><br />
+<em class="quotelev2">&gt;&gt;   Research Associate - University of Oklahoma
+</em><br />
+<em class="quotelev2">&gt;&gt;   Cooperative Institute for Mesoscale Meteorological Studies
+</em><br />
+<em class="quotelev2">&gt;&gt;   ARM Climate Research Facility - Data Quality Office
+</em><br />
+<em class="quotelev2">&gt;&gt;   e-mail: kkehoe at ou.edu&lt;mailto:kkehoe at ou.edu&gt; &lt;kkehoe at ou.edu&gt; | Office:
+</em><br />
+<em class="quotelev2">&gt;&gt; 303-497-4754
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu&lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El</a>tfQFm7wf7CO4&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El</a>tfQFm7wf7CO4&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ========================
+</em><br />
+<em class="quotelev2">&gt;&gt; John Graybeal
+</em><br />
+<em class="quotelev2">&gt;&gt; Technical Program Manager
+</em><br />
+<em class="quotelev2">&gt;&gt; Center for Expanded Data Annotation and Retrieval /+/ NCBO BioPortal
+</em><br />
+<em class="quotelev2">&gt;&gt; Stanford Center for Biomedical Informatics Research
+</em><br />
+<em class="quotelev2">&gt;&gt; 650-736-1632
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El</a>tfQFm7wf7CO4&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing listCF-metadata at cgd.ucar.edu<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El</a>tfQFm7wf7CO4&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; Kenneth E. Kehoe
+</em><br />
+<em class="quotelev2">&gt;&gt;   Research Associate - University of Oklahoma
+</em><br />
+<em class="quotelev2">&gt;&gt;   Cooperative Institute for Mesoscale Meteorological Studies
+</em><br />
+<em class="quotelev2">&gt;&gt;   ARM Climate Research Facility - Data Quality Office
+</em><br />
+<em class="quotelev2">&gt;&gt;   e-mail: kkehoe at ou.edu | Office: 303-497-4754
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El</a>tfQFm7wf7CO4&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ========================
+</em><br />
+<em class="quotelev2">&gt;&gt; John Graybeal
+</em><br />
+<em class="quotelev2">&gt;&gt; Technical Program Manager
+</em><br />
+<em class="quotelev2">&gt;&gt; Center for Expanded Data Annotation and Retrieval /+/ NCBO BioPortal
+</em><br />
+<em class="quotelev2">&gt;&gt; Stanford Center for Biomedical Informatics Research
+</em><br />
+<em class="quotelev2">&gt;&gt; 650-736-1632
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El">https://urldefense.proofpoint.com/v2/url?u=http-3A__mailman.cgd.ucar.edu_mailman_listinfo_cf-2Dmetadata&amp;d=DwMFaQ&amp;c=qKdtBuuu6dQK9MsRUVJ2DPXW6oayO8fu4TfEHS8sGNk&amp;r=Vm7o2ZGxPkkqRuPs8nVMVQ&amp;m=VTdz9EFvdYCHVZuWqyGFVznrg66340ZMoqNJYCjC5P8&amp;s=LsVZCCklZnY9hhudjOxMkybEHPKZ1El</a>tfQFm7wf7CO4&amp;e=&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; Kenneth E. Kehoe
+</em><br />
+<em class="quotelev1">&gt;   Research Associate - University of Oklahoma
+</em><br />
+<em class="quotelev1">&gt;   Cooperative Institute for Mesoscale Meteorological Studies
+</em><br />
+<em class="quotelev1">&gt;   ARM Climate Research Facility - Data Quality Office
+</em><br />
+<em class="quotelev1">&gt;   e-mail: kkehoe at ou.edu | Office: 303-497-4754
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20190726/93f6f5a0/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20190726/93f6f5a0/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Jul 26 2019 - 14:05:59 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start9808">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./9809.html" title="Next message in the list">Kehoe, Kenneth E.: "[CF-metadata] New standard_name of quality_flag for corresponding quality control variables"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./9807.html" title="Previous message in the list">Andrew Barna: "[CF-metadata] New standard_name of quality_flag for corresponding quality control variables"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./9803.html" title="Message to which this message replies">Kehoe, Kenneth E.: "[CF-metadata] New standard_name of quality_flag for corresponding quality control variables"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./9810.html" title="Next message in this discussion thread">Kehoe, Kenneth E.: "[CF-metadata] New standard_name of quality_flag for corresponding quality control variables"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./9810.html" title="Message sent in reply to this message">Kehoe, Kenneth E.: "[CF-metadata] New standard_name of quality_flag for corresponding quality control variables"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg9808" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg9808" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg9808" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg9808" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:36 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./9807.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./9809.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

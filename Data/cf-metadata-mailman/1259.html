@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  CF Addition Proposal: bitmap values from Jonathan Gregory on 2008-03-21 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  CF Addition Proposal: bitmap values" />
+<meta name="Date" content="2008-03-21" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1258.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1260.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  CF Addition Proposal: bitmap values</h1>
+<!-- received="Fri Mar 21 02:08:14 2008" -->
+<!-- isoreceived="20080321020814" -->
+<!-- sent="Fri, 21 Mar 2008 08:08:14 +0000" -->
+<!-- isosent="20080321080814" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  CF Addition Proposal: bitmap values" -->
+<!-- id="20080321080814.GB8184_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1259" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1260.html" accesskey="d" title="Denis Nadeau: &quot;[CF-metadata] Difficulties to display Swath files form NetCDF.&quot;">Next message</a> ]
+[ <a href="./1258.html" title="Greg Rappa: &quot;[CF-metadata] CF Addition Proposal: bitmap values&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1259" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1259" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1259" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1259" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20CF%20Addition%20Proposal%3A%20bitmap%20values">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 21 Mar 2008 08:08:14 +0000</span><br />
+</address>
+<br />
+Dear Greg
+<br />
+<br />I agree that flag values are quite often generated in the way you describe,
+<br />
+by logical OR of bit values. While this could be described using the current
+<br />
+convention, by enumerating the translation for all the possible distinct ORed
+<br />
+combinations, that would obviously be very inefficient! I would suggest that
+<br />
+rather than introduce an alternative to &quot;flag&quot;, we could modify it, thus:
+<br />
+<br />byte precip_qc(time, z0, y0, x0) ; 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:long_name = &quot;Precipitation status bit field&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:grid_mapping = &quot;grid_mapping0&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:_FillValue = 0b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:valid_range = 1b, 15b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:flag_masks = 1b, 2b, 4b, 8b ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precip_qc:flag_meanings = &quot;no_coverage impaired phase_mixed phase_snow&quot;;
+<br />
+<br />where the use of flag_masks instead of flag_values implies that the values
+<br />
+can be ORed, rather than being mutually exclusive. What do you think?
+<br />
+<br />I also wonder whether a more general treatment would be helpful, because a flag
+<br />
+value could be a logical OR of codes which may occupy more than one bit e.g.
+<br />
+a flag might be defined as an OR of bits 0-1 (with four possible values),
+<br />
+bit 2 (with two) and bit 3-5 (with eight). Is that likely to be useful? It is
+<br />
+a combination of the two approaches.
+<br />
+<br />To propose a change to the convention, you start a new ticket on the CF trac
+<br />
+website under <a href="http://cf-pcmdi.llnl.gov/">http://cf-pcmdi.llnl.gov/</a>, using the template provided. The
+<br />
+proposal should say exactly what text should be changed (as you did) and also
+<br />
+what changes are needed to the conformance document.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Mar 21 2008 - 02:08:14 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1259">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1260.html" title="Next message in the list">Denis Nadeau: "[CF-metadata] Difficulties to display Swath files form NetCDF."</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1258.html" title="Previous message in the list">Greg Rappa: "[CF-metadata] CF Addition Proposal: bitmap values"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1259" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1259" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1259" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1259" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:03 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1258.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1260.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

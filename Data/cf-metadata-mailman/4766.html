@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Data Model Development | types from Hedley, Mark on 2012-09-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Hedley, Mark (mark.hedley)" />
+<meta name="Subject" content="[CF-metadata] Data Model Development | types" />
+<meta name="Date" content="2012-09-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4765.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4767.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Data Model Development | types</h1>
+<!-- received="Wed Sep 26 02:24:56 2012" -->
+<!-- isoreceived="20120926012456" -->
+<!-- sent="Wed, 26 Sep 2012 09:24:56 +0100" -->
+<!-- isosent="20120926082456" -->
+<!-- name="Hedley, Mark" -->
+<!-- email="mark.hedley" -->
+<!-- subject="[CF-metadata] Data Model Development | types" -->
+<!-- id="8AC4893FB411FA4AA8CFECD9C8913B660CB4806A_at_EXXMAIL01.desktop.frd.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="8AC4893FB411FA4AA8CFECD9C8913B660CB48037&#64;EXXMAIL01.desktop.frd.metoffice.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4766" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4767.html" accesskey="d" title="Etienne Tourigny: &quot;[CF-metadata] Choice of fill value for unpacked data&quot;">Next message</a> ]
+[ <a href="./4765.html" title="Russ Rew: &quot;[CF-metadata] Choice of fill value for unpacked data&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4766" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4766" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4766" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4766" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Hedley, Mark &lt;<a href="mailto:mark.hedley?Subject=Re%3A%20%5BCF-metadata%5D%20Data%20Model%20Development%20%7C%20types">mark.hedley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 26 Sep 2012 09:24:56 +0100</span><br />
+</address>
+<br />
+I have put a couple of posts onto a trac ticket:
+<br />
+<a href="https://cf-pcmdi.llnl.gov/trac/ticket/68#comment:26">https://cf-pcmdi.llnl.gov/trac/ticket/68#comment:26</a>
+<br />
+but these do not seem to be posted to the mailing list, which is unfortunate, I thought this functionality had been implemented.
+<br />
+<br />Apologies for anyone who already has these, but I don't want them hidden away from potentially interested parties:
+<br />
+<br />&nbsp;
+<br />
+Referencing the PotentialDataModelTypes wiki (<a href="https://cf-pcmdi.llnl.gov/trac/wiki/PotentialDataModelTypes">https://cf-pcmdi.llnl.gov/trac/wiki/PotentialDataModelTypes</a>), I would like to open discussion on some issues:
+<br />
+<br />Firstly: the definition of an abstract Coordinate type.
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;This has been suggested as a container for common properties of DimensionCoordinate and AuxiliaryCoordinate types.
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;Is it a sensible construct to have?
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;Does it add value?
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;I think it does, which I why I propose its inclusion, there appear to be common aspects shared by DimensionCoordinate and AuxiliaryCoordinate which can be defined in one and only one place, e.g.:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Their indexing relationship to their containing ScalarField/Field
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The constraint on size/shape from their reference to the ScalarField/Field
+<br />
+<br />Secondly: the definitions of ScalarField and Field:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;The proposed Field definition includes explicit description of the other types this type may contain. The ScalarField makes no comment on types it may contain, merely stating
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and metadata describing the phenomenon values
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;Should type definitions be explicit about what they may reference or is this the role of the 'Relation' section (as yet not defined)?
+<br />
+<br />09/26/12 01:07:12 changed by markh
+<br />
+<br />Other points I would like to open discussion on:
+<br />
+<br />CellMeasures:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;The type is defined with the name CellMeasures, but the definition and the example suggest the type should be called CellMeasure. The description suggests this is a singular entity, like Dimension, which a Field may have multiple different instances of. Does this seem valid?
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;How does a CellMeasure differ from an AuxiliaryCoordinate? The way they link to a Field/ScalarField appears very similar, the main difference appears to be in how they might be used. Is this sufficient justification for an explicit type?
+<br />
+<br />CellMethod/CellMethods
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;One of the proposed definitions, CellMethods, defines a singular type which is an ordered list of similar entries. The other, Cellmethod, defines a type which implements a single qualification; a ScalarField might have multiple instances of this type.
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;Is one of these approaches more helpful than the other?
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Sep 26 2012 - 02:24:56 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4766">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4767.html" title="Next message in the list">Etienne Tourigny: "[CF-metadata] Choice of fill value for unpacked data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4765.html" title="Previous message in the list">Russ Rew: "[CF-metadata] Choice of fill value for unpacked data"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4766" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4766" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4766" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4766" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:09 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4765.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4767.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

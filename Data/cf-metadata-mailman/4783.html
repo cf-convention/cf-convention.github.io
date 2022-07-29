@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Coordinate systems from Jim Biard on 2012-10-11 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jim.biard)" />
+<meta name="Subject" content="[CF-metadata] Coordinate systems" />
+<meta name="Date" content="2012-10-11" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4782.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4784.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Coordinate systems</h1>
+<!-- received="Thu Oct 11 13:23:24 2012" -->
+<!-- isoreceived="20121011122324" -->
+<!-- sent="Thu, 11 Oct 2012 15:23:24 -0400" -->
+<!-- isosent="20121011192324" -->
+<!-- name="Jim Biard" -->
+<!-- email="jim.biard" -->
+<!-- subject="[CF-metadata] Coordinate systems" -->
+<!-- id="C6EC2B0B-C081-4B33-90EE-CDD16C90F3C3_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4783" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4784.html" accesskey="d" title="John Caron: &quot;[CF-metadata] Choice of fill value for unpacked data&quot;">Next message</a> ]
+[ <a href="./4782.html" title="Mark Mathewson Consulting: &quot;[CF-metadata] CF-netcdf for Mercator projection - use lat/lon, or xc/yc plus lat/lon&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4785.html" accesskey="t" title="Hedley, Mark: &quot;[CF-metadata] Coordinate systems&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4783" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4783" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4783" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4783" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jim.biard?Subject=Re%3A%20%5BCF-metadata%5D%20Coordinate%20systems">jim.biard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 11 Oct 2012 15:23:24 -0400</span><br />
+</address>
+<br />
+Hi.
+<br />
+<br />I mentioned I thought/concern I had about coordinate systems in CF as an aside a while back, and I didn't much response, so I'm writing it now as a standalone post.
+<br />
+When I look at the way geographic coordinate systems are implemented in CF, I keep getting the feeling that the associations (in a UML sense) don't make good sense.
+<br />
+<br />What we have right now is that a variable has coordinates associated with it, and also has a grid_mapping (a definition of a geographic coordinate system) associated with it.  Here's a cheap ASCII picture of that.
+<br />
+<br />[coordinate]2------&gt;*[variable]*&lt;------1[grid_mapping]
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[lon/lat]
+<br />
+<br />I'm on purpose limiting myself for the sake of this discussion to the case of 2 coordinates (X/Y, lon/lat, etc) for any given variable.  I know there can be more, but we are still fuzzy on Z, and other coordinates that might be present aren't geographic.  I have also shown the longitude and latitude auxiliary coordinates smashed together into a single element for compactness.  I hope it's not overly confusing.
+<br />
+<br />Based on this model, the coordinates don't have a coordinate system except by relation through a variable.  As a result, the same coordinates could be associated with different geographic coordinate systems in different variables.  You could two different grid_mappings defined (UTM zone 8 and Polar Stereographic, for example) associate one with variable 1 and the other with variable 2, yet have the same coordinates associated with both variable 1 and variable 2.  Furthermore, the longitude and latitude are assumed to relate (via dimensionality) with the coordinates as defined by the grid_mapping, which could (again) be different for each variable.  This model seems more than a bit fragile and unnatural to me.
+<br />
+<br />The thing is, coordinates are meaningless without the definition of the coordinate system they belong to.  Starting from scratch, the natural approach to this would be to associate coordinate systems with coordinates, which can then be associated with variables.  The diagram would be:
+<br />
+<br />[grid_mapping]1-----&gt;*[(aux) coordinate]*------&gt;*[variable]
+<br />
+<br />Each coordinate would have a geographic coordinate system associated with it.  A variable could have any number of (pairs of) coordinates associated with it.  Longitude/latitude or other auxiliary coordinates would fit into this model in just the same way.
+<br />
+<br />Written as CDL, what you would see is:
+<br />
+<br />netcdf {
+<br />
+&nbsp;dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;xt = 50;
+<br />
+&nbsp;&nbsp;&nbsp;yt = 50;
+<br />
+&nbsp;variables:
+<br />
+&nbsp;&nbsp;&nbsp;float xt(xt=50);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:grid_mapping = &quot;TM&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;m&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;float yt(yt=50);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:grid_mapping = &quot;TM&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;m&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;float temperature(xt=50, yt=50);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:coordinates = &quot;lon lat xp yp&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;K&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;float lon(xt=50, yt=50);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;degrees_east&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:grid_mapping = &quot;LonLat&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;float lat(xt=50, yt=50);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;degrees_north&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:grid_mapping = &quot;LonLat&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;float xp(xt=50, yt=50);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;m&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:grid_mapping = &quot;PolarStereo&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;float yp(xt=50, yt=50);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:coordinates = &quot;xt yt&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:units = &quot;m&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:grid_mapping = &quot;PolarStereo&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;char LonLat;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:grid_mapping_name = &quot;latitude_longitude&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;char PolarStereo;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:grid_mapping_name = &quot;polar_stereographic&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;char TM;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:grid_mapping_name = &quot;transverse_mercator&quot;;
+<br />
+}
+<br />
+<br />I left out the details of the grid_mapping variables for brevity.
+<br />
+<br />So, having said all that, I'm curious to know if there is any particular reason why geographic coordinate systems are being done the way they are right now, and wondering if what I have described makes sense to anyone else.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />Jim Biard
+<br />
+Research Scholar
+<br />
+Cooperative Institute for Climate and Satellites
+<br />
+Remote Sensing and Applications Division
+<br />
+National Climatic Data Center
+<br />
+151 Patton Ave, Asheville, NC 28801-5001
+<br />
+<br />jim.biard at noaa.gov
+<br />
+828-271-4900
+<br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20121011/ecd3dedd/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20121011/ecd3dedd/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Oct 11 2012 - 13:23:24 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4783">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4784.html" title="Next message in the list">John Caron: "[CF-metadata] Choice of fill value for unpacked data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4782.html" title="Previous message in the list">Mark Mathewson Consulting: "[CF-metadata] CF-netcdf for Mercator projection - use lat/lon, or xc/yc plus lat/lon"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4785.html" title="Next message in this discussion thread">Hedley, Mark: "[CF-metadata] Coordinate systems"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4785.html" title="Message sent in reply to this message">Hedley, Mark: "[CF-metadata] Coordinate systems"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4783" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4783" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4783" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4783" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:10 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4782.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4784.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

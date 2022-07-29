@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Jonathan Gregory on 2015-05-28 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-05-28" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7036.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7038.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Thu May 28 01:50:44 2015" -->
+<!-- isoreceived="20150528005044" -->
+<!-- sent="Thu, 28 May 2015 08:50:44 +0100" -->
+<!-- isosent="20150528075044" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="20150528075044.GA2853_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7037" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7038.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./7036.html" title="Nan Galbraith: &quot;[CF-metadata] Salinity units&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7038.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7037" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7037" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7037" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7037" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 28 May 2015 08:50:44 +0100</span><br />
+</address>
+<br />
+Dear Jim
+<br />
+<br />Thanks for your email. I see what you mean. The calendar attribute does not
+<br />
+indicate only which set of rules are used for encoding and decoding, but it
+<br />
+also indicates the time coordinate reference system in which the timestamps
+<br />
+are interpreted (both the reference timestep in the units and the decoded time
+<br />
+coordinates). I had not distinguished these in my mind because they go together
+<br />
+in all the cases CF currently distinguishes. The difference in this new debate
+<br />
+is that the GPS and TAI time reference system use the same set of rules
+<br />
+(Gregorian no-leap-second) but a given timestep doesn't refer to the same
+<br />
+instant in the real-world in the two systems, so you need to know which one it
+<br />
+is, as you have pointed out. Thanks for pursuing this.
+<br />
+<br />Therefore here's my latest suggestion. We should have *four* calendars,
+<br />
+gregorian_gps, gregorian_tai (this hasn't been requested yet, so according to
+<br />
+our usual practice we could omit it for the moment since we haven't been given
+<br />
+a use-case), gregorian_utc and gregorian. The first two calendars use the
+<br />
+no-leap-second encoding. gregorian_gps is for the GPS time reference system and
+<br />
+is not allowed for timestamps earlier than 1980-1-6 or with ref times earlier
+<br />
+than that (the GPS epoch), and TAI correspondingly not before the TAI epoch
+<br />
+(1958-1-1 I think you said). If you are using either of those time systems, it
+<br />
+can't be meaningful to extend them before their epochs, can it? gregorian_utc
+<br />
+is for encoding UTC time with leap seconds. This calendar can be used for any
+<br />
+previous time before UTC began as well (with the Julian/Gregorian calendar
+<br />
+change as in udunits, except that we might exclude years before 1 - we can come
+<br />
+back to that).
+<br />
+<br />The gregorian calendar encodes UTC time (and before) *without* leap seconds. I
+<br />
+anticipate you might not be happy with this, but I'm putting it forward because
+<br />
+I think we agree that this is what is often, or usually, done with real-world
+<br />
+time, since most software doesn't support leap seconds. In the description, we
+<br />
+must point out that this encoding is faulty, because when leap seconds are
+<br />
+inserted or removed the encoded time coordinate may have a missing or repeated
+<br />
+second. Therefore it shouldn't be used for purposes where precision to the
+<br />
+second is important, but clearly for most real-world purposes it's fine in
+<br />
+practice, because that's what's done and people don't report problems. I think
+<br />
+it is better to be explicit about the choice between gregorian_utc and
+<br />
+gregorian, rather than leave it vague which has been used.
+<br />
+<br />If we think it's preferable we could also define gregorian_nls with the same
+<br />
+meaning and deprecate gregorian, so that a warning is generated by the checker,
+<br />
+in order to encourage data-writers to check if they're making the right choice.
+<br />
+I assume that all the other calendars are also no-leap-second ones since they
+<br />
+are for model data (including proleptic_gregorian) and this should be stated.
+<br />
+<br />For reference, I repeat what else I proposed earlier, to make this complete:
+<br />
+<br />* Don't mention &quot;UTC&quot; in the description of time units. Instead say the time
+<br />
+zone of the Greenwich meridian, without summmer/daylight-saving time.
+<br />
+<br />* Clarify that in the CF convention the choice of &quot;calendar&quot; implies the
+<br />
+particular set of rules that is used to convert between date-times (YYYY-MM-DD
+<br />
+hh:mm:ss i.e. sets of six numbers) and time coordinates in units of elapsed
+<br />
+time since a reference time. The calendar is identified by the calendar att of
+<br />
+of the time coordinate variable. It's a property of the time coord variable.
+<br />
+<br />... and now we also have to point out that calendar has an additional
+<br />
+implication of reference system for the real world
+<br />
+<br />* Require the calendar to be specified i.e. no default, and abolish the
+<br />
+&quot;standard&quot; calendar (currently a synonym for the default). These are backward-
+<br />
+incompatible changes for data-writers, but of course they do not invalidate any
+<br />
+data written with old CF versions.
+<br />
+<br />Best wishes and thanks
+<br />
+<br />Jonathan
+<br />
+<br />----- Forwarded message from Jim Biard &lt;jbiard at cicsnc.org&gt; -----
+<br />
+<br /><em class="quotelev1">&gt; Date: Thu, 21 May 2015 14:36:46 -0400
+</em><br />
+<em class="quotelev1">&gt; From: Jim Biard &lt;jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev1">&gt; To: Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; CC: CF Metadata List &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] How to define time coordinate in GPS?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The point I'm trying to make about gregorian_nls is that it lacks any
+</em><br />
+<em class="quotelev1">&gt; mechanism for specifying which time system is being used for the timestamp
+</em><br />
+<em class="quotelev1">&gt; in the reference date &amp; time. In Chris Little's terms (at least roughly),
+</em><br />
+<em class="quotelev1">&gt; gregorian_nls is incomplete because the timestamp in the reference date &amp;
+</em><br />
+<em class="quotelev1">&gt; time lacks an associated epoch/origin. It is a calendar without an
+</em><br />
+<em class="quotelev1">&gt; associated CRS.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Take my example times in TAI, GPS and UTC from my previous email. Let's say
+</em><br />
+<em class="quotelev1">&gt; I wanted to set my reference date &amp; time to that instant in history, and I
+</em><br />
+<em class="quotelev1">&gt; have a GPS timestamp. If I specified my calendar as gregorian_nls so I
+</em><br />
+<em class="quotelev1">&gt; could use my GPS timestamp, there is no way for a user of my file to know
+</em><br />
+<em class="quotelev1">&gt; that my timestamp was a GPS timestamp. They might assume it was a TAI
+</em><br />
+<em class="quotelev1">&gt; timestamp, and will then be 19 seconds off for every &quot;absolute&quot; time they
+</em><br />
+<em class="quotelev1">&gt; extract from the time variable elapsed time values.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; For a complete representation, in Chris Little's terms, there must be a
+</em><br />
+<em class="quotelev1">&gt; CRS, a calendar, and a notation. gregorian_nls lacks a CRS. That's why I
+</em><br />
+<em class="quotelev1">&gt; suggested that we must either make a calendar for each different time
+</em><br />
+<em class="quotelev1">&gt; system, and add more as more people want to use more time systems, or we
+</em><br />
+<em class="quotelev1">&gt; state that the timestamp in the reference must be UTC. Declaring the
+</em><br />
+<em class="quotelev1">&gt; reference timestamp unambiguously as UTC doesn't force anyone to extract
+</em><br />
+<em class="quotelev1">&gt; absolute times from the time variable in UTC. It does require data
+</em><br />
+<em class="quotelev1">&gt; consumers to convert the UTC timestamp to GPS or TAI or whatever before
+</em><br />
+<em class="quotelev1">&gt; proceeding to extract absolute times from the time variable.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I'm OK with deprecating 'vanilla' gregorian, but there are so many cases
+</em><br />
+<em class="quotelev1">&gt; where it is sufficient even though it is incomplete that it seems a bit
+</em><br />
+<em class="quotelev1">&gt; draconian.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Grace and peace,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jim
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; [image: CICS-NC] &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt;Visit us on
+</em><br />
+<em class="quotelev1">&gt; Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt;*Jim Biard*
+</em><br />
+<em class="quotelev1">&gt; *Research Scholar*
+</em><br />
+<em class="quotelev1">&gt; Cooperative Institute for Climate and Satellites NC  &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; North Carolina State University  &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; NOAA National Centers for Environmental Information  &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; *formerly NOAA???s National Climatic Data Center*
+</em><br />
+<em class="quotelev1">&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev1">&gt; e: jbiard at cicsnc.org
+</em><br />
+<em class="quotelev1">&gt; o: +1 828 271 4900
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; *Connect with us on Facebook for climate
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://www.facebook.com/NOAANCEIclimate">http://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://www.facebook.com/NOAANCEIoceangeo">http://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us on
+</em><br />
+<em class="quotelev1">&gt; Twitter at _at_NOAANCEIclimate
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://www.twitter.com/NOAANCEIclimate">http://www.twitter.com/NOAANCEIclimate</a>&gt;and _at_NOAANCEIocngeo
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://www.twitter.com/NOAANCEIocngeo">http://www.twitter.com/NOAANCEIocngeo</a>&gt;.*
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On Thu, May 21, 2015 at 1:11 PM, Jonathan Gregory &lt;j.m.gregory at reading.ac.uk
+</em><br />
+<em class="quotelev2">&gt; &gt; wrote:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev2">&gt; &gt; Dear Jim
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; I don't understand why you think gregorian_nls is not sufficiently
+</em><br />
+<em class="quotelev2">&gt; &gt; specific.
+</em><br />
+<em class="quotelev2">&gt; &gt; I think it indicates specifically that the conversion between timestamp and
+</em><br />
+<em class="quotelev2">&gt; &gt; elapsed seconds is done without using leap seconds.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; As an example, the date and time stamps as I'm writing this in the
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; different systems are:
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt;
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt;      * TAI 2015-05-20 20:21:00
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt;      * GPS 2015-05-20 20:21:16
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt;      * UTC 2015-05-20 20:21:35
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; If you have a timestamp of 2015-05-20 20:21:35 and you encode it with
+</em><br />
+<em class="quotelev2">&gt; &gt; calendar=&quot;gregorian_utc&quot; and units=&quot;seconds since 1980-01-06 00:00:00&quot;
+</em><br />
+<em class="quotelev2">&gt; &gt; you will get the same number (of seconds) as if you encode the timestamp
+</em><br />
+<em class="quotelev2">&gt; &gt; of 2015-05-20 20:21:16 with calendar=&quot;gregorian_nls&quot; and the same units.
+</em><br />
+<em class="quotelev2">&gt; &gt; Have I got that right? Thus, this would be a way to encode GPS time (the
+</em><br />
+<em class="quotelev2">&gt; &gt; original question). The same gregorian_nls calendar can be used to encode
+</em><br />
+<em class="quotelev2">&gt; &gt; TAI time with units=&quot;seconds since 1958-01-01 00:00:00&quot;. The same software
+</em><br />
+<em class="quotelev2">&gt; &gt; could do both - it needs to know the Gregorian calendar, and assumes that
+</em><br />
+<em class="quotelev2">&gt; &gt; all days have 86400 s.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; Redefine 'gregorian' to remove reference to UTC as Jonathan has
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; described, and state that presence or absence of leap second
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; artifacts in the reference timestamp and elapsed time values is not
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; known for a time variable that names this calendar. This is backward
+</em><br />
+<em class="quotelev3">&gt; &gt; &gt; compatible.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; I don't see an advantage in encouraging data-producers to be vague.
+</em><br />
+<em class="quotelev2">&gt; &gt; Deprecating
+</em><br />
+<em class="quotelev2">&gt; &gt; this calendar, so it gives a warning, might persuade them to specify what
+</em><br />
+<em class="quotelev2">&gt; &gt; they
+</em><br />
+<em class="quotelev2">&gt; &gt; are doing to encode their times.
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; Best wishes
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; Jonathan
+</em><br />
+<em class="quotelev2">&gt; &gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt; &gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt; &gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<br />----- End forwarded message -----
+<br />
+<span id="received"><dfn>Received on</dfn> Thu May 28 2015 - 01:50:44 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7037">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7038.html" title="Next message in the list">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7036.html" title="Previous message in the list">Nan Galbraith: "[CF-metadata] Salinity units"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7038.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7038.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7037" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7037" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7037" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7037" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7036.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7038.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

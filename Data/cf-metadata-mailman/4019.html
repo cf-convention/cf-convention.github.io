@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] inconsistencies in translating projection parameters OGC WKT &lt;-&gt; CF-1.5 from Etienne Tourigny on 2011-12-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="Etienne Tourigny (etourigny.dev)" />
+<meta name="Subject" content="[CF-metadata] inconsistencies in translating projection parameters OGC WKT &lt;-&gt; CF-1.5" />
+<meta name="Date" content="2011-12-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4018.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4020.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] inconsistencies in translating projection parameters OGC WKT &lt;-&gt; CF-1.5</h1>
+<!-- received="Tue Dec 13 14:21:01 2011" -->
+<!-- isoreceived="20111213142101" -->
+<!-- sent="Tue, 13 Dec 2011 19:21:01 -0200" -->
+<!-- isosent="20111213212101" -->
+<!-- name="Etienne Tourigny" -->
+<!-- email="etourigny.dev" -->
+<!-- subject="[CF-metadata] inconsistencies in translating projection parameters OGC WKT &lt;-&gt; CF-1.5" -->
+<!-- id="CA+TxYvOtrLbrKdMjWKe7Fu5cMuPqHNCLVyYzqc76j0+kjfj2pA_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4019" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4020.html" accesskey="d" title="Karl Taylor: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">Next message</a> ]
+[ <a href="./4018.html" title="Cameron-smith, Philip: &quot;[CF-metadata] Nitrate and nitrite&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./4039.html" accesskey="t" title="John Caron: &quot;[CF-metadata] inconsistencies in translating projection parameters OGC WKT &#0060;-&#0062; CF-1.5&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4019" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4019" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4019" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4019" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Etienne Tourigny &lt;<a href="mailto:etourigny.dev?Subject=Re%3A%20%5BCF-metadata%5D%20inconsistencies%20in%20translating%20projection%20parameters%20OGC%20WKT%20%3C-%3E%20CF-1.5">etourigny.dev</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 13 Dec 2011 19:21:01 -0200</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />I am opening a seperate thread at this deals merely with the problems
+<br />
+encountered in translating projection parameters to/from OGC WKT and
+<br />
+CF-1.5.
+<br />
+<br />I would appreciate any guidance in resolving these issues.
+<br />
+<br />In summary:
+<br />
+<br />1) LCC (Lambert conformal): should include a scale_factor parameter in
+<br />
+the 1 standard parallel case
+<br />
+2) CEA (Lambert Cylindrical Equal Area): how to convert the
+<br />
+'scale_factor_at_projection_origin' alternative to standard parallel
+<br />
+to OGC WKT?
+<br />
+3) PS (Polar stereographic):This projection's parameters in CF-1 are
+<br />
+significantly different from OGC/PROJ.4 ,  CF-1 standard parameters
+<br />
+'Either standard_parallel or scale_factor_at_projection_origin' is
+<br />
+incompatible with OGC WKT, which requires both
+<br />
+<br />More detailed information (reproduced here) can be found at
+<br />
+<a href="http://trac.osgeo.org/gdal/wiki/NetCDF_ProjectionTestingStatus">http://trac.osgeo.org/gdal/wiki/NetCDF_ProjectionTestingStatus</a>
+<br />
+<br />1) LCC 1SP (Lambert conformal)
+<br />
+<br />The OGC WKT 'Lambert_Conformal_Conic_2SP' maps clearly to LCC in CF-1
+<br />
+with 2 std parallels.
+<br />
+<br />The CF-1 spec claims that a 1SP version can be used, but it doesn't
+<br />
+include a 'scale_factor' as does the OGC WKT
+<br />
+'Lambert_Conformal_Conic_1SP'.
+<br />
+<br />For import: Given discussion and example on #3324, and also support
+<br />
+from NARCCAP project: it seems the CF-1 LCC 1SP projection is a
+<br />
+'degenerate' LCC-2SP with both SP's at the same location. Thus seems
+<br />
+we can read with both 'std_parallel' (1 value) and
+<br />
+'latitude_of_projection_origin' mapping to latitude_of_origin (WKT)
+<br />
+and setting scale_factor=1? This is the code's current behaviour
+<br />
+(though perhaps could do more error-checking).
+<br />
+<br />For export: given the LCC-1SP can specifically include a scale_factor
+<br />
+to control the projection (see
+<br />
+<a href="http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html">http://www.remotesensing.org/geotiff/proj_list/lambert_conic_conformal_1sp.html</a>),
+<br />
+it seems this can't be directly exported to NetCDF without throwing
+<br />
+away the scale factor.
+<br />
+Perhaps the reasonable thing for now is to export the scale_factor to
+<br />
+NetCDF, so it can at least be read back in. Otherwise, we'd have to
+<br />
+try to translate the LCC-1SP to a LCC-2SP on the fly.
+<br />
+<br /><br />2) CEA (Lambert Cylindrical Equal Area):
+<br />
+<br />The CF-1 conventions claim this can be encoded with a
+<br />
+'scale_factor_at_projection_origin' alternative to standard parallel -
+<br />
+how would this conversion be done from/to OGC WKT (which requires
+<br />
+central_meridian and standard_parallel_1)?
+<br />
+<br /><br />3) PS (Polar stereographic)
+<br />
+<br />This projection's parameters in CF-1 are significantly different from
+<br />
+<a href="http://www.remotesensing.org/geotiff/proj_list/polar_stereographic.html">http://www.remotesensing.org/geotiff/proj_list/polar_stereographic.html</a>.
+<br />
+In particular the CF-1 equivalent for 'latitude of natural origin'
+<br />
+seems to be 'standard_parallel'.
+<br />
+<br />CF-1 defines either standard_parallel or
+<br />
+scale_factor_at_projection_origin, which is incompatible with OGC WKT
+<br />
+(and OGR) that requires both. Note: we have verified the current
+<br />
+approach we take to mapping is the same used by at least one other
+<br />
+NetCDF CF-1 user in the UCAR NARCCAP project.
+<br />
+<br />Current implementation (as of Dec. 13) uses the following rules:
+<br />
+- WKT scale_factor maps to CF scale_factor_at_projection_origin
+<br />
+- WKT central_meridian maps to CF straight_vertical_longitude_from_pole
+<br />
+- WKT latitude_of_origin maps to WKT standard_parallel
+<br />
+- WKT to CF: if WKT latitude_of_origin is positive then CF
+<br />
+latitude_of_projection_origin is +90, else it is -90 (North vs. South
+<br />
+Pole)
+<br />
+- CF to WKT: unsupported if standard_parallel is not defined, as
+<br />
+OGRSpatialReference::SetPS() requires both CF
+<br />
+scale_factor_at_projection_origin
+<br />
+<br />Thanks
+<br />
+Etienne
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Dec 13 2011 - 14:21:01 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4019">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4020.html" title="Next message in the list">Karl Taylor: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4018.html" title="Previous message in the list">Cameron-smith, Philip: "[CF-metadata] Nitrate and nitrite"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./4039.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] inconsistencies in translating projection parameters OGC WKT &#0060;-&#0062; CF-1.5"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./4039.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] inconsistencies in translating projection parameters OGC WKT &#0060;-&#0062; CF-1.5"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4019" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4019" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4019" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4019" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:55 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4018.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4020.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

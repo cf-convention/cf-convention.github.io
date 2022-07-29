@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Dealing with large numbers of flag values in	netcdf cf from Seth McGinnis on 2009-10-26 (cf-metadata-mailman)</title>
+<meta name="Author" content="Seth McGinnis (mcginnis)" />
+<meta name="Subject" content="[CF-metadata] Dealing with large numbers of flag values in	netcdf cf" />
+<meta name="Date" content="2009-10-26" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2263.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2265.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Dealing with large numbers of flag values in	netcdf cf</h1>
+<!-- received="Mon Oct 26 17:13:06 2009" -->
+<!-- isoreceived="20091026171306" -->
+<!-- sent="Mon, 26 Oct 2009 17:13:06 -0600" -->
+<!-- isosent="20091026231306" -->
+<!-- name="Seth McGinnis" -->
+<!-- email="mcginnis" -->
+<!-- subject="[CF-metadata] Dealing with large numbers of flag values in	netcdf cf" -->
+<!-- id="web-27264493_at_mail.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="BC9E3B54-0DF2-4889-BC44-5E7FD45303C6_at_marinemetadata.org" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2264" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2265.html" accesskey="d" title="John Caron: &quot;[CF-metadata] Dealing with large numbers of flag values in netcdf cf&quot;">Next message</a> ]
+[ <a href="./2263.html" title="John Graybeal: &quot;[CF-metadata] Dealing with large numbers of flag values in netcdf cf&quot;">Previous message</a> ]
+[ <a href="./2263.html" title="John Graybeal: &quot;[CF-metadata] Dealing with large numbers of flag values in netcdf cf&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2267.html" accesskey="t" title="martin.juckes at stfc.ac.uk: &quot;[CF-metadata] Dealing with large numbers of flag values innetcdf cf&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2264" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2264" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2264" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2264" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Seth McGinnis &lt;<a href="mailto:mcginnis?Subject=Re%3A%20%5BCF-metadata%5D%20Dealing%20with%20large%20numbers%20of%20flag%20values%20in%09netcdf%20cf">mcginnis</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 26 Oct 2009 17:13:06 -0600</span><br />
+</address>
+<br />
+On Mon, 26 Oct 2009 12:16:17 -0700
+<br />
+&nbsp;John Graybeal &lt;graybeal at marinemetadata.org&gt; wrote:
+<br />
+<em class="quotelev1">&gt;Love the question! :-&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;Are you saying every map location has one index value, which is one of  the
+</em><br />
+<em class="quotelev1">&gt;numbers from 1 to 827?  So these are mutually exclusive?  Or are  there 827
+</em><br />
+<em class="quotelev1">&gt;flag values assigned independently for each map location?
+</em><br />
+<br />It sounds to me like it's the former case, and the problem is that
+<br />
+concatenating 827 flag values into a single string attribute makes
+<br />
+something that is easy for a machine to interpret, but impenetrable to
+<br />
+the human reader.
+<br />
+<br />As I read section 3.5, there are no other options for encoding the
+<br />
+information according to spec; a gigantic flag_meanings attribute is
+<br />
+the right answer.
+<br />
+<br />But if the issue is really usability, I think the answer is not to do
+<br />
+it differently, but just to add an extra attribute that presents the
+<br />
+same information in a more user-friendly format.  You could add an
+<br />
+attribute named something descriptive, like &quot;category_legend&quot;, and
+<br />
+pair the values &amp; meanings up, one per line.  Then you'd end up with
+<br />
+something that looks like this:
+<br />
+<br /><br />float landtype(yc, xc) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;landtype:long_name =&quot;Land cover type&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;landtype:standard_name =&quot;land_cover&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;landtype:flag_values = 1.f, 2.f, 3.f, 4.f, 5.f, 6.f, 7.f, 8.f, 9.f,
+<br />
+10.f, 11.f, 12.f, 13.f, 14.f, 15.f, 16.f, 17.f, 18.f, 19.f, 20.f, 21.f, 22.f,
+<br />
+23.f, 24 .f;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;landtype:flag_meanings =&quot;Urban_and_Built-up_Land
+<br />
+Dryland_Cropland_and_Pasture Irrigated_Cropland_and_Pasture
+<br />
+Mixed_Dryland/Irrigated_Cropland_and_Pasture Cropland/Grassland_Mosaic
+<br />
+Cropland/Woodland_Mosaic Grassland Shrubland Mixed_Shrubland/Grassland Savanna
+<br />
+Deciduous_Broadleaf_Forest Deciduous_Needleleaf_Forest Evergreen_Broadleaf
+<br />
+Evergreen_Needleleaf Mixed_Forest Water_Bodies Herbaceous_Wetland
+<br />
+Wooden_Wetland Barren_or_Sparsely_Vegetated Herbaceous_Tundra Wooded_Tundra
+<br />
+Mixed_Tundra Bare_Ground_Tundra Snow_or_Ice&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;landtype:category_legend =&quot;\n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;1: Urban and Built-up Land \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;2: Dryland Cropland and Pasture \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;3: Irrigated Cropland and Pasture \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;4: Mixed Dryland/Irrigated Cropland and Pasture \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;5: Cropland/Grassland Mosaic \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;6: Cropland/Woodland Mosaic \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;7: Grassland \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;8: Shrubland \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;9: Mixed Shrubland/Grassland \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;10: Savanna \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;11: Deciduous Broadleaf Forest \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;12: Deciduous Needleleaf Forest \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;13: Evergreen Broadleaf \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;14: Evergreen Needleleaf \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;15: Mixed Forest \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;16: Water Bodies \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;17: Herbaceous Wetland \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;18: Wooden Wetland \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;19: Barren or Sparsely Vegetated \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;20: Herbaceous Tundra \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;21: Wooded Tundra \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;22: Mixed Tundra \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;23: Bare Ground Tundra \n&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;24: Snow or Ice&quot; ;
+<br />
+<br />(Sorry for the length, but it gives a real sense of what I mean.)
+<br />
+<br />The flag_values and flag_meanings attributes are still a mess to look
+<br />
+at, but they're easy to deal with programmatically, while end-users
+<br />
+can easily look at category_legend and figure out what cover type 22
+<br />
+is if that's all they're after.
+<br />
+<br />Fundamentally, this is the same issue as the question of how to record
+<br />
+the grid mapping, and the underlying problem is that while attributes
+<br />
+allow you to associate key-value pairs with a variable, there's no way
+<br />
+to nest another associative array within an attribute; the best you
+<br />
+can do is reference a dummy container variable and look at *its*
+<br />
+attributes.
+<br />
+<br />(Which is an approach that works well enough for the grid mapping
+<br />
+problem. It may be worth formalizing / regularizing it and applying it
+<br />
+to any attribute sets that are grouped together and have a tendency
+<br />
+toward being composed of long lists of elements...)
+<br />
+<br />Cheers,
+<br />
+<br />--Seth
+<br />
+<br /><pre>
+----
+Seth McGinnis
+mcginnis at ucar.edu
+NARCCAP Data Manager
+IMAGe / ISP / NCAR
+----
+&gt;On Oct 26, 2009, at 0710, &lt;martin.juckes at stfc.ac.uk&gt; wrote:
+&gt;
+&gt;&gt; Hello,
+&gt;&gt;
+&gt;&gt; I wonder if anyone can help with this problem:
+&gt;&gt;
+&gt;&gt; I have a file with a map of index values, ranging from 1 to 827. The  flag
+&gt;meanings range from ?Admiralty Islands lowland rain forests? to  ?Zambezian
+&gt;halophytics?. I?m reluctant to combine all 827 flag  meanings into a single
+&gt;string for the ?flag_meanings? attribute ? is  there a better way?
+&gt;&gt;
+&gt;&gt; Note that this is not my dataset, so that while suggestions for  presenting
+&gt;the data in a different way may be useful, they won?t  solve my current
+&gt;problem. The dataset is a eco-region analysis  distributed by the WWF and has
+&gt;wide usage in its present form.
+&gt;&gt;
+&gt;&gt; Sincerely,
+&gt;&gt; Martin Juckes
+&gt;&gt;
+&gt;&gt; -- 
+&gt;&gt; Scanned by iCritical.
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Oct 26 2009 - 17:13:06 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2264">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2265.html" title="Next message in the list">John Caron: "[CF-metadata] Dealing with large numbers of flag values in netcdf cf"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2263.html" title="Previous message in the list">John Graybeal: "[CF-metadata] Dealing with large numbers of flag values in netcdf cf"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./2263.html" title="Message to which this message replies">John Graybeal: "[CF-metadata] Dealing with large numbers of flag values in netcdf cf"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2267.html" title="Next message in this discussion thread">martin.juckes at stfc.ac.uk: "[CF-metadata] Dealing with large numbers of flag values innetcdf cf"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2267.html" title="Message sent in reply to this message">martin.juckes at stfc.ac.uk: "[CF-metadata] Dealing with large numbers of flag values innetcdf cf"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2264" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2264" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2264" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2264" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:22 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2263.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2265.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

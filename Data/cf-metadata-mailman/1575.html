@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] fixed sensors, depth, datum from Philip Bentley on 2008-09-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="Philip Bentley (philip.bentley)" />
+<meta name="Subject" content="[CF-metadata] fixed sensors, depth, datum" />
+<meta name="Date" content="2008-09-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1574.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1576.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] fixed sensors, depth, datum</h1>
+<!-- received="Mon Sep 29 08:18:09 2008" -->
+<!-- isoreceived="20080929071809" -->
+<!-- sent="Mon, 29 Sep 2008 15:18:09 +0100" -->
+<!-- isosent="20080929141809" -->
+<!-- name="Philip Bentley" -->
+<!-- email="philip.bentley" -->
+<!-- subject="[CF-metadata] fixed sensors, depth, datum" -->
+<!-- id="1222697890.6637.122.camel_at_eld414.desktop.frd.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20080929081036.GA9646_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1575" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1576.html" accesskey="d" title="Ethan Davis: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Next message</a> ]
+[ <a href="./1574.html" title="Jon Blower: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Previous message</a> ]
+[ <a href="./1571.html" title="Jonathan Gregory: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1578.html" accesskey="t" title="Ethan Davis: &quot;[CF-metadata] fixed sensors, depth, datum&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1575" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1575" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1575" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1575" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Philip Bentley &lt;<a href="mailto:philip.bentley?Subject=Re%3A%20%5BCF-metadata%5D%20fixed%20sensors%2C%20depth%2C%20datum">philip.bentley</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 29 Sep 2008 15:18:09 +0100</span><br />
+</address>
+<br />
+Hi,
+<br />
+<br />Since I'm name-checked in this thread I thought I ought to chip in with
+<br />
+my 2 cents worth.
+<br />
+<br />FWIW, I'd make the following observations (some of which reiterate other
+<br />
+contributions):
+<br />
+<br />* I don't think that the 'grid_mapping' attribute (and its associated
+<br />
+variable) is the right place to encode this information. In the case of
+<br />
+in situ observations/measurements, for example, presumably it would be
+<br />
+quite normal to want to provide geoid and/or reference datum metadata
+<br />
+that has little or no relevance to grids or grid mappings (i.e. in the
+<br />
+map projection sense).
+<br />
+<br />* We could encode geoid metadata in an attribute called, say,
+<br />
+'geoid_name' or 'geoid_id', at either the global or variable level. As
+<br />
+already discussed this would identify a well-known geoid, the details of
+<br />
+which would need to be determined from external sources.
+<br />
+<br />* We could encode vertical datum metadata in an attribute called, say,
+<br />
+'vertical_datum_name' or 'vertical_datum_id', again at either the global
+<br />
+or variable level, the latter overriding the former. As before, this
+<br />
+attribute would identify a well-known datum, defined externally to CF.
+<br />
+<br />* Where appropriate, we might consider encoding a local datum offset to
+<br />
+an agreed reference datum (the WGS 1984 datum perhaps?) in the same way
+<br />
+as is currently done for WGS 84-related lat-long coords. This we could
+<br />
+do using an attribute called, say, 'vertical_offset_from_wgs1984_datum'.
+<br />
+Of course, this would only make sense in the simple case of a constant
+<br />
+offset (I have no feeling for how common or rare this scenario is -
+<br />
+presumably the relationship between different vertical datums is
+<br />
+decidedly non-trivial).
+<br />
+<br />* If we don't like the idea of attaching the above attributes to
+<br />
+individual variables then we could collect them together in a
+<br />
+'container' CRS attribute &amp; variable as per the 'grid_mapping' attribute
+<br />
+&amp; variable. This was my preferred approach when compiling my original
+<br />
+Trac ticket (#9). However, in order to reach agreement on the core
+<br />
+aspects of that ticket, it was decided to keep them within the existing
+<br />
+grid mapping container.
+<br />
+<br />* If the 'grid_mapping' attribute is intended to encapsulate all things
+<br />
+CRS then we should consider renaming it (e.g. 'crs_definition').
+<br />
+<br />* IMO, pulling together a coherent proposal covering the desired facets
+<br />
+of horizontal and vertical coordinate reference systems will likely take
+<br />
+a suitably-knowledgeable person 3 months work, possibly more. Does
+<br />
+anyone have that kind of time to spare?
+<br />
+<br />* As mentioned in a previous posting, I believe that these (and some
+<br />
+other key) updates might best be addressed by a small team of technical
+<br />
+experts producing a draft CF 2.0 specification. I'm not convinced that
+<br />
+the current Trac discussion mechanism would work successfully for such a
+<br />
+large proposal (the fragmentation of the 'common concept' proposal
+<br />
+illustrates the problem here).
+<br />
+<br />* The suggestions above run counter to current 'CF philosophy' in that
+<br />
+(i) CF/netCDF files would not necessarily be self-describing; (ii) we
+<br />
+would be introducing changes to the CF conventions which anticipate
+<br />
+future rather than immediate requirements. As a community are we willing
+<br />
+to go down this route?
+<br />
+<br />Regards
+<br />
+Phil
+<br />
+<br />On Mon, 2008-09-29 at 09:10 +0100, Jonathan Gregory wrote:
+<br />
+<br /><em class="quotelev1">&gt; Dear Ethan
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I agree that different definitions of the reference ellipsoid do not constitute
+</em><br />
+<em class="quotelev1">&gt; different geophysical quantities. Likewise different definitions of the geoid
+</em><br />
+<em class="quotelev1">&gt; all give the same geophysical quantity. Therefore I agree that the geoid should
+</em><br />
+<em class="quotelev1">&gt; be identified as part of the CRS (naming it in the grid_mapping would be
+</em><br />
+<em class="quotelev1">&gt; convenient), just as the ellipsoid is identified as part of the CRS (we added
+</em><br />
+<em class="quotelev1">&gt; the parameters specifying the ellipsoid to the grid_mapping as part of Phil
+</em><br />
+<em class="quotelev1">&gt; Bentley's change to the conventions). I agree too that the definition of the
+</em><br />
+<em class="quotelev1">&gt; vertical CRS is relevant both to coordinate variables and data variables. That
+</em><br />
+<em class="quotelev1">&gt; is another reason why it would make sense to put it in the grid_mapping.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<br />&lt;snip&gt;
+<br />
+<br /><em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20080929/a925e4ef/attachment-0002.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20080929/a925e4ef/attachment-0002.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Sep 29 2008 - 08:18:09 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1575">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1576.html" title="Next message in the list">Ethan Davis: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1574.html" title="Previous message in the list">Jon Blower: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./1571.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1578.html" title="Next message in this discussion thread">Ethan Davis: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1578.html" title="Message sent in reply to this message">Ethan Davis: "[CF-metadata] fixed sensors, depth, datum"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1575" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1575" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1575" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1575" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:09 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1574.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1576.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

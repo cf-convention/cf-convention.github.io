@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Overlapping vertical bounds from Ansley C. Manke on 2017-03-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="Ansley C. Manke (ansley.b.manke)" />
+<meta name="Subject" content="[CF-metadata] Overlapping vertical bounds" />
+<meta name="Date" content="2017-03-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8074.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8076.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Overlapping vertical bounds</h1>
+<!-- received="Mon Mar  6 11:19:53 2017" -->
+<!-- isoreceived="20170306111953" -->
+<!-- sent="Mon, 6 Mar 2017 10:19:53 -0800" -->
+<!-- isosent="20170306181953" -->
+<!-- name="Ansley C. Manke" -->
+<!-- email="ansley.b.manke" -->
+<!-- subject="[CF-metadata] Overlapping vertical bounds" -->
+<!-- id="b7b19215-b144-b05a-c454-d5f0c122f5e2_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="001d1c7b-517d-bf52-5fba-f33da2dcda4b_at_noaa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8075" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8076.html" accesskey="d" title="Chris Barker: &quot;[CF-metadata] Pre-proposal for &#0034;charset&#0034;&quot;">Next message</a> ]
+[ <a href="./8074.html" title="Jonathan Gregory: &quot;[CF-metadata] Pre-proposal for &#0034;charset&#0034;&quot;">Previous message</a> ]
+[ <a href="./8070.html" title="Ansley C. Manke: &quot;[CF-metadata] Overlapping vertical bounds&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8075" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8075" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8075" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8075" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Ansley C. Manke &lt;<a href="mailto:ansley.b.manke?Subject=Re%3A%20%5BCF-metadata%5D%20Overlapping%20vertical%20bounds">ansley.b.manke</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 6 Mar 2017 10:19:53 -0800</span><br />
+</address>
+<br />
+Hi Evan,
+<br />
+Another couple of comments on using a file with overlapping bounds in 
+<br />
+Ferret.  Ferret does not have any grid operations that handle such 
+<br />
+bounds, but you can make use of the bounds as a variable in your Ferret 
+<br />
+session.  The full message:
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;yes? use file.nc
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;*** NOTE: Axis definition error on axis: ZAX. Bounds describe cells
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;that overlap one another
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*** NOTE: Error in bounds &quot;ZAX_bnds&quot; or bounds do not enclose
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;point on axis ZAX
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*** NOTE: Substituting coordinate midpoints
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;yes? list/k=1:5 z[gz=var]
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;yes? list/k=1:5 ZAX_bnds
+<br />
+<br />The bounds are available in this 2-by-K variable, and you could make use 
+<br />
+of it in expressions that you define.
+<br />
+<br />-Ansley
+<br />
+<br />On 3/3/2017 3:59 PM, Ansley C. Manke wrote:
+<br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hi Evan,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The data model in Ferret does not allow for overlapping bounds, nor 
+</em><br />
+<em class="quotelev1">&gt; does it allow non-contiguous bounds.  Those are legal in CF, but 
+</em><br />
+<em class="quotelev1">&gt; Ferret (as I imagine is the case for most software), does not 
+</em><br />
+<em class="quotelev1">&gt; implement everything in the standard.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In fact Ferret will not make use of your bounds definition; I believe 
+</em><br />
+<em class="quotelev1">&gt; it will have ignored the bounds and will instead have defined the 
+</em><br />
+<em class="quotelev1">&gt; grid-cell edges using the midpoints between axes. Use the command,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;    show axis/z axis_name
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; to see what Ferret has done to set up its the internal representation 
+</em><br />
+<em class="quotelev1">&gt; of the axis.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -Ansley
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 3/3/2017 7:32 AM, Manning, Evan M (398B) wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; When I was researching  the topic I came across this:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;/When I try and load the file using Ferret, this throws a warning.. 
+</em><br />
+<em class="quotelev2">&gt;&gt; Which/
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;/makes me think I?m not doing things correctly:/
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;//
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;/Ferret v6.93/
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;/yes? use file.nc/
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;/   *** NOTE: Axis definition error on axis: time. Bounds describe 
+</em><br />
+<em class="quotelev2">&gt;&gt; cells that/
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt; &gt;/overlap one another/
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; which made me think that overlap was an error.  But reading more 
+</em><br />
+<em class="quotelev2">&gt;&gt; context I see it is just a ?note?, not an ?error?, and clearly 
+</em><br />
+<em class="quotelev2">&gt;&gt; overlapping bounds are accepted.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; For my situation of overlapping vertical trapezoids, I now think I 
+</em><br />
+<em class="quotelev2">&gt;&gt; should use the full overlapping extent in the ?bounds? variable and 
+</em><br />
+<em class="quotelev2">&gt;&gt; explain the full shape of the trapezoids in the main variable?s 
+</em><br />
+<em class="quotelev2">&gt;&gt; description attribute.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Is there a better way to communicate the full situation?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;   -- Evan
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; *From: *Jim Biard &lt;jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; *Date: *Friday, March 3, 2017 at 5:09 AM
+</em><br />
+<em class="quotelev2">&gt;&gt; *To: *&lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; *Subject: *Re: [CF-metadata] Overlapping vertical bounds
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; What makes you think overlapping bounds are illegal?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 3/2/17 7:20 PM, Manning, Evan M (398B) wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     I have some quantities which are defined on trapezoids in the
+</em><br />
+<em class="quotelev2">&gt;&gt;     vertical direction.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     For example the top trap might be full weight from the top of the
+</em><br />
+<em class="quotelev2">&gt;&gt;     atmosphere (TOA) to 50 hPa, then we ramp linearly between the
+</em><br />
+<em class="quotelev2">&gt;&gt;     first and second traps between 50 &amp; 75 hPa, then trap 2 is full
+</em><br />
+<em class="quotelev2">&gt;&gt;     weight 75-100 hPa, followed by another transition in [100, 125]
+</em><br />
+<em class="quotelev2">&gt;&gt;     hPa, etc.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     I can?t have a bounds variable with the full extent of each trap
+</em><br />
+<em class="quotelev2">&gt;&gt;     like [ [0, 75], [50, 125], [100, ? because overlap is illegal.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     I could have underlap, just giving the intervals where each trap
+</em><br />
+<em class="quotelev2">&gt;&gt;     is in full force: [ [0, 50], [75, 100], ?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     Or I could use the midpoints of the transitions: [ [ 0, 62.5],
+</em><br />
+<em class="quotelev2">&gt;&gt;     [62.5, 112.5], ?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     I?d prefer to find a standard way to communicate the precise
+</em><br />
+<em class="quotelev2">&gt;&gt;     situation.  Is there one?
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;       -- Evan
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;     <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; -- 
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; *ICS-NC* &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt;Visit us on
+</em><br />
+<em class="quotelev2">&gt;&gt; *Facebook * &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 	
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; *Jim Biard*
+</em><br />
+<em class="quotelev2">&gt;&gt; *Research Scholar*
+</em><br />
+<em class="quotelev2">&gt;&gt; *Cooperative Institute for Climate and Satellites NC * 
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; *North Carolina State University * &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; *NOAA National Centers for Environmental Information * 
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; /formerly NOAA?s National Climatic Data Center/
+</em><br />
+<em class="quotelev2">&gt;&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev2">&gt;&gt; e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; o: +1 828 271 4900
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; /Connect with us on Facebook for climate 
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow 
+</em><br />
+<em class="quotelev2">&gt;&gt; us on Twitter at _at_NOAANCEIclimate 
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and _at_NOAANCEIocngeo 
+</em><br />
+<em class="quotelev2">&gt;&gt; &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170306/1677db44/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170306/1677db44/attachment.html</a>&gt;
+<br />
+-------------- next part --------------
+<br />
+A non-text attachment was scrubbed...
+<br />
+Name: not available
+<br />
+Type: image/png
+<br />
+Size: 15785 bytes
+<br />
+Desc: not available
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170306/1677db44/attachment.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170306/1677db44/attachment.png</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Mar 06 2017 - 11:19:53 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8075">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8076.html" title="Next message in the list">Chris Barker: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8074.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Pre-proposal for &#0034;charset&#0034;"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8070.html" title="Message to which this message replies">Ansley C. Manke: "[CF-metadata] Overlapping vertical bounds"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8075" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8075" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8075" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8075" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:10 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8074.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8076.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

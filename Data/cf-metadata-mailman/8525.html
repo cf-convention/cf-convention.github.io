@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Add new integer types to CF? from Jim Biard on 2017-09-25 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] Add new integer types to CF?" />
+<meta name="Date" content="2017-09-25" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8524.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8526.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Add new integer types to CF?</h1>
+<!-- received="Mon Sep 25 09:13:56 2017" -->
+<!-- isoreceived="20170925081356" -->
+<!-- sent="Mon, 25 Sep 2017 11:13:56 -0400" -->
+<!-- isosent="20170925151356" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] Add new integer types to CF?" -->
+<!-- id="1bfba535-dcaf-7401-bcc1-71ca41322260_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="E72B3E3D-0BEA-49B0-8DF1-680137379FFD_at_jpl.nasa.gov" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8525" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8526.html" accesskey="d" title="Charlie Zender: &quot;[CF-metadata] Add new integer types to CF?&quot;">Next message</a> ]
+[ <a href="./8524.html" title="Signell, Richard: &quot;[CF-metadata] Add new integer types to CF?&quot;">Previous message</a> ]
+[ <a href="./8522.html" title="Manning, Evan M: &quot;[CF-metadata] Add new integer types to CF?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8521.html" accesskey="t" title="Mary Jo Brodzik: &quot;[CF-metadata] Add new integer types to CF?&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8525" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8525" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8525" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8525" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20Add%20new%20integer%20types%20to%20CF%3F">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 25 Sep 2017 11:13:56 -0400</span><br />
+</address>
+<br />
+Hi.
+<br />
+<br />The valid_* way of showing that data contained in a signed integer type 
+<br />
+should be treated as unsigned, and the netCDF User Guide (NUG) _Unsigned 
+<br />
+way of doing so, are both intended to indicate that the user should take 
+<br />
+the binary values stored in the variable and interpret them as unsigned 
+<br />
+values rather than signed. So, a value of 0xff stored in a &quot;byte&quot; 
+<br />
+variable should be interpreted as 255 rather than -1. In order for the 
+<br />
+valid_* method to work, the attributes must be of a type with more bytes 
+<br />
+than the variable itself (short for byte, integer for short, out of luck 
+<br />
+for integer) so that they? can store the unsigned range values (such as 
+<br />
+0 - 255).
+<br />
+<br />The _Unsigned method is much less ambiguous. I have this sense that 
+<br />
+there was a discussion of the _Unsigned attribute in the past, and that 
+<br />
+some were opposed to it's use, but I can't find the thread.
+<br />
+<br />Regardless, the point (as made in another email in this thread) is to 
+<br />
+provide a clear way for netCDF-3 files written with older versions of 
+<br />
+the netCDF library (which didn't support unsigned types) to indicate 
+<br />
+that values should be treated as unsigned.
+<br />
+<br />People here at NCEI have used the _Unsigned attribute in netCDF-3 files 
+<br />
+to indicate that a variable should be interpreted as unsigned, so there 
+<br />
+definitely are files &quot;in the wild&quot; that use this attribute.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 9/22/17 1:36 PM, Manning, Evan M (398B) wrote:
+<br />
+<em class="quotelev1">&gt; I think the _Unsigned attribute would have been a grand idea before.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; But if we?re now allowing explicit unsigned types, what purpose does it serve?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Do I use the _Unsigned = ?true? attribute on every ubyte, ushort, and uint variable?  They?re already clearly unsigned according to the type definition.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; it would only be useful if I wanted to keep declaring the variables as byte but wanted folks to treat them as ubyte.  This seems perverse.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; And would we start putting _Unsigned = ?false? on all of our integer variables?  All numeric variables?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Also note that fully supporting the new types means we can have unsigned integer global attributes.  Since attributes can?t have attributes, _Unsigned and valid_ don?t help here.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;    -- Evan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 9/22/17, 9:55 AM, &quot;Signell, Richard&quot; &lt;rsignell at usgs.gov&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      Folks,
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;      I suggested
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;      _Unsigned = &quot;true&quot;
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;      because that is  already supported by Unidata:
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;      <a href="http://www.unidata.ucar.edu/software/netcdf/docs/BestPractices.html#bp_Unsigned-Data">http://www.unidata.ucar.edu/software/netcdf/docs/BestPractices.html#bp_Unsigned-Data</a>
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;      <a href="http://www.unidata.ucar.edu/mailing_lists/archives/netcdf-java/2013/msg00087.html">http://www.unidata.ucar.edu/mailing_lists/archives/netcdf-java/2013/msg00087.html</a>
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;      _at_Unidata: are you guys are you going to chime in on this?
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;      On Fri, Sep 22, 2017 at 12:40 PM, Charlie Zender &lt;zender at uci.edu&gt; wrote:
+</em><br />
+<em class="quotelev2">&gt;      &gt; _Unsigned = &quot;true&quot; is cleaner and clearer to me
+</em><br />
+<em class="quotelev2">&gt;      &gt; than the valid_* attributes.
+</em><br />
+<em class="quotelev2">&gt;      &gt; To me, Rich's suggestion requires a consensus
+</em><br />
+<em class="quotelev2">&gt;      &gt; to _drop_ valid_* in CF 1.8, and instead make
+</em><br />
+<em class="quotelev2">&gt;      &gt; _Unsigned the preferred workaround for file formats
+</em><br />
+<em class="quotelev2">&gt;      &gt; that do not support unsigned types.
+</em><br />
+<em class="quotelev2">&gt;      &gt; Unless people want to require _both_
+</em><br />
+<em class="quotelev2">&gt;      &gt; _Unsigned and valid_* (seems burdensome to me),
+</em><br />
+<em class="quotelev2">&gt;      &gt; or allow either _Unsigned or valid_* (seems
+</em><br />
+<em class="quotelev2">&gt;      &gt; crufty to me). What do others think?
+</em><br />
+<em class="quotelev2">&gt;      &gt;
+</em><br />
+<em class="quotelev2">&gt;      &gt; On 9/22/17 04:49, Signell, Richard wrote:
+</em><br />
+<em class="quotelev3">&gt;      &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;      &gt;&gt; lookin at the NUG, how about saying:
+</em><br />
+<em class="quotelev3">&gt;      &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;      &gt;&gt; In file types that don't offer native support for unsigned types,
+</em><br />
+<em class="quotelev3">&gt;      &gt;&gt; integer or byte variables that are to be interpreted as unsigned must
+</em><br />
+<em class="quotelev3">&gt;      &gt;&gt; have the attribute _Unsigned = &quot;true&quot;.
+</em><br />
+<em class="quotelev2">&gt;      &gt;
+</em><br />
+<em class="quotelev2">&gt;      &gt; --
+</em><br />
+<em class="quotelev2">&gt;      &gt; Charlie Zender, Earth System Sci. &amp; Computer Sci.
+</em><br />
+<em class="quotelev2">&gt;      &gt; University of California, Irvine 949-891-2429 )'(
+</em><br />
+<em class="quotelev2">&gt;      &gt;
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;      --
+</em><br />
+<em class="quotelev1">&gt;      Dr. Richard P. Signell   (508) 457-2229
+</em><br />
+<em class="quotelev1">&gt;      USGS, 384 Woods Hole Rd.
+</em><br />
+<em class="quotelev1">&gt;      Woods Hole, MA 02543-1598
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;      
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+/formerly NOAA?s National Climatic Data Center/
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+o: +1 828 271 4900
+/Connect with us on Facebook for climate 
+&lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+&lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us 
+on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and 
+_at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170925/b228b3e1/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20170925/b228b3e1/attachment.html</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Mon Sep 25 2017 - 09:13:56 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8525">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8526.html" title="Next message in the list">Charlie Zender: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8524.html" title="Previous message in the list">Signell, Richard: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8522.html" title="Message to which this message replies">Manning, Evan M: "[CF-metadata] Add new integer types to CF?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8521.html" title="Next message in this discussion thread">Mary Jo Brodzik: "[CF-metadata] Add new integer types to CF?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8525" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8525" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8525" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8525" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:16 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8524.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8526.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

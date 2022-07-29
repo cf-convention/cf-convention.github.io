@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] the need to store lat/lon coordinates in a CF metadata compliant netCDF file from John Caron on 2011-08-10 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] the need to store lat/lon coordinates in a CF metadata compliant netCDF file" />
+<meta name="Date" content="2011-08-10" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3635.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3637.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] the need to store lat/lon coordinates in a CF metadata compliant netCDF file</h1>
+<!-- received="Wed Aug 10 06:51:49 2011" -->
+<!-- isoreceived="20110810055149" -->
+<!-- sent="Wed, 10 Aug 2011 06:51:49 -0600" -->
+<!-- isosent="20110810125149" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] the need to store lat/lon coordinates in a CF metadata compliant netCDF file" -->
+<!-- id="4E427EE5.6060009_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20110726102445.GC10562_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3636" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3637.html" accesskey="d" title="Jim Biard: &quot;[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?&quot;">Next message</a> ]
+[ <a href="./3635.html" title="John Caron: &quot;[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?&quot;">Previous message</a> ]
+[ <a href="./3559.html" title="Jonathan Gregory: &quot;[CF-metadata] the need to store lat/lon coordinates in a CF metadata compliant netCDF file&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3636" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3636" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3636" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3636" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20the%20need%20to%20store%20lat%2Flon%20coordinates%20in%20a%20CF%20metadata%20compliant%20netCDF%20file">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 10 Aug 2011 06:51:49 -0600</span><br />
+</address>
+<br />
+On 7/26/2011 4:24 AM, Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear all
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; For datasets which are intended for analysis by end-users I think it would be
+</em><br />
+<em class="quotelev1">&gt; undesirable to remove the requirement of providing explicit lat and lon
+</em><br />
+<em class="quotelev1">&gt; coords even if a grid_mapping is provided. I think it is unrealistic to expect
+</em><br />
+<em class="quotelev1">&gt; all software which someone might use to analyse netCDF files to be able to
+</em><br />
+<em class="quotelev1">&gt; recognise and act upon all possible values of the CF grid_mapping attribute,
+</em><br />
+<em class="quotelev1">&gt; and without the lat and lon information the user would have a problem. If the
+</em><br />
+<em class="quotelev1">&gt; issue is storage space in the file I think the much better choice is to store
+</em><br />
+<em class="quotelev1">&gt; the explicit coordinates in another file, by extending the CF convention to
+</em><br />
+<em class="quotelev1">&gt; allow datasets to be distributed over several linked files, as gridspec does
+</em><br />
+<em class="quotelev1">&gt; for example.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Steve appears to suggest that grid_mapping is required in some circumstances,
+</em><br />
+<em class="quotelev1">&gt; but I don't think it is at present. However, the text Steve quotes may not be
+</em><br />
+<em class="quotelev1">&gt; quite right:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;     &quot;/When the coordinate variables for a horizontal grid are not
+</em><br />
+<em class="quotelev1">&gt;     longitude and latitude,*_it is required that the true latitude and
+</em><br />
+<em class="quotelev1">&gt;     longitude coordinates be supplied_* via the coordinates attribute/.&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The text should make it clear that this requirement applies when the data has a
+</em><br />
+<em class="quotelev1">&gt; geolocated horizontal grid. It doesn't necessarily apply to idealised cases.
+</em><br />
+<em class="quotelev1">&gt; We could clarify this with a defect ticket.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Without the grid_mapping, the lat and lon still make sense in the common case
+</em><br />
+<em class="quotelev1">&gt; (and original CF case) of GCM data, and in many other cases, the intended
+</em><br />
+<em class="quotelev1">&gt; usage of the data does not require precision about the figure of the Earth.
+</em><br />
+<em class="quotelev1">&gt; Although this metadata could be valuable if it can be defined, I think it would
+</em><br />
+<em class="quotelev1">&gt; be too onerous to require it.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; CF is primarily intended &quot;to promote the processing and sharing&quot; of netCDF
+</em><br />
+<em class="quotelev1">&gt; files, it says in the Abstract. As John notes, it could be used for other
+</em><br />
+<em class="quotelev1">&gt; purposes, such as internal files in models. Do they have to be CF-compliant,
+</em><br />
+<em class="quotelev1">&gt; however, if they're not intended for analysis or for sharing?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><br /><br />Storing coordinates in a separate file is a reasonable solution for 
+<br />
+large, managed archives, not so good for data exchange (eg extract a 
+<br />
+subset from large archive and give it to ArcGIS to read). I think we 
+<br />
+should provide a profile of CF which relaxes the requirement for 2D 
+<br />
+lat/lon coordinates, as long as grid_mapping is supplied.
+<br />
+<br />We also may need a profile of CF for GIS data, eg to make the datum be 
+<br />
+required. Then we could say &quot;file is CF/GIS compliant&quot; without adding 
+<br />
+unneeded requirements for climate modelers.
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Aug 10 2011 - 06:51:49 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3636">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3637.html" title="Next message in the list">Jim Biard: "[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3635.html" title="Previous message in the list">John Caron: "[CF-metadata] Is there a convention defining day offsets to use for monthly average time series?"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3559.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] the need to store lat/lon coordinates in a CF metadata compliant netCDF file"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3636" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3636" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3636" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3636" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:49 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3635.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3637.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

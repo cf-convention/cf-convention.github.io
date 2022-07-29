@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction from Jonathan Gregory on 2008-11-03 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction" />
+<meta name="Date" content="2008-11-03" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1707.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1709.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction</h1>
+<!-- received="Mon Nov  3 06:16:46 2008" -->
+<!-- isoreceived="20081103061646" -->
+<!-- sent="Mon, 3 Nov 2008 13:16:46 +0000" -->
+<!-- isosent="20081103131646" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction" -->
+<!-- id="20081103131646.GA17257_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1708" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1709.html" accesskey="d" title="Bryan Lawrence: &quot;[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction&quot;">Next message</a> ]
+[ <a href="./1707.html" title="Heinke Hoeck: &quot;[CF-metadata] CF standard names for chemical constituents and aerosols&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1718.html" accesskey="t" title="Heinke Hoeck: &quot;[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1708" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1708" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1708" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1708" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20a%20different%20(but%20perhaps%20unoriginal)%20approach%20to%20standard%20name%20construction">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 3 Nov 2008 13:16:46 +0000</span><br />
+</address>
+<br />
+Dear Karl et al.
+<br />
+<br />Standard names are certainly a difficult business and it's a good idea to
+<br />
+discuss how we should be dealing with them. They are much more than names, as
+<br />
+Julia Collins remarked.
+<br />
+<br />In your email, Karl, I am unclear whether you are proposing to replace the
+<br />
+single standard_name attribute with many attributes, or to construct the
+<br />
+single attribute by a more systematic procedure. I think there are several
+<br />
+arguments in favour of having a single attribute:
+<br />
+<br />* There are several possible optional qualifying bits of information
+<br />
+(at_SURFACE, due_to_PROCESS, assuming_CONDITION, etc.). With a single
+<br />
+attribute, you know at once what is specified. With separate attributes, you
+<br />
+would need a separate way to find out what attributes might possibly be
+<br />
+specified, in order to check whether they were there.
+<br />
+<br />* It makes sure that essential definitive information is included, such as the
+<br />
+sign-convention. Separate attributes can be accidentally omitted.
+<br />
+<br />* It is more convenient in a program to examine a single attribute to find
+<br />
+what you want. If the information is in several attributes, you need to have
+<br />
+several if-conditions ANDed together. (Of course, sometimes this is necessary
+<br />
+anyway if there is a condition on coordinates or cell_methods too, but we
+<br />
+don't want to make things unnecessarily difficult.)
+<br />
+<br />* The order of the bits of information may be significant e.g. the two
+<br />
+components of a tensor, or the order of transformations. If they are in
+<br />
+separate attributes, the ordering would be more awkward to record.
+<br />
+<br />In favour of many attributes, you suggest that you might want to contain the
+<br />
+data for quantities which currently have various standard names in a single
+<br />
+data array e.g. concentrations of different chemical species, contributions of
+<br />
+various processes. This might be desirable, but I'm not convinced. This is
+<br />
+being discussed in the chemistry thread, where it has been remarked that
+<br />
+although chemical models *do* have dimensions over chemical species, it is not
+<br />
+essential to write out the data in that way. But it could be done, by making
+<br />
+the chemical species a coordinate dimension, as we have been discussing. It
+<br />
+could be done in general by making the standard_name a coordinate variable,
+<br />
+instead of an attribute, if there is a strong reason for doing it.
+<br />
+<br />Of course, I am not arguing entirely against having more than one attribute.
+<br />
+We do have cell_methods and standard_name qualifiers as well as basic standard
+<br />
+names and coordinates, for instance. I think there's a good reason to separate
+<br />
+out qualifiers which are always or usually relevant.
+<br />
+<br />Supposing we continue with a single attribute, the issue is whether we can
+<br />
+construct it with less effort. You say yourself that this is perhaps the more
+<br />
+important objective. I agree that if we had a system for assembling new
+<br />
+standard names from existing components, it would be useful. It would help
+<br />
+people find out whether there was in fact already a name for something, and it
+<br />
+would make sure we put things in the same order and used the same phrases
+<br />
+wherever relevant. I believe there is actually more system to the existing
+<br />
+names than the Guidelines indicate, and an automatic system would make this
+<br />
+apparent.
+<br />
+<br />However, the cases which are extensions of existing patterns are already the
+<br />
+easy ones. They are not the cases which take most of the time and effort to
+<br />
+deal with, I think. I've said this before - do you think I'm mistaken in this
+<br />
+perception? Consider recent examples:
+<br />
+<br />* The long debate about extreme statistics was mostly about how the metadata
+<br />
+should be organised among standard name, coordinate variable and cell methods,
+<br />
+not about the choice of standard name per se.
+<br />
+<br />* The thread about &quot;date and time&quot; is so far more about what we want to
+<br />
+distinguish than how to do it.
+<br />
+<br />* I listed in another thread some questions that Stephen Griffies and I have
+<br />
+been discussing for ocean quantities for CMIP5. These are the kind of
+<br />
+decisions that took most time, not actually stringing together a name:
+<br />
+- Basin masks for tracer and velocity are the same geophysical quantity, but
+<br />
+distinguished by coordinates.
+<br />
+- What does &quot;ideal age&quot; of sea water mean?
+<br />
+- Is the mixed-layer depth determined by a buoyancy criterion the same concept
+<br />
+as mixed-layer depth determined by sigma-theta?
+<br />
+- Transports across various straits are all the same geophysical quantity, and
+<br />
+the strait should be identified by some string-valued coordinate.
+<br />
+- How do we most usefully categorise the various kinds of ocean mixing in a
+<br />
+way which will be helpful for comparing models?
+<br />
+- What is the clearest way to describe the energetics of vertical mixing: is
+<br />
+it the rate of work against stratification, or the rate of change of potential
+<br />
+energy?
+<br />
+<br />While a better description of what we are doing would clarify the existence of
+<br />
+difficult cases and help us think about them, I don't think would reduce the
+<br />
+hard work of deciding on the new distinctions, elements and constructions.
+<br />
+<br />However, I think it would still be valuable to follow this up. Because of the
+<br />
+issue of ordering, and the large number of qualifiers, I think Robert
+<br />
+Muetzelfeldt's description of the problem by using a grammar is more
+<br />
+appropriate than using a number of independent attributes.
+<br />
+<br />Finally, I wonder whether you could say more about what you mean by &quot;this
+<br />
+standard_name business seems a bit out of control&quot;?
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Nov 03 2008 - 06:16:46 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1708">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1709.html" title="Next message in the list">Bryan Lawrence: "[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1707.html" title="Previous message in the list">Heinke Hoeck: "[CF-metadata] CF standard names for chemical constituents and aerosols"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1718.html" title="Next message in this discussion thread">Heinke Hoeck: "[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1718.html" title="Message sent in reply to this message">Heinke Hoeck: "[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction"</a></li>
+<li><dfn>Reply</dfn>: <a href="./1724.html" title="Message sent in reply to this message">John Graybeal: "[CF-metadata] a different (but perhaps unoriginal) approach to standard name construction"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1708" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1708" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1708" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1708" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:12 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1707.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1709.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

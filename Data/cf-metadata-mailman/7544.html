@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] cells with different numbers of vertices from Charlie Zender on 2016-04-06 (cf-metadata-mailman)</title>
+<meta name="Author" content="Charlie Zender (zender)" />
+<meta name="Subject" content="[CF-metadata] cells with different numbers of vertices" />
+<meta name="Date" content="2016-04-06" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7543.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7545.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] cells with different numbers of vertices</h1>
+<!-- received="Wed Apr  6 12:32:30 2016" -->
+<!-- isoreceived="20160406113230" -->
+<!-- sent="Wed, 6 Apr 2016 14:32:30 -0400" -->
+<!-- isosent="20160406183230" -->
+<!-- name="Charlie Zender" -->
+<!-- email="zender" -->
+<!-- subject="[CF-metadata] cells with different numbers of vertices" -->
+<!-- id="5705563E.7020303_at_uci.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7544" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7545.html" accesskey="d" title="Chris Barker: &quot;[CF-metadata] cells with different numbers of vertices&quot;">Next message</a> ]
+[ <a href="./7543.html" title="Timothy Patterson: &quot;[CF-metadata] Multiple units attribute for an array of polynomial coefficients&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7544" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7544" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7544" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7544" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Charlie Zender &lt;<a href="mailto:zender?Subject=Re%3A%20%5BCF-metadata%5D%20cells%20with%20different%20numbers%20of%20vertices">zender</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 6 Apr 2016 14:32:30 -0400</span><br />
+</address>
+<br />
+G'day,
+<br />
+<br />A convention for unused vertices would be useful.
+<br />
+The unstructured grids that I have tested handle
+<br />
+this in a sub-optimal way.
+<br />
+Most put the valid vertices first, and copy the
+<br />
+last valid vertice into all the unused vertices.
+<br />
+In other words, they represent unused vertices as
+<br />
+duplicates of the same vertice.
+<br />
+<br />This approach requires tools (like ncremap/ncks)
+<br />
+to count the number of non-duplicated points
+<br />
+to determine the vertice number for each cell.
+<br />
+This is sub-optimal and error-prone.
+<br />
+<br />I propose that the _FillValue attribute, if any,
+<br />
+of relevant CF bounds variables (e.g., lat_bounds,
+<br />
+lon_bounds) indicate unused vertices.
+<br />
+Although a _FillValue could theoretically appear
+<br />
+in any vertice, it would be most tool-friendly
+<br />
+if all the valid vertices were grouped together
+<br />
+at the beginning of the vertice array, rather
+<br />
+than having unused vertices interspersed throughout.
+<br />
+This would make it less cumbersome to read the
+<br />
+all useful vertices into an array because tools
+<br />
+could stop reading the vertices upon encountering
+<br />
+the first _FillValue. Are there good reasons
+<br />
+for unused vertices in the middle of an array?
+<br />
+If not, I further propose that valid vertices
+<br />
+be grouped together at beginning of the
+<br />
+vertice array.
+<br />
+<br />Charlie
+<br />
+<br /><em class="quotelev1"> &gt; Hi all,
+</em><br />
+<em class="quotelev1"> &gt;
+</em><br />
+<em class="quotelev1"> &gt; For unstructured grids when some cells are quadralaterals and others are
+</em><br />
+<em class="quotelev1"> &gt; pentagons, the convention stipulates that bounds should be dimensioned
+</em><br />
+<em class="quotelev1"> &gt; (n,5) so that the lat and lon locations of all 5 penatagon vertices can
+</em><br />
+<em class="quotelev1"> &gt; be recorded.  My question is what to do about the extra vertex for the
+</em><br />
+<em class="quotelev1"> &gt; quadralaterals?  Should we define a &quot;missing_value&quot; and store it in the
+</em><br />
+<em class="quotelev1"> &gt; unused vertex location?
+</em><br />
+<em class="quotelev1"> &gt;
+</em><br />
+<em class="quotelev1"> &gt; If so, perhaps we should make this clear in the convention document.
+</em><br />
+<em class="quotelev1"> &gt;
+</em><br />
+<em class="quotelev1"> &gt; best regards,
+</em><br />
+<em class="quotelev1"> &gt; Karl
+</em><br />
+<br /><pre>
+-- 
+Charlie Zender, Earth System Sci. &amp; Computer Sci.
+University of California, Irvine 949-891-2429 )'(
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Apr 06 2016 - 12:32:30 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7544">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7545.html" title="Next message in the list">Chris Barker: "[CF-metadata] cells with different numbers of vertices"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7543.html" title="Previous message in the list">Timothy Patterson: "[CF-metadata] Multiple units attribute for an array of polynomial coefficients"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7544" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7544" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7544" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7544" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:02 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7543.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7545.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

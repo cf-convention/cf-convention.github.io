@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] udunits handling of fuzzy time units from Christopher Barker on 2011-03-17 (cf-metadata-mailman)</title>
+<meta name="Author" content="Christopher Barker (Chris.Barker)" />
+<meta name="Subject" content="[CF-metadata] udunits handling of fuzzy time units" />
+<meta name="Date" content="2011-03-17" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3330.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3332.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] udunits handling of fuzzy time units</h1>
+<!-- received="Thu Mar 17 10:50:41 2011" -->
+<!-- isoreceived="20110317105041" -->
+<!-- sent="Thu, 17 Mar 2011 09:50:41 -0700" -->
+<!-- isosent="20110317165041" -->
+<!-- name="Christopher Barker" -->
+<!-- email="Chris.Barker" -->
+<!-- subject="[CF-metadata] udunits handling of fuzzy time units" -->
+<!-- id="4D823BE1.4050803_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4D80DB82.3030703_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3331" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3332.html" accesskey="d" title="John Caron: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Next message</a> ]
+[ <a href="./3330.html" title="Benno Blumenthal: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Previous message</a> ]
+[ <a href="./3317.html" title="John Caron: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3341.html" accesskey="t" title="John Caron: &quot;[CF-metadata] udunits handling of fuzzy time units&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3331" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3331" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3331" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3331" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Christopher Barker &lt;<a href="mailto:Chris.Barker?Subject=Re%3A%20%5BCF-metadata%5D%20udunits%20handling%20of%20fuzzy%20time%20units">Chris.Barker</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 17 Mar 2011 09:50:41 -0700</span><br />
+</address>
+<br />
+On 3/16/11 8:47 AM, John Caron wrote:
+<br />
+<br /><em class="quotelev1">&gt; 1. time instants vs time duration
+</em><br />
+<em class="quotelev1">&gt; - one must distinguish between dimensional time (&quot;time duration&quot;,
+</em><br />
+<em class="quotelev1">&gt; units=&quot;secs&quot;), and calendar time (&quot;time instant&quot;, or &quot;point on the time
+</em><br />
+<em class="quotelev1">&gt; continuum&quot;) which is not dimensional.
+</em><br />
+<br />yup -- key clarification in all this.
+<br />
+<br /><em class="quotelev1">&gt; - calendar time always references a calendar, default calendar is
+</em><br />
+<em class="quotelev1">&gt; Gregorian, aka standard
+</em><br />
+<br /><em class="quotelev1">&gt; - udunits is a good reference library for dimensional time, but not for
+</em><br />
+<em class="quotelev1">&gt; calendar time
+</em><br />
+<br />I still think the library is not the issue here -- CF should be 
+<br />
+independent of any particular library implementation.
+<br />
+<br />Anyway, I think the real issue here is: what are appropriate units for 
+<br />
+what John is calling &quot;dimensional time&quot;? -- &quot;months&quot; and &quot;years&quot; are 
+<br />
+poor choices, period.
+<br />
+<br />As an example, the Python datetime module has a &quot;timedelta&quot; object -- 
+<br />
+this is John's &quot;dimensional time&quot;. timedelta's can be instantiated by 
+<br />
+specifying: days, seconds, microseconds, milliseconds, minutes, hours, 
+<br />
+or weeks. not months or years, for exactly these reasons.
+<br />
+<br /><em class="quotelev1">&gt; 2. calendar time
+</em><br />
+<br /><em class="quotelev1">&gt; - calendar time representation needs to be clarified
+</em><br />
+<em class="quotelev1">&gt; - udunits should no longer be the reference library for calendar time. a
+</em><br />
+<em class="quotelev1">&gt; new reference library is needed, which handles non-standard calendars.
+</em><br />
+<br />again, the lib is not the point -- the point is that the calendar in use 
+<br />
+needs to be clearly defined when specifying a calendar time. Personally, 
+<br />
+I'd rather the &quot;idealized Gregorian calendar&quot; be the standard, but there 
+<br />
+may be reasons to use others. So if people have a good use case for 
+<br />
+calendars other than Gregorian, then there needs to be a way to specify 
+<br />
+what calendar is used, and that needs to be a part of the CF standard -- 
+<br />
+and that is really an independent proposal.
+<br />
+<br /><em class="quotelev1">&gt; - udunit date representation (&quot;n timeUnit since ISO_date&quot;) must be
+</em><br />
+<em class="quotelev1">&gt; retained for backwards compatibility. &quot;month&quot; and &quot;year&quot; timeUnit should
+</em><br />
+<em class="quotelev1">&gt; be redefined in CF version 1.x to refer to calendar fields, not fixed
+</em><br />
+<em class="quotelev1">&gt; length time durations.
+</em><br />
+<br />ouch! -- I think that is a bad idea.
+<br />
+<br />1) it's a change, so backward compatibility is broken.
+<br />
+<br />2) &quot;month&quot; and &quot;year&quot; in this context should be deprecated.
+<br />
+<br />It seems abundantly clear to me that if you want:
+<br />
+<br />January, February, March, ...
+<br />
+<br />you are specifying something different than when you are specifying 
+<br />
+something that happens every n seconds, there should be a different way 
+<br />
+to specify that. Why? because the kinds of operations you can/should do 
+<br />
+with the data are different. To work with &quot;n timeUnit since ISO_date&quot;, 
+<br />
+you can immediately work with that data as an axis, and compute stuff 
+<br />
+from it, smoothing, integrals, all the stuff Steve mentioned. Often I 
+<br />
+don't need to know, and don't use, the start_date part of the 
+<br />
+specification at all, because all I care about is the interval.
+<br />
+<br />&quot;monthly&quot; data, on the other hand, inherently has to be handled 
+<br />
+differently. If the above proposal where enacted, I'd have to convert 
+<br />
+the start date to a datetime, then use a library to convert the monthly 
+<br />
+interval to a real time, etc. before I could do anything with it -- I 
+<br />
+couldn't assume anything about the timestep (not accurately anyway).
+<br />
+<br />Or, if I wanted to use the data in a categorical way, I'd still have to 
+<br />
+use a library to convert it to named months.
+<br />
+<br />so, no matter how you want to use it, you need to to use a library to 
+<br />
+manipulate the data first.
+<br />
+<br /><br />One other question:
+<br />
+<br />One of the things that has come up here is information such as &quot;monthly 
+<br />
+average&quot; i.e. the average temperature in January. How does that get 
+<br />
+expressed? There is no start date to use.
+<br />
+<br />On 3/16/11 10:13 AM, Jon Blower wrote:
+<br />
+<em class="quotelev1">&gt; How about the following: if we want to add fixed durations to the temporal datum, we use the current syntax:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      &quot;duration since datum&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; as we do currently.  But if we want to add calendar fields to the datum we use:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;      &quot;field_name since datum by calendar field&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; or something similar?
+</em><br />
+<br />+1
+<br />
+<br /><em class="quotelev1">&gt; i think the UTC_Calendar case that Tim brought up indicates that all
+</em><br />
+<em class="quotelev1">&gt; units like month, year, day, hour, (not second), should mean &quot;increment
+</em><br />
+<em class="quotelev1">&gt; that field using calendar system x&quot;. if that's the case, maybe prepending
+</em><br />
+<em class="quotelev1">&gt; &quot;_calendar&quot; is not needed?
+</em><br />
+<br />Ouch! -- despite my general preference for purity, in this case I think 
+<br />
+&quot;practicality beat purity&quot;. Generally accepted definitions for the 
+<br />
+length of minute, hour and day (and week) are available, we may as well 
+<br />
+use them.
+<br />
+<br /><em class="quotelev1">&gt; If that's the case, maybe prepending  &quot;_calendar&quot; is not needed?
+</em><br />
+<br />Being explicit is a good thing!
+<br />
+<br /><br /><em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; - the grammar for udunit date representations should be defined,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; so that multiple libraries can implement it
+</em><br />
+<em class="quotelev2">&gt;&gt; It is not perfectly obvious what it should do. n months since 1st of a
+</em><br />
+<em class="quotelev2">&gt;&gt; month
+</em><br />
+<em class="quotelev2">&gt;&gt; makes sense, but what does &quot;1 calendar_month since 31 Jan 2008&quot; mean, for
+</em><br />
+<em class="quotelev2">&gt;&gt; instance.
+</em><br />
+<br />Another good reason to avoid this whole concept! &quot;30 days since 31 Jan 
+<br />
+2008&quot; is perfectly well defined.
+<br />
+<br />What does your &quot;monthly&quot; data mean? If it's categorical, use a 
+<br />
+categorical representation, if it's a time step, use a unit appropriate 
+<br />
+for time steps.
+<br />
+<br /><em class="quotelev1">&gt; perhaps forbid month/year in the udunits. removing fractions in the &quot;by calendar field&quot; would make life a lot easier.
+</em><br />
+<br />+1
+<br />
+<br /><em class="quotelev1">&gt; could someone define what resolution means ?
+</em><br />
+<br />I think in this context, &quot;resolution&quot; is the same as &quot;precision&quot;, as 
+<br />
+opposed to &quot;accuracy&quot;. Accuracy expresses how correct a value is. 
+<br />
+Precision expresses how specifically defined a value is. So to say that 
+<br />
+a temperature is 31C is only precise to 1 degree, but could be perfectly 
+<br />
+accurate, whereas a temperature of 31.13543C is far more precise, but if 
+<br />
+measured by a badly calibrated thermometer, not accurate at all. 
+<br />
+Ideally, the two are in-sync when data are represented.
+<br />
+<br />In this context, having a resolution of 1 day means that that data 
+<br />
+applies to the day as a whole, perhaps an average, or simply the only 
+<br />
+measurement taken that day.
+<br />
+<br />Or does that just confuse things more?
+<br />
+<br />-Chris
+<br />
+<br /><br /><br /><pre>
+-- 
+Christopher Barker, Ph.D.
+Oceanographer
+Emergency Response Division
+NOAA/NOS/OR&amp;R            (206) 526-6959   voice
+7600 Sand Point Way NE   (206) 526-6329   fax
+Seattle, WA  98115       (206) 526-6317   main reception
+Chris.Barker at noaa.gov
+</pre>
+<span id="received"><dfn>Received on</dfn> Thu Mar 17 2011 - 10:50:41 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3331">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3332.html" title="Next message in the list">John Caron: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3330.html" title="Previous message in the list">Benno Blumenthal: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3317.html" title="Message to which this message replies">John Caron: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3341.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3341.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<li><dfn>Reply</dfn>: <a href="./3359.html" title="Message sent in reply to this message">Steve Hankin: "[CF-metadata] udunits handling of fuzzy time units"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3331" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3331" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3331" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3331" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:43 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3330.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3332.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

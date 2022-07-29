@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Add new integer types to CF? from Charlie Zender on 2017-09-08 (cf-metadata-mailman)</title>
+<meta name="Author" content="Charlie Zender (zender)" />
+<meta name="Subject" content="[CF-metadata] Add new integer types to CF?" />
+<meta name="Date" content="2017-09-08" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8495.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8497.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Add new integer types to CF?</h1>
+<!-- received="Fri Sep  8 14:39:31 2017" -->
+<!-- isoreceived="20170908133931" -->
+<!-- sent="Fri, 8 Sep 2017 14:39:31 -0600" -->
+<!-- isosent="20170908203931" -->
+<!-- name="Charlie Zender" -->
+<!-- email="zender" -->
+<!-- subject="[CF-metadata] Add new integer types to CF?" -->
+<!-- id="e5881aa4-e73e-eb87-0ce1-26116b0070de_at_uci.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8496" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8497.html" accesskey="d" title="Mary Jo Brodzik: &quot;[CF-metadata] Add new integer types to CF?&quot;">Next message</a> ]
+[ <a href="./8495.html" title="V Balaji - NOAA Affiliate: &quot;[CF-metadata] grid cells with a varying number of cell bounds&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8497.html" accesskey="t" title="Mary Jo Brodzik: &quot;[CF-metadata] Add new integer types to CF?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8496" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8496" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8496" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8496" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Charlie Zender &lt;<a href="mailto:zender?Subject=Re%3A%20%5BCF-metadata%5D%20Add%20new%20integer%20types%20to%20CF%3F">zender</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 8 Sep 2017 14:39:31 -0600</span><br />
+</address>
+<br />
+People,
+<br />
+<br />CF explicitly supports types char, byte, short, int, float, and double.
+<br />
+There are five &quot;new&quot; numeric types it could support:
+<br />
+unsigned byte, unsigned short, unsigned int, int64, and unsigned int64.
+<br />
+These new types are in netCDF3 (in the CDF5 encoding released in netCDF
+<br />
+v. 4.4.0) and in netCDF4. I suggest that CF 1.8 merge support for the
+<br />
+new numeric types. Please comment on this proposal.
+<br />
+<br />The current CF 1.8 draft reads (Section 2.2):
+<br />
+<br />&quot;The netCDF data types char, byte, short, int, float or real, and
+<br />
+double are all acceptable. The char type is not intended for numeric
+<br />
+data. One byte numeric data should be stored using the byte data
+<br />
+type. All integer types are treated by the netCDF interface as
+<br />
+signed. It is possible to treat the byte type as unsigned by using the
+<br />
+NUG convention of indicating the unsigned range using the valid_min,
+<br />
+valid_max, or valid_range attributes.&quot;
+<br />
+<br />I suggest replacing that text with something like:
+<br />
+<br />&quot;The netCDF data types char, byte, unsigned byte, short, unsigned
+<br />
+short, int, unsigned int, int64, unsigned int64, float or real,
+<br />
+and double are all acceptable. The char type is not intended for
+<br />
+numeric data. One byte numeric data should be stored using the byte
+<br />
+or unsigned byte data type. It is possible to treat the byte type as
+<br />
+unsigned by using the NUG convention of indicating the unsigned range
+<br />
+using the valid_min, valid_max, or valid_range attributes. The
+<br />
+convention explicitly distinguishes between signed and unsigned
+<br />
+integer types only where necessary. Unless otherwise noted, int is
+<br />
+interchangeable with unsigned int, int64, and unsigned int64 in this
+<br />
+convention, including examples and appendices. Similarly short is
+<br />
+interchangable with unsigned short, and byte with unsigned byte.&quot;
+<br />
+<br />Section 8.1 on Packed Data currently reads:
+<br />
+<br />&quot;An additional restriction in this case is that the variable
+<br />
+containing the packed data must be of type byte, short or int. It is
+<br />
+not advised to unpack an int into a float as there is a potential
+<br />
+precision loss.&quot;
+<br />
+<br />I suggest replacing that with something like:
+<br />
+<br />&quot;An additional restriction in this case is that the variable
+<br />
+containing the packed data must be of type byte, short, or int.
+<br />
+Use of unsigned types to hold packed data is not permitted since
+<br />
+they are incapable of representing negative numbers. It is not
+<br />
+advised to unpack an int into a float as there is a potential
+<br />
+precision loss.&quot;
+<br />
+<br />The insertion of an Oxford comma in this last change is optional,
+<br />
+not intended to provoke an international incident.
+<br />
+<br />Unsigned,
+<br />
+Charlie
+<br />
+<pre>
+-- 
+Charlie Zender, Earth System Sci. &amp; Computer Sci.
+University of California, Irvine 949-891-2429 )'(
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Sep 08 2017 - 14:39:31 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8496">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8497.html" title="Next message in the list">Mary Jo Brodzik: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8495.html" title="Previous message in the list">V Balaji - NOAA Affiliate: "[CF-metadata] grid cells with a varying number of cell bounds"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8497.html" title="Next message in this discussion thread">Mary Jo Brodzik: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8497.html" title="Message sent in reply to this message">Mary Jo Brodzik: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><dfn>Reply</dfn>: <a href="./8500.html" title="Message sent in reply to this message">Chris Barker: "[CF-metadata] Add new integer types to CF?"</a></li>
+<li><dfn>Reply</dfn>: <a href="./8505.html" title="Message sent in reply to this message">Dave Allured - NOAA Affiliate: "[CF-metadata] Add new integer types to CF?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8496" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8496" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8496" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8496" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:16 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8495.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8497.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

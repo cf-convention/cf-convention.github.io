@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Question on WKT representation of CRS from Etienne Tourigny on 2011-11-22 (cf-metadata-mailman)</title>
+<meta name="Author" content="Etienne Tourigny (etourigny.dev)" />
+<meta name="Subject" content="[CF-metadata] Question on WKT representation of CRS" />
+<meta name="Date" content="2011-11-22" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3937.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3939.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Question on WKT representation of CRS</h1>
+<!-- received="Tue Nov 22 10:34:14 2011" -->
+<!-- isoreceived="20111122103414" -->
+<!-- sent="Tue, 22 Nov 2011 15:34:14 -0200" -->
+<!-- isosent="20111122173414" -->
+<!-- name="Etienne Tourigny" -->
+<!-- email="etourigny.dev" -->
+<!-- subject="[CF-metadata] Question on WKT representation of CRS" -->
+<!-- id="CA+TxYvOa=UAS13UvVV1zcG9nxfGEDVPp-6tdtZ4ecS-YBRtOzg_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20111122162220.GA16281_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3938" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3939.html" accesskey="d" title="Randy Horne: &quot;[CF-metadata] Making a proposal for the addition of the geosprojection&quot;">Next message</a> ]
+[ <a href="./3937.html" title="Jonathan Gregory: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">Previous message</a> ]
+[ <a href="./3937.html" title="Jonathan Gregory: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3949.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] Question on WKT representation of CRS&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3938" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3938" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3938" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3938" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Etienne Tourigny &lt;<a href="mailto:etourigny.dev?Subject=Re%3A%20%5BCF-metadata%5D%20Question%20on%20WKT%20representation%20of%20CRS">etourigny.dev</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 22 Nov 2011 15:34:14 -0200</span><br />
+</address>
+<br />
+Hi Jonathan.
+<br />
+<br />you are correct about the additions that would be needed to support
+<br />
+these files.
+<br />
+<br />About GDAL, recent changes to the netcdf driver (by Pat Sunter and I)
+<br />
+have made it fully (I hope) CF-1.5 compliant, with some issues in
+<br />
+certain projections.  This is in the dev version, though. The stable
+<br />
+version does a decent job in most cases.
+<br />
+<br />The new version supports both import and export of netcdf-CF files.  A
+<br />
+recent gdal utility (gdalrsinfo, dev version) takes an input file or
+<br />
+CRS, and prints a number of GDAL's supported projection definitions
+<br />
+(WKT, proj4, etc).
+<br />
+I guess all that is missing is generating a CF definition in cdl
+<br />
+format for consulting.  Anyway, if you take an input file with WKT
+<br />
+(say a geotiff file), and translate it to netcdf format, the result is
+<br />
+a  netcdf CF file.
+<br />
+(gdal_translate -of file.tif file.nc ).
+<br />
+<br />What we added recently was better lon/lat support, better projection
+<br />
+support (still some glitches in some cases) and also export of lon/lat
+<br />
+values for a projected grid (optional).
+<br />
+<br />More info here:
+<br />
+<a href="http://trac.osgeo.org/gdal/wiki/NetCDF_Improvements">http://trac.osgeo.org/gdal/wiki/NetCDF_Improvements</a>
+<br />
+<a href="http://trac.osgeo.org/gdal/wiki/NetCDF_ProjectionTestingStatus">http://trac.osgeo.org/gdal/wiki/NetCDF_ProjectionTestingStatus</a>
+<br />
+<br /><br />Here is an example of import of a CF file (LCC) to WKT
+<br />
+&nbsp;$ ncdump -h orog_MM5I.nc
+<br />
+netcdf orog_MM5I {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xc = 123 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yc = 99 ;
+<br />
+variables:
+<br />
+[...]
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char Lambert_Conformal ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lambert_Conformal:grid_mapping_name = &quot;lambert_conformal_conic&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lambert_Conformal:standard_parallel = 30., 60. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lambert_Conformal:longitude_of_central_meridian = -97. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lambert_Conformal:latitude_of_projection_origin = 47.5 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lambert_Conformal:false_easting = 3825000. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lambert_Conformal:false_northing = 3200000. ;
+<br />
+[...]
+<br />
+<br />$ gdalinfo NETCDF:/data/research/work/gdal-netcdf/narrcap/orog_MM5I.nc:orog
+<br />
+Driver: netCDF/Network Common Data Format
+<br />
+Files: none associated
+<br />
+Size is 123, 99
+<br />
+Coordinate System is:
+<br />
+PROJCS[&quot;unnamed&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;GEOGCS[&quot;WGS 84&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATUM[&quot;WGS_1984&quot;,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TOWGS84[0,0,0,0,0,0,0],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRIMEM[&quot;Greenwich&quot;,0,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UNIT[&quot;degree&quot;,0.0174532925199433,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AUTHORITY[&quot;EPSG&quot;,&quot;9108&quot;]],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PROJECTION[&quot;Lambert_Conformal_Conic_2SP&quot;],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PARAMETER[&quot;standard_parallel_1&quot;,30],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PARAMETER[&quot;standard_parallel_2&quot;,60],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PARAMETER[&quot;latitude_of_origin&quot;,47.5],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PARAMETER[&quot;central_meridian&quot;,-97],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PARAMETER[&quot;false_easting&quot;,3825000],
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PARAMETER[&quot;false_northing&quot;,3200000]]
+<br />
+Origin = (775000.000000000000000,5725000.000000000000000)
+<br />
+Pixel Size = (50000.000000000000000,-50000.000000000000000)
+<br />
+<br />and round-trip conversion back to netcdf:
+<br />
+$ gdal_translate -of gtiff -q NETCDF:orog_MM5I.nc:orog tmp1.tif
+<br />
+$ gdal_translate -of netcdf -co WRITE_GDAL_TAGS=NO -q tmp1.tif tmp1.nc
+<br />
+$ ncdump -h tmp1.nc
+<br />
+netcdf tmp1 {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = 123 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = 99 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char lambert_conformal_conic ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:grid_mapping_name = &quot;lambert_conformal_conic&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:longitude_of_prime_meridian = 0. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:semi_major_axis = 6378137. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:inverse_flattening = 298.257223563 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:longitude_of_central_meridian = -97. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:false_easting = 3825000. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:false_northing = 3200000. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:latitude_of_projection_origin = 47.5 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lambert_conformal_conic:standard_parallel = 30., 60. ;
+<br />
+[...]
+<br />
+<br />cheers
+<br />
+Etienne
+<br />
+<br />On Tue, Nov 22, 2011 at 2:22 PM, Jonathan Gregory
+<br />
+&lt;j.m.gregory at reading.ac.uk&gt; wrote:
+<br />
+<em class="quotelev1">&gt; Dear Etienne
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thank you for your two examples. This is very helpful. In the first example,
+</em><br />
+<em class="quotelev1">&gt; as you say, it appears that a new grid_mapping type of sinusoidal is needed.
+</em><br />
+<em class="quotelev1">&gt; It is easy to add new grid_mappings to Appendix F if their definition is known.
+</em><br />
+<em class="quotelev1">&gt; In the second example, the essential extra features are the names of the
+</em><br />
+<em class="quotelev1">&gt; geographical coordinate system, datum and spheroid, the prime meridian, and the
+</em><br />
+<em class="quotelev1">&gt; TOWGS84 parameters. Have I got that right? These would require new attributes
+</em><br />
+<em class="quotelev1">&gt; for the grid_mapping variable in Table F.1.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It is also interesting to see that GDAL's netCDF driver can convert WKT into
+</em><br />
+<em class="quotelev1">&gt; CF attributes. Can it translate the other way too?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<span id="received"><dfn>Received on</dfn> Tue Nov 22 2011 - 10:34:14 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3938">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3939.html" title="Next message in the list">Randy Horne: "[CF-metadata] Making a proposal for the addition of the geosprojection"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3937.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3937.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3949.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./3949.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] Question on WKT representation of CRS"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3938" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3938" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3938" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3938" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:53 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3937.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3939.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

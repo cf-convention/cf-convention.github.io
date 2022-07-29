@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  interplay of standard name modifiers, cell_methods -- is there a problem? from Jonathan Gregory on 2013-04-02 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  interplay of standard name modifiers, cell_methods -- is there a problem?" />
+<meta name="Date" content="2013-04-02" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./5243.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5245.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  interplay of standard name modifiers, cell_methods -- is there a problem?</h1>
+<!-- received="Tue Apr  2 11:05:40 2013" -->
+<!-- isoreceived="20130402100540" -->
+<!-- sent="Tue, 2 Apr 2013 18:05:40 +0100" -->
+<!-- isosent="20130402170540" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF&ndash;metadata]  interplay of standard name modifiers, cell_methods &ndash;&ndash; is there a problem?" -->
+<!-- id="20130402170540.GA30032_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start5244" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./5245.html" accesskey="d" title="Lowry, Roy K.: &quot;[CF-metadata] Taxa in CF.  Some questions&quot;">Next message</a> ]
+[ <a href="./5243.html" title="Jonathan Gregory: &quot;[CF-metadata]  Taxa in CF.  Some questions&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./5246.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] interplay of standard name modifiers, cell_methods -- is there a problem?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5244" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5244" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5244" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5244" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20interplay%20of%20standard%20name%20modifiers%2C%20cell_methods%20--%20is%20there%20a%20problem%3F">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 2 Apr 2013 18:05:40 +0100</span><br />
+</address>
+<br />
+Dear all
+<br />
+<br />Jim asked,
+<br />
+<br />&quot;As some examples of the confusing situation we have now, why do we have a
+<br />
+separate word modifier number_of_observations instead of a
+<br />
+number_of_observations_of_X transformation modifier?  Why don't we have
+<br />
+variance_of_X or anomaly_of_X transformations (or separate word modifiers
+<br />
+variance or anomaly)?  Why isn't there a cell method for standard error?  I
+<br />
+can't discern any logic behind the current partitioning.&quot;
+<br />
+<br />I've tried to explain how this came about, but perhaps I am not being clear,
+<br />
+so let me try again:
+<br />
+<br />* We introduced the modifiers like number_of_observations for those situations
+<br />
+where it was thought likely that a large number of standard names would need
+<br />
+them. Factorising out this dimension thus avoids a large expansion of the
+<br />
+standard name table. So far, only four anomaly_of names have been requested,
+<br />
+so it seems the right judgement not to have a standard_name modifier for that.
+<br />
+<br />* That was also one of the motivations for cell_methods: there would be vastly
+<br />
+more standard names if we had to include all the cell_methods information too.
+<br />
+The other motivation for cell_methods is that the statistical operations
+<br />
+relate to particular axes. For instance, just &quot;mean&quot; is too vague: does it
+<br />
+mean time-mean, zonal-mean, mean over radiation wavelength, or what? The same
+<br />
+is true for variance. The cell_methods attribute makes this precise.
+<br />
+<br />* There is not a cell method for standard error because it does not relate to
+<br />
+a particular dimension. The standard error is a metadata property of the
+<br />
+individual data. The cell methods statistically describe the variation of the
+<br />
+quantity within cells. These are different purposes.
+<br />
+<br />While you may not agree with the logic, does this help to explain what it is?
+<br />
+<br />If the situation is perceived as confusing and easily misunderstood, I am all
+<br />
+in favour of clarifying it by inserting more explanation and discussion in the
+<br />
+CF standard document. That could be done with a defect ticket. As Philip says,
+<br />
+it could shorten future discussions.
+<br />
+<br />But we can also change the standard, of course. However, changes to existing
+<br />
+attributes are difficult for existing software. I do not think we need or
+<br />
+ought to change the existing attributes. While I appreciate the reason for the
+<br />
+suggestion, I feel that suffixing something to the standard_name to indicate
+<br />
+&quot;something&quot; has been done to it would not really help, because there is almost
+<br />
+*always* something done to it! Cell methods are recommended to be specified in
+<br />
+any case where the default &quot;point&quot; or &quot;sum&quot; is not correct. They should be
+<br />
+present if the quantity is a mean, in particular. A mean is also a
+<br />
+transformation, just like a standard deviation.
+<br />
+<br />I am not convinced yet by the argument that we have to modify the CF standard
+<br />
+because the standard_name may be misunderstood or misused by software which
+<br />
+catalogues or serves datasets. CF introduced the standard_name attribute. If
+<br />
+it's being used now, software must already have been modified to support CF.
+<br />
+Well then, why can't be modified again to support CF more fully or correctly?
+<br />
+If we explained more clearly in the standard what the intention was, that would
+<br />
+no doubt help with future software design.
+<br />
+<br />Instead of changing what we have, I think we should add to it. It seems to me,
+<br />
+as I've said before, that the existing proposal for &quot;CF strings&quot; summarising
+<br />
+some essential metadata (similar to the earlier proposal for common concepts
+<br />
+in some ways) would solve this problem. It is *that* kind of string, not the
+<br />
+standard name, that the user should be offered to select an appropriate
+<br />
+variable. It's a combination of attributes. It's not hard to assemble that
+<br />
+information from the separate attributes, but if that's an obstacle, we could
+<br />
+help software over it by recommending that this extra attribute be included.
+<br />
+<br />Please have a look at <a href="https://cf-pcmdi.llnl.gov/trac/ticket/94">https://cf-pcmdi.llnl.gov/trac/ticket/94</a> and add your
+<br />
+comments on it.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Apr 02 2013 - 11:05:40 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start5244">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./5245.html" title="Next message in the list">Lowry, Roy K.: "[CF-metadata] Taxa in CF.  Some questions"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./5243.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  Taxa in CF.  Some questions"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./5246.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] interplay of standard name modifiers, cell_methods -- is there a problem?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./5246.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] interplay of standard name modifiers, cell_methods -- is there a problem?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg5244" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg5244" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg5244" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg5244" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:18 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./5243.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./5245.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

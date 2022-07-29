@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  Same parameter, different meaning (pressure) from Jonathan Gregory on 2008-08-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  Same parameter, different meaning (pressure)" />
+<meta name="Date" content="2008-08-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1508.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1510.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  Same parameter, different meaning (pressure)</h1>
+<!-- received="Fri Aug 29 01:04:53 2008" -->
+<!-- isoreceived="20080829000453" -->
+<!-- sent="Fri, 29 Aug 2008 08:04:53 +0100" -->
+<!-- isosent="20080829070453" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  Same parameter, different meaning (pressure)" -->
+<!-- id="20080829070453.GB8142_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1509" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1510.html" accesskey="d" title="Bert Jagers: &quot;[CF-metadata] AGU Fall Meeting H65: Integrated Modeling in Hydrology: Advances in Model Interoperability, Architectures, and Cyberinfrastructure&quot;">Next message</a> ]
+[ <a href="./1508.html" title="Steve Hankin: &quot;[CF-metadata] Same parameter, different meaning (pressure)&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1509" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1509" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1509" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1509" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20Same%20parameter%2C%20different%20meaning%20(pressure)">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 29 Aug 2008 08:04:53 +0100</span><br />
+</address>
+<br />
+Dear Steve
+<br />
+<br /><em class="quotelev1">&gt;    If the quantity in question is sea water pressure then
+</em><br />
+<em class="quotelev1">&gt;    it should be called &quot;sea_water_pressure&quot;.  If it is measured at 200m
+</em><br />
+<em class="quotelev1">&gt;    then it should have a typical CF-encoded Z coordinate axis to indicate
+</em><br />
+<em class="quotelev1">&gt;    that it is at 200m depth.
+</em><br />
+<br />I agree with that. In the example, it was 200 m height above the sea floor,
+<br />
+which can also be recorded as a vertical coordinate.
+<br />
+<br />However, I think that if it's on the sea-floor we should put that in the
+<br />
+standard name. This is the approach we have use for a lot of existing standard
+<br />
+names. A conceptual reason for this is that quantities on particular physically
+<br />
+important surfaces often do have somewhat different physical uses or
+<br />
+interpretations from quantities on surfaces defined by coordinate variables
+<br />
+in the body of a fluid. A practical reason is that it is rather arbitrary how
+<br />
+to encode the surface using a coordinate variable. The sea-floor could be
+<br />
+recorded as 0 m below sea floor, or 0 m above sea floor, or sigma=0, or H m
+<br />
+below the sea surface, etc. This wide choice would make it inconvenient for
+<br />
+software or humans to identify the quantity as being on the sea-floor. It
+<br />
+seems better to indicate this explicitly, since that is what we want to say.
+<br />
+<br />An argument could be made that the named surface should instead be encoded
+<br />
+in a separate attribute, taking the place of a vertical coordinate variable.
+<br />
+I agree that would work, but I don't think it is preferable because it would
+<br />
+be more complicated for humans or software, which would have to look in two
+<br />
+attributes rather than one. I don't see the advantage in it. As I say, we
+<br />
+have followed the approach of encoding named surfaces in standard names right
+<br />
+since the beginning of CF, and we have a lot of them now in the stdname table.
+<br />
+<br /><em class="quotelev1">&gt;    Regarding the question of tethered sensors, my initial reaction was
+</em><br />
+<em class="quotelev1">&gt;    that this should not be encoded in the standard name.
+</em><br />
+<br />I agree. If the tethered sensors are actually moving, so that x y z are
+<br />
+functions of t, I agree also that this information could be provided like
+<br />
+a trajectory, as auxiliary coordinate variables. That does not require a
+<br />
+new standard name.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Fri Aug 29 2008 - 01:04:53 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1509">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1510.html" title="Next message in the list">Bert Jagers: "[CF-metadata] AGU Fall Meeting H65: Integrated Modeling in Hydrology: Advances in Model Interoperability, Architectures, and Cyberinfrastructure"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1508.html" title="Previous message in the list">Steve Hankin: "[CF-metadata] Same parameter, different meaning (pressure)"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1509" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1509" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1509" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1509" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:08 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1508.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1510.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

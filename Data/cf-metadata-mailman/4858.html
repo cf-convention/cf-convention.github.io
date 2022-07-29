@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] [netcdf-java] problem with times in PSD dataset from Steve Hankin on 2012-12-07 (cf-metadata-mailman)</title>
+<meta name="Author" content="Steve Hankin (steven.c.hankin)" />
+<meta name="Subject" content="[CF-metadata] [netcdf-java] problem with times in PSD dataset" />
+<meta name="Date" content="2012-12-07" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./4857.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4859.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] [netcdf-java] problem with times in PSD dataset</h1>
+<!-- received="Thu Dec  6 17:35:40 2012" -->
+<!-- isoreceived="20121206173540" -->
+<!-- sent="Thu, 06 Dec 2012 16:35:40 -0800" -->
+<!-- isosent="20121207003540" -->
+<!-- name="Steve Hankin" -->
+<!-- email="steven.c.hankin" -->
+<!-- subject="[CF-metadata] [netcdf-java] problem with times in PSD dataset" -->
+<!-- id="50C139DC.3060002_at_noaa.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="50C133AA.80506_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start4858" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./4859.html" accesskey="d" title="Dave Allured - NOAA Affiliate: &quot;[CF-metadata] CF calendars (was: problem with times in PSD dataset)&quot;">Next message</a> ]
+[ <a href="./4857.html" title="John Caron: &quot;[CF-metadata] [netcdf-java] problem with times in PSD dataset&quot;">Previous message</a> ]
+[ <a href="./4857.html" title="John Caron: &quot;[CF-metadata] [netcdf-java] problem with times in PSD dataset&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4858" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4858" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4858" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4858" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Steve Hankin &lt;<a href="mailto:steven.c.hankin?Subject=Re%3A%20%5BCF-metadata%5D%20%5Bnetcdf-java%5D%20problem%20with%20times%20in%20PSD%20dataset">steven.c.hankin</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 06 Dec 2012 16:35:40 -0800</span><br />
+</address>
+<br />
+On 12/6/2012 4:09 PM, John Caron wrote:
+<br />
+<em class="quotelev1">&gt; Hi Cathy:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There no question that CF currently defaults to mixed gregorian 
+</em><br />
+<em class="quotelev1">&gt; calendar. The discussion is whether thats the best choice (probably 
+</em><br />
+<em class="quotelev1">&gt; not), and to advise users not to cross the discontinuity (eg store 
+</em><br />
+<em class="quotelev1">&gt; modern dates starting from 1-1-1).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Im curious as to how you generate the dates that you store? That is, 
+</em><br />
+<em class="quotelev1">&gt; how do you know that they are correct?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br />Hi Cathy,
+<br />
+<br />A question to add to John's:
+<br />
+<br />&nbsp;&nbsp;* If a user made a time series plot of paleo data across the
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;Julian-Gregorian discontinuity, what expectations would he/she have
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;about how the time axis was labelled?  Do you know of software that
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;will correctly label the time axis across a mixed Julian-Gregorian
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;time series?
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Steve
+<br />
+<br /><em class="quotelev1">&gt; John
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 12/6/2012 4:34 PM, Cathy Smith (NOAA Affiliate) wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; John
+</em><br />
+<em class="quotelev2">&gt;&gt; There is some meteorological data that is available pre-Gregorian
+</em><br />
+<em class="quotelev2">&gt;&gt; calendar (paleo data, some temperature datasets) and of course there are
+</em><br />
+<em class="quotelev2">&gt;&gt; other scientific fields where data is pre-1500 (e.g. astronomy,
+</em><br />
+<em class="quotelev2">&gt;&gt; archeology) . Given that netCDF files with data dates spanning ~1550 
+</em><br />
+<em class="quotelev2">&gt;&gt; probably already exist and the large number of preexisting files that
+</em><br />
+<em class="quotelev2">&gt;&gt; use the 1-1-1 base (we have over 2000), it doesn't seem reasonable to
+</em><br />
+<em class="quotelev2">&gt;&gt; request that files be changed to accommodate what is essentially a bug;
+</em><br />
+<em class="quotelev2">&gt;&gt; the date values we store are correct. We started using the 1-1-1 base 
+</em><br />
+<em class="quotelev2">&gt;&gt; in the mid
+</em><br />
+<em class="quotelev2">&gt;&gt; 1990's (almost 20 years ago) as part of the COARDS (now CF) agreed 
+</em><br />
+<em class="quotelev2">&gt;&gt; upon standard.
+</em><br />
+<em class="quotelev2">&gt;&gt; It is reasonable for us to consider future changes but I don't think 
+</em><br />
+<em class="quotelev2">&gt;&gt; it reasonable for us to have to change our files because the Java 
+</em><br />
+<em class="quotelev2">&gt;&gt; interface is not backwards compatible.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Cathy Smith
+</em><br />
+<em class="quotelev2">&gt;&gt; NOAA/ESRL PSD
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 12/5/12 12:25 PM, John Caron wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Hi all:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Its probably the right thing to do to make gregorian (&quot;Mixed
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Gregorian/Julian calendar&quot;) the default calendar for COARDS/CF, for
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; backwards compatibility. However, CDM may leave proleptic_gregorian
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; (ISO8601) as its default.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; And I would strongly suggest that data writers stop using &quot;time since
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; 1-1-1&quot;. Ive never seen a dataset where &quot;time since 1-1-1&quot; using the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; mixed gregorian calendar was actually needed. If any one has a real
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; example, Id like to hear about it.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; If you really need &quot;historical accuracy&quot;, then put in an ISO8601
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; formatted string, and an explicit calendar attribute. CDM handles
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; those ok. CF should be upgraded to allow ISO strings also. &quot;time since
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; reference date&quot; is not good for very large ranges of time.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Ill just add that udunits never wanted to be a calendaring library,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; and shouldnt be used anymore for that. Im relying on joda-time (and
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; its successor threeten) to be the expert in calendering, so i dont
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; have to. I think the netcdf-C library now uses some CDAT (?) code for
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; its calendaring, but Im sure theres other standard libraries that
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; could be used. Anyone have candidate libraries in C or Python for
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; robust calendering&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; In short, we should rely on clear encoding standards (eg ISO8601) with
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; reference software, rather than implementations like udunits that
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; eventually go away.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; John
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; PS: I think ill cross post to cf, just to throw some gasoline on the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; fire ;), and maybe some broader viewpoints.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; On 12/5/2012 10:24 AM, Don Murray (NOAA Affiliate) wrote:
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Hi Gerry-
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; On 12/5/12 9:42 AM, Gerry Creager - NOAA Affiliate wrote:
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; There are other datasets with reference to 1-1-1. I've seen them most
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; recently in some ocean models.
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; And the ESRL/PSD NCEP reanalysis datasets use it.
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Don
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; On Wed, Dec 5, 2012 at 10:16 AM, Don Murray (NOAA Affiliate)
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; &lt;don.murray at noaa.gov &lt;mailto:don.murray at noaa.gov&gt;&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      John-
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      I meant to send this to support-netcdf-java, but perhaps  
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; others on
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      the list might have the same problem.
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      On 12/4/12 4:51 PM, John Caron wrote:
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          On 12/4/2012 4:09 PM, Don Murray (NOAA Affiliate) wrote:
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              Hi-
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              I was just trying to access the NOAA/ESRL/PSD  Outgoing
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; Longwave
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              Radiation (OLR) data using netCDF-Java 4.3 ToolsUI and
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              noticed that the
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              times are wrong.  If you open:
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; dods://www.esrl.noaa.gov/psd/__thredds/dodsC/Datasets/__uninterp_OLR/olr.day.mean.nc 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; &lt;<a href="http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/uninterp_OLR/olr.day.mean.nc">http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/uninterp_OLR/olr.day.mean.nc</a>&gt; 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              in the ToolsUI grid viewer, the last time in the file is
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              shown as
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              2012-12-04 00Z.  However, the last time in the file is
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; actually
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              2012-12-02 00Z.  Here is the time variable in that file:
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;                   double time(time=3989);
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;                     :units = &quot;hours since 1-1-1 00:00:0.0&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;                     :long_name = &quot;Time&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;                     :actual_range = 1.7540448E7, 1.763616E7; // 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; double
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;                     :delta_t = &quot;0000-00-01 00:00:00&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;                     :avg_period = &quot;0000-00-01 00:00:00&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;                     :standard_name = &quot;time&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;                     :axis = &quot;T&quot;;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              netCDF-Java 4.2 and ncdump -t -v time (C version) 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; show the
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              correct
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              date/times.
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          hours from 1-1-1 is rather problematic, since you are 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; crossing
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; the
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          julian/gregorian weirdness line (i think thats the technical
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; term ;)
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          Im guessing the trouble lies here:
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          &quot;Default calendar: for udunits, and therefore for CF, the
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; default
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          calendar is gregorian (&quot;Mixed Gregorian/Julian 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; calendar&quot;). For
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          CDM, the
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          default calendar is proleptic_gregorian (ISO8601 standard).
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; This
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          only
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          matters for dates before 1582.&quot;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      Joda time supports the GJ calendar (Historically accurate 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; calendar
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      with Julian followed by Gregorian) which seems it would be 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; backward
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      compatible with the CF/udunits.  Perhaps that should be the 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; default
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      for backward compatibility.
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          I have to say relying uncritically on a calendar
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; implementation like
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          udunits is a mistake. putting the reference date
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; unnecessarily to
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          include the problem is, um, unnecessary.
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      But it is historically accurate.  For climate datasets, this 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; would
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      be important.
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          is there any way those files can be updated? specifying the
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          gregorian
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          calendar explicitly should do it, but changing to use a
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          reference date
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          after 1582 would be much better.
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      How's your FORTRAN? ;-)  I'm not sure why this was chosen
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      originally, but it doesn't seem reasonable to make people change
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      their datasets.
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      Does anyone else on the list know of datasets (other than
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      climatologies) that might use a reference of 1-1-1 that will be
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      affected by this change?
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              BTW, is there an easier way to see human readable dates
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              through toolsUI
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;              than loading it into the grid viewer (akin to ncdump 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; -t)?
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          open in coordSys tab; in bottom table, select time coord,
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          right-click
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;          and choose &quot;show values as date&quot;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      Thanks, that's easier.
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      Don
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      --
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      Don Murray
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      NOAA/ESRL/PSD and CIRES
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      303-497-3596 &lt;tel:303-497-3596&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      <a href="http://www.esrl.noaa.gov/psd/__people/don.murray/">http://www.esrl.noaa.gov/psd/__people/don.murray/</a>
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; &lt;<a href="http://www.esrl.noaa.gov/psd/people/don.murray/">http://www.esrl.noaa.gov/psd/people/don.murray/</a>&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      _________________________________________________
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      netcdf-java mailing list
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      netcdf-java at unidata.ucar.edu 
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; &lt;mailto:netcdf-java at unidata.ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      For list information or to unsubscribe, visit:
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      <a href="http://www.unidata.ucar.edu/__mailing_lists/">http://www.unidata.ucar.edu/__mailing_lists/</a>
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;      &lt;<a href="http://www.unidata.ucar.edu/mailing_lists/">http://www.unidata.ucar.edu/mailing_lists/</a>&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20121206/42125ace/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20121206/42125ace/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Dec 06 2012 - 17:35:40 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start4858">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./4859.html" title="Next message in the list">Dave Allured - NOAA Affiliate: "[CF-metadata] CF calendars (was: problem with times in PSD dataset)"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./4857.html" title="Previous message in the list">John Caron: "[CF-metadata] [netcdf-java] problem with times in PSD dataset"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./4857.html" title="Message to which this message replies">John Caron: "[CF-metadata] [netcdf-java] problem with times in PSD dataset"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg4858" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg4858" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg4858" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg4858" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:11 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./4857.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./4859.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

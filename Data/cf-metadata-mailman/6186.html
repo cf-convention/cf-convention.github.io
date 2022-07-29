@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Classification of a &quot;trajectory&quot; with asynchronous time coordinates from Jim Biard on 2014-03-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] Classification of a &quot;trajectory&quot; with asynchronous time coordinates" />
+<meta name="Date" content="2014-03-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6185.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6187.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Classification of a &quot;trajectory&quot; with asynchronous time coordinates</h1>
+<!-- received="Wed Mar 19 07:31:24 2014" -->
+<!-- isoreceived="20140319073124" -->
+<!-- sent="Wed, 19 Mar 2014 09:31:24 -0400" -->
+<!-- isosent="20140319133124" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] Classification of a &quot;trajectory&quot; with asynchronous time coordinates" -->
+<!-- id="9EE11FE3-7852-41FE-BDE9-2F334A09ACD7_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="1395175819.40688.YahooMailNeo_at_web141001.mail.bf1.yahoo.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6186" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6187.html" accesskey="d" title="Kreienkamp Frank: &quot;[CF-metadata] : netcdf-fortran example for Example H.3 out of - problem solved&quot;">Next message</a> ]
+[ <a href="./6185.html" title="Jonathan Gregory: &quot;[CF-metadata]  standard name aliases&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6186" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6186" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6186" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6186" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20Classification%20of%20a%20%22trajectory%22%20with%20asynchronous%20time%20coordinates">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 19 Mar 2014 09:31:24 -0400</span><br />
+</address>
+<br />
+Mike,
+<br />
+<br />(If I?m wrong in what I?m about to say, someone please feel free to step in.)
+<br />
+<br />The general concept of a trajectory in CF requires you to have a common trajectory index dimension that ties all of the related elements together.  A simple example of a trajectory is one in which the time dimension is also your index dimension, but in every case there must be unique position and time values for each trajectory point.  In your first example, you have a bunch of unrelated time series.  You cannot use variables that don?t share a dimension with a variable as auxiliary coordinates for that variable, so putting lat, lon, and z in the coordinates attributes for the O3 or NO3 variables is not allowed.  In this second example, you have one trajectory that has no data variable (composed of the lon, lat, z, and time_coords group), and two unrelated time series (O3 and NO3).  As in the first case, you cannot associate lon, lat, or z with O3 or NO3, because they don?t share a dimension.
+<br />
+<br />There is nothing illegal about having a bunch of dimensionally unrelated time series in a file.  You can totally do that and comply with CF, but they aren?t trajectories, and automated software won?t be able to make sense of it as somehow forming an ensemble.  There is no interpolation formalism that would automatically imply lon, lat, and z values for the O3 and NO3 measurements.  (None that I?m aware of, at any rate.)
+<br />
+<br />Anyway, that?s the best I understand it, based on what you have shared so far.  If this data really represents O3 and NO3 measurements taken at different rates from each other while moving along a path with location fixes taken at yet a different rate, then I don?t see a simple way to make a single trajectory out of the data without doing the interpolations beforehand.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />Visit us on
+<br />
+Facebook	Jim Biard
+<br />
+Research Scholar
+<br />
+Cooperative Institute for Climate and Satellites NC
+<br />
+North Carolina State University
+<br />
+NOAA's National Climatic Data Center
+<br />
+151 Patton Ave, Asheville, NC 28801
+<br />
+e: jbiard at cicsnc.org
+<br />
+o: +1 828 271 4900
+<br />
+<br /><br /><br /><br />On Mar 18, 2014, at 4:50 PM, Mike Godin &lt;mikegodin at yahoo.com&gt; wrote:
+<br />
+<br /><em class="quotelev1">&gt; Hi Jim,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Actually, the latitude, longitude, and z values are not sampled at different rates (I showed them as such for an extreme example, and in some decimation schemes they end up being asynchronous), but in reality the science data are collected asynchronously from each other and the coordinate data. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I can't find where the CF standard specifies that a trajectory must have a single time dimension (perhaps I've missed it).  If it does, and this is a collection of time series, can a collection of time series be represented in a CF-compliant file?  If so how would one indicate that lat, lon, and z are the coordinates through which O3 and NO3 vary?  
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; If it helps, one could imagine the following somewhat simpler CDL, in which coordinates are time-synchronized but scientific measurements are not:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;   dimensions:
+</em><br />
+<em class="quotelev1">&gt;       time_coords = 435;
+</em><br />
+<em class="quotelev1">&gt;       time_O3 = 335;
+</em><br />
+<em class="quotelev1">&gt;       time_NO3 = 5357;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    variables:
+</em><br />
+<em class="quotelev1">&gt;       double time_coords(time_coords) ; 
+</em><br />
+<em class="quotelev1">&gt;           time_coords:standard_name = &quot;time&quot;;
+</em><br />
+<em class="quotelev1">&gt;           time_coords:long_name = &quot;time_coords&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           time_coords:units = &quot;days since 1970-01-01 00:00:00&quot; ;
+</em><br />
+<em class="quotelev1">&gt;       float lon(time_coords) ; 
+</em><br />
+<em class="quotelev1">&gt;           lon:standard_name = &quot;longitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;           lon:long_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           lon:units = &quot;degrees_east&quot; ;
+</em><br />
+<em class="quotelev1">&gt;       float lat(time_coords) ; 
+</em><br />
+<em class="quotelev1">&gt;           lat:standard_name = &quot;latitude&quot;;
+</em><br />
+<em class="quotelev1">&gt;           lat:long_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           lat:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev1">&gt;       float z(time_coords) ; 
+</em><br />
+<em class="quotelev1">&gt;           z:standard_name = ?altitude?;
+</em><br />
+<em class="quotelev1">&gt;           z:long_name = &quot;height above mean sea level&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           z:units = &quot;km&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           z:positive = &quot;up&quot; ; 
+</em><br />
+<em class="quotelev1">&gt;            z:axis = &quot;Z&quot; ; 
+</em><br />
+<em class="quotelev1">&gt;            
+</em><br />
+<em class="quotelev1">&gt;      double time_O3(time_O3) ; 
+</em><br />
+<em class="quotelev1">&gt;           time_O3:standard_name = &quot;time&quot;;
+</em><br />
+<em class="quotelev1">&gt;           time_O3:long_name = &quot;time_O3&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           time_O3:units = &quot;days since 1970-01-01 00:00:00&quot; ;
+</em><br />
+<em class="quotelev1">&gt;       float O3(time_O3) ; 
+</em><br />
+<em class="quotelev1">&gt;           O3:standard_name = ?mass_fraction_of_ozone_in_air?;
+</em><br />
+<em class="quotelev1">&gt;           O3:long_name = &quot;ozone concentration&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           O3:units = &quot;1e-9&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           O3:coordinates = &quot;time_O3 lon lat z&quot; ;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;      double time_NO3(time_NO3) ; 
+</em><br />
+<em class="quotelev1">&gt;           time_NO3:standard_name = &quot;time&quot;;
+</em><br />
+<em class="quotelev1">&gt;           time_NO3:long_name = &quot;time_NO3&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           time_NO3:units = &quot;days since 1970-01-01 00:00:00&quot; ;
+</em><br />
+<em class="quotelev1">&gt;       float O3(time_NO3) ; 
+</em><br />
+<em class="quotelev1">&gt;           NO3:standard_name = ?mass_fraction_of_nitrate_radical_in_air?;
+</em><br />
+<em class="quotelev1">&gt;           NO3:long_name = &quot;NO3 concentration&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           NO3:units = &quot;1e-9&quot; ;
+</em><br />
+<em class="quotelev1">&gt;           NO3:coordinates = &quot;time_NO3 lon lat z&quot; ;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    attributes:
+</em><br />
+<em class="quotelev1">&gt;       :featureType = &quot;????&quot;;
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thanks, 
+</em><br />
+<em class="quotelev1">&gt; Mike Godin
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Lead Engineer, 
+</em><br />
+<em class="quotelev1">&gt; IntuAware
+</em><br />
+<em class="quotelev1">&gt; <a href="http://intuaware.com">http://intuaware.com</a>
+</em><br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140319/b32275f2/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140319/b32275f2/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Mar 19 2014 - 07:31:24 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6186">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6187.html" title="Next message in the list">Kreienkamp Frank: "[CF-metadata] : netcdf-fortran example for Example H.3 out of - problem solved"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6185.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata]  standard name aliases"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6186" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6186" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6186" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6186" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:40 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6185.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6187.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

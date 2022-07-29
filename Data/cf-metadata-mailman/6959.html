@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  How to define time coordinate in GPS? from Jonathan Gregory on 2015-05-10 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata]  How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-05-10" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6958.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6960.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  How to define time coordinate in GPS?</h1>
+<!-- received="Sun May 10 01:29:23 2015" -->
+<!-- isoreceived="20150510002923" -->
+<!-- sent="Sun, 10 May 2015 08:29:23 +0100" -->
+<!-- isosent="20150510072923" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata]  How to define time coordinate in GPS?" -->
+<!-- id="20150510072833.GA15283_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6959" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6960.html" accesskey="d" title="Ben Hetland: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next message</a> ]
+[ <a href="./6958.html" title="Jonathan Gregory: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6960.html" accesskey="t" title="Ben Hetland: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6959" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6959" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6959" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6959" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sun, 10 May 2015 08:29:23 +0100</span><br />
+</address>
+<br />
+Dear all
+<br />
+<br />A postscript to my last message. I am not myself convinced that the backward
+<br />
+incompatibility (for data-writing) that I suggested below is really worth the
+<br />
+pain it would cause! I think it might well be OK to retain the existing
+<br />
+calendar name of &quot;gregorian&quot; from CF1.7, but give it a more precise definition,
+<br />
+in order to eliminate the ambiguity about leap seconds. (Of course, there is
+<br />
+nothing we can do to remedy this with existing data.)
+<br />
+<br />With all the arguments otherwise unaltered, that would make my proposal:
+<br />
+<br />* We redefine &quot;gregorian&quot;, and introduce a new calendar &quot;gregorian_utc&quot;, for
+<br />
+the real-world calendar, without and with UTC leap seconds respectively.
+<br />
+<br />* We abolish the &quot;standard&quot; calendar (since one thing this discussion has
+<br />
+shown is that there is not a single standard!) and we require the calendar
+<br />
+always to be specified (no default).
+<br />
+<br />* We state that all the other calendars have fixed-length days with no leap
+<br />
+seconds.
+<br />
+<br />My further suggestions, about dealing with the Julian/Gregorian transition
+<br />
+and negative years in better ways, are unaffected (except to retain the name
+<br />
+&quot;gregorian&quot;). Those are an optional extra, dealing with a different subject,
+<br />
+but it would be opportune to do both at once.
+<br />
+<br />Cheers
+<br />
+<br />Jonathan
+<br />
+<br />----- Forwarded message from Jonathan Gregory &lt;j.m.gregory at reading.ac.uk-----
+<br />
+<br />Dear Jim
+<br />
+<br />Yes, I'm glad we appear to be approaching an agreement!
+<br />
+<br /><em class="quotelev2">&gt; &gt;&quot;In order to calculate a new date and time given a base date, base time and a
+</em><br />
+<em class="quotelev2">&gt; &gt;time increment one must know what calendar to use.&quot;
+</em><br />
+<em class="quotelev2">&gt; &gt;and I think that is the sense in which I am using &quot;calendar&quot;.
+</em><br />
+<em class="quotelev1">&gt; I agree that this is a CF-consistent usage of the word calendar, but
+</em><br />
+<em class="quotelev1">&gt; it runs against natural usage, and I think it's worth keeping that
+</em><br />
+<em class="quotelev1">&gt; in mind.
+</em><br />
+<br />OK. Perhaps we can clarify what we mean in the CF convention.
+<br />
+<br /><em class="quotelev1">&gt; I agree that leap seconds haven't been carefully considered before.
+</em><br />
+<em class="quotelev1">&gt; I disagree that nearly all existing time values have been encoded
+</em><br />
+<em class="quotelev1">&gt; without leap seconds. I'd say that nearly all existing time values
+</em><br />
+<em class="quotelev1">&gt; that were derived from true UTC timestamps are at risk of having
+</em><br />
+<em class="quotelev1">&gt; leap second discontinuities encoded into the set of values.
+</em><br />
+<br />All right. In that case I think we may have to take more serious steps to
+<br />
+avoid future problems. I'll come back to that.
+<br />
+<br /><em class="quotelev1">&gt; There are three issues here, so let's not conflate them. They are:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 1. What to call the time system that is like UTC in overall form
+</em><br />
+<em class="quotelev1">&gt;    (Greenwich meridian, etc) but doesn't include leap seconds.
+</em><br />
+<em class="quotelev1">&gt; 2. How to indicate which actual time system is being used for the time
+</em><br />
+<em class="quotelev1">&gt;    part of the reference time in the units attribute.
+</em><br />
+<em class="quotelev1">&gt; 3. How to indicate whether or not the elapsed times in the time
+</em><br />
+<em class="quotelev1">&gt;    variable are certain to be free of leap second induced discontinuities.
+</em><br />
+<br />This is a useful classification, thanks, but I don't think the situation is
+<br />
+quite as complicated as that.
+<br />
+<br />I'm not sure (2) is something we need to be concerned about - but it may
+<br />
+be I've missed a point. In my understanding, there is no calendar implied by
+<br />
+the reference time, because it's given as a timestamp YYYY-MM-DD hh:mm:ss
+<br />
+[+-hh:mm], where the [] is the optional time-zone. A timestamp is calendar-
+<br />
+neutral; it can be interpreted in any calendar, except that some dates will be
+<br />
+illegal in some calendars, and some times might be illegal if leap seconds are
+<br />
+in effect. The reference date-time is used for encoding and decoding in the
+<br />
+calendar specified, with or without leap seconds, but itself implies nothing
+<br />
+about the time system. We could state it as a requirement of CF that the
+<br />
+reference date and time must be legal in the encoding which applies to the time
+<br />
+coordinate.
+<br />
+<br />Regarding part of (1), we need a name for the time-zone which applies at the
+<br />
+Greenwich meridian without summer/daylight-saving time. We shouldn't use &quot;UTC&quot;,
+<br />
+as the CF standard currently does (quoting from udunits(3)), because that's
+<br />
+confusing. Maybe it should just be stated explicitly as I have done!
+<br />
+<br />To address point (3), I continue to favour a subspecies of calendar name,
+<br />
+rather than a modifier or separate attribute, because this distinction only
+<br />
+applies to the real-world calendars. A decomposition of metadata is cumbersome
+<br />
+if it isn't generally relevant. Suppose X can take values X1 or X2; if it's X1
+<br />
+then Y can be Y1 or Y2, whereas Y is irrelevant if it's X2. In that situation I
+<br />
+would have a single attribute with possible values X1_Y1 X1_Y2 and X2. A single
+<br />
+attribute is easier for scanning a dataset, less work to write and read, and
+<br />
+more likely to be correct because it's less likely that Y will not be coded if
+<br />
+relevant or will be coded if irrelevant.
+<br />
+<br />I suggest that the leap seconds are needed only in the Gregorian calendar i.e.
+<br />
+the real-world one. I think it's unlikely the proleptic Gregorian calendar will
+<br />
+be used with leap-seconds; you only need this calendar if you're going back
+<br />
+more than several centuries, in which case it's probably not a dataset which
+<br />
+has UTC precision in time, and it's most often used with models, which do not
+<br />
+have leap seconds. (However, a leap-second variety could be introduced if I am
+<br />
+wrong and it is needed.) Leap seconds are not needed in the noleap, all_leap,
+<br />
+360_day and none calendars, which are all for model worlds. The julian calendar
+<br />
+is used astronomically and might be used in models, but the web page you
+<br />
+cited (<a href="http://www.ucolick.org/~sla/leapsecs/timescales.html">http://www.ucolick.org/~sla/leapsecs/timescales.html</a>) points out that's
+<br />
+not a good idea to try to use it with leap seconds since it's based on units
+<br />
+of day (=86400 s).
+<br />
+<br />If this is the case, then I would propose that in the next version of CF:
+<br />
+<br />* We introduce two new calendars, &quot;gregorian_noleaps&quot; and &quot;gregorian_utc&quot;, for
+<br />
+the real-world calendar, without and with UTC leap seconds respectively. I
+<br />
+suggest &quot;noleaps&quot; instead of &quot;traditional&quot;, which you put forward, because
+<br />
+&quot;noleaps&quot; is more self-explanatory, I think. I agree with you that &quot;POSIX&quot; is
+<br />
+not so good because it implies a reference time.
+<br />
+<br />* We abolish the &quot;gregorian&quot; and &quot;standard&quot; calendars, and we require the
+<br />
+calendar always to be specified (no default). This would be quite a radical
+<br />
+step, but forcing the noleaps/utc property to be explicitly stated is only way
+<br />
+I can see to avoid in future the ambiguity about whether elapsed times have
+<br />
+been encoded with or without leap seconds. This does not invalidate existing
+<br />
+data that adheres to CF1.6 or earlier, but it would invalidate existing
+<br />
+data-writing software that does not write the calendar attribute, and it would
+<br />
+require data-reading software to recognise the new calendars (although if it
+<br />
+assumed the existing default for them that would not be too bad).
+<br />
+<br />* We state that all the other calendars have fixed-length days with no leap
+<br />
+seconds.
+<br />
+<br />What do you think? Is it worth the pain?
+<br />
+<br />Although it's going to complicate this discussion, if we decided to abolish the
+<br />
+existing default, we could take this opportunity to deal with problems with the
+<br />
+mixed Julian/Gregorian calendar, as in <a href="http://cf-trac.llnl.gov/trac/ticket/96">http://cf-trac.llnl.gov/trac/ticket/96</a>,
+<br />
+opened by Dave Allured, but never concluded. To do that I would further propose
+<br />
+(copying some text from that ticket):
+<br />
+<br />* The gregorian_noleaps and gregorian_utc calendars can be used only to encode
+<br />
+dates since 1582-10-15, and must not have reference dates earlier than that.
+<br />
+This means they cannot cross the Julian/Gregorian transition. This is desirable
+<br />
+because there are ambiguities introduced by assuming different dates for the
+<br />
+change in calendar. By this rule, the common choice of 1-1-1 as a reference
+<br />
+date would be disallowed in these calendars, for example.
+<br />
+<br />* We introduce a new calendar &quot;mixed_gregorian_julian&quot;, which is the calendar
+<br />
+of udunits, with no leap seconds. However we make it stricter than currently,
+<br />
+in these ways: (1) The reference date is not allowed to be any of the dates in
+<br />
+the transitional period 1582-10-5 to 1582-10-14 inclusive. (2) Neither the
+<br />
+reference date nor any date which is encoded with this calendar is allowed to
+<br />
+be a negative year. (3) Year 0 is interpreted as climatological time in this
+<br />
+calendar, following COARDS, but this is deprecated in favour of the CF
+<br />
+conventions of Sect 7.4.
+<br />
+<br />* Because of problems caused by the discontinuity, it is recommended that the
+<br />
+mixed_gregorian_julian calendar be used only in datasets with real-world
+<br />
+historical dates which span the change of calendar from Julian to Gregorian. In
+<br />
+datasets with real-world historical dates that all precede the change of
+<br />
+calendar, the julian calendar should be used. In datasets with real-world
+<br />
+historical dates that all follow the change of calendar, and in simulated
+<br />
+datasets in which there is no change of calendar, the proleptic_gregorian
+<br />
+calendar should be used.
+<br />
+<br />* We disallow dates to be encoded or reference dates to be used in year zero or
+<br />
+negative years for the julian calendar, because it's ambiguous whether this
+<br />
+calendar has a year 0.
+<br />
+<br />* We state that year 0 is valid in the proleptic_gregorian, noleap, all_leap,
+<br />
+360_day and none calendars.
+<br />
+<br />If these further proposals complicate the previous discussion, we can defer
+<br />
+them until we've reached agreement on leap seconds!
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br />----- End forwarded message -----
+<br />
+<span id="received"><dfn>Received on</dfn> Sun May 10 2015 - 01:29:23 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6959">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6960.html" title="Next message in the list">Ben Hetland: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6958.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6960.html" title="Next message in this discussion thread">Ben Hetland: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6960.html" title="Message sent in reply to this message">Ben Hetland: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><dfn>Reply</dfn>: <a href="./6961.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6959" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6959" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6959" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6959" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:54 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6958.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6960.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

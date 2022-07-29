@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Getting back to ensembles from Bryan Lawrence on 2006-11-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="Bryan Lawrence (b.n.lawrence)" />
+<meta name="Subject" content="[CF-metadata] Getting back to ensembles" />
+<meta name="Date" content="2006-11-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0459.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0461.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Getting back to ensembles</h1>
+<!-- received="Mon Nov 20 06:53:32 2006" -->
+<!-- isoreceived="20061120065332" -->
+<!-- sent="Mon, 20 Nov 2006 13:53:32 +0000" -->
+<!-- isosent="20061120135332" -->
+<!-- name="Bryan Lawrence" -->
+<!-- email="b.n.lawrence" -->
+<!-- subject="[CF-metadata] Getting back to ensembles" -->
+<!-- id="1164030812.16116.0.camel_at_localhost.localdomain" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start460" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0461.html" accesskey="d" title="Egil St&#0248;ren: &quot;[CF-metadata] CF provisional standards&quot;">Next message</a> ]
+[ <a href="./0459.html" title="Simon Wood: &quot;[CF-metadata] axis attribute&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0462.html" accesskey="t" title="John Caron: &quot;[CF-metadata] Getting back to ensembles&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg460" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg460" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg460" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg460" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Bryan Lawrence &lt;<a href="mailto:b.n.lawrence?Subject=Re%3A%20%5BCF-metadata%5D%20Getting%20back%20to%20ensembles">b.n.lawrence</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 20 Nov 2006 13:53:32 +0000</span><br />
+</address>
+<br />
+Hi Folks
+<br />
+<br />I've said enough about process for now.
+<br />
+<br />We should get back to discussing exactly what's on the table. I've
+<br />
+enumerated key paragraphs to help discussion.  I will move this to trac
+<br />
+once Kyle reminds me what my account details are :-(
+<br />
+<br />1) I think there is general acceptance that we can have something like:
+<br />
+<br />float temperature(realization,time,lat,lon):
+<br />
+temperature:coordinates = 'realization time lat lon' ;
+<br />
+<br />2) I then muddied the waters by suggesting using ancillary variables for
+<br />
+metadata about the realizations. Jamie and Jonathan stressed that we
+<br />
+should use auxillary coordinate variables. They were right.
+<br />
+<br />3) Jonathan's example then was similar to the following, where I've
+<br />
+added an extra metadata label to stress the point that as I understand
+<br />
+it the auxillary coordinate variables provide a mechanism for slicing
+<br />
+the realizations in many ways, without adding to the dimensionality of
+<br />
+the ensemble itself (by the way, this could be useful for station data
+<br />
+as it stands provided we don't overload much meaning into
+<br />
+&quot;realization&quot;). This should allow a lot of the functionality paco wants.
+<br />
+<br />float temperature(realization,time,lat,lon):
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;temperature:coordinates = 'time lat lon metadata1 metadata2' ;
+<br />
+&nbsp;&nbsp;char metadata1(realization,len100):
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;metadata1:standard_name=&quot;institution&quot;; // for instance
+<br />
+&nbsp;&nbsp;char metadata2(realization,len100):
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;metadata2:standard_name=&quot;thing2; // for instance
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;
+<br />
+4) As an aside at this point it seems we don't need a standard name for
+<br />
+&quot;realization&quot; even though we have one ... (although we'd need it for the
+<br />
+case where there were no auxillary coordinate variables).
+<br />
+<br />5) I suggested that where we don't already have standard names for the
+<br />
+metadata here, that we should not invent them.  I made the argument that
+<br />
+we were opening a huge metadata door here and that we ought not reinvent
+<br />
+the entire wheel within CF.
+<br />
+<br />6) I further made the argument that whatever metadata we did want
+<br />
+internally for these  should not be *standard names*, which in my mind
+<br />
+really ought to be about defining physical variables  (things with
+<br />
+units), or at least things which we directly might expect to manipulate
+<br />
+(e.g. realization weights). I think the intention for this stuff is also
+<br />
+different from the flag concept as well ...
+<br />
+<br />7) I accept that there is merit in standard &quot;somethings&quot; which map our
+<br />
+existing global attributes, which ought to help aggregation tools. John?
+<br />
+<br />8) So, I was proposing something new, which I then think should be
+<br />
+provisional: firstly, that we create a new class of standard
+<br />
+identifiers, which we call &quot;standard_metadata&quot;, and we put the global
+<br />
+file attribute things in here, and anything else we find external
+<br />
+vocabularies inadequate for.
+<br />
+<br />9) So the example would be rather than in 3) above, we would have:
+<br />
+float temperature(realization,time,lat,lon):
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;temperature:coordinates = 'time lat lon metadata1 metadata2' ;
+<br />
+&nbsp;&nbsp;char metadata1(realization,len100):
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;metadata1:standard_metadata=&quot;institution&quot;; // for instance
+<br />
+&nbsp;&nbsp;char metadata2(realization,len100):
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;metadata2:standard_metadata=&quot;thing2; // for instance
+<br />
+<br />Note that one could still have *standard_names* in as auxillary
+<br />
+coordinate variables, but when we use standard_metadata, we are
+<br />
+explicitly saying there is nothing physical about this information!
+<br />
+I think that would be of considerable aid to software! 
+<br />
+<br />10) But, secondly, where possible *for metadata* we should use external
+<br />
+vocabularies, and *not* add new stuff into our controlled vocabularies.
+<br />
+I thought the mechanism for doing this would be (for anything actually,
+<br />
+not just for standard_metadata):
+<br />
+<br />char metadata1(realization,len100):
+<br />
+&nbsp;&nbsp;&nbsp;metadata1:external_vocabulary = <a href="http://wmo.foo.int/identifierY">http://wmo.foo.int/identifierY</a> 
+<br />
+<br />11) Obviously if one wrote a file containing this stuff, one would 
+<br />
+a) be documenting the file consistently, this doesn't  necessarily rely
+<br />
+on external tables any more than using standard_names relies on the
+<br />
+external definitions.
+<br />
+b) want some faith that www.foo.int will keep that meaning around at
+<br />
+least as long as the data exists. That's no more or less a leap of faith
+<br />
+than in CF ... any given data producer can then make their own decision
+<br />
+about doing that.
+<br />
+<br />12) If there is an existing cf standard name or cf standard metadata for
+<br />
+this, then *don't* use them both - that way lies confusion (it's
+<br />
+unlikely that the two will really be identical). In this I differ
+<br />
+strongly from Jonathan's last suggestion.
+<br />
+<br />That's probably enough for now.
+<br />
+<br />Bryan
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Nov 20 2006 - 06:53:32 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start460">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0461.html" title="Next message in the list">Egil St&#0248;ren: "[CF-metadata] CF provisional standards"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0459.html" title="Previous message in the list">Simon Wood: "[CF-metadata] axis attribute"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0462.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] Getting back to ensembles"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0462.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] Getting back to ensembles"</a></li>
+<li><dfn>Reply</dfn>: <a href="./0559.html" title="Message sent in reply to this message">Kettleborough, Jamie: "[CF-metadata] Getting back to ensembles"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg460" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg460" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg460" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg460" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:50 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0459.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0461.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

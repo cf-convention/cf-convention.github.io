@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] axis attribute from Sebastien Villaume on 2017-04-05 (cf-metadata-mailman)</title>
+<meta name="Author" content="Sebastien Villaume (sebastien.villaume)" />
+<meta name="Subject" content="[CF-metadata] axis attribute" />
+<meta name="Date" content="2017-04-05" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8227.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8229.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] axis attribute</h1>
+<!-- received="Wed Apr  5 14:17:35 2017" -->
+<!-- isoreceived="20170405131735" -->
+<!-- sent="Wed, 5 Apr 2017 20:17:35 +0000 (GMT-00:00)" -->
+<!-- isosent="20170405201735" -->
+<!-- name="Sebastien Villaume" -->
+<!-- email="sebastien.villaume" -->
+<!-- subject="[CF-metadata] axis attribute" -->
+<!-- id="282132908.32544713.1491423455810.JavaMail.zimbra_at_ecmwf.int" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="1129976975.32485561.1491415840897.JavaMail.zimbra_at_ecmwf.int" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8228" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8229.html" accesskey="d" title="Hedley, Mark: &quot;[CF-metadata] CF compliant tripolar grid representation&quot;">Next message</a> ]
+[ <a href="./8227.html" title="Sebastien Villaume: &quot;[CF-metadata] CF compliant tripolar grid representation&quot;">Previous message</a> ]
+[ <a href="./8226.html" title="Sebastien Villaume: &quot;[CF-metadata] axis attribute&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./8231.html" accesskey="t" title="Hedley, Mark: &quot;[CF-metadata] axis attribute&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8228" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8228" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8228" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8228" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Sebastien Villaume &lt;<a href="mailto:sebastien.villaume?Subject=Re%3A%20%5BCF-metadata%5D%20axis%20attribute">sebastien.villaume</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 5 Apr 2017 20:17:35 +0000 (GMT-00:00)</span><br />
+</address>
+<br />
+Dear Jim et al,
+<br />
+<br />after reading the Trac tickets and Jim's last comment I realized something: people are mixing and overlapping 2 different concepts, i.e. the coordinates system and the plotting space!!!
+<br />
+<br />Very often the coordinates axes can be used as plotting axes so one tends to forget that they can be different. 
+<br />
+<br />When both coordinates and plotting space are defined using orthogonal axes it is easy to map straight away lat/lon/depth with a x/y/z (provided that one map the units of the coordinates on the x/y/z plotting axes)!
+<br />
+<br />People, like me, that understands &quot;axis&quot; as &quot;coordinate axis&quot; will always want to have it on something that has the following properties: 1-D, an origin, some units and a direction.
+<br />
+Others, that understands &quot;axis&quot; as &quot;plotting axis&quot;, will not see a problem putting that attribute on a 2-D variable because what they mean is &quot;use the values contained in that 2-D field to position the data variable on that plotting axis&quot;. It is not wrong but it is misleading!
+<br />
+<br />if I take the example of my specific case, and if I carefully make the distinction between the coordinates system and the plotting space I would then have:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;y = 292 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;x = 362 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double y(y) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:axis = &quot;Y&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:long_name = &quot;j-index of mesh grid&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double x(x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:axis = &quot;X&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:units = &quot;1&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:long_name = &quot;i-index of mesh grid&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float longitude(y, x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:standard_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:long_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:plotting_axis = &quot;X&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float latitude(y, x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:standard_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:long_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:plotting_axis = &quot;Y&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;float sit(y, x) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sit:units = &quot;m&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sit:standard_name = &quot;sea_ice_thickness&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sit:long_name = &quot;Ice thickness&quot; ;
+<br />
+<br />Here I use &quot;axis&quot; to label the &quot;coordinate axes&quot; and &quot;plotting_axis&quot; to tell what is used to space-position the content of the data variable. What the plotting_axis attribute tells is:
+<br />
+<br />&quot;use the content of the 2-D longitude variable to position the grid points of my data variable on the X plot axis&quot;
+<br />
+&quot;use the content of the 2-D latitude variable to position the grid points of my data variable on the Y plot axis&quot;
+<br />
+<br />Note that if it creates backward incompatibilities one could keep &quot;axis&quot; for &quot;plotting_axis&quot; and have a new attribute for &quot;coordinates axis&quot; named &quot;coord_axis&quot; (and make it optional if the plotting and coordinates axes are identical).
+<br />
+<br />and then I still need 2 new standard names for my 1-D coordinate variables! :D
+<br />
+<br />____________________________________ 
+<br />
+<br />Dr. S?bastien Villaume 
+<br />
+Analyst 
+<br />
+ECMWF 
+<br />
+Shinfield Park, 
+<br />
+Reading RG2 9AX, UK 
+<br />
++44 7825 521592 
+<br />
+sebastien.villaume at ecmwf.int 
+<br />
+____________________________________
+<br />
+<br />----- Original Message -----
+<br />
+From: &quot;Sebastien Villaume&quot; &lt;sebastien.villaume at ecmwf.int&gt;
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Sent: Wednesday, 5 April, 2017 19:10:40
+<br />
+Subject: Re: [CF-metadata] axis attribute
+<br />
+<br />Dear Jonathan et al,
+<br />
+<br />I think that the coordinates terminology widely used in the CF community is very misleading (at least to me, but maybe it is because I am quite new in the CF business and/or I see all this with fresh new eyes). 
+<br />
+<br />If I define a &quot;x&quot; and a &quot;y&quot; in addition of the 2-D lat and lon, it is not x and y that are auxiliary coordinates, it is in fact exactly the opposite from a mathematical point of view: x and y will be the primary coordinates and lat and lon are only 2 quantities (that happens to be coordinates in a different coordinates system) expressed in my coordinates system. This is why coordinates (or &quot;primary coordinates&quot; if we consider that auxiliary coordinates are reserved for coordinates of a different coordinates system expressed in the primary one) have to be 1-D and anything that is 2-D or 3-D or n-D can in principle be expressed in terms of the primary coordinates. 
+<br />
+<br />I can make an analogy with 2 coordinates systems again:  Cartesian (x,y,z) and spherical (r, theta and phi). In the Cartesian system, r theta and phi are function of x,y,z and vice versa in spherical system x, y and z are function of r, theta, phi.
+<br />
+<br />I also find the units of latitude and longitude confusing: it looks like it was a way to squeeze the direction of the coordinate inside the units. I have the same observation for the time coordinate that has its origin in the units!
+<br />
+It was done correctly for z coordinate using &quot;units&quot; and &quot;positive&quot;, probably because there are many types of z coordinates with various origin and directions, and no real consensus. I note however that often the origin is not always clearly defined.
+<br />
+I would have kept &quot;units=degrees&quot; for both latitude and longitude and then attached a &quot;positive=north&quot; for latitude and &quot;positive=east&quot; for longitude... Then the origins are usually always standard (Greenwich meridian and equator) so I can understand that those can be omitted. For Time, I also understand that the direction of the time can also be omitted, the time flowing in the other direction is not directly useful... well, it is useful in relativistic quantum theory: <a href="https://en.wikipedia.org/wiki/T-symmetry">https://en.wikipedia.org/wiki/T-symmetry</a>
+<br />
+<br /><br />____________________________________ 
+<br />
+<br />Dr. S?bastien Villaume 
+<br />
+Analyst 
+<br />
+ECMWF Shinfield Park, 
+<br />
+Reading RG2 9AX, UK 
+<br />
++44 7825 521592 
+<br />
+sebastien.villaume at ecmwf.int 
+<br />
+____________________________________
+<br />
+<br />----- Original Message -----
+<br />
+From: &quot;Jonathan Gregory&quot; &lt;j.m.gregory at reading.ac.uk&gt;
+<br />
+To: cf-metadata at cgd.ucar.edu
+<br />
+Sent: Wednesday, 5 April, 2017 17:12:09
+<br />
+Subject: Re: [CF-metadata] axis attribute
+<br />
+<br />Dear Karl, Sebastien, Jim
+<br />
+<br />In ticket 8 I proposed explicitly to disallow the axis attribute for auxiliary
+<br />
+coordinate variables, restricting it to 1D coordinate variables. This was
+<br />
+agreed and implemented in an early version of CF. However in ticket 62 this
+<br />
+decision was revised. That ticket was begun by Karl, who was initially
+<br />
+concerned with scalar coordinate variables. However in the end the majority
+<br />
+agreed to allow the attribute for all aux coord vars.
+<br />
+<br />We could change it back, of course, in CF 1.7, if a new proposal was made and
+<br />
+agreed quickly. Please could you have a look at ticket 62 to review the
+<br />
+earlier decision?
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<br />----- Forwarded message from Sebastien Villaume &lt;sebastien.villaume at ecmwf.int&gt; -----
+<br />
+<br /><em class="quotelev1">&gt; Date: Wed, 5 Apr 2017 08:36:29 +0000
+</em><br />
+<em class="quotelev1">&gt; From: Sebastien Villaume &lt;sebastien.villaume at ecmwf.int&gt;
+</em><br />
+<em class="quotelev1">&gt; To: Jim Biard &lt;jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev1">&gt; CC: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] axis attribute
+</em><br />
+<em class="quotelev1">&gt; X-Mailer: Zimbra 8.6.0_GA_1200 (ZimbraWebClient - FF50 (Linux)/8.6.0_GA_1200)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Hi,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I am also against assigning an &quot;axis&quot; attribute to a 2-D variables. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; From a mathematical point of view an axis is one dimension, has an origin, a reference unit and a direction. For instance a 3D Cartesian coordinates system has three dimensions defined by 3 axes, each axis is defined by a unit vector (reference unit and direction) and an origin (it happens that they all share the same origin but it is not a requirement in principle). A spherical coordinate system has also 3 dimensions, defined by 1 axis and 2 angles, the axis is defined like in Cartesian coordinates, the 2 angles are defined by an origin (0deg), a reference unit (1/360 of a circle) and a direction ( increasing degrees is anti clockwise).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Clearly 2-D latitude and longitude do not fulfil this. In my case both are simply variables in a 2D space that needs to be defined somehow. This is exactly why I am trying to define 2 &quot;supporting&quot; 1-D variables with the clear intention to put an axis attribute on them. I could name this 2 supporting variables x and y , or i and j or whatever. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Is it acceptable to put an &quot;axis = x/y&quot; on variables with standard names containing i/j? would it be acceptable to put axis = i/j instead? 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; More generally when you have a dataset in a different coordinates system, i.e. spherical coordinates, do you put axis x/y/z on r, theta, phi? if you have a dataset in a grid point space: i/j/k? of in a lattice space (admittedly with limited usage for earth science)?  Would it be more logical to have different type of variable attributes for different type of dimensions? like &quot;axis&quot;, &quot;angle&quot;, etc.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; This is a more general discussion for the CF convention experts, what I only need is two standard names to describe my lat/lon supporting axes!
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ____________________________________ 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Dr. S?bastien Villaume 
+</em><br />
+<em class="quotelev1">&gt; Analyst 
+</em><br />
+<em class="quotelev1">&gt; ECMWF Shinfield Park, 
+</em><br />
+<em class="quotelev1">&gt; Reading RG2 9AX, UK 
+</em><br />
+<em class="quotelev1">&gt; +44 7825 521592 
+</em><br />
+<em class="quotelev1">&gt; sebastien.villaume at ecmwf.int 
+</em><br />
+<em class="quotelev1">&gt; ____________________________________
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message -----
+</em><br />
+<em class="quotelev1">&gt; From: &quot;Jim Biard&quot; &lt;jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Sent: Tuesday, 4 April, 2017 23:43:58
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] axis attribute
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Karl, 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Don't allow the attribute on 2D variables. :) I feel like it's a pretty far stretch to get to your 2D example. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jim 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On 4/4/17 6:41 PM, Karl Taylor wrote: 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Hi all, 
+</em><br />
+<em class="quotelev1">&gt; I don't think the issue of 2-d auxiliary coordinates entered the discussion leading to their allowance by CF 1.6 (but I only quickly reviewed the discussion). I think that allowing the axis attribute to be attached to an auxiliary coordinate that is 1-d can be useful (e.g., when a balloon records temperature as a function of time and we want to record its lat and lon positions as a function of time; one could conceivably want to plot the temperature as a function of latitude and/or longitude, with one or the other of them providing the positions along a coordinate axis). 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I agree that saying lat(x,y) is a &quot;y axis&quot; seems rather odd, but if you consider each x,y pair to define an index, then it might be tolerable to say they each could be regarded as parametric axes defined as a function of an index. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; In both cases, of course, the axis values may not be monotonic, so they wouldn't be considered coordinates axes themselves. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; It's really not a pretty situation. Not sure what can be done about it. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; best regards, 
+</em><br />
+<em class="quotelev1">&gt; Karl 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On 4/4/17 1:49 PM, Jim Biard wrote: 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan, 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; But was the axis attribute intended for use on 2D auxiliary coordinate variables? Perhaps that was before my time, but I don't recall seeing any discussion where that use was advocated. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jim 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On 4/4/17 4:30 PM, Jonathan Gregory wrote: 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Dear David and Jim
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Before CF 1.6, the axis attribute was allowed only for (Unidata) coordinate
+</em><br />
+<em class="quotelev1">&gt; variables (i.e. the 1D ones whose name equals their dimension name). In CF 1.6
+</em><br />
+<em class="quotelev1">&gt; it was generalised to be allowed for auxiliary coordinate variables, as
+</em><br />
+<em class="quotelev1">&gt; described in the preamble of sect 5. I wasn't really in favour of this change,
+</em><br />
+<em class="quotelev1">&gt; but the majority was.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ----- Forwarded message from Jim Biard &lt;jbiard at cicsnc.org&gt; ----- 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Date: Fri, 31 Mar 2017 12:44:11 -0400
+</em><br />
+<em class="quotelev1">&gt; From: Jim Biard &lt;jbiard at cicsnc.org&gt; CC: CF Metadata &lt;cf-metadata at cgd.ucar.edu&gt; Subject: Re: [CF-metadata] CF compliant tripolar grid representation
+</em><br />
+<em class="quotelev1">&gt; User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:45.0)
+</em><br />
+<em class="quotelev1">&gt; 	Gecko/20100101 Thunderbird/45.8.0
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; David,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Yes. I think the wording could stand to be clearer. What I wonder is
+</em><br />
+<em class="quotelev1">&gt; what use is there for identifying a 2D grid of latitude values as
+</em><br />
+<em class="quotelev1">&gt; being an axis? I do a lot of satellite swath imagery and have worked
+</em><br />
+<em class="quotelev1">&gt; with polar stereographic data, and latitude is not an axis of my
+</em><br />
+<em class="quotelev1">&gt; measurement variable grid in either case.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I think part of the confusion arises from a somewhat unclear
+</em><br />
+<em class="quotelev1">&gt; definition of coordinate. I tend to use the phrase &quot;true coordinate&quot;
+</em><br />
+<em class="quotelev1">&gt; for one that is1-D, has a variable name equal to its dimension name,
+</em><br />
+<em class="quotelev1">&gt; is monotonic, has no fill values, etc, versus &quot;auxiliary coordinate&quot;
+</em><br />
+<em class="quotelev1">&gt; for one that doesn't meet one or more of those requirements. I
+</em><br />
+<em class="quotelev1">&gt; generally assume that true coordinates are being referred to when I
+</em><br />
+<em class="quotelev1">&gt; see the word coordinate in the Conventions unless it's made clear
+</em><br />
+<em class="quotelev1">&gt; that is not the case (as in Section 5 paragraph 6). With that
+</em><br />
+<em class="quotelev1">&gt; reading, the coordinate type and dimension type are one in the same
+</em><br />
+<em class="quotelev1">&gt; in Section 4 paragraph 2, since only true coordinate variables are
+</em><br />
+<em class="quotelev1">&gt; being discussed.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Grace and peace,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jim
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On 3/31/17 12:28 PM, David Hassell wrote: 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Hi Jim,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I agree you with in spirit, but the conventions do say that the
+</em><br />
+<em class="quotelev1">&gt; axis attribute as being there to identify the *coordinate* type,
+</em><br />
+<em class="quotelev1">&gt; rather than the *dimension* type (section 4, paragraph 2). Perhaps
+</em><br />
+<em class="quotelev1">&gt; the wording here could be tightened up to say dimension type? I
+</em><br />
+<em class="quotelev1">&gt; wonder how the axis attribute has been used over the last 6 years
+</em><br />
+<em class="quotelev1">&gt; since 1.6 was released?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; All the best,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; David
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; On 31 March 2017 at 17:04, Jim Biard &lt; jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt; &gt; wrote:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    David,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    As I read the Conventions, the axis attribute is to be applied to
+</em><br />
+<em class="quotelev1">&gt;    coordinate variables (Section 4. Coordinate Types and Section 5.
+</em><br />
+<em class="quotelev1">&gt;    Coordinate systems) to indicate that this variable can be treated
+</em><br />
+<em class="quotelev1">&gt;    as representing an dimensional axis of corresponding variable
+</em><br />
+<em class="quotelev1">&gt;    grids. Section 5 paragraph 6 talks about how it is still possible
+</em><br />
+<em class="quotelev1">&gt;    to figure out that an auxiliary coordinate variable is a
+</em><br />
+<em class="quotelev1">&gt;    spatiotemporal dimension of the if the axis attribute is not
+</em><br />
+<em class="quotelev1">&gt;    present. I don't think a 2D auxiliary coordinate variable can be
+</em><br />
+<em class="quotelev1">&gt;    considered to be a dimensional axis, can it?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    Grace and peace,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    Jim
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    On 3/31/17 11:52 AM, David Hassell wrote: 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Hello S?bastien and Jim,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;        You are right to feel weird about identifying 2D lat and lon
+</em><br />
+<em class="quotelev1">&gt;        as Y and X axes. The axis attribute should never be applied
+</em><br />
+<em class="quotelev1">&gt;        to 2D variables. It is only valid for 1D &quot;true&quot; coordinate
+</em><br />
+<em class="quotelev1">&gt;        variables.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    The axis attribute can be attached to auxiliary coordinate
+</em><br />
+<em class="quotelev1">&gt;    variables with any number of dimensions. I would agree, though,
+</em><br />
+<em class="quotelev1">&gt;    that attaching the axis=X attribute to a 2-d longitude auxiliary
+</em><br />
+<em class="quotelev1">&gt;    coordinate variable is likely to confuse. The axis attribute's
+</em><br />
+<em class="quotelev1">&gt;    purpose is merely to make identification easier, but as long
+</em><br />
+<em class="quotelev1">&gt;    there are units of degrees_east (mandatory) and a standard name
+</em><br />
+<em class="quotelev1">&gt;    of longitude (optional), humans and software alike should be happy.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    All the best,
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    David
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    --     David Hassell
+</em><br />
+<em class="quotelev1">&gt;    National Centre for Atmospheric Science
+</em><br />
+<em class="quotelev1">&gt;    Department of Meteorology, University of Reading,
+</em><br />
+<em class="quotelev1">&gt;    Earley Gate, PO Box 243, Reading RG6 6BB
+</em><br />
+<em class="quotelev1">&gt;    Tel: +4
+</em><br />
+<em class="quotelev1">&gt;    4 
+</em><br />
+<em class="quotelev1">&gt;    118 378 5613 <a href="http://www.met.reading.ac.uk/">http://www.met.reading.ac.uk/</a> 
+</em><br />
+<em class="quotelev1">&gt; --     CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+</em><br />
+<em class="quotelev1">&gt;    Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; *Jim Biard*
+</em><br />
+<em class="quotelev1">&gt;    *Research Scholar*
+</em><br />
+<em class="quotelev1">&gt;    Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt; North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt; NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt; /formerly NOAA?s National Climatic Data Center/
+</em><br />
+<em class="quotelev1">&gt;    151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev1">&gt;    e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt; o: +1 828 271 4900 &lt;<a href="tel:%28828%29%20271-4900> /Connect with us on Facebook for climate <https://www.facebook.com/NOAANCEIclimate">tel:%28828%29%20271-4900> /Connect with us on Facebook for climate <https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and
+</em><br />
+<em class="quotelev1">&gt;    geophysics &lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and @NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt; . /
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt;    _______________________________________________
+</em><br />
+<em class="quotelev1">&gt;    CF-metadata mailing list CF-metadata at cgd.ucar.edu &lt;mailto:CF-metadata at cgd.ucar.edu&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> &lt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>&gt; -- 
+</em><br />
+<em class="quotelev1">&gt; David Hassell
+</em><br />
+<em class="quotelev1">&gt; National Centre for Atmospheric Science
+</em><br />
+<em class="quotelev1">&gt; Department of Meteorology, University of Reading,
+</em><br />
+<em class="quotelev1">&gt; Earley Gate, PO Box 243, Reading RG6 6BB
+</em><br />
+<em class="quotelev1">&gt; <a href="Tel: +44 118 378 5613 http://www.met.reading.ac.uk/">Tel: +44 118 378 5613 http://www.met.reading.ac.uk/</a> 
+</em><br />
+<em class="quotelev1">&gt; -- 
+</em><br />
+<em class="quotelev1">&gt; CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+</em><br />
+<em class="quotelev1">&gt; Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; *Jim Biard*
+</em><br />
+<em class="quotelev1">&gt; *Research Scholar*
+</em><br />
+<em class="quotelev1">&gt; Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt; North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt; NOAA National Centers for Environmental Information &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt; /formerly NOAA?s National Climatic Data Center/
+</em><br />
+<em class="quotelev1">&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev1">&gt; e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt; o: +1 828 271 4900
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; /Connect with us on Facebook for climate &lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics &lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow
+</em><br />
+<em class="quotelev1">&gt; us on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; and @NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt; . / 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> 
+</em><br />
+<em class="quotelev1">&gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; -- 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 	Visit us on 
+</em><br />
+<em class="quotelev1">&gt; Facebook 	Jim Biard 
+</em><br />
+<em class="quotelev1">&gt; Research Scholar 
+</em><br />
+<em class="quotelev1">&gt; Cooperative Institute for Climate and Satellites NC 
+</em><br />
+<em class="quotelev1">&gt; North Carolina State University 
+</em><br />
+<em class="quotelev1">&gt; NOAA National Centers for Environmental Information 
+</em><br />
+<em class="quotelev1">&gt; formerly NOAA?s National Climatic Data Center 
+</em><br />
+<em class="quotelev1">&gt; 151 Patton Ave, Asheville, NC 28801 
+</em><br />
+<em class="quotelev1">&gt; e: jbiard at cicsnc.org 
+</em><br />
+<em class="quotelev1">&gt; o: +1 828 271 4900 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Connect with us on Facebook for climate and ocean and geophysics information, and follow us on Twitter at _at_NOAANCEIclimate and &#64;NOAANCEIocngeo &#46;<!--nospam--> 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a> 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; -- 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 	Visit us on 
+</em><br />
+<em class="quotelev1">&gt; Facebook 	Jim Biard 
+</em><br />
+<em class="quotelev1">&gt; Research Scholar 
+</em><br />
+<em class="quotelev1">&gt; Cooperative Institute for Climate and Satellites NC 
+</em><br />
+<em class="quotelev1">&gt; North Carolina State University 
+</em><br />
+<em class="quotelev1">&gt; NOAA National Centers for Environmental Information 
+</em><br />
+<em class="quotelev1">&gt; formerly NOAA?s National Climatic Data Center 
+</em><br />
+<em class="quotelev1">&gt; 151 Patton Ave, Asheville, NC 28801 
+</em><br />
+<em class="quotelev1">&gt; e: jbiard at cicsnc.org 
+</em><br />
+<em class="quotelev1">&gt; o: +1 828 271 4900 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Connect with us on Facebook for climate and ocean and geophysics information, and follow us on Twitter at _at_NOAANCEIclimate and &#64;NOAANCEIocngeo &#46;<!--nospam--> 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><br /><em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br /><br />----- End forwarded message -----
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+_______________________________________________
+<br />
+CF-metadata mailing list
+<br />
+CF-metadata at cgd.ucar.edu
+<br />
+<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Apr 05 2017 - 14:17:35 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8228">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8229.html" title="Next message in the list">Hedley, Mark: "[CF-metadata] CF compliant tripolar grid representation"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8227.html" title="Previous message in the list">Sebastien Villaume: "[CF-metadata] CF compliant tripolar grid representation"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./8226.html" title="Message to which this message replies">Sebastien Villaume: "[CF-metadata] axis attribute"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./8231.html" title="Next message in this discussion thread">Hedley, Mark: "[CF-metadata] axis attribute"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./8231.html" title="Message sent in reply to this message">Hedley, Mark: "[CF-metadata] axis attribute"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8228" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8228" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8228" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8228" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:12 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8227.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8229.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

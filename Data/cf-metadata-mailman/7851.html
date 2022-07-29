@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  Usage of histogram_of_X_over_Z from martin.juckes at stfc.ac.uk on 2016-10-13 (cf-metadata-mailman)</title>
+<meta name="Author" content="martin.juckes at stfc.ac.uk (martin.juckes)" />
+<meta name="Subject" content="[CF-metadata]  Usage of histogram_of_X_over_Z" />
+<meta name="Date" content="2016-10-13" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7850.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7852.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  Usage of histogram_of_X_over_Z</h1>
+<!-- received="Thu Oct 13 06:04:57 2016" -->
+<!-- isoreceived="20161013050457" -->
+<!-- sent="Thu, 13 Oct 2016 12:04:57 +0000" -->
+<!-- isosent="20161013120457" -->
+<!-- name="martin.juckes at stfc.ac.uk" -->
+<!-- email="martin.juckes" -->
+<!-- subject="[CF-metadata]  Usage of histogram_of_X_over_Z" -->
+<!-- id="E21FBC3F00D7304687CB46529F9676D7010289EF01_at_exchmbx01" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7851" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7852.html" accesskey="d" title="Bodas-Salcedo, Alejandro: &quot;[CF-metadata] Usage of histogram_of_X_over_Z&quot;">Next message</a> ]
+[ <a href="./7850.html" title="Jonathan Gregory: &quot;[CF-metadata] Missing data bins in histograms&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7852.html" accesskey="t" title="Bodas-Salcedo, Alejandro: &quot;[CF-metadata] Usage of histogram_of_X_over_Z&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7851" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7851" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7851" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7851" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: martin.juckes at stfc.ac.uk &lt;<a href="mailto:martin.juckes?Subject=Re%3A%20%5BCF-metadata%5D%20%20Usage%20of%20histogram_of_X_over_Z">martin.juckes</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 13 Oct 2016 12:04:57 +0000</span><br />
+</address>
+<br />
+Dear Alejandro,
+<br />
+<br />The two CMIP variables which I'm talking about are cfadDbze94 currently defined as &quot;CFAD (Cloud Frequency Altitude Diagrams) are joint height - radar reflectivity (or lidar scattering ratio) distributions.&quot; and cfadLidarsr532, which has the same definition. If they are not joint distributions we clearly have a problem with these definitions.
+<br />
+<br /><em class="quotelev1">&gt;From your reply I understand now that these are univariate distributions giving the frequency of different radar reflectivities in different height bands. Coming from radar/lidar instruments (or an emulator of these instruments), there are multiple observations in each GCM-scale height band. Presumably, there are also multiple profiles in the GCM-scale grid square, so that we have a frequency distribution over sub-grid scale variability in the vertical and the horizontal? Or is it actually evaluated at a spatial point?
+</em><br />
+<br />If this is the case, you are right and we just need to correct the definitions in the CMIP tables (though there is still a case for introducing a frequencs_distribution for other variables, but that should ne another thread). I would favour a slightly more verbose and explicit definition, e.g.
+<br />
+&quot;CFAD (Cloud Frequency Altitude Diagrams) are frequency distributions of radar reflectivity (or lidar scattering ratio) as a function of altitude. cfadDbze94 is defined as the simulated relative frequency of radar reflectivity in sampling volumes defined by altitude bins and model grid cells.&quot;
+<br />
+<br />Note that I'm using &quot;altitude&quot; rather than &quot;height&quot; to match the standard names: in the CF Convention, &quot;altitude&quot; means height above the geoid, and &quot;height&quot; means height above the surface.
+<br />
+<br />Is that an accurate definition?
+<br />
+<br />regards,
+<br />
+Martin
+<br />
+<br /><br />Dear Martin,
+<br />
+<br />Thanks for your detailed explanation. I'd like to add a bit more information. These variables are not joint distributions, they are 1D distributions for different ranges of Z. The question is, does &quot;histogram_of_X[_over_Z]&quot; mean that the Z coordinate has to be completely collapsed? It is not clear to that the current definition implies that. If Z is not completely collapsed, you can then end up with a function of the form frequency(lat,lon,X,Z2), where the coordinate Z is only partially collapsed into bins described by Z2. I'm using here Z2 to explicitly show when the Z coordinate represents bins. This would look like a joint histogram, but it is not. I think that your proposal of dropping &quot;_over_Z&quot; from the standard name works for a joint distribution, but not for a collection of 1D distributions along Z, unless there is a way of distinguishing between both cases with the use of attributes.
+<br />
+<br />Another detail is that these histograms provide relative frequencies (values between 0 and 1, not counts), not absolute frequencies. Is that inconsistent with the current definition of histogram in CF?
+<br />
+<br />Regards,
+<br />
+<br />Alejandro
+<br />
+<br /><em class="quotelev1">&gt; -----Original Message-----
+</em><br />
+<em class="quotelev1">&gt; From: martin.juckes at stfc.ac.uk&lt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>&gt; [mailto:martin.juckes at stfc.ac.uk&lt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>&gt;]
+</em><br />
+<em class="quotelev1">&gt; Sent: 12 October 2016 19:05
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu&lt;<a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; Cc: Bodas-Salcedo, Alejandro
+</em><br />
+<em class="quotelev1">&gt; Subject: Usage of histogram_of_X_over_Z
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hello,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There are two standard names of the form histogram_of_..... in the CF Standard
+</em><br />
+<em class="quotelev1">&gt; Name list (at version 36):
+</em><br />
+<em class="quotelev1">&gt; histogram_of_backscattering_ratio_over_height_above_reference_ellipsoid and
+</em><br />
+<em class="quotelev1">&gt; histogram_of_equivalent_reflectivity_factor_over_height_above_reference_ellipsoid
+</em><br />
+<em class="quotelev1">&gt; . Both of these where used in CMIP5 and set to be used in CMIP6, but the usage
+</em><br />
+<em class="quotelev1">&gt; does not appear to match the standard name desecriptions.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The possible confusion is over the role of different coordinates. The CF definitions
+</em><br />
+<em class="quotelev1">&gt; say ''&quot;histogram_of_X[_over_Z]&quot; means histogram (i.e. number of counts for each
+</em><br />
+<em class="quotelev1">&gt; range of X) of variations (over Z) of X.' This implies to me that you start with a
+</em><br />
+<em class="quotelev1">&gt; function of Z and possibly other coordinates and end up with a function of X and the
+</em><br />
+<em class="quotelev1">&gt; other coordinates. E.g. if the source data is X(lat,lon,Z), then the histogram data will
+</em><br />
+<em class="quotelev1">&gt; be of the form frequency(lat,lon,X).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In the two CMIP5/CMIP6 draft variables (cfadLidarsr532, cfadDbze94) using these
+</em><br />
+<em class="quotelev1">&gt; standard names the &quot;Z&quot; coordinate  which is included in the standard name
+</em><br />
+<em class="quotelev1">&gt; (&quot;height_above_reference_ellipsoid&quot;) is one of the coordinates of the histogram data
+</em><br />
+<em class="quotelev1">&gt; variable. Both these variables appear to be joint distributions (frequency of X and Y
+</em><br />
+<em class="quotelev1">&gt; values) over sub-grid variability as a function of latitude, longitude and time.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I've been reviewing these existing definitions in some detail because there are some
+</em><br />
+<em class="quotelev1">&gt; new distribution variables in the request and I'd like to make sure that we have a
+</em><br />
+<em class="quotelev1">&gt; consistent approach.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If we need to described a variable which carries a joint distribution of X and Y, then
+</em><br />
+<em class="quotelev1">&gt; the variable will have to use X and Y as coordinates, so perhaps we can simplify the
+</em><br />
+<em class="quotelev1">&gt; process by leaving them out of the standard name. Similarly the &quot;over_Z&quot; part of the
+</em><br />
+<em class="quotelev1">&gt; name would be better expressed as a cell_methods construct. This line of reasoning
+</em><br />
+<em class="quotelev1">&gt; suggests using a new standard name such as &quot;frequency_distribution&quot; (units &quot;1&quot;).
+</em><br />
+<em class="quotelev1">&gt; The only difficulty is that the frequency distribution might be a function of the
+</em><br />
+<em class="quotelev1">&gt; quantities X and Y (scattering ratio and cloud top height for cfadLidarsr532) and also
+</em><br />
+<em class="quotelev1">&gt; of latitude, longitude and time. There should be some way of distinguishing the
+</em><br />
+<em class="quotelev1">&gt; different roles of these 5 coordinates: is is the distribution of X and Y as a function of
+</em><br />
+<em class="quotelev1">&gt; latitude, longitude and time. I think this could be done conveniently by introducing a
+</em><br />
+<em class="quotelev1">&gt; single new attribute, e.g. &quot;bin_coords: X Y&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; &quot;frequency_distribution&quot; could be used for single or joint distributions.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; My questions to the list are:
+</em><br />
+<em class="quotelev1">&gt; (1) am I missing something in my interpretation of the existing histogram_of_...
+</em><br />
+<em class="quotelev1">&gt; names?
+</em><br />
+<em class="quotelev1">&gt; (2) if not, is the adoption of a &quot;frequency_distribution&quot; standard name an appropriate
+</em><br />
+<em class="quotelev1">&gt; way forward?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; regards,
+</em><br />
+<em class="quotelev1">&gt; Martin
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; regards,
+</em><br />
+<em class="quotelev1">&gt; Martin
+</em><br />
+<span id="received"><dfn>Received on</dfn> Thu Oct 13 2016 - 06:04:57 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7851">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7852.html" title="Next message in the list">Bodas-Salcedo, Alejandro: "[CF-metadata] Usage of histogram_of_X_over_Z"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7850.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] Missing data bins in histograms"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7852.html" title="Next message in this discussion thread">Bodas-Salcedo, Alejandro: "[CF-metadata] Usage of histogram_of_X_over_Z"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7852.html" title="Message sent in reply to this message">Bodas-Salcedo, Alejandro: "[CF-metadata] Usage of histogram_of_X_over_Z"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7851" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7851" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7851" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7851" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:07 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7850.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7852.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

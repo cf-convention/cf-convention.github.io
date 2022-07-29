@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Vertical coordinates &amp; boundaries from Jim Biard on 2015-02-20 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jim Biard (jbiard)" />
+<meta name="Subject" content="[CF-metadata] Vertical coordinates &amp; boundaries" />
+<meta name="Date" content="2015-02-20" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6813.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6815.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Vertical coordinates &amp; boundaries</h1>
+<!-- received="Fri Feb 20 07:40:35 2015" -->
+<!-- isoreceived="20150220074035" -->
+<!-- sent="Fri, 20 Feb 2015 09:40:35 -0500" -->
+<!-- isosent="20150220144035" -->
+<!-- name="Jim Biard" -->
+<!-- email="jbiard" -->
+<!-- subject="[CF-metadata] Vertical coordinates &amp; boundaries" -->
+<!-- id="54E74763.8020404_at_cicsnc.org" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="54E71503.8050406_at_knmi.nl" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6814" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6815.html" accesskey="d" title="Maarten Sneep: &quot;[CF-metadata] Vertical coordinates &#0038; boundaries&quot;">Next message</a> ]
+[ <a href="./6813.html" title="Maarten Sneep: &quot;[CF-metadata] Vertical coordinates &#0038; boundaries&quot;">Previous message</a> ]
+[ <a href="./6813.html" title="Maarten Sneep: &quot;[CF-metadata] Vertical coordinates &#0038; boundaries&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6815.html" accesskey="t" title="Maarten Sneep: &quot;[CF-metadata] Vertical coordinates &#0038; boundaries&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6814" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6814" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6814" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6814" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jim Biard &lt;<a href="mailto:jbiard?Subject=Re%3A%20%5BCF-metadata%5D%20Vertical%20coordinates%20%26%20boundaries">jbiard</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Fri, 20 Feb 2015 09:40:35 -0500</span><br />
+</address>
+<br />
+Maarten,
+<br />
+<br />This is life with CF. Just to be sure I understand the details of the 
+<br />
+problem, the vertical set of pressure values at one lat and lon is 
+<br />
+different from the vertical set at a different lat and lon, correct? Is 
+<br />
+there no metric (as in, not just an index) vertical coordinate that you 
+<br />
+can construct that doesn't vary across the lat/lon grid?
+<br />
+<br />As far as the pressure bounds being a variable no user will ever need, 
+<br />
+I've got to differ with you. Having an unambiguous, consistent, and 
+<br />
+automation-friendly mechanism for declaring bounds is quite useful. It 
+<br />
+removes uncertainty and avoids the problems that can develop when a 
+<br />
+product is developed by one community of people who say, for example, 
+<br />
+&quot;Everyone knows that the grid boundaries are halfway between the grid 
+<br />
+points&quot; and then gets used by a community of people who say, &quot;Everyone 
+<br />
+knows that the grid boundaries are at the grid points.&quot; (I've dealt with 
+<br />
+this sort of problem more than once in my career!) If CF had a standard 
+<br />
+that stated that an extra element at the end of a dimension was 
+<br />
+understood to be an upper bound, then your original proposal would be 
+<br />
+fine. Without a standard, your original proposal is non-standard (by 
+<br />
+definition), and thus open to conflicting interpretations.
+<br />
+<br />I've felt the same frustration about the inefficiencies of coordinate 
+<br />
+grids, but until we define a standard for a more compact representation, 
+<br />
+it's what we've got.
+<br />
+<br />Grace and peace,
+<br />
+<br />Jim
+<br />
+<br />On 2/20/15 6:05 AM, Maarten Sneep wrote:
+<br />
+<em class="quotelev1">&gt; On 19-02-15 18:56, Jim Biard wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Maarten,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; It would, instead be something like this:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; dimensions:
+</em><br />
+<em class="quotelev2">&gt;&gt;    lon = 360;
+</em><br />
+<em class="quotelev2">&gt;&gt;    lat = 180;
+</em><br />
+<em class="quotelev2">&gt;&gt;    layer = 18;
+</em><br />
+<em class="quotelev2">&gt;&gt;    vertices = 2;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; variables:
+</em><br />
+<em class="quotelev2">&gt;&gt;     float lat(lat);
+</em><br />
+<em class="quotelev2">&gt;&gt;      lat:long_name = &quot;latitude&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;      lat:units = &quot;degrees_north&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;      lat:bounds = &quot;lat_bnds&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;    float lon(lon);
+</em><br />
+<em class="quotelev2">&gt;&gt;      lon:long_name = &quot;longitude&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;      lon:units = &quot;degrees_east&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;      lon:bounds = &quot;lon_bnds&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;    float pressure(layer, lon, lat);
+</em><br />
+<em class="quotelev2">&gt;&gt;      pressure:long_name = &quot;pressure grid&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;      pressure:units = &quot;hPa&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;      pressure:bounds = &quot;pressure_bnds&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;    float lat_bnds(lon,vertices);
+</em><br />
+<em class="quotelev2">&gt;&gt;    float lon_bnds(lat,vertices);
+</em><br />
+<em class="quotelev2">&gt;&gt;    float pressure_bnds(layer,lon,lat,vertices);
+</em><br />
+<em class="quotelev2">&gt;&gt;    float O3(layer, lon, lat);
+</em><br />
+<em class="quotelev2">&gt;&gt;      O3:units = &quot;1e-9&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;      O3:coordinates = &quot;pressure&quot;;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; You can have a layer index coordinate variable if you require/desire
+</em><br />
+<em class="quotelev2">&gt;&gt; one, but it isn't necessary. The bounds attribute is applied to the
+</em><br />
+<em class="quotelev2">&gt;&gt; pressure variable, and a coordinates attribute is applied to the O3
+</em><br />
+<em class="quotelev2">&gt;&gt; variable naming the pressure variable. The pressure variable is an
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;auxiliary coordinate&quot;, and must be explicitly associated with the O3
+</em><br />
+<em class="quotelev2">&gt;&gt; variable in this way.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks, but my colleague has a remark: &quot;this is very inefficient&quot; 
+</em><br />
+<em class="quotelev1">&gt; (although it is CF compliant).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Only the pressure boundaries are of interest, the pressures themselves 
+</em><br />
+<em class="quotelev1">&gt; are pretty much a dummy variable, although a pretty large dummy 
+</em><br />
+<em class="quotelev1">&gt; variable: 18*360*180 elements. Then the interfaces: 18*360*180*2. so 
+</em><br />
+<em class="quotelev1">&gt; instead of storing (18+1)*360*180, the storage requirement jumps to 
+</em><br />
+<em class="quotelev1">&gt; 3*18*360*180, or 2.84 times as much. Not a fantastic score. Especially 
+</em><br />
+<em class="quotelev1">&gt; for vertical coordinates this is a common situation
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; For regular coordinates the overhead is there, but at least it is a 
+</em><br />
+<em class="quotelev1">&gt; lot smaller. For irregular grids, this overhead is large, and adds 
+</em><br />
+<em class="quotelev1">&gt; variables no user will ever need. I'll think if I can think of a neat 
+</em><br />
+<em class="quotelev1">&gt; solution that can be used in CF2.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Maarten Sneep
+</em><br />
+<br /><pre>
+-- 
+CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+*Research Scholar*
+Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+NOAA's National Climatic Data Center &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+151 Patton Ave, Asheville, NC 28801
+e: jbiard at cicsnc.org
+o: +1 828 271 4900
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150220/f128b7ff/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150220/f128b7ff/attachment-0001.html</a>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: bbhbajha.png
+Type: image/png
+Size: 11847 bytes
+Desc: not available
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150220/f128b7ff/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150220/f128b7ff/attachment-0001.png</a>&gt;
+</pre>
+<span id="received"><dfn>Received on</dfn> Fri Feb 20 2015 - 07:40:35 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6814">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6815.html" title="Next message in the list">Maarten Sneep: "[CF-metadata] Vertical coordinates &#0038; boundaries"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6813.html" title="Previous message in the list">Maarten Sneep: "[CF-metadata] Vertical coordinates &#0038; boundaries"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6813.html" title="Message to which this message replies">Maarten Sneep: "[CF-metadata] Vertical coordinates &#0038; boundaries"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6815.html" title="Next message in this discussion thread">Maarten Sneep: "[CF-metadata] Vertical coordinates &#0038; boundaries"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6815.html" title="Message sent in reply to this message">Maarten Sneep: "[CF-metadata] Vertical coordinates &#0038; boundaries"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6814" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6814" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6814" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6814" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:52 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6813.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6815.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

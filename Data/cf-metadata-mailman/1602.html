@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Ocean sigma coordinate from Rich Signell on 2008-10-14 (cf-metadata-mailman)</title>
+<meta name="Author" content="Rich Signell (rsignell)" />
+<meta name="Subject" content="[CF-metadata] Ocean sigma coordinate" />
+<meta name="Date" content="2008-10-14" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1601.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1603.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Ocean sigma coordinate</h1>
+<!-- received="Tue Oct 14 14:52:00 2008" -->
+<!-- isoreceived="20081014135200" -->
+<!-- sent="Tue, 14 Oct 2008 22:52:00 +0200" -->
+<!-- isosent="20081014205200" -->
+<!-- name="Rich Signell" -->
+<!-- email="rsignell" -->
+<!-- subject="[CF-metadata] Ocean sigma coordinate" -->
+<!-- id="61033b870810141352s2a0d9cd6r6479e3580fad4f2c_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="48EF3C4B.4040700_at_ifremer.fr" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1602" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1603.html" accesskey="d" title="Steve Hankin: &quot;[CF-metadata] CF Section 5.3 &#0034;Reduced Horizontal Grid&#0034; and Section 8.2 &#0034;compression by gathering&#0034; somewhat inconsistent&quot;">Next message</a> ]
+[ <a href="./1601.html" title="Schultz, Martin: &quot;[CF-metadata] standard names for chemistry - MCM&quot;">Previous message</a> ]
+[ <a href="./1586.html" title="Stephane TAROT: &quot;[CF-metadata] Ocean sigma coordinate&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1602" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1602" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1602" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1602" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Rich Signell &lt;<a href="mailto:rsignell?Subject=Re%3A%20%5BCF-metadata%5D%20Ocean%20sigma%20coordinate">rsignell</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 14 Oct 2008 22:52:00 +0200</span><br />
+</address>
+<br />
+Stephane,
+<br />
+<br />There are at least 4 different ways that I see to deal with your
+<br />
+non-standard sigma issue:
+<br />
+<br />1. You could subtract 1 from the values of the sigma variable you
+<br />
+currently store in your NetCDF file.
+<br />
+<br />2. If it's important to keep your old non-compliant sigma variable,
+<br />
+you could just add a new CF-compliant sigma variable to your NetCDF
+<br />
+file.   Then add the &quot;standard_name = ocean_sigma_coordinate&quot; to this
+<br />
+new variable (and assign it values that are one less than in your old
+<br />
+variable).
+<br />
+<br />3. If your goal is just to have your vertical coordinate understood by
+<br />
+NetCDF-Java (compatible with Unidata's CDM), you could use the
+<br />
+&quot;explicit_field&quot; and provide the 4D field for z.
+<br />
+See details at:
+<br />
+<a href="http://www.unidata.ucar.edu/software/netcdf-java/reference/StandardCoordinateTransforms.html">http://www.unidata.ucar.edu/software/netcdf-java/reference/StandardCoordinateTransforms.html</a>
+<br />
+<br />4. Propose a new dimensionless coordinate called
+<br />
+&quot;ocean_sigma_coordinate2&quot; to the CF standards committee.
+<br />
+<br />Good luck,
+<br />
+<br />-Rich Signell
+<br />
+<br />On Fri, Oct 10, 2008 at 1:28 PM, Stephane TAROT
+<br />
+&lt;Stephane.Tarot at ifremer.fr&gt; wrote:
+<br />
+<em class="quotelev1">&gt; Dear all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; For a french project of coastal oceanography (Previmer :
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.previmer.org/en">http://www.previmer.org/en</a>), I have to define
+</em><br />
+<em class="quotelev1">&gt; a netcdf file format for our gridded products (in fact, that format exists,
+</em><br />
+<em class="quotelev1">&gt; but needs to be improved). Of
+</em><br />
+<em class="quotelev1">&gt; course, I want it to be compliant with CF1.3.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I have a problem with some data with dimensionless vertical coordinates. The
+</em><br />
+<em class="quotelev1">&gt; model (called MARS) is
+</em><br />
+<em class="quotelev1">&gt; using an ocean sigma coordinate which defnition is :
+</em><br />
+<em class="quotelev1">&gt; sigma = (z + depth)/(eta + depth)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; This is different from the definition of the CF ocean_sigme_coordinate
+</em><br />
+<em class="quotelev1">&gt; (appendix D.6) :
+</em><br />
+<em class="quotelev1">&gt; z = eta + sigma(depth + eta)   or   sigma=(z - eta)/(eta + depth)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In our case, at the sea surface (z=eta) sigma=1, and at the sea floor
+</em><br />
+<em class="quotelev1">&gt; (z=-depth) sigma=0.
+</em><br />
+<em class="quotelev1">&gt; In the CF case, at the sea surface (z=eta) sigma=0, and at the sea floor
+</em><br />
+<em class="quotelev1">&gt; (z=-depth) sigma=-1.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; How can I deal with that ?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Thanks for your help
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Stephane Tarot
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><br /><pre>
+-- 
+Dr. Richard P. Signell   (508) 457-2229
+USGS, 384 Woods Hole Rd.
+Woods Hole, MA 02543-1598
+</pre>
+<span id="received"><dfn>Received on</dfn> Tue Oct 14 2008 - 14:52:00 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1602">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1603.html" title="Next message in the list">Steve Hankin: "[CF-metadata] CF Section 5.3 &#0034;Reduced Horizontal Grid&#0034; and Section 8.2 &#0034;compression by gathering&#0034; somewhat inconsistent"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1601.html" title="Previous message in the list">Schultz, Martin: "[CF-metadata] standard names for chemistry - MCM"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./1586.html" title="Message to which this message replies">Stephane TAROT: "[CF-metadata] Ocean sigma coordinate"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1602" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1602" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1602" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1602" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:10 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1601.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1603.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] standard_name modifiers -- units problem from Karl Taylor on 2011-03-01 (cf-metadata-mailman)</title>
+<meta name="Author" content="Karl Taylor (taylor13)" />
+<meta name="Subject" content="[CF-metadata] standard_name modifiers -- units problem" />
+<meta name="Date" content="2011-03-01" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./3261.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3263.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] standard_name modifiers -- units problem</h1>
+<!-- received="Tue Mar  1 13:32:15 2011" -->
+<!-- isoreceived="20110301133215" -->
+<!-- sent="Tue, 01 Mar 2011 12:32:15 -0800" -->
+<!-- isosent="20110301203215" -->
+<!-- name="Karl Taylor" -->
+<!-- email="taylor13" -->
+<!-- subject="[CF&ndash;metadata] standard_name modifiers &ndash;&ndash; units problem" -->
+<!-- id="4D6D57CF.9000506_at_llnl.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="4D6D2C29.5060502_at_unidata.ucar.edu" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start3262" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./3263.html" accesskey="d" title="Seth McGinnis: &quot;[CF-metadata] standard_name modifiers&quot;">Next message</a> ]
+[ <a href="./3261.html" title="cristina.tronconi at artov.isac.cnr.it: &quot;[CF-metadata] standard_name modifiers -- units problem&quot;">Previous message</a> ]
+[ <a href="./3260.html" title="Steven Emmerson: &quot;[CF-metadata] standard_name modifiers -- units problem&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./3250.html" accesskey="t" title="cristina.tronconi at artov.isac.cnr.it: &quot;[CF-metadata] standard_name modifiers -- units problem&quot;">Next in thread</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3262" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3262" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3262" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3262" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Karl Taylor &lt;<a href="mailto:taylor13?Subject=Re%3A%20%5BCF-metadata%5D%20standard_name%20modifiers%20--%20units%20problem">taylor13</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Tue, 01 Mar 2011 12:32:15 -0800</span><br />
+</address>
+<br />
+Dear all,
+<br />
+<br />Here's what the CF conventions say about dimensionless quantities:
+<br />
+<br />&quot;Units are not required for dimensionless quantities. A variable with no 
+<br />
+units attribute is assumed to be dimensionless. However, a units 
+<br />
+attribute specifying a dimensionless unit may optionally be included. 
+<br />
+The Udunits package defines a few dimensionless units, such as 
+<br />
+|percent|, but is lacking commonly used units such as ppm (parts per 
+<br />
+million). This convention does not support the addition of new 
+<br />
+dimensionless units that are not udunits compatible. The conforming unit 
+<br />
+for quantities that represent fractions, or parts of a whole, is &quot;1&quot;. 
+<br />
+The conforming unit for parts per million is &quot;1e-6&quot;. Descriptive 
+<br />
+information about dimensionless quantities, such as sea-ice 
+<br />
+concentration, cloud fraction, probability, etc., should be given in the 
+<br />
+|long_name| or |standard_name| attributes (see below) rather than the 
+<br />
+|units|. &quot;
+<br />
+<br />It does not indicate whether or not it is o.k. to set units to the empty 
+<br />
+string, but by *not* mentioning this, I think we should assume that this 
+<br />
+would not be CF compatible.  I also think that a human interpreting 
+<br />
+units = &quot;&quot; might think that the user had made mistake, whereas if the 
+<br />
+units attribute were missing altogether, they would think it was simply 
+<br />
+unitless.  A strict interpretation of the conventions seems to imply:
+<br />
+<br />1.  a number (like &quot;1&quot; or &quot;1e-6&quot;) should be used if the quantity 
+<br />
+represents fractions or parts of a whole, whereas
+<br />
+2.  the units attribute should be omitted in other dimensionless cases 
+<br />
+(e.g., involving ratios such as calcium/boron ratio, or involving 
+<br />
+&quot;counts&quot; such as the number of cars crossing a bridge each day)  In 
+<br />
+these cases the standard name indicates what the quantity is (but I 
+<br />
+wonder what standard name applies in the second example above, and 
+<br />
+should it have units of inverse time?)
+<br />
+<br />If a quantity is dimensionless and the units attribute is present, I 
+<br />
+think the CF checker currently only allows &quot;1&quot; as the units attribute.  
+<br />
+Perhaps this should be generalized since apparently a conforming unit is 
+<br />
+also a number (such as &quot;1e-6&quot; for ppm).  I don't think it should allow 
+<br />
+units = &quot;&quot;.
+<br />
+<br />Best regards,
+<br />
+Karl
+<br />
+<br />On 3/1/11 9:26 AM, Steven Emmerson wrote:
+<br />
+<em class="quotelev1">&gt; Everyone,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The UDUNITS packages (both UDUNITS and UDUNITS-2) interpret the empty
+</em><br />
+<em class="quotelev1">&gt; string (i.e., &quot;&quot;) as the dimensionless unit 1 -- so if you can't use
+</em><br />
+<em class="quotelev1">&gt; &quot;1&quot;, then use &quot;&quot; (assuming you pass that string to the UDUNITS library).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The udunits(1) and udunits2(1) programs, however, interpret the empty
+</em><br />
+<em class="quotelev1">&gt; string as a user input error and ask for the input unit again.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Regards,
+</em><br />
+<em class="quotelev1">&gt; Steve Emmerson
+</em><br />
+<em class="quotelev1">&gt; UDUNITS developer
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 2/28/2011 10:18 AM, Rosalyn Hatcher wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Dear Karl,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; That is correct. If the variable is deemed unitless, then the checker
+</em><br />
+<em class="quotelev2">&gt;&gt; will not flag an error if either units=1 or the units attribute is omitted.
+</em><br />
+<em class="quotelev2">&gt;&gt; If the units attribute is missing, it will, however, produce an
+</em><br />
+<em class="quotelev2">&gt;&gt; information message suggesting that the units attribute is added for
+</em><br />
+<em class="quotelev2">&gt;&gt; completeness.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Eg.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; ------------------
+</em><br />
+<em class="quotelev2">&gt;&gt; Checking variable: CHL_count
+</em><br />
+<em class="quotelev2">&gt;&gt; ------------------
+</em><br />
+<em class="quotelev2">&gt;&gt; INFO (3.1): No units attribute set.    Please consider adding a units attribute for completeness.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I introduced the INFO category of message a while ago, for instances
+</em><br />
+<em class="quotelev2">&gt;&gt; where the checker couldn't be sure of an error (E.g. where an attribute
+</em><br />
+<em class="quotelev2">&gt;&gt; is being used in a non-standard way), to prompt the user to double check
+</em><br />
+<em class="quotelev2">&gt;&gt; that what they've put is actually what they meant.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I'll hopefully have a fixed version of the checker available tomorrow
+</em><br />
+<em class="quotelev2">&gt;&gt; for testing.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; Regards,
+</em><br />
+<em class="quotelev2">&gt;&gt; Ros.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 28/02/11 16:44, Karl Taylor wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Dear Rosalyn,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; I assume the checker will also not complain if the units attribute is
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; simply omitted when the variable is unitless (i.e., either units=&quot;1&quot;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; or the attribute is omitted result in the same behavior by the checker).
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; best regards,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Karl
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; On 2/28/11 4:28 AM, cristina.tronconi at artov.isac.cnr.it wrote:
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Dear Rosalyn,
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; thanks so much for your reply and your works that is so important for
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; me. Infact &quot;my&quot; data are produced within MYOCEAN (european) project
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; and thay are going to test them! so it is important they do not failed
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; the CF checker test.
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Best regards.
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; cristina
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; p.s.
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Sorry if sometime I miss some e-mails and I didin't answer to them.
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; This is a very caotic working time....and I'm receiving so many e-mails.
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Thanks to all the cf-metadata group to their help!
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Citando Rosalyn Hatcher&lt;r.s.hatcher at reading.ac.uk&gt;:
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; I agree units should be set to &quot;1&quot; and I am currently in the process of
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; fixing the error in the CF Checker.
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; Regards,
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; Ros.
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; On 27/02/11 17:27, Steven Emmerson wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; Cristina,
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; I recommend the unit &quot;1&quot; for that use.
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; If the CF checker doesn't like that unit, then it should be fixed,
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; IMO, because that unit is supported by both the US NIST and the BIPM.
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; Regards,
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; Steve Emmerson
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; UDUNITS developer
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; On 2/26/2011 12:30 PM,cristina.tronconi at artov.isac.cnr.it  wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; Dear Roy,
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; Our variable &quot;chlorophyll count&quot; as is understandable by CF is the
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; number of individual measurements used to determine a chlorophyll value.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; I do need to know what to put at &quot;units&quot; attribute for that variable.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; I undestood by the CF convention 1.4 (appendix C) that I have to put
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; &quot;units=&quot;1&quot; as the chlorophyll count is a dimensionless variable...but
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; the CF checker found it as an error.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; I try not to put the Unit attribute ...but again i get an error by che
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; cf chcker.......so.....
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; my question is: what unit shoudl I set for my chlorophyll count variable?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; thanks for your help.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; cristina
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; -------------------------------------------------------------------
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; Cristina Tronconi
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; Istituto di Scienze dell'Atmosfera e del Clima - sezione di Roma
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; Consiglio Nazionale delle Ricerche
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; Via Fosso del Cavaliere 100
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; 00133 Roma, Italy
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; Tel: +39 06 49934342
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; cell: '39 349 1242954
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; Fax: +39 06 20660291
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; e-mail:cristina.tronconi at artov.isac.cnr.it
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt;&gt;&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; --
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; Rosalyn Hatcher
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; NCAS Computational Modelling Services
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; Dept. of Meteorology, University of Reading,
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; Earley Gate, Reading. RG6 6BB
+</em><br />
+<em class="quotelev1">&gt;&gt;&gt;&gt;&gt; Email:r.s.hatcher at reading.ac.uk      Tel: +44 (0) 118 378 6016
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; -------------------------------------------------------------------
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Cristina Tronconi
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Istituto di Scienze dell'Atmosfera e del Clima - sezione di Roma
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Consiglio Nazionale delle Ricerche
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Via Fosso del Cavaliere 100
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; 00133 Roma, Italy
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Tel:      +39  06  49934342
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; cell:     '39 349 1242954
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; Fax:      +39  06  20660291
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; e-mail:cristina.tronconi at artov.isac.cnr.it
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt;
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev4">&gt;&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; --
+</em><br />
+<em class="quotelev2">&gt;&gt; Rosalyn Hatcher
+</em><br />
+<em class="quotelev2">&gt;&gt; NCAS Computational Modelling Services
+</em><br />
+<em class="quotelev2">&gt;&gt; Dept. of Meteorology, University of Reading,
+</em><br />
+<em class="quotelev2">&gt;&gt; Earley Gate, Reading. RG6 6BB
+</em><br />
+<em class="quotelev2">&gt;&gt; Email:r.s.hatcher at reading.ac.uk      Tel: +44 (0) 118 378 6016
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110301/ce0607b4/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20110301/ce0607b4/attachment-0001.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Tue Mar 01 2011 - 13:32:15 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start3262">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./3263.html" title="Next message in the list">Seth McGinnis: "[CF-metadata] standard_name modifiers"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./3261.html" title="Previous message in the list">cristina.tronconi at artov.isac.cnr.it: "[CF-metadata] standard_name modifiers -- units problem"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./3260.html" title="Message to which this message replies">Steven Emmerson: "[CF-metadata] standard_name modifiers -- units problem"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./3250.html" title="Next message in this discussion thread">cristina.tronconi at artov.isac.cnr.it: "[CF-metadata] standard_name modifiers -- units problem"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg3262" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg3262" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg3262" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg3262" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:41 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./3261.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./3263.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

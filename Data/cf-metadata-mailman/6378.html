@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Date/time and leap seconds from John Caron on 2014-07-16 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] Date/time and leap seconds" />
+<meta name="Date" content="2014-07-16" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./6377.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6379.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Date/time and leap seconds</h1>
+<!-- received="Wed Jul 16 15:58:57 2014" -->
+<!-- isoreceived="20140716145857" -->
+<!-- sent="Wed, 16 Jul 2014 15:58:57 -0600" -->
+<!-- isosent="20140716215857" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] Date/time and leap seconds" -->
+<!-- id="CA+y1y7wyy7q60N_5A+SsKksOxE3sA9gom83qCccAaTrS8UpAUw_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="53C6E50C.7010806_at_arcor.de" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start6378" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./6379.html" accesskey="d" title="rhorne at excaliburlabs.com: &quot;[CF-metadata] Date/time and leap seconds&quot;">Next message</a> ]
+[ <a href="./6377.html" title="Maik Riechert: &quot;[CF-metadata] Date/time and leap seconds&quot;">Previous message</a> ]
+[ <a href="./6377.html" title="Maik Riechert: &quot;[CF-metadata] Date/time and leap seconds&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./6381.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] Date/time and leap seconds&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6378" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6378" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6378" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6378" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20Date%2Ftime%20and%20leap%20seconds">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 16 Jul 2014 15:58:57 -0600</span><br />
+</address>
+<br />
+Hi Maik:
+<br />
+<br />Unfortunately, CF references the udunits package which is no longer being
+<br />
+developed, at least for date/time coordinates.
+<br />
+<br />udunits does not support leap seconds.
+<br />
+<br />your best bet is to add an auxiliary time coordinate which uses leap
+<br />
+seconds, eg TAI. your specialized software can use that
+<br />
+<br />also add a time coordinate which uses the standard non-leap seconds from
+<br />
+udunits. visualization software will use this to display calendar dates, i
+<br />
+think if you are careful this will only be wrong on a leap second.
+<br />
+<br />You could propose adding a leap second-aware calendar to CF.
+<br />
+<br /><br />On Wed, Jul 16, 2014 at 2:48 PM, Maik Riechert &lt;maik.riechert at arcor.de&gt;
+<br />
+wrote:
+<br />
+<br /><em class="quotelev1">&gt; Hi Jim
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; I see where the potential for mismatches when using time values with
+</em><br />
+<em class="quotelev2">&gt; &gt; &quot;unexpected&quot; encoding means that we should provide a way to declare what
+</em><br />
+<em class="quotelev2">&gt; &gt; kind of time-since-epoch values are used in a particular time variable.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; And that's exactly the problem. The CDF website summarizes it quite
+</em><br />
+<em class="quotelev1">&gt; nicely: &quot;Science data should have well-defined times to enable more
+</em><br />
+<em class="quotelev1">&gt; accurate cross-comparison between missions and as documentation for
+</em><br />
+<em class="quotelev1">&gt; future archive use.&quot; netcdf-CF is basically CDF before introduction of
+</em><br />
+<em class="quotelev1">&gt; the CDF_TIME_TT2000 type.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In the end, people use libraries to read datasets, and I'm pretty sure
+</em><br />
+<em class="quotelev1">&gt; that the netcdf4 library in Python is used a lot, and this one assumes a
+</em><br />
+<em class="quotelev1">&gt; certain time encoding, without actually having it specified within the
+</em><br />
+<em class="quotelev1">&gt; CF conventions. And I find this all a bit worrying, but many people
+</em><br />
+<em class="quotelev1">&gt; probably don't care as their time resolution is higher than 1 second.
+</em><br />
+<em class="quotelev1">&gt; Still, I think this issue should be addressed, better sooner than later.
+</em><br />
+<em class="quotelev1">&gt; Don't you think?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt; Maik
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; Grace and peace,
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; Jim
+</em><br />
+<em class="quotelev2">&gt; &gt;
+</em><br />
+<em class="quotelev2">&gt; &gt; On 7/16/14, 4:06 AM, Maik Riechert wrote:
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Hi,
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; after reading
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; <a href="http://cdf.gsfc.nasa.gov/html/leapseconds_requirements.html">http://cdf.gsfc.nasa.gov/html/leapseconds_requirements.html</a> I'm a bit
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; confused on how CF handles times for the netcdf world. It seems as if
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; the 'seconds since' convention is basically POSIX time in regards to
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; how leap seconds are handled. Quoting wiki &quot; Due to its handling of
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; leap seconds, it is neither a linear representation of time nor a true
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; representation of UTC&quot;. This means that any dataset with &lt;= 1 second
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; resolution which covers the moment a leap second happens will have a
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; problem encoding the time using the existing units convention.
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; I first posted this issue on the netcdf4-python tracker:
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; <a href="https://github.com/Unidata/netcdf4-python/issues/280">https://github.com/Unidata/netcdf4-python/issues/280</a>
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Is this an issue which was discussed before and is there any solution?
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt;
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Cheers
+</em><br />
+<em class="quotelev3">&gt; &gt;&gt; Maik
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140716/09442735/attachment.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20140716/09442735/attachment.html</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Jul 16 2014 - 15:58:57 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start6378">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./6379.html" title="Next message in the list">rhorne at excaliburlabs.com: "[CF-metadata] Date/time and leap seconds"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./6377.html" title="Previous message in the list">Maik Riechert: "[CF-metadata] Date/time and leap seconds"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./6377.html" title="Message to which this message replies">Maik Riechert: "[CF-metadata] Date/time and leap seconds"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./6381.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] Date/time and leap seconds"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./6381.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] Date/time and leap seconds"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg6378" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg6378" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg6378" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg6378" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:44 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./6377.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./6379.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

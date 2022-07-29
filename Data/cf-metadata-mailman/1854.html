@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Storing multiple NWP model runs in a NetCDF - CF file [SEC=UNCLASSIFIED] from Timothy Hume on 2009-01-07 (cf-metadata-mailman)</title>
+<meta name="Author" content="Timothy Hume (T.Hume)" />
+<meta name="Subject" content="[CF-metadata] Storing multiple NWP model runs in a NetCDF - CF file [SEC=UNCLASSIFIED]" />
+<meta name="Date" content="2009-01-07" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1853.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1855.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Storing multiple NWP model runs in a NetCDF - CF file [SEC=UNCLASSIFIED]</h1>
+<!-- received="Wed Jan  7 16:46:10 2009" -->
+<!-- isoreceived="20090107164610" -->
+<!-- sent="Thu, 8 Jan 2009 10:46:10 +1100" -->
+<!-- isosent="20090107234610" -->
+<!-- name="Timothy Hume" -->
+<!-- email="T.Hume" -->
+<!-- subject="[CF-metadata] Storing multiple NWP model runs in a NetCDF - CF file [SEC=UNCLASSIFIED]" -->
+<!-- id="A638730E91FBA941969A262738288BFD01EEEAD1_at_officeho2.bom.gov.au" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1854" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1855.html" accesskey="d" title="Karl Taylor: &quot;[CF-metadata] Storing multiple NWP model runs in a NetCDF - CF file	[SEC=UNCLASSIFIED]&quot;">Next message</a> ]
+[ <a href="./1853.html" title="Heinke Hoeck: &quot;[CF-metadata] new names for AeroCom&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1855.html" accesskey="t" title="Karl Taylor: &quot;[CF-metadata] Storing multiple NWP model runs in a NetCDF - CF file	[SEC=UNCLASSIFIED]&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1854" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1854" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1854" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1854" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Timothy Hume &lt;<a href="mailto:T.Hume?Subject=Re%3A%20%5BCF-metadata%5D%20Storing%20multiple%20NWP%20model%20runs%20in%20a%20NetCDF%20-%20CF%20file%20%5BSEC%3DUNCLASSIFIED%5D">T.Hume</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 8 Jan 2009 10:46:10 +1100</span><br />
+</address>
+<br />
+Hi,
+<br />
+<br />I am writing NetCDF files which hold surface fields (2m temperature etc) from multiple NWP model runs (all the runs from the same model for the last month or so). The files are for operational use, so I want them to strictly follow the CF conventions. I am running into a couple of problems, where the conventions don't seem to be ideally suited for storing more than a single model run.
+<br />
+<br />Here is what I do:
+<br />
+<br />I have four dimensions and associated coordinate variables:
+<br />
+<br />basetime:	The base time for the model run (units: seconds since 1970-01-01 00:00:00.0 +0:00)
+<br />
+forecast:	The forecast lead time, relative to the basetime (units: hours)
+<br />
+latitude
+<br />
+longitude
+<br />
+<br />There is no need for a vertical dimension, because I am using surface fields. Never-the-less I make use of a scalar vertical coordinate variable as described in Section 5.7 of the CF-1.3 metadata conventions document.
+<br />
+<br />The use of two dimensions to store the time information (basetime and forecast) seems to be a natural way to store multiple NWP model runs, and is the standard way used in the very old NUWG conventions. As far as I can tell, what I am doing is supported by the CF conventions, provided the time axis is taken to be the basetime dimension. This is because Section 4.4 of the conventions specifies the units of the time coordinate must include a reference time. Obviously the units of the forecast coordinate cannot include a reference time, because the reference time varies, and is determined by the value of the basetime coordinate.
+<br />
+<br />The difficulty I am encountering is that some applications which read NetCDF/CF files (such as the Unidata IDV and Joe Sirott's very nice web based NetCDF data viewer) seem to choke on my data. I suspect (but am not 100% certain in the case of the IDV) that the reason is because of the way I handle the time information in my files.
+<br />
+<br />To illustrate in more detail what my files look like, I am attaching the CDL from an example file. The CDL is non-CF compliant, because I have specified the &quot;T&quot; axis (via the axis variable attribute) to be the forecast coordinate, and the forecast coordinate has invalid units (no reference time). I am planning on switching the &quot;T&quot; axis to the base time coordinate, which as far as I can determine should make the file CF compliant.
+<br />
+<br />My question is: is there a better (or more standard) way of storing multiple NWP model runs in a single file than what I am doing? 
+<br />
+<br />Cheers,
+<br />
+<br />Tim Hume
+<br />
+Centre for Australian Weather and Climate Research
+<br />
+Australian Bureau of Meteorology
+<br />
+Melbourne
+<br />
+Australia
+<br />
+<br />--- Example CDL follows ---
+<br />
+<br />netcdf gasp_1p0deg_ocf_t2m_rtdb_opn {
+<br />
+dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forecast = 69 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basetime = UNLIMITED ; // (100 currently)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude = 96 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude = 121 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bounds = 2 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double forecast(forecast) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forecast:long_name = &quot;Time of model forecast, relative to the basetime&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forecast:units = &quot;hours&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forecast:standard_name = &quot;forecast_period&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forecast:axis = &quot;T&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forecast:bounds = &quot;forecast_bounds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double forecast_bounds(forecast, bounds) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forecast_bounds:long_name = &quot;forecast interval&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forecast_bounds:units = &quot;hours&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int basetime(basetime) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basetime:long_name = &quot;Model basetime&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basetime:units = &quot;seconds since 1970-01-01 00:00:00.0 +0:00&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basetime:calendar = &quot;gregorian&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basetime:standard_name = &quot;forecast_reference_time&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double latitude(latitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:long_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:bounds = &quot;latitude_bounds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:valid_min = -90. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:valid_max = 90. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:standard_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:axis = &quot;Y&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double latitude_bounds(latitude, bounds) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude_bounds:long_name = &quot;grid cell latitude boundaries&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude_bounds:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude_bounds:valid_min = -90. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude_bounds:valid_max = 90. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double longitude(longitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:long_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:bounds = &quot;longitude_bounds&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:valid_min = -360. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:valid_max = 360. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:standard_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:axis = &quot;X&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double longitude_bounds(longitude, bounds) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude_bounds:long_name = &quot;grid cell longitude boundaries&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude_bounds:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude_bounds:valid_min = -360. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude_bounds:valid_max = 360. ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float temperature_2m(basetime, forecast, latitude, longitude) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature_2m:long_name = &quot;Air temperature 2m above the surface&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature_2m:units = &quot;K&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature_2m:_FillValue = 9.96921e+36f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature_2m:missing_value = 9.96921e+36f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature_2m:valid_min = 180.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature_2m:valid_max = 330.f ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature_2m:standard_name = &quot;air_temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature_2m:cell_methods = &quot;lat: lon: mean (area weighted)&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature_2m:coordinates = &quot;level&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double level ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level:long_name = &quot;Height above the surface&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level:units = &quot;m&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level:positive = &quot;up&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level:standard_name = &quot;height&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level:axis = &quot;Z&quot; ;
+<br />
+<br />// global attributes:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Conventions = &quot;CF-1.3&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:history = &quot;File created by the Gridded OCF data ingest system&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:institution = &quot;Australian Bureau of Meteorology&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:source = &quot;model&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:title = &quot;GASP forecasts of temperature_2m; resolution: 1.0 degree; source: rtdb&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:topography = &quot;MSAS&quot; ;
+<br />
+}
+<br />
+<span id="received"><dfn>Received on</dfn> Wed Jan 07 2009 - 16:46:10 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1854">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1855.html" title="Next message in the list">Karl Taylor: "[CF-metadata] Storing multiple NWP model runs in a NetCDF - CF file	[SEC=UNCLASSIFIED]"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1853.html" title="Previous message in the list">Heinke Hoeck: "[CF-metadata] new names for AeroCom"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1855.html" title="Next message in this discussion thread">Karl Taylor: "[CF-metadata] Storing multiple NWP model runs in a NetCDF - CF file	[SEC=UNCLASSIFIED]"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1855.html" title="Message sent in reply to this message">Karl Taylor: "[CF-metadata] Storing multiple NWP model runs in a NetCDF - CF file	[SEC=UNCLASSIFIED]"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1854" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1854" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1854" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1854" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:14 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1853.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1855.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

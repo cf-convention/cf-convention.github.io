@@ -1,0 +1,2410 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] axis attribute from Sebastien Villaume on 2017-04-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Sebastien Villaume (sebastien.villaume)" />
+<meta name="Subject" content="[CF-metadata] axis attribute" />
+<meta name="Date" content="2017-04-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./8262.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8264.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] axis attribute</h1>
+<!-- received="Wed Apr 19 14:26:20 2017" -->
+<!-- isoreceived="20170419132620" -->
+<!-- sent="Wed, 19 Apr 2017 20:26:20 +0000 (GMT-00:00)" -->
+<!-- isosent="20170419202620" -->
+<!-- name="Sebastien Villaume" -->
+<!-- email="sebastien.villaume" -->
+<!-- subject="[CF-metadata] axis attribute" -->
+<!-- id="299969536.44525496.1492633580775.JavaMail.zimbra_at_ecmwf.int" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="CAEMt9PO78QcQ5Yk0qUmbEKV+UdaSCD7Uqot2e6aP1f0TNx-cPg_at_mail.gmail.com" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start8263" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./8264.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] axis attribute&quot;">Next message</a> ]
+[ <a href="./8262.html" title="Sebastien Villaume: &quot;[CF-metadata] axis attribute&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8263" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8263" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8263" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8263" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Sebastien Villaume &lt;<a href="mailto:sebastien.villaume?Subject=Re%3A%20%5BCF-metadata%5D%20axis%20attribute">sebastien.villaume</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Wed, 19 Apr 2017 20:26:20 +0000 (GMT-00:00)</span><br />
+</address>
+<br />
+Hi David,
+<br />
+<br />I am still missing an attribute attached to &quot;latitude&quot; and &quot;longitude&quot; to bind them with their respective axis/spatial dimension.
+<br />
+The &quot;link&quot; is still implicit if nothing else than what you wrote is added. I also feel that the dimension and axis attributes are somehow redundant.
+<br />
+<br />I also find your long_name attribute misleading because all the values in latitude(j,i) goes on the Y axis and all the values in longitude(j,i) goes on the X axis! i and j are only the indices of the horizontal grid. Your long_name suggests something else.
+<br />
+<br />Is it ok if I add in your example an &quot;axis_mapping&quot; attribute to lat and lon:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;i = 100 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;j = 200 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;char x:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:dimension = &quot;i&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:axis = &quot;X&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:standard_name = &quot;???&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;char y: 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:dimension = &quot;j&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:axis = &quot;Y&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:standard_name = &quot;???&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double longitude(j, i) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:axis_mapping = x ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double latitude(j, i) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:axis_mapping = y  ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double tas(j, i) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:standard_name = &quot;air_temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:units = &quot;K&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:coordinates = &quot;longitude latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:axes = &quot;x y&quot; ;  // new data variable attribute which points to dimension variables
+<br />
+<br /><br /><br />/S?bastien
+<br />
+<br />----- Original Message -----
+<br />
+From: &quot;David Hassell&quot; &lt;david.hassell at ncas.ac.uk&gt;
+<br />
+To: &quot;Sebastien Villaume&quot; &lt;sebastien.villaume at ecmwf.int&gt;
+<br />
+Cc: &quot;Jim Biard&quot; &lt;jbiard at cicsnc.org&gt;, &quot;CF Metadata&quot; &lt;cf-metadata at cgd.ucar.edu&gt;
+<br />
+Sent: Tuesday, 18 April, 2017 13:09:18
+<br />
+Subject: Re: [CF-metadata] axis attribute
+<br />
+<br />Hello S?bastien,
+<br />
+<br />If we were to go down a route like this (and I'm not sure myself about it),
+<br />
+I think a new generic &quot;add metadata to a dimension&quot; mechanism might be
+<br />
+better. This could be used to provide plotting hints, regridding hints (a
+<br />
+more compelling use case than plotting, for me) or anything else about a
+<br />
+dimension. The idea being that we have a place to store information
+<br />
+relating to a dimension which does not directly describe the other
+<br />
+variables which span that dimension.
+<br />
+<br />A new &quot;dimension variable&quot; would have to say which dimension it relates to,
+<br />
+and may optionally have &quot;axis&quot;, &quot;long_name&quot; and &quot;comment&quot; to describe the
+<br />
+dimension (any other attributes being considered non-standard). The
+<br />
+dimension variables would be referenced by data variables, rather than
+<br />
+coordinate variables:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;i = 100 ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;j = 200 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;char x:                     // dimension metadata variable (of
+<br />
+arbitrary type becuase it has no data)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.dimension = &quot;i&quot; ;         // mandatory dimension property which
+<br />
+says which dimension is being described
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:axis = &quot;X&quot; ;              // optional
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.long_name = &quot;provide plotting/regridding hint that i should go on
+<br />
+X axis&quot; ;        // optional
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;char y:                     // dimension metadata variable (of
+<br />
+arbitrary type)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.dimension = &quot;j&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:axis = &quot;Y&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.long_name = &quot;provide plotting/regridding hint that j should go on
+<br />
+Y axis&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double longitude(j, i) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double latitude(j, i) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;double temperature(j, i) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:standard_name = &quot;air_temperature&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:units = &quot;K&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:coordinates = &quot;longitude latitide&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tas:axes = &quot;x y&quot; ;  // new data variable attribute which points to
+<br />
+dimension variables
+<br />
+<br /><br />Thanks, David
+<br />
+<br /><br />On 18 April 2017 at 11:08, Sebastien Villaume &lt;sebastien.villaume at ecmwf.int&gt;
+<br />
+wrote:
+<br />
+<br /><em class="quotelev1">&gt; Dear Jonathan and Jim,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; thank you for your further comments.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _at_Jonathan: I don't want to define an axis without coordinates or put the
+</em><br />
+<em class="quotelev1">&gt; &quot;axis&quot; attribute on more than one object, I only propose to decouple the
+</em><br />
+<em class="quotelev1">&gt; axis definition from the coordinate definition. I don't see why I can't
+</em><br />
+<em class="quotelev1">&gt; define a dummy object, it is exactly what is done to define a crs: a
+</em><br />
+<em class="quotelev1">&gt; variable without dimension, without data, only attributes:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   int crs ;
+</em><br />
+<em class="quotelev1">&gt;     crs:grid_mapping_name = &quot;latitude_longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     crs:semi_major_axis = 6371000.0 ;
+</em><br />
+<em class="quotelev1">&gt;     crs:inverse_flattening = 0 ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; following the same principle, I could define:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   int axis_x ;
+</em><br />
+<em class="quotelev1">&gt;     axis_x:axis = X;
+</em><br />
+<em class="quotelev1">&gt;     axis_x:standard_name = &quot;axis&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     axis_x:long_name = &quot;axis for the longitude coordinate&quot;
+</em><br />
+<em class="quotelev1">&gt;     axis_x:units = &quot;1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; and then have my longitude:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; float longitude(j,i);
+</em><br />
+<em class="quotelev1">&gt;     longitude:standard_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     longitude:units = &quot;degree_east&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     longitude:long_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     longitude:axis_mapping = &quot;X&quot; ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In that specific example, only axis_x has the &quot;axis&quot; attribute. I added a
+</em><br />
+<em class="quotelev1">&gt; &quot;axis_mapping&quot; attribute to the longitude variable to indicate that it
+</em><br />
+<em class="quotelev1">&gt; should be understood as the coordinate of the axis given in &quot;axis_mapping&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I favour this solution over creating a dummy coordinate variable with
+</em><br />
+<em class="quotelev1">&gt; gridbox indices. It seems artificial to do so and usually creating
+</em><br />
+<em class="quotelev1">&gt; something artificial to comply to a rule is the sign of a design problem or
+</em><br />
+<em class="quotelev1">&gt; a lack of functionality to describe the use case.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _at_Jim: I agree with your last message, It would be beneficial to have an
+</em><br />
+<em class="quotelev1">&gt; explicit mechanism to identify axes, coordinates, and their relationships
+</em><br />
+<em class="quotelev1">&gt; when the use case does not conform to the common  case dimension = axis =
+</em><br />
+<em class="quotelev1">&gt; coordinate .
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; What is the CF mechanism to extend the convention or to propose semantic
+</em><br />
+<em class="quotelev1">&gt; changes, rewrites of some portions of chapters, etc. ?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes,
+</em><br />
+<em class="quotelev1">&gt; /S?bastien
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message -----
+</em><br />
+<em class="quotelev1">&gt; From: &quot;Jim Biard&quot; &lt;jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev1">&gt; To: cf-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; Sent: Friday, 14 April, 2017 23:11:44
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] axis attribute
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; We've got no great options available. The axis attribute ought to be an
+</em><br />
+<em class="quotelev1">&gt; indicator of an independent coordinate axis. Because of possible backward
+</em><br />
+<em class="quotelev1">&gt; compatibility issues, I think we need to demote the axis attribute to being
+</em><br />
+<em class="quotelev1">&gt; a plotting hint. I'm at a loss for a word to use for a new attribute, but
+</em><br />
+<em class="quotelev1">&gt; overloading axis with the different meanings seems too confusing.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The existing convention for identifying 1D coordinate variables (variable
+</em><br />
+<em class="quotelev1">&gt; name = dimension name) works well for identifying independent axes as far
+</em><br />
+<em class="quotelev1">&gt; as that goes, so what are we missing with a fuzzy or demoted axis
+</em><br />
+<em class="quotelev1">&gt; attribute? It seems to me that we lack a clean way to identify the
+</em><br />
+<em class="quotelev1">&gt; x/y/z/t/etc relationships between the different independent axes, and we
+</em><br />
+<em class="quotelev1">&gt; lack a way to clearly identify a 1-D variable as an independent axis if it
+</em><br />
+<em class="quotelev1">&gt; doesn't conform to the variable name = dimension name convention.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I'm not sure what's the cleanest way to go about it, but I'll suggest a
+</em><br />
+<em class="quotelev1">&gt; name for an attribute that would fill some portion of these purposes. How
+</em><br />
+<em class="quotelev1">&gt; about basis (or bases)?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Grace and peace,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jim
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 4/11/17 10:36 AM, Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear David and Sebastien
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; In a given model the level numbers are meaningful indeed, but there's no
+</em><br />
+<em class="quotelev1">&gt; universal convention for them. Maybe some atmosphere models number them
+</em><br />
+<em class="quotelev1">&gt; from
+</em><br />
+<em class="quotelev1">&gt; the TOA downwards, for instance. Nothing would prohibit that, and the
+</em><br />
+<em class="quotelev1">&gt; standard_name of model_level_number doesn't prescribe any convention for
+</em><br />
+<em class="quotelev1">&gt; it.
+</em><br />
+<em class="quotelev1">&gt; There is likewise no universal convention for how to number the gridboxes
+</em><br />
+<em class="quotelev1">&gt; in
+</em><br />
+<em class="quotelev1">&gt; x and y, but in any given model there is a convention for it. Thus I think
+</em><br />
+<em class="quotelev1">&gt; it's the same. The standard name identifies a conventional concept, but
+</em><br />
+<em class="quotelev1">&gt; not a
+</em><br />
+<em class="quotelev1">&gt; convention for the numbers themselves.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; As for the axis attribute itself, maybe we could distinguish the two
+</em><br />
+<em class="quotelev1">&gt; meanings
+</em><br />
+<em class="quotelev1">&gt; of &quot;axis&quot; and avoid backwards compatibility by removing the restriction in
+</em><br />
+<em class="quotelev1">&gt; chapter 5 that it is not permissible for a data variable to have both a
+</em><br />
+<em class="quotelev1">&gt; coordinate variable and an auxiliary coordinate variable having an axis
+</em><br />
+<em class="quotelev1">&gt; attribute with any given value. That is, at present you can't have both a
+</em><br />
+<em class="quotelev1">&gt; 1D
+</em><br />
+<em class="quotelev1">&gt; x-coordinate variable with axis=&quot;X&quot; and a 2D longitude auxiliary coordinate
+</em><br />
+<em class="quotelev1">&gt; variable with axis=&quot;X&quot;. But we could allow them both, with different
+</em><br />
+<em class="quotelev1">&gt; meanings.
+</em><br />
+<em class="quotelev1">&gt; We could say that the axis attribute of 1D coordinate variables labels the
+</em><br />
+<em class="quotelev1">&gt; index dimensions of the data variable, while the axis attribute of multi-
+</em><br />
+<em class="quotelev1">&gt; dimensional auxiliary coordinate variables labels them as spatiotemporal
+</em><br />
+<em class="quotelev1">&gt; dimensions, as a hint for plotting.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Forwarded message from David Hassell &lt;david.hassell at ncas.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; -----
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Date: Tue, 11 Apr 2017 08:41:34 +0100
+</em><br />
+<em class="quotelev1">&gt; From: David Hassell &lt;david.hassell at ncas.ac.uk&gt; To: Jonathan Gregory &lt;
+</em><br />
+<em class="quotelev1">&gt; j.m.gregory at reading.ac.uk&gt; CC: CF Metadata &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] axis attribute
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Hello all,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I am still uncomfortable with creating a coordinate variable with arbitrary
+</em><br />
+<em class="quotelev1">&gt; values. The analogy with model_level_number is not quite there, I think, as
+</em><br />
+<em class="quotelev1">&gt; the model_level_number values are not arbitrary. For example, a value of 6
+</em><br />
+<em class="quotelev1">&gt; means (in one model I know) that this is the first level above the boundary
+</em><br />
+<em class="quotelev1">&gt; layer. That value and meaning is relevant however the data may have been
+</em><br />
+<em class="quotelev1">&gt; subspaced/sliced.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Perhaps an auxiliary coordinate variable could be used with missing data in
+</em><br />
+<em class="quotelev1">&gt; all of its values, an axis attribute (of &quot;X&quot; or &quot;Y&quot;) and *no* standard
+</em><br />
+<em class="quotelev1">&gt; name? In the absence of a coordinate variable for that dimension, the axis
+</em><br />
+<em class="quotelev1">&gt; attribute of the auxiliary coordinate variable would give meaning to the
+</em><br />
+<em class="quotelev1">&gt; dimension.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; This is still not ideal, though ...
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; All the best,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; David
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 10 April 2017 at 18:25, Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt;
+</em><br />
+<em class="quotelev1">&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear S?bastien
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Yes, you're right, we can't have an axis without coordinates. This is
+</em><br />
+<em class="quotelev1">&gt; because
+</em><br />
+<em class="quotelev1">&gt; CF is a netCDF convention, and there's no way to attach attributes to a
+</em><br />
+<em class="quotelev1">&gt; dimension other than by creating a coordinate variable. Similarly we don't
+</em><br />
+<em class="quotelev1">&gt; have data variables with just dimensions but no data. We could have
+</em><br />
+<em class="quotelev1">&gt; conventions
+</em><br />
+<em class="quotelev1">&gt; for these concepts in CF-netCDF but it hasn't been proposed.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; However it seems pretty good to me to do as you suggest and create a
+</em><br />
+<em class="quotelev1">&gt; coordinate variable with the gridbox indices in it, for which (as
+</em><br />
+<em class="quotelev1">&gt; discussed)
+</em><br />
+<em class="quotelev1">&gt; we could define a standard name. This is analogous to model_level_number,
+</em><br />
+<em class="quotelev1">&gt; which is already a standard name and could be a vertical coordinate
+</em><br />
+<em class="quotelev1">&gt; variable.
+</em><br />
+<em class="quotelev1">&gt; It can do what you want, and I agree it makes sense to label these
+</em><br />
+<em class="quotelev1">&gt; coordinate
+</em><br />
+<em class="quotelev1">&gt; variables as X and Y. That indicates that they are the horizontal
+</em><br />
+<em class="quotelev1">&gt; dimensions.
+</em><br />
+<em class="quotelev1">&gt; It's probably less important which is X and which Y. That's a plotting
+</em><br />
+<em class="quotelev1">&gt; issue.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I think the confusion probably arises because we didn't define what we mean
+</em><br />
+<em class="quotelev1">&gt; by &quot;axis&quot;. We used the word as an &quot;obvious&quot; concept, but there is an
+</em><br />
+<em class="quotelev1">&gt; ambiguity
+</em><br />
+<em class="quotelev1">&gt; about whether it corresponds to a dimension of a data variable, or a
+</em><br />
+<em class="quotelev1">&gt; physical
+</em><br />
+<em class="quotelev1">&gt; variable (not necessarily spatiotemporal) which could be an independent
+</em><br />
+<em class="quotelev1">&gt; variable on which the data depends. Latitude might be an axis in the second
+</em><br />
+<em class="quotelev1">&gt; sense even if it's not an axis in the first sense. I prefer the first
+</em><br />
+<em class="quotelev1">&gt; sense,
+</em><br />
+<em class="quotelev1">&gt; which is the one the axis attribute originally had.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Forwarded message from Sebastien Villaume &lt;
+</em><br />
+<em class="quotelev1">&gt; sebastien.villaume at ecmwf.int &gt; -----
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Date: Fri, 7 Apr 2017 09:10:09 +0000
+</em><br />
+<em class="quotelev1">&gt; From: Sebastien Villaume &lt;sebastien.villaume at ecmwf.int&gt; To: David Hassell
+</em><br />
+<em class="quotelev1">&gt; &lt;david.hassell at ncas.ac.uk&gt; CC: CF Metadata &lt;cf-metadata at cgd.ucar.edu&gt; ,
+</em><br />
+<em class="quotelev1">&gt; Jonathan Gregory &lt;j.m.gregory at reading.ac.uk&gt; Subject: Re: [CF-metadata]
+</em><br />
+<em class="quotelev1">&gt; axis attribute
+</em><br />
+<em class="quotelev1">&gt; X-Mailer: Zimbra 8.6.0_GA_1200 (ZimbraWebClient - FF50
+</em><br />
+<em class="quotelev1">&gt; (Linux)/8.6.0_GA_1200)
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear David,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I see your point and you are probably right that a plotting routine will
+</em><br />
+<em class="quotelev1">&gt; probably sort this out.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; However this is not what I am after, I am more interested in metadata
+</em><br />
+<em class="quotelev1">&gt; discovery and indexing.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I need to discover what I have in a file without plotting it, without
+</em><br />
+<em class="quotelev1">&gt; having a human looking at it to confirm what it is and that it has been
+</em><br />
+<em class="quotelev1">&gt; plotted correctly.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I also would like to use these metadata informations to perform actions
+</em><br />
+<em class="quotelev1">&gt; like merging netCDF files, slicing, cropping, aggregating, interpolating,
+</em><br />
+<em class="quotelev1">&gt; comparing data in different grids and representations, etc.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I understand that implicit is fine and that explicit is not required for
+</em><br />
+<em class="quotelev1">&gt; some applications. I have no issue with this.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; My personal point of view is that explicit is better than implicit: I
+</em><br />
+<em class="quotelev1">&gt; tend to prefer &quot;mandatory&quot; over &quot;optional&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Being implicit means that the assumptions made need to be valid 100% of
+</em><br />
+<em class="quotelev1">&gt; the time to avoid accidents or corner cases.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I would like to be explicit so I need all the proper mechanisms
+</em><br />
+<em class="quotelev1">&gt; (variables, semantics, etc.) in place so I can use them.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Right now it feels that I am missing some functionality.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Let me copy below few bits of the terminology section in the CF 1.7
+</em><br />
+<em class="quotelev1">&gt; draft document (very similar to 1.6). Please read it keeping in mind what
+</em><br />
+<em class="quotelev1">&gt; is really an axis, a coordinate, a spatio-temporal dimension and an an
+</em><br />
+<em class="quotelev1">&gt; array dimension. Each time you read &quot;coordinate2, &quot;dimension&quot; or
+</em><br />
+<em class="quotelev1">&gt; &quot;dimensional&quot;, ask yourself what is implied and if it is not ambiguous:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------------
+</em><br />
+<em class="quotelev1">&gt; variables
+</em><br />
+<em class="quotelev1">&gt; ------------------------
+</em><br />
+<em class="quotelev1">&gt; auxiliary coordinate variable
+</em><br />
+<em class="quotelev1">&gt;     Any netCDF variable that contains coordinate data, but is not a
+</em><br />
+<em class="quotelev1">&gt; coordinate variable (in the sense of that term defined by the NUG and used
+</em><br />
+<em class="quotelev1">&gt; by this standard - see below). Unlike coordinate variables, there is no
+</em><br />
+<em class="quotelev1">&gt; relationship between the name of an auxiliary coordinate variable and the
+</em><br />
+<em class="quotelev1">&gt; name(s) of its dimension(s).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; coordinate variable
+</em><br />
+<em class="quotelev1">&gt;     We use this term precisely as it is defined in section 2.3.1 of the
+</em><br />
+<em class="quotelev1">&gt; NUG . It is a one-dimensional variable with the same name as its dimension
+</em><br />
+<em class="quotelev1">&gt; [e.g., time(time) ], and it is defined as a numeric data type with values
+</em><br />
+<em class="quotelev1">&gt; that are ordered monotonically. Missing values are not allowed in
+</em><br />
+<em class="quotelev1">&gt; coordinate variables.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; grid mapping variable
+</em><br />
+<em class="quotelev1">&gt;     A variable used as a container for attributes that define a specific
+</em><br />
+<em class="quotelev1">&gt; grid mapping. The type of the variable is arbitrary since it contains no
+</em><br />
+<em class="quotelev1">&gt; data.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; multidimensional coordinate variable
+</em><br />
+<em class="quotelev1">&gt;     An auxiliary coordinate variable that is multidimensional.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; scalar coordinate variable
+</em><br />
+<em class="quotelev1">&gt;     A scalar variable (i.e. one with no dimensions) that contains
+</em><br />
+<em class="quotelev1">&gt; coordinate data. Depending on context, it may be functionally equivalent
+</em><br />
+<em class="quotelev1">&gt; either to a size-one coordinate variable (Section 5.7, &quot;Scalar Coordinate
+</em><br />
+<em class="quotelev1">&gt; Variables&quot;) or to a size-one auxiliary coordinate variable (Section 6.1,
+</em><br />
+<em class="quotelev1">&gt; &quot;Labels&quot; and Section 9.2, &quot;Collections, instances, and elements&quot;).
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------------
+</em><br />
+<em class="quotelev1">&gt; dimensions
+</em><br />
+<em class="quotelev1">&gt; ------------------------
+</em><br />
+<em class="quotelev1">&gt; latitude dimension
+</em><br />
+<em class="quotelev1">&gt;     A dimension of a netCDF variable that has an associated latitude
+</em><br />
+<em class="quotelev1">&gt; coordinate variable.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; longitude dimension
+</em><br />
+<em class="quotelev1">&gt;     A dimension of a netCDF variable that has an associated longitude
+</em><br />
+<em class="quotelev1">&gt; coordinate variable.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; spatiotemporal dimension
+</em><br />
+<em class="quotelev1">&gt;     A dimension of a netCDF variable that is used to identify a location
+</em><br />
+<em class="quotelev1">&gt; in time and/or space.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; time dimension
+</em><br />
+<em class="quotelev1">&gt;     A dimension of a netCDF variable that has an associated time
+</em><br />
+<em class="quotelev1">&gt; coordinate variable.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; vertical dimension
+</em><br />
+<em class="quotelev1">&gt;     A dimension of a netCDF variable that has an associated vertical
+</em><br />
+<em class="quotelev1">&gt; coordinate variable.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ------------------------
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; So according to this terminology, I have in my file, 2 auxiliary
+</em><br />
+<em class="quotelev1">&gt; coordinates variables, but no &quot;real&quot; coordinates variables (according to
+</em><br />
+<em class="quotelev1">&gt; the NUG) so my auxiliary coordinates are auxiliary to what?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; What is a &quot;multidimensional coordinate&quot;? if dimension means
+</em><br />
+<em class="quotelev1">&gt; spatio-temporal dimension it is a non sense because a coordinate can only
+</em><br />
+<em class="quotelev1">&gt; reference 1 spatio-temporal dimension, if it is meant to be
+</em><br />
+<em class="quotelev1">&gt; array-dimensions it is not clear...
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; What are my 2D array latitude and longitude then? are they latitude and
+</em><br />
+<em class="quotelev1">&gt; longitude dimension defined in the terminology? not really.... because
+</em><br />
+<em class="quotelev1">&gt; there are no such things as latitude and longitude dimension: you can
+</em><br />
+<em class="quotelev1">&gt; define latitude and longitude coordinates, associated with 2 axis that
+</em><br />
+<em class="quotelev1">&gt; themselves define 2 spatial dimensions... but the coordinates can be
+</em><br />
+<em class="quotelev1">&gt; defined in whatever n-D array.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I like the definition of &quot;grid mapping variable&quot;, I could use a similar
+</em><br />
+<em class="quotelev1">&gt; variable to be a container for attributes for my &quot;axis variable&quot; with no
+</em><br />
+<em class="quotelev1">&gt; data!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I know that in the day-to-day life and discussions we don't make the
+</em><br />
+<em class="quotelev1">&gt; effort to be precise (I don't) and that it is easy to overload the meaning
+</em><br />
+<em class="quotelev1">&gt; of things but I think that the CF document needs to be very precise, non
+</em><br />
+<em class="quotelev1">&gt; ambiguous and can not mix axes, coordinates, spatio-temporal and array
+</em><br />
+<em class="quotelev1">&gt; dimensions.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; /S?bastien
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message -----
+</em><br />
+<em class="quotelev1">&gt; From: &quot;David Hassell&quot; &lt;david.hassell at ncas.ac.uk&gt; To: &quot;Sebastien Villaume&quot;
+</em><br />
+<em class="quotelev1">&gt; &lt;sebastien.villaume at ecmwf.int&gt; Cc: &quot;CF Metadata&quot; &lt;cf-metadata at cgd.ucar.edu&gt;
+</em><br />
+<em class="quotelev1">&gt; , &quot;Jonathan Gregory&quot; &lt;
+</em><br />
+<em class="quotelev1">&gt; j.m.gregory at reading.ac.uk &gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Sent: Friday, 7 April, 2017 08:37:20
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] axis attribute
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear S?bastien,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Please bear with me when I ask to right back to the beginning! I am not
+</em><br />
+<em class="quotelev1">&gt; sure what the benefit is in labelling the dimensions as X or Y. In the
+</em><br />
+<em class="quotelev1">&gt; original tripolar case we have:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; dimensions:
+</em><br />
+<em class="quotelev1">&gt;     i = 96 ;
+</em><br />
+<em class="quotelev1">&gt;     j = 73 ;
+</em><br />
+<em class="quotelev1">&gt; variables:
+</em><br />
+<em class="quotelev1">&gt;     float latitude(j, i) ;
+</em><br />
+<em class="quotelev1">&gt;         latitude:units = &quot;degrees_north&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     float longitude(j, i) ;
+</em><br />
+<em class="quotelev1">&gt;         longitude:units = &quot;degrees_east&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     float sit(j, i) ;
+</em><br />
+<em class="quotelev1">&gt;         sit:units = &quot;m&quot; ;
+</em><br />
+<em class="quotelev1">&gt;         sit:standard_name = &quot;sea_ice_thickness&quot; ;
+</em><br />
+<em class="quotelev1">&gt;         sit:coordinates = &quot;latitude longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; There is nothing stopping anything from seeing that this is 2-d array of
+</em><br />
+<em class="quotelev1">&gt; size i*j, and there is nothing stopping software subpacing the data by i
+</em><br />
+<em class="quotelev1">&gt; and j indices.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I don't think a plotting routine would benefit from knowing that the i
+</em><br />
+<em class="quotelev1">&gt; dimension was &quot;X&quot;, because there are no 1-d coordinates it can use along
+</em><br />
+<em class="quotelev1">&gt; that dimension.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Many thanks and all the best,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; David
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 6 April 2017 at 22:45, Sebastien Villaume &lt;
+</em><br />
+<em class="quotelev1">&gt; sebastien.villaume at ecmwf.int &gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; wrote:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear Mark and Jonathan,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; thank you for your comments.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _at_Mark:
+</em><br />
+<em class="quotelev1">&gt; the short answer: you can put in principle whatever you want in that
+</em><br />
+<em class="quotelev1">&gt; variable because in this case it is a dummy variable only there to
+</em><br />
+<em class="quotelev1">&gt; hold the
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; axis attribute. But please read the long explanation!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; the long, boring explanation:
+</em><br />
+<em class="quotelev1">&gt; As I understand it, the CF convention does not recognize axis as a
+</em><br />
+<em class="quotelev1">&gt; valid
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; object on its own like for &quot;dimensions&quot; and the various type of
+</em><br />
+<em class="quotelev1">&gt; &quot;variables&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; and the convention seems to make it mandatory to attach to it a
+</em><br />
+<em class="quotelev1">&gt; variable
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; that becomes a &quot;coordinate&quot; variable. Note that I say that it is the
+</em><br />
+<em class="quotelev1">&gt; coordinate variable that is attached to the axis and not the opposite.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; From a mathematical point of view, it is perfectly possible to define
+</em><br />
+<em class="quotelev1">&gt; an
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; axis without a coordinate on it (arguably it is not that useful). The
+</em><br />
+<em class="quotelev1">&gt; common case is that a 1-D array defines positions on that axis (the
+</em><br />
+<em class="quotelev1">&gt; coordinate). Then your 1-D data points are positioned with the help of
+</em><br />
+<em class="quotelev1">&gt; the
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; coordinate, itself attached to the axis.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If you have one more axis, you can define a new coordinate on it. This
+</em><br />
+<em class="quotelev1">&gt; creates a 2-D space. Now you have the choice on how you represent your
+</em><br />
+<em class="quotelev1">&gt; 2-D
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; data points:
+</em><br />
+<em class="quotelev1">&gt; if the dataset is totally irregular you will have a 1-D array of &quot;n&quot;
+</em><br />
+<em class="quotelev1">&gt; data
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; points associated with a 1-D array of &quot;n&quot; positions for the first
+</em><br />
+<em class="quotelev1">&gt; dimension
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; and a 1-D array of &quot;n&quot; positions for the second dimension. It works,
+</em><br />
+<em class="quotelev1">&gt; it is
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; still a 2-D dataset stored in a long one dimensional vector.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Imagine that you realize that your dataset is not as irregular as you
+</em><br />
+<em class="quotelev1">&gt; thought, it is in fact a regular grid! you identify that you only have
+</em><br />
+<em class="quotelev1">&gt; i
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; possible values of the first coordinate and j possible values for the
+</em><br />
+<em class="quotelev1">&gt; second coordinate, you also notice that i*j=n. Great you can now
+</em><br />
+<em class="quotelev1">&gt; represent
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; your dataset with 2 coordinates of length i and j respectively, each of
+</em><br />
+<em class="quotelev1">&gt; them associated with 2 axes x and y and your data is now a 2-D array of
+</em><br />
+<em class="quotelev1">&gt; size (i,j). you can position your data using the coordinates, it is
+</em><br />
+<em class="quotelev1">&gt; mapped
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; using the indices within each coordinate array. Now you have a 2-D
+</em><br />
+<em class="quotelev1">&gt; spatial
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; dataset sored in a 2-D array with 2 supporting 1-D spatial coordinates
+</em><br />
+<em class="quotelev1">&gt; stored in one dimensional vectors.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Lets say now that you take this regular grid and you distort it... your
+</em><br />
+<em class="quotelev1">&gt; regular grid is gone you can no longer use i and j for partitioning!
+</em><br />
+<em class="quotelev1">&gt; really? well no, nobody says that you can not slice your &quot;n&quot; long
+</em><br />
+<em class="quotelev1">&gt; vectors
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; into i*j arrays! you could choose whatever you want for i and j as
+</em><br />
+<em class="quotelev1">&gt; long as
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; i*j=n. Of course if you choose (2)*(n/2) or (n/2)*(2), it is a bit
+</em><br />
+<em class="quotelev1">&gt; useless,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; but you can also choose meaningful i and j because even if your grid
+</em><br />
+<em class="quotelev1">&gt; became
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; irregular, it is not random points, it is still a grid of size i*j .
+</em><br />
+<em class="quotelev1">&gt; This
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; is exactly my use case! And in that situation your coordinates can be
+</em><br />
+<em class="quotelev1">&gt; arranged in arrays of size i*j. What I need is 2 axes and 2
+</em><br />
+<em class="quotelev1">&gt; coordinates of
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; dimension 2 with lengths i and j. The catch here is that I have 2-D
+</em><br />
+<em class="quotelev1">&gt; arrays
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; to store one &quot;spatial&quot; dimension! It is another case of overlapped
+</em><br />
+<em class="quotelev1">&gt; concepts, dimension is used transparently for the dimension of arrays,
+</em><br />
+<em class="quotelev1">&gt; dimension of the geometrical space, and sometimes for the size of one
+</em><br />
+<em class="quotelev1">&gt; of
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; the dimensions of an array!!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Anyway, I should be able to define my axes like this:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; int x;
+</em><br />
+<em class="quotelev1">&gt;     x:axis = &quot;X&quot;;
+</em><br />
+<em class="quotelev1">&gt;     x:standard_name = &quot;x_axis&quot; ; // no standard name exists...
+</em><br />
+<em class="quotelev1">&gt;     x:units = &quot;1&quot; ; // no units, it will come with the coordinate
+</em><br />
+<em class="quotelev1">&gt; int y;
+</em><br />
+<em class="quotelev1">&gt;     y:axis = &quot;Y&quot;;
+</em><br />
+<em class="quotelev1">&gt;     y:standard_name = &quot;y_axis&quot; ; // no standard name exists...
+</em><br />
+<em class="quotelev1">&gt;     y:units = &quot;1&quot; ; // no units, it will come with the coordinate
+</em><br />
+<em class="quotelev1">&gt; float longitude(j,i);
+</em><br />
+<em class="quotelev1">&gt;     longitude:standard_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     longitude:units = &quot;degrees&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     longitude:positive = &quot;east&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     longitude:long_name = &quot;longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     longitude:axis_mapping = &quot;X&quot; ;
+</em><br />
+<em class="quotelev1">&gt; float latitude(j,i);
+</em><br />
+<em class="quotelev1">&gt;     latitude:standard_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     latitude:units = &quot;degrees&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     latitude:positive = &quot;north&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     latitude:long_name = &quot;latitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     latitude:axis_mapping = &quot;Y&quot; ;
+</em><br />
+<em class="quotelev1">&gt; float sit(j, i) ;
+</em><br />
+<em class="quotelev1">&gt;     sit:units = &quot;m&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     sit:standard_name = &quot;sea_ice_thickness&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     sit:long_name = &quot;Ice thickness&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     sit:coordinates = &quot;latitude longitude&quot; ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; several comments:
+</em><br />
+<em class="quotelev1">&gt; notice how one could tell on which axis the coordinate should go using
+</em><br />
+<em class="quotelev1">&gt; for
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; instance a &quot;axis_mapping&quot; attribute. Not a &quot;coordinate&quot; attribute,
+</em><br />
+<em class="quotelev1">&gt; this one
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; should be used to tell the coordinates of my data variable!
+</em><br />
+<em class="quotelev1">&gt; I find this approach clearer and more flexible as it can probably cater
+</em><br />
+<em class="quotelev1">&gt; for any situation of axes, coordinates, etc.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; But because in CF one cannot create bare axis, I follow the rules and
+</em><br />
+<em class="quotelev1">&gt; creates:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; double x(i);
+</em><br />
+<em class="quotelev1">&gt;     x:axis = &quot;X&quot;;
+</em><br />
+<em class="quotelev1">&gt;     x:standard_name = &quot;...&quot; ; // not an axis anymore, give me a
+</em><br />
+<em class="quotelev1">&gt; standard
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; name
+</em><br />
+<em class="quotelev1">&gt;     x:units = &quot;1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     y:long_name = &quot;i-index of mesh grid&quot; ;
+</em><br />
+<em class="quotelev1">&gt; double y(j);
+</em><br />
+<em class="quotelev1">&gt;     y:axis = &quot;Y&quot;;
+</em><br />
+<em class="quotelev1">&gt;     y:standard_name = &quot;...&quot; ; // not an axis anymore, give me a
+</em><br />
+<em class="quotelev1">&gt; standard
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; name
+</em><br />
+<em class="quotelev1">&gt;     y:units = &quot;1&quot; ;
+</em><br />
+<em class="quotelev1">&gt;     y:long_name = &quot;j-index of mesh grid&quot; ;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; and I have the choice of what I put in those arrays since it is somehow
+</em><br />
+<em class="quotelev1">&gt; artificial.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I could populate the &quot;primary&quot; coordinates with 1 to i and 1 to j which
+</em><br />
+<em class="quotelev1">&gt; would represent the indices and if I subset the grid, I then retain the
+</em><br />
+<em class="quotelev1">&gt; information that the domain has been cropped because the indices left
+</em><br />
+<em class="quotelev1">&gt; will
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; not be 1 to i/j but n to m.
+</em><br />
+<em class="quotelev1">&gt; I don' t really like this but what can I do?
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If we follow this idea, it means introducing a clear concept from
+</em><br />
+<em class="quotelev1">&gt; &quot;axis&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; besides the other types of variables, defining new attribute to
+</em><br />
+<em class="quotelev1">&gt; &quot;attach&quot;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; coordinates to axes, etc.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Another solution, much less disturbing, would be to heavily modify the
+</em><br />
+<em class="quotelev1">&gt; proper chapters in the CF document to:
+</em><br />
+<em class="quotelev1">&gt; - completely decouple the concepts of &quot;axis&quot; and &quot;coordinate&quot;: a
+</em><br />
+<em class="quotelev1">&gt; coordinate is not an axis and vice versa.
+</em><br />
+<em class="quotelev1">&gt; - completely decouple the concepts of spatio temporal dimension from
+</em><br />
+<em class="quotelev1">&gt; array
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; dimension from the size the array dimension
+</em><br />
+<em class="quotelev1">&gt; - continue to use the &quot;axis&quot; attribute  but on n-D array coordinates:
+</em><br />
+<em class="quotelev1">&gt; the
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; array has n-D dimensions but the coordinate map to 1 axis/spatial
+</em><br />
+<em class="quotelev1">&gt; dimension
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; only!
+</em><br />
+<em class="quotelev1">&gt; - Whatever the dimensions of the array for the coordinate, all the
+</em><br />
+<em class="quotelev1">&gt; values
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; contained in the array must be mapped on one given axis, the one
+</em><br />
+<em class="quotelev1">&gt; defined in
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; axis attribute. For instance, a 2-D latitude only contains values that
+</em><br />
+<em class="quotelev1">&gt; are
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; latitudes and will only map on one axis.
+</em><br />
+<em class="quotelev1">&gt; - In principle one could have in the same file several coordinates of
+</em><br />
+<em class="quotelev1">&gt; possibly different &quot;array&quot; dimensions, different sizes and different
+</em><br />
+<em class="quotelev1">&gt; units
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; defined for one axis. This means that the attribute &quot;axis=z&quot; for
+</em><br />
+<em class="quotelev1">&gt; instance
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; can appears more than once in the file. The only restriction I see is
+</em><br />
+<em class="quotelev1">&gt; that
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 2 data variables can be only plotted simultaneously if all their
+</em><br />
+<em class="quotelev1">&gt; coordinates share the same units (the coordinate mapped on one axis of
+</em><br />
+<em class="quotelev1">&gt; the
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; first data variable must have the same units than the coordinate
+</em><br />
+<em class="quotelev1">&gt; mapped on
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; the same axis for the other data variable). This allow 2 data variables
+</em><br />
+<em class="quotelev1">&gt; defined on two different grid sharing the same units to be in the same
+</em><br />
+<em class="quotelev1">&gt; file
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; and plotted together.
+</em><br />
+<em class="quotelev1">&gt; - X and Y should be clearly decoupled from longitude and latitude. X
+</em><br />
+<em class="quotelev1">&gt; and Y
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; are the axes, longitude and latitude are the coordinates!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _at_Jonathan:
+</em><br />
+<em class="quotelev1">&gt; I think the whole confusion here comes from the overlapping of
+</em><br />
+<em class="quotelev1">&gt; concepts:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; axes and coordinates on one hand and dimension of arrays and spatial
+</em><br />
+<em class="quotelev1">&gt; dimensions on the other hand. If the relevant chapters are rewritten
+</em><br />
+<em class="quotelev1">&gt; carefully to separate axes from coordinates and array dimensions from
+</em><br />
+<em class="quotelev1">&gt; spatio-temporal dimensions we are good.  think
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _at_all: Reading more through the Trac tickets system, I noticed the nice
+</em><br />
+<em class="quotelev1">&gt; Trac ticket 117 about &quot;multiple&quot; time axis. This is a nice example of
+</em><br />
+<em class="quotelev1">&gt; mixing axes, coordinates, dimensions of arrays, the time dimension,
+</em><br />
+<em class="quotelev1">&gt; etc!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; /S?bastien
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; ----- Original Message -----
+</em><br />
+<em class="quotelev1">&gt; From: &quot;Jonathan Gregory&quot; &lt;j.m.gregory at reading.ac.uk&gt; To:
+</em><br />
+<em class="quotelev1">&gt; cf-metadata at cgd.ucar.edu Sent: Thursday, 6 April, 2017 16:49:56
+</em><br />
+<em class="quotelev1">&gt; Subject: Re: [CF-metadata] axis attribute
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Dear Jim and Sebastien
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The original intention of axis was to label the independent variables
+</em><br />
+<em class="quotelev1">&gt; as 1D
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; xyzt axes of the data variables.  This can be deduced from other
+</em><br />
+<em class="quotelev1">&gt; attributes,
+</em><br />
+<em class="quotelev1">&gt; but it's more effort. It's partly a plotting hint, but also it's
+</em><br />
+<em class="quotelev1">&gt; because
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; you
+</em><br />
+<em class="quotelev1">&gt; might reasonable want to tell software, &quot;give me the z-axis
+</em><br />
+<em class="quotelev1">&gt; coordinates&quot;,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; or
+</em><br />
+<em class="quotelev1">&gt; &quot;calculate a mean over the x-direction&quot;. The latter is often a zonal
+</em><br />
+<em class="quotelev1">&gt; mean,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; but
+</em><br />
+<em class="quotelev1">&gt; it isn't with a rotated-pole or tripolar grid, yet the operation is
+</em><br />
+<em class="quotelev1">&gt; still
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; performed sometimes.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It's useful that you've pointed out the confusion of purpose. If it
+</em><br />
+<em class="quotelev1">&gt; were
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; regarded as an acceptable backwards-incompatibility, which I'm nervous
+</em><br />
+<em class="quotelev1">&gt; about,
+</em><br />
+<em class="quotelev1">&gt; I'd be happy if we returned &quot;axis&quot; to its original purpose of
+</em><br />
+<em class="quotelev1">&gt; identifying
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; 1D
+</em><br />
+<em class="quotelev1">&gt; axes, and also for scalar coordinate variables (which are equivalent to
+</em><br />
+<em class="quotelev1">&gt; axes
+</em><br />
+<em class="quotelev1">&gt; of size one), and provided another attribute to label aux coords as
+</em><br />
+<em class="quotelev1">&gt; horizontal.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree that if we have 1D x and y, with 2D lat and lon, the 1D
+</em><br />
+<em class="quotelev1">&gt; variables
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; are
+</em><br />
+<em class="quotelev1">&gt; the axes. That's consistent with the original purpose of the axis
+</em><br />
+<em class="quotelev1">&gt; attribute.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I also find the units of latitude and longitude confusing: it looks
+</em><br />
+<em class="quotelev1">&gt; like
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; it was a way to squeeze the direction of the coordinate inside the
+</em><br />
+<em class="quotelev1">&gt; units. I
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; have the same observation for the time coordinate that has its origin
+</em><br />
+<em class="quotelev1">&gt; in
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; the units!
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; This convention was kept in CF for backwards-compatibility with
+</em><br />
+<em class="quotelev1">&gt; COARDS. CF
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; does
+</em><br />
+<em class="quotelev1">&gt; not use units in any other case to identify the quantity or sense.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; It was done correctly for z coordinate using &quot;units&quot; and &quot;positive&quot;,
+</em><br />
+<em class="quotelev1">&gt; probably because there are many types of z coordinates with various
+</em><br />
+<em class="quotelev1">&gt; origin
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; and directions, and no real consensus. I note however that often the
+</em><br />
+<em class="quotelev1">&gt; origin
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; is not always clearly defined.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; The positive attribute was also kept for backwards-compatibility with
+</em><br />
+<em class="quotelev1">&gt; COARDS.
+</em><br />
+<em class="quotelev1">&gt; It has the advantage of being useful to identify the vertical axis, but
+</em><br />
+<em class="quotelev1">&gt; this
+</em><br />
+<em class="quotelev1">&gt; can also be done with axis=&quot;Z&quot;. CF standard names provide information
+</em><br />
+<em class="quotelev1">&gt; which
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; indicates the sign convention.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; If coordinate_index is confusing, I think standard_names containing
+</em><br />
+<em class="quotelev1">&gt; x_index
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; or y_index would be OK, provided we change the existing standard names
+</em><br />
+<em class="quotelev1">&gt;   magnitude_of_derivative_of_position_wrt_x_coordinate_index
+</em><br />
+<em class="quotelev1">&gt;   magnitude_of_derivative_of_position_wrt_y_coordinate_index
+</em><br />
+<em class="quotelev1">&gt; to remove &quot;_coordinate&quot;.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Best wishes
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; David Hassell
+</em><br />
+<em class="quotelev1">&gt; National Centre for Atmospheric Science
+</em><br />
+<em class="quotelev1">&gt; Department of Meteorology, University of Reading,
+</em><br />
+<em class="quotelev1">&gt; Earley Gate, PO Box 243, Reading RG6 6BB
+</em><br />
+<em class="quotelev1">&gt; <a href="Tel: +44 118 378 5613 http://www.met.reading.ac.uk/">Tel: +44 118 378 5613 http://www.met.reading.ac.uk/</a>
+</em><br />
+<em class="quotelev1">&gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt; David Hassell
+</em><br />
+<em class="quotelev1">&gt; National Centre for Atmospheric Science
+</em><br />
+<em class="quotelev1">&gt; Department of Meteorology, University of Reading,
+</em><br />
+<em class="quotelev1">&gt; Earley Gate, PO Box 243, Reading RG6 6BB
+</em><br />
+<em class="quotelev1">&gt; <a href="Tel: +44 118 378 5613 http://www.met.reading.ac.uk/">Tel: +44 118 378 5613 http://www.met.reading.ac.uk/</a>
+</em><br />
+<em class="quotelev1">&gt; ----- End forwarded message -----
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; --
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;         Visit us on
+</em><br />
+<em class="quotelev1">&gt; Facebook        Jim Biard
+</em><br />
+<em class="quotelev1">&gt; Research Scholar
+</em><br />
+<em class="quotelev1">&gt; Cooperative Institute for Climate and Satellites NC
+</em><br />
+<em class="quotelev1">&gt; North Carolina State University
+</em><br />
+<em class="quotelev1">&gt; NOAA National Centers for Environmental Information
+</em><br />
+<em class="quotelev1">&gt; formerly NOAA?s National Climatic Data Center
+</em><br />
+<em class="quotelev1">&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev1">&gt; e: jbiard at cicsnc.org
+</em><br />
+<em class="quotelev1">&gt; o: +1 828 271 4900
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Connect with us on Facebook for climate and ocean and geophysics
+</em><br />
+<em class="quotelev1">&gt; information, and follow us on Twitter at _at_NOAANCEIclimate and
+</em><br />
+<em class="quotelev1">&gt; _at_NOAANCEIocngeo .
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<br /><br /><pre>
+-- 
+David Hassell
+National Centre for Atmospheric Science
+Department of Meteorology, University of Reading,
+Earley Gate, PO Box 243, Reading RG6 6BB
+Tel: +44 118 378 5613
+<a href="http://www.met.reading.ac.uk/">http://www.met.reading.ac.uk/</a>
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Apr 19 2017 - 14:26:20 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start8263">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./8264.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] axis attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./8262.html" title="Previous message in the list">Sebastien Villaume: "[CF-metadata] axis attribute"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg8263" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg8263" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg8263" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg8263" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:13 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./8262.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./8264.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

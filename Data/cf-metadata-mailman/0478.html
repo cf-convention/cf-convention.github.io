@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] axis attribute from Richard Gorman on 2006-11-22 (cf-metadata-mailman)</title>
+<meta name="Author" content="Richard Gorman (r.gorman)" />
+<meta name="Subject" content="[CF-metadata] axis attribute" />
+<meta name="Date" content="2006-11-22" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0477.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0479.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] axis attribute</h1>
+<!-- received="Wed Nov 22 12:49:07 2006" -->
+<!-- isoreceived="20061122124907" -->
+<!-- sent="Thu, 23 Nov 2006 08:49:07 +1300" -->
+<!-- isosent="20061122194907" -->
+<!-- name="Richard Gorman" -->
+<!-- email="r.gorman" -->
+<!-- subject="[CF-metadata] axis attribute" -->
+<!-- id="4564A9B3.1030703_at_niwa.co.nz" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="20061122074626.GA19787_at_met.reading.ac.uk" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start478" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0479.html" accesskey="d" title="Jonathan Gregory: &quot;[CF-metadata] axis attribute&quot;">Next message</a> ]
+[ <a href="./0477.html" title="Ed Hartnett: &quot;[CF-metadata] libcf alpha 4 released on Unidata web site...&quot;">Previous message</a> ]
+[ <a href="./0475.html" title="Jonathan Gregory: &quot;[CF-metadata] axis attribute&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg478" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg478" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg478" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg478" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Richard Gorman &lt;<a href="mailto:r.gorman?Subject=Re%3A%20%5BCF-metadata%5D%20axis%20attribute">r.gorman</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 23 Nov 2006 08:49:07 +1300</span><br />
+</address>
+<br />
+Dear Jonathon,
+<br />
+<br />This was to interpolate fields onto a lat/lon grid for input to a wave 
+<br />
+model. The interpolation subroutine was written to expect inputs in the 
+<br />
+form of 2D arrays of latitude, longitude and the input field, with 
+<br />
+indices in (x,y) order. So I wanted to identify which were the &quot;x-like&quot; 
+<br />
+and &quot;y-like&quot; dimensions in the original file.
+<br />
+<br />In this case, I suspect it would still work if the &quot;x&quot; and &quot;y&quot; indices 
+<br />
+are transposed, so as long as we can identify the two dimensions which 
+<br />
+are horizontal. But there could be cases where the parity flip would 
+<br />
+matter, e.g. where axial quantities such as vorticity are involved. So I 
+<br />
+think it is useful to allow the axis = X and Y attribute for coordinate 
+<br />
+variables that are a continuous transformation from cartesian 
+<br />
+coordinates or lat/lon coordinates (without a parity inversion).
+<br />
+<br />Regards,
+<br />
+Richard
+<br />
+<br /><br />On 22/11/2006 20:46 p.m., Jonathan Gregory wrote:
+<br />
+<em class="quotelev1">&gt; Dear Richard
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; ----- Forwarded message from Richard Gorman &lt;r.gorman at niwa.co.nz&gt; -----
+</em><br />
+<em class="quotelev2">&gt;&gt; When I started writing code to handle NetCDF data, the files I was 
+</em><br />
+<em class="quotelev2">&gt;&gt; dealing with used the axis = X and Y attribute for rotated pole 
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinates. So I took that interpretation to be standard and, like you, 
+</em><br />
+<em class="quotelev2">&gt;&gt; coded to use that attribute as one way to identify the spatial 
+</em><br />
+<em class="quotelev2">&gt;&gt; coordinate variables and dimensions.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; What was the importance of identifying them as X and Y? Is it to decide which
+</em><br />
+<em class="quotelev1">&gt; one is the horizontal axis of the plot, for instance?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Jonathan
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<br /><pre>
+-- 
+=========================================================
+Richard Gorman
+National Institute of Water and Atmospheric Research
+PO Box 11-115, Hamilton, 3251, New Zealand
+Tel: +64 7 856 1736 Mob: 021 074 7490 Fax: +64 7 856 0151
+Email: r.gorman at niwa.co.nz   Web: <a href="http://www.niwa.co.nz">http://www.niwa.co.nz</a>
+=========================================================
+</pre>
+<span id="received"><dfn>Received on</dfn> Wed Nov 22 2006 - 12:49:07 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start478">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0479.html" title="Next message in the list">Jonathan Gregory: "[CF-metadata] axis attribute"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0477.html" title="Previous message in the list">Ed Hartnett: "[CF-metadata] libcf alpha 4 released on Unidata web site..."</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0475.html" title="Message to which this message replies">Jonathan Gregory: "[CF-metadata] axis attribute"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg478" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg478" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg478" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg478" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:51 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0477.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0479.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

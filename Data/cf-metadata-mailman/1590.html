@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF Section 5.3 &quot;Reduced Horizontal Grid&quot; and Section 8.2 &quot;compression by gathering&quot; somewhat inconsistent from John Caron on 2008-10-11 (cf-metadata-mailman)</title>
+<meta name="Author" content="John Caron (caron)" />
+<meta name="Subject" content="[CF-metadata] CF Section 5.3 &quot;Reduced Horizontal Grid&quot; and Section 8.2 &quot;compression by gathering&quot; somewhat inconsistent" />
+<meta name="Date" content="2008-10-11" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./1589.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1591.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF Section 5.3 &quot;Reduced Horizontal Grid&quot; and Section 8.2 &quot;compression by gathering&quot; somewhat inconsistent</h1>
+<!-- received="Sat Oct 11 15:45:41 2008" -->
+<!-- isoreceived="20081011144541" -->
+<!-- sent="Sat, 11 Oct 2008 15:45:41 -0600" -->
+<!-- isosent="20081011214541" -->
+<!-- name="John Caron" -->
+<!-- email="caron" -->
+<!-- subject="[CF-metadata] CF Section 5.3 &quot;Reduced Horizontal Grid&quot; and Section 8.2 &quot;compression by gathering&quot; somewhat inconsistent" -->
+<!-- id="48F11E85.4060804_at_unidata.ucar.edu" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start1590" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./1591.html" accesskey="d" title="Brian Eaton: &quot;[CF-metadata] CF errata&quot;">Next message</a> ]
+[ <a href="./1589.html" title="John Caron: &quot;[CF-metadata] CF errata&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./1592.html" accesskey="t" title="John Caron: &quot;[CF-metadata] CF Section 5.3 &#0034;Reduced Horizontal Grid&#0034; and Section 8.2 &#0034;compression by gathering&#0034; somewhat inconsistent&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1590" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1590" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1590" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1590" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: John Caron &lt;<a href="mailto:caron?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20Section%205.3%20%22Reduced%20Horizontal%20Grid%22%20and%20Section%208.2%20%22compression%20by%20gathering%22%20somewhat%20inconsistent">caron</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Sat, 11 Oct 2008 15:45:41 -0600</span><br />
+</address>
+<br />
+CF Section 8.2 compression by gathering has this example:
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;lat=73;
+<br />
+&nbsp;&nbsp;lon=96;
+<br />
+&nbsp;&nbsp;landpoint=2381;
+<br />
+&nbsp;&nbsp;depth=4;
+<br />
+<br />variables:
+<br />
+&nbsp;&nbsp;int landpoint(landpoint);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;landpoint:compress=&quot;lat lon&quot;;
+<br />
+&nbsp;&nbsp;float landsoilt(depth,landpoint);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;landsoilt:long_name=&quot;soil temperature&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;landsoilt:units=&quot;K&quot;;
+<br />
+&nbsp;&nbsp;float depth(depth);
+<br />
+&nbsp;&nbsp;float lat(lat);
+<br />
+&nbsp;&nbsp;float lon(lon);
+<br />
+<br />data:
+<br />
+&nbsp;&nbsp;landpoint=363, 364, 365, ...;
+<br />
+<br /><br />However, CF Section 5.3 &quot;Reduced Horizontal Grid&quot; has a different example of Compression by Gathering:
+<br />
+<br />&quot;A &quot;reduced&quot; longitude-latitude grid is one in which the points are arranged along constant latitude lines with the number of points on a latitude line decreasing toward the poles. Storing this type of gridded data in two-dimensional arrays wastes space, and results in the presence of missing values in the 2D coordinate variables.&quot;
+<br />
+<br />Example 5.3. Reduced horizontal grid
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;londim = 128 ;
+<br />
+&nbsp;&nbsp;latdim = 64 ;
+<br />
+&nbsp;&nbsp;rgrid = 6144 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;float PS(rgrid) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PS:long_name = &quot;surface pressure&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PS:units = &quot;Pa&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PS:coordinates = &quot;lon lat&quot; ;
+<br />
+&nbsp;&nbsp;float lon(rgrid) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lon:long_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lon:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;float lat(rgrid) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lat:long_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lat:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;int rgrid(rgrid);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;rgrid:compress = &quot;latdim londim&quot;;
+<br />
+<br />note:
+<br />
+&nbsp;&nbsp;float lon(rgrid);
+<br />
+&nbsp;&nbsp;float lat(rgrid);
+<br />
+<br />instead of: 
+<br />
+&nbsp;&nbsp;float lat(lat);
+<br />
+&nbsp;&nbsp;float lon(lon);      
+<br />
+<br />I believe CF is trying to deal with 2D lat lon coordinates here, whereas in 8.2, it had 1D coordinates. Actually i think the common case for reduced grids is 1D latitude coordinates and variable length 2D longitide coordinates (eg reduced Gaussian Grids).  So probably the example should be
+<br />
+<br />dimensions:
+<br />
+&nbsp;&nbsp;londim = 128 ;
+<br />
+&nbsp;&nbsp;lat = 64 ;
+<br />
+&nbsp;&nbsp;rgrid = 6144 ;
+<br />
+variables:
+<br />
+&nbsp;&nbsp;float PS(rgrid) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PS:long_name = &quot;surface pressure&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PS:units = &quot;Pa&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PS:coordinates = &quot;lon lat&quot; ;
+<br />
+&nbsp;&nbsp;float lon(rgrid) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lon:long_name = &quot;longitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lon:units = &quot;degrees_east&quot; ;
+<br />
+&nbsp;&nbsp;float lat(lat) ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lat:long_name = &quot;latitude&quot; ;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;lat:units = &quot;degrees_north&quot; ;
+<br />
+&nbsp;&nbsp;int rgrid(rgrid);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;rgrid:compress = &quot;lat londim&quot;;
+<br />
+<br />Its also probably worth adding into 8.3 the use of coordinates:
+<br />
+<br />&nbsp;&nbsp;float data(depth, cindex);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;data:coordinates = &quot;lon lat&quot; ;
+<br />
+<br />We havent really described the general use of this &quot;compression by gathering&quot; technique. Does anyone have any example files using this? Should we deprecate? generalize?
+<br />
+<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br />
+<span id="received"><dfn>Received on</dfn> Sat Oct 11 2008 - 15:45:41 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start1590">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./1591.html" title="Next message in the list">Brian Eaton: "[CF-metadata] CF errata"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./1589.html" title="Previous message in the list">John Caron: "[CF-metadata] CF errata"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./1592.html" title="Next message in this discussion thread">John Caron: "[CF-metadata] CF Section 5.3 &#0034;Reduced Horizontal Grid&#0034; and Section 8.2 &#0034;compression by gathering&#0034; somewhat inconsistent"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./1592.html" title="Message sent in reply to this message">John Caron: "[CF-metadata] CF Section 5.3 &#0034;Reduced Horizontal Grid&#0034; and Section 8.2 &#0034;compression by gathering&#0034; somewhat inconsistent"</a></li>
+<li><dfn>Reply</dfn>: <a href="./1603.html" title="Message sent in reply to this message">Steve Hankin: "[CF-metadata] CF Section 5.3 &#0034;Reduced Horizontal Grid&#0034; and Section 8.2 &#0034;compression by gathering&#0034; somewhat inconsistent"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg1590" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg1590" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg1590" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg1590" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:10 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./1589.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./1591.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

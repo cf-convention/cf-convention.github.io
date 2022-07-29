@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] CF and multi-forecast system ensemble data from Kettleborough, Jamie on 2006-10-30 (cf-metadata-mailman)</title>
+<meta name="Author" content="Kettleborough, Jamie (jamie.kettleborough)" />
+<meta name="Subject" content="[CF-metadata] CF and multi-forecast system ensemble data" />
+<meta name="Date" content="2006-10-30" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./0376.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0378.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] CF and multi-forecast system ensemble data</h1>
+<!-- received="Mon Oct 30 07:41:32 2006" -->
+<!-- isoreceived="20061030074132" -->
+<!-- sent="Mon, 30 Oct 2006 14:41:32 +0000" -->
+<!-- isosent="20061030144132" -->
+<!-- name="Kettleborough, Jamie" -->
+<!-- email="jamie.kettleborough" -->
+<!-- subject="[CF-metadata] CF and multi-forecast system ensemble data" -->
+<!-- id="1162219292.16088.86.camel_at_eld408.desktop.frd.metoffice.com" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="1161940978.4780.89.camel_at_localhost.localdomain" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start377" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./0378.html" accesskey="d" title="Kettleborough, Jamie: &quot;[CF-metadata] CF and multi-forecast system ensemble data&quot;">Next message</a> ]
+[ <a href="./0376.html" title="Jonathan Gregory: &quot;[CF-metadata] CF and multi-forecast system ensemble data&quot;">Previous message</a> ]
+[ <a href="./0374.html" title="Bryan Lawrence: &quot;[CF-metadata] CF and multi-forecast system ensemble data&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./0378.html" accesskey="t" title="Kettleborough, Jamie: &quot;[CF-metadata] CF and multi-forecast system ensemble data&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg377" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg377" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg377" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg377" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Kettleborough, Jamie &lt;<a href="mailto:jamie.kettleborough?Subject=Re%3A%20%5BCF-metadata%5D%20CF%20and%20multi-forecast%20system%20ensemble%20data">jamie.kettleborough</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 30 Oct 2006 14:41:32 +0000</span><br />
+</address>
+<br />
+Thanks Bryan,
+<br />
+<br />I'm not sure I've fully got my head round what you are suggesting.  As
+<br />
+I'm sure you're aware (even if it means dredging through the mega post -
+<br />
+sorry again) the whole issue of aggregation was not really the point of
+<br />
+Paco's original post. It was something I introduced to try and
+<br />
+understand how CMOR/IPCC AR4 data might be bought into the same ensemble
+<br />
+framework.  I think this has to be thought about in this context though
+<br />
+- as ensembles are, by their nature, built up from individual model
+<br />
+runs.
+<br />
+<br />Are you suggesting 'external_dictionary' attributes should only be
+<br />
+applied to pseudo-coordinates like ensemble/realization? 
+<br />
+<br />Under your suggestion could you encode the IPCC AR4 data something like
+<br />
+<br />float temperature(time,realization,lat,lon):
+<br />
+&nbsp;&nbsp;&nbsp;temperature:coordinates = 'experiment_id source institution' ;
+<br />
+<br />char experiment_id(realization,len100):
+<br />
+&nbsp;&nbsp;&nbsp;experiment_id:external_vocabulary = '<a href="http://www">http://www</a>-
+<br />
+pcmdi.llnl.gov/ipcc/about_ipcc.php' ; // may not be best URI... but..
+<br />
+<br />char source(realization,len100):
+<br />
+&nbsp;&nbsp;&nbsp;source:external_vocabulary = '<a href="http://www">http://www</a>-
+<br />
+pcmdi.llnl.gov/ipcc/about_ipcc.php'
+<br />
+<br />char institution(realization,len100):
+<br />
+&nbsp;&nbsp;&nbsp;source:external_vocabulary = '<a href="http://www">http://www</a>-
+<br />
+pcmdi.llnl.gov/ipcc/about_ipcc.php'
+<br />
+<br />&nbsp;experiment_id=['720 ppm stabilization experiment (SRES A1B)',
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'550 ppm stabilization experiment (SRES A1B)', ... ]
+<br />
+<br />&nbsp;source=['HadGEM1 (2004): atmosphere: N96L38; ocean: (1.0-0.3 x 1.0);sea
+<br />
+ice: multiple thickness categories, EVP ; land: MOSES2',
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'HadGEM1 (2004): atmosphere: N96L38; ocean: (1.0-0.3 x 1.0);sea
+<br />
+ice: multiple thickness categories, EVP ; land: MOSES2', .... ]
+<br />
+<br />&nbsp;institution=[etc...]
+<br />
+<br />(I'm trying to cross check I understand what you are suggesting - sorry
+<br />
+if I'm way off track).
+<br />
+<br />And Paco could do something similar for ENSEMBLES?  Or of course we
+<br />
+could agree the common ground for ENSEMBLES, IPCC, (and/or MO-QUMP,
+<br />
+cp.net) and publish a new dictionary or sets of dictionaries?  (I guess
+<br />
+the GRIB2 support for ensembles gives some indication of the relevant
+<br />
+meta data WMO would expect to see?)
+<br />
+<br />For aggregation you would not try and capture any of the information in
+<br />
+the global attributes - you would only, in effect, allow aggregation
+<br />
+along pre-existing dimensions (even if they are scalar dimensions).
+<br />
+<br />Thanks,
+<br />
+<br />Jamie
+<br />
+&nbsp;
+<br />
+&nbsp;&nbsp;&nbsp;
+<br />
+<br /><br />On Fri, 2006-10-27 at 10:22 +0100, Bryan Lawrence wrote:
+<br />
+<em class="quotelev1">&gt; Hi Folks
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; It seems that there are two threads to the massive email from
+</em><br />
+<em class="quotelev1">&gt; Jamie,Paco, Jonathan that we've seen (and which is not included
+</em><br />
+<em class="quotelev1">&gt; below :-).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The first is how to expedite aggregation, which is the point John has
+</em><br />
+<em class="quotelev1">&gt; picked up on, and the second is how to deal with the special case of
+</em><br />
+<em class="quotelev1">&gt; ensemble metadata. In this email I'm going to try and boil down what I
+</em><br />
+<em class="quotelev1">&gt; think the issues are. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; The suggestion proposed, as far as I can see reduces to:
+</em><br />
+<em class="quotelev1">&gt;  
+</em><br />
+<em class="quotelev1">&gt; a) we should create some standard names which exactly correspond to
+</em><br />
+<em class="quotelev1">&gt; some recommended global variables, and model integrations should use
+</em><br />
+<em class="quotelev1">&gt; global variables where they contain exactly one realization to indicate
+</em><br />
+<em class="quotelev1">&gt; these.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; b) upon aggregation, one should use the realization dimension (called
+</em><br />
+<em class="quotelev1">&gt; joinDim by John and realization by the triumvirate) as both a dimension
+</em><br />
+<em class="quotelev1">&gt; on the aggregated variable and a key to the metadata about the
+</em><br />
+<em class="quotelev1">&gt; realizations which is extracted from global variables and populates some
+</em><br />
+<em class="quotelev1">&gt; new variables which are essentially metadata variables. (This automatic
+</em><br />
+<em class="quotelev1">&gt; extraction would be based on a correspondence between standard names and
+</em><br />
+<em class="quotelev1">&gt; global attribute names)
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; At this point if we take the word model from point a) and the constraint
+</em><br />
+<em class="quotelev1">&gt; on realization, then what we have is a rule for how to construct global
+</em><br />
+<em class="quotelev1">&gt; metadata into aggregated netcdf files. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Note that CF doesn't *require* any global attributes (2.6.2), so no code
+</em><br />
+<em class="quotelev1">&gt; can rely on them being present, nor does it *limit* global attributes to
+</em><br />
+<em class="quotelev1">&gt; only those defined. (Which is good, because I think those defined are
+</em><br />
+<em class="quotelev1">&gt; not precise enough for me, nor for Paco, judging by the discussion).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I would have thought it makes sense that in producing any aggregation,
+</em><br />
+<em class="quotelev1">&gt; that any of the original metadata which distinguishes the original files
+</em><br />
+<em class="quotelev1">&gt; (and their contents) should appear in metadata associated with the join
+</em><br />
+<em class="quotelev1">&gt; dimension. From a coding point of view the problem will arise in the
+</em><br />
+<em class="quotelev1">&gt; join when the individual files don't all have the appropriate global
+</em><br />
+<em class="quotelev1">&gt; attributes (trust me, it'll happen). Anyway from a CF point of view this
+</em><br />
+<em class="quotelev1">&gt; produces CF issue A: What is the best method of providing metadata on an
+</em><br />
+<em class="quotelev1">&gt; aggregation dimension and indicating that's what has been done?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; (Issue B: might be to make sure our solution works when we aggregate two
+</em><br />
+<em class="quotelev1">&gt; files that have already been aggregated).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I'm sure John has thought more than most (especially me) about this, so
+</em><br />
+<em class="quotelev1">&gt; I'll shut up about aggregation for now ...
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; At this point there is no necessity for any modifications of standard
+</em><br />
+<em class="quotelev1">&gt; names, the discussion thus far is simply about how to use what
+</em><br />
+<em class="quotelev1">&gt; attributes we have, but:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Issue C: should we have a standard name modifier associated with a
+</em><br />
+<em class="quotelev1">&gt; variable on the aggregation dimension to show that it was produced by
+</em><br />
+<em class="quotelev1">&gt; aggregating file attributes?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; They also got into what I would call the specifics of variable metadata
+</em><br />
+<em class="quotelev1">&gt; needed to distinguish ensemble member identity and characteristics.
+</em><br />
+<em class="quotelev1">&gt; These may or may not need standard names, but let's start with the
+</em><br />
+<em class="quotelev1">&gt; principle. Are these not simply special cases of variable metadata? With
+</em><br />
+<em class="quotelev1">&gt; the possible exception of ensemble_weight, all the others are intended
+</em><br />
+<em class="quotelev1">&gt; to be either character strings or url links to information about
+</em><br />
+<em class="quotelev1">&gt; variable metadata. In principle we could want exactly the same
+</em><br />
+<em class="quotelev1">&gt; facilities for any variables (e.g. a bunch of station data in one file,
+</em><br />
+<em class="quotelev1">&gt; we might want to have a lot more characteristics of each station linked
+</em><br />
+<em class="quotelev1">&gt; by the station dimension in exactly the same way as the  realization
+</em><br />
+<em class="quotelev1">&gt; dimension could be used).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; So, I think what we have here is a discussion about what are the
+</em><br />
+<em class="quotelev1">&gt; variable attributes (metadata) required to distinguish ensemble members
+</em><br />
+<em class="quotelev1">&gt; (or model integrations)? This could go way beyond what we have seen in
+</em><br />
+<em class="quotelev1">&gt; the email. Jamie has referred to our work on NumSim
+</em><br />
+<em class="quotelev1">&gt; (<a href="http://proj.badc.rl.ac.uk/ndg/wiki/NumSim">http://proj.badc.rl.ac.uk/ndg/wiki/NumSim</a>), and there is also the work
+</em><br />
+<em class="quotelev1">&gt; on Numerical Model Metadata
+</em><br />
+<em class="quotelev1">&gt; (<a href="http://www.cgam.nerc.ac.uk/pmwiki/NMM/index.php/">http://www.cgam.nerc.ac.uk/pmwiki/NMM/index.php/</a>). Similarly, the
+</em><br />
+<em class="quotelev1">&gt; metadata one *might* want to attach to any observation goes way beyond
+</em><br />
+<em class="quotelev1">&gt; what one can mandate in the CF file (e.g. SensorML etc).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; So there is a continuum of information one could have about a variable
+</em><br />
+<em class="quotelev1">&gt; (indexed by station or realization or whatever), ranging from simply
+</em><br />
+<em class="quotelev1">&gt; identity (e.g. item number in the sequence) to it's source, to the
+</em><br />
+<em class="quotelev1">&gt; entire content of one these external schema.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; CF has a number of ways of actually adding such information, we can use
+</em><br />
+<em class="quotelev1">&gt; labels (6.1), Ancillary Data etc ... and so without going into the
+</em><br />
+<em class="quotelev1">&gt; specifics of the triumvirate discussion, the issue really is:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Issue-D: how far should CF go into providing standard names for
+</em><br />
+<em class="quotelev1">&gt; describing variable metadata?
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Quite clearly there is utility in new standard names, but in doing so
+</em><br />
+<em class="quotelev1">&gt; are we not straying into the governance territory of others - (e.g.
+</em><br />
+<em class="quotelev1">&gt; SensorML). I've argued quite strongly that we shouldn't do any more of
+</em><br />
+<em class="quotelev1">&gt; this, because every time we do, we add to the CF maintenance problem
+</em><br />
+<em class="quotelev1">&gt; (e.g. I think we already have problems with gazeteers). 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Now I know (because I talked to Jamie on the phone) that triumvirate
+</em><br />
+<em class="quotelev1">&gt; could argue that in the case of model metadata, it would be helpful for
+</em><br />
+<em class="quotelev1">&gt; CF to mandate this stuff at least for the numerical model community. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Now we can do that ... but ...
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; I didn't want to make a proposal in this email, but, I think we should
+</em><br />
+<em class="quotelev1">&gt; have a standard mechanism of indicating that a specific characterstring
+</em><br />
+<em class="quotelev1">&gt; variable set comes from an external vocabulary indicated by a URI:,
+</em><br />
+<em class="quotelev1">&gt; something like:
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; variables:
+</em><br />
+<em class="quotelev1">&gt;   float temperature(realization,...);
+</em><br />
+<em class="quotelev1">&gt;      temperature:coordinates=&quot;realization ...&quot;;
+</em><br />
+<em class="quotelev1">&gt;      temperature:ancillary_variables = &quot;metadata&quot;;
+</em><br />
+<em class="quotelev1">&gt;   char metadata(realization,len80);
+</em><br />
+<em class="quotelev1">&gt;      metadata:external_dictionary='<a href="http://someExternalGovernanceBody">http://someExternalGovernanceBody</a>';
+</em><br />
+<em class="quotelev1">&gt; (i.e. a new modifier).
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Then, IPCC, or WMO or whoever, could come up with the dictionaries they
+</em><br />
+<em class="quotelev1">&gt; want, and the cf file would still be self-describing, cf-software could
+</em><br />
+<em class="quotelev1">&gt; still manipulate it, but communities could write software that made use
+</em><br />
+<em class="quotelev1">&gt; of these extra characteristics, without CF having to govern everything
+</em><br />
+<em class="quotelev1">&gt; (and add all the components of these external schema to CF, piece by
+</em><br />
+<em class="quotelev1">&gt; piece, with detailed arguments for each one to go in the standard name
+</em><br />
+<em class="quotelev1">&gt; table). 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Obviously my mechanism could be extended for any characteristic of a
+</em><br />
+<em class="quotelev1">&gt; variable that we didn't want to put in a standard name, so the real
+</em><br />
+<em class="quotelev1">&gt; policy issue is Issue-D, and it comes back to the scope of CF, which
+</em><br />
+<em class="quotelev1">&gt; needs some decision.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Thus far we have held a line on standard names, but I feel the
+</em><br />
+<em class="quotelev1">&gt; Paco,Jamie,Jonathan proposal takes us into new territory. We will take
+</em><br />
+<em class="quotelev1">&gt; on having to discuss and approve a whole new class of standard names
+</em><br />
+<em class="quotelev1">&gt; (and all the work that goes with that). It's fine if it's a community
+</em><br />
+<em class="quotelev1">&gt; decision to go there, but we need our eyes open :-), and some realistic
+</em><br />
+<em class="quotelev1">&gt; appreciation of how we can actually do it. 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; My opinion: better to push it off onto the communities who care, and
+</em><br />
+<em class="quotelev1">&gt; keep CF focused.
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; Cheers
+</em><br />
+<em class="quotelev1">&gt; Bryan
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; 
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://www.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Oct 30 2006 - 07:41:32 GMT</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start377">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./0378.html" title="Next message in the list">Kettleborough, Jamie: "[CF-metadata] CF and multi-forecast system ensemble data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./0376.html" title="Previous message in the list">Jonathan Gregory: "[CF-metadata] CF and multi-forecast system ensemble data"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./0374.html" title="Message to which this message replies">Bryan Lawrence: "[CF-metadata] CF and multi-forecast system ensemble data"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./0378.html" title="Next message in this discussion thread">Kettleborough, Jamie: "[CF-metadata] CF and multi-forecast system ensemble data"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./0378.html" title="Message sent in reply to this message">Kettleborough, Jamie: "[CF-metadata] CF and multi-forecast system ensemble data"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg377" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg377" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg377" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg377" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:56:49 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./0376.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./0378.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

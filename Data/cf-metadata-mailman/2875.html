@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata]  New standard names for satellite obs data from Evan Manning on 2010-10-19 (cf-metadata-mailman)</title>
+<meta name="Author" content="Evan Manning (Evan.M.Manning)" />
+<meta name="Subject" content="[CF-metadata]  New standard names for satellite obs data" />
+<meta name="Date" content="2010-10-19" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./2874.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2876.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata]  New standard names for satellite obs data</h1>
+<!-- received="Mon Oct 18 21:30:17 2010" -->
+<!-- isoreceived="20101018203017" -->
+<!-- sent="Mon, 18 Oct 2010 20:30:17 -0700" -->
+<!-- isosent="20101019033017" -->
+<!-- name="Evan Manning" -->
+<!-- email="Evan.M.Manning" -->
+<!-- subject="[CF-metadata]  New standard names for satellite obs data" -->
+<!-- id="AANLkTim9D4RKELwOs-1X6yty2znWZ_NPARr4ribe7sUk_at_mail.gmail.com" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start2875" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./2876.html" accesskey="d" title="Aleksandar Jelenak: &quot;[CF-metadata] New standard names for satellite obs data&quot;">Next message</a> ]
+[ <a href="./2874.html" title="stephane.poirier at oifii.org: &quot;[CF-metadata] Is there some samples of netCDF CF-1.0/1.4 for polar stereographic and other non-lat lon geo-grided data&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+[ <a href="./2880.html" accesskey="t" title="Jonathan Gregory: &quot;[CF-metadata] New standard names for satellite obs data&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2875" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2875" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2875" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2875" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Evan Manning &lt;<a href="mailto:Evan.M.Manning?Subject=Re%3A%20%5BCF-metadata%5D%20%20New%20standard%20names%20for%20satellite%20obs%20data">Evan.M.Manning</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 18 Oct 2010 20:30:17 -0700</span><br />
+</address>
+<br />
+The names below mix &quot;satellite&quot; and &quot;instrument&quot; differently than I'm
+<br />
+used to.  For AIRS we use satellite zenith &amp; azimuth angles, since
+<br />
+it is the angle to the entire satellite, not just a single instrument.
+<br />
+<br />We also have an instrument scan angle, along its own scan plan and
+<br />
+relative to its nominal &quot;nadir&quot; position, not to true nadir.  We
+<br />
+sometimes calculate a satellite view angle from instrument
+<br />
+zenith angle.  This is roughly equivalent to a scan angle but
+<br />
+explicitly divorced from actual instrument geometry and satellite
+<br />
+attitude.
+<br />
+<br />I recommend changing:
+<br />
+&nbsp;&nbsp;instrument_zenith_angle -&gt; satellite_zenith_angle
+<br />
+&nbsp;&nbsp;instrument_azimuth_angle -&gt; satellite_azimuth_angle
+<br />
+&nbsp;&nbsp;satellite_scan_angle -&gt; satellite_view_angle
+<br />
+And add:
+<br />
+&nbsp;&nbsp;instrument_scan_angle
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;The angle between the line of sight from an instrument and its
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;reference scan position.
+<br />
+<br />&nbsp;&nbsp;-- Evan
+<br />
+<br /><em class="quotelev1">&gt; 3) &quot;instrument_zenith_angle&quot; [degree]
+</em><br />
+<em class="quotelev1">&gt; ??? The angle between the line of sight to the instrument and the local
+</em><br />
+<em class="quotelev1">&gt; ??? vertical.
+</em><br />
+<br /><em class="quotelev1">&gt; 4) &quot;satellite_scan_angle&quot; [degree]
+</em><br />
+<em class="quotelev1">&gt; ??? The angle between the line of sight from the satellite and the nadir
+</em><br />
+<em class="quotelev1">&gt; ??? line. Nadir is the direction given by the vertical from the satellite
+</em><br />
+<em class="quotelev1">&gt; ??? looking towards the center of the Earth.
+</em><br />
+<br /><em class="quotelev1">&gt; 5) &quot;instrument_azimuth_angle&quot; [degree]
+</em><br />
+<em class="quotelev1">&gt; ??? The horizontal angle between the line of sight to the instrument and
+</em><br />
+<em class="quotelev1">&gt; ??? a reference direction which is often due north. The angle is measured
+</em><br />
+<em class="quotelev1">&gt; ??? clockwise.
+</em><br />
+<br /><em class="quotelev1">&gt; 6) &quot;relative_instrument_azimuth_angle&quot; [degree]
+</em><br />
+<em class="quotelev1">&gt; ??? Difference between two instrument_azimuth_angle values.
+</em><br />
+<span id="received"><dfn>Received on</dfn> Mon Oct 18 2010 - 21:30:17 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start2875">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./2876.html" title="Next message in the list">Aleksandar Jelenak: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./2874.html" title="Previous message in the list">stephane.poirier at oifii.org: "[CF-metadata] Is there some samples of netCDF CF-1.0/1.4 for polar stereographic and other non-lat lon geo-grided data"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./2880.html" title="Next message in this discussion thread">Jonathan Gregory: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./2880.html" title="Message sent in reply to this message">Jonathan Gregory: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<li><dfn>Reply</dfn>: <a href="./2885.html" title="Message sent in reply to this message">Aleksandar Jelenak: "[CF-metadata] New standard names for satellite obs data"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg2875" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg2875" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg2875" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg2875" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:57:33 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./2874.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./2876.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

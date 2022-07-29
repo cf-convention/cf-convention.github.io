@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] Feedback requested on proposed CF Simple Geometries from Jonathan Gregory on 2016-10-27 (cf-metadata-mailman)</title>
+<meta name="Author" content="Jonathan Gregory (j.m.gregory)" />
+<meta name="Subject" content="[CF-metadata] Feedback requested on proposed CF Simple Geometries" />
+<meta name="Date" content="2016-10-27" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7874.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7876.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] Feedback requested on proposed CF Simple Geometries</h1>
+<!-- received="Thu Oct 27 02:41:33 2016" -->
+<!-- isoreceived="20161027014133" -->
+<!-- sent="Thu, 27 Oct 2016 09:41:33 +0100" -->
+<!-- isosent="20161027084133" -->
+<!-- name="Jonathan Gregory" -->
+<!-- email="j.m.gregory" -->
+<!-- subject="[CF-metadata] Feedback requested on proposed CF Simple Geometries" -->
+<!-- id="20161027084133.GA2977_at_met.reading.ac.uk" -->
+<!-- charset="US-ASCII" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7875" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7876.html" accesskey="d" title="martin.juckes at stfc.ac.uk: &quot;[CF-metadata] Usage of histogram_of_X_over_Z&quot;">Next message</a> ]
+[ <a href="./7874.html" title="Armstrong, Edward M: &quot;[CF-metadata] Handling time when date is &#0034;missing&#0034;&quot;">Previous message</a> ]
+<!-- unextthread="start" -->
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7875" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7875" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7875" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7875" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Jonathan Gregory &lt;<a href="mailto:j.m.gregory?Subject=Re%3A%20%5BCF-metadata%5D%20Feedback%20requested%20on%20proposed%20CF%20Simple%20Geometries">j.m.gregory</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Thu, 27 Oct 2016 09:41:33 +0100</span><br />
+</address>
+<br />
+Dear Dave
+<br />
+<br /><em class="quotelev1">&gt; I?ll respond the first question by saying that we are talking about
+</em><br />
+<em class="quotelev1">&gt; (time,geometry) NOT (time,node).
+</em><br />
+<br />Good. Thanks for the clarification.
+<br />
+<br /><em class="quotelev1">&gt; You are correct in thinking that this is analogous to a complex (potentially
+</em><br />
+<em class="quotelev1">&gt; multipart) cell. In this case, we feel that it is more analogous to a
+</em><br />
+<em class="quotelev1">&gt; different spatial representation of a station DSG data type than an extension
+</em><br />
+<em class="quotelev1">&gt; of cell geometry, but different use cases may have differing a-priori
+</em><br />
+<em class="quotelev1">&gt; relationships to the existing standards baseline.
+</em><br />
+<br />Timeseries have data(time,station), which is like your case. When all stations
+<br />
+have the same sampling times, this is just a 2D array and the station dimension
+<br />
+is a &quot;discrete axis&quot; (CF sect 4.5). This existed before sect 9 on DSGs was
+<br />
+added to CF. That new section provides a mechanism for storing ragged data
+<br />
+arrays for multiple timeseries without wasting space, but logically it is
+<br />
+equivalent to the rectangular array, which it upholds as a possible way to
+<br />
+store the data. So I think actually the two cases you mention are the same.
+<br />
+The new thing you want to do is describe the &quot;station&quot; for each timeseries in
+<br />
+a geometrically complex way, rather than its being a single point or a single
+<br />
+polygon, which can already be described by coordinates and coordinate bounds,
+<br />
+respectively.
+<br />
+<br /><em class="quotelev1">&gt; DSG handles data from one or a collection of TimeSeries (point), Trajectory,
+</em><br />
+<em class="quotelev1">&gt; Profile, TrajectoryProfile or TimeSeriesProfile. So measurements are from a
+</em><br />
+<em class="quotelev1">&gt; point (TimeSeries and Profile) or points along a trajectory. DSG can be used
+</em><br />
+<em class="quotelev1">&gt; for at least some of what you want to do here if you say, e.g., I have a
+</em><br />
+<em class="quotelev1">&gt; TimeSeries which is stream flow measured (or modeled) at a given point on a
+</em><br />
+<em class="quotelev1">&gt; stream. But DSG has no system to define a geometry (point, polyline, polygon,
+</em><br />
+<em class="quotelev1">&gt; etc) and say e.g, The expected rainfall in this polygon for some period of
+</em><br />
+<em class="quotelev1">&gt; time is 5304 liters, except to assign a nominal point (centroid?) or just use
+</em><br />
+<em class="quotelev1">&gt; an ID (e.g., San Francisquito Catchment section 5A).
+</em><br />
+<br />I suggest that if we see it this way you would still provide representative
+<br />
+coordinates for each station, whether you stored it as a rectangular array or a
+<br />
+ragged one. These could be useful for the simplest kind of plotting, which
+<br />
+wants a location for each &quot;geometry&quot;. However, these coordinates would not have
+<br />
+bounds, because that's not adequate to describe the structure.
+<br />
+<br />There are many choices for how the geometry data could be stored. Here's a
+<br />
+suggestion along the lines of my last email. I have made it resemble ugrid (and
+<br />
+grid_mapping) in using a &quot;container&quot; variable to &quot;host&quot; the geometry
+<br />
+description. In this way of doing it, each data variable points to the geometry
+<br />
+variable, and the geometry variable points to the geometry coordinates, with no
+<br />
+direct link between the representative (geometry) coordinates and the geometry
+<br />
+(node) coordinates. It could alternatively, or additionally, be arranged so
+<br />
+that the representative coordinates point to the geometry coordinates.
+<br />
+<br />However, my suggestion below is unlike other uses of container variables, which
+<br />
+are scalars that don't contain information. My geometry variable is an
+<br />
+auxiliary coordinate variable, pointed to by the usual CF coordinates
+<br />
+attribute, and its value contains information - it gives the number of parts in
+<br />
+each geometry. It is identifiable as a geometry variable by its special
+<br />
+attributes. Making it formally an aux coord variable avoids having to invent a
+<br />
+new attribute to point to it. The &quot;inout&quot; variable contains I or O for inside
+<br />
+or outside polygon; it could also contain L for line and P for point.
+<br />
+<br />&nbsp;&nbsp;geom=3;
+<br />
+&nbsp;&nbsp;part=11;
+<br />
+&nbsp;&nbsp;node=36;
+<br />
+&nbsp;&nbsp;time=20;
+<br />
+&nbsp;&nbsp;float p(time,geom);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;p:standard_name=&quot;precipitation_flux&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;p:units=&quot;kg m-2 s-1&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;p:coordinates=&quot;xrep yrep geom3&quot;;
+<br />
+&nbsp;&nbsp;float t(time,geom);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;t:standard_name=&quot;air_temperature&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;t:units=&quot;K&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;t:coordinates=&quot;xrep yrep geom3 z&quot;;
+<br />
+&nbsp;&nbsp;float z;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;z:standard_name=&quot;height&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;z:units=&quot;m&quot;;
+<br />
+&nbsp;&nbsp;int geom3(geom);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;geom3:part_dimension=&quot;part&quot;; // must equal the sum of geom3
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;geom3:node_count=&quot;nodes_per_part&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;geom3:part_type=&quot;inout&quot;;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;geom3:node_dimension=&quot;node&quot;; // must equal the sum of the node_count
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;geom3:node_coordinates=&quot;x y&quot;; // also an attribute in ugrid
+<br />
+&nbsp;&nbsp;float xrep(geom);
+<br />
+&nbsp;&nbsp;float yrep(geom);
+<br />
+&nbsp;&nbsp;int geom3(geom);
+<br />
+&nbsp;&nbsp;int nodes_per_part(part);
+<br />
+&nbsp;&nbsp;char inout(part);
+<br />
+&nbsp;&nbsp;float x(node);
+<br />
+&nbsp;&nbsp;float y(node);
+<br />
+&nbsp;&nbsp;geom=6, 3, 2;
+<br />
+&nbsp;&nbsp;nodes_per_part=4, 3, 3, 3, 3, 3, 3, 5, 3, 3, 3;
+<br />
+&nbsp;&nbsp;inout=&quot;OIIIOOOIO&quot;;
+<br />
+&nbsp;&nbsp;x=0, 20, 20, 0, 1, 10, 19, 5, 7, 9, 11, 13, 15, 5, 9, 7, 11, 15, 13, -40,
+<br />
+&nbsp;&nbsp;-20, -45, -20, -10, -10, -30, -45, -30, -20, -20, 30, 45, 10, 25, 50, 30;
+<br />
+&nbsp;&nbsp;y = 0, 0, 20, 20, 1, 5, 1, 15, 19, 15, 15, 19, 15, 25, 25, 29, 25, 25, 29,
+<br />
+&nbsp;&nbsp;-40, -45, -30, -35, -30, -10, -5, -20, -20, -15, -25, 20, 40, 40, 5, 10, 15;
+<br />
+&nbsp;&nbsp;z = 1.5;
+<br />
+<br />I agree you can't use ugrid as it stands, because ugrid describes a single
+<br />
+mesh per data variable, with many data &quot;points&quot; at nodes, edges and faces of
+<br />
+the mesh. You want several meshes (in ugrid terms) for each data variable,
+<br />
+with only one data &quot;point&quot; for each mesh. It would be nice not have a
+<br />
+separate convention, but that can only be avoided by adapting ugrid, it seems.
+<br />
+You also can't use DGS of sect 9 as they are, because they cannot accommodate
+<br />
+a ragged array of ragged arrays.
+<br />
+<br />Best wishes
+<br />
+<br />Jonathan
+<br />
+<span id="received"><dfn>Received on</dfn> Thu Oct 27 2016 - 02:41:33 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7875">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7876.html" title="Next message in the list">martin.juckes at stfc.ac.uk: "[CF-metadata] Usage of histogram_of_X_over_Z"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7874.html" title="Previous message in the list">Armstrong, Edward M: "[CF-metadata] Handling time when date is &#0034;missing&#0034;"</a></li>
+<!-- lnextthread="start" -->
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7875" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7875" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7875" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7875" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:59:07 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7874.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7876.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

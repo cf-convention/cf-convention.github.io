@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<meta name="generator" content="hypermail 2.3.0, see http://www.hypermail-project.org/" />
+<title>[CF-metadata] How to define time coordinate in GPS? from Karl Taylor on 2015-06-29 (cf-metadata-mailman)</title>
+<meta name="Author" content="Karl Taylor (taylor13)" />
+<meta name="Subject" content="[CF-metadata] How to define time coordinate in GPS?" />
+<meta name="Date" content="2015-06-29" />
+<style type="text/css">
+/*<![CDATA[*/
+/* To be incorporated in the main stylesheet, don't code it in hypermail! */
+body {color: black; background: #ffffff}
+dfn {font-weight: bold;}
+pre { background-color:inherit;}
+.head { border-bottom:1px solid black;}
+.foot { border-top:1px solid black;}
+th {font-style:italic;}
+table { margin-left:2em;}map ul {list-style:none;}
+#mid { font-size:0.9em;}
+#received { float:right;}
+address { font-style:inherit ;}
+/*]]>*/
+.quotelev1 {color : #990099}
+.quotelev2 {color : #ff7700}
+.quotelev3 {color : #007799}
+.quotelev4 {color : #95c500}
+.period {font-weight: bold}
+</style>
+</head>
+<body>
+<div class="head">
+<a style="text-decoration:none" href="./7173.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7175.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a><h1>[CF-metadata] How to define time coordinate in GPS?</h1>
+<!-- received="Mon Jun 29 15:58:19 2015" -->
+<!-- isoreceived="20150629145819" -->
+<!-- sent="Mon, 29 Jun 2015 14:58:19 -0700" -->
+<!-- isosent="20150629215819" -->
+<!-- name="Karl Taylor" -->
+<!-- email="taylor13" -->
+<!-- subject="[CF-metadata] How to define time coordinate in GPS?" -->
+<!-- id="5591BF7B.5030009_at_llnl.gov" -->
+<!-- charset="US-ASCII" -->
+<!-- inreplyto="55919027.2040108_at_cicsnc.org" -->
+<!-- expires="-1" -->
+<map id="navbar" name="navbar">
+<ul class="links">
+<li>
+<dfn>This message</dfn>:
+[ <a href="#start7174" name="options1" id="options1" tabindex="1">Message body</a> ]
+ [ More options (<a href="#options2">top</a>, <a href="#options3">bottom</a>) ]
+</li>
+<li>
+<dfn>Related messages</dfn>:
+<!-- unext="start" -->
+[ <a href="./7175.html" accesskey="d" title="Karl Taylor: &quot;[CF-metadata] Specifying latitude and longitude of transects and regions&quot;">Next message</a> ]
+[ <a href="./7173.html" title="martin.juckes at stfc.ac.uk: &quot;[CF-metadata] Specifying latitude and longitude of transects and regions&quot;">Previous message</a> ]
+[ <a href="./7172.html" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">In reply to</a> ]
+<!-- unextthread="start" -->
+[ <a href="./7178.html" accesskey="t" title="Jim Biard: &quot;[CF-metadata] How to define time coordinate in GPS?&quot;">Next in thread</a> ]
+ [ <a href="#replies">Replies</a> ]
+<!-- ureply="end" -->
+</li>
+</ul>
+</map>
+<ul class="links">
+<li><a name="options2" id="options2"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7174" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7174" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7174" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7174" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</div>
+<!-- body="start" -->
+<div class="mail">
+<address class="headers">
+<span id="from">
+<dfn>From</dfn>: Karl Taylor &lt;<a href="mailto:taylor13?Subject=Re%3A%20%5BCF-metadata%5D%20How%20to%20define%20time%20coordinate%20in%20GPS%3F">taylor13</a>&gt;
+</span><br />
+<span id="date"><dfn>Date</dfn>: Mon, 29 Jun 2015 14:58:19 -0700</span><br />
+</address>
+<br />
+Hi all,
+<br />
+<br />After further reflection, I would like to clarify and slightly modify my 
+<br />
+proposal.  I suggest:
+<br />
+<br />1) CF not try to accommodate folks using &quot;wrong&quot; software.
+<br />
+<br />2) we relax our requirement that udunits be able to handle the time 
+<br />
+coordinate because it won't recognize and interpret &quot;UTC&quot; and &quot;GPS&quot;.
+<br />
+<br />3)  If the units attribute indicates that &quot;UTC&quot; is used for reference 
+<br />
+time, this would imply that &quot;UTC&quot; should also be used to record the time 
+<br />
+coordinate values. If the units attribute indicates that &quot;GPS&quot; is used 
+<br />
+for reference time, this would imply that &quot;GPS&quot; should also be used to 
+<br />
+record the time coordinate values.
+<br />
+<br />4) I originally proposed that there be  no difference between &quot;GPS&quot; and 
+<br />
+the current units attribute.  I now see that this won't allow us to 
+<br />
+handle all cases.  So, I now propose that if &quot;GPS&quot; or &quot;UTC&quot; are not 
+<br />
+included as part of the units attribute (as is the case in all current 
+<br />
+CF-compliant files), then we should interpret this as meaning that the 
+<br />
+data provider has assumed that the calendar and earth orbital period 
+<br />
+neglect leap seconds entirely (and that leaving them out doesn't matter 
+<br />
+to them).  The &quot;no suffix&quot; case would apply to all models I know of and 
+<br />
+observational data where differences in sampling time of up to 16 
+<br />
+seconds (as of now) can be tolerated.
+<br />
+<br />The above means that when comparing datasets where we want to consider 
+<br />
+the state of the system at a particular time of year (i.e., at the same 
+<br />
+orbital longitude), we should make sure to correctly compute the 
+<br />
+time-stamps from the elapsed time (which under CF is what is stored as a 
+<br />
+coordinate variable).   Different algorithms would have to be used 
+<br />
+depending on whether or not the reference time stored as part of the 
+<br />
+units attribute includes the &quot;GPS&quot; suffix or the &quot;UTC&quot; suffix.  The 
+<br />
+algorithm used to compute the &quot;UTC&quot; timestamp could also be used to 
+<br />
+generate the time-stamp for the normal model case which has no leap 
+<br />
+seconds (i.e. where the units attribute omits both &quot;GPS&quot; and &quot;UTC&quot;).   
+<br />
+Once the time-stamps are known, then one could convert these back to 
+<br />
+elapsed time using a single approach (say, UTC) for all datasets (using 
+<br />
+a common reference time).  We would then know how the sampling times 
+<br />
+across datasets were staggered, and the sample values could be 
+<br />
+interpolated in time to a common set of times. Going to this much 
+<br />
+trouble would, of course, be unwarranted in many cases.  In fact I think 
+<br />
+only if one of the datasets is &quot;GPS&quot; would we ever have to do this.  
+<br />
+Even for GPS, if up to a 16 second errors in time could be tolerated, 
+<br />
+one could simply take the original time-values for each dataset and 
+<br />
+interpolate the data values to common times.
+<br />
+<br />best regards,
+<br />
+Karl
+<br />
+<br /><br /><br /><br />On 6/29/15 11:36 AM, Jim Biard wrote:
+<br />
+<em class="quotelev1">&gt; Karl,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; On 6/29/15 2:00 PM, Karl Taylor wrote:
+</em><br />
+<em class="quotelev2">&gt;&gt; Hi all,
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; I haven't followed all this as closely as I would have liked, but 
+</em><br />
+<em class="quotelev2">&gt;&gt; will hazard some comments anyway:
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; 1. I think we should require that elapsed time (recorded by the 
+</em><br />
+<em class="quotelev2">&gt;&gt; time-coordinate in CF files) be correct no matter what the calendar.  
+</em><br />
+<em class="quotelev2">&gt;&gt; So samples taken at a specific interval have identical 
+</em><br />
+<em class="quotelev2">&gt;&gt; time-differences (calculated from the difference between successive 
+</em><br />
+<em class="quotelev2">&gt;&gt; time coordinate values) whether or not the a leap second was 
+</em><br />
+<em class="quotelev2">&gt;&gt; introduced (or dropped?) or not.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; I agree, in principle. The way leap seconds worm their way into 
+</em><br />
+<em class="quotelev1">&gt; elapsed times is by using the &quot;wrong&quot; software when calculating 
+</em><br />
+<em class="quotelev1">&gt; elapsed times from timestamps. POSIX (that is, Unix/linux) time 
+</em><br />
+<em class="quotelev1">&gt; conversion functions do not normally account for leap seconds, so if 
+</em><br />
+<em class="quotelev1">&gt; you use them with UTC times, you put yourself at risk a couple of 
+</em><br />
+<em class="quotelev1">&gt; different ways.
+</em><br />
+<em class="quotelev2">&gt;&gt; 2. I think we should allow for basetime (the reference time stamp) to 
+</em><br />
+<em class="quotelev2">&gt;&gt; be recorded either as UTC or GPS.  Absence of either of these would 
+</em><br />
+<em class="quotelev2">&gt;&gt; imply &quot;GPS&quot;, which will therefore apply to all data written until now 
+</em><br />
+<em class="quotelev2">&gt;&gt; under CF.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; This is great for real-world acquired times, but model times are in a 
+</em><br />
+<em class="quotelev1">&gt; non-real time system - neither GPS nor UTC. There is also the 
+</em><br />
+<em class="quotelev1">&gt; possibility of reference times recorded in the TAI time system, but we 
+</em><br />
+<em class="quotelev1">&gt; can handle that by adding yet another calendar (and so on for sidereal 
+</em><br />
+<em class="quotelev1">&gt; time, etc, etc).
+</em><br />
+<em class="quotelev2">&gt;&gt; 3. Folks *generating* CF files should use algorithms that correctly 
+</em><br />
+<em class="quotelev2">&gt;&gt; convert their timestamps to elapsed time (which is recorded in the 
+</em><br />
+<em class="quotelev2">&gt;&gt; files).  Then users can regenerate the timestamps correctly by 
+</em><br />
+<em class="quotelev2">&gt;&gt; looking at whether UTC or GPS (or neither) appears.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; They should, but many haven't in the past, and the added complexity of 
+</em><br />
+<em class="quotelev1">&gt; getting UTC time conversion functions that understand leap seconds 
+</em><br />
+<em class="quotelev1">&gt; (one is going to be added at midnight July 1!) is overkill. When your 
+</em><br />
+<em class="quotelev1">&gt; time resolution is on the order of 1 hour, none of this matters.
+</em><br />
+<em class="quotelev2">&gt;&gt; 4.  Couldn't all of the above be simply accommodated with a single 
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;gregorian&quot; calendar, but with the basetime (reference time stamp in 
+</em><br />
+<em class="quotelev2">&gt;&gt; the units attribute) including either &quot;UTC&quot; or &quot;GPS&quot; at the end (or 
+</em><br />
+<em class="quotelev2">&gt;&gt; neither for compatibility with previous written CF data)?  Examples: 
+</em><br />
+<em class="quotelev2">&gt;&gt; &quot;days since 1990-1-1 0:0:0UTC&quot; or  &quot;days since 1950-1-1 0:0:0 GPS&quot; 
+</em><br />
+<em class="quotelev2">&gt;&gt; (which would be equivalent to &quot;days since 1950-1-1 0:0:0&quot;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; This would be another way to tackle it. In the past, CF also allowed 
+</em><br />
+<em class="quotelev1">&gt; for time zone offsets, so you would need to add that as well.
+</em><br />
+<em class="quotelev2">&gt;&gt; 5.  Data would not be considered CF-compliant if the elapsed time 
+</em><br />
+<em class="quotelev2">&gt;&gt; (recorded by the time coordinate) were incorrect because it had been 
+</em><br />
+<em class="quotelev2">&gt;&gt; incorrectly converted by the data provider.  &quot;UTC&quot; would indicate 
+</em><br />
+<em class="quotelev2">&gt;&gt; that the basetime and conversion of elapsed time to timestamps should 
+</em><br />
+<em class="quotelev2">&gt;&gt; follow the rules of UTC and include leap seconds.  &quot;GPS&quot; (or absence 
+</em><br />
+<em class="quotelev2">&gt;&gt; of &quot;UTC&quot; for backward compatibility) would indicate that thebasetime 
+</em><br />
+<em class="quotelev2">&gt;&gt; and conversion of elapsed time to timestamps should follow the rules 
+</em><br />
+<em class="quotelev2">&gt;&gt; of GPS and *not* include leap seconds.
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; Note that UTC and GPS in the reference times (or in the calendar) 
+</em><br />
+<em class="quotelev1">&gt; don't say anything about how to create timestamps. It tells you how to 
+</em><br />
+<em class="quotelev1">&gt; read the reference time. How you produce timestamps from the elapsed 
+</em><br />
+<em class="quotelev1">&gt; times is up to the data consumer. It is entirely correct to take a 
+</em><br />
+<em class="quotelev1">&gt; time variable with a reference time in GPS, correctly convert the 
+</em><br />
+<em class="quotelev1">&gt; reference time to UTC, and then produce UTC timestamps. The 
+</em><br />
+<em class="quotelev1">&gt; information in the time variable tells me what I have in hand (what 
+</em><br />
+<em class="quotelev1">&gt; the data producer did), not what I'm supposed to do with it.
+</em><br />
+<em class="quotelev2">&gt;&gt; I'm sure I have missed some important use case where the above simple 
+</em><br />
+<em class="quotelev2">&gt;&gt; scheme would be inadequate.  (Or perhaps I'm just completely out to 
+</em><br />
+<em class="quotelev2">&gt;&gt; lunch, in which case please forgive me).
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev1">&gt; From my perspective there are two gaps. One is model time, which is 
+</em><br />
+<em class="quotelev1">&gt; entirely non-physical (has no reference point that ties it into the 
+</em><br />
+<em class="quotelev1">&gt; real world), and the other is the very real and likely continuing case 
+</em><br />
+<em class="quotelev1">&gt; where the (in-)precision of the time measurements makes the whole 
+</em><br />
+<em class="quotelev1">&gt; thing moot.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; I'm thinking that Nan's suggestion of specifying an uncertainty for 
+</em><br />
+<em class="quotelev1">&gt; the elapsed time values (which when left off could imply that 
+</em><br />
+<em class="quotelev1">&gt; &quot;anything goes&quot; as far as leap seconds is concerned) may be an elegant 
+</em><br />
+<em class="quotelev1">&gt; way through this.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; We could (whether in the calendar or the units) have:
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;   * gregorian, which would not take an uncertainty attribute and would
+</em><br />
+<em class="quotelev1">&gt;     indicate that the time base and precision are unknown (good for
+</em><br />
+<em class="quotelev1">&gt;     models and for backward compatibility)
+</em><br />
+<em class="quotelev1">&gt;   * gregorian + utc, which would take an uncertainty attribute and
+</em><br />
+<em class="quotelev1">&gt;     would indicate that the reference time stamp is expressed in UTC,
+</em><br />
+<em class="quotelev1">&gt;     and that elapsed times have no artifacts to the level of the
+</em><br />
+<em class="quotelev1">&gt;     uncertainty (true UTC with &quot;wrong&quot; conversions but only accurate
+</em><br />
+<em class="quotelev1">&gt;     to 1 minute would validly fit in this category)
+</em><br />
+<em class="quotelev1">&gt;   * gregorian + gps, which would be like gregorian + utc, except that
+</em><br />
+<em class="quotelev1">&gt;     the reference time stamp is expressed in GPS.
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Grace and peace,
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; Jim
+</em><br />
+<em class="quotelev2">&gt;&gt; best regards,
+</em><br />
+<em class="quotelev2">&gt;&gt; Karl
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; On 6/29/15 9:21 AM, Jonathan Gregory wrote:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Dear Tim and Nan
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; If I have understood correctly, I think your two emails suggest that we do need
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; a distinction of the precise and imprecise cases. As usual, I believe that CF
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; should not prescribe to users what they should do; its aim is to allow them to
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; describe what they have done. Different levels of precision are needed for
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; different datasets.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Following the emails that Jim and I exchanged, we could distinguish:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; gregorian: Real world-times, but without specifying whether UTC or GPS
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; timestamps are intended, nor whether the encoding was done with or without leap
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; seconds. The decoded times could differ by several seconds from UTC. I think
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; this is Nan's use-case.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; gregorian_nls: UTC timestamps were encoded without leap seconds, with a
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; reference UTC timestamp. I think this is Tim's use-case. This is not accurate
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; according to UTC but it can be decoded precisely as intended. Jim points out
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; that it's not a real-world calendar, but it's not far off.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Have I correctly described these as your cases?
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; In addition, we propose two other calendars:
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; gregorian_utc: The encoded and reference timestamps are UTC, and the encoding
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; is done with leap seconds allowed for. Hence the time coord is an accurate
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; elapsed time.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; gregorian_gps: The encoded and reference timestamps are GPS, and the encoding
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; is done without leap seconds. Again, the time coord is accurately elapsed time.
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; I think this is the use-case which originally started this thread!
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Best wishes
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt;
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; Jonathan
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev3">&gt;&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt;
+</em><br />
+<em class="quotelev2">&gt;&gt; _______________________________________________
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev2">&gt;&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev2">&gt;&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; -- 
+</em><br />
+<em class="quotelev1">&gt; CICS-NC &lt;<a href="http://www.cicsnc.org/">http://www.cicsnc.org/</a>&gt; Visit us on
+</em><br />
+<em class="quotelev1">&gt; Facebook &lt;<a href="http://www.facebook.com/cicsnc">http://www.facebook.com/cicsnc</a>&gt; 	*Jim Biard*
+</em><br />
+<em class="quotelev1">&gt; *Research Scholar*
+</em><br />
+<em class="quotelev1">&gt; Cooperative Institute for Climate and Satellites NC &lt;<a href="http://cicsnc.org/">http://cicsnc.org/</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; North Carolina State University &lt;<a href="http://ncsu.edu/">http://ncsu.edu/</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; NOAA National Centers for Environmental Information 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="http://ncdc.noaa.gov/">http://ncdc.noaa.gov/</a>&gt;
+</em><br />
+<em class="quotelev1">&gt; /formerly NOAA?s National Climatic Data Center/
+</em><br />
+<em class="quotelev1">&gt; 151 Patton Ave, Asheville, NC 28801
+</em><br />
+<em class="quotelev1">&gt; e: jbiard at cicsnc.org &lt;mailto:jbiard at cicsnc.org&gt;
+</em><br />
+<em class="quotelev1">&gt; o: +1 828 271 4900
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; /Connect with us on Facebook for climate 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="https://www.facebook.com/NOAANCEIclimate">https://www.facebook.com/NOAANCEIclimate</a>&gt; and ocean and geophysics 
+</em><br />
+<em class="quotelev1">&gt; &lt;<a href="https://www.facebook.com/NOAANCEIoceangeo">https://www.facebook.com/NOAANCEIoceangeo</a>&gt; information, and follow us 
+</em><br />
+<em class="quotelev1">&gt; on Twitter at _at_NOAANCEIclimate &lt;<a href="https://twitter.com/NOAANCEIclimate">https://twitter.com/NOAANCEIclimate</a>&gt; 
+</em><br />
+<em class="quotelev1">&gt; and _at_NOAANCEIocngeo &lt;<a href="https://twitter.com/NOAANCEIocngeo">https://twitter.com/NOAANCEIocngeo</a>&gt;. /
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt;
+</em><br />
+<em class="quotelev1">&gt; _______________________________________________
+</em><br />
+<em class="quotelev1">&gt; CF-metadata mailing list
+</em><br />
+<em class="quotelev1">&gt; CF-metadata at cgd.ucar.edu
+</em><br />
+<em class="quotelev1">&gt; <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata">http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata</a>
+</em><br />
+<br />-------------- next part --------------
+<br />
+An HTML attachment was scrubbed...
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150629/f60004a3/attachment-0001.html">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150629/f60004a3/attachment-0001.html</a>&gt;
+<br />
+-------------- next part --------------
+<br />
+A non-text attachment was scrubbed...
+<br />
+Name: not available
+<br />
+Type: image/png
+<br />
+Size: 15784 bytes
+<br />
+Desc: not available
+<br />
+URL: &lt;<a href="http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150629/f60004a3/attachment-0001.png">http://mailman.cgd.ucar.edu/pipermail/cf-metadata/attachments/20150629/f60004a3/attachment-0001.png</a>&gt;
+<br />
+<span id="received"><dfn>Received on</dfn> Mon Jun 29 2015 - 15:58:19 BST</span>
+</div>
+<!-- body="end" -->
+<div class="foot">
+<map id="navbarfoot" name="navbarfoot" title="Related messages">
+<ul class="links">
+<li><dfn>This message</dfn>: [ <a href="#start7174">Message body</a> ]</li>
+<!-- lnext="start" -->
+<li><dfn>Next message</dfn>: <a href="./7175.html" title="Next message in the list">Karl Taylor: "[CF-metadata] Specifying latitude and longitude of transects and regions"</a></li>
+<li><dfn>Previous message</dfn>: <a href="./7173.html" title="Previous message in the list">martin.juckes at stfc.ac.uk: "[CF-metadata] Specifying latitude and longitude of transects and regions"</a></li>
+<li><dfn>In reply to</dfn>: <a href="./7172.html" title="Message to which this message replies">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lnextthread="start" -->
+<li><dfn>Next in thread</dfn>: <a href="./7178.html" title="Next message in this discussion thread">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<li><a name="replies" id="replies"></a>
+<dfn>Reply</dfn>: <a href="./7178.html" title="Message sent in reply to this message">Jim Biard: "[CF-metadata] How to define time coordinate in GPS?"</a></li>
+<!-- lreply="end" -->
+</ul>
+<ul class="links">
+<li><a name="options3" id="options3"></a><dfn>Contemporary messages sorted</dfn>: [ <a href="index.html#msg7174" title="Contemporary messages by date">by date</a> ] [ <a href="thread.html#msg7174" title="Contemporary discussion threads">by thread</a> ] [ <a href="subject.html#msg7174" title="Contemporary messages by subject">by subject</a> ] [ <a href="author.html#msg7174" title="Contemporary messages by author">by author</a> ] [ <a href="attachment.html" title="Contemporary messages by attachment">by messages with attachments</a> ]</li>
+</ul>
+</map>
+</div>
+<!-- trailer="footer" -->
+<p><small><em>
+This archive was generated by <a href="http://www.hypermail-project.org/">hypermail 2.3.0</a>
+: Wed Jul 27 2022 - 12:58:58 BST
+</em></small></p>
+</body>
+<p><a style="text-decoration:none" href="./7173.html"><img src="./red-arrow-left.jpg" width="50" alt="&lArr;"></a> <a style="text-decoration:none" href="./7175.html"><img src="./red-arrow-right.jpg" width="50" alt="&rArr;"></a></html>

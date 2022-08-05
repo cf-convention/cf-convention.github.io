@@ -144,7 +144,7 @@ To help us with planning, please check the "Other" box, in the [registration for
 * Antonio S. Cofiño
 * Ethan Davis
 * David Hassell (chair)
- *Aleksandar Jelenak
+ * Aleksandar Jelenak
 * Daniel Lee
 * Kevin O'Brien
 * Alison Pamment

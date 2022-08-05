@@ -113,7 +113,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 
 ## Training session
-In the week prior to the CF Workshop there will be a virtual training event for users new to CF.
+In the week prior to the CF Workshop there will be a virtual training event designed for users new or fairly new to CF.
 The training will last for 3 hours and will take place on **Thursday 8th September, 1500 - 1800 UTC**.
 
 Details of training programme can be found at the [training section of the CF website][TRAINING].

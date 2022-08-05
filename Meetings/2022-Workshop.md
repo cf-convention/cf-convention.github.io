@@ -118,7 +118,9 @@ The training will last for 3 hours and will take place on **Thursday 8th Septemb
 
 Details of training programme can be found at the [training section of the CF website][TRAINING].
 
-Pre-registration for the on-line training event is not essential, but to help us with planning please the corresponding checkbox, in the [registration form][REGISTRATION], if you would be interested in attending. For those unable to attend the event itself, the presentations will be accessable from the [training section of the CF website][TRAINING], and videos presentations will also be made available for later viewing. 
+Pre-registration for the on-line training event is not essential, but to help us with planning please the corresponding checkbox, in the [registration form][REGISTRATION], if you would be interested in attending.
+
+For those unable to attend the event itself, the presentations will be accessable from the [training section of the CF website][TRAINING], and videos presentations will also be made available for later viewing. 
 
 More details at: <https://github.com/cf-convention/discuss/issues/158>
 
@@ -132,7 +134,7 @@ More details at: <https://github.com/cf-convention/discuss/issues/152>
 
 ## Poster contributions
 
-During the CF Workshop there will be available displays for poster contributions from participants. There will be no formal poster session, but posters are expected to be chatted about informally during breaks.
+During the CF Workshop there will be displays for poster contributions from participants. There will be no formal poster session, but posters are expected to be chatted about informally during breaks.
 
 To help us with planning, please check the "Other" box, in the [registration form][REGISTRATION], and provided a tentative title, if you would be interested to bring your poster. 
 

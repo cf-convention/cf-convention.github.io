@@ -37,7 +37,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 ### Tuesday, 13 September 2022
 
-* **09:30 - Welcome, logistics and introduction** (Antonio Cofiño)
+* **09:30 - Welcome, logistics, and introduction** (Antonio Cofiño)
 
 * **10:00 - Review of CF-1.10** (David Hassell and Sadie Bartholomew)
 
@@ -59,7 +59,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **16:30 -** Coffee break
 
-* **17:00 - Hackathon sessions** (continued)
+* **17:00 - Parallel hackathon sessions** (continued)
 
 * **18:00 -** Close
 
@@ -85,7 +85,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **16:30 -** Coffee break
 
-* **17:00 - Hackathon sessions** (continued)
+* **17:00 - Parallel hackathon sessions** (continued)
 
 * **17:30 -** Evening trip and dinner
 
@@ -99,7 +99,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **11:30 - Parallel hackathon sessions**
   * **5.** Create DOIs for the CF conventions 
-  * **6.** Dataset DOIs: further discussion and conventions enhancements
+  * **6.** Dataset DOIs: Further discussion and conventions enhancements
 
 * **13:00 -** Lunch
 
@@ -112,31 +112,30 @@ All times are local to Santander, i.e. **UTC+2**
 * **17:30 -** Close
 
 
+## Training session
+In the week prior to the CF Workshop there will be a virtual training event for users new to CF.
+The training will last for 3 hours and will take place on **Thursday 8th September, 1500 - 1800 UTC**.
 
-### Training session
-In the week prior to the CF Workshop we plan to run a virtual training event for users new to CF.
-This will take place on Thursday 8th September, 1500 - 1800 UTC. 
-
-**The full programme will be published on the CF website prior to the event.** 
+Details of training programme can be found at the [training section of the CF website][TRAINING].
 
 Pre-registration for the on-line training event is not essential, but to help us with planning please the corresponding checkbox, in the [registration form][REGISTRATION], if you would be interested in attending. Videos of the training presentations will be made available for later viewing by those unable to attend the event itself. 
 
 More details at: <https://github.com/cf-convention/discuss/issues/158>
 
-### Topics for hackathon sessions
+## Topics for hackathon sessions
 
-We will devote the afternoon (CEST time) sessions of each day to focused-attention hackathons, during which it is hoped that concrete progress on each topic can be made (such as actual changes suggested to the Conventions text). 
+We will devote roughly half of the time on each day to focused-attention hackathons, during which it is hoped that concrete progress on each topic can be made (such as actual changes suggested to the Conventions text). 
 
 Please express an interest in any number of these sessions, in the [registration form][REGISTRATION], or suggest a new topic that could be included, with a suggestion of who you think could lead the discussion. 
 
 More details at: <https://github.com/cf-convention/discuss/issues/152>
 
-### Poster contributions 
+## Poster contributions 
 During the CF Workshop there will be available displays for Poster contributions from participants. There will be no formal poster session, but posters expected to chatted about informally during breaks.
 
 To help us with planning, please check the "Other" box, in the [registration form][REGISTRATION], and provided a tentative title, if you would be interested to bring your poster. 
 
-# The organising committee
+## The organising committee
 
 * Guilherme Castelão
 * Antonio S. Cofiño
@@ -147,7 +146,7 @@ To help us with planning, please check the "Other" box, in the [registration for
 * Alison Pamment
 * Charlie Zender
 
-# Sponsorship
+## Sponsorship
 
 Thanks for their support of this meeting to: 
  - [IS-ENES3] which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
@@ -168,6 +167,7 @@ Thanks for their support of this meeting to:
 [CORDyS-logo]: 2022-workshop/micin-aei-cordys_en.png 
 [IFCA]: https://ifca.unican.es/en-us "Institute of Physics of Cantabria (IFCA, CSIC-UC)"
 [IFCA-logo]: 2022-workshop/ifca-logo.png 
+[TRAINING]: http://cfconventions.org/Training/2022-Training-Workshop.html "2022 CF Training Workshop"
 
 *[AEI]: Spanish State Research Agency
 *[MCIN]: Spanish Ministry of Science

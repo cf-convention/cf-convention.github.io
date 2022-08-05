@@ -33,7 +33,85 @@ Please check details on [how to arrive to IFCA](https://ifca.unican.es/en-us/abo
 
 ## Agenda
 
-**TO BE COMPLETED**
+All times are local to Santander, i.e. **UTC+2**
+
+### Tuesday, 13 September 2022
+
+* **09:30 - Welcome, logistics and introduction** (Antonio Cofiño)
+
+* **10:00 - Review of CF-1.10** (David Hassell and Sadie Bartholomew)
+
+* **10:30 - CF training - overview and discussion** (Sadie Bartholomew)
+
+* **11:00 -** Coffee break
+
+* **11:30 - CF to BUFR/WMO** (Kevin O’Brien)
+
+* **11:45 - How we describe our variables** (Alison Pamment)
+
+* **12:30 - Standard names in Carbon community challenges** (Steve Jones)
+
+* **13:00** Lunch
+
+* **15:00 - Parallel hackathon sessions**
+  * **1.** Mapping CF standard names to IADOPT
+  * **2.** House cleaning: improvement to Conventions documents formatting
+
+* **16:30 -** Coffee break
+
+* **17:00 - Hackathon sessions (continued)**
+
+* **18:00 -** Close
+
+### Wednesday, 14 September 2022
+
+* **09:30 - Tuesday recap and discussion**
+
+* **09:45 - netCDF/Zarr** (Ethan Davis)
+
+* **10:15 - UGRID** (TBA)
+
+* **11:00 -** Coffee break
+
+* **11:30 - Compression** (Bryan Lawrence)
+
+* **12:15 - Lossy compression** (Charlie Zender)
+
+* **13:00 -** Lunch
+
+* **15:00 - Parallel hackathon sessions**
+  * **3.** Conventions enhancements for describing lossy compression
+  * **4.** GitHub processes and automations
+
+* **16:30 -** Coffee break
+
+* **17:00 - Hackathon sessions (continued)**
+
+* **17:30 -** Evening trip and dinner
+
+### Thursday, 15 September 2022
+
+* **09:45 - Wednesday recap and discussion**
+
+* **10:00 - Dataset DOIs discussion**
+
+* **11:00 -** Coffee break
+
+* **11:30 - Parallel hackathon sessions**
+  * **5.** Creating CF conventions DOIs
+  * **6.** Dataset DOIs: further discussion and conventions enhancements
+
+* **13:00 -** Lunch
+
+* **15:00 - Hackathon debriefings**
+
+* **16:00 -** Coffee break
+
+* **16:30 - Wrap-up, conclusions, and actions** (Antonio Cofiño)
+
+* **17:30 -** Close
+
+
 
 ### Training session
 In the week prior to the CF Workshop we plan to run a virtual training event for users new to CF.

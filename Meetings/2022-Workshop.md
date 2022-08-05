@@ -118,7 +118,7 @@ The training will last for 3 hours and will take place on **Thursday 8th Septemb
 
 Details of training programme can be found at the [training section of the CF website][TRAINING].
 
-Pre-registration for the on-line training event is not essential, but to help us with planning please the corresponding checkbox, in the [registration form][REGISTRATION], if you would be interested in attending. Videos of the training presentations will be made available for later viewing by those unable to attend the event itself. 
+Pre-registration for the on-line training event is not essential, but to help us with planning please the corresponding checkbox, in the [registration form][REGISTRATION], if you would be interested in attending. For those unable to attend the event itself, the presentations will be accessable from the [training section of the CF website][TRAINING], and videos presentations will also be made available for later viewing. 
 
 More details at: <https://github.com/cf-convention/discuss/issues/158>
 

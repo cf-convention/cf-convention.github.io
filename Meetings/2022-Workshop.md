@@ -41,7 +41,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **10:00 - Review of CF-1.10** (David Hassell and Sadie Bartholomew)
 
-* **10:30 - CF training - overview and discussion** (Sadie Bartholomew)
+* **10:30 - CF training: Overview and discussion** (Sadie Bartholomew)
 
 * **11:00 -** Coffee break
 
@@ -49,9 +49,9 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **11:45 - How we describe our variables** (Alison Pamment)
 
-* **12:30 - Standard names in Carbon community challenges** (Steve Jones)
+* **12:30 - Standard name challenges in the carbon community** (Steve Jones)
 
-* **13:00** Lunch
+* **13:00 -** Lunch
 
 * **15:00 - Parallel hackathon sessions**
   * **1.** Mapping CF standard names to IADOPT
@@ -59,7 +59,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **16:30 -** Coffee break
 
-* **17:00 - Hackathon sessions (continued)**
+* **17:00 - Hackathon sessions** (continued)
 
 * **18:00 -** Close
 
@@ -85,7 +85,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **16:30 -** Coffee break
 
-* **17:00 - Hackathon sessions (continued)**
+* **17:00 - Hackathon sessions** (continued)
 
 * **17:30 -** Evening trip and dinner
 
@@ -93,12 +93,12 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **09:45 - Wednesday recap and discussion**
 
-* **10:00 - Dataset DOIs discussion**
+* **10:00 - Dataset DOIs: Discussion**
 
 * **11:00 -** Coffee break
 
 * **11:30 - Parallel hackathon sessions**
-  * **5.** Creating CF conventions DOIs
+  * **5.** Create DOIs for the CF conventions 
   * **6.** Dataset DOIs: further discussion and conventions enhancements
 
 * **13:00 -** Lunch

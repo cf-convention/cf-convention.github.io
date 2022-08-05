@@ -122,16 +122,17 @@ Pre-registration for the on-line training event is not essential, but to help us
 
 More details at: <https://github.com/cf-convention/discuss/issues/158>
 
-## Topics for hackathon sessions
+## Hackathon sessions
 
-We will devote roughly half of the time on each day to focused-attention hackathons, during which it is hoped that concrete progress on each topic can be made (such as actual changes suggested to the Conventions text). 
+We will devote roughly half of the time on each day to focused-attention hackathons, during which it is hoped that concrete progress on each topic can be made (such as actual changes suggested to the Conventions text). On each day, two hackathon sessions will run in parallel.
 
 Please express an interest in any number of these sessions, in the [registration form][REGISTRATION], or suggest a new topic that could be included, with a suggestion of who you think could lead the discussion. 
 
 More details at: <https://github.com/cf-convention/discuss/issues/152>
 
-## Poster contributions 
-During the CF Workshop there will be available displays for Poster contributions from participants. There will be no formal poster session, but posters expected to chatted about informally during breaks.
+## Poster contributions
+
+During the CF Workshop there will be available displays for poster contributions from participants. There will be no formal poster session, but posters are expected to be chatted about informally during breaks.
 
 To help us with planning, please check the "Other" box, in the [registration form][REGISTRATION], and provided a tentative title, if you would be interested to bring your poster. 
 

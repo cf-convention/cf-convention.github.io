@@ -75,7 +75,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **11:30 - Compression** (Bryan Lawrence)
 
-* **12:15 - Lossy compression** (Charlie Zender)
+* **12:15 - Lossy compression: The netCDF implementation and towards encoding precision** (Charlie Zender)
 
 * **13:00 -** Lunch
 

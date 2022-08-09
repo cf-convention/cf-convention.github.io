@@ -55,7 +55,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **15:00 - Parallel hackathon sessions**
   * **1.** Mapping CF standard names to IADOPT
-  * **2.** House cleaning: improvement to Conventions documents formatting
+  * **2.** Housekeeping: Formatting improvements, and clarifying Udunits usage text
 
 * **16:30 -** Coffee break
 

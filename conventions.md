@@ -82,6 +82,8 @@ group: "navigation"
 
   <div class="col-md-6">
 
+    <h2><a href="./conventions_contributors.html">List of contributors</a> to CF conventions
+
     <h2>Compliance checker</h2>
     <a href="https://pumatest.nerc.ac.uk/cgi-bin/cf-checker.pl">This utility</a> checks that a netCDF file which you supply complies with the CF conformance requirements and recommendations.
 

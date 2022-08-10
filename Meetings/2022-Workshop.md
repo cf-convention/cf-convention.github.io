@@ -33,43 +33,124 @@ Please check details on [how to arrive to IFCA](https://ifca.unican.es/en-us/abo
 
 ## Agenda
 
-**TO BE COMPLETED**
+All times are local to Santander, i.e. **UTC+2**
 
-### Training session
-In the week prior to the CF Workshop we plan to run a virtual training event for users new to CF.
-This will take place on Thursday 8th September, 1500 - 1800 UTC. 
+### Tuesday, 13 September 2022
 
-**The full programme will be published on the CF website prior to the event.** 
+* **09:30 - Welcome, logistics, and introduction** (Antonio Cofiño)
 
-Pre-registration for the on-line training event is not essential, but to help us with planning please the corresponding checkbox, in the [registration form][REGISTRATION], if you would be interested in attending. Videos of the training presentations will be made available for later viewing by those unable to attend the event itself. 
+* **10:00 - Review of CF-1.10** (David Hassell and Sadie Bartholomew)
+
+* **10:30 - CF training: Overview and discussion** (Sadie Bartholomew)
+
+* **11:00 -** Coffee break
+
+* **11:30 - CF to BUFR/WMO** (Kevin O’Brien)
+
+* **11:45 - How we describe our variables** (Alison Pamment)
+
+* **12:30 - Standard name challenges in the carbon community** (Steve Jones)
+
+* **13:00 -** Lunch
+
+* **15:00 - Parallel hackathon sessions**
+  * **1.** Mapping CF standard names to IADOPT
+  * **2.** Housekeeping: Formatting improvements, and clarifying general Udunits text
+
+* **16:30 -** Coffee break
+
+* **17:00 - Parallel hackathon sessions** (continued)
+
+* **18:00 -** Close
+
+### Wednesday, 14 September 2022
+
+* **09:30 - Tuesday recap and discussion**
+
+* **09:45 - netCDF/Zarr** (Ethan Davis)
+
+* **10:15 - UGRID** (TBA)
+
+* **11:00 -** Coffee break
+
+* **11:30 - Compression** (Bryan Lawrence)
+
+* **12:15 - Lossy compression: The netCDF implementation and towards encoding precision** (Charlie Zender)
+
+* **13:00 -** Lunch
+
+* **15:00 - Parallel hackathon sessions**
+  * **3.** Conventions enhancements for describing lossy compression
+  * **4.** GitHub processes and automations
+
+* **16:30 -** Coffee break
+
+* **17:00 - Parallel hackathon sessions** (continued)
+
+* **17:30 -** Evening trip and dinner
+
+### Thursday, 15 September 2022
+
+* **09:45 - Wednesday recap and discussion**
+
+* **10:00 - Dataset DOIs: Discussion**
+
+* **11:00 -** Coffee break
+
+* **11:30 - Parallel hackathon sessions**
+  * **5.** Create DOIs for the CF conventions 
+  * **6.** Dataset DOIs: Further discussion and conventions enhancements
+
+* **13:00 -** Lunch
+
+* **15:00 - Hackathon debriefings**
+
+* **16:00 -** Coffee break
+
+* **16:30 - Wrap-up, conclusions, and actions** (Antonio Cofiño)
+
+* **17:30 -** Close
+
+
+## Training session
+In the week prior to the CF Workshop there will be a virtual training event designed for users new or fairly new to CF, which may well be useful to those with more experience, too.
+The training will last for 3 hours and will take place on **Thursday 8th September, 1500 - 1800 UTC**.
+
+Details of training programme can be found at the [training section of the CF website][TRAINING].
+
+Pre-registration for the on-line training event is not essential, but to help us with planning please tick the corresponding checkbox, in the [registration form][REGISTRATION], if you would be interested in attending.
+
+For those unable to attend the event itself, the content (including videos of the presentations) will be accessable from the [training section of the CF website][TRAINING]. 
 
 More details at: <https://github.com/cf-convention/discuss/issues/158>
 
-### Topics for hackathon sessions
+## Hackathon sessions
 
-We will devote the afternoon (CEST time) sessions of each day to focused-attention hackathons, during which it is hoped that concrete progress on each topic can be made (such as actual changes suggested to the Conventions text). 
+We will devote roughly half of the time on each day to focused-attention hackathons, during which it is hoped that concrete progress on each topic can be made (such as actual changes suggested to the Conventions text). On each day, two hackathon sessions will run in parallel.
 
 Please express an interest in any number of these sessions, in the [registration form][REGISTRATION], or suggest a new topic that could be included, with a suggestion of who you think could lead the discussion. 
 
 More details at: <https://github.com/cf-convention/discuss/issues/152>
 
-### Poster contributions 
-During the CF Workshop there will be available displays for Poster contributions from participants. There will be no formal poster session, but posters expected to chatted about informally during breaks.
+## Poster contributions
+
+During the CF Workshop there will be displays for poster contributions from participants. There will be no formal poster session, but posters are expected to be chatted about informally during breaks.
 
 To help us with planning, please check the "Other" box, in the [registration form][REGISTRATION], and provided a tentative title, if you would be interested to bring your poster. 
 
-# The organising committee
+## The organising committee
 
 * Guilherme Castelão
 * Antonio S. Cofiño
 * Ethan Davis
 * David Hassell (chair)
+ * Aleksandar Jelenak
 * Daniel Lee
 * Kevin O'Brien
 * Alison Pamment
 * Charlie Zender
 
-# Sponsorship
+## Sponsorship
 
 Thanks for their support of this meeting to: 
  - [IS-ENES3] which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
@@ -90,6 +171,7 @@ Thanks for their support of this meeting to:
 [CORDyS-logo]: 2022-workshop/micin-aei-cordys_en.png 
 [IFCA]: https://ifca.unican.es/en-us "Institute of Physics of Cantabria (IFCA, CSIC-UC)"
 [IFCA-logo]: 2022-workshop/ifca-logo.png 
+[TRAINING]: http://cfconventions.org/Training/2022-Training-Workshop.html "2022 CF Training Workshop"
 
 *[AEI]: Spanish State Research Agency
 *[MCIN]: Spanish Ministry of Science

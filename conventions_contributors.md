@@ -30,6 +30,7 @@ Jon Blower, University of Reading<br>
 Benno Blumenthal, Columbia University<br>
 Philip Cameron-Smith, LLNL<br>
 John Caron, Unidata<br>
+Guilherme Castelão, SIO/UCSD<br>
 Antonio Cofiño, University of Cantabria<br>
 Lorenzo Corgnati, CNR-ISMAR<br>
 Ethan Davis, Unidata<br>

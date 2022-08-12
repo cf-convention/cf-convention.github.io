@@ -16,6 +16,8 @@ Each issue template notes that the approval of one or more members of the follow
 - The [Conventions Committee and Standard Names Committee](committee), or
 - The [Governance Panel](gov-panel)
 
+When closing an issue, the moderator should note in the final comment any users who have contributed significantly enough to warrant addition to the [CF Conventions Contributors List](https://cfconventions.org/conventions_contributors.html).
+
 [cf-website]: http://cfconventions.org/
 [contribute-conventions]: https://github.com/cf-convention/cf-conventions/blob/master/CONTRIBUTING.md
 [discuss]: https://github.com/cf-convention/discuss/issues

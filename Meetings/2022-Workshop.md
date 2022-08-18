@@ -31,6 +31,10 @@ The workshop takes place at [IFCA] which it's located at [University of Cantabri
 
 Please check details on [how to arrive to IFCA](https://ifca.unican.es/en-us/about-ifca/how-to-arrive)
 
+## On-line access
+
+On-line access will be via Zoom. The link will be posted here before the start of the meeting.
+
 ## Agenda
 
 All times are local to Santander, i.e. **UTC+2**

@@ -41,9 +41,9 @@ All times are local to Santander, i.e. **UTC+2**
 
 ### Tuesday, 13 September 2022
 
-* **09:30 - Welcome, logistics, and introduction** (Antonio Cofiño)
+* **09:30 - Welcome, logistics, and introduction** (Antonio S. Cofiño)
 
-* **10:00 - Review of CF-1.10** (David Hassell and Sadie Bartholomew)
+* **10:00 - Review of CF-1.10** (David Hassell)
 
 * **10:30 - CF training: Overview and discussion** (Sadie Bartholomew)
 
@@ -111,7 +111,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **16:00 -** Coffee break
 
-* **16:30 - Wrap-up, conclusions, and actions** (Antonio Cofiño)
+* **16:30 - Wrap-up, conclusions, and actions** (Antonio S. Cofiño)
 
 * **17:30 -** Close
 

@@ -85,7 +85,7 @@ as current contact information.
 - Maarten Sneep, KNMI
 - Anders Meier Soerensen, EUMETSAT
 - Karl Taylor, PCMDI, LLNL
-- Etienne Tourigny
+- Etienne Tourigny, INPE
 - Micah Wengren, NOAA
 - Timothy Whiteaker, University of Texas
 - John Wilkin, Rutgers University

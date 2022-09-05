@@ -29,17 +29,19 @@ The 2022 CF training workshop will take place online on Thursday 08 September 20
 
 * **15:10 - A brief introduction to CF** (David Hassell)
 
-* **15:35 - Why use CF?** (Jennifer Sevadjian, Andy Heaps, Antonio Cofiño)
+* **15:35 - An introduction to using CF standard names** (Alison Pamment)
 
-* **16:05 - Starting to use tools with CF** (Ethan Davis)
+* **15:50 - Why use CF?** (Jennifer Sevadjian, Andy Heaps, Antonio Cofiño)
 
-* **16:30 -** 10 minute break
+* **16:20 -** 10 minute break
 
-* **16:40 - Some examples of creating CF metadata** (Guilherme Castelão, Alison Pamment)
+* **16:30 - Starting to use tools with CF** (Ethan Davis)
 
-* **17:20 - How to contribute to CF** (Sadie Bartholomew)
+* **16:55 - An example of creating CF metadata** (Guilherme Castelão)
 
-* **17:40 - General Q&A** (All presenters)
+* **17:25 - How to contribute to CF** (Sadie Bartholomew)
+
+* **17:45 - General Q&A** (All presenters)
 
 * **17:55 - Wrap-up** (Alison Pamment)
 
@@ -63,4 +65,4 @@ Thanks for their support of this meeting to:
    ![IS-ENES3-logo]{: height="75px"}
    
 [IS-ENES3]: https://is.enes.org "Infrastructure for the European Network for Earth System Modelling"
-[IS-ENES3-logo]: 2022-workshop/is-enes3-logo.png
+[IS-ENES3-logo]: http://cf-conventions.org/Meetings/2022-workshop/is-enes3-logo.png

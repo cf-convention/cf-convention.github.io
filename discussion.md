@@ -33,10 +33,11 @@ using [GitHub issues][github_issues].
 No registration with CF is required to contribute; all that is needed
 is a freely available [GitHub account][github].
 
-Before the CF community migrated to GitHub, general and standard-name
-discussion took place on the [cf-metadata mailing list][archives], and
-enhancements to the conventions were proposed on the [CF Metadata
-Trac](Data/trac.html) site.
+Before the CF community migrated to GitHub,
+general and standard-name discussion took place on the
+[cf-metadata mailing list][archives], and enhancements
+to the conventions were proposed
+on the [CF Metadata Trac](Data/trac.html) site.
 
 ### Archive links
 

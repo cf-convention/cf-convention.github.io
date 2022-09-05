@@ -26,7 +26,7 @@ group: "navigation"
 * Nan Galbraith (29 May 2025)
 * John Graybeal (29 May 2025)
 * Jonathan Gregory (chair of CF Committees, 6 July 2024) (29 May 2025)
-* David Hassell (secretary of the Conventions Committee) (31 March 2022)
+* David Hassell (secretary of the Conventions Committee) (31 March 2027)
 * Martin Juckes (12 Apr 2026)
 * Daniel Lee (30 Sep 2024)
 * Roy Lowry (29 May 2025)

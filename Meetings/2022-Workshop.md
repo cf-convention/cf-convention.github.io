@@ -73,7 +73,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **09:45 - netCDF/Zarr** (Ethan Davis)
 
-* **10:15 - UGRID** (TBA)
+* **10:15 - Geometries and Grids** (Antonio S. Cofiño)
 
 * **11:00 -** Coffee break
 

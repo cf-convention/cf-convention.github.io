@@ -12,11 +12,15 @@ The CF convention includes a standard name table, which defines strings that ide
 
 ---
 
-**Latest release** (1.10) [HTML][releasedhtml] [PDF][releasedpdf]
+**_Conventions_:** **Latest release** (1.10) [HTML][releasedhtml] [PDF][releasedpdf]
 <code>&nbsp;&bull;&nbsp;</code>
 **Working draft** [HTML][workinghtml] [PDF][workingpdf]
+
+**_Vocabulary_:** [**Standard names**][currentnames]
 <code>&nbsp;&bull;&nbsp;</code>
-[**Standard name table**][currentnames]
+[**Area types**][areatypes]
+<code>&nbsp;&bull;&nbsp;</code>
+[**Standardized regions**][regions]
 
 ---
 
@@ -31,8 +35,6 @@ The use of CF is recommended where applicable by Unidata.
 
 See also the links in the navigation bar at the top of this page.
 
-* [Latest release of CF conventions][releasedhtml]
-* [Current version of CF standard name table][currentnames]
 * Current issues: [general discussion][github_discuss] (including standard names), [conventions][github_conventions], this [website][github_website] (including governance)
 * [CF GitHub organisation][cf_github]
 * [CF FAQ][faq]
@@ -53,6 +55,8 @@ See also the links in the navigation bar at the top of this page.
 [workinghtml]: /cf-conventions/cf-conventions.html
 [workingpdf]: /cf-conventions/cf-conventions.pdf
 [currentnames]: Data/cf-standard-names/current/build/cf-standard-name-table.html
+[areatypes]: Data/area-type-table/current/build/area-type-table.html
+[regions]: Data/standardized-region-list/standardized-region-list.current.html
 [cfdmpaper]: https://doi.org/10.5194/gmd-10-4619-2017
 [github_discuss]: https://github.com/cf-convention/discuss/issues
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues

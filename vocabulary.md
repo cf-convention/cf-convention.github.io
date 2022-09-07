@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Standard Names
+title: Vocabulary
 group: "navigation"
 ---
 

@@ -65,4 +65,4 @@ Thanks for their support of this meeting to:
    ![IS-ENES3-logo]{: height="75px"}
    
 [IS-ENES3]: https://is.enes.org "Infrastructure for the European Network for Earth System Modelling"
-[IS-ENES3-logo]: http://cf-conventions.org/Meetings/2022-workshop/is-enes3-logo.png
+[IS-ENES3-logo]: ../Meetings/2022-workshop/is-enes3-logo.png

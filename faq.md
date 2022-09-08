@@ -382,7 +382,7 @@ References:
 
 ### How can I find the standard name I need?
 
-To find standard names that describe your data, open up the latest [Standard Name table](http://cfconventions.org/vocabulary.html) (as HTML or XML) and search through it for words typically used for your data. (Because standard names contain no blanks, you may want to search for one word at a time, or even part of a word, rather than a full phrase like "air temperature".) If you can not find any matches, you can browse the table to see the kinds of names that exist -- names strongly lean toward environmental modeling and observation data, especially in atmosphere and ocean science.
+To find standard names that describe your data, open up the latest [Standard Name table](http://cfconventions.org/vocabularies.html) (as HTML or XML) and search through it for words typically used for your data. (Because standard names contain no blanks, you may want to search for one word at a time, or even part of a word, rather than a full phrase like "air temperature".) If you can not find any matches, you can browse the table to see the kinds of names that exist -- names strongly lean toward environmental modeling and observation data, especially in atmosphere and ocean science.
 
 If you can't find any matches, send an email to the CF-Metadata list describing your variables. (See the [question on asking for a new standard name](#stdnames_ask).)
 <a class="anchor" id="stdnames_ask"></a>

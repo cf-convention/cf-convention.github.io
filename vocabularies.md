@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Vocabulary
+title: Vocabularies
 group: "navigation"
 ---
 
-<h2><b>CF Standard Names and other CF Controlled Vocabulary</b></h2>
+<h2><b>CF Standard Names and other CF Controlled Vocabularies</b></h2>
 <p>
 <h4><b>Standard Name Table (current version, v79, 19 March 2022)</b></h4>
   <a href="Data/cf-standard-names/79/build/cf-standard-name-table.html">HTML</a> &nbsp;

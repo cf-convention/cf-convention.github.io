@@ -16,7 +16,7 @@ The CF convention includes a standard name table, which defines strings that ide
 <code>&nbsp;&bull;&nbsp;</code>
 **Working draft** [HTML][workinghtml] [PDF][workingpdf]
 
-**_Vocabulary_:** [**Standard names**][currentnames]
+**_Vocabularies_:** [**Standard names**][currentnames]
 <code>&nbsp;&bull;&nbsp;</code>
 [**Area types**][areatypes]
 <code>&nbsp;&bull;&nbsp;</code>

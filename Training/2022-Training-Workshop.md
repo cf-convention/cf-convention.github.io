@@ -19,7 +19,9 @@ You can register using [this form][REGISTRATION]. (This is also the form to use 
 
 # Online access
 
-Online access will be via Zoom. Zoom link: https://ukri.zoom.us/j/96281250361
+Online access will be via Zoom. You can use this [link][ZOOMLINK] to join the session.
+
+[ZOOMLINK]: https://ukri.zoom.us/j/96281250361
 
 # Programme
 

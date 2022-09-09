@@ -27,7 +27,7 @@ Online access will be via Zoom. You can use this [link][ZOOMLINK] to join the se
 
 The 2022 CF training workshop will take place online on Thursday 08 September 2022, 15:00-18:00 UTC. All times below are UTC.
 
-Videos of selected presentations can be found at the [CF conventions YouTube channel][YouTube]
+Videos of the presentations can be found at the [CF conventions YouTube channel][YouTube]
 
 * **15:00 - Introduction to the training session** (Alison Pamment)
 

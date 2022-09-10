@@ -59,7 +59,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **15:00 - Parallel hackathon sessions**
   * **1.** Mapping CF standard names to [I-ADOPT](https://doi.org/10.15497/RDA00071)
-  * **2.** Housekeeping: Formatting improvements, and clarifying general Udunits text
+  * **2.** Housekeeping: Formatting improvements, clarifying general Udunits text, and more.
 
 * **16:30 -** Coffee break
 
@@ -79,7 +79,9 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **11:30 - Compression** (Bryan Lawrence)
 
-* **12:15 - Lossy compression: The netCDF implementation and towards encoding precision** (Charlie Zender)
+* **11:50 - Lossy compression: The netCDF implementation and towards encoding precision** (Charlie Zender)
+
+* **12:20 - Compression: Discussion**
 
 * **13:00 -** Lunch
 
@@ -148,7 +150,7 @@ To help us with planning, please check the "Other" box, in the [registration for
 * Antonio S. Cofiño
 * Ethan Davis
 * David Hassell (chair)
- * Aleksandar Jelenak
+* Aleksandar Jelenak
 * Daniel Lee
 * Kevin O'Brien
 * Alison Pamment

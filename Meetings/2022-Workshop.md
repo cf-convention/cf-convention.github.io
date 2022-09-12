@@ -18,7 +18,6 @@ There are no registration fees, but registration before 30th of August is requir
 
 You can register using [this form][REGISTRATION].
 
-
 [REGISTRATION]: https://forms.gle/RB9BYZuLULcVKBsF6
 
 ## Venue
@@ -29,11 +28,25 @@ The workshop takes place at [IFCA] which it's located at [University of Cantabri
 
 ### Travel information
 
-Please check details on [how to arrive to IFCA](https://ifca.unican.es/en-us/about-ifca/how-to-arrive)
+Please check details on [how to arrive to IFCA](https://ifca.unican.es/en-us/about-ifca/how-to-arrive) 
 
 ## On-line access
 
-On-line access will be via Zoom. The link will be posted here before the start of the meeting.
+Use the following link to access the [Zoom Room for the plenary sessions][MainZoomRoom]:
+ - [Main Zoom Room][MainZoomRoom]
+
+For hackatons sessions, an [Auxiliary Zoom Room][AuxiliaryZoomRoom] will be use, in addition to the [Main Zoom Room][MainZoomRoom]:
+ - [Auxiliary Zoom Room][AuxiliaryZoomRoom]
+
+Please, be sure your name on Zoom follows this pattern: 
+```
+Firstname M. Lastname (Institution, Country)
+```
+You can find some instructions on how to change your name on Zoom [here] [ChangeNameZoom]
+
+[ChangeNameZoom]: https://support.zoom.us/hc/en-us/articles/8715431556621-Changing-your-name-on-Zoom#h_01GBDJTECEGP2KBR77HZ99Q46G "How to change your name on Zoom"
+[MainZoomRoom]: https://us06web.zoom.us/j/85052846695?pwd=RFVmZi9TRGJoSVpHamVZbnNGdDZsdz09 "Main Zoom Room"
+[AuxiliaryZoomRoom]: https://us06web.zoom.us/j/85391362542?pwd=ZTN6emtlZFpXeUF2S2hGMm9yZDQwQT09 "Auxiliary Zoom Room"
 
 ## Agenda
 

@@ -4,6 +4,8 @@ title: Rules
 ---
 
 # Rules for CF Conventions Changes
+
+Let's be really chaotic. Always. 
  
 <p>New proposals are to be made in github issues using the template, including verbatim changes proposed to the text of standard document and the conformance document.</p>
 

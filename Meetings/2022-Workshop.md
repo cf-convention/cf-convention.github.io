@@ -75,8 +75,8 @@ All times are local to Santander, i.e. **UTC+2**
 * **13:00 -** Lunch
 
 * **15:00 - Parallel hackathon sessions**
-  * **1.** Mapping CF standard names to [I-ADOPT](https://doi.org/10.15497/RDA00071)
-  * **2.** Housekeeping: Formatting improvements, clarifying general Udunits text, and more.
+  * **1.** Mapping CF standard names to [I-ADOPT](https://doi.org/10.15497/RDA00071): [Main Zoom Room][MainZoomRoom]
+  * **2.** Housekeeping: Formatting improvements, clarifying general Udunits text, and more: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **16:30 -** Coffee break
 

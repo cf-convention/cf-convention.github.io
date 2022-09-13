@@ -77,6 +77,10 @@ where tabular representations become unwieldy and inefficient.
 CF Standard names, units, and coordinate metadata are built into Iris,
 giving you a rich and expressive interface for maintaining an accurate representation of your data.
 
+### netCDF Operators (NCO)
+The [netCDF Operators](https://nco.sf.net) toolkit manipulates and analyzes data stored in netCDF-accessible formats, including DAP, HDF4, HDF5, and, most recently, Zarr. NCO exploits the geophysical expressivity and logic of many CF (Climate & Forecast) metadata conventions including support for UDUNITS, fo the attributes `Conventions`, `history`, `scale_factor`, `add_offset`, `coordinates`, `cell_methods`, and `cell_measures`, for hierarchical datasets, and for auxiliary coordinates. See the [documentation](https://nco.sf.net/nco.html) for a full description.
+
+
 ### netCDF Flattener - Flatten netCDF files
 The [netCDF Flattener](https://gitlab.eumetsat.int/open-source/netcdf-flattener/) Python package takes netCDF objects that use groups and flattens them
 while preserving references as described in the [Groups section](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#groups)

@@ -48,6 +48,10 @@ You can find some instructions on how to change your name on Zoom [here] [Change
 [MainZoomRoom]: https://us06web.zoom.us/j/85052846695?pwd=RFVmZi9TRGJoSVpHamVZbnNGdDZsdz09 "Main Zoom Room"
 [AuxiliaryZoomRoom]: https://us06web.zoom.us/j/85391362542?pwd=ZTN6emtlZFpXeUF2S2hGMm9yZDQwQT09 "Auxiliary Zoom Room"
 
+## Documents
+
+All of the presentations and notes for the plenary and hackathon sessions will be available in this [Google Drive folder](https://drive.google.com/drive/folders/18BzZixnRUhV8nDqbeRE_ltVvWTF1BzVG).
+
 ## Agenda
 
 All times are local to Santander, i.e. **UTC+2**

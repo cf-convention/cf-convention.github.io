@@ -2,7 +2,7 @@
 
 Original from the CF white paper of 2006, amended May 2020.
 
-### Introduction
+## Introduction
 
 The governance arrangements described in this document are intended to
 organise and facilitate the work of the CF community
@@ -17,7 +17,7 @@ by participating in online discussions,
 attending meetings, proposing changes, or taking part in any other way they
 deem appropriate and useful, on a best-effort basis.
 
-### Constitution of the CF Governance Panel
+## Constitution of the CF Governance Panel
 
 The panel governs the CF standard on behalf of the
 user community under the auspices of the WMO/WCRP Working Group on Coupled
@@ -38,7 +38,7 @@ The panel will appoint its own new members as the need arises.
 Its members may serve as long as they are willing,
 and may resign at any time.
 
-### Terms of reference of the CF Governance Panel
+## Terms of reference of the CF Governance Panel
 
 The panel will be responsible for the stewardship of CF, but will not have any
 special responsibility for or influence on the technical content of CF.
@@ -81,7 +81,7 @@ The panel will maintain a permanent public
 record of debates and of any decisions it makes,
 except where privacy is essential.
 
-### Constitution of the CF committees
+## Constitution of the CF committees
 
 Anyone with sufficient time, interest and expertise is qualified to serve as a
 member of the conventions committee or the standard names committee or
@@ -126,8 +126,7 @@ proposing and deciding changes are kept up-to-date and made publicly available.
 The committees may not change their constitutions or terms of reference
 themselves, but each may propose changes to be made by the CF Governance Panel.
 
-
-### Terms of reference of the conventions committee
+## Terms of reference of the conventions committee
 
 The conventions committee will be responsible for the development of the CF
 conventions constituting the CF netCDF standard, except for the definition of
@@ -149,8 +148,7 @@ The membership of the conventions committee should include representatives of
 those who maintain widely used software which follows the CF conventions,
 especially those which the committee regards as reference implementations.
 
-
-### Terms of reference of the standard names committee
+## Terms of reference of the standard names committee
 
 The standard names committee will be responsible for the definition of CF
 standard names and of any other aspects of controlled vocabulary in the

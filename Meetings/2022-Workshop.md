@@ -103,8 +103,8 @@ All times are local to Santander, i.e. **UTC+2**
 * **13:00 -** Lunch
 
 * **15:00 - Parallel hackathon sessions**
-  * **3.** Conventions enhancements for describing lossy compression
-  * **4.** GitHub processes and automations
+  * **3.** Conventions enhancements for describing lossy compression: [Main Zoom Room][MainZoomRoom]
+  * **4.** GitHub processes and automations: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **16:30 -** Coffee break
 

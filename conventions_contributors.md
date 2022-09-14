@@ -5,15 +5,10 @@ title: Rules
 
 # Contributors to the CF Conventions
 
-The following individuals have proposed enhancements or corrections of defects
-in the CF conventions, or participated substantially in discussions which led
-to agreement on changes being made, or which concluded in no change being made
-after detailed consideration. They are listed here in recognition of their
-contribution to the development of the CF standard.
+The following individuals have proposed enhancements or corrections of defects in the CF conventions, or participated substantially in discussions which led to agreement on changes being made, or which concluded in no change being made after detailed consideration.
+They are listed here in recognition of their contribution to the development of the CF standard.
 
-The affiliations are those that the contributors used at the time of their
-contribution and are included to identify them, rather than
-as current contact information.
+The affiliations are those that the contributors used at the time of their contribution and are included to identify them, rather than as current contact information.
 
 - Ryan Abernathey, Columbia University
 - Dave Allured, NOAA

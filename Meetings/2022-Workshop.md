@@ -94,7 +94,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **11:00 -** Coffee break
 
-* **11:30 - Compression** (Bryan Lawrence)
+* **11:30 - Requirements for Compression Metadata** (Bryan Lawrence)
 
 * **11:50 - Lossy compression: The netCDF implementation and towards encoding precision** (Charlie Zender)
 

@@ -121,8 +121,8 @@ All times are local to Santander, i.e. **UTC+2**
 * **11:00 -** Coffee break
 
 * **11:30 - Parallel hackathon sessions**
-  * **5.** Create DOIs for the CF conventions 
-  * **6.** Dataset DOIs: Further discussion and conventions enhancements
+  * **5.** Create DOIs for the CF conventions: [Main Zoom Room][MainZoomRoom] 
+  * **6.** Dataset DOIs: Further discussion and conventions enhancements: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **13:00 -** Lunch
 

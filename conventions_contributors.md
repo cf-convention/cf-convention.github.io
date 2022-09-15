@@ -59,6 +59,7 @@ as current contact information.
 - Randy Horne, Excalibur Laboratories Inc
 - Bert Jagers, Deltares
 - Aleksandar Jelenak, HDF Group
+- Steve Jones, University of Bergen
 - Martin Juckes, NCAS
 - Tobias Kölling, MPIM
 - Dalton Kell, AER

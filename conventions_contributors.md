@@ -22,6 +22,7 @@ as current contact information.
 - Chris Barker, NOAA
 - Andrew Barna, SIO/UCSD
 - Lars Bärring, SMHI
+- Sadie Bartholomew, NCAS and University of Reading
 - Phil Bentley, UK Met Office
 - Jim Biard, NOAA
 - Leon Bilton, ANU

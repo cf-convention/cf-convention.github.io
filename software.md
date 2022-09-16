@@ -68,6 +68,10 @@ It can also use numpy arrays of data as the input fields
 making for flexible plotting of data.
 cf-plot uses the Python numpy, matplotlib and scipy libraries.
 
+### cf-view - CF Python Quick Look Visualization Package
+The [cf-view Python package](https://ajheaps.github.io/cf-view/) is a quick look data exploration tool for netCDF and Met Office PP data.
+It uses the [cf-python](#cf-python---cf-python-package) and [cf-plot](#cf-python---cf-python-package) packages and reads and writes CF-compliant dataset.
+
 ### Iris - Python library for analysing and visualising Earth science data
 [Iris](https://scitools.org.uk/iris/docs/latest/) implements a data model based on the CF conventions
 giving you a powerful, format-agnostic interface for working with your data.

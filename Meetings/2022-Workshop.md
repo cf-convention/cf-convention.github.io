@@ -173,6 +173,9 @@ To help us with planning, please check the "Other" box, in the [registration for
 * Alison Pamment
 * Charlie Zender
 
+## Picture from participants
+![Participants-Picture]
+
 ## Sponsorship
 
 Thanks for their support of this meeting to: 
@@ -195,6 +198,7 @@ Thanks for their support of this meeting to:
 [IFCA]: https://ifca.unican.es/en-us "Institute of Physics of Cantabria (IFCA, CSIC-UC)"
 [IFCA-logo]: 2022-workshop/ifca-logo.png 
 [TRAINING]: http://cfconventions.org/Training/2022-Training-Workshop.html "2022 CF Training Workshop"
+[Participants-Picture]: 2022-workshop/Participants-Picture.jpg
 
 *[AEI]: Spanish State Research Agency
 *[MCIN]: Spanish Ministry of Science

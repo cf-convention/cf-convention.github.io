@@ -174,7 +174,7 @@ To help us with planning, please check the "Other" box, in the [registration for
 * Charlie Zender
 
 ## Picture from participants
-![Participants-Picture]
+![Participants-Picture]{: height="480px"}
 
 ## Sponsorship
 

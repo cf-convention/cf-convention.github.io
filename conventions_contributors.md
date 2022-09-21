@@ -17,6 +17,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Chris Barker, NOAA
 - Andrew Barna, SIO/UCSD
 - Lars Bärring, SMHI
+- Sadie Bartholomew, NCAS and University of Reading
 - Phil Bentley, UK Met Office
 - Jim Biard, NOAA
 - Leon Bilton, ANU
@@ -54,6 +55,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Randy Horne, Excalibur Laboratories Inc
 - Bert Jagers, Deltares
 - Aleksandar Jelenak, HDF Group
+- Steve Jones, University of Bergen
 - Martin Juckes, NCAS
 - Tobias Kölling, MPIM
 - Dalton Kell, AER

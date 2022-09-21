@@ -199,12 +199,13 @@ CF offers a rich set of options for specifying coordinate axes. Here is a short 
 * [Discrete axes](http://cfconventions.org/cf-conventions/cf-conventions.html#discrete-axis) can have unordered, enumerated axis values, like days of the week or model levels [example](http://cfconventions.org/cf-conventions/cf-conventions.html#alternative-coordinates).
 * Isotherms are described as a data variable of depth with a coordinate of (potential) temperature. 
 * Various other vertical coordinate systems that are dimensionless are explicitly listed in [Appendix D](http://cfconventions.org/cf-conventions/cf-conventions.html#dimensionless-v-coord), and are specified as described in [Dimensionless Vertical Coordinates section](http://cfconventions.org/cf-conventions/cf-conventions.html#dimensionless-vertical-coordinate).
-* Swath coordinates (e.g., 'along-track' and 'across-track' values often obtained from platforms following a path, like satellites, planes, and autonomous underwater vehicles) can be expressed as x,y coordinates that are mapped to latitude and longitude.
+* Swath coordinates (e.g., 'along-track' and 'across-track' values often obtained from platforms following a path, like satellites, planes, and autonomous underwater vehicles) can be expressed as x,y coordinates that are mapped to latitude and longitude. There are [open proposals](https://github.com/cf-convention/cf-conventions/issues/269) for specifying swath coordinates.
 * Degree-day integrals are described as integral_of_air_temperature_deficit|excess_wrt_time with a coordinate of air_temperature_threshold. 
 * Electromagnetic radiation at particular wavelengths uses a coordinate of radiation_wavelength or radiation_frequency.
 
 *Suggestion for improvement: add a good example for swath coordinates.
 The ones in http://kitt.llnl.gov/trac/wiki/SatelliteData don't seem quite illustrative.*
+
 
 ### How can I describe a file with multiple time coordinates (e.g., run time AND valid or forecast time)?
 
@@ -218,7 +219,7 @@ If both are multi-valued, then they are each defined as one-dimensional auxiliar
 
 CF section 5.7 has an [example of the first case](http://cfconventions.org/cf-conventions/cf-conventions.html#scalar-coordinate-variables), with a scalar coordinate variable for forecast_reference_time and a multivalued time axis for the valid time.
 
-[CF ticket #117](http://kitt.llnl.gov/trac/ticket/117) has an example of the second case, drawn from the email referenced above.
+An example of the second case can be found in the email referenced above.
 
 ### What are Discrete Sampling Geometries? Do I need to worry about them?
 
@@ -305,7 +306,7 @@ surface_temperature:coordinates = "lat lon surface_type";
 
 ## CF Standard Names
 
-Reference [section 3.3 of the CF Convention, Standard Names](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#standard-name)
+Reference [section 3.3 of the CF Convention, Standard Names](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#standard-name)
 
 ### What is the official list of standard names?
 
@@ -443,9 +444,9 @@ Among these efforts:
 
 * Karl Taylor ([list post](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2008/052705.html)): A different approach to standard name construction
 * Robert Muetzelfeldt ([list post](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2010/053657.html)): [A grammar for CF standard names](http://envarml.pbworks.com/w/page/8988920/FrontPage) / 1103 names
-** An interesting [page of keywords](http://cfconventions.org/Data/cf-standard-names/47/kwicindex/kwic_index_for_cf_standard_names_v47.html) that resulted
+* An interesting [page of keywords](https://cfconventions.org/Data/cf-standard-names/79/build/kwic_index_for_cf_standard_names.html) that resulted
 * Jonathan Gregory et al ([list post](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2010/048064.html)): [standard name grammar/Parsing CF standard names](http://www.met.reading.ac.uk/~jonathan/CF_metadata/14.1/) / 2072 names
-* Rob Raskin ([list post mention](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2009/047768.html)): [mapped CF standard name list to SWEET-based ontologolical representation](http://sweet.jpl.nasa.gov/ontology/) (Excel) / 2149 names
+* Rob Raskin ([list post mention](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2009/047768.html)): [mapped CF standard name list to SWEET-based ontologolical representation](https://wiki.earthdata.nasa.gov/download/attachments/50792120/SWEET_SPG.ppt?version=1&modificationDate=1435254939370&api=v2) (Powerpoint) / 2149 names
 * John Graybeal (no list post):  [auto-generated pseudo-CF names from CF components](https://github.com/graybealski/cf-conventions-work/blob/master/CF_SWEET_201401_Redacted.xlsx) (Excel) / 2523 names
 * Michael Piasecki/Peng Ji ([list post](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2012/055875.html)): [CF standard names organized by facets](http://edscvs.ccny.cuny.edu/cf/index.php?tema=4448) (TemaTres) / 9981 concepts
 
@@ -468,7 +469,7 @@ In addition to the results mentioned in the [mappings](#stdnames_mappings), othe
 * NERC Vocabulary Server (RDF): http://vocab.nerc.ac.uk/collection/P07/current/
 * MARIS Vocabulary Server: http://seadatanet.maris2.nl/v_bodc_vocab_v2/search.asp?lib=P07
 * MMI Ontology Registry and Repository (RDF/SPARQL): http://mmisw.org/ont/cf/parameter
-* MMI's prototype CF Standard Name search service: http://mmisw.org/experimental/cfsn
+* MMI's prototype CF Standard Name search service: https://mmisw.org/ont/mmi/cfonmap
 
 These have been derived from the original XML, and as of this writing (2014) are being updated quickly whenever the original XML is changed.
 In fact, the NERC Vocabulary Server is updated simultaneously with the publication of the original XML document.
@@ -516,7 +517,7 @@ These combinations can be combined as follows in CF:
 * taken to an integral power, using '^n' or '**n' notation (or simply appending the power, if using symbols;
 * divided by a quotient, using 'per' (or a slash, '/', if using symbols) to indicate the quotient
 
-You can review [basic examples in the UDUNITS documentation](https://www.unidata.ucar.edu/software/udunits/udunits-current/doc/udunits/udunits2lib.html#Examples).
+You can review [basic examples in the UDUNITS documentation](https://www.unidata.ucar.edu/software/udunits/udunits-current/udunits2lib.html#Examples).
 
 More complicated examples of units can be found in the CF Standard Names table, which lists the canonical units for each standard name.
 
@@ -546,7 +547,7 @@ Details of the CF units not in UDUNITS:
 
 The [UDUNITS-2 GitHub repository](https://github.com/Unidata/UDUNITS-2) contains working code and documentation.
 
-The [API-Guide](https://www.unidata.ucar.edu/software/udunits/udunits-current/doc/udunits/udunits2lib.html) contains some detailed information, but it is oriented entirely for developers. 
+The [API-Guide](https://www.unidata.ucar.edu/software/udunits/udunits-current/udunits2lib.html#Examples) contains some detailed information, but it is oriented entirely for developers. 
 
 A [units conversion page on the ERDDAP site](http://coastwatch.pfeg.noaa.gov/erddap/convert/units.html) lets you try different unit strings, and provides additional context on UDUNITS (and UCUM units) further down the page.
 

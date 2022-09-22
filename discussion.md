@@ -6,39 +6,25 @@ group: "navigation"
 
 # Discussion
  
-Discussion about CF Metadata takes place on GitHub in three forums,
-using [GitHub issues][github_issues].
+Discussion about CF Metadata takes place on GitHub in three forums, using [GitHub issues][github_issues].
 
 *   [General discussion and standard names][github_discuss]
 
-    For proposing standard names, asking questions or having discussions about the
-    interpretation and use of the CF conventions, and initial
-    suggestions for proposals to change or extend the CF conventions.
+    For proposing standard names, asking questions or having discussions about the interpretation and use of the CF conventions, and initial suggestions for proposals to change or extend the CF conventions.
 
-    There is also a separate website detailing the [status of current
-    proposals for new standard names][current] that have been
-    initiated on the general discussion forum.
+    There is also a separate website detailing the [status of current proposals for new standard names][current] that have been initiated on the general discussion forum.
   
 *   [Conventions][github_conventions]
 
-    For proposing enhancements and reporting defects in the CF
-    conventions, that may or may not have started as conversations on
-    the general discussion forum.
+    For proposing enhancements and reporting defects in the CF conventions, that may or may not have started as conversations on the general discussion forum.
 
 *   [Website and governance][github_website]
 
-    For discussing, proposing changes and reporting defects in the [CF
-    website][website], and for discussion of CF governance.
+    For discussing, proposing changes and reporting defects in the [CF website][website], and for discussion of CF governance.
 
-No registration with CF is required to contribute; all that is needed
-is a freely available [GitHub account][github].
+No registration with CF is required to contribute; all that is needed is a freely available [GitHub account][github].
 
-Before the CF community migrated to GitHub,
-general and standard-name discussion took place on the
-[cf-metadata mailing list][archives], and enhancements
-to the conventions were proposed
-on the [CF Metadata Trac](Data/trac.html) site.
-
+Before the CF community migrated to GitHub, general and standard-name discussion took place on the [cf-metadata mailing list][archives], and enhancements to the conventions were proposed on the [CF Metadata Trac](Data/trac.html) site.
 
 ### Archive links
 

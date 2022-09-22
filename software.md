@@ -4,12 +4,11 @@ title: Software that "Understands" CF Data
 ---
 
 # Software that "Understands" CF Data
-This page lists sofware packages that "understand" CF Data.
+This page lists software packages that "understand" CF Data.
 If you have any additions or corrections for this page, please submit an issue on the
 [CF Website GitHub repo][website-repo]
 (see the [Contributing Guide][website-contrib] for more details).
 
-For a software package to be listed on this page, it must ....
 The description of each software package should give some indication of the level of support for CF.
 
 [website-repo]: https://github.com/cf-convention/cf-convention.github.io
@@ -72,7 +71,7 @@ CF Standard names, units, and coordinate metadata are built into Iris, giving yo
 
 ### netCDF Operators (NCO)
 The [netCDF Operators](https://nco.sf.net) toolkit manipulates and analyzes data stored in netCDF-accessible formats, including DAP, HDF4, HDF5, and, most recently, Zarr.
-NCO exploits the geophysical expressivity and logic of many CF (Climate & Forecast) metadata conventions including support for UDUNITS, fo the attributes `Conventions`, `history`, `scale_factor`, `add_offset`, `coordinates`, `cell_methods`, and `cell_measures`, for hierarchical datasets, and for auxiliary coordinates.
+NCO exploits the geophysical expressivity and logic of many CF (Climate & Forecast) metadata conventions including support for UDUNITS, for the attributes `Conventions`, `history`, `scale_factor`, `add_offset`, `coordinates`, `cell_methods`, and `cell_measures`, for hierarchical datasets, and for auxiliary coordinates.
 See the [documentation](https://nco.sf.net/nco.html) for a full description.
 
 
@@ -99,5 +98,3 @@ The service returns subsets as CF compliant netCDF-3/4 files, in addition to oth
 ### xarray - Python Package for working with n-D labeled arrays
 [Xarray](http://xarray.pydata.org/) is a Python package designed for working with labelled, multi-dimensional array data, built around the netCDF data model.
 It uses CF conventions in several ways, such as encoding / decoding variables and interpreting metadata for visualization.
-
-## Commercial Software Packages

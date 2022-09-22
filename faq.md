@@ -4,6 +4,7 @@ title: Frequently Asked Questions
 ---
 
 # Frequently Asked Questions (FAQ) about the CF Conventions
+{:.no_toc}
 
 This page covers many of the most common questions asked about the Climate and Forecast conventions (and Standard Names).
 If you have a question that isn't on this list, please ask it of the CF-metadata mail list, so that the CF community can respond.
@@ -20,8 +21,10 @@ The questions are organized by topic.
 {:toc}
 
 # Questions and Answers
+{:.no_toc}
 
 ## CF background
+This section includes general background about the CF conventions.
 
 ### What are the CF conventions, and what do they include?
 
@@ -59,6 +62,7 @@ These include conventions for grid-cell boundaries, horizontal grids other than 
 These needs were driven by the original user community developing the CF conventions,  the climatology and weather forecasting science community.
 
 ## Working with the CF Convention
+Learning about and changing the CF convention.
 
 ### Do the CF conventions stand alone?
 
@@ -189,6 +193,7 @@ If you have a variable that contains coordinate values but does not meet these c
 The rules for creating and using auxiliary coordinate variables are described in the [Coordinate Systems](http://cfconventions.org/cf-conventions/cf-conventions.html#coordinate-system) section of the Convention.
 
 ## Rich technical questions about CF
+The detailed and big picture concepts in CF.
 
 ### My data variables have an unusual coordinate axis, how do I describe it?
 
@@ -305,6 +310,7 @@ surface_temperature:coordinates = "lat lon surface_type";
 ```
 
 ## CF Standard Names
+General and specific information about purpose and mechanisms of standard names.
 
 Reference [section 3.3 of the CF Convention, Standard Names](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#standard-name)
 
@@ -487,6 +493,7 @@ The alias is not shown in the HTML table of standard names.
 (As of August 2014, vocabulary servers typically do not show deprecated standard names in their term list, though the NERC Vocabulary Server has a separate list of the deprecated terms.)
 
 ## Units in CF (UDUNITS)
+These questions are not strictly part of CF, but CF depends on this understanding.
 
 ### Why does CF use UDUNITS as its standard?
 
@@ -562,6 +569,7 @@ The strings (names) corresponding to accepted UDUNITS can be found in the UDUNIT
 The repository also contains codes for each of the defined units in UDUNITS, which can be used if a unique identifier is needed to refer to a specific UDUNITS unit.
 
 ## Maintaining the CF standard
+This section is about the meta-question of procedures involved to update CF standards documentation.
 
 ### Who physically maintains the standards documentation?
 

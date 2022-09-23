@@ -5,15 +5,10 @@ title: Rules
 
 # Contributors to the CF Conventions
 
-The following individuals have proposed enhancements or corrections of defects
-in the CF conventions, or participated substantially in discussions which led
-to agreement on changes being made, or which concluded in no change being made
-after detailed consideration. They are listed here in recognition of their
-contribution to the development of the CF standard.
+The following individuals have proposed enhancements or corrections of defects in the CF conventions, or participated substantially in discussions which led to agreement on changes being made, or which concluded in no change being made after detailed consideration.
+They are listed here in recognition of their contribution to the development of the CF standard.
 
-The affiliations are those that the contributors used at the time of their
-contribution and are included to identify them, rather than
-as current contact information.
+The affiliations are those that the contributors used at the time of their contribution and are included to identify them, rather than as current contact information.
 
 - Ryan Abernathey, Columbia University
 - Dave Allured, NOAA
@@ -22,6 +17,7 @@ as current contact information.
 - Chris Barker, NOAA
 - Andrew Barna, SIO/UCSD
 - Lars Bärring, SMHI
+- Sadie Bartholomew, NCAS and University of Reading
 - Phil Bentley, UK Met Office
 - Jim Biard, NOAA
 - Leon Bilton, ANU
@@ -59,6 +55,7 @@ as current contact information.
 - Randy Horne, Excalibur Laboratories Inc
 - Bert Jagers, Deltares
 - Aleksandar Jelenak, HDF Group
+- Steve Jones, University of Bergen
 - Martin Juckes, NCAS
 - Tobias Kölling, MPIM
 - Dalton Kell, AER

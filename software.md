@@ -5,10 +5,8 @@ title: Software that "Understands" CF Data
 
 # Software that "Understands" CF Data
 
-This page lists sofware packages that "understand" CF Data.
+This page lists software packages that "understand" CF Data.
 If you have any additions or corrections for this page, please submit an issue on the [CF Website GitHub repo][website-repo] (see the [Contributing Guide][website-contrib] for more details).
-
-For a software package to be listed on this page, it must ....
 
 The description of each software package should give some indication of the level of support for CF.
 
@@ -19,12 +17,13 @@ The description of each software package should give some indication of the leve
 
 ### cf-checker - Python Tool for Compliance Checking
 
-The [cf-checker](https://github.com/cedadev/cf-checker) is a python tool to check compliance of netCDF files against the CF Convention.
+The [cf-checker](https://github.com/cedadev/cf-checker) is a python tool to check compliance of netCDF files against the CF Conventions.
 It can be run as a command-line tool, via a web interface (available at [NCAS](https://github.com/cedadev/cf-checker) and [CEDA](http://wps-web1.ceda.ac.uk/submit/form?proc_id=CFChecker)) or imported as a python library.
 The cf-checker verifies conformance according to the requirements and recommendations laid out in the [CF Conformance Document](https://cfconventions.org/cf-conventions/conformance.html).
 It is possible to check conformance against any CF version.
 
 ### IOOS Compliance Checker
+
 The [IOOS Compliance Checker](https://github.com/ioos/compliance-checker) is a python based tool for data providers to check for completeness and community standard compliance of local or remote netCDF files against CF, [ACDD](http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery_1-3), and [IOOS Metadata Profile](https://ioos.github.io/ioos-metadata) file standards.
 The Compliance Checker can be used as a command-line tool or as a library that can be integrated into other software.
 
@@ -53,12 +52,21 @@ cf-plot generally uses [cf-python](#cf-python---cf-python-package) to present th
 It can also use numpy arrays of data as the input fields making for flexible plotting of data.
 cf-plot uses the Python numpy, matplotlib and scipy libraries.
 
+### cf-view - CF Python Quick Look Visualization Package
+The [cf-view Python package](https://ajheaps.github.io/cf-view/) is a quick look data exploration tool for netCDF and Met Office PP data.
+It uses the [cf-python](#cf-python---cf-python-package) and [cf-plot](#cf-python---cf-python-package) packages and reads and writes CF-compliant dataset.
+
 ### Iris - Python library for analysing and visualising Earth science data
 
-[Iris](https://scitools.org.uk/iris/docs/latest/) implements a data model based on the CF conventions giving you a powerful, format-agnostic interface for working with your data.
+[Iris](https://scitools.org.uk/iris/docs/latest/) implements a data model based on the CF Conventions giving you a powerful, format-agnostic interface for working with your data.
 It excels when working with multi-dimensional Earth Science data, where tabular representations become unwieldy and inefficient.
 
 CF Standard names, units, and coordinate metadata are built into Iris, giving you a rich and expressive interface for maintaining an accurate representation of your data.
+
+### netCDF Operators (NCO)
+The [netCDF Operators](https://nco.sf.net) toolkit manipulates and analyzes data stored in netCDF-accessible formats, including DAP, HDF4, HDF5, and, most recently, Zarr.
+NCO exploits the geophysical expressivity and logic of many CF (Climate & Forecast) metadata conventions including support for UDUNITS, for the attributes `Conventions`, `history`, `scale_factor`, `add_offset`, `coordinates`, `cell_methods`, and `cell_measures`, for hierarchical datasets, and for auxiliary coordinates.
+See the [documentation](https://nco.sf.net/nco.html) for a full description.
 
 ### netCDF Flattener - Flatten netCDF files
 
@@ -69,7 +77,7 @@ The resulting object is logically equivalent to the original, and can be process
 
 The [netCDF Java library](https://www.unidata.ucar.edu/software/netcdf-java/) provides an interface for scientific data access.
 It can be used to read scientific data from a variety of file formats including netCDF, HDF, GRIB, BUFR, and many others, as well as a variety of remote data access protocols.
-It implements the [Unidata Common Data Model](https://docs.unidata.ucar.edu/netcdf-java/current/userguide/common_data_model_overview.html) which uses CF and other metadata convention in its Coordinate System and Scientific Feature Type layers.
+It implements the [Unidata Common Data Model](https://docs.unidata.ucar.edu/netcdf-java/current/userguide/common_data_model_overview.html) which uses CF and other metadata conventions in its Coordinate System and Scientific Feature Type layers.
 NetCDF-Java can write netCDF-3/4 files that conform to the CF Metadata Conventions.
 
 ### THREDDS Data Server (TDS)
@@ -83,6 +91,4 @@ The service returns subsets as CF compliant netCDF-3/4 files, in addition to oth
 ### xarray - Python Package for working with n-D labeled arrays
 
 [Xarray](http://xarray.pydata.org/) is a python package designed for working with labelled, multi-dimensional array data, built around the netCDF data model.
-It uses CF conventions in several ways, such as encoding / decoding variables and interpreting metadata for visualization.
-
-## Commercial Software Packages
+It uses CF Conventions in several ways, such as encoding / decoding variables and interpreting metadata for visualization.

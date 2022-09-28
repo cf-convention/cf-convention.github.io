@@ -192,6 +192,13 @@ group: "navigation"
     <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for Construction of CF Standard Names<br>
     List of<a href="Data/cf-standard-names/docs/standard-name-contributors.html"> contributors</a> to CF Standard Names<br>
     CF Standard Names <a href="standard_name_rules.html">rules</a>
+<!--
+    * Consider converting this line to Markdown and use ".md" extenstion
+    * to make the link checker happy (:
+    CF Standard Names [rules](standard_name_rules.md)
+
+    * Probably should consider converting this entire file to Markdown.
+-->
 
   <h5><b>Discussion</b></h5>
 

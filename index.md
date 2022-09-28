@@ -48,9 +48,9 @@ See also the links in the navigation bar at the top of this page.
 [coards]: https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html
 [viewgraphs]: Data/cf-documents/overview/viewgraphs.pdf
 [article]: Data/cf-documents/overview/article.pdf
-[discussion]: discussion.html
-[governance]: governance.html
-[faq]: faq.html
+[discussion]: discussion.md
+[governance]: governance.md
+[faq]: faq.md
 [releasedhtml]: Data/cf-conventions/cf-conventions-1.10/cf-conventions.html
 [releasedpdf]: Data/cf-conventions/cf-conventions-1.10/cf-conventions.pdf
 [workinghtml]: /cf-conventions/cf-conventions.html

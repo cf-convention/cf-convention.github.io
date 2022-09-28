@@ -7,7 +7,7 @@ title: Governance
 
 This page is an archive copy, kept only for historical interest, of information about the former [CF Metadata Trac](Data/trac.html) site, which itself also is now kept only as an archive.
 The Trac site was used until July 2018 for discussion of enhancements to the CF convention.
-New proposals are now [discussed in GitHub](discussion.html).
+New proposals are now [discussed in GitHub](discussion.md).
 The following information should be read in the past tense.
 
 ## How the Ticket System Works

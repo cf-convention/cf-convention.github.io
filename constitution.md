@@ -6,7 +6,7 @@ Original from the CF white paper of 2006, amended May 2020.
 
 The governance arrangements described in this document are intended to organise and facilitate the work of the CF community in developing and maintaining the CF metadata standard.
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
-This is reflected in the community's [Code of Conduct](code-of-conduct).
+This is reflected in the community's [Code of Conduct][code-of-conduct].
 Members of the community contribute by participating in online discussions, attending meetings, proposing changes, or taking part in any other way they deem appropriate and useful, on a best-effort basis.
 
 ## Constitution of the CF Governance Panel

@@ -18,7 +18,6 @@ There are no registration fees, but registration before 30th of August is requir
 
 You can register using [this form][REGISTRATION].
 
-
 [REGISTRATION]: https://forms.gle/RB9BYZuLULcVKBsF6
 
 ## Venue
@@ -29,11 +28,29 @@ The workshop takes place at [IFCA] which it's located at [University of Cantabri
 
 ### Travel information
 
-Please check details on [how to arrive to IFCA](https://ifca.unican.es/en-us/about-ifca/how-to-arrive)
+Please check details on [how to arrive to IFCA](https://ifca.unican.es/en-us/about-ifca/how-to-arrive) 
 
 ## On-line access
 
-On-line access will be via Zoom. The link will be posted here before the start of the meeting.
+Use the following link to access the [Zoom Room for the plenary sessions][MainZoomRoom]:
+ - [Main Zoom Room][MainZoomRoom]
+
+For hackatons sessions, an [Auxiliary Zoom Room][AuxiliaryZoomRoom] will be use, in addition to the [Main Zoom Room][MainZoomRoom]:
+ - [Auxiliary Zoom Room][AuxiliaryZoomRoom]
+
+Please, be sure your name on Zoom follows this pattern: 
+```
+Firstname M. Lastname (Institution, Country)
+```
+You can find some instructions on how to change your name on Zoom [here] [ChangeNameZoom]
+
+[ChangeNameZoom]: https://support.zoom.us/hc/en-us/articles/8715431556621-Changing-your-name-on-Zoom#h_01GBDJTECEGP2KBR77HZ99Q46G "How to change your name on Zoom"
+[MainZoomRoom]: https://us06web.zoom.us/j/85052846695?pwd=RFVmZi9TRGJoSVpHamVZbnNGdDZsdz09 "Main Zoom Room"
+[AuxiliaryZoomRoom]: https://us06web.zoom.us/j/85391362542?pwd=ZTN6emtlZFpXeUF2S2hGMm9yZDQwQT09 "Auxiliary Zoom Room"
+
+## Documents
+
+All of the presentations and notes for the plenary and hackathon sessions will be available in this [Google Drive folder](https://drive.google.com/drive/folders/18BzZixnRUhV8nDqbeRE_ltVvWTF1BzVG).
 
 ## Agenda
 
@@ -58,8 +75,8 @@ All times are local to Santander, i.e. **UTC+2**
 * **13:00 -** Lunch
 
 * **15:00 - Parallel hackathon sessions**
-  * **1.** Mapping CF standard names to [I-ADOPT](https://doi.org/10.15497/RDA00071)
-  * **2.** Housekeeping: Formatting improvements, and clarifying general Udunits text
+  * **1.** Mapping CF standard names to [I-ADOPT](https://doi.org/10.15497/RDA00071): [Main Zoom Room][MainZoomRoom]
+  * **2.** Housekeeping: Formatting improvements, clarifying general Udunits text, and more: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **16:30 -** Coffee break
 
@@ -77,15 +94,17 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **11:00 -** Coffee break
 
-* **11:30 - Compression** (Bryan Lawrence)
+* **11:30 - Requirements for Compression Metadata** (Bryan Lawrence)
 
-* **12:15 - Lossy compression: The netCDF implementation and towards encoding precision** (Charlie Zender)
+* **11:50 - Lossy compression: The netCDF implementation and towards encoding precision** (Charlie Zender)
+
+* **12:20 - Compression: Discussion**
 
 * **13:00 -** Lunch
 
 * **15:00 - Parallel hackathon sessions**
-  * **3.** Conventions enhancements for describing lossy compression
-  * **4.** GitHub processes and automations
+  * **3.** Conventions enhancements for describing lossy compression: [Main Zoom Room][MainZoomRoom]
+  * **4.** GitHub processes and automations: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **16:30 -** Coffee break
 
@@ -102,8 +121,8 @@ All times are local to Santander, i.e. **UTC+2**
 * **11:00 -** Coffee break
 
 * **11:30 - Parallel hackathon sessions**
-  * **5.** Create DOIs for the CF conventions 
-  * **6.** Dataset DOIs: Further discussion and conventions enhancements
+  * **5.** Create DOIs for the CF conventions: [Main Zoom Room][MainZoomRoom] 
+  * **6.** Dataset DOIs: Further discussion and conventions enhancements: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **13:00 -** Lunch
 
@@ -148,11 +167,14 @@ To help us with planning, please check the "Other" box, in the [registration for
 * Antonio S. Cofiño
 * Ethan Davis
 * David Hassell (chair)
- * Aleksandar Jelenak
+* Aleksandar Jelenak
 * Daniel Lee
 * Kevin O'Brien
 * Alison Pamment
 * Charlie Zender
+
+## Picture from participants
+![Participants-Picture]{: height="480px"}
 
 ## Sponsorship
 
@@ -176,6 +198,7 @@ Thanks for their support of this meeting to:
 [IFCA]: https://ifca.unican.es/en-us "Institute of Physics of Cantabria (IFCA, CSIC-UC)"
 [IFCA-logo]: 2022-workshop/ifca-logo.png 
 [TRAINING]: http://cfconventions.org/Training/2022-Training-Workshop.html "2022 CF Training Workshop"
+[Participants-Picture]: 2022-workshop/Participants-Picture.jpg
 
 *[AEI]: Spanish State Research Agency
 *[MCIN]: Spanish Ministry of Science

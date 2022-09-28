@@ -19,11 +19,15 @@ You can register using [this form][REGISTRATION]. (This is also the form to use 
 
 # Online access
 
-Online access will be via Zoom. The link will be posted here before the date of the session.
+Online access will be via Zoom. You can use this [link][ZOOMLINK] to join the session.
+
+[ZOOMLINK]: https://ukri.zoom.us/j/96281250361
 
 # Programme
 
 The 2022 CF training workshop will take place online on Thursday 08 September 2022, 15:00-18:00 UTC. All times below are UTC.
+
+Videos of the presentations can be found at the [CF conventions YouTube channel][YouTube]
 
 * **15:00 - Introduction to the training session** (Alison Pamment)
 
@@ -66,3 +70,4 @@ Thanks for their support of this meeting to:
    
 [IS-ENES3]: https://is.enes.org "Infrastructure for the European Network for Earth System Modelling"
 [IS-ENES3-logo]: ../Meetings/2022-workshop/is-enes3-logo.png
+[YouTube]: https://www.youtube.com/channel/UCKLq7PCVonFJA0ec98SMFZA

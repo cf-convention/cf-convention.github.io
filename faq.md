@@ -316,7 +316,7 @@ Reference [section 3.3 of the CF Convention, Standard Names](https://cfconventio
 
 ### What is the official list of standard names?
 
-The CF site contains [the official list of CF standard names](http://cfconventions.org/standard-names).
+The CF site contains [the official list of CF standard names and other controlled vocabularies](vocabularies.md).
 The XML document pointed to from that page is the primary reference, but the HTML and PDF documents are produced automatically from the XML, and should contain the same information.
 
 Several other sites represent alternative views of knowledge artifacts of the standard names.

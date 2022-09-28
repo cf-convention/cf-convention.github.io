@@ -39,7 +39,7 @@ Before the CF community migrated to GitHub, general and standard-name discussion
 [github]: https://github.com
 [website]: https://cfconventions.org
 [trac]: Data/trac.html
-[about]: about-trac.html
+[about]: about-trac.md
 [mail]: http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata
 [archives]: https://cfconventions.org/mailing-list-archive/Data/
 [NCAR_archives]: https://mailman.cgd.ucar.edu/pipermail/cf-metadata/

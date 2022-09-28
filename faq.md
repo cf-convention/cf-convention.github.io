@@ -341,7 +341,7 @@ References:
 
 ### How can I find the standard name I need?
 
-To find standard names that describe your data, open up the latest [Standard Name table](http://cfconventions.org/standard-names.html) (as HTML or XML) and search through it for words typically used for your data.
+To find standard names that describe your data, open up the latest [Standard Name table](http://cfconventions.org/vocabularies.html) (as HTML or XML) and search through it for words typically used for your data.
 (Because standard names contain no blanks, you may want to search for one word at a time, or even part of a word, rather than a full phrase like "air temperature".)
 If you can not find any matches, you can browse the table to see the kinds of names that exist -- names strongly lean toward environmental modeling and observation data, especially in atmosphere and ocean science.
 

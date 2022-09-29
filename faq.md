@@ -38,9 +38,9 @@ Principles of CF include self-describing data (no external tables needed for und
 ### Who manages the CF conventions?
 
 The CF conventions are maintained by volunteers, led by a Governance Panel and assisted by the Conventions Committee and Standard Names Committee.
-(See [CF Governance](http://cfconventions.org/governance.html).)
-Changes to the conventions are proposed and settled by the community, using the [CF-Metadata Mailing List](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/) and [CF Metadata Trac site](http://kitt.llnl.gov/trac).
-Many of the principles of CF operations follow the proposals at these [rules for CF conventions changes](http://cfconventions.org/rules.html).
+(See [CF Governance](governance.md).)
+Changes to the conventions are proposed and settled by the community, using the [CF Conventions GitHub repository][cf-conventions-repo]'s [issues][cf-conventions-issues] and [pull request][cf-conventions-pulls] functionality for discussion, agreement, and implementing any agreed changes.
+Many of the principles of CF operations follow the proposals at these [rules for CF conventions changes](rules.md).
 
 ### How long has CF been around? Is it mature?
 
@@ -94,10 +94,10 @@ CF community members usually respond within a day to simple questions, but allow
 
 ### How do I propose a change?
 
-Changes to the CF standard and the Standard Names are generally proposed first on the [CF-Metadata Mailing List](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/).
+Changes to the CF standard and the Standard Names are generally proposed first on the [CF Discuss GitHub repo][cf-discuss-repo] as an [issue][cf-discuss-issues].
 See [How do I ask for a new standard name?](#stdnames_ask) to learn more about changes to the Standard Names list.
 
-A change to the CF standard itself may be brought up on the mailing list, but must be presented and agreed to in detail on the [CF Metadata Trac site](http://kitt.llnl.gov/trac), where the explicit change being requested can be refined.
+A change to the CF standard itself may be discussed initially in a [CF Discuss issue][cf-discuss-issues], but must be presented and agreed to in detail as a [CF Conventions issue][cf-conventions-issues], where the explicit change being requested can be refined.
 
 ### What is the process for accepting a change to the CF convention?
 
@@ -140,7 +140,7 @@ However, this is not recommended; it would be better to use a standard name of h
 
 Note that a standard name attribute is not required for the vertical coordinate, but the `positive` attribute is required if the standard name is not 'pressure'.
 
-Reference: [Trac ticket #109](http://kitt.llnl.gov/trac/ticket/109) 
+Reference: [Trac ticket #109](https://cfconventions.org/Data/Trac-tickets/109.html)
 
 ### How (and why) does CF specify directions in standard names?
 
@@ -180,7 +180,7 @@ For example, `horizontal` is indicating a plane rather than a direction, while `
 ### How can I encode flag values (or other enumerated lists) with CF?
 
 Often data values in an enumerated list are given as string codes ("UP", "GOOD", "Warning"), yet it is more useful to encode these values as integers.
-CF's [flag_values mechanism](http://cfconventions.org/cf-conventions.html#flags) can encode strings in numeric data variables, while defining flag_meanings to map the numbers to the meanings.
+CF's [flag_values mechanism](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#flags) can encode strings in numeric data variables, while defining flag_meanings to map the numbers to the meanings.
 The `flag_values` and `flag_meanings` attributes (and, if necessary, the `flag_masks` attribute) describe a status flag consisting of mutually exclusive coded values.
 The `flag_values` attribute is the same type as the variable to which it is attached, and contains a list of the possible flag values.
 The `flag_meanings` attribute is a string whose value is a blank-separated list of descriptive words or phrases, one for each flag value. 
@@ -375,7 +375,7 @@ A CF standard name is a unique text string, which is associated in the CF Standa
 The text string is made up of two parts: the name (from the CF Standard Names table), and optionally, following the name and one or more blanks, a standard name modifier.
 The name contains no white space (underscores separate the words, in practice) and identifies the physical quantity.
 The modifier is used to describe a quantity which is related to another variable with the modified standard name.
-Details are provided in the convention section on [Standard Name](http://cfconventions.org/1.6.html#standard-name), and examples of modifiers are given in [Appendix C](http://cfconventions.org/1.6.html#standard-name-modifiers). 
+Details are provided in the convention section on [Standard Name](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#standard-name), and examples of modifiers are given in [Appendix C](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#standard-name-modifiers). 
 
 Several attributes are required for every standard name: the canonical units, which are *typical* units of the physical quantity, and the description, which clarifies related quantities and meanings of the standard name (but is not strictly a definition per se).
 Older standard names may not have a description. 
@@ -433,7 +433,7 @@ The standard name should not include:
 
 In many cases the standard name is qualified by a specific detail, for example area_type, whose value may change from one set of observations to another or one observation to another.
 In these cases the definition for the standard name references one or more attributes or variables where the additional qualifying information may be found.
-([Standard name *modifiers*](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#standard-name-modifiers) and [cell_methods](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#cell-methods) may also be used for this purpose.)
+([Standard name *modifiers*](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#standard-name-modifiers) and [cell_methods](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#cell-methods) may also be used for this purpose.)
 In this way the divergence of the standard names is minimized, and interoperability increased.
 
 ### Are there common standard name phrases that get re-used?
@@ -454,7 +454,7 @@ Among these efforts:
 * Jonathan Gregory et al ([list post](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2010/048064.html)): [standard name grammar/Parsing CF standard names](http://www.met.reading.ac.uk/~jonathan/CF_metadata/14.1/) / 2072 names
 * Rob Raskin ([list post mention](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2009/047768.html)): [mapped CF standard name list to SWEET-based ontologolical representation](https://wiki.earthdata.nasa.gov/download/attachments/50792120/SWEET_SPG.ppt?version=1&modificationDate=1435254939370&api=v2) (Powerpoint) / 2149 names
 * John Graybeal (no list post):  [auto-generated pseudo-CF names from CF components](https://github.com/graybealski/cf-conventions-work/blob/master/CF_SWEET_201401_Redacted.xlsx) (Excel) / 2523 names
-* Michael Piasecki/Peng Ji ([list post](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2012/055875.html)): [CF standard names organized by facets](http://edscvs.ccny.cuny.edu/cf/index.php?tema=4448) (TemaTres) / 9981 concepts
+* Michael Piasecki/Peng Ji ([list post](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2012/055875.html)): CF standard names organized by facets [("need reference: old `edscvs.ccny.cuny.edu/cf/index.php?tema=4448` link no longer working")] (TemaTres) / 9981 concepts
 
 ### Are there mappings of the standard name terms to other terms?
 
@@ -593,3 +593,11 @@ There are various maintenance processes going on behind the scenes to update the
 Once you understand the procedure by which your suggested changes should be approved (e.g., email approval on the CF-metadata list, a trac ticket, or some other arrangement), you can submit suggested changes as a pull request on the appropriate content.
 However, as noted above, this should first be agreed with the person overseeing that content.
 
+[cf-conventions-repo]: https://github.com/cf-convention/cf-conventions
+[cf-conventions-issues]: https://github.com/cf-convention/cf-conventions/issues
+[cf-conventions-pulls]: https://github.com/cf-convention/cf-conventions/pulls
+[cf-discuss-repo]: https://github.com/cf-convention/discuss
+[cf-discuss-issues]: https://github.com/cf-convention/discuss/issues
+[cf-website-repo]: https://github.com/cf-convention/cf-convention.github.io
+[cf-website-issues]: https://github.com/cf-convention/cf-convention.github.io/issues
+[cf-website-pulls]: https://github.com/cf-convention/cf-convention.github.io/pulls

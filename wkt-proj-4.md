@@ -6,11 +6,11 @@ title: WKT/PROJ.4
 
 ## Mapping from CF Grid Mapping Attributes to CRS WKT Elements
 
-These __provisional__ mappings have been compiled to support, among other things, CF proposals [69](http://cfconventions.org/Data/Trac-tickets/69.html) and [80](http://cfconventions.org/Data/Trac-tickets/80.html); which have been incorporated in the CF Conventions document version 1.7.
+These __provisional__ mappings have been compiled to support, among other things, CF proposals [69](https://cfconventions.org/Data/Trac-tickets/69.html) and [80](https://cfconventions.org/Data/Trac-tickets/80.html); which have been incorporated in the CF Conventions document version 1.7.
 If you spot any errors or omissions, please email the authors (Phil Bentley and Etienne Tourigny) or the CF mailing list, or else update this wiki page.
 
 In Tables 1 and 2 the names of WKT PARAMETER elements follow the names of coordinate operation parameters
-defined in the [EPSG geodetic parameter registry](http://www.epsg-registry.org).
+defined in the [EPSG geodetic parameter registry](https://epsg.org).
 
 The following tables list translations of projection parameter names between CF and various other representations (such as OGC WKT, EPSG and PROJ.4).
 The information was obtained from various sources.
@@ -19,11 +19,11 @@ The various representations listed are:
 
 *   **CF** The CF-1.6 (and possibly CF-1.7) parameter names
 *   **OGC WKT** The names following OGC WKT specification (used by GDAL/OGR and CadCorp(?))
-*   **PROJ.4** The names used in the PROJ.4 software (​http://trac.osgeo.org/proj)
-*   **EPSG** The names and codes used in the EPSG Geodetic Parameter Dataset (http://www.epsg.org and http://www.epsg-registry.org)
-*   **GeoTIFF ID** The names used in the GeoTIFF raster format (http://trac.osgeo.org/geotiff)
+*   **PROJ.4** The names used in the PROJ.4 software (https://proj.org)
+*   **EPSG** The names and codes used in the EPSG Geodetic Parameter Dataset (https://epsg.org)
+*   **GeoTIFF ID** The names used in the GeoTIFF raster format (https://trac.osgeo.org/geotiff)
 
-The following files are provided to list the various possible Datum, Ellipsoid and Prime Meridian names (in support of CF trac ticket [80](http://cf-trac.llnl.gov/trac/ticket/80))
+The following files are provided to list the various possible Datum, Ellipsoid and Prime Meridian names (in support of CF trac ticket [80](https://cfconventions.org/Data/Trac-tickets/80.html))
 
 *   horiz_datum.csv - horizontal datum parameters for use as reference for CF-1.7 (source: GDAL/OGR, modified by Etienne Tourigny)
 *   ellipsoid.csv - Ellipsoid parameters from the EPSG database (source: GDAL/OGR)
@@ -221,7 +221,7 @@ The 2SP variant corresponds to EPSG code 9802 - Lambert Conic Conformal (2SP).
 
 The scale_factor_at_projection_origin variant is not recommended as it does not translate to and from WKT/PROJ.4.
 Snyder formulas 10-2b and 10-2 can be used to relate scale_factor_at_projection_origin, standard_parallel1 and latitude_of_projection_origin but the latter is not part of this projection's parameters.
-It has been proposed to deprecate or remove this variant from the CF spec (see CF trac ticket [75](http://cf-trac.llnl.gov/trac/ticket/75)).
+It has been proposed to deprecate or remove this variant from the CF spec (see CF trac ticket [75](https://cfconventions.org/Data/Trac-tickets/75.html)).
 
 #### Mercator 1SP / 2SP
 
@@ -246,7 +246,7 @@ Mappings are only listed for the current set of CF grid mapping attributes -- th
 
 The order of attributes follows Table F.1 in the CF conventions document.
 
-The names of WKT PARAMETER elements follow the names of coordinate operation parameters defined in the [​EPSG geodetic parameter registry](http://www.epsg-registry.org).
+The names of WKT PARAMETER elements follow the names of coordinate operation parameters defined in the [EPSG geodetic parameter registry](https://epsg.org).
 
 ---
 

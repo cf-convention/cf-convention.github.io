@@ -1,0 +1,153 @@
+= Markh Scratch of the CF Data Model 1.5 =
+
+This page is the scratch draft of the CF data model for CF 1.5, 
+
+== UML Sketch ==
+
+This sketch represents the model in its draft state, illustrating the relationships between types. 
+
+[[Image(cf1.5.png)]]
+
+
+
+== Controlled Vocabularies ==
+
+==== standard_name ====
+
+Where a type has an attribute of 'standard_name' its value must be taken from the list of standard names [http://cf-pcmdi.llnl.gov/documents/cf-standard-names/ http://cf-pcmdi.llnl.gov/documents/cf-standard-names/]
+
+
+= Constructs, Types =
+
+
+With this in mind, I propose a data model text, as follows:
+
+    == Field Construct ==
+
+    The central concept of the data model is a Field construct.  A Field represents a single phenomenon with metadata to define that phenomenon and to define the domain which the phenomenon is sampled from.
+
+    The domain of the Field defines the Field's location in time, space and all other degrees of freedom it may have; it also may provide further contextual metadata. A field construct may be regarded as a domain definition with data in that domain. 
+
+    The Field contains one multi-dimensional array of data values, which may include missing data.  Elements of the data array must all be of the same data type.
+
+    The data array has shape, an ordered set of dimensions with extents defined by the Field's explicit domain_axes.  
+
+    The data model makes a central assumption that each Field construct is independent.
+
+    The Field defines it's domain using the attributes: '''domain_axes''', '''dim_coordinates''', '''aux_coordinates''', '''transforms''' and '''cell_measures''' and the constructs these attributes reference:
+
+    * '''dim_coordinates''': 
+      * a set of containment associations, 
+      * referencing !OrderedCoord instances,
+      * each mediated by one and only one explicit domain axis;
+    * '''aux_coordinates''': 
+      * a set of containment associations, 
+      * referencing !OrderedCoord or !UnorderedCoord instances,
+      * each mediated by a collection of domain axes (recognising the constraints on shape matching). 
+
+    The Field defines its phenomenon with the attributes: '''standard_name''', '''units''', '''long_name''', all of which take strings and '''cell_methods''' which qualify the phenomenon referencing a !CellMethod collection.
+
+    Other attributes are interpreted consistently with Appendix A. Attributes of the CF Conventions for NetCDF files (1.5), apart from '''coordinates''' and '''grid_mapping''' which are not to be used within the scope of the data model.  
+
+    All the Fields attributes are optional except for data.
+
+    === The Field Construct in a NetCDF File ===
+
+    In a dataset contained in a single CF netCDF file, each data variable usually corresponds to a field construct, but a field construct might be a combination of several data variables, as long as they represent the same phenomenon, over comparable but not overlapping domains. In a dataset comprising several netCDF files, a field construct may span data variables in more than one file, for instance from different ranges of a time coordinate (to be introduced by Gridspec in CF version 1.7). Rules for aggregating data variables from one or several files into a single field construct are needed but are not defined by CF version 1.5; such rules are regarded as the concern of data processing software.    
+
+    Data variables stored in CF-netCDF files are often not independent, because they share coordinate variables. However, this is viewed solely as a means of saving disk space, and it is assumed that implementations will be able to alter any field construct without affecting other field constructs. For instance, if the coordinates of one field construct are modified, it will not affect any other field construct. Explicit tests of equality will be required to establish whether two data variables have the same coordinates. Such tests are necessary in general if CF is applied to a dataset comprising more than one file, because different variables may then reside in different files, with their own coordinate variables. In a netCDF file, tests for the equality of coordinates between different data variables may be simplified if the data variables refer to the same coordinate variable.
+
+
+
+
+    == !DomainAxis Construct ==
+
+    A !DomainAxis defines a degree of freedom for a Field.
+
+    Explicit !DomainAxis instances are bound to a Fields data array, such that the ordered collection of the Field's !DomainAxis instances define the shape of the Field's data array.
+
+    A Field also defines one Potential !DomainAxis, with an explicit length of one.
+
+    The one potential !DomainAxis and the collection of explicit !DomainAxes together provide the degrees of freedom for the Field in its current state and provide the facility to expand the degrees of freedom by altering the Field.  The potential !DomainAxis provides an flexible pool of Explicit !DomainAxes of size 1, which may be created or removed without changing the data and metadata values of the Field.
+
+    This enables a Field's dimensionality to be changed, e.g. by collapsing an explicit !DomainAxis or by stacking potential !DomainAxes into a new explicit!DomainAxis.   
+
+
+    === The !DomainAxis Construct in a NetCDF File ===
+
+    In a CF NetCDF file an explicit !DomainAxis is a NetCDF dimension.  The potential !DomainAxis is implicit in the CF NetCDF file.
+
+    == !OrderedCoord ==
+
+    A !OrderedCoord represents a single, defined phenomenon used to define an individual !DomainAxis instance of the Field's domain or describe some of the Field's domain.
+
+    A !OrderedCoord must have an array of points which is constrained to be one-dimensional unambiguously sortable and strictly monotonic.
+
+    It may have an array of bounds, with two dimensions, one of size two, and the other matching the size the points array.
+
+    The points and bounds arrays must be of the same data type.
+
+    The sizes of the points array and optional bounds array are defined by the referencing !DomainAxis.
+
+    The attributes of an !OrderedCoord are interpreted consistently with Appendix A. Attributes of the CF Conventions for NetCDF files (1.5) apart from '''bounds''' which is only to be used for referencing of a seperate bounds array, as implemented in NetCDF. 
+
+    === The !OrderedCoord Construct in a NetCDF File ===
+
+    In a CF NetCDF file the !OrderedConstruct is implemented as a NetCDF Coordiante Variable, in accordance with the NUG.
+
+    == !UnorderedCoord ==
+
+    An !UnorderedCoord represents a single, defined phenomenon, used for interpreting some of the !DomainAxes of the Field.
+
+    An !UnorderedCoord must have an array of points.
+
+    It may have an array of bounds, with one extra dimension compared to the points array, of size two, and matching the shape of the points array in all other respects.
+
+    The points and bounds arrays must be of the same data type.
+
+    The sizes of the points array and optional bounds array are defined by the referencing !DomainAxes.
+
+    The attributes of an !UnorderedCoord are interpreted consistently with Appendix A. Attributes of the CF Conventions for NetCDF files (1.5) apart from '''bounds''' which is only to be used for referencing of a seperate bounds array, as implemented in NetCDF. 
+
+
+    === The !UnorderedCoord Construct in a NetCDF File ===
+
+    In a CF NetCDF file the !UnorderedConstruct is implemented as a variable which is referenced by a data variable using the CF attribute coordinates.     
+
+
+=== !CellMeasure ===
+
+A Field may contain !CellMeasure referenced by domain_axes of the Field.
+
+A Field may contain many !CellMeasure per domain_axes of the Field.
+
+!CellMeasures may be multi-dimensional and not definitively sortable.
+
+!CellMeasures quantify aspects of the Field's domain (where this is not derivable)
+
+=== !CellMethod ===
+
+A !CellMethod defines a process the data has undergone, qualifying the definition of the Field's phenomenon.
+
+A !CellMethod may contain a !CellMethod, forming an ordered list of !CellMethods.
+
+=== Transform ===
+
+A Transform defines a process which produces a defined result from a set of metadata inputs: Coordinates, !AuxiliaryCoordinates, !CellMeasures.
+
+e.g. A pair of !AuxiliaryCoordinates: latitude and longitude, from a projected spatial coordinate pair.
+
+ 
+==== Notes ====
+
+Wherever it is used for a Type, 'attributes' is a collection of key:value pairs.
+
+Particular keys are banned from use for each type, as a particular implementation (NetCDF) has used them for referencing between variables.  As such the specified attribute keys may not be used to provide semantic meaning to a Type.  
+
+== Notes ==
+
+=== Qualified Associations ===
+
+The associations between the Field and its Coordinates and !CellMeasures are qualified associations.  These are UML concepts which denote a managed association without mandating how this association is managed; only the constraints of the relationship are detailed.
+
+E.g. a Field may have One or Zero Coordinates for each domain_axes of the Field.

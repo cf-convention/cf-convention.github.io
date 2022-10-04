@@ -1,0 +1,74 @@
+'''Please don't modify this page. It is an annex to [https://cf-pcmdi.llnl.gov/trac/ticket/107#comment:2 ticket 107 comment 2].'''
+
+In [https://cf-pcmdi.llnl.gov/trac/ticket/88 CF trac ticket 88], proposed by Mark Hedley and accepted on 5th August 2012, it has been decided that CF should adopt a data model. The data model will be a logical abstraction of the concepts of CF data and metadata, and the relationships that exist between these concepts, but will not define an application programming interface (API) for CF. Adopting a data model is believed to offer the following benefits:
+
+  * Providing an orientation guide to the CF Conventions Document.
+  * Guiding the development of software compatible with CF.
+  * Facilitating the creation of an API which "behaves" or "feels" like CF and is intuitive to use.
+  * Providing a reference point for gap analysis and conflict analysis of the CF specification.
+  * Providing a communication tool for discussing CF concepts and proposals for changes to the CF specification.
+  * Setting the groundwork to expand CF beyond netCDF files.
+
+The present document proposes a data model corresponding to the [http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.5 CF metadata standard] (version 1.7). The data model avoids prescribing more than is needed for interpreting CF as it stands, in order to avoid inconsistency with future developments of CF. ''UML to be agreed'': This document is illustrated by the accompanying UML diagram of the data model.
+
+As well as describing the CF data model, this document also comments on how it is implemented in netCDF. Since the CF data model could be implemented in file formats other than netCDF, it would be logically better to put the information about CF-netCDF in a separate document, but when introducing the data model for the first time, we feel that this document would be harder to understand if it omitted reference to the netCDF information. We propose that these functions should be separated in a later version of the data model. Some parts of the CF standard arise specifically from the requirements or restrictions of the netCDF file format, or are concerned with efficient ways of storing data on disk; these parts are not logically part of the data model and are only briefly mentioned in this document.
+
+In this document, we use the word "construct" because we feel it to be a more language-neutral term than "object" or "structure". The constructs of this data model might correspond to objects in an OO language.
+
+'''Field construct'''
+
+The central concept of the data model is a '''field construct'''. A field construct corresponds to exactly one data array together with associated information about the domain in which the data resides (defined by spatio-temporal and other coordinates) and other metadata. This data model makes a central assumption that each field construct is independent.
+
+Each field construct must contain:
+
+  * An unordered list of zero or more '''domain axis constructs'''. Each domain axis construct declares a dimension of the field. 
+  * A '''data array''', which contains the data of the field. The shape of the data array is determined by an ordered subset of the domain axes. All domain axes of size greater than one must be included in the subset, but domain axes of size one may optionally be omitted, because their position in the order of domain axes makes no difference to the order of data elements in the array. If there are no domain axes of greater size than one, the single datum may be a scalar instead of an array. If the data array has more than one element, they must all be of the same data type, which may be numeric, character or string.
+
+and may optionally contain:
+
+  * An unordered collection of '''dimension coordinate constructs'''. Each dimension coordinate construct provides physical coordinates to locate the cells at unique positions along a single domain axis. ''To be agreed:'' A dimension coordinate construct provides the independent coordinates on which the field depends.
+  * An unordered collection of '''auxiliary coordinate constructs'''. Each auxiliary coordinate construct provides physical coordinates to locate the cells along one or more domain axes. ''To be agreed:'' An auxiliary coordinate construct provides coordinates that depend on the dimension coordinates.
+  * ''Proposed'': An unordered collection of '''cell measure constructs'''. A cell measure construct provides information about the size, shape or location of the cells defined by an ordered list of one or more domain axes of the field.
+  * ''Proposed'': A '''cell methods construct''', which refers to the domain axes (but not their sizes). It describes how the data values represent variation of the quantity within cells.
+  * ''Proposed'': An optional unordered collection of '''transform constructs''' (corresponding to CF-netCDF `formula_terms` and `grid_mapping`). A transform construct defines a mapping from one set of coordinates which can not geo-locate the field construct's data to another set of coordinates that can geo-locate the field construct's data.
+  * Other '''properties''', which are metadata that do not refer to the domain axes, and serve to describe the data the field contains. Properties may be of any data type (numeric, character or string) and can be scalars or arrays. These properties correspond to attributes in the netCDF file, but we use the term "property" instead because not all CF-netCDF attributes are properties in this sense.
+  * A list of '''ancillary fields''', which contain metadata about the elements of the field's data array.
+
+Collectively, the domain axis, dimension coordinate, auxiliary coordinate, cell measure and cell method constructs describe the domain in which the data resides. Thus a field construct can be regarded as a domain with data in that domain.
+
+The CF-netCDF `formula_terms` (see also Transform constructs) and `ancillary_variables` attributes make links between field constructs. These links are fragile and it might not always be possible for data processing software to maintain a consistent set of such links when writing fields to files or manipulating them in memory.
+
+CF-netCDF considers fields which are contained in single netCDF files. In a dataset contained in a single netCDF file, each data variable corresponds to one field construct. This data model has a broader scope. It applies also to data contained in memory and to datasets comprising several netCDF files. A field construct may span data variables in more than one file, for instance from different ranges of a time coordinate. Rules for aggregating data variables from several files into a single field construct are needed but are not defined by CF version 1.5; such rules are regarded as the concern of data processing software. Technically, data variables stored in CF-netCDF files are often not independent, because they share coordinate variables. However, we view this solely as a means of saving disk space, and we assume that software will be able to alter any field construct in memory without affecting other field constructs. For instance, if the coordinates of one field construct are modified by averaging the field values over one dimension, it will not affect any other field construct.
+
+Explicit tests of domain consistency will be required to establish whether two data variables have the same coordinates or share a subset of these coordinates. Such tests are necessary in general if CF is applied to a dataset comprising more than one file, because different variables may then reside in different files, with their own coordinate variables. Within a netCDF file, tests for the equality of coordinates between different data variables may be simplified if the data variables refer to the same coordinate variable.
+
+'''Domain axis construct'''
+
+A domain axis construct must contain
+
+  * A '''size''', which is an integer that must be greater than zero, but could be equal to one.
+
+'''Dimension coordinate construct'''
+
+A dimension coordinate construct may contain:
+
+  *  A one-dimensional numerical '''coordinate array''' of the size specified for the domain axis. If the size is one, the single coordinate value may be a scalar instead of an array. If the size is greater than one, the elements of the coordinate array must all be of the same numeric data type, they must all have different non-missing values, and they must be monotonically increasing or decreasing. Dimension coordinate constructs cannot have string-valued coordinates.
+  * A two-dimensional numerical '''boundary array''', whose slow-varying dimension (first in CDL, second in Fortran) equals the size specified by the domain axis construct, and whose fast-varying dimension is two, indicating the extent of the cell. For climatological time dimensions, the bounds are interpreted in a special way indicated by the cell methods. Sometimes the bounds are the important information for locating the cell, and the coordinates are notional, especially for extensive quantities.
+  * Properties (in the same sense as for the field construct) serving to describe the coordinates.
+
+A dimension coordinate construct corresponds to a netCDF coordinate variable, whose name is the same as the name of its single dimension, or a CF-netCDF numeric scalar coordinate variable. A CF-netCDF string-valued coordinate variable or string-valued scalar coordinate variable corresponds to an auxiliary coordinate construct (not a dimension coordinate construct), with a domain axis that is not associated with any dimension coordinate construct.
+
+In this data model we permit a domain axis construct not to have a dimension coordinate construct if there is no appropriate numeric monotonic coordinate. That is the case for a dimension that runs over ocean basins or area types, for example, or for a domain axis that indexes timeseries at scattered points. Such domain axes do not correspond to a continuous physical quantity. (They are called '''index dimensions''' in CF version 1.7.) 
+
+'''Auxiliary coordinate construct'''
+
+An auxiliary coordinate construct must contain:
+
+  * A coordinate array whose shape is determined by the domain axes in the order listed, optionally omitting any domain axes of size one. If all domain axes are of size one, the single coordinate value may be a scalar instead of an array. If the array has more than one element, they must all be of the same data type (numeric, character or string), but they do not have to be distinct or monotonic. Missing values are not allowed (in CF version 1.5). In CF-netCDF, a string-valued auxiliary coordinate construct can be stored either as a character array with an additional dimension (last dimension in CDL) for maximum string length, or represented by a numerical auxiliary coordinate variable with a `flag_meanings` attribute to supply the translation to strings.
+
+and may also contain
+
+  * A boundary array with all the dimensions, in the same order, as the coordinate array, and an additional dimension (following the coordinate array dimensions in CDL, preceding them in Fortran) equal to the number of vertices of each cell.
+  * Properties (in the same sense as for the field construct) serving to describe the coordinates. 
+
+Auxiliary coordinate constructs correspond to auxiliary coordinate variables named by the coordinates attribute of a data variable in a CF-netCDF file. CF requires there to be auxiliary coordinate constructs of latitude and longitude if there is two-dimensional horizontal variation but the horizontal coordinates are not latitude and longitude.

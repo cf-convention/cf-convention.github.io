@@ -37,6 +37,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Alan D. Snow, Corteva Agriscience
 - Brian Eaton, NCAR
 - Steve Emmerson, Unidata
+- Jesus Fernandez, Universidad de Cantabria
 - Nan Galbraith, WHOI
 - Lucile Gaultier, OceanDataLab
 - Beate Geyer, GKSS
@@ -44,11 +45,13 @@ The affiliations are those that the contributors used at the time of their contr
 - John Graybeal, Stanford University
 - Jonathan Gregory, University of Reading and UK Met Office
 - Tom Gross, NOAA
+- Magnus Hagdorn, University of Edinburgh
 - Steve Hankin, PMEL, NOAA
 - David Hassell, NCAS and University of Reading
 - Rosalyn Hatcher, NCAS and University of Reading
 - Richard Hattersley, UK Met Office
 - Mark Hedley, UK Met Office
+- Angelika Heil, DKRZ
 - Dan Hollis, UK Met Office
 - Sylvain Herlédan, OceanDataLab
 - Heinke Höck, DKRZ
@@ -61,6 +64,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Dalton Kell, AER
 - Jamie Kettleborough, UK Met Office
 - Heiko Klein, NMI
+- Luis Kornblueh, MPIM
 - Peter Kuma, Stockholm University
 - Thomas Lavergne, NMI
 - Bryan Lawrence, NCAS and University of Reading
@@ -70,16 +74,20 @@ The affiliations are those that the contributors used at the time of their contr
 - Seth McGinnis, NCAR
 - Don Murray, Unidata
 - Daniel Neumann, DKRZ
+- Dan Nowacki, USGS
 - Alison Pamment, CEDA
 - Patrick Peglar, UK Met Office
+- Jean-Yves Peterschmitt, LSCE-CEA-IPSL
 - Alex Pletzer, Tech-X Corporation
 - Greg Rappa, MIT
 - Martin Raspaud, SMHI
 - Russ Rew, Unidata
+- Burkhardt Rockel, GKSS
 - Martin Schultz, Jülich Supercomputing Centre
 - Rich Signell, USGS
 - Bob Simons, NOAA
 - Maarten Sneep, KNMI
+- Ag Stephens, BADC
 - Anders Meier Soerensen, EUMETSAT
 - Karl Taylor, PCMDI, LLNL
 - Etienne Tourigny, INPE

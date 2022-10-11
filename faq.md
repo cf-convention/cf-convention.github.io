@@ -38,13 +38,13 @@ Principles of CF include self-describing data (no external tables needed for und
 ### Who manages the CF conventions?
 
 The CF conventions are maintained by volunteers, led by a Governance Panel and assisted by the Conventions Committee and Standard Names Committee.
-(See [CF Governance](http://cfconventions.org/governance.html).)
-Changes to the conventions are proposed and settled by the community, using the [CF-Metadata Mailing List](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/) and [CF Metadata Trac site](http://kitt.llnl.gov/trac).
-Many of the principles of CF operations follow the proposals at these [rules for CF conventions changes](http://cfconventions.org/rules.html).
+(See [CF Governance](governance.md).)
+Changes to the conventions are proposed and settled by the community, using the [CF Conventions GitHub repository][cf-conventions-repo]'s [issues][cf-conventions-issues] and [pull request][cf-conventions-pulls] functionality for discussion, agreement, and implementing any agreed changes.
+Many of the principles of CF operations follow the proposals at these [rules for CF conventions changes](rules.md).
 
 ### How long has CF been around? Is it mature?
 
-Work began on CF in 2001 and [Version 1.0](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.0/build/cf-conventions.html) was released in October 2003.
+Work began on CF in 2001 and [Version 1.0](/Data/cf-conventions/cf-conventions-1.0/build/cf-conventions.html) was released in October 2003.
 Now at Version 1.10, it has been used for tens of thousands of distinct netCDF products, has an active discussion list with hundreds of participants, and is a mature technical specification.
 Because it is community-supported and community-driven, turnaround on questions and changes can take a little time, but are generally thoroughly considered.
 
@@ -78,7 +78,7 @@ So for example the CF Standard Names attempt to be as general and well-defined a
 
 ### How do I find previously asked questions about CF?
 
-The two main ways to research CF questions are checking this FAQ, and visiting the [mail archives](http://mailman.cgd.ucar.edu/pipermail/cf-metadata), to see if your question has already been asked. 
+The two main ways to research CF questions are checking this FAQ, and visiting the [mail archives](https://mailman.cgd.ucar.edu/pipermail/cf-metadata), to see if your question has already been asked. 
 
 You can use the pipermail search window to see when your topic may have been raised over the years.
 To follow a particular subject thread, go to the year in which the discussion took place, click on the `by thread` sorting option, and choose the first mail with that subject.
@@ -89,15 +89,15 @@ If you are going to work with CF a lot, you may want to download the yearly file
 ### How do I ask questions about CF?
 
 First, please see whether your question has already been answered (see [question above](#research)).
-Questions about the CF Convention, including its Standard Names list, may be asked at the [CF-Metadata Mailing List](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/).
+Questions about the CF Convention, including its Standard Names list, may be asked at the [CF-Metadata Mailing List](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/).
 CF community members usually respond within a day to simple questions, but allow more time if you have an advanced technical topic.
 
 ### How do I propose a change?
 
-Changes to the CF standard and the Standard Names are generally proposed first on the [CF-Metadata Mailing List](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/).
+Changes to the CF standard and the Standard Names are generally proposed first on the [CF Discuss GitHub repo][cf-discuss-repo] as an [issue][cf-discuss-issues].
 See [How do I ask for a new standard name?](#stdnames_ask) to learn more about changes to the Standard Names list.
 
-A change to the CF standard itself may be brought up on the mailing list, but must be presented and agreed to in detail on the [CF Metadata Trac site](http://kitt.llnl.gov/trac), where the explicit change being requested can be refined.
+A change to the CF standard itself may be discussed initially in a [CF Discuss issue][cf-discuss-issues], but must be presented and agreed to in detail as a [CF Conventions issue][cf-conventions-issues], where the explicit change being requested can be refined.
 
 ### What is the process for accepting a change to the CF convention?
 
@@ -105,11 +105,11 @@ The community discusses requests for changes via the mail list and trac site, an
 If no one raises objections or concerns about the change (modified as needed to address any issues) for the period of time required for that document, it is considered accepted.
 The moderators of the list typically make a final statement of acceptance once that stage has been reached.
 
-More detailed information can be found in the [Rules for CF Conventions Changes](http://cfconventions.org/rules.html).
+More detailed information can be found in the [Rules for CF Conventions Changes](rules.md).
 
 ### What is the process for fixing errors?
 
-Errors have a simpler workflow, but still use a community process, as described in the [Rules for Correcting Errors in CF Documents](http://cfconventions.org/errors.html).
+Errors have a simpler workflow, but still use a community process, as described in the [Rules for Correcting Errors in CF Documents](errors.md).
 
 ### When are changes added to the CF Convention?
 
@@ -140,7 +140,7 @@ However, this is not recommended; it would be better to use a standard name of h
 
 Note that a standard name attribute is not required for the vertical coordinate, but the `positive` attribute is required if the standard name is not 'pressure'.
 
-Reference: [Trac ticket #109](http://kitt.llnl.gov/trac/ticket/109) 
+Reference: [Trac ticket #109](https://cfconventions.org/Data/Trac-tickets/109.html)
 
 ### How (and why) does CF specify directions in standard names?
 
@@ -180,7 +180,7 @@ For example, `horizontal` is indicating a plane rather than a direction, while `
 ### How can I encode flag values (or other enumerated lists) with CF?
 
 Often data values in an enumerated list are given as string codes ("UP", "GOOD", "Warning"), yet it is more useful to encode these values as integers.
-CF's [flag_values mechanism](http://cfconventions.org/cf-conventions.html#flags) can encode strings in numeric data variables, while defining flag_meanings to map the numbers to the meanings.
+CF's [flag_values mechanism](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#flags) can encode strings in numeric data variables, while defining flag_meanings to map the numbers to the meanings.
 The `flag_values` and `flag_meanings` attributes (and, if necessary, the `flag_masks` attribute) describe a status flag consisting of mutually exclusive coded values.
 The `flag_values` attribute is the same type as the variable to which it is attached, and contains a list of the possible flag values.
 The `flag_meanings` attribute is a string whose value is a blank-separated list of descriptive words or phrases, one for each flag value. 
@@ -190,7 +190,7 @@ The `flag_meanings` attribute is a string whose value is a blank-separated list 
 In NetCDF, a `coordinate variable` is a one-dimensional variable with the same name as its dimension [e.g., time(time)]; is a numeric data type; has values that are ordered monotonically (always going in one direction); and has no missing values.
 If you have a variable that contains coordinate values but does not meet these criteria, in CF you can still indicate that it has coordinate values by naming it as an auxiliary coordinate variable. 
 
-The rules for creating and using auxiliary coordinate variables are described in the [Coordinate Systems](http://cfconventions.org/cf-conventions/cf-conventions.html#coordinate-system) section of the Convention.
+The rules for creating and using auxiliary coordinate variables are described in the [Coordinate Systems](/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#coordinate-system) section of the Convention.
 
 ## Rich technical questions about CF
 The detailed and big picture concepts in CF.
@@ -201,9 +201,9 @@ CF allows coordinate variables to be used for any quantity that you might regard
 
 CF offers a rich set of options for specifying coordinate axes. Here is a short list of possibilities; others may be appropriate.
 
-* [Discrete axes](http://cfconventions.org/cf-conventions/cf-conventions.html#discrete-axis) can have unordered, enumerated axis values, like days of the week or model levels [example](http://cfconventions.org/cf-conventions/cf-conventions.html#alternative-coordinates).
+* [Discrete axes](/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#discrete-axis) can have unordered, enumerated axis values, like days of the week or model levels [example](/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#alternative-coordinates).
 * Isotherms are described as a data variable of depth with a coordinate of (potential) temperature. 
-* Various other vertical coordinate systems that are dimensionless are explicitly listed in [Appendix D](http://cfconventions.org/cf-conventions/cf-conventions.html#dimensionless-v-coord), and are specified as described in [Dimensionless Vertical Coordinates section](http://cfconventions.org/cf-conventions/cf-conventions.html#dimensionless-vertical-coordinate).
+* Various other vertical coordinate systems that are dimensionless are explicitly listed in [Appendix D](/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#parametric-v-coord), and are specified as described in [Dimensionless Vertical Coordinates section](/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#dimensionless-vertical-coordinate).
 * Swath coordinates (e.g., 'along-track' and 'across-track' values often obtained from platforms following a path, like satellites, planes, and autonomous underwater vehicles) can be expressed as x,y coordinates that are mapped to latitude and longitude. There are [open proposals](https://github.com/cf-convention/cf-conventions/issues/269) for specifying swath coordinates.
 * Degree-day integrals are described as integral_of_air_temperature_deficit|excess_wrt_time with a coordinate of air_temperature_threshold. 
 * Electromagnetic radiation at particular wavelengths uses a coordinate of radiation_wavelength or radiation_frequency.
@@ -214,7 +214,7 @@ The ones in http://kitt.llnl.gov/trac/wiki/SatelliteData don't seem quite illust
 
 ### How can I describe a file with multiple time coordinates (e.g., run time AND valid or forecast time)?
 
-There are several ways that multiple time coordinates may be handled; you may wish to review the details in [this list message](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2006/001008.html). 
+There are several ways that multiple time coordinates may be handled; you may wish to review the details in [this list message](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2006/001008.html). 
  
 CF's standard name for the valid or forecast time is `time` (also used for the time of an observation).
 CF also has a standard name for the time the analysis was performed (its 'run time'): forecast_reference_time.
@@ -222,7 +222,7 @@ Very briefly, values in either or both of these axes may vary (a single run may 
 If either axis contains just a single value, they are both specified as coordinates.
 If both are multi-valued, then they are each defined as one-dimensional auxiliary coordinate variables, with a common index dimension. 
 
-CF section 5.7 has an [example of the first case](http://cfconventions.org/cf-conventions/cf-conventions.html#scalar-coordinate-variables), with a scalar coordinate variable for forecast_reference_time and a multivalued time axis for the valid time.
+CF section 5.7 has an [example of the first case](/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#scalar-coordinate-variables), with a scalar coordinate variable for forecast_reference_time and a multivalued time axis for the valid time.
 
 An example of the second case can be found in the email referenced above.
 
@@ -256,9 +256,9 @@ Use your good judgment!
 
 ### My variable depends on the type of surface. How can I specify the surface type?
 
-CF maintains a vocabulary specifically for specifying surface and area types; it is available on the CF site as the [Area Type Table](http://cfconventions.org/Data/area-type-table/current/build/area-type-table.html), and can also be accessed as a [controlled vocabulary](http://mmisw.org/ont/cf/areatype).
+CF maintains a vocabulary specifically for specifying surface and area types; it is available on the CF site as the [Area Type Table](/Data/area-type-table/current/build/area-type-table.html), and can also be accessed as a [controlled vocabulary](http://mmisw.org/ont/cf/areatype).
 
-Terms from this vocabulary may be used as specified in the CF Convention [section 7.3.3 Statistics applying to portions of cells](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#statistics-applying-portions).
+Terms from this vocabulary may be used as specified in the CF Convention [section 7.3.3 Statistics applying to portions of cells](/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#statistics-applying-portions).
 However, it is also possible to describe a data variable by using a named quantity as a coordinate variable, and the area_type is often needed for such a purpose.
 The area_type can be attached as a dimensioned coordinate variable, or as a scalar coordinate.
 
@@ -316,7 +316,7 @@ Reference [section 3.3 of the CF Convention, Standard Names](https://cfconventio
 
 ### What is the official list of standard names?
 
-The CF site contains [the official list of CF standard names](http://cfconventions.org/standard-names).
+The CF site contains [the official list of CF standard names and other controlled vocabularies](vocabularies.md).
 The XML document pointed to from that page is the primary reference, but the HTML and PDF documents are produced automatically from the XML, and should contain the same information.
 
 Several other sites represent alternative views of knowledge artifacts of the standard names.
@@ -337,11 +337,11 @@ Variables with different standard names are presumably not directly comparable.
 Of course users must review the details of variables, particularly their `long_name` and `source` attributes, to assess whether they are truly interoperable.
 
 References:
-* J Gregory, 2008: [what standard names are for](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2008/052334.html)
+* J Gregory, 2008: [what standard names are for](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2008/052334.html)
 
 ### How can I find the standard name I need?
 
-To find standard names that describe your data, open up the latest [Standard Name table](http://cfconventions.org/vocabularies.html) (as HTML or XML) and search through it for words typically used for your data.
+To find standard names that describe your data, open up the latest [Standard Name table](vocabularies.md) (as HTML or XML) and search through it for words typically used for your data.
 (Because standard names contain no blanks, you may want to search for one word at a time, or even part of a word, rather than a full phrase like "air temperature".)
 If you can not find any matches, you can browse the table to see the kinds of names that exist -- names strongly lean toward environmental modeling and observation data, especially in atmosphere and ocean science.
 
@@ -350,7 +350,7 @@ If you can't find any matches, send an email to the CF-Metadata list describing 
 
 ### How do I ask for a new standard name?
 
-You ask for a new standard name by sending an email to the [CF-Metadata Mailing List](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/).
+You ask for a new standard name by sending an email to the [CF-Metadata Mailing List](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/).
 You should sign up to the mailing list before sending your email, so you can follow the discussion of your request.
 
 In the email specify the following for each standard name you want to request:
@@ -375,7 +375,7 @@ A CF standard name is a unique text string, which is associated in the CF Standa
 The text string is made up of two parts: the name (from the CF Standard Names table), and optionally, following the name and one or more blanks, a standard name modifier.
 The name contains no white space (underscores separate the words, in practice) and identifies the physical quantity.
 The modifier is used to describe a quantity which is related to another variable with the modified standard name.
-Details are provided in the convention section on [Standard Name](http://cfconventions.org/1.6.html#standard-name), and examples of modifiers are given in [Appendix C](http://cfconventions.org/1.6.html#standard-name-modifiers). 
+Details are provided in the convention section on [Standard Name](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#standard-name), and examples of modifiers are given in [Appendix C](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#standard-name-modifiers). 
 
 Several attributes are required for every standard name: the canonical units, which are *typical* units of the physical quantity, and the description, which clarifies related quantities and meanings of the standard name (but is not strictly a definition per se).
 Older standard names may not have a description. 
@@ -426,14 +426,14 @@ for  | by | reported on | Artifact State
 The standard name should not include:
 
 * provenance of the variable, including details of the process by which the value was obtained,
-* mathematical transformations such as addition, multiplication, and averaging (these are handled by [cell_methods](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#cell-methods)),
+* mathematical transformations such as addition, multiplication, and averaging (these are handled by [cell_methods](/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#cell-methods)),
 * specialized terms not meaningful to a broad scientific audience, unless widely used and agreed on by the community of origin,
 * acronyms, or
 * geospatial location or similar deployment information, for example wind_speed_at_10_meter_platform.
 
 In many cases the standard name is qualified by a specific detail, for example area_type, whose value may change from one set of observations to another or one observation to another.
 In these cases the definition for the standard name references one or more attributes or variables where the additional qualifying information may be found.
-([Standard name *modifiers*](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#standard-name-modifiers) and [cell_methods](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#cell-methods) may also be used for this purpose.)
+([Standard name *modifiers*](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#standard-name-modifiers) and [cell_methods](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#cell-methods) may also be used for this purpose.)
 In this way the divergence of the standard names is minimized, and interoperability increased.
 
 ### Are there common standard name phrases that get re-used?
@@ -448,13 +448,13 @@ There is no adopted grammar for the standard names.
 Many investigations or partial forays into a standard grammar have been made.
 Among these efforts:
 
-* Karl Taylor ([list post](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2008/052705.html)): A different approach to standard name construction
-* Robert Muetzelfeldt ([list post](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2010/053657.html)): [A grammar for CF standard names](http://envarml.pbworks.com/w/page/8988920/FrontPage) / 1103 names
+* Karl Taylor ([list post](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2008/052705.html)): A different approach to standard name construction
+* Robert Muetzelfeldt ([list post](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2010/053657.html)): [A grammar for CF standard names](http://envarml.pbworks.com/w/page/8988920/FrontPage) / 1103 names
 * An interesting [page of keywords](https://cfconventions.org/Data/cf-standard-names/79/build/kwic_index_for_cf_standard_names.html) that resulted
-* Jonathan Gregory et al ([list post](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2010/048064.html)): [standard name grammar/Parsing CF standard names](http://www.met.reading.ac.uk/~jonathan/CF_metadata/14.1/) / 2072 names
-* Rob Raskin ([list post mention](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2009/047768.html)): [mapped CF standard name list to SWEET-based ontologolical representation](https://wiki.earthdata.nasa.gov/download/attachments/50792120/SWEET_SPG.ppt?version=1&modificationDate=1435254939370&api=v2) (Powerpoint) / 2149 names
+* Jonathan Gregory et al ([list post](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2010/048064.html)): [standard name grammar/Parsing CF standard names](http://www.met.reading.ac.uk/~jonathan/CF_metadata/14.1/) / 2072 names
+* Rob Raskin ([list post mention](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2009/047768.html)): [mapped CF standard name list to SWEET-based ontologolical representation](https://wiki.earthdata.nasa.gov/download/attachments/50792120/SWEET_SPG.ppt?version=1&modificationDate=1435254939370&api=v2) (Powerpoint) / 2149 names
 * John Graybeal (no list post):  [auto-generated pseudo-CF names from CF components](https://github.com/graybealski/cf-conventions-work/blob/master/CF_SWEET_201401_Redacted.xlsx) (Excel) / 2523 names
-* Michael Piasecki/Peng Ji ([list post](http://mailman.cgd.ucar.edu/pipermail/cf-metadata/2012/055875.html)): [CF standard names organized by facets](http://edscvs.ccny.cuny.edu/cf/index.php?tema=4448) (TemaTres) / 9981 concepts
+* Michael Piasecki/Peng Ji ([list post](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2012/055875.html)): CF standard names organized by facets [("need reference: old `edscvs.ccny.cuny.edu/cf/index.php?tema=4448` link no longer working")] (TemaTres) / 9981 concepts
 
 ### Are there mappings of the standard name terms to other terms?
 
@@ -497,7 +497,7 @@ These questions are not strictly part of CF, but CF depends on this understandin
 
 ### Why does CF use UDUNITS as its standard?
 
-[UDUNITS](http://www.unidata.ucar.edu/software/udunits/) was specified in the original COARDS convention ("Where possible the units attribute should be formatted as per the recommendations in the Unidata udunits package"), and is a widely used standard with many tools and libraries.
+[UDUNITS](https://www.unidata.ucar.edu/software/udunits/) was specified in the original COARDS convention ("Where possible the units attribute should be formatted as per the recommendations in the Unidata udunits package"), and is a widely used standard with many tools and libraries.
 The package contains an extensive unit database, which is in XML format and user-extensible (though the extensions will not be compliant with CF).
 
 There are a few units CF allows that do not appear in UDUNITS; see [the related FAQ question](#udunits_missing).
@@ -593,3 +593,11 @@ There are various maintenance processes going on behind the scenes to update the
 Once you understand the procedure by which your suggested changes should be approved (e.g., email approval on the CF-metadata list, a trac ticket, or some other arrangement), you can submit suggested changes as a pull request on the appropriate content.
 However, as noted above, this should first be agreed with the person overseeing that content.
 
+[cf-conventions-repo]: https://github.com/cf-convention/cf-conventions
+[cf-conventions-issues]: https://github.com/cf-convention/cf-conventions/issues
+[cf-conventions-pulls]: https://github.com/cf-convention/cf-conventions/pulls
+[cf-discuss-repo]: https://github.com/cf-convention/discuss
+[cf-discuss-issues]: https://github.com/cf-convention/discuss/issues
+[cf-website-repo]: https://github.com/cf-convention/cf-convention.github.io
+[cf-website-issues]: https://github.com/cf-convention/cf-convention.github.io/issues
+[cf-website-pulls]: https://github.com/cf-convention/cf-convention.github.io/pulls

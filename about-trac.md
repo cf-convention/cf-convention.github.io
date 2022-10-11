@@ -7,7 +7,7 @@ title: Governance
 
 This page is an archive copy, kept only for historical interest, of information about the former [CF Metadata Trac](Data/trac.html) site, which itself also is now kept only as an archive.
 The Trac site was used until July 2018 for discussion of enhancements to the CF convention.
-New proposals are now [discussed in GitHub](discussion.html).
+New proposals are now [discussed in GitHub](discussion.md).
 The following information should be read in the past tense.
 
 ## How the Ticket System Works
@@ -31,7 +31,7 @@ If you ARE already a member of the cf-metadata@cgd.ucar.edu mailing list:
 Note: Step 1 is only required if you want to post messages.
 If you only want to listen in, you don't have to do anything.
 
-1. Request a Trac account by sending your first name, last name, and preferred username to: webmaster@pcmdi.llnl.gov
+1. Request a Trac account by sending your first name, last name, and preferred username to: webmaster at pcmdi.llnl.gov
 
 As a member of the cf-metadata@cgd.ucar.edu mailing list, you will automatically be subscribed to the new cf-metadata@lists.llnl.gov mailing list.
 At a later date, if you wish to limit email traffic to certain aspects of CF discussions, you can unsubscribe yourself from cf-metadata@lists.llnl.gov and subscribe instead to one or more of the sub-lists.
@@ -40,7 +40,7 @@ If you ARE NOT already a member of the cf-metadata@cgd.ucar.edu mailing list:
 Note: Step 1 is only required if you want to post messages.
 If you only want to listen in, skip to Step 2.
 
-1. Request a Trac account by sending your first name, last name, and preferred username to: webmaster@pcmdi.llnl.gov.
+1. Request a Trac account by sending your first name, last name, and preferred username to: webmaster at pcmdi.llnl.gov.
 2. Subscribe yourself to the mailing lists you're interested in.
 You will automatically be subscribed to the cf-conventions and cf-standard-names mailing lists.
 You must independently subscribe to the working group lists.

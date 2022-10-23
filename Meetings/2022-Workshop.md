@@ -173,9 +173,10 @@ To help us with planning, please check the "Other" box, in the [registration for
 * Alison Pamment
 * Charlie Zender
 
+{::comment}
 ## Picture from participants
 ![Participants-Picture]{: height="480px"}
-
+{:/comment}
 ## Sponsorship
 
 Thanks for their support of this meeting to: 

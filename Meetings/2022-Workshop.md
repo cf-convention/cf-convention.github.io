@@ -93,7 +93,7 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **17:00 - Parallel hackathon sessions** (continued)
 
-* **17:30 -** Evening trip and dinner
+* **17:30 -** Social event and dinner
 
 ### Thursday, 15 September 2022
 
@@ -161,7 +161,7 @@ To help us with planning, please check the "Other" box, in the [registration for
 Thanks for their support of this meeting to: 
  - [IS-ENES3] which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
    
-   ![IS-ENES3-logo]{: height="75px"}
+   ![IS-ENES3-logo]{: height="75px"} ![EU-FUNDED-logo]{: height="75px"}
  
  - [CORDyS] funded by the Spanish MCIN/AEI/10.13039/501100011033 (PID2020-116595RB-100)
    
@@ -173,6 +173,7 @@ Thanks for their support of this meeting to:
  
 [IS-ENES3]: https://is.enes.org "Infrastructure for the European Network for Earth System Modelling"
 [IS-ENES3-logo]: 2022-workshop/is-enes3-logo.png
+[EU-FUNDED-logo]: 2022-workshop/eu_funded_en.jpg
 [CORDyS]: https://github.com/AEI-CORDyS "Contribution to the next generation of CORDEX regional climate projections: Dynamical and Statistical approaches"
 [CORDyS-logo]: 2022-workshop/micin-aei-cordys_en.png 
 [IFCA]: https://ifca.unican.es/en-us "Institute of Physics of Cantabria (IFCA, CSIC-UC)"

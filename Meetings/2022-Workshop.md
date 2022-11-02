@@ -75,8 +75,8 @@ All times are local to Santander, i.e. **UTC+2**
 * **13:00 -** Lunch
 
 * **15:00 - Parallel hackathon sessions**
-  * **1.** Mapping CF standard names to [I-ADOPT](https://doi.org/10.15497/RDA00071): [Main Zoom Room][MainZoomRoom]
-  * **2.** Housekeeping: Formatting improvements, clarifying general Udunits text, and more: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
+  * **1.** Mapping CF standard names to [I-ADOPT](https://doi.org/10.15497/RDA00071) (Alison Pamment): [Main Zoom Room][MainZoomRoom] 
+  * **2.** Housekeeping: Formatting improvements, clarifying general Udunits text, and more (Daniel Lee): [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **16:30 -** Coffee break
 
@@ -98,13 +98,13 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **11:50 - Lossy compression: The netCDF implementation and towards encoding precision** (Charlie Zender)
 
-* **12:20 - Compression: Discussion**
+* **12:20 - Compression: Discussion** (Charlie Zender and Bryan Lawrence)
 
 * **13:00 -** Lunch
 
 * **15:00 - Parallel hackathon sessions**
-  * **3.** Conventions enhancements for describing lossy compression: [Main Zoom Room][MainZoomRoom]
-  * **4.** GitHub processes and automations: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
+  * **3.** Conventions enhancements for describing lossy compression (Charlie Zender): [Main Zoom Room][MainZoomRoom]
+  * **4.** GitHub processes and automations (Daniel Lee): [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **16:30 -** Coffee break
 
@@ -121,12 +121,12 @@ All times are local to Santander, i.e. **UTC+2**
 * **11:00 -** Coffee break
 
 * **11:30 - Parallel hackathon sessions**
-  * **5.** Create DOIs for the CF conventions: [Main Zoom Room][MainZoomRoom] 
-  * **6.** Dataset DOIs: Further discussion and conventions enhancements: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
+  * **5.** Create DOIs for the CF conventions (Ethan Davis and Kevin O'Brien): [Main Zoom Room][MainZoomRoom] 
+  * **6.** Dataset DOIs: Further discussion and conventions enhancements (Ethan Davis and Kevin O'Brien): [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **13:00 -** Lunch
 
-* **15:00 - Hackathon debriefings**
+* **15:00 - Hackathon debriefings** (Charlie Zender, Daniel Lee, Alison Pamment, Ethan Davis, Kevin O'Brien, David Hassell)
 
 * **16:00 -** Coffee break
 

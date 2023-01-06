@@ -21,7 +21,9 @@ jobs:
         
       - name: Check links
         id: lychee
-        uses: lycheeverse/lychee-action@v1.0.4
+        uses: lycheeverse/lychee-action@v1.5.4
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         # See exclusions in .lycheeignore, commented here since that file accepts no comments:
         #   mailman.cgd.ucar.edu from faq.md. Server times out.
         #   cfeditor.ceda.ac.uk from discussion.md. Server times out.
@@ -37,7 +39,7 @@ jobs:
           # fail: true  # fail job if no go
       
       - name: Create Issue From File
-        #if: env.lychee_exit_code != 0  # Only execute if check failed
+        if: env.lychee_exit_code != 0  # Only execute if check failed
         uses: peter-evans/create-issue-from-file@v4.0.0
         with:
           title: Link Checker Report

@@ -1,0 +1,35 @@
+= Cell Types For Unstructured Grid CF standard =
+
+Similar to the data types that already exist [http://www.unidata.ucar.edu/software/netcdf/docs/netcdf/CDL-Data-Types.html#CDL-Data-Types NetCDF Users Guide], we could add cell types to the netCDF library which describe the geometry of a cell. This would provide the information about how many vertices a cell has and there for how many node index values to expect in the connectivity. Each cell type would have a standard node ordering which describes how to format and use the connectivity data.
+
+{{{
+0 NC_PTS	A series of scattered points: earthquake locations
+1 NC_TRK	A series of connected points: Drifter data
+2 NC_LIN	An arbitrary list of lines each described by two end points: edge data
+
+3 NC_TRI	Triangles described by the location of three vertices's
+4 NC_QAD	Quadrilaterals described by the location of four vertices's
+5 NC_PNT	etc
+6 NC_HEX	etc
+7 NC_SPT	etc
+8 NC_OCT	etc
+9 NC_MXD        Mixed 2D polygon cells
+
+43   NC_TETRAHEDRON     ! Numbers are based on: #of faces #of sides     
+64   NC_HEXAHEDRON
+1443 NC_PYRAMID		! for more complex types: #of faces #of sides #of faces #of sides
+3423 NC_WEDGE
+9999 NC_UNSTRUCT	! MIXED 3D solids cells
+}}}
+''Better formatting?''
+
+'''we need good pictures to do this properly!'''
+
+== questions ==
+ * Not sure about these 3D types: 
+  * other suggestions for numbering, naming, geometries?
+ * Do extruded cells need an NC_XXXXX integer typing?
+ * For each of these we need to define a node numbering scheme,
+      a face numbering scheme, and an edge numbering scheme
+
+

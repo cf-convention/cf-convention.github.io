@@ -1,0 +1,53 @@
+=== Example 1 ===
+An example of a multi-banded image structure that contains navigation on a point-by-point basis, and provides for linear calibration (provided by Tom Whittaker, Tom Rink, and Kaba Bah).
+{{{
+dimensions:
+    x = 5304;
+    y = 2438;
+    band = 16;
+
+variables:
+    float lat(y, x);
+        lat:standard_name = "latitude";
+        lat:units = "degrees_north";
+        lat:valid_range = -90.f, 90.f;
+
+    float lon(y, x) ;
+        lon:standard_name = "longitude";
+        lon:units = "degrees_east";
+        lon:valid_range = -180.f, 180.f;
+
+    int band(band);
+
+    double time;
+        time:long_name = "Nominal time of image";
+        time:units="s since 1990-1-1 0:0:0";
+
+    string bandname(band);
+        bandname:standard_name = "band_name";
+
+    float offset(band);
+        offset:standard_name="linear_calibration_offset";
+
+    float scale(band);
+        scale:standard_name="linear_calibration_scale_factor";
+
+    float wavelength(band);
+        wavelength:standard_name="radiation_wavelength";
+        wavelength:units="micron";
+
+    string units(band);
+        units:standard_name="band_units";
+
+    short ImageData(band, y, x);
+        ImageData:coordinates = "band lat lon";
+        ImageData:valid_min = 1s;
+        ImageData:_FillValue = 0s;
+        ImageData:missing_value = 0s;
+}}}
+
+ * For look-up table calibration (as opposed to "linear_calibration"), include the following:
+{{{
+    float lookup(band, 256);
+        lookup:standard_name="calibration_lookup_table";
+}}}

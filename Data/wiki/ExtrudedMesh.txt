@@ -1,0 +1,42 @@
+= What is an Extruded Mesh? =
+
+An unstructured [wiki:NameAndTerminology extruded] mesh is a half-breed of curvalinear coordinates and a two dimensional unstructured grid. While extruded cells are a subset of fully unstructured cell types, and can be stored with full 3D generality but it is useful, computationally and theoretically to consider them as layered 2D structures. For that reason this type of grid should be part of the CF UnstructuredGrids standard.
+
+== Comments and Questions ==
+We need a very thoughtful definition of what extruded is!
+
+How do we signify that a mesh is extruded?
+ * By the MeshMetaData?
+bors are only explicitly defined in 2D. The connectivity and neighbors in the extruded dimension is implied by the geometry
+
+The number prisms in How do we describe the vertical coordinate of its nodes? (generality of sigma coords?)
+ * Include equation as text and names of all needed variables from the file
+
+== What is an extruded mesh geometry? ==
+
+'''Extruded Cells'''
+ 1. Non-overlapping geometric solids 
+ 2. Top and bottom faces of the cell are congruent when projected on a plane orthogonal to the extruded dimension
+ 3. The edges which are parallel to the extruded dimension therefore the faces on the sides must be trapezoids
+  * ''These solids are a more general case of prisms: [[BR]] The top and bottom need not be parallel, as in a prism, but the side edges must be parallel by definition of extrusion.
+
+== Suggested Data to define an extruded mesh ==
+
+=== [wiki:FileDimensions Dimensions] ===
+
+ '''Nodes''' ::
+  The number of nodes in the 2D projection of the mesh. The connectivity is therefore specified only in 2D.
+ '''Cells''' ::
+  The number of cells in the 2D projection of the mesh.
+ '''Layers''' ::
+  The number of cells stacked in the extruded dimension.
+ '''Levels''' ::
+  The number of nodes stacked in teh extruded dimension.
+
+=== [wiki:MeshMetaData Meta Data] ===
+
+add stuff here
+
+=== [wiki:FileVariables Variables] ===
+
+Add stuff here too!

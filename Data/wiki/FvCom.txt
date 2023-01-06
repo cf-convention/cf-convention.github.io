@@ -1,0 +1,158 @@
+= Proposed FVCOM CDL =
+
+{{{
+netcdf FVCOMFILE {
+dimensions:
+	nNodes = 32420 ;
+	nCells = 59949 ;
+	nConnect= 3;
+	Layers = 30 ;
+	Levels = 31 ;
+	time = UNLIMITED ; // ( not many, currently)
+variables:
+
+	int sigmalayers(nConnect, nCells) ;
+		sigmalayers:Standard_Name      = "Connectivity"
+		sigmalayers:Spatial Dimension = "3"
+		sigmalayers:Topological Dimension = "3"
+		sigmalayers:X nodal coordinate = "x"
+		sigmalayers:Y nodal Coordinate = "y" 
+		sigmalayers:Sigma_Coordintes   = "Layers" 
+		sigmalayers:Sigma_surface      = "SSH"
+		sigmalayers:Sigma_bottom       = "Bathymetry" 
+		sigmalayers:Sigma_equation     = "z = Sigma * (Bathymetry + Surface) 
+						  + Surface"
+		sigmalayers:Cellent Type       = NC_TRI
+
+
+	int sigmalevels(nConnect, nCells) ;
+		sigmalevels:Standard_Name      = "Connectivity"
+		sigmalevels:Spatial Dimension = "3"
+		sigmalevels:Topological Dimension = "3"
+		sigmalevels:X nodal coordinate = "x"
+		sigmalevels:Y nodal Coordinate = "y" 
+		sigmalevels:Sigma_Coordintes   = "layers"
+		sigmalevels:Sigma_surface      = "SSH"
+		sigmalevels:Sigma_bottom       = "Bathymetry" 
+		sigmalevels:Sigma_equation     = "z = Sigma * (Bathymetry + Surface) 
+						  + Surface"
+		sigmalevels:Cellent Type       = NC_TRI
+
+
+	int SeaSurfaceHeight(nConnect, nCells) ;
+		SeaSurfaceHeight:Standard_Name      = "Connectivity"
+		SeaSurfaceHeight:Spatial Dimension  = "3"
+		SeaSurfaceHeight:Topological Dimension = "2"
+		SeaSurfaceHeight:X nodal coordinate = "x"
+		SeaSurfaceHeight:Y nodal Coordinate = "y" 
+		SeaSurfaceHeight:Z nodal Coordinate = "zeta" 
+		SeaSurfaceHeight:Cellent Type       = NC_TRI
+
+
+	int Bathymetry(nConnect, nCells) ;
+		Bathymetry:Standard_Name      = "Connectivity"
+	:	Bathymetry:Spatial Dimension  = "3"
+		Bathymetry:Topological Dimension = "2"
+		Bathymetry:X nodal coordinate = "x"
+		Bathymetry:Y nodal Coordinate = "y" 
+		Bathymetry:Z nodal Coordinate = "h" 
+		Bathymetry:Cellent Type       = NC_TRI
+
+
+	float x(nNodes) ;
+		x:long_name = "nodal x-coordinate" ;
+		x:units = "meters" ;
+	float y(nNodes) ;
+		y:long_name = "nodal y-coordinate" ;
+		y:units = "meters" ;
+	float layers(Layers) ;
+		siglay:long_name = "Sigma Layers" ;
+		siglay:standard_name = "ocean_sigma_coordinate" ;
+		siglay:positive = "up" ;
+		siglay:valid_min = "-1" ;
+		siglay:valid_max = "0" ;
+		siglay:formula_terms = "siglay:siglay eta:zeta depth:depth" ;
+	float levels(Levels) ;
+		siglev:long_name = "Sigma Levels" ;
+		siglev:standard_name = "ocean_sigma_coordinate" ;
+		siglev:positive = "up" ;
+		siglev:valid_min = "-1" ;
+		siglev:valid_max = "0" ;
+		siglev:formula_terms = "siglev:siglev eta:zeta depth:depth" ;
+	float h(nNodes) ;
+		h:long_name = "Bathymetry" ;
+		h:units = "meters" ;
+		h:positive = "down" ;
+		h:standard_name = "depth" ;
+		h:grid = "fvcom_grid" ;
+	float time(time) ;
+		time:long_name = "Time" ;
+		time:units = "seconds after 00:00:00" ;
+		time:calendar = "none" ;
+	float iint(time) ;
+		iint:long_name = "internal mode iteration number" ;
+	float u(time, Layers, nNcells) ;
+		u:long_name = "Eastward Water Velocity" ;
+		u:Mesh = "sigmalevels"
+		u:Location = "CellCent"
+		u:units = "meters s-1" ;
+		u:type = "data" ;
+	float v(time, Layers, nNcells) ;
+		v:long_name = "Northward Water Velocity" ;
+		v:Mesh = "sigmalevels"
+		v:Location = "CellCent"
+		v:units = "meters s-1" ;
+		v:type = "data" ;
+	float ww(time, Levels, nNcells) ;
+		ww:long_name = "Upward Water Velocity" ;
+		ww:Mesh = "sigmalevels"
+		ww:Location = "CellCent"
+		ww:units = "meters s-1" ;
+		ww:type = "data" ;
+	float km(time, Levels, nNodes) ;
+		km:long_name = "Turbulent Eddy Viscosity" ;
+		km:Mesh = "sigmalevels"
+		km:Location = "NODECENT"
+		km:units = "meters2 s-1" ;
+		km:type = "data" ;
+	float temp(time, Layers, nNodes) ;
+		temp:long_name = "temperature" ;
+		temp:standard_name = "sea_water_temperature" ;
+		temp:Mesh = "sigmalayers"
+		temp:Location = "CellCent"
+		temp:units = "degrees_C" ;
+		temp:type = "data" ;
+	float salinity(time, siglay, node) ;
+		salinity:long_name = "salinity" ;
+		salinity:standard_name = "sea_water_salinity" ;
+		salinity:Mesh = "sigmalayers"
+		salinity:Location = "NodeCent"
+		salinity:units = "1e-3" ;
+		salinity:grid = "fvcom_grid" ;
+		salinity:type = "data" ;
+	float zeta(time, node) ;
+		zeta:long_name = "Water Surface Elevation" ;
+		zeta:Mesh = "SeaSurfaceHeight"
+		zeta:Location = "NODECENT"
+		zeta:units = "meters" ;
+		zeta:positive = "up" ;
+		zeta:standard_name = "sea_surface_elevation" ;
+		zeta:type = "data" ;
+
+// global attributes:
+		:title = "Best Model Ever!" ;
+		:institution = "Happy Hour is a good institution!" ;
+		:source = "David's wild ideas!" ;
+		:history = "24 hours of brain storming" ;
+		:references = "CDL_description" ;
+		:Conventions = "CDL_description version 0a" ;
+		:Simulation_type = "Idealized"
+		:MESH1 = "sigmalayers"
+		:MESH2 = "sigmalevels"
+		:MESH3 = "SeaSurfaceHeight"
+		:MESH4 = "Bathymetry"
+}
+}}}
+}}}
+
+'''Go Back to''' CdlDiscussion '''Table of Contents'''

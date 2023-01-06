@@ -1,0 +1,1208 @@
+= Chapter 9 Discrete Sampling Geometries =
+
+Chapter 5 explains how to specify Coordinate Systems using coordinate variables and auxiliary coordinate variables. This section extends and modifies that framework for data with discrete sampling geometries, previously called "point observation data".
+
+== 9.1 Overview ==
+
+A '''discrete sampled observation''' is a data measurement at a specific time and location. Each type of measured data ('''parameter''') is placed in a netCDF data variable. The time and location values of the observation are placed into coordinate variables and auxiliary coordinate variables.
+
+The intent of Chapter 9 is to define mechanisms for storing collections of discrete sampled observations in a single file.  The types of collections, called '''feature types''' that are specified here are:
+
+    * '''point''': one or more parameters measured at a set of points in time and space
+    * '''timeSeries''': a time-series of data points at the same location, with varying time
+    * '''trajectory''': a connected set of data points along a 1D curve in time and space
+    * '''profile''': a set of data points along a vertical line
+    * '''timeSeriesProfile''': a time-series of profiles at a named location
+    * '''trajectoryProfile''':  a collection of profiles which originate along a trajectory.
+
+This version of CF is restricted to a single feature type per file. Future versions of CF may generalize this to allow multiple feature types. The feature type is specified by a global attribute CF:featureType, and must have a value of one of the above feature types.
+
+For CF-1.5, the global attribute CF:featureType is required except to allow backwards compatibility with previous examples (section 5.4 and 5.5).  New file writers are strongly encouraged to add CF:featureType in all cases, and to follow the newer conventions as described in this chapter.
+
+There are two main ways to represent discrete data in the classic netCDF model:
+
+    * the '''multidimensional (rectangular array) representation''' is simpler but requires that the same amount of space be reserved for each feature stored in the file
+    * the '''ragged array representation''' allows different features to be stored with different lengths in the file
+
+The following subsections detail each discrete feature type and show examples of the possible representations of each.
+
+== 9.1.1 Coordinates ==
+  
+It is required that observations can be geospatially and time located by information self-contained in the file, therefore:
+   	1. The coordinates attribute must identify the variables needed to geospatially position and time locate the observation. The lat, lon and time coordinates must always exist; a vertical coordinate may exist. 
+   	2. The geospatial/time location must be unambiguous, and so the coordinates attribute must not point to multiple lat, lon, alt/depth or time coordinates.  
+   	3. The coordinates attribute may optionally include other station info, such as station name and other metadata.
+	4. If a useful station name exists, that name should be included as a station variable and the attribute standard_name = "station_id" should be included on this variable.
+
+The vertical coordinate is optional but strongly recommended. It must be identified as specified in chapter 4.3. The use of the attribute axis="Z" is recommended for clarity. A standard_name attribute that clarifies the reference surface is recommended, e.g.  "altitude", "height", "height_above_reference_ellipsoid", "geopotential_height". See CF Standard Name Table for details.
+
+For coordinates that are connected, coordinate bounds are specified following section 7.1 "Bounds for 1-D coordinate variables". For coordinates that are not connected, follow section 7.1 "Bounds for 2-D coordinate variables with 4-sided cells" and "Bounds for multi-dimensional coordinate variables with p-sided cells".
+
+== 9.1.2 Missing Data ==
+
+Auxiliary coordinates may use missing values to indicate that the observation should be skipped. The data variables that use these coordinates should also have missing values wherever the auxiliary coordinate does, although a reader may check just the coordinate values to infer missing data. 
+
+
+== 9.2 Point Data ==
+
+To represent data at scattered, unconnected locations, both data and coordinates use the same, single dimension. The 'coordinates' attribute is used on the data variables to unambiguously identify the time, lat, lon, and vertical auxiliary coordinate variables.
+
+{{{
+dimensions:
+  obs = 1234 ;
+
+variables:
+  double time(obs) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(obs) ;
+    lon:long_name = "longitude of the observation";
+    lon:units = "degrees_east";
+  float lat(obs) ;
+    lat:long_name = "latitude of the observation" ;
+    lat:units = "degrees_north" ;
+  float alt(obs) ;
+    alt:long_name = "vertical distance above the surface" ;
+    alt:standard_name = "height" ;
+    alt:units = "m";
+    alt:positive = "up";
+    alt:axis = "Z";
+
+  float humidity(obs) ;
+    humidity:long_name = "specific humidity" ;
+    humidity:coordinates = "time lat lon alt" ;
+  float temp(obs) ;
+    temp:long_name = "temperature" ;
+    temp:units = "Celsius" ;
+    temp:coordinates = "time lat lon alt" ;
+
+attributes:
+  :CF\:featureType = "point";
+}}}
+
+In this example, the humidity(i) and temp(i) data are associated with the coordinate values time(i), lat(i), lon(i), and optionally alt(i). The obs dimension may use the unlimited dimension or not. If the time coordinate is ordered, the obs dimension may be named time (making time a coordinate variable rather than an auxiliary variable).
+
+The time coordinate may use a missing value, which indicates to skip all the data for that time index. 
+
+
+== 9.3 Time Series Data ==
+
+Discrete data may be taken at a set of named locations called stations. The set of observations at a particular station, if ordered by time, is a time series, and the file contains a collection of timeSeries features.
+
+Some assumption are common to all timeSeries representations:
+
+   * The outer dimension of the latitude and longitude coordinates (which must agree) is the 'station dimension'.
+   * All variables that have the station dimension as their outer dimension are considered to be station information, and are called 'station variables'. 
+   * It is strongly recommended that there always be a station variable (of any type) with standard_name attribute "'''station_id'''", whose values uniquely identify the station.
+   * The station_id variable may use missing values. This allows one to reserve more space than is needed for stations.
+   * It is recommended to add station variables with standard_name attribute "'''station_desc'''", "'''surface_altitude'''", and "'''station_WMO_id'''" when applicable.
+
+=== 9.3.1 Multidimensional representation ===
+
+When the numbers of observations at each location are the same, one can use the multidimensional representation:
+
+{{{
+dimensions:
+  station = UNLIMITED ;
+  obs = 13 ;
+
+variables:
+  float lon(station) ;
+    lon:long_name = "station longitude";
+    lon:units = "degrees_east";
+  float lat(station) ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+  float alt(station) ;
+    alt:long_name = "vertical distance above the surface" ;
+    alt:standard_name = "height" ;
+    alt:units = "m";
+    alt:positive = "up";
+    alt:axis = "Z";
+  char station_name(station, name_strlen) ;
+    station_name:long_name = "station name" ;
+    station_name:standard_name = "station_id";
+  int station_info(station) ;
+    station_info:long_name = "any kind of station info" ;
+  float station_elevation(station) ;
+    alt:long_name = "height above the geoid" ;
+    alt:standard_name = "surface_altitude" ;
+    alt:units = "m";
+
+  double time(station, obs) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+    time:missing_value = -999.9;
+  float humidity(station, obs) ;
+    humidity:long_name = "specific humidity" ;
+    humidity:coordinates = "time lat lon alt" ;
+    humidity:_FillValue = -999.9;
+  float temp(station, obs) ;
+    temp:long_name = "temperature" ;
+    temp:units = "Celsius" ;
+    temp:coordinates = "time lat lon alt" ;
+    temp:_FillValue = -999.9;
+
+attributes:
+    :CF\:featureType = "timeSeries";
+}}}
+
+The humidity(s,i) and temp(s,i) data are associated with the coordinate values time(s,i), lat(s), lon(s), and optionally vertical(s). The station dimension may be the unlimited dimension or not. 
+
+The time coordinate may use a missing value, which indicates that data is missing for that location and obs index. This allows one to have a variable number of observations at different stations, at the cost of some wasted space. The data variables may also use missing data values, to indicate that just that data variable is missing. If all the time values are identical for all timeSeries, you may use time(obs) or time(time) to indicate this.
+
+Note that this is a generalization of Example 5.4, which assumes that all the timeSeries have observations with the same time coordinates.
+
+=== 9.3.2 Ragged array (contiguous) representation ===
+
+When the number of observations at each location vary, one can use the 'contiguous ragged array' representation if you are able to completely control the order in which the observations are written. The canonical use case for this is when rewriting raw data, and you expect that the common read pattern will be to read all the data from each time series. If the obs dimension is the unlimited dimension, this data will be contiguous on disk.
+
+{{{
+dimensions:
+  station = 23 ;
+  obs = 1234 ;
+
+variables:
+  float lon(station) ;
+    lon:long_name = "station longitude";
+    lon:units = "degrees_east";
+  float lat(station) ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+  float alt(station) ;
+    alt:long_name = "vertical distance above the surface" ;
+    alt:standard_name = "height" ;
+    alt:units = "m";
+    alt:positive = "up";
+    alt:axis = "Z";
+  char station_name(station, name_strlen) ;
+    station_name:long_name = "station name" ;
+    station_name:standard_name = "station_id";
+  int station_info(station) ;
+    station_info:long_name = "some kind of station info" ;
+  int row_size(station) ;
+    row_size:long_name = "number of observations for this station " ;
+    row_size:CF\:ragged_row_count = "obs" ;
+
+  double time(obs) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float humidity(obs) ;
+    humidity:long_name = "specific humidity" ;
+    humidity:coordinates = "time lat lon alt" ;
+    humidity:_FillValue = -999.9;
+  float temp(obs) ;
+    temp:long_name = "temperature" ;
+    temp:units = "Celsius" ;
+    temp:coordinates = "time lat lon alt" ;
+    temp:_FillValue = -999.9;
+
+attributes:
+    :CF\:featureType = "timeSeries";
+}}}
+
+Then for each timeSeries with index stn, its observations go from
+
+{{{
+  rowStart(stn) to rowStart(stn) + row_size(stn) - 1
+
+where
+
+  rowStart(stn) = 0 if stn = 0    
+  rowStart(stn) = rowStart(stn-1) + row_size(stn-1) if i > 0
+
+}}}
+
+The row_size variable contains the number of observations for each timeSeries, and is identified by having an attribute with name "'''CF:ragged_row_count'''" whose value is the observation dimension being counted. It must have the station dimension as its single dimension, and must be type integer.
+
+The single dimension of the time coordinate is the obs dimension. All variables having the obs dimension as their outer dimension are observation variables. The obs dimension may use the unlimited dimension or not.
+
+=== 9.3.3 Ragged array (indexed) representation ===
+
+When the number of observations at each location vary, and the observations cannot be written in order, one can use the 'indexed ragged array' representation. The canonical use case is when writing real-time data streams that contain reports from many stations. The data can be written as it arrives; if the obs dimension is the unlimited dimension, this will effectively append to the file.
+
+{{{
+dimensions:
+  station = 23 ;
+  obs = UNLIMITED ;
+
+variables:
+  float lon(station) ;
+    lon:long_name = "station longitude";
+    lon:units = "degrees_east";
+  float lat(station) ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+  float alt(station) ;
+    alt:long_name = "vertical distance above the surface" ;
+    alt:standard_name = "height" ;
+    alt:units = "m";
+    alt:positive = "up";
+    alt:axis = "Z";
+  char station_name(station, name_strlen) ;
+    station_name:long_name = "station name" ;
+    station_name:standard_name = "station_id";
+  int station_info(station) ;
+    station_info:long_name = "some kind of station info" ;
+
+  int stationIndex(obs) ;
+    stationIndex:long_name = "which station this obs is for" ;
+    stationIndex:CF\:ragged_row_index= "station" ;
+  double time(obs) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float humidity(obs) ;
+    humidity:long_name = "specific humidity" ;
+    humidity:coordinates = "time lat lon alt" ;
+    humidity:_FillValue = -999.9;
+  float temp(obs) ;
+    temp:long_name = "temperature" ;
+    temp:units = "Celsius" ;
+    temp:coordinates = "time lat lon alt" ;
+    temp:_FillValue = -999.9;
+
+attributes:
+    :CF\:featureType = "timeSeries";
+}}}
+
+The humidity(i) and temp(i) data are associated with the coordinate values time(i), lat(s), lon(s), and optionally alt(s), where s = stationIndex(i). The stationIndex variable is identified by having an attribute with name of "'''CF:ragged_row_index'''" whose value is the parent dimension.  It must have the obs dimension as its single dimension, and must be type integer. The values in the stationIndex variable are the station indices that the observation belongs to. All indices are zero based.
+
+The single dimension of the time coordinate is the obs dimension. All variables having the obs dimension as their outer dimension are observation variables. The obs dimension may use the unlimited dimension or not.
+
+=== 9.3.4 Single timeSeries ===
+
+When there is a single timeSeries in the file, one can can use the multidimensional representation with number of stations = 1. One can also use scalar coordinates. This case is identified when the lat and lon coordinates are scalar. In this case, no connecting variable between station and observations is required, since they all belong to the same station. 
+
+{{{
+dimensions:
+  obs = 1233 ;
+  name_strlen = 23
+
+variables:
+  float lon ;
+    lon:long_name = "station longitude";
+    lon:units = "degrees_east";
+  float lat ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+  float alt(station) ;
+    alt:long_name = "vertical distance above the surface" ;
+    alt:standard_name = "height" ;
+    alt:units = "m";
+    alt:positive = "up";
+    alt:axis = "Z";
+  char station_name(name_strlen) ;
+    station_name:long_name = "station name" ;
+    station_name:standard_name = "station_id";
+
+  double time(obs) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+    time:missing_value = -999.9;
+  float humidity(obs) ;
+    humidity:long_name = "specific humidity" ;
+    humidity:coordinates = "time lat lon alt" ;
+    humidity:_FillValue = -999.9;
+  float temp(obs) ;
+    temp:long_name = "temperature" ;
+    temp:units = "Celsius" ;
+    temp:coordinates = "time lat lon alt" ;
+    temp:_FillValue = -999.9;
+
+attributes:
+    :CF\:featureType = "timeSeries";
+}}}
+
+=== 9.3.5 Flattened representation ===
+
+When factoring out the station information is not desired, one may use a 'flattened representation', in which the station information is repeated for each observation. The station_id variable, which is required, is used to associate the observations into a time series. 
+
+{{{
+dimensions:
+  obs = UNLIMITED ;
+
+variables:
+  float lon(obs) ;
+    lon:long_name = "station longitude";
+    lon:units = "degrees_east";
+  float lat(obs) ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+  float alt(station) ;
+    alt:long_name = "vertical distance above the surface" ;
+    alt:standard_name = "height" ;
+    alt:units = "m";
+    alt:positive = "up";
+    alt:axis = "Z";
+  int station_id(obs) ;
+    station_name:long_name = "station" ;
+    station_name:standard_name = "station_id";
+
+  double time(obs) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float humidity(obs) ;
+    humidity:long_name = "specific humidity" ;
+    humidity:coordinates = "time lat lon alt" ;
+    humidity:_FillValue = -999.9;
+  float temp(obs) ;
+    temp:long_name = "temperature" ;
+    temp:units = "Celsius" ;
+    temp:coordinates = "time lat lon alt" ;
+    temp:_FillValue = -999.9;
+
+attributes:
+    :CF\:featureType = "timeSeries";
+}}}
+
+The humidity(i) and temp(i) data are associated with the coordinate values time(i), lat(i), lon(i), and optionally alt(i). All observations with the same station_id are assumed to belong to that timeSeries.
+
+In some observational networks, station location may change. However, for timeSeries feature types this should be infrequent and not overly consequential. In principle, a new station identifier should be assigned. In practice, occasional and small adjustments to station location may not matter for typical processing of data for visualization, and generic clients may not detect these changes, eg they may assume that the first location encountered is valid for all other observations at the same station. Specialized clients, of course, may be more careful in examining station location data, and nothing prevents data providers from using a factored representation as in 9.3.1, 9.3.2, and 9.3.3, and also putting location information into the observation record, as in the flattened representation in 9.3.5.
+
+
+== 9.4 Trajectory Data ==
+
+Point data may be taken along a flight path or ship path, constituting a connected set of points called a trajectory.
+
+Some assumptions are common to all trajectory representations:
+
+   * It is strongly recommended that there always be variable (of any data type) with standard_name attribute "'''trajectory_id'''", whose values uniquely identify the trajectory.
+   * The outer dimension of the trajectory_id variable is the 'trajectory dimension'.
+   * All variables that have the trajectory dimension as their only dimension are considered to be information about that trajectory
+   * The trajectory_id variable may use missing values. This allows one to reserve more space than is needed.
+  
+=== 9.4.1 Multidimensional representation ===
+
+When storing multiple trajectories in the same file, and the number of observations in each trajectory is the same, one can use the multidimensional representation:
+
+{{{
+dimensions:
+  obs = 1000 ;
+  trajectory = 77 ;
+
+variables:
+  char trajectory(trajectory, name_strlen) ;
+   trajectory:standard_name = "trajectory_id";
+   trajectory:long_name = "trajectory name" ;
+  int trajectory_info(trajectory) ;
+    trajectory_info:long_name = "some kind of trajectory info" 
+
+  double time(trajectory, obs) ;
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(trajectory, obs) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(trajectory, obs) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+
+  float z(trajectory, obs) ;
+    z:long_name = "height above mean sea level" ;
+    z:units = "km" ;
+    z:positive = "up" ; 
+    z:axis = "Z" ; 
+
+  float O3(trajectory, obs) ;
+    O3:long_name = "ozone concentration" ;
+    O3:units = "1e-9" ;
+    O3:coordinates = "time lon lat z" ;
+
+  float NO3(trajectory, obs) ;
+    NO3:long_name = "NO3 concentration" ;
+    NO3:units = "1e-9" ;
+    NO3:coordinates = "time lon lat z" ;
+
+attributes:
+  :CF\:featureType = "trajectory";
+}}}
+
+The NO3(t,i) and O3(t,i) data are associated with the coordinate values time(t,i), lat(t,i), lon(t,i), and alt(t,i). The trajectory dimension may be the unlimited dimension or not. All variables that have trajectory as their only dimension are considered to be information about that trajectory.
+
+The time coordinate may use a missing value, which indicates that data is missing for that trajectory and obs index. This allows one to have a variable number of observations for different trajectories, at the cost of some wasted space. The data variables may also use missing data values.
+
+=== 9.4.2 Single Trajectory ===
+
+When a single trajectory is stored in a file, one can use a variation of 9.4.1 which removes the trajectory dimension:
+
+{{{
+dimensions:
+  time = 42;
+
+variables:
+  char trajectory(name_strlen) ;
+    trajectory:standard_name = "trajectory_id";
+
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(time) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(time) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  float z(time) ;
+    z:long_name = "height above mean sea level" ;
+    z:units = "km" ;
+    z:positive = "up" ; 
+    z:axis = "Z" ; 
+
+  float O3(time) ;
+    O3:long_name = "ozone concentration" ;
+    O3:units = "1e-9" ;
+    O3:coordinates = "time lon lat z" ;
+
+  float NO3(time) ;
+    NO3:long_name = "NO3 concentration" ;
+    NO3:units = "1e-9" ;
+    NO3:coordinates = "time lon lat z" ;
+
+attributes:
+  :CF\:featureType = "trajectory";
+}}}
+
+The NO3(n) and O3(n) data is associated with the coordinate values time(n), z(n), lat(n), and lon(n). When the time coordinate is ordered, it is appropriate to use a coordinate variable for time, i.e. time(time). The time dimension may be unlimited or not.
+
+Note that structurally this looks like unconnected point data as in example 9.2.1. The presence of the CF:featureType = "trajectory" global attribute indicates that in fact the points are connected along a trajectory.
+
+Note that this is the same as Example 5.5.
+
+
+=== 9.4.3 Ragged array (contiguous) representation ===
+
+When the number of observations for each trajectory varies, and one can control the order of writing, one can use the contiguous ragged array representation.  The canonical use case for this is when rewriting raw data, and you expect that the common read pattern will be to read all the data from each trajectory. If the obs dimension is the unlimited dimension, this data will be contiguous on disk.
+
+
+{{{
+dimensions:
+  obs = 3443;
+  trajectory = 77 ;
+
+variables:
+  char trajectory(trajectory, name_strlen) ;
+     trajectory:standard_name = "trajectory_id";
+  int rowSize(trajectory) ;
+    rowSize:long_name = "number of obs for this trajectory " ;
+    rowSize:CF\:ragged_row_count = "obs" ;
+
+  double time(obs) ;
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(obs) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(obs) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  float z(obs) ;
+    z:long_name = "height above mean sea level" ;
+    z:units = "km" ;
+    z:positive = "up" ; 
+    z:axis = "Z" ; 
+
+  float O3(obs) ;
+    O3:long_name = "ozone concentration" ;
+    O3:units = "1e-9" ;
+    O3:coordinates = "time lon lat z" ;
+
+  float NO3(obs) ;
+    NO3:long_name = "NO3 concentration" ;
+    NO3:units = "1e-9" ;
+    NO3:coordinates = "time lon lat z" ;
+
+attributes:
+  :CF\:featureType = "trajectory";
+}}}
+
+
+The O3(i) and NO3(i) data are associated with the coordinate values time(i), lat(i), lon(i), and alt(i). All observations for one trajectory are contiguous along the obs dimension, and should be time ordered. All variables that have trajectory as their single dimension are considered to be information about that trajectory. The obs dimension may use the unlimited dimension or not.
+
+The row_size variable contains the number of observations for each trajectory, and is identified by having an attribute with name "'''CF:ragged_row_count'''" whose value is the observation dimension being counted. It must have the trajectory dimension as its single dimension, and must be type integer. The observations are associated with the trajectory using the same algorithm as in 9.3.2.
+
+=== 9.4.4 Ragged array (indexed) representation ===
+
+When the number of observations at each trajectory vary, and the observations cannot be written in order, one can use the indexed ragged array representation. The canonical use case is when writing real-time data streams that contain reports from many trajectories. The data can be written as it arrives; if the obs dimension is the unlimited dimension, this will effectively append to the file.
+
+{{{
+dimensions:
+  obs = UNLIMITED ;
+  trajectory = 77 ;
+
+variables:
+  char trajectory(trajectory, name_strlen) ;
+    trajectory:standard_name = "trajectory_id";
+
+  int trajectory_index(obs) ;
+    trajectory_index:long_name = "index of trajectory this obs belongs to " ;
+    trajectory_index:CF\:ragged_row_index= "trajectory" ;
+  double time(obs) ;
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(obs) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(obs) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  float z(obs) ;
+    z:long_name = "height above mean sea level" ;
+    z:units = "km" ;
+    z:positive = "up" ;
+    z:axis = "Z" ;  
+
+  float O3(obs) ;
+    O3:long_name = "ozone concentration" ;
+    O3:units = "1e-9" ;
+    O3:coordinates = "time lon lat z" ;
+
+  float NO3(obs) ;
+    NO3:long_name = "NO3 concentration" ;
+    NO3:units = "1e-9" ;
+    NO3:coordinates = "time lon lat z" ;
+
+attributes:
+  :CF\:featureType = "trajectory";
+}}}
+
+
+The O3(i) and NO3(i) data are associated with the coordinate values time(i), lat(i), lon(i), and alt(i). All observations for one trajectory will have the same trajectory index value, and should be time ordered. The obs dimension may use the unlimited dimension or not. All indices are zero based.
+
+The trajectory_index variable is identified by having an attribute with name of "'''CF:ragged_row_index'''" whose value is the trajectory dimension name. 
+
+ 
+== 9.5 Profile Data ==
+
+A series of connected observations along a vertical line, like an atmospheric or ocean sounding, is called a profile. The lat, lon locations are factored out into the profile.
+
+Some assumptions are common to all profile representations:
+
+   * It is strongly recommended that there always be a variable (of any type) with standard_name attribute "'''profile_id'''", whose values uniquely identify the profile.
+   * The outer dimension of the profile_id variable is the 'profile dimension'.
+   * All variables that have the profile dimension as their only dimension are considered to be information about that profile
+   * The profile_id variable may use missing values. This allows one to reserve more space than is needed.
+
+=== 9.5.1 Multidimensional representation ===
+
+When storing multiple profiles in the same file, and the numbers of vertical levels in each profile are the same, one can use the multidimensional representation:
+
+{{{
+dimensions:
+  z = 42 ;
+  profile = 142 ;
+
+variables:
+  int profile(profile) ;
+     profile:standard_name = "profile_id";
+  double time(profile);
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(profile);
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(profile);
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+
+  float alt(profile, z) ;
+    alt:long_name = "height above mean sea level" ;
+    alt:units = "km" ;
+    alt:positive = "up" ; 
+    alt:axis = "Z" ;  
+
+  float pressure(profile, z) ;
+    pressure:long_name = "pressure level" ;
+    pressure:units = "hPa" ;
+    pressure:coordinates = "time lon lat alt" ;
+
+  float temperature(profile, z) ;
+    temperature:long_name = "skin temperature" ;
+    temperature:units = "Celsius" ;
+    temperature:coordinates = "time lon lat alt" ;
+
+  float humidity(profile, z) ;
+    humidity:long_name = "relative humidity" ;
+    humidity:units = "%" ;
+    humidity:coordinates = "time lon lat alt" ;
+
+attributes:
+  :CF\:featureType = "profile";
+}}}
+
+The pressure(p,i), temperature(p,i), and humidity(p,i) data is associated with the coordinate values time(p), alt(p,i), lat(p), and lon(p). If the vertical coordinates are the same for all profiles, one can use z(z) instead of alt(profile,z). The time coordinate may depend on z also, e.g. time(profile,z). 
+
+When there are a variable number of observations for different profiles, use alt(profile, z) with missing values. 
+
+
+=== 9.5.2 Single Profile ===
+
+When a single profile is stored in a file, one can use a variation of the 9.5.1 which removes the profile dimension:
+
+{{{
+dimensions:
+  z = 42 ;
+
+variables:
+  int profile ;
+    profile:standard_name = "profile_id";
+
+  double time;
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+
+  float alt(z) ;
+    alt:long_name = "height above mean sea level" ;
+    alt:units = "km" ;
+    alt:positive = "up" ; 
+    alt:axis = "Z" ;  
+
+  float pressure(z) ;
+    pressure:long_name = "pressure level" ;
+    pressure:units = "hPa" ;
+    pressure:coordinates = "time lon lat z" ;
+
+  float temperature(z) ;
+    temperature:long_name = "skin temperature" ;
+    temperature:units = "Celsius" ;
+    temperature:coordinates = "time lon lat z" ;
+
+  float humidity(z) ;
+    humidity:long_name = "relative humidity" ;
+    humidity:units = "%" ;
+    humidity:coordinates = "time lon lat z" ;
+
+attributes:
+  :CF\:featureType = "profile";
+}}}
+
+The pressure(i), temperature(i), and humidity(i) data is associated with the coordinate values time, alt(i), lat, and lon. The time coordinate may depend on z also, eg may be time(z).
+
+
+=== 9.5.3 Ragged array (contiguous) representation ===
+
+When the number of vertical levels for each profile varies, one can use the contiguous ragged array representation. One stores the set of observation for each profile contiguously along the obs dimension. The canonical use case for this is when rewriting raw data, and you expect that the common read pattern will be to read all the data from each profile. 
+
+{{{
+dimensions:
+  obs = UNLIMITED ;
+  profiles = 142 ;
+
+variables:
+  int profile(profile) ;
+    profile:standard_name = "profile_id";
+  double time(profile);
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(profile);
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(profile);
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ; 
+  int rowSize(profile) ;
+    rowSize:long_name = "number of obs for this profile " ;
+    rowSize:CF\:ragged_row_count = "obs" ;
+
+  float z(obs) ;
+    z:long_name = "height above mean sea level" ;
+    z:units = "km" ;
+    z:positive = "up" ;
+    z:axis = "Z" ;  
+
+  float pressure(obs) ;
+    pressure:long_name = "pressure level" ;
+    pressure:units = "hPa" ;
+    pressure:coordinates = "time lon lat z" ;
+
+  float temperature(obs) ;
+    temperature:long_name = "skin temperature" ;
+    temperature:units = "Celsius" ;
+    temperature:coordinates = "time lon lat z" ;
+
+  float humidity(obs) ;
+    humidity:long_name = "relative humidity" ;
+    humidity:units = "%" ;
+    humidity:coordinates = "time lon lat z" ;
+
+attributes:
+  :CF\:featureType = "profile";
+}}}
+
+The pressure(i), temperature(i), and humidity(i) data is associated with the coordinate values time(p), z(i), lat(p), and lon(p), where p is found by reading the rowSize variable values as in 9.3.4. The time coordinate may depend on z also, e.g. time(p,z).
+
+=== 9.5.4 Ragged array (indexed) representation ===
+
+When the number of vertical levels for each profile varies, and one cant write them contiguously, one can use the indexed ragged array representation. The canonical use case is when writing real-time data streams that contain reports from many profiles, arriving randomly. 
+
+{{{
+dimensions:
+  obs = UNLIMITED ;
+  profiles = 142 ;
+
+variables:
+  int profile(profile) ;
+    profile:standard_name = "profile_id";
+  double time(profile);
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(profile);
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(profile);
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ; 
+
+  int parentIndex(obs) ;
+    parentIndex:long_name = "index of profile " ;
+    parentIndex:CF\:ragged_row_index= "profile" ;
+  
+  float z(obs) ;
+    z:long_name = "height above mean sea level" ;
+    z:units = "km" ;
+    z:positive = "up" ;
+    z:axis = "Z" ;  
+
+  float pressure(obs) ;
+    pressure:long_name = "pressure level" ;
+    pressure:units = "hPa" ;
+    pressure:coordinates = "time lon lat z" ;
+
+  float temperature(obs) ;
+    temperature:long_name = "skin temperature" ;
+    temperature:units = "Celsius" ;
+    temperature:coordinates = "time lon lat z" ;
+
+  float humidity(obs) ;
+    humidity:long_name = "relative humidity" ;
+    humidity:units = "%" ;
+    humidity:coordinates = "time lon lat z" ;
+
+attributes:
+  :CF\:featureType = "profile";
+}}}
+
+The pressure(i), temperature(i), and humidity(i) data is associated with the coordinate values time(p), z(i), lat(p), and lon(p), where p=parent_index(i). The time coordinate may depend on z also, e.g. time(p,z).  All indices are zero based.
+
+
+== 9.6 Time Series of Profiles ==
+
+When profiles are taken at a set of stations, one gets a time series of profiles at each station, called a timeSeriesProfile. 
+
+The same assumptions are made as with timeSeries data:
+
+   * The outer dimension of the latitude and longitude coordinates (which must agree) is the 'station dimension'.
+   * All variables that have the station dimension as their outer dimension are considered to be station information, and are called 'station variables'. 
+   * It is strongly recommended that there always be station variable (of any type) with standard_name attribute "'''station_id'''", whose values uniquely identify the station.
+   * The station_id variable may use missing values. This allows one to reserve more space than is needed for stations.
+   * There may be station variables with standard_name attribute "'''station_desc'''", "'''surface_altitude'''", and "'''station_WMO_id'''"..
+
+=== 9.6.1 Multidimensional representation ===
+
+When storing time series of profiles at multiple stations in the same file, if there are the same number of time points for all timeSeries, and the same number of vertical levels for every profile, one can use the multidimensional representation:
+
+{{{
+dimensions:
+  station = 22 ;
+  profile = 3002 ;
+  z = 42 ;
+
+variables:
+  float lon(station) ;
+    lon:long_name = "station longitude";
+    lon:units = "degrees_east";
+  float lat(station) ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+  char station_name(station, name_strlen) ;
+    station_name:standard_name = "station_id" ;
+    station_name:long_name = "station name" ;
+  int station_info(station) ;
+    station_name:long_name = "some kind of station info" ;
+
+  float alt(station, profile , z) ;
+    alt:long_name = "height above mean sea level" ;
+    alt:units = "km" ;
+    alt:positive = "up" ; 
+    alt:axis = "Z" ;  
+
+  double time(station, profile ) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+    time:missing_value = -999.9;
+
+  float pressure(station, profile , z) ;
+    pressure:long_name = "pressure level" ;
+    pressure:units = "hPa" ;
+    pressure:coordinates = "time lon lat alt" ;
+
+  float temperature(station, profile , z) ;
+    temperature:long_name = "skin temperature" ;
+    temperature:units = "Celsius" ;
+    temperature:coordinates = "time lon lat alt" ;
+
+  float humidity(station, profile , z) ;
+    humidity:long_name = "relative humidity" ;
+    humidity:units = "%" ;
+    humidity:coordinates = "time lon lat alt" ;
+
+attributes:
+ :CF\:featureType = "timeSeriesProfile";
+}}}
+
+The pressure(s,p,i), temperature(s,p,i), and humidity(s,p,i) data is associated with the coordinate values time(s,p), z(s,p,i), lat(s), and lon(s).
+
+The time coordinate may depend on z also, e.g. time(station,profile,z). If all of the profiles use the same z coordinate, alt(station, profile, z) may be factored out into z(z).
+
+When there are varying number of profiles for different stations, use time(station, profile) with missing values. When there are varying number of levels for different profiles, use alt(station, profile, z) with missing values. 
+
+=== 9.6.2 Profile time series at a single station ===
+
+If there is only one station in a file, one can use a variation of 9.6.1 which removes the station dimension:
+
+{{{
+dimensions:
+  profile = 30 ;
+  z = 42 ;
+
+variables:
+  float lon ;
+    lon:long_name = "station longitude";
+    lon:units = "degrees_east";
+  float lat ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+  char station_name(name_strlen) ;
+    station_name:standard_name = "station_id" ;
+    station_name:long_name = "station name" ;
+  int station_info;
+    station_name:long_name = "some kind of station info" ;
+
+  float alt(profile , z) ;
+    alt:long_name = "height above mean sea level" ;
+    alt:units = "km" ;
+    alt:axis = "Z" ;  
+    alt:positive = "up" ; 
+
+  double time(profile ) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+    time:missing_value = -999.9;
+
+  float pressure(profile , z) ;
+    pressure:long_name = "pressure level" ;
+    pressure:units = "hPa" ;
+    pressure:coordinates = "time lon lat alt" ;
+
+  float temperature(profile , z) ;
+    temperature:long_name = "skin temperature" ;
+    temperature:units = "Celsius" ;
+    temperature:coordinates = "time lon lat alt" ;
+
+  float humidity(profile , z) ;
+    humidity:long_name = "relative humidity" ;
+    humidity:units = "%" ;
+    humidity:coordinates = "time lon lat alt" ;
+
+attributes:
+ :CF\:featureType = "timeSeriesProfile";
+}}}
+
+The pressure(i,j), temperature(i,j), and humidity(i,j) data are associated with the coordinate values time(p), alt(p,i), lat, and lon. The time coordinate may depend on z also, e.g. time(profile,z). If all of the profiles use the same z coordinate, alt(profile, z) may be factored out into z(z).
+
+=== 9.6.3 Ragged array of profile time series ===
+
+When the number of profiles and levels for each station varies, one can use the ragged array representation. This uses the contiguous ragged array representation for profiles (9.5.3), and adds the (factored out) station information with station indexes (9.2.4). The canonical use case is when writing real-time data streams that contain profiles from many stations, arriving randomly. However, the data for entire profile is written all at once, and contiguously.
+
+
+{{{
+dimensions:
+  obs = UNLIMITED ;
+  profiles = 1420 ;
+  stations = 42;
+
+variables:
+  float lon(station) ;
+    lon:long_name = "station longitude";
+    lon:units = "degrees_east";
+  float lat(station) ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+  float alt(station) ;
+    alt:long_name = "altitude above MSL" ;
+    alt:units = "m" ;
+  char station_name(station, name_strlen) ;
+    station_name:long_name = "station name" ;
+    station_name:standard_name = "station_id";
+  int station_info(station) ;
+    station_info:long_name = "some kind of station info" ;
+
+  int profile(profile) ;
+    profile:standard_name = "profile_id";
+  double time(profile);
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  int station_index(profile) ;
+    station_index:long_name = "which station this obs is for" ;
+    station_index:CF\:ragged_row_index = "station" ;
+  int row_size(profile) ;
+    row_size:long_name = "number of obs for this profile " ;
+    row_size:CF\:ragged_row_count = "obs" ;
+
+  float z(obs) ;
+    z:long_name = "height above mean sea level" ;
+    z:units = "km" ;
+    z:axis = "Z" ;  
+    z:positive = "up" ;
+
+  float pressure(obs) ;
+    pressure:long_name = "pressure level" ;
+    pressure:units = "hPa" ;
+    pressure:coordinates = "time lon lat z" ;
+
+  float temperature(obs) ;
+    temperature:long_name = "skin temperature" ;
+    temperature:units = "Celsius" ;
+    temperature:coordinates = "time lon lat z" ;
+
+  float humidity(obs) ;
+    humidity:long_name = "relative humidity" ;
+    humidity:units = "%" ;
+    humidity:coordinates = "time lon lat z" ;
+
+attributes:
+  :CF\:featureType = "timeSeriesProfile";
+}}}
+
+The profile is associated with a station using the station_index(profile). For each profile, the observations must be written contiguously, and the number of obs for each profile written in row_size(profile).
+
+The pressure(i), temperature(i), and humidity(i) data is associated with the coordinate values time(p), z(i), lat(s), and lon(s), where s = station_index(p). The time coordinate may depend on z also, e.g. time(obs) instead of time(profile).
+
+== 9.7 Trajectory of Profiles ==
+
+When profiles are taken along a trajectory, one gets a time series of profiles called a trajectoryProfile. This looks like a collection of profiles (see 9.5), except that the profile locations are assumed to be a connected set of points along a trajectory. A single file may contain one or more such trajectoryProfile features.
+
+Some assumptions are common to all trajectoryProfile representations:
+
+   * It is strongly recommended that there always be a variable (of any type) with standard_name attribute "'''trajectory_id'''", whose values uniquely identify the trajectory.
+   * The outer dimension of the trajectory_id variable is the 'trajectory dimension'.
+   * All variables that have the trajectory dimension as their only dimension are considered to be information about that trajectory
+   * The trajectory_id variable may use missing values. This allows one to reserve more space than is needed.
+
+=== 9.7.1 Trajectory Profile multidimensional representation ===
+
+If there are the same number of profiles for all trajectories, and the same number of vertical levels for every profile, one can use the multidimensional representation:
+
+{{{
+dimensions:
+  trajectory = 22 ;
+  profile = 33;
+  z = 42 ;
+
+variables:
+  int trajectory (trajectory ) ;
+    trajectory:standard_name = "trajectory_id" ;
+
+  float lon(trajectory, profile) ;
+    lon:units = "degrees_east";
+  float lat(trajectory, profile) ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+
+  float alt(trajectory, profile , z) ;
+    alt:long_name = "height above mean sea level" ;
+    alt:units = "km" ;
+    alt:positive = "up" ; 
+    alt:axis = "Z" ;  
+
+  double time(trajectory, profile ) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+    time:missing_value = -999.9;
+
+  float pressure(trajectory, profile , z) ;
+    pressure:long_name = "pressure level" ;
+    pressure:units = "hPa" ;
+    pressure:coordinates = "time lon lat alt" ;
+
+  float temperature(trajectory, profile , z) ;
+    temperature:long_name = "skin temperature" ;
+    temperature:units = "Celsius" ;
+    temperature:coordinates = "time lon lat alt" ;
+
+  float humidity(trajectory, profile , z) ;
+    humidity:long_name = "relative humidity" ;
+    humidity:units = "%" ;
+    humidity:coordinates = "time lon lat alt" ;
+
+attributes:
+ :CF\:featureType = "trajectoryProfile";
+}}}
+
+The pressure(s,p,i), temperature(s,p,i), and humidity(s,p,i) data is associated with the coordinate values time(s,p), alt(s,p,i), lat(s,p), and lon(s,p).
+
+The time coordinate may depend on z also, eg time(trajectory,profile,z). If all of the profiles use the same z coordinate, alt(trajectory, profile, z) may be factored out into z(z).
+
+When there are varying number of profiles for different trajectorys, use time(trajectory, profile) with missing values. When there are varying number of levels for different profiles, use alt(trajectory, profile, z) with missing values. 
+
+=== 9.7.2 Single Trajectory in the file ===
+
+If there is only one trajectory in the file, one can use a variation of 9.7.1 which removes the trajectory dimension:
+
+{{{
+dimensions:
+  profile = 33;
+  z = 42 ;
+
+variables:
+  int trajectory;
+    trajectory:standard_name = "trajectory_id" ;
+
+  float lon(profile) ;
+    lon:units = "degrees_east";
+  float lat(profile) ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+
+  float alt(profile, z) ;
+    alt:long_name = "height above mean sea level" ;
+    alt:units = "km" ;
+    alt:positive = "up" ; 
+    alt:axis = "Z" ;  
+
+  double time(profile ) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+    time:missing_value = -999.9;
+
+  float pressure(profile, z) ;
+    pressure:long_name = "pressure level" ;
+    pressure:units = "hPa" ;
+    pressure:coordinates = "time lon lat alt" ;
+
+  float temperature(profile, z) ;
+    temperature:long_name = "skin temperature" ;
+    temperature:units = "Celsius" ;
+    temperature:coordinates = "time lon lat alt" ;
+
+  float humidity(profile, z) ;
+    humidity:long_name = "relative humidity" ;
+    humidity:units = "%" ;
+    humidity:coordinates = "time lon lat alt" ;
+
+attributes:
+ :CF\:featureType = "trajectoryProfile";
+}}}
+
+=== 9.7.3 Ragged array of trajectoryProfile data ===
+
+When the number of profiles and levels for each trajectory varies, one can use the ragged array representation. This uses the contiguous ragged array representation for profiles (9.5.3), and adds trajectory information with trajectory indexes. The canonical use case is when writing real-time data streams that contain profiles from many trajectories, arriving randomly. However, the data for entire profile is written contiguously all at once.
+
+{{{
+dimensions:
+  obs = UNLIMITED ;
+  profiles = 142 ;
+  section = 3;
+
+variables:
+  int trajectory(trajectory) ;
+    section:standard_name = "trajectory_id" ;
+
+  double time(profile);
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(profile);
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(profile);
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ; 
+  int row_size(profile) ;
+    row_size:long_name = "number of obs for this profile " ;
+    row_size:CF\:ragged_row_count = "obs" ;
+  int trajectory_index(profile) ;
+    trajectory_index:long_name = "which trajectory this profile is for" ;
+    trajectory_index:CF\:ragged_row_index= "trajectory" ;
+  
+  float z(obs) ;
+    z:long_name = "height above mean sea level" ;
+    z:units = "km" ;
+    z:positive = "up" ;
+    z:axis = "Z" ;  
+
+  float pressure(obs) ;
+    pressure:long_name = "pressure level" ;
+    pressure:units = "hPa" ;
+    pressure:coordinates = "time lon lat z" ;
+
+  float temperature(obs) ;
+    temperature:long_name = "skin temperature" ;
+    temperature:units = "Celsius" ;
+    temperature:coordinates = "time lon lat z" ;
+
+  float humidity(obs) ;
+    humidity:long_name = "relative humidity" ;
+    humidity:units = "%" ;
+    humidity:coordinates = "time lon lat z" ;
+
+attributes:
+  :CF\:featureType = "trajectoryProfile";
+}}}
+
+The profile is associated with a trajectory using the trajectory_index(profile). The observations for each profile must be written contiguously, and the number of obs in each profile is stored in row_size(profile).
+
+The pressure(i), temperature(i), and humidity(i) data is associated with the coordinate values time(p), z(i), lat(p), and lon(p). The time coordinate may depend on z also, eg time(obs) instead of time(profile).
+
+
+= New standard names =
+ 
+   * station_id 
+   * station_desc
+   * station_WMO_id
+   * profile_id 
+   * trajectory_id
+
+= New variable attributes =
+
+    * '''CF:ragged_row_count''' whose value is the dimension being counted
+    * '''CF:ragged_row_index''' whose value is the dimension being indexed
+
+= New global attribute =
+
+'''CF:featureType''' can take one of these values: 
+  
+  * point
+  * timeSeries
+  * trajectory
+  * profile
+  * timeSeriesProfile
+  * trajectoryProfile
+
+= Other modifications =
+
+In section 5, third paragraph, change:
+
+"The dimensions of an auxiliary coordinate variable must be a subset of the dimensions of the variable with which the coordinate is associated (an exception is label coordinates (Section 6.1, “Labels”) which contain a dimension for maximum string length)"
+
+to
+
+"The dimensions of an auxiliary coordinate variable must be a subset of the dimensions of the variable with which the coordinate is associated (with two exceptions: 1) label coordinates (see Section 6.1, “Labels”) contain a dimension for maximum string length, and 2) the Point Observation indexed and contiguous representations (see Section 9, “Point Observations”) allow special kinds of coordinates which are connected in a differrent way than by the dimension"
+
+ 
+In section 5.4, first paragraph, add at the end:
+
+It is strongly recommended that new data writers use the "Discrete Sampling" Conventions in Chapter 9.3 and 9.6, which provide more extensive options for writing Time Series Data. 
+
+In section 5.5, first paragraph, add at the end:
+
+It is strongly recommended that new data writers use the "Discrete Sampling" Conventions in Chapter 9.4, which provide more extensive options for writing Trajectory Data. 
+
+
+= Also see =
+
+   [http://www.unidata.ucar.edu/software/netcdf-java/reference/FeatureDatasets/CFencodingTable.html Summary of encodings]

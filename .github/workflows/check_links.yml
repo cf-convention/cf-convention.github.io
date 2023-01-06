@@ -19,16 +19,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
+        # See exclusions in .lycheeignore, remove lines and give it a whirl if you're hunting broken links
       - name: Check links
         id: lychee
         uses: lycheeverse/lychee-action@v1.0.4
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        # See exclusions in .lycheeignore, commented here since that file accepts no comments:
-        #   mailman.cgd.ucar.edu from faq.md. Server times out.
-        #   cfeditor.ceda.ac.uk from discussion.md. Server times out.
-        #   wps-web1.ceda.ac.uk software.md
-        #   http://kitt.llnl.gov/trac/wiki/SatelliteData faq.md
         
       - name: Upload report
         if: env.lychee_exit_code != 0

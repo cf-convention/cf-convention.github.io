@@ -96,4 +96,4 @@ The standard names committee will make proposals for modification of conventions
 
 The membership of the standard names committee should include representatives of the various scientific user communities of the CF standard.
 
-[code-of-conduct]: (https://github.com/cf-convention/cf-conventions/blob/master/CODE_OF_CONDUCT.md)
+[code-of-conduct]: (https://github.com/cf-convention/cf-conventions/blob/main/CODE_OF_CONDUCT.md)

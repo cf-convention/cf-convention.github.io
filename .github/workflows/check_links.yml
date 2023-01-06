@@ -29,14 +29,11 @@ jobs:
         with:
           name: Link check report
           path: ./lychee/out.md
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
+          # fail: true  # fail job if no go
       
       - name: Create Issue From File
-        if: env.lychee_exit_code != 0  # Only execute if check failed
+        #if: env.lychee_exit_code != 0  # Only execute if check failed
         uses: peter-evans/create-issue-from-file@v4.0.0
-        
         with:
           title: Link Checker Report
           content-filepath: ./lychee/out.md

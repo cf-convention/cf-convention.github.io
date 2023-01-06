@@ -21,7 +21,7 @@ jobs:
         
       - name: Check links
         id: lychee
-        uses: lycheeverse/lychee-action@v1
+        uses: lycheeverse/lychee-action@v1.0.4
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         # See exclusions in .lycheeignore, commented here since that file accepts no comments:
@@ -31,7 +31,7 @@ jobs:
         #   http://kitt.llnl.gov/trac/wiki/SatelliteData faq.md
         
       - name: Upload report
-        if: ${{ always() }}
+        if: env.lychee_exit_code != 0
         uses: actions/upload-artifact@v1
         with:
           name: Link check report

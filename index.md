@@ -12,15 +12,20 @@ The CF convention includes a standard name table, which defines strings that ide
 
 ---
 
-**Latest release** (1.10) [HTML][releasedhtml] [PDF][releasedpdf]
+**_Conventions_:** **Latest release** (1.10) [HTML][releasedhtml] [PDF][releasedpdf]
 <code>&nbsp;&bull;&nbsp;</code>
 **Working draft** [HTML][workinghtml] [PDF][workingpdf]
+
+**_Vocabularies_:** [**Standard names**][currentnames]
 <code>&nbsp;&bull;&nbsp;</code>
-[**Standard name table**][currentnames]
+[**Area types**][areatypes]
+<code>&nbsp;&bull;&nbsp;</code>
+[**Standardized regions**][regions]
 
 ---
 
-CF is developed through open discussion on GitHub. If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here][discussion].
+CF is developed through open discussion on GitHub.
+If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here][discussion].
 Changes are decided according to the CF [governance arrangements][governance].
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion. 
 
@@ -31,8 +36,6 @@ The use of CF is recommended where applicable by Unidata.
 
 See also the links in the navigation bar at the top of this page.
 
-* [Latest release of CF conventions][releasedhtml]
-* [Current version of CF standard name table][currentnames]
 * Current issues: [general discussion][github_discuss] (including standard names), [conventions][github_conventions], this [website][github_website] (including governance)
 * [CF GitHub organisation][cf_github]
 * [CF FAQ][faq]
@@ -45,14 +48,16 @@ See also the links in the navigation bar at the top of this page.
 [coards]: https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html
 [viewgraphs]: Data/cf-documents/overview/viewgraphs.pdf
 [article]: Data/cf-documents/overview/article.pdf
-[discussion]: discussion.html
-[governance]: governance.html
-[faq]: faq.html
+[discussion]: discussion.md
+[governance]: governance.md
+[faq]: faq.md
 [releasedhtml]: Data/cf-conventions/cf-conventions-1.10/cf-conventions.html
 [releasedpdf]: Data/cf-conventions/cf-conventions-1.10/cf-conventions.pdf
 [workinghtml]: /cf-conventions/cf-conventions.html
 [workingpdf]: /cf-conventions/cf-conventions.pdf
 [currentnames]: Data/cf-standard-names/current/build/cf-standard-name-table.html
+[areatypes]: Data/area-type-table/current/build/area-type-table.html
+[regions]: Data/standardized-region-list/standardized-region-list.current.html
 [cfdmpaper]: https://doi.org/10.5194/gmd-10-4619-2017
 [github_discuss]: https://github.com/cf-convention/discuss/issues
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues

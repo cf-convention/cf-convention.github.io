@@ -1,0 +1,77 @@
+= Mesh !MetaData =
+
+== Where should the Mesh !MetaData Reside? ==
+The connectivity variable of each mesh could contain the mesh meta data for each mesh in the file. If a file has three meshs (for instance: Bathymetry, Sea Surface Height, and Data) then there would probably need to be three connectivity variables anyway to describe them. The one-to-one nature makes this variable an obvious choice. The names of all the meshes in a file should be specified in GlobalAttributes. These names should corrispond to the name of the connectivity variables.
+
+
+== What should be included in the Mesh !MetaData? ==
+ * Spatial Dimension and Topology
+ * names of coordinate variables
+ * name of coordinate type
+ * Cell type (types)
+
+== Discussion ==
+
+=== Spatial Dimension and Topology ===
+
+''' Spatial Dimension ''' ::
+  ''The spatial dimension attribute corresponds to how many dimensions are needed to specify the coordinates for the points that make up your mesh. If your mesh exists in a 2D plane then choose 2, otherwise choose 3.'' '''Quote:''' [http://www.llnl.gov/visit/manuals.html LLNL's VisIt]
+
+''' Topological Dimension ''' ::
+  ''The Topological dimension attribute describes the number of logical dimensions used by your mesh, regardless of the dimension of the space that it sits in. For example you may have a planar suface of triangles sitting in 3D space. Such a mesh would be topologiacally 2D even though it sits in 3D space. The rule of thump that Visit follows is that if your mesh's cells are points then you have a mesh that is topologically 0D, lines are 1D, surfaces are 2D volumes are 3D.'' '''Quote:''' [http://www.llnl.gov/visit/manuals.html LLNL's VisIt]
+
+=== Name of Coordinate Variables ===
+The name of the coordinate variables used define to location of points in a mesh should be specified in the mesh meta data. This will prevent confusion in the case that there is more than one set of coordinate locations in a file to support more than one mesh.
+
+=== Name of Coordinate Type ===
+There are a number of different coordinate types in use. Which type the mesh uses should be specified in the meta data. Some examples include: 
+ * z-coordinates vs sigma-coordinates 
+ * lat/lon vs projection
+The types should be enumerated and standardized as part of the Unstructured Grid convention?
+
+=== Cell Type ===
+see CellType
+
+== Example CDL for the connectivity variable == 
+
+=== Two dimensional triangular Mesh === 
+{{{
+int	MESH A(nConnect_A, nCells);
+	MESH A:Standard_Name      = "Connectivity"
+	MESH A:Spatial Dimension  = "3"
+	MESH A:Topological Dimension = "2"
+	MESH A:X nodal coordinate = "x_A"
+	MESH A:Y nodal Coordinate = "y_A" 
+	MESH A:Z nodal Coordinate = "Z_A"
+	MESH A:Cell Type       = "NC_TRI"
+}}}
+
+=== Extruded two dimensional triangular mesh ===
+{{{
+int	MESH B(nConnect_B, nCells) ;
+	MESH B:Standard_Name      = "Connectivity"
+	MESH B:Spatial Dimension = "3"
+	MESH B:Topological Dimension = "3"
+	MESH B:X nodal coordinate = "x_B"
+	MESH B:Y nodal Coordinate = "y_B" 
+	MESH B:Sigma_Coordintes   = "Sigma"        ! Name of sigma coordinate variable
+	MESH B:Sigma_surface      = "Surface"	   ! Name of surface height variable
+	MESH B:Sigma_bottom       = "Bottom"       ! Name of sigma bottom depth variable
+	MESH B:Sigma_equation     = "Your equation here"
+	MESH B:Cell Type       = NC_tri
+}}}
+
+=== Mixed three dimensional cell mesh ===
+{{{
+int	MESH C(nConnect_C, nCells) ;          
+	MESH C:Standard_Name      = "Connectivity"
+	MESH C:Spatial Dimension = "3"
+	MESH C:Topological Dimension = "3"	
+	MESH C:X nodal coordinate = "x_C"    
+	MESH C:Y nodal Coordinate = "y_C" 
+	MESH C:Z nodal Coordinate = "Z_C"
+	MESH C:Cell Type       = "NC_UNSTRUCT"
+	MESH C:Mixed Cell List = "Mesh C Types"  
+}}}
+
+'''Go Back to''' CdlDiscussion '''Table of Contents'''

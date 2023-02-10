@@ -75,8 +75,8 @@ All times are local to Santander, i.e. **UTC+2**
 * **13:00 -** Lunch
 
 * **15:00 - Parallel hackathon sessions**
-  * **1.** Mapping CF standard names to [I-ADOPT](https://doi.org/10.15497/RDA00071): [Main Zoom Room][MainZoomRoom]
-  * **2.** Housekeeping: Formatting improvements, clarifying general Udunits text, and more: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
+  * **1.** Mapping CF standard names to [I-ADOPT](https://doi.org/10.15497/RDA00071) (Alison Pamment): [Main Zoom Room][MainZoomRoom] 
+  * **2.** Housekeeping: Formatting improvements, clarifying general Udunits text, and more (Daniel Lee): [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **16:30 -** Coffee break
 
@@ -98,19 +98,19 @@ All times are local to Santander, i.e. **UTC+2**
 
 * **11:50 - Lossy compression: The netCDF implementation and towards encoding precision** (Charlie Zender)
 
-* **12:20 - Compression: Discussion**
+* **12:20 - Compression: Discussion** (Charlie Zender and Bryan Lawrence)
 
 * **13:00 -** Lunch
 
 * **15:00 - Parallel hackathon sessions**
-  * **3.** Conventions enhancements for describing lossy compression: [Main Zoom Room][MainZoomRoom]
-  * **4.** GitHub processes and automations: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
+  * **3.** Conventions enhancements for describing lossy compression (Charlie Zender): [Main Zoom Room][MainZoomRoom]
+  * **4.** GitHub processes and automations (Daniel Lee): [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **16:30 -** Coffee break
 
 * **17:00 - Parallel hackathon sessions** (continued)
 
-* **17:30 -** Evening trip and dinner
+* **17:30 -** Social event and dinner
 
 ### Thursday, 15 September 2022
 
@@ -121,12 +121,12 @@ All times are local to Santander, i.e. **UTC+2**
 * **11:00 -** Coffee break
 
 * **11:30 - Parallel hackathon sessions**
-  * **5.** Create DOIs for the CF conventions: [Main Zoom Room][MainZoomRoom] 
-  * **6.** Dataset DOIs: Further discussion and conventions enhancements: [Auxiliary Zoom Room][AuxiliaryZoomRoom]
+  * **5.** Create DOIs for the CF conventions (Ethan Davis and Kevin O'Brien): [Main Zoom Room][MainZoomRoom] 
+  * **6.** Dataset DOIs: Further discussion and conventions enhancements (Ethan Davis and Kevin O'Brien): [Auxiliary Zoom Room][AuxiliaryZoomRoom]
 
 * **13:00 -** Lunch
 
-* **15:00 - Hackathon debriefings**
+* **15:00 - Hackathon debriefings** (Charlie Zender, Daniel Lee, Alison Pamment, Ethan Davis, Kevin O'Brien, David Hassell)
 
 * **16:00 -** Coffee break
 
@@ -173,12 +173,16 @@ To help us with planning, please check the "Other" box, in the [registration for
 * Alison Pamment
 * Charlie Zender
 
+{::comment}
+## Picture from participants
+![Participants-Picture]{: height="480px"}
+{:/comment}
 ## Sponsorship
 
 Thanks for their support of this meeting to: 
  - [IS-ENES3] which is funded by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824084
    
-   ![IS-ENES3-logo]{: height="75px"}
+   ![IS-ENES3-logo]{: height="75px"} ![EU-FUNDED-logo]{: height="75px"}
  
  - [CORDyS] funded by the Spanish MCIN/AEI/10.13039/501100011033 (PID2020-116595RB-100)
    
@@ -190,11 +194,13 @@ Thanks for their support of this meeting to:
  
 [IS-ENES3]: https://is.enes.org "Infrastructure for the European Network for Earth System Modelling"
 [IS-ENES3-logo]: 2022-workshop/is-enes3-logo.png
+[EU-FUNDED-logo]: 2022-workshop/eu_funded_en.jpg
 [CORDyS]: https://github.com/AEI-CORDyS "Contribution to the next generation of CORDEX regional climate projections: Dynamical and Statistical approaches"
 [CORDyS-logo]: 2022-workshop/micin-aei-cordys_en.png 
 [IFCA]: https://ifca.unican.es/en-us "Institute of Physics of Cantabria (IFCA, CSIC-UC)"
 [IFCA-logo]: 2022-workshop/ifca-logo.png 
 [TRAINING]: http://cfconventions.org/Training/2022-Training-Workshop.html "2022 CF Training Workshop"
+[Participants-Picture]: 2022-workshop/Participants-Picture.jpg
 
 *[AEI]: Spanish State Research Agency
 *[MCIN]: Spanish Ministry of Science

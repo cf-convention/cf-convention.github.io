@@ -1,0 +1,37 @@
+= Grid Mapping: Adding Horizontal Datum =
+
+== Title ==
+
+Add horizontal datum attributes to the existing CF grid mapping attributes.
+
+== Requirement ==
+
+The existing CF grid mapping attributes can define a projection method and projection coordinates but not the associated geographic coordinates.
+
+This is a follow-up proposal to the proposal in CF Trac ticket #18.
+
+== Summary of Change ==
+
+Add grid mapping attributes to describe the geographic CRS upon which the projection is based.
+
+== Benefit ==
+
+== Status Quo ==
+
+== Initial Statement of Technical Proposal ==
+
+=== Add to the "Map parameters" lists in Examples F.1, F.2, F.3, F.4, F.5, F.7, and F.8 ===
+
+ * semi_major_axis
+ * semi_minor_axis
+ * inverse_flattening
+ * longitude_of_prime_meridian
+
+=== Add the following attributes to Table F.1 ===
+
+|| '''Attribute''' || '''Description''' ||
+|| earth_radius || Used to specify the radius, in metres, of the spherical figure used to approximate the shape of the Earth. This attribute should be specified for those projected CRS's in which the X-Y cartesian coordinates have been derived using a spherical Earth approximation. If the cartesian coordinates were derived using the ellipsoid associated with the geodetic datum then this attribute should not be defined. Example: "6371007” , which is the radius of the GRS 1980 Authalic Sphere. ||
+|| inverse_flattening || Used to specify the inverse flattening (1/f) of the ellipsoidal figure associated with the geodetic datum and used to approximate the shape of the Earth. The flattening (f) of the ellipsoid is related to the semi-major and semi-minor axes by the formula f = (a-b)/a. In the case of a spherical Earth this attribute should be omitted. Example: 298.257222101 for the GRS 1980 ellipsoid. (Note: By convention the dimensions of an ellipsoid are specified using either the semi-major and semi-minor axis lengths, or the semi-major axis length and the inverse flattening. If all three attributes are specified then the supplied values must be consistent with the aforementioned formula.) ||
+|| longitude_of_prime_meridian || Specifies the longitude, with respect to Greenwich, of the prime meridian associated with the geodetic datum. The prime meridian defines the origin from which longitude values are determined. Domain: -180.0 <= longitude_of_prime_meridian < 180.0 decimal degrees. Default = 0.0 ||
+|| semi_major_axis || Specifies the length, in metres, of the semi-major axis of the ellipsoidal figure associated with the geodetic datum and used to approximate the shape of the Earth. Commonly denoted using the symbol “a”. In the case of a spherical Earth approximation this attribute defines the radius of the Earth. See also the inverse_flattening attribute. ||
+|| semi_minor_axis || Specifies the length, in metres, of the semi-minor axis of the ellipsoidal figure associated with the geodetic datum and used to approximate the shape of the Earth. Commonly denoted using the symbol “b”. In the case of a spherical Earth approximation this attribute should be omitted (the preferred option) or else set equal to the value of the semi_major_axis attribute. See also the inverse_flattening attribute. ||

@@ -56,6 +56,17 @@ cf-plot uses the Python numpy, matplotlib and scipy libraries.
 The [cf-view Python package](https://ajheaps.github.io/cf-view/) is a quick look data exploration tool for netCDF and Met Office PP data.
 It uses the [cf-python](#cf-python---cf-python-package) and [cf-plot](#cf-python---cf-python-package) packages and reads and writes CF-compliant dataset.
 
+### ERDDAP - scientific data server
+[ERDDAP](https://github.com/BobSimons/erddap) is a scientific data server that gives users a simple, consistent way to download subsets of gridded and tabular scientific datasets in common file formats and make graphs and maps.
+ERDDAP is a Free and Open Source (Apache and Apache-like) Java Servlet from NOAA NMFS SWFSC Environmental Research Division (ERD).
+
+### Ferret and pyFerret - analysis and visualization for ocean and weather data
+[Ferret](https://ferret.pmel.noaa.gov/Ferret/) is an interactive computer visualization and analysis environment designed to meet the needs of oceanographers and meteorologists analyzing large and complex gridded data sets.
+It runs on recent Unix and Mac systems, using X windows for display.
+[PyFerret](https://ferret.pmel.noaa.gov/Ferret/documentation/pyferret), introduced in 2012, is a Python module wrapping Ferret.
+PyFerret is an upgrade to Ferret which runs existing Ferret scripts and includes all Ferret functionality with updated graphics capabilities and additional analysis functions.
+In addition the pyferret module provides Python functions so Python users can easily take advantage of Ferret's abilities to retrieve, manipulate, visualize, and save data.
+
 ### Iris - Python library for analysing and visualising Earth science data
 
 [Iris](https://scitools.org.uk/iris/docs/latest/) implements a data model based on the CF Conventions giving you a powerful, format-agnostic interface for working with your data.

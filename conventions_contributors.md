@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Rules
+title: Contributors to the CF Conventions
 ---
 
 # Contributors to the CF Conventions

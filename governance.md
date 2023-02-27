@@ -48,7 +48,7 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 
 * Andrew Barna
 * Sadie Bartholomew
-* Antonio Cofiño
+* Antonio S. Cofiño
 * Fran Eggleton
 * David Hassell (secretary of the Conventions Committee)
 * Rosalyn Hatcher

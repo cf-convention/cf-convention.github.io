@@ -10,7 +10,7 @@ The following individuals are listed here in recognition of their contributions 
 - Andrew Barna, SIO/UCSD
 - Sadie Bartholomew, University of Reading
 - David Blodgett, USGS
-- Antonio Cofiño, CSIC
+- Antonio S. Cofiño, CSIC
 - Ethan Davis, Unidata
 - Martin Desruisseaux, Geomatys
 - Brian Eaton, NCAR

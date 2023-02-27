@@ -82,7 +82,7 @@ The climate research community is indebted to former members of the committee, p
 
 ### Contributors
 
-Lists of contributors to [information management and website](infomgmt_contributors.html), [standard names](Data/cf-standard-names/docs/standard-name-contributors.html) and [conventions](conventions_contributors.html).
+Lists of contributors to [information management and website](./infomgmt_contributors.html), [standard names](./Data/cf-standard-names/docs/standard-name-contributors.html) and [conventions](./conventions_contributors.html).
 
 [rules]: rules.md
 [errors]: errors.md

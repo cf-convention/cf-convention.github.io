@@ -67,6 +67,7 @@ The climate research community is indebted to former members of the committee, p
 * Burkhardt Rockel (Standard Names)
 * Christiane Textor (Standard Names)
 * Dave Bader (Governance)
+* John Graybeal (Information Management and Support)
 * Tom Gross (Conventions)
 * Manuel Fuentes (Standard Names)
 * Kyle Halliday (Information Management and Support)

@@ -54,6 +54,8 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Rosalyn Hatcher
 * Alison Pamment (secretary of Standard Names Committee)
 
+Governance Panel members also contribute to information management and support.
+
 ## Acknowledgements
 
 The climate research community is indebted to former members of the committee, panel and team, and to the many other contributors, as listed below, for their magnanimous contributions in establishing and improving the CF Conventions.

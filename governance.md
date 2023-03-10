@@ -6,7 +6,7 @@ group: "navigation"
 
 # CF Governance
 
-### Governance Documents
+## Governance Documents
 
 * [Rules for making changes to the CF Conventions][rules]
   * Discussion about these rules can be found in the [CF mailing list archives][mail], in June and July, 2007. See messages with the subject line "proposed rules for changes to CF conventions".
@@ -15,7 +15,7 @@ group: "navigation"
 * [CF constitution](./constitution.md)
 * CF white paper (Lawrence et al., 2006)  \[ [PDF][pdf], [HTML][html] \]
  
-### Conventions Committee and Standard Names Committee
+## Conventions Committee and Standard Names Committee
 
 (The date of the end of each member's present term appears in parentheses)
 
@@ -33,7 +33,7 @@ group: "navigation"
 * Alison Pamment (secretary of Standard Names Committee) (29 May 2025)
 * Karl Taylor (29 May 2025)
  
-### Governance Panel
+## Governance Panel
 
 * Fanny Adloff
 * Ethan Davis (chair)
@@ -44,17 +44,21 @@ group: "navigation"
 
 CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 
-### Information Management and Support Team
+## Information Management and Support Team
 
-* Martin Desruisseaux (Geomatys)
-* Fran Eggleton (UK Met Office)
-* John Graybeal (Stanford University)
-* David Hassell (University of Reading)
-* Rosalyn Hatcher (University of Reading)
-* Richard Hattersley (UK Met Office)
-* Mark Hedley (UK Met Office)
-* Alison Pamment (CEDA)
-* Sadie Bartholomew (University of Reading)
+* Andrew Barna
+* Sadie Bartholomew
+* Antonio S. Cofiño
+* Fran Eggleton
+* David Hassell (secretary of the Conventions Committee)
+* Rosalyn Hatcher
+* Alison Pamment (secretary of Standard Names Committee)
+
+Governance Panel members also contribute to information management and support.
+
+## Acknowledgements
+
+The climate research community is indebted to former members of the committee, panel and team, and to the many other contributors, as listed below, for their magnanimous contributions in establishing and improving the CF Conventions.
 
 ### Former Committee, Panel and Team Members
 
@@ -65,6 +69,7 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Burkhardt Rockel (Standard Names)
 * Christiane Textor (Standard Names)
 * Dave Bader (Governance)
+* John Graybeal (Information Management and Support)
 * Tom Gross (Conventions)
 * Manuel Fuentes (Standard Names)
 * Kyle Halliday (Information Management and Support)
@@ -73,13 +78,14 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Bryan Lawrence (Standard Names)
 * Velimir Mlaker (Information Management and Support)
 * Jeff Painter (Information Management and Support)
-* Tanya Reshel (Information Management and Support)
 * Russ Rew (Conventions and Governance)
 * Martin Schultz (Conventions)
 * Rich Signell (Governance and Standard Names)
 * Karl Taylor (Governance and Conventions, former chair but present member of both)
 
-The climate research community is indebted to the above for their magnanimous contributions in establishing and improving the CF Conventions.
+### Contributors
+
+Lists of contributors to [information management and website](./infomgmt_contributors.html), [standard names](./Data/cf-standard-names/docs/standard-name-contributors.html) and [conventions](./conventions_contributors.html).
 
 [rules]: rules.md
 [errors]: errors.md

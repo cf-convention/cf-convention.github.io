@@ -39,9 +39,26 @@ More information (including videos of the presentations) is available on the [20
 
 Thanks to IFCA (CSIC-UC, Spain) for hosting both in-person and virtual.
 
+## Decisions and Actions
+
+During the Dataset DOI Discussion
+* DECISION: CF is not going to standardize a DOI attribute.
+  * Should there be some mention of or guidance around ACDD in the FAQ?
+* ACTION: Create a GH issue to capture the discussion during the Data DOI session on use of /reference to ACDD.
+* ACTION: Create a GH issue (on website repo) about crafting FAQ around ACDD.
+
 ## Documents
 
 All of the presentations and notes for the plenary and hackathon sessions are available in this [Google Drive folder](https://drive.google.com/drive/folders/18BzZixnRUhV8nDqbeRE_ltVvWTF1BzVG).
+The notes and summary docs are:
+* Notes and discussion from Plenary sessions ([GDoc][Plenary-notes])
+* Hackathon debrief notes from 15 Sept ([GDoc][Hackathon-debrief-notes]):
+  * I-ADOPT; Housekeeping, CI, and DOI; Lossy Compression
+* All presentations are in the [Presentations sub-folder][Presentation-folder]
+
+[Plenary-notes]: https://docs.google.com/document/d/1krLEGKu82-YTAbQ2gWLX5-9cq3q2cjqSqkJZWiDlve4/edit
+[Hackathon-debrief-notes]: https://docs.google.com/document/d/10kKCmN6Vi-xBEnJ2fj54OAy7f97AwTQopBJPwKRY3Bw/edit
+[Presentation-folder]: https://drive.google.com/drive/u/0/folders/1MO2xZ3dBmyQYz8xLfZJ_ng1yhm_Sme_t
 
 ## Agenda
 

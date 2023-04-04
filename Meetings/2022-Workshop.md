@@ -5,52 +5,60 @@ title: 2022 CF Workshop
 
 # 2022 CF Workshop
 
-The Climate and Forecast metadata conventions (CF) are a community-developed standard  designed to promote the processing and sharing of climate and forecast model and observational output data, and derived data products. The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities. The CF convention includes a standard name table, which defines strings that identify physical quantities.
+## Executive Summary
 
-2022 CF Workshop will take place on 13-15 September 2022 hosted by [IFCA] at Santander (Spain). After 2 successful virtual editions ([2020] and [2021]), the 2022 edition is organized as a hybrid event having in-person and on-line participants. 
+The 2022 CF Workshop was a hybrid event held on 13-15 September 2022.
+The in-person portion of the workshop took place in Santander, Spain at the Institute of Physics of Cantabria ([IFCA]) on the University of Cantabria campus.
+There were approximately 100 people from 16 countries registered for the workshop, approximately 20 people attended in-person each day with 40-50 total attending most of the plenary sessions.
 
-[2021]: https://cfconventions.org/Meetings/2021-Workshop.html "2021 CF Workshop"
-[2020]: https://cfconventions.org/Meetings/2020-Workshop.html "2020 CF Workshop"
+Each day of the meeting started with plenary sessions which were followed by parallel hackathon sessions.
+The plenary sessions included:
+* a review of the recent CF 1.10 release
+* a review of the CF Training Workshop held virtually on 8 September 2022
+* a review of CF standard names as well as their use in the carbon community
+* a discussion of how the World Meteorological Organization (WMO) is starting to use CF-netCDF data
+* an update on Zarr and its support in netCDF libraries
+* introductions to several of the hackathon topics.
 
-## Registration
+The hackathon topics included:
+* Mapping CF Standard Names to I-ADOPT
+* Housekeeping on the CF Conventions document
+* Describing lossy compression
+* GitHub process and automation
+* DOIs: for the CF Conventions; for datasets
 
-There are no registration fees, but registration before 30th of August is required.
+Three posters were presented and discussed during breaks. Poster topics included:
+* ???
+* ???
+* ???
 
-You can register using [this form][REGISTRATION].
+The workshop ended with reporting out from the hackathon sessions and a final wrap-up session.
 
-[REGISTRATION]: https://forms.gle/RB9BYZuLULcVKBsF6
+In the week before the workshop, a three-hour CF Training Workshop was held.
+More information (including videos of the presentations) is available on the [2022 CF Training Workshop page][TRAINING]).
 
-## Venue
-The workshop takes place at [IFCA] which it's located at [University of Cantabria Campus][IFCA-campus] in the city of Santander (Spain). Take a look at IFCA's ["street view"][IFCA-street-view]!
+Thanks to IFCA (CSIC-UC, Spain) for hosting both in-person and virtual.
 
-[IFCA-street-view]: https://goo.gl/maps/NPwzRr8aDyQR99L29
-[IFCA-campus]: https://goo.gl/maps/pnHFXz1mrGPVfE137
+## Decisions and Actions
 
-### Travel information
-
-Please check details on [how to arrive to IFCA](https://ifca.unican.es/en-us/about-ifca/how-to-arrive) 
-
-## On-line access
-
-Use the following link to access the [Zoom Room for the plenary sessions][MainZoomRoom]:
- - [Main Zoom Room][MainZoomRoom]
-
-For hackatons sessions, an [Auxiliary Zoom Room][AuxiliaryZoomRoom] will be use, in addition to the [Main Zoom Room][MainZoomRoom]:
- - [Auxiliary Zoom Room][AuxiliaryZoomRoom]
-
-Please, be sure your name on Zoom follows this pattern: 
-```
-Firstname M. Lastname (Institution, Country)
-```
-You can find some instructions on how to change your name on Zoom [here] [ChangeNameZoom]
-
-[ChangeNameZoom]: https://support.zoom.us/hc/en-us/articles/8715431556621-Changing-your-name-on-Zoom#h_01GBDJTECEGP2KBR77HZ99Q46G "How to change your name on Zoom"
-[MainZoomRoom]: https://us06web.zoom.us/j/85052846695?pwd=RFVmZi9TRGJoSVpHamVZbnNGdDZsdz09 "Main Zoom Room"
-[AuxiliaryZoomRoom]: https://us06web.zoom.us/j/85391362542?pwd=ZTN6emtlZFpXeUF2S2hGMm9yZDQwQT09 "Auxiliary Zoom Room"
+During the Dataset DOI Discussion
+* DECISION: CF is not going to standardize a DOI attribute.
+  * Should there be some mention of or guidance around ACDD in the FAQ?
+* ACTION: Create a GH issue to capture the discussion during the Data DOI session on use of /reference to ACDD.
+* ACTION: Create a GH issue (on website repo) about crafting FAQ around ACDD.
 
 ## Documents
 
-All of the presentations and notes for the plenary and hackathon sessions will be available in this [Google Drive folder](https://drive.google.com/drive/folders/18BzZixnRUhV8nDqbeRE_ltVvWTF1BzVG).
+All of the presentations and notes for the plenary and hackathon sessions are available in this [Google Drive folder](https://drive.google.com/drive/folders/18BzZixnRUhV8nDqbeRE_ltVvWTF1BzVG).
+The notes and summary docs are:
+* Notes and discussion from Plenary sessions ([GDoc][Plenary-notes])
+* Hackathon debrief notes from 15 Sept ([GDoc][Hackathon-debrief-notes]):
+  * I-ADOPT; Housekeeping, CI, and DOI; Lossy Compression
+* All presentations are in the [Presentations sub-folder][Presentation-folder]
+
+[Plenary-notes]: https://docs.google.com/document/d/1krLEGKu82-YTAbQ2gWLX5-9cq3q2cjqSqkJZWiDlve4/edit
+[Hackathon-debrief-notes]: https://docs.google.com/document/d/10kKCmN6Vi-xBEnJ2fj54OAy7f97AwTQopBJPwKRY3Bw/edit
+[Presentation-folder]: https://drive.google.com/drive/u/0/folders/1MO2xZ3dBmyQYz8xLfZJ_ng1yhm_Sme_t
 
 ## Agenda
 
@@ -133,33 +141,6 @@ All times are local to Santander, i.e. **UTC+2**
 * **16:30 - Wrap-up, conclusions, and actions** (Antonio S. Cofiño)
 
 * **17:30 -** Close
-
-
-## Training session
-In the week prior to the CF Workshop there will be a virtual training event designed for users new or fairly new to CF, which may well be useful to those with more experience, too.
-The training will last for 3 hours and will take place on **Thursday 8th September, 1500 - 1800 UTC**.
-
-Details of training programme can be found at the [training section of the CF website][TRAINING].
-
-Pre-registration for the on-line training event is not essential, but to help us with planning please tick the corresponding checkbox, in the [registration form][REGISTRATION], if you would be interested in attending.
-
-For those unable to attend the event itself, the content (including videos of the presentations) will be accessable from the [training section of the CF website][TRAINING]. 
-
-More details at: <https://github.com/cf-convention/discuss/issues/158>
-
-## Hackathon sessions
-
-We will devote roughly half of the time on each day to focused-attention hackathons, during which it is hoped that concrete progress on each topic can be made (such as actual changes suggested to the Conventions text). On each day, two hackathon sessions will run in parallel.
-
-Please express an interest in any number of these sessions, in the [registration form][REGISTRATION], or suggest a new topic that could be included, with a suggestion of who you think could lead the discussion. 
-
-More details at: <https://github.com/cf-convention/discuss/issues/152>
-
-## Poster contributions
-
-During the CF Workshop there will be displays for poster contributions from participants. There will be no formal poster session, but posters are expected to be chatted about informally during breaks.
-
-To help us with planning, please check the "Other" box, in the [registration form][REGISTRATION], and provided a tentative title, if you would be interested to bring your poster. 
 
 ## The organising committee
 

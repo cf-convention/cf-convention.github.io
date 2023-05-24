@@ -32,211 +32,269 @@
 
         <!-- This page requires an external javascript which is included by Plone -->
         <!-- See: /usr/local/zopeinstance1/Products/CMFPlone/skins/plone_ecmascript/toggleHelp.js -->
-        <script>
-            
-            function applyFilter(filter_text)
-            {
-                // applying a filter hides all standard names not matching filter_text
-                // if filter_text contains no spaces, it is treated as a regexp
-                // otherwise, all substrings must occur somewhere
-                var is_match = false;
-                var search_type = 'regexp';
-                var search_help_text = false;
-                var num_matches = 0;
-                var is_boolean_and = true;
-                
-                search_help_text = (document.getElementById('search_help_text').checked);
-                is_boolean_and = (document.getElementById('logical_operator_and').checked);
-                
-                if (filter_text.indexOf(' ') == -1)
-                {
-                    search_type = 'regexp';
-                    var re = new RegExp(filter_text, 'i')
-                }
-                else
-                {
-                    search_type = 'string';
-                    var string_parts = filter_text.split(' ');
-                }
-                
-                curTable = document.getElementById('standard_name_table');
-                allTRs = curTable.getElementsByTagName('tr');
-                
-                for (var i = 0; i &lt; allTRs.length; i++)
-                {
-                    curTR = allTRs[i];
-                    
-                    if (curTR.id != '')
-                    {
-                        if (search_type == 'regexp')
-                        {
-                            is_match = curTR.id.substring(0, curTR.id.length - 3).match(re);
-                            if (search_help_text)
-                            {
-                                var helpText = document.getElementById(curTR.id.substring(0,curTR.id.length - 3) + '_help').innerHTML;
-                                is_match = is_match || helpText.match(re);
-                            }
+        <script type="text/javascript"><![CDATA[
+        ALIAS_FLAG = "\n<i>alias:</i>"
+        UNITS_CLASS = "canonical_units"
+
+        /**
+         * Apply a filter hides all standard names not matching `filter_text`.
+         *
+         * If `filter_text` contains no spaces, it is treated as a regexp.
+         * Otherwise, all substrings must occur somewhere.
+         */
+        function applyFilter(filter_text) {
+            var search_type = 'regexp';
+            var num_matches = 0;
+            var must_search_help_text = document.getElementById('must_search_help_text').checked;
+            var must_search_aliases = document.getElementById('must_search_aliases').checked;
+            var must_search_units_only = document.getElementById('must_search_units_only').checked;
+            var is_boolean_and = document.getElementById('logical_operator_and').checked;
+            var filter_text_re = new RegExp(filter_text, 'i')
+            // case sensitive regex for units
+            var units_regex = new RegExp(filter_text) 
+            if (filter_text.indexOf(' ') == -1 || must_search_units_only) {
+                search_type = 'regexp';
+            }
+            else {
+                search_type = 'string';
+                var string_parts = filter_text.split(' ');
+            }
+            allRows = document.getElementById('standard_name_table')
+                              .getElementsByTagName('tr');
+            for (var i = 0; i < allRows.length; i++) {
+                currentRow = allRows[i];
+                currentStandardName = currentRow.id.substring(0, currentRow.id.length - 3)
+                if (currentRow.id != '') {
+                    is_match = _isRowMatchingQuery(
+                        search_type,
+                        must_search_units_only,
+                        must_search_help_text,
+                        currentStandardName,
+                        currentRow,
+                        string_parts,
+                        filter_text_re,
+                        units_regex,
+                        is_boolean_and
+                    )
+                    if (is_match) {
+                        num_matches++;
+                        currentRow.style.display = '';
+                        if (must_search_help_text) {
+                            showHelp(currentStandardName);
                         }
-                        else
-                        {
-                            if (is_boolean_and)
-                            {
-                                var is_name_match = true;
-                                for (var j = 0; j &lt; string_parts.length &amp;&amp; is_name_match; j++)
-                                {
-                                    if (!curTR.id.match(new RegExp(string_parts[j], 'i')))
-                                    {
-                                        is_name_match = false;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                var is_name_match = false;
-                                for (var j = 0; j &lt; string_parts.length &amp;&amp; !is_name_match; j++)
-                                {
-                                    if (curTR.id.substring(0, curTR.id.length - 3).match(new RegExp(string_parts[j], 'i')))
-                                    {
-                                        is_name_match = true;
-                                    }
-                                }
-                            }
-                            is_match = is_name_match;
-                            
-                            if (search_help_text)
-                            {
-                                var helpText = document.getElementById(curTR.id.substring(0,curTR.id.length - 3) + '_help').innerHTML;
-                                
-                                if (is_boolean_and)
-                                {
-                                    var is_help_match = true;
-                                    for (var j = 0; j &lt; string_parts.length &amp;&amp; is_help_match; j++)
-                                    {
-                                        if (!helpText.match(new RegExp(string_parts[j], 'i')))
-                                        {
-                                            is_help_match = false;
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    var is_help_match = false;
-                                    for (var j = 0; j &lt; string_parts.length &amp;&amp; !is_help_match; j++)
-                                    {
-                                        if (helpText.match(new RegExp(string_parts[j], 'i')))
-                                        {
-                                            is_help_match = true;
-                                        }
-                                    }
-                                }
-                                is_match = is_match || is_help_match;
-                            }
-                        }
-                        if (!is_match)
-                        {
-                            curTR.style.display = 'none';
-                        }
-                        else
-                        {
-                            num_matches++;
-                            
-                            curTR.style.display = '';
-                            if (search_help_text)
-                            {
-                                showHelp(curTR.id.substring(0,curTR.id.length - 3));
-                            }
-                            else
-                            {
-                                hideHelp(curTR.id.substring(0,curTR.id.length - 3));
-                            }
+                        else {
+                            hideHelp(currentStandardName);
                         }
                     }
+                    else {
+                        currentRow.style.display = 'none';
+                    }
                 }
-                
-                var filter_matches = document.getElementById('filter_matches');
-                var filter_matches_num = document.getElementById('filter_matches_num');
-                var filter_matches_query = document.getElementById('filter_matches_query');
-                
-                if (filter_text != '')
-                {
-                    filter_matches.style.visibility = 'visible';
-                    filter_matches_num.innerHTML = num_matches;
-                    filter_matches_query.innerHTML = filter_text;
-                }
-                else
-                {
-                    filter_matches.style.visibility = 'hidden';
-                }
-                
             }
-            
-            function clearFilter()
-            {
-                curTable = document.getElementById('standard_name_table');
-                allTRs = curTable.getElementsByTagName('tr');
-                
-                for (var i = 0; i &lt; allTRs.length; i++)
-                {
-                    curTR = allTRs[i];
-                    curTR.style.display = '';
-                }
-                
-                var filter_matches = document.getElementById('filter_matches');
+            var filter_matches = document.getElementById('filter_matches');
+            var filter_matches_num = document.getElementById('filter_matches_num');
+            var filter_matches_query = document.getElementById('filter_matches_query');
+            if (filter_text != '') {
+                filter_matches.style.visibility = 'visible';
+                filter_matches_num.innerHTML = num_matches;
+                filter_matches_query.innerHTML = filter_text;
+            }
+            else {
                 filter_matches.style.visibility = 'hidden';
-                
-                document.getElementById('filter_text').value = '';
             }
-            
-            
-            function toggleHelp(standard_name)
-            {
-                // check for the existence of the help tr object for this standard_name
-                var helpDiv = document.getElementById(standard_name + '_help');
-                
-                if (helpDiv)
-                {
-                    if (helpDiv.style.display != 'none')
-                    {
-                        helpDiv.style.display = 'none';
-                        
-                        curArrow = document.getElementById(standard_name + '_arrow');
-                        curArrow.src = '../build/media/images/arrow_right.gif';
-                    }
-                    else
-                    {
-                        helpDiv.style.display = '';
-                        
-                        curArrow = document.getElementById(standard_name + '_arrow');
-                        curArrow.src = '../build/media/images/arrow_down.gif';
-                    }
+        }
+
+        function clearFilter() {
+            curTable = document.getElementById('standard_name_table');
+            allRows = curTable.getElementsByTagName('tr');
+
+            for (var i = 0; i < allRows.length; i++) {
+                currentRow = allRows[i];
+                currentRow.style.display = '';
+            }
+
+            var filter_matches = document.getElementById('filter_matches');
+            filter_matches.style.visibility = 'hidden';
+
+            document.getElementById('filter_text').value = '';
+        }
+
+        function filterConstraints($checkboxElem){
+            var must_search_units_only = $checkboxElem.checked;
+            if (must_search_units_only){
+                document.getElementById('must_search_help_text').checked = false;
+                document.getElementById('must_search_help_text').disabled = true;
+                document.getElementById('must_search_aliases').checked = false;
+                document.getElementById('must_search_aliases').disabled = true;
+                document.getElementById('logical_operator_and').checked = false;
+                document.getElementById('logical_operator_and').disabled = true;
+                document.getElementById('logical_operator_or').checked = false;
+                document.getElementById('logical_operator_or').disabled = true;
+            } else {
+                document.getElementById('must_search_help_text').disabled = false;
+                document.getElementById('must_search_aliases').disabled = false;
+                document.getElementById('logical_operator_and').checked = true;
+                document.getElementById('logical_operator_and').disabled = false;
+                document.getElementById('logical_operator_or').disabled = false;
+            }
+        }
+
+
+        function toggleHelp(standard_name) {
+            // check for the existence of the help tr object for this standard_name
+            var helpDiv = document.getElementById(standard_name + '_help');
+
+            if (helpDiv) {
+                if (helpDiv.style.display != 'none') {
+                    helpDiv.style.display = 'none';
+
+                    curArrow = document.getElementById(standard_name + '_arrow');
+                    curArrow.src = '../build/media/images/arrow_right.gif';
                 }
-            }
-            
-            
-            function showHelp(standard_name)
-            {
-                var helpDiv = document.getElementById(standard_name + '_help');
-                
-                if (helpDiv)
-                {
+                else {
                     helpDiv.style.display = '';
+
                     curArrow = document.getElementById(standard_name + '_arrow');
                     curArrow.src = '../build/media/images/arrow_down.gif';
                 }
             }
-            
-            function hideHelp(standard_name)
-            {
-                var helpDiv = document.getElementById(standard_name + '_help');
-                
-                if (helpDiv)
-                {
-                    helpDiv.style.display = 'none';
-                    curArrow = document.getElementById(standard_name + '_arrow');
-                    curArrow.src = '../build/media/images/arrow_right.gif';
+        }
+
+        function showHelp(standard_name) {
+            var helpDiv = document.getElementById(standard_name + '_help');
+
+            if (helpDiv) {
+                helpDiv.style.display = '';
+                curArrow = document.getElementById(standard_name + '_arrow');
+                curArrow.src = '../build/media/images/arrow_down.gif';
+            }
+        }
+
+        function hideHelp(standard_name) {
+            var helpDiv = document.getElementById(standard_name + '_help');
+
+            if (helpDiv) {
+                helpDiv.style.display = 'none';
+                curArrow = document.getElementById(standard_name + '_arrow');
+                curArrow.src = '../build/media/images/arrow_right.gif';
+            }
+        }
+
+        function toggleSearchHelp($event) {
+            var helpbox = document.getElementById("search-help");
+            var arrow = document.getElementById("search-help-arrow");
+            if (helpbox.style.display === 'none') {
+                helpbox.style.display = 'inline-block';
+                arrow.src = '../build/media/images/arrow_down.gif';
+            }
+            else {
+                helpbox.style.display = 'none';
+                arrow.src = '../build/media/images/arrow_right.gif';
+            }
+        }
+
+        function _isTextInAliases(aliases, regex) {
+            return aliases.filter((alias) => alias.match(regex)).length > 0
+        }
+
+        function _isTextInUnitsText(units, regex) {
+            return units && units.match(regex)
+        }
+
+        function _readAliases(tr) {
+            return _getAliasesDivs(tr).map(_readAlias)
+        }
+
+        function _getAliasesDivs(tr) {
+            return Array.from(tr.querySelectorAll('div'))
+                .filter(el => el.innerHTML.includes(ALIAS_FLAG));
+        }
+
+        function _readAlias(div) {
+            return div.innerHTML.substring(ALIAS_FLAG.length)
+        }
+
+        function _read_units(div) {
+            units = div.querySelector("." + UNITS_CLASS)
+            if (units) return units.innerHTML
+            else return null
+        }
+
+        function _isRowMatchingQuery(
+                search_type,
+                must_search_units_only,
+                must_search_help_text,
+                standardName,
+                row,
+                string_parts,
+                filter_text_re,
+                units_regex,
+                is_boolean_and
+        ) {
+            aliases = _readAliases(row)
+            units = _read_units(row)
+            if (search_type == 'regexp') {
+                if (must_search_units_only) {
+                    return _isTextInUnitsText(units, units_regex);
+                }
+                is_match = standardName.match(filter_text_re);
+                if (must_search_help_text) {
+                    var helpText = document.getElementById(standardName + '_help').innerHTML;
+                    is_match = is_match || helpText.match(filter_text_re);
+                }
+                if (must_search_aliases) {
+                    is_match = is_match || _isTextInAliases(aliases, filter_text_re);
+                }
+                return is_match
+            }
+            if (is_boolean_and) {
+                var is_match = true;
+                for (var j = 0; j < string_parts.length && is_match; j++) {
+                    re = new RegExp(string_parts[j], 'i')
+                    if (!standardName.match(re)) {
+                        is_match = false;
+                    }
+                    if (must_search_aliases) {
+                        is_match = is_match || _isTextInAliases(aliases, re);
+                    }
                 }
             }
-            
+            else {
+                var is_match = false;
+                for (var j = 0; j < string_parts.length && !is_match; j++) {
+                    re = new RegExp(string_parts[j], 'i')
+                    if (standardName.match(re)) {
+                        is_match = true;
+                    }
+                    if (must_search_aliases) {
+                        is_match = is_match || _isTextInAliases(aliases, re);
+                    }
+                }
+            }
+            if (must_search_help_text) {
+                var helpText = document.getElementById(standardName + '_help').innerHTML;
+                if (is_boolean_and) {
+                    var is_help_match = true;
+                    for (var j = 0; j < string_parts.length && is_help_match; j++) {
+                        if (!helpText.match(new RegExp(string_parts[j], 'i'))) {
+                            is_help_match = false;
+                        }
+                    }
+                }
+                else {
+                    var is_help_match = false;
+                    for (var j = 0; j < string_parts.length && !is_help_match; j++) {
+                        if (helpText.match(new RegExp(string_parts[j], 'i'))) {
+                            is_help_match = true;
+                        }
+                    }
+                }
+                is_match = is_match || is_help_match;
+            }
+            return is_match
+        }
+
+]]> 
         </script>
     </div>
         
@@ -285,9 +343,43 @@ The canonical units associated with each standard name are usually the SI units 
                                                   id="logical_operator_or" 
                                                   value="OR"/> OR</label> (separate search terms with spaces)
                                     <br/>
-                                    <label><input id="search_help_text" 
-                                                  name="search_help_text" 
+                                    <label><input id="must_search_help_text" 
+                                                  name="must_search_help_text" 
                                                   type="checkbox"/> Also search help text</label>
+                                    <br/>
+                                    <label><input id="must_search_aliases"
+                                                  name="must_search_aliases"
+                                                  type="checkbox" checked="checked"/> Also search aliases text</label>
+                                    <br/>
+                                    <label><input id="must_search_units_only"
+                                                  name="must_search_units_only"
+                                                  type="checkbox" onchange="filterConstraints(this)" />Only search canonical units</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div onclick="toggleSearchHelp(event)">
+                                        <img id="search-help-arrow" src="../build/media/images/arrow_down.gif"></img>
+                                        <label>Advanced searches</label>
+                                    </div>
+                                    <div id="search-help"
+                                        style="display: inline-block; padding-left: 16px; margin-top: 4px; border: 1px dashed aliceblue;">                                   
+                                        To look for standard names you can use either:
+                                        <ul>
+                                        <li>
+                                            An extended regular expression. This is a powerful tool used to search complex queries.
+                                            <br/>For example, with the "Only search canonical units" enabled, <code>^mol m-3$|^mol/m3$</code> would match any string that is exactly "mol m-3" or exactly "mol/m3".
+                                            Exact matches (that is, matches to the entire string) are toggled using the <code>^</code> prefix and the <code>$</code> suffix. The <code>|</code> character acts as an "or" operator.<br/>
+                                            If you want to learn more, <a href="https://regexr.com/">Regexr</a> is a great playground to explore regular expressions.
+                                        </li>
+                                        <li>
+                                            A list of possible matches separated by blank spaces.
+                                            <br/>This is used in conjunction  with AND and OR radio buttons.
+                                            For example, the query "age ice", with AND enabled, would search for every standard names where that contains both "age" and "ice".
+                                            <br/>It is equivalent to the regular expression <code>(?=.*?ice)(?=.*?age).+</code>
+                                        </li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -411,7 +503,7 @@ The canonical units associated with each standard name are usually the SI units 
                 </div>
                 
             </td>
-            <td><xsl:value-of select="canonical_units"/></td>
+            <td class="canonical_units"><xsl:value-of select="canonical_units"/></td>
             <td>
                 <xsl:choose>
                     <xsl:when test="amip">

@@ -524,7 +524,7 @@ These combinations can be combined as follows in CF:
 * taken to an integral power, using '^n' or '**n' notation (or simply appending the power, if using symbols;
 * divided by a quotient, using 'per' (or a slash, '/', if using symbols) to indicate the quotient
 
-You can review [basic examples in the UDUNITS documentation](https://www.unidata.ucar.edu/software/udunits/udunits-current/udunits2lib.html#Examples).
+You can review [basic examples in the UDUNITS documentation](https://docs.unidata.ucar.edu/udunits/current/udunits2lib.html#Examples).
 
 More complicated examples of units can be found in the CF Standard Names table, which lists the canonical units for each standard name.
 

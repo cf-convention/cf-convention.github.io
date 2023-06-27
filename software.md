@@ -17,8 +17,8 @@ The description of each software package should give some indication of the leve
 
 ### cf-checker - Python Tool for Compliance Checking
 
-The [cf-checker](https://github.com/cedadev/cf-checker) is a python tool to check compliance of netCDF files against the CF Conventions.
-It can be run as a command-line tool, via a web interface (available at [NCAS](https://github.com/cedadev/cf-checker) and [CEDA](http://wps-web1.ceda.ac.uk/submit/form?proc_id=CFChecker)) or imported as a python library.
+The cf-checker is a python tool to check compliance of netCDF files against the CF Conventions.
+It can be run via a [web interface](https://cfchecker.ncas.ac.uk) or [downloaded](https://github.com/cedadev/cf-checker) for use as a command-line utility on Linux and macOS by installing from PyPI, conda-forge or source code.
 The cf-checker verifies conformance according to the requirements and recommendations laid out in the [CF Conformance Document](https://cfconventions.org/cf-conventions/conformance.html).
 It is possible to check conformance against any CF version.
 
@@ -103,3 +103,12 @@ The service returns subsets as CF compliant netCDF-3/4 files, in addition to oth
 
 [Xarray](http://xarray.pydata.org/) is a python package designed for working with labelled, multi-dimensional array data, built around the netCDF data model.
 It uses CF Conventions in several ways, such as encoding / decoding variables and interpreting metadata for visualization.
+
+## Commercial Software Packages
+
+### ArcGIS Pro
+
+Esri’s [ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview) supports the ingest, [management](https://pro.arcgis.com/en/pro-app/latest/tool-reference/multidimension/an-overview-of-the-multidimension-toolbox.htm), data visualization, multidimensional analysis, and authoritative sharing of CF-Conventions compliant netCDF data.
+NetCDF data can be processed as tables, points, rasters,  and, most recently, [discrete sampling geometries](https://pro.arcgis.com/en/pro-app/latest/tool-reference/multidimension/how-netcdf-discrete-sampling-geometry-dsg-tools-work.htm).
+In addition, various ArcGIS Pro tools enable multidimensional management (aggregation, subsetting, anomaly detection), [spatio-temporal analysis](https://pro.arcgis.com/en/pro-app/latest/tool-reference/space-time-pattern-mining/an-overview-of-the-space-time-pattern-mining-toolbox.htm) (trend detection, time-series clustering, changepoint detection, hot spot detection), and visualization as 3D features or [voxels](https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/what-is-a-voxel-layer-.htm).
+Analysis results based on netCDF data can be shared and viewed across the web as interactive maps, 3D features, and voxels.

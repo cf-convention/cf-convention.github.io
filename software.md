@@ -17,8 +17,8 @@ The description of each software package should give some indication of the leve
 
 ### cf-checker - Python Tool for Compliance Checking
 
-The [cf-checker](https://github.com/cedadev/cf-checker) is a python tool to check compliance of netCDF files against the CF Conventions.
-It can be run as a command-line tool, via a web interface (available at [NCAS](https://github.com/cedadev/cf-checker) and [CEDA](http://wps-web1.ceda.ac.uk/submit/form?proc_id=CFChecker)) or imported as a python library.
+The cf-checker is a python tool to check compliance of netCDF files against the CF Conventions.
+It can be run via a [web interface](https://cfchecker.ncas.ac.uk) or [downloaded](https://github.com/cedadev/cf-checker) for use as a command-line utility on Linux and macOS by installing from PyPI, conda-forge or source code.
 The cf-checker verifies conformance according to the requirements and recommendations laid out in the [CF Conformance Document](https://cfconventions.org/cf-conventions/conformance.html).
 It is possible to check conformance against any CF version.
 

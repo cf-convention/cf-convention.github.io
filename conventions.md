@@ -88,10 +88,10 @@ group: "navigation"
 
   <div class="col-md-6">
 
-    <h2><a href="./conventions_contributors.html">List of contributors</a> to CF conventions
+    <h2><a href="./conventions_contributors.html">List of contributors</a> to CF conventions</h2>
 
     <h2>Compliance checker</h2>
-    <a href="https://pumatest.nerc.ac.uk/cgi-bin/cf-checker.pl">This utility</a> checks that a netCDF file which you supply complies with the CF conformance requirements and recommendations.
+    <a href="https://cfchecker.ncas.ac.uk">This utility</a> checks that a netCDF file which you supply complies with the CF conformance requirements and recommendations.
 
     <h2>Conformance</h2>
     Each version of the CF conventions document is accompanied by a conformance document which lists the requirements and recommendations that could be verified by the compliance checker or any program with a similar aim. For any <em>recommendation</em> which is not followed, the checker gives a warning; for any <em>requirement</em> which is not met, it reports an error.

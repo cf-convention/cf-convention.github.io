@@ -7,6 +7,7 @@ title: Contributors to CF information management
 
 The following individuals are listed here in recognition of their contributions to past and present software used by CF for maintaining the conventions, enabling discussions and decisions, communication and record-keeping.
 
+- Abel Aoun, Exostaff/Eumetsat
 - Andrew Barna, SIO/UCSD
 - Sadie Bartholomew, University of Reading
 - David Blodgett, USGS

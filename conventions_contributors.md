@@ -11,7 +11,7 @@ They are listed here in recognition of their contribution to the development of 
 The affiliations are those that the contributors used at the time of their contribution and are included to identify them, rather than as current contact information.
 
 - Ryan Abernathey, Columbia University
-- Dave Allured, NOAA
+- Dave Allured, NOAA/CIRES/University of Colorado
 - Sean Arms, SpectraLogic
 - Balaji, NOAA and Princeton University
 - Chris Barker, NOAA

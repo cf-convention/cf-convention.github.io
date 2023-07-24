@@ -67,7 +67,7 @@ Learning about and changing the CF convention.
 ### Do the CF conventions stand alone?
 
 Not entirely; because CF is a netCDF convention, it assumes the netCDF standard is being followed.
-And it relies on the UDUNITS system of specifying units (see <a href="#udunits">CF and COARDS units</a> below).
+And it relies on the UDUNITS system of specifying units (see [Units in CF (UDUNITS)](#units-in-cf-udunits) below).
 CF does not replicate the information from these other documents, so to adhere to CF you may need to become familiar with the other specifications as well, particularly the netCDF User's Guide.
 
 The CF Conventions were originally based on the netCDF convention called the [COARDS conventions](https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html) (named for their sponsor, the Cooperative Ocean/Atmosphere Research Data Service), developed in 1995.
@@ -88,14 +88,14 @@ If you are going to work with CF a lot, you may want to download the yearly file
 
 ### How do I ask questions about CF?
 
-First, please see whether your question has already been answered (see [question above](#research)).
+First, please see whether your question has already been answered (see [question above](#how-do-i-find-previously-asked-questions-about-cf)).
 Questions about the CF Convention, including its Standard Names list, may be asked at the [CF-Metadata Mailing List](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/).
 CF community members usually respond within a day to simple questions, but allow more time if you have an advanced technical topic.
 
 ### How do I propose a change?
 
 Changes to the CF standard and the Standard Names are generally proposed first on the [CF Discuss GitHub repo][cf-discuss-repo] as an [issue][cf-discuss-issues].
-See [How do I ask for a new standard name?](#stdnames_ask) to learn more about changes to the Standard Names list.
+See [How do I ask for a new standard name?](#how-do-i-ask-for-a-new-standard-name) to learn more about changes to the Standard Names list.
 
 A change to the CF standard itself may be discussed initially in a [CF Discuss issue][cf-discuss-issues], but must be presented and agreed to in detail as a [CF Conventions issue][cf-conventions-issues], where the explicit change being requested can be refined.
 
@@ -208,8 +208,7 @@ CF offers a rich set of options for specifying coordinate axes. Here is a short 
 * Degree-day integrals are described as integral_of_air_temperature_deficit|excess_wrt_time with a coordinate of air_temperature_threshold. 
 * Electromagnetic radiation at particular wavelengths uses a coordinate of radiation_wavelength or radiation_frequency.
 
-*Suggestion for improvement: add a good example for swath coordinates.
-The ones in http://kitt.llnl.gov/trac/wiki/SatelliteData don't seem quite illustrative.*
+*Suggestion for improvement: add a good example for swath coordinates. Here is [a tentative example]( https://cfconventions.org/Data/wiki/SatelliteExample1.txt).*
 
 
 ### How can I describe a file with multiple time coordinates (e.g., run time AND valid or forecast time)?
@@ -262,7 +261,7 @@ Terms from this vocabulary may be used as specified in the CF Convention [sectio
 However, it is also possible to describe a data variable by using a named quantity as a coordinate variable, and the area_type is often needed for such a purpose.
 The area_type can be attached as a dimensioned coordinate variable, or as a scalar coordinate.
 
-If the area_type you need is not in the list, [request a new area_type name](#stdnames_ask) just as you would a standard name (no units required).
+If the area_type you need is not in the list, [request a new area_type name](#how-do-i-ask-for-a-new-standard-name) just as you would a standard name (no units required).
 
 This example adds the area_type as a dimensioned coordinate variable:
 
@@ -320,7 +319,7 @@ The CF site contains [the official list of CF standard names and other controlle
 The XML document pointed to from that page is the primary reference, but the HTML and PDF documents are produced automatically from the XML, and should contain the same information.
 
 Several other sites represent alternative views of knowledge artifacts of the standard names.
-See the [Standard Names Tools](#stdnames_tools) section for more details.
+See the [Standard Names Tools](#what-tools-exist-to-work-with-standard-names) section for more details.
 
 ### What is the purpose of the standard name?
 
@@ -346,7 +345,7 @@ To find standard names that describe your data, open up the latest [Standard Nam
 If you can not find any matches, you can browse the table to see the kinds of names that exist -- names strongly lean toward environmental modeling and observation data, especially in atmosphere and ocean science.
 
 If you can't find any matches, send an email to the CF-Metadata list describing your variables.
-(See the [question on asking for a new standard name](#stdnames_ask).)
+(See the [question on asking for a new standard name](#how-do-i-ask-for-a-new-standard-name).)
 
 ### How do I ask for a new standard name?
 
@@ -367,7 +366,7 @@ This depends on the application -- there can be standard names for very narrowly
 The appropriate choice depends on which distinctions need to be made to decide whether another quantity is comparable to the one being defined.
 
 Of course, this broad guideline could result in extraordinarily detailed standard names that will rarely be useful to others.
-Because the goal of standard names is to encourage interoperability, there are [several qualifier types that are actively discouraged](#stdnames_nonos). 
+Because the goal of standard names is to encourage interoperability, there are [several qualifier types that are actively discouraged](#what-shouldnt-be-described-in-a-standard-name). 
 
 ### What are the components of a standard name?
 
@@ -397,7 +396,7 @@ The order is not rule-based; the goal is to make the name as clear and natural a
 An example standard name with most of the above is mole_concentration_of_atomic_nitrogen_in_air (quantity-transformation-state-substance-medium).
 
 Several structural analyses have been performed on standard names.
-For more information, check out [What can be described in a standard name?](#stdnames_facets).
+For more information, check out [What can be described in a standard name?](#is-there-a-grammar-for-standard-names).
 
 ### What can be described in a standard name?
 
@@ -470,7 +469,7 @@ As of 2014, none of these mappings are regularly updated as new versions of the 
 
 ### What tools exist to work with standard names?
 
-In addition to the results mentioned in the [mappings](#stdnames_mappings), other tools include:
+In addition to the results mentioned in the [mappings](#are-there-mappings-of-the-standard-name-terms-to-other-terms), other tools include:
 
 * NERC Vocabulary Server (RDF): http://vocab.nerc.ac.uk/collection/P07/current/
 * MARIS Vocabulary Server: http://seadatanet.maris2.nl/v_bodc_vocab_v2/search.asp?lib=P07
@@ -500,7 +499,7 @@ These questions are not strictly part of CF, but CF depends on this understandin
 [UDUNITS](https://www.unidata.ucar.edu/software/udunits/) was specified in the original COARDS convention ("Where possible the units attribute should be formatted as per the recommendations in the Unidata udunits package"), and is a widely used standard with many tools and libraries.
 The package contains an extensive unit database, which is in XML format and user-extensible (though the extensions will not be compliant with CF).
 
-There are a few units CF allows that do not appear in UDUNITS; see [the related FAQ question](#udunits_missing).
+There are a few units CF allows that do not appear in UDUNITS; see [the related FAQ question](#are-there-units-in-cf-that-arent-in-udunits).
 
 Note that CF depends on UDUNITS as a standard for formatting the units string, but not as a software package.
 
@@ -524,12 +523,12 @@ These combinations can be combined as follows in CF:
 * taken to an integral power, using '^n' or '**n' notation (or simply appending the power, if using symbols;
 * divided by a quotient, using 'per' (or a slash, '/', if using symbols) to indicate the quotient
 
-You can review [basic examples in the UDUNITS documentation](https://docs.unidata.ucar.edu/udunits/current/udunits2lib.html#Examples).
+You can review basic examples in section _6.1 Unit Specification Examples_ of the [UDUNITS documentation](https://docs.unidata.ucar.edu/udunits/current/udunits2lib.html).
 
 More complicated examples of units can be found in the CF Standard Names table, which lists the canonical units for each standard name.
 
 UDUNITS terms can be found in XML on the [UDUNITS github pages](https://github.com/Unidata/UDUNITS-2), specifically in the files udunits2-*.xml under the [lib path](https://github.com/Unidata/UDUNITS-2/tree/master/lib).
-The terms can be easily viewed in the MMI ORR repository referenced in the [UDUNITS resources question](#udunits_refs).
+The terms can be easily viewed in the MMI ORR repository referenced in the [UDUNITS resources question](#are-there-other-good-resources-about-udunits).
 
 ### How do units of time work?
 
@@ -554,7 +553,7 @@ Details of the CF units not in UDUNITS:
 
 The [UDUNITS-2 GitHub repository](https://github.com/Unidata/UDUNITS-2) contains working code and documentation.
 
-The [API-Guide](https://www.unidata.ucar.edu/software/udunits/udunits-current/udunits2lib.html#Examples) contains some detailed information, but it is oriented entirely for developers. 
+The [API-Guide](https://docs.unidata.ucar.edu/udunits/current/udunits2lib.html) contains some detailed information, but it is oriented entirely for developers. 
 
 A [units conversion page on the ERDDAP site](http://coastwatch.pfeg.noaa.gov/erddap/convert/units.html) lets you try different unit strings, and provides additional context on UDUNITS (and UCUM units) further down the page.
 
@@ -576,7 +575,7 @@ This section is about the meta-question of procedures involved to update CF stan
 Alison Pamment of the [Science and Technologies Facility Council](http://stfc.ac.uk) maintains the CF Standard Names documentation.
 
 A team at Lawrence Livermore National Lab maintains documents and content on the CF web site; Matthew Harris is the primary updater of that site.
-As the site is maintained in a GitHub repository (see [this item](#where_docs), other members of the community may contribute modifications for inclusion on the site.
+As the site is maintained in a GitHub repository (see [this item](#where-is-the-documentation-stored), below), other members of the community may contribute modifications for inclusion on the site.
 
 ### Where is the documentation stored?
 

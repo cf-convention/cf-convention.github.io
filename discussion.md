@@ -29,7 +29,7 @@ Before the CF community migrated to GitHub, general and standard-name discussion
 ### Archive links
 
 * cf-metadata mailing list archive [copy on GitHub][archives] or [original at NCAR][NCAR_archives] (until December 2019)
-* [Resolved proposals for new standard names][proposals] (from March 2011 onwards)
+* To see a list of resolved proposals (accepted or rejected) for standard names from March 2011 onwards, click "Inactive" in the [CEDA vocabulary editor][vocab-editor]
 * [CF Metadata Trac](Data/trac.html) (until July 2018)
 * [About CF Metadata Trac][about]
 

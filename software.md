@@ -27,8 +27,8 @@ It is possible to check conformance against any CF version.
 The [IOOS Compliance Checker](https://github.com/ioos/compliance-checker) is a python based tool for data providers to check for completeness and community standard compliance of local or remote netCDF files against CF, [ACDD](http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery_1-3), and [IOOS Metadata Profile](https://ioos.github.io/ioos-metadata) file standards.
 The Compliance Checker can be used as a command-line tool or as a library that can be integrated into other software.
 
-The Compliance Checker also includes a [web-based version](https://data.ioos.us/compliance/index.html) that enables a broader audience and improve accessibility for the checker.
-With the web version, providers can simply provide a link or upload their datasets and get the full suite of capabilities that Compliance Checker offers.
+<!-- The Compliance Checker also includes a [web-based version](https://data.ioos.us/compliance/index.html) that enables a broader audience and improve accessibility for the checker.
+With the web version, providers can simply provide a link or upload their datasets and get the full suite of capabilities that Compliance Checker offers. -->
 
 ## Free and Open Source Software Packages
 

@@ -204,8 +204,8 @@ group: "navigation"
 
   <h5><b>Discussion</b></h5>
 
-  <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter">Current proposals for new standard names</a> <br>
-  <a href="http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter">Resolved proposals for new standard names (from March 2011 onwards)</a> <br>
+  Current issues in the <a href="https://github.com/cf-convention/discuss/issues">CF `discuss` repo</a>, where proposals for additions and changes to standard names are made<br>
+  Current proposals for new standard names in the <a href="http://cfeditor.ceda.ac.uk/proposals/1">CEDA vocabulary editor</a>. Click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those which have been either accepted and included in the standard name table or rejected
 
 <h4><b>Area Type Table (v11, 06 July 2023)</b></h4>
   <a href="Data/area-type-table/11/build/area-type-table.html">HTML</a>&nbsp;

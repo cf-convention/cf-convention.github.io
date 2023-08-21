@@ -21,7 +21,7 @@ The discussion will be moderated by the CF standard names secretary, or another 
 The discussion takes place on github issues and all may participate.
 
 A status page summarizing the progress of standard name proposals through the discussion process may also be viewed in the
-[CEDA vocabulary editor](http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter).
+[CEDA vocabulary editor](http://cfeditor.ceda.ac.uk/proposals/1).
 
 If a proposal is received for a new vocabulary term that follows the same syntactic patterns as existing terms, and whose description can also be based on existing term descriptions, the proposal can be accepted after brief discussion, subject to checking by the moderator.
 

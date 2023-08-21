@@ -204,7 +204,7 @@ group: "navigation"
 
   <h5><b>Discussion</b></h5>
 
-  Current issues in the <a href="https://github.com/cf-convention/discuss/issues>CF `discuss` repo</a>, where proposals for additions and changes to standard names are made<br>
+  Current issues in the <a href="https://github.com/cf-convention/discuss/issues">CF `discuss` repo</a>, where proposals for additions and changes to standard names are made<br>
   Current proposals for new standard names in the <a href="http://cfeditor.ceda.ac.uk/proposals/1">CEDA vocabulary editor
   Click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those which have been either accepted and included in the standard name table or rejected
 

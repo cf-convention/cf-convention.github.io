@@ -78,18 +78,12 @@ So for example the CF Standard Names attempt to be as general and well-defined a
 
 ### How do I find previously asked questions about CF?
 
-The two main ways to research CF questions are checking this FAQ, and visiting the [mail archives](https://mailman.cgd.ucar.edu/pipermail/cf-metadata), to see if your question has already been asked. 
-
-You can use the pipermail search window to see when your topic may have been raised over the years.
-To follow a particular subject thread, go to the year in which the discussion took place, click on the `by thread` sorting option, and choose the first mail with that subject.
-The `next message` link will then progress through each of the threads in order.
-
-If you are going to work with CF a lot, you may want to download the yearly files from pipermail and import them to your local mail application.
+The first way is to check this FAQ. If you can't find your question answered here, you could search for it in the [CF discussion repository][cf-discuss-issues] for questions asked since 2020, or for earlier questions in the [CF mailing list][mailing-list-archive].
 
 ### How do I ask questions about CF?
 
 First, please see whether your question has already been answered (see [question above](#how-do-i-find-previously-asked-questions-about-cf)).
-Questions about the CF Convention, including its Standard Names list, may be asked at the [CF-Metadata Mailing List](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/).
+Questions about the CF Convention, including its Standard Names list, may be asked by raising new `question` issues in the [CF discussion repository][cf-discuss-issues].
 CF community members usually respond within a day to simple questions, but allow more time if you have an advanced technical topic.
 
 ### How do I propose a change?
@@ -213,7 +207,7 @@ CF offers a rich set of options for specifying coordinate axes. Here is a short 
 
 ### How can I describe a file with multiple time coordinates (e.g., run time AND valid or forecast time)?
 
-There are several ways that multiple time coordinates may be handled; you may wish to review the details in [this list message](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2006/001008.html). 
+There are several ways that multiple time coordinates may be handled; you may wish to review the details in [this list message](https://cfconventions.org/mailing-list-archive/Data/1007.html). 
  
 CF's standard name for the valid or forecast time is `time` (also used for the time of an observation).
 CF also has a standard name for the time the analysis was performed (its 'run time'): forecast_reference_time.
@@ -336,7 +330,7 @@ Variables with different standard names are presumably not directly comparable.
 Of course users must review the details of variables, particularly their `long_name` and `source` attributes, to assess whether they are truly interoperable.
 
 References:
-* J Gregory, 2008: [what standard names are for](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2008/052334.html)
+* J Gregory, 2008: [what standard names are for](https://cfconventions.org/mailing-list-archive/Data/2098.html)
 
 ### How can I find the standard name I need?
 
@@ -349,10 +343,7 @@ If you can't find any matches, send an email to the CF-Metadata list describing 
 
 ### How do I ask for a new standard name?
 
-You ask for a new standard name by sending an email to the [CF-Metadata Mailing List](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/).
-You should sign up to the mailing list before sending your email, so you can follow the discussion of your request.
-
-In the email specify the following for each standard name you want to request:
+You ask for a new standard name by raising a new `standard name` issue in the [CF discussion repository][cf-discuss-issues]. In your issue, specify the following for each standard name you want to request:
 
 * its name,
 * its description, and
@@ -447,13 +438,13 @@ There is no adopted grammar for the standard names.
 Many investigations or partial forays into a standard grammar have been made.
 Among these efforts:
 
-* Karl Taylor ([list post](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2008/052705.html)): A different approach to standard name construction
-* Robert Muetzelfeldt ([list post](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2010/053657.html)): [A grammar for CF standard names](http://envarml.pbworks.com/w/page/8988920/FrontPage) / 1103 names
+* Karl Taylor ([list post](https://cfconventions.org/mailing-list-archive/Data/2500.html)): A different approach to standard name construction
+* Robert Muetzelfeldt ([list post](https://cfconventions.org/mailing-list-archive/Data/2517.html)): [A grammar for CF standard names](http://envarml.pbworks.com/w/page/8988920/FrontPage) / 1103 names
 * An interesting [page of keywords](https://cfconventions.org/Data/cf-standard-names/79/build/kwic_index_for_cf_standard_names.html) that resulted
-* Jonathan Gregory et al ([list post](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2010/048064.html)): [standard name grammar/Parsing CF standard names](http://www.met.reading.ac.uk/~jonathan/CF_metadata/14.1/) / 2072 names
-* Rob Raskin ([list post mention](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2009/047768.html)): [mapped CF standard name list to SWEET-based ontologolical representation](https://wiki.earthdata.nasa.gov/download/attachments/50792120/SWEET_SPG.ppt?version=1&modificationDate=1435254939370&api=v2) (Powerpoint) / 2149 names
+* Jonathan Gregory et al ([list post](https://cfconventions.org/mailing-list-archive/Data/3450.html)): [standard name grammar/Parsing CF standard names](http://www.met.reading.ac.uk/~jonathan/CF_metadata/14.1/) / 2072 names
+* Rob Raskin: [mapped CF standard name list to SWEET-based ontologolical representation](https://wiki.earthdata.nasa.gov/download/attachments/50792120/SWEET_SPG.ppt?version=1&modificationDate=1435254939370&api=v2) (Powerpoint) / 2149 names
 * John Graybeal (no list post):  [auto-generated pseudo-CF names from CF components](https://github.com/graybealski/cf-conventions-work/blob/master/CF_SWEET_201401_Redacted.xlsx) (Excel) / 2523 names
-* Michael Piasecki/Peng Ji ([list post](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2012/055875.html)): CF standard names organized by facets [("need reference: old `edscvs.ccny.cuny.edu/cf/index.php?tema=4448` link no longer working")] (TemaTres) / 9981 concepts
+<!-- * Michael Piasecki/Peng Ji ([list post](https://mailman.cgd.ucar.edu/pipermail/cf-metadata/2012/055875.html)): CF standard names organized by facets [("need reference: old `edscvs.ccny.cuny.edu/cf/index.php?tema=4448` link no longer working")] (TemaTres) / 9981 concepts -->
 
 ### Are there mappings of the standard name terms to other terms?
 
@@ -600,3 +591,4 @@ However, as noted above, this should first be agreed with the person overseeing 
 [cf-website-repo]: https://github.com/cf-convention/cf-convention.github.io
 [cf-website-issues]: https://github.com/cf-convention/cf-convention.github.io/issues
 [cf-website-pulls]: https://github.com/cf-convention/cf-convention.github.io/pulls
+[mailing-list-archive]: https://cfconventions.org/mailing-list-archive/Data

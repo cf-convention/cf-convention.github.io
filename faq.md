@@ -39,7 +39,7 @@ Principles of CF include self-describing data (no external tables needed for und
 
 The CF conventions are maintained by volunteers, led by a Governance Panel and assisted by the Conventions Committee and Standard Names Committee.
 (See [CF Governance](governance.md).)
-Changes to the conventions are proposed and settled by the community, using the [CF Conventions GitHub repository][cf-conventions-repo]'s [issues][cf-conventions-issues] and [pull request][cf-conventions-pulls] functionality for discussion, agreement, and implementing any agreed changes.
+Changes to the conventions are proposed and settled by the community, using the [CF conventions GitHub repository][cf-conventions-repo]'s [issues][cf-conventions-issues] and [pull request][cf-conventions-pulls] functionality for discussion, agreement, and implementing any agreed changes.
 Many of the principles of CF operations follow the proposals at these [rules for CF conventions changes](rules.md).
 
 ### How long has CF been around? Is it mature?
@@ -78,20 +78,20 @@ So for example the CF Standard Names attempt to be as general and well-defined a
 
 ### How do I find previously asked questions about CF?
 
-The first way is to check this FAQ. If you can't find your question answered here, you could search for it in the [CF discussion repository][cf-discuss-issues] for questions asked since 2020, or for earlier questions in the [CF mailing list][mailing-list-archive].
+The first way is to check this FAQ. If you can't find your question answered here, you could search for it in the [CF discussion GitHub repository][cf-discuss-issues] for questions asked since 2020, or for earlier questions in the [CF mailing list][mailing-list-archive].
 
 ### How do I ask questions about CF?
 
 First, please see whether your question has already been answered (see [question above](#how-do-i-find-previously-asked-questions-about-cf)).
-Questions about the CF Convention, including its Standard Names list, may be asked by raising new `question` issues in the [CF discussion repository][cf-discuss-issues].
+Questions about the CF Convention, including its Standard Names list, may be asked by raising new `question` issues in the [CF discussion GitHub repository][cf-discuss-issues].
 CF community members usually respond within a day to simple questions, but allow more time if you have an advanced technical topic.
 
 ### How do I propose a change?
 
-Changes to the CF standard and the Standard Names are generally proposed first on the [CF Discuss GitHub repo][cf-discuss-repo] as an [issue][cf-discuss-issues].
+Changes to the CF standard and the Standard Names are generally proposed first on the [CF discussion GitHub repository][cf-discuss-repo] as an [issue][cf-discuss-issues].
 See [How do I ask for a new standard name?](#how-do-i-ask-for-a-new-standard-name) to learn more about changes to the Standard Names list.
 
-A change to the CF standard itself may be discussed initially in a [CF Discuss issue][cf-discuss-issues], but must be presented and agreed to in detail as a [CF Conventions issue][cf-conventions-issues], where the explicit change being requested can be refined.
+A change to the CF standard itself may be discussed initially in an issue in the [CF discussion GitHub repository][cf-discuss-issues], but must be presented and agreed to in detail as a [CF conventions issue][cf-conventions-issues], where the explicit change being requested can be refined.
 
 ### What is the process for accepting a change to the CF convention?
 
@@ -343,7 +343,7 @@ If you can't find any matches, send an email to the CF-Metadata list describing 
 
 ### How do I ask for a new standard name?
 
-You ask for a new standard name by raising a new `standard name` issue in the [CF discussion repository][cf-discuss-issues]. In your issue, specify the following for each standard name you want to request:
+You ask for a new standard name by raising a new `standard name` issue in the [CF discussion GitHub repository][cf-discuss-issues]. In your issue, specify the following for each standard name you want to request:
 
 * its name,
 * its description, and

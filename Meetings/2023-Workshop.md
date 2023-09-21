@@ -128,13 +128,13 @@ Propose/Sign-up: _need a link_
 * 2
 
 ## The organising committee
-Alison Pamment
-Antonio S. Cofiño
-Charlie Zender
-Daniel Lee
-David Hassell
-Ethan Davis
-Guilherme Castelao
-Kevin O'Brien
-Lars Bärring
-Sadie Bartholomew
+* Alison Pamment
+* Antonio S. Cofiño
+* Charlie Zender
+* Daniel Lee
+* David Hassell
+* Ethan Davis
+* Guilherme Castelao
+* Kevin O'Brien
+* Lars Bärring
+* Sadie Bartholomew

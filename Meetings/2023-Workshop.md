@@ -71,7 +71,7 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 
 * **15:05 - ClimateEurope2**
 
-* **15:45 - Standard names - new developments, volunteers (Alison)**
+* **15:30 - Standard names - new developments, volunteers (Alison)**
 
 * **16:00 - Lightning Talks (MC: Organizing Committee)**
   * Talk 1

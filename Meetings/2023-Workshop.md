@@ -23,7 +23,7 @@ There is no fee!
 The meeting will be held on Zoom.
 [Click here to access the meeting] -- Link coming soon!
 
-[Click here] -- Link coming soon -- to join the social hour after each day's sessions (the password should have been e-mailed to you, but if not it will be made available during the meeting).
+The social hour after each day's session will continue on the same Zoom link as the meeting itself.
 
 ## Documents
 

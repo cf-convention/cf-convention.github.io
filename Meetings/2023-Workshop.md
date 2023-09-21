@@ -68,9 +68,8 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 ### Wednesday, 4 October 2023
 
 * **15:00 UTC - Welcome, Review, Discussion (Organizing Committee)**
-  * Report out from Hackathon sessions
 
-* **15:30 - ClimateEurope2**
+* **15:05 - ClimateEurope2**
 
 * **15:45 - Standard names - new developments, volunteers (Alison)**
 

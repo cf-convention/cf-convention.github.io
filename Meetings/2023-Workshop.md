@@ -9,10 +9,6 @@ The 2023 CF Workshop will be a virtual meeting on 3-5 October 2023.
 The meeting will run for three hours on each day, 15:00 to 18:00 UTC,
 plus an informal hour at the end of each day.
 
-Thanks for its support of this meeting to:
-- ??
-- ?
-
 ## Registration
 
 You can register using [this form](https://docs.google.com/forms/d/e/1FAIpQLSdKBGahnN4sjnGlY3-puFwe7cUuf9UJomL3Wb7JhYRN4IR0Qg/viewform).
@@ -21,7 +17,7 @@ There is no fee!
 ## Virtual Meeting Information
 
 The meeting will be held on Zoom.
-[Click here to access the meeting] -- Link coming soon!
+[Click here to access the meeting](https://ukri.zoom.us/j/95471173597?pwd=V3paaWU3VmwwR0xtMTUyMWhmWlNYdz09)
 
 The social hour after each day's session will continue on the same Zoom link as the meeting itself.
 
@@ -36,7 +32,7 @@ Some presenters may also have access to an institutional repository that provide
 If you are new to this type of repository, see the Figshare "How to sign-up" [page](https://help.figshare.com/article/how-to-sign-up-to-figshare) and the "How to upload and publish your research" [page](https://help.figshare.com/article/how-to-upload-and-publish-your-research)
 or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quickstart/).
 
-## Agenda
+## Dynamic Agenda
 
 ### Tuesday, 3 October 2023
 
@@ -47,20 +43,20 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 
 * **15:10 - Process review and discussion (???)**
   * Release scheduling
-  * Regular committee meetings
-  * Office hours / ask me anything sessions (community call?)
+  * Regular committee meetings (and Info Management and Support Team meetings)
+  * Regular community meetings
+    * Office hours / ask me anything sessions
+    * Issue triage meetings
+    * Hackathon meetings
+  * Will all/any of this help drive forward stuck issues? 
+  * Is annually a good pace for CF Workshops?
 
-* **15:35 - BCP 14 Discussion -- "MUST", "SHALL", "SHOULD", "MAY", etc. (???)**
+* **15:35 - BCP 14 Discussion -- "MUST", "SHALL", "SHOULD", "MAY", etc. (TBD)**
   * How to move forward
 
 * **16:00 - Lightning Talks (MC: Organizing Committee)**
-  * Talk 1
-  * Talk 2
-  * ...
 
-* **16:30 - Hackathon sessions (???)**
-  * Topic 1 (Zoom Room ?)
-  * Topic 2 (Zoom Room ?)
+* **16:30 - Hackathon sessions**
 
 * **18:00 - Adjourn to Virtual Social Hour**
     * Virtual Social Hour
@@ -69,18 +65,13 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 
 * **15:00 UTC - Welcome, Review, Discussion (Organizing Committee)**
 
-* **15:05 - ClimateEurope2**
+* **15:05 - ClimateEurope2 (TBD)**
 
 * **15:30 - Standard names - new developments, volunteers (Alison)**
 
 * **16:00 - Lightning Talks (MC: Organizing Committee)**
-  * Talk 1
-  * Talk 2
-  * ...
 
 * **16:30 - Hackathon sessions (???)**
-  * Topic 1 (Zoom Room ?)
-  * Topic 2 (Zoom Room ?)
 
 * **18:00 - Adjourn to Virtual Social Hour**
   * Virtual Social Hour
@@ -89,42 +80,37 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 
 * **15:00 UTC - Welcome, Review, Discussion (Organizing Committee)**
 
-* **15:15 - Report out from Hackathon sessions (???)**
+* ** 15:15 - Plenary ()
+  * Discussion of Training
+  * Other topics TBD
+
+* **15:15 - Report out from Hackathon sessions (TBD)**
 
 * **16:00 - Lightning Talks (MC: Organizing Committee)**
-  * Talk 1
-  * Talk 2
-  * ...
+
+* ** 17:30 - Summary / Report out (TBD)
 
 * **18:00 - Adjourn**
 
 ## Hackathons
 
-Propose a hackathon topic: see CF Discuss issue #???
+Propose a hackathon topic in registration form.
 
-### Hackathon Schedule
+### Topics
+* BCP 14 implementation (see https://github.com/cf-convention/discuss/issues/258)
+* NetCDF enumerations versus CF flags (see https://github.com/cf-convention/discuss/issues/238)
+* Enhancing CF to allow localizing NetCDF metadata (locale-aware) (see https://github.com/cf-convention/discuss/issues/233)
+* Precipitation standard names
+* Issue triage (https://github.com/cf-convention/cf-conventions/issues)
+* More topics to come ...
 
-#### Tuesday, 3 October 2023
-* Topic 1
-* Topic 2
-
-#### Wednesday, 4 October 2023
-* Topic 3
-* Topic 4
 
 ## Lightning Talks
 
-Propose/Sign-up: _need a link_
+Propose talks in registration form.
 
-### Lightning Talk Schedule
-
-#### Tuesday, 3 October 2023
-* Great talk 1 
-* Great talk 2
-
-#### Wednesday, 4 October 2023
-* Another great talk 1
-* 2
+## CF Code of Conduct
+Participants should review the [CF Code of Conduct](https://github.com/cf-convention/cf-conventions/blob/main/CODE_OF_CONDUCT.md).
 
 ## The organising committee
 * Alison Pamment

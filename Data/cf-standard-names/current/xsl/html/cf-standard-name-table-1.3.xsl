@@ -23,24 +23,35 @@
         }
 
         details summary:hover{
-            color: #234
+            color: #234;
         }
 
         details summary > * {
             display: inline;
         }
 
-        .clickable-cell {
-            padding: 2px
+        .standard-name-summary {
+            padding: 2px;
         }
 
-        .clickable-cell:hover {
+        .standard-name-summary:hover {
             cursor: pointer;
-            background-color: rgb(242, 242, 242)
+            background-color: rgb(242, 242, 242);
         }
 
         .standard-name-label {
             color: #339;
+        }
+
+        .standard-name-description {
+            padding-left: 16px;
+            margin-top: 4px;
+            border-top: 1px dashed #cccccc;
+        }
+        
+        .standard-name-arrow {
+            position: relative;
+            top: 2px;
         }
     </style>
 
@@ -477,16 +488,10 @@ The canonical units associated with each standard name are usually the SI units 
     <xsl:template match="entry">
         <tr>
             <xsl:attribute name="id"><xsl:value-of select="@id"/>_tr</xsl:attribute>
-            
             <td>
-                <div class="clickable-cell">
+                <div class="standard-name-summary">
                     <xsl:attribute name="onclick">toggleHelp('<xsl:value-of select="@id"/>')</xsl:attribute>
-                    <a>
-                        <xsl:attribute name="name">
-                            <xsl:value-of select="@id"/>
-                        </xsl:attribute>
-                    </a>
-                    <img>
+                    <img class="standard-name-arrow">
                         <xsl:attribute name="id"><xsl:value-of select="@id"/>_arrow</xsl:attribute>
                         <xsl:attribute name="src">../build/media/images/arrow_right.gif</xsl:attribute>
                     </img>
@@ -496,10 +501,9 @@ The canonical units associated with each standard name are usually the SI units 
                     <xsl:variable name="standard_name_id" select="@id"/>
                     <xsl:apply-templates select="../alias[entry_id=$standard_name_id]"/>
                 </div>
-                <div>
+                <div class="standard-name-description">
                     <xsl:attribute name="id"><xsl:value-of select="@id"/>_help</xsl:attribute>
-                    <xsl:attribute name="style">display: none; padding-left: 16px; margin-top: 4px; border-top: 1px dashed #cccccc;</xsl:attribute>
-                    
+                    <xsl:attribute name="style">display: none;</xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="description=''">
                             No help available.

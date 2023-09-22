@@ -17,7 +17,21 @@
         cf-standard-name-table.html
     </title>
 
-        <h1 class="documentFirstHeading">CF Standard Name Table</h1>
+    <style>
+        details summary { 
+            cursor: pointer;
+        }
+
+        details summary:hover{
+            color: #234
+        }
+
+        details summary > * {
+            display: inline;
+        }
+    </style>
+
+    <h1 class="documentFirstHeading">CF Standard Name Table</h1>
 
     <div class="documentByLine">
 
@@ -177,19 +191,6 @@
                 helpDiv.style.display = 'none';
                 curArrow = document.getElementById(standard_name + '_arrow');
                 curArrow.src = '../build/media/images/arrow_right.gif';
-            }
-        }
-
-        function toggleSearchHelp($event) {
-            var helpbox = document.getElementById("search-help");
-            var arrow = document.getElementById("search-help-arrow");
-            if (helpbox.style.display === 'none') {
-                helpbox.style.display = 'inline-block';
-                arrow.src = '../build/media/images/arrow_down.gif';
-            }
-            else {
-                helpbox.style.display = 'none';
-                arrow.src = '../build/media/images/arrow_right.gif';
             }
         }
 
@@ -358,28 +359,24 @@ The canonical units associated with each standard name are usually the SI units 
                             </tr>
                             <tr>
                                 <td>
-                                    <div onclick="toggleSearchHelp(event)">
-                                        <img id="search-help-arrow" src="../build/media/images/arrow_down.gif"></img>
-                                        <label>Advanced searches</label>
-                                    </div>
-                                    <div id="search-help"
-                                        style="display: inline-block; padding-left: 16px; margin-top: 4px; border: 1px dashed aliceblue;">                                   
+                                    <details>
+                                        <summary>Advanced searches</summary>
                                         To look for standard names you can use either:
                                         <ul>
-                                        <li>
-                                            An extended regular expression. This is a powerful tool used to search complex queries.
-                                            <br/>For example, with the "Only search canonical units" enabled, <code>^mol m-3$|^mol/m3$</code> would match any string that is exactly "mol m-3" or exactly "mol/m3".
-                                            Exact matches (that is, matches to the entire string) are toggled using the <code>^</code> prefix and the <code>$</code> suffix. The <code>|</code> character acts as an "or" operator.<br/>
-                                            If you want to learn more, <a href="https://regexr.com/">Regexr</a> is a great playground to explore regular expressions.
-                                        </li>
-                                        <li>
-                                            A list of possible matches separated by blank spaces.
-                                            <br/>This is used in conjunction  with AND and OR radio buttons.
-                                            For example, the query "age ice", with AND enabled, would search for every standard names where that contains both "age" and "ice".
-                                            <br/>It is equivalent to the regular expression <code>(?=.*?ice)(?=.*?age).+</code>
-                                        </li>
+                                            <li>
+                                                An extended regular expression. This is a powerful tool used to search complex queries.
+                                                <br/>For example, with the "Only search canonical units" enabled, <code>^mol m-3$|^mol/m3$</code> would match any string that is exactly "mol m-3" or exactly "mol/m3".
+                                                Exact matches (that is, matches to the entire string) are toggled using the <code>^</code> prefix and the <code>$</code> suffix. The <code>|</code> character acts as an "or" operator.<br/>
+                                                If you want to learn more, <a href="https://regexr.com/">Regexr</a> is a great playground to explore regular expressions.
+                                            </li>
+                                            <li>
+                                                A list of possible matches separated by blank spaces.
+                                                <br/>This is used in conjunction  with AND and OR radio buttons.
+                                                For example, the query "age ice", with AND enabled, would search for every standard names where that contains both "age" and "ice".
+                                                <br/>It is equivalent to the regular expression <code>(?=.*?ice)(?=.*?age).+</code>
+                                            </li>
                                         </ul>
-                                    </div>
+                                    </details>
                                 </td>
                             </tr>
                         </tbody>

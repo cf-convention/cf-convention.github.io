@@ -489,6 +489,11 @@ The canonical units associated with each standard name are usually the SI units 
         <tr>
             <xsl:attribute name="id"><xsl:value-of select="@id"/>_tr</xsl:attribute>
             <td>
+                <a>
+                    <xsl:attribute name="name">
+                        <xsl:value-of select="@id"/>
+                    </xsl:attribute>
+                </a>
                 <div class="standard-name-summary">
                     <xsl:attribute name="onclick">toggleHelp('<xsl:value-of select="@id"/>')</xsl:attribute>
                     <img class="standard-name-arrow">

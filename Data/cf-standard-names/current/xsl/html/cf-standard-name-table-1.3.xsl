@@ -29,6 +29,19 @@
         details summary > * {
             display: inline;
         }
+
+        .clickable-cell {
+            padding: 2px
+        }
+
+        .clickable-cell:hover {
+            cursor: pointer;
+            background-color: rgb(242, 242, 242)
+        }
+
+        .standard-name-label {
+            color: #339;
+        }
     </style>
 
     <h1 class="documentFirstHeading">CF Standard Name Table</h1>
@@ -466,25 +479,23 @@ The canonical units associated with each standard name are usually the SI units 
             <xsl:attribute name="id"><xsl:value-of select="@id"/>_tr</xsl:attribute>
             
             <td>
-                <a>
-                    <xsl:attribute name="name">
-                        <xsl:value-of select="@id"/>
-                    </xsl:attribute>
-                </a>
-                <img>
-                    <xsl:attribute name="id"><xsl:value-of select="@id"/>_arrow</xsl:attribute>
-                    <xsl:attribute name="src">../build/media/images/arrow_right.gif</xsl:attribute>
-                </img>
-                <code class="varname">
+                <div class="clickable-cell">
+                    <xsl:attribute name="onclick">toggleHelp('<xsl:value-of select="@id"/>')</xsl:attribute>
                     <a>
-                        <xsl:attribute name="href">javascript:void(0)</xsl:attribute>
-                        <xsl:attribute name="onclick">toggleHelp('<xsl:value-of select="@id"/>')</xsl:attribute>
-                        <xsl:value-of select="@id"/>
+                        <xsl:attribute name="name">
+                            <xsl:value-of select="@id"/>
+                        </xsl:attribute>
                     </a>
-                </code>
-                <xsl:variable name="standard_name_id" select="@id"/>
-                <xsl:apply-templates select="../alias[entry_id=$standard_name_id]"/>
-                
+                    <img>
+                        <xsl:attribute name="id"><xsl:value-of select="@id"/>_arrow</xsl:attribute>
+                        <xsl:attribute name="src">../build/media/images/arrow_right.gif</xsl:attribute>
+                    </img>
+                    <span class="standard-name-label">
+                        <xsl:value-of select="@id"/>
+                    </span>
+                    <xsl:variable name="standard_name_id" select="@id"/>
+                    <xsl:apply-templates select="../alias[entry_id=$standard_name_id]"/>
+                </div>
                 <div>
                     <xsl:attribute name="id"><xsl:value-of select="@id"/>_help</xsl:attribute>
                     <xsl:attribute name="style">display: none; padding-left: 16px; margin-top: 4px; border-top: 1px dashed #cccccc;</xsl:attribute>

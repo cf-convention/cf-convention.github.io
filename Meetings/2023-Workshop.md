@@ -100,7 +100,7 @@ Propose a hackathon topic in registration form.
 * BCP 14 implementation (see https://github.com/cf-convention/discuss/issues/258)
 * NetCDF enumerations versus CF flags (see https://github.com/cf-convention/discuss/issues/238)
 * Enhancing CF to allow localizing NetCDF metadata (locale-aware) (see https://github.com/cf-convention/discuss/issues/233)
-* Precipitation standard names
+* Precipitation standard names (see https://github.com/cf-convention/discuss/issues/262)
 * Issue triage (https://github.com/cf-convention/cf-conventions/issues)
 * More topics to come ...
 

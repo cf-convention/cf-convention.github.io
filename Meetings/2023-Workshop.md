@@ -24,6 +24,7 @@ The social hour after each day's session will continue on the same Zoom link as 
 ## Documents
 
 All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder](https://drive.google.com/drive/u/0/folders/1fxyG-4-9LD5zhfYA5F7zF_YqNFtJOjKI).
+(Presenters, please upload your slides to the workshop folder before your presentation time to allow for backup in case of technical issues.)
 
 The organizing committee requests that all presentations, in final form, be placed in a document repository that provides permanence for the document and a DOI (or other de-referencable PID).
 Both [Figshare](https://figshare.com/) and [Zenodo](https://zenodo.org/) provide these services.

@@ -24,6 +24,7 @@ The social hour after each day's session will continue on the same Zoom link as 
 ## Documents
 
 All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder](https://drive.google.com/drive/u/0/folders/1fxyG-4-9LD5zhfYA5F7zF_YqNFtJOjKI).
+(Presenters, please upload your slides to the workshop folder before your presentation time to allow for backup in case of technical issues.)
 
 The organizing committee requests that all presentations, in final form, be placed in a document repository that provides permanence for the document and a DOI (or other de-referencable PID).
 Both [Figshare](https://figshare.com/) and [Zenodo](https://zenodo.org/) provide these services.
@@ -36,14 +37,14 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 
 ### Tuesday, 3 October 2023
 
-* **15:00 UTC - Welcome and Overview of meeting structure (Organizing Committee)**
+* **15:00 UTC - Welcome and Overview of meeting structure (Alison)**
   * Discussion-heavy plenary sessions
   * Lightning Talks
   * Hackathons (time to work)
 
-* **15:10 - Process review and discussion (???)**
-  * Release scheduling
-  * Regular committee meetings (and Info Management and Support Team meetings)
+* **15:10 - Process review and discussion (Ethan)**
+  * Release scheduling (David)
+  * Regular committee meetings (and Info Management and Support Team meetings) (Jonathan)
   * Regular community meetings
     * Office hours / ask me anything sessions
     * Issue triage meetings
@@ -51,12 +52,11 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
   * Will all/any of this help drive forward stuck issues? 
   * Is annually a good pace for CF Workshops?
 
-* **15:35 - BCP 14 Discussion -- "MUST", "SHALL", "SHOULD", "MAY", etc. (TBD)**
-  * How to move forward
-
-* **16:00 - Lightning Talks (MC: Organizing Committee)**
+* **15:35 - Hackathon Introductions**
+  * Hackathon topics and schedule ([Google Document](https://docs.google.com/document/d/1MRamt7q8dZ_dSsjzLftgQkUhC9_LjPlwXgmJ6Z7Ciao/edit))
 
 * **16:30 - Hackathon sessions**
+  * Hackathon topics and schedule ([Google Document](https://docs.google.com/document/d/1MRamt7q8dZ_dSsjzLftgQkUhC9_LjPlwXgmJ6Z7Ciao/edit))
 
 * **18:00 - Adjourn to Virtual Social Hour**
     * Virtual Social Hour
@@ -65,13 +65,13 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 
 * **15:00 UTC - Welcome, Review, Discussion (Organizing Committee)**
 
-* **15:05 - ClimateEurope2 (TBD)**
+* **15:05 - Standard names - new developments, volunteers (Alison)**
 
-* **15:30 - Standard names - new developments, volunteers (Alison)**
+* **15:35 - Lightning Talks (MC: Organizing Committee)**
+  * Topics and schedule for Lightning Talk ([Google Document](https://docs.google.com/document/d/1RnQ6WL4LKTWvAt7A9wb6J5qfUZ66nAxyezGdYhOhEls/edit)) 
 
-* **16:00 - Lightning Talks (MC: Organizing Committee)**
-
-* **16:30 - Hackathon sessions (???)**
+* **16:00 - Hackathon sessions**
+  * Hackathon topics and schedule ([Google Document](https://docs.google.com/document/d/1MRamt7q8dZ_dSsjzLftgQkUhC9_LjPlwXgmJ6Z7Ciao/edit))
 
 * **18:00 - Adjourn to Virtual Social Hour**
   * Virtual Social Hour
@@ -80,15 +80,16 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 
 * **15:00 UTC - Welcome, Review, Discussion (Organizing Committee)**
 
-* ** 15:15 - Plenary ()
+* **15:15 - Plenary**
   * Discussion of Training
   * Other topics TBD
 
-* **15:15 - Report out from Hackathon sessions (TBD)**
+* **15:15 - Report out from Hackathon sessions**
+  * Hackathon topics and schedule ([Google Document](https://docs.google.com/document/d/1MRamt7q8dZ_dSsjzLftgQkUhC9_LjPlwXgmJ6Z7Ciao/edit))
 
 * **16:00 - Lightning Talks (MC: Organizing Committee)**
 
-* ** 17:30 - Summary / Report out (TBD)
+* **17:30 - Summary / Report out (TBD)**
 
 * **18:00 - Adjourn**
 

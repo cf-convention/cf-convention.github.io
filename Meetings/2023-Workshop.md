@@ -55,7 +55,9 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 * **15:35 - Hackathon Introductions**
   * Hackathon topics and schedule ([Google Document](https://docs.google.com/document/d/1MRamt7q8dZ_dSsjzLftgQkUhC9_LjPlwXgmJ6Z7Ciao/edit))
 
-* **16:30 - Hackathon sessions**
+* **16:30 - Break**
+
+* **16:40 - Hackathon sessions**
   * Hackathon topics and schedule ([Google Document](https://docs.google.com/document/d/1MRamt7q8dZ_dSsjzLftgQkUhC9_LjPlwXgmJ6Z7Ciao/edit))
 
 * **18:00 - Adjourn to Virtual Social Hour**
@@ -70,7 +72,9 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 * **15:35 - Lightning Talks (MC: Organizing Committee)**
   * Topics and schedule for Lightning Talk ([Google Document](https://docs.google.com/document/d/1RnQ6WL4LKTWvAt7A9wb6J5qfUZ66nAxyezGdYhOhEls/edit)) 
 
-* **16:00 - Hackathon sessions**
+* **16:30 - Break**
+
+* **16:40 - Hackathon sessions**
   * Hackathon topics and schedule ([Google Document](https://docs.google.com/document/d/1MRamt7q8dZ_dSsjzLftgQkUhC9_LjPlwXgmJ6Z7Ciao/edit))
 
 * **18:00 - Adjourn to Virtual Social Hour**
@@ -89,7 +93,9 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 
 * **16:00 - Lightning Talks (MC: Organizing Committee)**
 
-* **17:30 - Summary / Report out (TBD)**
+* **16:45 - Break**
+
+* **17:00 - Summary / Report out (TBD)**
 
 * **18:00 - Adjourn**
 

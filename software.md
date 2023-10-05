@@ -104,6 +104,11 @@ The service returns subsets as CF compliant netCDF-3/4 files, in addition to oth
 [Xarray](http://xarray.pydata.org/) is a python package designed for working with labelled, multi-dimensional array data, built around the netCDF data model.
 It uses CF Conventions in several ways, such as encoding / decoding variables and interpreting metadata for visualization.
 
+### gridded -- Python package for working with gridded met/ocean model results.
+[gridded](https://github.com/NOAA-ORR-ERD/gridded) provides a single API for accessing / working with gridded model results on multiple grid types.
+It aims to support reading and writing and analysis of regular, curvilinear, and unstuctrueed grids using the CF, UGRID and SGRID conventions.
+
+
 ## Commercial Software Packages
 
 ### ArcGIS Pro

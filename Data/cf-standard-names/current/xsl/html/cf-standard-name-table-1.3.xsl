@@ -31,12 +31,13 @@
         }
 
         .standard-name-summary {
-            padding: 2px;
+            padding-top: 2px;
+            padding-bottom: 2px;
         }
 
         .standard-name-summary:hover {
             cursor: pointer;
-            background-color: rgb(242, 242, 242);
+            background-color: #ffe6d3;   
         }
 
         .standard-name-label {
@@ -49,6 +50,18 @@
             border-top: 1px dashed #cccccc;
         }
         
+        #standard_name_table tr:nth-child(even) {
+            background-color: #f9f2f4;
+        }
+        
+        #standard_name_table td {
+            padding-left: 8px;
+        }
+
+        .table-header {
+            text-align: start;
+            padding-left: 8px;
+        }
     </style>
 
     <h1 class="documentFirstHeading">CF Standard Name Table</h1>
@@ -458,11 +471,11 @@ The canonical units associated with each standard name are usually the SI units 
                 
             </div>
             
-            <table id="standard_name_table" border="1" width="100%" cellpadding="2" cellspacing="0">
-                <th width="76%">Standard Name</th>
-                <th width="8%">Canonical Units</th>
-                <th width="8%">AMIP</th>
-                <th width="8%">GRIB</th>
+            <table id="standard_name_table" width="100%">
+                <th width="76%" class="table-header">Standard Name</th>
+                <th width="8%" class="table-header">Canonical Units</th>
+                <th width="8%" class="table-header">AMIP</th>
+                <th width="8%" class="table-header">GRIB</th>
                 <xsl:apply-templates select="entry"/>
             </table>
      </body>            

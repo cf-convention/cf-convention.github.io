@@ -49,10 +49,6 @@
             border-top: 1px dashed #cccccc;
         }
         
-        .standard-name-arrow {
-            position: relative;
-            top: 2px;
-        }
     </style>
 
     <h1 class="documentFirstHeading">CF Standard Name Table</h1>
@@ -181,40 +177,27 @@
         function toggleHelp(standard_name) {
             // check for the existence of the help tr object for this standard_name
             var helpDiv = document.getElementById(standard_name + '_help');
-
             if (helpDiv) {
                 if (helpDiv.style.display != 'none') {
                     helpDiv.style.display = 'none';
-
-                    curArrow = document.getElementById(standard_name + '_arrow');
-                    curArrow.src = '../build/media/images/arrow_right.gif';
                 }
                 else {
                     helpDiv.style.display = '';
-
-                    curArrow = document.getElementById(standard_name + '_arrow');
-                    curArrow.src = '../build/media/images/arrow_down.gif';
                 }
             }
         }
 
         function showHelp(standard_name) {
             var helpDiv = document.getElementById(standard_name + '_help');
-
             if (helpDiv) {
                 helpDiv.style.display = '';
-                curArrow = document.getElementById(standard_name + '_arrow');
-                curArrow.src = '../build/media/images/arrow_down.gif';
             }
         }
 
         function hideHelp(standard_name) {
             var helpDiv = document.getElementById(standard_name + '_help');
-
             if (helpDiv) {
                 helpDiv.style.display = 'none';
-                curArrow = document.getElementById(standard_name + '_arrow');
-                curArrow.src = '../build/media/images/arrow_right.gif';
             }
         }
 
@@ -496,10 +479,6 @@ The canonical units associated with each standard name are usually the SI units 
                 </a>
                 <div class="standard-name-summary">
                     <xsl:attribute name="onclick">toggleHelp('<xsl:value-of select="@id"/>')</xsl:attribute>
-                    <img class="standard-name-arrow">
-                        <xsl:attribute name="id"><xsl:value-of select="@id"/>_arrow</xsl:attribute>
-                        <xsl:attribute name="src">../build/media/images/arrow_right.gif</xsl:attribute>
-                    </img>
                     <span class="standard-name-label">
                         <xsl:value-of select="@id"/>
                     </span>

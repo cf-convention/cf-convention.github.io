@@ -1,0 +1,246 @@
+= On Scalar Coordinates =
+
+This page illustrates differences between tickets #104 and #105 for data creators using Scalar Coordinate Variables.
+
+
+
+In the examples, all variables are linked to a data variable, either as a coordinate variable or via the coordinates attribute, I have omitted this encoding to keep the table clearer.
+
+The right hand column shows a number of current uses of scalar coordinates we have encountered in software creating CF NetCDF datasets.  All of these examples become invalid if #104 is implemented but remain valid if #105 is implemented.
+
+The left hand column indicates how we would have to change the current operations and output if #104 is accepted as a change to CF. In many cases decisions have to be made about which structure to encode which are currently not deemed necessary.  In particular, these decisions are not currently made when the data set is written.  The choice of appropriate structure is very case dependent.
+
+The proposed change #104 adds significant complexity to the data writing process, imposing decisions on data creators which they are not currently making as they are not deemed necessary in the cases illustrated below.
+
+In all these cases #104 is driving a change in my behaviour as a data creator, where as #105 is enabling me to carry on as I currently work, whilst clarifying the interpretation.
+
+{{{
+#!rst
+
+
+
++----------------------------------------------+------------------------+
+|                  #104                        |      #105              |
+|                                              |                        |
+|                                              |  and current use       |
+|                                              |                        |
+|                                              |                        |
+|                                              |                        |
+|                                              |                        |
++----------------------------------------------+------------------------+
+|                                                                       |
+|This simple example shows how a parametrised vertical coordinate may   |
+|be encoded correctly.                                                  |
+|                                                                       |
+|                                                                       |
+|                                                                       |
+|                                                                       |
++----------------------------------------------+------------------------+
+|                                              |                        |
+|dimensions:                                   |dimensions:             |
+|  model_level = 1 ;                           |                        |
+|                                              |                        |
+|variables:                                    |variables:              |
+|  model_level(model_level);                   |  model_level ;         |
+|                                              |                        |
+|  sigma(model_level);                         |  sigma ;               |
+|                                              |                        |
+|  delta(model_level);                         |  delta ;               |
++----------------------------------------------+------------------------+
+|This example illustrates that for forecasting times the situation is   |
+|significantly complicated: a decision has to be made by the data       |
+|creator which is not currently made about the inter-relationship       |
+|between the times.                                                     |
+|                                                                       |
+|It is not clear at the time of writing the data which configuration is |
+|appropriate, all three are plausible interpretations, but one is not   |
+|allowed by CF.                                                         |
+|                                                                       |
+|As a data producer I do not think I should have to make this decision  |
+|to write my data.                                                      |
++----------------------------------------------+------------------------+
+|dimensions:                                   |dimensions              |
+|  time = 1 ;                                  |                        |
+|                                              |variables:              |
+|  forecast_reftime = 1 ;                      |  time ;                |
+|                                              |                        |
+|variables:                                    |  forecast_period ;     |
+|  time(time) ;                                |                        |
+|                                              |  forecast_reftime      |
+|  forecast_reftime(forecast_reftime) ;        |                        |
+|                                              |                        |
+|  forecast_period(time, forecast_reftime) ;   |                        |
++----------------------------------------------+                        |
+|dimensions:                                   |                        |
+|  time = 1 ;                                  |                        |
+|                                              |                        |
+|  forecast_period = 1 ;                       |                        |
+|                                              |                        |
+|variables:                                    |                        |
+|  time(time) ;                                |                        |
+|                                              |                        |
+|  forecast_period(forecast_period) ;          |                        |
+|                                              |                        |
+|  forecast_reftime(time, forecast_period) ;   |                        |
++----------------------------------------------+                        |
+|not allowed (see #100)                        |                        |
+|                                              |                        |
+|dimensions:                                   |                        |
+|  forecast_period = 1 ;                       |                        |
+|                                              |                        |
+|  forecast_reftime = 1 ;                      |                        |
+|                                              |                        |
+|variables:                                    |                        |
+|  forecast_period(forecast_period) ;          |                        |
+|                                              |                        |
+|  forecast_reftime(forecast_reftime) ;        |                        |
+|                                              |                        |
+|  time(forecast_period, forecast_reftime) ;   |                        |
++----------------------------------------------+------------------------+
+|In multi-model analyses a range of factors combine to define where in  |
+|the experimental design space a particular data subset exists.         |
+|                                                                       |
+|Each potential member of the multi-model collection is defined         |
+|independently.  How groups of these may be structured is governed by   |
+|the group members, their characterisitcs and the data.                 |
+|                                                                       |
+|The data creator should not have to define a set of inter-relationships|
+|at the point of data writing, there are no valid ways of doing this to |
+|meet all needs , no unique answer.                                     |
+|                                                                       |
+|#105 recognises these characteristics as emergent properties, not      |
+|defined at the time of writing each data set.                          |
++----------------------------------------------+------------------------+
+|dimensions:                                   |dimensions:             |
+|  multi-model = 1 ;                           |                        |
+|                                              |                        |
+|variables:                                    |variables:              |
+|  ensemble(multi-model) ;                     |  ensemble ;            |
+|                                              |                        |
+|  institute(multi-model)                      |  institute ;           |
+|                                              |                        |
+|  model(multi-model) ;                        |  model ;               |
+|                                              |                        |
+|  configuration(multi-model) ;                |  configuration ;       |
+|                                              |                        |
+|  exp_param1(multi-model) ;                   |  exp_param1 ;          |
+|                                              |                        |
+|  exp_param2(multi-model) ;                   |  exp_param2 ;          |
+|                                              |                        |
+|  exp_param3(multi-model) ;                   |  exp_param3 ;          |
++----------------------------------------------+                        |
+|dimensions:                                   |                        |
+|  ensemble = 1 ;                              |                        |
+|                                              |                        |
+|  model_member = 1 ;                          |                        |
+|                                              |                        |
+|  configuration = 1 ;                         |                        |
+|                                              |                        |
+|  params = 1 ;                                |                        |
+|                                              |                        |
+|variables:                                    |                        |
+|  ensemble(ensemble) ;                        |                        |
+|                                              |                        |
+|  institute(model-member) ;                   |                        |
+|                                              |                        |
+|  model(model-member) ;                       |                        |
+|                                              |                        |
+|  configuration(configuration)                |                        |
+|                                              |                        |
+|  exp_param1(params)                          |                        |
+|                                              |                        |
+|  exp_param2(params)                          |                        |
+|                                              |                        |
+|  exp_param3(params)                          |                        |
++----------------------------------------------+                        |
+|dimensions:                                   |                        |
+|  ensemble = 1 ;                              |                        |
+|                                              |                        |
+|  model_member = 1 ;                          |                        |
+|                                              |                        |
+|  configuration = 1 ;                         |                        |
+|                                              |                        |
+|  param1 = 1 ;                                |                        |
+|                                              |                        |
+|  param2 = 1 ;                                |                        |
+|                                              |                        |
+|  param3 = 1 ;                                |                        |
+|                                              |                        |
+|variables:                                    |                        |
+|  ensemble(ensemble) ;                        |                        |
+|                                              |                        |
+|  institute(model-member) ;                   |                        |
+|                                              |                        |
+|  model(model-member) ;                       |                        |
+|                                              |                        |
+|  configuration(configuration)                |                        |
+|                                              |                        |
+|  exp_param1(param1)                          |                        |
+|                                              |                        |
+|  exp_param2(param2)                          |                        |
+|                                              |                        |
+|  exp_param3(param3)                          |                        |
++----------------------------------------------+                        |
+|numerous further combination options are      |                        |
+|plausible                                     |                        |
++----------------------------------------------+------------------------+
+|When single labels are used as coordinates the interpretation of scalar|
+|as defined by 104 forces the first interpretation.  If this is not the |
+|desired interpretation the data creator must make further decisions    |
+|about how the labels are to be interpreted.                            |
+|                                                                       |
+|                                                                       |
+|                                                                       |
+|                                                                       |
+|                                                                       |
++----------------------------------------------+------------------------+
+|dimensions:                                   |dimensions:             |
+|  label_1 = 1 ;                               |                        |
+|  label_2 = 1 ;                               |variables:              |
+|  label_3 = 1 ;                               |  label_1 ;             |
+|                                              |                        |
+|variables:                                    |  label_2 ;             |
+|  label_1(label_1) ;                          |                        |
+|  label_2(label_2) ;                          |  label_3 ;             |
+|  label_3(label_3) ;                          |                        |
++----------------------------------------------+                        |
+|dimensions:                                   |                        |
+|  experiment = 1 ;                            |                        |
+|                                              |                        |
+|variables:                                    |                        |
+|  label_1(experiment) ;                       |                        |
+|                                              |                        |
+|  label_2(experiment) ;                       |                        |
+|                                              |                        |
+|  label_3(experiment) ;                       |                        |
++----------------------------------------------+                        |
+|dimensions:                                   |                        |
+|  label_1 = 1 ;                               |                        |
+|                                              |                        |
+|  label_2 = 1 ;                               |                        |
+|                                              |                        |
+|variables:                                    |                        |
+|  label_1(label_1) ;                          |                        |
+|                                              |                        |
+|  label_2(label_2) ;                          |                        |
+|                                              |                        |
+|  label_3(label_2) ;                          |                        |
++----------------------------------------------+                        |
+|dimensions:                                   |                        |
+|  label_1 = 1 ;                               |                        |
+|                                              |                        |
+|  label_2 = 1 ;                               |                        |
+|                                              |                        |
+|variables:                                    |                        |
+|  label_1(label_1) ;                          |                        |
+|                                              |                        |
+|  label_2(label_1) ;                          |                        |
+|                                              |                        |
+|  label_3(label_2) ;                          |                        |
++----------------------------------------------+------------------------+
+
+}}}
+
+There are no examples of Discrete Sampling Geometries in this table, as #104 states: 'The interpretation of scalar coordinate variables in Section 9 may be different from the above, and this may require further clarification if the above is agreed'. 
+
+In the absence of this clarification the only comment I can make about Scalar Coordinate Variables and Discrete Sampling Geometries is that #105 does not require further clarification, it is consistent with Section 9 of the Conventions document.

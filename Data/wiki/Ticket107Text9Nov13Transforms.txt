@@ -1,0 +1,13 @@
+A transform construct contains
+
+  * A transform name, which indicates the nature of the transformation and implies the formula to be used. CF metadata does not explicitly record the formula; it is assumed that application software knows what to do.
+
+  * An unordered collection of variables which correspond to the terms of the transformation formula. The variables may be scalar parameters, pointers to dimension or auxiliary coordinate constructs of the field construct, or pointers to other field constructs. The collection includes the input coordinates being mapped, but not the output coordinates.
+
+A transform construct provides geo-locating metadata to all of the dimension and auxiliary coordinate constructs referenced by it.
+
+Transform constructs correspond to the functions of the CF-netCDF attributes `formula_terms`, which describes how to compute a vertical auxiliary coordinate variable from components ([http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/cf-conventions.html#dimensionless-v-coord CF Appendix D]), and `grid_mapping`, which describes how to compute true latitude and longitude auxiliary coordinate variables from horizontal projection dimension coordinates, or describes the figure of earth for true latitude and longitude coordinate variables ([http://cf-pcmdi.llnl.gov/documents/cf-conventions/1.6/cf-conventions.html#appendix-grid-mappings CF Appendix F]).
+
+The transform name is the `standard_name` of a vertical coordinate variable with `formula_terms`, and the `grid_mapping_name` of a `grid_mapping` variable. The scalar parameters are scalar data variables (which should have units if dimensional) named by `formula_terms`, and attributes of `grid_mapping` variables (for which the units are specified by the transform construct). The role of each term in the formula of the transform construct is identified by its keyword in a `formula_terms` attribute, or its attribute name in a `grid_mapping` variable.
+
+Note that the transform construct for a CF-netCDF grid mapping of `latitude_longitude` is a special case in which the outputs are the same as the input coordinates.

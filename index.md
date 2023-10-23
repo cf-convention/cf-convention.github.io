@@ -12,27 +12,33 @@ The CF convention includes a standard name table, which defines strings that ide
 
 ---
 
-**Latest release** (1.9) [HTML][releasedhtml] [PDF][releasedpdf]
+**_Conventions_:** **Latest release** (1.10) [HTML][releasedhtml] [PDF][releasedpdf]
 <code>&nbsp;&bull;&nbsp;</code>
 **Working draft** [HTML][workinghtml] [PDF][workingpdf]
+
+**_Vocabularies_:** [**Standard names**][currentnames]
 <code>&nbsp;&bull;&nbsp;</code>
-[**Standard name table**][currentnames]
+[**Area types**][areatypes]
+<code>&nbsp;&bull;&nbsp;</code>
+[**Standardized regions**][regions]
 
 ---
 
-CF is developed through open discussion on GitHub. If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here](https://cfconventions.org/discussion.html). Changes are decided according to the CF [governance arrangements](https://cfconventions.org/governance.html). The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion. 
+CF is developed through open discussion on GitHub.
+If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here][discussion].
+Changes are decided according to the CF [governance arrangements][governance].
+The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion. 
 
-Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models. The use of CF is recommended where applicable by Unidata.
+Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models.
+The use of CF is recommended where applicable by Unidata.
 
 ## Quick links
 
 See also the links in the navigation bar at the top of this page.
 
-* [Latest release of CF conventions][releasedhtml]
-* [Current version of CF standard name table][currentnames]
 * Current issues: [general discussion][github_discuss] (including standard names), [conventions][github_conventions], this [website][github_website] (including governance)
 * [CF GitHub organisation][cf_github]
-* [CF FAQ][q8]
+* [CF FAQ][faq]
 * [List of software for working with CF](software.md)
 * [Paper][cfdmpaper] describing the CF data model and reference software
 * Overview of CF basics as a [presentation][viewgraphs] and [paper][article]
@@ -42,20 +48,16 @@ See also the links in the navigation bar at the top of this page.
 [coards]: https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html
 [viewgraphs]: Data/cf-documents/overview/viewgraphs.pdf
 [article]: Data/cf-documents/overview/article.pdf
-[discussion]: discussion.html
-[q1]: latest.html
-[q2]: standard-names.html
-[q3]: http://cf-trac.llnl.gov/trac
-[q4]: http://www.met.reading.ac.uk/~david/cf_trac_summary.html
-[q5]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
-[q6]: requirements-and-recommendations.html
-[q7]: compliance-checker.html
-[q8]: faq.html
-[releasedhtml]: Data/cf-conventions/cf-conventions-1.9/cf-conventions.html
-[releasedpdf]: Data/cf-conventions/cf-conventions-1.9/cf-conventions.pdf
+[discussion]: discussion.md
+[governance]: governance.md
+[faq]: faq.md
+[releasedhtml]: Data/cf-conventions/cf-conventions-1.10/cf-conventions.html
+[releasedpdf]: Data/cf-conventions/cf-conventions-1.10/cf-conventions.pdf
 [workinghtml]: /cf-conventions/cf-conventions.html
 [workingpdf]: /cf-conventions/cf-conventions.pdf
 [currentnames]: Data/cf-standard-names/current/build/cf-standard-name-table.html
+[areatypes]: Data/area-type-table/current/build/area-type-table.html
+[regions]: Data/standardized-region-list/standardized-region-list.current.html
 [cfdmpaper]: https://doi.org/10.5194/gmd-10-4619-2017
 [github_discuss]: https://github.com/cf-convention/discuss/issues
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues

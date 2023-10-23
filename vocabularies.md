@@ -1,0 +1,259 @@
+---
+layout: default
+title: Vocabularies
+group: "navigation"
+---
+
+<h2><b>CF Standard Names and other CF Controlled Vocabularies</b></h2>
+<p>
+<h4><b>Standard Name Table (current version, v83, 17 October 2023)</b></h4>
+  <a href="Data/cf-standard-names/83/build/cf-standard-name-table.html">HTML</a> &nbsp;
+  <a href="Data/cf-standard-names/83/src/cf-standard-name-table.xml">XML</a> &nbsp;
+  <a href="Data/cf-standard-names/83/build/kwic_index_for_cf_standard_names.html">KWIC_Index</a>
+
+  <h5><b>Previous Versions (HTML)</b></h5>
+    N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/82/build/cf-standard-name-table.html">v82</a> &nbsp;
+    <a href="Data/cf-standard-names/81/build/cf-standard-name-table.html">v81</a> &nbsp;
+    <a href="Data/cf-standard-names/80/build/cf-standard-name-table.html">v80</a> &nbsp;
+    <a href="Data/cf-standard-names/79/build/cf-standard-name-table.html">v79</a> &nbsp;
+    <a href="Data/cf-standard-names/78/build/cf-standard-name-table.html">v78</a> &nbsp;
+    <a href="Data/cf-standard-names/77/build/cf-standard-name-table.html">v77</a> &nbsp;
+    <a href="Data/cf-standard-names/76/build/cf-standard-name-table.html">v76</a> &nbsp;
+    <a href="Data/cf-standard-names/75/build/cf-standard-name-table.html">v75</a> &nbsp;
+    <a href="Data/cf-standard-names/74/build/cf-standard-name-table.html">v74</a> &nbsp;
+    <a href="Data/cf-standard-names/73/build/cf-standard-name-table.html">v73</a> &nbsp;
+    <a href="Data/cf-standard-names/72/build/cf-standard-name-table.html">v72</a> &nbsp;
+    <a href="Data/cf-standard-names/71/build/cf-standard-name-table.html">v71</a> &nbsp;
+    <a href="Data/cf-standard-names/70/build/cf-standard-name-table.html">v70</a> &nbsp;
+    <a href="Data/cf-standard-names/69/build/cf-standard-name-table.html">v69</a> &nbsp;
+    <a href="Data/cf-standard-names/68/build/cf-standard-name-table.html">v68</a> &nbsp;
+    <a href="Data/cf-standard-names/67/build/cf-standard-name-table.html">v67</a> &nbsp;
+    <a href="Data/cf-standard-names/66/build/cf-standard-name-table.html">v66</a> &nbsp;
+    <a href="Data/cf-standard-names/65/build/cf-standard-name-table.html">v65</a> &nbsp;
+    <a href="Data/cf-standard-names/64/build/cf-standard-name-table.html">v64</a> &nbsp;
+    <a href="Data/cf-standard-names/63/build/cf-standard-name-table.html">v63</a> &nbsp;
+    <a href="Data/cf-standard-names/62/build/cf-standard-name-table.html">v62</a> &nbsp;
+    <a href="Data/cf-standard-names/61/build/cf-standard-name-table.html">v61</a> &nbsp;
+    <a href="Data/cf-standard-names/60/build/cf-standard-name-table.html">v60</a> &nbsp;
+    <a href="Data/cf-standard-names/59/build/cf-standard-name-table.html">v59</a> &nbsp;
+    <a href="Data/cf-standard-names/58/build/cf-standard-name-table.html">v58</a> &nbsp;
+    <a href="Data/cf-standard-names/57/build/cf-standard-name-table.html">v57</a> &nbsp;
+    <a href="Data/cf-standard-names/56/build/cf-standard-name-table.html">v56</a> &nbsp;
+    <a href="Data/cf-standard-names/55/build/cf-standard-name-table.html">v55</a> &nbsp;
+    <a href="Data/cf-standard-names/54/build/cf-standard-name-table.html">v54</a> &nbsp;
+    <a href="Data/cf-standard-names/53/build/cf-standard-name-table.html">v53</a> &nbsp;
+    <a href="Data/cf-standard-names/52/build/cf-standard-name-table.html">v52</a> &nbsp;
+    <a href="Data/cf-standard-names/51/build/cf-standard-name-table.html">v51</a> &nbsp;
+    <a href="Data/cf-standard-names/50/build/cf-standard-name-table.html">v50</a> &nbsp;
+    <a href="Data/cf-standard-names/49/build/cf-standard-name-table.html">v49</a> &nbsp;
+    <a href="Data/cf-standard-names/48/build/cf-standard-name-table.html">v48</a> &nbsp;
+    <a href="Data/cf-standard-names/47/build/cf-standard-name-table.html">v47</a> &nbsp;
+    <a href="Data/cf-standard-names/46/build/cf-standard-name-table.html">v46</a> &nbsp;
+    <a href="Data/cf-standard-names/45/build/cf-standard-name-table.html">v45</a> &nbsp;
+    <a href="Data/cf-standard-names/44/build/cf-standard-name-table.html">v44</a> &nbsp;
+    <a href="Data/cf-standard-names/43/build/cf-standard-name-table.html">v43</a> &nbsp;
+    <a href="Data/cf-standard-names/42/build/cf-standard-name-table.html">v42</a> &nbsp;
+    <a href="Data/cf-standard-names/41/build/cf-standard-name-table.html">v41</a> &nbsp;
+    <a href="Data/cf-standard-names/40/build/cf-standard-name-table.html">v40</a> &nbsp;
+    <a href="Data/cf-standard-names/39/build/cf-standard-name-table.html">v39</a> &nbsp;
+    <a href="Data/cf-standard-names/37/build/cf-standard-name-table.html">v37</a> &nbsp;
+    <a href="Data/cf-standard-names/36/build/cf-standard-name-table.html">v36</a> &nbsp;
+    <a href="Data/cf-standard-names/35/build/cf-standard-name-table.html">v35</a> &nbsp;
+    <a href="Data/cf-standard-names/34/build/cf-standard-name-table.html">v34</a> &nbsp;
+    <a href="Data/cf-standard-names/33/build/cf-standard-name-table.html">v33</a> &nbsp;
+    <a href="Data/cf-standard-names/32/build/cf-standard-name-table.html">v32</a> &nbsp;
+    <a href="Data/cf-standard-names/31/build/cf-standard-name-table.html">v31</a> &nbsp;
+    <a href="Data/cf-standard-names/30/build/cf-standard-name-table.html">v30</a> &nbsp;
+    <a href="Data/cf-standard-names/29/build/cf-standard-name-table.html">v29</a> &nbsp;
+    <a href="Data/cf-standard-names/28/build/cf-standard-name-table.html">v28</a> &nbsp;
+    <a href="Data/cf-standard-names/27/build/cf-standard-name-table.html">v27</a> &nbsp;
+    <a href="Data/cf-standard-names/26/build/cf-standard-name-table.html">v26</a> &nbsp;
+    <a href="Data/cf-standard-names/25/build/cf-standard-name-table.html">v25</a> &nbsp;
+    <a href="Data/cf-standard-names/24/build/cf-standard-name-table.html">v24</a> &nbsp;
+    <a href="Data/cf-standard-names/23/build/cf-standard-name-table.html">v23</a> &nbsp;
+    <a href="Data/cf-standard-names/22/build/cf-standard-name-table.html">v22</a> &nbsp;
+    <a href="Data/cf-standard-names/21/build/cf-standard-name-table.html">v21</a> &nbsp;
+    <a href="Data/cf-standard-names/20/build/cf-standard-name-table.html">v20</a> &nbsp;
+    <a href="Data/cf-standard-names/19/build/cf-standard-name-table.html">v19</a> &nbsp;
+    <a href="Data/cf-standard-names/18/build/cf-standard-name-table.html">v18</a> &nbsp;
+    <a href="Data/cf-standard-names/17/build/cf-standard-name-table.html">v17</a> &nbsp;
+    <a href="Data/cf-standard-names/16/build/cf-standard-name-table.html">v16</a> &nbsp;
+    <a href="Data/cf-standard-names/15/build/cf-standard-name-table.html">v15</a> &nbsp;
+    <a href="Data/cf-standard-names/14/build/cf-standard-name-table.html">v14</a> &nbsp;
+    <a href="Data/cf-standard-names/13/build/cf-standard-name-table.html">v13</a> &nbsp;
+    <a href="Data/cf-standard-names/12/build/cf-standard-name-table.html">v12</a> &nbsp;
+    <a href="Data/cf-standard-names/11/build/cf-standard-name-table.html">v11</a> &nbsp;
+    <a href="Data/cf-standard-names/10/build/cf-standard-name-table.html">v10</a> &nbsp;
+    <a href="Data/cf-standard-names/9/build/cf-standard-name-table.html">v9</a> &nbsp;
+    <a href="Data/cf-standard-names/8/build/cf-standard-name-table.html">v8</a> &nbsp;
+    <a href="Data/cf-standard-names/7/build/cf-standard-name-table.html">v7</a> &nbsp;
+    <a href="Data/cf-standard-names/6/build/cf-standard-name-table.html">v6</a> &nbsp;
+    <a href="Data/cf-standard-names/5/build/cf-standard-name-table.html">v5</a> &nbsp;
+    <a href="Data/cf-standard-names/4/build/cf-standard-name-table.html">v4</a> &nbsp;
+    <a href="Data/cf-standard-names/3/build/cf-standard-name-table.html">v3</a> &nbsp;
+    <a href="Data/cf-standard-names/2/build/cf-standard-name-table.html">v2</a> &nbsp;
+    <a href="Data/cf-standard-names/1/build/cf-standard-name-table.html">v1</a> &nbsp;
+
+  <h5><b>Previous Versions (XML)</b></h5>
+    N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/82/src/cf-standard-name-table.xml">v82</a> &nbsp;
+    <a href="Data/cf-standard-names/81/src/cf-standard-name-table.xml">v81</a> &nbsp;
+    <a href="Data/cf-standard-names/80/src/cf-standard-name-table.xml">v80</a> &nbsp;
+    <a href="Data/cf-standard-names/79/src/cf-standard-name-table.xml">v79</a> &nbsp;
+    <a href="Data/cf-standard-names/78/src/cf-standard-name-table.xml">v78</a> &nbsp;
+    <a href="Data/cf-standard-names/77/src/cf-standard-name-table.xml">v77</a> &nbsp;
+    <a href="Data/cf-standard-names/76/src/cf-standard-name-table.xml">v76</a> &nbsp;
+    <a href="Data/cf-standard-names/75/src/cf-standard-name-table.xml">v75</a> &nbsp;
+    <a href="Data/cf-standard-names/74/src/cf-standard-name-table.xml">v74</a> &nbsp;
+    <a href="Data/cf-standard-names/73/src/cf-standard-name-table.xml">v73</a> &nbsp;
+    <a href="Data/cf-standard-names/72/src/cf-standard-name-table.xml">v72</a> &nbsp;
+    <a href="Data/cf-standard-names/71/src/cf-standard-name-table.xml">v71</a> &nbsp;
+    <a href="Data/cf-standard-names/70/src/cf-standard-name-table.xml">v70</a> &nbsp;
+    <a href="Data/cf-standard-names/69/src/cf-standard-name-table.xml">v69</a> &nbsp;
+    <a href="Data/cf-standard-names/68/src/cf-standard-name-table.xml">v68</a> &nbsp;
+    <a href="Data/cf-standard-names/67/src/cf-standard-name-table.xml">v67</a> &nbsp;
+    <a href="Data/cf-standard-names/66/src/cf-standard-name-table.xml">v66</a> &nbsp;
+    <a href="Data/cf-standard-names/65/src/cf-standard-name-table.xml">v65</a> &nbsp;
+    <a href="Data/cf-standard-names/64/src/cf-standard-name-table.xml">v64</a> &nbsp;
+    <a href="Data/cf-standard-names/63/src/cf-standard-name-table.xml">v63</a> &nbsp;
+    <a href="Data/cf-standard-names/62/src/cf-standard-name-table.xml">v62</a> &nbsp;
+    <a href="Data/cf-standard-names/61/src/cf-standard-name-table.xml">v61</a> &nbsp;
+    <a href="Data/cf-standard-names/60/src/cf-standard-name-table.xml">v60</a> &nbsp;
+    <a href="Data/cf-standard-names/59/src/cf-standard-name-table.xml">v59</a> &nbsp;
+    <a href="Data/cf-standard-names/58/src/cf-standard-name-table.xml">v58</a> &nbsp;
+    <a href="Data/cf-standard-names/57/src/cf-standard-name-table.xml">v57</a> &nbsp;
+    <a href="Data/cf-standard-names/56/src/cf-standard-name-table.xml">v56</a> &nbsp;
+    <a href="Data/cf-standard-names/55/src/cf-standard-name-table.xml">v55</a> &nbsp;
+    <a href="Data/cf-standard-names/54/src/cf-standard-name-table.xml">v54</a> &nbsp;
+    <a href="Data/cf-standard-names/53/src/cf-standard-name-table.xml">v53</a> &nbsp;
+    <a href="Data/cf-standard-names/52/src/cf-standard-name-table.xml">v52</a> &nbsp;
+    <a href="Data/cf-standard-names/51/src/cf-standard-name-table.xml">v51</a> &nbsp;
+    <a href="Data/cf-standard-names/50/src/cf-standard-name-table.xml">v50</a> &nbsp;
+    <a href="Data/cf-standard-names/49/src/cf-standard-name-table.xml">v49</a> &nbsp;
+    <a href="Data/cf-standard-names/48/src/cf-standard-name-table.xml">v48</a> &nbsp;
+    <a href="Data/cf-standard-names/47/src/cf-standard-name-table.xml">v47</a> &nbsp;
+    <a href="Data/cf-standard-names/46/src/cf-standard-name-table.xml">v46</a> &nbsp;
+    <a href="Data/cf-standard-names/45/src/cf-standard-name-table.xml">v45</a> &nbsp;
+    <a href="Data/cf-standard-names/44/src/cf-standard-name-table.xml">v44</a> &nbsp;
+    <a href="Data/cf-standard-names/43/src/cf-standard-name-table.xml">v43</a> &nbsp;
+    <a href="Data/cf-standard-names/42/src/cf-standard-name-table.xml">v42</a> &nbsp;
+    <a href="Data/cf-standard-names/41/src/cf-standard-name-table.xml">v41</a> &nbsp;
+    <a href="Data/cf-standard-names/40/src/cf-standard-name-table.xml">v40</a> &nbsp;
+    <a href="Data/cf-standard-names/39/src/cf-standard-name-table.xml">v39</a> &nbsp;
+    <a href="Data/cf-standard-names/37/src/cf-standard-name-table.xml">v37</a> &nbsp;
+    <a href="Data/cf-standard-names/36/src/cf-standard-name-table.xml">v36</a> &nbsp;
+    <a href="Data/cf-standard-names/35/src/cf-standard-name-table.xml">v35</a> &nbsp;
+    <a href="Data/cf-standard-names/34/src/cf-standard-name-table.xml">v34</a> &nbsp;
+    <a href="Data/cf-standard-names/33/src/cf-standard-name-table.xml">v33</a> &nbsp;
+    <a href="Data/cf-standard-names/32/src/cf-standard-name-table.xml">v32</a> &nbsp;
+    <a href="Data/cf-standard-names/31/src/cf-standard-name-table.xml">v31</a> &nbsp;
+    <a href="Data/cf-standard-names/30/src/cf-standard-name-table.xml">v30</a> &nbsp;
+    <a href="Data/cf-standard-names/29/src/cf-standard-name-table.xml">v29</a> &nbsp;
+    <a href="Data/cf-standard-names/28/src/cf-standard-name-table.xml">v28</a>  &nbsp;
+    <a href="Data/cf-standard-names/27/src/cf-standard-name-table.xml">v27</a>  &nbsp;
+    <a href="Data/cf-standard-names/26/src/cf-standard-name-table.xml">v26</a>  &nbsp;
+    <a href="Data/cf-standard-names/25/src/cf-standard-name-table.xml">v25</a>  &nbsp;
+    <a href="Data/cf-standard-names/24/src/cf-standard-name-table.xml">v24</a> &nbsp;
+    <a href="Data/cf-standard-names/23/src/cf-standard-name-table.xml">v23</a> &nbsp;
+    <a href="Data/cf-standard-names/22/src/cf-standard-name-table.xml">v22</a> &nbsp;
+    <a href="Data/cf-standard-names/21/src/cf-standard-name-table.xml">v21</a> &nbsp;
+    <a href="Data/cf-standard-names/20/src/cf-standard-name-table.xml">v20</a> &nbsp;
+    <a href="Data/cf-standard-names/19/src/cf-standard-name-table.xml">v19</a> &nbsp;
+    <a href="Data/cf-standard-names/18/src/cf-standard-name-table.xml">v18</a> &nbsp;
+    <a href="Data/cf-standard-names/17/src/cf-standard-name-table.xml">v17</a> &nbsp;
+    <a href="Data/cf-standard-names/16/src/cf-standard-name-table.xml">v16</a> &nbsp;
+    <a href="Data/cf-standard-names/15/src/cf-standard-name-table.xml">v15</a> &nbsp;
+    <a href="Data/cf-standard-names/14/src/cf-standard-name-table.xml">v14</a> &nbsp;
+    <a href="Data/cf-standard-names/13/src/cf-standard-name-table.xml">v13</a> &nbsp;
+    <a href="Data/cf-standard-names/12/src/cf-standard-name-table.xml">v12</a> &nbsp;
+    <a href="Data/cf-standard-names/11/src/cf-standard-name-table.xml">v11</a> &nbsp;
+    <a href="Data/cf-standard-names/10/src/cf-standard-name-table.xml">v10</a> &nbsp;
+    <a href="Data/cf-standard-names/9/src/cf-standard-name-table.xml">v9</a>  &nbsp;
+    <a href="Data/cf-standard-names/8/src/cf-standard-name-table.xml">v8</a>  &nbsp;
+    <a href="Data/cf-standard-names/7/src/cf-standard-name-table.xml">v7</a>  &nbsp;
+    <a href="Data/cf-standard-names/6/src/cf-standard-name-table.xml">v6</a>  &nbsp;
+    <a href="Data/cf-standard-names/5/src/cf-standard-name-table.xml">v5</a>  &nbsp;
+    <a href="Data/cf-standard-names/4/src/cf-standard-name-table.xml">v4</a>  &nbsp;
+    <a href="Data/cf-standard-names/3/src/cf-standard-name-table.xml">v3</a>  &nbsp;
+    <a href="Data/cf-standard-names/2/src/cf-standard-name-table.xml">v2</a>  &nbsp;
+    <a href="Data/cf-standard-names/1/src/cf-standard-name-table.xml">v1</a> &nbsp;
+
+<h5>Previous Versions (Keyword Centred List)</h5>
+      <a href="Data/cf-standard-names/82/build/kwic_index_for_cf_standard_names.html">v82</a>  &nbsp;
+      <a href="Data/cf-standard-names/81/build/kwic_index_for_cf_standard_names.html">v81</a>  &nbsp;
+      <a href="Data/cf-standard-names/80/build/kwic_index_for_cf_standard_names.html">v80</a>  &nbsp;
+      <a href="Data/cf-standard-names/79/build/kwic_index_for_cf_standard_names.html">v79</a>  &nbsp;
+      <a href="Data/cf-standard-names/78/build/kwic_index_for_cf_standard_names.html">v78</a>  &nbsp;
+      <a href="Data/cf-standard-names/77/build/kwic_index_for_cf_standard_names.html">v77</a>  &nbsp;
+      <a href="Data/cf-standard-names/76/build/kwic_index_for_cf_standard_names.html">v76</a>  &nbsp;
+      <a href="Data/cf-standard-names/75/build/kwic_index_for_cf_standard_names.html">v75</a>  &nbsp;
+      <a href="Data/cf-standard-names/74/build/kwic_index_for_cf_standard_names.html">v74</a>  &nbsp;
+      <a href="Data/cf-standard-names/73/build/kwic_index_for_cf_standard_names.html">v73</a>  &nbsp;
+      <a href="Data/cf-standard-names/72/build/kwic_index_for_cf_standard_names.html">v72</a>  &nbsp;
+      <a href="Data/cf-standard-names/71/build/kwic_index_for_cf_standard_names.html">v71</a>  &nbsp;
+      <a href="Data/cf-standard-names/70/build/kwic_index_for_cf_standard_names.html">v70</a>  &nbsp;
+      <a href="Data/cf-standard-names/69/build/kwic_index_for_cf_standard_names.html">v69</a>  &nbsp;
+      <a href="Data/cf-standard-names/68/build/kwic_index_for_cf_standard_names.html">v68</a>  &nbsp;
+      <a href="Data/cf-standard-names/67/build/kwic_index_for_cf_standard_names.html">v67</a>  &nbsp;
+      <a href="Data/cf-standard-names/66/build/kwic_index_for_cf_standard_names.html">v66</a>  &nbsp;
+      <a href="Data/cf-standard-names/65/build/kwic_index_for_cf_standard_names.html">v65</a>  &nbsp;
+      <a href="Data/cf-standard-names/47/build/kwic_index_for_cf_standard_names.html">v47</a>  &nbsp;
+
+  <h5><b>Documents</b></h5>
+    <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for Construction of CF Standard Names<br>
+    List of<a href="Data/cf-standard-names/docs/standard-name-contributors.html"> contributors</a> to CF Standard Names<br>
+    CF Standard Names [rules][rules]
+
+  <h5><b>Discussion</b></h5>
+
+  Current issues in the <a href="https://github.com/cf-convention/discuss/issues">CF `discuss` repo</a>, where proposals for additions and changes to standard names are made<br>
+  Current proposals for new standard names in the <a href="http://cfeditor.ceda.ac.uk/proposals/1">CEDA vocabulary editor</a>;
+  click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those which have been either accepted and included in the standard name table or rejected
+
+<h4><b>Area Type Table (v11, 06 July 2023)</b></h4>
+  <a href="Data/area-type-table/11/build/area-type-table.html">HTML</a>&nbsp;
+  <a href="Data/area-type-table/11/src/area-type-table.xml">XML</a>&nbsp;
+
+  <h5>Previous Versions (HTML)</h5>
+    <a href="Data/area-type-table/10/build/area-type-table.html">v10</a>&nbsp;
+    <a href="Data/area-type-table/9/build/area-type-table.html">v9</a>&nbsp;
+    <a href="Data/area-type-table/8/build/area-type-table.html">v8</a>&nbsp;
+    <a href="Data/area-type-table/7/build/area-type-table.html">v7</a>&nbsp;
+    <a href="Data/area-type-table/6/build/area-type-table.html">v6</a>&nbsp;
+    <a href="Data/area-type-table/5/build/area-type-table.html">v5</a>&nbsp;
+    <a href="Data/area-type-table/4/build/area-type-table.html">v4</a>&nbsp;
+    <a href="Data/area-type-table/3/build/area-type-table.html">v3</a>&nbsp;
+    <a href="Data/area-type-table/2/build/area-type-table.html">v2</a> &nbsp;
+    <a href="Data/area-type-table/1/build/area-type-table.html">v1</a> &nbsp;
+
+  <h5>Previous Versions (XML)</h5>
+    <a href="Data/area-type-table/10/src/area-type-table.xml">v10</a>&nbsp;
+    <a href="Data/area-type-table/9/src/area-type-table.xml">v9</a>&nbsp;
+    <a href="Data/area-type-table/8/src/area-type-table.xml">v8</a>&nbsp;
+    <a href="Data/area-type-table/7/src/area-type-table.xml">v7</a>&nbsp;
+    <a href="Data/area-type-table/6/src/area-type-table.xml">v6</a>&nbsp;
+    <a href="Data/area-type-table/5/src/area-type-table.xml">v5</a>&nbsp;
+    <a href="Data/area-type-table/4/src/area-type-table.xml">v4</a>&nbsp;
+    <a href="Data/area-type-table/3/src/area-type-table.xml">v3</a>&nbsp;
+    <a href="Data/area-type-table/2/src/area-type-table.xml">v2</a> &nbsp;
+    <a href="Data/area-type-table/1/src/area-type-table.xml">v1</a> &nbsp;
+
+<h4><b>Standardized Region List (v4, 18 December 2018)</b></h4>
+    <a href="Data/standardized-region-list/standardized-region-list.html">HTML</a> &nbsp;
+    <a href="Data/standardized-region-list/standardized-region-list.xml">XML</a> &nbsp;
+    Old format <a href="Data/cf-standard-names/docs/standardized-region-names.html">HTML</a> (deprecated).&nbsp;
+
+  <h5>Previous Versions (HTML)</h5>
+    <a href="Data/standardized-region-list/standardized-region-list.3.html">3</a> &nbsp;
+    <a href="Data/standardized-region-list/standardized-region-list.2.html">2</a> &nbsp;
+    <a href="Data/standardized-region-list/standardized-region-list.1.html">1</a> &nbsp;
+
+  <h5>Previous Versions (XML)</h5>
+    <a href="Data/standardized-region-list/standardized-region-list.3.xml">3</a> &nbsp;
+    <a href="Data/standardized-region-list/standardized-region-list.2.xml">2</a> &nbsp;
+    <a href="Data/standardized-region-list/standardized-region-list.1.xml">1</a> &nbsp;
+
+</p>  
+
+[rules]: https://github.com/cf-convention/cf-convention.github.io/blob/main/standard_name_rules.md

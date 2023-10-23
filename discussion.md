@@ -6,44 +6,30 @@ group: "navigation"
 
 # Discussion
  
-Discussion about CF Metadata takes place on GitHub in three forums,
-using [GitHub issues][github_issues].
+Discussion about CF Metadata takes place on GitHub in three forums, using [GitHub issues][github_issues].
 
 *   [General discussion and standard names][github_discuss]
 
-    For proposing standard names, asking questions or having discussions about the
-    interpretation and use of the CF conventions, and initial
-    suggestions for proposals to change or extend the CF conventions.
+    For proposing standard names, asking questions or having discussions about the interpretation and use of the CF conventions, and initial suggestions for proposals to change or extend the CF conventions.
 
-    There is also a separate website detailing the [status of current
-    proposals for new standard names][current] that have been
-    initiated on the general discussion forum.
+    The status of proposals about standard names that have been initiated on the general discussion forum is shown by the [CEDA vocabulary editor][vocab_editor].
   
 *   [Conventions][github_conventions]
 
-    For proposing enhancements and reporting defects in the CF
-    conventions, that may or may not have started as conversations on
-    the general discussion forum.
+    For proposing enhancements and reporting defects in the CF conventions, that may or may not have started as conversations on the general discussion forum.
 
 *   [Website and governance][github_website]
 
-    For discussing, proposing changes and reporting defects in the [CF
-    website][website], and for discussion of CF governance.
+    For discussing, proposing changes and reporting defects in the [CF website][website], and for discussion of CF governance.
 
-No registration with CF is required to contribute; all that is needed
-is a freely available [GitHub account][github].
+No registration with CF is required to contribute; all that is needed is a freely available [GitHub account][github].
 
-Before the CF community migrated to GitHub,
-general and standard-name discussion took place on the
-[cf-metadata mailing list][archives], and enhancements
-to the conventions were proposed
-on the [CF Metadata Trac](Data/trac.html) site.
-
+Before the CF community migrated to GitHub, general and standard-name discussion took place on the [cf-metadata mailing list][archives], and enhancements to the conventions were proposed on the [CF Metadata Trac](Data/trac.html) site.
 
 ### Archive links
 
-* [cf-metadata Mailing List Archives][archives] (until December 2019)
-* [Resolved proposals for new standard names][proposals] (from March 2011 onwards)
+* cf-metadata mailing list archive [copy on GitHub][archives] or [original at NCAR][NCAR_archives] (until December 2019)
+* To see a list of resolved proposals (accepted or rejected) for standard names from March 2011 onwards, click "Inactive" in the [CEDA vocabulary editor][vocab_editor]
 * [CF Metadata Trac](Data/trac.html) (until July 2018)
 * [About CF Metadata Trac][about]
 
@@ -53,9 +39,10 @@ on the [CF Metadata Trac](Data/trac.html) site.
 [github]: https://github.com
 [website]: https://cfconventions.org
 [trac]: Data/trac.html
-[about]: about-trac.html
+[about]: about-trac.md
 [mail]: http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata
-[archives]: http://mailman.cgd.ucar.edu/pipermail/cf-metadata/
+[archives]: https://cfconventions.org/mailing-list-archive/Data/
+[NCAR_archives]: https://mailman.cgd.ucar.edu/pipermail/cf-metadata/
 [current]: http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter
-[proposals]: http://cfeditor.ceda.ac.uk/proposals/1?status=inactive&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter
+[vocab_editor]: http://cfeditor.ceda.ac.uk/proposals/1
 [github_issues]: https://guides.github.com/features/issues

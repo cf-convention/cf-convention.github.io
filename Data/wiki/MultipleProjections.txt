@@ -1,0 +1,51 @@
+= Multiple Projections =
+
+On 24 Nov 2006 Bert Jagers requested the addition of a convention to support (a) 2D projection coordinates (whereas the existing standard expects projection coordinates to be the 1D coordinate variables) (b) more than one grid_mapping for a given data variable. Three conventions have been proposed. In all of them the projection coordinates have to have the appropriate standard_name.
+
+== John (modified by accident by Jonathan) ==
+
+Introduce a new abstraction: a variable to describe a horizontal coordinate system.
+{{{
+  int Dutch_CoordSystem;
+    Dutch_CoordSystem:coordinates = "dutch_x dutch_y";
+    Dutch_CoordSystem:grid_mapping = "EPSG19914";
+  int German_CoordSystem;
+    German_CoordSystem:coordinates = "german_x german_y";
+    Dutch_CoordSystem:grid_mapping = "EPSG16362";
+  float velocity(time,layer,m,n);
+    velocity:coordinateSystems = "Dutch_CoordSystem Belgian_CoordSystem" ;
+    velocity:coordinates="lat lon"; // can also list 1D coordinate variables
+  float dutch_x(m,n);
+  float dutch_y(m,n);
+  float german_x(m,n);
+  float german_y(m,n);
+}}}
+
+== Jonathan ==
+
+Extended syntax for the grid_mapping attribute so that it can identify more than one projection and list 2D projection coordinates.
+{{{
+  float velocity(time,layer,m,n);
+    velocity:grid_mapping="dutch_x: dutch_y: EPSG19914 german_x: german_y: EPSG16362";
+    velocity:coordinates="lat lon"; // 2D projection coordinates could be listed as well
+  float dutch_x(m,n);
+  float dutch_y(m,n);
+  float german_x(m,n);
+  float german_y(m,n);
+}}}  
+
+== Bert ==
+
+Attach the grid_mapping attribute to the 2D projection coordinates.
+{{{
+  float velocity(time,layer,m,n);
+    velocity:coordinates="lat lon dutch_x dutch_y german_x german_y";
+  float dutch_x(m,n);
+    dutch_x:grid_mapping="EPSG19914";
+  float dutch_y(m,n);
+    dutch_y:grid_mapping="EPSG19914";
+  float german_x(m,n);
+    german_x:grid_mapping="EPSG16362";
+  float german_y(m,n);
+    german_y:grid_mapping="EPSG16362";
+}}}

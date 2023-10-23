@@ -6,37 +6,30 @@ title: WKT/PROJ.4
 
 ## Mapping from CF Grid Mapping Attributes to CRS WKT Elements
 
-These __provisional__ mappings have been compiled to support, among other things, CF proposals [69](http://cfconventions.org/Data/Trac-tickets/69.html) and [80](http://cfconventions.org/Data/Trac-tickets/80.html); which have been incorporated in the CF Conventions document version 1.7.
+These __provisional__ mappings have been compiled to support, among other things, CF proposals [69](https://cfconventions.org/Data/Trac-tickets/69.html) and [80](https://cfconventions.org/Data/Trac-tickets/80.html); which have been incorporated in the CF Conventions document version 1.7.
 If you spot any errors or omissions, please email the authors (Phil Bentley and Etienne Tourigny) or the CF mailing list, or else update this wiki page.
 
 In Tables 1 and 2 the names of WKT PARAMETER elements follow the names of coordinate operation parameters
-defined in the [EPSG geodetic parameter registry](http://www.epsg-registry.org).
+defined in the [EPSG geodetic parameter registry](https://epsg.org).
 
-The following tables list translations of projection parameter names between CF and various other representations (such as OGC WKT, EPSG and PROJ.4). The information was obtained from various sources.
+The following tables list translations of projection parameter names between CF and various other representations (such as OGC WKT, EPSG and PROJ.4).
+The information was obtained from various sources.
 
 The various representations listed are:
 
 *   **CF** The CF-1.6 (and possibly CF-1.7) parameter names
-
 *   **OGC WKT** The names following OGC WKT specification (used by GDAL/OGR and CadCorp(?))
+*   **PROJ.4** The names used in the PROJ.4 software (https://proj.org)
+*   **EPSG** The names and codes used in the EPSG Geodetic Parameter Dataset (https://epsg.org)
+*   **GeoTIFF ID** The names used in the GeoTIFF raster format (https://trac.osgeo.org/geotiff)
 
-*   **PROJ.4** The names used in the PROJ.4 software (​http://trac.osgeo.org/proj)
-
-*   **EPSG** The names and codes used in the EPSG Geodetic Parameter Dataset (http://www.epsg.org and http://www.epsg-registry.org)
-
-*   **GeoTIFF ID** The names used in the GeoTIFF raster format (http://trac.osgeo.org/geotiff)
-
-The following files are provided to list the various possible Datum, Ellipsoid and Prime Meridian names (in support of CF trac ticket [80](http://cf-trac.llnl.gov/trac/ticket/80))
+The following files are provided to list the various possible Datum, Ellipsoid and Prime Meridian names (in support of CF trac ticket [80](https://cfconventions.org/Data/Trac-tickets/80.html))
 
 *   horiz_datum.csv - horizontal datum parameters for use as reference for CF-1.7 (source: GDAL/OGR, modified by Etienne Tourigny)
-
 *   ellipsoid.csv - Ellipsoid parameters from the EPSG database (source: GDAL/OGR)
-
 *   prime_meridian.csv - Prime Meridian parameters from the EPSG database (source: GDAL/OGR)
 
-
 ### Table 1 - Existing (CF-1.6) CF Grid Mapping Attributes
-
 
 | **CF Grid Mapping Attribute**  | **Corresponding WKT Syntax** (1) |
 | earth_radius  | SPHEROID["<reference_ellipsoid_name>", <semi_major_axis>, 0.0, ...] 
@@ -98,7 +91,6 @@ The following files are provided to list the various possible Datum, Ellipsoid a
 ---
 
 ### Table 4 - Specific projection parameter names
-
 
 ---
 
@@ -202,58 +194,59 @@ The following files are provided to list the various possible Datum, Ellipsoid a
 
 ### Units Information
 
-Translation of units depends on if the crs is geographic or projected
+Translation of units depends on if the crs is geographic or projected.
 
-For a geographic crs (grid_mapping_name # "latitude_longitude"), units are angular. GEOGCS contains a UNIT node which gives the conversion to radians. When the crs is in degrees the following node is used: UNIT["degree",0.0174532925199433]. For a more complete description, see CT 1.0 section "7.3.19 UNIT"
+For a geographic crs (grid_mapping_name # "latitude_longitude"), units are angular.
+GEOGCS contains a UNIT node which gives the conversion to radians.
+When the crs is in degrees the following node is used: UNIT["degree",0.0174532925199433].
+For a more complete description, see CT 1.0 section "7.3.19 UNIT"
 CF requires all value to be in degrees, which is specified in the dimension's units attribute ( lon:units # "degrees_east" / lat:units # "degrees_north" ), the udunits packages allows to transform from radians.
 
-For a projected crs, units are linear.  PROJCS must contains a UNIT node which gives the conversion into meters. For example, if the units are in kilometers the following node is used: UNIT["kilometre",1000]].
+For a projected crs, units are linear.
+PROJCS must contains a UNIT node which gives the conversion into meters.
+For example, if the units are in kilometers the following node is used: UNIT["kilometre",1000]].
 In CF, units are given in the dimension's units attribute (xc:units # "m").
-
 
 ### Projection-specific notes
 
 EPSG codes below correspond to "EPSG dataset coordinate operation method" codes.
 
-
 #### Lambert conformal 1SP / 2SP
 
-The 1SP variant corresponds to EPSG code 9801 - Lambert Conic Conformal (1SP), with CF latitude_of_projection_origin#standard_parallel and WKT scale_factor#1. A scale factor less than 1 means that there are 2 standard parallels, but it cannot be translated to the CF 1SP variant, therefore the 2SP variant should be used instead. The 2SP variant corresponds to EPSG code 9802 - Lambert Conic Conformal (2SP).
-
+The 1SP variant corresponds to EPSG code 9801 - Lambert Conic Conformal (1SP), with CF latitude_of_projection_origin#standard_parallel and WKT scale_factor#1.
+A scale factor less than 1 means that there are 2 standard parallels, but it cannot be translated to the CF 1SP variant, therefore the 2SP variant should be used instead.
+The 2SP variant corresponds to EPSG code 9802 - Lambert Conic Conformal (2SP).
 
 #### Lambert cylindrical equal area
 
-The scale_factor_at_projection_origin variant is not recommended as it does not translate to and from WKT/PROJ.4. Snyder formulas 10-2b and 10-2 can be used to relate scale_factor_at_projection_origin, standard_parallel1 and latitude_of_projection_origin but the latter is not part of this projection's parameters. It has been proposed to deprecate or remove this variant from the CF spec (see CF trac ticket [75](http://cf-trac.llnl.gov/trac/ticket/75)).
-
+The scale_factor_at_projection_origin variant is not recommended as it does not translate to and from WKT/PROJ.4.
+Snyder formulas 10-2b and 10-2 can be used to relate scale_factor_at_projection_origin, standard_parallel1 and latitude_of_projection_origin but the latter is not part of this projection's parameters.
+It has been proposed to deprecate or remove this variant from the CF spec (see CF trac ticket [75](https://cfconventions.org/Data/Trac-tickets/75.html)).
 
 #### Mercator 1SP / 2SP
 
 The scale_factor_at_projection_origin variant corresponds to EPSG code 9804 - Mercator (1SP) or Mercator (variant A), and the standard_parallel variant corresponds to EPSG code 9805 - Mercator (2SP) or Mercator (variant B).
 
-
 #### Polar stereographic
 
-The standard_parallel variant corresponds to EPSG code 9829 - Polar Stereographic (Variant B), while the scale_factor_at_projection_origin variant corresponds to EPSG code 9810 - Polar Stereographic (Variant A). As WKT/PROJ.4 require the standard parallel, [Snyder] formula 21-7 can be used to compute it from scale_factor_at_projection_origin if that variant is used.
-
+The standard_parallel variant corresponds to EPSG code 9829 - Polar Stereographic (Variant B), while the scale_factor_at_projection_origin variant corresponds to EPSG code 9810 - Polar Stereographic (Variant A).
+As WKT/PROJ.4 require the standard parallel, [Snyder] formula 21-7 can be used to compute it from scale_factor_at_projection_origin if that variant is used.
 
 #### Transverse Mercator
 
 Transverse Mercator can be translated to PROJ.4 using either +proj#tmerc (Transverse Mercator) or +proj#utm (Universal Transverse Mercator) by computing zone number from longitude_of_central_meridian.
 For example, a TM projection with longitude_of_central_meridian#-117 would have the corresponding PROJ.4 string: '+proj#utm +zone#11 +datum#NAD27 +units#m +no_defs '
 
-
 ## Mapping from CF Grid Mapping Attributes to CRS WKT Elements (previous table by Phil Bentley, Oct 2011)
 
 These __provisional__ mappings have been compiled to support, among other things, CF proposal [69](http://cfconventions.org/Data/Trac-tickets/69.html).
 If you spot any errors or omissions, please email the author or the CF mailing list, or else update this wiki page.
 
-Mappings are only listed for the current set of CF grid mapping attributes -- there are a number of WKT elements,
-and many CRS PARAMETERs, for which there are no corresponding CF attributes.
+Mappings are only listed for the current set of CF grid mapping attributes -- there are a number of WKT elements, and many CRS PARAMETERs, for which there are no corresponding CF attributes.
 
 The order of attributes follows Table F.1 in the CF conventions document.
 
-The names of WKT PARAMETER elements follow the names of coordinate operation parameters
-defined in the [​EPSG geodetic parameter registry](http://www.epsg-registry.org).
+The names of WKT PARAMETER elements follow the names of coordinate operation parameters defined in the [EPSG geodetic parameter registry](https://epsg.org).
 
 ---
 

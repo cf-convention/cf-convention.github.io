@@ -1,8 +1,8 @@
 ---
 layout: default
-title: CF Governance Panel Minutes
+title: CF Conventions Committee and Standard Names Committee Minutes
 ---
 
-# CF Governance Panel Meeting Minutes
+# CF Conventions Committee and Standard Names Committee Minutes 
 
 * [2023-09-29 CF Conventions Committee and Standard Names Committee meeting](2023-09-29-meeting.md)

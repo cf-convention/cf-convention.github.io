@@ -19,17 +19,19 @@ group: "navigation"
 
 (The date of the end of each member's present term appears in parentheses)
 
+* Chris Barker (29 Sep 2028)
 * Lars Bärring (12 Apr 2026)
-* David Blodgett (30 Sep 2023)
+* David Blodgett (30 Sep 2028)
 * Philip Cameron-Smith (29 May 2025)
 * Fran Eggleton (12 Apr 2026)  
 * Nan Galbraith (29 May 2025)
 * John Graybeal (29 May 2025)
 * Jonathan Gregory (chair of CF Committees, 6 July 2024) (29 May 2025)
-* David Hassell (secretary of the Conventions Committee) (31 March 2022)
+* David Hassell (secretary of the Conventions Committee) (31 Mar 2027)
 * Martin Juckes (12 Apr 2026)
 * Daniel Lee (30 Sep 2024)
 * Roy Lowry (29 May 2025)
+* Seth McGinnis (29 Sep 2028)
 * Alison Pamment (secretary of Standard Names Committee) (29 May 2025)
 * Karl Taylor (29 May 2025)
  

@@ -5,12 +5,12 @@ title: Rules
 
 # Rules for CF Conventions Changes
  
-New proposals are to be made in github issues using the template, including verbatim changes proposed to the text of standard document and the conformance document.
+New proposals are to be made in GitHub issues using the template, including verbatim changes proposed to the text of standard document and the conformance document.
 
 A member of the conventions committee, or another suitably qualified person, volunteers to moderate the discussion.
 If no-one volunteers, the chairman of the committee will ask someone to do it.
 
-The discussion takes place on github issues and all may participate.
+The discussion takes place on GitHub issues and all may participate.
 
 The moderator periodically summarises discussion on github, keeps it moving forward and tries to achieve a consensus.
 It is expected that everyone with an interest will contribute to the discussion and to achieving a consensus during this stage.
@@ -38,7 +38,7 @@ The moderator will call for votes and all members should vote.
 
 Not near consensus: No change to standard.
 
-The github issue is then closed by the moderator stating the outcome.
+The GitHub issue is then closed by the moderator stating the outcome.
 
 If the change is accepted, the standard document should be updated, the CF convention version number incremented, and the conformance document updated.
 
@@ -71,3 +71,10 @@ This is the preferred solution.
 
 Any changes to the data model must be described verbatim as part of the proposal discussion, including any modified or new data model diagrams.
 However, to facilitate the progress of a proposal that requires data model changes, it is sufficient for the general nature of the data model modifications to be identified, on the understanding that the data model text will be updated in detail at a later date, possibly after the proposal has been accepted.
+
+## Additional recommendations relating to UGRID
+
+CF incorporates named versions of the UGRID conventions without redefining them in the CF conventions document, i.e. CF formally refers to the UGRID conventions document for its description of mesh topologies.
+UGRID has its own governance that is independent of the rules governing the CF conventions, and it is therefore the joint responsibility of the CF and UGRID communities to ensure that changes to one convention are mutually agreeable to the other.
+
+In the unlikely and highly undesirable event that a non-negotiable change to one convention is incompatible with the other convention then this may be resolved either by restricting which versions of UGRID are allowed in CF; or else (as a last resort) rewriting UGRID into the CF conventions document, including any required compatibility changes, thereby breaking the formal dependence on the external UGRID conventions.

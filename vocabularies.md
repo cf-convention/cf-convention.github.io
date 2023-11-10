@@ -6,13 +6,14 @@ group: "navigation"
 
 <h2><b>CF Standard Names and other CF Controlled Vocabularies</b></h2>
 <p>
-<h4><b>Standard Name Table (current version, v82, 06 July 2023)</b></h4>
-  <a href="Data/cf-standard-names/82/build/cf-standard-name-table.html">HTML</a> &nbsp;
-  <a href="Data/cf-standard-names/82/src/cf-standard-name-table.xml">XML</a> &nbsp;
-  <a href="Data/cf-standard-names/82/build/kwic_index_for_cf_standard_names.html">KWIC_Index</a>
+<h4><b>Standard Name Table (current version, v83, 17 October 2023)</b></h4>
+  <a href="Data/cf-standard-names/83/build/cf-standard-name-table.html">HTML</a> &nbsp;
+  <a href="Data/cf-standard-names/83/src/cf-standard-name-table.xml">XML</a> &nbsp;
+  <a href="Data/cf-standard-names/83/build/kwic_index_for_cf_standard_names.html">KWIC_Index</a>
 
   <h5><b>Previous Versions (HTML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/82/build/cf-standard-name-table.html">v82</a> &nbsp;
     <a href="Data/cf-standard-names/81/build/cf-standard-name-table.html">v81</a> &nbsp;
     <a href="Data/cf-standard-names/80/build/cf-standard-name-table.html">v80</a> &nbsp;
     <a href="Data/cf-standard-names/79/build/cf-standard-name-table.html">v79</a> &nbsp;
@@ -96,6 +97,7 @@ group: "navigation"
 
   <h5><b>Previous Versions (XML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
+    <a href="Data/cf-standard-names/82/src/cf-standard-name-table.xml">v82</a> &nbsp;
     <a href="Data/cf-standard-names/81/src/cf-standard-name-table.xml">v81</a> &nbsp;
     <a href="Data/cf-standard-names/80/src/cf-standard-name-table.xml">v80</a> &nbsp;
     <a href="Data/cf-standard-names/79/src/cf-standard-name-table.xml">v79</a> &nbsp;
@@ -178,6 +180,7 @@ group: "navigation"
     <a href="Data/cf-standard-names/1/src/cf-standard-name-table.xml">v1</a> &nbsp;
 
 <h5>Previous Versions (Keyword Centred List)</h5>
+      <a href="Data/cf-standard-names/82/build/kwic_index_for_cf_standard_names.html">v82</a>  &nbsp;
       <a href="Data/cf-standard-names/81/build/kwic_index_for_cf_standard_names.html">v81</a>  &nbsp;
       <a href="Data/cf-standard-names/80/build/kwic_index_for_cf_standard_names.html">v80</a>  &nbsp;
       <a href="Data/cf-standard-names/79/build/kwic_index_for_cf_standard_names.html">v79</a>  &nbsp;
@@ -200,12 +203,12 @@ group: "navigation"
   <h5><b>Documents</b></h5>
     <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for Construction of CF Standard Names<br>
     List of<a href="Data/cf-standard-names/docs/standard-name-contributors.html"> contributors</a> to CF Standard Names<br>
-    CF Standard Names [rules](standard_name_rules.md)
+    CF Standard Names [rules][rules]
 
   <h5><b>Discussion</b></h5>
 
   Current issues in the <a href="https://github.com/cf-convention/discuss/issues">CF `discuss` repo</a>, where proposals for additions and changes to standard names are made<br>
-  Current proposals for new standard names in the <a href="http://cfeditor.ceda.ac.uk/proposals/1">CEDA vocabulary editor</a>;
+  Current proposals for new standard names in the <a href="https://cfconventions.org/editor_placeholder.html">CEDA vocabulary editor</a>;
   click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those which have been either accepted and included in the standard name table or rejected
 
 <h4><b>Area Type Table (v11, 06 July 2023)</b></h4>
@@ -253,3 +256,4 @@ group: "navigation"
 
 </p>  
 
+[rules]: https://github.com/cf-convention/cf-convention.github.io/blob/main/standard_name_rules.md

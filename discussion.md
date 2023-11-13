@@ -43,6 +43,6 @@ Before the CF community migrated to GitHub, general and standard-name discussion
 [mail]: http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata
 [archives]: https://cfconventions.org/mailing-list-archive/Data/
 [NCAR_archives]: https://mailman.cgd.ucar.edu/pipermail/cf-metadata/
-[current]: http://cfeditor.ceda.ac.uk/proposals/1?status=active&namefilter=&proposerfilter=&descfilter=&filter+and+display=filter
-[vocab_editor]: https://cfconventions.org/editor_placeholder.html
+[current]: https://cfeditor.ceda.ac.uk/proposals/1
+[vocab_editor]: https://cfeditor.ceda.ac.uk/proposals/1
 [github_issues]: https://guides.github.com/features/issues

@@ -16,18 +16,27 @@
     <title>
         cf-standard-name-table.html
     </title>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    </link>
     <style>
+        body {
+          margin: 0 8px;
+        }
+
         details summary { 
             cursor: pointer;
         }
 
         details summary:hover{
-            color: #234;
+            color: #ffe6d3;
         }
 
         details summary > * {
             display: inline;
+        }
+
+        .category-table td {
+          padding: 4px;
         }
 
         .standard-name-summary {
@@ -358,23 +367,24 @@ The canonical units associated with each standard name are usually the SI units 
                                                   name="logical_operator" 
                                                   id="logical_operator_and" 
                                                   value="AND" 
-                                                  checked="checked"/> AND</label> 
-                                    <label><input type="radio" 
+                                                  checked="checked"/>&#160;AND</label> 
+                                    &#160;
+                                              <label><input type="radio" 
                                                   name="logical_operator" 
                                                   id="logical_operator_or" 
-                                                  value="OR"/> OR</label> (separate search terms with spaces)
+                                                  value="OR"/>&#160;OR</label> (separate search terms with spaces)
                                     <br/>
                                     <label><input id="must_search_help_text" 
                                                   name="must_search_help_text" 
-                                                  type="checkbox"/> Also search help text</label>
+                                                  type="checkbox"/>&#160;Also search help text</label>
                                     <br/>
                                     <label><input id="must_search_aliases"
                                                   name="must_search_aliases"
-                                                  type="checkbox" checked="checked"/> Also search aliases text</label>
+                                                  type="checkbox" checked="checked"/>&#160;Also search aliases text</label>
                                     <br/>
                                     <label><input id="must_search_units_only"
                                                   name="must_search_units_only"
-                                                  type="checkbox" onchange="filterConstraints(this)" />Only search canonical units</label>
+                                                  type="checkbox" onchange="filterConstraints(this)" />&#160;Only search canonical units</label>
                                 </td>
                             </tr>
                             <tr>
@@ -408,7 +418,7 @@ The canonical units associated with each standard name are usually the SI units 
                 </div>
                 
                 <h2>View by Category</h2>
-                <table cellpadding="4" cellspacing="0" border="1">
+                <table class="category-table" >
                     <tr>
                         <td>
                             <a href="javascript:void(0)" 
@@ -468,10 +478,10 @@ The canonical units associated with each standard name are usually the SI units 
                         </td>
                     </tr>
                 </table>
-                
             </div>
             
             <table id="standard_name_table" width="100%">
+                <p><i>In the table below, click on a standard-name to show or hide its description and help text.</i></p> 
                 <th width="76%" class="table-header">Standard Name</th>
                 <th width="8%" class="table-header">Canonical Units</th>
                 <th width="8%" class="table-header">AMIP</th>

@@ -25,7 +25,7 @@ The lightning talk topics were:
 * Metadata to Describe Lossy Compression - presented by Charlie Zender
 * Temperature units in CF - presented by David Hassell
 * NetCDF Enumerations - presented by Abel Aoun
-* CF Training: where to find existing resources and how to request future topics - presented by Sadie Bartholomew
+* CF Training: where to find existing resources and how to request future topics - presented by Sadie Bartholomew (slides at https://doi.org/10.6084/m9.figshare.24615177.v1)
 
 ## Documents
 

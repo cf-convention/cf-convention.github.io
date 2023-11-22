@@ -39,7 +39,7 @@ Some presenters may also have access to an institutional repository that provide
 If you are new to this type of repository, see the Figshare "How to sign-up" [page](https://help.figshare.com/article/how-to-sign-up-to-figshare) and the "How to upload and publish your research" [page](https://help.figshare.com/article/how-to-upload-and-publish-your-research)
 or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quickstart/).
 
-## Dynamic Agenda
+## Agenda
 
 ### Tuesday, 3 October 2023
 

@@ -16,8 +16,64 @@
     <title>
         cf-standard-name-table.html
     </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    </link>
+    <style>
+        body {
+          margin: 0 8px;
+        }
 
-        <h1 class="documentFirstHeading">CF Standard Name Table</h1>
+        details summary { 
+            cursor: pointer;
+        }
+
+        details summary:hover{
+            color: #ffe6d3;
+        }
+
+        details summary > * {
+            display: inline;
+        }
+
+        .category-table td {
+          padding: 4px;
+        }
+
+        .standard-name-summary {
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+        .standard-name-summary:hover {
+            cursor: pointer;
+            background-color: #ffe6d3;   
+        }
+
+        .standard-name-label {
+            color: #339;
+        }
+
+        .standard-name-description {
+            padding-left: 16px;
+            margin-top: 4px;
+            border-top: 1px dashed #cccccc;
+        }
+        
+        #standard_name_table tr:nth-child(even) {
+            background-color: #f9f2f4;
+        }
+        
+        #standard_name_table td {
+            padding-left: 8px;
+        }
+
+        .table-header {
+            text-align: start;
+            padding-left: 8px;
+        }
+    </style>
+
+    <h1 class="documentFirstHeading">CF Standard Name Table</h1>
 
     <div class="documentByLine">
 
@@ -143,53 +199,27 @@
         function toggleHelp(standard_name) {
             // check for the existence of the help tr object for this standard_name
             var helpDiv = document.getElementById(standard_name + '_help');
-
             if (helpDiv) {
                 if (helpDiv.style.display != 'none') {
                     helpDiv.style.display = 'none';
-
-                    curArrow = document.getElementById(standard_name + '_arrow');
-                    curArrow.src = '../build/media/images/arrow_right.gif';
                 }
                 else {
                     helpDiv.style.display = '';
-
-                    curArrow = document.getElementById(standard_name + '_arrow');
-                    curArrow.src = '../build/media/images/arrow_down.gif';
                 }
             }
         }
 
         function showHelp(standard_name) {
             var helpDiv = document.getElementById(standard_name + '_help');
-
             if (helpDiv) {
                 helpDiv.style.display = '';
-                curArrow = document.getElementById(standard_name + '_arrow');
-                curArrow.src = '../build/media/images/arrow_down.gif';
             }
         }
 
         function hideHelp(standard_name) {
             var helpDiv = document.getElementById(standard_name + '_help');
-
             if (helpDiv) {
                 helpDiv.style.display = 'none';
-                curArrow = document.getElementById(standard_name + '_arrow');
-                curArrow.src = '../build/media/images/arrow_right.gif';
-            }
-        }
-
-        function toggleSearchHelp($event) {
-            var helpbox = document.getElementById("search-help");
-            var arrow = document.getElementById("search-help-arrow");
-            if (helpbox.style.display === 'none') {
-                helpbox.style.display = 'inline-block';
-                arrow.src = '../build/media/images/arrow_down.gif';
-            }
-            else {
-                helpbox.style.display = 'none';
-                arrow.src = '../build/media/images/arrow_right.gif';
             }
         }
 
@@ -312,7 +342,7 @@ Refer to the <span class="link-external"><a href="http://cfconventions.org/Data/
           <br/>
           <br/>
 <b>A note about units</b><br/>
-The canonical units associated with each standard name are usually the SI units for the quantity. <span class="link-external"><a href="http://cfconventions.org/cf-conventions/cf-conventions.html#standard-name">Section 3.3 of the CF conventions</a></span> states: "Unless it is dimensionless, a variable with a standard_name attribute must have units which are physically equivalent (not necessarily identical) to the canonical units, possibly modified by an operation specified by either the standard name modifier ... or by the cell_methods attribute." Furthermore, <span class="link-external"><a href="http://cfconventions.org/cf-conventions/cf-conventions.html#_overview"> Section 1.3 of the CF conventions</a></span> states: "The values of the units attributes are character strings that are recognized by UNIDATA's Udunits package [UDUNITS], (with exceptions allowed as discussed in Section 3.1, “Units”)." For example, a variable with the standard name of "air_temperature" may have a units attribute of "degree_Celsius" because Celsius can be converted to Kelvin by Udunits. For the full range of supported units, refer to the <a href="https://www.unidata.ucar.edu/software/udunits/udunits-current/doc/udunits/udunits2.html#Database"> Udunits documentation</a>. Refer to the <a href="http://cfconventions.org/cf-conventions/cf-conventions.html"> CF conventions</a> for full details of the units attribute.<br/><br/>
+The canonical units associated with each standard name are usually the SI units for the quantity. <span class="link-external"><a href="http://cfconventions.org/cf-conventions/cf-conventions.html#standard-name">Section 3.3 of the CF conventions</a></span> states: "Unless it is dimensionless, a variable with a standard_name attribute must have units which are physically equivalent (not necessarily identical) to the canonical units, possibly modified by an operation specified by either the standard name modifier ... or by the cell_methods attribute." Furthermore, <span class="link-external"><a href="http://cfconventions.org/cf-conventions/cf-conventions.html#_overview"> Section 1.3 of the CF conventions</a></span> states: "The values of the units attributes are character strings that are recognized by UNIDATA's Udunits package [UDUNITS], (with exceptions allowed as discussed in Section 3.1, “Units”)." For example, a variable with the standard name of "air_temperature" may have a units attribute of "degree_Celsius" because Celsius can be converted to Kelvin by Udunits. For the full range of supported units, refer to the <a href="https://docs.unidata.ucar.edu/udunits/current/#Database"> Udunits documentation</a>. Refer to the <a href="http://cfconventions.org/cf-conventions/cf-conventions.html"> CF conventions</a> for full details of the units attribute.<br/><br/>
 
             <div style="border: 1px solid rgb(153, 153, 153); background-color: rgb(204, 204, 204); padding-top: 10px; padding-left: 10px; padding-bottom: 10px; margin-bottom: 10px;">
                 <h2>Search</h2>
@@ -337,49 +367,46 @@ The canonical units associated with each standard name are usually the SI units 
                                                   name="logical_operator" 
                                                   id="logical_operator_and" 
                                                   value="AND" 
-                                                  checked="checked"/> AND</label> 
-                                    <label><input type="radio" 
+                                                  checked="checked"/>&#160;AND</label> 
+                                    &#160;
+                                              <label><input type="radio" 
                                                   name="logical_operator" 
                                                   id="logical_operator_or" 
-                                                  value="OR"/> OR</label> (separate search terms with spaces)
+                                                  value="OR"/>&#160;OR</label> (separate search terms with spaces)
                                     <br/>
                                     <label><input id="must_search_help_text" 
                                                   name="must_search_help_text" 
-                                                  type="checkbox"/> Also search help text</label>
+                                                  type="checkbox"/>&#160;Also search help text</label>
                                     <br/>
                                     <label><input id="must_search_aliases"
                                                   name="must_search_aliases"
-                                                  type="checkbox" checked="checked"/> Also search aliases text</label>
+                                                  type="checkbox" checked="checked"/>&#160;Also search aliases text</label>
                                     <br/>
                                     <label><input id="must_search_units_only"
                                                   name="must_search_units_only"
-                                                  type="checkbox" onchange="filterConstraints(this)" />Only search canonical units</label>
+                                                  type="checkbox" onchange="filterConstraints(this)" />&#160;Only search canonical units</label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div onclick="toggleSearchHelp(event)">
-                                        <img id="search-help-arrow" src="../build/media/images/arrow_down.gif"></img>
-                                        <label>Advanced searches</label>
-                                    </div>
-                                    <div id="search-help"
-                                        style="display: inline-block; padding-left: 16px; margin-top: 4px; border: 1px dashed aliceblue;">                                   
+                                    <details>
+                                        <summary>Advanced searches</summary>
                                         To look for standard names you can use either:
                                         <ul>
-                                        <li>
-                                            An extended regular expression. This is a powerful tool used to search complex queries.
-                                            <br/>For example, with the "Only search canonical units" enabled, <code>^mol m-3$|^mol/m3$</code> would match any string that is exactly "mol m-3" or exactly "mol/m3".
-                                            Exact matches (that is, matches to the entire string) are toggled using the <code>^</code> prefix and the <code>$</code> suffix. The <code>|</code> character acts as an "or" operator.<br/>
-                                            If you want to learn more, <a href="https://regexr.com/">Regexr</a> is a great playground to explore regular expressions.
-                                        </li>
-                                        <li>
-                                            A list of possible matches separated by blank spaces.
-                                            <br/>This is used in conjunction  with AND and OR radio buttons.
-                                            For example, the query "age ice", with AND enabled, would search for every standard names where that contains both "age" and "ice".
-                                            <br/>It is equivalent to the regular expression <code>(?=.*?ice)(?=.*?age).+</code>
-                                        </li>
+                                            <li>
+                                                An extended regular expression. This is a powerful tool used to search complex queries.
+                                                <br/>For example, with the "Only search canonical units" enabled, <code>^mol m-3$|^mol/m3$</code> would match any string that is exactly "mol m-3" or exactly "mol/m3".
+                                                Exact matches (that is, matches to the entire string) are toggled using the <code>^</code> prefix and the <code>$</code> suffix. The <code>|</code> character acts as an "or" operator.<br/>
+                                                If you want to learn more, <a href="https://regexr.com/">Regexr</a> is a great playground to explore regular expressions.
+                                            </li>
+                                            <li>
+                                                A list of possible matches separated by blank spaces.
+                                                <br/>This is used in conjunction  with AND and OR radio buttons.
+                                                For example, the query "age ice", with AND enabled, would search for every standard names where that contains both "age" and "ice".
+                                                <br/>It is equivalent to the regular expression <code>(?=.*?ice)(?=.*?age).+</code>
+                                            </li>
                                         </ul>
-                                    </div>
+                                    </details>
                                 </td>
                             </tr>
                         </tbody>
@@ -391,7 +418,7 @@ The canonical units associated with each standard name are usually the SI units 
                 </div>
                 
                 <h2>View by Category</h2>
-                <table cellpadding="4" cellspacing="0" border="1">
+                <table class="category-table" >
                     <tr>
                         <td>
                             <a href="javascript:void(0)" 
@@ -451,14 +478,14 @@ The canonical units associated with each standard name are usually the SI units 
                         </td>
                     </tr>
                 </table>
-                
             </div>
             
-            <table id="standard_name_table" border="1" width="100%" cellpadding="2" cellspacing="0">
-                <th width="76%">Standard Name</th>
-                <th width="8%">Canonical Units</th>
-                <th width="8%">AMIP</th>
-                <th width="8%">GRIB</th>
+            <table id="standard_name_table" width="100%">
+                <p><i>In the table below, click on a standard-name to show or hide its description and help text.</i></p> 
+                <th width="76%" class="table-header">Standard Name</th>
+                <th width="8%" class="table-header">Canonical Units</th>
+                <th width="8%" class="table-header">AMIP</th>
+                <th width="8%" class="table-header">GRIB</th>
                 <xsl:apply-templates select="entry"/>
             </table>
      </body>            
@@ -467,31 +494,23 @@ The canonical units associated with each standard name are usually the SI units 
     <xsl:template match="entry">
         <tr>
             <xsl:attribute name="id"><xsl:value-of select="@id"/>_tr</xsl:attribute>
-            
             <td>
                 <a>
                     <xsl:attribute name="name">
                         <xsl:value-of select="@id"/>
                     </xsl:attribute>
                 </a>
-                <img>
-                    <xsl:attribute name="id"><xsl:value-of select="@id"/>_arrow</xsl:attribute>
-                    <xsl:attribute name="src">../build/media/images/arrow_right.gif</xsl:attribute>
-                </img>
-                <code class="varname">
-                    <a>
-                        <xsl:attribute name="href">javascript:void(0)</xsl:attribute>
-                        <xsl:attribute name="onclick">toggleHelp('<xsl:value-of select="@id"/>')</xsl:attribute>
+                <div class="standard-name-summary">
+                    <xsl:attribute name="onclick">toggleHelp('<xsl:value-of select="@id"/>')</xsl:attribute>
+                    <span class="standard-name-label">
                         <xsl:value-of select="@id"/>
-                    </a>
-                </code>
-                <xsl:variable name="standard_name_id" select="@id"/>
-                <xsl:apply-templates select="../alias[entry_id=$standard_name_id]"/>
-                
-                <div>
+                    </span>
+                    <xsl:variable name="standard_name_id" select="@id"/>
+                    <xsl:apply-templates select="../alias[entry_id=$standard_name_id]"/>
+                </div>
+                <div class="standard-name-description">
                     <xsl:attribute name="id"><xsl:value-of select="@id"/>_help</xsl:attribute>
-                    <xsl:attribute name="style">display: none; padding-left: 16px; margin-top: 4px; border-top: 1px dashed #cccccc;</xsl:attribute>
-                    
+                    <xsl:attribute name="style">display: none;</xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="description=''">
                             No help available.

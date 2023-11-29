@@ -18,7 +18,7 @@ The hackathon topics included:
 * Harmonizing precipitation standard names (see issue #[262](https://github.com/cf-convention/discuss/issues/262))
 * Adding complex numbers to CF (see issue #[204](https://github.com/cf-convention/cf-conventions/issues/204))
 * Remove CF restrictions on netCDF object names (see issue #[237](https://github.com/cf-convention/cf-conventions/issues/237) and [Overview/Summary slides](https://doi.org/10.6084/m9.figshare.24564295.v1))
-* Conventions for dataset aggregation (see [CF Aggregation page](https://github.com/NCAS-CMS/cfa-conventions/blob/master/source/cfa.md))
+* [Conventions for dataset aggregation](https://figshare.com/account/articles/24633939)
 
 The second and third days included lightning talk plenary sessions.
 The lightning talk topics were:

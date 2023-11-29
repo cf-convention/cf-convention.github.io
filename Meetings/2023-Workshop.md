@@ -23,7 +23,7 @@ The hackathon topics included:
 The second and third days included lightning talk plenary sessions.
 The lightning talk topics were:
 * Metadata to Describe Lossy Compression - presented by Charlie Zender (see issue #[403](https://github.com/cf-convention/cf-conventions/issues/403))
-* Temperature units in CF - presented by David Hassell
+* [Temperature units in CF](https://figshare.com/account/articles/24633894) - presented by David Hassell
 * NetCDF Enumerations - presented by Abel Aoun
 * CF Training: where to find existing resources and how to request future topics - presented by Sadie Bartholomew (slides at https://doi.org/10.6084/m9.figshare.24615177.v1)
 

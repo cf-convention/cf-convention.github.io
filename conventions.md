@@ -22,7 +22,7 @@ group: "navigation"
       <a href="Data/cf-conventions/cf-conventions-1.11/cf-conventions.pdf">PDF</a>
       &nbsp;
 
-      <h4><b>Latest released version</b>: CF 1.10 (August 2022)</h4>
+      <h4>CF 1.10 (August 2022)</h4>
       <a href="Data/cf-conventions/cf-conventions-1.10/cf-conventions.html">Single HTML</a>
       &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.10/cf-conventions.pdf">PDF</a>

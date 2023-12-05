@@ -81,7 +81,7 @@ See the [documentation](https://nco.sourceforge.net/nco.html) for a full descrip
 
 ### netCDF Flattener - Flatten netCDF files
 
-The [netCDF Flattener](https://gitlab.eumetsat.int/open-source/netcdf-flattener/) Python package takes netCDF objects that use groups and flattens them while preserving references as described in the [Groups section](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html#groups) of the CF Conventions.
+The [netCDF Flattener](https://gitlab.eumetsat.int/open-source/netcdf-flattener/) Python package takes netCDF objects that use groups and flattens them while preserving references as described in the [Groups section](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.11/cf-conventions.html#groups) of the CF Conventions.
 The resulting object is logically equivalent to the original, and can be processed by software that isn't able to work with files that use netCDF-4 groups.
 
 ### netCDF-Java Library

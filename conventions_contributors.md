@@ -12,6 +12,7 @@ The affiliations are those that the contributors used at the time of their contr
 
 - Ryan Abernathey, Columbia University
 - Dave Allured, NOAA/CIRES/University of Colorado
+- Abel Aoun, EUMETSAT
 - Sean Arms, SpectraLogic
 - Balaji, NOAA and Princeton University
 - Chris Barker, NOAA
@@ -71,6 +72,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Roy Lowry, BODC
 - Daniel Lee, EUMETSAT
 - Joao Macedo, IPMA
+- Fernando Manzano, Puertos del Estado, Madrid
 - Seth McGinnis, NCAR
 - Don Murray, Unidata
 - Daniel Neumann, DKRZ

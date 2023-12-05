@@ -12,7 +12,7 @@ The CF convention includes a standard name table, which defines strings that ide
 
 ---
 
-**_Conventions_:** **Latest release** (1.10) [HTML][releasedhtml] [PDF][releasedpdf]
+**_Conventions_:** **Latest release** (1.11) [HTML][releasedhtml] [PDF][releasedpdf]
 <code>&nbsp;&bull;&nbsp;</code>
 **Working draft** [HTML][workinghtml] [PDF][workingpdf]
 
@@ -51,8 +51,8 @@ See also the links in the navigation bar at the top of this page.
 [discussion]: discussion.md
 [governance]: governance.md
 [faq]: faq.md
-[releasedhtml]: Data/cf-conventions/cf-conventions-1.10/cf-conventions.html
-[releasedpdf]: Data/cf-conventions/cf-conventions-1.10/cf-conventions.pdf
+[releasedhtml]: Data/cf-conventions/cf-conventions-1.11/cf-conventions.html
+[releasedpdf]: Data/cf-conventions/cf-conventions-1.11/cf-conventions.pdf
 [workinghtml]: /cf-conventions/cf-conventions.html
 [workingpdf]: /cf-conventions/cf-conventions.pdf
 [currentnames]: Data/cf-standard-names/current/build/cf-standard-name-table.html

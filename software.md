@@ -115,9 +115,9 @@ various grids used for (primarily) met/ocean modeling The goal of this package i
 single way to work with results from ANY model -- regardless of what type of grid it was computed on.
 Currently supported are:
 
-- Regular Structured Grids (CF Conventions)
-- Unstructured Grids (CF + [UGRID Conventions](http://ugrid-conventions.github.io/ugrid-conventions/))
-- Staggered Grids (CF + [SGRID Conventions](http://sgrid.github.io/sgrid/))
+* Regular Structured Grids (CF Conventions)
+* Unstructured Grids (CF + [UGRID Conventions](http://ugrid-conventions.github.io/ugrid-conventions/))
+* Staggered Grids (CF + [SGRID Conventions](http://sgrid.github.io/sgrid/))
 
 ### xCDAT - Python package for climate data analysis on structured grids
 

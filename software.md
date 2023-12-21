@@ -53,14 +53,17 @@ It can also use numpy arrays of data as the input fields making for flexible plo
 cf-plot uses the Python numpy, matplotlib and scipy libraries.
 
 ### cf-view - CF Python Quick Look Visualization Package
+
 The [cf-view Python package](https://ajheaps.github.io/cf-view/) is a quick look data exploration tool for netCDF and Met Office PP data.
 It uses the [cf-python](#cf-python---cf-python-package) and [cf-plot](#cf-python---cf-python-package) packages and reads and writes CF-compliant dataset.
 
 ### ERDDAP - scientific data server
+
 [ERDDAP](https://github.com/BobSimons/erddap) is a scientific data server that gives users a simple, consistent way to download subsets of gridded and tabular scientific datasets in common file formats and make graphs and maps.
 ERDDAP is a Free and Open Source (Apache and Apache-like) Java Servlet from NOAA NMFS SWFSC Environmental Research Division (ERD).
 
 ### Ferret and pyFerret - analysis and visualization for ocean and weather data
+
 [Ferret](https://ferret.pmel.noaa.gov/Ferret/) is an interactive computer visualization and analysis environment designed to meet the needs of oceanographers and meteorologists analyzing large and complex gridded data sets.
 It runs on recent Unix and Mac systems, using X windows for display.
 [PyFerret](https://ferret.pmel.noaa.gov/Ferret/documentation/pyferret), introduced in 2012, is a Python module wrapping Ferret.
@@ -75,6 +78,7 @@ It excels when working with multi-dimensional Earth Science data, where tabular 
 CF Standard names, units, and coordinate metadata are built into Iris, giving you a rich and expressive interface for maintaining an accurate representation of your data.
 
 ### netCDF Operators (NCO)
+
 The [netCDF Operators](https://nco.sourceforge.net/) toolkit manipulates and analyzes data stored in netCDF-accessible formats, including DAP, HDF4, HDF5, and, most recently, Zarr.
 NCO exploits the geophysical expressivity and logic of many CF (Climate & Forecast) metadata conventions including support for UDUNITS, for the attributes `Conventions`, `history`, `scale_factor`, `add_offset`, `coordinates`, `cell_methods`, and `cell_measures`, for hierarchical datasets, and for auxiliary coordinates.
 See the [documentation](https://nco.sourceforge.net/nco.html) for a full description.
@@ -105,6 +109,7 @@ The service returns subsets as CF compliant netCDF-3/4 files, in addition to oth
 It uses CF Conventions in several ways, such as encoding / decoding variables and interpreting metadata for visualization.
 
 ### `gridded` - A Python API for accessing / working with gridded model results on multiple grid types
+
 [gridded](https://github.com/NOAA-ORR-ERD/gridded) is a python package designed for working with
 various grids used for (primarily) met/ocean modeling The goal of this package is to present a
 single way to work with results from ANY model -- regardless of what type of grid it was computed on.
@@ -114,12 +119,21 @@ Currently supported are:
 * Unstructured Grids (CF + [UGRID Conventions](http://ugrid-conventions.github.io/ugrid-conventions/))
 * Staggered Grids (CF + [SGRID Conventions](http://sgrid.github.io/sgrid/))
 
+### xCDAT - Python package for climate data analysis on structured grids
+
+[xCDAT (Xarray Climate Data Analysis Tools)](https://github.com/xCDAT/xcdat) is an extension of [xarray](https://github.com/pydata/xarray) for climate data analysis on structured grids. It serves as a modern successor to the [Community Data Analysis Tools (CDAT)](https://github.com/CDAT/cdat) library.
+
+The goal of xCDAT is to provide generalizable features and utilities for simple and robust analysis of climate data. xCDAT's design philosophy is focused on reducing the overhead required to accomplish certain tasks in xarray. xCDAT aims to be compatible with structured grids that are [CF-compliant](https://cfconventions.org/) (e.g., CMIP6). Some key xCDAT features are inspired by or ported from the core CDAT library, while others leverage powerful libraries in the xarray ecosystem (e.g., [xESMF](https://pangeo-xesmf.readthedocs.io/en/latest/), [xgcm](https://xgcm.readthedocs.io/en/latest/index.html), [cf_xarray](https://cf-xarray.readthedocs.io/en/latest/index.html)) to deliver robust APIs.
+
+### `cf_xarray` - Python package for interpreting CF metadata on xarray objects
+
+[cf_xarray](https://cf-xarray.readthedocs.io/en/latest/index.html) mainly provides an accessor (`DataArray.cf` or `Dataset.cf`) that allows you to interpret [Climate and Forecast metadata convention attributes](http://cfconventions.org/) present on [xarray](https://github.com/pydata/xarray) objects.
 
 ## Commercial Software Packages
 
 ### ArcGIS Pro
 
 Esri’s [ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview) supports the ingest, [management](https://pro.arcgis.com/en/pro-app/latest/tool-reference/multidimension/an-overview-of-the-multidimension-toolbox.htm), data visualization, multidimensional analysis, and authoritative sharing of CF-Conventions compliant netCDF data.
-NetCDF data can be processed as tables, points, rasters,  and, most recently, [discrete sampling geometries](https://pro.arcgis.com/en/pro-app/latest/tool-reference/multidimension/how-netcdf-discrete-sampling-geometry-dsg-tools-work.htm).
+NetCDF data can be processed as tables, points, rasters, and, most recently, [discrete sampling geometries](https://pro.arcgis.com/en/pro-app/latest/tool-reference/multidimension/how-netcdf-discrete-sampling-geometry-dsg-tools-work.htm).
 In addition, various ArcGIS Pro tools enable multidimensional management (aggregation, subsetting, anomaly detection), [spatio-temporal analysis](https://pro.arcgis.com/en/pro-app/latest/tool-reference/space-time-pattern-mining/an-overview-of-the-space-time-pattern-mining-toolbox.htm) (trend detection, time-series clustering, changepoint detection, hot spot detection), and visualization as 3D features or [voxels](https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/what-is-a-voxel-layer-.htm).
 Analysis results based on netCDF data can be shared and viewed across the web as interactive maps, 3D features, and voxels.

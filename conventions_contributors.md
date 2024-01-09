@@ -11,6 +11,7 @@ They are listed here in recognition of their contribution to the development of 
 The affiliations are those that the contributors used at the time of their contribution and are included to identify them, rather than as current contact information.
 
 - Ryan Abernathey, Columbia University
+- Ben Adams, RPS group
 - Dave Allured, NOAA/CIRES/University of Colorado
 - Abel Aoun, EUMETSAT
 - Sean Arms, SpectraLogic
@@ -19,6 +20,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Andrew Barna, SIO/UCSD
 - Lars Bärring, SMHI
 - Sadie Bartholomew, NCAS and University of Reading
+- Abby Benson, USGS
 - Phil Bentley, UK Met Office
 - Jim Biard, NOAA
 - Leon Bilton, ANU
@@ -56,6 +58,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Dan Hollis, UK Met Office
 - Sylvain Herlédan, OceanDataLab
 - Heinke Höck, DKRZ
+- Gerrit Holl, Deutscher Wetterdienst
 - Randy Horne, Excalibur Laboratories Inc
 - Bert Jagers, Deltares
 - Aleksandar Jelenak, HDF Group
@@ -72,8 +75,10 @@ The affiliations are those that the contributors used at the time of their contr
 - Roy Lowry, BODC
 - Daniel Lee, EUMETSAT
 - Joao Macedo, IPMA
+- Ken Mankoff, NASA GISS
 - Fernando Manzano, Puertos del Estado, Madrid
 - Seth McGinnis, NCAR
+- Kai Mühlbauer, University of Bonn
 - Don Murray, Unidata
 - Daniel Neumann, DKRZ
 - Dan Nowacki, USGS

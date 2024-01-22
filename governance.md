@@ -52,6 +52,7 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Sadie Bartholomew
 * Antonio S. Cofiño
 * Fran Eggleton
+* Ellie Fisher
 * David Hassell (secretary of the Conventions Committee)
 * Rosalyn Hatcher
 * Alison Pamment (secretary of Standard Names Committee)

@@ -5,21 +5,27 @@ title: 2023 CF Workshop
 
 # 2023 CF Workshop
 
-The 2023 CF Workshop will be a virtual meeting on 3-5 October 2023.
-The meeting will run for three hours on each day, 15:00 to 18:00 UTC,
-plus an informal hour at the end of each day.
+The 2023 CF Workshop was a virtual meeting held on 3-5 October 2023.
+The meeting ran for three hours on each day, plus an informal hour at the end of each day.
+There were just over 40 registered attendees from 8 countries with 20-27 active participants online at most times during the three-day meeting.
 
-## Registration
+Each day began with plenary sessions with topics including standard names, governance and process, lightning talks, and introductions to hackathon topics.
+The majority of each day was spent in hackathon sessions.
+The hackathon topics included:
+* Using requirements key words in CF Conventions, e.g., "MUST", "SHALL", "SHOULD", "MAY" (See issue #[258](https://github.com/cf-convention/discuss/issues/258))
+* Can CF use netCDF enumerations to replace CF flags (See issue #[238](https://github.com/cf-convention/discuss/issues/238))
+* Enhancing CF to allow localizing NetCDF metadata (see issue #[244](https://github.com/cf-convention/discuss/issues/244))
+* Harmonizing precipitation standard names (see issue #[262](https://github.com/cf-convention/discuss/issues/262))
+* Adding complex numbers to CF (see issue #[204](https://github.com/cf-convention/cf-conventions/issues/204))
+* Remove CF restrictions on netCDF object names (see issue #[237](https://github.com/cf-convention/cf-conventions/issues/237) and [Overview/Summary slides](https://doi.org/10.6084/m9.figshare.24564295.v1))
+* [Conventions for dataset aggregation](https://figshare.com/account/articles/24633939)
 
-You can register using [this form](https://docs.google.com/forms/d/e/1FAIpQLSdKBGahnN4sjnGlY3-puFwe7cUuf9UJomL3Wb7JhYRN4IR0Qg/viewform).
-There is no fee!
-
-## Virtual Meeting Information
-
-The meeting will be held on Zoom.
-[Click here to access the meeting](https://ukri.zoom.us/j/95471173597?pwd=V3paaWU3VmwwR0xtMTUyMWhmWlNYdz09)
-
-The social hour after each day's session will continue on the same Zoom link as the meeting itself.
+The second and third days included lightning talk plenary sessions.
+The lightning talk topics were:
+* Metadata to Describe Lossy Compression - presented by Charlie Zender (see issue #[403](https://github.com/cf-convention/cf-conventions/issues/403))
+* [Temperature units in CF](https://figshare.com/account/articles/24633894) - presented by David Hassell
+* NetCDF Enumerations - presented by Abel Aoun
+* CF Training: where to find existing resources and how to request future topics - presented by Sadie Bartholomew (slides at https://doi.org/10.6084/m9.figshare.24615177.v1)
 
 ## Documents
 
@@ -33,7 +39,7 @@ Some presenters may also have access to an institutional repository that provide
 If you are new to this type of repository, see the Figshare "How to sign-up" [page](https://help.figshare.com/article/how-to-sign-up-to-figshare) and the "How to upload and publish your research" [page](https://help.figshare.com/article/how-to-upload-and-publish-your-research)
 or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quickstart/).
 
-## Dynamic Agenda
+## Agenda
 
 ### Tuesday, 3 October 2023
 
@@ -98,23 +104,6 @@ or the Zenodo "Quick Start" [page](https://help.zenodo.org/docs/get-started/quic
 * **17:00 - Summary / Report out (TBD)**
 
 * **18:00 - Adjourn**
-
-## Hackathons
-
-Propose a hackathon topic in registration form.
-
-### Topics
-* BCP 14 implementation (see https://github.com/cf-convention/discuss/issues/258)
-* NetCDF enumerations versus CF flags (see https://github.com/cf-convention/discuss/issues/238)
-* Enhancing CF to allow localizing NetCDF metadata (locale-aware) (see https://github.com/cf-convention/discuss/issues/233)
-* Precipitation standard names (see https://github.com/cf-convention/discuss/issues/262)
-* Issue triage (https://github.com/cf-convention/cf-conventions/issues)
-* More topics to come ...
-
-
-## Lightning Talks
-
-Propose talks in registration form.
 
 ## CF Code of Conduct
 Participants should review the [CF Code of Conduct](https://github.com/cf-convention/cf-conventions/blob/main/CODE_OF_CONDUCT.md).

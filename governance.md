@@ -85,6 +85,11 @@ The climate research community is indebted to former members of the committee, p
 * Martin Schultz (Conventions)
 * Rich Signell (Governance and Standard Names)
 * Karl Taylor (Governance and Conventions, former chair but present member of both)
+* Martin Desruisseaux (Information Management and Support)
+* Matthew Harris (Information Management and Support)
+* Richard Hattersley (Information Management and Support)
+* Mark Hedley (Information Management and Support)
+* Tanya Reshel (Information Management and Support)
 
 ### Contributors
 

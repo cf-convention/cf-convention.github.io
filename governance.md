@@ -50,6 +50,7 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 
 * Andrew Barna
 * Sadie Bartholomew
+* Guilherme Castelão
 * Antonio S. Cofiño
 * Fran Eggleton
 * Ellie Fisher

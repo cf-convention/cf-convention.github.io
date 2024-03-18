@@ -16,7 +16,7 @@ Proposals for changing CF are discussed as [GitHub issues][github_issues] in thr
 
     For proposing additions or amendments to standard names, their definitions, or other CF controlled vocabulary (area types and standardized regions).
 
-    The status of proposals about standard names is shown by the [CEDA vocabulary editor][vocab_editor].
+    As well as in GitHub issues, the status of proposals about standard names is shown by the [CEDA vocabulary editor][vocab_editor]. To see a list of resolved proposals (accepted or rejected) for standard names from March 2011 onwards, click "Inactive" in the [CEDA vocabulary editor][vocab_editor]
   
 *   [Conventions][github_conventions]
 
@@ -35,7 +35,6 @@ No registration with CF is required to contribute; all that is needed is a freel
 Before the CF community migrated to GitHub, general and standard-name discussion took place on the [cf-metadata mailing list][archives], and enhancements to the conventions were proposed on the [CF Metadata Trac](Data/trac.html) site.
 
 * cf-metadata mailing list archive [copy on GitHub][archives] or [original at NCAR][NCAR_archives] (until December 2019)
-* To see a list of resolved proposals (accepted or rejected) for standard names from March 2011 onwards, click "Inactive" in the [CEDA vocabulary editor][vocab_editor]
 * [CF Metadata Trac](Data/trac.html) (until July 2018)
 * [About CF Metadata Trac][about]
 

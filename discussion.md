@@ -8,7 +8,7 @@ group: "navigation"
 
 CF is carrying out a trial (beginning in March 2024) of using the CF [GitHub organization Discussions][github_discussions] for announcements relevant to CF, community discussion of comments and ideas for changing CF, and for questions and answers about how to use CF.
 
-Announcements, discussions and Q&A that were initiated _before_ the trial of CF GitHub Discussions began are continuing as [GitHub issues][github_issues] in the [`discuss` repository][github_discuss].
+Announcements, discussions and Q&A that were initiated _before_ the trial of CF GitHub Discussions began are continuing as [GitHub issues][github_issues] in the [`discuss` repository][github_discuss]. (These might later be moved to GitHub Discussions if the trial is successful.)
  
 Proposals for changing CF are discussed as [GitHub issues][github_issues] in three repositories:
 
@@ -30,9 +30,9 @@ Proposals for changing CF are discussed as [GitHub issues][github_issues] in thr
 
 No registration with CF is required to contribute; all that is needed is a freely available [GitHub account][github].
 
-Before the CF community migrated to GitHub, general and standard-name discussion took place on the [cf-metadata mailing list][archives], and enhancements to the conventions were proposed on the [CF Metadata Trac](Data/trac.html) site.
-
 ### Archive links
+
+Before the CF community migrated to GitHub, general and standard-name discussion took place on the [cf-metadata mailing list][archives], and enhancements to the conventions were proposed on the [CF Metadata Trac](Data/trac.html) site.
 
 * cf-metadata mailing list archive [copy on GitHub][archives] or [original at NCAR][NCAR_archives] (until December 2019)
 * To see a list of resolved proposals (accepted or rejected) for standard names from March 2011 onwards, click "Inactive" in the [CEDA vocabulary editor][vocab_editor]
@@ -41,9 +41,9 @@ Before the CF community migrated to GitHub, general and standard-name discussion
 
 [github_discuss]: https://github.com/cf-convention/discuss/issues
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues
-[github_conventions_change]: [github_conventions]?q=is:issue+label:"change agreed"
-[github_conventions_nochange]: [github_conventions]?q=is:issue+label:"agreement not to change"
-[github_conventions_dormant]: [github_conventions]?q=is:issue+label:dormant
+[github_conventions_change]: https://github.com/cf-convention/cf-conventions/issues?q=is:issue+label:"change agreed"
+[github_conventions_nochange]: https://github.com/cf-convention/cf-conventions/issues?q=is:issue+label:"agreement not to change"
+[github_conventions_dormant]: https://github.com/cf-convention/cf-conventions/issues?q=is:issue+label:dormant
 [github_website]: https://github.com/cf-convention/cf-convention.github.io/issues
 [github]: https://github.com
 [website]: https://cfconventions.org

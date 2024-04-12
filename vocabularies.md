@@ -6,14 +6,15 @@ group: "navigation"
 
 <h2><b>CF Standard Names and other CF Controlled Vocabularies</b></h2>
 <p>
-<h4><b>Standard Name Table (current version, v84, 19 January 2024)</b></h4>
-  <a href="Data/cf-standard-names/84/build/cf-standard-name-table.html">HTML</a> &nbsp;
-  <a href="Data/cf-standard-names/84/src/cf-standard-name-table.xml">XML</a> &nbsp;
-  <a href="Data/cf-standard-names/84/build/kwic_index_for_cf_standard_names.html">KWIC_Index</a>
+<h4><b>Standard Name Table (current version)</b></h4>
+  <a href="Data/cf-standard-names/current/build/cf-standard-name-table.html">HTML</a> &nbsp;
+  <a href="Data/cf-standard-names/current/src/cf-standard-name-table.xml">XML</a> &nbsp;
+  <a href="Data/cf-standard-names/current/build/kwic_index_for_cf_standard_names.html">KWIC_Index</a>
 
   <h5><b>Previous Versions (HTML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
-    <a href="Data/cf-standard-names/82/build/cf-standard-name-table.html">v83</a> &nbsp;
+    <a href="Data/cf-standard-names/84/build/cf-standard-name-table.html">v84</a> &nbsp;
+    <a href="Data/cf-standard-names/83/build/cf-standard-name-table.html">v83</a> &nbsp;
     <a href="Data/cf-standard-names/82/build/cf-standard-name-table.html">v82</a> &nbsp;
     <a href="Data/cf-standard-names/81/build/cf-standard-name-table.html">v81</a> &nbsp;
     <a href="Data/cf-standard-names/80/build/cf-standard-name-table.html">v80</a> &nbsp;
@@ -98,7 +99,8 @@ group: "navigation"
 
   <h5><b>Previous Versions (XML)</b></h5>
     N.B. For technical reasons, no standard name table was published with version number 38.<br>
-    <a href="Data/cf-standard-names/82/src/cf-standard-name-table.xml">v83</a> &nbsp;
+    <a href="Data/cf-standard-names/84/src/cf-standard-name-table.xml">v84</a> &nbsp;
+    <a href="Data/cf-standard-names/83/src/cf-standard-name-table.xml">v83</a> &nbsp;
     <a href="Data/cf-standard-names/82/src/cf-standard-name-table.xml">v82</a> &nbsp;
     <a href="Data/cf-standard-names/81/src/cf-standard-name-table.xml">v81</a> &nbsp;
     <a href="Data/cf-standard-names/80/src/cf-standard-name-table.xml">v80</a> &nbsp;
@@ -182,7 +184,8 @@ group: "navigation"
     <a href="Data/cf-standard-names/1/src/cf-standard-name-table.xml">v1</a> &nbsp;
 
 <h5>Previous Versions (Keyword Centred List)</h5>
-      <a href="Data/cf-standard-names/83/build/kwic_index_for_cf_standard_names.html">v82</a>  &nbsp;
+      <a href="Data/cf-standard-names/84/build/kwic_index_for_cf_standard_names.html">v84</a>  &nbsp;
+      <a href="Data/cf-standard-names/83/build/kwic_index_for_cf_standard_names.html">v83</a>  &nbsp;
       <a href="Data/cf-standard-names/82/build/kwic_index_for_cf_standard_names.html">v82</a>  &nbsp;
       <a href="Data/cf-standard-names/81/build/kwic_index_for_cf_standard_names.html">v81</a>  &nbsp;
       <a href="Data/cf-standard-names/80/build/kwic_index_for_cf_standard_names.html">v80</a>  &nbsp;
@@ -206,7 +209,7 @@ group: "navigation"
   <h5><b>Documents</b></h5>
     <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for Construction of CF Standard Names<br>
     List of<a href="Data/cf-standard-names/docs/standard-name-contributors.html"> contributors</a> to CF Standard Names<br>
-    [Rules][vocabrules] for making changes to the CF vocabularies
+    <a href="standard_name_rules.html">Rules</a> for making changes to the CF vocabularies
 
   <h5><b>Discussion</b></h5>
 
@@ -257,6 +260,4 @@ group: "navigation"
     <a href="Data/standardized-region-list/standardized-region-list.2.xml">2</a> &nbsp;
     <a href="Data/standardized-region-list/standardized-region-list.1.xml">1</a> &nbsp;
 
-</p>  
-
-[vocabrules]: https://cfconventions.org/standard_name_rules.html
+</p>

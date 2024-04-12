@@ -211,6 +211,7 @@ group: "navigation"
     <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for Construction of CF Standard Names<br>
     List of<a href="Data/cf-standard-names/docs/standard-name-contributors.html"> contributors</a> to CF Standard Names<br>
     <a href="standard_name_rules.html">Rules</a> for making changes to the CF vocabularies
+    <a href="Data/schema-files/cf-standard-name-table-2.0.xsd">Schema file</a> for the Standard name table XML files (version 1 -- current)
 
   <h5><b>Discussion</b></h5>
 

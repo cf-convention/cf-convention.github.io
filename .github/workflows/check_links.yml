@@ -23,13 +23,34 @@ jobs:
         with:
           output: ./lychee/out.md
         
+        # See exclusions in .lycheeignore, remove lines and give it a
+        # whirl if you're hunting broken links
+      - name: Check links
+        id: lychee
+        uses: lycheeverse/lychee-action@master
+        with:
+          fail: true
+          # We need to exclude the cf-conventions-1.2 and .3 build dirs
+          # because they lead to an error of:
+          #   Error: Cannot read input content from file <relevant file>
+          #   Caused by:
+          #       stream did not contain valid UTF-8
+          # Note: --exclude-path only takes one input path, so we need
+          # to set it twice.
+          # Note also we define a .lycheeignore file to exclude some
+          # specific links for checking, instead of using --exclude.
+          args: >
+            --no-progress './*.md'
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
       - name: Upload report
-        if: ${{ always() }}
+        if: env.exit_code != 0
         uses: actions/upload-artifact@v1
         with:
           name: Link check report
           path: ./lychee/out.md
-      
+
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v5.0.0
         with:

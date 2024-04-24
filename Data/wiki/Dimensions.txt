@@ -1,0 +1,79 @@
+= Dimensions for unstructured grid data =
+
+
+== Some standard dimensions ==
+ '''Nodes'''::
+  the number of nodes in the mesh
+ '''Cells'''::
+  the number of cells in the mesh
+ ''''Connect'''::
+  the number of nodes per cell [''The maximum number for mixed cells'']
+   * For an extruded mesh, these should describe the 2D pattern, not the 3D cells
+   * Better name?
+ '''Edges'''::
+  the number of edges [''optional - edge data only'']
+ '''Faces'''::
+  the number of Faces [''optional - 3D face center data only'']
+
+ '''Times'''::
+  The number of time points in the data set.
+
+[''Only for [wiki:ExtrudedMesh extruded] meshes'']
+ '''Layers'''::
+  the number of stacked prismatic cell in an extruded mesh
+ '''Levels'''::
+  the number of stacked nodes bounding the cells of an extruded mesh
+
+
+== Discusion of Dimension issues: ==
+
+=== What about netCDF files which contain more than one mesh? That would require one complete set of these dimesions for each mesh in the file? ===
+
+ * The naming conventions will be very messy	
+
+ * A strong case could be made for only allowing one set of standard dimensions in NETCDF3.6
+
+ * With out a way to store multiple mesh dimensions, zones and domain decomposition are impossible in a single file.
+
+ * Only one unlimited dimension is available anyway...
+
+ * These can become groups in NETCDF 4 where this *should* be included as a single file!
+
+ * What if we had pointers to other files for NETCDF 3.6 standard so that we could simulate groups? That way we can have as many meshes and dimensions as we need, without cluttering a single file. These would naturally turn into groups in NETCDF 4?
+
+
+== Example CDL Dimension for multiple mesh files ==
+{{{		
+dimensions:
+	nNodes_A = ;
+	nCells_A = ;
+	nConnect_A = ;
+	nEdges_A= ;
+	nFaces_A= ;
+	Time_A = ; 
+	nNodes_B = ;
+	nCells_B = ;
+	nConnect_B = ;
+	nEdges_B= ;
+	nFaces_B= ;
+	Time_B = ; 
+}}}
+'''Better Ideas Please!?!?'''
+
+ Comment::
+  If two sets of dimensions are included each one should be complete and independent of the other.
+  * Exception: Common time variable?
+	
+
+
+== Other dimensions to include: ==
+We need dimensions for the following:
+ *maximum # of cells surrounding each cell
+ * maximum # of cells surrounding each node
+ * maximum # of nodes surrounding each cell
+ * maximum # of nodes surrounding each node
+	
+What about other dimensions required for variables used in gradient calculations?
+How do we standardize and name these?
+
+'''Go Back to''' CdlDiscussion '''Table of Contents'''

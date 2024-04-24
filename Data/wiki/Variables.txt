@@ -1,0 +1,66 @@
+= Variables =
+
+Variables are variables, they should be very similar to the existing CF Conventions, but certain meta data should be added due the complexity of unstructured grid data.
+
+== Variable Meta Data additions for unstructured grids ==
+ * Connectivity variables 
+  * MeshMetaData
+ * The coordinate variables
+  * the name of the mesh it belongs to
+ * Data variables
+   * the name of the mesh it belongs to
+   * The location of the data on the cell
+
+== Examples ==
+
+=== Data CDL ===
+
+Data at nodes in a non sigma coordinate mesh
+{{{
+float SomeData(time,Nodes)
+	SomeData:standard_name = "this data"
+	SomeData:Mesh = "MESH A"
+	SomeData:Location = "NODECENT"
+	SomeData:valid_min = "xx"
+	SomeData:valid_max = "yy"
+}}}
+
+Data at nodes in a sigma coordinate mesh
+{{{
+float MoreData(time,levels, Nodes)
+	MoreData:standard_name = "that data"
+	MoreData:Mesh = "MESH B"
+	MoreData:Location = "NODECENT 
+	MoreData:valid_min = "xx"
+	MoreData:valid_max = "yy"
+}}}
+
+Data at Cell centers in a sigma coordinate mesh
+{{{
+float lastData(time, layers, Cells)
+	lastData:standard_name = "which data?"
+	lastData:Mesh = "MESH C"
+	lastData:Location = "CELLCENT"
+	lastData:valid_min = "xx"
+	lastData:valid_max = "yy"
+}}}
+
+Data at cell edges
+{{{
+float LessData(time, Edges)
+	LessData:standard_name = "whos data?"
+	LessData:Mesh = "MESH D"
+	LessData:Location = "EDGECENT 
+	LessData:valid_min = "xx"
+	LessData:valid_max = "yy"
+}}}
+
+Data at cell faces
+{{{
+float ItsData(time, Faces)
+	ItsData:standard_name = "why data?"
+	ItsData:Mesh = "MESH D"
+	ItsData:Location = "FACECENT 
+	ItsData:valid_min = "xx"
+	ItsData:valid_max = "yy"
+}}}

@@ -1,0 +1,78 @@
+= Aggregation Over Discrete Coordinates =
+
+Consider a CF NetCDF data set with 4 auxiliary coordinates describing an ensemble dimension:
+
+{{{
+netcdf input {
+dimensions:
+        longitude = 144 ;
+        latitude = 73 ;
+        time = UNLIMITED ; // (120 currently)
+        time_bnd = 2 ;
+        ensemble = 21 ;
+        string4 = 4 ;
+        string15 = 15 ;
+        string60 = 60 ;
+variables:
+...
+        int realization(ensemble) ;
+                realization:long_name = "Number of the simulation in the ensemble" ;
+        char experiment_id(ensemble, string4) ;
+                experiment_id:long_name = "Experiment identifier" ;
+        char source(ensemble, string60) ;
+                source:long_name = "Method of production of the data" ;
+        char institution(ensemble, string15) ;
+                institution:long_name = "Institution responsible for the forecast system" ;
+...
+        float sh(time, ensemble, latitude, longitude) ;
+                sh:units = "1" ;
+                sh:standard_name = "specific_humidity" ;
+                sh:cell_methods = "leadtime: mean (interval 6 h)" ;
+                sh:coordinates = "experiment_id source realization institution" ;
+}}}
+
+I can calculate a range of statistics (e.g. mean) by aggregating over the dimension labelled ensemble.  Having calculated these statistics, how do I describe my result?
+
+I do not think that I would like to process the auxiliary coordinates to try and deliver a coordinate of length one for any of the coordinates which have been collapsed over, these do not make sense in my mind.
+
+I can maintain the four auxiliary coordinates from my input dataset, encoding these as ancillary variables, this seems like a helpful step.
+
+However, how do I describe the aggregation in my result?
+
+What can I put in the cell_methods string to define the result data set from this aggregation operation?
+
+The cell_methods string should include the string "leadtime: mean (interval 6 h)" at the start, to maintain consistency; what should be added to this?  
+
+cell_methods = "leadtime: mean (interval 6 h) ???????????????????" ;
+
+Can the ancillary variables be referenced by the cell_methods?
+
+{{{
+netcdf result {
+dimensions:
+        longitude = 144 ;
+        latitude = 73 ;
+        time = UNLIMITED ; // (120 currently)
+        time_bnd = 2 ;
+        ensemble = 21 ;
+        string4 = 4 ;
+        string15 = 15 ;
+        string60 = 60 ;
+variables:
+...
+        int realization(ensemble) ;
+                realization:long_name = "Number of the simulation in the ensemble" ;
+        char experiment_id(ensemble, string4) ;
+                experiment_id:long_name = "Experiment identifier" ;
+        char source(ensemble, string60) ;
+                source:long_name = "Method of production of the data" ;
+        char institution(ensemble, string15) ;
+                institution:long_name = "Institution responsible for the forecast system" ;
+...
+        float sh_sd(time, latitude, longitude) ;
+                sh_sd:units = "1" ;
+                sh_sd:standard_name = "specific_humidity" ;
+                sh_sd:cell_methods = "leadtime: mean (interval 6 h) experiment_id: source: realization: institution: mean" ;
+                sh_sd:coordinates = "experiment_id source realization institution" ;
+}}}
+

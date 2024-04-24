@@ -12,7 +12,7 @@ The CF convention includes a standard name table, which defines strings that ide
 
 ---
 
-**_Conventions_:** **Latest release** (1.10) [HTML][releasedhtml] [PDF][releasedpdf]
+**_Conventions_:** **Latest release** (1.11) [HTML][releasedhtml] [PDF][releasedpdf]
 <code>&nbsp;&bull;&nbsp;</code>
 **Working draft** [HTML][workinghtml] [PDF][workingpdf]
 
@@ -36,13 +36,13 @@ The use of CF is recommended where applicable by Unidata.
 
 See also the links in the navigation bar at the top of this page.
 
-* Current issues: [general discussion][github_discuss] (including standard names), [conventions][github_conventions], this [website][github_website] (including governance)
+* [CF GitHub Discussions][github_discussions]: announcements, forum for community discussion, questions and answers
+* Current proposals for changing CF (CF GitHub issues): [vocabulary][github_discuss] (including standard names), [conventions][github_conventions], this [website][github_website] (including governance)
 * [CF GitHub organisation][cf_github]
 * [CF FAQ][faq]
 * [List of software for working with CF](software.md)
 * [Paper][cfdmpaper] describing the CF data model and reference software
 * Overview of CF basics as a [presentation][viewgraphs] and [paper][article]
-
 
 [api]: https://www.unidata.ucar.edu/software/netcdf/index.html
 [coards]: https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html
@@ -51,8 +51,8 @@ See also the links in the navigation bar at the top of this page.
 [discussion]: discussion.md
 [governance]: governance.md
 [faq]: faq.md
-[releasedhtml]: Data/cf-conventions/cf-conventions-1.10/cf-conventions.html
-[releasedpdf]: Data/cf-conventions/cf-conventions-1.10/cf-conventions.pdf
+[releasedhtml]: Data/cf-conventions/cf-conventions-1.11/cf-conventions.html
+[releasedpdf]: Data/cf-conventions/cf-conventions-1.11/cf-conventions.pdf
 [workinghtml]: /cf-conventions/cf-conventions.html
 [workingpdf]: /cf-conventions/cf-conventions.pdf
 [currentnames]: Data/cf-standard-names/current/build/cf-standard-name-table.html
@@ -63,3 +63,4 @@ See also the links in the navigation bar at the top of this page.
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues
 [github_website]: https://github.com/cf-convention/cf-convention.github.io/issues
 [cf_github]: https://github.com/cf-convention
+[github_discussions]: https://github.com/orgs/cf-convention/discussions

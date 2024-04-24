@@ -36,6 +36,10 @@ The panel will encourage continued support of CF by benevolent organisations and
 
 The panel will ensure that an annual meeting is organised for discussing issues relevant to the CF standard.
 
+The panel may appoint an information management and support team to help with technical and organisational aspects of CF.
+
+The panel will decide who may have permission to approve and implement changes to the CF website and documents.
+
 Once every year, the panel will make a report to the WGCM on the status of CF, and must secure an assurance from the WGCM that in their judgement the present membership of the panel is suitable to meet its terms of reference.
 The panel must urgently address any concerns in this regard expressed by either the WGCM or the CF community.
 

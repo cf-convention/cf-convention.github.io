@@ -1,0 +1,73 @@
+[http://kitt.llnl.gov/trac/ticket/107#comment:60 davidhassell]:
+
+> Another is that a georeference construct is not, according to some definitions (such as ISO 19123, Geographic information -Schema for coverage geometry and functions) a CRS. 
+
+ISO19123 is a useful reference point for this discussion.  For the CRS definition, ISO19123 standard references ISO19111:
+
+{{{
+5.3.10 Coordinate Reference System
+
+The association Coordinate Reference System shall link the CV_Coverage to the coordinate reference system to
+which the objects in its spatiotemporal domain are referenced. The class SC_CRS is specified in ISO 19111. 
+}}}
+
+ISO19111 describes the coordinate reference system:
+
+{{{
+
+6.1 Relationship between coordinates and coordinate reference system
+
+In this International Standard, a coordinate is one of n scalar values that define the position of a single point.
+
+Coordinates are ambiguous until the system to which those coordinates are related has been fully defined.
+Without the full specification of the system, coordinates are ambiguous at best and meaningless at worst. A
+coordinate reference system (CRS) defines the coordinate space such that the coordinate values are
+unambiguous. 
+}}}
+
+This is the functionality which CF-NetCDF grid_mapping variables provide. CF-NetCDF coord/auxcoord variables are a set of values referencing a fully defined system.
+
+{{{
+8.2 Coordinate reference system
+
+8.2.1 General
+
+In this International Standard a coordinate reference system shall be defined by one coordinate system and
+one datum. A datum specifies the relationship of a coordinate system to an object, thus ensuring that the
+abstract mathematical concept “coordinate system” can be applied to the practical problem of describing
+positions of features on or near the object's surface by means of coordinates.
+}}}
+
+The CF grid_mapping options defined in Appendix F of the CF conventions relate very closely to this ISO definition.  Each one defines a datum and the system of coordinate names which may be validly used.
+
+It appears to me that CF-NetCDF has followed the ISO approach in defining coordinate reference systems, calling them ''grid_mapping'' variables.
+
+[http://kitt.llnl.gov/trac/ticket/107#comment:60 davidhassell]:
+
+> (An ISO 19123 CRS is actually defined by a subset of the information contained in a georeference construct taken with the coordinate constructs to which it relates.)
+
+I do not think this is correct.  The ISO19123 describes the definition of grids:
+
+{{{
+8.2 Quadrilateral grid geometry
+
+...
+A grid may be defined in terms of an external coordinate reference system. This requires additional information
+about the location of the grid’s origin within the external coordinate reference system, the orientation of the grid
+axes, and a measure of the spacing between the grid lines.
+
+}}}
+
+The grid is defined by a set of values, quantities with respect to an ISO19111 CRS.  In CF-NetCDF terminology, there are two coordinate variables defined with respect to a grid_mapping variable.
+
+
+
+The functionality provided by ''formula terms'' in a CF NetCDF file enables a set of coordinate values to be inferred from other information in the file.  This is a hugely flexible tool, which has so far been used to define parameterised vertical coordinates, common in atmosphere models, but has potentially many further uses.  One, well defined transformation is detailed, enabling a set of coordinate values to be derived following the defined process.
+
+The result is a coordinate, just like a coordinate variable or auxiliary coordinate variable.  In many cases, it will be useful to be able to define this derived coordinate with respect to some well specified coordinate reference system; there has been significant recent discussion on this topic on the mailing list.
+
+The derived nature is related to the coordinate values.  The spatial referencing is an explicitly separate concept.  I think we will store up a large amount of confusion and complexity for the future if we attempt to conflate these two concepts within the CF data model.
+
+If we keep them separate, we may be able to follow the ISO terminology and describe Coordinate Reference System instances within our model in ways which are consistent with the ISO definitions, which I would find particularly useful.
+
+

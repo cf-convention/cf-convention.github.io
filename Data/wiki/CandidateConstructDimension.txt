@@ -1,0 +1,13 @@
+= Dimension construct =
+
+A dimension construct must contain
+
+    A size (an integer greater than zero), which can be equal to one. In CF-netCDF, there is a formal distinction between scalar coordinate variables and size-one coordinate variables, but they are logically the same; CF-netCDF supports scalar coordinate variables for simplicity and convenience in the netCDF file. An example of a size-one dimension is a vertical dimension for 1.5 m height. In this data model, a CF-netCDF scalar coordinate variable is regarded as a dimension construct with a size of unity. 
+
+It may also optionally contain
+
+    A one-dimensional numerical coordinate array of the size specified for the dimension. If the size of the dimension is greater than one, the elements of the coordinate array must all be of the same numeric data type, they must all have different non-missing values, and they must be monotonically increasing or decreasing. dimension constructs cannot have string-valued coordinates. In this data model, a CF-netCDF string-valued coordinate variable or string-valued scalar coordinate variable corresponds to an auxiliary coordinate construct (not a dimension construct), with a dimension whose coordinate construct has no coordinate array.
+    A two-dimensional boundary coordinate array, whose slow-varying (second in Fortran) dimension equals the size specified by the dimension construct, and whose fast-varying dimension is two, indicating the extent of the cell. For climatological time dimensions, the bounds are interpreted in a special way indicated by the cell methods.
+    Properties (in the same sense as for the field construct) serving to describe the coordinates. 
+
+In this data model we permit a dimension not to have a coordinate array if there is no appropriate numeric monotonic coordinate. That is the case for a dimension that runs over ocean basins or area types, for example, or for a dimension that indexes timeseries at scattered points. Such dimensions do not correspond to a continuous physical quantity. (They will be called index dimensions in CF version 1.6.) 

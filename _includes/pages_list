@@ -1,9 +1,9 @@
 {% for node in pages_list %}
   {% if group == null or group == node.group %}
-    {% if page.url == node.url %}
-      <li class="active"><a href="{{node.url}}" class="active">{{node.title}}</a></li>
+    {% if page.url contains node.url %}
+      <li class="active"><a href="{{ node.url | relative_url }}" class="active">{{ node.title }}</a></li>
     {% else %}
-      <li><a href="{{node.url}}">{{node.title}}</a></li>
+      <li><a href="{{ node.url | relative_url }}">{{ node.title }}</a></li>
     {% endif %}
   {% endif %}
 {% endfor %}

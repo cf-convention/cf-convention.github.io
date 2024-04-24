@@ -1,0 +1,82 @@
+= Draft of the CF Data Model 1.5 =
+
+This page is the working draft of the CF data model for CF 1.5, under the terms of reference of ticket 88.  The original discussion in ticket 68 have been closed and a new ticket opened to move adapt this draft model to a community accepted model.
+
+
+== UML Sketch ==
+
+This sketch represents the model in its draft state, illustrating the relationships between types. 
+
+== Constructs, Types ==
+
+These construct names have been agreed in principle and the detail of their specification is being worked upon. 
+
+=== Field ===
+
+The Field is the atomic unit within the CF data model.  Fields are independent entities containing data and metadata.
+
+The Field defines a domain and one phenomenon described over that domain.  It contains a multi-dimensional array of data values, which may include missing data, and the metadata which define the domain.
+
+=== Coordinate ===
+
+A Field may contain one or zero Coordinates per dimension of the Field's data array.
+
+The Coordinate defines a phenomenon and data values for nominal points.  Optionally bounds may be defined.
+
+The Coordinate defines a domain_axis for the Fields domain. 
+
+Coordinates are one-dimensional and strictly monotonic.
+
+=== !AuxiliaryCoordinate ===
+
+A Field may contain !AuxiliaryCoordinates referenced by dimensions of the Field's data array.
+
+A Field may contain many !AuxiliaryCoordinates per dimension of the Field's data array.
+
+!AuxiliaryCoordinates may be multi-dimensional and not definitively sortable.
+
+!AuxiliaryCoordinates further describe the Field's domain.
+
+=== !CellMeasure ===
+
+A Field may contain !CellMeasure referenced by dimensions of the Field's data array.
+
+A Field may contain many !CellMeasure per dimension of the Field's data array.
+
+!CellMeasures may be multi-dimensional and not definitively sortable.
+
+!CellMeasures quantify aspects of the Field's domain (where this is not derivable)
+
+=== !CellMethod ===
+
+A !CellMethod defines a process the data has undergone, qualifying the definition of the Field's phenomenon.
+
+A !CellMethod may contain a !CellMethod, forming an ordered list of !CellMethods.
+
+=== Transform ===
+
+A Transform defines a process which produces a defined result from a set of metadata inputs: Coordinates, !AuxiliaryCoordinates, !CellMeasures.
+
+e.g. A pair of !AuxiliaryCoordinates: latitude and longitude, from a projected spatial coordinate pair.
+
+ 
+==== Notes ====
+
+Wherever it is used for a Type, 'attributes' is a collection of key:value pairs: particular keys are banned from use for each type
+
+== Potential Constructs: Under Discussion ==
+
+
+
+=== Domain Axis ===
+
+=== !CoordinateReferenceSystem ===
+ 
+
+== Notes ==
+
+=== Qualified Associations ===
+
+The associations between the Field and its Coordinates and !CellMeasures are qualified associations.  These are UML concepts which denote a managed association without mandating how this association is managed; only the constraints of the relationship are detailed.
+
+E.g. a Field may have One or Zero Coordinates for each dimension which exists on the Field's Data Array.  

@@ -1,13 +1,12 @@
 name: Check Links on PR
-permissions:
-    pull-requests: write
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-
 jobs:
   check-links:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: lycheeverse/lychee-action@v1
@@ -24,3 +23,6 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           path: ./lychee/results.md
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  

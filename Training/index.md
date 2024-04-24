@@ -15,5 +15,5 @@ group: "navigation"
 Videos of presentations given at the [2022 CF training workshop][2022] are available at the [CF conventions YouTube channel][YouTube]
 
 
-[2022]: 2022-Training-Workshop.html
+[2022]: 2022-Training-Workshop.md
 [YouTube]: https://www.youtube.com/channel/UCKLq7PCVonFJA0ec98SMFZA

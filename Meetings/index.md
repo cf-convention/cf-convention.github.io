@@ -17,14 +17,14 @@ group: "navigation"
 * [2017 Advancing netCDF-CF Workshop][2017] - 6-8 September 2017 - EarthCube - Boulder, CO (USA)
 * [2016 Advancing netCDF-CF Workshop for the Geosciences][2016] - 24-26 May 2016 - EarthCube - Boulder, CO (USA)
  
-[2023]: 2023-Workshop.html
-[2022]: 2022-Workshop.html
-[2021]: 2021-Workshop.html
-[2020]: 2020-Workshop.html
-[2019]: 2019-Workshop.html
-[2018]: 2018-Workshop.html
-[2017]: 2017-Workshop.html
-[2016]: 2016-Workshop.html
+[2023]: 2023-Workshop.md
+[2022]: 2022-Workshop.md
+[2021]: 2021-Workshop.md
+[2020]: 2020-Workshop.md
+[2019]: 2019-Workshop.md
+[2018]: 2018-Workshop.md
+[2017]: 2017-Workshop.md
+[2016]: 2016-Workshop.md
 
 ## Other related CF meetings
 

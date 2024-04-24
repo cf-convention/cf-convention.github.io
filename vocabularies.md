@@ -3,7 +3,6 @@ layout: default
 title: Vocabularies
 group: "navigation"
 ---
-
 <h2><b>CF Standard Names and other CF Controlled Vocabularies</b></h2>
 <p>
 <h4><b>Standard Name Table</b></h4>
@@ -210,9 +209,11 @@ group: "navigation"
   <h5><b>Documents</b></h5>
     <a href="Data/cf-standard-names/docs/guidelines.html">Guidelines</a> for Construction of CF Standard Names<br>
     List of<a href="Data/cf-standard-names/docs/standard-name-contributors.html"> contributors</a> to CF Standard Names<br>
-    <a href="standard_name_rules.html">Rules</a> for making changes to the CF vocabularies<br>
+<div markdown="1"> 
+[//]: # (This is a workaround to embed the .md into the HTML sysntax)
+[Rules](standard_name_rules.md) for making changes to the CF vocabularies
+</div>
     <a href="Data/schema-files/cf-standard-name-table-2.0.xsd">Schema file</a> for all versions of the Standard Name Table XML files
-
   <h5><b>Discussion</b></h5>
 
   Current issues in the <a href="https://github.com/cf-convention/discuss/issues">CF `discuss` repo</a>, where proposals for additions and changes to standard names are made<br>

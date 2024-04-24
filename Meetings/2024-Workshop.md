@@ -23,7 +23,7 @@ Part 2 will follow the familiar format of our usual annual meeting.
 
 ## Documents
 
-All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder]() (No yet availiable).
+All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder]() (Not yet available).
 
 ## Agenda
 **TO BE [DISCUSSED][ISSUE] AND COMPLETED**
@@ -52,7 +52,7 @@ Participants should review the [CF Code of Conduct][CoC].
 ## The organising committee
 * Alison Pamment
 * David Hassell
-* Elli Fisher
+* Ellie Fisher
 * Ethan Davis
 * Lars Bärring
 * **Your name here, [there's still room for more help!][ISSUE]**

@@ -1,0 +1,57 @@
+#
+# GitHub Actions Workflow to check links on CF website artifact, and reopen related issue
+#
+# For more information on the actions used in this workflow, please see:
+#   https://github.com/lycheeverse/lychee-action
+#   https://github.com/actions/download-artifact
+#   https://github.com/micalevisk/last-issue-action
+#   https://github.com/peter-evans/create-issue-from-file
+
+name: Check links on CF conventions web page
+on:
+  schedule:
+    - cron: '23 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  check_links:
+    name: Check links  # TODO: Check also Asciidoc (this should take place in https://github.com/cf-convention/cf-conventions)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download CF Website artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: CF Website
+          path: ./_site/
+      
+      - name: Check markdown links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          fail: true
+          format: markdown
+          jobSummary: true
+          output: ./lychee/results.md
+          args: --config lychee.toml ./_site/
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+      - name: Find Link Checker Issue
+        id: link-checker-issue
+        uses: micalevisk/last-issue-action@v2
+        with:
+          state: open
+          labels: |
+            link-checker,  report, automated issue     
+      
+      - name: Update Issue
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Broken links detected in CF Website artifact 🔗"
+          # Update an existing issue if one was found (issue-number),
+          # otherwise an empty value creates a new issue:
+          issue-number: "${{ steps.link-checker-issue.outputs.issue_number }}"
+          content-filepath: ./lychee/results.md
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: |
+            link-checker,  report, automated issue     

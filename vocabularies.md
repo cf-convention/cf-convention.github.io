@@ -60,7 +60,6 @@ N.B. For technical reasons, no standard name table was published with version nu
 [v41](Data/cf-standard-names/41/build/cf-standard-name-table.html) &nbsp;
 [v40](Data/cf-standard-names/40/build/cf-standard-name-table.html) &nbsp;
 [v39](Data/cf-standard-names/39/build/cf-standard-name-table.html) &nbsp;
-[v38](Data/cf-standard-names/38/build/cf-standard-name-table.html) &nbsp;
 [v37](Data/cf-standard-names/37/build/cf-standard-name-table.html) &nbsp;
 [v36](Data/cf-standard-names/36/build/cf-standard-name-table.html) &nbsp;
 [v35](Data/cf-standard-names/35/build/cf-standard-name-table.html) &nbsp;
@@ -148,7 +147,6 @@ N.B. For technical reasons, no standard name table was published with version nu
 [v41](Data/cf-standard-names/41/src/cf-standard-name-table.xml) &nbsp;
 [v40](Data/cf-standard-names/40/src/cf-standard-name-table.xml) &nbsp;
 [v39](Data/cf-standard-names/39/src/cf-standard-name-table.xml) &nbsp;
-[v38](Data/cf-standard-names/38/src/cf-standard-name-table.xml) &nbsp;
 [v37](Data/cf-standard-names/37/src/cf-standard-name-table.xml) &nbsp;
 [v36](Data/cf-standard-names/36/src/cf-standard-name-table.xml) &nbsp;
 [v35](Data/cf-standard-names/35/src/cf-standard-name-table.xml) &nbsp;
@@ -189,27 +187,27 @@ N.B. For technical reasons, no standard name table was published with version nu
 
 ### Keyword Centred List (most current first)
 
-[v84](Data/cf-standard-names/84/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v83](Data/cf-standard-names/83/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v82](Data/cf-standard-names/82/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v81](Data/cf-standard-names/81/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v80](Data/cf-standard-names/80/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v79](Data/cf-standard-names/79/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v78](Data/cf-standard-names/78/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v77](Data/cf-standard-names/77/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v76](Data/cf-standard-names/76/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v75](Data/cf-standard-names/75/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v74](Data/cf-standard-names/74/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v73](Data/cf-standard-names/73/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v72](Data/cf-standard-names/72/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v71](Data/cf-standard-names/71/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v70](Data/cf-standard-names/70/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v69](Data/cf-standard-names/69/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v68](Data/cf-standard-names/68/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v67](Data/cf-standard-names/67/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v66](Data/cf-standard-names/66/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v65](Data/cf-standard-names/65/src/kwic_index_for_cf_standard_names.html) &nbsp;
-[v47](Data/cf-standard-names/47/src/kwic_index_for_cf_standard_names.html) &nbsp;
+[v84](Data/cf-standard-names/84/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v83](Data/cf-standard-names/83/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v82](Data/cf-standard-names/82/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v81](Data/cf-standard-names/81/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v80](Data/cf-standard-names/80/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v79](Data/cf-standard-names/79/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v78](Data/cf-standard-names/78/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v77](Data/cf-standard-names/77/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v76](Data/cf-standard-names/76/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v75](Data/cf-standard-names/75/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v74](Data/cf-standard-names/74/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v73](Data/cf-standard-names/73/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v72](Data/cf-standard-names/72/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v71](Data/cf-standard-names/71/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v70](Data/cf-standard-names/70/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v69](Data/cf-standard-names/69/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v68](Data/cf-standard-names/68/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v67](Data/cf-standard-names/67/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v66](Data/cf-standard-names/66/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v65](Data/cf-standard-names/65/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v47](Data/cf-standard-names/47/build/kwic_index_for_cf_standard_names.html) &nbsp;
 
 ### Documents
 - [Guidelines](Data/cf-standard-names/docs/guidelines.html) for Construction of CF Standard Names

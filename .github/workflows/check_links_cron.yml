@@ -31,27 +31,17 @@ jobs:
           fail: true
           format: markdown
           jobSummary: true
-          output: ./lychee/results.md
-          args: --config .lychee.toml ./_site/
+          output: .lychee/results.md
+          args: --config .lychee/config.toml ./_site/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Find Link Checker Issue
-        id: link-checker-issue
-        uses: micalevisk/last-issue-action@v2
-        with:
-          state: all
-          labels: |
-            link-checker,  report, automated issue     
-      
-      - name: Update Issue
+      - name: Open Issue on failure
+        if: failure()
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: "Broken links detected in CF Website"
-          # Update an existing issue if one was found (issue-number),
-          # otherwise an empty value creates a new issue:
-          issue-number: "${{ steps.link-checker-issue.outputs.issue-number }}"
-          content-filepath: ./lychee/results.md
+          content-filepath: .lychee/results.md
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: |
             link-checker,  report, automated issue     

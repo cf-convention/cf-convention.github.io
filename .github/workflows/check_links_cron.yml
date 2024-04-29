@@ -19,23 +19,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download CF Website artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: CF Website
-          path: ./_site/
-      
-      - name: Check markdown links
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+ 
+      - name: Check CF site's links 
         uses: lycheeverse/lychee-action@v1
         with:
           fail: true
           format: markdown
           jobSummary: true
           output: ./lychee/results.md
-          args: --config lychee.toml ./_site/
+          args: --config .lychee.toml ./_site/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
+
       - name: Find Link Checker Issue
         id: link-checker-issue
         uses: micalevisk/last-issue-action@v2

@@ -6,6 +6,8 @@
 #   https://github.com/actions/download-artifact
 #   https://github.com/micalevisk/last-issue-action
 #   https://github.com/peter-evans/create-issue-from-file
+#   https://github.com/marketplace/actions/create-or-update-comment
+
 
 name: Check links on CF conventions web page
 on:
@@ -26,6 +28,7 @@ jobs:
         uses: actions/jekyll-build-pages@v1
  
       - name: Check CF site's links 
+        id: check-links
         uses: lycheeverse/lychee-action@v1
         with:
           fail: true
@@ -36,12 +39,32 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Open Issue on failure
-        if: failure()
+      - name: Find the last report issue
+        if: ${{ always() }}
+        id: last-issue
+        uses: micalevisk/last-issue-action@v2
+        with:
+          state: open
+          # Find the last updated open issue that has these labels:
+          labels: |
+            defect, link-checker,  report, automated issue 
+        
+      - name: On failure create issue if missing
+        if: ${{ failure() && steps.last-issue.outputs.has-found == 'false' }}
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: "Broken links detected in CF Website"
           content-filepath: .lychee/results.md
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: |
-            link-checker,  report, automated issue     
+            defect, link-checker,  report, automated issue     
+
+      - name: On failure add comment to issue if exist
+        if: ${{ always() && steps.last-issue.outputs.has-found == 'true' }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ steps.last-issue.outputs.issue-number }}
+          body-path: .lychee/results.md
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  

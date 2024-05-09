@@ -47,14 +47,14 @@ Field constructs from cf can also be visualised with the [cf-plot package](#cf-p
 
 ### cf-plot - CF Python Plotting package
 
-cf-plot is a set of Python functions for making common contour, vector and line plots that climate researchers use.
+[cf-plot](https://ncas-cms.github.io/cf-plot/build/) is a set of Python functions for making common contour, vector and line plots that climate researchers use.
 cf-plot generally uses [cf-python](#cf-python---cf-python-package) to present the data and CF attributes for plotting.
 It can also use numpy arrays of data as the input fields making for flexible plotting of data.
 cf-plot uses the Python numpy, matplotlib and scipy libraries.
 
 ### cf-view - CF Python Quick Look Visualization Package
 
-The [cf-view Python package](https://ajheaps.github.io/cf-view/) is a quick look data exploration tool for netCDF and Met Office PP data.
+The [cf-view Python package](https://ncas-cms.github.io/cf-view/build/) is a quick look data exploration tool for netCDF and Met Office PP data.
 It uses the [cf-python](#cf-python---cf-python-package) and [cf-plot](#cf-python---cf-python-package) packages and reads and writes CF-compliant dataset.
 
 ### ERDDAP - scientific data server

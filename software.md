@@ -51,7 +51,7 @@ The [cf-plot Python package](https://ncas-cms.github.io/cf-plot/build/) supports
 
 ### cf-view - CF Python Exploration and Visualization Package
 
-The [cf-view Python package](https://ncas-cms.github.io/cf-view/build/) is a Graphical User Interface (GUI) for earth science and aligned research which supports the exploration, analysis and plotting of netCDF and Met Office format (PP or fields) data. It uses the [cf-python](#cf-python---cf-python-package) and [cf-plot](#cf-python---cf-python-package) packages.
+The [cf-view Python package](https://ncas-cms.github.io/cf-view/build/) is a Graphical User Interface (GUI) for earth science and aligned research which supports the exploration, analysis and plotting of netCDF and Met Office format (PP or fields) data. It uses the [cf-python](#cf-python---cf-python-package) and [cf-plot](#cf-plot---cf-plot-package) packages.
 
 ### ERDDAP - scientific data server
 

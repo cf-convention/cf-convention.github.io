@@ -30,6 +30,7 @@ jobs:
       - name: Check CF site's links 
         id: check-links
         uses: lycheeverse/lychee-action@v1
+        continue-on-error: true
         with:
           fail: true
           format: markdown
@@ -40,17 +41,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub API token to use when checking github.com links, to avoid rate limiting
 
       - name: Find the last report issue
-        if: ${{ always() }}
         id: last-issue
         uses: micalevisk/last-issue-action@v2
         with:
-          state: open
+          state: all
           # Find the last updated open issue that has these labels:
           labels: |
-            defect, link-checker,  report, automated issue 
+            defect, link-checker, report, automated issue 
         
-      - name: On failure create issue if missing
-        if: ${{ failure() && steps.last-issue.outputs.has-found == 'false' }}
+      - name: If failure, create issue if missing
+        if: ${{ steps.check-links.outcome == 'failure' && steps.last-issue.outputs.has-found == false }}
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: "Broken links detected in CF Website"
@@ -59,12 +59,20 @@ jobs:
           labels: |
             defect, link-checker,  report, automated issue     
 
-      - name: On failure add comment to issue if exist
-        if: ${{ always() && steps.last-issue.outputs.has-found == 'true' }}
+      - name: If failure and issue exists, add comment 
+        if: ${{ failure() && steps.check-links.outcome == 'failure' && steps.last-issue.outputs.has-found == true }}
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ steps.last-issue.outputs.issue-number }}
           body-path: .lychee/results.md
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: If success and issue is open, add comment
+        if: ${{ steps.check-links.outcome == 'success' && steps.last-issue.outputs.is-closed == false }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ steps.last-issue.outputs.issue-number }}
+          body-path: .lychee/results.md
+          token: ${{ secrets.GITHUB_TOKEN }}
   
+    

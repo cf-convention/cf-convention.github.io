@@ -49,8 +49,8 @@ jobs:
           labels: |
             defect, link-checker, report, automated issue 
         
-      - name: If failure, create issue if missing
-        if: ${{ steps.check-links.outcome == 'failure' && steps.last-issue.outputs.has-found == false }}
+      - name: If failure and issue not found, create issue
+        if: ${{ steps.check-links.outcome == 'failure' && steps.last-issue.outputs.has-found == 'false' }}
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: "Broken links detected in CF Website"
@@ -60,7 +60,7 @@ jobs:
             defect, link-checker,  report, automated issue     
 
       - name: If failure and issue exists, add comment 
-        if: ${{ failure() && steps.check-links.outcome == 'failure' && steps.last-issue.outputs.has-found == true }}
+        if: ${{ steps.check-links.outcome == 'failure' && steps.last-issue.outputs.has-found == 'true' }}
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ steps.last-issue.outputs.issue-number }}
@@ -68,7 +68,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: If success and issue is open, add comment
-        if: ${{ steps.check-links.outcome == 'success' && steps.last-issue.outputs.is-closed == false }}
+        if: ${{ steps.check-links.outcome == 'success' && steps.last-issue.outputs.is-closed == 'false' }}
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ steps.last-issue.outputs.issue-number }}

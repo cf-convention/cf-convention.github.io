@@ -1,0 +1,32 @@
+#
+# GitHub Actions Workflow to build and deploy CF Website.
+#
+# For more information on the actions used in this workflow, please see:
+#   https://github.com/actions/checkout
+#   https://github.com/marketplace/actions/build-jekyll
+#
+name: Build and Deploy CF Website
+on: 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build with Jekyll 
+        uses: actions/jekyll-build-pages@v1
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: _site # The folder the action should deploy.
+          branch: gh-pages # The branch to deploy to
+          target-folder: docs # Deployment folder on the deployment branch

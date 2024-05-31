@@ -40,27 +40,33 @@ jobs:
           source: ./
           destination: ./_site
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Touch .nojekyll
+        run: |
+          sudo touch _site/.nojekyll
+          sudo chmod -R a+rW
+  
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: ./_site
+          folder: _site # The folder the action should deploy.
+          branch: gh-pages # The branch to deploy to
+          clean: true
+          clean-exclude: |
+            .nojekyll
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-#      - name: Deploy
-#        uses: JamesIves/github-pages-deploy-action@v4
+#      - name: Upload artifact
+#        uses: actions/upload-pages-artifact@v3
 #        with:
-#          folder: _site # The folder the action should deploy.
-#          branch: gh-pages # The branch to deploy to
-#          clean: true
-#          clean-exclude: |
-#            .nojekyll
+#          path: ./_site
+#
+#  deploy:
+#    runs-on: ubuntu-latest
+#    needs: build
+#    steps:
+#      - name: Deploy to GitHub Pages
+#        id: deployment
+#        uses: actions/deploy-pages@v4
+#    environment:
+#      name: github-pages
+#      url: ${{ steps.deployment.outputs.page_url }}
+

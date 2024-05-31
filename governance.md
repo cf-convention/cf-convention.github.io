@@ -12,7 +12,7 @@ group: "navigation"
   * Discussion about these rules can be found in the [CF mailing list archives][mail], in June and July, 2007. See messages with the subject line "proposed rules for changes to CF conventions".
   * The rules were amended in January 2016 following [CF trac ticket 146][ticket146]
 * [Rules for correcting errors in the CF documents][errors]
-* [CF constitution](./constitution.md)
+* [CF constitution](constitution)
 * CF white paper (Lawrence et al., 2006)  \[ [PDF][pdf], [HTML][html] \]
  
 ## Conventions Committee and Standard Names Committee
@@ -34,7 +34,7 @@ group: "navigation"
 * Alison Pamment (secretary of Standard Names Committee) (29 May 2025)
 * Karl Taylor (29 May 2025)
  
-CF Conventions Committee and Standard Names Committee meeting [minutes](Committees/Conventions_and_Standard_Names/meeting-minutes.md)
+CF Conventions Committee and Standard Names Committee meeting [minutes](Committees/Conventions_and_Standard_Names/meeting-minutes)
 
 ## Governance Panel
 

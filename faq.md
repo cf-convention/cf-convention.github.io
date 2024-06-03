@@ -546,7 +546,7 @@ The [UDUNITS-2 GitHub repository](https://github.com/Unidata/UDUNITS-2) contains
 
 The [API-Guide](https://docs.unidata.ucar.edu/udunits/current/udunits2lib.html) contains some detailed information, but it is oriented entirely for developers. 
 
-A [units conversion page on the ERDDAP site](http://coastwatch.pfeg.noaa.gov/erddap/convert/units.html) lets you try different unit strings, and provides additional context on UDUNITS (and UCUM units) further down the page.
+A [units conversion page on the ERDDAP site](https://coastwatch.pfeg.noaa.gov/erddap/convert/units.html) lets you try different unit strings, and provides additional context on UDUNITS (and UCUM units) further down the page.
 
 The strings (names) corresponding to accepted UDUNITS can be found in the UDUNITS vocabulary entries at the MMI Ontology Registry and Repository:
 

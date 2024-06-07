@@ -3,7 +3,7 @@
 #
 # For more information on the actions used in this workflow, please see:
 #   https://github.com/lycheeverse/lychee-action
-#   https://github.com/actions/download-artifact
+#   
 #   https://github.com/micalevisk/last-issue-action
 #   https://github.com/peter-evans/create-issue-from-file
 #   https://github.com/marketplace/actions/create-or-update-comment
@@ -21,14 +21,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages      # page is already build and deployed from this branch
+          path: _site/       # checkout to default jekyll ouput directory
+
 #      - name: Build with Jekyll
 #        uses: actions/jekyll-build-pages@v1
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
 
       - name: Check CF site's links 
         id: check-links
@@ -39,7 +39,7 @@ jobs:
           format: markdown
           jobSummary: true
           output: .lychee/results.md
-          args: --config .lychee/config.toml ./_site/
+          args: --config .lychee/config.toml ./
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub API token to use when checking github.com links, to avoid rate limiting
 
@@ -62,6 +62,13 @@ jobs:
           labels: |
             defect, link-checker,  report, automated issue     
 
+      - name: If failure and issue is closed, reopen and comment
+        if: ${{ steps.check-links.outcome == 'failure' && steps.last-issue.outputs.is-closed == 'true' }}
+        run: gh issue reopen $ISSUE --comment "Broken links detected in CF Website, reopen issue"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ steps.last-issue.outputs.issue-number }}
+              
       - name: If failure and issue exists, add comment 
         if: ${{ steps.check-links.outcome == 'failure' && steps.last-issue.outputs.has-found == 'true' }}
         uses: peter-evans/create-or-update-comment@v4

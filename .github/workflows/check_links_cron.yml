@@ -49,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub API token to use when checking github.com links, to avoid rate limiting
 
       - name: Add section to the end of report
-        run: printf "\n## Detailed action output" >> .lychee/results.md
+        run: sed -i 's/\[Full Github Actions output\]/\n## &/g' .lychee/results.md
 
       - name: Find the last report issue
         id: last-issue

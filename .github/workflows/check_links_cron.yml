@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout main branch
         uses: actions/checkout@v4
         with:
           ref: main      # main branc contains link check config
@@ -29,7 +29,7 @@ jobs:
 #      - name: Build with Jekyll
 #        uses: actions/jekyll-build-pages@v1
 
-      - name: Checkout
+      - name: Checkout gh-pages branch
         uses: actions/checkout@v4
         with:
           ref: gh-pages      # page is already build and deployed from this branch
@@ -47,6 +47,9 @@ jobs:
           args: --config .lychee/config.toml ./_site/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub API token to use when checking github.com links, to avoid rate limiting
+
+      - name: Add section to the end of report
+        run: printf "\n## Detailed action output" >> .lychee/results.md
 
       - name: Find the last report issue
         id: last-issue

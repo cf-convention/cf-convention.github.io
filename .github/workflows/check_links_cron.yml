@@ -24,12 +24,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: gh-pages      # page is already build and deployed from this branch
-          path: _site/       # checkout to default jekyll ouput directory
+          ref: main      # main branc contains link check config
 
 #      - name: Build with Jekyll
 #        uses: actions/jekyll-build-pages@v1
 
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages      # page is already build and deployed from this branch
+          path: _site/       # checkout to default jekyll ouput directory
+  
       - name: Check CF site's links 
         id: check-links
         uses: lycheeverse/lychee-action@v1
@@ -39,7 +44,7 @@ jobs:
           format: markdown
           jobSummary: true
           output: .lychee/results.md
-          args: --config .lychee/config.toml ./
+          args: --config .lychee/config.toml ./_site/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub API token to use when checking github.com links, to avoid rate limiting
 

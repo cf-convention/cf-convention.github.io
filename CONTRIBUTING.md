@@ -1,3 +1,7 @@
+---
+layout: default
+title: Contributing
+---
 # Contributing to the netCDF-CF Conventions website
 
 Dear CF community member,

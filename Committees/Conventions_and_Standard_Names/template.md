@@ -1,3 +1,7 @@
+---
+layout: default
+title: YYYY-MM-DD CF Conventions Committee and Standard Names Committee meeting
+---
 # YYYY-MM-DD CF Conventions Committee and Standard Names Committee meeting
 
 ## Attendees

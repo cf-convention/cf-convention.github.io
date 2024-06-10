@@ -1,3 +1,7 @@
+---
+layout: default
+title: YYYY-MM-DD CF Governance Panel meeting
+---
 # YYYY-MM-DD CF Governance Panel meeting 
 
 ## Attendees

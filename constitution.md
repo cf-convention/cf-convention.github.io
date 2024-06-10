@@ -1,3 +1,7 @@
+---
+layout: default
+title: Constitution
+---
 # Constitution for the governance of the CF metadata standard
 
 Original from the CF white paper of 2006, amended May 2020.

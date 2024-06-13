@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Extract lines containing list of region names (one region per line) from html file; strip off two leading spaces; strip off trailing html line
+# break code; Store in temp file
+grep '<br>'$ standardized-region-names-old-format.html | sed -e 's/  //' -e 's/<br>//' > ./region_tmplist
+
+# Write header to xml file
+echo "<?xml version=\"1.0\"?>" > standardized-region-list.xml
+echo "<standardized_region_list xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"region-list-1.1.xsd\">" >> standardized-region-list.xml
+echo "  <title>Standardized Region List</title>" >> standardized-region-list.xml
+echo "  <version_number>2</version_number>" >> standardized-region-list.xml
+echo "  <date>12 June 2013</date>" >> standardized-region-list.xml
+echo "  <institution>Centre for Environmental Data Analysis</institution>" >> standardized-region-list.xml
+echo "  <contact>support@ceda.ac.uk</contact>" >> standardized-region-list.xml
+
+# Write out xml file entries one at a time
+while read REGION; do
+  echo "  <entry id=\""$REGION\"">"; echo "    <description></description>"; echo "  </entry>" 
+done < ./region_tmplist >> standardized-region-list.xml
+
+echo "</standardized_region_list>" >> standardized-region-list.xml
+
+# Tidy up
+rm ./region_tmplist
+

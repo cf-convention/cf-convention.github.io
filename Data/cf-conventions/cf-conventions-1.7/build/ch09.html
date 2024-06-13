@@ -1,0 +1,65 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter 9. Discrete Sampling Geometries</title><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="prev" href="ch08s02.html" title="8.2. Compression by Gathering"><link rel="next" href="ch09s02.html" title="9.2. Collections, instances and elements"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 9. <span class="newtext">Discrete Sampling Geometries</span></th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s02.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch09s02.html">Next</a></td></tr></table><hr></div><div class="chapter" lang="en"><div class="titlepage"><div><div></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="ch09.html#idp7518976">9.1. Features and feature types</a></span></dt><dt><span class="sect1"><a href="ch09s02.html">9.2. Collections, instances and elements</a></span></dt><dt><span class="sect1"><a href="ch09s03.html">9.3. Representations of collections of features in data variables</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch09s03.html#idp7637760">9.3.1. Orthogonal multidimensional array representation</a></span></dt><dt><span class="sect2"><a href="ch09s03.html#idp7681632">9.3.2.  Incomplete multidimensional array representation</a></span></dt><dt><span class="sect2"><a href="ch09s03.html#idp7716768">9.3.3.  Contiguous ragged array representation</a></span></dt><dt><span class="sect2"><a href="ch09s03.html#idp7760480">9.3.4. Indexed ragged array representation</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch09s04.html">9.4. The featureType  attribute</a></span></dt><dt><span class="sect1"><a href="ch09s05.html">9.5. Coordinates and metadata</a></span></dt><dt><span class="sect1"><a href="ch09s06.html">9.6. Missing Data</a></span></dt></dl></div><p><span class="commenttext">Note: For greater readability, the conventional highlighting for new material. has not been applied to the whole chapter.</span></p><p>This chapter provides representations for <span class="bold"><strong>discrete sampling geometries</strong></span>, such as time series, vertical profiles and trajectories. Discrete sampling geometry datasets are characterized by a dimensionality that is lower than that of the space-time region that is sampled; discrete sampling geometries are typically &#8220;paths&#8221; through space-time.  </p><p></p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp7518976"></a>9.1. Features and feature types</h2></div></div></div><p>Each type of discrete sampling geometry (point, time series, profile
+   or trajectory) is defined by the relationships among its spatiotemporal
+   coordinates.  We refer to the type of discrete sampling geometry as its
+   <span class="bold"><strong>featureType</strong></span>.  The term &#8220;<span class="bold"><strong>feature</strong></span>&#8221; refers herein to a single instance of the
+   <span class="bold"><strong>discrete sampling geometry</strong></span> (such as a
+   single time series).  The representation of such features in a CF dataset
+   was supported previous to the introduction of this chapter using a
+   particular convention, which is still supported (that described by section
+   9.3.1).  This chapter describes further conventions which offer advantages
+   of efficiency and clarity for storing a collection of features in a single
+   file.  When using these new conventions, <span class="emphasis"><em>the
+   features contained within a collection must always be of the same type; and
+   all the collections in a CF file must be of the same feature
+   type</em></span>. (Future versions of CF may allow mixing of multiple feature
+   types within a file.)  Table 9.1 presents the feature types covered by this
+   chapter.</p><p></p><div class="informaltable"><table border="1" width="85%"><colgroup><col><col></colgroup><tbody><tr><td>
+	   <p><span class="bold"><strong>featureType</strong></span></p>
+	 </td><td>
+	   <p><span class="bold"><strong>Description of a single feature with this discrete sampling geometry</strong></span></p>
+	 </td></tr><tr><td> </td><td><div class="informaltable"><table border="1"><colgroup><col><col></colgroup><tbody><tr><td>
+	   <p><span class="bold"><strong>Form of a data variable containing values defined on a collection of these features</strong></span></p></td><td>
+	   <p><span class="bold"><strong>Mandatory space-time coordinates for a collection of these features                                                </strong></span></p></td></tr></tbody></table></div>
+	 </td></tr><tr><td>
+	   <p><span class="bold"><strong>point</strong></span></p>
+	 </td><td>
+	   <p>a single data point (having no implied coordinate relationship to other points)</p>
+	 </td></tr><tr><td> </td><td><div class="informaltable"><table border="1" width="100%"><colgroup><col><col></colgroup><tbody><tr><td>
+	   <p>      data(i)</p></td><td>
+	   <p>x(i) y(i)  t(i) </p></td></tr></tbody></table></div>
+	 </td></tr><tr><td>
+	   <p><span class="bold"><strong>timeSeries</strong></span></p>
+	 </td><td>
+	   <p>a series of data points at the same spatial location with monotonically increasing times</p>
+	 </td></tr><tr><td> </td><td><div class="informaltable"><table border="1" width="100%"><colgroup><col><col></colgroup><tbody><tr><td>
+	   <p>     data(i,o)</p></td><td>
+	   <p>x(i) y(i) t(i,o) </p></td></tr></tbody></table></div>
+	 </td></tr><tr><td>
+	   <p><span class="bold"><strong>trajectory</strong></span></p>
+	 </td><td>
+	   <p>a series of data points along a path through space with monotonically increasing times</p>
+	 </td></tr><tr><td> </td><td><div class="informaltable"><table border="1" width="100%"><colgroup><col><col></colgroup><tbody><tr><td>
+	   <p>       data(i,o)    </p></td><td>
+	   <p>x(i,o) y(i,o) t(i,o) </p></td></tr></tbody></table></div>
+	 </td></tr><tr><td>
+	   <p><span class="bold"><strong>profile</strong></span></p>
+	 </td><td>
+	   <p>an ordered set of data points along a vertical line at a fixed horizontal position and fixed time</p>
+	 </td></tr><tr><td> </td><td><div class="informaltable"><table border="1" width="100%"><colgroup><col><col></colgroup><tbody><tr><td>
+	   <p>       data(i,o)    </p></td><td>
+	   <p>x(i) y(i) z(i,o) t(i) </p></td></tr></tbody></table></div>
+	 </td></tr><tr><td>
+	   <p><span class="bold"><strong>timeSeriesProfile</strong></span></p>
+	 </td><td>
+	   <p>a series of profile features at the same horizontal position with monotonically increasing times</p>
+	 </td></tr><tr><td> </td><td><div class="informaltable"><table border="1" width="100%"><colgroup><col><col></colgroup><tbody><tr><td>
+	   <p>       data(i,p,o)     </p></td><td>
+	   <p>x(i) y(i) z(i,p,o) t(i,p) </p></td></tr></tbody></table></div>
+	 </td></tr><tr><td>
+	   <p><span class="bold"><strong>trajectoryProfile</strong></span></p>
+	 </td><td>
+	   <p>a series of profile features located at points ordered along a trajectory</p>
+	 </td></tr><tr><td> </td><td><div class="informaltable"><table border="1" width="100%"><colgroup><col><col></colgroup><tbody><tr><td>
+	   <p>       data(i,p,o)         </p></td><td>
+	   <p>x(i,p) y(i,p) z(i,p,o) t(i,p) </p></td></tr></tbody></table></div>
+	 </td></tr></tbody></table></div><p></p><p><span class="bold"><strong>Table 9.1.</strong></span> Logical structure and mandatory coordinates for discrete sampling geometry featureTypes.</p><p></p><p>In Table 9.1 the spatial coordinates x and y typically refer to longitude and latitude but other horizontal coordinates could also be used (see sections 4 and 5.6).   The spatial coordinate z refers to vertical position.  The time coordinate is indicated as t.  The space-time coordinates that are indicated for each feature are mandatory.  However a featureType may also include other space-time coordinates which are not mandatory (notably the z coordinate).  The array subscripts that are shown illustrate only the <span class="emphasis"><em>logical</em></span> structure of the data.  The subscripts found in actual CF files are determined by the specific type of representations (see section 9.3).</p><p></p><p>The designation of dimensions as mandatory precludes the encoding of data variables where geo-positioning cannot be described as a discrete point location.  Problematic examples include:   </p><p></p><div class="itemizedlist"><ul type="disc"><li><p>time series that refer to a geographical region (e.g. the northern hemisphere), a volume (e.g. the troposphere), or a geophysical quantity in which geolocation information is inherent (e.g. the Southern Oscillation Index (SOI) is the difference between values at two point locations);</p></li><li><p>vertical profiles that similarly represent geographically area-averaged values;  and</p></li><li><p>paths in space that indicate a geographically located feature, but lack a suitable time coordinate (e.g. a meteorological front). </p></li></ul></div><p></p><p>Future versions of CF will generalize the concepts of geolocation to encompass these cases.  As of CF version 1.6 such data can be stored using the representations that are documented here by two means: 1) by utilizing the orthogonal multidimensional array representation and omitting the featureType attribute; or 2) by assigning arbitrary coordinates to the mandatory dimensions.  For example a globally-averaged latitude position (90s to 90n) could be represented arbitrarily (and poorly) as a latitude position at the equator.</p><p></p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s02.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch09s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.2. Compression by Gathering </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 9.2. Collections, instances and elements</td></tr></table></div></body></html>

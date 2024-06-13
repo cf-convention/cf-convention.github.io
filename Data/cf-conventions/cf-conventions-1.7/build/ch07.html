@@ -1,0 +1,127 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter 7. Data Representative of Cells</title><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="prev" href="ch06s02.html" title="6.2. Alternative Coordinates"><link rel="next" href="ch07s02.html" title="7.2. Cell Measures"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 7. Data Representative of Cells</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s02.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch07s02.html">Next</a></td></tr></table><hr></div><div class="chapter" lang="en"><div class="titlepage"><div><div></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch07.html#cell-boundaries">7.1. Cell Boundaries</a></span></dt><dt><span class="section"><a href="ch07s02.html">7.2. Cell Measures</a></span></dt><dt><span class="section"><a href="ch07s03.html">7.3. Cell Methods</a></span></dt><dd><dl><dt><span class="section"><a href="ch07s03.html#statistics-more-than-one-axis">7.3.1. <span class="newtext">Statistics for more than one
+      axis</span></a></span></dt><dt><span class="section"><a href="ch07s03.html#recording-spacing-original-data">7.3.2. <span class="newtext">Recording the spacing of the original
+      data and other information</span></a></span></dt><dt><span class="section"><a href="ch07s03.html#statistics-applying-portions">7.3.3. 
+        <span class="newtext">Statistics applying to portions of
+        cells</span>
+      </a></span></dt><dt><span class="section"><a href="ch07s03.html#cell-methods-no-coordinates">7.3.4. <span class="newtext">Cell methods when there are no
+      coordinates</span></a></span></dt></dl></dd><dt><span class="section"><a href="ch07s04.html">7.4. Climatological Statistics</a></span></dt></dl></div><p>When gridded data does not represent the point values of a field but
+  instead represents some characteristic of the field within cells of finite
+  "volume," a complete description of the variable should include metadata
+  that describes the domain or extent of each cell, and the characteristic of
+  the field that the cell values represent. It is possible for a single data
+  value to be the result of an operation whose domain is a disjoint set of
+  cells. This is true for many types of climatological averages, for example,
+  the mean January temperature for the years 1970-2000. The methods that we
+  present below for describing cells only provides an association of a grid
+  point with a single cell, not with a collection of cells. However,
+  climatological statistics are of such importance that we provide special
+  methods for describing their associated computational domains in <a class="xref" href="ch07s04.html" title="7.4. Climatological Statistics">Section 7.4, &#8220;Climatological Statistics&#8221;</a>.</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="cell-boundaries"></a>7.1. Cell Boundaries</h2></div></div></div><p>To represent cells we add the attribute <code class="varname">bounds</code> to
+    the appropriate coordinate variable(s). The value of
+    <code class="varname">bounds</code> is the name of the variable that contains the
+    vertices of the cell boundaries. We refer to this type of variable as a
+    "boundary variable." <span class="emphasis"><em> A boundary variable will have one more
+    dimension than its associated coordinate or auxiliary coordinate variable.
+    </em></span> The additional dimension should be the most rapidly varying
+    one, and its size is the maximum number of cell vertices. Since a boundary
+    variable is considered to be part of a coordinate variable's metadata, it
+    is not necessary to provide it with attributes such as
+    <code class="varname">long_name</code> and <code class="varname">units</code>.</p><p>Note that the boundary variable for a set of N contiguous intervals
+    is an array of shape (N,2). Although in this case there will be a
+    duplication of the boundary coordinates between adjacent intervals, this
+    representation has the advantage that it is general enough to handle,
+    without modification, non-contiguous intervals, as well as intervals on an
+    axis using the unlimited dimension.</p><p>Applications that process cell boundary data often times need to
+    determine whether or not adjacent cells share an edge. In order to
+    facilitate this type of processing the following restrictions are placed
+    on the data in boundary variables.</p><div class="variablelist"><dl><dt><span class="term">Bounds for 1-D coordinate variables</span></dt><dd><p>For a coordinate variable such as
+            <code class="varname">lat(lat)</code> with associated boundary variable
+            <code class="varname">latbnd(x,2)</code>, the interval endpoints must be
+            ordered consistently with the associated coordinate, e.g., for an
+            increasing coordinate, <code class="varname">lat(1)</code> &gt;
+            <code class="varname">lat(0)</code> implies <code class="varname">latbnd(i,1)</code>
+            &gt;= <code class="varname">latbnd(i,0)</code> for all
+            <code class="varname">i</code></p><p>If adjacent intervals are contiguous, the shared endpoint
+            must be represented indentically in each instance where it occurs
+            in the boundary variable. For example, if the intervals that
+            contain grid points <code class="varname">lat(i)</code> and
+            <code class="varname">lat(i+1)</code> are contiguous, then
+            <code class="varname">latbnd(i+1,0)</code> =
+            <code class="varname">latbnd(i,1)</code>.</p></dd><dt><span class="term">Bounds for 2-D coordinate variables with 4-sided cells</span></dt><dd><p>In the case where the horizontal grid is described by
+            two-dimensional auxiliary coordinate variables in latitude
+            <code class="varname">lat(n,m)</code> and longitude
+            <code class="varname">lon(n,m)</code>, and the associated cells are
+            four-sided, then the boundary variables are given in the form
+            <code class="varname">latbnd(n,m,4)</code> and
+            <code class="varname">lonbnd(n,m,4)</code>, where the trailing index runs
+            over the four vertices of the cells. Let us call the side of cell
+            <code class="varname">(j,i)</code> facing cell <code class="varname">(j,i-1)</code>
+            the "<code class="varname">i-1</code>" side, the side facing cell
+            <code class="varname">(j,i+1)</code> the "<code class="varname">i+1</code>" side, and
+            similarly for "<code class="varname">j-1</code>" and
+            "<code class="varname">j+1</code>". Then we can refer to the vertex formed
+            by sides <code class="varname">i-1</code> and <code class="varname">j-1</code> as
+            <code class="varname">(j-1,i-1)</code>. With this notation, the four
+            vertices are indexed as follows: <code class="varname">0=(j-1,i-1)</code>,
+            <code class="varname">1=(j-1,i+1)</code>, <code class="varname">2=(j+1,i+1)</code>,
+            <code class="varname">3=(j+1,i-1)</code>.</p><p>If i-j-upward is a right-handed coordinate system (like
+            lon-lat-upward), this ordering means the vertices will be
+            traversed anticlockwise on the lon-lat surface seen from above. If
+            i-j-upward is left-handed, they will be traversed clockwise on the
+            lon-lat surface.</p><p>The bounds can be used to decide whether cells are
+            contiguous via the following relationships. In these equations the
+            variable <code class="varname">bnd</code> is used generically to represent
+            either the latitude or longitude boundary variable.
+            </p><pre class="programlisting">
+For 0 &lt; j &lt; n and 0 &lt; i &lt; m,
+	If cells (j,i) and (j,i+1) are contiguous, then
+		bnd(j,i,1)=bnd(j,i+1,0) 
+		bnd(j,i,2)=bnd(j,i+1,3)
+	If cells (j,i) and (j+1,i) are contiguous, then	
+		bnd(j,i,3)=bnd(j+1,i,0) and bnd(j,i,2)=bnd(j+1,i,1)
+							</pre></dd><dt><span class="term">Bounds for multi-dimensional coordinate variables with p-sided
+          cells</span></dt><dd><p>In all other cases, the bounds should be dimensioned
+            <code class="varname">(...,n,p)</code>, where <code class="varname">(...,n)</code> are
+            the dimensions of the auxiliary coordinate variables, and
+            <code class="varname">p</code> the number of vertices of the cells. The
+            vertices must be traversed anticlockwise in the lon-lat plane as
+            viewed from above. The starting vertex is not specified.</p></dd></dl></div><div class="example"><a name="idp7079760"></a><p class="title"><b>Example 7.1. Cells on a latitude axis</b></p><div class="example-contents"><pre class="programlisting">
+dimensions:
+  lat = 64;
+  nv = 2;    // number of vertices
+variables:
+  float lat(lat);
+    lat:long_name = "latitude";
+    lat:units = "degrees_north";
+    lat:bounds = "lat_bnds";
+  float lat_bnds(lat,nv);
+					</pre><p>The boundary variable <code class="varname">lat_bnds</code> associates a
+        latitude gridpoint <code class="varname">i</code> with the interval whose
+        boundaries are <code class="varname">lat_bnds(i,0)</code> and
+        <code class="varname">lat_bnds(i,1)</code>. The gridpoint location,
+        <code class="varname">lat(i)</code>, should be contained within this
+        interval.</p></div></div><p><br class="example-break"></p><p>For rectangular grids, two-dimensional cells can be expressed as
+    Cartesian products of one-dimensional cells of the type in the preceding
+    example. However for non-rectangular grids a "rectangular" cell will in
+    general require specifying all four vertices for each cell.</p><div class="example"><a name="idp7045392"></a><p class="title"><b>Example 7.2. Cells in a non-rectangular grid</b></p><div class="example-contents"><pre class="programlisting">
+dimensions:
+  imax = 128;
+  jmax = 64;
+  nv = 4;
+variables:
+  float lat(jmax,imax);
+    lat:long_name = "latitude";
+    lat:units = "degrees_north";
+    lat:bounds = "lat_bnds";
+  float lon(jmax,imax);
+    lon:long_name = "longitude";
+    lon:units = "degrees_east";
+    lon:bounds = "lon_bnds";
+  float lat_bnds(jmax,imax,nv);
+  float lon_bnds(jmax,imax,nv);
+					</pre><p>The boundary variables <code class="varname">lat_bnds</code> and
+        <code class="varname">lon_bnds</code> associate a gridpoint
+        <code class="varname">(j,i)</code> with the cell determined by the vertices
+        <code class="varname">(lat_bnds(j,i,n),lon_bnds(j,i,n))</code>,
+        <code class="varname">n=0,..,3</code>. The gridpoint location,
+        <code class="varname">(lat(j,i),lon(j,i))</code>, should be contained within
+        this region.</p></div></div><p><br class="example-break"></p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s02.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch07s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">6.2. Alternative Coordinates </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 7.2. Cell Measures</td></tr></table></div></body></html>

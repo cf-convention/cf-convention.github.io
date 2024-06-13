@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<appendix label="B" id="standard-name-table-format">
+  <title>Standard Name Table Format</title>
+  <para>
+	The CF standard name table is an XML document (i.e., its format
+	adheres to the XML 1.0 
+	<biblioref linkend="xml"/> recommendation). The XML suite
+	of protocols provides a reasonable balance between human and
+	machine readability. It also provides extensive support for
+	internationalization. See the W3C <biblioref linkend="w3c"/> home page for more
+	information.
+  </para>
+  <para>
+	The document begins with a header that identifies it as an XML file:
+
+	<programlisting>
+	 	<![CDATA[
+  <?xml version="1.0"?>
+			 ]]>
+	</programlisting>
+
+	Next is the <varname>standard_name_table</varname> itself, which is bracketed by the tags
+    <varname><sgmltag>&lt;standard_name_table&gt;</sgmltag></varname> and <varname><sgmltag>&lt;/standard_name_table&gt;</sgmltag></varname>.
+
+	<programlisting>
+	 	<![CDATA[
+  <standard_name_table 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xsi:noNamespaceSchemaLocation="CFStandardNameTable.xsd">
+			 ]]>
+	 </programlisting>
+
+  </para>
+
+  <para>
+	The content (delimited by the <sgmltag>&lt;standard_name_table&gt;</sgmltag> tags) 
+	 consists of, in order,
+
+	 <programlisting>
+	 	<![CDATA[
+  <institution>Name of institution here ... </institution>
+  <contact>E-mail address of contact person ... </contact>
+			 ]]>
+	 </programlisting>
+
+	 followed by a sequence of <varname>entry</varname> elements which may optionally
+	 be followed by a sequence of <varname>alias</varname> elements.
+     The <varname>entry</varname> and
+	 <varname>alias</varname> elements take the following forms:
+	 <programlisting>
+	 	<![CDATA[
+  <entry id="an_id">
+      Define the variable whose standard_name attribute has the value "an_id".  
+  </entry>
+  <alias id="another_id">
+      Provide alias for a variable whose standard_name attribute has the
+        value "another_id".
+  </alias>
+			 ]]>
+	 </programlisting>
+
+
+  </para>
+
+
+
+
+  <para>
+	The value of the <varname>id</varname> attribute appearing in the
+    <varname>entry</varname> and <varname>alias</varname>
+	tags is a case sensitive string, containing no whitespace,
+	which uniquely identifies the entry relative to the table. 
+	<emphasis>This is the value used for a variable's <varname>standard_name</varname> attribute.</emphasis>
+  </para>
+
+	<para>
+		The purpose of the <varname>entry</varname> elements are to provide
+		definitions for the <varname>id</varname> strings. Each <varname>entry</varname> element
+		contains the following elements:
+		<programlisting>
+			<![CDATA[
+  <entry id="an_id">
+    <canonical_units>Representative units for the variable ... </canonical_units>
+    <description>Description of the variable ... </description>
+  </entry>
+			]]>
+		</programlisting>
+
+		<varname>Entry</varname> elements may optionally also contain the following elements:
+		<programlisting>
+			<![CDATA[
+  <grib>GRIB parameter code</grib>
+  <amip>AMIP identifier string</amip>
+
+			]]>
+		</programlisting>
+	</para>
+
+	<para>
+		Not all variables have equivalent AMIP or GRIB
+		codes. ECMWF GRIB codes start with <varname>E</varname>, NCEP codes
+		with <varname>N</varname>. Standard codes (in the range 1-127) are not
+		prefaced. When a variable has more than one equivalent
+		GRIB code, the alternatives are given as a blank-separated
+		list.
+	</para>
+
+	<para>
+		The <varname>alias</varname> elements do not contain definitions.
+        Rather they
+		contain the value of the <varname>id</varname> attribute
+        of an <varname>entry</varname> element
+		that contains the sought after definition. The purpose of
+		the <varname>alias</varname> elements are to provide a means for maintaining
+		the table in a backwards compatible fashion. For example,
+		if more than one <varname>id</varname> string was found to correspond to
+		identical definitions, then the redundant definitions
+		can be converted into aliases. It is not intended that
+		the <varname>alias</varname> elements be used to accommodate the use of
+		local naming conventions in the 
+		<varname>standard_name</varname>
+		attribute
+		strings. Each <varname>alias</varname> element contains a single element:
+		<programlisting>
+			<![CDATA[
+  <alias id="an_id">
+    <entry_id>Identifier of the defining entry ... </entry_id>
+  </alias>
+			]]>
+		</programlisting>
+	</para>
+	<para>
+		<example>
+			<title>A name table containing three entries</title>
+			<para>
+				<programlisting>
+					<![CDATA[
+  <?xml version="1.0"?>
+  <standard_name_table>
+    <institution>Program for Climate Model Diagnosis and Intercomparison</institution>
+    <contact>support@pcmdi.llnl.gov</contact>
+    <entry id="surface_air_pressure">
+      <canonical_units>Pa</canonical_units>
+      <grib>E134</grib>
+      <amip>ps</amip>
+      <description>
+          The surface called "surface" means the lower boundary of the atmosphere.  
+      </description>
+    </entry>
+    <entry id="air_pressure_at_sea_level">
+      <canonical_units>Pa</canonical_units>
+      <grib>2 E151</grib>
+      <amip>psl</amip>
+      <description>
+          Air pressure at sea level is the quantity often abbreviated 
+          as MSLP or PMSL. sea_level means mean sea level, which is close 
+          to the geoid in sea areas.  
+      </description>
+    </entry>
+    <alias id="mean_sea_level_pressure">
+      <entry_id>air_pressure_at_sea_level</entry_id>
+    </alias>
+  </standard_name_table>
+					]]>
+				</programlisting>
+			</para>
+		</example>
+	</para>
+
+
+
+
+	<para>
+			The definition of a variable with the <varname>standard_name</varname>
+			attribute <varname>surface_air_pressure</varname> is found directly since
+			the element with <varname>id="surface_air_pressure"</varname> is an
+            <varname>entry</varname> element which contains the definition.
+	</para>
+	<para>
+		The definition of a variable with the
+		<varname>standard_name</varname> attribute
+		<constant>mean_sea_level_pressure</constant>
+		is found indirectly by first finding the element with the
+		<varname>id="mean_sea_level_pressure"</varname>,
+		and then, since this is an alias element, by searching for the element with
+		<varname>id="air_pressure_at_sea_level"</varname> as indicated
+        by the value of the <varname>entry_id</varname> tag.
+	</para>
+	
+	<para>
+		It is possible that new tags may be added in the
+		future. Any applications that parse the standard table
+		should be written so that unrecognized tags are gracefully
+		ignored.
+	</para>
+
+</appendix>

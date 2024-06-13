@@ -1,0 +1,8 @@
+= Transform constructs =
+
+A transform construct identifies functions of the coordinates of the field from which auxiliary coordinate constructs can be computed. A transform construct contains
+
+    A transform name which indicates the nature of the transformation and implies the formulae to be used. A CF-netCDF file does not explicitly record the formulae; it depends on the application software knowing what to do.
+    An unordered collection of terms, which are scalar parameters, pointers to dimension or auxiliary coordinate constructs of the field construct, and pointers to other field constructs. Each member of the collection has a particular role in the formulae. 
+
+Transform constructs correspond to the functions of the CF-netCDF attributes formula_terms, which describes how to compute a vertical coordinate variable from components (CF Appendix D), and grid_mapping, which describes how to transform between longitude-latitude field and the horizontal coordinates of the field construct (CF Appendix F). The transform name is the standard_name of a vertical coordinate variable with formula_terms, and the grid_mapping_name of a grid_mapping variable. The scalar parameters are scalar data variables (which should have units if dimensional) named by formula_terms, and attributes of grid_mapping variables (for which the units are specified by the transform construct). The role of each term in the formulae of the transform construct is identified by its keyword in a formula_terms attribute, or its attribute name in a grid_mapping variable. 

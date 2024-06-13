@@ -1,0 +1,279 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>9.3. Representations of collections of features in data variables</title><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch09.html" title="Chapter 9. Discrete Sampling Geometries"><link rel="prev" href="ch09s02.html" title="9.2. Collections, instances and elements"><link rel="next" href="ch09s04.html" title="9.4. The featureType  attribute"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">9.3. Representations of collections of features in data variables</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch09s02.html">Prev</a> </td><th width="60%" align="center">Chapter 9. <span class="newtext">Discrete Sampling Geometries</span></th><td width="20%" align="right"> <a accesskey="n" href="ch09s04.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div></div></div></div><p></p><p>The individual features within a collection need not necessarily contain the same number of elements.   For instance observed in situ time series will commonly contain unique numbers of time points, reflecting different deployment dates of the instruments.   Other data sources, such as the output of numerical models, may commonly generate features of identical size.  CF offers multiple representations to allow the storage to be optimized for the character of the data.  Four types of representation are utilized in this chapter: </p><p></p><div class="itemizedlist"><ul type="disc"><li><p>two <span class="bold"><strong>multidimensional array representations</strong></span>, in which each feature instance is allocated the identical amount of storage space.  In these representations the instance dimension and the element dimension(s) are distinct CF coordinate axes (typical of coordinate axes discussed in chapter 4); and</p></li><li><p>two <span class="bold"><strong>ragged array representations</strong></span>, in which each feature is provided with the minimum amount of space that it requires.  In these representations the instances of the individual features are stacked sequentially along the same array dimension as the elements of the features; we refer to this combined dimension as the <span class="bold"><strong>sample dimension</strong></span>.</p></li></ul></div><p></p><p>In the multidimensional array representations, data variables have both an instance dimension and an element dimension.  The dimensions may be given in any order.  If there is a need for either the instance or an element dimension to be the netCDF unlimited dimension (so that more features or more elements can be appended), then that dimension must be the outer dimension of the data variable i.e. the leading dimension in CDL.</p><p>In the ragged array representations, the instance dimension (<code class="varname">i</code>), which sequences the individual features within the collection, and the element dimension, which sequences the data elements of each feature (<code class="varname">o</code> and <code class="varname">p</code>), both occupy the same dimension (the sample dimension).   If the sample dimension is the netCDF unlimited dimension, new data can be appended to the file.   </p><p>In all representations, the instance dimension (which is also the sample dimension in ragged representations) may be set initially to a size that is arbitrarily larger than what is required for the features which are available at the time that the file is created.   Allocating unused array space in this way (pre-filled with missing values -- see also section 9.6, <span class="emphasis"><em>Missing data</em></span>), can be useful as a means to reserve space that will be available to add features at a later time.</p><p></p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp7637760"></a>9.3.1. Orthogonal multidimensional array representation</h3></div></div></div><p></p><p>The <span class="bold"><strong>orthogonal multidimensional array representation</strong></span>, the simplest representation, can be used if each feature instance in the collection has identical coordinates along the element axis of the features.  For example, for a collection of the timeSeries that share a common set of times, or a collection of profiles that share a common set of vertical levels, this is likely to be the natural representation to use.  In both examples, there will be longitude and latitude coordinate variables, x(i), y(i), that are one-dimensional and defined along the instance dimension.</p><p>Table 9.2 illustrates the storage of a data variable using the orthogonal multidimensional array representation.  The data variable holds a collection of 4 features.  The individual features, distinguished by color, are sequenced along the horizontal axis by the instance dimension indices, i1, i2, i3, i4.  Each instance contains three elements, sequenced along the vertical with element dimension indices, o1, o2, o3.  The i and o subscripts would be interchanged (i.e. Table 9.2 would be transposed) if the element dimension were the netCDF unlimited dimension.</p><p></p><div class="informaltable"><table border="1"><colgroup><col><col><col><col></colgroup><tbody><tr><td bgcolor="#99dddd">
+               <p>(i1, o1)</p>
+	       
+            </td><td bgcolor="#f6c682">
+               <p>(i2, o1)</p>
+	       
+            </td><td bgcolor="#d4b4de">
+               <p>(i3, o1)</p>
+	       
+            </td><td bgcolor="#ddaaaa">
+               <p>(i4, o1)</p>
+	       
+            </td></tr><tr><td bgcolor="#99dddd">
+               <p>(i1, o2)</p>
+	       
+            </td><td bgcolor="#f6c682">
+               <p>(i2, o2)</p>
+	       
+            </td><td bgcolor="#d4b4de">
+               <p>(i3, o2)</p>
+	       
+            </td><td bgcolor="#ddaaaa">
+               <p>(i4, o2)</p>
+	       
+            </td></tr><tr><td bgcolor="#99dddd">
+               <p>(i1, o3)</p>
+	       
+            </td><td bgcolor="#f6c682">
+               <p>(i2, o3)</p>
+	       
+            </td><td bgcolor="#d4b4de">
+               <p>(i3, o3)</p>
+	       
+            </td><td bgcolor="#ddaaaa">
+               <p>(i4, o3)</p>
+	       
+            </td></tr></tbody></table></div><p></p><p>Table 9.2  The storage of a data variable using the orthogonal multidimensional array representation (subscripts in CDL order).</p><p></p><p>The instance variables of a dataset corresponding to Table 9.2 will be one-dimensional with size 4 (for example, the latitude locations of timeSeries), </p><p></p><div class="informaltable"><table border="1"><colgroup><col><col><col><col></colgroup><tbody><tr><td bgcolor="#99dddd">
+               <p>lat(i1)</p>
+	       
+            </td><td bgcolor="#f6c682">
+               <p>lat(i2)</p>
+	       
+            </td><td bgcolor="#d4b4de">
+               <p>lat(i3)</p>
+	       
+            </td><td bgcolor="#ddaaaa">
+               <p>lat(i4)</p>
+	       
+            </td></tr></tbody></table></div><p></p><p>and the element coordinate axis will be one-dimensional with size 3 (for example, the time </p><p></p><div class="informaltable"><table border="1"><colgroup><col></colgroup><tbody><tr><td bgcolor="#d7d7d7">
+               <p>time(o1)</p>
+	       
+            </td></tr><tr><td bgcolor="#d7d7d7">
+               <p>time(o2)</p>
+	       
+            </td></tr><tr><td bgcolor="#d7d7d7">
+               <p>time(o3)</p>
+	       
+            </td></tr><tr><td bgcolor="#d7d7d7">
+               <p>time(o4)</p>
+	       
+            </td></tr></tbody></table></div><p></p><p>coordinates that are shared by all of the timeSeries). This representation is consistent with the multidimensional fields described in chapter 5; the characteristic that makes it atypical from chapter 5 (though not incompatible) is that the instance dimension is a discrete axis (see section 4.5).</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp7681632"></a>9.3.2.  Incomplete multidimensional array representation</h3></div></div></div><p></p><p>The <span class="bold"><strong>incomplete multidimensional array representation</strong></span> can used if the features within a collection do not all have the same number of elements, but sufficient storage space is available to allocate the number of elements required by the longest feature to all features.  That is, features that are shorter than the longest feature must be padded with missing values to bring all instances to the same storage size. This representation sacrifices storage space to achieve simplicity for reading and writing.  </p><p></p><p>Table 9.3 illustrates the storage of a data variable using the orthogonal multidimensional array representation.   The data variable holds a collection of 4 features.  The individual features, distinguished by color, are sequenced by the instance dimension indices, i1, i2, i3, i4.  The instances contain respectively 2, 4, 3 and 6 elements, sequenced by the element dimension index with values of o1, o2, o3, ....  The i and o subscripts would be interchanged (i.e. Table 9.3 would be transposed) if the element dimension were the netCDF unlimited dimension.</p><p></p><div class="informaltable"><table border="1"><colgroup><col><col><col><col></colgroup><tbody><tr><td bgcolor="#99dddd">
+               <p> (i1, o1)</p>
+	       
+            </td><td bgcolor="#f6c682">
+               <p>(i2, o1)</p>
+	       
+            </td><td bgcolor="#d4b4de">
+               <p>(i3, o1)</p>
+	       
+            </td><td bgcolor="#ddaaaa">
+               <p>(i4, o1)</p>
+	       
+            </td></tr><tr><td bgcolor="#99dddd">
+               <p>(i1, o2)</p>
+	       
+            </td><td bgcolor="#f6c682">
+               <p>(i2, o2)</p>
+	       
+            </td><td bgcolor="#d4b4de">
+               <p>(i3, o2)</p>
+	       
+            </td><td bgcolor="#ddaaaa">
+               <p>(i4, o2)</p>
+	       
+            </td></tr><tr><td>
+               <p></p>
+            </td><td bgcolor="#f6c682">
+               <p>(i2, o3)</p>
+	       
+            </td><td bgcolor="#d4b4de">
+               <p>(i3, o3)</p>
+	       
+            </td><td bgcolor="#ddaaaa">
+               <p>(i4, o3)</p>
+	       
+            </td></tr><tr><td>
+               <p></p>
+            </td><td bgcolor="#f6c682">
+               <p>(i2, o4)</p>
+	       
+            </td><td>
+               <p></p>
+            </td><td bgcolor="#ddaaaa">
+               <p>(i4, o4)</p>
+	       
+            </td></tr><tr><td>
+               <p></p>
+            </td><td>
+               <p></p>
+            </td><td>
+               <p></p>
+            </td><td bgcolor="#ddaaaa">
+               <p>(i4, o5)</p>
+	       
+            </td></tr><tr><td>
+               <p></p>
+            </td><td>
+               <p></p>
+            </td><td>
+               <p></p>
+            </td><td bgcolor="#ddaaaa">
+               <p>(i4, o6)</p>
+	       
+            </td></tr></tbody></table></div><p>        </p><p>Table 9.3.   The storage of data using the incomplete multidimensional array representation (subscripts in CDL order).</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp7716768"></a>9.3.3.  Contiguous ragged array representation</h3></div></div></div><p></p><p> The <span class="bold"><strong>contiguous ragged array representation</strong></span> can be used only if the size of each feature is known at the time that it is created.  In this representation the data for each feature will be contiguous on disk, as shown in Table 9.4. </p><p></p><div class="informaltable"><table border="1"><colgroup><col></colgroup><tbody><tr><td bgcolor="#99dddd">
+               <p>(i1, o1)</p>
+	       
+            </td></tr><tr><td bgcolor="#99dddd">
+               <p>(i1, o2)</p>
+	       
+            </td></tr><tr><td bgcolor="#f6c682">
+               <p>(i2, o1)</p>
+	       
+            </td></tr><tr><td bgcolor="#f6c682">
+               <p>(i2, o2)</p>
+	       
+            </td></tr><tr><td bgcolor="#f6c682">
+               <p>(i2, o3)</p>
+	       
+            </td></tr><tr><td bgcolor="#f6c682">
+               <p>(i2, o4)</p>
+	       
+            </td></tr><tr><td bgcolor="#d4b4de">
+               <p>(i3, o1)</p>
+	       
+            </td></tr><tr><td bgcolor="#d4b4de">
+               <p>(i3, o2)</p>
+	       
+            </td></tr><tr><td bgcolor="#d4b4de">
+               <p>(i3, o3)</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o1)</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o2)</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o3)</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o4)</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o5)</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o6)</p>
+	       
+            </td></tr></tbody></table></div><p>        </p><p>Table 9.4. The storage of data using the contiguous ragged representation (subscripts in CDL order). </p><p></p><p>In this representation, the file contains a <span class="bold"><strong>count variable</strong></span>, which must be of type integer and </p><p></p><div class="informaltable"><table border="1"><colgroup><col><col><col><col></colgroup><tbody><tr><td>
+               <p>count(i1)</p>
+            </td><td>
+               <p>count(i2)</p>
+            </td><td>
+               <p>count(i3)</p>
+            </td><td>
+               <p>count(i4)</p>
+            </td></tr><tr><td bgcolor="#99dddd">
+               <p>2</p>
+	       
+            </td><td bgcolor="#f6c682">
+               <p>4</p>
+	       
+            </td><td bgcolor="#d4b4de">
+               <p>3</p>
+	       
+            </td><td bgcolor="#ddaaaa">
+               <p>6</p>
+	       
+            </td></tr></tbody></table></div><p></p><p>must have the instance dimension as its sole dimension.  The count variable contains the number of elements that each feature has. This representation and its count variable are identifiable by the presence of an attribute, <code class="varname">sample_dimension</code>, found on the count variable, which names the sample dimension being counted. For indices that correspond to features, whose data have not yet been written, the count variable should  have a value of zero or a missing value.</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp7760480"></a>9.3.4. Indexed ragged array representation</h3></div></div></div><p></p><p>The <span class="bold"><strong>indexed ragged array representation</strong></span> stores the features interleaved along the sample dimension in the data variable as shown in Table 9.4. The canonical use case for this representation is the storage of real-time data streams that contain reports from many sources; the data can be written as it arrives. </p><p></p><p></p><p></p><div class="informaltable"><table border="1"><colgroup><col><col><col></colgroup><tbody><tr><td bgcolor="#99dddd">
+               <p>(i1, o1)</p>
+	       
+            </td><td>        </td><td bgcolor="#99dddd">
+               <p>0</p>
+	       
+            </td></tr><tr><td bgcolor="#f6c682">
+               <p>(i2, o1)</p>
+	       
+            </td><td> </td><td bgcolor="#f6c682">
+               <p>1</p>
+	       
+            </td></tr><tr><td bgcolor="#d4b4de">
+               <p>(i3, o1)</p>
+	       
+            </td><td> </td><td bgcolor="#d4b4de">
+               <p>2</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o1)</p>
+	       
+            </td><td> </td><td bgcolor="#ddaaaa">
+               <p>3</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o2)</p>
+	       
+            </td><td> </td><td bgcolor="#ddaaaa">
+               <p>3</p>
+	       
+            </td></tr><tr><td bgcolor="#f6c682">
+               <p>(i2, o2)</p>
+	       
+            </td><td> </td><td bgcolor="#f6c682">
+               <p>1</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o3)</p>
+	       
+            </td><td> </td><td bgcolor="#ddaaaa">
+               <p>3</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o4)</p>
+	       
+            </td><td> </td><td bgcolor="#ddaaaa">
+               <p>3</p>
+	       
+            </td></tr><tr><td bgcolor="#99dddd">
+               <p>(i1, o2)</p>
+	       
+            </td><td> </td><td bgcolor="#99dddd">
+               <p>0</p>
+	       
+            </td></tr><tr><td bgcolor="#f6c682">
+               <p>(i2, o3)</p>
+	       
+            </td><td> </td><td bgcolor="#f6c682">
+               <p>1</p>
+	       
+            </td></tr><tr><td bgcolor="#d4b4de">
+               <p>(i3, o2)</p>
+	       
+            </td><td> </td><td bgcolor="#d4b4de">
+               <p>2</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o5)</p>
+	       
+            </td><td> </td><td bgcolor="#ddaaaa">
+               <p>3</p>
+	       
+            </td></tr><tr><td bgcolor="#d4b4de">
+               <p>(i3, o3)</p>
+	       
+            </td><td> </td><td bgcolor="#d4b4de">
+               <p>2</p>
+	       
+            </td></tr><tr><td bgcolor="#f6c682">
+               <p>(i2, o4)</p>
+	       
+            </td><td> </td><td bgcolor="#f6c682">
+               <p>1</p>
+	       
+            </td></tr><tr><td bgcolor="#ddaaaa">
+               <p>(i4, o6)</p>
+	       
+            </td><td> </td><td bgcolor="#ddaaaa">
+               <p>3</p>
+	       
+            </td></tr></tbody></table></div><p>        </p><p>Table 9.4 The storage of data using the indexed ragged representation (subscripts in CDL order).  The left hand side of the table illustrates a data variable; the right hand side of the table contains the values of the index variable.</p><p></p><p>In this representation, the file contains an <span class="bold"><strong>index variable</strong></span>, which must be of type integer, and must have the sample dimension as its single dimension. The index variable contains the zero-based index of the feature to which each element belongs. This representation is identifiable by the presence of an attribute, <code class="varname">instance_dimension</code>, on the index variable, which names the dimension of the instance variables. For those indices of the sample dimension, into which data have not yet been written, the index variable should be pre-filled with missing values.</p><p></p><p></p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch09s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch09.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch09s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">9.2. Collections, instances and elements </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 9.4. The featureType  attribute</td></tr></table></div></body></html>

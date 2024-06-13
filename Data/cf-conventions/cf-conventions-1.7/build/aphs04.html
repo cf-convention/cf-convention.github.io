@@ -1,0 +1,174 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>H.4. Trajectory Data</title><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="aph.html" title="Appendix H. Annotated Examples of Discrete Geometries"><link rel="prev" href="aphs03.html" title="H.3. Profile Data"><link rel="next" href="aphs05.html" title="H.5. Time Series of Profiles"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">H.4. Trajectory Data</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="aphs03.html">Prev</a> </td><th width="60%" align="center">Appendix H. <span class="newtext">Annotated Examples of Discrete Geometries</span></th><td width="20%" align="right"> <a accesskey="n" href="aphs05.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div></div></div></div><p></p><p>Data may be taken along discrete paths through space, each path constituting a connected set of points called a trajectory, for example along a flight path, a ship path or the path of a parcel in a Lagrangian calculation. A data variable may contain a collection of trajectory features. The instance dimension in the case of trajectories specifies the number of trajectories in the collection and is also referred to as the <span class="bold"><strong>trajectory dimension</strong></span>. The instance variables, which have just this dimension, are also referred to as <span class="bold"><strong>trajectory variables</strong></span> and are considered to be information about the trajectories. It is strongly recommended that there always be a trajectory variable (of any data type) with the attribute <code class="varname">cf_role=&#8221;trajectory_id&#8221;</code> attribute, whose values uniquely identify the trajectories. The trajectory variables may contain missing values. This allows one to reserve space for additional trajectories that may be added at a later time, as discussed in section 9.6. All the representations described in section 9.3 can be used for trajectories. The global attribute <code class="varname">featureType=&#8221;trajectory&#8221;</code> (case-insensitive) should be included if all data variables in the file contain trajectories.</p><p></p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9964384"></a>H.4.1. Multidimensional array representation of trajectories</h3></div></div></div><p></p><p>When storing multiple trajectories in the same file, and the number of elements in each trajectory is the same, one can use the multidimensional array representation. This representation also allows one to have a variable number of elements in different trajectories, at the cost of some wasted space. In that case, any unused elements of the data and auxiliary coordinate variables must contain missing data values (section 9.6).  </p><div class="example"><a name="Example%20H.4.1.1"></a><p class="title"><b>Example H.12. Trajectories recording atmospheric composition in the incomplete multidimensional array representation.</b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      obs = 1000 ;
+      trajectory = 77 ;
+
+   variables:
+      char trajectory(trajectory, name_strlen) ;
+        trajectory:cf_role = "trajectory_id";
+        trajectory:long_name = "trajectory name" ;
+      int trajectory_info(trajectory) ;
+          trajectory_info:long_name = "some kind of trajectory info" 
+
+      double time(trajectory, obs) ; 
+          time:standard_name = "time";
+          time:long_name = "time" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+      float lon(trajectory, obs) ; 
+          lon:standard_name = "longitude";
+          lon:long_name = "longitude" ;
+          lon:units = "degrees_east" ;
+      float lat(trajectory, obs) ; 
+          lat:standard_name = "latitude";
+          lat:long_name = "latitude" ;
+          lat:units = "degrees_north" ;
+
+      float z(trajectory, obs) ; 
+          z:standard_name = &#8220;altitude&#8221;;
+          z:long_name = "height above mean sea level" ;
+          z:units = "km" ;
+          z:positive = "up" ; 
+           z:axis = "Z" ; 
+
+      float O3(trajectory, obs) ;
+          O3:standard_name = &#8220;mass_fraction_of_ozone_in_air&#8221;;
+          O3:long_name = "ozone concentration" ;
+          O3:units = "1e-9" ;
+          O3:coordinates = "time lon lat z" ;
+
+      float NO3(trajectory, obs) ;
+          NO3:standard_name = &#8220;mass_fraction_of_nitrate_radical_in_air&#8221;;
+          NO3:long_name = "NO3 concentration" ;
+          NO3:units = "1e-9" ;
+          NO3:coordinates = "time lon lat z" ;
+
+   attributes:
+      :featureType = "trajectory";</pre></div></div><br class="example-break"><p></p><p>The NO3(i,o) and O3(i,o) data for element o of trajectory i are associated with the coordinate values time(i,o), lat(i,o), lon(i,o), and z(i,o). Either the instance (trajectory) or the element (obs) dimension could be the netCDF unlimited dimension. All variables that have trajectory as their only dimension are considered to be information about that trajectory.</p><p>If the trajectories all have the same set of times, the time auxiliary coordinate variable could be one-dimensional time(obs), or replaced by a one-dimensional coordinate variable time(time), where the size of the time dimension is now equal to the number of elements of each trajectory. In the latter case, listing the time coordinate variable in the coordinates attribute is optional.</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9972640"></a>H.4.2. Single trajectory</h3></div></div></div><p></p><p>When a single trajectory is stored in the data variable, there is no need for the trajectory dimension and the arrays are one-dimensional. This is a special case of the multidimensional array representation. </p><p></p><div class="example"><a name="Example%20H.4.2.1"></a><p class="title"><b>Example H.13. A single trajectory recording atmospheric composition.</b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      time = 42;
+
+   variables:
+      char trajectory(name_strlen) ;
+          trajectory:cf_role = "trajectory_id";
+
+      double time(time) ; 
+          time:standard_name = "time";
+          time:long_name = "time" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+      float lon(time) ; 
+          lon:standard_name = "longitude";
+          lon:long_name = "longitude" ;
+          lon:units = "degrees_east" ;
+      float lat(time) ; 
+          lat:standard_name = "latitude";
+          lat:long_name = "latitude" ;
+          lat:units = "degrees_north" ;
+      float z(time) ; 
+          z:standard_name = &#8220;altitude&#8221;;
+          z:long_name = "height above mean sea level" ;
+          z:units = "km" ;
+          z:positive = "up" ; 
+           z:axis = "Z" ; 
+
+      float O3(time) ; 
+          O3:standard_name = &#8220;mass_fraction_of_ozone_in_air&#8221;;
+          O3:long_name = "ozone concentration" ;
+          O3:units = "1e-9" ;
+          O3:coordinates = "time lon lat z" ;
+
+      float NO3(time) ; 
+          NO3:standard_name = &#8220;mass_fraction_of_nitrate_radical_in_air&#8221;;
+          NO3:long_name = "NO3 concentration" ;
+          NO3:units = "1e-9" ;
+          NO3:coordinates = "time lon lat z" ;
+
+   attributes:
+      :featureType = "trajectory";</pre></div></div><br class="example-break"><p></p><p>The NO3(o) and O3(o) data are associated with the coordinate values time(o), z(o), lat(o), and lon(o). In this example, the time coordinate is ordered, so time values are contained in a coordinate variable i.e. time(time) and time is the element dimension. The time dimension may be unlimited or not. </p><p>Note that structurally this looks like unconnected point data as in example 9.5. The presence of the featureType = "trajectory" global attribute indicates that in fact the points are connected along a trajectory.</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9979792"></a>H.4.3. Contiguous ragged array representation of trajectories</h3></div></div></div><p></p><p>When the number of elements for each trajectory varies, and one can control the order of writing, one can use the contiguous ragged array representation. The canonical use case for this is when rewriting raw data, and you expect that the common read pattern will be to read all the data from each trajectory.</p><p></p><div class="example"><a name="Example%20H.4.3.1"></a><p class="title"><b>Example H.14. Trajectories recording atmospheric composition in the contiguous ragged array representation.</b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      obs = 3443;
+      trajectory = 77 ;
+   
+   variables:
+      char trajectory(trajectory, name_strlen) ;
+            trajectory:cf_role = "trajectory_id";
+      int rowSize(trajectory) ;
+          rowSize:long_name = "number of obs for this trajectory " ;
+          rowSize:sample_dimension = "obs" ;
+   
+      double time(obs) ; 
+          time:standard_name = "time";
+          time:long_name = "time" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+      float lon(obs) ; 
+          lon:standard_name = "longitude";
+          lon:long_name = "longitude" ;
+          lon:units = "degrees_east" ;
+      float lat(obs) ; 
+          lat:standard_name = "latitude";
+          lat:long_name = "latitude" ;
+          lat:units = "degrees_north" ;
+      float z(obs) ; 
+          z:standard_name = &#8220;altitude&#8221;;
+          z:long_name = "height above mean sea level" ;
+          z:units = "km" ;
+          z:positive = "up" ; 
+           z:axis = "Z" ; 
+   
+      float O3(obs) ; 
+          O3:standard_name = &#8220;mass_fraction_of_ozone_in_air&#8221;;
+          O3:long_name = "ozone concentration" ;
+          O3:units = "1e-9" ;
+          O3:coordinates = "time lon lat z" ;
+   
+      float NO3(obs) ; 
+          NO3:standard_name = &#8220;mass_fraction_of_nitrate_radical_in_air&#8221;;
+          NO3:long_name = "NO3 concentration" ;
+          NO3:units = "1e-9" ;
+          NO3:coordinates = "time lon lat z" ;
+   
+   attributes:
+      :featureType = "trajectory";</pre></div></div><br class="example-break"><p></p><p>The O3(o) and NO3(o) data are associated with the coordinate values time(o), lat(o), lon(o), and alt(o). All elements for one trajectory are contiguous along the sample dimension. The sample dimension (obs) may be the unlimited dimension or not. All variables that have the instance dimension (trajectory) as their single dimension are considered to be information about that trajectory. </p><p></p><p>The count variable (row_size) contains the number of elements for each trajectory, and is identified by having an attribute with name "sample_dimension" whose value is the sample dimension being counted. It must have the trajectory dimension as its single dimension, and must be type integer. The elements are associated with the trajectories using the same algorithm as in H.2.4.</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9987632"></a>H.4.4. Indexed ragged array representation of trajectories</h3></div></div></div><p></p><p>When the number of elements at each trajectory vary, and the elements cannot be written in order, one can use the indexed ragged array representation. The canonical use case is when writing real-time data streams that contain reports from many trajectories. The data can be written as it arrives; if the flatsample dimension is the unlimited dimension, this allows data to be appended to the file. </p><p></p><div class="example"><a name="Example%20H.4.4.1"></a><p class="title"><b>Example H.15. Trajectories recording atmospheric composition in the indexed ragged array representation. </b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      obs = UNLIMITED ;
+      trajectory = 77 ;
+   
+   variables:
+      char trajectory(trajectory, name_strlen) ;
+          trajectory:cf_role = "trajectory_id";
+   
+      int trajectory_index(obs) ;
+          trajectory_index:long_name = "index of trajectory this obs belongs to " ;
+          trajectory_index:instance_dimension= "trajectory" ;
+      double time(obs) ; 
+          time:standard_name = "time";
+          time:long_name = "time" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+      float lon(obs) ; 
+          lon:standard_name = "longitude";
+          lon:long_name = "longitude" ;
+          lon:units = "degrees_east" ;
+      float lat(obs) ; 
+          lat:standard_name = "latitude";
+          lat:long_name = "latitude" ;
+          lat:units = "degrees_north" ;
+      float z(obs) ; 
+          z:standard_name = &#8220;altitude&#8221;;
+          z:long_name = "height above mean sea level" ;
+          z:units = "km" ;
+          z:positive = "up" ;
+          z:axis = "Z" ;   
+   
+      float O3(obs) ; 
+          O3:standard_name = &#8220;mass_fraction_of_ozone_in_air&#8221;;
+          O3:long_name = "ozone concentration" ;
+          O3:units = "1e-9" ;
+          O3:coordinates = "time lon lat z" ;
+   
+      float NO3(obs) ; 
+          NO3:standard_name = &#8220;mass_fraction_of_nitrate_radical_in_air&#8221;;
+          NO3:long_name = "NO3 concentration" ;
+          NO3:units = "1e-9" ;
+          NO3:coordinates = "time lon lat z" ;
+   
+   attributes:
+      :featureType = "trajectory";</pre></div></div><br class="example-break"><p></p><p>The O3(o) and NO3(o) data are associated with the coordinate values time(o), lat(o), lon(o), and alt(o). All elements for one trajectory will have the same trajectory index value. The sample dimension (obs) may be the unlimited dimension or not. </p><p></p><p>The index variable (trajectory_index) is identified by having an attribute with name of "instance_dimension" whose value is the trajectory dimension name. It must have the sample dimension as its single dimension, and must be type integer. Each value in the trajectory_index variable is the zero-based trajectory index that the element belongs to. The elements are associated with the trajectories using the same algorithm as in H.2.5. </p><p> </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="aphs03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="aph.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="aphs05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">H.3. Profile Data </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> H.5. Time Series of Profiles</td></tr></table></div></body></html>

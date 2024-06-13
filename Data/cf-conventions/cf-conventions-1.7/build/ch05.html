@@ -1,0 +1,106 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter 5. Coordinate Systems</title><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="prev" href="ch04s05.html" title="4.5. Discrete Axis"><link rel="next" href="ch05s02.html" title="5.2. Two-Dimensional Latitude, Longitude, Coordinate Variables"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 5. Coordinate Systems</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s05.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch05s02.html">Next</a></td></tr></table><hr></div><div class="chapter" lang="en"><div class="titlepage"><div><div></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch05.html#idp6750288">5.1. Independent Latitude, Longitude, Vertical, and Time Axes</a></span></dt><dt><span class="section"><a href="ch05s02.html">5.2. Two-Dimensional Latitude, Longitude, Coordinate Variables</a></span></dt><dt><span class="section"><a href="ch05s03.html">5.3. Reduced Horizontal Grid</a></span></dt><dt><span class="section"><a href="ch05s04.html">5.4. <span class="deletedtext">Timeseries of Station
+    Data</span></a></span></dt><dt><span class="section"><a href="ch05s05.html">5.5. <span class="deletedtext">Trajectories</span></a></span></dt><dt><span class="section"><a href="ch05s06.html">5.6. <span class="deletedtext">Grid Mappings and
+    Projections</span><span class="newtext">Horizontal Coordinate
+    Reference Systems, Grid Mappings, and Projections</span></a></span></dt><dd><dl><dt><span class="section"><a href="ch05s06.html#idp6832064">5.6.1. <span class="newtext">Use of the CRS Well-known Text
+      Format</span></a></span></dt></dl></dd><dt><span class="section"><a href="ch05s07.html">5.7. Scalar Coordinate Variables</a></span></dt></dl></div><p>A variable's spatiotemporal dimensions are used to locate data values
+  in time and space. This is accomplished by associating these dimensions with
+  the relevant set of latitude, longitude, vertical, and time coordinates.
+  This section presents two methods for making that association: the use of
+  <span class="emphasis"><em>coordinate variables</em></span>, and the use of
+  <span class="emphasis"><em>auxiliary coordinate variables</em></span>.</p><p>All of a variable's dimensions that are latitude, longitude, vertical,
+  or time dimensions (see <a class="xref" href="ch01s02.html" title="1.2. Terminology">Section 1.2, &#8220;Terminology&#8221;</a>) must have
+  corresponding coordinate variables, i.e., one-dimensional variables with the
+  same name as the dimension (see examples in <a class="xref" href="ch04.html" title="Chapter 4.  Coordinate Types">Chapter 4, <i>
+    Coordinate Types
+  </i></a>). This is the only method of associating
+  dimensions with coordinates that is supported by [<a href="bi01.html#coards" class="biblioref" title="[COARDS]"><abbr class="abbrev">COARDS</abbr></a>].</p><p>All of a variable's spatiotemporal dimensions that are not latitude,
+  longitude, vertical, or time dimensions are required to be associated with
+  the relevant latitude, longitude, vertical, or time coordinates via the new
+  <code class="varname">coordinates</code> attribute of the variable. The value of the
+  <code class="varname">coordinates</code> attribute is <span class="emphasis"><em>a blank separated list
+  of the names of auxiliary coordinate variables</em></span>. There is no
+  restriction on the order in which the auxiliary coordinate variables appear
+  in the <code class="varname">coordinates</code> attribute string. <span class="deletedtext"> The dimensions of an auxiliary coordinate variable must
+  be a subset of the dimensions of the variable with which the coordinate is
+  associated (an exception is label coordinates (<a class="xref" href="ch06.html#labels" title="6.1. Labels">Section 6.1, &#8220;Labels&#8221;</a>)
+  which contain a dimension for maximum string length).</span> <span class="newtext"> The dimensions of an auxiliary coordinate variable must be a
+  subset of the dimensions of the variable with which the coordinate is
+  associated, with two exceptions. First, string-valued coordinates (<a class="xref" href="ch06.html#labels" title="6.1. Labels">Section 6.1, &#8220;Labels&#8221;</a>) have a dimension for maximum string length. Second, in
+  the ragged array representations of data (<a class="xref" href="ch09.html" title="Chapter 9. Discrete Sampling Geometries">Chapter 9, <i><span class="newtext">Discrete Sampling Geometries</span></i></a>), special methods are needed to
+  connect the data and coordinates </span></p><p>We recommend that the name of a multidimensional coordinate variable
+  should not match the name of any of its dimensions because that precludes
+  supplying a coordinate variable for the dimension. This practice also avoids
+  potential bugs in applications that determine coordinate variables by only
+  checking for a name match between a dimension and a variable and not
+  checking that the variable is one dimensional.</p><p>The use of coordinate variables is required whenever they are
+  applicable. That is, auxiliary coordinate variables may not be used as the
+  only way to identify latitude and longitude coordinates that could be
+  identified using coordinate variables. This is both to enhance conformance
+  to COARDS and to facilitate the use of generic applications that recognize
+  the NUG convention for coordinate variables. An application that is trying
+  to find the latitude coordinate of a variable should always look first to
+  see if any of the variable's dimensions correspond to a latitude coordinate
+  variable. If the latitude coordinate is not found this way, then the
+  auxiliary coordinate variables listed by the <code class="varname">coordinates</code>
+  attribute should be checked. Note that it is permissible, but optional, to
+  list coordinate variables as well as auxiliary coordinate variables in the
+  <code class="varname">coordinates</code> attribute.</p><p>If an <code class="varname">axis</code> attribute is attached to an auxiliary
+  coordinate variable, it can be used by applications in the same way the
+  <code class="varname">axis</code> attribute attached to a coordinate variable is used.
+  However, it is not permissible for a data variable to have both a coordinate
+  variable and an auxiliary coordinate variable, or more than one of either
+  type of variable, having an <code class="varname">axis</code> attribute with any given
+  value e.g. there must be no more than one <code class="varname">axis</code> attribute
+  for <code class="varname">X</code> for any data variable. Note that if the
+  <code class="varname">axis</code> attribute is not specified for an auxiliary
+  coordinate variable, it may still be possible to determine if it is a
+  spatiotemporal dimension from its own units or standard_name, or from the
+  units and standard_name of the coordinate variable corresponding to its
+  dimensions (see <a class="xref" href="ch04.html" title="Chapter 4.  Coordinate Types">Chapter 4, <i>
+    Coordinate Types
+  </i></a> ). For instance,
+  auxiliary coordinate variables which lie on the horizontal surface can be
+  identified as such by their dimensions being horizontal. Horizontal
+  dimensions are those whose coordinate variables have an
+  <code class="varname">axis</code> attribute of <code class="varname">X</code> or
+  <code class="varname">Y</code>, or a <code class="varname">units</code> attribute indicating
+  latitude and longitude.</p><p>If the coordinate variables for a horizontal grid are not longitude
+  and latitude, it is recommended that they be supplied <span class="emphasis"><em>in
+  addition</em></span> to the required coordinates. For example, the Cartesian
+  coordinates of a map projection should be supplied as coordinate variables
+  in addition to the required two-dimensional latitude and longitude variables
+  that are identified via the <code class="varname">coordinates</code> attribute. The
+  use of the <code class="varname">axis</code> attribute with values
+  <code class="varname">X</code> and <code class="varname">Y</code> is recommended for the
+  coordinate variables(see <a class="xref" href="ch04.html" title="Chapter 4.  Coordinate Types">Chapter 4, <i>
+    Coordinate Types
+  </i></a>).</p><p>It is sometimes not practical to specify the latitude-longitude
+  location of data which is representative of geographic regions with complex
+  boundaries. For this purpose, provision is made in <a class="xref" href="ch06.html#geographic-regions" title="6.1.1. Geographic Regions">Section 6.1.1, &#8220;Geographic Regions&#8221;</a> for indicating the region by a standardized
+  name.</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp6750288"></a>5.1. Independent Latitude, Longitude, Vertical, and Time Axes</h2></div></div></div><p>When each of a variable's spatiotemporal dimensions is a latitude,
+    longitude, vertical, or time dimension, then each axis is identified by a
+    coordinate variable.</p><div class="example"><a name="idp6751584"></a><p class="title"><b>Example 5.1. Independent coordinate variables</b></p><div class="example-contents"><pre class="programlisting">
+dimensions:
+  lat = 18 ;
+  lon = 36 ;
+  pres = 15 ;
+  time = 4 ;
+variables:
+  float xwind(time,pres,lat,lon) ;
+    xwind:long_name = "zonal wind" ;
+    xwind:units = "m/s" ;
+  float lon(lon) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(lat) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  float pres(pres) ;
+    pres:long_name = "pressure" ;
+    pres:units = "hPa" ;
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1990-1-1 0:0:0" ;
+      </pre></div></div><br class="example-break"><p><code class="varname">xwind(n,k,j,i)</code> is associated with the coordinate
+    values <code class="varname">lon(i)</code>, <code class="varname">lat(j)</code>,
+    <code class="varname">pres(k)</code>, and <code class="varname">time(n)</code>.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s05.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch05s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.5. <span class="newtext">Discrete Axis</span> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 5.2. Two-Dimensional Latitude, Longitude, Coordinate Variables</td></tr></table></div></body></html>

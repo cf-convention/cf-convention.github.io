@@ -1,0 +1,166 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Appendix B. Standard Name Table Format</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="prev" href="apa.html" title="Appendix A. Attributes"><link rel="next" href="apc.html" title="Appendix C. Standard Name Modifiers"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix B. Standard Name Table Format</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apa.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="apc.html">Next</a></td></tr></table><hr></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a name="standard-name-table-format"></a>Appendix B. Standard Name Table Format</h1></div></div></div><p>
+	The CF standard name table is an XML document (i.e., its format
+	adheres to the XML 1.0 
+	[<a href="bi01.html#xml" class="biblioref" title="[XML]"><abbr class="abbrev">XML</abbr></a>] recommendation). The XML suite
+	of protocols provides a reasonable balance between human and
+	machine readability. It also provides extensive support for
+	internationalization. See the W3C [<a href="bi01.html#w3c" class="biblioref" title="[W3C]"><abbr class="abbrev">W3C</abbr></a>] home page for more
+	information.
+  </p><p>
+	The document begins with a header that identifies it as an XML file:
+
+	</p><pre class="programlisting">
+	 	
+  &lt;?xml version="1.0"?&gt;
+			 
+	</pre><p>
+
+	Next is the <code class="varname">standard_name_table</code> itself, which is bracketed by the tags
+    <code class="varname"><code class="sgmltag-element">&lt;standard_name_table&gt;</code></code> and <code class="varname"><code class="sgmltag-element">&lt;/standard_name_table&gt;</code></code>.
+
+	</p><pre class="programlisting">
+	 	
+  &lt;standard_name_table 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xsi:noNamespaceSchemaLocation="CFStandardNameTable.xsd"&gt;
+			 
+	 </pre><p>
+
+  </p><p>
+	The content (delimited by the <code class="sgmltag-element">&lt;standard_name_table&gt;</code> tags) 
+	 consists of, in order,
+
+	 </p><pre class="programlisting">
+	 	
+  &lt;institution&gt;Name of institution here ... &lt;/institution&gt;
+  &lt;contact&gt;E-mail address of contact person ... &lt;/contact&gt;
+			 
+	 </pre><p>
+
+	 followed by a sequence of <code class="varname">entry</code> elements which may optionally
+	 be followed by a sequence of <code class="varname">alias</code> elements.
+     The <code class="varname">entry</code> and
+	 <code class="varname">alias</code> elements take the following forms:
+	 </p><pre class="programlisting">
+	 	
+  &lt;entry id="an_id"&gt;
+      Define the variable whose standard_name attribute has the value "an_id".  
+  &lt;/entry&gt;
+  &lt;alias id="another_id"&gt;
+      Provide alias for a variable whose standard_name attribute has the
+        value "another_id".
+  &lt;/alias&gt;
+			 
+	 </pre><p>
+
+
+  </p><p>
+	The value of the <code class="varname">id</code> attribute appearing in the
+    <code class="varname">entry</code> and <code class="varname">alias</code>
+	tags is a case sensitive string, containing no whitespace,
+	which uniquely identifies the entry relative to the table. 
+	<span class="emphasis"><em>This is the value used for a variable's <code class="varname">standard_name</code> attribute.</em></span>
+  </p><p>
+		The purpose of the <code class="varname">entry</code> elements are to provide
+		definitions for the <code class="varname">id</code> strings. Each <code class="varname">entry</code> element
+		contains the following elements:
+		</p><pre class="programlisting">
+			
+  &lt;entry id="an_id"&gt;
+    &lt;canonical_units&gt;Representative units for the variable ... &lt;/canonical_units&gt;
+    &lt;description&gt;Description of the variable ... &lt;/description&gt;
+  &lt;/entry&gt;
+			
+		</pre><p>
+
+		<code class="varname">Entry</code> elements may optionally also contain the following elements:
+		</p><pre class="programlisting">
+			
+  &lt;grib&gt;GRIB parameter code&lt;/grib&gt;
+  &lt;amip&gt;AMIP identifier string&lt;/amip&gt;
+
+			
+		</pre><p>
+	</p><p>
+		Not all variables have equivalent AMIP or GRIB
+		codes. ECMWF GRIB codes start with <code class="varname">E</code>, NCEP codes
+		with <code class="varname">N</code>. Standard codes (in the range 1-127) are not
+		prefaced. When a variable has more than one equivalent
+		GRIB code, the alternatives are given as a blank-separated
+		list.
+	</p><p>
+		The <code class="varname">alias</code> elements do not contain definitions.
+        Rather they
+		contain the value of the <code class="varname">id</code> attribute
+        of an <code class="varname">entry</code> element
+		that contains the sought after definition. The purpose of
+		the <code class="varname">alias</code> elements are to provide a means for maintaining
+		the table in a backwards compatible fashion. For example,
+		if more than one <code class="varname">id</code> string was found to correspond to
+		identical definitions, then the redundant definitions
+		can be converted into aliases. It is not intended that
+		the <code class="varname">alias</code> elements be used to accommodate the use of
+		local naming conventions in the 
+		<code class="varname">standard_name</code>
+		attribute
+		strings. Each <code class="varname">alias</code> element contains a single element:
+		</p><pre class="programlisting">
+			
+  &lt;alias id="an_id"&gt;
+    &lt;entry_id&gt;Identifier of the defining entry ... &lt;/entry_id&gt;
+  &lt;/alias&gt;
+			
+		</pre><p>
+	</p><p>
+		</p><div class="example"><a name="idm412833992000"></a><p class="title"><b>Example B.1. A name table containing three entries</b></p><div class="example-contents"><p>
+				</p><pre class="programlisting">
+					
+  &lt;?xml version="1.0"?&gt;
+  &lt;standard_name_table&gt;
+    &lt;institution&gt;Program for Climate Model Diagnosis and Intercomparison&lt;/institution&gt;
+    &lt;contact&gt;support@pcmdi.llnl.gov&lt;/contact&gt;
+    &lt;entry id="surface_air_pressure"&gt;
+      &lt;canonical_units&gt;Pa&lt;/canonical_units&gt;
+      &lt;grib&gt;E134&lt;/grib&gt;
+      &lt;amip&gt;ps&lt;/amip&gt;
+      &lt;description&gt;
+          The surface called "surface" means the lower boundary of the atmosphere.  
+      &lt;/description&gt;
+    &lt;/entry&gt;
+    &lt;entry id="air_pressure_at_sea_level"&gt;
+      &lt;canonical_units&gt;Pa&lt;/canonical_units&gt;
+      &lt;grib&gt;2 E151&lt;/grib&gt;
+      &lt;amip&gt;psl&lt;/amip&gt;
+      &lt;description&gt;
+          Air pressure at sea level is the quantity often abbreviated 
+          as MSLP or PMSL. sea_level means mean sea level, which is close 
+          to the geoid in sea areas.  
+      &lt;/description&gt;
+    &lt;/entry&gt;
+    &lt;alias id="mean_sea_level_pressure"&gt;
+      &lt;entry_id&gt;air_pressure_at_sea_level&lt;/entry_id&gt;
+    &lt;/alias&gt;
+  &lt;/standard_name_table&gt;
+					
+				</pre><p>
+			</p></div></div><p><br class="example-break">
+	</p><p>
+			The definition of a variable with the <code class="varname">standard_name</code>
+			attribute <code class="varname">surface_air_pressure</code> is found directly since
+			the element with <code class="varname">id="surface_air_pressure"</code> is an
+            <code class="varname">entry</code> element which contains the definition.
+	</p><p>
+		The definition of a variable with the
+		<code class="varname">standard_name</code> attribute
+		<code class="constant">mean_sea_level_pressure</code>
+		is found indirectly by first finding the element with the
+		<code class="varname">id="mean_sea_level_pressure"</code>,
+		and then, since this is an alias element, by searching for the element with
+		<code class="varname">id="air_pressure_at_sea_level"</code> as indicated
+        by the value of the <code class="varname">entry_id</code> tag.
+	</p><p>
+		It is possible that new tags may be added in the
+		future. Any applications that parse the standard table
+		should be written so that unrecognized tags are gracefully
+		ignored.
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apa.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="apc.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix A. Attributes </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix C. Standard Name Modifiers</td></tr></table></div></body></html>

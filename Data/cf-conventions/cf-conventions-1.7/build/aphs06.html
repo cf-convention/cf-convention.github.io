@@ -1,0 +1,155 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>H.6. Trajectory of Profiles</title><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="aph.html" title="Appendix H. Annotated Examples of Discrete Geometries"><link rel="prev" href="aphs05.html" title="H.5. Time Series of Profiles"><link rel="next" href="bi01.html" title="Bibliography"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">H.6. Trajectory of Profiles</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="aphs05.html">Prev</a> </td><th width="60%" align="center">Appendix H. <span class="newtext">Annotated Examples of Discrete Geometries</span></th><td width="20%" align="right"> <a accesskey="n" href="bi01.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div></div></div></div><p></p><p>When profiles are taken along a trajectory, one gets a collection of profiles called a trajectoryProfile. A data variable may contain a collection of such trajectoryProfile features, one feature per trajectory. The instance dimension in the case of a trajectoryProfile is also referred to as the <span class="bold"><strong>trajectory dimension</strong></span>. The instance variables, which have just this dimension, are also referred to as <span class="bold"><strong>trajectory variables</strong></span> and are considered to contain information describing the trajectories. The trajectory variables may contain missing values. This allows one to reserve space for additional trajectories that may be added at a later time, as discussed in section 9.6. TrajectoryProfiles are more complicated than trajectories because there are two element dimensions. Each trajectory has a number of profiles as its elements, and each profile has a number of data from various levels as its elements. It is strongly recommended that there always be a variable (of any data type) with the profile dimension and the <code class="varname">cf_role</code> attribute "<code class="varname">profile_id</code>", whose values uniquely identify the profiles.</p><p></p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp10066864"></a>H.6.1. Multidimensional array representation of trajectory profiles</h3></div></div></div><p></p><p>If there are the same number of profiles for all trajectories, and the same number of vertical levels for every profile, one can use the multidimensional representation:</p><p></p><div class="example"><a name="Example%20H.6.1.1"></a><p class="title"><b>Example H.20. Time series of atmospheric sounding profiles along a set of trajectories stored in a multidimensional array representation.</b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      trajectory = 22 ;
+      profile = 33;
+      z = 42 ;
+   
+   variables:
+      int trajectory (trajectory ) ;
+          trajectory:cf_role = "trajectory_id" ;
+   
+      float lon(trajectory, profile) ; 
+          lon:standard_name = "longitude";
+          lon:units = "degrees_east";
+      float lat(trajectory, profile) ; 
+          lat:standard_name = "latitude";
+          lat:long_name = "station latitude" ;
+          lat:units = "degrees_north" ;
+   
+      float alt(trajectory, profile , z) ; 
+          alt:standard_name = &#8220;altitude&#8221;;
+          alt:long_name = "height above mean sea level" ;
+          alt:units = "km" ;
+          alt:positive = "up" ; 
+          alt:axis = "Z" ;   
+   
+      double time(trajectory, profile ) ; 
+          time:standard_name = "time";
+          time:long_name = "time of measurement" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+          time:missing_value = -999.9;
+   
+      float pressure(trajectory, profile , z) ; 
+          pressure:standard_name = "air_pressure" ;
+          pressure:long_name = "pressure level" ;
+          pressure:units = "hPa" ;
+          pressure:coordinates = "time lon lat alt" ;
+   
+      float temperature(trajectory, profile , z) ; 
+          temperature:standard_name = "surface_temperature" ;
+          temperature:long_name = "skin temperature" ;
+          temperature:units = "Celsius" ;
+          temperature:coordinates = "time lon lat alt" ;
+   
+      float humidity(trajectory, profile , z) ; 
+          humidity:standard_name = "relative_humidity" ;
+          humidity:long_name = "relative humidity" ;
+          humidity:units = "%" ;
+          humidity:coordinates = "time lon lat alt" ;
+   
+   attributes:
+    :featureType = "trajectoryProfile";</pre></div></div><br class="example-break"><p></p><p>The pressure(i,p,o), temperature(i,p,o), and humidity(i,p,o) data for element o of profile p along trajectory i are associated with the coordinate values time(i,p), alt(i,p,o), lat(i,p), and lon(i,p). Any of the three dimensions could be the netCDF unlimited dimension, if it might be useful to be able enlarge it. </p><p></p><p>If all of the profiles along any given trajectory have the same set of vertical coordinates values, the vertical auxiliary coordinate variable could be dimensioned alt(trajectory, z). If all the profiles have the same set of vertical coordinates, the vertical auxiliary coordinate variable could be one-dimensional alt(z), or replaced by a one-dimensional coordinate variable z(z), provided the values are ordered monotonically. In the latter case, listing the vertical coordinate variable in the coordinates attribute is optional.</p><p></p><p>If the profiles are taken along all the trajectories at the same set of times, the time auxiliary coordinate variable could be one-dimensional time(profile), or replaced by a one-dimensional coordinate variable time(time), where the size of the time dimension is now equal to the number of profiles along each trajectory. In the latter case, listing the time coordinate variable in the coordinates attribute is optional.</p><p></p><p>At the cost of some wasted space, the multidimensional array representation also allows one to have a variable number of profiles for different trajectories, and varying numbers of levels for different profiles. In these cases, any unused elements of the data and auxiliary coordinate variables must contain missing data values (section 9.6).</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp10078848"></a>H.6.2. Profiles along a single trajectory</h3></div></div></div><p></p><p>If there is only one trajectory in the data variable, there is no need for the trajectory dimension: </p><p></p><div class="example"><a name="Example%20H.6.2.1"></a><p class="title"><b>Example H.21. Time series of atmospheric sounding profiles along a trajectory stored in a multidimensional array representation.</b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      profile = 33;
+      z = 42 ;
+   
+   variables:
+      int trajectory;
+          trajectory:cf_role = "trajectory_id" ;
+   
+      float lon(profile) ; 
+          lon:standard_name = "longitude";
+          lon:units = "degrees_east";
+      float lat(profile) ; 
+          lat:standard_name = "latitude";
+          lat:long_name = "station latitude" ;
+          lat:units = "degrees_north" ;
+   
+      float alt(profile, z) ; 
+          alt:standard_name = &#8220;altitude&#8221;;
+          alt:long_name = "height above mean sea level" ;
+          alt:units = "km" ;
+          alt:positive = "up" ; 
+           alt:axis = "Z" ;   
+   
+      double time(profile ) ; 
+          time:standard_name = "time";
+          time:long_name = "time of measurement" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+          time:missing_value = -999.9;
+   
+      float pressure(profile, z) ; 
+          pressure:standard_name = "air_pressure" ;
+          pressure:long_name = "pressure level" ;
+          pressure:units = "hPa" ;
+          pressure:coordinates = "time lon lat alt" ;
+   
+      float temperature(profile, z) ; 
+          temperature:standard_name = "surface_temperature" ;
+          temperature:long_name = "skin temperature" ;
+          temperature:units = "Celsius" ;
+          temperature:coordinates = "time lon lat alt" ;
+   
+      float humidity(profile, z) ; 
+          humidity:standard_name = "relative_humidity" ;
+          humidity:long_name = "relative humidity" ;
+          humidity:units = "%" ;
+          humidity:coordinates = "time lon lat alt" ;
+   
+   attributes:
+    :featureType = "trajectoryProfile";</pre></div></div><br class="example-break"><p></p><p>The pressure(p,o), temperature(p,o), and humidity(p,o) data for element o of profile p are associated with the coordinate values time(p), alt(p,o), lat(p), and lon(p). If all the profiles have the same set of vertical coordinates, the vertical auxiliary coordinate variable could be one-dimensional alt(z), or replaced by a one-dimensional coordinate variable z(z), provided the values are ordered monotonically. In the latter case, listing the vertical coordinate variable in the coordinates attribute is optional.</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp10085568"></a>H.6.3. Ragged array representation of trajectory profiles</h3></div></div></div><p></p><p>When the number of profiles and levels for each trajectory varies, one can use a ragged array representation. Each of the two element dimensions (along a projectory, within a profile) could in principle be stored either contiguous or indexed, but this convention supports only one of the four possible choices. This uses the contiguous ragged array representation for each profile (9.3.3), and the indexed ragged array representation to organise the profiles into time series (9.3.4). The canonical use case is when writing real-time data streams that contain profiles from many trajectories, arriving randomly, with the data for each entire profile written all at once.</p><p></p><div class="example"><a name="Example%20H.6.3.1"></a><p class="title"><b>Example H.22. Time series of atmospheric sounding profiles along a set of trajectories stored in a ragged array representation. </b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      obs = UNLIMITED ;
+      profiles = 142 ;
+      section = 3;
+   
+   variables:
+      int trajectory(trajectory) ;
+          section:standard_namecf_role = "trajectory_id" ;
+   
+      double time(profile); 
+          time:standard_name = "time";
+          time:long_name = "time" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+      float lon(profile); 
+          lon:standard_name = "longitude";
+          lon:long_name = "longitude" ;
+          lon:units = "degrees_east" ;
+      float lat(profile); 
+          lat:standard_name = "latitude";
+          lat:long_name = "latitude" ;
+          lat:units = "degrees_north" ; 
+      int row_size(profile) ;
+          row_size:long_name = "number of obs for this profile " ;
+          row_size:sample_dimension = "obs" ;
+      int trajectory_index(profile) ;
+          trajectory_index:long_name = "which trajectory this profile is for" ;
+          trajectory_index:instance_dimension= "trajectory" ;
+      
+       float z(obs) ;
+          z:standard_name = &#8220;altitude&#8221;;
+          z:long_name = "height above mean sea level" ;
+          z:units = "km" ;
+          z:positive = "up" ;
+          z:axis = "Z" ;   
+   
+      float pressure(obs) ; 
+          pressure:standard_name = "air_pressure" ;
+          pressure:long_name = "pressure level" ;
+          pressure:units = "hPa" ;
+          pressure:coordinates = "time lon lat z" ;
+   
+      float temperature(obs) ; 
+          temperature:standard_name = "surface_temperature" ;
+          temperature:long_name = "skin temperature" ;
+          temperature:units = "Celsius" ;
+          temperature:coordinates = "time lon lat z" ;
+   
+      float humidity(obs) ; 
+          humidity:standard_name = "relative_humidity" ;
+          humidity:long_name = "relative humidity" ;
+          humidity:units = "%" ;
+          humidity:coordinates = "time lon lat z" ;
+   
+   attributes:
+      :featureType = "trajectoryProfile";</pre></div></div><br class="example-break"><p></p><p>The pressure(o), temperature(o), and humidity(o) data for element o of profile p along trajectory i are associated with the coordinate values time(p), z(o), lat(p), and lon(p).</p><p>The index variable (trajectory_index) is identified by having an attribute with name of instance_dimension whose value is the instance dimension name (trajectory in this example). The index variable must have the profile dimension as its sole dimension, and must be type integer. Each value in the index variable is the zero-based trajectory index that the profile belongs to i.e. profile p belongs to trajectory i=trajectory_index(p), as in section H.2.5. </p><p>The count variable (row_size) contains the number of elements for each profile, which must be written contiguously. The count variable is identified by having an attribute with name sample_dimension whose value is the sample dimension (obs in this example) being counted. It must have the profile dimension as its sole dimension, and must be type integer. The number of elements in profile p is recorded in row_size(p), as in section H.2.4. The sample dimension need not be the netCDF unlimited dimension,  though it commonly is.</p><p></p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="aphs05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="aph.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="bi01.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">H.5. Time Series of Profiles </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Bibliography</td></tr></table></div></body></html>

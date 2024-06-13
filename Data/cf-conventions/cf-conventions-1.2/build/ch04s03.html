@@ -1,0 +1,84 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>4.3. Vertical (Height or Depth) Coordinate</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch04.html" title="Chapter 4.  Coordinate Types"><link rel="prev" href="ch04s02.html" title="4.2. Longitude Coordinate"><link rel="next" href="ch04s04.html" title="4.4. Time Coordinate"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.3. Vertical (Height or Depth) Coordinate</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><th width="60%" align="center">Chapter 4. 
+    Coordinate Types
+  </th><td width="20%" align="right"> <a accesskey="n" href="ch04s04.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="vertical-coordinate"></a>4.3. Vertical (Height or Depth) Coordinate</h2></div></div></div><p>
+      Variables representing dimensional height or depth axes must always
+      explicitly include the <code class="varname">units</code> attribute; there is
+      no default value.
+    </p><p>
+      The direction of positive (i.e., the direction in which the coordinate
+      values are increasing), whether up or down, cannot in all cases be
+      inferred from the units. The direction of positive is useful for
+      applications displaying the data. For this reason the attribute
+      <code class="varname">positive</code> as defined in the COARDS standard is
+      required if the vertical axis units are not a valid unit of pressure
+      (a determination which can be made using the udunits routine, utScan)
+      -- otherwise its inclusion is optional. The <code class="varname">positive</code>
+      attribute may have the value <code class="varname">up</code> or
+      <code class="varname">down</code> (case insensitive). This attribute may be
+      applied to either coordinate variables or auxillary coordinate
+      variables that contain vertical coordinate data.
+    </p><p>
+      For example, if an oceanographic netCDF file encodes the depth of
+      the surface as 0 and the depth of 1000 meters as 1000 then the axis
+      would use attributes as follows:
+      </p><pre class="programlisting">
+axis_name:units = "meters" ; 
+axis_name:positive = "down" ; 	
+      </pre><p>
+    </p><p>
+      If, on the other hand, the depth of 1000 meters were represented
+      as -1000 then the value of the <code class="varname">positive</code> attribute
+      would have been <code class="varname">up</code>. If the <code class="varname">units</code>
+      attribute value is a valid pressure unit the default value of the
+      <code class="varname">positive</code> attribute is <code class="varname">down</code>.
+    </p><p>
+      A vertical coordinate will be identifiable by:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+	    units of pressure; or
+	  </p></li><li class="listitem"><p>
+	    the presence of the positive attribute with a value of
+        <code class="varname">up</code> or <code class="varname">down</code> (case insensitive).
+	  </p></li></ul></div><p>
+    </p><p>
+      Optionally, the vertical type may be indicated additionally by
+      providing the <code class="varname">standard_name</code> attribute with an
+      appropriate value, and/or the <code class="varname">axis</code> attribute
+      with the value <code class="varname">Z</code>.
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm127200961120"></a>4.3.1. Dimensional Vertical Coordinate</h3></div></div></div><p>
+	The <code class="varname">units</code> attribute for dimensional coordinates will
+    be a string formatted as per the
+    <a class="ulink" href="http://www.unidata.ucar.edu/software/udunits/" target="_top"><code class="filename">udunits.dat</code></a> file.
+    The acceptable units for vertical (depth or height) coordinate variables are:
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+	      units of pressure as listed in the file <code class="filename">udunits.dat</code>.
+          For vertical axes the most commonly used of these include
+          include <code class="varname">bar</code>, <code class="varname">millibar</code>,
+          <code class="varname">decibar</code>, <code class="varname">atmosphere (atm)</code>,
+          <code class="varname">pascal (Pa)</code>, and <code class="varname">hPa</code>.
+	    </p></li><li class="listitem"><p>
+	      units of length as listed in the file udunits.dat. For vertical axes the most commonly used of these include <code class="varname">meter (metre, m)</code>, and <code class="varname">kilometer (km)</code>.
+	    </p></li><li class="listitem"><p>
+	      other units listed in the file udunits.dat that may under certain circumstances reference vertical position such as units of density or temperature.
+	    </p></li></ul></div><p>
+	Plural forms are also acceptable.
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="dimensionless-vertical-coordinate"></a>4.3.2. Dimensionless Vertical Coordinate</h3></div></div></div><p>
+	The <code class="varname">units</code> attribute is not required for dimensionless coordinates. For backwards compatibility with COARDS we continue to allow the <code class="varname">units</code> attribute to take one of the values: <code class="varname">level</code>, <code class="varname">layer</code>, or <code class="varname">sigma_level</code>. These values are not recognized by the Udunits package, and are considered a deprecated feature in the CF standard.
+      </p><p>
+	For dimensionless vertical coordinates we extend the COARDS standard by making use of the <code class="varname">standard_name</code> attribute to associate a coordinate with its definition from <a class="xref" href="apd.html" title="Appendix D. Dimensionless Vertical Coordinates">Appendix D, <i>Dimensionless Vertical Coordinates</i></a>. The definition provides a mapping between the dimensionless coordinate values and dimensional values that can positively and uniquely indicate the location of the data. A new attribute, <code class="varname">formula_terms</code>, is used to associate terms in the definitions with variables in a netCDF file. To maintain backwards compatibility with COARDS the use of these attributes is not required, but is strongly recommended.
+      </p><div class="example"><a name="idm127200944896"></a><p class="title"><b>Example 4.3. Atmosphere sigma coordinate</b></p><div class="example-contents"><pre class="programlisting">
+float lev(lev) ;
+  lev:long_name = "sigma at layer midpoints" ;
+  lev:positive = "down" ;
+  lev:standard_name = "atmosphere_sigma_coordinate" ;
+  lev:formula_terms = "sigma: lev ps: PS ptop: PTOP" ;
+	</pre></div></div><br class="example-break"><p>
+	 In this example the <code class="varname">standard_name</code> value <code class="varname">atmosphere_sigma_coordinate</code> identifies the following definition from <a class="xref" href="apc.html" title="Appendix C. Standard Name Modifiers">Appendix C, <i>Standard Name Modifiers</i></a> which specifies how to compute pressure at gridpoint <code class="varname">(n,k,j,i)</code> where <code class="varname">j</code> and <code class="varname">i</code> are horizontal indices, <code class="varname">k</code> is a vertical index, and <code class="varname">n</code> is a time index:
+	</p><pre class="programlisting">
+p(n,k,j,i) = ptop + sigma(k)*(ps(n,j,i)-ptop)
+	</pre><p>
+      </p><p>
+	The <code class="varname">formula_terms</code> attribute associates the variable <code class="varname">lev</code> with the term <code class="varname">sigma</code>, the variable <code class="varname">PS</code> with the term <code class="varname">ps</code>, and the variable <code class="varname">PTOP</code> with the term <code class="varname">ptop</code>. Thus the pressure at gridpoint <code class="varname">(n,k,j,i)</code> would be calculated by
+	</p><pre class="programlisting">
+p(n,k,j,i) = PTOP + lev(k)*(PS(n,j,i)-PTOP)
+	</pre><p>
+      </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.2. Longitude Coordinate </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 4.4. Time Coordinate</td></tr></table></div></body></html>

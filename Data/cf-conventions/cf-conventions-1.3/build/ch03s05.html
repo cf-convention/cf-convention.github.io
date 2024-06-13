@@ -1,0 +1,98 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>3.5. Flags</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="ch03.html" title="Chapter 3.  Description of the Data"><link rel="prev" href="ch03s04.html" title="3.4. Ancillary Data"><link rel="next" href="ch04.html" title="Chapter 4.  Coordinate Types"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.5. Flags</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s04.html">Prev</a> </td><th width="60%" align="center">Chapter 3. 
+    Description of the Data
+  </th><td width="20%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="flags"></a>3.5. Flags</h2></div></div></div><p>
+      The attributes <code class="varname">flag_values</code><span class="newtext">, 
+      <code class="varname">flag_masks</code></span> and <code class="varname">flag_meanings</code> 
+      are intended to make variables that contain flag values self describing. 
+      <span class="newtext">Status codes and Boolean (binary) condition flags
+      may be expressed with different combinations of <code class="varname">flag_values</code>
+      and <code class="varname">flag_masks</code> attribute definitions.</span>      
+    </p><p>
+      <span class="newtext">The <code class="varname">flag_values</code> and <code class="varname">flag_meanings</code>
+      attributes describe a status flag consisting of mutually exclusive coded values.</span>
+      The <code class="varname">flag_values</code> attribute is the same type as the variable to which 
+      it is attached, and contains a list of the possible flag values. 
+      The <code class="varname">flag_meanings</code> attribute is a string whose value is a blank 
+      separated list of descriptive words or phrases, one for each flag value. 
+      If multi-word phrases are used to describe the flag values, then the words within 
+      a phrase should be connected with underscores. <span class="newtext">The following example illustrates
+      the use of flag values to express a speed quality with an enumerated status code.</span>
+    </p><div class="example"><a name="idm315660594048"></a><p class="title"><b>Example 3.3. A flag variable<span class="newtext">, using <code class="varname">flag_values</code></span></b></p><div class="example-contents"><pre class="programlisting">
+  byte current_speed_qc(time, depth, lat, lon) ;
+    current_speed_qc:long_name = "Current Speed Quality" ;
+    <span class="newtext">current_speed_qc:standard_name = "sea_water_speed status_flag" ;</span>
+    current_speed_qc:_FillValue = -128b ;
+    current_speed_qc:valid_range = <span class="newtext">0b, 2b</span><span class="deletedtext">-127b, 127b</span> ;
+    current_speed_qc:flag_values = 0b, 1b, 2b ;
+    current_speed_qc:flag_meanings = "quality_good sensor_nonfunctional 
+                                      outside_valid_range" ;
+      </pre></div></div><br class="example-break"><p>
+      <span class="newtext">The <code class="varname">flag_masks</code> and <code class="varname">flag_meanings</code> 
+      attributes describe a number of independent Boolean conditions using bit field notation by setting 
+      unique bits in each <code class="varname">flag_masks</code> value.  <code class="varname">The flag_masks</code> attribute 
+      is the same type as the variable to which it is attached, and contains a list of values matching unique 
+      bit fields.  The <code class="varname">flag_meanings</code> attribute is defined as above, one for each 
+      <code class="varname">flag_masks</code> value.  A flagged condition is identified by performing a bitwise AND
+      of the variable value and each <code class="varname">flag_masks</code> value; a non-zero result indicates a 
+      <code class="varname">true</code> condition.  Thus, any or all of the flagged conditions may be <code class="varname">true</code>, 
+      depending on the variable bit settings. The following example illustrates the use of <code class="varname">flag_masks</code>
+      to express six sensor status conditions.</span>
+    </p><div class="example"><a name="idm315660583936"></a><p class="title"><b>Example 3.4. <span class="newtext">A flag variable, using <code class="varname">flag_masks</code></span></b></p><div class="example-contents"><pre class="programlisting"><span class="newtext">
+  byte sensor_status_qc(time, depth, lat, lon) ;
+    sensor_status_qc:long_name = "Sensor Status" ;
+    sensor_status_qc:_FillValue = 0b ;
+    sensor_status_qc:valid_range = 1b, 63b ;
+    sensor_status_qc:flag_masks = 1b, 2b, 4b, 8b, 16b, 32b ;
+    sensor_status_qc:flag_meanings = "low_battery processor_fault
+                                      memory_fault disk_fault
+                                      software_fault
+                                      maintenance_required" ;</span>
+      </pre></div></div><br class="example-break"><p>
+      <span class="newtext">The <code class="varname">flag_masks</code>, <code class="varname">flag_values</code> and 
+      <code class="varname">flag_meanings</code> attributes, used together, describe a blend of independent Boolean 
+      conditions and enumerated status codes.  The <code class="varname">flag_masks</code> and <code class="varname">flag_values</code>
+      attributes are both the same type as the variable to which they are attached.  A flagged condition 
+      is identified by a bitwise AND of the variable value and each <code class="varname">flag_masks</code> value; 
+      a result that matches the <code class="varname">flag_values</code> value indicates a <code class="varname">true</code> 
+      condition.  Repeated <code class="varname">flag_masks</code> define a bit field mask that identifies a number 
+      of status conditions with different <code class="varname">flag_values</code>.  The <code class="varname">flag_meanings</code>
+      attribute is defined as above, one for each <code class="varname">flag_masks</code> bit field and 
+      <code class="varname">flag_values</code> definition.  Each <code class="varname">flag_values</code> and 
+      <code class="varname">flag_masks</code> value must coincide with a <code class="varname">flag_meanings</code> value.  
+      The following example illustrates the use of <code class="varname">flag_masks</code> and <code class="varname">flag_values</code>
+      to express two sensor status conditions and one enumerated status code.</span>
+    </p><div class="example"><a name="idm315660571760"></a><p class="title"><b>Example 3.5. <span class="newtext">A flag variable, using <code class="varname">flag_masks</code> and <code class="varname">flag_values</code></span></b></p><div class="example-contents"><pre class="programlisting"><span class="newtext">
+  byte sensor_status_qc(time, depth, lat, lon) ;
+    sensor_status_qc:long_name = "Sensor Status" ;
+    sensor_status_qc:_FillValue = 0b ;
+    sensor_status_qc:valid_range = 1b, 15b ;
+    sensor_status_qc:flag_masks = 1b, 2b, 12b, 12b, 12b ;
+    sensor_status_qc:flag_values = 1b, 2b, 4b, 8b, 12b ;
+    sensor_status_qc:flag_meanings =
+         "low_battery
+          hardware_fault
+          offline_mode calibration_mode maintenance_mode" ;</span>
+      </pre></div></div><br class="example-break"><p>
+      <span class="newtext">In this case, mutually exclusive values are blended with Boolean values 
+      to maximize use of the available bits in a flag value.  The table below represents the four binary 
+      digits (bits) expressed by the <code class="varname">sensor_status_qc</code> variable in the previous 
+      example.</span>
+    </p><p>
+      <span class="newtext">Bit 0 and Bit 1 are Boolean values indicating a low battery condition 
+      and a hardware fault, respectively. The next two bits (Bit 2 and Bit 3) express an enumeration 
+      indicating abnormal sensor operating modes.  Thus, if Bit 0 is set, the battery is low and if 
+      Bit 1 is set, there is a hardware fault - independent of the current sensor operating mode.</span>
+    </p><div class="table"><a name="idm315660565248"></a><p class="title"><b>Table 3.2. <span class="newtext">Flag Variable Bits (from Example)</span></b></p><div class="table-contents"><table summary="Flag Variable Bits (from Example)" border="1"><colgroup><col width="50pt" align="left"><col width="50pt" align="left"><col width="50pt" align="left"><col width="50pt" align="left"></colgroup><thead><tr><th align="left"><span class="newtext">Bit 3 (MSB)</span></th><th align="left"><span class="newtext">Bit 2</span></th><th align="left"><span class="newtext">Bit 1</span></th><th align="left"><span class="newtext">Bit 0 (LSB)</span></th></tr></thead><tbody><tr><td align="left"> </td><td align="left"> </td><td align="left"><span class="newtext">H/W Fault</span></td><td align="left"><span class="newtext">Low Batt</span></td></tr></tbody></table></div></div><br class="table-break"><p>
+      <span class="newtext">The remaining bits (Bit 2 and Bit 3) are decoded as follows:</span>
+    </p><div class="table"><a name="idm315660552928"></a><p class="title"><b>Table 3.3. <span class="newtext">Flag Variable Bit 2 and Bit 3 (from Example)</span></b></p><div class="table-contents"><table summary="Flag Variable Bit 2 and Bit 3 (from Example)" border="1"><colgroup><col width="50pt" align="left"><col width="50pt" align="left"><col width="100pt" align="left"></colgroup><thead><tr><th align="left"><span class="newtext">Bit 3</span></th><th align="left"><span class="newtext">Bit 2</span></th><th align="left"><span class="newtext">Mode</span></th></tr></thead><tbody><tr><td align="left"><span class="newtext">0</span></td><td align="left"><span class="newtext">1</span></td><td align="left"><span class="newtext">offline_mode</span></td></tr><tr><td align="left"><span class="newtext">1</span></td><td align="left"><span class="newtext">0</span></td><td align="left"><span class="newtext">calibration_mode</span></td></tr><tr><td align="left"><span class="newtext">1</span></td><td align="left"><span class="newtext">1</span></td><td align="left"><span class="newtext">maintenance_mode</span></td></tr></tbody></table></div></div><br class="table-break"><p>
+      <span class="newtext">The "12b" flag mask is repeated in the <code class="varname">sensor_status_qc</code>
+      <code class="varname">flag_masks</code> definition to explicitly declare the recommended bit field masks to 
+      repeatedly AND with the variable value while searching for matching enumerated values. An application 
+      determines if any of the conditions declared in the <code class="varname">flag_meanings</code> list are 
+      <code class="varname">true</code> by simply iterating through each of the <code class="varname">flag_masks</code> and 
+      AND'ing them with the variable. When a result is equal to the corresponding <code class="varname">flag_values</code>
+      element, that condition is <code class="varname">true</code>. The repeated <code class="varname">flag_masks</code> enable 
+      a simple mechanism for clients to detect all possible conditions.</span>
+    </p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.4. Ancillary Data </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4. 
+    Coordinate Types
+  </td></tr></table></div></body></html>

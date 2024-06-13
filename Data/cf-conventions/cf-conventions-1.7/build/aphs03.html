@@ -1,0 +1,197 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>H.3. Profile Data</title><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="aph.html" title="Appendix H. Annotated Examples of Discrete Geometries"><link rel="prev" href="aphs02.html" title="H.2. Time Series Data"><link rel="next" href="aphs04.html" title="H.4. Trajectory Data"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">H.3. Profile Data</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="aphs02.html">Prev</a> </td><th width="60%" align="center">Appendix H. <span class="newtext">Annotated Examples of Discrete Geometries</span></th><td width="20%" align="right"> <a accesskey="n" href="aphs04.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div></div></div></div><p></p><p>A series of connected observations along a vertical line, like an atmospheric or ocean sounding, is called a profile. For each profile, there is a single time, lat and lon. A data variable may contain a collection of profile features. The instance dimension in the case of profiles specifies the number of profiles in the collection and is also referred to as the <span class="bold"><strong>profile dimension</strong></span>. The instance variables, which have just this dimension, including latitude and longitude for example, are also referred to as <span class="bold"><strong>profile variables</strong></span> and are considered to be information about the profiles. It is strongly recommended that there always be a profile variable (of any data type) with <code class="varname">cf_role</code> attribute "<code class="varname">profile_id</code>", whose values uniquely identify the profiles. The profile variables may contain missing values. This allows one to reserve space for additional profiles that may be added at a later time, as discussed in section 9.6. All the representations described in section 9.1.3 can be used for profiles. The global attribute <code class="varname">featureType=&#8221;profile&#8221;</code> (case-insensitive) should be included if all data variables in the file contain profiles.</p><p></p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9928832"></a>H.3.1. Orthogonal multidimensional array representation of profiles</h3></div></div></div><p></p><p>If the profile instances have the same number of elements and the vertical coordinate values are identical for all instances, you may use the orthogonal multidimensional array representation. This has either a one-dimensional coordinate variable, z(z), provided the vertical coordinate values are ordered monotonically, or a one-dimensional auxiliary coordinate variable, alt(o), where o is the element dimension. In the former case, listing the vertical coordinate variable in the <span class="bold"><strong>coordinates</strong></span> attributes of the data variables is optional.</p><p></p><div class="example"><a name="Example%20H.3.1.1"></a><p class="title"><b>Example H.8. Atmospheric sounding profiles for a common set of vertical coordinates stored in the orthogonal multidimensional array representation.</b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      z = 42 ;
+      profile = 142 ;
+
+   variables:
+      int profile(profile) ;
+            profile:cf_role = "profile_id";
+      double time(profile); 
+          time:standard_name = "time";
+          time:long_name = "time" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+      float lon(profile); 
+          lon:standard_name = "longitude";
+          lon:long_name = "longitude" ;
+          lon:units = "degrees_east" ;
+      float lat(profile); 
+          lat:standard_name = "latitude";
+          lat:long_name = "latitude" ;
+          lat:units = "degrees_north" ;
+
+      float z(z) ;
+          z:standard_name = &#8220;altitude&#8221;;
+          z:long_name = "height above mean sea level" ;
+          z:units = "km" ;
+          z:positive = "up" ; 
+          z:axis = "Z" ;   
+
+      float pressure(profile, z) ; 
+          pressure:standard_name = "air_pressure" ;
+          pressure:long_name = "pressure level" ;
+          pressure:units = "hPa" ;
+          pressure:coordinates = "time lon lat altz" ;
+
+      float temperature(profile, z) ; 
+          temperature:standard_name = "surface_temperature" ;
+          temperature:long_name = "skin temperature" ;
+          temperature:units = "Celsius" ;
+          temperature:coordinates = "time lon lat altz" ;
+
+      float humidity(profile, z) ; 
+          humidity:standard_name = "relative_humidity" ;
+          humidity:long_name = "relative humidity" ;
+          humidity:units = "%" ;
+          humidity:coordinates = "time lon lat altz" ;
+
+   attributes:
+      :featureType = "profile";</pre></div></div><br class="example-break"><p>The pressure(i,o), temperature(i,o), and humidity(i,o) data for element o of profile i are associated with the coordinate values time(i), lat(i), and lon(i). The vertical coordinate for element o in each profile is altitude z(o). Either the instance (profile) or the element (z) dimension could be the netCDF unlimited dimension.</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9936304"></a>H.3.2. Incomplete multidimensional array representation of profiles</h3></div></div></div><p></p><p>If there are the same number of levels in each profile, but they do not have the same set of vertical coordinates, one can use the incomplete multidimensional array representation, which the vertical coordinate variable is two-dimensional e.g. replacing z(z) in <a class="xref" href="aphs03.html#Example%20H.3.1.1" title="Example H.8. Atmospheric sounding profiles for a common set of vertical coordinates stored in the orthogonal multidimensional array representation.">Example H.8, &#8220;Atmospheric sounding profiles for a common set of vertical coordinates stored in the orthogonal multidimensional array representation.&#8221;</a> with alt(profile,z).  This representation also allows one to have a variable number of elements in different profiles, at the cost of some wasted space. In that case, any unused elements of the data and auxiliary coordinate variables must contain missing data values (section 9.6).</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9939376"></a>H.3.3. Single profile</h3></div></div></div><p></p><p>When a single profile is stored in a file, there is no need for the profile dimension; the data arrays are one-dimensional. This is a special case of the orthogonal multidimensional array representation (9.3.1). </p><div class="example"><a name="Example%20H.3.3.1"></a><p class="title"><b>Example H.9. Data from a single atmospheric sounding profile.</b></p><div class="example-contents"><pre class="programlisting">
+   dimensions:
+      z = 42 ;
+
+   variables:
+      int profile ;
+          profile:cf_role = "profile_id";
+
+      double time; 
+          time:standard_name = "time";
+          time:long_name = "time" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+      float lon; 
+          lon:standard_name = "longitude";
+          lon:long_name = "longitude" ;
+          lon:units = "degrees_east" ;
+      float lat; 
+          lat:standard_name = "latitude";
+          lat:long_name = "latitude" ;
+          lat:units = "degrees_north" ;
+
+      float z(z) ; 
+          z:standard_name = &#8220;altitude&#8221;;
+          z:long_name = "height above mean sea level" ;
+          z:units = "km" ;
+          z:positive = "up" ; 
+          z:axis = "Z" ;   
+
+      float pressure(z) ; 
+          pressure:standard_name = "air_pressure" ;
+          pressure:long_name = "pressure level" ;
+          pressure:units = "hPa" ;
+          pressure:coordinates = "time lon lat z" ;
+
+      float temperature(z) ; 
+          temperature:standard_name = "surface_temperature" ;
+          temperature:long_name = "skin temperature" ;
+          temperature:units = "Celsius" ;
+          temperature:coordinates = "time lon lat z" ;
+
+      float humidity(z) ; 
+          humidity:standard_name = "relative_humidity" ;
+          humidity:long_name = "relative humidity" ;
+          humidity:units = "%" ;
+          humidity:coordinates = "time lon lat z" ;
+
+   attributes:
+      :featureType = "profile";</pre></div></div><br class="example-break"><p>The pressure(o), temperature(o), and humidity(o) data is associated with the coordinate values time, z(o), lat, and lon. The profile variables time, lat and lon, shown here as scalar, could alternatively be one-dimensional time(profile), lat(profile), lon(profile) if a size-one profile dimension were retained in the file.</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9945264"></a>H.3.4. Contiguous ragged array representation of profiles</h3></div></div></div><p>When the number of vertical levels for each profile varies, and one can control the order of writing, one can use the contiguous ragged array representation. The canonical use case for this is when rewriting raw data, and you expect that the common read pattern will be to read all the data from each profile. </p><div class="example"><a name="Example%20H.3.4.1"></a><p class="title"><b>Example H.10. Atmospheric sounding profiles for a common set of vertical coordinates stored in the contiguous ragged array representation.</b></p><div class="example-contents"><pre class="programlisting">
+   dimensions:
+      obs = UNLIMITED ;
+      profile = 142 ;
+
+   variables:
+      int profile(profile) ;
+          profile:cf_role = "profile_id";
+      double time(profile); 
+          time:standard_name = "time";
+          time:long_name = "time" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+      float lon(profile); 
+          lon:standard_name = "longitude";
+          lon:long_name = "longitude" ;
+          lon:units = "degrees_east" ;
+      float lat(profile); 
+          lat:standard_name = "latitude";
+          lat:long_name = "latitude" ;
+          lat:units = "degrees_north" ; 
+       int rowSize(profile) ;
+          rowSize:long_name = "number of obs for this profile " ;
+          rowSize:sample_dimension = "obs" ;
+
+      float z(obs) ; 
+          z:standard_name = &#8220;altitude&#8221;;
+          z:long_name = "height above mean sea level" ;
+          z:units = "km" ;
+          z:positive = "up" ;
+          z:axis = "Z" ;   
+
+      float pressure(obs) ; 
+          pressure:standard_name = "air_pressure" ;
+          pressure:long_name = "pressure level" ;
+          pressure:units = "hPa" ;
+          pressure:coordinates = "time lon lat z" ;
+
+      float temperature(obs) ; 
+          temperature:standard_name = "surface_temperature" ;
+          temperature:long_name = "skin temperature" ;
+          temperature:units = "Celsius" ;
+          temperature:coordinates = "time lon lat z" ;
+
+      float humidity(obs) ; 
+          humidity:standard_name = "relative_humidity" ;
+          humidity:long_name = "relative humidity" ;
+          humidity:units = "%" ;
+          humidity:coordinates = "time lon lat z" ;
+
+   attributes:
+      :featureType = "profile";</pre></div></div><br class="example-break"><p></p><p>The pressure(o), temperature(o), and humidity(o) data is associated with the coordinate values time(i), z(o), lat(i), and lon(i), where i indicates which profile. All elements for one profile are contiguous along the sample dimension. The sample dimension (obs) may be the unlimited dimension or not. All variables that have the instance dimension (profile) as their single dimension are considered to be information about the profiles. </p><p></p><p>The count variable (row_size) contains the number of elements for each profile, and is identified by having an attribute with name "sample_dimension" whose value is the sample dimension being counted. It must have the profile dimension as its single dimension, and must be type integer. The elements are associated with the profile using the same algorithm as in H.2.4.</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9952528"></a>H.3.5. Indexed ragged array representation of profiles</h3></div></div></div><p></p><p>When the number of vertical levels for each profile varies, and one cannot write them contiguously, one can use the indexed ragged array representation. The canonical use case is when writing real-time data streams that contain reports from many profiles, arriving randomly. If the sample dimension is the unlimited dimension, this allows data to be appended to the file. </p><p></p><div class="example"><a name="Example%20H.3.5.1"></a><p class="title"><b>Example H.11. Atmospheric sounding profiles for a common set of vertical coordinates stored in the indexed ragged array representation.</b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      obs = UNLIMITED ;
+      profiles = 142 ;
+
+   variables:
+      int profile(profile) ;
+          profile:cf_name = "profile_id";
+      double time(profile); 
+          time:standard_name = "time";
+          time:long_name = "time" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+      float lon(profile); 
+          lon:standard_name = "longitude";
+          lon:long_name = "longitude" ;
+          lon:units = "degrees_east" ;
+      float lat(profile); 
+          lat:standard_name = "latitude";
+          lat:long_name = "latitude" ;
+          lat:units = "degrees_north" ; 
+
+      int parentIndex(obs) ;
+          parentIndex:long_name = "index of profile " ;
+          parentIndex:instance_dimension= "profile" ;
+      
+       float z(obs) ; 
+          z:standard_name = &#8220;altitude&#8221;;
+          z:long_name = "height above mean sea level" ;
+          z:units = "km" ;
+          z:positive = "up" ;
+          z:axis = "Z" ;   
+
+      float pressure(obs) ; 
+          pressure:standard_name = "air_pressure" ;
+          pressure:long_name = "pressure level" ;
+          pressure:units = "hPa" ;
+          pressure:coordinates = "time lon lat z" ;
+
+      float temperature(obs) ; 
+          temperature:standard_name = "surface_temperature" ;
+          temperature:long_name = "skin temperature" ;
+          temperature:units = "Celsius" ;
+          temperature:coordinates = "time lon lat z" ;
+
+      float humidity(obs) ; 
+          humidity:standard_name = "relative_humidity" ;
+          humidity:long_name = "relative humidity" ;
+          humidity:units = "%" ;
+          humidity:coordinates = "time lon lat z" ;
+
+   attributes:
+      :featureType = "profile";</pre></div></div><br class="example-break"><p></p><p>The pressure(o), temperature(o), and humidity(o) data are associated with the coordinate values time(i), z(o), lat(i), and lon(i), where i indicates which profile. The sample dimension (obs) may be the unlimited dimension or not. The profile index variable (parentIndex) is identified by having an attribute with name of "instance_dimension" whose value is the profile dimension name. It must have the sample dimension as its single dimension, and must be type integer. Each value in the profile index variable is the zero-based profile index that the element belongs to. The elements are associated with the profiles using the same algorithm as in H.2.5.
+   </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="aphs02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="aph.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="aphs04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">H.2. Time Series Data </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> H.4. Trajectory Data</td></tr></table></div></body></html>

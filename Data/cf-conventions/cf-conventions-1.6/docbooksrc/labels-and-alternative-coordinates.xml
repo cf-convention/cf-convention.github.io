@@ -1,0 +1,118 @@
+<chapter>
+    <title>
+        Labels and Alternative Coordinates
+    </title>
+  <section id="labels">
+    <title>Labels</title>
+    <para><emphasis role="deletedtext">
+      The previous section contained several examples in which measurements from scattered sites were grouped using a single dimension. Coordinates of the site locations can be provided using auxiliary coordinate variables, but it is often desirable to identify measurement sites by name, or some other unique string. Other purposes for string identifiers are also described in <xref linkend="geographic-regions"/>, and <xref linkend="statistics-applying-portions"/>.
+    </emphasis></para>
+    <para><emphasis role="deletedtext">
+      The list of string identifiers plays an analogous role to a coordinate variable, hence we have chosen to use the <varname>coordinates</varname> attribute to provide the name of the variable that contains the string array. An application processing the variables listed in the <varname>coordinates</varname> attribute can recognize a labeled axis by checking whether or not a given variable contains character data. If a character variable has only one dimension (the length of the string), it is regarded as a string-valued scalar coordinate variable, analogous to a numeric scalar coordinate variable (see <xref linkend="coordinate-system"/>.)
+    </emphasis></para>
+    <para><emphasis role="newtext">
+      Character strings can be used to provide a name or label for each
+      element of an axis. This is particularly useful for discrete axes
+      (section 4.5). For instance, if a data variable contains time series of
+      observational data from a number of observing stations, it may be
+      convenient to provide the names of the stations as labels for the
+      elements of the station dimension (<xref linkend="time-series-data"/>).
+      <xref linkend="Example H.1.1"/> illustrates another application for labels.
+      </emphasis></para><para><emphasis role="newtext">
+      Character strings labelling the elements of an axis are regarded as
+      string-valued auxiliary coordinate variables. The <varname>coordinates</varname> attribute
+      of the data variable names the variable that contains the string
+      array. An application processing the variables listed in the <varname>coordinates</varname>
+      attribute can recognize a string-valued auxiliary coordinate variable
+      because it contains an array of character data. The inner dimension (last
+      dimension in CDL terms) is the maximum length of each string, and the
+      other dimensions are axis dimensions. If a character variable has only
+      one dimension (the maximum length of the string), it is regarded as a
+      string-valued scalar coordinate variable, analogous to a numeric scalar
+      coordinate variable (see <xref linkend="scalar-coordinate-variables"/>)
+    </emphasis></para>
+    <example>
+      <title><emphasis role="deletedtext">Several parcel trajectories</emphasis></title>
+      <para><emphasis role="deletedtext">
+Consider a set of ocean floats that follow parcel trajectories and simultaneously measure temperature at fixed times. We wish to identify the floats by name. The temperature data is a function of parcel (i.e., <constant>float</constant>) and time. The location of each sample is also a function of parcel and time, so the position information is stored in a multidimensional coordinate variable.
+      </emphasis></para>
+      <programlisting><emphasis role="deletedtext">
+dimensions:
+  parcel = 15 ; // number of trajectories
+  times = 20 ;
+  max_len_parcel_name = 64 ; // max length of trajectory name
+variables:
+  float temperature(parcel,times) ;
+    temperature:coordinates = "parcel_name lat lon" ;
+  float times(times) ;
+  char parcel_name(parcel,max_len_parcel_name) ;
+  float lon(parcel,times) ;
+  float lat(parcel,times) ;
+      </emphasis></programlisting>
+    </example>
+    <section id="geographic-regions">
+      <title>Geographic Regions</title>
+      <para>
+	When data is representative of geographic regions which can be identified by names but which have complex boundaries that cannot practically be specified using longitude and latitude boundary coordinates, a labeled axis should be used to identify the regions. We recommend that the names be chosen from the list of <ulink url="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/standardized-region-names">standardized region names</ulink> whenever possible. To indicate that the label values are standardized the variable that contains the labels must be given the <varname>standard_name</varname> attribute with the value <constant>region</constant>.
+      </para>
+      <example>
+	<title>Northward heat transport in Atlantic Ocean</title>
+	<para>
+	  Suppose we have data representing northward heat transport across a set of zonal slices in the Atlantic Ocean. Note that the standard names to describe this quantity do not include location information. That is provided by the latitude coordinate and the labeled axis:
+	</para>
+	<programlisting>
+dimensions:
+  times = 20 ;
+  lat = 5
+  lbl = 1 ;
+  strlen = 64 ;
+variables:
+  float n_heat_transport(time,lat,lbl);
+    n_heat_transport:units="W";
+    n_heat_transport:coordinates="geo_region";
+    n_heat_transport:standard_name="northward_ocean_heat_transport";
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1990-1-1 0:0:0" ;
+  float lat(lat) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  char geo_region(lbl,strlen) ;
+    geo_region:standard_name="region"
+data:
+  geo_region = "atlantic_ocean" ;
+  lat = 10., 20., 30., 40., 50. ;
+	</programlisting>
+      </example>
+    </section>
+
+  </section>
+  <section id="alternative-coordinates">
+    <title>Alternative Coordinates</title>
+    <para>
+      In some situations a dimension may have alternative sets of coordinates values. Since there can only be one coordinate variable for the dimension (the variable with the same name as the dimension), any alternative sets of values have to be stored in auxiliary coordinate variables. For such alternative coordinate variables, there are no mandatory attributes, but they may have any of the attributes allowed for coordinate variables.
+    </para>
+    <example>
+      <title>Model level numbers</title>
+      <para>
+	Levels on a vertical axis may be described by both the physical coordinate and the ordinal model level number.
+      </para>
+      <programlisting>
+float xwind(sigma,lat);
+  xwind:coordinates="model_level";
+float sigma(sigma); // physical height coordinate
+  sigma:long_name="sigma";
+  sigma:positive="down";
+int model_level(sigma); // model level number at each height
+  model_level:long_name="model level number";
+  model_level:positive="up";
+      </programlisting>
+    </example>
+  </section>
+</chapter>
+
+
+
+
+
+

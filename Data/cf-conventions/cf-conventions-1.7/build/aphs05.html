@@ -1,0 +1,196 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>H.5. Time Series of Profiles</title><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="NetCDF Climate and Forecast (CF) Metadata Conventions"><link rel="up" href="aph.html" title="Appendix H. Annotated Examples of Discrete Geometries"><link rel="prev" href="aphs04.html" title="H.4. Trajectory Data"><link rel="next" href="aphs06.html" title="H.6. Trajectory of Profiles"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">H.5. Time Series of Profiles</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="aphs04.html">Prev</a> </td><th width="60%" align="center">Appendix H. <span class="newtext">Annotated Examples of Discrete Geometries</span></th><td width="20%" align="right"> <a accesskey="n" href="aphs06.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div></div></div></div><p></p><p>When profiles are taken repeatedly at a station, one gets a time series of profiles (see also section H.2 for discussion of stations and time series). The resulting collection of profiles is called a timeSeriesProfile. A data variable may contain a collection of such timeSeriesProfile features, one feature per station. The instance dimension in the case of a timeSeriesProfile is also referred to as the <span class="bold"><strong>station dimension</strong></span>. The instance variables, which have just this dimension, including latitude and longitude for example, are also referred to as <span class="bold"><strong>station variables</strong></span> and are considered to contain information describing the stations. The station variables may contain missing values. This allows one to reserve space for additional stations that may be added at a later time, as discussed in section 9.6. In addition,</p><p></p><div class="itemizedlist"><ul type="disc"><li>
+         It is strongly recommended that there should be a station variable (which may be of any type) with <code class="varname">cf_role</code> attribute "<code class="varname">timeseries_id</code>", whose values uniquely identify the stations.
+      </li><li>
+         It is recommended that there should be station variables with standard_name attributes "<code class="varname">platform_name</code>", "<code class="varname">surface_altitude</code>" and &#8220;<code class="varname">platform_id</code>&#8221; when applicable.
+      </li></ul></div><p></p><p>TimeSeriesProfiles are more complicated than timeSeries because there are two element dimensions (profile and vertical). Each time series has a number of profiles from different times as its elements, and each profile has a number of data from various levels as its elements. It is strongly recommended that there always be a variable (of any data type) with the profile dimension and the <code class="varname">cf_role</code> attribute "<code class="varname">profile_id</code>", whose values uniquely identify the profiles.</p><p></p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp10005184"></a>H.5.1. Multidimensional array representations of time series profiles</h3></div></div></div><p></p><p>When storing time series of profiles at multiple stations in the same data variable, if there are the same number of time points for all timeSeries, and the same number of vertical levels for every profile, one can use the multidimensional array representation: </p><p></p><div class="example"><a name="Example%20H.5.1.1"></a><p class="title"><b>Example H.16. Time series of atmospheric sounding profiles from a set of locations stored in a multidimensional array representation.</b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      station = 22 ;
+      profile = 3002 ;
+      z = 42 ;
+   
+   variables:
+      float lon(station) ; 
+          lon:standard_name = "longitude";
+          lon:long_name = "station longitude";
+          lon:units = "degrees_east";
+      float lat(station) ; 
+          lat:standard_name = "latitude";
+          lat:long_name = "station latitude" ;
+          lat:units = "degrees_north" ;
+      char station_name(station, name_strlen) ;
+          station_name:cf_role = "timeseries_id" ;
+          station_name:long_name = "station name" ;
+      int station_info(station) ;
+          station_name:long_name = "some kind of station info" ;
+   
+      float alt(station, profile , z) ; 
+          alt:standard_name = &#8220;altitude&#8221;;
+          alt:long_name = "height above mean sea level" ;
+          alt:units = "km" ;
+          alt:positive = "up" ; 
+           alt:axis = "Z" ;   
+   
+      double time(station, profile ) ; 
+          time:standard_name = "time";
+          time:long_name = "time of measurement" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+          time:missing_value = -999.9;
+   
+      float pressure(station, profile , z) ; 
+          pressure:standard_name = "air_pressure" ;
+          pressure:long_name = "pressure level" ;
+          pressure:units = "hPa" ;
+          pressure:coordinates = "time lon lat alt" ;
+   
+      float temperature(station, profile , z) ; 
+          temperature:standard_name = "surface_temperature" ;
+          temperature:long_name = "skin temperature" ;
+          temperature:units = "Celsius" ;
+          temperature:coordinates = "time lon lat alt" ;
+   
+      float humidity(station, profile , z) ; 
+          humidity:standard_name = "relative_humidity" ;
+          humidity:long_name = "relative humidity" ;
+          humidity:units = "%" ;
+          humidity:coordinates = "time lon lat alt" ;
+   
+   attributes:
+    :featureType = "timeSeriesProfile";</pre></div></div><br class="example-break"><p></p><p>The pressure(i,p,o), temperature(i,p,o), and humidity(i,p,o) data for element o of profile p at station i are associated with the coordinate values time(i,p), z(i,p,o), lat(i), and lon(i). Any of the three dimensions could be the netCDF unlimited dimension, if it might be useful to be able enlarge it.</p><p></p><p>If all of the profiles at any given station have the same set of vertical coordinates values, the vertical auxiliary coordinate variable could be dimensioned alt(station, z). If all the profiles have the same set of vertical coordinates, the vertical auxiliary coordinate variable could be one-dimensional alt(z), or replaced by a one-dimensional coordinate variable z(z), provided the values are ordered monotonically. In the latter case, listing the vertical coordinate variable in the coordinates attribute is optional.</p><p></p><p>If the profiles are taken at all stations at the same set of times, the time auxiliary coordinate variable could be one-dimensional time(profile), or replaced by a one-dimensional coordinate variable time(time), where the size of the time dimension is now equal to the number of profiles at each station. In the latter case, listing the time coordinate variable in the coordinates attribute is optional.</p><p></p><p>If there is only a single set of levels and a single set of times, the multidimensional array representation is formally orthogonal:</p><p></p><div class="example"><a name="Example%20H.5.1.2"></a><p class="title"><b>Example H.17. Time series of atmospheric sounding profiles from a set of locations stored in an orthogonal multidimensional array representation. </b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+     station = 10 ;  // measurement locations
+     pressure = 11 ; // pressure levels
+     time = UNLIMITED ;
+   variables:
+     float humidity(time,pressure,station) ;
+       humidity:standard_name = &#8220;specific_humidity&#8221; ;
+       humidity:coordinates = "lat lon" ;
+     double time(time) ; 
+       time:standard_name = "time";
+       time:long_name = "time of measurement" ;
+       time:units = "days since 1970-01-01 00:00:00" ;
+     float lon(station) ;
+       lon:long_name = "station longitude";
+       lon:units = "degrees_east";
+     float lat(station) ;
+       lat:long_name = "station latitude" ;
+       lat:units = "degrees_north" ;
+     float pressure(pressure) ; 
+       pressure:standard_name = "air_pressure" ;
+       pressure:long_name = "pressure" ;
+       pressure:units = "hPa" ;
+       pressure:axis = "Z" ;</pre></div></div><br class="example-break"><p></p><p><code class="varname">humidity(p,o,i)</code> is associated with the coordinate values <code class="varname">time(p)</code>, <code class="varname">pressure(o)</code>, <code class="varname">lat(i)</code>, and <code class="varname">lon(i)</code>. The number of profiles equals the number of times.</p><p>At the cost of some wasted space, the multidimensional array representation also allows one to have a variable number of profiles for different stations, and varying numbers of levels for different profiles. In these cases, any unused elements of the data and auxiliary coordinate variables must contain missing data values (section 9.6).</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9874192"></a>H.5.2. Time series of profiles at a single station</h3></div></div></div><p></p><p>If there is only one station in the data variable, there is no need for the station dimension:</p><p></p><div class="example"><a name="Example%20H.5.2.1"></a><p class="title"><b>Example H.18. Time series of atmospheric sounding profiles from a single location stored in a multidimensional array representation. </b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      profile = 30 ;
+      z = 42 ;
+   
+   variables:
+      float lon ; 
+          lon:standard_name = "longitude";
+          lon:long_name = "station longitude";
+          lon:units = "degrees_east";
+      float lat ; 
+          lat:standard_name = "latitude";
+          lat:long_name = "station latitude" ;
+          lat:units = "degrees_north" ;
+      char station_name(name_strlen) ;
+          station_name:cf_role = "timeseries_id" ;
+          station_name:long_name = "station name" ;
+      int station_info;
+          station_name:long_name = "some kind of station info" ;
+   
+      float alt(profile , z) ; 
+          alt:standard_name = &#8220;altitude&#8221;;
+          alt:long_name = "height above mean sea level" ;
+          alt:units = "km" ;
+          alt:axis = "Z" ;   
+          alt:positive = "up" ; 
+   
+      double time(profile ) ; 
+          time:standard_name = "time";
+          time:long_name = "time of measurement" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+          time:missing_value = -999.9;
+   
+      float pressure(profile , z) ; 
+          pressure:standard_name = "air_pressure" ;
+          pressure:long_name = "pressure level" ;
+          pressure:units = "hPa" ;
+          pressure:coordinates = "time lon lat alt" ;
+   
+      float temperature(profile , z) ; 
+          temperature:standard_name = "surface_temperature" ;
+          temperature:long_name = "skin temperature" ;
+          temperature:units = "Celsius" ;
+          temperature:coordinates = "time lon lat alt" ;
+   
+      float humidity(profile , z) ; 
+          humidity:standard_name = "relative_humidity" ;
+          humidity:long_name = "relative humidity" ;
+          humidity:units = "%" ;
+          humidity:coordinates = "time lon lat alt" ;
+   
+   attributes:
+    :featureType = "timeSeriesProfile";</pre></div></div><br class="example-break"><p></p><p>The pressure(p,o), temperature(p,o), and humidity(p,o) data for element o of profile p are associated with the coordinate values time(p), alt(p,o), lat, and lon. If all the profiles have the same set of vertical coordinates, the vertical auxiliary coordinate variable could be one-dimensional alt(z), or replaced by a one-dimensional coordinate variable z(z), provided the values are ordered monotonically. In the latter case, listing the vertical coordinate variable in the coordinates attribute is optional.</p><p></p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9883136"></a>H.5.3. Ragged array representation of time series profiles</h3></div></div></div><p></p><p>When the number of profiles and levels for each station varies, one can use a ragged array representation. Each of the two element dimensions (time and vertical) could in principle be stored either contiguous or indexed, but this convention supports only one of the four possible choices. This uses the contiguous ragged array representation for each profile (9.5.43.3), and the indexed ragged array representation to organise the profiles into time series (9.3.54). The canonical use case is when writing real-time data streams that contain profiles from many stations, arriving randomly, with the data for each entire profile written all at once. </p><p></p><div class="example"><a name="Example%20H.5.3.1"></a><p class="title"><b>Example H.19. Time series of atmospheric sounding profiles from a set of locations stored in a ragged array representation.</b></p><div class="example-contents"><p></p><pre class="programlisting">
+   dimensions:
+      obs = UNLIMITED ;
+      profiles = 1420 ;
+      stations = 42;
+   
+   variables:
+      float lon(station) ; 
+          lon:standard_name = "longitude";
+          lon:long_name = "station longitude";
+          lon:units = "degrees_east";
+      float lat(station) ; 
+          lat:standard_name = "latitude";
+          lat:long_name = "station latitude" ;
+          lat:units = "degrees_north" ;
+      float alt(station) ;
+          alt:long_name = "altitude above MSL" ;
+          alt:units = "m" ;
+      char station_name(station, name_strlen) ;
+          station_name:long_name = "station name" ;
+          station_name:cf_role = "timeseries_id";
+      int station_info(station) ;
+          station_info:long_name = "some kind of station info" ;
+   
+      int profile(profile) ;
+          profile:cf_role = "profile_id";
+      double time(profile); 
+          time:standard_name = "time";
+          time:long_name = "time" ;
+          time:units = "days since 1970-01-01 00:00:00" ;
+      int station_index(profile) ;
+          station_index:long_name = "which station this profile is for" ;
+          station_index:instance_dimension = "station" ;
+      int row_size(profile) ;
+          row_size:long_name = "number of obs for this profile " ;
+          row_size:sample_dimension = "obs" ;
+   
+      float z(obs) ; 
+          z:standard_name = &#8220;altitude&#8221;;
+          z:long_name = "height above mean sea level" ;
+          z:units = "km" ;
+          z:axis = "Z" ;   
+           z:positive = "up" ;
+   
+      float pressure(obs) ; 
+          pressure:standard_name = "air_pressure" ;
+          pressure:long_name = "pressure level" ;
+          pressure:units = "hPa" ;
+          pressure:coordinates = "time lon lat z" ;
+   
+      float temperature(obs) ; 
+          temperature:standard_name = "surface_temperature" ;
+          temperature:long_name = "skin temperature" ;
+          temperature:units = "Celsius" ;
+          temperature:coordinates = "time lon lat z" ;
+   
+      float humidity(obs) ; 
+          humidity:standard_name = "relative_humidity" ;
+          humidity:long_name = "relative humidity" ;
+          humidity:units = "%" ;
+          humidity:coordinates = "time lon lat z" ;
+   
+   attributes:
+      :featureType = "timeSeriesProfile";</pre></div></div><br class="example-break"><p></p><p>The pressure(o), temperature(o), and humidity(o) data for element o of profile p at station i are associated with the coordinate values time(p), z(o), lat(i), and lon(i).</p><p></p><p>The index variable (station_index) is identified by having an attribute with name of instance_dimension whose value is the instance dimension name (station in this example). The index variable must have the profile dimension as its sole dimension, and must be type integer. Each value in the index variable is the zero-based station index that the profile belongs to i.e. profile p belongs to station i=station_index(p), as in section H.2.5.</p><p>The count variable (row_size) contains the number of elements for each profile, which must be written contiguously. The count variable is identified by having an attribute with name sample_dimension whose value is the sample dimension (obs in this example) being counted. It must have the profile dimension as its sole dimension, and must be type integer. The number of elements in profile p is recorded in row_size(p), as in section H.2.4. The sample dimension need not be the netCDF unlimited dimension,  though it commonly is.</p><p></p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="aphs04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="aph.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="aphs06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">H.4. Trajectory Data </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> H.6. Trajectory of Profiles</td></tr></table></div></body></html>

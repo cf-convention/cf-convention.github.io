@@ -3,7 +3,6 @@
 #
 # For more information on the actions used in this workflow, please see:
 #   https://github.com/lycheeverse/lychee-action
-#   
 #   https://github.com/micalevisk/last-issue-action
 #   https://github.com/peter-evans/create-issue-from-file
 #   https://github.com/marketplace/actions/create-or-update-comment
@@ -17,17 +16,14 @@ on:
 
 jobs:
   check_links:
-    name: Check links  # TODO: Check also Asciidoc (this should take place in https://github.com/cf-convention/cf-conventions)
+    name: Check links  # TODO: Check also Asciidoc (this should take place in https://github.com/cf-convention/cf-conventions). See https://github.com/cf-convention/cf-conventions/issues/525
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout main branch
         uses: actions/checkout@v4
         with:
-          ref: main      # main branc contains link check config
-
-#      - name: Build with Jekyll
-#        uses: actions/jekyll-build-pages@v1
+          ref: main      # main branch contains link check config
 
       - name: Checkout gh-pages branch
         uses: actions/checkout@v4
@@ -84,13 +80,13 @@ jobs:
           issue-number: ${{ steps.last-issue.outputs.issue-number }}
           body-path: .lychee/results.md
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: If success and issue is open, add comment
-        if: ${{ steps.check-links.outcome == 'success' && steps.last-issue.outputs.is-closed == 'false' }}
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          issue-number: ${{ steps.last-issue.outputs.issue-number }}
-          body-path: .lychee/results.md
-          token: ${{ secrets.GITHUB_TOKEN }}
+# UNCOMMENT IF WE WANT TO REPORT SUCCESS IF ISSUE IT'S OPEN
+#      - name: If success and issue is open, add comment
+#        if: ${{ steps.check-links.outcome == 'success' && steps.last-issue.outputs.is-closed == 'false' }}
+#        uses: peter-evans/create-or-update-comment@v4
+#        with:
+#          issue-number: ${{ steps.last-issue.outputs.issue-number }}
+#          body-path: .lychee/results.md
+#          token: ${{ secrets.GITHUB_TOKEN }}
   
     

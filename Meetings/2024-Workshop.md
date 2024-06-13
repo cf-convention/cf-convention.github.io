@@ -6,6 +6,7 @@ title: 2024 CF Workshop
 # 2024 CF Workshop
 
 The 2024 CF workshop will be held at SMHI, Norrköping, Sweden (and online) from Tuesday 17th to Friday 20th September 2024.
+Travel information and a link to the registration form is available on the [SMHI CF Workshop page](https://www.smhi.se/en/research/research-departments/climate-research-at-the-rossby-centre/cf-community-workshop-2024-1.207332). 
 
 The meeting will be divided into two parts, and participants may choose to attend the first two days of the programme, the last two days, or the whole meeting, according to their own interests and availability:
 
@@ -51,11 +52,12 @@ Participants should review the [CF Code of Conduct][CoC].
 
 ## The organising committee
 * Alison Pamment
+* Daniel Lee
 * David Hassell
 * Ellie Fisher
 * Ethan Davis
+* Kevin O'Brien
 * Lars Bärring
-* **Your name here, [there's still room for more help!][ISSUE]**
 
 [ISSUE]: https://github.com/cf-convention/discuss/issues/279
 [CoC]: https://github.com/cf-convention/cf-conventions/blob/main/CODE_OF_CONDUCT.md

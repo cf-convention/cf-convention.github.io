@@ -30,38 +30,155 @@ All the presentations and notes for the plenary and breakout sessions will be av
 
 ## Preliminary Agenda
 
-| Time | Session | Speakers |
-| ---- | ------- | -------- |
-| CEST (UTC+2) | ***Tuesday, 17 September*** |  |
-| &ensp;8:00 - &ensp;9:30	| Registration |  |
-| &ensp;9:30 - 10:30  | Opening session | Lars Bärring: *Welcome, practicalities, format/structure/expectations of meeting*<br/>David Hassell: *Setting the scene &ndash; overview of CF* |
-| 10:30 - 11:00	| Break |  |
-| 11:00 - 12:30	| Vocabularies |  |
-| 12:30 - 14:00	| Lunch |  |
-| 14:00 - 15:30	| Uncertainty |  |
-| 15:30 - 16:00	| Break |  |
-| 16:00 - 17:30	| Metadata for describing<br/>statistical processing |  |
-| ------------- | ----------------------- |  |
-| CEST (UTC+2) | ***Wednesday, 18 September*** |  |
-| &ensp;9:00 - 10:30  | Metadata requirements for<br/>new technologies |  |
-| 10:30 - 11:00	| Break |  |
-| 11:00 - 12:30	| Interoperability &<br/>cross format issues |  |
-| 12:30 - 14:00	| Lunch |  |
-| 14:00 - 15:30	| Cross-domain challenges<br/>and opportunities |  |
-| 15:30 - 16:00	| Break |  |
-| 16:00 - 17:30	| Synthesis session |  |
-|               | *End of first part* |  |
-| ------------- | ----------------------- |  |
-| CEST (UTC+2) | ***Thursday, 19 September*** |  |
-| &ensp;9:00 - 12:30 | Hackathon sessions<br/>including break | *cdtails TBD* |
-| 12:30 - 14:00	| Lunch |  |
-| 14:00 - 17:30	| Hackathon sessions | *details TBD* |
-| ------------- | ----------------------- |  |
-| CEST (UTC+2) | ***Friday, 20 September*** |  |
-| &ensp;09:00 - 12:30 | Hackathon sessions | *details TBD* |
-| 12:30 - 14:00	| Lunch |  |
-| 14:00 - 15:00 | Hackathon wrapup |  |
-| 15:00 - 15:30 | Workshop wrapup |  |
+In the first part each session will begin with 1-2 short (10 - 15 min each) keynote presentations to set the scene for the converation. For the second part the overall aim is to have a dynamic and flexible agenda that includes a mixture of breakout group discussions and hands-on hackathons. 
+. 
+
+<table border="1px">
+  <thead>
+    <tr>
+      <th>&emsp;Time&emsp;</th>
+      <th>&emsp;Session&emsp;</th>
+      <th>&emsp;Speakers&emsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
+      <td><br/>&emsp;<strong><em>Tuesday, 17 September</em></strong>&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&ensp;8:00 - &ensp;9:30&emsp;</td>
+      <td>&emsp;Registration&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&ensp;9:30 - 10:30&emsp;</td>
+      <td>&emsp;Opening session&emsp;</td>
+      <td>&emsp;Lars Bärring: <em>Welcome, practicalities, format/structure/expectations of meeting</em>&emsp;<br/>&emsp;David Hassell: <em>Setting the scene &ndash; overview of CF</em>&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;10:30 - 11:00&emsp;</td>
+      <td>&emsp;Break&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;11:00 - 12:30&emsp;</td>
+      <td>&emsp;Vocabularies&emsp;</td>
+      <td>&emsp;Chair: Alison Pamment&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;12:30 - 14:00&emsp;</td>
+      <td>&emsp;Lunch&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;14:00 - 15:30&emsp;</td>
+      <td>&emsp;Uncertainty&emsp;</td>
+      <td>&emsp;Chair: Antonio Cofiño&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;15:30 - 16:00&emsp;</td>
+      <td>&emsp;Break&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;16:00 - 17:30&emsp;</td>
+      <td>&emsp;Metadata for describing&emsp;<br/>&emsp;statistical processing&emsp;</td>
+      <td>&emsp;Chair: Lars Bärring&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
+      <td><br/>&emsp;<strong><em>Wednesday, 18 September&emsp;</em></strong>&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&ensp;9:00 - 10:30&emsp;</td>
+      <td>&emsp;Metadata requirements for&emsp;<br/>&emsp;new technologies&emsp;</td>
+      <td>&emsp;Chair: TBD&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;10:30 - 11:00&emsp;</td>
+      <td>&emsp;Break&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;11:00 - 12:30&emsp;</td>
+      <td>&emsp;Interoperability and&emsp;<br/>&emsp;cross format issues&emsp;</td>
+      <td>&emsp;Chair: TBD&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;12:30 - 14:00&emsp;</td>
+      <td>&emsp;Lunch&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;14:00 - 15:30&emsp;</td>
+      <td>&emsp;Cross-domain challenges&emsp;<br/>&emsp;and opportunities&emsp;</td>
+      <td>&emsp;Chair: Ellie Fisher&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;15:30 - 16:00&emsp;</td>
+      <td>&emsp;Break&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;16:00 - 17:30&emsp;</td>
+      <td>&emsp;Synthesis session&emsp;</td>
+      <td>&emsp;Chair: David Hassell&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&emsp;</td>
+      <td>&emsp;<em>End of first part</em>&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
+      <td><br/>&emsp;<strong><em>Thursday, 19 September</em></strong>&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&ensp;9:00 - 12:30&emsp;</td>
+      <td>&emsp;Hackathon sessions&emsp;<br/>&emsp;including break&emsp;</td>
+      <td>&emsp;<em></em>&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;12:30 - 14:00&emsp;</td>
+      <td>&emsp;Lunch&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;14:00 - 17:30&emsp;</td>
+      <td>&emsp;Hackathon sessions&emsp;<br/>&emsp;including break&emsp;</td>
+      <td>&emsp;<em></em>&emsp;</td>
+    </tr>
+    <tr>
+      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
+      <td><br/>&emsp;<strong><em>Friday, 20 September</em></strong>&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&ensp;9:00 - 12:30&emsp;</td>
+      <td>&emsp;Hackathon sessions<br/>&emsp;including break&emsp;</td>
+      <td>&emsp;<em></em>&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;12:30 - 14:00&emsp;</td>
+      <td>&emsp;Lunch&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;14:00 - 15:00&emsp;</td>
+      <td>&emsp;Hackathon wrapup&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;15:00 - 15:30&emsp;</td>
+      <td>&emsp;Workshop wrapup&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+  </tbody>
+</table>
 
 ----------------------------------------------------------------------------------------
 

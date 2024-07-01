@@ -31,9 +31,9 @@ All the presentations and notes for the plenary and breakout sessions will be av
 ## Preliminary Agenda
 
 In the first part each session will begin with 1-2 short (10 - 15 min each) keynote presentations to set the scene for the converation. For the second part the overall aim is to have a dynamic and flexible agenda that includes a mixture of breakout group discussions and hands-on hackathons. 
-. 
+ 
 
-<table border="1px">
+<table border="1px" id="preliminary-agenda">
   <thead>
     <tr>
       <th>&emsp;Time&emsp;</th>

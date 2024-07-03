@@ -26,26 +26,161 @@ Part 2 will follow the familiar format of our usual annual meeting.
 
 All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder]() (Not yet available).
 
-## Agenda
-**TO BE [DISCUSSED][ISSUE] AND COMPLETED**
+----------------------------------------------------------------------------------------
 
-### Tuesday, 17 September 2024
+## Preliminary Agenda
 
-#### Day 1 of 2: Engaging the cross-domain CF community to gather user needs and develop a high-level CF roadmap.
-TBC
+In the first part each session will begin with 1-2 short (10 - 15 min each) keynote presentations to set the scene for the converation. For the second part the overall aim is to have a dynamic and flexible agenda that includes a mixture of breakout group discussions and hands-on hackathons. 
+ 
 
-### Wednesday, 18 September 2024
+<table border="1px" id="preliminary-agenda">
+  <thead>
+    <tr>
+      <th>&emsp;Time&emsp;</th>
+      <th>&emsp;Session&emsp;</th>
+      <th>&emsp;Speakers&emsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
+      <td><br/>&emsp;<strong><em>Tuesday, 17 September</em></strong>&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&ensp;8:00 - &ensp;9:30&emsp;</td>
+      <td>&emsp;Registration&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&ensp;9:30 - 10:30&emsp;</td>
+      <td>&emsp;Opening session&emsp;</td>
+      <td>&emsp;Lars Bärring: <em>Welcome, practicalities, format/structure/expectations of meeting</em>&emsp;<br/>&emsp;David Hassell: <em>Setting the scene &ndash; overview of CF</em>&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;10:30 - 11:00&emsp;</td>
+      <td>&emsp;Break&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;11:00 - 12:30&emsp;</td>
+      <td>&emsp;Vocabularies&emsp;</td>
+      <td>&emsp;Chair: Alison Pamment&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;12:30 - 14:00&emsp;</td>
+      <td>&emsp;Lunch&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;14:00 - 15:30&emsp;</td>
+      <td>&emsp;Uncertainty&emsp;</td>
+      <td>&emsp;Chair: Antonio Cofiño&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;15:30 - 16:00&emsp;</td>
+      <td>&emsp;Break&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;16:00 - 17:30&emsp;</td>
+      <td>&emsp;Metadata for describing&emsp;<br/>&emsp;statistical processing&emsp;</td>
+      <td>&emsp;Chair: Lars Bärring&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
+      <td><br/>&emsp;<strong><em>Wednesday, 18 September&emsp;</em></strong>&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&ensp;9:00 - 10:30&emsp;</td>
+      <td>&emsp;Metadata requirements for&emsp;<br/>&emsp;new technologies&emsp;</td>
+      <td>&emsp;Chair: TBD&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;10:30 - 11:00&emsp;</td>
+      <td>&emsp;Break&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;11:00 - 12:30&emsp;</td>
+      <td>&emsp;Interoperability and&emsp;<br/>&emsp;cross format issues&emsp;</td>
+      <td>&emsp;Chair: TBD&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;12:30 - 14:00&emsp;</td>
+      <td>&emsp;Lunch&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;14:00 - 15:30&emsp;</td>
+      <td>&emsp;Cross-domain challenges&emsp;<br/>&emsp;and opportunities&emsp;</td>
+      <td>&emsp;Chair: Ellie Fisher&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;15:30 - 16:00&emsp;</td>
+      <td>&emsp;Break&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;16:00 - 17:30&emsp;</td>
+      <td>&emsp;Synthesis session&emsp;</td>
+      <td>&emsp;Chair: David Hassell&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&emsp;</td>
+      <td>&emsp;<em>End of first part</em>&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
+      <td><br/>&emsp;<strong><em>Thursday, 19 September</em></strong>&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&ensp;9:00 - 12:30&emsp;</td>
+      <td>&emsp;Hackathon sessions&emsp;<br/>&emsp;including break&emsp;</td>
+      <td>&emsp;<em></em>&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;12:30 - 14:00&emsp;</td>
+      <td>&emsp;Lunch&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;14:00 - 17:30&emsp;</td>
+      <td>&emsp;Hackathon sessions&emsp;<br/>&emsp;including break&emsp;</td>
+      <td>&emsp;<em></em>&emsp;</td>
+    </tr>
+    <tr>
+      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
+      <td><br/>&emsp;<strong><em>Friday, 20 September</em></strong>&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;&ensp;9:00 - 12:30&emsp;</td>
+      <td>&emsp;Hackathon sessions<br/>&emsp;including break&emsp;</td>
+      <td>&emsp;<em></em>&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;12:30 - 14:00&emsp;</td>
+      <td>&emsp;Lunch&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;14:00 - 15:00&emsp;</td>
+      <td>&emsp;Hackathon wrapup&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;15:00 - 15:30&emsp;</td>
+      <td>&emsp;Workshop wrapup&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+  </tbody>
+</table>
 
-#### Day 2 of 2: Engaging the cross-domain CF community to gather user needs and develop a high-level CF roadmap.
-TBC
-
-### Thursday, 19 September 2024
-#### Day 1 of 2: Detailed CF development including hackathon sessions.
-TBC
-
-### Friday, 20 September 2024
-#### Day 2 of 2: Detailed CF development including hackathon sessions.
-TBC
+----------------------------------------------------------------------------------------
 
 ## CF Code of Conduct
 Participants should review the [CF Code of Conduct][CoC].

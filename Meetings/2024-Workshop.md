@@ -95,7 +95,7 @@ In the first part each session will begin with 1-2 short (10 - 15 min each) keyn
     <tr>
       <td>&emsp;&ensp;9:00 - 10:30&emsp;</td>
       <td>&emsp;Metadata requirements for&emsp;<br/>&emsp;new technologies&emsp;</td>
-      <td>&emsp;Chair: TBD&emsp;<br/>&emsp;&emsp;</td>
+      <td>&emsp;Chair: Daniel Lee&emsp;<br/>&emsp;&emsp;</td>
     </tr>
     <tr>
       <td>&emsp;10:30 - 11:00&emsp;</td>
@@ -105,7 +105,7 @@ In the first part each session will begin with 1-2 short (10 - 15 min each) keyn
     <tr>
       <td>&emsp;11:00 - 12:30&emsp;</td>
       <td>&emsp;Interoperability and&emsp;<br/>&emsp;cross format issues&emsp;</td>
-      <td>&emsp;Chair: TBD&emsp;<br/>&emsp;&emsp;</td>
+      <td>&emsp;Chair: Ethan Davis&emsp;<br/>&emsp;&emsp;</td>
     </tr>
     <tr>
       <td>&emsp;12:30 - 14:00&emsp;</td>

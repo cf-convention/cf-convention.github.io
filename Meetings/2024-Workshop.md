@@ -30,7 +30,9 @@ All the presentations and notes for the plenary and breakout sessions will be av
 
 ## Preliminary Agenda
 
-In the first part each session will begin with 1-2 short (10 - 15 min each) keynote presentations to set the scene for the converation. For the second part the overall aim is to have a dynamic and flexible agenda that includes a mixture of breakout group discussions and hands-on hackathons. 
+In the first part each session will begin with 1-2 short (10 - 15 min each) keynote presentations to set the scene for the conversation. In addition, there may be 1-2 brief "lightning talks" (max 5 min each) to highlight a particular perspective relevant to the conversation.
+
+For the second part the overall aim is to have a dynamic and flexible agenda that includes a mixture of breakout group discussions and hands-on hackathons. There will be an introductory session to give an overview of outstanding issues where hackathon conveners should be prepared to give a brief introduction of each hackathon theme. 
  
 
 <table border="1px" id="preliminary-agenda">
@@ -138,8 +140,18 @@ In the first part each session will begin with 1-2 short (10 - 15 min each) keyn
       <td>&emsp;&emsp;</td>
     </tr>
     <tr>
-      <td>&emsp;&ensp;9:00 - 12:30&emsp;</td>
-      <td>&emsp;Hackathon sessions&emsp;<br/>&emsp;including break&emsp;</td>
+      <td>&emsp;&ensp;9:00 - 10:30&emsp;</td>
+      <td>&emsp;Overview of outstanding issues and&emsp;<br/>&emsp;introduction to hackaton sessions&emsp;</td>
+      <td>&emsp;&emsp;<br/>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;10:30 - 11:00&emsp;</td>
+      <td>&emsp;Break&emsp;</td>
+      <td>&emsp;&emsp;</td>
+    </tr>
+    <tr>
+      <td>&emsp;11:00 - 12:30&emsp;</td>
+      <td>&emsp;Hackathon sessions&emsp;</td>
       <td>&emsp;<em></em>&emsp;</td>
     </tr>
     <tr>

@@ -23,7 +23,7 @@ The objective of [CMIP](https://www.wcrp-climate.org/wgcm-cmip) is to better und
 
 ### CORDEX - Coordinated Downscaling Experiment
 
-The vision of [CORDEX](https://cordex.org) is to advance and coordinate through global partnerships the science and application of regional climate downscaling of data directly from contemporary global climate models. The WCRP views regional downscaling as both an important research topic and an opportunity to engage a broader community of climate scientists in its activities. Regional climate information is more than ever needed for decision-making on societal issues such as vulnerability and adaptation to a changing climate with weather/water extremes. For infrastructure support, data and metadata standards CORDEX draws on and contributes to the work of WIP.
+The vision of [CORDEX](https://cordex.org) is to advance and coordinate through global partnerships the science and application of regional climate downscaling of data directly from contemporary global climate models. The WCRP views regional downscaling as both an important research topic and an opportunity to engage a broader community of climate scientists in its activities. Regional climate information is more than ever needed for decision-making on societal issues such as vulnerability and adaptation to a changing climate with weather/water extremes. For infrastructure support, data and metadata standards CORDEX draws on and contributes to the work of WIP. *** CORDEX DRQ***
 
 ### Input4MIPs - Input datasets for Model Intercomparisons Project
 
@@ -44,5 +44,67 @@ The vision of [CORDEX](https://cordex.org) is to advance and coordinate through 
 
 ## Satellite and remote sensing data
 
+### EUMETSAT - European Organisation for the Exploitation of Meteorological Satellites
+[EUMETSAT(https://www.eumetsat.int)] uses CF for all data dissemination from the Meteosat Third Generation (geostationary) launched and soon uperational, and upcoming EPS Second Generation (polar orbiters), as well as for  numerous joint missions and projects.
 
+### ESA CCI - European Space Agency's Climate Change Initiative
+
+[ESA CCI](https://climate.esa.int/en/) Data Standards are community-driven requirements ensuring consistent essential climate variable (ECV) data production across the CCI programme. Version 2.3 is the latest. The requirements include data production conformance to the network Common Data Form (netCDF) format, the Climate and Forecasting (CF) metadata conventions, the Attribute Convention for Data Discovery (ACDD), and Infrastructure for Spatial Information in the European Community (INSPIRE) compliant discovery metadata.
+
+## XXSA - XXX XXX Space Agency
+
+***... ... ...***
+
+
+## Data Portals
+
+### ESGF - Earth System Grid Federation (ESGF)
+
+[ESGF](https://esgf.llnl.gov) is a collaboration involving multiple international organizations that provides access to a vast array of climate data. THe software stack that provide the ESGF federated services draws heavily on CF compliant metadata and additional conventions developed and maintained by the different MIPS that ESGF supports. 
+
+<!-- 
+### NOAA NCEI -- National Oceanic and Atmospheric Administration's National Centers for Environmental Information
+
+ NOAA [NCEI]()), use CF conventions for many of their climate and oceanographic datasets.
+-->
+
+## Copernicus CDS - Copernicus Climate Data Store
+
+Copernicus [CDS](https://cds.climate.copernicus.eu) provides comprehensive climate data and services. Depending on data type several formats are used, including netCDF/CF. External data providers are requested to follow a specified data format that builds on CF (see this [link](https://confluence.ecmwf.int/display/COPSRV/%28version+C3S-0.3%29+Guide+to+NetCDF+encoding+for+C3S+providers) for details).
+
+
+<!--
+
+## JEDI - Joint Effort for Data assimilation Integration (JEDI)
+
+JEDI is led by the Joint Center for Satellite Data Assimilation (JCSDA), uses CF conventions to handle diverse data types in a unified framework for weather prediction and climate research.
+
+
+## Arctic Data Center
+
+Managed by the National Center for Ecological Analysis and Synthesis (NCEAS), this repository adheres to CF conventions for its extensive collection of Arctic research data.
+
+
+## Australian Integrated Marine Observing System (IMOS)
+
+IMOS provides oceanographic data following the CF conventions, ensuring that their datasets are accessible and usable by the wider scientific community.
+
+-->
+
+## Data and metadata standards that build on and extend CF
+
+### WMO Experimental CF-netCDF Profiles
+
+Within the overaching framework of WMO Information System (WIS) three experimental extensions to the Climate and Forecast Conventions (CF conventions) for netCDF (WMO-CF extensions, or *profiles*) have been published. They aim to reduce the effort involved in specifying data products and ensure interoperability by providing standardized semantics and metadata. The level of standardization provided by the WMO-CF extensions is in many cases greater than what is provided by the CF conventions to satisfy the specific WMO operational needs to support Earth System monitoring and prediction. New netCDF profiles are defined to act as templates for reporting data from different sources. 
+
+#### WMO-CF RADIAL 
+This *profile* should be used for the representation of weather radar and lidar data in the native instrument-centric polar coordinates. The profile is now published in [WMO-No. 1257](https://library.wmo.int/records/item/68826-guide-to-operational-weather-radar-best-practices?language_id=13&back=&offset=5.). In addition this profile is extended and updated in [CFRadial2](http://dx.doi.org/10.5065/fy2k-x587).
+
+#### WMO-CF MARINE TRAJECTORY
+
+This *profile* should be used for the reporting of meteorological and/or oceanographic observations along one or more trajectories, including both at or near the ocean surface and at depth. The first draft is available from the [WMO Sharepoint](https://wmoomm.sharepoint.com/sites/wmocpdb/eve_activityarea/Forms/AllItems.aspx?id=%2Fsites%2Fwmocpdb%2Feve%5Factivityarea%2FWMO%20Information%20System%20%28WIS%29%5F6cf41395%2D0ffc%2Dea11%2Da813%2D000d3aafe55d%2Fdocs%20shared%20on%20community%20site%2FFM%2B302%2DXX%2BWMO%2DCF%2BMARINE%2BTRAJECTORY%2Edoc%2Epdf&parent=%2Fsites%2Fwmocpdb%2Feve%5Factivityarea%2FWMO%20Information%20System%20%28WIS%29%5F6cf41395%2D0ffc%2Dea11%2Da813%2D000d3aafe55d%2Fdocs%20shared%20on%20community%20site&p=true&ga=1)
+
+#### WMO-CF UAS TRAJECTORY
+
+This *profile* should be used for the reporting of meteorological, atmospheric chemistry and air quality observations along one or more trajectories from a single platform. The trajectory may follow an undulating profile. The first draft is available on the [WMO Sharepoint](https://wmoomm.sharepoint.com/sites/wmocpdb/eve_activityarea/Forms/AllItems.aspx?id=%2Fsites%2Fwmocpdb%2Feve_activityarea%2FWMO Information System (WIS)_6cf41395-0ffc-ea11-a813-000d3aafe55d%2Fdocs shared on community site%2FFM%2B302-XX%2BWMO-CF%2BMARINE%2BTRAJECTORY.doc.pdf&parent=%2Fsites%2Fwmocpdb%2Feve_activityarea%2FWMO Information System (WIS)_6cf41395-0ffc-ea11-a813-000d3aafe55d%2Fdocs shared on community site&p=true&ga=1).
 

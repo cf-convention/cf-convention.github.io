@@ -72,6 +72,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Peter Kuma, Stockholm University
 - Thomas Lavergne, NMI
 - Bryan Lawrence, NCAS and University of Reading
+- Danny Lloyd, NCAS
 - Roy Lowry, BODC
 - Daniel Lee, EUMETSAT
 - Joao Macedo, IPMA

@@ -42,7 +42,7 @@ The vision of [CORDEX](https://cordex.org) is to advance and coordinate through 
 ## Satellite and remote sensing data
 
 ### EUMETSAT - European Organisation for the Exploitation of Meteorological Satellites
-[EUMETSAT(https://www.eumetsat.int)] uses CF for all data dissemination from the Meteosat Third Generation (geostationary) launched and soon operational, and upcoming EPS Second Generation (polar orbiters), as well as for  numerous joint missions and projects.
+[EUMETSAT](https://www.eumetsat.int) uses CF for all data dissemination from the Meteosat Third Generation (geostationary) launched and soon operational, and upcoming EPS Second Generation (polar orbiters), as well as for  numerous joint missions and projects.
 
 ### ESA CCI - European Space Agency's Climate Change Initiative
 
@@ -53,7 +53,7 @@ The vision of [CORDEX](https://cordex.org) is to advance and coordinate through 
 
 ### ESGF - Earth System Grid Federation (ESGF)
 
-[ESGF](https://esgf.llnl.gov) is a collaboration involving multiple international organizations that provides access to a vast array of climate data. THe software stack that provides the ESGF federated services draws heavily on CF compliant metadata and additional conventions developed and maintained by the different MIPS that ESGF supports. 
+[ESGF](https://esgf.llnl.gov) is a collaboration involving multiple international organizations that provides access to a vast array of climate data. The software stack that provides the ESGF federated services draws heavily on CF compliant metadata and additional conventions developed and maintained by the different MIPS that ESGF supports. 
 
 <!-- 
 ### NOAA NCEI -- National Oceanic and Atmospheric Administration's National Centers for Environmental Information

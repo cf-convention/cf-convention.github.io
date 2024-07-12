@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Large projects that sucessfully make use of the CF Conventions
+title: Projects and Activities that Use the CF Metadata Conventions
 ---
 
-# Large projects that sucessfully make use of the CF Conventions
+# Projects and Activities that Use the CF Metadata Conventions
 
 This page lists large projects and activities that draw on the CF Conventions for metadata.
 If you have any additions or corrections for this page, please submit an issue on the [CF Website GitHub repo][website-repo] (see the [Contributing Guide][website-contrib] for more details).
@@ -15,15 +15,15 @@ The description of each project and activity should give some indication of to w
 
 ## Model Intercomparions Projects
 
-Many model intercomparison projects ("MIPs") are under the auspices of the [World Climate Research Programme](https://www.wcrp-climate.org/) and supported by either of the *core projects* [Earth System Modelling and Observations (ESMO)](https://www.wcrp-climate.org/esmo-overview) and [Regional Information for Society (RIfS)](https://www.wcrp-climate.org/rifs-overview).
+Many model intercomparison projects ("MIPs") are under the auspices of the [World Climate Research Programme](https://www.wcrp-climate.org/) and supported by either of the two *core projects* [Earth System Modelling and Observations (ESMO)](https://www.wcrp-climate.org/esmo-overview) and [Regional Information for Society (RIfS)](https://www.wcrp-climate.org/rifs-overview).
 
 ### CMIP - Coupled Model Intercomparion Project
 
-The objective of [CMIP](https://www.wcrp-climate.org/wgcm-cmip) is to better understand past, present and future climate changes arising from natural, unforced variability or in response to changes in radiative forcing in a multi-model context. A specific committee, the [WGCM Infrastructure Panel (WIP)](https://www.wcrp-climate.org/wgcm-cmip/wip) is charged with coordinating infrastructure support for CMIP. It works with projects funded to develop software and supporting infrastructure that facilitates access to and analysis of the CMIP model output. It defines specifications and standards that ensure model output is written in a common structure and format, and that it is archived and made accessible worldwide in a common way. ***something on DRQ that provides a direct link to CF***
+The objective of [CMIP](https://www.wcrp-climate.org/wgcm-cmip) is to better understand past, present and future climate changes arising from natural, unforced variability or in response to changes in radiative forcing in a multi-model context. A specific committee, the [WGCM Infrastructure Panel (WIP)](https://www.wcrp-climate.org/wgcm-cmip/wip) is charged with coordinating infrastructure support for CMIP. It works with projects funded to develop software and supporting infrastructure that facilitates access to and analysis of the CMIP model output. It defines specifications and standards that ensure model output is written in a common structure and format, and that it is archived and made accessible worldwide in a common way.  These specifications and standards are collected into a [Data Request (CMIP DRQ)](https://wcrp-cmip.github.io/WGCM_Infrastructure_Panel/CMIP6/data_request.html). 
 
 ### CORDEX - Coordinated Downscaling Experiment
 
-The vision of [CORDEX](https://cordex.org) is to advance and coordinate through global partnerships the science and application of regional climate downscaling of data directly from contemporary global climate models. The WCRP views regional downscaling as both an important research topic and an opportunity to engage a broader community of climate scientists in its activities. Regional climate information is more than ever needed for decision-making on societal issues such as vulnerability and adaptation to a changing climate with weather/water extremes. For infrastructure support, data and metadata standards CORDEX draws on and contributes to the work of WIP. *** CORDEX DRQ***
+The vision of [CORDEX](https://cordex.org) is to advance and coordinate through global partnerships the science and application of regional climate downscaling of data directly from contemporary global climate models. The WCRP views regional downscaling as both an important research topic and an opportunity to engage a broader community of climate scientists in its activities. Regional climate information is more than ever needed for decision-making on societal issues such as vulnerability and adaptation to a changing climate with weather/water extremes. For infrastructure support, data and metadata standards CORDEX draws on and contributes to the work of WIP. Similar to CMIP, these data specifications are collected into a Data Request, the [CORDEX DRQ](https://cordex.org/experiment-guidelines/cordex-cmip6/data-request-cordex-cmip6-rcms/).
 
 ### Input4MIPs - Input datasets for Model Intercomparisons Project
 
@@ -35,32 +35,25 @@ The vision of [CORDEX](https://cordex.org) is to advance and coordinate through 
 
 ### ISIMIP  - Inter-Sectoral Impact Model Intercomparison Project
 
-[ISIMIP](https://www.isimip.org)  offers a framework to compare climate impact projections in different sectors and at different scales. Consistent climate and socio-economic input data provide the basis for a cross-sectoral integration of impact projections. The focus was put on on providing cross-sectorally consistent projections of the impacts of different levels of global warming in the 21st century. The common set of scenarios made use of climate projections from five Global Climate Models (GCMs) driven by the Representative Concentration Pathways (RCPs). Thus, ISIMIP was established as a natural extension of the work done within the Coupled Climate Model Intercomparison Project (CMIP). ***Links to CF needs to be established - seems to use basic CMIP style metadata***
-
-### XXX-MIP
-
-***XXXX***
+[ISIMIP](https://www.isimip.org)  offers a framework to compare climate impact projections in different sectors and at different scales. Consistent climate and socio-economic input data provide the basis for a cross-sectoral integration of impact projections. The focus was put on on providing cross-sectorally consistent projections of the impacts of different levels of global warming in the 21st century. The common set of scenarios made use of climate projections from five Global Climate Models (GCMs) driven by the Representative Concentration Pathways (RCPs). Thus, ISIMIP was established as a natural extension of the work done within the Coupled Climate Model Intercomparison Project (CMIP). 
+<!-- ***ISIMIP links to CF needs to be established - seems to use basic CMIP style metadata*** -->
 
 
 ## Satellite and remote sensing data
 
 ### EUMETSAT - European Organisation for the Exploitation of Meteorological Satellites
-[EUMETSAT(https://www.eumetsat.int)] uses CF for all data dissemination from the Meteosat Third Generation (geostationary) launched and soon uperational, and upcoming EPS Second Generation (polar orbiters), as well as for  numerous joint missions and projects.
+[EUMETSAT(https://www.eumetsat.int)] uses CF for all data dissemination from the Meteosat Third Generation (geostationary) launched and soon operational, and upcoming EPS Second Generation (polar orbiters), as well as for  numerous joint missions and projects.
 
 ### ESA CCI - European Space Agency's Climate Change Initiative
 
 [ESA CCI](https://climate.esa.int/en/) Data Standards are community-driven requirements ensuring consistent essential climate variable (ECV) data production across the CCI programme. Version 2.3 is the latest. The requirements include data production conformance to the network Common Data Form (netCDF) format, the Climate and Forecasting (CF) metadata conventions, the Attribute Convention for Data Discovery (ACDD), and Infrastructure for Spatial Information in the European Community (INSPIRE) compliant discovery metadata.
-
-## XXSA - XXX XXX Space Agency
-
-***... ... ...***
 
 
 ## Data Portals
 
 ### ESGF - Earth System Grid Federation (ESGF)
 
-[ESGF](https://esgf.llnl.gov) is a collaboration involving multiple international organizations that provides access to a vast array of climate data. THe software stack that provide the ESGF federated services draws heavily on CF compliant metadata and additional conventions developed and maintained by the different MIPS that ESGF supports. 
+[ESGF](https://esgf.llnl.gov) is a collaboration involving multiple international organizations that provides access to a vast array of climate data. THe software stack that provides the ESGF federated services draws heavily on CF compliant metadata and additional conventions developed and maintained by the different MIPS that ESGF supports. 
 
 <!-- 
 ### NOAA NCEI -- National Oceanic and Atmospheric Administration's National Centers for Environmental Information

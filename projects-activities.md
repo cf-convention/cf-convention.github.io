@@ -42,7 +42,7 @@ The vision of [CORDEX](https://cordex.org) is to advance and coordinate through 
 ## Satellite and remote sensing data
 
 ### EUMETSAT - European Organisation for the Exploitation of Meteorological Satellites
-[EUMETSAT](https://www.eumetsat.int) uses CF for all data dissemination from the Meteosat Third Generation (geostationary) launched and soon operational, and upcoming EPS Second Generation (polar orbiters), as well as for  numerous joint missions and projects.
+[EUMETSAT](https://www.eumetsat.int) uses CF for all data dissemination from the Meteosat Third Generation (geostationary) launched and soon operational, and upcoming EPS Second Generation polar orbiters, as well as for  numerous joint missions and projects.
 
 ### ESA CCI - European Space Agency's Climate Change Initiative
 
@@ -63,7 +63,7 @@ The vision of [CORDEX](https://cordex.org) is to advance and coordinate through 
 
 ## Copernicus CDS - Copernicus Climate Data Store
 
-Copernicus [CDS](https://cds.climate.copernicus.eu) provides comprehensive climate data and services. Depending on data type several formats are used, including netCDF/CF. External data providers are requested to follow a specified data format that builds on CF (see this [link](https://confluence.ecmwf.int/display/COPSRV/%28version+C3S-0.3%29+Guide+to+NetCDF+encoding+for+C3S+providers) for details).
+[Copernicus CDS](https://cds.climate.copernicus.eu) provides comprehensive climate data and services. Depending on data type several formats are used, including netCDF/CF. External data providers are requested to follow a specified data format that builds on CF (see this [link](https://confluence.ecmwf.int/display/COPSRV/%28version+C3S-0.3%29+Guide+to+NetCDF+encoding+for+C3S+providers) for details).
 
 
 <!--
@@ -88,7 +88,7 @@ IMOS provides oceanographic data following the CF conventions, ensuring that the
 
 ### WMO Experimental CF-netCDF Profiles
 
-Within the overaching framework of WMO Information System (WIS) three experimental extensions to the Climate and Forecast Conventions (CF conventions) for netCDF (WMO-CF extensions, or *profiles*) have been published. They aim to reduce the effort involved in specifying data products and ensure interoperability by providing standardized semantics and metadata. The level of standardization provided by the WMO-CF extensions is in many cases greater than what is provided by the CF conventions to satisfy the specific WMO operational needs to support Earth System monitoring and prediction. New netCDF profiles are defined to act as templates for reporting data from different sources.  
+Within the overaching framework of WMO Information System (WIS) extensions to the Climate and Forecast Conventions (CF conventions) for netCDF are developed (WMO-CF extensions, or *profiles*). They aim to reduce the effort involved in specifying data products and ensure interoperability by providing standardized semantics and metadata. The level of standardization provided by the WMO-CF extensions is in many cases greater than what is provided by the CF conventions to satisfy the specific WMO operational needs to support Earth System monitoring and prediction. New netCDF profiles are defined to act as templates for reporting data from different sources.  
 
 #### WMO-CF RADIAL 
 This *profile* should be used for the representation of weather radar and lidar data in the native instrument-centric polar coordinates. The profile is now published in [WMO-No. 1257](https://library.wmo.int/records/item/68826-guide-to-operational-weather-radar-best-practices?language_id=13&back=&offset=5.). In addition this profile is extended and updated in [CFRadial2](http://dx.doi.org/10.5065/fy2k-x587).
@@ -100,4 +100,53 @@ This *profile* should be used for the reporting of meteorological and/or oceanog
 #### WMO-CF UAS TRAJECTORY
 
 This *profile* should be used for the reporting of meteorological, atmospheric chemistry and air quality observations along one or more trajectories from a single platform. The trajectory may follow an undulating profile. The first draft is available via [this webpage](https://community.wmo.int/en/activity-areas/wis/wmo-cf-extensions).
+
+--------
+
+Table explaining key acronyms appearing in this page.
+
+Acronym | Explanation
+-- | --
+ACDD | Attribute Convention for Data Discovery
+AMIP | Atmosphere Model lntercomparison Project is a subproject of CMIP
+C3S | Copernicus Climate Change Service
+CCI | The Climate Change Initiative of the European Space Agency
+CDS | Copernicus Climate Data Store
+CF | Climate and Forecasts Conventions
+CFRadial2 | ----- not an acronym ???
+CMIP | Coupled Model Intercomparison Project that continues in cycles (CMIP3, CMIP5, CMIP6, ...)
+CORDEX | Coordinated Regional Downscaling Experiment
+DRQ | Jargon acronym for the CMIP or CORDEX Data Request
+ECV | Essential Climate Variables identified by the Global Climate Observing System
+EPS | EUMETSAT Polar System
+ESA | European Space Agency
+ESGF | Earth System Grid Federation
+ESMO | Earth System Modelling and Observations is a core activity of the WCRP
+EUMETSAT | European Organisation for the Exploitation of Meteorological Satellites
+GCM | Global Climate Model
+IMOS | ----- still only in comment
+Input4MIPs | ----- not an acronym ???
+INSPIRE | Infrastructure for Spatial Information in the European Community
+ISIMIP | Inter-Sectoral Impact Model Intercomparison Project
+JCSDA | ----- still only in comment
+JEDI | ----- still only in comment
+MIP | Model Intercomparison Project
+NCEAS | ----- still only in comment
+NCEI | ----- still only in comment
+NetCDF | Network Common Data Format is a self-describing binary file format
+NOAA | National Oceanic and Atmospheric Administration of the USA
+Obs4MIPs | ----- not an acronym ???
+piControl | ----- not an acronym ???
+RADIAL | ----- not an acronym ???
+RCM | Regional Climate Model
+RCP | Representative Concentration Pathways are various projected greenhouse gas emission and concentration pathways
+RIfS | Regional Information for Society is a core activity of the WCRP
+UAS | ----- not clear what this stands for
+WCRP | World Climate Research Programme
+WGCM | WCRP Working Group on Coupled Modelling
+WIP | WGCM Infrastructure Panel
+WIS | WMO Information System
+WMO | World Meteorological Organization
+
+
 

@@ -41,6 +41,7 @@ See also the links in the navigation bar at the top of this page.
 * [CF GitHub organisation][cf_github]
 * [CF FAQ][faq]
 * [List of software for working with CF](software.md)
+* [List of Projects and Activities that Use the CF Metadata Conventions](projects-activities.md)
 * [Paper][cfdmpaper] describing the CF data model and reference software
 * Overview of CF basics as a [presentation][viewgraphs] and [paper][article]
 

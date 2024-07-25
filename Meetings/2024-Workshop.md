@@ -87,7 +87,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>
           &emsp;Chair: Alison Pamment&emsp;<br/>
           &emsp;<em>Keynote: Gwen Moncoiffe: CF Standard Names as a global semantic resource</em>&emsp;<br/>
-          &emsp;<em>Lightning talk: Liqing Jiang: TBD</em>&emsp;
+          &emsp;<em>Lightning talk: Liqing Jiang: Title TBD</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -99,7 +99,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       </td>
       <td>
         &emsp;Chair: Alison Pamment&emsp;<br/>
-        &emsp;<em>Keynote: Stuart Chalk: TBD</em>&emsp;
+        &emsp;<em>Keynote: Stuart Chalk (virtual):  Title TBD</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -123,7 +123,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>
         &emsp;Chair: Antonio Cofiño&emsp;<br/>
         &emsp;<em>Keynote: Charlotte Pascoe (virtual?): Communicating (and understanding) uncertainty through the value chain</em>&emsp;<br/> 
-        &emsp;<em>Keynote: David Huard (virtual): TBD</em>&emsp;
+        &emsp;<em>Keynote: David Huard (virtual): Title TBD</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -147,7 +147,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>
         &emsp;Chair: Lars Bärring&emsp;<br/>
         &emsp;<em>Keynote: Christian Pagé: Metadata Challenges to properly address provenance in climate indices</em>&emsp;<br/>
-        &emsp;<em>Keynote: Keynote: José Manuel Gutiérrez Llorente: TBD</em>&emsp;
+        &emsp;<em>Keynote: José Manuel Gutiérrez Llorente: Title TBD</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -170,8 +170,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       </td>
       <td>
         &emsp;Chair: Daniel Lee&emsp;<br/>
-        &emsp;<em>Keynote: Michael Schick: TBD</em>&emsp;<br/>
-        &emsp;<em>Lightning talk: Ag Stephens: Teaching LLMs to speak CF-NetCDF</em>&emsp;
+        &emsp;<em>Keynote: Michael Schick: Title TBD</em>&emsp;<br/>
+        &emsp;<em>Lightning talk: Ag Stephens: Teaching Large Language Models to speak CF-NetCDF</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -195,8 +195,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       </td>
       <td>
         &emsp;Chair: Ethan Davis&emsp;<br/>
-        &emsp;<em>Keynote: Sebastién Villaume: TBD</em>&emsp;<br/>
-        &emsp;<em>Lightning talk: Guillermo Tesoro Calvo: NetCDF-Schema: A general purpose schema for defining and validating netCDF products</em>&emsp;
+        &emsp;<em>Keynote: Sebastién Villaume: Title TBD</em>&emsp;<br/>
+        &emsp;<em>Lightning talk: Guillermo Tesoro Calvo: NetCDF-Schema: A general schema for defining and validating netCDF products</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -220,8 +220,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       </td>
       <td>
         &emsp;Chair: Ellie Fisher&emsp;<br/>
-        &emsp;<em>Keynote: Martin Juckes: CF conventions encoded as XML</em>&emsp;
-        &emsp;<em>Keynote: Luke Marsden: CF from the perspective of new discipline</em>&emsp;<br/>
+        &emsp;<em>Keynote: Martin Juckes: CF conventions encoded as XML</em>&emsp;<br/>
+        &emsp;<em>Keynote: Luke Marsden: CF from the perspective of new discipline</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -302,13 +302,13 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 (In order of appearance)
 * Gwen Moncoiffe: Senior Marine Data Manager and NERC Vocabulary Server Team Co-Lead,	BODC, National Oceanography Centre, Liverpool, UK
 * Liqing Jiang: Associate Research Scientist, NOAA Cooperative Institute for Satellite Earth System Studies (CISESS)
-* Stuart Chalk: Professor of Chemistry, University of North Florida, **and Member CODATA Task Group on Digital Representation of Units of Measurement (DRUM)**
+* Stuart Chalk: Professor of Chemistry, University of North Florida, **and Member CODATA Task Group on Digital Representation of Units of Measurement (DRUM)**
 * Charlotte Pascoe: Co-Lead CEDA Atmospheric Science, Centre for Environmental Data Analysis (CEDA), UK
 * David Huard: Research and innovation support Specialist, Ouranos, Quebec, Canada, **and IPCC TG-Data co-lead**
 * Christian Pagé: Research Engineer	CERFACS, Toulouse, France
-* José Manuel Gutiérrez Llorente: **Professor of Physics, IPCC TG-Data Member and IPCC Atlas Lead	University of Cantabria, Spain**
+* José Manuel Gutiérrez Llorente: **Professor of Physics, University of Cantabria, Spain, and IPCC TG-Data Member and IPCC Atlas Lead**
 * Michael Schick: Principal Engineer, EUMETSAT
-* Ag Stephens: **Head of Partnerships**	Centre for Environmental Data Analysis (CEDA), UK
+* Ag Stephens: **Head of Partnerships**,	Centre for Environmental Data Analysis (CEDA), UK
 * Sebastién Villaume: Senior Data Scientist, ECMWF
 * Guillermo Tesoro Calvo: Technical Manager, CS Communication & Systèmes
 * Martin Juckes: NCAS Senior Research Scientist in Climate Data	University of Oxford & Centre for Environmental Data Analysis (CEDA), UK

@@ -123,7 +123,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>
         &emsp;Chair: Antonio Cofiño&emsp;<br/>
         &emsp;<em>Keynote: Charlotte Pascoe (virtual?): Communicating (and understanding) uncertainty through the value chain</em>&emsp;<br/> 
-        &emsp;<em>Keynote: David Huard (virtual): Title TBD</em>&emsp;
+        &emsp;<em>Keynote: David Huard (virtual): Metadata Pipelines in IPCC Assessment Reports</em>&emsp;
       </td>
     </tr>
     <tr>

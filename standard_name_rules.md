@@ -3,6 +3,7 @@ layout: default
 title: Vocabulary rules
 ---
 
+
 # Rules for Changes to CF Standard Names, Area Types and Standardized Region List Vocabularies
 
 **These rules apply only to changes in CF controlled vocabularies.
@@ -58,3 +59,6 @@ The author of an accepted proposal should be added to the
 [list of standard name contributors](http://cfconventions.org/Data/cf-standard-names/docs/standard-name-contributors.html).
 
 All versions of the CF controlled vocabularies should be kept available online, along with their github discussion issues.
+
+The workflow associated with standard name proposals is summarized in the diagram below.
+![Diagram](http://cfconventions.org/Data/media/images/cf-standard-name-process.png)

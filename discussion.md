@@ -12,7 +12,7 @@ Announcements, discussions and Q&A that were initiated _before_ the trial of CF 
  
 Proposals for changing CF are discussed as [GitHub issues][github_issues] in three repositories:
 
-*   [Vocabulary][github_discuss]
+*   [Vocabulary][github_vocabularies]
 
     For proposing additions or amendments to standard names, their definitions, or other CF controlled vocabulary (area types and standardized regions).
 
@@ -38,11 +38,12 @@ Before the CF community migrated to GitHub, general and standard-name discussion
 * [CF Metadata Trac](Data/trac.html) (until July 2018)
 * [About CF Metadata Trac][about]
 
-[github_discuss]: https://github.com/cf-convention/discuss/issues
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues
 [github_conventions_change]: https://github.com/cf-convention/cf-conventions/issues?q=is:issue+label:"change agreed"
 [github_conventions_nochange]: https://github.com/cf-convention/cf-conventions/issues?q=is:issue+label:"agreement not to change"
 [github_conventions_dormant]: https://github.com/cf-convention/cf-conventions/issues?q=is:issue+label:dormant
+[github_discuss]: https://github.com/cf-convention/discuss/issues
+[github_vocabularies]: https://github.com/cf-convention/vocabularies/issues
 [github_website]: https://github.com/cf-convention/cf-convention.github.io/issues
 [github]: https://github.com
 [website]: https://cfconventions.org

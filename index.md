@@ -37,7 +37,7 @@ The use of CF is recommended where applicable by Unidata.
 See also the links in the navigation bar at the top of this page.
 
 * [CF GitHub Discussions][github_discussions]: announcements, forum for community discussion, questions and answers
-* Current proposals for changing CF (CF GitHub issues): [vocabulary][github_discuss] (including standard names), [conventions][github_conventions], this [website][github_website] (including governance)
+* Current proposals for changing CF (CF GitHub issues): [vocabulary][github_vocabularies] (including standard names), [conventions][github_conventions], this [website][github_website] (including governance)
 * [CF GitHub organisation][cf_github]
 * [CF FAQ][faq]
 * [List of software for working with CF](software.md)
@@ -59,8 +59,9 @@ See also the links in the navigation bar at the top of this page.
 [areatypes]: Data/area-type-table/current/build/area-type-table.html
 [regions]: Data/standardized-region-list/standardized-region-list.current.html
 [cfdmpaper]: https://doi.org/10.5194/gmd-10-4619-2017
-[github_discuss]: https://github.com/cf-convention/discuss/issues
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues
+[github_discuss]: https://github.com/cf-convention/discuss/issues
+[github_vocabularies]: https://github.com/cf-convention/vocabularies/issues
 [github_website]: https://github.com/cf-convention/cf-convention.github.io/issues
 [cf_github]: https://github.com/cf-convention
 [github_discussions]: https://github.com/orgs/cf-convention/discussions

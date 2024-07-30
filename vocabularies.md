@@ -218,7 +218,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 - [Schema file](Data/schema-files/cf-standard-name-table-2.0.xsd) for all versions of the Standard Name Table XML files
 
 ### Discussion
-- Current issues in the [CF `discuss` repo](https://github.com/cf-convention/discuss/issues), where proposals for additions and changes to standard names are made.
+- Current issues in the [CF `vocabularies` repo](https://github.com/cf-convention/vocabularies/issues), where proposals for additions and changes to standard names are made.
 - Current proposals for new standard names in the [CEDA vocabulary editor](https://cfeditor.ceda.ac.uk/proposals/1);
 click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those which have been either accepted and included in the standard name table or rejected.
 

@@ -9,7 +9,7 @@ title: Vocabulary rules
 **These rules apply only to changes in CF controlled vocabularies.
 The rules for changes to the CF conventions themselves are given [here](http://cfconventions.org/rules.html).**
 
-New proposals are made by opening a new issue in the cf-convention/discuss github repository.
+New proposals are made by opening a new issue in the cf-convention/vocabularies github repository.
 The 'Standard Names' template should be used, even if the proposal relates to one of the other vocabularies.
 
 Proposals may be for:
@@ -34,7 +34,7 @@ However, since consensus is the best outcome, it will be helpful if anyone who e
 If a consensus, or near consensus, view can not be achieved by discussion the moderator can ask the standard names committee to vote on a proposal.
 The committee's decision is final.
 
-If three weeks have passed with no contributions being made the moderator should attempt to reinvigorate the discussion so that a conclusion can be reached.
+If 30 days have passed with no contributions being made the moderator should attempt to reinvigorate the discussion so that a conclusion can be reached.
 
 The moderator will summarize the outcome of the discussion of each vocabulary term proposal.
 
@@ -61,4 +61,4 @@ The author of an accepted proposal should be added to the
 All versions of the CF controlled vocabularies should be kept available online, along with their github discussion issues.
 
 The workflow associated with standard name proposals is summarized in the diagram below.
-![Diagram](http://cfconventions.org/Data/media/images/cf-standard-name-process.png)
+![Schematic representation of how standard names are processed using github issues and the vocabulary editor.](Data/media/images/cf-standard-names-process.png)

@@ -220,7 +220,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       </td>
       <td>
         &emsp;Chair: Ellie Fisher&emsp;<br/>
-        &emsp;<em>Keynote: Martin Juckes: CF conventions encoded as XML</em>&emsp;<br/>
+        &emsp;<em>Keynote: Martin Juckes: Challenges in the Expanding Scope of the CMIP Data Request</em>&emsp;<br/>
         &emsp;<em>Keynote: Luke Marsden: CF from the perspective of new discipline</em>&emsp;
       </td>
     </tr>

@@ -99,7 +99,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       </td>
       <td>
         &emsp;Chair: Alison Pamment&emsp;<br/>
-        &emsp;<em>Keynote: Stuart Chalk (virtual):  Title TBD</em>&emsp;
+        &emsp;<em>Keynote: Stuart Chalk (virtual): The Units of Measurement Interoperability Service</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -302,13 +302,13 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 (In order of appearance)
 * Gwen Moncoiffe: Senior Marine Data Manager and NERC Vocabulary Server Team Co-Lead,	BODC, National Oceanography Centre, Liverpool, UK
 * Liqing Jiang: Associate Research Scientist, NOAA Cooperative Institute for Satellite Earth System Studies (CISESS)
-* Stuart Chalk: Professor of Chemistry, University of North Florida, **and Member CODATA Task Group on Digital Representation of Units of Measurement (DRUM)**
+* Stuart Chalk: Professor of Chemical Informatics, University of North Florida, and Member CODATA Task Group on Digital Representation of Units of Measurement (DRUM)
 * Charlotte Pascoe: Co-Lead CEDA Atmospheric Science, Centre for Environmental Data Analysis (CEDA), UK
-* David Huard: Research and innovation support Specialist, Ouranos, Quebec, Canada, **and IPCC TG-Data co-lead**
+* David Huard: Research and innovation support Specialist, Ouranos, Quebec, Canada, and IPCC TG-Data co-lead
 * Christian Pagé: Research Engineer	CERFACS, Toulouse, France
-* José Manuel Gutiérrez Llorente: **Professor of Physics, University of Cantabria, Spain, and IPCC TG-Data Member and IPCC Atlas Lead**
+* José Manuel Gutiérrez Llorente: Professor of Physics, University of Cantabria, Spain, and IPCC TG-Data Member and IPCC Atlas Lead
 * Michael Schick: Principal Engineer, EUMETSAT
-* Ag Stephens: **Head of Partnerships**,	Centre for Environmental Data Analysis (CEDA), UK
+* Ag Stephens: Head of Partnerships,	Centre for Environmental Data Analysis (CEDA), UK
 * Sebastién Villaume: Senior Data Scientist, ECMWF
 * Guillermo Tesoro Calvo: Technical Manager, CS Communication & Systèmes
 * Martin Juckes: NCAS Senior Research Scientist in Climate Data	University of Oxford & Centre for Environmental Data Analysis (CEDA), UK

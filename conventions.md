@@ -120,6 +120,9 @@ group: "navigation"
 
     <h2><a href="wkt-proj-4.html">CF Grid Mapping &rlhar; CRS WKT</a></h2>
 
+    <h2>Conventions preceding CF 1.0</h2>
+    The development of the CF convention built upon three earlier netCDF conventions: <a href="https://ferret.pmel.noaa.gov/Ferret/documentation/coards-netcdf-conventions">COARDS</a>, NCAR CSM and <a href="GDT">GDT</a>, as well as the NetCDF User Guide. Development of CF began in 1999, and there were several <a href="CF-beta">beta versions of CF</a> before 1.0.
+
   </div>
 
 </div>

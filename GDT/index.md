@@ -1,9 +1,9 @@
 ---
 layout: default
-title: GDT convention
+title: GDT conventions
 ---
 
-# GDT netCDF conventions
+# GDT conventions
 
 The GDT conventions were developed between 1997 and 1999 by Jonathan Gregory, Bob Drach, Simon Tett and Karl Taylor.
 The last published version was 1.3.

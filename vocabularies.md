@@ -10,7 +10,7 @@ group: "navigation"
 [HTML](Data/cf-standard-names/current/build/cf-standard-name-table.html) &nbsp;
 [XML](Data/cf-standard-names/current/src/cf-standard-name-table.xml) &nbsp;
 [KWIC_Index](Data/cf-standard-names/current/build/kwic_index_for_cf_standard_names.html) &nbsp;
-[NERC Vocab Server](https://vocab.nerc.ac.uk/collection/P07/current/) &nbsp;
+[NERC Vocabulary Server](https://vocab.nerc.ac.uk/collection/P07/current/) &nbsp;
 
 ### HTML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
@@ -226,6 +226,7 @@ click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those 
 ## Area Type Table (v11, 06 July 2023)
 [HTML](Data/area-type-table/current/build/area-type-table.html) &nbsp;
 [XML](Data/area-type-table/current/src/area-type-table.xml) &nbsp;
+[NERC Vocabulary Server](https://vocab.nerc.ac.uk/collection/P29/current/) &nbsp;
 
 ### Previous Versions (HTML)
 [v10](Data/area-type-table/10/build/area-type-table.html) &nbsp;
@@ -255,6 +256,7 @@ click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those 
 [HTML](Data/standardized-region-list/standardized-region-list.html) &nbsp;
 [XML](Data/standardized-region-list/standardized-region-list.xml) &nbsp;
 Old Format [HTML](Data/cf-standard-names/docs/standardized-region-names.html) &nbsp;
+[NERC Vocabulary Server](https://vocab.nerc.ac.uk/collection/P30/current/) &nbsp;
 
 ### Previous Versions (HTML)
 [v3](Data/standardized-region-list/standardized-region-list.3.html) &nbsp;
@@ -265,3 +267,6 @@ Old Format [HTML](Data/cf-standard-names/docs/standardized-region-names.html) &n
 [v3](Data/standardized-region-list/standardized-region-list.3.xml) &nbsp;
 [v2](Data/standardized-region-list/standardized-region-list.2.xml) &nbsp;
 [v1](Data/standardized-region-list/standardized-region-list.1.xml) &nbsp;
+
+## CF Attributes
+[NERC Vocabulary Server](https://vocab.nerc.ac.uk/collection/P31/current/)

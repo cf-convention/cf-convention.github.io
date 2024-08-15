@@ -315,6 +315,18 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 * Guillermo Tesoro Calvo: Technical Manager, CS Communication & Systèmes, France
 * Luke Marsden: Data Manager, Norwegian Meteorological Institute & University Centre in Svalbard, Norway
 * Martin Juckes: NCAS Senior Research Scientist in Climate Data,	University of Oxford & Centre for Environmental Data Analysis (CEDA), UK
+ 
+#### Hackathon topics (part 2)
+
+There is flexibility to form additional ad hoc hackathon groups according to participants interest and preference (which is encouraged by the organisers).
+
+* Localised metadata & CF/ERDDAP (led by Erin Turnbull)
+* BCP-14 (led by Daniel Lee)
+* HEALPix (led by David Hassell)
+* “Good housekeeping!” - website & conventions text (led by Daniel Lee)
+* Standard names (led by Alison Pamment)
+* Visualisations for standard names data (led by Sadie Barthomolew)
+* Roadmap / white paper discussion (open)
 
 ----------------------------------------------------------------------------------------
 
@@ -322,13 +334,13 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 Participants should review the [CF Code of Conduct][CoC].
 
 ## The organising committee
-* Alison Pamment
-* Daniel Lee
-* David Hassell
-* Ellie Fisher
-* Ethan Davis
-* Kevin O'Brien
-* Lars Bärring
+* Alison Pamment, UKRI/NCAS/Centre for Environmental Data Analysis, UK 
+* Daniel Lee, EUMETSAT, Germany 
+* David Hassell, NCAS/University of Reading, UK 
+* Ellie Fisher, NCAS/Centre for Environmental Data Analysis, UK 
+* Ethan Davis, NSF Unidata, UCAR, USA 
+* Kevin O'Brien, NOAA Affiliate, PMEL, University of Washington, USA
+* Lars Bärring, Rossby Centre, SMHI, Sweden
 
 [ISSUE]: https://github.com/cf-convention/discuss/issues/279
 [CoC]: https://github.com/cf-convention/cf-conventions/blob/main/CODE_OF_CONDUCT.md

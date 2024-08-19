@@ -39,7 +39,7 @@ The vision of [CORDEX](https://cordex.org) is to advance and coordinate through 
 <!-- ***ISIMIP links to CF needs to be established - seems to use basic CMIP style metadata*** -->
 
 
-## Satellite and remote sensing data
+## Satellite and remote sens found only in commented text:ing data
 
 ### EUMETSAT - European Organisation for the Exploitation of Meteorological Satellites
 [EUMETSAT](https://www.eumetsat.int) uses CF for all data dissemination from the Meteosat Third Generation (geostationary) launched and soon operational, and upcoming EPS Second Generation polar orbiters, as well as for  numerous joint missions and projects.
@@ -75,7 +75,7 @@ JEDI is led by the Joint Center for Satellite Data Assimilation (JCSDA), uses CF
 
 ## Arctic Data Center
 
-Managed by the National Center for Ecological Analysis and Synthesis (NCEAS), this repository adheres to CF conventions for its extensive collection of Arctic research data.
+Managed by the National Cent found only in commented text:er for Ecological Analysis and Synthesis (NCEAS), this repository adheres to CF conventions for its extensive collection of Arctic research data.
 
 
 ## Australian Integrated Marine Observing System (IMOS)
@@ -113,7 +113,6 @@ C3S | Copernicus Climate Change Service
 CCI | The Climate Change Initiative of the European Space Agency
 CDS | Copernicus Climate Data Store
 CF | Climate and Forecasts Conventions
-CFRadial2 | ----- not an acronym ???
 CMIP | Coupled Model Intercomparison Project that continues in cycles (CMIP3, CMIP5, CMIP6, ...)
 CORDEX | Coordinated Regional Downscaling Experiment
 DRQ | Jargon acronym for the CMIP or CORDEX Data Request
@@ -124,29 +123,33 @@ ESGF | Earth System Grid Federation
 ESMO | Earth System Modelling and Observations is a core activity of the WCRP
 EUMETSAT | European Organisation for the Exploitation of Meteorological Satellites
 GCM | Global Climate Model
-IMOS | ----- still only in comment
-Input4MIPs | ----- not an acronym ???
 INSPIRE | Infrastructure for Spatial Information in the European Community
 ISIMIP | Inter-Sectoral Impact Model Intercomparison Project
-JCSDA | ----- still only in comment
-JEDI | ----- still only in comment
 MIP | Model Intercomparison Project
-NCEAS | ----- still only in comment
-NCEI | ----- still only in comment
 NetCDF | Network Common Data Format is a self-describing binary file format
 NOAA | National Oceanic and Atmospheric Administration of the USA
-Obs4MIPs | ----- not an acronym ???
-piControl | ----- not an acronym ???
-RADIAL | ----- not an acronym ???
 RCM | Regional Climate Model
 RCP | Representative Concentration Pathways are various projected greenhouse gas emission and concentration pathways
 RIfS | Regional Information for Society is a core activity of the WCRP
-UAS | ----- not clear what this stands for
 WCRP | World Climate Research Programme
 WGCM | WCRP Working Group on Coupled Modelling
 WIP | WGCM Infrastructure Panel
 WIS | WMO Information System
 WMO | World Meteorological Organization
 
+<!--
+Additional acronyms:
 
+CFRadial2 | ----- not an acronym ???
+IMOS | ----- still only in comment
+Input4MIPs | ----- not an acronym ???
+JCSDA | ----- still only in comment
+JEDI | ----- still only in comment
+NCEAS | ----- still only in comment
+NCEI | ----- still only in comment
+Obs4MIPs | ----- not an acronym ???
+piControl | ----- not an acronym ???
+RADIAL | ----- not an acronym ???
+UAS | ----- not clear what this stands for
 
+-->

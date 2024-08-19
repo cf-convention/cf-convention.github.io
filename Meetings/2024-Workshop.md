@@ -325,7 +325,7 @@ There is flexibility to form additional ad hoc hackathon groups according to par
 * HEALPix (led by David Hassell)
 * “Good housekeeping!” - website & conventions text (led by Daniel Lee)
 * Standard names (led by Alison Pamment)
-* Visualisations for standard names data (led by Sadie Barthomolew)
+* Visualisations for standard names data (led by Sadie Bartholomew)
 * Roadmap / white paper discussion (open)
 
 ----------------------------------------------------------------------------------------

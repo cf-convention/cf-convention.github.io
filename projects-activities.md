@@ -66,7 +66,7 @@ The vision of [CORDEX](https://cordex.org) is to advance and coordinate through 
 Within the overaching framework of WMO Information System (WIS) extensions to the Climate and Forecast Conventions (CF conventions) for netCDF are developed (WMO-CF extensions, or *profiles*). They aim to reduce the effort involved in specifying data products and ensure interoperability by providing standardized semantics and metadata. The level of standardization provided by the WMO-CF extensions is in many cases greater than what is provided by the CF conventions to satisfy the specific WMO operational needs to support Earth System monitoring and prediction. New netCDF profiles are defined to act as templates for reporting data from different sources.  
 
 #### WMO-CF RADIAL 
-This *profile* should be used for the representation of weather radar and lidar data in the native instrument-centric polar coordinates. The profile is now published in [WMO-No. 1257 Volume VII](https://library.wmo.int/records/item/68826-guide-to-operational-weather-radar-best-practices?language_id=13&back=&offset=5). In addition this profile is being extended and updated in [CFRadial2](http://dx.doi.org/10.5065/fy2k-x587).
+This *profile* should be used for the representation of weather radar and lidar data in the native instrument-centric polar coordinates. The profile is now published in [WMO-No. 1257 Volume VII](https://library.wmo.int/idurl/4/68826). In addition this profile is being extended and updated in [CFRadial2](http://dx.doi.org/10.5065/fy2k-x587).
 
 #### WMO-CF MARINE TRAJECTORY
 

@@ -21,7 +21,7 @@ Many model intercomparison projects ("MIPs") are under the auspices of the [Worl
 
 The objective of [CMIP](https://www.wcrp-climate.org/wgcm-cmip) is to better understand past, present and future climate changes arising from natural, unforced variability or in response to changes in radiative forcing in a multi-model context. A specific committee, the [WGCM Infrastructure Panel (WIP)](https://www.wcrp-climate.org/wgcm-cmip/wip) is charged with coordinating infrastructure support for CMIP. It works with projects funded to develop software and supporting infrastructure that facilitates access to and analysis of the CMIP model output. It defines specifications and standards that ensure model output is written in a common structure and format, and that it is archived and made accessible worldwide in a common way.  These specifications and standards are collected into a [Data Request (CMIP DRQ)](https://wcrp-cmip.github.io/WGCM_Infrastructure_Panel/CMIP6/data_request.html). 
 
-### CORDEX - Coordinated Downscaling Experiment
+### CORDEX - Coordinated Regional Downscaling Experiment
 
 The vision of [CORDEX](https://cordex.org) is to advance and coordinate through global partnerships the science and application of regional climate downscaling of data directly from contemporary global climate models. The WCRP views regional downscaling as both an important research topic and an opportunity to engage a broader community of climate scientists in its activities. Regional climate information is more than ever needed for decision-making on societal issues such as vulnerability and adaptation to a changing climate with weather/water extremes. For infrastructure support, data and metadata standards CORDEX draws on and contributes to the work of WIP. Similar to CMIP, these data specifications are collected into a Data Request, the [CORDEX DRQ](https://cordex.org/experiment-guidelines/cordex-cmip6/data-request-cordex-cmip6-rcms/).
 
@@ -55,34 +55,9 @@ The vision of [CORDEX](https://cordex.org) is to advance and coordinate through 
 
 [ESGF](https://esgf.llnl.gov) is a collaboration involving multiple international organizations that provides access to a vast array of climate data. The software stack that provides the ESGF federated services draws heavily on CF compliant metadata and additional conventions developed and maintained by the different MIPS that ESGF supports. 
 
-<!-- 
-### NOAA NCEI -- National Oceanic and Atmospheric Administration's National Centers for Environmental Information
-
- NOAA [NCEI]()), use CF conventions for many of their climate and oceanographic datasets.
--->
-
 ## Copernicus CDS - Copernicus Climate Data Store
 
 [Copernicus CDS](https://cds.climate.copernicus.eu) provides comprehensive climate data and services. Depending on data type several formats are used, including netCDF/CF. External data providers are requested to follow a specified data format that builds on CF (see this [link](https://confluence.ecmwf.int/display/COPSRV/%28version+C3S-0.3%29+Guide+to+NetCDF+encoding+for+C3S+providers) for details).
-
-
-<!--
-
-## JEDI - Joint Effort for Data assimilation Integration (JEDI)
-
-JEDI is led by the Joint Center for Satellite Data Assimilation (JCSDA), uses CF conventions to handle diverse data types in a unified framework for weather prediction and climate research.
-
-
-## Arctic Data Center
-
-Managed by the National Center for Ecological Analysis and Synthesis (NCEAS), this repository adheres to CF conventions for its extensive collection of Arctic research data.
-
-
-## Australian Integrated Marine Observing System (IMOS)
-
-IMOS provides oceanographic data following the CF conventions, ensuring that their datasets are accessible and usable by the wider scientific community.
-
--->
 
 ## Data and metadata standards that build on and extend CF
 
@@ -91,7 +66,7 @@ IMOS provides oceanographic data following the CF conventions, ensuring that the
 Within the overaching framework of WMO Information System (WIS) extensions to the Climate and Forecast Conventions (CF conventions) for netCDF are developed (WMO-CF extensions, or *profiles*). They aim to reduce the effort involved in specifying data products and ensure interoperability by providing standardized semantics and metadata. The level of standardization provided by the WMO-CF extensions is in many cases greater than what is provided by the CF conventions to satisfy the specific WMO operational needs to support Earth System monitoring and prediction. New netCDF profiles are defined to act as templates for reporting data from different sources.  
 
 #### WMO-CF RADIAL 
-This *profile* should be used for the representation of weather radar and lidar data in the native instrument-centric polar coordinates. The profile is now published in [WMO-No. 1257](https://library.wmo.int/records/item/68826-guide-to-operational-weather-radar-best-practices?language_id=13&back=&offset=5.). In addition this profile is extended and updated in [CFRadial2](http://dx.doi.org/10.5065/fy2k-x587).
+This *profile* should be used for the representation of weather radar and lidar data in the native instrument-centric polar coordinates. The profile is now published in [WMO-No. 1257 Volume VII](https://library.wmo.int/idurl/4/68829). In addition this profile is being extended and updated in [CFRadial2](http://dx.doi.org/10.5065/fy2k-x587).
 
 #### WMO-CF MARINE TRAJECTORY
 
@@ -113,7 +88,6 @@ C3S | Copernicus Climate Change Service
 CCI | The Climate Change Initiative of the European Space Agency
 CDS | Copernicus Climate Data Store
 CF | Climate and Forecasts Conventions
-CFRadial2 | ----- not an acronym ???
 CMIP | Coupled Model Intercomparison Project that continues in cycles (CMIP3, CMIP5, CMIP6, ...)
 CORDEX | Coordinated Regional Downscaling Experiment
 DRQ | Jargon acronym for the CMIP or CORDEX Data Request
@@ -124,29 +98,19 @@ ESGF | Earth System Grid Federation
 ESMO | Earth System Modelling and Observations is a core activity of the WCRP
 EUMETSAT | European Organisation for the Exploitation of Meteorological Satellites
 GCM | Global Climate Model
-IMOS | ----- still only in comment
-Input4MIPs | ----- not an acronym ???
 INSPIRE | Infrastructure for Spatial Information in the European Community
 ISIMIP | Inter-Sectoral Impact Model Intercomparison Project
-JCSDA | ----- still only in comment
-JEDI | ----- still only in comment
 MIP | Model Intercomparison Project
-NCEAS | ----- still only in comment
-NCEI | ----- still only in comment
 NetCDF | Network Common Data Format is a self-describing binary file format
 NOAA | National Oceanic and Atmospheric Administration of the USA
-Obs4MIPs | ----- not an acronym ???
-piControl | ----- not an acronym ???
-RADIAL | ----- not an acronym ???
 RCM | Regional Climate Model
 RCP | Representative Concentration Pathways are various projected greenhouse gas emission and concentration pathways
 RIfS | Regional Information for Society is a core activity of the WCRP
-UAS | ----- not clear what this stands for
 WCRP | World Climate Research Programme
 WGCM | WCRP Working Group on Coupled Modelling
 WIP | WGCM Infrastructure Panel
 WIS | WMO Information System
 WMO | World Meteorological Organization
-
-
-
+<!--
+UAS | ----- not clear what this stands for
+-->

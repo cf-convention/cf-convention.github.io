@@ -148,6 +148,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
         &emsp;Chair: Lars Bärring&emsp;<br/>
         &emsp;<em>Keynote: Christian Pagé: Metadata Challenges to properly address provenance in climate indices</em>&emsp;<br/>
         &emsp;<em>Keynote: José Manuel Gutiérrez Llorente: Title TBD</em>&emsp;
+        &emsp;<em>Lightning talk: Thomas Martin: Capturing provenance for ML</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -223,6 +224,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
         &emsp;Chair: Ellie Fisher&emsp;<br/>
         &emsp;<em>Keynote: Luke Marsden: CF from the perspective of new discipline</em>&emsp;<br/>
         &emsp;<em>Keynote: Martin Juckes: Challenges in the Expanding Scope of the CMIP Data Request</em>&emsp;
+        &emsp;<em>Lightning talk: Heiko Goelzer: Use of CF in the Ice Sheet Model Intercomparison Project (ISMIP)</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -308,13 +310,16 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 * David Huard: Research and Innovation Support Specialist, Ouranos, Quebec, Canada, and IPCC TG-Data co-lead
 * Christian Pagé: Research Engineer,	CERFACS, Toulouse, France
 * José Manuel Gutiérrez Llorente: Professor of Physics, University of Cantabria, Spain, and IPCC TG-Data Member and IPCC Atlas Lead
-* Michael Schick: Principal Engineer, EUMETSAT
+* Thomas Martin: Software Engineer, NSF Unidata, USA
+* Michael Schick: Principal Engineer, EUMETSAT, Germany
 * Ag Stephens: Head of Partnerships,	Centre for Environmental Data Analysis (CEDA), UK
-* Sebastién Villaume: Senior Data Scientist, ECMWF
+* Sebastién Villaume: Senior Data Scientist, ECMWF, UK
 * Martina Stockhause: IPCC DDC Manager, German Climate Computing Center (DKRZ), Germany
 * Guillermo Tesoro Calvo: Technical Manager, CS Communication & Systèmes, France
 * Luke Marsden: Data Manager, Norwegian Meteorological Institute & University Centre in Svalbard, Norway
 * Martin Juckes: NCAS Senior Research Scientist in Climate Data,	University of Oxford & Centre for Environmental Data Analysis (CEDA), UK
+* Heiko Goelzer: Research Professor, Bjerknes Centre for Climate Research, Norway
+
  
 #### Hackathon topics (part 2)
 

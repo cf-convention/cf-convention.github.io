@@ -111,6 +111,7 @@ WGCM | WCRP Working Group on Coupled Modelling
 WIP | WGCM Infrastructure Panel
 WIS | WMO Information System
 WMO | World Meteorological Organization
+
 <!--
 UAS | ----- not clear what this stands for
 -->

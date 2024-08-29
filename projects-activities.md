@@ -13,11 +13,11 @@ The description of each project and activity should give some indication of to w
 [website-repo]: https://github.com/cf-convention/cf-convention.github.io
 [website-contrib]: https://github.com/cf-convention/cf-convention.github.io/blob/master/CONTRIBUTING.md
 
-## Model Intercomparions Projects
+## Model Intercomparison Projects
 
 Many model intercomparison projects ("MIPs") are under the auspices of the [World Climate Research Programme](https://www.wcrp-climate.org/) and supported by either of the two *core projects* [Earth System Modelling and Observations (ESMO)](https://www.wcrp-climate.org/esmo-overview) and [Regional Information for Society (RIfS)](https://www.wcrp-climate.org/rifs-overview).
 
-### CMIP - Coupled Model Intercomparion Project
+### CMIP - Coupled Model Intercomparison Project
 
 The objective of [CMIP](https://www.wcrp-climate.org/wgcm-cmip) is to better understand past, present and future climate changes arising from natural, unforced variability or in response to changes in radiative forcing in a multi-model context. A specific committee, the [WGCM Infrastructure Panel (WIP)](https://www.wcrp-climate.org/wgcm-cmip/wip) is charged with coordinating infrastructure support for CMIP. It works with projects funded to develop software and supporting infrastructure that facilitates access to and analysis of the CMIP model output. It defines specifications and standards that ensure model output is written in a common structure and format, and that it is archived and made accessible worldwide in a common way.  These specifications and standards are collected into a [Data Request (CMIP DRQ)](https://wcrp-cmip.github.io/WGCM_Infrastructure_Panel/CMIP6/data_request.html). 
 

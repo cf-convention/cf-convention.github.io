@@ -20,8 +20,6 @@ The desired outcome is a publication of the proceedings, including a roadmap for
 
 Part 2 will follow the familiar format of our usual annual meeting.
 
-**If you are interested in helping to set the meeting agenda, please [comment on this issue][ISSUE], or even join the organising committee (there's still room for more help!)**
-
 ## Documents
 
 All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder]() (Not yet available).
@@ -99,7 +97,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       </td>
       <td>
         &emsp;Chair: Alison Pamment&emsp;<br/>
-        &emsp;<em>Keynote: Stuart Chalk (virtual): Digital Units of Measurement: The Digital SI and Interoperable Units</em>&emsp;
+        &emsp;<em>Keynote: Stuart Chalk (virtual): Digital Units of Measurement: The Digital SI and Interoperable Units</em>&emsp;<br/>
+        &emsp;<em>Keynote: Chris Little (virtual): OGC Temporal Doman Working Group Activities</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -147,7 +146,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>
         &emsp;Chair: Lars Bärring&emsp;<br/>
         &emsp;<em>Keynote: Christian Pagé: Metadata Challenges to properly address provenance in climate indices</em>&emsp;<br/>
-        &emsp;<em>Keynote: José Manuel Gutiérrez Llorente: Title TBD</em>&emsp;
+        &emsp;<em>Keynote: José Manuel Gutiérrez Llorente: Title TBD</em>&emsp;<br/>
+        &emsp;<em>Lightning talk: Thomas Martin: Capturing provenance for ML</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -222,7 +222,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>
         &emsp;Chair: Ellie Fisher&emsp;<br/>
         &emsp;<em>Keynote: Luke Marsden: CF from the perspective of new discipline</em>&emsp;<br/>
-        &emsp;<em>Keynote: Martin Juckes: Challenges in the Expanding Scope of the CMIP Data Request</em>&emsp;
+        &emsp;<em>Keynote: Martin Juckes: Challenges in the Expanding Scope of the CMIP Data Request</em>&emsp;<br/>
+        &emsp;<em>Lightning talk: Heiko Gölzer: Use of CF in the Ice Sheet Model Intercomparison Project (ISMIP)</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -246,19 +247,24 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>&emsp;&emsp;</td>
     </tr>
     <tr>
-      <td>&emsp;&ensp;9:00 - 10:30&emsp;</td>
-      <td>&emsp;Overview of outstanding issues and&emsp;<br/>&emsp;introduction to hackathon sessions&emsp;</td>
-      <td>&emsp;&emsp;<br/>&emsp;&emsp;</td>
+      <td>&emsp;&ensp;9:00 - 10&emsp;</td>
+      <td>&emsp;Overview of CF news and &emsp;<br/>&emsp;introduction to hackathon sessions&emsp;</td>
+      <td>
+        &emsp;<em>Lars Bärring: Practical information for Part II</em>&emsp;<br/>
+        &emsp;<em>TBD: Review of CF-1.11</em>&emsp;<br/>
+        &emsp;<em>Ethan Davis: DOI for the website and the conventions document</em>&emsp;<br/>
+         <!-- &emsp;<em>Ethan Davis: The CF Information Management and Suppport Team</em>&emsp;<br/> -->
+        &emsp;<em>TBD: New Vocabulary and Discussions repos &mdash;
+discussions vs. issues</em>&emsp;<br/>
+        &emsp;<em>Hackathon conveners: Brief introduction to hackathon themes</em>&emsp;
+      </td>
     </tr>
     <tr>
-      <td>&emsp;10:30 - 11:00&emsp;</td>
-      <td>&emsp;Break&emsp;</td>
-      <td>&emsp;&emsp;</td>
-    </tr>
-    <tr>
-      <td>&emsp;11:00 - 12:30&emsp;</td>
-      <td>&emsp;Hackathon sessions&emsp;</td>
-      <td>&emsp;<em></em>&emsp;</td>
+      <td>&emsp;10:00 - 12:30&emsp;</td>
+      <td>&emsp;Hackathon sessions including break&emsp;</td>
+      <td>&emsp;<em>Daniel Lee: "Good housekeeping": website & conventions text</em>&emsp;<br/>
+        &emsp;<em>David Hassell: HEALPix grids in CF</em>&emsp;<br/>
+        &emsp;<em>Sadie Bartholomew: visualisations for standard names data</em>&emsp;</td>
     </tr>
     <tr>
       <td>&emsp;12:30 - 14:00&emsp;</td>
@@ -268,7 +274,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
     <tr>
       <td>&emsp;14:00 - 17:30&emsp;</td>
       <td>&emsp;Hackathon sessions&emsp;<br/>&emsp;including break&emsp;</td>
-      <td>&emsp;<em></em>&emsp;</td>
+      <td>&emsp;<em>Erin Turnbull: Localized metadata & CF/ERDDAP</em>&emsp;<br/>
+        &emsp;<em>TBD: CF roadmap/white paper</em>&emsp;</td>
     </tr>
     <tr>
       <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
@@ -278,7 +285,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
     <tr>
       <td>&emsp;&ensp;9:00 - 12:30&emsp;</td>
       <td>&emsp;Hackathon sessions<br/>&emsp;including break&emsp;</td>
-      <td>&emsp;<em></em>&emsp;</td>
+      <td>&emsp;<em>Daniel Lee: BCP-14</em>&emsp;<br/>
+        &emsp;<em>Alison Pamment: Standard names</em>&emsp;</td>
     </tr>
     <tr>
       <td>&emsp;12:30 - 14:00&emsp;</td>
@@ -304,17 +312,21 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 * Gwen Moncoiffé: Senior Marine Data Manager and NERC Vocabulary Server Team Co-Lead,	BODC, National Oceanography Centre, Liverpool, UK
 * Liqing Jiang: Associate Research Scientist, NOAA Cooperative Institute for Satellite Earth System Studies (CISESS), USA
 * Stuart Chalk: Professor of Chemical Informatics, University of North Florida, USA, and Member CODATA Task Group on Digital Representation of Units of Measurement (DRUM)
+* Chris Little: IT Fellow, UK Met Office, UK
 * Charlotte Pascoe: Co-Lead CEDA Atmospheric Science, Centre for Environmental Data Analysis (CEDA), UK
 * David Huard: Research and Innovation Support Specialist, Ouranos, Quebec, Canada, and IPCC TG-Data co-lead
-* Christian Pagé: Research Engineer,	CERFACS, Toulouse, France
+* Christian Pagé: Research Engineer, CERFACS, Toulouse, France
 * José Manuel Gutiérrez Llorente: Professor of Physics, University of Cantabria, Spain, and IPCC TG-Data Member and IPCC Atlas Lead
-* Michael Schick: Principal Engineer, EUMETSAT
+* Thomas Martin: Software Engineer, NSF Unidata, USA
+* Michael Schick: Principal Engineer, EUMETSAT, Germany
 * Ag Stephens: Head of Partnerships,	Centre for Environmental Data Analysis (CEDA), UK
-* Sebastién Villaume: Senior Data Scientist, ECMWF
+* Sebastién Villaume: Senior Data Scientist, ECMWF, UK
 * Martina Stockhause: IPCC DDC Manager, German Climate Computing Center (DKRZ), Germany
 * Guillermo Tesoro Calvo: Technical Manager, CS Communication & Systèmes, France
 * Luke Marsden: Data Manager, Norwegian Meteorological Institute & University Centre in Svalbard, Norway
 * Martin Juckes: NCAS Senior Research Scientist in Climate Data,	University of Oxford & Centre for Environmental Data Analysis (CEDA), UK
+* Heiko Gölzer: Research Professor, Bjerknes Centre for Climate Research, Norway
+
  
 #### Hackathon topics (part 2)
 
@@ -322,11 +334,17 @@ There is flexibility to form additional ad hoc hackathon groups according to par
 
 * Localised metadata & CF/ERDDAP (led by Erin Turnbull)
 * BCP-14 (led by Daniel Lee)
-* HEALPix (led by David Hassell)
+* HEALPix grids in CF (led by David Hassell)
 * “Good housekeeping!” - website & conventions text (led by Daniel Lee)
 * Standard names (led by Alison Pamment)
 * Visualisations for standard names data (led by Sadie Bartholomew)
 * Roadmap / white paper discussion (open)
+
+<!-- Additional relevant themes suggested by participants -->
+* To create a high-quality dataset of CF-NetCDF file headers - to be used to train Machine Learning models (Ag Stephens)
+* NetCDF-Schema discussion (Guillermo Tesoro Calvo)
+
+
 
 ----------------------------------------------------------------------------------------
 

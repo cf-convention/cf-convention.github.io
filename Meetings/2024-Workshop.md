@@ -283,7 +283,7 @@ discussions vs. issues</em>&emsp;<br/>
       <td>&emsp;&emsp;</td>
     </tr>
     <tr>
-      <td>&emsp;&ensp;9:00 - 12:30&emsp;</td>
+      <td>&emsp;&ensp;9:30 - 12:30&emsp;</td>
       <td>&emsp;Hackathon sessions<br/>&emsp;including break&emsp;</td>
       <td>&emsp;<em>Daniel Lee: BCP-14</em>&emsp;<br/>
         &emsp;<em>Alison Pamment: Standard names</em>&emsp;</td>
@@ -330,19 +330,21 @@ discussions vs. issues</em>&emsp;<br/>
  
 #### Hackathon topics (part 2)
 
-There is flexibility to form additional ad hoc hackathon groups according to participants interest and preference (which is encouraged by the organisers).
-
-* Localised metadata & CF/ERDDAP (led by Erin Turnbull)
-* BCP-14 (led by Daniel Lee)
-* HEALPix grids in CF (led by David Hassell)
+* Localised metadata & CF/ERDDAP [link][I528] (led by Erin Turnbull)
+* BCP-14 [link][I258] (led by Daniel Lee)
+* HEALPix grids in CF [link][I433] (led by David Hassell)
 * “Good housekeeping!” - website & conventions text (led by Daniel Lee)
 * Standard names (led by Alison Pamment)
-* Visualisations for standard names data (led by Sadie Bartholomew)
+* Visualisations for standard names data [link][I110] (led by Sadie Bartholomew)
 * Roadmap / white paper discussion (open)
 
-<!-- Additional relevant themes suggested by participants -->
+*Hackathon topics suggested by participants* (will be scheduled during the meeting)
+
 * To create a high-quality dataset of CF-NetCDF file headers - to be used to train Machine Learning models (Ag Stephens)
 * NetCDF-Schema discussion (Guillermo Tesoro Calvo)
+
+There is flexibility to form additional ad hoc hackathon groups according to participants' interest and preference (which is encouraged by the organisers).
+
 
 
 
@@ -362,3 +364,9 @@ Participants should review the [CF Code of Conduct][CoC].
 
 [ISSUE]: https://github.com/cf-convention/discuss/issues/279
 [CoC]: https://github.com/cf-convention/cf-conventions/blob/main/CODE_OF_CONDUCT.md
+[I528]: https://github.com/cf-convention/cf-conventions/issues/528
+[I258]: https://github.com/cf-convention/discuss/issues/258
+[I433]: https://github.com/cf-convention/cf-conventions/issues/433
+[I110]: https://github.com/cf-convention/cf-convention.github.io/issues/110
+
+

@@ -171,7 +171,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>
         &emsp;Chair: Daniel Lee&emsp;<br/>
         &emsp;<em>Keynote: Michael Schick: Title TBD</em>&emsp;<br/>
-        &emsp;<em>Lightning talk: Ag Stephens: Teaching Large Language Models to speak CF-NetCDF</em>&emsp;
+        &emsp;<em>Lightning talk: Ag Stephens: Teaching Large Language Models to speak CF-NetCDF</em>&emsp;<br/>
+        &emsp;<em>Jesus Fernandez (virtual): Metadata requirements for high-resolution urbam modelling</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -222,7 +223,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>
         &emsp;Chair: Ellie Fisher&emsp;<br/>
         &emsp;<em>Keynote: Luke Marsden: CF from the perspective of new discipline</em>&emsp;<br/>
-        &emsp;<em>Keynote: Martin Juckes: Challenges in the Expanding Scope of the CMIP Data Request</em>&emsp;<br/>
+        &emsp;<em>Keynote: Martin Juckes (virtual): Challenges in the Expanding Scope of the CMIP Data Request</em>&emsp;<br/>
         &emsp;<em>Lightning talk: Heiko Gölzer: Use of CF in the Ice Sheet Model Intercomparison Project (ISMIP)</em>&emsp;
       </td>
     </tr>
@@ -251,11 +252,11 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>&emsp;Overview of CF news and &emsp;<br/>&emsp;introduction to hackathon sessions&emsp;</td>
       <td>
         &emsp;<em>Lars Bärring: Practical information for Part II</em>&emsp;<br/>
-        &emsp;<em>TBD: Review of CF-1.11</em>&emsp;<br/>
-        &emsp;<em>Ethan Davis: DOI for the website and the conventions document</em>&emsp;<br/>
-         <!-- &emsp;<em>Ethan Davis: The CF Information Management and Suppport Team</em>&emsp;<br/> -->
-        &emsp;<em>TBD: New Vocabulary and Discussions repos &mdash;
-discussions vs. issues</em>&emsp;<br/>
+        &emsp;<em>Jonathan Gregory: Brief introduction to the Committees</em>&emsp;<br/>
+        &emsp;<em>Jobathan Gregory: Review of CF-1.11 and preview of CF-1.12</em>&emsp;<br/>
+        &emsp;<em>Jonathan Gregory: New Vocabulary and Discussions repos &ndash; discussions vs. issues</em>&emsp;<br/>
+         &emsp;<em>Ethan Davis: Brief introduction to the CF Governance Panel, and to the CF Information Management and Support Team</em>&emsp;<br/>
+        &emsp;<em>Ethan Davis: DOI for the website and the conventions document&emsp;<em><br/>
         &emsp;<em>Hackathon conveners: Brief introduction to hackathon themes</em>&emsp;
       </td>
     </tr>
@@ -286,7 +287,9 @@ discussions vs. issues</em>&emsp;<br/>
       <td>&emsp;&ensp;9:30 - 12:30&emsp;</td>
       <td>&emsp;Hackathon sessions<br/>&emsp;including break&emsp;</td>
       <td>&emsp;<em>Daniel Lee: BCP-14</em>&emsp;<br/>
-        &emsp;<em>Alison Pamment: Standard names</em>&emsp;</td>
+        &emsp;<em>Alison Pamment: Standard names</em>&emsp;<br/>
+        &emsp;<em>Guillermo Tesoro Calvo: NetCDF-Schema discussion</em>&emsp;<br/>
+        &emsp;<em>Ag Stephens: To create a high-quality dataset of CF-NetCDF file headers - to be used to train Machine Learning models</em>&emsp;</td>
     </tr>
     <tr>
       <td>&emsp;12:30 - 14:00&emsp;</td>
@@ -300,7 +303,7 @@ discussions vs. issues</em>&emsp;<br/>
     </tr>
     <tr>
       <td>&emsp;15:00 - 15:30&emsp;</td>
-      <td>&emsp;Workshop wrap-up&emsp;</td>
+      <td>&emsp;Workshop wrap-up, including setting dealine for release of CF-1.12&emsp;</td>
       <td>&emsp;&emsp;</td>
     </tr>
   </tbody>
@@ -337,13 +340,11 @@ discussions vs. issues</em>&emsp;<br/>
 * Standard names (led by Alison Pamment)
 * Visualisations for standard names data [link][I110] (led by Sadie Bartholomew)
 * Roadmap / white paper discussion (open)
+* NetCDF-Schema discussion (led by Guillermo Tesoro Calvo)
+* To create a high-quality dataset of CF-NetCDF file headers - to be used to train Machine Learning models (led by Ag Stephens)
 
-*Hackathon topics suggested by participants* (will be scheduled during the meeting)
 
-* To create a high-quality dataset of CF-NetCDF file headers - to be used to train Machine Learning models (Ag Stephens)
-* NetCDF-Schema discussion (Guillermo Tesoro Calvo)
-
-There is flexibility to form additional ad hoc hackathon groups according to participants' interest and preference (which is encouraged by the organisers).
+**There is flexibility to form additional ad hoc hackathon groups according to participants' interest and preference (which is encouraged by the organisers).**
 
 
 

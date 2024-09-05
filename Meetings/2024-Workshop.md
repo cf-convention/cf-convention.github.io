@@ -172,7 +172,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
         &emsp;Chair: Daniel Lee&emsp;<br/>
         &emsp;<em>Keynote: Michael Schick: Title TBD</em>&emsp;<br/>
         &emsp;<em>Lightning talk: Ag Stephens: Teaching Large Language Models to speak CF-NetCDF</em>&emsp;<br/>
-        &emsp;<em>Jesús Fernández (virtual): Metadata requirements for high-resolution urban modelling</em>&emsp;
+        &emsp;<em>Lightning talk: Jesús Fernández (virtual): Metadata requirements for high-resolution urban modelling</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -256,7 +256,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
         &emsp;<em>Jobathan Gregory: Review of CF-1.11 and preview of CF-1.12</em>&emsp;<br/>
         &emsp;<em>Jonathan Gregory: New Vocabulary and Discussions repos &ndash; discussions vs. issues</em>&emsp;<br/>
          &emsp;<em>Ethan Davis: Brief introduction to the CF Governance Panel, and to the CF Information Management and Support Team</em>&emsp;<br/>
-        &emsp;<em>Ethan Davis: DOI for the website and the conventions document&emsp;</em>em><br/>
+        &emsp;<em>Ethan Davis: DOI for the website and the conventions document</em>&emsp;<br/>
         &emsp;<em>Hackathon conveners: Brief introduction to hackathon themes</em>&emsp;
       </td>
     </tr>
@@ -319,11 +319,11 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 * Charlotte Pascoe: Co-Lead CEDA Atmospheric Science, Centre for Environmental Data Analysis (CEDA), UK
 * David Huard: Research and Innovation Support Specialist, Ouranos, Quebec, Canada, and IPCC TG-Data co-lead
 * Christian Pagé: Research Engineer, CERFACS, Toulouse, France
-* José Manuel Gutiérrez Llorente: Professor of Physics, University of Cantabria, Spain, and IPCC TG-Data Member and IPCC Atlas Lead
+* José Manuel Gutiérrez Llorente: Research Professor, Instituto de Física de Cantabria (IFCA), CSIC-University of Cantabria, and IPCC TG-Data Member and IPCC Atlas Lead
 * Thomas Martin: Software Engineer, NSF Unidata, USA
 * Michael Schick: Principal Engineer, EUMETSAT, Germany
 * Ag Stephens: Head of Partnerships,	Centre for Environmental Data Analysis (CEDA), UK
-* Jesús Fernández: Research scientist, Instituto de Física de Cantabria, University of Cantabria, Spain
+* Jesús Fernández: Research scientist, Instituto de Física de Cantabria (IFCA), CSIC-University of Cantabria, Spain
 * Sebastién Villaume: Senior Data Scientist, ECMWF, UK
 * Martina Stockhause: IPCC DDC Manager, German Climate Computing Center (DKRZ), Germany
 * Guillermo Tesoro Calvo: Technical Manager, CS Communication & Systèmes, France

@@ -256,7 +256,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
         &emsp;<em>Jobathan Gregory: Review of CF-1.11 and preview of CF-1.12</em>&emsp;<br/>
         &emsp;<em>Jonathan Gregory: New Vocabulary and Discussions repos &ndash; discussions vs. issues</em>&emsp;<br/>
          &emsp;<em>Ethan Davis: Brief introduction to the CF Governance Panel, and to the CF Information Management and Support Team</em>&emsp;<br/>
-        &emsp;<em>Ethan Davis: DOI for the website and the conventions document&emsp;<em><br/>
+        &emsp;<em>Ethan Davis: DOI for the website and the conventions document&emsp;</em>em><br/>
         &emsp;<em>Hackathon conveners: Brief introduction to hackathon themes</em>&emsp;
       </td>
     </tr>

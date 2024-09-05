@@ -14,6 +14,7 @@ group: "navigation"
 ### HTML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v86](Data/cf-standard-names/86/build/cf-standard-name-table.html) &nbsp;
 [v85](Data/cf-standard-names/85/build/cf-standard-name-table.html) &nbsp;
 [v84](Data/cf-standard-names/84/build/cf-standard-name-table.html) &nbsp;
 [v83](Data/cf-standard-names/83/build/cf-standard-name-table.html) &nbsp;
@@ -102,6 +103,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 ### XML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v86](Data/cf-standard-names/86/src/cf-standard-name-table.xml) &nbsp;
 [v85](Data/cf-standard-names/85/src/cf-standard-name-table.xml) &nbsp;
 [v84](Data/cf-standard-names/84/src/cf-standard-name-table.xml) &nbsp;
 [v83](Data/cf-standard-names/83/src/cf-standard-name-table.xml) &nbsp;
@@ -189,6 +191,8 @@ N.B. For technical reasons, no standard name table was published with version nu
 
 ### Keyword Centred List (most current first)
 
+[v86](Data/cf-standard-names/86/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v85](Data/cf-standard-names/85/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v84](Data/cf-standard-names/84/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v83](Data/cf-standard-names/83/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v82](Data/cf-standard-names/82/build/kwic_index_for_cf_standard_names.html) &nbsp;

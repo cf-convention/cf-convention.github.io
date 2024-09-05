@@ -303,7 +303,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
     </tr>
     <tr>
       <td>&emsp;15:00 - 15:30&emsp;</td>
-      <td>&emsp;Workshop wrap-up, including setting dealine for release of CF-1.12&emsp;</td>
+      <td>&emsp;Workshop wrap-up, including setting a deadline for release of CF-1.12&emsp;</td>
       <td>&emsp;&emsp;</td>
     </tr>
   </tbody>

@@ -172,7 +172,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
         &emsp;Chair: Daniel Lee&emsp;<br/>
         &emsp;<em>Keynote: Michael Schick: Title TBD</em>&emsp;<br/>
         &emsp;<em>Lightning talk: Ag Stephens: Teaching Large Language Models to speak CF-NetCDF</em>&emsp;<br/>
-        &emsp;<em>Jesus Fernandez (virtual): Metadata requirements for high-resolution urbam modelling</em>&emsp;
+        &emsp;<em>Jesús Fernández (virtual): Metadata requirements for high-resolution urban modelling</em>&emsp;
       </td>
     </tr>
     <tr>
@@ -323,6 +323,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 * Thomas Martin: Software Engineer, NSF Unidata, USA
 * Michael Schick: Principal Engineer, EUMETSAT, Germany
 * Ag Stephens: Head of Partnerships,	Centre for Environmental Data Analysis (CEDA), UK
+* Jesús Fernández: Research scientist, Instituto de Física de Cantabria, University of Cantabria, Spain
 * Sebastién Villaume: Senior Data Scientist, ECMWF, UK
 * Martina Stockhause: IPCC DDC Manager, German Climate Computing Center (DKRZ), Germany
 * Guillermo Tesoro Calvo: Technical Manager, CS Communication & Systèmes, France

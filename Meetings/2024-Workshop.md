@@ -312,6 +312,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 #### About the presenters (part 1):
 
 (In order of appearance)
+* David Hassell: Computational scientist, National Centre for Atmospheric Science (NCAS) & University of Reading, UK
 * Gwen Moncoiffé: Senior Marine Data Manager and NERC Vocabulary Server Team Co-Lead,	BODC, National Oceanography Centre, Liverpool, UK
 * Liqing Jiang: Associate Research Scientist, NOAA Cooperative Institute for Satellite Earth System Studies (CISESS), USA
 * Stuart Chalk: Professor of Chemical Informatics, University of North Florida, USA, and Member CODATA Task Group on Digital Representation of Units of Measurement (DRUM)
@@ -330,6 +331,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 * Luke Marsden: Data Manager, Norwegian Meteorological Institute & University Centre in Svalbard, Norway
 * Martin Juckes: NCAS Senior Research Scientist in Climate Data,	University of Oxford & Centre for Environmental Data Analysis (CEDA), UK
 * Heiko Gölzer: Research Professor, Bjerknes Centre for Climate Research, Norway
+* Jonathan Gregory: Senior scientist, NCAS, University of Reading, UK and Met Office Science Fellow, Exeter, UK
+* Ethan Davis: Software Engineer and Manager, NSF Unidata, UCAR, USA, and CF Governance Panel Chair
 
  
 #### Hackathon topics (part 2)

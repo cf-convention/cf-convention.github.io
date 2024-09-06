@@ -252,7 +252,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>&emsp;Overview of CF news and &emsp;<br/>&emsp;introduction to hackathon sessions&emsp;</td>
       <td>
         &emsp;<em>Lars Bärring: Practical information for Part II</em>&emsp;<br/>
-        &emsp;<em>Jonathan Gregory: Brief introduction to the Committees</em>&emsp;<br/>
+        &emsp;<em>Jonathan Gregory: Brief introduction to the CF Committees</em>&emsp;<br/>
         &emsp;<em>Jobathan Gregory: Review of CF-1.11 and preview of CF-1.12</em>&emsp;<br/>
         &emsp;<em>Jonathan Gregory: New Vocabulary and Discussions repos &ndash; discussions vs. issues</em>&emsp;<br/>
          &emsp;<em>Ethan Davis: Brief introduction to the CF Governance Panel, and to the CF Information Management and Support Team</em>&emsp;<br/>
@@ -312,6 +312,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 #### About the presenters (part 1):
 
 (In order of appearance)
+* Lars Bärring: Senior Research Scientist, SMHI Rossby Centre, Sweden, and Workshop local organiser
 * David Hassell: Computational scientist, National Centre for Atmospheric Science (NCAS) & University of Reading, UK
 * Gwen Moncoiffé: Senior Marine Data Manager and NERC Vocabulary Server Team Co-Lead,	BODC, National Oceanography Centre, Liverpool, UK
 * Liqing Jiang: Associate Research Scientist, NOAA Cooperative Institute for Satellite Earth System Studies (CISESS), USA

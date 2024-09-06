@@ -313,7 +313,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 
 (In order of appearance)
 * Lars Bärring: Senior Research Scientist, SMHI Rossby Centre, Sweden, and CF2024 Workshop local organiser
-* David Hassell: Computational scientist, National Centre for Atmospheric Science (NCAS) & University of Reading, UK
+* David Hassell: Senior computational scientist, National Centre for Atmospheric Science (NCAS) & University of Reading, UK
 * Gwen Moncoiffé: Senior Marine Data Manager and NERC Vocabulary Server Team Co-Lead,	BODC, National Oceanography Centre, Liverpool, UK
 * Liqing Jiang: Associate Research Scientist, NOAA Cooperative Institute for Satellite Earth System Studies (CISESS), USA
 * Stuart Chalk: Professor of Chemical Informatics, University of North Florida, USA, and Member CODATA Task Group on Digital Representation of Units of Measurement (DRUM)

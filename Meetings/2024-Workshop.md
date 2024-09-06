@@ -146,7 +146,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>
         &emsp;Chair: Lars Bärring&emsp;<br/>
         &emsp;<em>Keynote: Christian Pagé: Metadata Challenges to properly address provenance in climate indices</em>&emsp;<br/>
-        &emsp;<em>Keynote: José Manuel Gutiérrez Llorente: Title TBD</em>&emsp;<br/>
+        &emsp;<em>Keynote: José Manuel Gutiérrez Llorente: Provenance for (complex) climate products: The experience from the IPCC Interactive Atlas</em>&emsp;<br/>
         &emsp;<em>Lightning talk: Thomas Martin: Capturing provenance for ML</em>&emsp;
       </td>
     </tr>
@@ -312,7 +312,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 #### About the presenters (part 1):
 
 (In order of appearance)
-* Lars Bärring: Senior Research Scientist, SMHI Rossby Centre, Sweden, and Workshop local organiser
+* Lars Bärring: Senior Research Scientist, SMHI Rossby Centre, Sweden, and CF2024 Workshop local organiser
 * David Hassell: Computational scientist, National Centre for Atmospheric Science (NCAS) & University of Reading, UK
 * Gwen Moncoiffé: Senior Marine Data Manager and NERC Vocabulary Server Team Co-Lead,	BODC, National Oceanography Centre, Liverpool, UK
 * Liqing Jiang: Associate Research Scientist, NOAA Cooperative Institute for Satellite Earth System Studies (CISESS), USA
@@ -333,7 +333,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 * Martin Juckes: NCAS Senior Research Scientist in Climate Data,	University of Oxford & Centre for Environmental Data Analysis (CEDA), UK
 * Heiko Gölzer: Research Professor, Bjerknes Centre for Climate Research, Norway
 * Jonathan Gregory: Senior scientist, NCAS, University of Reading, UK and Met Office Science Fellow, Exeter, UK
-* Ethan Davis: Software Engineer and Manager, NSF Unidata, UCAR, USA, and CF Governance Panel Chair
+* Ethan Davis: Technical Manager, NSF Unidata, UCAR, USA, and CF Governance Panel Chair
 
  
 #### Hackathon topics (part 2)

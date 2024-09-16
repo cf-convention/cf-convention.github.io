@@ -22,7 +22,7 @@ Part 2 will follow the familiar format of our usual annual meeting.
 
 ## Documents
 
-All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder]() (Not yet available).
+All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder][DOC].
 
 ----------------------------------------------------------------------------------------
 
@@ -146,7 +146,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>
         &emsp;Chair: Lars Bärring&emsp;<br/>
         &emsp;<em>Keynote: Christian Pagé: Metadata Challenges to properly address provenance in climate indices</em>&emsp;<br/>
-        &emsp;<em>Keynote: José Manuel Gutiérrez Llorente: Provenance for (complex) climate products: The experience from the IPCC Interactive Atlas</em>&emsp;<br/>
+        &emsp;<em>Keynote: José Manuel Gutiérrez Llorente (virtual): Provenance for (complex) climate products: The experience from the IPCC Interactive Atlas</em>&emsp;<br/>
         &emsp;<em>Lightning talk: Thomas Martin: Capturing provenance for ML</em>&emsp;
       </td>
     </tr>
@@ -170,7 +170,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       </td>
       <td>
         &emsp;Chair: Daniel Lee&emsp;<br/>
-        &emsp;<em>Keynote: Michael Schick: Title TBD</em>&emsp;<br/>
+        &emsp;<em>Keynote: Daniel Lee: Destination Earth Data Lake - Fueling Europe's Digital Twins</em>&emsp;<br/>
         &emsp;<em>Lightning talk: Ag Stephens: Teaching Large Language Models to speak CF-NetCDF</em>&emsp;<br/>
         &emsp;<em>Lightning talk: Jesús Fernández (virtual): Metadata requirements for high-resolution urban modelling</em>&emsp;
       </td>
@@ -323,7 +323,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 * Christian Pagé: Research Engineer, CERFACS, Toulouse, France
 * José Manuel Gutiérrez Llorente: Research Professor, Instituto de Física de Cantabria (IFCA), CSIC-University of Cantabria, and IPCC TG-Data Member and IPCC Atlas Lead
 * Thomas Martin: Software Engineer, NSF Unidata, USA
-* Michael Schick: Principal Engineer, EUMETSAT, Germany
+* Daniel Lee: Data access systems operations manager, EUMETSAT, Germany
 * Ag Stephens: Head of Partnerships,	Centre for Environmental Data Analysis (CEDA), UK
 * Jesús Fernández: Research scientist, Instituto de Física de Cantabria (IFCA), CSIC-University of Cantabria, Spain
 * Sebastién Villaume: Senior Data Scientist, ECMWF, UK
@@ -374,5 +374,6 @@ Participants should review the [CF Code of Conduct][CoC].
 [I258]: https://github.com/cf-convention/discuss/issues/258
 [I433]: https://github.com/cf-convention/cf-conventions/issues/433
 [I110]: https://github.com/cf-convention/cf-convention.github.io/issues/110
+[DOC]: https://drive.google.com/drive/folders/1Z3eXgRsUYu6aXxyn5MSUraj5DXlQQYeQ
 
 

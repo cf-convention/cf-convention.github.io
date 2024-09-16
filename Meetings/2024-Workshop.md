@@ -22,7 +22,7 @@ Part 2 will follow the familiar format of our usual annual meeting.
 
 ## Documents
 
-All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder]() (Not yet available).
+All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder][DOC].
 
 ----------------------------------------------------------------------------------------
 
@@ -374,5 +374,6 @@ Participants should review the [CF Code of Conduct][CoC].
 [I258]: https://github.com/cf-convention/discuss/issues/258
 [I433]: https://github.com/cf-convention/cf-conventions/issues/433
 [I110]: https://github.com/cf-convention/cf-convention.github.io/issues/110
+[DOC]: https://drive.google.com/drive/folders/1Z3eXgRsUYu6aXxyn5MSUraj5DXlQQYeQ
 
 

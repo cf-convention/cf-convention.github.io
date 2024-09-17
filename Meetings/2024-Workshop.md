@@ -98,7 +98,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>
         &emsp;Chair: Alison Pamment&emsp;<br/>
         &emsp;<em>Keynote: Stuart Chalk (virtual): Digital Units of Measurement: The Digital SI and Interoperable Units</em>&emsp;<br/>
-        &emsp;<em>Keynote: Chris Little (virtual): OGC Temporal Doman Working Group Activities</em>&emsp;
+        &emsp;<em>Keynote: Chris Little (virtual): OGC Temporal Domain Working Group Activities</em>&emsp;
       </td>
     </tr>
     <tr>

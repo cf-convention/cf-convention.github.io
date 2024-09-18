@@ -265,7 +265,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>&emsp;Hackathon sessions including break&emsp;</td>
       <td>&emsp;<em>Daniel Lee: "Good housekeeping": website & conventions text</em>&emsp;<br/>
         &emsp;<em>David Hassell: HEALPix grids in CF</em>&emsp;<br/>
-        &emsp;<em>Sadie Bartholomew: visualisations for standard names data</em>&emsp;</td>
+        &emsp;<em>Guillermo Tesoro Calvo: NetCDF-Schema discussion</em>&emsp;<br/>
     </tr>
     <tr>
       <td>&emsp;12:30 - 14:00&emsp;</td>
@@ -288,7 +288,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>&emsp;Hackathon sessions<br/>&emsp;including break&emsp;</td>
       <td>&emsp;<em>Daniel Lee: BCP-14</em>&emsp;<br/>
         &emsp;<em>Alison Pamment: Standard names</em>&emsp;<br/>
-        &emsp;<em>Guillermo Tesoro Calvo: NetCDF-Schema discussion</em>&emsp;<br/>
+        &emsp;<em>Sadie Bartholomew: visualisations for standard names data</em>&emsp;</td>
         &emsp;<em>Ag Stephens: To create a high-quality dataset of CF-NetCDF file headers - to be used to train Machine Learning models</em>&emsp;</td>
     </tr>
     <tr>

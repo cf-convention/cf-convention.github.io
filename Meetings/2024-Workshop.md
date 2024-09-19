@@ -262,8 +262,9 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
     </tr>
     <tr>
       <td>&emsp;10:00 - 12:30&emsp;</td>
-      <td>&emsp;Hackathon sessions including break&emsp;</td>
-      <td>&emsp;<em>Daniel Lee: "Good housekeeping": website & conventions text</em>&emsp;<br/>
+      <td>&emsp;Hackathon sessions including break&emsp;<br/>
+       &emsp;<b>See <a href="https://drive.google.com/file/d/1qAoPLlF6nh7C_9kQZo19sIT6D-S7tA4Y/view?usp=drive_link">Google doc</a> for Zoom link to use for each hackathon</b>&emsp;</td>
+      <td>&emsp;<em>Daniel Lee: "Good housekeeping": website & conventions text</em>&emsp;<br/> 
         &emsp;<em>David Hassell: HEALPix grids in CF</em>&emsp;<br/>
         &emsp;<em>Guillermo Tesoro Calvo: NetCDF-Schema discussion</em>&emsp;</td>
     </tr>
@@ -274,7 +275,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
     </tr>
     <tr>
       <td>&emsp;14:00 - 17:30&emsp;</td>
-      <td>&emsp;Hackathon sessions&emsp;<br/>&emsp;including break&emsp;</td>
+      <td>&emsp;Hackathon sessions&emsp;<br/>&emsp;including break&emsp;<br/>
+      &emsp;<b>See <a href="https://drive.google.com/file/d/1qAoPLlF6nh7C_9kQZo19sIT6D-S7tA4Y/view?usp=drive_link">Google doc</a> for Zoom link to use for each hackathon</b>&emsp;</td>
       <td>&emsp;<em>Erin Turnbull: Localized metadata & CF/ERDDAP</em>&emsp;<br/>
         &emsp;<em>TBD: CF roadmap/white paper</em>&emsp;</td>
     </tr>
@@ -285,7 +287,8 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
     </tr>
     <tr>
       <td>&emsp;&ensp;9:30 - 12:30&emsp;</td>
-      <td>&emsp;Hackathon sessions<br/>&emsp;including break&emsp;</td>
+      <td>&emsp;Hackathon sessions<br/>&emsp;including break&emsp;<br/>
+       &emsp;<b>See <a href="https://drive.google.com/file/d/1qAoPLlF6nh7C_9kQZo19sIT6D-S7tA4Y/view?usp=drive_link">Google doc</a> for Zoom link to use for each hackathon</b>&emsp;</td>
       <td>&emsp;<em>Daniel Lee: BCP-14</em>&emsp;<br/>
         &emsp;<em>Alison Pamment: Standard names</em>&emsp;<br/>
         &emsp;<em>Sadie Bartholomew: visualisations for standard names data</em>&emsp;<br/>

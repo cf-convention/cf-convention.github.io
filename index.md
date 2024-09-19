@@ -12,14 +12,13 @@ The CF convention includes a standard name table, which defines strings that ide
 
 ---
 
-**_Conventions_:** **Latest release** (1.11) [HTML][releasedhtml] [PDF][releasedpdf]
-<code>&nbsp;&bull;&nbsp;</code>
+[**_Ask a question_ about how to use CF**&nbsp;&nbsp;&#x1F4AC;][github_discussions]
+
+**_Read the conventions_:** **Latest release** (1.11) [HTML][releasedhtml] [PDF][releasedpdf]&nbsp;&bull;&nbsp;
 **Working draft** [HTML][workinghtml] [PDF][workingpdf]
 
-**_Vocabularies_:** [**Standard names**][currentnames]
-<code>&nbsp;&bull;&nbsp;</code>
-[**Area types**][areatypes]
-<code>&nbsp;&bull;&nbsp;</code>
+**_Check the latest vocabularies_:** [**Standard names**][currentnames]&nbsp;&bull;&nbsp;
+[**Area types**][areatypes]&nbsp;&bull;&nbsp;
 [**Standardized regions**][regions]
 
 ---

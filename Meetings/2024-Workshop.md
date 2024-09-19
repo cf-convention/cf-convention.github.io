@@ -285,7 +285,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td><br/>Dinner at 19:00 at <a href="https://www.thekniferestaurant.se/">The Knife!</a> <a href="https://docs.google.com/spreadsheets/d/1a7V5O-x7Ena0FLaBYlhew0nZ91ViUcmwSSv6UXDQv68/edit?gid=0#gid=0">Place your order online</a> by 13:30.</td>
     </tr>
     <tr>
-      <td/><br/>&emsp;CEST (UTC+2)&emsp;</td>
+      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
       <td><br/>&emsp;<strong><em>Friday, 20 September</em></strong>&emsp;</td>
       <td>&emsp;&emsp;</td>
     </tr>

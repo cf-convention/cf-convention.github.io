@@ -277,8 +277,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>&emsp;14:00 - 17:30&emsp;</td>
       <td>&emsp;Hackathon sessions&emsp;<br/>&emsp;including break&emsp;<br/>
       &emsp;<b>See <a href="https://drive.google.com/file/d/1qAoPLlF6nh7C_9kQZo19sIT6D-S7tA4Y/view?usp=drive_link">Google doc</a> for Zoom link to use for each hackathon</b>&emsp;</td>
-      <td>&emsp;<em>Erin Turnbull: Localized metadata & CF/ERDDAP</em>&emsp;<br/>
-        &emsp;<em>TBD: CF roadmap/white paper</em>&emsp;</td>
+      <td>&emsp;<em>David Hassell: CF roadmap/white paper</em>&emsp;</td>
     </tr>   
     <tr>
       <td/>
@@ -286,7 +285,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td><br/>Dinner at 19:00 at <a href="https://www.thekniferestaurant.se/">The Knife!</a> <a href="https://docs.google.com/spreadsheets/d/1a7V5O-x7Ena0FLaBYlhew0nZ91ViUcmwSSv6UXDQv68/edit?gid=0#gid=0">Place your order online</a> by 13:30.</td>
     </tr>
     <tr>
-      <td/><br/>&emsp;CEST (UTC+2)&emsp;</td>
+      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
       <td><br/>&emsp;<strong><em>Friday, 20 September</em></strong>&emsp;</td>
       <td>&emsp;&emsp;</td>
     </tr>

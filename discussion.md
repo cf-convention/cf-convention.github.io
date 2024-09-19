@@ -24,7 +24,7 @@ Proposals to change CF are discussed and decided as [GitHub issues][github_issue
 
     For proposing additions or amendments to standard names, their definitions, or other CF controlled vocabulary (area types and standardized regions).
 
-    [Concluded issues][github_vocabularies_closed]
+    [Concluded vocabulary issues][github_vocabularies_closed]
 
     As well as in GitHub issues, the status of proposals about standard names is shown by the [CEDA vocabulary editor][vocab_editor]. To see a list of resolved proposals (accepted or rejected) for standard names from March 2011 onwards, click "Inactive" in the [CEDA vocabulary editor][vocab_editor]
   
@@ -32,7 +32,7 @@ Proposals to change CF are discussed and decided as [GitHub issues][github_issue
 
     For proposing enhancements and reporting defects in the CF conventions.
 
-    [Concluded issues][github_conventions_closed]: [change agreed][github_conventions_change]&nbsp;&bull;&nbsp;[agreement not to change][github_conventions_nochange]&nbsp;&bull;&nbsp;[dormant][github_conventions_dormant]
+    [Concluded conventions issues][github_conventions_closed]: [change agreed][github_conventions_change]&nbsp;&bull;&nbsp;[agreement not to change][github_conventions_nochange]&nbsp;&bull;&nbsp;[dormant][github_conventions_dormant]
 
     "Dormant" means the discussion on a proposed change did not reach a conclusion. Dormant issues may be reopened if there is a new impetus or ideas that might help bring about an agreement.
 

@@ -42,11 +42,12 @@ Proposals to change CF are discussed and decided as [GitHub issues][github_issue
 
 ### Archive links
 
-Announcements, discussions and Q&A that were initiated before CF GitHub Discussions began are continuing as [GitHub issues][github_issues] in the `discuss` repository. They will soon be converted to GitHub Discussions.
+Announcements, discussions and Q&A that were initiated before CF GitHub Discussions began are continuing as GitHub issues in the `discuss` repository. They will soon be converted to GitHub Discussions.
 
 Before the CF community migrated to GitHub:
 
 * until December 2019, general discussion took place and standard names were proposed on the [cf-metadata mailing list][archives] ([original at NCAR][NCAR_archives]).
+
 * until July 2018, changes to the conventions were proposed on the [CF Metadata Trac][about] site.
 
 

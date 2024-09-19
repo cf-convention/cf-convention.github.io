@@ -33,284 +33,37 @@ In the first part each session will begin with 1-2 short (10 - 15 min each) keyn
 For the second part the overall aim is to have a dynamic and flexible agenda that includes a mixture of breakout group discussions and hands-on hackathons. There will be an introductory session to give an overview of outstanding issues where hackathon conveners should be prepared to give a brief introduction of each hackathon theme. 
  
 
-<table border="1px" id="preliminary-agenda">
-  <thead>
-    <tr>
-      <th>&emsp;Time&emsp;</th>
-      <th>&emsp;Session&emsp;</th>
-      <th>&emsp;Speakers&emsp;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
-      <td><br/>&emsp;<strong><em>Tuesday, 17 September</em></strong>&emsp;</td>
-      <td>&emsp;&emsp;</td>
-    </tr>
-    <tr>
-      <td>&emsp;&ensp;8:00 - &ensp;9:30&emsp;</td>
-      <td>&emsp;Registration&emsp;</td>
-      <td>&emsp;&emsp;</td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;&ensp;9:30 - 10:30&emsp;
-      </td>
-      <td>
-        &emsp;Opening session&emsp;
-      </td>
-      <td>
-        &emsp;Lars Bärring: <em>Welcome, practicalities, format/structure/expectations of meeting</em>&emsp;<br/>
-        &emsp;David Hassell: <em>Setting the scene &ndash; overview of CF</em>&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;10:30 - 11:00&emsp;
-      </td>
-      <td>
-        &emsp;Break&emsp;
-      </td>
-      <td>
-        &emsp;&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;11:00 - 12:00&emsp;
-      </td>
-      <td>
-        &emsp;Vocabularies&emsp;
-      </td>
-      <td>
-          &emsp;Chair: Alison Pamment&emsp;<br/>
-          &emsp;<em>Keynote: Gwen Moncoiffe: CF Standard Names as a global semantic resource</em>&emsp;<br/>
-          &emsp;<em>Lightning talk: Liqing Jiang: Vocabulary needs of the ocean carbon and acidification community</em>&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;12:00 - 13:00&emsp;
-      </td>
-      <td>
-        &emsp;Units&emsp;
-      </td>
-      <td>
-        &emsp;Chair: Alison Pamment&emsp;<br/>
-        &emsp;<em>Keynote: Stuart Chalk (virtual): Digital Units of Measurement: The Digital SI and Interoperable Units</em>&emsp;<br/>
-        &emsp;<em>Keynote: Chris Little (virtual): OGC Temporal Domain Working Group Activities</em>&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;13:00 - 14:00&emsp;
-      </td>
-      <td>
-        &emsp;Lunch&emsp;
-      </td>
-      <td>
-        &emsp;&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;14:00 - 15:30&emsp;
-      </td>
-      <td>
-        &emsp;Uncertainty&emsp;
-      </td>
-      <td>
-        &emsp;Chair: Antonio Cofiño&emsp;<br/>
-        &emsp;<em>Keynote: Charlotte Pascoe (virtual): Communicating (and understanding) uncertainty through the value chain</em>&emsp;<br/> 
-        &emsp;<em>Keynote: David Huard (virtual): Metadata Pipelines in IPCC Assessment Reports</em>&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;15:30 - 16:00&emsp;
-      </td>
-      <td>
-        &emsp;Break&emsp;
-      </td>
-      <td>
-        &emsp;&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;16:00 - 17:30&emsp;
-      </td>
-      <td>
-        &emsp;Metadata for describing&emsp;<br/>&emsp;statistical processing&emsp;
-      </td>
-      <td>
-        &emsp;Chair: Lars Bärring&emsp;<br/>
-        &emsp;<em>Keynote: Christian Pagé: Metadata Challenges to properly address provenance in climate indices</em>&emsp;<br/>
-        &emsp;<em>Keynote: José Manuel Gutiérrez Llorente (virtual): Provenance for (complex) climate products: The experience from the IPCC Interactive Atlas</em>&emsp;<br/>
-        &emsp;<em>Lightning talk: Thomas Martin: Capturing provenance for ML</em>&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <br/>&emsp;CEST (UTC+2)&emsp;
-      </td>
-      <td>
-        <br/>&emsp;<strong><em>Wednesday, 18 September&emsp;</em></strong>&emsp;
-      </td>
-      <td>
-        &emsp;&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;&ensp;9:00 - 10:30&emsp;
-      </td>
-      <td>
-        &emsp;Metadata requirements for&emsp;<br/>&emsp;new technologies&emsp;
-      </td>
-      <td>
-        &emsp;Chair: Daniel Lee&emsp;<br/>
-        &emsp;<em>Keynote: Daniel Lee: Destination Earth Data Lake - Fueling Europe's Digital Twins</em>&emsp;<br/>
-        &emsp;<em>Lightning talk: Ag Stephens: Teaching Large Language Models to speak CF-NetCDF</em>&emsp;<br/>
-        &emsp;<em>Lightning talk: Jesús Fernández (virtual): Metadata requirements for high-resolution urban modelling</em>&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;10:30 - 11:00&emsp;
-      </td>
-      <td>
-        &emsp;Break&emsp;
-      </td>
-      <td>
-        &emsp;&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;11:00 - 12:30&emsp;
-      </td>
-      <td>
-        &emsp;Interoperability and&emsp;<br/>
-        &emsp;cross format issues&emsp;
-      </td>
-      <td>
-        &emsp;Chair: Ethan Davis&emsp;<br/>
-        &emsp;<em>Keynote: Sebastién Villaume: Mapping between GRIB and CF-netCDF and ECMWF software development plans</em>&emsp;<br/>
-        &emsp;<em>Keynote: Martina Stockhause: CF in the context of developments in the Research Data Alliance (RDA): RDA recommendations and CF opportunities</em>&emsp;<br/>
-        &emsp;<em>Lightning talk: Guillermo Tesoro Calvo: NetCDF-Schema: A general schema for defining and validating netCDF products</em>&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;12:30 - 14:00&emsp;
-      </td>
-      <td>
-        &emsp;Lunch&emsp;
-      </td>
-      <td>
-        &emsp;&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>
-        &emsp;14:00 - 15:30&emsp;
-      </td>
-      <td>
-        &emsp;Cross-domain challenges&emsp;<br/>
-        &emsp;and opportunities&emsp;
-      </td>
-      <td>
-        &emsp;Chair: Ellie Fisher&emsp;<br/>
-        &emsp;<em>Keynote: Luke Marsden: CF from the perspective of new discipline</em>&emsp;<br/>
-        &emsp;<em>Keynote: Martin Juckes (virtual): Challenges in the Expanding Scope of the CMIP Data Request</em>&emsp;<br/>
-        &emsp;<em>Lightning talk: Heiko Gölzer: Use of CF in the Ice Sheet Model Intercomparison Project (ISMIP)</em>&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>&emsp;15:30 - 16:00&emsp;</td>
-      <td>&emsp;Break&emsp;</td>
-      <td>&emsp;&emsp;</td>
-    </tr>
-    <tr>
-      <td>&emsp;16:00 - 17:30&emsp;</td>
-      <td>&emsp;Synthesis session&emsp;</td>
-      <td>&emsp;Chair: David Hassell&emsp;<br/>&emsp;&emsp;</td>
-    </tr>
-    <tr>
-      <td>&emsp;&emsp;</td>
-      <td>&emsp;<em>End of first part</em>&emsp;</td>
-      <td>&emsp;&emsp;</td>
-    </tr>
-    <tr>
-      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
-      <td><br/>&emsp;<strong><em>Thursday, 19 September</em></strong>&emsp;</td>
-      <td>&emsp;&emsp;</td>
-    </tr>
-    <tr>
-      <td>&emsp;&ensp;9:00 - 10&emsp;</td>
-      <td>&emsp;Overview of CF news and &emsp;<br/>&emsp;introduction to hackathon sessions&emsp;</td>
-      <td>
-        &emsp;<em>Lars Bärring: Practical information for Part II</em>&emsp;<br/>
-        &emsp;<em>Jonathan Gregory: Brief introduction to the CF Committees</em>&emsp;<br/>
-        &emsp;<em>Jonathan Gregory: Review of CF-1.11 and preview of CF-1.12</em>&emsp;<br/>
-        &emsp;<em>Jonathan Gregory: New Vocabulary and Discussions repos &ndash; discussions vs. issues</em>&emsp;<br/>
-         &emsp;<em>Ethan Davis: Brief introduction to the CF Governance Panel, and to the CF Information Management and Support Team</em>&emsp;<br/>
-        &emsp;<em>Ethan Davis: DOI for the website and the conventions document</em>&emsp;<br/>
-        &emsp;<em>Hackathon conveners: Brief introduction to hackathon themes</em>&emsp;
-      </td>
-    </tr>
-    <tr>
-      <td>&emsp;10:00 - 12:30&emsp;</td>
-      <td>&emsp;Hackathon sessions including break&emsp;<br/>
-       &emsp;<b>See <a href="https://drive.google.com/file/d/1qAoPLlF6nh7C_9kQZo19sIT6D-S7tA4Y/view?usp=drive_link">Google doc</a> for Zoom link to use for each hackathon</b>&emsp;</td>
-      <td>&emsp;<em>Daniel Lee: "Good housekeeping": website & conventions text</em>&emsp;<br/> 
-        &emsp;<em>David Hassell: HEALPix grids in CF</em>&emsp;<br/>
-        &emsp;<em>Guillermo Tesoro Calvo: NetCDF-Schema discussion</em>&emsp;</td>
-    </tr>
-    <tr>
-      <td>&emsp;12:30 - 14:00&emsp;</td>
-      <td>&emsp;Lunch&emsp;</td>
-      <td>&emsp;&emsp;</td>
-    </tr>
-    <tr>
-      <td>&emsp;14:00 - 17:30&emsp;</td>
-      <td>&emsp;Hackathon sessions&emsp;<br/>&emsp;including break&emsp;<br/>
-      &emsp;<b>See <a href="https://drive.google.com/file/d/1qAoPLlF6nh7C_9kQZo19sIT6D-S7tA4Y/view?usp=drive_link">Google doc</a> for Zoom link to use for each hackathon</b>&emsp;</td>
-      <td>&emsp;<em>Erin Turnbull: Localized metadata & CF/ERDDAP</em>&emsp;<br/>
-        &emsp;<em>TBD: CF roadmap/white paper</em>&emsp;</td>
-    </tr>
-    <tr>
-      <td><br/>&emsp;CEST (UTC+2)&emsp;</td>
-      <td><br/>&emsp;<strong><em>Friday, 20 September</em></strong>&emsp;</td>
-      <td>&emsp;&emsp;</td>
-    </tr>
-    <tr>
-      <td>&emsp;&ensp;9:30 - 12:30&emsp;</td>
-      <td>&emsp;Hackathon sessions<br/>&emsp;including break&emsp;<br/>
-       &emsp;<b>See <a href="https://drive.google.com/file/d/1qAoPLlF6nh7C_9kQZo19sIT6D-S7tA4Y/view?usp=drive_link">Google doc</a> for Zoom link to use for each hackathon</b>&emsp;</td>
-      <td>&emsp;<em>Daniel Lee: BCP-14</em>&emsp;<br/>
-        &emsp;<em>Alison Pamment: Standard names</em>&emsp;<br/>
-        &emsp;<em>Sadie Bartholomew: visualisations for standard names data</em>&emsp;<br/>
-        &emsp;<em>Ag Stephens: To create a high-quality dataset of CF-NetCDF file headers - to be used to train Machine Learning models</em>&emsp;</td>
-    </tr>
-    <tr>
-      <td>&emsp;12:30 - 14:00&emsp;</td>
-      <td>&emsp;Lunch&emsp;</td>
-      <td>&emsp;&emsp;</td>
-    </tr>
-    <tr>
-      <td>&emsp;14:00 - 15:00&emsp;</td>
-      <td>&emsp;Hackathon wrap-up&emsp;</td>
-      <td>&emsp;&emsp;</td>
-    </tr>
-    <tr>
-      <td>&emsp;15:00 - 15:30&emsp;</td>
-      <td>&emsp;Workshop wrap-up, including setting a deadline for release of CF-1.12&emsp;</td>
-      <td>&emsp;&emsp;</td>
-    </tr>
-  </tbody>
-</table>
+| Time  |  Session  |  Speakers  |
+|---|---|---|
+|  CEST (UTC+2)  |  Tuesday, 17 September  |    |
+|   8:00 -  9:30  |  Registration  |    |
+|   9:30 - 10:30  |  Opening session  |  Lars Bärring: Welcome, practicalities, format/structure/expectations of meeting <br> David Hassell: Setting the scene – overview of CF  |
+|  10:30 - 11:00  |  Break  |    |
+|  11:00 - 12:00  |  Vocabularies  |  Chair: Alison Pamment <br> Keynote: Gwen Moncoiffe: CF Standard Names as a global semantic resource <br> Lightning talk: Liqing Jiang: Vocabulary needs of the ocean carbon and acidification community  |
+|  12:00 - 13:00  |  Units  |  Chair: Alison Pamment <br> Keynote: Stuart Chalk (virtual): Digital Units of Measurement: The Digital SI and Interoperable Units <br> Keynote: Chris Little (virtual): OGC Temporal Domain Working Group Activities  |
+|  13:00 - 14:00  |  Lunch  |    |
+|  14:00 - 15:30  |  Uncertainty  |  Chair: Antonio Cofiño <br> Keynote: Charlotte Pascoe (virtual): Communicating (and understanding) uncertainty through the value chain <br> Keynote: David Huard (virtual): Metadata Pipelines in IPCC Assessment Reports  |
+|  15:30 - 16:00  |  Break  |    |
+|  16:00 - 17:30  |  Metadata for describing <br> statistical processing  |  Chair: Lars Bärring <br> Keynote: Christian Pagé: Metadata Challenges to properly address provenance in climate indices <br> Keynote: José Manuel Gutiérrez Llorente (virtual): Provenance for (complex) climate products: The experience from the IPCC Interactive Atlas <br> Lightning talk: Thomas Martin: Capturing provenance for ML  |
+|  CEST (UTC+2)  |  Wednesday, 18 September   |    |
+|   9:00 - 10:30  |  Metadata requirements for <br> new technologies  |  Chair: Daniel Lee <br> Keynote: Daniel Lee: Destination Earth Data Lake - Fueling Europe's Digital Twins <br> Lightning talk: Ag Stephens: Teaching Large Language Models to speak CF-NetCDF <br> Lightning talk: Jesús Fernández (virtual): Metadata requirements for high-resolution urban modelling  |
+|  10:30 - 11:00  |  Break  |    |
+|  11:00 - 12:30  |  Interoperability and <br> cross format issues  |  Chair: Ethan Davis <br> Keynote: Sebastién Villaume: Mapping between GRIB and CF-netCDF and ECMWF software development plans <br> Keynote: Martina Stockhause: CF in the context of developments in the Research Data Alliance (RDA): RDA recommendations and CF opportunities <br> Lightning talk: Guillermo Tesoro Calvo: NetCDF-Schema: A general schema for defining and validating netCDF products  |
+|  12:30 - 14:00  |  Lunch  |    |
+|  14:00 - 15:30  |  Cross-domain challenges <br> and opportunities  |  Chair: Ellie Fisher <br> Keynote: Luke Marsden: CF from the perspective of new discipline <br> Keynote: Martin Juckes (virtual): Challenges in the Expanding Scope of the CMIP Data Request <br> Lightning talk: Heiko Gölzer: Use of CF in the Ice Sheet Model Intercomparison Project (ISMIP)  |
+|  15:30 - 16:00  |  Break  |    |
+|  16:00 - 17:30  |  Synthesis session  |  Chair: David Hassell <br>   |
+|    |  End of first part  |    |
+|  CEST (UTC+2)  |  Thursday, 19 September  |    |
+|   9:00 - 10  |  Overview of CF news and  <br> introduction to hackathon sessions  |  Lars Bärring: Practical information for Part II <br> Jonathan Gregory: Brief introduction to the CF Committees <br> Jonathan Gregory: Review of CF-1.11 and preview of CF-1.12 <br> Jonathan Gregory: New Vocabulary and Discussions repos – discussions vs. issues <br> Ethan Davis: Brief introduction to the CF Governance Panel, and to the CF Information Management and Support Team <br> Ethan Davis: DOI for the website and the conventions document <br> Hackathon conveners: Brief introduction to hackathon themes  |
+|  10:00 - 12:30  |  Hackathon sessions including break  |  Daniel Lee: "Good housekeeping": website & conventions text <br> David Hassell: HEALPix grids in CF <br> Guillermo Tesoro Calvo: NetCDF-Schema discussion  |
+|  12:30 - 14:00  |  Lunch  |    |
+|  14:00 - 17:30  |  Hackathon sessions <br> including break  |  Erin Turnbull: Localized metadata & CF/ERDDAP <br> TBD: CF roadmap/white paper  |
+|  CEST (UTC+2)  |  Friday, 20 September  |    |
+|   9:30 - 12:30  |  Hackathon sessions<br> including break  |  Daniel Lee: BCP-14 <br> Alison Pamment: Standard names <br> Sadie Bartholomew: visualisations for standard names data <br> Ag Stephens: To create a high-quality dataset of CF-NetCDF file headers - to be used to train Machine Learning models  |
+|  12:30 - 14:00  |  Lunch  |    |
+|  14:00 - 15:00  |  Hackathon wrap-up  |    |
+|  15:00 - 15:30  |  Workshop wrap-up, including setting a deadline for release of CF-1.12  |    |
 
 #### About the presenters (part 1):
 

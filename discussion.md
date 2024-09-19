@@ -8,10 +8,10 @@ group: "navigation"
 
 To ask a question about how to use CF, to comment on any aspect of CF or to make a suggestion how CF could be changed or improved, please visit CF [GitHub organization Discussions][github_discussions]. There you can start a new discussion, contribute to any of the ongoing ones, and read the previous ones. Announcements about CF are made there as well.
 
-To keep up-to-date with announcements and other discussions, go to the [`discuss` repository][github_discuss] and enable email notifications from the <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye"><path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path>
-</svg><b>Watch</b> drop-down menu.
+To keep up-to-date with announcements and other discussions, go to the [`discuss` repository][github_discuss] and enable email notifications from the <svg aria-hidden="true" height="16" viewBox="-8 -8 8 8" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye"><path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path>
+</svg>&nbsp;<b>Watch</b> drop-down menu.
 
-<g-emoji alias="question" fallback-src="https://github.githubassets.com/assets/2753-004f026b5cbf.png">❓</g-emoji> Questions and answers about using CF: [all][github_discussions/categories/q-a-about-using-cf] [conventions][github_discussions/categories/q-a-about-using-cf/?discussions_q=label%3Aconventions]
+<g-emoji alias="question" fallback-src="https://github.githubassets.com/assets/2753-004f026b5cbf.png">❓</g-emoji>&nbsp;Questions and answers about using CF: [all][github_discussions_qa]&nbps;&bull;&nbsp;[conventions][github_discussions_qa_conventions]
 
 ## Proposals to change CF
  
@@ -45,6 +45,7 @@ Before the CF community migrated to GitHub, general and standard-name discussion
 * [CF Metadata Trac](Data/trac.html) (until July 2018)
 * [About CF Metadata Trac][about]
 
+
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues
 [github_conventions_change]: https://github.com/cf-convention/cf-conventions/issues?q=is:issue+label:"change agreed"
 [github_conventions_nochange]: https://github.com/cf-convention/cf-conventions/issues?q=is:issue+label:"agreement not to change"
@@ -62,4 +63,7 @@ Before the CF community migrated to GitHub, general and standard-name discussion
 [current]: https://cfeditor.ceda.ac.uk/proposals/1
 [vocab_editor]: https://cfeditor.ceda.ac.uk/proposals/1
 [github_issues]: https://guides.github.com/features/issues
+
 [github_discussions]: https://github.com/orgs/cf-convention/discussions
+[github_discussions_qa]: https://github.com/orgs/cf-convention/discussions/categories/q-a-about-using-cf
+[github_discussions_qa_conventions]: https://github.com/orgs/cf-convention/discussions/categories/q-a-about-using-cf/?discussions_q=label%3Aconventions

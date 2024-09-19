@@ -32,6 +32,13 @@ With the web version, providers can simply provide a link or upload their datase
 
 ## Free and Open Source Software Packages
 
+### CDO - Climate Data Operators
+
+[CDO](https://code.mpimet.mpg.de/projects/cdo) is a collection of command line operators to manipulate and analyse climate and NWP model data.
+It supports GRIB, netCDF, SERVICE, EXTRA and IEG data formats with more than 600 operators available.
+Many of the [operators](https://code.mpimet.mpg.de/projects/cdo/embedded/index.html) rely on the CF conventions to interpret file contents (e.g. grid projections, axis direction, etc.).
+CF-compliant output can be produced, especially via the `cmor` and `cmorlite` operators.
+
 ### cfdm - Python CF Data Model Package
 
 The [cfdm Python package](https://ncas-cms.github.io/cfdm) implements the [CF data model](https://doi.org/10.5194/gmd-10-4619-2017) for its internal data structures and so is able to process any CF-compliant dataset.

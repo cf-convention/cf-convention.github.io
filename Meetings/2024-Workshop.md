@@ -277,8 +277,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
       <td>&emsp;14:00 - 17:30&emsp;</td>
       <td>&emsp;Hackathon sessions&emsp;<br/>&emsp;including break&emsp;<br/>
       &emsp;<b>See <a href="https://drive.google.com/file/d/1qAoPLlF6nh7C_9kQZo19sIT6D-S7tA4Y/view?usp=drive_link">Google doc</a> for Zoom link to use for each hackathon</b>&emsp;</td>
-      <td>&emsp;<em>Erin Turnbull: Localized metadata & CF/ERDDAP</em>&emsp;<br/>
-        &emsp;<em>TBD: CF roadmap/white paper</em>&emsp;</td>
+      <td>&emsp;<em>TBD: CF roadmap/white paper</em>&emsp;</td>
     </tr>   
     <tr>
       <td/>

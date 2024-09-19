@@ -12,14 +12,13 @@ The CF convention includes a standard name table, which defines strings that ide
 
 ---
 
-**_Conventions_:** **Latest release** (1.11) [HTML][releasedhtml] [PDF][releasedpdf]
-<code>&nbsp;&bull;&nbsp;</code>
+[**_Ask a question_ about how to use CF**&nbsp;&nbsp;&#x2753;][github_askq]
+
+**_Read the conventions_:** **Latest release** (1.11) [HTML][releasedhtml] [PDF][releasedpdf]&nbsp;&bull;&nbsp;
 **Working draft** [HTML][workinghtml] [PDF][workingpdf]
 
-**_Vocabularies_:** [**Standard names**][currentnames]
-<code>&nbsp;&bull;&nbsp;</code>
-[**Area types**][areatypes]
-<code>&nbsp;&bull;&nbsp;</code>
+**_Check the latest vocabularies_:** [**Standard names**][currentnames]&nbsp;&bull;&nbsp;
+[**Area types**][areatypes]&nbsp;&bull;&nbsp;
 [**Standardized regions**][regions]
 
 ---
@@ -66,3 +65,4 @@ See also the links in the navigation bar at the top of this page.
 [github_website]: https://github.com/cf-convention/cf-convention.github.io/issues
 [cf_github]: https://github.com/cf-convention
 [github_discussions]: https://github.com/orgs/cf-convention/discussions
+[github_askq]: https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf

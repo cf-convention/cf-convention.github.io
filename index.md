@@ -12,9 +12,9 @@ The CF convention includes a standard name table, which defines strings that ide
 
 ---
 
-[**_Ask a question_ &#x2753; about how to use CF**][github_askq]
+[**_Ask a question_ &#x2753; about how to use CF**][github_askq]<br>
 **_Read the conventions_:** **Latest release** (1.11) [HTML][releasedhtml] [PDF][releasedpdf]&nbsp;&bull;&nbsp;
-**Working draft** [HTML][workinghtml] [PDF][workingpdf]
+**Working draft** [HTML][workinghtml] [PDF][workingpdf]<br>
 **_Check the latest vocabularies_:** [**Standard names**][currentnames]&nbsp;&bull;&nbsp;
 [**Area types**][areatypes]&nbsp;&bull;&nbsp;
 [**Standardized regions**][regions]

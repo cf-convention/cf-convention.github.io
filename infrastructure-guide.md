@@ -21,13 +21,13 @@ from the CF Website repo's GitHub Actions [page](https://github.com/cf-conventio
 for the build of that PR.
 
 Configuration files are:
-- [`check_jekyll_build.yml`](https://github.com/cf-convention/cf-convention.github.io/blob/master/.github/workflows/check_jekyll_build.yml)
-- [`Gemfile`](https://github.com/cf-convention/cf-convention.github.io/blob/master/Gemfile)
-- [`_config.yml`](https://github.com/cf-convention/cf-convention.github.io/blob/master/_config.yml)
+- [`check_jekyll_build.yml`](https://github.com/cf-convention/cf-convention.github.io/blob/main/.github/workflows/check_jekyll_build.yml)
+- [`Gemfile`](https://github.com/cf-convention/cf-convention.github.io/blob/main/Gemfile)
+- [`_config.yml`](https://github.com/cf-convention/cf-convention.github.io/blob/main/_config.yml)
 
 ## CF Conventions Document
 The CF Conventions Document is built from source documents (in AsciiDoc)
-on the `master` branch of the [CF Conventions repo](https://github.com/cf-convention/cf-conventions).
+on the `main` branch of the [CF Conventions repo](https://github.com/cf-convention/cf-conventions).
 
 ### Draft Version - Including all Accepted Proposals 
 For each commit to the `master` branch of the CF Conventions repo,
@@ -56,7 +56,7 @@ using Asciidoctor. The resulting HTML page and PDF document are available
 as artifacts in each build on the CF Conventions repo GitHub Actions [page](https://github.com/cf-convention/cf-conventions/actions).
 
 The configuration file for this GitHub Action is:
-- [`check_adoc_build.yml`](https://github.com/cf-convention/cf-conventions/blob/master/.github/workflows/check_adoc_build.yml)
+- [`check_adoc_build.yml`](https://github.com/cf-convention/cf-conventions/blob/main/.github/workflows/check_adoc_build.yml)
 
 ## CF Standard Names Table
 New CF Standard Names are proposed and discussed in issues on the

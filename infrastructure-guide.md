@@ -30,16 +30,18 @@ The CF Conventions Document is built from source documents (in AsciiDoc)
 on the `main` branch of the [CF Conventions repo](https://github.com/cf-convention/cf-conventions).
 
 ### Draft Version - Including all Accepted Proposals 
-For each commit to the `master` branch of the CF Conventions repo,
-[Travis](https://travis-ci.org) builds the CF Conventions document(s)
+For each commit to the `main` branch of the CF Conventions repo,
+a GitHub Workflow builds the CF Conventions document(s)
 using [Asciidoctor](https://asciidoctor.org/).
+
 The resulting HTML page and PDF document are pushed to the `gh-pages` branch
-and are served by GitHub Pages at http://cfconventions.org/cf-conventions.
-As only accepted proposals and fixes are pushed to master, the resulting documents
+and are served by GitHub Pages at http://cfconventions.org/cf-conventions .
+As only accepted proposals and fixes are pushed to `main`, the resulting documents
 are the draft version for the next release.
 
 ### Release Versions
 ??? Also done with Travis? Need to confirm this.
+??? This also done in the same GitHub action as the Draft version, but special conditions are met when the event it's a `release`
 
 Resulting HTML page and PDF document are pushed to the CF Website Repo
 at `/Data/cf-conventions/cf-convention-<version>`

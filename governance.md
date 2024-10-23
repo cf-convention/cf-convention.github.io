@@ -30,6 +30,7 @@ group: "navigation"
 * Martin Juckes (12 Apr 2026)
 * Daniel Lee (30 Sep 2024)
 * Roy Lowry (29 May 2025)
+* Luke Marsden (23 Oct 2029)
 * Seth McGinnis (29 Sep 2028)
 * Alison Pamment (secretary of Standard Names Committee) (29 May 2025)
 * Karl Taylor (29 May 2025)

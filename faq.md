@@ -78,7 +78,7 @@ So for example the CF Standard Names attempt to be as general and well-defined a
 
 ### How do I find previously asked questions about CF?
 
-The first way is to check this FAQ. If you can't find your question answered here, you could search for it in the [CF GitHub Discussions](cf-discussions], or in the archives listed on the [discussion page][cf-discussion-page].
+The first way is to check this FAQ. If you can't find your question answered here, you could search for it in the [CF GitHub Discussions][cf-discussions], or in the archives listed on the [discussion page][cf-discussion-page].
 
 ### How do I ask questions about CF?
 

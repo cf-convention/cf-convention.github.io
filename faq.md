@@ -88,7 +88,7 @@ CF community members usually respond within a day to simple questions, but allow
 
 ### How do I propose a change?
 
-A possible change to the CF standard may be suggested and debated initially as a [CF GitHub Discussion](cf-discussions]. When there is a definite proposal, it must be presented and agreed to in detail as a [CF conventions issue][cf-conventions-issues], where the explicit change being requested can be refined. See [How do I ask for a new standard name?](#how-do-i-ask-for-a-new-standard-name) about changes to the Standard Names list.
+A possible change to the CF standard may be suggested and debated initially as a [CF GitHub Discussion][cf-discussions]. When there is a definite proposal, it must be presented and agreed to in detail as a [CF conventions issue][cf-conventions-issues], where the explicit change being requested can be refined. See [How do I ask for a new standard name?](#how-do-i-ask-for-a-new-standard-name) about changes to the Standard Names list.
 
 ### What is the process for accepting a change to the CF convention?
 

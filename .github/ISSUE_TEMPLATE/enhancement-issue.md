@@ -1,6 +1,6 @@
 ---
 name: Enhancement proposal
-about: Use to propose enhancements to the website's look and feel, or to improve the presentation of its contents
+about: Use to propose enhancements to the website's content, presentation and appearance
 title: ''
 labels: enhancement
 assignees: ''

@@ -45,7 +45,7 @@ Many of the principles of CF operations follow the proposals at these [rules for
 ### How long has CF been around? Is it mature?
 
 Work began on CF in 2001 and [Version 1.0](/Data/cf-conventions/cf-conventions-1.0/build/cf-conventions.html) was released in October 2003.
-Now at Version 1.11, it has been used for tens of thousands of distinct netCDF products, has an active discussion list with hundreds of participants, and is a mature technical specification.
+Now at Version 1.11, it has been used for tens of thousands of distinct netCDF products, continues to develop through discussions involving hundreds of participants, and is a mature technical specification.
 Because it is community-supported and community-driven, turnaround on questions and changes can take a little time, but are generally thoroughly considered.
 
 ### How does CF relate to other conventions/specifications (especially COARDS and netCDF)?
@@ -78,20 +78,17 @@ So for example the CF Standard Names attempt to be as general and well-defined a
 
 ### How do I find previously asked questions about CF?
 
-The first way is to check this FAQ. If you can't find your question answered here, you could search for it in the [CF discussion GitHub repository][cf-discuss-issues] for questions asked since 2020, or for earlier questions in the [CF mailing list][mailing-list-archive].
+The first way is to check this FAQ. If you can't find your question answered here, you could search for it in the [CF GitHub Discussions](cf-discussions], or in the archives listed on the [discussion page][cf-discussion-page].
 
 ### How do I ask questions about CF?
 
 First, please see whether your question has already been answered (see [question above](#how-do-i-find-previously-asked-questions-about-cf)).
-Questions about the CF Convention, including its Standard Names list, may be asked by raising new `question` issues in the [CF discussion GitHub repository][cf-discuss-issues].
+Questions about the CF Convention, including its Standard Names list, may be asked by [starting a new Q&A discussion](https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf).
 CF community members usually respond within a day to simple questions, but allow more time if you have an advanced technical topic.
 
 ### How do I propose a change?
 
-Changes to the CF standard and the Standard Names are generally proposed first on the [CF discussion GitHub repository][cf-discuss-repo] as an [issue][cf-discuss-issues].
-See [How do I ask for a new standard name?](#how-do-i-ask-for-a-new-standard-name) to learn more about changes to the Standard Names list.
-
-A change to the CF standard itself may be discussed initially in an issue in the [CF discussion GitHub repository][cf-discuss-issues], but must be presented and agreed to in detail as a [CF conventions issue][cf-conventions-issues], where the explicit change being requested can be refined.
+A possible change to the CF standard may be suggested and debated initially as a [CF GitHub Discussion](cf-discussions]. When there is a definite proposal, it must be presented and agreed to in detail as a [CF conventions issue][cf-conventions-issues], where the explicit change being requested can be refined. See [How do I ask for a new standard name?](#how-do-i-ask-for-a-new-standard-name) about changes to the Standard Names list.
 
 ### What is the process for accepting a change to the CF convention?
 
@@ -343,13 +340,13 @@ If you can't find any matches, send an email to the CF-Metadata list describing 
 
 ### How do I ask for a new standard name?
 
-You ask for a new standard name by raising a new `standard name` issue in the [CF discussion GitHub repository][cf-discuss-issues]. In your issue, specify the following for each standard name you want to request:
+You ask for a new standard name by raising a new `standard name` issue in the [CF vocabularies repository][cf-vocab-issues]. In your issue, specify the following for each standard name you want to request:
 
 * its name,
 * its description, and
 * its canonical units.
 
-Use other examples from the Standard Names table to model your request, or review past requests in the mail list archives.
+Use the [standard names guidelines](http://cfconventions.org/Data/cf-standard-names/docs/guidelines.html), examples from the Standard Names table, and previous proposals to model your request.
 
 ### How detailed should a standard name be?
 
@@ -592,3 +589,6 @@ However, as noted above, this should first be agreed with the person overseeing 
 [cf-website-issues]: https://github.com/cf-convention/cf-convention.github.io/issues
 [cf-website-pulls]: https://github.com/cf-convention/cf-convention.github.io/pulls
 [mailing-list-archive]: https://cfconventions.org/mailing-list-archive/Data
+[cf-discussions]: https://github.com/orgs/cf-convention/discussions
+[cf-discussion-page]: http://cfconventions.org/discussion.html
+[cf-vocab-issues]: https://github.com/cf-convention/vocabularies/issues

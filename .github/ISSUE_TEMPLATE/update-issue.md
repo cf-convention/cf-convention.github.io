@@ -1,6 +1,6 @@
 ---
 name: Update
-about: Use to post updates to the website
+about: Use to make updates to the website in accordance with changes that have already been agreed
 title: ''
 labels: update
 assignees: ''

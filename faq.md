@@ -86,21 +86,19 @@ First, please see whether your question has already been answered (see [question
 Questions about the CF Convention, including its Standard Names list, may be asked by [starting a new Q&A discussion](https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf).
 CF community members usually respond within a day to simple questions, but allow more time if you have an advanced technical topic.
 
-### How do I propose a change?
+### How do I propose a change to the CF convention?
 
-A possible change to the CF standard may be suggested and debated initially as a [CF GitHub Discussion][cf-discussions]. When there is a definite proposal, it must be presented and agreed to in detail as a [CF conventions issue][cf-conventions-issues], where the explicit change being requested can be refined. See [How do I ask for a new standard name?](#how-do-i-ask-for-a-new-standard-name) about changes to the Standard Names list.
-
-### What is the process for accepting a change to the CF convention?
-
-The community discusses requests for changes via the mail list and trac site, and may ask questions or recommend changes.
-If no one raises objections or concerns about the change (modified as needed to address any issues) for the period of time required for that document, it is considered accepted.
-The moderators of the list typically make a final statement of acceptance once that stage has been reached.
-
+A possible change to the CF standard may be suggested and debated initially as a [CF GitHub Discussion][cf-discussions], though this is not mandatory.
+Once there is a definite proposal, it must be presented and agreed in detail as a new `enhancement` [issue in the CF conventions repository][cf-conventions-issues].
+In the issue, anyone may ask questions or make suggestions, and the proposed change to the text may be developed and refined, until consensus is achieved.
 More detailed information can be found in the [Rules for CF Conventions Changes](rules.md).
 
-### What is the process for fixing errors?
+See [How do I ask for a new standard name?](#how-do-i-ask-for-a-new-standard-name) about changes to the Standard Names list.
 
-Errors have a simpler workflow, but still use a community process, as described in the [Rules for Correcting Errors in CF Documents](errors.md).
+### What is the process for fixing errors in the CF convention?
+
+A change to correct a typo or mistake in the wording or to clarify the text (without changing its intended meaning) may be proposed as a new `defect` [issue in the CF conventions repository][cf-conventions-issues].
+The workflow is described in the [Rules for Correcting Errors in CF Documents](errors.md), and is simpler than for enhancements.
 
 ### When are changes added to the CF Convention?
 

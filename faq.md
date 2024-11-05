@@ -45,7 +45,7 @@ Many of the principles of CF operations follow the proposals at these [rules for
 ### How long has CF been around? Is it mature?
 
 Work began on CF in 2001 and [Version 1.0](/Data/cf-conventions/cf-conventions-1.0/build/cf-conventions.html) was released in October 2003.
-Now at Version 1.11, it has been used for tens of thousands of distinct netCDF products, continues to develop through discussions involving hundreds of participants, and is a mature technical specification.
+Now at Version 1.11, it has been used for tens of thousands of distinct netCDF products, continues to develop through [discussions][cf-discussion-page] involving hundreds of participants, and is a mature technical specification.
 Because it is community-supported and community-driven, turnaround on questions and changes can take a little time, but are generally thoroughly considered.
 
 ### How does CF relate to other conventions/specifications (especially COARDS and netCDF)?

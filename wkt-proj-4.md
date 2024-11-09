@@ -24,28 +24,28 @@ The various representations listed are:
 ### Table 1 - CF Grid Mapping Attributes with numerical values
 
 | **CF Grid Mapping Attribute**  | **Corresponding WKT Syntax** (1) |
-| azimuth_of_central_line | PARAMETER["Azimuth", __value__]
-| earth_radius  | SPHEROID["__reference_ellipsoid_name__", __semi_major_axis__, 0.0, ...] 
-| false_easting  | PARAMETER["False easting", __value__] 
-| false_northing  | PARAMETER["False northing", __value__] 
+| azimuth_of_central_line | PARAMETER["Azimuth", *value*]
+| earth_radius  | SPHEROID["*reference_ellipsoid_name*", *semi_major_axis*, 0.0, ...] 
+| false_easting  | PARAMETER["False easting", *value*] 
+| false_northing  | PARAMETER["False northing", *value*] 
 | grid_mapping_name  | no known equivalent 
 | grid_north_pole_latitude  | no known equivalent 
 | grid_north_pole_longitude  | no known equivalent 
-| inverse_flattening  | SPHEROID["__reference_ellipsoid_name__", __semi_major_axis__, __inverse_flattening__, ...] 
-| latitude_of_projection_origin  | PARAMETER["Latitude of natural origin", __value__] 
-| longitude_of_central_meridian  | PARAMETER["Longitude of natural origin", __value__] 
-| longitude_of_prime_meridian  | PRIMEM["__prime_meridian_name__", __longitude_of_prime_meridian__, ...] 
-| longitude_of_projection_origin  | PARAMETER["Longitude of natural origin", __value__] 
+| inverse_flattening  | SPHEROID["*reference_ellipsoid_name*", *semi_major_axis*, *inverse_flattening*, ...] 
+| latitude_of_projection_origin  | PARAMETER["Latitude of natural origin", *value*] 
+| longitude_of_central_meridian  | PARAMETER["Longitude of natural origin", *value*] 
+| longitude_of_prime_meridian  | PRIMEM["*prime_meridian_name*", *longitude_of_prime_meridian*, ...] 
+| longitude_of_projection_origin  | PARAMETER["Longitude of natural origin", *value*] 
 | north_pole_grid_longitude  | no known equivalent 
-| perspective_point_height  | PARAMETER["Viewpoint height", __value__] 
-| scale_factor_at_central_meridian  | PARAMETER["Scale factor at natural origin", __value__] 
-| scale_factor_at_projection_origin  | PARAMETER["Scale factor at natural origin", __value__] 
-| semi_major_axis  | SPHEROID["__reference_ellipsoid_name__", __semi_major_axis__, __inverse_flattening__, ...] 
+| perspective_point_height  | PARAMETER["Viewpoint height", *value*] 
+| scale_factor_at_central_meridian  | PARAMETER["Scale factor at natural origin", *value*] 
+| scale_factor_at_projection_origin  | PARAMETER["Scale factor at natural origin", *value*] 
+| semi_major_axis  | SPHEROID["*reference_ellipsoid_name*", *semi_major_axis*, *inverse_flattening*, ...] 
 | semi_minor_axis  | no direct equivalent, the SPHEROID element is used to define ellipsoid geometry 
-| standard_parallel (one parallel)  | PARAMETER["Latitude of standard parallel", __value__] 
-| standard_parallel (two parallels)  | PARAMETER["Latitude of 1st standard parallel", __value__], PARAMETER["Latitude of 2nd standard parallel", __value__] 
-| straight_vertical_longitude_from_pole  | PARAMETER["Longitude of origin", __value__] 
-| towgs84  | GEOGCS["__name__", DATUM["__name__", TOWGS84[__7 params__] ]  | +towgs84 
+| standard_parallel (one parallel)  | PARAMETER["Latitude of standard parallel", *value*] 
+| standard_parallel (two parallels)  | PARAMETER["Latitude of 1st standard parallel", *value*], PARAMETER["Latitude of 2nd standard parallel", *value*] 
+| straight_vertical_longitude_from_pole  | PARAMETER["Longitude of origin", *value*] 
+| towgs84  | GEOGCS["*name*", DATUM["*name*", TOWGS84[*7 params*] ]  | +towgs84 
 {: class="table table-striped"}
 
 ---
@@ -56,13 +56,13 @@ The various representations listed are:
 
 | **CF Grid Mapping Attribute**  | **Corresponding WKT Syntax** (1)  | **PROJ.4 Syntax** |  
 | fixed_angle_axis | no known equivalent | specify the other axis with +sweep
-| geographic_crs_name  | GEOGCS["__geographic_coordinate_system_name__", ...]  | N/A
-| geoid_name | VERT_DATUM["__vertical_datum_name__", ...] | N/A
-| geopotential_datum_name  | VERT_DATUM["__vertical_datum_name__", ...] | N/A 
-| horizontal_datum_name  | GEOGCS["__name__", DATUM["__horizontal_datum_name__", ...] ]  | +datum 
-| prime_meridian_name  | GEOGCS["__name__",PRIMEM["__prime_meridian_name__",__value__]  | +pm 
-| projected_crs_name  | PROJCS["__projected_coordinate_system_name__", ...]  | N/A 
-| reference_ellipsoid_name  | GEOGCS["__name__", DATUM["__name__", SPHEROID["__reference_ellipsoid_name__", ...] ] ]  | +ellps
+| geographic_crs_name  | GEOGCS["*geographic_coordinate_system_name*", ...]  | N/A
+| geoid_name | VERT_DATUM["*vertical_datum_name*", ...] | N/A
+| geopotential_datum_name  | VERT_DATUM["*vertical_datum_name*", ...] | N/A 
+| horizontal_datum_name  | GEOGCS["*name*", DATUM["*horizontal_datum_name*", ...] ]  | +datum 
+| prime_meridian_name  | GEOGCS["*name*",PRIMEM["*prime_meridian_name*",*value*]  | +pm 
+| projected_crs_name  | PROJCS["*projected_coordinate_system_name*", ...]  | N/A 
+| reference_ellipsoid_name  | GEOGCS["*name*", DATUM["*name*", SPHEROID["*reference_ellipsoid_name*", ...] ] ]  | +ellps
 | sweep_angle_axis | no known equivalent | +sweep
 {: class="table table-striped"}
 

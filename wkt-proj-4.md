@@ -2,7 +2,7 @@
 layout: default
 title: WKT/PROJ.4
 ---
-# CF &rlhar; WKT/PROJ.4 translation
+# CF &amp;rlhar; WKT/PROJ.4 translation
 
 ## Mapping from CF Grid Mapping Attributes to CRS WKT Elements
 

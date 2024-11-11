@@ -485,7 +485,7 @@ The canonical units associated with each standard name are usually the SI units 
                 <th width="76%" class="table-header">Standard Name</th>
                 <th width="8%" class="table-header">Canonical Units</th>
                 <th width="8%" class="table-header">AMIP</th>
-                <th width="8%" class="table-header">GRIB</th>
+                <th width="8%" class="table-header">GRIB</th>		
                 <xsl:apply-templates select="entry"/>
             </table>
      </body>            

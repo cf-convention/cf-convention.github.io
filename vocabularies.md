@@ -9,12 +9,13 @@ group: "navigation"
 ### Quick links to current version
 [HTML](Data/cf-standard-names/current/build/cf-standard-name-table.html) &nbsp;
 [XML](Data/cf-standard-names/current/src/cf-standard-name-table.xml) &nbsp;
-[KWIC_Index](Data/cf-standard-names/current/build/kwic_index_for_cf_standard_names.html) &nbsp;
+# [KWIC_Index](Data/cf-standard-names/current/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [NERC Vocabulary Server](https://vocab.nerc.ac.uk/collection/P07/current/) &nbsp;
 
 ### HTML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v87](Data/cf-standard-names/87/build/cf-standard-name-table.html) &nbsp;
 [v86](Data/cf-standard-names/86/build/cf-standard-name-table.html) &nbsp;
 [v85](Data/cf-standard-names/85/build/cf-standard-name-table.html) &nbsp;
 [v84](Data/cf-standard-names/84/build/cf-standard-name-table.html) &nbsp;
@@ -41,7 +42,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 [v63](Data/cf-standard-names/63/build/cf-standard-name-table.html) &nbsp;
 [v62](Data/cf-standard-names/62/build/cf-standard-name-table.html) &nbsp;
 [v61](Data/cf-standard-names/61/build/cf-standard-name-table.html) &nbsp;
-[v50](Data/cf-standard-names/50/build/cf-standard-name-table.html) &nbsp;
+[v60](Data/cf-standard-names/60/build/cf-standard-name-table.html) &nbsp;
 [v59](Data/cf-standard-names/59/build/cf-standard-name-table.html) &nbsp;
 [v58](Data/cf-standard-names/58/build/cf-standard-name-table.html) &nbsp;
 [v57](Data/cf-standard-names/57/build/cf-standard-name-table.html) &nbsp;
@@ -104,6 +105,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 ### XML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v87](Data/cf-standard-names/87/src/cf-standard-name-table.xml) &nbsp;
 [v86](Data/cf-standard-names/86/src/cf-standard-name-table.xml) &nbsp;
 [v85](Data/cf-standard-names/85/src/cf-standard-name-table.xml) &nbsp;
 [v84](Data/cf-standard-names/84/src/cf-standard-name-table.xml) &nbsp;
@@ -130,7 +132,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 [v63](Data/cf-standard-names/63/src/cf-standard-name-table.xml) &nbsp;
 [v62](Data/cf-standard-names/62/src/cf-standard-name-table.xml) &nbsp;
 [v61](Data/cf-standard-names/61/src/cf-standard-name-table.xml) &nbsp;
-[v50](Data/cf-standard-names/50/src/cf-standard-name-table.xml) &nbsp;
+[v60](Data/cf-standard-names/60/src/cf-standard-name-table.xml) &nbsp;
 [v59](Data/cf-standard-names/59/src/cf-standard-name-table.xml) &nbsp;
 [v58](Data/cf-standard-names/58/src/cf-standard-name-table.xml) &nbsp;
 [v57](Data/cf-standard-names/57/src/cf-standard-name-table.xml) &nbsp;
@@ -256,18 +258,20 @@ click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those 
 [v2](Data/area-type-table/2/src/area-type-table.xml) &nbsp;
 [v1](Data/area-type-table/1/src/area-type-table.xml) &nbsp;
 
-## Standardized Region List (v4, 18 December 2018)
-[HTML](Data/standardized-region-list/standardized-region-list.html) &nbsp;
-[XML](Data/standardized-region-list/standardized-region-list.xml) &nbsp;
+## Standardized Region List (v5, 12 November 2024)
+[HTML](Data/standardized-region-list/standardized-region-list.current.html) &nbsp;
+[XML](Data/standardized-region-list/standardized-region-list.current.xml) &nbsp;
 Old Format [HTML](Data/cf-standard-names/docs/standardized-region-names.html) &nbsp;
 [NERC Vocabulary Server](https://vocab.nerc.ac.uk/collection/P30/current/) &nbsp;
 
 ### Previous Versions (HTML)
+[v4](Data/standardized-region-list/standardized-region-list.4.html) &nbsp;
 [v3](Data/standardized-region-list/standardized-region-list.3.html) &nbsp;
 [v2](Data/standardized-region-list/standardized-region-list.2.html) &nbsp;
 [v1](Data/standardized-region-list/standardized-region-list.1.html) &nbsp;
 
 ### Previous Versions (XML)
+[v4](Data/standardized-region-list/standardized-region-list.4.xml) &nbsp;
 [v3](Data/standardized-region-list/standardized-region-list.3.xml) &nbsp;
 [v2](Data/standardized-region-list/standardized-region-list.2.xml) &nbsp;
 [v1](Data/standardized-region-list/standardized-region-list.1.xml) &nbsp;

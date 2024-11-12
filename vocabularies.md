@@ -9,7 +9,6 @@ group: "navigation"
 ### Quick links to current version
 [HTML](Data/cf-standard-names/current/build/cf-standard-name-table.html) &nbsp;
 [XML](Data/cf-standard-names/current/src/cf-standard-name-table.xml) &nbsp;
-# [KWIC_Index](Data/cf-standard-names/current/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [NERC Vocabulary Server](https://vocab.nerc.ac.uk/collection/P07/current/) &nbsp;
 
 ### HTML versions (most current first)

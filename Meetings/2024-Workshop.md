@@ -5,20 +5,19 @@ title: 2024 CF Workshop
 
 # 2024 CF Workshop
 
-The 2024 CF workshop will be held at SMHI, Norrköping, Sweden (and online) from Tuesday 17th to Friday 20th September 2024.
-Travel information and a link to the registration form is available on the [SMHI CF Workshop page](https://www.smhi.se/en/research/research-departments/climate-research-at-the-rossby-centre/cf-community-workshop-2024-1.207332). 
+The 2024 CF workshop was held at SMHI, Norrköping, Sweden (and online) from Tuesday 17th to Friday 20th September 2024.
+Further practical information about the workshop from the host institution can be found at the [SMHI CF Workshop page](https://www.smhi.se/en/research/research-departments/climate-research-at-the-rossby-centre/cf-community-workshop-2024-1.207332). 
 
-The meeting will be divided into two parts, and participants may choose to attend the first two days of the programme, the last two days, or the whole meeting, according to their own interests and availability:
+The meeting was divided into two parts:
 
  - **Part 1 (17-18 September 2024): Engaging the cross-domain CF community to gather user needs and develop a high-level CF roadmap.**
  - **Part 2 (19-20 September 2024): Detailed CF development including hackathon sessions.**
 
-The plan for Part 1 of the workshop is to invite speakers from a broad range of CF users and potential users, for example, representatives of data producers and data archives in the earth system sciences, the health and biological research communities.
+During Part I, speakers were invited from a broad range of CF users and potential users, for example, representatives of data producers and data archives in the earth system sciences, the health and biological research communities. Part 2 followed the familiar format of our usual annual meeting.
 
-The aim is to maximise the usefulness of CF to a wide range of communities, encourage others to join and contribute to the CF community effort, and enhance interoperability with other widely used standards.
-The desired outcome is a publication of the proceedings, including a roadmap for development of the CF conventions and vocabularies over the next 1 to 5 years.
+The aim of the workshop was to maximise the usefulness of CF to a wide range of communities, encourage others to join and contribute to the CF community effort, and enhance interoperability with other widely used standards.
+The desired outcome following the workshop will be a publication of the proceedings, including a roadmap for development of the CF conventions and vocabularies over the next 1 to 5 years.
 
-Part 2 will follow the familiar format of our usual annual meeting.
 
 ## Documents
 
@@ -26,12 +25,11 @@ All the presentations and notes for the plenary and breakout sessions will be av
 
 ----------------------------------------------------------------------------------------
 
-## Preliminary Agenda
+## Agenda
 
-In the first part each session will begin with 1-2 short (10 - 15 min each) keynote presentations to set the scene for the conversation. In addition, there may be 1-2 brief "lightning talks" (max 5 min each) to highlight a particular perspective relevant to the conversation.
+In the first part each session began with 1-2 short (10 - 15 min each) keynote presentations to set the scene for the conversation. In addition, 1-2 brief "lightning talks" (5 min each) were given to highlight a particular perspective relevant to the conversation.
 
-For the second part the overall aim is to have a dynamic and flexible agenda that includes a mixture of breakout group discussions and hands-on hackathons. There will be an introductory session to give an overview of outstanding issues where hackathon conveners should be prepared to give a brief introduction of each hackathon theme. 
- 
+For the second part the agenda included a mixture of breakout group discussions and hands-on hackathons.
 
 <table border="1px" id="preliminary-agenda">
   <thead>
@@ -356,15 +354,7 @@ For the second part the overall aim is to have a dynamic and flexible agenda tha
 * To create a high-quality dataset of CF-NetCDF file headers - to be used to train Machine Learning models (led by Ag Stephens)
 
 
-**There is flexibility to form additional ad hoc hackathon groups according to participants' interest and preference (which is encouraged by the organisers).**
-
-
-
-
 ----------------------------------------------------------------------------------------
-
-## CF Code of Conduct
-Participants should review the [CF Code of Conduct][CoC].
 
 ## The organising committee
 * Alison Pamment, UKRI/NCAS/Centre for Environmental Data Analysis, UK 

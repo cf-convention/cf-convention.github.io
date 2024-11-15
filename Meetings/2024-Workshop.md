@@ -23,6 +23,8 @@ The desired outcome following the workshop will be a publication of the proceedi
 
 All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder][DOC].
 
+The presentations from speakers in Part I are available on the [CF Metadata Conventions Zenodo repository][ZENODO].
+
 ----------------------------------------------------------------------------------------
 
 ## Agenda
@@ -342,17 +344,13 @@ For the second part the agenda included a mixture of breakout group discussions 
 
  
 #### Hackathon topics (part 2)
-
-* Localised metadata & CF/ERDDAP [link][I528] (led by Erin Turnbull)
 * BCP-14 [link][I258] (led by Daniel Lee)
 * HEALPix grids in CF [link][I433] (led by David Hassell)
 * “Good housekeeping!” - website & conventions text (led by Daniel Lee)
 * Standard names (led by Alison Pamment)
 * Visualisations for standard names data [link][I110] (led by Sadie Bartholomew)
-* Roadmap / white paper discussion (open)
-* NetCDF-Schema discussion (led by Guillermo Tesoro Calvo)
 * To create a high-quality dataset of CF-NetCDF file headers - to be used to train Machine Learning models (led by Ag Stephens)
-
+* Roadmap / white paper discussion (open)
 
 ----------------------------------------------------------------------------------------
 
@@ -372,5 +370,5 @@ For the second part the agenda included a mixture of breakout group discussions 
 [I433]: https://github.com/cf-convention/cf-conventions/issues/433
 [I110]: https://github.com/cf-convention/cf-convention.github.io/issues/110
 [DOC]: https://drive.google.com/drive/folders/1Z3eXgRsUYu6aXxyn5MSUraj5DXlQQYeQ
-
+[ZENODO]: https://zenodo.org/communities/cfconventions/records
 

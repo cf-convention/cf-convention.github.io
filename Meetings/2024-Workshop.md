@@ -18,8 +18,8 @@ During Part I, speakers were invited from a broad range of CF users and potentia
 The aim of the workshop was to maximise the usefulness of CF to a wide range of communities, encourage others to join and contribute to the CF community effort, and enhance interoperability with other widely used standards.
 The desired outcome following the workshop will be a publication of the proceedings, including a roadmap for development of the CF conventions and vocabularies over the next 1 to 5 years.
 
-![Group photo outside SMHI](../Data/media/images/CF2024_group2.JPG)
-![Group photo outside dinner venue](../Data/media/images/CF2024_group1.JPG)
+<img src=../Data/media/images/CF2024_group2.JPG alt="Group photo outside SMHI" width="600" height="400">
+<img src=../Data/media/images/CF2024_group1.JPG alt="Group photo outside dinner venue" width="600" height="400">
 
 ## Attendees
 

@@ -361,6 +361,7 @@ For the second part the agenda included a mixture of breakout group discussions 
 * “Good housekeeping!” - website & conventions text (led by Daniel Lee)
 * Standard names (led by Alison Pamment)
 * Visualisations for standard names data [link][I110] (led by Sadie Bartholomew)
+* NetCDF-Schema discussion (led by Guillermo Tesoro Calvo)
 * To create a high-quality dataset of CF-NetCDF file headers - to be used to train Machine Learning models (led by Ag Stephens)
 * Roadmap / white paper discussion (open)
 

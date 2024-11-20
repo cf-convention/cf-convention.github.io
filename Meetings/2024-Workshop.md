@@ -18,8 +18,17 @@ During Part I, speakers were invited from a broad range of CF users and potentia
 The aim of the workshop was to maximise the usefulness of CF to a wide range of communities, encourage others to join and contribute to the CF community effort, and enhance interoperability with other widely used standards.
 The desired outcome following the workshop will be a publication of the proceedings, including a roadmap for development of the CF conventions and vocabularies over the next 1 to 5 years.
 
-![Group photo outside SMHI](Data/media/images/CF2024_group2.JPG)
-![Group photo outside dinner venue](Data/media/images/CF2024_group1.JPG)
+![Group photo outside SMHI](../Data/media/images/CF2024_group2.JPG)
+![Group photo outside dinner venue](../Data/media/images/CF2024_group1.JPG)
+
+## Attendees
+
+A total of 78 participants registered for the workshop, with around 25-30 of these attending on-site. A breakdown of this information is shown in the following graph;
+'Europe' refers to those representing a European organisation such as ECMWF, EUMETSAT or EMODnet.
+
+![Attendee summary table by country](../Data/media/images/2024_workshop_attendees_barchart.png)
+
+A range of organisations were represented within the workshop: the affiliations of the presenters can be found underneath the agenda. 
 
 
 ## Documents

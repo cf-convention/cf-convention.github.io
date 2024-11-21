@@ -210,7 +210,8 @@ For the second part the agenda included a mixture of breakout group discussions 
         &emsp;Chair: Ethan Davis&emsp;<br/>
         &emsp;<em>Keynote: Sebastién Villaume: Mapping between GRIB and CF-netCDF and ECMWF software development plans</em>&emsp;<br/>
         &emsp;<em>Keynote: Martina Stockhause: CF in the context of developments in the Research Data Alliance (RDA): RDA recommendations and CF opportunities</em>&emsp;<br/>
-        &emsp;<em>Lightning talk: Guillermo Tesoro Calvo: NetCDF-Schema: A general schema for defining and validating netCDF products</em>&emsp;
+        &emsp;<em>Lightning talk: Guillermo Tesoro Calvo: NetCDF-Schema: A general schema for defining and validating netCDF products</em>&emsp;<br/>
+        &emsp;<em>Lightning talk: Ethan Davis: Zarr and GeoZarr</em>&emsp;
       </td>
     </tr>
     <tr>

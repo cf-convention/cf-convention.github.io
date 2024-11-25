@@ -20,7 +20,7 @@ The desired outcome following the workshop will be a publication of the proceedi
 
 <img src=../Data/media/images/CF2024_group2.JPG alt="Group photo outside SMHI" width="377px" height="252px">
 
-![](../Data/media/images/CF2024_group2.JPG | width=400px)
+![](../Data/media/images/CF2024_group2.JPG =250x250)
 
 <img src=../Data/media/images/CF2024_group1.JPG alt="Group photo outside dinner venue" width="70%" height="70%">
 

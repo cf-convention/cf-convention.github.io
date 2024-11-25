@@ -19,6 +19,9 @@ The aim of the workshop was to maximise the usefulness of CF to a wide range of 
 The desired outcome following the workshop will be a publication of the proceedings, including a roadmap for development of the CF conventions and vocabularies over the next 1 to 5 years.
 
 <img src=../Data/media/images/CF2024_group2.JPG alt="Group photo outside SMHI" width="377px" height="252px">
+
+![](../Data/media/images/CF2024_group2.JPG | width=400)
+
 <img src=../Data/media/images/CF2024_group1.JPG alt="Group photo outside dinner venue" width="70%" height="70%">
 
 ## Attendees

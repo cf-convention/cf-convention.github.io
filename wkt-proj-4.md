@@ -2,74 +2,77 @@
 layout: default
 title: WKT/PROJ.4
 ---
-# CF-1.6 <--> WKT/PROJ.4 translation
+# CF &#x021cc; WKT/PROJ.4 translation
 
 ## Mapping from CF Grid Mapping Attributes to CRS WKT Elements
 
-These __provisional__ mappings have been compiled to support, among other things, CF proposals [69](https://cfconventions.org/Data/Trac-tickets/69.html) and [80](https://cfconventions.org/Data/Trac-tickets/80.html); which have been incorporated in the CF Conventions document version 1.7.
-If you spot any errors or omissions, please email the authors (Phil Bentley and Etienne Tourigny) or the CF mailing list, or else update this wiki page.
+These mappings were compiled by Etienne Tourigny and Phil Bentley to support CF trac tickets [69](https://cfconventions.org/Data/Trac-tickets/69.html) and [80](https://cfconventions.org/Data/Trac-tickets/80.html), which were subsequently implemented in CF version 1.7.
+The [web page](https://cfconventions.org/wkt-proj-4.html) you are reading is an edited version of the [GitHub wiki page](https://github.com/cf-convention/cf-conventions/wiki/Mapping-from-CF-Grid-Mapping-Attributes-to-CRS-WKT-Elements), itself a copy from the obsolete trac wiki.
 
-In Tables 1 and 2 the names of WKT PARAMETER elements follow the names of coordinate operation parameters
-defined in the [EPSG geodetic parameter registry](https://epsg.org).
-
-The following tables list translations of projection parameter names between CF and various other representations (such as OGC WKT, EPSG and PROJ.4).
+In Tables 1 and 2 the names of WKT PARAMETER elements follow the names of coordinate operation parameters defined in the [EPSG geodetic parameter registry](https://epsg.org).
+The later tables list translations of projection parameter names between CF and various other representations (such as OGC WKT, EPSG and PROJ.4).
 The information was obtained from various sources.
 
 The various representations listed are:
 
-*   **CF** The CF-1.6 (and possibly CF-1.7) parameter names
+*   **CF** The CF grid mapping attribute names, of which the definitive list is [Table F.1 of the CF convention](https://cfconventions.org/cf-conventions/cf-conventions.html#table-grid-mapping-attributes)
 *   **OGC WKT** The names following OGC WKT specification (used by GDAL/OGR and CadCorp(?))
 *   **PROJ.4** The names used in the PROJ.4 software (https://proj.org)
 *   **EPSG** The names and codes used in the EPSG Geodetic Parameter Dataset (https://epsg.org)
 *   **GeoTIFF ID** The names used in the GeoTIFF raster format (https://trac.osgeo.org/geotiff)
 
-The following files are provided to list the various possible Datum, Ellipsoid and Prime Meridian names (in support of CF trac ticket [80](https://cfconventions.org/Data/Trac-tickets/80.html))
-
-*   horiz_datum.csv - horizontal datum parameters for use as reference for CF-1.7 (source: GDAL/OGR, modified by Etienne Tourigny)
-*   ellipsoid.csv - Ellipsoid parameters from the EPSG database (source: GDAL/OGR)
-*   prime_meridian.csv - Prime Meridian parameters from the EPSG database (source: GDAL/OGR)
-
-### Table 1 - Existing (CF-1.6) CF Grid Mapping Attributes
+### Table 1 - CF Grid Mapping Attributes with numerical values
 
 | **CF Grid Mapping Attribute**  | **Corresponding WKT Syntax** (1) |
-| earth_radius  | SPHEROID["<reference_ellipsoid_name>", <semi_major_axis>, 0.0, ...] 
-| false_easting  | PARAMETER["False easting", <value>] 
-| false_northing  | PARAMETER["False northing", <value>] 
+| azimuth_of_central_line | PARAMETER["Azimuth", *value*]
+| earth_radius  | SPHEROID["*reference_ellipsoid_name*", *semi_major_axis*, 0.0, ...] 
+| false_easting  | PARAMETER["False easting", *value*] 
+| false_northing  | PARAMETER["False northing", *value*] 
 | grid_mapping_name  | no known equivalent 
 | grid_north_pole_latitude  | no known equivalent 
 | grid_north_pole_longitude  | no known equivalent 
-| inverse_flattening  | SPHEROID["<reference_ellipsoid_name>", <semi_major_axis>, <inverse_flattening>, ...] 
-| latitude_of_projection_origin  | PARAMETER["Latitude of natural origin", <value>] 
-| longitude_of_central_meridian  | PARAMETER["Longitude of natural origin", <value>] 
-| longitude_of_prime_meridian  | PRIMEM["<prime_meridian_name>", <longitude_of_prime_meridian>, ...] 
-| longitude_of_projection_origin  | PARAMETER["Longitude of natural origin", <value>] 
+| inverse_flattening  | SPHEROID["*reference_ellipsoid_name*", *semi_major_axis*, *inverse_flattening*, ...] 
+| latitude_of_projection_origin  | PARAMETER["Latitude of natural origin", *value*] 
+| longitude_of_central_meridian  | PARAMETER["Longitude of natural origin", *value*] 
+| longitude_of_prime_meridian  | PRIMEM["*prime_meridian_name*", *longitude_of_prime_meridian*, ...] 
+| longitude_of_projection_origin  | PARAMETER["Longitude of natural origin", *value*] 
 | north_pole_grid_longitude  | no known equivalent 
-| perspective_point_height  | PARAMETER["Viewpoint height", <value>] 
-| scale_factor_at_central_meridian  | PARAMETER["Scale factor at natural origin", <value>] 
-| scale_factor_at_projection_origin  | PARAMETER["Scale factor at natural origin", <value>] 
-| semi_major_axis  | SPHEROID["<reference_ellipsoid_name>", <semi_major_axis>, <inverse_flattening>, ...] 
+| perspective_point_height  | PARAMETER["Viewpoint height", *value*] 
+| scale_factor_at_central_meridian  | PARAMETER["Scale factor at natural origin", *value*] 
+| scale_factor_at_projection_origin  | PARAMETER["Scale factor at natural origin", *value*] 
+| semi_major_axis  | SPHEROID["*reference_ellipsoid_name*", *semi_major_axis*, *inverse_flattening*, ...] 
 | semi_minor_axis  | no direct equivalent, the SPHEROID element is used to define ellipsoid geometry 
-| standard_parallel (one parallel)  | PARAMETER["Latitude of standard parallel", <value>] 
-| standard_parallel (two parallels)  | PARAMETER["Latitude of 1st standard parallel", <value>], PARAMETER["Latitude of 2nd standard parallel", <value>] 
-| straight_vertical_longitude_from_pole  | PARAMETER["Longitude of origin", <value>] 
+| standard_parallel (one parallel)  | PARAMETER["Latitude of standard parallel", *value*] 
+| standard_parallel (two parallels)  | PARAMETER["Latitude of 1st standard parallel", *value*], PARAMETER["Latitude of 2nd standard parallel", *value*] 
+| straight_vertical_longitude_from_pole  | PARAMETER["Longitude of origin", *value*] 
+| towgs84  | GEOGCS["*name*", DATUM["*name*", TOWGS84[*7 params*] ]  | +towgs84 
 {: class="table table-striped"}
 
 ---
 
-### Table 2 - Future (CF-1.7) CF Grid Mapping Attributes
+### Table 2 - CF Grid Mapping Attributes with string values
 
 ---
 
 | **CF Grid Mapping Attribute**  | **Corresponding WKT Syntax** (1)  | **PROJ.4 Syntax** |  
-| projected_crs_name  | PROJCS["<projected_coordinate_system_name>", ...]  | N/A 
-| geographic_crs_name  | GEOGCS["<geographic_coordinate_system_name>", ...]  | N/A 
-| horizontal_datum_name  | GEOGCS["<name>", DATUM["<horizontal_datum_name>", ...] ]  | +datum 
-| reference_ellipsoid_name  | GEOGCS["<name>", DATUM["<name>", SPHEROID["<reference_ellipsoid_name>", ...] ] ]  | +ellps 
-| towgs84  | GEOGCS["<name>", DATUM["<name>", TOWGS84[<7 params>] ]  | +towgs84 
-| prime_meridian_name  | GEOGCS["<name>",PRIMEM["<prime_meridian_name>",<value>]  | + pm 
+| fixed_angle_axis | no known equivalent | specify the other axis with +sweep
+| geographic_crs_name  | GEOGCS["*geographic_coordinate_system_name*", ...]  | N/A
+| geoid_name | VERT_DATUM["*vertical_datum_name*", ...] | N/A
+| geopotential_datum_name  | VERT_DATUM["*vertical_datum_name*", ...] | N/A 
+| horizontal_datum_name  | GEOGCS["*name*", DATUM["*horizontal_datum_name*", ...] ]  | +datum 
+| prime_meridian_name  | GEOGCS["*name*",PRIMEM["*prime_meridian_name*",*value*]  | +pm 
+| projected_crs_name  | PROJCS["*projected_coordinate_system_name*", ...]  | N/A 
+| reference_ellipsoid_name  | GEOGCS["*name*", DATUM["*name*", SPHEROID["*reference_ellipsoid_name*", ...] ] ]  | +ellps
+| sweep_angle_axis | no known equivalent | +sweep
 {: class="table table-striped"}
 
 ---
+
+See also the following files, which list the various possible Datum, Ellipsoid and Prime Meridian names. (They were produced in support of CF trac ticket [80](https://cfconventions.org/Data/Trac-tickets/80.html).)
+
+*   [`horiz_datum.csv`](https://github.com/cf-convention/cf-conventions/wiki/csv/horiz_datum.csv) - horizontal datum parameters for use as reference for CF-1.7 (source: GDAL/OGR, modified by Etienne Tourigny)
+*   [`ellipsoid.csv`](https://github.com/cf-convention/cf-conventions/wiki/csv/ellipsoid.csv) - Ellipsoid parameters from the EPSG database (source: GDAL/OGR)
+*   [`prime_meridian.csv`](https://github.com/cf-convention/cf-conventions/wiki/csv/prime_meridian.csv) - Prime Meridian parameters from the EPSG database (source: GDAL/OGR)
 
 ### Table 3 - Common projection parameter names
 
@@ -236,53 +239,3 @@ As WKT/PROJ.4 require the standard parallel, [Snyder] formula 21-7 can be used t
 
 Transverse Mercator can be translated to PROJ.4 using either +proj#tmerc (Transverse Mercator) or +proj#utm (Universal Transverse Mercator) by computing zone number from longitude_of_central_meridian.
 For example, a TM projection with longitude_of_central_meridian#-117 would have the corresponding PROJ.4 string: '+proj#utm +zone#11 +datum#NAD27 +units#m +no_defs '
-
-## Mapping from CF Grid Mapping Attributes to CRS WKT Elements (previous table by Phil Bentley, Oct 2011)
-
-These __provisional__ mappings have been compiled to support, among other things, CF proposal [69](http://cfconventions.org/Data/Trac-tickets/69.html).
-If you spot any errors or omissions, please email the author or the CF mailing list, or else update this wiki page.
-
-Mappings are only listed for the current set of CF grid mapping attributes -- there are a number of WKT elements, and many CRS PARAMETERs, for which there are no corresponding CF attributes.
-
-The order of attributes follows Table F.1 in the CF conventions document.
-
-The names of WKT PARAMETER elements follow the names of coordinate operation parameters defined in the [EPSG geodetic parameter registry](https://epsg.org).
-
----
-
-| **CF Grid Mapping Attribute**  | **Corresponding WKT Element** | 
-| earth_radius  | SPHEROID["<name>", <semi-major-axis>, 0.0, ...] 
-| false_easting  | PARAMETER["False easting", <value>] 
-| false_northing  | PARAMETER["False northing", <value>] 
-| grid_mapping_name  | no known equivalent 
-| grid_north_pole_latitude  | no known equivalent 
-| grid_north_pole_longitude  | no known equivalent 
-| inverse_flattening  | SPHEROID["<name>", <semi-major-axis>, <inverse-flattening>, ...] 
-| latitude_of_projection_origin  | PARAMETER["Latitude of natural origin", <value>] 
-| longitude_of_central_meridian  | PARAMETER["Longitude of natural origin", <value>] 
-| longitude_of_prime_meridian  | PRIMEM["<name>", <longitude>, ...] 
-| longitude_of_projection_origin  | PARAMETER["Longitude of natural origin", <value>] 
-| north_pole_grid_longitude  | no known equivalent 
-| perspective_point_height  | PARAMETER["Viewpoint height", <value>] 
-| scale_factor_at_central_meridian  | PARAMETER["Scale factor at natural origin", <value>] 
-| scale_factor_at_projection_origin  | PARAMETER["Scale factor at natural origin", <value>] 
-| semi_major_axis  | SPHEROID["<name>", <semi-major-axis>, <inverse-flattening>, ...] 
-| semi_minor_axis  | no direct equivalent, the SPHEROID element is used to define ellipsoid geometry 
-| standard_parallel (one parallel)  | PARAMETER["Latitude of standard parallel", <value>] 
-| standard_parallel (two parallels)  | PARAMETER["Latitude of 1st standard parallel", <value>], PARAMETER["Latitude of 2nd standard parallel", <value>] 
-| straight_vertical_longitude_from_pole  | PARAMETER["Longitude of origin", <value>] 
-{: class="table table-striped"}
-
----
-
-### Attachments (3) (work in progress)
-
-*   /trac/attachment/wiki/Cf2CrsWkt/horiz_datum.csv[horiz_datum.csv]/trac/raw-attachment/wiki/Cf2CrsWkt/horiz_datum.csv[​]
-       (43.2 KB) -
-                "horizontal datum parameters for use as reference for CF-1.7"
-*   /trac/attachment/wiki/Cf2CrsWkt/ellipsoid.csv[ellipsoid.csv]/trac/raw-attachment/wiki/Cf2CrsWkt/ellipsoid.csv[​]
-       (13.5 KB) -
-                 "Ellipsoid parameters from the EPSG database (source: GDAL/OGR)"
-*   /trac/attachment/wiki/Cf2CrsWkt/prime_meridian.csv[prime_meridian.csv]/trac/raw-attachment/wiki/Cf2CrsWkt/prime_meridian.csv[​]
-       (1.6 KB) -
-                "Prime Meridian parameters from the EPSG database (source: GDAL/OGR)"

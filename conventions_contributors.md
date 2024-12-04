@@ -72,6 +72,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Peter Kuma, Stockholm University
 - Thomas Lavergne, NMI
 - Bryan Lawrence, NCAS and University of Reading
+- Chris Little, UK Met Office
 - Danny Lloyd, NCAS
 - Roy Lowry, BODC
 - Daniel Lee, EUMETSAT
@@ -92,6 +93,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Russ Rew, Unidata
 - Burkhardt Rockel, GKSS
 - Martin Schultz, Jülich Supercomputing Centre
+- Hauke Schulz, Danish Meteorological Institute
 - Rich Signell, USGS
 - Bob Simons, NOAA
 - Maarten Sneep, KNMI

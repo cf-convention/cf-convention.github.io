@@ -13,7 +13,7 @@ The CF convention includes a standard name table, which defines strings that ide
 ---
 
 [**_Ask a question_ &#x2753; about how to use CF**][github_askq]<br>
-**_Read the conventions_:** **Latest release** (1.11) [HTML][releasedhtml] [PDF][releasedpdf]&nbsp;&bull;&nbsp;
+**_Read the conventions_:** **Latest release** (1.12) [HTML][releasedhtml] [PDF][releasedpdf]&nbsp;&bull;&nbsp;
 **Working draft** [HTML][workinghtml] [PDF][workingpdf]<br>
 **_Check the latest vocabularies_:** [**Standard names**][currentnames]&nbsp;&bull;&nbsp;
 [**Area types**][areatypes]&nbsp;&bull;&nbsp;
@@ -49,8 +49,8 @@ See also the links in the navigation bar at the top of this page.
 [discussion]: discussion.md
 [governance]: governance.md
 [faq]: faq.md
-[releasedhtml]: Data/cf-conventions/cf-conventions-1.11/cf-conventions.html
-[releasedpdf]: Data/cf-conventions/cf-conventions-1.11/cf-conventions.pdf
+[releasedhtml]: Data/cf-conventions/cf-conventions-1.12/cf-conventions.html
+[releasedpdf]: Data/cf-conventions/cf-conventions-1.12/cf-conventions.pdf
 [workinghtml]: /cf-conventions/cf-conventions.html
 [workingpdf]: /cf-conventions/cf-conventions.pdf
 [currentnames]: Data/cf-standard-names/current/build/cf-standard-name-table.html

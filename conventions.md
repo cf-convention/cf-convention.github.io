@@ -40,7 +40,7 @@ group: "navigation"
       <a href="Data/cf-conventions/cf-conventions-1.8/cf-conventions.pdf">PDF</a>
       &nbsp;
 
-      <h4>CF 1.7</h4>
+      <h4>CF 1.7 (August 2017)</h4>
       <a href="Data/cf-conventions/cf-conventions-1.7/cf-conventions.html">Single HTML</a>
       &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.7/cf-conventions.pdf">PDF</a>
@@ -51,7 +51,7 @@ group: "navigation"
       <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions-multi.html"> Multi HTML (DocBook)</a> &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.7/build/cf-conventions.pdf">PDF (DocBook)</a>
       
-      <h4>CF 1.6</h4>
+      <h4>CF 1.6 (December 2011)</h4>
       <a href="/cf-conventions/v1.6.0/cf-conventions.html">Single HTML</a>
       &nbsp;
       <a href="/cf-conventions/v1.6.0/cf-conventions.pdf">PDF</a>
@@ -60,32 +60,32 @@ group: "navigation"
       <!--<a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
       <a href="Data/cf-conventions/cf-conventions-1.6/build/cf-conventions.pdf">PDF (DocBook)</a>
       
-      <h4>CF 1.5</h4>
+      <h4>CF 1.5 (October 2010)</h4>
       <a href="Data/cf-conventions/cf-conventions-1.5/build/cf-conventions.html">   Single HTML</a> &nbsp;
       <!--<a href="Data/cf-conventions/cf-conventions-1.5/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
       <a href="Data/cf-conventions/cf-conventions-1.5/build/cf-conventions.pdf">PDF</a>
       
-      <h4>CF 1.4</h4>
+      <h4>CF 1.4 (February 2009)</h4>
       <a href="Data/cf-conventions/cf-conventions-1.4/build/cf-conventions.html">   Single HTML</a> &nbsp;
       <!--<a href="Data/cf-conventions/cf-conventions-1.4/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;-->
       <a href="Data/cf-conventions/cf-conventions-1.4/build/cf-conventions.pdf">PDF</a>
       
-      <h4>CF 1.3</h4>
-      <a href="Data/cf-conventions/cf-conventions-1.3/build/cf-conventions.html">   Single HTML</a> &nbsp;
+      <h4>CF 1.3 (November 2008)</h4>
+      (Single HTML not available) &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.3/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.3/build/cf-conventions.pdf">PDF</a>
       
-      <h4>CF 1.2</h4>
+      <h4>CF 1.2 (May 2008)</h4>
       <a href="Data/cf-conventions/cf-conventions-1.2/build/cf-conventions.html">   Single HTML</a> &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.2/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.2/build/cf-conventions.pdf">PDF</a>
       
-      <h4>CF 1.1</h4>
+      <h4>CF 1.1 (January 2008)</h4>
       <a href="Data/cf-conventions/cf-conventions-1.1/build/cf-conventions.html">   Single HTML</a> &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.1/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.1/build/cf-conventions.pdf">PDF</a>
       
-      <h4>CF 1.0</h4>
+      <h4>CF 1.0 (October 2003 with revisions until March 2006)</h4>
       <a href="Data/cf-conventions/cf-conventions-1.0/build/cf-conventions.html">   Single HTML</a> &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.0/build/cf-conventions-multi.html"> Multi HTML</a> &nbsp;
       <a href="Data/cf-conventions/cf-conventions-1.0/build/cf-conventions.pdf">PDF</a>
@@ -103,8 +103,8 @@ group: "navigation"
     Each version of the CF conventions document is accompanied by a conformance document which lists the requirements and recommendations that could be verified by the compliance checker or any program with a similar aim. For any <em>recommendation</em> which is not followed, the checker gives a warning; for any <em>requirement</em> which is not met, it reports an error.
 
     <p><ul>
-      <li><a href="http://cfconventions.org/cf-conventions/conformance.html">1.12-draft</a></li>
-      <li><a href="Data/cf-documents/requirements-recommendations/conformance-1.11.html">1.11</a></li>
+      <li>1.12-draft: &nbsp; <a href="http://cfconventions.org/cf-conventions/conformance.pdf">PDF</a> &nbsp; <a href="http://cfconventions.org/cf-conventions/conformance.html">HTML</a></li>
+      <li>1.11: &nbsp; <a href="Data/cf-documents/requirements-recommendations/conformance-1.11.pdf">PDF</a> &nbsp; <a href="Data/cf-documents/requirements-recommendations/conformance-1.11.html">HTML</a></li>
       <li><a href="Data/cf-documents/requirements-recommendations/conformance-1.10.html">1.10</a></li>
       <li><a href="Data/cf-documents/requirements-recommendations/conformance-1.9.html">1.9</a></li>
       <li><a href="Data/cf-documents/requirements-recommendations/conformance-1.8.html">1.8</a></li>

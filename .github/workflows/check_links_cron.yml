@@ -7,7 +7,6 @@
 #   https://github.com/peter-evans/create-issue-from-file
 #   https://github.com/marketplace/actions/create-or-update-comment
 
-
 name: Check links on CF conventions web page
 on:
   schedule:
@@ -23,13 +22,13 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v4
         with:
-          ref: main      # main branch contains link check config
+          ref: main # main branch contains link check config
 
       - name: Checkout gh-pages branch
         uses: actions/checkout@v4
         with:
-          ref: gh-pages      # page is already build and deployed from this branch
-          path: _site/       # checkout to default jekyll ouput directory
+          ref: gh-pages # page is already built and deployed from this branch
+          path: _site/ # checkout to default Jekyll output directory
   
       - name: Check CF site's links 
         id: check-links
@@ -40,7 +39,7 @@ jobs:
           format: markdown
           jobSummary: true
           output: .lychee/results.md
-          args: --config .lychee/config.toml ./_site/
+          args: --github-token $GITHUB_TOKEN --config .lychee/config.toml ./_site/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub API token to use when checking github.com links, to avoid rate limiting
 
@@ -64,7 +63,7 @@ jobs:
           content-filepath: .lychee/results.md
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: |
-            defect, link-checker,  report, automated issue     
+            defect, link-checker, report, automated issue     
 
       - name: If failure and issue is closed, reopen and comment
         if: ${{ steps.check-links.outcome == 'failure' && steps.last-issue.outputs.is-closed == 'true' }}
@@ -80,7 +79,8 @@ jobs:
           issue-number: ${{ steps.last-issue.outputs.issue-number }}
           body-path: .lychee/results.md
           token: ${{ secrets.GITHUB_TOKEN }}
-# UNCOMMENT IF WE WANT TO REPORT SUCCESS IF ISSUE IT'S OPEN
+
+# Uncomment if you want to report success if the issue is open
 #      - name: If success and issue is open, add comment
 #        if: ${{ steps.check-links.outcome == 'success' && steps.last-issue.outputs.is-closed == 'false' }}
 #        uses: peter-evans/create-or-update-comment@v4
@@ -88,5 +88,3 @@ jobs:
 #          issue-number: ${{ steps.last-issue.outputs.issue-number }}
 #          body-path: .lychee/results.md
 #          token: ${{ secrets.GITHUB_TOKEN }}
-  
-    

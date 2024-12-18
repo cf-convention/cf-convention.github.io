@@ -14,6 +14,7 @@ group: "navigation"
 ### HTML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v88](Data/cf-standard-names/88/build/cf-standard-name-table.html) &nbsp;
 [v87](Data/cf-standard-names/87/build/cf-standard-name-table.html) &nbsp;
 [v86](Data/cf-standard-names/86/build/cf-standard-name-table.html) &nbsp;
 [v85](Data/cf-standard-names/85/build/cf-standard-name-table.html) &nbsp;
@@ -104,6 +105,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 ### XML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v88](Data/cf-standard-names/88/src/cf-standard-name-table.xml) &nbsp;
 [v87](Data/cf-standard-names/87/src/cf-standard-name-table.xml) &nbsp;
 [v86](Data/cf-standard-names/86/src/cf-standard-name-table.xml) &nbsp;
 [v85](Data/cf-standard-names/85/src/cf-standard-name-table.xml) &nbsp;

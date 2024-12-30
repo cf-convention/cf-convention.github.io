@@ -32,13 +32,11 @@ You can enable notifications of updates to issues for each kind of issue separat
 
 ### Archive links
 
-Announcements, discussions and Q&A that were initiated before CF GitHub Discussions began are continuing as GitHub issues in the `discuss` repository. They will soon be converted to GitHub Discussions.
+* Announcements were made, questions asked and discussions took place in GitHub [issues in the `discuss` repository][github_discuss] from December 2019 until March 2024, when CF GitHub Discussions began.
 
-Before the CF community migrated to GitHub:
+* General discussion took place and standard names were proposed on the [cf-metadata mailing list][archives] ([original at NCAR][NCAR_archives]) until December 2019, when these functions migrated to GitHub `discuss` issues.
 
-* until December 2019, general discussion took place and standard names were proposed on the [cf-metadata mailing list][archives] ([original at NCAR][NCAR_archives]).
-
-* until July 2018, changes to the conventions were proposed on the [CF Metadata Trac][about] site.
+* Changes to the conventions were proposed on the [CF Metadata Trac][about] site from October 2006 until July 2018, when these functions migrated to GitHub `conventions` issues. Before October 2006, when CF Metadata Trac was introduced, changes to the conventions were proposed on the cf-metadata mailing list.
 
 
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues

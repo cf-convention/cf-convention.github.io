@@ -140,3 +140,9 @@ Esri’s [ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/over
 NetCDF data can be processed as tables, points, rasters, and, most recently, [discrete sampling geometries](https://pro.arcgis.com/en/pro-app/latest/tool-reference/multidimension/how-netcdf-discrete-sampling-geometry-dsg-tools-work.htm).
 In addition, various ArcGIS Pro tools enable multidimensional management (aggregation, subsetting, anomaly detection), [spatio-temporal analysis](https://pro.arcgis.com/en/pro-app/latest/tool-reference/space-time-pattern-mining/an-overview-of-the-space-time-pattern-mining-toolbox.htm) (trend detection, time-series clustering, changepoint detection, hot spot detection), and visualization as 3D features or [voxels](https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/what-is-a-voxel-layer-.htm).
 Analysis results based on netCDF data can be shared and viewed across the web as interactive maps, 3D features, and voxels.
+
+## Other tools
+
+### Nansen Legacy template generator
+
+This [template generator](https://www.nordatanet.no/aen/template-generator/config%3DCF-NetCDF) can be used to create spreadsheet templates that include column headers from the CF standard names. The templates include separate sheets for recording variable and global attributes, based on the CF and the Attribute Convention for Data Discovery (ACDD).

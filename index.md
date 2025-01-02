@@ -1,12 +1,14 @@
 ---
 layout: default
 title: CF Conventions Home Page
+flash_message: "The CF Conventions have won the <a href='https://www.agu.org/user-profile?cstkey=0fc4a399-6049-4787-8dc4-c57c91b8a26f' target='_blank'>AGU Open Science Recognition Prize</a> for 2024! 🎉"
+flash_message_type: "success"  # Optional: Use 'info', 'success', 'warning', or 'error'
 ---
 
 # CF Metadata Conventions
 
-The CF metadata conventions are designed to promote the processing and sharing of files created with the [NetCDF API][api]. 
-The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. 
+The CF metadata conventions are designed to promote the processing and sharing of files created with the [NetCDF API][api].
+The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data.
 This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities.
 The CF convention includes a standard name table, which defines strings that identify physical quantities.
 
@@ -24,7 +26,7 @@ The CF convention includes a standard name table, which defines strings that ide
 CF is developed through open discussion on GitHub.
 If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here][discussion].
 Changes are decided according to the CF [governance arrangements][governance].
-The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion. 
+The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
 
 Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models.
 The use of CF is recommended where applicable by Unidata.

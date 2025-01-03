@@ -3,6 +3,11 @@ layout: default
 title: CF Conventions Home Page
 flash_message: "The CF Conventions have won the <a href='https://www.agu.org/user-profile?cstkey=0fc4a399-6049-4787-8dc4-c57c91b8a26f' target='_blank'>AGU Open Science Recognition Prize</a> for 2024! 🎉"
 flash_message_type: "success"  # Optional: Use 'info', 'success', 'warning', or 'error'
+# hero_image: Data/media/images/CF2024_group1.JPG
+hero_header: CF Metadata Conventions # Only displays if hero_image is provided
+# hero_paragraph: Some words about the CF Conventions # Only displays if hero_image is provided
+hero_button_text: View latest release # Only displays if hero_image is provided
+hero_button_url: Data/cf-conventions/cf-conventions-1.12/cf-conventions.html # Only displays if hero_image is provided
 ---
 
 # CF Metadata Conventions

@@ -15,6 +15,7 @@ group: "navigation"
 ### HTML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v89](Data/cf-standard-names/89/build/cf-standard-name-table.html) &nbsp;
 [v88](Data/cf-standard-names/88/build/cf-standard-name-table.html) &nbsp;
 [v87](Data/cf-standard-names/87/build/cf-standard-name-table.html) &nbsp;
 [v86](Data/cf-standard-names/86/build/cf-standard-name-table.html) &nbsp;
@@ -106,6 +107,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 ### XML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v89](Data/cf-standard-names/89/src/cf-standard-name-table.xml) &nbsp;
 [v88](Data/cf-standard-names/88/src/cf-standard-name-table.xml) &nbsp;
 [v87](Data/cf-standard-names/87/src/cf-standard-name-table.xml) &nbsp;
 [v86](Data/cf-standard-names/86/src/cf-standard-name-table.xml) &nbsp;
@@ -196,6 +198,8 @@ N.B. For technical reasons, no standard name table was published with version nu
 
 ### Keyword Centred List (most current first)
 
+[v89](Data/cf-standard-names/89/build/kwic_index_for_cf_standard_names.html) &nbsp;
+[v88](Data/cf-standard-names/88/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v86](Data/cf-standard-names/86/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v85](Data/cf-standard-names/85/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v84](Data/cf-standard-names/84/build/kwic_index_for_cf_standard_names.html) &nbsp;
@@ -231,12 +235,17 @@ N.B. For technical reasons, no standard name table was published with version nu
 - Current proposals for new standard names in the [CEDA vocabulary editor](https://cfeditor.ceda.ac.uk/proposals/1);
 click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those which have been either accepted and included in the standard name table or rejected.
 
-## Area Type Table (v11, 06 July 2023)
+## Area Type Table (v12, 21 January 2025)
+
+###Quick links to current version
+
 [HTML](Data/area-type-table/current/build/area-type-table.html) &nbsp;
 [XML](Data/area-type-table/current/src/area-type-table.xml) &nbsp;
 [NERC Vocabulary Server](https://vocab.nerc.ac.uk/collection/P29/current/) &nbsp;
 
-### Previous Versions (HTML)
+### HTML Versions (most current first)
+[v12](Data/area-type-table/12/build/area-type-table.html) &nbsp;
+[v11](Data/area-type-table/11/build/area-type-table.html) &nbsp;
 [v10](Data/area-type-table/10/build/area-type-table.html) &nbsp;
 [v9](Data/area-type-table/9/build/area-type-table.html) &nbsp;
 [v8](Data/area-type-table/8/build/area-type-table.html) &nbsp;
@@ -248,7 +257,9 @@ click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those 
 [v2](Data/area-type-table/2/build/area-type-table.html) &nbsp;
 [v1](Data/area-type-table/1/build/area-type-table.html) &nbsp;
 
-### Previous Versions (XML)
+### XML Versions (most current first)
+[v12](Data/area-type-table/12/src/area-type-table.xml) &nbsp;
+[v11](Data/area-type-table/11/src/area-type-table.xml) &nbsp;
 [v10](Data/area-type-table/10/src/area-type-table.xml) &nbsp;
 [v9](Data/area-type-table/9/src/area-type-table.xml) &nbsp;
 [v8](Data/area-type-table/8/src/area-type-table.xml) &nbsp;

@@ -237,7 +237,7 @@ click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those 
 
 ## Area Type Table (v12, 21 January 2025)
 
-###Quick links to current version
+### Quick links to current version
 
 [HTML](Data/area-type-table/current/build/area-type-table.html) &nbsp;
 [XML](Data/area-type-table/current/src/area-type-table.xml) &nbsp;

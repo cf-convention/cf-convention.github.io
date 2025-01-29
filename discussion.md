@@ -51,6 +51,7 @@ You can enable notifications of updates to issues for each kind of issue separat
 [github]: https://github.com
 [website]: https://cfconventions.org
 [trac]: Data/trac.html
+[about]: about-trac.md
 [mail]: http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata
 [archives]: https://cfconventions.org/mailing-list-archive/Data/
 [NCAR_archives]: https://mailman.cgd.ucar.edu/pipermail/cf-metadata/

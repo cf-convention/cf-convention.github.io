@@ -36,7 +36,7 @@ You can enable notifications of updates to issues for each kind of issue separat
 
 * General discussion took place and standard names were proposed on the [cf-metadata mailing list][archives] ([original at NCAR][NCAR_archives]) until December 2019, when these functions migrated to GitHub `discuss` issues.
 
-* Changes to the conventions were proposed on the [CF Metadata Trac](Data/trac.html) site from October 2006 until July 2018, when these functions migrated to GitHub `conventions` issues. Before October 2006, when CF Metadata Trac was introduced, changes to the conventions were proposed on the cf-metadata mailing list.
+* Changes to the conventions were proposed on the [CF Metadata Trac][trac] site from October 2006 until July 2018, when these functions migrated to GitHub `conventions` issues. Before October 2006, when CF Metadata Trac was introduced, changes to the conventions were proposed on the cf-metadata mailing list.
 
 
 [github_conventions]: https://github.com/cf-convention/cf-conventions/issues
@@ -51,7 +51,6 @@ You can enable notifications of updates to issues for each kind of issue separat
 [github]: https://github.com
 [website]: https://cfconventions.org
 [trac]: Data/trac.html
-[about]: about-trac.md
 [mail]: http://mailman.cgd.ucar.edu/mailman/listinfo/cf-metadata
 [archives]: https://cfconventions.org/mailing-list-archive/Data/
 [NCAR_archives]: https://mailman.cgd.ucar.edu/pipermail/cf-metadata/

@@ -5,4 +5,4 @@ title: CF Conventions Committee and Standard Names Committee Minutes
 
 # CF Conventions Committee and Standard Names Committee Minutes
 
-* [2023-09-29 CF Conventions Committee and Standard Names Committee meeting](2023-09-29-meeting.md)
+* [2025-01-27 CF Conventions Committee and Standard Names Committee meeting](committee_meeting_minutes_2025-01-27.md)

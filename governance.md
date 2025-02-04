@@ -36,7 +36,7 @@ group: "navigation"
 * Alison Pamment (secretary of Standard Names Committee) (29 May 2025)
 * Karl Taylor (29 May 2025)
  
-CF Conventions Committee and Standard Names Committee meeting [minutes](Committees/Conventions_and_Standard_Names/meeting-minutes.md)
+CF Conventions Committee and Standard Names Committee meeting [minutes](Committees/Conventions_and_Standard_Names/committee_meeting_minutes.md)
 
 ## Governance Panel
 

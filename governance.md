@@ -63,6 +63,8 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 
 Governance Panel members also contribute to information management and support.
 
+CF Information Management and Support Team meeting [minutes](Governance/InfoMgmt/meeting-minutes.md).
+
 ## Acknowledgements
 
 The climate research community is indebted to former members of the committee, panel and team, and to the many other contributors, as listed below, for their magnanimous contributions in establishing and improving the CF Conventions.

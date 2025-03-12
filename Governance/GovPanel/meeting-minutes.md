@@ -5,6 +5,7 @@ title: CF Governance Panel Minutes
 
 # CF Governance Panel Meeting Minutes
 
+* [2024-12-05 CF Governance Panel Meeting](2024-12-05-meeting.md)
 * [2024-09-09 CF Governance Panel Meeting](2024-09-09-meeting.md)
 * [2024-06-10 CF Governance Panel Meeting](2024-06-10-meeting.md)
 * [2024-03-04 CF Governance Panel Meeting](2024-03-04-meeting.md)

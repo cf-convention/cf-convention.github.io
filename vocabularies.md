@@ -6,7 +6,7 @@ group: "navigation"
 # CF Standard Names and other CF Controlled Vocabularies
 ## Standard Name Table
   
-### Quick links to current version
+### Quick links to current version (v90, 20 March 2025)
 [HTML](Data/cf-standard-names/current/build/cf-standard-name-table.html) &nbsp;
 [XML](Data/cf-standard-names/current/src/cf-standard-name-table.xml) &nbsp;
 [KWIC Index](Data/cf-standard-names/current/build/kwic_index_for_cf_standard_names.html) &nbsp;
@@ -15,6 +15,7 @@ group: "navigation"
 ### HTML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v90](Data/cf-standard-names/90/build/cf-standard-name-table.html) &nbsp;
 [v89](Data/cf-standard-names/89/build/cf-standard-name-table.html) &nbsp;
 [v88](Data/cf-standard-names/88/build/cf-standard-name-table.html) &nbsp;
 [v87](Data/cf-standard-names/87/build/cf-standard-name-table.html) &nbsp;
@@ -107,6 +108,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 ### XML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v90](Data/cf-standard-names/90/src/cf-standard-name-table.xml) &nbsp;
 [v89](Data/cf-standard-names/89/src/cf-standard-name-table.xml) &nbsp;
 [v88](Data/cf-standard-names/88/src/cf-standard-name-table.xml) &nbsp;
 [v87](Data/cf-standard-names/87/src/cf-standard-name-table.xml) &nbsp;
@@ -198,6 +200,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 
 ### Keyword Centred List (most current first)
 
+[v90](Data/cf-standard-names/90/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v89](Data/cf-standard-names/89/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v88](Data/cf-standard-names/88/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v86](Data/cf-standard-names/86/build/kwic_index_for_cf_standard_names.html) &nbsp;
@@ -235,7 +238,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 - Current proposals for new standard names in the [CEDA vocabulary editor](https://cfeditor.ceda.ac.uk/proposals/1);
 click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those which have been either accepted and included in the standard name table or rejected.
 
-## Area Type Table (v12, 21 January 2025)
+## Area Type Table (v13, 20 March 2025)
 
 ### Quick links to current version
 
@@ -244,6 +247,7 @@ click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those 
 [NERC Vocabulary Server](https://vocab.nerc.ac.uk/collection/P29/current/) &nbsp;
 
 ### HTML Versions (most current first)
+[v13](Data/area-type-table/13/build/area-type-table.html) &nbsp;
 [v12](Data/area-type-table/12/build/area-type-table.html) &nbsp;
 [v11](Data/area-type-table/11/build/area-type-table.html) &nbsp;
 [v10](Data/area-type-table/10/build/area-type-table.html) &nbsp;
@@ -258,6 +262,7 @@ click "Inactive" to see resolved proposals (from March 2011 onwards) i.e. those 
 [v1](Data/area-type-table/1/build/area-type-table.html) &nbsp;
 
 ### XML Versions (most current first)
+[v13](Data/area-type-table/13/src/area-type-table.xml) &nbsp;
 [v12](Data/area-type-table/12/src/area-type-table.xml) &nbsp;
 [v11](Data/area-type-table/11/src/area-type-table.xml) &nbsp;
 [v10](Data/area-type-table/10/src/area-type-table.xml) &nbsp;

@@ -42,7 +42,9 @@ See also the links in the navigation bar at the top of this page.
 * [List of software for working with CF](software.md)
 * [List of Projects and Activities that Use the CF Metadata Conventions](projects-activities.md)
 * [Paper][cfdmpaper] describing the CF data model and reference software
-* Overview of CF basics as a [presentation][viewgraphs] and [paper][article]
+* Overview of CF basics
+  * High-level presentation ([DOI](https://doi.org/10.5281/zenodo.15015065), [PDF](https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=1) - from 2024 AGU)
+  * More detailed [presentation][viewgraphs] and [paper][article]
 
 [api]: https://www.unidata.ucar.edu/software/netcdf/index.html
 [coards]: https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html

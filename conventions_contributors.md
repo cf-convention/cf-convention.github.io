@@ -101,6 +101,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Anders Meier Soerensen, EUMETSAT
 - Karl Taylor, PCMDI, LLNL
 - Etienne Tourigny, INPE
+- Patrick Van Laake, Independent data scientist
 - Micah Wengren, NOAA
 - Timothy Whiteaker, University of Texas
 - John Wilkin, Rutgers University

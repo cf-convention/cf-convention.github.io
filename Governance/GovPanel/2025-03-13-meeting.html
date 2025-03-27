@@ -8,7 +8,7 @@
     <meta name="author" content="Matthew Harris (mattben)">
     <link rel="icon"             type="image/png" href="/Data/media/images/logo.png">
     <link rel="apple-touch-icon" type="image/png" href="/Data/media/images/logo.png">
-    <title>2024-12-03 CF Information Management and Support Team meeting</title>
+    <title>2025-03-13 CF Governance Panel meeting</title>
 
     <!-- Bootstrap  Core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -247,55 +247,68 @@
 
     <div class="container">
 
-      <h1 id="2024-12-03-cf-information-management-and-support-team-meeting">2024-12-03 CF Information Management and Support Team meeting</h1>
+      <h1 id="2025-03-13-cf-governance-panel-meeting">2025-03-13 CF Governance Panel meeting</h1>
 
 <h2 id="attendees">Attendees</h2>
-<p>???</p>
+<p>Attending: Jonathan, Daniel, Bryan, Ethan, Karl</p>
 
 <h2 id="agendanotes">Agenda/Notes</h2>
 
 <ul>
-  <li>Schedule next meeting
+  <li>Schedule our next meeting
     <ul>
-      <li>4 March 2025 8am Mtn</li>
+      <li>12 June 2025 at 14:00 UTC (8am MDT, 3pm BST, 4pm CEST)</li>
     </ul>
   </li>
-  <li>Vocabularies repo structure (Andrew Barna, Jonathan Gregory(?))
+  <li>Update on writing an article on CF history/future
     <ul>
-      <li>Test Repo: https://github.com/DocOtak/cf-vocabularies/tree/reorg</li>
-      <li>Some Proposal Text: https://github.com/DocOtak/cf-vocabularies/blob/reorg/proposal_structure.md</li>
-      <li>Demo Site: https://www.andrewbarna.org/cf-vocabularies/</li>
-      <li>Proposal is 254MB (vs 781 in existing website Data dir)</li>
-    </ul>
-  </li>
-  <li>Two outstanding technical conventions issues. Does anyone have time to address them?
-    <ul>
-      <li>Color blindness accessibility of document figures &amp; tables - Issue #<a href="https://github.com/cf-convention/cf-conventions/issues/404">404</a></li>
-      <li>Appendix F: 14 geotiff.maptools.org domain links redirecting - Issue #<a href="https://github.com/cf-convention/cf-conventions/issues/479">479</a></li>
-    </ul>
-  </li>
-  <li>Comparison of GitHub Discussions with Discuss issues, now we’ve got experience of both.</li>
-  <li>[Antonio] Review and Finalization of PR #570 and v1.12 Zenodo SANDBOX Process
-    <ul>
-      <li>Objective: Discuss the current state of PR #<a href="https://github.com/cf-convention/cf-conventions/pull/570">570</a> <br />
-which includes colophon, license, citation, and DOI. Determine any final changes or approvals needed for the draft before the “final final” release.</li>
-      <li>Review the Zenodo SANDBOX publication process challenges outlined in the <a href="https://github.com/orgs/cf-convention/discussions/326#discussioncomment-11441829">comment</a> to discussion #326.
+      <li>Prioritize between Roadmap and History</li>
+      <li>Single paper with recent history and future plans?
         <ul>
-          <li>CF Metadata Conventions - SANDBOX Zenodo Community
+          <li>Introduction
+  *</li>
+          <li>History
             <ul>
-              <li>https://sandbox.zenodo.org/communities/cfconventions-sandbox</li>
+              <li>Start - CMIP3</li>
             </ul>
           </li>
-          <li>Zenodo SANDBOX record for the CF Conventions Document:
+          <li>CMIP5-7 (now)</li>
+          <li>Process
             <ul>
-              <li>https://sandbox.zenodo.org/records/138825</li>
+              <li>Principles, advantages to a process that requires time for careful thought and consideration with the aim of reaching consensus</li>
+              <li>Examples (e.g enumerations and swathes)</li>
             </ul>
+          </li>
+          <li>Next steps: The roadmap</li>
+        </ul>
+      </li>
+      <li>History helps explain why things are the way they are</li>
+    </ul>
+  </li>
+  <li>Could we convene a meeting with Zarr/GeoZarr developers to discuss data model and interoperability?
+    <ul>
+      <li>To some extent their data model is not different from the (basic) NetCDF model is it?
+Clearly the format is different …</li>
+      <li>
+        <p>(We now have a <em>working</em> a pure python HDF5 reader - the pull request is public now - see <a href="https://github.com/jjhelmus/pyfive">https://github.com/jjhelmus/pyfive</a> - that does nearly (<strong>+</strong>) everything that Zarr can do!
+So all that stuff can work on top of NetCDF without needing Zarr per se.)</p>
+
+        <p>(<strong>+</strong>) need support for arbitrary filters.</p>
+      </li>
+      <li>(We do need to do better at good chunking default)</li>
+      <li>Zarr exists (I think) to handle three things:
+        <ul>
+          <li>Threading performance (the HDF5 c-library is not thread safe)</li>
+          <li>People always rechunk into zarr files, the important requirement is the rechunking not the zarr</li>
+          <li>
+            <p>The metadata is consolidated into one file, so it can be read more efficiently than reading metadata throughout a file - but this too can be done by h5repacking as is done by reading netcdf and writing zarr.</p>
+
+            <p>The biggest downside of Zarr is the number of files.
+If your average netCDF file is 2 GB, then you will be facing ~500 times more Zarr files (every 4 MB chunk is a zarr file).
+This is a problem for HPC file systems and data managers.</p>
           </li>
         </ul>
       </li>
-      <li>Plan next steps for addressing issues with earlier versions (v1.0 to v1.11).</li>
-      <li>Confirm actions required to transition from the Zenodo SANDBOX to the production Zenodo setup.</li>
-      <li>Specific Task for Ethan: Discuss removing the automatic connection to Zenodo publication during GitHub releases.</li>
     </ul>
   </li>
 </ul>
@@ -307,7 +320,7 @@ which includes colophon, license, citation, and DOI. Determine any final changes
       <a href="/discussion">Contact the CF community</a> with questions, comments and suggestions about CF metadata or this website
       </p>
       <p>This site is open source in line with the <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero CC0 Deed</a>.&emsp;&emsp;&emsp;&emsp;&emsp;
-        <a href="https://github.com/cf-convention/cf-convention.github.io/edit/main/Governance/InfoMgmt/2024-12-03-meeting.md">Improve this page!</a></p>
+        <a href="https://github.com/cf-convention/cf-convention.github.io/edit/main/Governance/GovPanel/2025-03-13-meeting.md">Improve this page!</a></p>
       </footer>
     </div> <!-- /container -->
 

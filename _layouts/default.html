@@ -12,58 +12,14 @@
 
     <!-- Bootstrap  Core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!-- Custom styles for this template -->
-    <style>
-      body {
-        padding-bottom: 20px;
-      }
-      p a.anchor {
-        display: block;
-        position: relative;
-        top: -50px;
-        visibility: hidden;
-      }
-    </style>
-    <style>
-      .flash-message {
-        padding: 1em;
-        margin-bottom: 1em;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        text-align: center;
-      }
-
-      .flash-info {
-        background-color: #d9edf7;
-        color: #31708f;
-        border-color: #bce8f1;
-      }
-
-      .flash-success {
-        background-color: #dff0d8;
-        color: #3c763d;
-        border-color: #d6e9c6;
-      }
-
-      .flash-warning {
-        background-color: #fcf8e3;
-        color: #8a6d3b;
-        border-color: #faebcc;
-      }
-
-      .flash-error {
-        background-color: #f2dede;
-        color: #a94442;
-        border-color: #ebccd1;
-      }
-    </style>
   </head>
 
   <body>
@@ -97,6 +53,23 @@
     </div>
     {% endif %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
+
+    <!-- Hero Image Section -->
+    {% if page.hero_image %}
+    <div class="jumbotron" style="background: url('{{ page.hero_image | relative_url }}') no-repeat center center; background-size: cover; color: white; text-align: center; padding: 100px 20px; position: relative;">
+      <div class="container">
+        {% if page.hero_header %}
+        <h1 class="display-3" style="font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">{{ page.hero_header }}</h1>
+        {% endif %}
+        {% if page.hero_paragraph %}
+        <p class="lead" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);">{{ page.hero_paragraph }}</p>
+        {% endif %}
+        {% if page.hero_button_text and page.hero_button_url %}
+        <a href="{{ page.hero_button_url }}" class="btn btn-lg btn-primary" style="font-weight: bold;">{{ page.hero_button_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
 
     <div class="container">
 

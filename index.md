@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CF Conventions Home Page
-flash_message: "The CF Conventions have won the <a href='https://www.agu.org/user-profile?cstkey=0fc4a399-6049-4787-8dc4-c57c91b8a26f' target='_blank'>AGU Open Science Recognition Prize</a> for 2024! 🎉"
+flash_message: "Save the date: The <strong>2025 CF Conventions Workshop</strong> will be hosted online during the week 22nd-26th September! View more details <a href='https://github.com/orgs/cf-convention/discussions/415' target='_blank'>here.</a>"
 flash_message_type: "success"  # Optional: Use 'info', 'success', 'warning', or 'error'
 ---
 

@@ -3,6 +3,11 @@ layout: default
 title: CF Conventions Home Page
 flash_message: "Save the date: The <strong>2025 CF Conventions Workshop</strong> will be hosted online during the week 22nd-26th September! View more details <a href='https://github.com/orgs/cf-convention/discussions/415' target='_blank'>here.</a>"
 flash_message_type: "success"  # Optional: Use 'info', 'success', 'warning', or 'error'
+# hero_image: Data/media/images/CF2024_group1.JPG
+hero_header: CF Metadata Conventions # Only displays if hero_image is provided
+# hero_paragraph: Some words about the CF Conventions # Only displays if hero_image is provided
+hero_button_text: View latest release # Only displays if hero_image is provided
+hero_button_url: Data/cf-conventions/cf-conventions-1.12/cf-conventions.html # Only displays if hero_image is provided
 ---
 
 # CF Metadata Conventions

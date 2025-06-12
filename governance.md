@@ -29,7 +29,7 @@ group: "navigation"
 * Jonathan Gregory (29 May 2025, chair of CF Committees, 28 August 2027)
 * David Hassell (31 Mar 2027, secretary of the Conventions Committee)
 * Martin Juckes (12 Apr 2026)
-* Daniel Lee (30 Sep 2024)
+* Daniel Lee (9 Apr 2030)
 * Roy Lowry (29 May 2025)
 * Luke Marsden (23 Oct 2029)
 * Seth McGinnis (29 Sep 2028)

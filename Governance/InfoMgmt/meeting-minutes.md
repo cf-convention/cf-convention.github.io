@@ -5,6 +5,7 @@ title: CF Information Management and Support Team Meeting Minutes
 
 # CF Information Management and Support Team Meeting Minutes
 
+* [2025-06-05 CF Info Mgmt Team Meeting](2025-06-05-meeting.md)
 * [2025-03-04 CF Info Mgmt Team Meeting](2025-03-04-meeting.md)
 * [2024-12-03 CF Info Mgmt Team Meeting](2024-12-03-meeting.md)
 * [2024-09-03 CF Info Mgmt Team Meeting](2024-09-03-meeting.md)

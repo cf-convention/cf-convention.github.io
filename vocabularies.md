@@ -6,15 +6,15 @@ group: "navigation"
 # CF Standard Names and other CF Controlled Vocabularies
 ## Standard Name Table
   
-### Quick links to current version (v90, 20 March 2025)
+### Quick links to current version (v92, 24 July 2025)
 [HTML](Data/cf-standard-names/current/build/cf-standard-name-table.html) &nbsp;
 [XML](Data/cf-standard-names/current/src/cf-standard-name-table.xml) &nbsp;
-[KWIC Index](Data/cf-standard-names/current/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [NERC Vocabulary Server](https://vocab.nerc.ac.uk/collection/P07/current/) &nbsp;
 
 ### HTML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v91](Data/cf-standard-names/91/build/cf-standard-name-table.html) &nbsp;
 [v90](Data/cf-standard-names/90/build/cf-standard-name-table.html) &nbsp;
 [v89](Data/cf-standard-names/89/build/cf-standard-name-table.html) &nbsp;
 [v88](Data/cf-standard-names/88/build/cf-standard-name-table.html) &nbsp;
@@ -108,6 +108,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 ### XML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v91](Data/cf-standard-names/91/src/cf-standard-name-table.xml) &nbsp;
 [v90](Data/cf-standard-names/90/src/cf-standard-name-table.xml) &nbsp;
 [v89](Data/cf-standard-names/89/src/cf-standard-name-table.xml) &nbsp;
 [v88](Data/cf-standard-names/88/src/cf-standard-name-table.xml) &nbsp;

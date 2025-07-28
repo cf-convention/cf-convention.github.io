@@ -72,7 +72,7 @@ Participants should review the [CF Code of Conduct](https://github.com/cf-conven
 * David Hassell
 * Ellie Fisher
 * Ethan Davis
-* Guilherme Castelao
+* Guilherme Castelão
 * Kevin O'Brien
 * Lars Bärring
 * Luke Marsden

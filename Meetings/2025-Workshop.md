@@ -51,7 +51,7 @@ The meeting will run for three hours on each day, 15:00 to 18:00 UTC, plus an in
 | Time (UTC)    | Session                                                                          | Presenters
 |:--------------|:---------------------------------------------------------------------------------| :--- 
 | 15.00 - 15.15 | Introductions to Day 4 (roadmap) hackathons                                      |
-| 15:15 - 17.00 | Roadmap HACKATHONS (Parallel sessions) <br> (include screen break 16.30 - 16.40) |
+| 15:15 - 17.00 | Roadmap HACKATHONS (Parallel sessions) <br> (includes screen break 16.30 - 16.40) |
 | 17.00 - 18.00 | Roadmap hackathons wrap up and next steps                                        |
 | 18.00 - 18.45 | Social time                                                                      |
 

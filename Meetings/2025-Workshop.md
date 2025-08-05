@@ -13,55 +13,55 @@ The meeting will run for three hours on each day, 15:00 to 18:00 UTC, plus an in
 ### Monday, 22 September 2025
 
 <table>
-  <thead>
-    <tr>
-      <th style="text-align:left;">Time (UTC)</th>
-      <th style="text-align:left;">Session</th>
-      <th style-="text-align:left;">Presenters</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left;">15:00 - 15:10</td>
-      <td style="text-align:left;">Welcome and Overview of meeting structure</td>
-      <td style-"text-align:left;"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">15.10 - 15.40</td>
-      <td style="text-align:left;">Introduction to CF, what’s going into CF 1.13</td>
-      <td style="text-align:left;"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">15.40 - 15.55</td>
-      <td style="text-align:left;"><em>Science talk</em></td>
-      <td style="text-align:left;"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">15.55 - 16.10</td>
-      <td style="text-align:left;">Science talk</td>
-      <td style="text-align:left;"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">16.10 - 16.25</td>
-      <td style="text-align:left;">Screen break / coffee break</td>
-      <td style="text-align:left;"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">16.25 - 16.35</td>
-      <td style="text-align:left;">Introductions to Day 1 hackathons</td>
-      <td style="text-align:left;"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">16:35 - 18.00</td>
-      <td style="text-align:left;">HACKATHONS (Parallel sessions)</td>
-      <td style="text-align:left;"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">18.00 - 18.45</td>
-      <td style="text-align:left;">Social time</td>
-      <td style="text-align:left;"></td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th style="width:20%; text-align:left;">Time (UTC)</th>
+<th style="width:60%; text-align:left;">Session</th>
+<th style="width:20%; text-align:left;">Presenters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">15:00 - 15:10</td>
+<td style="text-align:left;">Welcome and Overview of meeting structure</td>
+<td style="text-align:left;"></td>
+</tr>
+<tr>
+<td style="text-align:left;">15.10 - 15.40</td>
+<td style="text-align:left;">Introduction to CF, what’s going into CF 1.13</td>
+<td style="text-align:left;"></td>
+</tr>
+<tr>
+<td style="text-align:left;">15.40 - 15.55</td>
+<td style="text-align:left;"><em>Science talk</em></td>
+<td style="text-align:left;"></td>
+</tr>
+<tr>
+<td style="text-align:left;">15.55 - 16.10</td>
+<td style="text-align:left;">Science talk</td>
+<td style="text-align:left;"></td>
+</tr>
+<tr>
+<td style="text-align:left;">16.10 - 16.25</td>
+<td style="text-align:left;">Screen break / coffee break</td>
+<td style="text-align:left;"></td>
+</tr>
+<tr>
+<td style="text-align:left;">16.25 - 16.35</td>
+<td style="text-align:left;">Introductions to Day 1 hackathons</td>
+<td style="text-align:left;"></td>
+</tr>
+<tr>
+<td style="text-align:left;">16:35 - 18.00</td>
+<td style="text-align:left;">HACKATHONS (Parallel sessions)</td>
+<td style="text-align:left;"></td>
+</tr>
+<tr>
+<td style="text-align:left;">18.00 - 18.45</td>
+<td style="text-align:left;">Social time</td>
+<td style="text-align:left;"></td>
+</tr>
+</tbody>
 </table>
 
 ### Tuesday, 23 September 2025

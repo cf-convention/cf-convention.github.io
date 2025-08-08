@@ -8,7 +8,7 @@ group: "navigation"
 
 ## Annual CF Workshops
 
-* [2025 CF Workshop][2025] - 22-25 September 2025 - Virtual Workshop
+* [2025 CF Workshop][2025] - 22-25 September 2025 - Virtual Workshop - <a href="https://forms.gle/UJ6JCiaZzSGndvWu8" target="_blank">register here.</a>
 * [2024 CF Workshop][2024] - 17-20 September 2024 - SMHI - Norrköping (Sweden)
 * [2023 CF Workshop][2023] - 3-5 October 2023 - Virtual Workshop
 * [2022 CF Workshop][2022] - 13-15 September 2022 - IFCA (CSIC-UC) - Santander (Spain)

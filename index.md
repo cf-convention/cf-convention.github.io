@@ -1,8 +1,8 @@
 ---
 layout: default
 title: CF Conventions Home Page
-flash_message: "Save the date: The <strong>2025 CF Conventions Workshop</strong> will be hosted online during the week 22nd-26th September! View more details <a href='https://github.com/orgs/cf-convention/discussions/415' target='_blank'>here.</a>"
-flash_message_type: "success"  # Optional: Use 'info', 'success', 'warning', or 'error'
+flash_message: "The <strong>CF Conventions Workshop 2025</strong> will be hosted online from 22nd to 25th September. Register <a href='https://forms.gle/UJ6JCiaZzSGndvWu8' target='_blank'><strong>here</strong></a> and view the agenda <a href='https://cfconventions.org/Meetings/2025-Workshop.html' target='_blank'><strong>here</strong></a>."
+flash_message_type: "info"  # Optional: Use 'info', 'success', 'warning', or 'error'
 ---
 
 # CF Metadata Conventions

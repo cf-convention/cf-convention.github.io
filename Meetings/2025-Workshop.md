@@ -5,8 +5,12 @@ title: 2025 CF Workshop
 
 # 2025 CF Workshop
 
-The 2025 CF Workshop will be held virtually on 22-25 September 2025.
-The meeting will run for three hours on each day, 15:00 to 18:00 UTC, plus an informal hour at the end of each day.
+The 2025 CF Workshop will be held **virtually** on **22-25 September 2025**.
+The meeting will run for three hours on each day, **15:00 to 18:00 UTC**, plus an informal hour at the end of each day.
+
+## How to register
+
+To participate, please <a href="https://forms.gle/UJ6JCiaZzSGndvWu8" target="_blank">register here.</a>
 
 ## Agenda
 

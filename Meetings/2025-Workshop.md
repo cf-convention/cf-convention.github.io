@@ -19,13 +19,13 @@ To participate, please [register here](https://forms.gle/UJ6JCiaZzSGndvWu8){:tar
 {: .table .table-bordered}
 | Time (UTC) | Session | Presenters |
 |:-----------|:--------|:-----------|
-|15:00 - 15:10 | Welcome and Overview of meeting structure | |
-|15.10 - 15.40 | Introduction to CF, what’s going into CF 1.13 | |
-|15.40 - 15.55 | *Science talk* | |
-|15.55 - 16.10 | *Science talk* | |
+|15:00 - 15:10 | Welcome and Overview of meeting structure | David Hassell (NCAS / University of Reading) |
+|15.10 - 15.40 | Introduction to CF, what’s going into CF 1.13 | Introduction: Ellie Fisher (Centre for Environmental Data Analysis / NCAS); <br> CF-1,13: Sadie Bartholomew (NCAS / University of Reading) |
+|15.40 - 15.55 | *Science talk* | Jack Atkinson (ICCS Cambridge), _TBD_ |
+|15.55 - 16.10 | *Science talk* | Mario Diez Fernandez (University of Cantabria), _Evaluating Large Language Models for Standard Names Generation in CF Conventions_  |
 |16.10 - 16.25 | Screen break / coffee break | |
 |16.25 - 16.35 | Introductions to Day 1 hackathons | |
-|16:35 - 18.00 | HACKATHONS (Parallel sessions) | |
+|16:35 - 18.00 | HACKATHONS (Parallel sessions) | Chris Barker, _SGRID Conventions_; <br> Alison Pamment (NCAS / CEDA), _Improvements/clarifications to precipitation-related standard names_; <br> Guilherme Castelao, _Making energy datasets CF-compliant_ |
 |18.00 - 18.45 | Social time | |
 
 ### Tuesday, 23 September 2025
@@ -35,10 +35,10 @@ To participate, please [register here](https://forms.gle/UJ6JCiaZzSGndvWu8){:tar
 |:-----------|:--------|:-----------|
 |15:00 - 15.10| Intro to day 2 | |
 |15.10 - 15.30| Governance updates, round-up of recent developments | |
-|15.30 - 15.50| *Science talk* | |
+|15.30 - 15.50| *Science talk* | Adam Jacobs (UK Met Office), _Fluid tool - mapping between NetCDF & GRIB_ |
 |15.50 - 16.00| Introductions to Day 2 hackathons | |
 |16.10 - 16.25| Screen break / coffee break | |
-|16:25 - 17.30| HACKATHONS (Parallel sessions) | |
+|16:25 - 17.30| HACKATHONS (Parallel sessions) | Sebastien Villaume (ECMWF), _Mapping CF Metadata and WMO GRIB2 Metadata_; <br> TBD, _"Housekeeping" - website maintenance & improvements_; <br> Sadie Bartholomew (NCAS / University of Reading), _Colour blindness accessibility of CF Convention document figures & tables_ |
 |17.30 - 18.00| Day 1 and 2 hackathon wrap-ups | |
 |18.00 - 18.45| Social time | |
 

@@ -35,7 +35,7 @@ To participate, please [register here](https://forms.gle/UJ6JCiaZzSGndvWu8){:tar
 |:-----------|:--------|:-----------|
 |15:00 - 15.10| Intro to day 2 | |
 |15.10 - 15.30| Governance updates, round-up of recent developments | |
-|15.30 - 15.50| *Science talk* | Adam Jacobs (UK Met Office), _Fluid tool - mapping between NetCDF & GRIB_ |
+|15.30 - 15.50| *Science talk* | Adam Jacobs (UK Met Office), _Tools for mapping between NetCDF and GRIB_ |
 |15.50 - 16.00| Introductions to Day 2 hackathons | |
 |16.10 - 16.25| Screen break / coffee break | |
 |16:25 - 17.30| HACKATHONS (Parallel sessions) | Sebastien Villaume (ECMWF), _Mapping CF Metadata and WMO GRIB2 Metadata_; <br> TBD, _"Housekeeping" - website maintenance & improvements_; <br> Sadie Bartholomew (NCAS / University of Reading), _Colour blindness accessibility of CF Convention document figures & tables_ |

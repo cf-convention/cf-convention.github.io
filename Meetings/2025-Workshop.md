@@ -49,7 +49,7 @@ To participate, please [register here](https://forms.gle/UJ6JCiaZzSGndvWu8){:tar
 |:-----------|:--------|:-----------|
 |15.00 - 15.30| Roadmap introduction / recap <br />(What is the roadmap? Why do we need it? Which communities are we engaging with? What did we do last year?)| Luke Marsden (Norwegian Meteorological Institute/University Centre in Svalbard) |
 |15.30 - 15.45 | Introductions to Day 3 (roadmap) hackathons | All hackathon chairs |
-|15:45 - 17:30 | Roadmap HACKATHONS (Parallel sessions) to include a break 16:45-17:00 | |
+|15:45 - 17:30 | Roadmap HACKATHONS (Parallel sessions) to include a break 16:45-17:00 | Vocabularies (Alison Pamment); <br>Discovery and Provenance metadata (TBD); <br>Example data sets (Luke Marsden and Ag Stephens)|
 |17.30 - 18.15 | Social time| N/A |
 
 ### Thursday, 25 September 2025
@@ -58,7 +58,7 @@ To participate, please [register here](https://forms.gle/UJ6JCiaZzSGndvWu8){:tar
 | Time (UTC) | Session | Presenters |
 |:-----------|:--------|:-----------|
 |15.00 - 15.15| Introductions to Day 4 (roadmap) hackathons| All hackathon chairs |
-|15:15 - 17.00| Roadmap HACKATHONS (Parallel sessions) <br> (includes screen break 16.30 - 16.40)||
+|15:15 - 17.00| Roadmap HACKATHONS (Parallel sessions) <br> (includes screen break 16.30 - 16.40)| File formats/data model (Sadie Bartholomew); <br>AI (LLMs - Ag Stephens); <br> CF tools (David Hassell) |
 |17.00 - 18.00| Roadmap hackathons wrap up and next steps | All hackathon chairs |
 |18.00 - 18.45| Social time| N/A |
 

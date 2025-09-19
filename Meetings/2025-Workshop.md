@@ -12,6 +12,30 @@ The meeting will run for three hours on each day, **15:00 to 18:00 UTC**, plus a
 
 To participate, please [register here](https://forms.gle/UJ6JCiaZzSGndvWu8){:target="_blank"}.
 
+## How to join
+
+The workshop will be held via Zoom.  
+
+<!-- Placeholder for Zoom link (replace when ready) -->
+**Join via Zoom:** Link will be posted here shortly.  
+(Same link for all four days.)
+
+<!-- When the Zoom link is available, remove these block comments -->
+<!-- 
+**Join via Zoom:** [Click here](https://zoom.us/j/XXXXXXXXXX?pwd=YYYYYYYYY)  
+(Same link for all four days.)
+-->
+
+### Instructions for participants
+- Please connect a few minutes early to allow time for setup.  
+- Keep your microphone muted unless speaking.  
+- Use the “Raise Hand” feature or the chat to ask questions.  
+- When joining, rename yourself using the format: `Full Name (Affiliation, Country)`  
+  Example: `Antonio S. Cofiño (IFCA, CSIC-UC, Spain)`  
+- Breakout rooms will be used for hackathons.  
+- Plenary sessions are intended to be recorded (not guaranteed).  
+- Automated captions and transcripts will be available (not guaranteed).  
+
 ## Agenda
 
 ### Monday, 22 September 2025

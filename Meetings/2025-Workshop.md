@@ -50,7 +50,7 @@ The organizing committee requests that all presentations, in final form, be plac
 | Time (UTC) | Session | Presenters |
 |:-----------|:--------|:-----------|
 |15:00 - 15:10 | Welcome and Overview of meeting structure | David Hassell (NCAS / University of Reading) |
-|15.10 - 15.40 | Introduction to CF, what’s going into CF 1.13 | Introduction: Ellie Fisher (Centre for Environmental Data Analysis / NCAS); <br> CF-1,13: Sadie Bartholomew (NCAS / University of Reading) |
+|15.10 - 15.40 | Introduction to CF, what’s going into CF-1.13 | Introduction: Ellie Fisher (Centre for Environmental Data Analysis / NCAS); <br> CF-1.13: Sadie Bartholomew (NCAS / University of Reading) |
 |15.40 - 15.55 | *Science talk* | Jack Atkinson (ICCS Cambridge), _TBD_ |
 |15.55 - 16.10 | *Science talk* | Mario Diez Fernandez (University of Cantabria), _Evaluating Large Language Models for Standard Names Generation in CF Conventions_  |
 |16.10 - 16.25 | Screen break / coffee break | N/A |

@@ -68,7 +68,7 @@ The organizing committee requests that all presentations, in final form, be plac
 |15.30 - 15.50| *Science talk* | Adam Jacobs (UK Met Office), _Tools for mapping between NetCDF and GRIB_ |
 |15.50 - 16.00| Introductions to Day 2 hackathons | All hackathon chairs |
 |16.10 - 16.25| Screen break / coffee break | N/A |
-|16:25 - 17.30| HACKATHONS (Parallel sessions) | Sebastien Villaume (ECMWF), _Mapping CF Metadata and WMO GRIB2 Metadata_; <br> TBD, _"Housekeeping" - website maintenance & improvements_; <br> Sadie Bartholomew (NCAS / University of Reading), _Colour blindness accessibility of CF Convention document figures & tables_ |
+|16:25 - 17.45| HACKATHONS (Parallel sessions) | Sebastien Villaume (ECMWF), _Mapping CF Metadata and WMO GRIB2 Metadata_; <br> TBD, _"Housekeeping" - website maintenance & improvements_; <br> Sadie Bartholomew (NCAS / University of Reading), _Colour blindness accessibility of CF Convention document figures & tables_ |
 |17.45 - 18.15| Day 1 and 2 hackathon wrap-ups | All hackathon chairs |
 |18.15 - 19:00| Social time | N/A |
 

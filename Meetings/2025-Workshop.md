@@ -92,13 +92,6 @@ The organizing committee requests that all presentations, in final form, be plac
 |17.00 - 18.00| Roadmap hackathons wrap up and next steps | All hackathon chairs |
 |18.00 - 18.45| Social time| N/A |
 
-## Hackathons
-
-See the "Call for Hackathons" ([Discussion #422](https://github.com/orgs/cf-convention/discussions/422)) for to propose a topic and to review already proposed topics.
-
-### Topics
-* Hackathon topic 1
-
 ## CF Code of Conduct
 Participants should review the [CF Code of Conduct](https://github.com/cf-convention/cf-conventions/blob/main/CODE_OF_CONDUCT.md).
 

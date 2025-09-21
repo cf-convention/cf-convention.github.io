@@ -68,17 +68,18 @@ To participate, please [register here](https://forms.gle/UJ6JCiaZzSGndvWu8){:tar
 
 ## How to join
 
+<!-- Placeholder for Zoom link (replace when ready) -->
+<!--
 The workshop will be held via Zoom.  
 
-<!-- Placeholder for Zoom link (replace when ready) -->
 **Join via Zoom:** Link will be posted here shortly.  
 (Same link for all four days.)
-
-<!-- When the Zoom link is available, remove these block comments -->
-<!-- 
-**Join via Zoom:** [Click here](https://zoom.us/j/XXXXXXXXXX?pwd=YYYYYYYYY)  
-(Same link for all four days.)
 -->
+<!-- When the Zoom link is available, remove these block comments -->
+
+[Join via Zoom](https://rediris.zoom.us/j/98145134170){: .btn .btn-primary .btn-lg role="button" target="_blank" rel="noopener"}
+
+_Same link for all four days._
 
 ### Instructions for participants
 - Please connect a few minutes early to allow time for setup.  
@@ -98,7 +99,7 @@ The organizing committee requests that all presentations, in final form, be plac
 
 ## Agenda
 
-### Monday, 22 September 2025
+### Monday, 22 September 2025 
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |

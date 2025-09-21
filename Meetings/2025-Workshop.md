@@ -112,9 +112,9 @@ The organizing committee requests that all presentations, in final form, be plac
 | 16:10--16:25 | Main   | *Screen break / coffee break*                        |                                               |
 | 16:25--16:35 | Main   | Introductions to Day 1 hackathons                    | *All hackathon chairs*                        |
 | 16:35--18:00 |        | **HACKATHONS (parallel sessions)**                   |                                               |
-|              | Room-1 | &emsp;SGRID Conventions                              | Chris Barker                                  |
-|              | Room-2 | &emsp;Precipitation-related standard names           | Alison Pamment (NCAS / CEDA)                  |
-|              | Room-3 | &emsp;Making energy datasets CF-compliant            | Guilherme Castelao                            |
+|              | Room 1 | &emsp;SGRID Conventions                              | Chris Barker                                  |
+|              | Room 2 | &emsp;Precipitation-related standard names           | Alison Pamment (NCAS / CEDA)                  |
+|              | Room 3 | &emsp;Making energy datasets CF-compliant            | Guilherme Castelao                            |
 | 18:00--18:45 | Main   | *Social time*                                        |                                               |
 
 ### Tuesday, 23 September 2025
@@ -128,9 +128,9 @@ The organizing committee requests that all presentations, in final form, be plac
 | 15:50--16:00 | Main   | Introductions to Day 2 hackathons                    | *All hackathon chairs*                        |
 | 16:10--16:25 | Main   | *Screen break / coffee break*                        |                                               |
 | 16:25--17:45 |        | **HACKATHONS (parallel sessions)**                   |                                               |
-|              | Room-1 | &emsp;Mapping CF Metadata and WMO GRIB2 Metadata     | Sébastien Villaume (ECMWF)                    |
-|              | Room-2 | &emsp;Housekeeping -- website maintenance & improvements | *TBD*                                     |
-|              | Room-3 | &emsp;Colour-blindness accessibility of CF Convention document figures & tables | Sadie Bartholomew (NCAS / University of Reading) |
+|              | Room 1 | &emsp;Mapping CF Metadata and WMO GRIB2 Metadata     | Sébastien Villaume (ECMWF)                    |
+|              | Room 2 | &emsp;Housekeeping -- website maintenance & improvements | *TBD*                                     |
+|              | Room 3 | &emsp;Colour-blindness accessibility of CF Convention document figures & tables | Sadie Bartholomew (NCAS / University of Reading) |
 | 17:45--18:15 | Main   | Day 1 and Day 2 hackathon wrap-ups                   | *All hackathon chairs*                        |
 | 18:15--19:00 | Main   | *Social time*                                        |                                               |
 
@@ -146,9 +146,9 @@ The organizing committee requests that all presentations, in final form, be plac
 |              |        | &emsp;What did we do last year?                      |                                               |
 | 15:30--15:45 | Main   | Introductions to Day 3 (roadmap) hackathons          | *All hackathon chairs*                        |
 | 15:45--17:30 |        | **Roadmap HACKATHONS (parallel sessions)** <br> (includes break 16:45--17:00) |                      |
-|              | Room-1 | &emsp;Vocabularies                                   | Alison Pamment                                |
-|              | Room-2 | &emsp;Discovery and Provenance metadata              | *TBD*                                         |
-|              | Room-3 | &emsp;Example datasets                               | Luke Marsden, Ag Stephens                     |
+|              | Room 1 | &emsp;Vocabularies                                   | Alison Pamment                                |
+|              | Room 2 | &emsp;Discovery and Provenance metadata              | *TBD*                                         |
+|              | Room 3 | &emsp;Example datasets                               | Luke Marsden, Ag Stephens                     |
 | 17:30--18:15 | Main   | *Social time*                                        |                                               |
 
 ### Thursday, 25 September 2025
@@ -158,9 +158,9 @@ The organizing committee requests that all presentations, in final form, be plac
 |:-------------|:-------|:-----------------------------------------------------|:----------------------------------------------|
 | 15:00--15:15 | Main   | Introductions to Day 4 (roadmap) hackathons          | *All hackathon chairs*                        |
 | 15:15--17:00 |        | **Roadmap HACKATHONS (parallel sessions)** <br> (includes screen break 16.30--16.40) |               |
-|              | Room-1 | &emsp;File formats / data model                      | Sadie Bartholomew                             |
-|              | Room-2 | &emsp;AI (LLMs)                                      | Ag Stephens                                   |
-|              | Room-3 | &emsp;CF tools                                       | David Hassell                                 |
+|              | Room 1 | &emsp;File formats / data model                      | Sadie Bartholomew                             |
+|              | Room 2 | &emsp;AI (LLMs)                                      | Ag Stephens                                   |
+|              | Room 3 | &emsp;CF tools                                       | David Hassell                                 |
 | 17:00--18:00 | Main   | Roadmap hackathons wrap-up and next steps            | *All hackathon chairs*                        |
 | 18:00--18:45 | Main   | *Social time*    
 

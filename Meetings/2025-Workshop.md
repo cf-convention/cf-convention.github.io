@@ -67,6 +67,7 @@ The meeting will run for three hours on each day, **15:00 to 18:00 UTC**, plus a
 To participate, please [register here](https://forms.gle/UJ6JCiaZzSGndvWu8){:target="_blank"}.
 
 ## How to join
+Please join each day using the **“Join via Zoom”** button below.
 
 <!-- Placeholder for Zoom link (replace when ready) -->
 <!--
@@ -79,7 +80,7 @@ The workshop will be held via Zoom.
 
 [Join via Zoom](https://rediris.zoom.us/j/98145134170){: .btn .btn-primary .btn-lg role="button" target="_blank" rel="noopener"}
 
-_Same link for all four days._
+**Breakout sessions:** These run **inside the same Zoom meeting**, there are **no separate links**. During hackathon slots, click **Breakout Rooms** in the Zoom toolbar and choose **Room 1/2/3**. You can switch rooms at any time. If you don’t see **Breakout Rooms**, try **More** on the toolbar. If it’s still not visible (e.g., in some browsers), ask in chat and we’ll move you.
 
 ### Instructions for participants
 - Please connect a few minutes early to allow time for setup.  
@@ -87,7 +88,7 @@ _Same link for all four days._
 - Use the “Raise Hand” feature or the chat to ask questions.  
 - When joining, rename yourself using the format: `Full Name (Affiliation, Country)`  
   Example: `Antonio S. Cofiño (IFCA, CSIC-UC, Spain)`  
-- Breakout rooms will be used for hackathons.  
+- **Hackathons:** breakout rooms are **self-assign** within the same Zoom meeting.
 - Plenary sessions are intended to be recorded (not guaranteed).  
 - Automated captions and transcripts will be available (not guaranteed).  
 

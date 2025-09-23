@@ -96,7 +96,7 @@ The workshop will be held via Zoom.
 
 All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder](https://drive.google.com/drive/folders/1-L_wDQHWM9PaKqUD5AtYNFYsUtbOXSV0).
 
-The organizing committee requests that all presentations, in final form, be placed in a the [CF Metadata Conventions Zenodo Community](https://zenodo.org/communities/cfconventions) document repository that provides permanence for the document and a DOI. If you are new to Zenodo, see the [Zenodo "Quick Start" page](https://help.zenodo.org/docs/get-started/quickstart/).
+The organizing committee requests that all presentations, in final form, be placed in the [CF Metadata Conventions Zenodo Community](https://zenodo.org/communities/cfconventions) document repository that provides permanence for the document and a DOI. If you are new to Zenodo, see the [Zenodo "Quick Start" page](https://help.zenodo.org/docs/get-started/quickstart/).
 
 ## Agenda
 
@@ -132,7 +132,7 @@ The organizing committee requests that all presentations, in final form, be plac
 | 16:25--17:45 |        | **HACKATHONS (parallel sessions)**                   |                                               |
 |              | Room 1 | &emsp;Mapping CF Metadata and WMO GRIB2 Metadata     | Sébastien Villaume (ECMWF)                    |
 |              | Room 2 | &emsp;Housekeeping -- website maintenance & improvements | *TBD*                                     |
-|              | Room 3 | &emsp;Colour-blindness accessibility of CF Convention document figures & tables | Sadie Bartholomew (NCAS / University of Reading) |
+|              | Room 3 | &emsp;(Digital) accessibility of the CF Convention document | Sadie Bartholomew (NCAS / University of Reading) |
 | 17:45--18:15 | Main   | Day 1 and Day 2 hackathon wrap-ups                   | *All hackathon chairs*                        |
 | 18:15--19:00 | Main   | *Social time*                                        |                                               |
 

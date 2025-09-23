@@ -100,7 +100,7 @@ The organizing committee requests that all presentations, in final form, be plac
 
 ## Agenda
 
-### Monday, 22 September 2025 
+### Day 1 - Monday, 22 September 2025 
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
@@ -119,7 +119,7 @@ The organizing committee requests that all presentations, in final form, be plac
 |              | Room 3 | &emsp;Making energy datasets CF-compliant            | Guilherme Castelao                            |
 | 18:00--18:45 | Main   | *Social time*                                        |                                               |
 
-### Tuesday, 23 September 2025
+### Day 2 - Tuesday, 23 September 2025
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
@@ -136,7 +136,7 @@ The organizing committee requests that all presentations, in final form, be plac
 | 17:45--18:15 | Main   | Day 1 and Day 2 hackathon wrap-ups                   | *All hackathon chairs*                        |
 | 18:15--19:00 | Main   | *Social time*                                        |                                               |
 
-### Wednesday, 24 September 2025
+### Day 3 - Wednesday, 24 September 2025
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
@@ -153,7 +153,7 @@ The organizing committee requests that all presentations, in final form, be plac
 |              | Room 3 | &emsp;Example datasets                               | Luke Marsden, Ag Stephens                     |
 | 17:30--18:15 | Main   | *Social time*                                        |                                               |
 
-### Thursday, 25 September 2025
+### Day 4 - Thursday, 25 September 2025
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |

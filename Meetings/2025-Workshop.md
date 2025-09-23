@@ -101,6 +101,7 @@ The organizing committee requests that all presentations, in final form, be plac
 ## Agenda
 
 ### Day 1 - Monday, 22 September 2025 
+> 📝 [**Shared Notes - Day 1**](https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.fks0s24ixhzw)  
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
@@ -120,6 +121,7 @@ The organizing committee requests that all presentations, in final form, be plac
 | 18:00--18:45 | Main   | *Social time*                                        |                                               |
 
 ### Day 2 - Tuesday, 23 September 2025
+> 📝 [**Shared Notes - Day 2**](https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.i4a568k8cm8l)  
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
@@ -137,6 +139,7 @@ The organizing committee requests that all presentations, in final form, be plac
 | 18:15--19:00 | Main   | *Social time*                                        |                                               |
 
 ### Day 3 - Wednesday, 24 September 2025
+> 📝 [**Shared Notes - Day 3**](https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.q6kfiyndk1ez)  
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
@@ -154,6 +157,7 @@ The organizing committee requests that all presentations, in final form, be plac
 | 17:30--18:15 | Main   | *Social time*                                        |                                               |
 
 ### Day 4 - Thursday, 25 September 2025
+> 📝 [**Shared Notes - Day 4**](https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.34svodmsznw0)  
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |

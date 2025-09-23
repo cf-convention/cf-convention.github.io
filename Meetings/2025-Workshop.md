@@ -116,7 +116,7 @@ The organizing committee requests that all presentations, in final form, be plac
 | 16:35--18:00 |        | **HACKATHONS (parallel sessions)**                   |                                               |
 |              | Room 1 | &emsp;SGRID Conventions                              | Chris Barker                                  |
 |              | Room 2 | &emsp;Precipitation-related standard names           | Alison Pamment (NCAS / CEDA)                  |
-|              | Room 3 | &emsp;Making energy datasets CF-compliant            | Guilherme Castelao                            |
+|              | Room 3 | ~~&emsp;Making energy datasets CF-compliant~~        | Guilherme Castelao                            |
 | 18:00--18:45 | Main   | *Social time*                                        |                                               |
 
 ### Day 2 - Tuesday, 23 September 2025

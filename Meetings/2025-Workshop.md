@@ -132,7 +132,7 @@ The organizing committee requests that all presentations, in final form, be plac
 | 16:25--17:45 |        | **HACKATHONS (parallel sessions)**                   |                                               |
 |              | Room 1 | &emsp;Mapping CF Metadata and WMO GRIB2 Metadata     | Sébastien Villaume (ECMWF)                    |
 |              | Room 2 | &emsp;Housekeeping -- website maintenance & improvements | *TBD*                                     |
-|              | Room 3 | &emsp;Colour-blindness accessibility of CF Convention document figures & tables | Sadie Bartholomew (NCAS / University of Reading) |
+|              | Room 3 | &emsp;(Digital) accessibility of the CF Convention document | Sadie Bartholomew (NCAS / University of Reading) |
 | 17:45--18:15 | Main   | Day 1 and Day 2 hackathon wrap-ups                   | *All hackathon chairs*                        |
 | 18:15--19:00 | Main   | *Social time*                                        |                                               |
 

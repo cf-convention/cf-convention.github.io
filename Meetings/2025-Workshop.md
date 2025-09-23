@@ -101,7 +101,7 @@ The organizing committee requests that all presentations, in final form, be plac
 ## Agenda
 
 ### Day 1 - Monday, 22 September 2025 
-> 📝 [**Shared Notes - Day 1**](https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.fks0s24ixhzw)  
+> 📝 [**Shared Notes - Day 1**][Notes-Day1]  
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
@@ -115,13 +115,17 @@ The organizing committee requests that all presentations, in final form, be plac
 | 16:10--16:25 | Main   | *Screen break / coffee break*                        |                                               |
 | 16:25--16:35 | Main   | Introductions to Day 1 hackathons                    | *All hackathon chairs*                        |
 | 16:35--18:00 |        | **HACKATHONS (parallel sessions)**                   |                                               |
-|              | Room 1 | &emsp;SGRID Conventions                              | Chris Barker                                  |
-|              | Room 2 | &emsp;Precipitation-related standard names           | Alison Pamment (NCAS / CEDA)                  |
+|              | Room 1 | &emsp;[SGRID Conventions 📝 ][Notes-Day1-Room1]      | Chris Barker                                  |
+|              | Room 2 | &emsp;[Precipitation-related standard names 📝][Notes-Day1-Room2]   | Alison Pamment (NCAS / CEDA)                  |
 |              | Room 3 | ~~&emsp;Making energy datasets CF-compliant~~        | Guilherme Castelao                            |
 | 18:00--18:45 | Main   | *Social time*                                        |                                               |
 
+[Notes-Day1]: https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.fks0s24ixhzw "Day 1, Plenary Session Notes"
+[Notes-Day1-Room1]: https://docs.google.com/document/d/1PSr6lYaSXBi_QFjsPyhRzWF8UUW5PBujetFSspV--hE/edit "Day 1, Room 1 Hackaton Notes: SGRID Conventions"
+[Notes-Day1-Room2]: https://docs.google.com/document/d/1flTbzN4Cnzlh2eSKKoedQJ-eqXa_8Mjv7GZQjc3V6uE/edit "Day 1, Room 2 Hackaton Notes: Precipitation-related standard names"
+
 ### Day 2 - Tuesday, 23 September 2025
-> 📝 [**Shared Notes - Day 2**](https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.i4a568k8cm8l)  
+> 📝 [**Shared Notes - Day 2**][Notes-Day2]
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
@@ -132,14 +136,19 @@ The organizing committee requests that all presentations, in final form, be plac
 | 15:50--16:00 | Main   | Introductions to Day 2 hackathons                    | *All hackathon chairs*                        |
 | 16:10--16:25 | Main   | *Screen break / coffee break*                        |                                               |
 | 16:25--17:45 |        | **HACKATHONS (parallel sessions)**                   |                                               |
-|              | Room 1 | &emsp;Mapping CF Metadata and WMO GRIB2 Metadata     | Sébastien Villaume (ECMWF)                    |
-|              | Room 2 | &emsp;Housekeeping -- website maintenance & improvements | *TBD*                                     |
-|              | Room 3 | &emsp;(Digital) accessibility of the CF Convention document | Sadie Bartholomew (NCAS / University of Reading) |
+|              | Room 1 | &emsp;[Mapping CF Metadata and WMO GRIB2 Metadata  📝 ][Notes-Day2-Room1] | Sébastien Villaume (ECMWF) |
+|              | Room 2 | &emsp;[Housekeeping -- website maintenance & improvements 📝 ][Notes-Day2-Room2] | Luke Marsden      |
+|              | Room 3 | &emsp;[(Digital) accessibility of the CF Convention document 📝 ][Notes-Day2-Room3] | Sadie Bartholomew (NCAS / University of Reading) |
 | 17:45--18:15 | Main   | Day 1 and Day 2 hackathon wrap-ups                   | *All hackathon chairs*                        |
 | 18:15--19:00 | Main   | *Social time*                                        |                                               |
 
+[Notes-Day2]: https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.i4a568k8cm8l  "Day 2, Plenary Session Notes"
+[Notes-Day2-Room1]: https://docs.google.com/document/d/1TXVtohGn1bCY6gVmoxtrtgIniotuszvPsajh_t5h2-Y/edit "Day 2, Room 1 Hackaton Notes: Mapping CF Metadata and WMO GRIB2 Metadata"
+[Notes-Day2-Room2]: https://docs.google.com/document/d/1JmKEopA99QsRVlxhn3cFr3hJ4AeZWfDAA1L8oyTmYBg/edit "Day 2, Room 2 Hackaton Notes: Housekeeping -- website maintenance & improvements"
+[Notes-Day2-Room3]: https://docs.google.com/document/d/1-5g0z766MkcKE_y6SRFTW08Rmo7Krav3826_oi6xVH4/edit "Day 2, Room 3 Hackaton Notes: (Digital) accessibility of the CF Convention document"
+
 ### Day 3 - Wednesday, 24 September 2025
-> 📝 [**Shared Notes - Day 3**](https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.q6kfiyndk1ez)  
+> 📝 [**Shared Notes - Day 3**][Notes-Day3]  
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
@@ -153,11 +162,16 @@ The organizing committee requests that all presentations, in final form, be plac
 | 15:45--17:30 |        | **Roadmap HACKATHONS (parallel sessions)** <br> (includes break 16:45--17:00) |                      |
 |              | Room 1 | &emsp;Vocabularies                                   | Alison Pamment                                |
 |              | Room 2 | &emsp;Discovery and Provenance metadata              | *TBD*                                         |
-|              | Room 3 | &emsp;Example datasets                               | Luke Marsden, Ag Stephens                     |
+|              | Room 3 | &emsp;[Example datasets 📝 ][Notes-Day3-Room3]       | Luke Marsden, Ag Stephens                     |
 | 17:30--18:15 | Main   | *Social time*                                        |                                               |
 
+[Notes-Day3]: https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.q6kfiyndk1ez "Day 3, Plenary Session Notes"
+[Notes-Day3-Room1]: https://docs.google.com/document/d/XXXXXXXXXXXXXXXXXXXXX/edit "Day 3, Room 1 Hackaton Notes: Vocabularies"
+[Notes-Day3-Room2]: https://docs.google.com/document/d/YYYYYYYYYYYYYYYYYYYYY/edit "Day 3, Room 2 Hackaton Notes: Discovery and Provenance metadata"
+[Notes-Day3-Room3]: https://docs.google.com/document/d/1YsNbpET2Ck0H1-1FhgpI2a5uuizg1YyBDZs8iiGdPs0/edit?usp=sharing "Day 3, Room 3 Hackaton Notes: Example datasets "
+
 ### Day 4 - Thursday, 25 September 2025
-> 📝 [**Shared Notes - Day 4**](https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.34svodmsznw0)  
+> 📝 [**Shared Notes - Day 4**][Notes-Day4]  
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
@@ -169,6 +183,11 @@ The organizing committee requests that all presentations, in final form, be plac
 |              | Room 3 | &emsp;CF tools                                       | David Hassell                                 |
 | 17:00--18:00 | Main   | Roadmap hackathons wrap-up and next steps            | *All hackathon chairs*                        |
 | 18:00--18:45 | Main   | *Social time*    
+
+[Notes-Day4]: https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.34svodmsznw0  "Day 4, Plenary Session Notes"
+[Notes-Day4-Room1]: https://docs.google.com/document/d/XXXXXXXXXXXXXXXXXXXXX/edit "Day 4, Room 1 Hackaton Notes: File formats / data model "
+[Notes-Day4-Room2]: https://docs.google.com/document/d/YYYYYYYYYYYYYYYYYYYYY/edit "Day 4, Room 2 Hackaton Notes: AI (LLMs)"
+[Notes-Day4-Room3]: https://docs.google.com/document/d/ZZZZZZZZZZZZZZZZZZZZZ/edit "Day 4, Room 3 Hackaton Notes: CF tools "
 
 ## CF Code of Conduct
 Participants should review the [CF Code of Conduct](https://github.com/cf-convention/cf-conventions/blob/main/CODE_OF_CONDUCT.md).

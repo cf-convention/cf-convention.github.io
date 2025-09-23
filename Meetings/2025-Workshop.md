@@ -96,7 +96,7 @@ The workshop will be held via Zoom.
 
 All the presentations and notes for the plenary and breakout sessions will be available in this [Google Drive folder](https://drive.google.com/drive/folders/1-L_wDQHWM9PaKqUD5AtYNFYsUtbOXSV0).
 
-The organizing committee requests that all presentations, in final form, be placed in a the [CF Metadata Conventions Zenodo Community](https://zenodo.org/communities/cfconventions) document repository that provides permanence for the document and a DOI. If you are new to Zenodo, see the [Zenodo "Quick Start" page](https://help.zenodo.org/docs/get-started/quickstart/).
+The organizing committee requests that all presentations, in final form, be placed in the [CF Metadata Conventions Zenodo Community](https://zenodo.org/communities/cfconventions) document repository that provides permanence for the document and a DOI. If you are new to Zenodo, see the [Zenodo "Quick Start" page](https://help.zenodo.org/docs/get-started/quickstart/).
 
 ## Agenda
 

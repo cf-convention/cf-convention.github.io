@@ -164,15 +164,15 @@ The organizing committee requests that all presentations, in final form, be plac
 |              |        | &emsp;What did we do last year?                      |                                               |
 | 15:30--15:45 | Main   | Introductions to Day 3 (roadmap) hackathons          | *All hackathon chairs*                        |
 | 15:45--17:30 |        | **Roadmap HACKATHONS (parallel sessions)** <br> (includes break 16:45--17:00) |                      |
-|              | Room 1 | &emsp;Vocabularies                                   | Alison Pamment                                |
-|              | Room 2 | &emsp;Discovery and Provenance metadata              | *TBD*                                         |
+|              | Room 1 | &emsp;[Vocabularies 📝 ][Notes-Day3-Room1]           | Alison Pamment                                |
+|              | Room 2 | &emsp;[Discovery and Provenance metadata 📝 ][Notes-Day3-Room2] | *TBD*                              |
 |              | Room 3 | &emsp;[Example datasets 📝 ][Notes-Day3-Room3]       | Luke Marsden, Ag Stephens                     |
 | 17:30--18:15 | Main   | *Social time*                                        |                                               |
 
 [Notes-Day3]: https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.q6kfiyndk1ez "Day 3, Plenary Session Notes"
-[Notes-Day3-Room1]: https://docs.google.com/document/d/XXXXXXXXXXXXXXXXXXXXX/edit "Day 3, Room 1 Hackaton Notes: Vocabularies"
-[Notes-Day3-Room2]: https://docs.google.com/document/d/YYYYYYYYYYYYYYYYYYYYY/edit "Day 3, Room 2 Hackaton Notes: Discovery and Provenance metadata"
-[Notes-Day3-Room3]: https://docs.google.com/document/d/1YsNbpET2Ck0H1-1FhgpI2a5uuizg1YyBDZs8iiGdPs0/edit?usp=sharing "Day 3, Room 3 Hackaton Notes: Example datasets "
+[Notes-Day3-Room1]: https://docs.google.com/document/d/1q0Pdhb42gKrS9XS3-5gexpitMaVvPe_GtviZNIxNEes/edit "Day 3, Room 1 Hackaton Notes: Vocabularies"
+[Notes-Day3-Room2]: https://docs.google.com/document/d/1DwXDTXIsyBYiCrgFUyoXrEf12I9rAImRbTimFutiPIs/edit "Day 3, Room 2 Hackaton Notes: Discovery and Provenance metadata"
+[Notes-Day3-Room3]: https://docs.google.com/document/d/1YsNbpET2Ck0H1-1FhgpI2a5uuizg1YyBDZs8iiGdPs0/edit "Day 3, Room 3 Hackaton Notes: Example datasets "
 
 ### Day 4 - Thursday, 25 September 2025
 > 📝 [**Shared Notes - Day 4**][Notes-Day4]  
@@ -182,16 +182,16 @@ The organizing committee requests that all presentations, in final form, be plac
 |:-------------|:-------|:-----------------------------------------------------|:----------------------------------------------|
 | 15:00--15:15 | Main   | Introductions to Day 4 (roadmap) hackathons          | *All hackathon chairs*                        |
 | 15:15--17:00 |        | **Roadmap HACKATHONS (parallel sessions)** <br> (includes screen break 16.30--16.40) |               |
-|              | Room 1 | &emsp;File formats / data model                      | Sadie Bartholomew                             |
-|              | Room 2 | &emsp;AI (LLMs)                                      | Ag Stephens                                   |
-|              | Room 3 | &emsp;CF tools                                       | David Hassell                                 |
+|              | Room 1 | &emsp;[File formats / data model 📝 ][Notes-Day4-Room1] | Sadie Bartholomew                          |
+|              | Room 2 | &emsp;[AI (LLMs) 📝 ][Notes-Day4-Room2]              | Ag Stephens                                   |
+|              | Room 3 | &emsp;[CF tools 📝 ][Notes-Day4-Room3]               | David Hassell                                 |
 | 17:00--18:00 | Main   | Roadmap hackathons wrap-up and next steps            | *All hackathon chairs*                        |
 | 18:00--18:45 | Main   | *Social time*    
 
 [Notes-Day4]: https://docs.google.com/document/d/1tJFt4CD7lDOoDRWTLgYgPSWBJv3T8w2_QgXjCZneQe4/edit?tab=t.0#bookmark=id.34svodmsznw0  "Day 4, Plenary Session Notes"
-[Notes-Day4-Room1]: https://docs.google.com/document/d/XXXXXXXXXXXXXXXXXXXXX/edit "Day 4, Room 1 Hackaton Notes: File formats / data model "
-[Notes-Day4-Room2]: https://docs.google.com/document/d/YYYYYYYYYYYYYYYYYYYYY/edit "Day 4, Room 2 Hackaton Notes: AI (LLMs)"
-[Notes-Day4-Room3]: https://docs.google.com/document/d/ZZZZZZZZZZZZZZZZZZZZZ/edit "Day 4, Room 3 Hackaton Notes: CF tools "
+[Notes-Day4-Room1]: https://docs.google.com/document/d/17rM-CQJNyTp_dycP9Mn95u12pJEJ1lJAC0qgP_EVPAo/edit "Day 4, Room 1 Hackaton Notes: File formats / data model "
+[Notes-Day4-Room2]: https://docs.google.com/document/d/10-fDXIi2jwTzl87Yo7w7vhI4ZyZ8761gfXwBEJj3Sdo/edit "Day 4, Room 2 Hackaton Notes: AI (LLMs)"
+[Notes-Day4-Room3]: https://docs.google.com/document/d/1YphF9RkXshIvxJNwFPzwDXBT-QqXuH31EfakIt005sY/edit "Day 4, Room 3 Hackaton Notes: CF tools "
 
 ## CF Code of Conduct
 Participants should review the [CF Code of Conduct](https://github.com/cf-convention/cf-conventions/blob/main/CODE_OF_CONDUCT.md).

@@ -165,7 +165,7 @@ The organizing committee requests that all presentations, in final form, be plac
 | 15:30--15:45 | Main   | Introductions to Day 3 (roadmap) hackathons          | *All hackathon chairs*                        |
 | 15:45--17:30 |        | **Roadmap HACKATHONS (parallel sessions)** <br> (includes break 16:45--17:00) |                      |
 |              | Room 1 | &emsp;[Vocabularies 📝 ][Notes-Day3-Room1]           | Alison Pamment                                |
-|              | Room 2 | &emsp;[Discovery and Provenance metadata 📝 ][Notes-Day3-Room2] | *TBD*                              |
+|              | Room 2 | &emsp;[Discovery and Provenance metadata 📝 ][Notes-Day3-Room2] | David Hassell                      |
 |              | Room 3 | &emsp;[Example datasets 📝 ][Notes-Day3-Room3]       | Luke Marsden, Ag Stephens                     |
 | 17:30--18:15 | Main   | *Social time*                                        |                                               |
 

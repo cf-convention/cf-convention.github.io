@@ -3,33 +3,50 @@ layout: default
 title: CF Conventions Home Page
 flash_message: "The <strong>CF Conventions Workshop 2025</strong> will be hosted online from 22nd to 25th September. Register <a href='https://forms.gle/UJ6JCiaZzSGndvWu8' target='_blank'><strong>here</strong></a> and view the agenda <a href='https://cfconventions.org/Meetings/2025-Workshop.html' target='_blank'><strong>here</strong></a>."
 flash_message_type: "info"  # Optional: Use 'info', 'success', 'warning', or 'error'
+#hero_image: Data/media/images/CF2024_group1.JPG # Overwrites gradient if
+hero_gradient: to bottom, rgb(34, 34, 34), rgb(34, 34, 34)
+hero_header: CF Metadata Conventions # Only displays if hero_image or hero_gradient are provided
+#hero_paragraph: Some words about the CF Conventions # Only displays if hero_image or hero_gradient are provided
+hero_button_text: View latest release # Only displays if hero_image or hero_gradient are provided
+hero_button_url: Data/cf-conventions/cf-conventions-1.12/cf-conventions.html # Only displays if hero_image or hero_gradient are provided
 ---
 
-# CF Metadata Conventions
+<br>
 
 The CF metadata conventions are designed to promote the processing and sharing of files created with the [NetCDF API][api].
 The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data.
 This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities.
 The CF convention includes a standard name table, which defines strings that identify physical quantities.
 
----
-
-[**_Ask a question_ &#x2753; about how to use CF**][github_askq]<br>
-**_Read the conventions_:** **Latest release** (1.12) [HTML][releasedhtml] [PDF][releasedpdf]&nbsp;&bull;&nbsp;
-**Working draft** [HTML][workinghtml] [PDF][workingpdf]<br>
-**_Check the latest vocabularies_:** [**Standard names**][currentnames]&nbsp;&bull;&nbsp;
-[**Area types**][areatypes]&nbsp;&bull;&nbsp;
-[**Standardized regions**][regions]
+Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models.
+The use of CF is recommended where applicable by Unidata.
 
 ---
+
+#### [Ask a question &#x2753; about how to use CF][github_askq]
+
+### Latest release (1.12)  
+[HTML][releasedhtml] [PDF][releasedpdf]  
+
+### Working draft  
+[HTML][workinghtml] [PDF][workingpdf]
+
+### Check the latest vocabularies
+
+<a href="Data/cf-standard-names/current/build/cf-standard-name-table.html" style="display:inline-block; background-color:#3498db; color:white; padding:14px 22px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.6rem; margin-right:8px; margin-bottom:8px;">Standard names</a>
+<a href="Data/area-type-table/current/build/area-type-table.html" style="display:inline-block; background-color:#3498db; color:white; padding:14px 22px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.6rem; margin-right:8px; margin-bottom:8px;">Area types</a>
+<a href="Data/standardized-region-list/standardized-region-list.current.html" style="display:inline-block; background-color:#3498db; color:white; padding:14px 22px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.6rem; margin-right:8px; margin-bottom:8px;">Standardized regions</a>
+
+---
+
+## Get involved
 
 CF is developed through open discussion on GitHub.
 If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here][discussion].
 Changes are decided according to the CF [governance arrangements][governance].
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
 
-Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models.
-The use of CF is recommended where applicable by Unidata.
+![CF community at the 2024 conventions workshop](Data/media/images/CF2024_group2_cropped.jpg)
 
 ## Quick links
 

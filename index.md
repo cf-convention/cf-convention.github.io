@@ -1,8 +1,8 @@
 ---
 layout: default
 title: CF Conventions Home Page
-flash_message: "The <strong>CF Conventions Workshop 2025</strong> will be hosted online from 22nd to 25th September. Register <a href='https://forms.gle/UJ6JCiaZzSGndvWu8' target='_blank'><strong>here</strong></a> and view the agenda <a href='https://cfconventions.org/Meetings/2025-Workshop.html' target='_blank'><strong>here</strong></a>."
-flash_message_type: "info"  # Optional: Use 'info', 'success', 'warning', or 'error'
+#flash_message: "The <strong>CF Conventions Workshop 2025</strong> will be hosted online from 22nd to 25th September. Register <a href='https://forms.gle/UJ6JCiaZzSGndvWu8' target='_blank'><strong>here</strong></a> and view the agenda <a href='https://cfconventions.org/Meetings/2025-Workshop.html' target='_blank'><strong>here</strong></a>."
+#flash_message_type: "info"  # Optional: Use 'info', 'success', 'warning', or 'error'
 #hero_image: Data/media/images/CF2024_group1.JPG # Overwrites gradient if
 hero_gradient: to bottom, rgb(34, 34, 34), rgb(25, 50, 75)
 hero_header: CF Metadata Conventions # Only displays if hero_image or hero_gradient are provided

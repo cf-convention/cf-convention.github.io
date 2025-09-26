@@ -4,7 +4,7 @@ title: CF Conventions Home Page
 flash_message: "The <strong>CF Conventions Workshop 2025</strong> will be hosted online from 22nd to 25th September. Register <a href='https://forms.gle/UJ6JCiaZzSGndvWu8' target='_blank'><strong>here</strong></a> and view the agenda <a href='https://cfconventions.org/Meetings/2025-Workshop.html' target='_blank'><strong>here</strong></a>."
 flash_message_type: "info"  # Optional: Use 'info', 'success', 'warning', or 'error'
 #hero_image: Data/media/images/CF2024_group1.JPG # Overwrites gradient if
-hero_gradient: to bottom, rgb(34, 34, 34), rgb(34, 34, 34)
+hero_gradient: to bottom, rgb(34, 34, 34), rgb(25, 50, 75)
 hero_header: CF Metadata Conventions # Only displays if hero_image or hero_gradient are provided
 #hero_paragraph: Some words about the CF Conventions # Only displays if hero_image or hero_gradient are provided
 hero_button_text: View latest release # Only displays if hero_image or hero_gradient are provided
@@ -46,7 +46,7 @@ If you would like to propose a change, make a suggestion, report a problem or as
 Changes are decided according to the CF [governance arrangements][governance].
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
 
-![CF community at the 2024 conventions workshop](Data/media/images/CF2024_group2_cropped.jpg)
+![CF community at the 2024 conventions workshop](Data/media/images/CF2024_group2_cropped.jpg){: style="max-width:800px; height:auto;" } *CF community at the 2024 conventions workshop*
 
 ## Quick links
 
@@ -63,7 +63,7 @@ See also the links in the navigation bar at the top of this page.
   * High-level presentation ([DOI](https://doi.org/10.5281/zenodo.15015065), [PDF](https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=1) - from 2024 AGU)
   * More detailed [presentation][viewgraphs] and [paper][article]
 
-[api]: https://www.unidata.ucar.edu/software/netcdf/index.html
+[api]: https://www.unidata.ucar.edu/software/netcdf
 [coards]: https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html
 [viewgraphs]: Data/cf-documents/overview/viewgraphs.pdf
 [article]: Data/cf-documents/overview/article.pdf

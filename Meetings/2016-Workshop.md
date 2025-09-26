@@ -11,7 +11,7 @@ title: 2016 CF Workshop
 
 **24-26 May 2016, Boulder, Colorado**
 
-***[Original website hosted at Unidata](https://www.unidata.ucar.edu/events/2016CFWorkshop/ "Unidata's website")***
+***[Original website hosted at Unidata](https://archive.unidata.ucar.edu/events/2016CFWorkshop/ "Unidata's Archive website")***
 
 This workshop will focus on discussing current and future efforts and directions for the Climate and Forecast (CF)
 metadata conventsions for netCDF (netCDF-CF). The meeting will be organized by the “Advancing netCDF-CF for Geoscience”

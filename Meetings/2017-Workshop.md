@@ -11,7 +11,7 @@ title: 2017 CF Workshop
 
 **6-8 September 2017, Boulder, Colorado**
 
-***[Original website hosted at Unidata](https://www.unidata.ucar.edu/events/2017CFWorkshop/ "Unidata's website")***
+***[Original website hosted at Unidata](https://archive.unidata.ucar.edu/events/2017CFWorkshop/ "Unidata's Archive website")***
 
 This workshop will focus on efforts to advance the Climate and Forecast (CF) metadata conventions for
 netCDF (netCDF-CF). The meeting is being hosted by the EarthCube “Advancing netCDF-CF for Geoscience”

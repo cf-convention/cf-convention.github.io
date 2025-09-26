@@ -4,7 +4,7 @@ title: CF Conventions Home Page
 #flash_message: "The <strong>CF Conventions Workshop 2025</strong> will be hosted online from 22nd to 25th September. Register <a href='https://forms.gle/UJ6JCiaZzSGndvWu8' target='_blank'><strong>here</strong></a> and view the agenda <a href='https://cfconventions.org/Meetings/2025-Workshop.html' target='_blank'><strong>here</strong></a>."
 #flash_message_type: "info"  # Optional: Use 'info', 'success', 'warning', or 'error'
 #hero_image: Data/media/images/CF2024_group1.JPG # Overwrites gradient if
-hero_gradient: to bottom, rgb(34, 34, 34), rgb(25, 50, 75)
+hero_gradient: to bottom, rgb(70, 110, 140), rgb(30, 70, 110)
 hero_header: CF Metadata Conventions # Only displays if hero_image or hero_gradient are provided
 #hero_paragraph: Some words about the CF Conventions # Only displays if hero_image or hero_gradient are provided
 hero_button_text: View latest release # Only displays if hero_image or hero_gradient are provided
@@ -34,8 +34,8 @@ The use of CF is recommended where applicable by Unidata.
 ### Check the latest vocabularies
 
 [Standard names][currentnames]{:.btn .btn-primary .btn-lg}
-[Area types][areatypes]{:.btn .btn-success .btn-lg}
-[Standarized regions][regions]{:.btn .btn-danger .btn-lg}
+[Area types][areatypes]{:.btn .btn-primary .btn-lg}
+[Standarized regions][regions]{:.btn .btn-primary .btn-lg}
 
 ---
 
@@ -47,6 +47,8 @@ Changes are decided according to the CF [governance arrangements][governance].
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
 
 ![CF community at the 2024 conventions workshop](Data/media/images/CF2024_group2_cropped.jpg){: style="max-width:800px; height:auto;" } *CF community at the 2024 conventions workshop*
+
+---
 
 ## Quick links
 

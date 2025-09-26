@@ -33,9 +33,9 @@ The use of CF is recommended where applicable by Unidata.
 
 ### Check the latest vocabularies
 
-<a href="Data/cf-standard-names/current/build/cf-standard-name-table.html" style="display:inline-block; background-color:#3498db; color:white; padding:14px 22px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.6rem; margin-right:8px; margin-bottom:8px;">Standard names</a>
-<a href="Data/area-type-table/current/build/area-type-table.html" style="display:inline-block; background-color:#3498db; color:white; padding:14px 22px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.6rem; margin-right:8px; margin-bottom:8px;">Area types</a>
-<a href="Data/standardized-region-list/standardized-region-list.current.html" style="display:inline-block; background-color:#3498db; color:white; padding:14px 22px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.6rem; margin-right:8px; margin-bottom:8px;">Standardized regions</a>
+[Standard names][currentnames]{:.btn .btn-primary .btn-lg}
+[Area types][areatypes]{:.btn .btn-success .btn-lg}
+[Standarized regions][regions]{:.btn .btn-danger .btn-lg}
 
 ---
 

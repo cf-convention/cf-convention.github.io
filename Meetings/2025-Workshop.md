@@ -58,30 +58,49 @@ table.agenda > tbody > tr > td:nth-child(4) {
 
 
 # 2025 CF Workshop
+<!-- === State 3: Archived after workshop === -->
+> This page is kept for reference. The CF Workshop 2025 took place online, 22–25 September 2025.
+<!-- -->
 
 The 2025 CF Workshop will be held **virtually** on **22-25 September 2025**.
 The meeting will run for three hours on each day, **15:00 to 18:00 UTC**, plus an informal hour at the end of each day.
 
 ## How to register
 
+<!-- === State 1: Placeholder before form is ready === -->
+<!--
+Registration will open soon. A link to the registration form will be posted here.
+-->
+
+<!-- === State 2: Active registration form === -->
+<!--
 To participate, please [register here](https://forms.gle/UJ6JCiaZzSGndvWu8){:target="_blank"}.
 
-## How to join
-Please join each day using the **“Join via Zoom”** button below.
+### Notes for participants
+- Registration is required to receive the Zoom link and updates.
+- Registration will remain open until [date].
+- After registration, you will receive a confirmation email.
+-->
 
-<!-- Placeholder for Zoom link (replace when ready) -->
+<!-- === State 3: Archived after workshop === -->
+Registration for the CF Workshop 2025 is now closed.
+
+## How to join
+
+<!-- === State 1: Placeholder before link is known === -->
 <!--
 The workshop will be held via Zoom.  
 
 **Join via Zoom:** Link will be posted here shortly.  
-(Same link for all four days.)
 -->
-<!-- When the Zoom link is available, remove these block comments -->
+
+<!-- === State 2: Active link during the workshop === -->
+<!--
+Please join each day using the **“Join via Zoom”** button below.
 
 [Join via Zoom](https://rediris.zoom.us/j/98145134170){: .btn .btn-primary .btn-lg role="button" target="_blank" rel="noopener"}
 
 **Breakout sessions:** These run **inside the same Zoom meeting**, there are **no separate links**. During hackathon slots, click **Breakout Rooms** in the Zoom toolbar and choose **Room 1/2/3**. You can switch rooms at any time. If you don’t see **Breakout Rooms**, try **More** on the toolbar. If it’s still not visible (e.g., in some browsers), ask in chat and we’ll move you.
-
 ### Instructions for participants
 - Please connect a few minutes early to allow time for setup.  
 - Keep your microphone muted unless speaking.  
@@ -91,6 +110,11 @@ The workshop will be held via Zoom.
 - **Hackathons:** breakout rooms are **self-assign** within the same Zoom meeting.
 - Plenary sessions are intended to be recorded (not guaranteed).  
 - Automated captions and transcripts will be available (not guaranteed).  
+
+-->
+
+<!-- === State 3: Archived after workshop === -->
+The CF Workshop 2025 was held online via Zoom (22–25 September 2025).
 
 ## Documents
 

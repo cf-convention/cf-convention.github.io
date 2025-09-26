@@ -139,7 +139,7 @@ The organizing committee requests that all presentations, in final form, be plac
 |              |        | &emsp;Introduction  [[slides][D1-Intro-CF]]          | Ellie Fisher (CEDA / NCAS)                    |
 |              |        | &emsp;CF-1.13 [[slides][D1-CF113]]                | Sadie Bartholomew (NCAS / University of Reading) |
 | 15:40--15:55 | Main   | *Science talk:* Experiences using cf-python to standardise outputs from cyclone tracking softwares | Jack Atkinson (ICCS Cambridge)               |
-| 15:55--16:10 | Main   | *Science talk:* Evaluating Large Language Models for Standard Names Generation in CF Conventions [[slides][D1-LLM-CF-StdNames]] &middot; [[DOI][D1-LLM-CF-StdNames-DOI]] | Mario Diez Fernandez (University of Cantabria) |
+| 15:55--16:10 | Main   | *Science talk:* Evaluating Large Language Models for Standard Names Generation in CF Conventions [[slides][D1-LLM-CF-StdNames]] &middot; [DOI] | Mario Diez Fernandez (University of Cantabria) |
 | 16:10--16:25 | Main   | *Screen break / coffee break*                        |                                               |
 | 16:25--16:35 | Main   | Introductions to Day 1 hackathons                    | *All hackathon chairs*                        |
 | 16:35--18:00 |        | **HACKATHONS (parallel sessions)**                   |                                               |

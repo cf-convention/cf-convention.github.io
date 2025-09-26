@@ -46,7 +46,7 @@ See also the links in the navigation bar at the top of this page.
   * High-level presentation ([DOI](https://doi.org/10.5281/zenodo.15015065), [PDF](https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=1) - from 2024 AGU)
   * More detailed [presentation][viewgraphs] and [paper][article]
 
-[api]: https://www.unidata.ucar.edu/software/netcdf/index.html
+[api]: https://www.unidata.ucar.edu/software/netcdf
 [coards]: https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html
 [viewgraphs]: Data/cf-documents/overview/viewgraphs.pdf
 [article]: Data/cf-documents/overview/article.pdf

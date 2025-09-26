@@ -134,12 +134,12 @@ The organizing committee requests that all presentations, in final form, be plac
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
 |:-------------|:-------|:-----------------------------------------------------|:----------------------------------------------|
-| 15:00--15:10 | Main   | Welcome and Overview of meeting structure            | David Hassell (NCAS / University of Reading)  |
+| 15:00--15:10 | Main   | Welcome and Overview of meeting structure [[slides][D1-Welcome]] | David Hassell (NCAS / University of Reading)  |
 | 15:10--15:40 | Main   | Introduction to CF, what’s going into CF 1.13        |                                               |
-|              |        | &emsp;Introduction                                   | Ellie Fisher (CEDA / NCAS)                    |
-|              |        | &emsp;CF-1.13                                        | Sadie Bartholomew (NCAS / University of Reading) |
+|              |        | &emsp;Introduction  [[slides][D1-Intro-CF]]          | Ellie Fisher (CEDA / NCAS)                    |
+|              |        | &emsp;CF-1.13 [[slides][D1-CF113]]                | Sadie Bartholomew (NCAS / University of Reading) |
 | 15:40--15:55 | Main   | *Science talk:* Experiences using cf-python to standardise outputs from cyclone tracking softwares | Jack Atkinson (ICCS Cambridge)               |
-| 15:55--16:10 | Main   | *Science talk:* Evaluating Large Language Models for Standard Names Generation in CF Conventions | Mario Diez Fernandez (University of Cantabria) |
+| 15:55--16:10 | Main   | *Science talk:* Evaluating Large Language Models for Standard Names Generation in CF Conventions [[slides][D1-LLM-CF-StdNames]] &middot; [[DOI][D1-LLM-CF-StdNames-DOI]] | Mario Diez Fernandez (University of Cantabria) |
 | 16:10--16:25 | Main   | *Screen break / coffee break*                        |                                               |
 | 16:25--16:35 | Main   | Introductions to Day 1 hackathons                    | *All hackathon chairs*                        |
 | 16:35--18:00 |        | **HACKATHONS (parallel sessions)**                   |                                               |
@@ -152,6 +152,13 @@ The organizing committee requests that all presentations, in final form, be plac
 [Notes-Day1-Room1]: https://docs.google.com/document/d/1PSr6lYaSXBi_QFjsPyhRzWF8UUW5PBujetFSspV--hE/edit "Day 1, Room 1 Hackaton Notes: SGRID Conventions"
 [Notes-Day1-Room2]: https://docs.google.com/document/d/1flTbzN4Cnzlh2eSKKoedQJ-eqXa_8Mjv7GZQjc3V6uE/edit "Day 1, Room 2 Hackaton Notes: Precipitation-related standard names"
 
+[D1-Welcome]:         https://docs.google.com/presentation/d/1hLoJrZdJanIcqYkWGQvhrPNHGWYZMtZ2MWL1OmyGDb0/present?rm=minimal "Slides: Welcome and Overview of meeting structure"
+[D1-Intro-CF]:        https://docs.google.com/presentation/d/1dGyX3XLJvUUxV-w4Df9w90rxMFzUm_4V/present?rm=minimal            "Slides: Introduction"
+[D1-CF113]:           https://drive.google.com/file/d/1mFgJ0pQpYNPSv1n1uYBAK-V2CISpGDks/preview                   "Slides: CF-1.13"
+[D1-Cyclone-talk]:    https://drive.google.com/file/d/XXXXXXXXX/view "Slides: Experiences using cf-python to standardise outputs from cyclone tracking softwares"
+[D1-LLM-CF-StdNames]: https://docs.google.com/presentation/d/17GTL_r5F35jAX1cPIDqfPQHs0hwVs63XIeYvhMDuUgI/present?rm=minimal "Slides: Evaluating Large Language Models for Standard Names Generation in CF Conventions"
+[D1-LLM-CF-StdNames-DOI]: https://doi.org/10.5281/zenodo.17203174 "DOI: Evaluating Large Language Models for Standard Names Generation in CF Conventions"
+
 ### Day 2 - Tuesday, 23 September 2025
 > 📝 [**Shared Notes - Day 2**][Notes-Day2]
 
@@ -159,8 +166,8 @@ The organizing committee requests that all presentations, in final form, be plac
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
 |:-------------|:-------|:-----------------------------------------------------|:----------------------------------------------|
 | 15:00--15:10 | Main   | Intro to Day 2                                       | *TBD*                                         |
-| 15:10--15:30 | Main   | Governance updates, round-up of recent developments  | Ethan Davis (NSF Unidata)                     |
-| 15:30--15:50 | Main   | *Science talk:* Tools for mapping between NetCDF and GRIB | Adam Jacobs (UK Met Office)              |
+| 15:10--15:30 | Main   | Governance updates, round-up of recent developments [[slides][D2-Governance]] | Ethan Davis (NSF Unidata) |
+| 15:30--15:50 | Main   | *Science talk:* Tools for mapping between NetCDF and GRIB [[slides][D2-GRIB]] | Adam Jacobs (UK Met Office) |
 | 15:50--16:00 | Main   | Introductions to Day 2 hackathons                    | *All hackathon chairs*                        |
 | 16:10--16:25 | Main   | *Screen break / coffee break*                        |                                               |
 | 16:25--17:45 |        | **HACKATHONS (parallel sessions)**                   |                                               |
@@ -175,13 +182,17 @@ The organizing committee requests that all presentations, in final form, be plac
 [Notes-Day2-Room2]: https://docs.google.com/document/d/1JmKEopA99QsRVlxhn3cFr3hJ4AeZWfDAA1L8oyTmYBg/edit "Day 2, Room 2 Hackaton Notes: Housekeeping -- website maintenance & improvements"
 [Notes-Day2-Room3]: https://docs.google.com/document/d/1-5g0z766MkcKE_y6SRFTW08Rmo7Krav3826_oi6xVH4/edit "Day 2, Room 3 Hackaton Notes: (Digital) accessibility of the CF Convention document"
 
+[D2-Governance]:        https://docs.google.com/presentation/d/1hsv2URh9UYuAYZTHDAL2BrBiFSCRz7dxhyy0jwrKOaU/present?rm=minimal "Slides: Governance updates, round-up of recent developments"
+[D2-GRIB]:              https://docs.google.com/presentation/d/16MDbBusTKw7kEvCxHJd600OcvnjvVZGM/present?rm=minimal "Slides: Tools for mapping between NetCDF and GRIB"
+
+
 ### Day 3 - Wednesday, 24 September 2025
 > 📝 [**Shared Notes - Day 3**][Notes-Day3]  
 
 {: .agenda .table .table-bordered .table-striped}
 | Time (UTC)   | Room   | Session                                              | Presenter/Chair                               |
 |:-------------|:-------|:-----------------------------------------------------|:----------------------------------------------|
-| 15:00--15:30 | Main   | Roadmap introduction / recap                         | Luke Marsden (Norwegian Meteorological Institute / University Centre in Svalbard) |
+| 15:00--15:30 | Main   | Roadmap introduction / recap [[slides][D3-Roadmap-Intro]] | Luke Marsden (Norwegian Meteorological Institute / University Centre in Svalbard) |
 |              |        | &emsp;What is the roadmap?                           |                                               |
 |              |        | &emsp;Why do we need it?                             |                                               |
 |              |        | &emsp;Which communities are we engaging with?        |                                               |
@@ -198,6 +209,8 @@ The organizing committee requests that all presentations, in final form, be plac
 [Notes-Day3-Room2]: https://docs.google.com/document/d/1DwXDTXIsyBYiCrgFUyoXrEf12I9rAImRbTimFutiPIs/edit "Day 3, Room 2 Hackaton Notes: Discovery and Provenance metadata"
 [Notes-Day3-Room3]: https://docs.google.com/document/d/1YsNbpET2Ck0H1-1FhgpI2a5uuizg1YyBDZs8iiGdPs0/edit "Day 3, Room 3 Hackaton Notes: Example datasets "
 
+[D3-Roadmap-Intro]:      https://docs.google.com/presentation/d/1irLEi2ZUOqhN_C3KkN6ytiVRc_u28TLQukFvnfDHKgM/present?rm=minimal "Slides: Roadmap introduction / recap"
+  
 ### Day 4 - Thursday, 25 September 2025
 > 📝 [**Shared Notes - Day 4**][Notes-Day4]  
 

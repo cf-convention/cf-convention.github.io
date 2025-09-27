@@ -13,7 +13,7 @@ title: Rules
 
  1. The moderator, if one has volunteered, should be in charge of the discussion and make sure that it is conducted in a fair and organized way;
  2. The moderator may list major points of agreement and contention, and, if appropriate, provide links to key milestones of the discussion in the top issue of a discussion;
- 3. Participant's in a discussion are expected to respect and comply with requests from the moderator (e.g. to suspend discussion on one topic until another is resolved or to answer specific questions from the moderator). Such requests from the moderator, with appropriate explanations, should be placed in the flow of the discussion.
+ 3. Participants in a discussion are expected to respect and comply with requests from the moderator (e.g. to suspend discussion on one topic until another is resolved or to answer specific questions from the moderator). Such requests from the moderator, with appropriate explanations, should be placed in the flow of the discussion.
  4. The individual acting as moderator may also act as a participant, but should clearly distinguish between the two roles;
  5. The moderator should oversee the implementation of proposed changes which are agreed and close the issue when this process is complete.
 

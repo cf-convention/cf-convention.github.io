@@ -1,0 +1,90 @@
+#
+# GitHub Actions Workflow to check links on CF website artifact, and reopen related issue
+#
+# For more information on the actions used in this workflow, please see:
+#   https://github.com/lycheeverse/lychee-action
+#   https://github.com/micalevisk/last-issue-action
+#   https://github.com/peter-evans/create-issue-from-file
+#   https://github.com/marketplace/actions/create-or-update-comment
+
+name: Check links on CF conventions web page
+on:
+  schedule:
+    - cron: '23 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  check_links:
+    name: Check links  # TODO: Check also Asciidoc (this should take place in https://github.com/cf-convention/cf-conventions). See https://github.com/cf-convention/cf-conventions/issues/525
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main # main branch contains link check config
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages # page is already built and deployed from this branch
+          path: _site/ # checkout to default Jekyll output directory
+  
+      - name: Check CF site's links 
+        id: check-links
+        uses: lycheeverse/lychee-action@v2.0.2
+        continue-on-error: true
+        with:
+          fail: true
+          format: markdown
+          jobSummary: true
+          output: .lychee/results.md
+          args: --github-token $GITHUB_TOKEN --config .lychee/config.toml ./_site/
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub API token to use when checking github.com links, to avoid rate limiting
+
+      - name: Add section to the end of report
+        run: sed -i 's/\[Full Github Actions output\]/\n## &/g' .lychee/results.md
+
+      - name: Find the last report issue
+        id: last-issue
+        uses: micalevisk/last-issue-action@v2
+        with:
+          state: all
+          # Find the last updated open issue that has these labels:
+          labels: |
+            defect, link-checker, report, automated issue 
+        
+      - name: If failure and issue not found, create issue
+        if: ${{ steps.check-links.outcome == 'failure' && steps.last-issue.outputs.has-found == 'false' }}
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Broken links detected in CF Website"
+          content-filepath: .lychee/results.md
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: |
+            defect, link-checker, report, automated issue     
+
+      - name: If failure and issue is closed, reopen and comment
+        if: ${{ steps.check-links.outcome == 'failure' && steps.last-issue.outputs.is-closed == 'true' }}
+        run: gh issue reopen $ISSUE --comment "Broken links detected in CF Website, reopen issue"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ steps.last-issue.outputs.issue-number }}
+              
+      - name: If failure and issue exists, add comment 
+        if: ${{ steps.check-links.outcome == 'failure' && steps.last-issue.outputs.has-found == 'true' }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ steps.last-issue.outputs.issue-number }}
+          body-path: .lychee/results.md
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+# Uncomment if you want to report success if the issue is open
+#      - name: If success and issue is open, add comment
+#        if: ${{ steps.check-links.outcome == 'success' && steps.last-issue.outputs.is-closed == 'false' }}
+#        uses: peter-evans/create-or-update-comment@v4
+#        with:
+#          issue-number: ${{ steps.last-issue.outputs.issue-number }}
+#          body-path: .lychee/results.md
+#          token: ${{ secrets.GITHUB_TOKEN }}

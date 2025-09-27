@@ -1,0 +1,52 @@
+= Variables as Containers =
+
+This summaries one of the options under discussion in #79.
+
+== Vector Proposal ==
+
+
+A new variable type is introduced to CF NetCDF: the Container Variable.
+
+An container variable may have attributes but it must not have data associated with it and it must not be defined with respect to any NetCDF dimensions.
+
+
+
+A new attribute:
+{{{
+    container_type
+}}}
+is introduced, to be used only with container variables. This will be a new controlled vocabulary for CF.
+
+A specific type of container variable is defined for the purpose of defining vector quantities.
+{{{
+    container_type = "spatial_vector"
+}}}
+The spatial_vector container variable defines an attribute for the name of the vector quantity:
+{{{
+    vector_name
+}}}
+ a set of attributes for the definition of components:
+{{{
+    i_component
+    j_component
+    k_component
+    i_j_direction
+    k_direction
+    magnitude 
+}}}
+Each of these attributes points to one and only one data variable within the dataset. All referenced components are CF data variables which exist in the dataset.
+
+Components must be defined on the same domain as each other (all coord definitions must be the same), but the sampling regimes may be different.
+
+    This is to exclude, for instance, one component variable having time-latitude-longitude and another time-altitude-latitude-longitude as coordinate variables, but it does permit components to be on an Arakawa C-grid.
+
+Example
+{{{
+int ice_drift_vector;
+ drift_vector:container_type = "spatial_vector" ;
+ drift_vector:vector_name = "sea_ice_displacement_vector" ;
+ drift_vector:long_name = "sea ice drift vector" ;
+ drift_vector:i_component = "dX" ;
+ drift_vector:j_component = "dY" ;
+ drift_vector:i_j_direction = "dir" ;
+}}}

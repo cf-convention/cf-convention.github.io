@@ -1,14 +1,9 @@
-cf-convention.github.io
-==========================
+# cf-convention.github.io
 
-### CF Metadata
+This repo contains the source files for the [CF Conventions web site][cf-website].
 
-#### NetCDF Climate and Forecast (CF) Metadata Convention
+[![Check links status][cf-website-link-status]][cf-website-link-status-summary]
 
-The conventions for climate and forecast (CF) metadata are designed to promote the processing and sharing of files created with the NetCDF API. The CF conventions are increasingly gaining acceptance and have been adopted by a number of projects and groups as a primary standard. The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities.     
-
-The CF conventions generalize and extend the COARDS conventions.     
-
-Discussion about CF Metadata takes place in two formats:
-* CF Metadata Trac, and
-* cf-metadata mailing list.
+[cf-website]: https://cfconventions.org/
+[cf-website-link-status]: https://github.com/cf-convention/cf-convention.github.io/actions/workflows/check_links_cron.yml/badge.svg
+[cf-website-link-status-summary]: https://github.com/cf-convention/cf-convention.github.io/actions/workflows/check_links_cron.yml

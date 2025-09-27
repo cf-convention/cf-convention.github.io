@@ -4,38 +4,39 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Climate and Forecast Metadata also know as the CF Convention or CF Metadata" />
+    <meta name="description" content="Climate and Forecast Metadata also known as the CF Convention or CF Metadata" />
     <meta name="author" content="Matthew Harris (mattben)">
-    <link rel="shortcut icon" href="Data/media/images/favicon.ico">
-
+    <link rel="icon"             type="image/png" href="{{ '/Data/media/images/logo.png' | relative_url }}">
+    <link rel="apple-touch-icon" type="image/png" href="{{ '/Data/media/images/logo.png' | relative_url }}">
     <title>{{ page.title }}</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="Data/media/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap  Core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom styles for this template -->
-    <style>
-      body {
-        padding-top: 50px;
-        padding-bottom: 20px;
-      }
-      p a.anchor {
-        display: block; 
-        position: relative;
-        top: -50px; 
-        visibility: hidden;
-      }
-    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
 
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse" style="margin-bottom: 0px;" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><img src="Data/media/images/logo.png" style="position: relative; top: -10px"/></a><a class="navbar-brand" href="index.html">CF MetaData</a>
+          <a class="navbar-brand" href="{{ '/' |  relative_url }}">
+            <img class="pull-left" src="{{ '/Data/media/images/logo.png' | relative_url }}" style="position: relative; top: -10px; left: -10px"/>
+            CF Metadata
+          </a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -43,24 +44,64 @@
             {% assign group = 'navigation' %}
             {% include pages_list %}
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="https://github.com/cf-convention" target="_blank" title="CF Conventions on GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
+    <!-- Hero Section -->
+    {% if page.hero_image or page.hero_gradient %}
+    <div class="jumbotron"
+        style="
+            {% if page.hero_image %}
+            background: url('{{ page.hero_image | relative_url }}') no-repeat center center;
+            {% elsif page.hero_gradient %}
+            background: linear-gradient({{ page.hero_gradient }});
+            {% endif %}
+            background-size: cover;
+            color: white; 
+            text-align: center; 
+            padding: 40px 20px; 
+            position: relative;
+        ">
+      <div class="container">
+        {% if page.hero_header %}
+        <h1 class="display-3" style="font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">{{ page.hero_header }}</h1>
+        {% endif %}
+        {% if page.hero_paragraph %}
+        <p class="lead" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);">{{ page.hero_paragraph }}</p>
+        {% endif %}
+        {% if page.hero_button_text and page.hero_button_url %}
+        <a href="{{ page.hero_button_url }}" class="btn btn-lg btn-hero" style="font-weight: bold;">{{ page.hero_button_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if page.flash_message %}
+    <div class="flash-message flash-{{ page.flash_message_type | default: 'info' }}">
+      {{ page.flash_message }}
+    </div>
+    {% endif %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
     <div class="container">
+
       {{ content }}
 
       <hr>
-
       <footer>
       <p>
-      <a href="http://github.com/esgf">CODE</a> &bull;
-      <a href="http://www-pcmdi.llnl.gov/">PCMDI</a> &bull;
-      <a href="http://cmip-pcmdi.llnl.gov/cmip5/">CMIP5</a> &bull;
-      <a href="http://www.llnl.gov/disclaimer.html">Privacy &amp; Legal Notice</a>
+      <a href="{{ '/discussion' | relative_url}}">Contact the CF community</a> with questions, comments and suggestions about CF metadata or this website
       </p>
+      <p>This site is open source in line with the <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero CC0 Deed</a>.&emsp;&emsp;&emsp;&emsp;&emsp;
+        <a href="{{ site.github.repository_url }}/edit/main/{{ page.path }}">Improve this page!</a></p>
       </footer>
     </div> <!-- /container -->
 
@@ -68,9 +109,11 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="Data/media/js/bootstrap.min.js"></script>
-    <script src="Data/media/js/links.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script src="{{ '/Data/media/js/links.js' | relative_url }}"></script>
 
   </body>
 </html>

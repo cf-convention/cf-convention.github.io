@@ -1,0 +1,3635 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>CF Conventions</title>
+
+<link rel="stylesheet" type="text/css" href="cf_style_sheet.css">
+
+</head>
+
+<body>
+
+<h1>NetCDF Climate and Forecast (CF) Metadata Conventions</h1>
+
+<h3>Version 1.0-beta5, dd mm 2003</h3> 
+
+<p>This document indicates changes from the previous version by using the
+following mark-up style: <span class="new">new text</span>,
+<span class="old">deleted text</span>, and <span class="comment">[a
+comment]</span>. 
+</p>
+
+<dl>
+<dt>Home page:<dt>
+<dd>Contains links to: previous draft and current working draft documents;
+applications for processing CF conforming files; email list for discussion
+about interpretation, clarification, and proposals for changes or
+extensions to the current conventions.</dd>
+<dd><a href="http://www.cgd.ucar.edu/cms/eaton/cf-metadata/index.html">
+http://www.cgd.ucar.edu/cms/eaton/cf-metadata/index.html</a>
+</dd>
+
+<dt>Authors:<dt>
+<dd>Brian Eaton, NCAR </dd>
+<dd>Jonathan Gregory, Hadley Centre, UK Met Office</dd>
+<dd>Bob Drach, PCMDI, LLNL</dd>
+<dd>Karl Taylor, PCMDI, LLNL</dd>
+<dd>Steve Hankin, PMEL, NOAA</dd>
+</dl>
+
+<!--========================================================================= ABS -->
+
+<h2>Abstract</h2> 
+
+<p>This document describes the CF conventions for climate and forecast
+metadata designed to promote the processing and sharing of files created
+with the netCDF Application Programmer Interface [<a
+href="#ref_nc">NetCDF</a>].  
+The conventions define metadata that provide a definitive description of
+what the data in each variable represents, and of the spatial and temporal
+properties of the data.  This enables users of data from different sources
+to decide which quantities are comparable, and facilitates building
+applications with powerful extraction, regridding, and display
+capabilities.
+</p>
+
+<p>The CF conventions generalize and extend the COARDS conventions [<a
+href="#ref_coards">COARDS</a>].  The extensions include metadata that
+provides a precise definition of each variable via specification of a
+standard name, describes the vertical locations corresponding to
+dimensionless vertical coordinate values, and provides the spatial
+coordinates of non-rectilinear gridded data.  Since climate and forecast
+data are often not simply representative of points in space/time, other
+extensions provide for the description of coordinate intervals,
+multidimensional cells and climatological time coordinates, and indicate
+how a data value is representative of an interval or cell.  This standard
+also relaxes the COARDS constraints on dimension order and specifies
+methods for reducing the size of datasets.
+</p>
+
+<!--========================================================================= TOC -->
+
+<h2><a name="toc">Table of Contents</a></h2>
+
+<li class="toc">1 &nbsp;<a href="#intro">Introduction</a></li>
+  <ul>
+  <li class="toc">1.1 &nbsp;<a href="#goals">Goals</a></li>
+  <li class="toc">1.2 &nbsp;<a href="#terms">Terminology</a></li>
+  <li class="toc">1.3 &nbsp;<a href="#oview">Overview</a></li>
+  <li class="toc">1.4 &nbsp;<a href="#coards">Relationship to the COARDS conventions</a></li>
+  </ul>
+<li class="toc">2 &nbsp;<a href="#file">NetCDF Files and Components</a></li>
+  <ul>
+  <li class="toc">2.1 &nbsp;<a href="#fname">Filename</a></li>
+  <li class="toc">2.2 &nbsp;<a href="#dtype">Data types</a></li>
+  <li class="toc">2.3 &nbsp;<a href="#names">Naming conventions</a></li>
+  <li class="toc">2.4 &nbsp;<a href="#dims">Dimensions</a></li>
+  <li class="toc">2.5 &nbsp;<a href="#vars">Variables</a></li>
+    <ul>
+    <li class="toc">2.5.1 &nbsp;<a href="#miss">Missing data</a></li>
+    </ul>
+  <li class="toc">2.6 &nbsp;<a href="#atts">Attributes</a></li>
+    <ul>
+    <li class="toc">2.6.1 &nbsp;<a href="#conv">Identification of conventions</a></li>
+    <li class="toc">2.6.2 &nbsp;<a href="#des">Description of file contents</a></li>
+    </ul>
+  </ul>
+<li class="toc">3 &nbsp;<a href="#data">Description of the Data</a></li>
+  <ul>
+  <li class="toc">3.1 &nbsp;<a href="#units">Units</a></li>
+  <li class="toc">3.2 &nbsp;<a href="#lname">Long name</a></li>
+  <li class="toc">3.3 &nbsp;<a href="#sname">Standard name</a></li>
+  </ul>
+<li class="toc">4 &nbsp;<a href="#ctype">Coordinate Types</a></li>
+  <ul>
+  <li class="toc">4.1 &nbsp;<a href="#lat">Latitude coordinate</a></li>
+  <li class="toc">4.2 &nbsp;<a href="#lon">Longitude coordinate</a></li>
+  <li class="toc">4.3 &nbsp;<a href="#vert">Vertical (height or depth) coordinate</a></li>
+    <ul>
+    <li class="toc">4.3.1 &nbsp;<a href="#vdim">Dimensional vertical coordinate</a></li>
+    <li class="toc">4.3.2 &nbsp;<a href="#vnum">Dimensionless vertical coordinate</a></li>
+    </ul>
+  <li class="toc">4.4 &nbsp;<a href="#time">Time coordinate</a></li>
+    <ul>
+    <li class="toc">4.4.1 &nbsp;<a href="#cal">Calendar</a></li>
+    </ul>
+  </ul>
+<li class="toc">5 &nbsp;<a href="#grids">Coordinate Systems</a></li>
+  <ul>
+  <li class="toc">5.1 &nbsp;<a href="#grid_ex1">Independent latitude,
+                             longitude, vertical, and time axes</a></li>
+  <li class="toc">5.2 &nbsp;<a href="#grid_ex2">Two-dimensional latitude,
+                             longitude coordinate variables</a></li>
+  <li class="toc">5.3 &nbsp;<a href="#grid_ex3">Reduced horizontal grid</a></li>
+  <li class="toc">5.4 &nbsp;<a href="#grid_ex4">Timeseries of station data</a></li>
+  <li class="toc">5.5 &nbsp;<a href="#grid_ex5">Trajectories</a></li>
+  <li class="toc">5.6 &nbsp;<a href="#gmap">Grid mappings and projections</a></li>
+  </ul>
+
+<li class="toc">6 &nbsp;<a href="#extra">Labels and Alternative Coordinates</a></li>
+  <ul>
+  <li class="toc">6.1 &nbsp;<a href="#lab">Labels</a></li>
+    <ul>
+    <li class="toc">6.1.1 &nbsp;<a href="#region">Geographic regions</a></li>
+    </ul>
+  <li class="toc">6.2 &nbsp;<a href="#altc">Alternative coordinates</a></li>
+  </ul>
+<li class="toc">7 &nbsp;<a href="#int">Data Representative of Cells</a></li>
+  <ul>
+  <li class="toc">7.1 &nbsp;<a href="#bnds">Cell boundaries</a></li>
+  <li class="toc">7.2 &nbsp;<a href="#cell-measures">Cell measures</a></li>
+  <li class="toc">7.3 &nbsp;<a href="#cell-methods">Cell methods</a></li>
+  <li class="toc">7.4 &nbsp;<a href="#climatology">Climatological statistics</a></li>
+  </ul>
+<li class="toc">8 &nbsp;<a href="#size">Reduction of Dataset Size</a></li>
+  <ul>
+  <li class="toc">8.1 &nbsp;<a href="#pack">Packed data</a></li>
+  <li class="toc">8.2 &nbsp;<a href="#gath">Compression by gathering</a></li>
+  </ul>
+
+<h2><a name="toc">Appendices</a></h2>
+
+<li class="toc">A &nbsp;<a href="#att_app">Attributes</a></li>
+<li class="toc">B &nbsp;<a href="#std_app">Standard Name Table</a></li>
+<li class="toc">C &nbsp;<a href="#vrt_app">Vertical Coordinate Definitions</a></li>
+<li class="toc">D &nbsp;<a href="#sub_app">Cell Methods</a></li>
+<li class="toc">E &nbsp;<a href="#gmap_app">Grid Mapping Definitions</a></li>
+<li class="toc">F &nbsp;<a href="#ref_app">References</a></li>
+
+<!--========================================================================= 1 -->
+<h2><a name="intro">1 &nbsp;Introduction</a></h2>
+
+<!--========================================================================= 1.1 -->
+<h3><a name="goals">1.1 &nbsp;Goals</a></h3>
+
+<p>The NetCDF library [<a href="#ref_nc">NetCDF</a>] is designed to read
+and write data that has been structured according to well-defined rules and
+is easily ported across various computer platforms.  The netCDF interface
+enables but does not require the creation of <em>self-describing</em>
+datasets. The purpose of the CF conventions is to require conforming
+datasets to contain sufficient metadata that they are self-describing in
+the sense that each variable in the file has an associated description of
+what it represents, including physical units if appropriate, and that each
+value can be located in space (relative to earth-based coordinates) and
+time.
+</p>
+
+<p>An important benefit of a convention is that it enables software tools
+to display data and perform operations on specified subsets of the data
+with minimal user intervention. It is possible to provide the metadata
+describing how a field is located in time and space in many different ways
+that a human would immediately recognize as equivalent.  The purpose in
+restricting how the metadata is represented is to make it practical to
+write software that allows a machine to parse that metadata and to
+automatically associate each data value with its location in time and
+space.  It is equally important that the metadata be easy for human users
+to write and to understand.
+</p>
+
+<p>This standard is intended for use with climate and forecast data, for
+atmosphere, surface and ocean, and was designed with model-generated data
+particularly in mind.  We recognise that there are limits to what a
+standard can practically cover; we restrict ourselves to issues that we
+believe to be of common and frequent concern in the design of climate and
+forecast metadata.  Our main purpose therefore, is to propose a clear,
+adequate and flexible definition of the metadata needed for climate and
+forecast data.  Although this is specifically a netCDF standard, we feel
+that most of the ideas are of wider application.  The metadata objects
+could be contained in file formats other than netCDF.  Conversion of the
+metadata between files of different formats will be facilitated if
+conventions for all formats are based on similar ideas.</p>
+
+<p>This convention is designed to be backward compatible with the COARDS
+conventions [<a href= "#ref_coards">COARDS</a>], by which we mean that a
+conforming COARDS dataset also conforms to the CF standard.  Thus new
+applications that implement the CF conventions will be able to process
+COARDS datasets.</p>
+
+<p>We have also striven to maximize conformance to the COARDS standard,
+that is, wherever the COARDS metadata conventions provide an adequate
+description we require their use.  Extensions to COARDS are implemented in
+a manner such that the content that doesn't depend on the extensions is
+still accessible to applications that adhere to the COARDS standard.
+</p>
+
+<!--========================================================================= 1.2 -->
+
+<h3><a name="terms">1.2 &nbsp;Terminology</a></h3>
+
+<p>The terms in this document that refer to components of a netCDF file are
+defined in the NetCDF User's Guide (NUG) [<a href="#ref_nug">NUG</a>].
+Some of those definitions are repeated below for convenience.</p>
+
+<dl>
+
+<dt><em>auxiliary coordinate variable</em></dt>
+<dd>Any netCDF variable that contains coordinate data, but is not a
+coordinate variable (in the sense of that term defined by the NUG and used
+by this standard - see below).  Unlike coordinate variables, there is no
+relationship between the name of an auxiliary coordinate variable and the
+name(s) of its dimension(s).
+</dd>
+
+<dt><em>boundary variable</em></dt>
+<dd>A boundary variable is associated with a variable that contains
+coordinate data.  When a data value provides information about conditions
+in a cell occupying a region of space/time or some other dimension, the
+boundary variable provides a description of cell extent.
+</dd>
+
+<dt><em>CDL syntax</em></dt>
+<dd>The ascii format used to describe the contents of a netCDF file is
+called CDL (network Common Data form Language).  This format represents
+arrays using the indexing conventions of the C programming language, i.e.,
+index values start at 0, and in multidimensional arrays, when indexing over
+the elements of the array, it is the last declared dimension that is the
+fastest varying in terms of file storage order.  The netCDF utilities
+ncdump and ncgen use this format (see
+<a href=
+"http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-15.html#HEADING15-0">
+chapter 10</a> of the NUG).  All examples in this document use CDL syntax.
+</dd>
+
+<dt><em>cell</em></dt>
+<dd>A region in one or more dimensions whose
+boundary can be described by a set of vertices. The term <em>interval</em> is
+sometimes used for one-dimensional cells.
+</dd>
+
+<dt><em>coordinate variable</em></dt>
+<dd>We use this term precisely as it is defined in section <a href=
+"http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-7.html#HEADING7-67">
+2.3.1</a> of the NUG.  It is a one-dimensional variable with the same name
+as its dimension [e.g., <kbd>time(time)</kbd>], and it is defined as a numeric data
+type with values that are ordered monotonically.  Missing values are not
+allowed in coordinate variables.
+</dd>
+
+<dt><em>latitude dimension</em></dt>
+<dd>A dimension of a netCDF variable that has an associated latitude
+coordinate variable.
+</dd>
+
+<dt><em>longitude dimension</em></dt>
+<dd>A dimension of a netCDF variable that has an associated longitude
+coordinate variable.
+</dd>
+
+<dt><em>multidimensional coordinate variable</em></dt>
+<dd>An auxiliary coordinate variable that is multidimensional.
+</dd>
+
+<dt><em>recommendation</em></dt>
+<dd>Recommendations in this convention are meant to provide advice that may
+be helpful for reducing common mistakes.  In some cases we have recommended
+rather than required particular attributes in order to maintain backwards
+compatibility with COARDS.  An application must not depend on a dataset's
+adherence to recommendations.
+</dd>
+
+<dt><em>spatiotemporal dimension</em></dt>
+<dd>A dimension of a netCDF variable that is used to identify a location in
+time and/or space.
+</dd>
+
+<dt><em>time dimension</em></dt>
+<dd>A dimension of a netCDF variable that has an associated time
+coordinate variable.
+</dd>
+
+<dt><em>vertical dimension</em></dt>
+<dd>A dimension of a netCDF variable that has an associated vertical
+coordinate variable.
+</dd>
+
+</dl>
+
+<!--========================================================================= 1.3 -->
+
+<h3><a name="oview">1.3 &nbsp;Overview</a></h3>
+
+<p>No variable or dimension names are standardized by this convention.
+Instead we follow the lead of the NUG [<a href="#ref_nug">NUG</a>] and
+standardize only the names of attributes and some of the values taken by
+those attributes.  The overview provided in this section will be followed
+with more complete descriptions in following sections.  <a
+href="#att_app">Appendix A</a> contains a summary of all the attributes
+used in this convention.
+</p>
+
+<p>We recommend that the NUG defined attribute <kbd
+class="att">Conventions</kbd> be given the string value <kbd>"CF-1.0"</kbd>
+to identify datasets that conform to these conventions.
+</p>
+
+<p>The general description of a file's contents should be contained in the
+following attributes: <kbd class="att">title</kbd>, <kbd
+class="att">history</kbd>, <kbd class="att">institution</kbd>, <kbd
+class="att">source</kbd>, <kbd class="att">comments</kbd> and <kbd
+class="att">references</kbd> (<a href="#des">2.6.2</a>).  For backwards
+compatibility with COARDS none of these attributes is required, but their
+use is recommended to provide human readable documentation of the file
+contents.  </p>
+
+<p>Each variable in a netCDF file has an associated description which is
+provided by the attributes <kbd class="att">units</kbd>, <kbd class="att">
+long_name</kbd>, and <kbd class="att">standard_name</kbd>.  The <kbd
+class="att">units</kbd>, and <kbd class="att">long_name</kbd> attributes
+are defined in the NUG and the <kbd class="att">standard_name</kbd>
+attribute is defined in this document.</p>
+
+<p>The <kbd class="att">units</kbd> attribute is required for all variables
+that represent dimensional quantities (except for boundary variables
+defined in section <a href="#bnds">7.1</a>).  The values of the <kbd
+class="att">units</kbd> attributes are character strings that are
+recognized by UNIDATA's Udunits package [<a href="#ref_units">UDUNITS</a>]
+(with exceptions allowed as discussed in section <a href="#units">3.1</a>).
+</p>
+
+<p>The <kbd class="att">long_name</kbd> and <kbd
+class="att">standard_name</kbd> attributes are used to describe the content
+of each variable.  For backwards compatibility with COARDS neither is
+required, but use of at least one of them is strongly recommended.  The use
+of standard names will facilitate the exchange of climate and forecast data
+by providing unambiguous identification of variables most commonly
+analyzed.
+</p>
+
+<p>Four types of coordinates receive special treatment by these
+conventions: latitude, longitude, vertical, and time.  Every variable must
+have associated metadata that allows identification of each such coordinate
+that is relevant.  Two independent parts of the convention allow this to
+be done.  There are conventions that identify the variables that contain
+the coordinate data, and there are conventions that identify the type of
+coordinate represented by that data.</p>
+
+<p>
+There are two methods used to identify variables that contain coordinate
+data.  The first is to use the NUG-defined "coordinate variables."  <em>The
+use of coordinate variables is required for all dimensions that correspond
+to one dimensional space or time coordinates</em>.  In cases where
+coordinate variables are not applicable, the variables containing
+coordinate data are identified by the <kbd class="att">coordinates</kbd>
+attribute.
+</p>
+
+<p>Once the variables containing coordinate data are identified, further
+conventions are required to determine the type of coordinate represented by
+each of these variables.  Latitude, longitude, and time coordinates are
+identified solely by the value of their <kbd class="att">units</kbd>
+attribute.  Vertical coordinates with units of pressure may also be
+identified by the <kbd class="att">units</kbd> attribute.  Other vertical
+coordinates must use the attribute <kbd class="att">positive</kbd> which
+determines whether the direction of increasing coordinate value is up or
+down.  Because identification of a coordinate type by its units involves
+the use of an external software package [<a href="#ref_units">UDUNITS</a>],
+we provide the optional attribute <kbd class="att">axis</kbd> for a direct
+identification of coordinates that correspond to latitude, longitude,
+vertical, or time axes.</p>
+
+<p>Latitude, longitude, and time are defined by internationally recognized
+standards, and hence, identifying the coordinates of these types is
+sufficient to locate data values uniquely with respect to time and a point
+on the earth's surface.  On the other hand identifying the vertical
+coordinate is not necessarily sufficient to locate a data value vertically
+with respect to the earth's surface.  In particular a model may output data
+on the dimensionless vertical coordinate used in its mathematical
+formulation.  To achieve the goal of being able to spatially locate all
+data values, this convention includes the definitions of common
+dimensionless vertical coordinates in <a href="#vrt_app">Appendix C</a>.
+These definitions provide a mapping between the dimensionless coordinate
+values and dimensional values that can be uniquely located with respect to
+a point on the earth's surface.  The definitions are associated with a
+coordinate variable via the <kbd class="att">standard_name</kbd> and <kbd
+class="att">formula_terms</kbd> attributes.  For backwards compatibility
+with COARDS use of these attributes is not required, but is strongly
+recommended.</p>
+
+<p>It is often the case that data values are not representative of single
+points in time and/or space, but rather of intervals or multidimensional
+cells.  This convention defines a <kbd class="att">bounds</kbd> attribute
+to specify the extent of intervals or cells.  When data that is
+representative of cells can be described by simple statistical methods,
+those methods can be indicated using the <kbd
+class="att">cell_methods</kbd> attribute.  An important application of this
+attribute is to describe climatological and diurnal statistics.
+</p>
+
+<p>Methods for reducing the total volume of data include both packing and
+compression.  Packing reduces the data volume by reducing the precision of
+the stored numbers.  It is implemented using the attributes <kbd
+class="att">add_offset</kbd> and <kbd class="att">scale_factor</kbd> which
+are defined in the NUG.  Compression on the other hand loses no precision,
+but reduces the volume by not storing missing data.  The attribute <kbd
+class="att">compress</kbd> is defined for this purpose.
+</p>
+
+<!--========================================================================= 1.4 -->
+
+<h3><a name="coards">1.4 &nbsp;Relationship to the COARDS conventions</a></h3>
+
+<p>These conventions generalize and extend the COARDS conventions [<a
+href="#ref_coards">COARDS</a>].  A major design goal has been to maintain
+<em>backward compatibility</em> with COARDS.  Hence applications written to
+process datasets that conform to these conventions will also be able to
+process COARDS conforming datasets.  We have also striven to maximize
+<em>conformance</em> to the COARDS standard so that datasets that only
+require the metadata that was available under COARDS will still be able to
+be processed by COARDS conforming applications.  But because of the
+extensions that provide new metadata content, and the relaxation of some
+COARDS requirements, datasets that conform to these conventions will not
+necessarily be recognized by applications that adhere to the COARDS
+conventions.  The features of these conventions that allow writing netCDF
+files that are not COARDS conforming are summarized below.
+</p>
+
+<p>COARDS standardizes the description of grids composed of independent
+latitude, longitude, vertical, and time axes.  In addition to standardizing
+the metadata required to identify each of these axis types COARDS restricts
+the axis (equivalently dimension) ordering to be longitude, latitude,
+vertical, and time (with longitude being the most rapidly varying
+dimension).  Because of I/O performance considerations it may not be
+possible for models to output their data in conformance with the COARDS
+requirement.  The CF convention places no rigid restrictions on the order
+of dimensions, however we encourage data producers to make the extra effort
+to stay within the COARDS standard order. The use of non-COARDS axis
+ordering will render files inaccessible to some applications and limit
+interoperability.  Often a buffering operation can be used to miminize
+performance penalties when axis ordering in model code does not match the
+axis ordering of a COARDS file.
+</p>
+
+<p>COARDS addresses the issue of identifying dimensionless vertical
+coordinates, but does not provide any mechanism for mapping the
+dimensionless values to dimensional ones that can be located with respect
+to the earth's surface.  For backwards compatibility we continue to allow
+(but do not require) the <kbd class="att">units</kbd> attribute of dimensionless
+vertical coordinates to take the values "level", "layer", or "sigma_level."
+But we recommend that the <kbd class="att">standard_name</kbd> and
+<kbd class="att">formula_terms</kbd> attributes be used to identify the appropriate
+definition of the dimensionless vertical coordinate
+(see section <a href=#vnum>4.3.2</a>).
+</p>
+
+<p>The CF conventions define attributes which enable the description of
+data properties that are outside the scope of the COARDS conventions.
+These new attributes do not violate the COARDS conventions, but
+applications that only recognize COARDS conforming datasets will not have
+the capabilities that the new attributes are meant to enable.  Briefly
+the new attributes allow:</p>
+
+<ul>
+<li>Identification of quantities using standard names.</li>
+<li>Description of dimensionless vertical coordinates.</li>
+<li>Associating dimensions with auxiliary coordinate variables.</li>
+<li>Associating dimensions with labels.</li>
+<li>Description of intervals and cells.</li>
+<li>Description of properties of data defined on intervals and cells.</li>
+<li>Description of climatological statistics.</li>
+<li>Data compression for variables with missing values.</li>
+</ul>
+
+
+<!--========================================================================= 2 -->
+
+<h2><a name="file">2 &nbsp;NetCDF Files and Components</a></h2>
+
+<p>The components of a netCDF file are described in section 2 of the NUG
+[<a href="#ref_nug">NUG</a>].  In this section we describe conventions
+associated with filenames and the basic components of a netCDF file.  We
+also introduce new attributes for describing the contents of a file.
+</p>
+
+<!--========================================================================= 2.1 -->
+
+<h3><a name="fname">2.1 &nbsp;Filename</a></h3>
+
+<p>NetCDF files should have the file name extension "<kbd>.nc</kbd>".
+</p>
+
+<!--========================================================================= 2.2 -->
+
+<h3><a name="dtype">2.2 &nbsp;Data types</a></h3>
+
+<p>The netCDF data types <kbd>char</kbd>, <kbd>byte</kbd>,
+<kbd>short</kbd>, <kbd>int</kbd>, <kbd>float</kbd> or <kbd>real</kbd>, and
+<kbd>double</kbd> are all acceptable.  The <kbd>char</kbd> type is not
+intended for numeric data.  One byte numeric data should be stored using
+the <kbd>byte</kbd> data type.  All integer types are treated by the netCDF
+interface as signed.  It is possible to treat the <kbd>byte</kbd> type as
+unsigned by using the NUG convention of indicating the unsigned range using
+the <kbd class="att">valid_min</kbd>, <kbd class="att">valid_max</kbd>, or
+<kbd class="att">valid_range</kbd> attributes.</p>
+
+<p>
+NetCDF does not support a character string type, so these must be
+represented as character arrays.  In this document, a one dimensional array
+of character data is simply referred to as a "string".  An n-dimensional
+array of strings must be implemented as a character array of dimension
+(n,max_string_length), with the last (most rapidly varying) dimension
+declared large enough to contain the longest string in the array.  All the
+strings in a given array are therefore defined to be equal in length.  For
+example, an array of strings containing the names of the months would be
+dimensioned (12,9) in order to accommodate "September", the month with the
+longest name.
+</p>
+
+<!--========================================================================= 2.3 -->
+
+<h3><a name="names">2.3 &nbsp;Naming conventions</a></h3>
+
+<p>Variable, dimension and attribute names should begin with a letter and
+be composed of letters, digits, and underscores.  Note that this is in
+conformance with the COARDS conventions, but is more restrictive than the
+netCDF interface which allows use of the hyphen character.  The netCDF
+interface also allows leading underscores in names, but the NUG states that
+this is reserved for system use.
+</p>
+
+<p>Case is significant in netCDF names, but it is recommended that names
+should not be distinguished purely by case, i.e., if case is disregarded,
+no two names should be the same.  It is also recommended that names should
+be obviously meaningful, if possible, as this renders the file more
+effectively self-describing.
+</p>
+
+<p>This convention does not standardize any variable or dimension names.
+Attribute names and their contents, where standardized, are given in
+English in this document and should appear in English in conforming netCDF
+files for the sake of portability.  Languages other than English are
+permitted for variables, dimensions, and non-standardized attributes.  The
+content of some standardized attributes are string values that are not
+standardized, and thus are not required to be in English.  For example, a
+description of what a variable represents may be given in a non-English
+language using the <kbd class="att">long_name</kbd> attribute (see section
+<a href=#lname>3.2</a>) whose contents are not standardized, but a
+description given by the <kbd class="att">standard_name</kbd> attribute
+(see section <a href=#sname>3.3</a>) must be taken from the standard name
+table which is in English.
+</p>
+
+<!--========================================================================= 2.4 -->
+
+<h3><a name="dims">2.4 &nbsp;Dimensions</a></h3>
+
+<p>A variable may have any number of dimensions, including zero, and the
+dimensions must all have different names.  <em>COARDS strongly recommends
+limiting the number of dimensions to four, but we wish to allow greater
+flexibility.</em> The dimensions of the variable define the axes of the
+quantity it contains.  Dimensions other than those of space and time may be
+included.  Several examples can be found in this document.  Under certain
+circumstances, one may need more than one dimension in a particular
+quantity.  For instance, a variable containing a two-dimensional
+probability density function might correlate the temperature at two
+different vertical levels, and hence would have temperature on both axes.
+</p>
+
+<p>If any or all of the dimensions of a variable have the interpretations
+of ``date or time'' (<kbd>T</kbd>), ``height or depth'' (<kbd>Z</kbd>),
+``latitude'' (<kbd>Y</kbd>), or ``longitude'' (<kbd>X</kbd>) then we
+recommend, but do not require (see section <a href=#coards>1.4</a>), those
+dimensions to appear in the relative order <kbd>T</kbd>, then <kbd>Z</kbd>,
+then <kbd>Y</kbd>, then <kbd>X</kbd> in the CDL definition corresponding to
+the file.  All other dimensions should, whenever possible, be placed to the
+left of the spatiotemporal dimensions.
+</p>
+
+<p>Dimensions may be of any size, including unity.  When a single value of
+some physical quantity applies to all the values in a variable, the
+recommended means of attaching this information to the variable is by use
+of a dimension of size unity with a one-element coordinate variable.  The
+advantage of this method is that all the attributes of a coordinate
+variable can be used to describe the single-valued quantity, including
+boundaries.  For example, a variable containing data for temperature at 1.5
+m above the ground has a single-valued vertical dimension supplying a
+height coordinate of 1.5 m, and a time-mean quantity has a single-valued
+time axis with an associated boundary variable to record the start and end
+of the averaging period.
+</p>
+
+<!--========================================================================= 2.5 -->
+
+<h3><a name="vars">2.5 &nbsp;Variables</a></h3>
+
+<p>This convention does not standardize variable names.
+</p>
+
+<p>NetCDF variables that contain coordinate data are referred to
+as <em>coordinate variables</em>, <em>auxiliary coordinate variables</em>,
+or <em>multidimensional coordinate variables</em>.
+</p>
+
+<!--========================================================================= 2.5.1 -->
+
+<h4><a name="miss">2.5.1 &nbsp;Missing data</a></h4>
+
+<p>The NUG conventions (NUG section <a href=
+"http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">
+8.1</a>) provide the <kbd class="att">_FillValue</kbd>, <kbd
+class="att">valid_min</kbd>, <kbd class="att">valid_max</kbd>, and <kbd
+class="att">valid_range</kbd> attributes to indicate missing data.
+</p>
+
+<p>The NUG conventions for missing data changed significantly between
+version 2.3 and version 2.4.  Since version 2.4 the NUG defines missing
+data as all values outside of the <kbd class="att">valid_range</kbd>, and
+specifies how the <kbd class="att">valid_range</kbd> should be defined from
+the <kbd class="att">_FillValue</kbd> (which has library specified default
+values) if it hasn't been explicitly specified.  If only one missing value
+is needed for a variable then we strongly recommend that this value be
+specified using the <kbd class="att">_FillValue</kbd> attribute.  Doing
+this guarantees that the missing value will be recognized by generic
+applications that follow either the before or after version 2.4
+conventions.
+</p>
+
+<p>The scalar attribute with the name <kbd class="att">_FillValue</kbd> and
+of the same type as its variable is recognized by the netCDF library as the
+value used to pre-fill disk space allocated to the variable.  This value is
+considered to be a special value that indicates undefined or missing data,
+and is returned when reading values that were not written.  The <kbd
+class="att">_FillValue</kbd> should be outside the range specified by <kbd
+class="att">valid_range</kbd> (if used) for a variable. The netCDF library
+defines a default fill value for each data type (NUG section <a href=
+"http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-12.html#HEADING12-1381">
+7.16</a>).
+</p>
+
+<p>The <kbd class="att">missing_value</kbd> attribute is considered
+deprecated by the NUG and we do not recommend its use.  However for
+backwards compatibility with COARDS this standard continues to recognize
+the use of the <kbd class="att">missing_value</kbd> attribute to indicate
+undefined or missing data.
+</p>
+
+<p>The missing values of a variable with <kbd
+class="att">scale_factor</kbd> and/or <kbd class="att">add_offset</kbd>
+attributes (see section <A href="#pack">8.1</A>) are interpreted relative
+to the variable's external values, i.e., the values stored in the netCDF
+file.  Applications that process variables that have attributes to indicate
+both a transformation (via a scale and/or offset) and missing values should
+first check that a data value is valid, and then apply the transformation.
+Note that values that are identified as missing should not be transformed.
+Since the missing value is outside the valid range it is possible that
+applying a transformation to it could result in an invalid operation.  For
+example, the default <kbd class="att">_FillValue</kbd> is very close to the
+maximum representable value of IEEE single precision floats, and
+multiplying it by 100 produces an "Infinity" (using single precision
+arithmetic).
+</p>
+
+
+<!--========================================================================= 2.6 -->
+
+<h3><a name="atts">2.6 &nbsp;Attributes</a></h3>
+
+<p>This standard describes many attributes (some mandatory, others
+optional), but a file may also contain non-standard attributes.  Such
+attributes do not represent a violation of this standard.  Application
+programs should ignore attributes that they do not recognise or which are
+irrelevant for their purposes.  Conventional attribute names should be used
+wherever applicable.  Non-standard names should be as meaningful as
+possible.  Before introducing an attribute, consideration should be given
+to whether the information would be better represented as a variable.  In
+general, if a proposed attribute requires ancillary data to describe it, is
+multidimensional, requires any of the defined netCDF dimensions to index
+its values, or requires a significant amount of storage, a variable should
+be used instead.  When this standard defines string attributes that may
+take various prescribed values, the possible values are generally given in
+lower case.  However, applications programs should not be sensitive to case
+in these attributes.  Several string attributes are defined by this
+standard to contain ``blank-separated lists''.  Consecutive words in such a
+list are separated by one or more adjacent spaces. The list may begin and
+end with any number of spaces.  See <a href="#att_app">appendix A</a> for a
+list of attributes described by this standard.</p>
+
+<!--========================================================================= 2.6.1 -->
+
+<h4><a name="conv">2.6.1 &nbsp;Identification of conventions</a></h4>
+
+<p>We recommend that netCDF files that follow these conventions indicate
+this by setting the NUG defined global attribute <kbd
+class="att">Conventions</kbd> to the string value <kbd>"CF-1.0"</kbd>.  The
+string is interpreted as a directory name relative to a directory that is a
+repository of documents describing sets of discipline-specific conventions.
+The conventions directory name is currently interpreted relative to the
+directory <kbd>pub/netcdf/Conventions/</kbd> on the host machine
+<kbd>ftp.unidata.ucar.edu</kbd>.  The web based versions of this document
+are linked from: <a
+href="http://www.unidata.ucar.edu/packages/netcdf/conventions.html"><kbd>
+http://www.unidata.ucar.edu/packages/netcdf/conventions.html</kbd></a>
+</p>
+
+<!--========================================================================= 2.6.2 -->
+
+<h4><a name="des">2.6.2 &nbsp;Description of file contents</a></h4>
+
+<p>The following attributes are intended to provide information about where
+the data came from and what has been done to it.  This information is
+mainly for the benefit of human readers.  The attribute values are all
+character strings.  For readability in ncdump outputs it is recommended to
+embed newline characters into long strings to break them into lines.  For
+backwards compatibility with COARDS none of these global attributes is
+required.</p>
+
+<p>The NUG defines <kbd class="att">title</kbd> and <kbd
+class="att">history</kbd> to be global attributes.  We wish to allow the
+newly defined attributes, i.e., <kbd class="att">institution</kbd>, <kbd
+class="att">source</kbd>, <kbd class="att">references</kbd>, and <kbd
+class="att">comment</kbd>, to be either global or assigned to individual
+variables.  When an attribute appears both globally and as a variable
+attribute, the variable's version has precedence.</p>
+
+<dl>
+
+<dt><kbd class="att">title</kbd></dt>
+<dd>A succinct description of what is in the dataset.</dd>
+
+<dt><kbd class="att">institution</kbd></dt>
+<dd>Specifies where the original data was produced.</dd>
+
+<dt><kbd class="att">source</kbd></dt>
+<dd>The method of production of the original data.  If it was
+model-generated, <kbd class="att">source</kbd> should name the model and
+its version, as specifically as could be useful.  If it is observational,
+<kbd class="att">source</kbd> should characterize it (e.g., <kbd>"surface
+observation"</kbd> or <kbd>"radiosonde"</kbd>).</dd>
+
+<dt><kbd class="att">history</kbd></dt>
+<dd>Provides an audit trail for modifications to the original data.
+Well-behaved generic netCDF filters will automatically append their name
+and the parameters with which they were invoked to the global history
+attribute of an input netCDF file.  We recommend that each line begin with
+a timestamp indicating the date and time of day that the program was
+executed.
+<dd>
+
+<dt><kbd class="att">references</kbd></dt>
+<dd>Published or web-based references that describe the data or methods
+used to produce it.</dd>
+
+<dt><kbd class="att">comment</kbd></dt>
+<dd>Miscellaneous information about the data or methods used to produce
+it.</dd>
+
+</dl>
+
+<!--========================================================================= 3 -->
+
+<h2><a name="data">3 &nbsp;Description of the Data</a></h2>
+
+<p>The attributes described in this section are used to provide a
+description of the content and the units of measurement for each variable.
+We continue to support the use of the <kbd class="att">units</kbd> and <kbd
+class="att">long_name</kbd> attributes as defined in COARDS.  We extend
+COARDS by adding the optional <kbd class="att">standard_name</kbd>
+attribute which is used to provide unique identifiers for variables.  This
+is important for data exchange since one cannot necessarily identify a
+particular variable based on the name assigned to it by the institution
+that provided the data.</p>
+
+<p>The <kbd class="att">standard_name</kbd> attribute can be used to
+identify variables that contain coordinate data.  But since it is an
+optional attribute, applications that implement these standards must
+continue to be able to identify coordinate types based on the COARDS
+conventions.
+</p>
+
+<!--========================================================================= 3.1 -->
+
+<h3><a name="units">3.1 &nbsp;Units</a></h3>
+
+<p>The <kbd class="att">units</kbd> attribute is required for all variables
+that represent dimensional quantities (except for boundary variables
+defined in section <a href="#bnds">7.1</a> and climatology variables
+defined in section <a href="#climatology">7.4</a>).  The value of the <kbd
+class="att">units</kbd> attribute is a string that can be recognized by
+UNIDATA's Udunits package [<a href="#ref_units">UDUNITS</a>], with a few
+exceptions that are given below.  The Udunits package includes a file <a
+href="http://www.unidata.ucar.edu/packages/udunits/udunits.dat">
+<kbd>udunits.dat</kbd></a>, which lists its supported unit names.  Note
+that case is significant in the <kbd class="att">units</kbd> strings.  </p>
+
+<p>The COARDS convention prohibits the unit <kbd>degrees</kbd> altogether,
+but this unit is not forbidden by the CF convention because it may in fact
+be appropriate for a variable containing, say, solar zenith angle.  The
+unit <kbd>degrees</kbd> is also allowed on coordinate variables such as the
+latitude and longitude coordinates of a transformed grid.  In this case the
+coordinate values are not true latitudes and longitudes which must always
+be identified using the more specific forms of <kbd>degrees</kbd> as
+described in sections <a href=#lat>4.1</a> and <a href=#lon>4.2</a>.  </p>
+
+<p>The units <kbd>level</kbd>, <kbd>layer</kbd>, and
+<kbd>sigma_level</kbd> are allowed for dimensionless vertical
+coordinates to maintain backwards compatibility with COARDS.  These units
+are not compatible with Udunits and are deprecated by this
+standard because conventions for more precisely identifying dimensionless
+vertical coordinates are introduced (see section <a href=#vnum>4.3.2</a>).
+</p>
+
+<p>The Udunits package defines a few dimensionless units, such as
+<kbd>percent</kbd>, but is lacking commonly used units such as ppm (parts
+per million).  This convention does not support the addition of new
+dimensionless units that are not udunits compatible.  The conforming unit
+for quantities that represent fractions, or parts of a whole, is "1".  The
+conforming unit for parts per million is "1e-6".  Descriptive information
+about dimensionless quantities, such as sea-ice concentration, cloud
+fraction, probability, etc., should be given in the <kbd
+class="att">long_name</kbd> or <kbd class="att">standard_name</kbd>
+attributes (see below) rather than the <kbd class="att">units</kbd>.  </p>
+
+<p>The Udunits syntax that allows scale factors and offsets to be applied
+to a unit is not supported by this standard.  The application of any scale
+factors or offsets to data should be indicated by the <kbd
+class="att">scale_factor</kbd> and <kbd class="att">add_offset</kbd>
+attributes.  Use of these attributes is discussed in detail in the section
+on <a href=#pack>data packing</a> which is their most important
+application.  </p>
+
+<p>Udunits recognizes the following prefixes and their abbreviations.
+</p>
+
+<table border>
+<thead>
+<tr> <td>Factor</td> <td>Prefix</td> <td>Abbreviation</td> <td>&nbsp</td>
+ <td>Factor</td> <td>Prefix</td> <td>Abbreviation</td>
+</tr>
+</thead>
+<tbody>
+<tr> <td>1e1  </td>    <td>deca, deka </td>       <td>da</td> <td>&nbsp</td>
+     <td>1e-1 </td>    <td>deci       </td>       <td>d	</td> </tr>
+<tr> <td>1e2  </td>    <td>hecto      </td>       <td>h	</td> <td>&nbsp</td>
+     <td>1e-2 </td>    <td>centi      </td>       <td>c	</td> </tr>
+<tr> <td>1e3  </td>    <td>kilo       </td>       <td>k	</td> <td>&nbsp</td>
+     <td>1e-3 </td>    <td>milli      </td>       <td>m	</td> </tr>
+<tr> <td>1e6  </td>    <td>mega       </td>       <td>M	</td> <td>&nbsp</td>
+     <td>1e-6 </td>    <td>micro      </td>       <td>u	</td> </tr>
+<tr> <td>1e9  </td>    <td>giga       </td>       <td>G	</td> <td>&nbsp</td>
+     <td>1e-9 </td>    <td>nano       </td>       <td>n	</td> </tr>
+<tr> <td>1e12 </td>    <td>tera       </td>       <td>T	</td> <td>&nbsp</td>
+     <td>1e-12</td>    <td>pico       </td>       <td>p	</td> </tr>
+<tr> <td>1e15 </td>    <td>peta       </td>       <td>P	</td> <td>&nbsp</td>
+     <td>1e-15</td>    <td>femto      </td>       <td>f	</td> </tr>
+<tr> <td>1e18 </td>    <td>exa        </td>       <td>E	</td> <td>&nbsp</td>
+     <td>1e-18</td>    <td>atto       </td>       <td>a	</td> </tr>
+<tr> <td>1e21 </td>    <td>zetta      </td>       <td>Z	</td> <td>&nbsp</td>
+     <td>1e-21</td>    <td>zepto      </td>       <td>z	</td> </tr>
+<tr> <td>1e24 </td>    <td>yotta      </td>       <td>Y </td> <td>&nbsp</td>
+     <td>1e-24</td>    <td>yocto      </td>       <td>y	</td> </tr>
+</tbody>
+</table>
+
+<!--========================================================================= 3.2 -->
+
+<h3><a name="lname">3.2 &nbsp;Long name</a></h3>
+
+<p>The <kbd class="att">long_name</kbd> attribute is defined by the NUG to
+contain a long descriptive name which may, for example, be used for
+labeling plots.  For backwards compatibility with COARDS this attribute is
+optional.  But it is highly recommended that either this or the <kbd
+class="att">standard_name</kbd> attribute defined in the next section be
+provided to make the file self-describing.  If a variable has no <kbd
+class="att">long_name</kbd> attribute then an application may use, as a
+default, the <kbd class="att">standard_name</kbd> if it exists, or the
+variable name itself.
+</p>
+
+<!--========================================================================= 3.3 -->
+
+<h3><a name="sname">3.3 &nbsp;Standard name</a></h3>
+
+<p>A fundamental requirement for exchange of scientific data is the ability
+to describe precisely the physical quantities being represented. To some
+extent this is the role of the <kbd class="att">long_name</kbd> attribute
+as defined in the NUG. However, usage of <kbd class="att">long_name</kbd>
+is completely ad-hoc.  For some applications it would be desirable to have
+a more definitive description of the quantity, which would allow users of
+data from different sources to determine whether quantities were in fact
+comparable.  For this reason an optional mechanism for uniquely associating
+each variable with a standard name is provided.
+</p>
+
+<p>The <kbd class="att">standard_name</kbd> attribute of a variable takes
+its value from the appropriate identifier in the standard name table.  The
+information in the table associated with this identifier uniquely defines
+the variable.  Case is significant in the <kbd
+class="att">standard_name</kbd>.
+</p>
+
+<p>The <em>standard name table</em> is a sequence of entries, each
+containing:
+</p>
+
+<dl>
+<dt><em>id</em></dt>
+<dd>The identifier of the physical quantity.  The identifier contains no
+whitespace and is case sensitive.  The value of the <kbd
+class="att">standard_name</kbd> attribute must be identical to one of the
+identifiers found in the table.
+</dd>
+
+<dt><em>canonical units</em></dt>
+<dd>Representative units of the physical quantity.  Unless it is
+dimensionless, a variable with a <kbd class="att">standard_name</kbd>
+attribute must have <kbd class="att">units</kbd> which are physically
+equivalent (not necessarily identical) to the canonical units as modified
+by any operations specified by the <kbd class="att">cell_methods</kbd>
+attribute (see section <a href="#cell-methods">7.3</a> and Appendix <a
+href="#sub_app">D</a>).</dd>
+
+<dt><em>description</em></dt>
+<dd>A precise definition of the physical quantity.</dd>
+
+</dl>
+
+<p>The standard name table is located at <a
+href="???"><em>http://www.???.???/???/standardNameTable.xml</em></a>,
+written in compliance with the XML format, as described in Appendix <a
+href="#table_format">B</a>.  Knowledge of the XML format is only necessary
+for application writers who plan to directly access the table.  A formatted
+text version of the table is provided at
+<a
+href="http://www.cgd.ucar.edu/cms/eaton/cf-metadata/standard_name.html">
+http://www.cgd.ucar.edu/cms/eaton/cf-metadata/standard_name.html</a>,
+and this table may be consulted in order to find the
+standard name that should be assigned to a variable.
+</p>
+
+<p>Files that make use of the standard name mechanism should provide the
+<kbd class="att">standard_name</kbd> attribute for variables in the
+file. The value of the <kbd class="att">standard_name</kbd> attribute must
+be one of the identifiers from the standard name table.
+</p>
+
+<div class="example">
+
+<p><span class="runin">Use of <kbd class="att">standard_name</kbd></span>:&nbsp;&nbsp;
+</p>
+
+<pre class="CDL">
+float psl(lat,lon) ;
+  psl:long_name = "mean sea level pressure" ;
+  psl:units = "hPa" ;
+  psl:standard_name = "air_pressure_at_sea_level" ;
+</pre>
+
+</div>
+
+<p>The identifier <kbd>air_pressure_at_sea_level</kbd> is used to find the
+entry in the standard name table that 
+uniquely defines the mean sea level pressure.
+</p>
+
+<!--========================================================================= 4 -->
+
+<h2><a name="ctype">4 &nbsp;Coordinate Types</a></h2>
+
+<p>Four types of coordinates receive special treatment by these
+conventions: latitude, longitude, vertical, and time.  We continue to
+support the special role that the <kbd class="att">units</kbd> and <kbd class="att">positive</kbd>
+attributes play in the COARDS convention to identify 
+coordinate type.
+We extend COARDS by providing explicit definitions
+of dimensionless vertical coordinates.  The definitions are associated with
+a coordinate variable via the <kbd class="att">standard_name</kbd> and
+<kbd class="att">formula_terms</kbd> attributes.  For backwards compatibility with COARDS
+use of these attributes is not required, but is strongly recommended.
+</p>
+
+<p>Because identification of a coordinate type by its units is complicated
+by requiring the use of an external software package [<a
+href="#ref_units">UDUNITS</a>], we provide two optional methods that yield
+a direct identification.  The attribute <kbd class="att">axis</kbd> may be
+attached to a coordinate variable and given one of the values <kbd>X, Y,
+Z</kbd> or <kbd>T</kbd> which stand for a longitude, latitude, vertical, or
+time axis respectively.  Alternatively the <kbd
+class="att">standard_name</kbd> attribute may be used for direct
+identification.  But note that these optional attributes are in addition to
+the required COARDS metadata.
+</p>
+
+<p>Coordinate types other than latitude, longitude, vertical, and time are
+allowed.  To identify generic spatial coordinates we recommend that the
+<kbd class="att">axis</kbd> attribute be attached to these coordinates and
+given one of the values <kbd>X, Y</kbd> or <kbd>Z</kbd>.  We attach no
+specific meaning to the <kbd class="att">axis</kbd> values in this case,
+but note that they may provide a useful hint to an application that plots
+spatially oriented data.  We strongly recommend that coordinate variables
+be used for all coordinate types whenever they are applicable.
+</p>
+
+<p>The methods of identifying coordinate types described in this section
+apply both to coordinate variables and to auxiliary coordinate variables
+named by the <kbd class="att">coordinates</kbd> attribute (see section <a
+href="#grids">5</a>).
+</p>
+
+<!--========================================================================= 4.1 -->
+
+<h3><a name="lat">4.1 &nbsp;Latitude coordinate</a></h3>
+
+<p>
+Variables representing latitude must always explicitly include the <kbd
+class="att">units</kbd> attribute; there is no default value.  The <kbd
+class="att">units</kbd> attribute will be a string formatted as per the
+<a href="http://www.unidata.ucar.edu/packages/udunits/udunits.dat">
+<kbd>udunits.dat</kbd></a> file.  The recommended unit of latitude is
+<kbd>degrees_north</kbd>. Also acceptable are <kbd>degree_north</kbd>,
+<kbd>degree_N</kbd>, <kbd>degrees_N</kbd>, <kbd>degreeN</kbd>, and
+<kbd>degreesN</kbd>.
+</p>
+
+<div class="example">
+
+<p><span class="runin">Latitude axis</span>:&nbsp;&nbsp;
+</p> 
+
+<pre class="CDL">
+float lat(lat) ;
+  lat:long_name = "latitude" ;
+  lat:units = "degrees_north" ;
+</pre>
+</div>
+
+<p>Application writers should note that the Udunits package does not
+recognize the directionality implied by the "north" part of the unit
+specification.  It only recognizes its size, i.e., 1 degree is defined to
+be pi/180 radians.  Hence, determination that a coordinate is a latitude
+type should be done via a string match between the given unit and one of
+the acceptable forms of <kbd>degrees_north</kbd>.
+</p>
+
+<p>Optionally, the latitude type may be indicated additionally by providing
+the <kbd class="att">standard_name</kbd> attribute with the value
+<kbd>latitude</kbd>, and/or the <kbd class="att">axis</kbd> attribute with
+the value <kbd>Y</kbd>.  </p>
+
+<p>Coordinates of latitude with respect to a rotated pole should be given
+units of <kbd>degrees</kbd>, not <kbd>degrees_north</kbd> or equivalents,
+because applications which use the units to identify axes would have no
+means of distinguishing such an axis from real latitude, and might draw
+incorrect coastlines, for instance.  It would also not generally be
+appropriate to attach an axis attribute to a rotated-latitude coordinate
+variable. Such a variable can be identified by a <kbd
+class="att">standard_name</kbd> of <kbd>grid_latitude</kbd>.
+</p>
+
+<!--========================================================================= 4.2 -->
+
+<h3><a name="lon">4.2 &nbsp;Longitude coordinate</a></h3>
+
+<p>
+Variables representing longitude must always explicitly include the <kbd
+class="att">units</kbd> attribute; there is no default value.  The <kbd
+class="att">units</kbd> attribute will be a string formatted as per the
+<a href="http://www.unidata.ucar.edu/packages/udunits/udunits.dat">
+<kbd>udunits.dat</kbd></a> file.  The recommended unit of longitude is
+<kbd>degrees_east</kbd>. Also acceptable are <kbd>degree_east</kbd>,
+<kbd>degree_E</kbd>, <kbd>degrees_E</kbd>, <kbd>degreeE</kbd>, and
+<kbd>degreesE</kbd>.
+</p>
+
+<div class="example">
+
+<p><span class="runin">Longitude axis</span>:&nbsp;&nbsp;
+</p> 
+
+<pre class="CDL">
+float lon(lon) ;
+  lon:long_name = "longitude" ;
+  lon:units = "degrees_east" ;
+</pre>
+
+</div>
+
+<p>Application writers should note that the Udunits package has limited
+recognition of the directionality implied by the "east" part of the unit
+specification.  It defines <kbd>degrees_east</kbd> to be pi/180 radians,
+and hence equivalent to <kbd>degrees_north</kbd>.  We recommend the
+determination that a coordinate is a longitude type should be done via a
+string match between the given unit and one of the acceptable forms of
+<kbd>degrees_east</kbd>.
+</p>
+
+<p>Optionally, the longitude type may be indicated additionally by
+providing the <kbd class="att">standard_name</kbd> attribute with the value
+<kbd>longitude</kbd>, and/or the <kbd class="att">axis</kbd> attribute with
+the value <kbd>X</kbd>.  </p>
+
+<p>Coordinates of longitude with respect to a rotated pole should be given
+units of <kbd>degrees</kbd>, not <kbd>degrees_east</kbd> or equivalents,
+because applications which use the units to identify axes would have no
+means of distinguishing such an axis from real longitude, and might draw
+incorrect coastlines, for instance.  It would also not generally be
+appropriate to attach an axis attribute to a rotated-longitude coordinate
+variable. Such a variable can be identified by a <kbd
+class="att">standard_name</kbd> of <kbd>grid_longitude</kbd>.
+</p>
+
+<!--========================================================================= 4.3 -->
+
+<h3><a name="vert">4.3 &nbsp;Vertical (height or depth) coordinate</a></h3>
+
+<p>
+Variables representing dimensional height or depth axes must
+always explicitly include the <kbd class="att">units</kbd> attribute; there is no
+default value.
+</p>
+
+<p>The direction of positive (i.e., the direction in which the coordinate
+values are increasing), whether up or down, cannot in all cases be inferred
+from the units. The direction of positive is useful for applications
+displaying the data. For this reason the attribute <kbd class="att">positive</kbd> as
+defined in the COARDS standard is required if the vertical axis units are
+not a valid unit of pressure (a determination which can be made using the
+udunits routine, utScan) -- otherwise its inclusion is optional. The
+<kbd class="att">positive</kbd> attribute may have the value <kbd>up</kbd> or
+<kbd>down</kbd> (case insensitive).
+</p>
+
+<p>For example, if an oceanographic netCDF file encodes the depth of the
+surface as 0 and the depth of 1000 meters as 1000 then the axis would use
+attributes as follows:
+</p>
+
+<div class="example">
+<pre class="CDL">
+axis_name:units = "meters" ; 
+axis_name:positive = "down" ; 
+</pre>
+</div>
+
+<p>If, on the other hand, the depth of 1000 meters were represented as
+-1000 then the value of the <kbd class="att">positive</kbd> attribute would have been
+<kbd>up</kbd>. If the <kbd class="att">units</kbd> attribute value is a valid
+pressure unit the default value of the <kbd class="att">positive</kbd> attribute is
+<kbd>down</kbd>.
+</p>
+
+<p>A vertical coordinate will be identifiable by:</p>
+
+<ul>
+<li>units of pressure; or</li>
+<li>the presence of the positive attribute with a value of "up" or "down"
+(case insensitive).</li>
+</ul>
+
+<p>Optionally, the vertical type may be indicated additionally by providing
+the <kbd class="att">standard_name</kbd> attribute with an appropriate
+value, and/or the <kbd class="att">axis</kbd> attribute with the value
+<kbd>Z</kbd>.
+</p>
+
+<!--========================================================================= 4.3.1 -->
+
+<h4><a name="vdim">4.3.1 &nbsp;Dimensional vertical coordinate</a></h4>
+
+<p>The <kbd class="att">units</kbd> attribute for dimensional coordinates
+will be a string formatted as per the
+<a href="http://www.unidata.ucar.edu/packages/udunits/udunits.dat">
+<kbd>udunits.dat</kbd></a> file.  The acceptable units for vertical (depth
+or height) coordinate variables are:
+</p>
+
+<ul>
+<li>units of pressure as listed in the file udunits.dat. For vertical axes
+the most commonly used of these include include <kbd>bar</kbd>,
+<kbd>millibar</kbd>, <kbd>decibar</kbd>, <kbd>atmosphere (atm)</kbd>,
+<kbd>pascal (Pa)</kbd>, and <kbd>hPa</kbd>.
+</li>
+<li>units of length as listed in the file udunits.dat. For vertical axes
+the most commonly used of these include <kbd>meter (metre, m)</kbd>, and
+<kbd>kilometer (km)</kbd>.
+</li>
+<li>other units listed in the file udunits.dat that may under certain
+circumstances reference vertical position such as units of density or
+temperature.
+</li>
+</ul>
+
+<p>Plural forms are also acceptable.
+</p>
+
+<!--========================================================================= 4.3.2 -->
+
+<h4><a name="vnum">4.3.2 &nbsp;Dimensionless vertical coordinates</a></h4>
+
+<p>The <kbd class="att">units</kbd> attribute is not required for
+dimensionless coordinates.  For backwards compatibility with COARDS we
+continue to allow the <kbd class="att">units</kbd> attribute to take one of
+the values: <kbd>level</kbd>, <kbd>layer</kbd>, or <kbd>sigma_level</kbd>.
+These values are not recognized by the Udunits package, and are considered
+a deprecated feature in the CF standard.
+<p>
+
+<p>For dimensionless vertical coordinates we extend the COARDS standard by
+making use of the <kbd class="att">standard_name</kbd> attribute to
+associate a coordinate with its definition from <a href="#vrt_app">appendix
+C</a>.  The definition provides a mapping between the dimensionless
+coordinate values and dimensional values that can positively and uniquely
+indicate the location of the data.  A new attribute, <kbd
+class="att">formula_terms</kbd>, is used to associate terms in the
+definitions with variables in a netCDF file.  To maintain backwards
+compatibility with COARDS the use of these attributes is not required, but
+is strongly recommended.
+</p>
+
+<div class="example">
+<p><span class="runin">Atmosphere sigma coordinate</span>:&nbsp;&nbsp;
+</p>
+
+<pre class="CDL">
+float lev(lev) ;
+  lev:long_name = "sigma at layer midpoints" ;
+  lev:positive = "down" ;
+  lev:standard_name = "atmosphere_sigma_coordinate" ;
+  lev:formula_terms = "sigma: lev ps: PS ptop: PTOP" ;
+</pre>
+</div>
+
+<p> In this example the <kbd class="att">standard_name</kbd> value <kbd>
+atmosphere_sigma_coordinate</kbd> identifies the following definition from
+appendix C which specifies how to compute pressure at gridpoint
+<kbd>(n,k,j,i)</kbd> where <kbd>j</kbd> and <kbd>i</kbd> are horizontal
+indices, <kbd>k</kbd> is a vertical index, and <kbd>n</kbd> is a time
+index: </p>
+
+<div class="example">
+<pre>
+p(n,k,j,i) = ptop + sigma(k)*(ps(n,j,i)-ptop)
+</pre>
+</div>
+
+<p>The <kbd class="att">formula_terms</kbd> attribute associates the
+variable <kbd>lev</kbd> with the term <kbd>sigma</kbd>, the variable
+<kbd>PS</kbd> with the term <kbd>ps</kbd>, and the variable <kbd>PTOP</kbd>
+with the term <kbd>ptop</kbd>.  Thus the pressure at gridpoint
+<kbd>(n,k,j,i)</kbd> would be calculated by </p>
+
+<div class="example">
+<pre>
+p(n,k,j,i) = PTOP + lev(k)*(PS(n,j,i)-PTOP)
+</pre>
+</div>
+
+<!--========================================================================= 4.4 -->
+
+<h3><a name="time">4.4 &nbsp;Time coordinate</a></h3>
+
+<p>Variables representing time must always explicitly include the <kbd
+class="att">units</kbd> attribute; there is no default value.  The <kbd
+class="att">units</kbd> attribute takes a string value formatted as per the
+recommendations in the Udunits package [<a href="#ref_units">UDUNITS</a>].
+The following excerpt from the Udunits documentation explains the time unit
+encoding by example:
+</p>
+
+<div class="example">
+<pre>
+The specification:
+
+    seconds since 1992-10-8 15:15:42.5 -6:00
+
+indicates seconds since October 8th, 1992  at  3  hours,  15
+minutes  and  42.5 seconds in the afternoon in the time zone
+which is six hours to the west of Coordinated Universal Time
+(i.e.  Mountain Daylight Time).  The time zone specification
+can also be written without a colon using one or  two-digits
+(indicating hours) or three or four digits (indicating hours
+and minutes).
+</pre>
+</div>
+
+<p>The acceptable units for time are listed in the
+<a href="http://www.unidata.ucar.edu/packages/udunits/udunits.dat">
+<kbd>udunits.dat</kbd></a> file.  The most commonly used of these strings
+(and their abbreviations) includes <kbd>day (d), hour (hr, h), minute
+(min)</kbd> and <kbd>second (sec, s)</kbd>. Plural forms are also
+acceptable.  The reference time string (appearing after the identifier
+<kbd>since</kbd>) may include date alone; date and time; or date, time, and
+time zone.  The reference time is required.  A reference time in year 0 has
+a special meaning (see section <a href="#climatology">7.4</a>).
+</p>
+
+<p>We recommend that the unit <kbd>year</kbd> be used with caution.  The
+Udunits package defines a <kbd>year</kbd> to be exactly 365.242198781 days
+(the interval between 2 successive passages of the sun through vernal
+equinox).  <em>It is not a calendar year.</em> Udunits includes the
+following definitions for years: a <kbd>common_year</kbd> is 365 days, a
+<kbd>leap_year</kbd> is 366 days, a <kbd>Julian_year</kbd> is 365.25 days,
+and a <kbd>Gregorian_year</kbd> is 365.2425 days.
+</p>
+
+<p>For similar reasons the unit <kbd>month</kbd>, which is defined in
+<kbd>udunits.dat</kbd> to be exactly <kbd>year/12</kbd>, should also be
+used with caution.
+</p>
+
+<div class="example">
+<p><span class="runin">Time axis</span>:&nbsp;&nbsp;
+</p>
+
+<pre class="CDL">
+double time(time) ;
+  time:long_name = "time" ;
+  time:units = "days since 1990-1-1 0:0:0" ;
+</pre>
+</div>
+
+<p>A time coordinate is identifiable from its units string alone.  The
+Udunits routines <kbd>utScan()</kbd> and <kbd>utIsTime()</kbd> can be used
+to make this determination.
+</p>
+
+<p>Optionally, the time coordinate may be indicated additionally by
+providing the <kbd class="att">standard_name</kbd> attribute with an
+appropriate value, and/or the <kbd class="att">axis</kbd> attribute with
+the value <kbd>T</kbd>.
+</p>
+
+<!--========================================================================= 4.4.1 -->
+
+<h4><a name="cal">4.4.1 &nbsp;Calendar</a></h4>
+
+<p>In order to calculate a new date and time given a base date, base time
+and a time increment one must know what calendar to use.  For this purpose
+we recommend that the calendar be specified by the attribute <kbd
+class="att">calendar</kbd> which is assigned to the time coordinate
+variable.  The values currently defined for <kbd class="att">calendar</kbd>
+are:
+</p>
+
+<dl>
+<dt><kbd>gregorian</kbd> or <kbd>standard</kbd></dt>
+<dd>Mixed Gregorian/Julian calendar as defined by Udunits.
+<em>This is the default</em>.
+</dd>
+<dt><kbd>proleptic_gregorian</kbd></dt>
+<dd>A Gregorian calendar extended to dates before 1582-10-15.
+That is, a year is a leap year if either (i) it
+is divisible by 4 but not by 100 or (ii) it is divisible by 400.
+</dd>
+<dt><kbd>noleap</kbd> or <kbd>365_day</kbd></dt>
+<dd>Gregorian calendar without leap years, i.e., all years are 365
+days long.
+</dd>
+<dt><kbd>all_leap</kbd> or <kbd>366_day</kbd></dt>
+<dd>Gregorian calendar with every year being a leap year, i.e., all years are 366
+days long.
+</dd>
+<dt><kbd>360_day</kbd></dt>
+<dd>All years are 360 days divided into 30 day months.
+</dd>
+<dt><kbd>julian</kbd></dt>
+<dd>Julian calendar.
+</dd>
+<dt><kbd>none</kbd></dt>
+<dd>No calendar.
+</dl>
+
+<p>The <kbd class="att">calendar</kbd> attribute may be set to
+<kbd>none</kbd> in climate experiments that simulate a fixed time of year.
+The time of year is indicated by the date in the reference time of the <kbd
+class="att">units</kbd> attribute.  The time coordinate that might apply in
+a perpetual July experiment are given in the following example.
+</p>
+
+<div class="example">
+<p><span class="runin">Perpetual time axis</span>:&nbsp;&nbsp;
+</p>
+ 
+<pre class="CDL">
+variables:
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1-7-15 0:0:0" ;
+    time:calendar = "none" ;
+data:
+  time = 0., 1., 2., ...;
+</pre>
+</div>
+
+<p>Here, all days simulate the conditions of 15th July, so it does not make
+sense to give them different dates.  The time coordinates are interpreted
+as 0, 1, 2, etc. days since the start of the experiment.
+</p>
+
+<p>If none of the calendars defined above applies (e.g., calendars
+appropriate to a different paleoclimate era), a non-standard calendar can
+be defined.  The lengths of each month are explicitly defined with the
+<kbd class="att">month_lengths</kbd> attribute of the time axis:
+</p>
+
+<dl>
+<dt><kbd class="att">month_lengths</kbd></dt>
+<dd>A vector of size 12, specifying the number of days in the months
+from January to December (in a non-leap year).
+</dd>
+</dl>
+
+<p>If leap years are included, then two other attributes of the time axis
+should also be defined:
+</p>
+
+<dl>
+<dt><kbd class="att">leap_year</kbd></dt>
+<dd>An example of a leap year. It is assumed that all years that differ
+from this year by a multiple of four are also leap years. If this attribute
+is absent, it is assumed there are no leap years.
+</dd>
+<dt><kbd class="att">leap_month</kbd></dt>
+<dd>A value in the range 1-12, specifying which month is lengthened by a
+day in leap years (1=January). If this attribute is not present, February
+(2) is assumed. This attribute is ignored if <kbd
+class="att">leap_year</kbd> is not specified.
+</dd>
+</dl>
+
+<p>The <kbd class="att">calendar</kbd> attribute is not required when a
+non-standard calendar is being used.  It is sufficient to define the
+calendar using the <kbd class="att">month_lengths</kbd> attribute, along
+with <kbd class="att">leap_year</kbd>, and <kbd
+class="att">leap_month</kbd> as appropriate.  However, the <kbd
+class="att">calendar</kbd> attribute is allowed to take non-standard values
+and in that case defining the non-standard calendar using the appropriate
+attributes is required.
+</p>
+
+<div class="example">
+<p><span class="runin">Paleoclimate time axis</span>:&nbsp;&nbsp;
+</p>
+
+<pre class="CDL">
+double time(time) ;
+  time:long_name = "time" ;
+  time:units = "days since 1-1-1 0:0:0" ;
+  time:calendar = "126 kyr B.P." ;
+  time:month_lengths = 34, 31, 32, 30, 29, 27, 28, 28, 28, 32, 32, 34 ;
+</pre>
+</div>
+
+<p>The mixed Gregorian/Julian calendar used by Udunits is explained in the
+following excerpt from the udunits(3) man page:
+</p>
+
+<div class="example">
+<pre>
+The udunits(3) package uses a mixed Gregorian/Julian  calen-
+dar  system.   Dates  prior to 1582-10-15 are assumed to use
+the Julian calendar, which was introduced by  Julius  Caesar
+in 46 BCE and is based on a year that is exactly 365.25 days
+long.  Dates on and after 1582-10-15 are assumed to use  the
+Gregorian calendar, which was introduced on that date and is
+based on a year that is exactly 365.2425 days long.  (A year
+is  actually  approximately 365.242198781 days long.)  Seem-
+ingly strange behavior of the udunits(3) package can  result
+if  a user-given time interval includes the changeover date.
+For example, utCalendar() and utInvCalendar() can be used to
+show that 1582-10-15 *preceded* 1582-10-14 by 9 days.
+</pre>
+</div>
+
+<p>Due to problems caused by the discontinuity in the default mixed
+Gregorian/Julian calendar, we strongly recommend that this calendar should
+only be used when the time coordinate does not cross the discontinuity.
+For time coordinates that do cross the discontinuity the
+<kbd>proleptic_gregorian</kbd> calendar should be used instead.
+</p>
+
+<!--========================================================================= 5 -->
+
+<h2><a name="grids">5 &nbsp;Coordinate Systems</a></h2>
+
+<p>A variable's spatiotemporal dimensions are used to locate data values in
+time and space.  This is accomplished by associating these dimensions with
+the relevant set of latitude, longitude, vertical, and time coordinates.
+This section presents two methods for making that association: the use of
+<em>coordinate variables</em>, and the use of <em>auxiliary coordinate
+variables</em>.
+</p>
+
+<p>All of a variable's dimensions that are latitude, longitude, vertical,
+or time dimensions (see <a href="#terms">terminology</a>) must have
+corresponding coordinate variables, i.e., one-dimensional variables with
+the same name as the dimension (see examples in section <a
+href="#ctype">4</a>).  This is the only method of associating dimensions
+with coordinates that is supported by COARDS [<a
+href="#ref_coards">COARDS</a>].
+</p>
+
+<p>All of a variable's spatiotemporal dimensions that are not latitude,
+longitude, vertical, or time dimensions are required to be associated with
+the relevant latitude, longitude, vertical, or time coordinates via the new
+<kbd class="att">coordinates</kbd> attribute of the variable.  The value of
+the <kbd class="att">coordinates</kbd> attribute is <em>a blank separated
+list of the names of auxiliary coordinate variables</em>.  There is no
+restriction on the order in which the auxiliary coordinate variables appear
+in the <kbd class="att">coordinates</kbd> attribute string.  The dimensions
+of an auxiliary coordinate variable must be a subset of the dimensions of
+the variable with which the coordinate is associated (an exception is label
+coordinates (section <a href="#lab">6.1</a>) which contain a dimension for
+maximum string length).  We recommend that the name of a multidimensional
+coordinate variable should not match the name of any of its dimensions
+because that precludes supplying an associated coordinate variable for the
+dimension.  This practice also avoids potential bugs in applications that
+determine coordinate variables by only checking for a name match between a
+dimension and a variable and not checking that the variable is one
+dimensional.  </p>
+
+<p>The use of coordinate variables is required whenever they are
+applicable.  That is, auxiliary coordinate variables may not be used as the
+only way to identify latitude and longitude coordinates that could be
+identified using coordinate variables.  This is both to enhance conformance
+to COARDS and to facilitate the use of generic applications that recognize
+the NUG convention for coordinate variables.  An application that is trying
+to find the latitude coordinate of a variable should always look first to
+see if any of the variable's dimensions correspond to a latitude coordinate
+variable.  If the latitude coordinate is not found this way, then the
+auxiliary coordinate variables listed by the <kbd
+class="att">coordinates</kbd> attribute should be checked.  Note that it is
+permissible, but optional, to list coordinate variables as well as
+auxiliary coordinate variables in the <kbd class="att">coordinates</kbd>
+attribute.
+</p>
+
+<p>If the coordinate variables for a horizontal grid are not longitude and
+latitude, it is recommended that they be supplied <em>in addition</em> to
+the required coordinates.  For example, the Cartesian coordinates of a map
+projection should be supplied as coordinate variables in addition to the
+required two-dimensional latitude and longitude variables that are
+identified via the <kbd class="att">coordinates</kbd> attribute.
+</p>
+
+<p>It is sometimes not practical to specify the latitude-longitude location
+of data which is representative of geographic regions with complex
+boundaries.  For this purpose, provision is made in section <a
+href="#region">6.1.1</a> for indicating the region by a standardized name.
+</p>
+
+<!--========================================================================= 5.1 -->
+
+<h3><a name="grid_ex1">5.1 &nbsp;Independent latitude, longitude, vertical, and time axes</a></h3> 
+
+<p>When each of a variable's spatiotemporal dimensions is a latitude,
+longitude, vertical, or time dimension, then each axis is identified by a
+coordinate variable.
+</p>
+
+<div class="example">
+<pre class="CDL">
+dimensions:
+  lat = 18 ;
+  lon = 36 ;
+  pres = 15 ;
+  time = 4 ;
+variables:
+  float xwind(time,pres,lat,lon) ;
+    xwind:long_name = "zonal wind" ;
+    xwind:units = "m/s" ;
+  float lon(lon) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(lat) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  float pres(pres) ;
+    pres:long_name = "pressure" ;
+    pres:units = "hPa" ;
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1990-1-1 0:0:0" ;
+</pre>
+</div>
+
+<p><kbd>xwind(n,k,j,i)</kbd> is associated with the coordinate values
+<kbd>lon(i)</kbd>, <kbd>lat(j)</kbd>, <kbd>pres(k)</kbd>, and
+<kbd>time(n)</kbd>.
+</p>
+
+<!--========================================================================= 5.2 -->
+
+<h3><a name="grid_ex2">5.2 &nbsp;</a>Two-dimensional latitude, longitude coordinate variables</h3> 
+
+<p>The latitude and longitude coordinates of a horizontal grid that was not
+defined as a Cartesian product of latitude and longitude axes, can
+sometimes be represented using two-dimensional coordinate variables.  These
+variables are identified as coordinates by use of the <kbd
+class="att">coordinates</kbd> attribute.
+</p>
+
+<div class="example">
+<pre class="CDL">
+dimensions:
+  xc = 128 ;
+  yc = 64 ;
+  lev = 18 ;
+variables:
+  float T(lev,yc,xc) ;
+    T:long_name = "temperature" ;
+    T:units = "K" ;
+    T:coordinates = "lon lat" ;
+  float xc(xc) ;
+    xc:long_name = "x-coordinate in Cartesian system" ;
+    xc:units = "m" ;
+  float yc(yc) ;
+    yc:long_name = "y-coordinate in Cartesian system" ;
+    yc:units = "m" ;
+  float lev(lev) ;
+    lev:long_name = "pressure level" ;
+    lev:units = "hPa" ;
+  float lon(yc,xc) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(yc,xc) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+</pre>
+</div>
+
+<p><kbd>T(k,j,i)</kbd> is associated with the coordinate values
+<kbd>lon(j,i)</kbd>, <kbd>lat(j,i)</kbd>, and <kbd>lev(k)</kbd>.  The
+vertical coordinate is represented by the coordinate variable
+<kbd>lev(lev)</kbd> and the latitude and longitude coordinates are
+represented by the auxiliary coordinate variables <kbd>lat(yc,xc)</kbd> and
+<kbd>lon(yc,xc)</kbd> which are identified by the <kbd
+class="att">coordinates</kbd> attribute.
+</p>
+
+<p>Note that coordinate variables are also defined for the <kbd>xc</kbd>
+and <kbd>yc</kbd> dimensions.  This faciliates processing of this data by
+generic applications that don't recognize the multidimensional latitude and
+longitude coordinates.
+</p>
+
+<!--========================================================================= 5.3 -->
+
+<h3><a name="grid_ex3">5.3 &nbsp;</a>Reduced horizontal grid</h3> 
+
+<p>A "reduced" longitude-latitude grid is one in which the points are
+arranged along constant latitude lines with the number of points on a
+latitude line decreasing toward the poles.  Storing this type of gridded
+data in two-dimensional arrays wastes space, and results in the presence of
+missing values in the 2D coordinate variables.  We recommend that this type
+of gridded data be stored using the compression scheme described in section
+<a href=#gath>8.2</a>.  Compression by gathering preserves structure by
+storing a set of indices that allows an application to easily scatter the
+compressed data back to two-dimensional arrays.  The compressed latitude
+and longitude auxiliary coordinate variables are identified by the <kbd
+class="att">coordinates</kbd> attribute.
+</p>
+
+<div class="example">
+<pre class="CDL">
+dimensions:
+  londim = 128 ;
+  latdim = 64 ;
+  rgrid = 6144 ;
+variables:
+  float PS(rgrid) ;
+    PS:long_name = "surface pressure" ;
+    PS:units = "Pa" ;
+    PS:coordinates = "lon lat" ;
+  float lon(rgrid) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(rgrid) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  int rgrid(rgrid);
+    rgrid:compress = "latdim londim";
+</pre>
+</div>
+
+<p><kbd>PS(n)</kbd> is associated with the coordinate values
+<kbd>lon(n)</kbd>, <kbd>lat(n)</kbd>.  Compressed grid index <kbd>(n)</kbd>
+would be assigned to 2D index <kbd>(j,i)</kbd> (C index conventions) where
+</p>
+
+<div class="example">
+<pre>
+j = rgrid(n) / 128
+i = rgrid(n) - 128*j
+</pre>
+</div>
+
+<p>Notice that even if an application does not recognize the <kbd
+class="att">compress</kbd> attribute, the grids stored in this format can
+still be handled, by an application that recognizes the <kbd
+class="att">coordinates</kbd> attribute.
+</p>
+
+<!--========================================================================= 5.4 -->
+
+<h3><a name="grid_ex4">5.4 &nbsp;</a>Timeseries of station data</h3> 
+
+<p>To represent data at scattered points it is convenient to use a variable
+with one dimension to represent the measurement locations.  Auxiliary
+coordinate variables are used to associate a single spatial dimension with
+multiple independent coordinates.
+</p>
+
+<div class="example">
+<pre class="CDL">
+dimensions:
+  station = 10 ;  // measurement locations
+  pressure = 11 ; // pressure levels
+  time = UNLIMITED ;
+variables:
+  float humidity(time,pressure,station) ;
+    humidity:long_name = "specific humidity" ;
+    humidity:coordinates = "lat lon" ;
+  double time(time) ;
+    time:long_name = "time of measurement" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(station) ;
+    lon:long_name = "station longitude";
+    lon:units = "degrees_east";
+  float lat(station) ;
+    lat:long_name = "station latitude" ;
+    lat:units = "degrees_north" ;
+  float pressure(pressure) ;
+    pressure:long_name = "pressure" ;
+    pressure:units = "hPa" ;
+</pre>
+</div>
+
+<p><kbd>humidity(n,k,i)</kbd> is associated with the coordinate values
+<kbd>time(n)</kbd>, <kbd>pressure(k)</kbd>, <kbd>lat(i)</kbd>, and
+<kbd>lon(i)</kbd>.
+</p>
+
+<!--========================================================================= 5.5 -->
+
+<h3><a name="grid_ex5">5.5 &nbsp;</a>Trajectories</h3> 
+
+<p>A possible representation of the spatiotemporal locations of
+measurements along a flight path is to use time to parameterize the
+trajectory and use auxiliary coordinate variables to provide the spatial
+locations.
+</p>
+
+<div class="example">
+<pre class="CDL">
+dimensions:
+  time = 1000 ;
+variables:
+  float O3(time) ;
+    O3:long_name = "ozone concentration" ;
+    O3:units = "1e-9" ;
+    O3:coordinates = "lon lat z" ;
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1970-01-01 00:00:00" ;
+  float lon(time) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(time) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  float z(time) ;
+    z:long_name = "height above mean sea level" ;
+    z:units = "km" ;
+    z:positive = "up" ;
+</pre>
+</div>
+
+<p><kbd>O3(n)</kbd> is associated with the coordinate values
+<kbd>time(n)</kbd>, <kbd>z(n)</kbd>, <kbd>lat(n)</kbd>, and
+<kbd>lon(n)</kbd>.
+</p>
+
+
+<!--========================================================================= 5.6 -->
+<h3><a name="gmap">5.6 &nbsp;</a>Grid mappings and projections</h3> 
+
+<p>When the coordinate variables for a horizontal grid are not longitude and
+latitude, it is required that the true latitude and longitude coordinates
+be supplied via the <kbd class="att">coordinates</kbd> attribute.  If in
+addition it is desired to describe the mapping between the given
+coordinate variables and the true latitude and longitude coordinates, the
+attribute <kbd class="att">grid_mapping</kbd> may be used to supply this
+description.  This attribute is attached to data variables so that variables
+with different mappings may be present in a single file.
+</p>
+
+<p>The <kbd class="att">grid_mapping</kbd> attribute takes a string value
+in the form:
+</p>
+<div class="example">
+<pre>
+name param1: val1 [param2: val2 [param3: val3 ...]]
+</pre>
+</div>
+<p>where the brackets indicate parameter/value pairs that may or may not be
+required depending on the particular mapping.  The valid mappings specified
+by the <kbd>name</kbd> token are described in Appendix <a
+href="#ref_gmap">E</a>.
+</p>
+
+<p>The following example illustrates the description of a rotated pole grid.
+</p>
+
+<div class="example">
+<pre class="CDL">
+dimensions:
+  rlon = 128 ;
+  rlat = 64 ;
+  lev = 18 ;
+variables:
+  float T(lev,rlat,rlon) ;
+    T:long_name = "temperature" ;
+    T:units = "K" ;
+    T:coordinates = "lon lat" ;
+    T:grid_mapping="rotated_latitude_longitude grid_north_pole_latitude: \n"
+                   " 32.5 grid_north_pole_longitude: 170." ;
+  float rlon(rlon) ;
+    rlon:long_name = "longitude in rotated pole grid" ;
+    rlon:units = "degrees" ;
+    rlon:standard_name = "grid_longitude";
+  float rlat(rlat) ;
+    rlat:long_name = "latitude in rotated pole grid" ;
+    rlat:units = "degrees" ;
+    rlon:standard_name = "grid_latitude";
+  float lev(lev) ;
+    lev:long_name = "pressure level" ;
+    lev:units = "hPa" ;
+  float lon(rlat,rlon) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+  float lat(rlat,rlon) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+</pre>
+</div>
+
+<p>Note that the units of the rotated longitude and latitude axes are given
+as <kbd>degrees</kbd>.  This should prevent a COARDS compliant application
+from mistaking the variables <kbd>rlon</kbd> and <kbd>rlat</kbd> to be
+actual longitude and latitude coordinates.  A CF compliant application can
+determine that <kbd>rlon</kbd> and <kbd>rlat</kbd> are longitude and
+latitude values in the rotated grid by recognizing the standard names
+<kbd>grid_longitude</kbd> and <kbd>grid_latitude</kbd>.  The definitions
+for these names in the standard name table indicates the appropriate sign
+conventions for the units of <kbd>degrees</kbd>.
+</p>
+
+<!--========================================================================= 6 -->
+
+<h2><a name="extra">6 &nbsp; Labels and Alternative Coordinates</a></h2>
+
+<!--========================================================================= 6.1 -->
+
+<h3><a name="lab">6.1 &nbsp;Labels</a></h3>
+
+<p>The previous section contained several examples in which measurements
+from scattered sites were grouped using a single dimension.  Coordinates of
+the site locations can be provided using auxiliary coordinate variables,
+but it is often desirable to identify measurement sites by name, or some
+other unique string.
+</p>
+
+<p>The list of string identifiers plays an analogous role to a coordinate
+variable, hence we have chosen to use the <kbd
+class="att">coordinates</kbd> attribute to provide the name of the variable
+that contains the string array.  An application processing the variables
+listed in the <kbd class="att">coordinates</kbd> attribute can recognize a
+labeled axis by checking whether or not a given variable contains character
+data.
+</p>
+
+<div class="example">
+
+<p>
+<span class="runin">Several parcel trajectories</span>:&nbsp;&nbsp;
+Consider a set of ocean floats that follow parcel trajectories and
+simultaneously measure temperature at fixed times.  We wish to identify the
+floats by name.  The temperature data is a function of parcel (i.e., float)
+and time.  The location of each sample is also a function of parcel and
+time, so the position information is stored in a multidimensional
+coordinate variable.
+</p>
+
+<pre class="CDL">
+dimensions:
+  parcel = 15 ; // number of trajectories
+  times = 20 ;
+  max_len_parcel_name = 64 ; // max length of trajectory name
+variables:
+  float temperature(parcel,times) ;
+    temperature:coordinates = "parcel_name lat lon" ;
+  float times(times) ;
+  char parcel_name(parcel,max_len_parcel_name) ;
+  float lon(parcel,times) ;
+  float lat(parcel,times) ;
+</pre>
+</div>
+
+<!--========================================================================= 6.1.1 -->
+
+<h4><a name="region">6.1.1 &nbsp;Geographic regions</a></h4>
+
+<p>When data is representative of geographic regions which can be
+identified by names but which have complex boundaries that cannot
+practically be specified using longitude and latitude boundary coordinates,
+a labeled axis should be used to identify the regions.  We recommend that
+the names be chosen from the list of <a
+href="http://www.cgd.ucar.edu/cms/eaton/cf-metadata/region.html">
+standardized region names</a> whenever possible.  To indicate that the
+label values are standardized the variable that contains the labels
+must be given the <kbd class="att">standard_name</kbd> attribute with the
+value <kbd>region</kbd>.
+</p>
+
+<p>A latitude coordinate may be used in conjunction with a labeled axis
+that identifies a region if the longitude axis has been contracted, for
+instance to give the zonal mean, as a function of latitude, for some
+quantity within an ocean basin.  Similarly, a longitude coordinate and a
+labeled axis may be used together if the latitude axis has been contracted.
+</p>
+
+<div class="example">
+
+<p><span class="runin">Northward heat transport in Atlantic Ocean</span>:&nbsp;&nbsp;
+Suppose we have data representing northward heat transport across a set of
+zonal slices in the Atlantic Ocean.  Note that the standard names to
+describe this quantity do not include location information.  That is
+provided by the latitude coordinate and the labeled axis:
+</p>
+
+<pre class="CDL">
+dimensions:
+  times = 20 ;
+  lat = 5
+  lbl = 1 ;
+  strlen = 64 ;
+variables:
+  float n_heat_transport(time,lat,lbl);
+    n_heat_transport:units="W";
+    n_heat_transport:coordinates="geo_region";
+    n_heat_transport:standard_name="northward_ocean_heat_transport";
+  double time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1990-1-1 0:0:0" ;
+  float lat(lat) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+  char geo_region(lbl,strlen) ;
+    geo_region:standard_name="region"
+data:
+  geo_region = "atlanic_ocean" ;
+  lat = 10., 20., 30., 40., 50. ;
+</pre>
+
+</div>
+
+<!--========================================================================= 6.2 -->
+
+<h3><a name="altc">6.2 &nbsp; Alternative coordinates</a></h3>
+
+<p>In some situations a dimension may have alternative sets of coordinates
+values.  Since there can only be one coordinate variable for the dimension
+(the variable with the same name as the dimension), any alternative sets of
+values have to be stored in auxiliary coordinate variables.  For such
+alternative coordinate variables, there are no mandatory attributes, but
+they may have any of the attributes allowed for coordinate variables.
+</p>
+
+<div class="example">
+
+<p>
+<span class="runin">Model level numbers</span>:&nbsp;&nbsp;
+Levels on a vertical axis may be described by both the physical coordinate
+and the ordinal model level number.
+</p>
+
+<pre class="CDL">
+float xwind(sigma,lat);
+  xwind:coordinates="model_level";
+float sigma(sigma); // physical height coordinate
+  sigma:long_name="sigma";
+  sigma:positive="down";
+int model_level(sigma); // model level number at each height
+  model_level:long_name="model level number";
+  model_level:positive="up";
+</pre>
+
+</div>
+
+<!--========================================================================= 7 -->
+
+<h2><a name="int">7 &nbsp;Data Representative of Cells</a></h2>
+
+<p>When gridded data does not represent the point values of a field but
+instead represents some characteristic of the field within cells of finite
+"volume," a complete description of the variable should include metadata
+that describes the domain or extent of each cell, and the characteristic of
+the field that the cell values represent.  It is possible for a single data
+value to be the result of an operation whose domain is a disjoint set of
+cells.  This is true for many types of climatological averages, for
+example, the mean January temperature for the years 1970-2000.  The methods
+that we present below for describing cells only provides an association of
+a grid point with a single cell, not with a collection of cells.  However,
+climatological statistics are of such importance that we provide special
+methods for describing their associated computational domains in section <a
+href=#climatology>7.4</a>.
+</p>
+
+<!--========================================================================= 7.1 -->
+
+<h3><a name="bnds">7.1 &nbsp;Cell boundaries</a></h3>
+
+<p>To represent cells we add the attribute <kbd class="att">bounds</kbd> to
+the appropriate coordinate variable(s).  The value of <kbd
+class="att">bounds</kbd> is the name of the variable that contains the
+vertices of the cell boundaries.  We refer to this type of variable as a
+"boundary variable."  <em>A boundary variable will have one more dimension
+than its associated coordinate or auxiliary coordinate variable.  The
+additional dimension should be the most rapidly varying one, and its size
+is the maximum number of cell vertices.</em> The ordering of the vertices
+is not specified, but must be consistent for all cells (e.g.,
+always order clockwise around the cell).  Since a boundary variable is
+considered to be part of a coordinate variable's metadata, it is not
+necessary to provide it with attributes such as <kbd
+class="att">long_name</kbd> and <kbd class="att">units</kbd>.
+</p>
+
+<p>Note that the boundary variable for a set of N contiguous intervals is
+an array of shape (N,2).  Although in this case there will be a duplication
+of the boundary coordinates between adjacent intervals, this representation
+has the advantage that it is general enough to handle, without
+modification, non-contiguous intervals, as well as intervals on an axis
+using the unlimited dimension.
+</p>
+
+<div class="example">
+<p><span class="runin">Cells on a latitude axis</span>:&nbsp;&nbsp;
+</p> 
+
+<pre class="CDL">
+dimensions:
+  lat = 64;
+  nv = 2;    // number of vertices
+variables:
+  float lat(lat);
+    lat:long_name = "latitude";
+    lat:units = "degrees_north";
+    lat:bounds = "lat_bnds";
+  float lat_bnds(lat,nv);
+</pre>
+
+<p>The boundary variable <kbd>lat_bnds</kbd> associates a latitude
+gridpoint <kbd>i</kbd> with the interval whose boundaries are
+<kbd>lat_bnds(i,0)</kbd> and <kbd>lat_bnds(i,1)</kbd>.  The gridpoint
+location, <kbd>lat(i)</kbd>, should be contained within this
+interval.
+</p>
+
+</div>
+
+<p>For rectangular grids, two-dimensional cells can be expressed as
+Cartesian products of one-dimensional cells of the type in the preceding
+example.  However for non-rectangular grids a "rectangular" cell will in
+general require specifying all four vertices for each cell.
+</p>
+
+<div class="example">
+<p><span class="runin">Cells in a non-rectangular grid</span>:&nbsp;&nbsp;
+</p> 
+
+<pre class="CDL">
+dimensions:
+  imax = 128;
+  jmax = 64;
+  nv = 4;
+variables:
+  float lat(jmax,imax);
+    lat:long_name = "latitude";
+    lat:units = "degrees_north";
+    lat:bounds = "lat_bnds";
+  float lon(jmax,imax);
+    lon:long_name = "longitude";
+    lon:units = "degrees_east";
+    lon:bounds = "lon_bnds";
+  float lat_bnds(jmax,imax,nv);
+  float lon_bnds(jmax,imax,nv);
+</pre>
+
+<p>The boundary variables <kbd>lat_bnds</kbd> and <kbd>lon_bnds</kbd>
+associate a gridpoint <kbd>(j,i)</kbd> with the cell determined by the
+vertices <kbd>(lat_bnds(j,i,n),lon_bnds(j,i,n)), n=0,..,3</kbd>.  The
+gridpoint location, <kbd>(lat(j,i),lon(j,i))</kbd>, should be contained
+within this region.
+</p>
+</div>
+
+<!--========================================================================= 7.2 -->
+<h3><a name="cell-measures">7.2 &nbsp;Cell measures</a></h3>
+
+<p>For some calculations, information is needed about the size, shape or
+location of the cells that cannot be deduced from the coordinates and
+bounds without special knowledge that a generic application cannot be
+expected to have. For instance, in computing the mean of several cell
+values, it is often appropriate to "weight" the values by area.  When
+computing an area-mean each grid cell value is multiplied by the grid-cell
+area before summing, and then the sum is divided by the sum of the
+grid-cell areas.  Area weights may also be needed to map data from one grid
+to another in such a way as to preserve the area mean of the field.  The
+preservation of area-mean values while regridding may be essential, for
+example, when calculating surface heat fluxes in an atmospheric model with
+a grid that differs from the ocean model grid to which it is coupled.
+</p>
+
+<p>In many cases the areas can be calculated from the cell bounds, but there
+are exceptions.  Consider, for example, a spherical geodesic grid composed
+of contiguous, roughly hexagonal cells.  The vertices of the cells can be
+stored in the variable identified by the <kbd class="att">bounds</kbd>
+attribute, but the cell perimeter is not uniquely defined by its vertices
+(because the vertices could, for example, be connected by straight lines,
+or, on a sphere, by lines following a great circle, or, in general, in some
+other way).  Thus, given the cell vertices alone, it is generally
+impossible to calculate the area of a grid cell.  This is why it may be
+necessary to store the grid-cell areas in addition to the cell vertices.
+</p>
+
+<p>In other cases, the grid cell-volume might be needed and might not be
+easily calculated from the coordinate information.  In ocean models, for
+example, it is not uncommon to find "partial" grid cells at the bottom of
+the ocean.  In this case, rather than (or in addition to) indicating grid
+cell area, it may be necessary to indicate volume.
+</p>
+
+<p>To indicate extra information about the spatial properties of a
+variable's grid cells, a <kbd class="att">cell_measures</kbd> attribute may
+be defined for a variable.  This is a string attribute comprising a list of
+blank-separated pairs of words of the form "<kbd>measure: name</kbd>".  For
+the moment, "<kbd>area</kbd>" and "<kbd>volume</kbd>" are the only defined
+measures, but others may be supported in future.  The "name" is the name of
+the variable containing the measure values, which we refer to as a "measure
+variable".  The dimensions of the measure variable should be the same as or
+a subset of the dimensions of the variable to which they are related, but
+their order is not restricted.  In the case of area, for example, the field
+itself might be a function of longitude, latitude, and time, but the
+variable containing the area values would only include longitude and
+latitude dimensions (and the dimension order could be reversed, although
+this is not recommended).  The variable must have a <kbd
+class="att">units</kbd> attribute and may have other attributes such as a
+<kbd class="att">standard_name</kbd>.
+</p>
+
+<p>For rectangular longitude-latitude grids, the area of grid cells can be
+calculated from the bounds: the area of a cell is proportional to the
+product of the difference in the longitude bounds of the cell and the
+difference between the sine of each latitude bound of the cell. In this
+case supplying grid-cell areas via the <kbd class="att">cell_measures</kbd>
+attribute is unnecessary because it may be assumed that applications
+can perform this calculation, using their own value for the radius of the
+Earth.
+</p>
+
+<div class="example">
+<p><span class="runin">Cell areas for a spherical geodesic grid</span>:&nbsp;&nbsp;
+</p> 
+
+<pre class="CDL">
+dimensions:
+  cell = 2562 ;  // number of grid cells
+  time = 12 ;
+  nv = 6 ;       // maximum number of cell vertices 
+variables:
+  float PS(time,cell) ;
+    PS:units = "Pa" ;
+    PS:coordinates = "lon lat" ;
+    PS:cell_measures = "area: cell_area" ;
+  float lon(cell) ;
+    lon:long_name = "longitude" ;
+    lon:units = "degrees_east" ;
+    lon:bounds="lon_vertices" ;
+  float lat(cell) ;
+    lat:long_name = "latitude" ;
+    lat:units = "degrees_north" ;
+    lat:bounds="lat_vertices" ;
+  float time(time) ;
+    time:long_name = "time" ;
+    time:units = "days since 1979-01-01 0:0:0" ;
+  float cell_area(cell) ;
+    cell_area:long_name = "area of grid cell" ;
+    cell_area:standard_name="area";
+    cell_area:units = "m2"
+  float lon_vertices(cell,nv) ;
+  float lat_vertices(cell,nv) ;
+</pre>
+</div>
+
+<!--========================================================================= 7.3 -->
+
+<h3><a name="cell-methods">7.3 &nbsp;Cell methods</a></h3>
+
+<p>To describe the characteristic of a field that is represented by cell
+values we define the <kbd class="att">cell_methods</kbd> attribute of the
+variable.  This is a string attribute comprising a list of blank-separated
+words of the form "<kbd>name: method</kbd>".  Each "<kbd>name:
+method</kbd>" pair indicates that for the axis whose dimension name or <kbd
+class="att">standard_name</kbd> is <kbd>name</kbd>, the cell values
+representing the field have been determined or derived by the specified
+<kbd>method</kbd>.  If there is a dimension of the variable called
+<kbd>name</kbd>, the method applies to this dimension.  If there is no
+dimension of that name, <kbd>name</kbd> must be a valid standard name.  The
+values of <kbd>method</kbd> should be selected from the list in Appendix <a
+href=#sub_app>D</a>, which includes <kbd>point</kbd>, <kbd>sum</kbd>,
+<kbd>mean</kbd>, <kbd>maximum</kbd>, <kbd>minimum</kbd>,
+<kbd>mid_range</kbd>, <kbd>standard_deviation</kbd>, <kbd>variance</kbd>,
+<kbd>mode</kbd>, and <kbd>median</kbd>. Case is not significant in the
+method name. Some methods (e.g., <kbd>variance</kbd>) imply a change of
+units of the variable, and this also is specified by Appendix D.  It must
+be remembered that the method applies only to the axis indicated, and
+different methods may apply to other axes. If a precipitation value in a
+longitude-latitude cell is given the method <kbd>maximum</kbd> for these
+axes, for instance, it means that it is the maximum within these spatial
+cells, and does not imply that it is also the maximum in time.  </p>
+
+<p>The default interpretation for variables that have cells associated with
+their grid points, but do not have the <kbd class="att">cell_methods</kbd>
+attribute specified, depends on whether the quantity is extensive (which
+depends on the size of the cell) or intensive (which doesn't).  So, for
+example, suppose the quantities "accumulated precipitation" and
+"precipitation rate" each have a time axis and that time intervals are
+associated with each point on the time axis via a boundary variable.  A
+variable representing accumulated precipitation is extensive in time and
+requires a time interval to be completely specified.  Hence its default
+interpretation should be that the cell associated with the grid point
+represents the time interval over which the precipitation was accumulated.
+This is indicated explicitly by setting the cell method to <kbd>sum</kbd>.
+A precipitation rate on the other hand is intensive in time and could
+equally well represent an instantaneous value or a mean value over the time
+interval specified by the cell.  However, if the <kbd>mean</kbd> method is
+not specified then the default interpretation for the quantity would be
+instantaneous.  The default method is indicated explicity by setting the
+cell method to <kbd>point</kbd>.  </p>
+
+<div class="example">
+
+<p><span class="runin">Methods applied to a
+timeseries</span>:&nbsp;&nbsp; Consider 12-hourly timeseries of pressure,
+temperature and precipitation from a number of stations, where pressure is
+measured instantaneously, maximum temperature for the preceding 12 hours
+is recorded, and precipitation is accumulated in a rain gauge. For a period
+of 48 hours from 6 a.m. on 19 April 1998, the data is structured as
+follows:
+</p>
+
+
+<pre class="CDL">
+dimensions:
+  time = UNLIMITED; // (5 currently)
+  station = 10;
+  nv = 2;
+variables:
+  float pressure(station,time);
+    pressure:long_name = "pressure";
+    pressure:units = "kPa";
+  float maxtemp(station,time);
+    maxtemp:long_name = "temperature";
+    maxtemp:units = "K";
+    maxtemp:cell_methods = "time: maximum";
+  float ppn(station,time);
+    ppn:long_name = "depth of water-equivalent precipitation";
+    ppn:units = "mm";
+  double time(time);
+    time:long_name = "time";
+    time:units = "h since 1998-4-19 6:0:0";
+    time:bounds = "time_bnds";
+  double time_bnds(time,nv);
+data:
+  time = 0., 12., 24., 36., 48.;
+  time_bnds = -12.,0., 0.,12., 12.,24., 24.,36., 36.,48.;
+</pre>
+
+<p>
+Note that in this example the time axis values coincide with the end of
+each interval.  It is sometimes desirable, however, to use the midpoint of
+intervals as coordinate values for variables that are representative of an
+interval.  An application may simply obtain the midpoint values by making
+use of the boundary data in <kbd>time_bnds</kbd>.
+</p>
+
+</div>
+
+<p>If more than one cell method is to be indicated, they should be arranged
+in the order they were applied. The left-most operation is assumed to have
+been applied first. Suppose a quantity varies in both longitude and time
+(dimensions lon and time) within each gridbox. Values that represent the
+time-average of the zonal maximum are labelled <kbd>cell_methods="lon:
+maximum time: mean"</kbd>, i.e. find the largest value at each instant of
+time over all longitudes, then average these maxima over time; values of
+the zonal maximum of time-averages are labelled <kbd>cell_methods="time:
+mean lon: maximum"</kbd>. If the methods could have been applied in any
+order without affecting the outcome, they may be put in any order in the
+<kbd class="att">cell_methods</kbd> attribute.
+</p>
+
+<p>If a data value is representative of variation over a combination of
+axes, a single method should be prefixed by the names of all the dimensions
+involved, whose order is immaterial. Dimensions should be grouped in this
+way only if there is an essential difference from treating them
+individually. For instance, the standard deviation of topographic height
+within a longitude-latitude gridbox would have <kbd>cell_methods="lat: lon:
+standard deviation"</kbd>. This is not the same as <kbd>cell_methods="lon:
+standard deviation lat: standard deviation"</kbd>, which would mean finding
+the standard deviation along each parallel of latitude within the zonal
+extent of the gridbox, and then the standard deviation of these values over
+latitude.
+</p>
+
+<div class="new">
+
+<p>To indicate more precisely how the cell method was applied, extra
+information may be included in parentheses () after the identification of
+the method. This information includes standardized and non-standarized
+parts.  Currently the only stardardized information is to provide the
+typical interval between the original data values to which the method was
+applied.  For example, if the data values for the cells are statistically
+representative of data values which had a finer spacing, the typical
+interval between the original data values can be recorded using the syntax
+<kbd>(interval: <em>value</em> <em>unit</em>)</kbd>, where
+<kbd><em>value</em></kbd> is a numerical value and <kbd><em>unit</em></kbd>
+is a string that can be recognized by UNIDATA's Udunits package [<a
+href="#ref_units">UDUNITS</a>].  The <kbd><em>unit</em></kbd> does not have
+to be dimensionally equivalent to the unit of the corresponding dimension
+name, although it often will be. Recording the original interval is
+particularly important for standard deviations. For example, the standard
+deviation of daily values could be indicated by <kbd>cell_methods="time:
+standard_deviation (interval: 1 day)"</kbd> and of annual values
+<kbd>cell_methods="time: standard_deviation (interval: 1 year)"</kbd>.
+</p>
+
+<p>If the cell method applies to a combination of axes, they may have a
+common original interval e.g.  <kbd>cell_methods="lat: lon: standard
+deviation (interval: 10 km)"</kbd>. Alternatively, they may have separate
+intervals, which are matched to the names of axes by position e.g.
+<kbd>cell_methods="lat: lon: standard deviation (interval: 0.1 degree_N
+interval: 0.2 degree_E)"</kbd>, in which 0.1 degree applies to latitude and
+0.2 degree to longitude.
+</p>
+
+<p>Any non-standardized information follows any standardized information.
+For instance, an area-weighted mean over latitude could be indicated as
+<kbd>lat: mean (area-weighted)</kbd> or <kbd>lat: mean (interval: 1
+degree_north area-weighted)</kbd>.
+</p>
+
+</div>
+
+<div class="old">
+
+<p>To indicate more precisely how the cell method was applied, extra
+information may be included in parentheses () after the identification of
+the method. This information is not standardised and may be ignored by a
+generic application. A mean over latitude, for instance, may be
+area-weighted. This could be indicated as <kbd>"lat: mean
+(area-weighted)"</kbd>.
+</p>
+
+</div>
+
+<p>A dimension of size one may be the result of "collapsing" an axis by
+some statistical operation, for instance by calculating a variance from
+time series data.  We strongly recommend that dimensions of size one be
+retained and used to document the method and its domain.
+</p>
+
+<div class="example">
+
+<p><span class="runin">Surface air temperature variance</span>: The
+variance of the diurnal cycle on 1 January 1990 has been calculated from
+hourly instantaneous surface air temperature measurments.  The time
+dimension of size one has been retained.  </p>
+
+<pre class="CDL">
+dimensions:
+  lat=90;
+  lon=180;
+  time=1;
+  nv=2;
+variables:
+  float TS_var(time,lat,lon);
+    TS_var:long_name="surface air temperature variance"
+    TS_var:units="K2";
+    TS_var:cell_methods="time: variance (of hourly instantaneous)";
+  float time(time);
+    time:units="days since 1990-01-01 00:00:00";
+    time:bounds="time_bnds";
+  float time_bnds(time,nv);
+data:
+  time=.5;
+  time_bnds=0.,1.;
+</pre>
+
+<p>Notice that a parenthesized comment in the <kbd class="att">cell_methods</kbd>
+attribute provides the nature of the samples used to calculate the variance.
+</p>
+
+</div>
+
+<p>
+The convention of specifying a cell method for a <kbd
+class="att">standard_name</kbd> rather than for a dimension with a coordinate
+variable is to allow one to provide an indication that a particular cell
+method is relevant to the data without having to provide a precise
+description of the corresponding cell. There are two reasons for doing
+this.
+</p>
+
+<ul>
+<li> If the cell coordinate range cannot be precisely defined. For example, the
+Levitus ocean climatology uses any data that exists. It is a time mean but the
+time range is not well defined, so cannot be stated.
+</li>
+<li> For convenience, if the cell extends over all valid coordinates. This
+is permitted only for the standard names
+<kbd>longitude</kbd> and <kbd>latitude</kbd>. Methods specified for these
+standard names are assumed to apply to the complete range of longitude and
+latitude respectively. If in addition the data variable has a dimension
+with a corresponding labeled axis that specifies a geographic region (see
+<a href="#region">6.1.1</a>), the implied range of longitude and latitude
+is the valid range for each specified region.
+</li>
+</ul>
+
+<p>We recommend that whenever possible cell bounds should be supplied by giving
+the variable a dimension of size one and attaching bounds to the associated
+coordinate variable.
+</p>
+
+<!--========================================================================= 7.4 -->
+
+<h3><a name="climatology">7.4 &nbsp;Climatological statistics</a></h3>
+
+<p>Climatological statistics may be derived from corresponding portions of
+the annual cycle in a set of years, e.g., the average January temperatures
+in the climatology of 1961-1990, where the values are derived by averaging
+the 30 Januarys from the separate years.  Portions of the climatological
+cycle are specified by references to dates within the calendar year.
+However, a calendar year is not a well-defined unit of time, because it
+differs between leap years and other years, and among calendars.
+Nonetheless for practical purposes we wish to compare statistics for months
+or seasons from different calendars, and to make climatologies from a
+mixture of leap years and other years.  Hence we provide special
+conventions for indicating dates within the climatological year.
+Climatological statistics may also be derived from corresponding portions
+of a range of days, for instance the average temperature for each hour of
+the average day in April 1997.  In addition the two concepts may be used at
+once, for instance to indicate not April 1997, but the average April of the
+five years 1995-1999.  </p>
+
+<p>Climatological variables have a climatological time axis. Like an
+ordinary time axis, a climatological time axis may have a dimension of
+unity (for example, a variable containing the January average temperatures
+for 1961-1990), but often it will have several elements (for example, a
+climatological time axis with a dimension of 12 for the climatological
+average temperatures in each month for 1961-1990, a dimension of 3 for the
+January mean temperatures for the three decades 1961-1970, 1971-1980,
+1981-1990, or a dimension of 24 for the hours of an average day).
+Intervals of climatological time are conceptually different from ordinary
+time intervals; a given interval of climatological time represents a set of
+subintervals which are not necessarily contiguous.  To indicate this
+difference, a climatological time coordinate variable does not have a <kbd
+class=att>bounds</kbd> attribute.  Instead, it has a <kbd
+class="att">climatology</kbd> attribute, which names a variable with
+dimensions (n,2), n being the dimension of the climatological time axis.
+Using the units and calendar of the time coordinate variable, element (i,0)
+of the climatology variable specifies the beginning of the first
+subinterval and element (i,1) the end of the last subinterval used to
+evaluate the climatological statistics with index i in the time dimension.
+The time coordinates should be values that are representative of the
+climatological time intervals, such that an application which does not
+recognise climatological time will nonetheless be able to make a reasonable
+interpretation.  </p>
+
+<p>The COARDS standard offers limited support for climatological time.  For
+compatibility with COARDS, time coordinates should also be recognised as
+climatological if they have a <kbd class="att">units</kbd> attribute of
+time-units relative to midnight on 1 January in year 0 i.e. <kbd>since
+0-1-1</kbd> in udunits syntax , and provided they refer to the real-world
+calendar.  We do not recommend this convention because (a) it does not
+provide any information about the intervals used to compute the
+climatology, and (b) there is no standard for how dates since year 1 will
+be encoded with units having a reference time in year 0, since this year
+does not exist; consequently there may be inconsistencies among software
+packages in the interpretation of the time coordinates.  Year 0 may be a
+valid year in non-real-world calendars, and therefore cannot be used to
+signal climatological time in such cases.  </p>
+
+<p>A climatological axis may use different statistical methods to represent
+variation among years, within years and within days.  For example, the
+average January temperature in a climatology is obtained by averaging both
+within years and over years.  This is different from the average
+January-maximum temperature and the maximum January-average temperature.
+For the former, we first calculate the maximum temperature in each January,
+then average these maxima; for the latter, we first calculate the average
+temperature in each January, then find the largest one.  As usual, the
+statistical operations are recorded in the <kbd
+class="att">cell_methods</kbd> attribute, which may have two or three
+entries for the climatological time dimension.  </p>
+
+<p>Valid values of the <kbd class="att">cell_methods</kbd> attribute must
+be in one of the forms from the following list.  The intervals over which
+various statistical methods are applied are determined by decomposing the
+date and time specifications of the climatological time bounds of a cell,
+as recorded in the variable named by the <kbd class="att">climatology</kbd>
+attribute.  (The date and time specifications must be calculated from the
+time coordinates expressed in units of "time interval since reference date
+and time".)  In the descriptions that follow we use the abbreviations
+<em>y</em>, <em>m</em>, <em>d</em>, <em>H</em>, <em>M</em>, and <em>S</em>
+for year, month, day, hour, minute, and second respectively.  The suffix
+<em>0</em> indicates the earlier bound and <em>1</em> the latter.  </p>
+
+<dl>
+
+<dt>
+<em>time</em><kbd>:</kbd> <em>method1</em> <kbd>within years</kbd>&nbsp;
+<em>time</em><kbd>:</kbd> <em>method2</em> <kbd>over years</kbd>
+</dt>
+<dd>
+<em>method1</em> is applied to the time intervals (<em>mdHMS0-mdHMS1</em>)
+within individual years and <em>method2</em> is applied over the range of
+years (<em>y0-y1</em>).
+</dd>
+
+<dt>
+<em>time</em><kbd>:</kbd> <em>method1</em> <kbd>within days</kbd>&nbsp;
+<em>time</em><kbd>:</kbd> <em>method2</em> <kbd>over days</kbd>
+</dt>
+<dd>
+<em>method1</em> is applied to the time intervals (<em>HMS0-HMS1</em>)
+within individual days and <em>method2</em> is applied over the days of the
+interval (<em>ymd0-ymd1</em>).
+</dd>
+
+<dt>
+<em>time</em><kbd>:</kbd> <em>method1</em> <kbd>within days</kbd>&nbsp;
+<em>time</em><kbd>:</kbd> <em>method2</em> <kbd>over days</kbd>&nbsp;
+<em>time</em><kbd>:</kbd> <em>method3</em> <kbd>over years</kbd>
+</dt>
+<dd>
+<em>method1</em> is applied to the time intervals (<em>HMS0-HMS1</em>)
+within individual days, <em>method2</em> is applied over the days of the
+interval (<em>md0-md1</em>), and <em>method3</em> is applied over the range
+of years (<em>y0-y1</em>).
+</dd>
+
+</dl>
+
+<p>The methods which can be specified are those listed in Appendix <a
+href=#sub_app>D</a> and each entry in the <kbd
+class="att">cell_methods</kbd> attribute may also, as usual, contain
+non-standardised information in parentheses after the method.  For
+instance, a mean over ENSO years might be indicated by "<kbd>time: mean
+over years (ENSO years)</kbd>".</p>
+
+<p>When considering intervals within years, if the earlier climatological
+time bound is later in the year than the later climatological time bound,
+it implies that the time intervals for the individual years run from each
+year across January 1 into the next year e.g. DJF intervals run from
+December 1 0:00 to March 1 0:00.  Analogous situations arise for daily
+intervals running across midnight from one day to the next.</p>
+
+<p>When considering intervals within days, if the earlier time of day is
+equal to the later time of day, then the method is applied to a full 24
+hour day.  </p>
+
+<p><em>We have tried to make the examples in this section easier to
+understand by translating all time coordinate values to date and time
+formats.  This is not currently valid CDL syntax.  </em></p>
+
+<div class="example">
+
+<p><span class="runin">Climatological seasons</span>: This example shows
+the metadata for the average seasonal-minimum temperature for the four
+standard climatological seasons MAM JJA SON DJF, made from data for March
+1960 to February 1991.  </p>
+
+<pre class="CDL">
+dimensions:
+  time=4;
+  nv=2;
+variables:
+  float temperature(time,lat,lon);
+    temperature:long_name="surface air temperature";
+    temperature:cell_methods="time: minimum within years time: mean over years";
+    temperature:units="K";
+  double time(time);
+    time:climatology="climatology_bounds";
+    time:units="days since 1960-1-1";
+  double climatology_bounds(time,nv);
+data:  // time coordinates translated to date/time format
+  time="1960-4-16", "1960-7-16", "1960-10-16", "1961-1-16" ;
+  climatology_bounds="1960-3-1",  "1990-6-1",
+                     "1960-6-1",  "1990-9-1",
+                     "1960-9-1",  "1990-12-1",
+                     "1960-12-1", "1991-3-1" ;
+</pre>
+</div>
+
+<div class="example">
+
+<p><span class="runin">Decadal averages for January</span>: 
+Average January precipitation totals are given for each of
+the decades 1961-1970, 1971-1980, 1981-1990.
+</p>
+
+<pre class="CDL">
+dimensions:
+  time=3;
+  nv=2;
+variables:
+  float precipitation(time,lat,lon);
+    precipitation:long_name="precipitation amount";
+    precipitation:cell_methods="time: sum within years time: mean over years";
+    precipitation:units="kg m-2";
+  double time(time);
+    time:climatology="climatology_bounds";
+    time:units="days since 1901-1-1";
+  double time_bounds(time,nv);
+  double climatology_bounds(time,nv);
+data:  // time coordinates translated to date/time format
+  time="1965-1-15", "1975-1-15", "1985-1-15" ;
+  climatology_bounds="1961-1-1", "1970-2-1",
+                     "1971-1-1", "1980-2-1",
+                     "1981-1-1", "1990-2-1" ;
+</pre>
+</div>
+
+<div class="example">
+
+<p><span class="runin">Temperature for each hour of the average day</span>:
+Hourly average temperatures are given for April 1997.
+</p>
+
+<pre class="CDL">
+dimensions:
+  time=24;
+  nv=2;
+variables:
+  float temperature(time,lat,lon);
+    temperature:long_name="surface air temperature";
+    temperature:cell_methods="time: mean within days time: mean over days";
+    temperature:units="K";
+  double time(time);
+    time:climatology="climatology_bounds";
+    time:units="hours since 1997-4-1";
+  double climatology_bounds(time,nv);
+data:  // time coordinates translated to date/time format
+  time="1997-4-1 0:30", "1997-4-1 1:30", ... "1997-4-1 23:30" ;
+  climatology_bounds="1997-4-1 0:00",  "1997-4-30 1:00",
+                     "1997-4-1 1:00",  "1997-4-30 2:00",
+                     ...
+                     "1997-4-1 23:00", "1997-5-1 0:00" ;
+</pre>
+</div>
+
+<div class="example">
+
+<p><span class="runin">Temperature for each hour of the typical
+climatological day</span>: This is a modified version of the previous
+example.  It now applies to April from a 1961-1990 climatology.  </p>
+
+<pre class="CDL">
+variables:
+  float temperature(time,lat,lon);
+    temperature:long_name="surface air temperature";
+    temperature:cell_methods="time: mean within days ",
+      "time: mean over days time: mean over years";
+    temperature:units="K";
+  double time(time);
+    time:climatology="climatology_bounds";
+    time:units="days since 1961-1-1";
+  double climatology_bounds(time,nv);
+data:  // time coordinates translated to date/time format
+  time="1961-4-1 0:30", "1961-4-1 1:30", ..., "1961-4-1 23:30" ;
+  climatology_bounds="1961-4-1 0:00", "1990-4-30 1:00",
+                     "1961-4-1 1:00", "1990-4-30 2:00",
+                     ...
+                     "1961-4-1 23:00", "1990-5-1 0:00" ;
+</pre>
+</div>
+
+<div class="example">
+
+<p><span class="runin">Monthly-maximum daily precipitation totals</span>:
+Maximum of daily precipitation amounts for each of
+the three months June, July and August 2000 are given.  The first
+daily total applies to 6 a.m. on 1 June to 6 a.m. on 2 June, the 30th from
+6 a.m. on 30 June to 6 a.m. on 1 July.  The maximum of these 30 values is
+stored under <kbd>time</kbd> index 0 in the <kbd>precipitation</kbd> array.
+</p>
+
+<pre class="CDL">
+dimensions:
+  time=3;
+  nv=2;
+variables:
+  float precipitation(time,lat,lon);
+    precipitation:long_name="Accumulated precipitation";
+    precipitation:cell_methods="time: sum within days time: maximum over days"; 
+    precipitation:units="kg";
+  double time(time);
+    time:climatology="climatology_bounds";
+    time:units="days since 2000-6-1";
+  double climatology_bounds(time,nv);
+data:  // time coordinates translated to date/time format
+  time="2000-6-16", "2000-7-16", "2000-8-16" ;
+  climatology_bounds="2000-6-1 6:00:00", "2000-7-1 6:00:00",
+                     "2000-7-1 6:00:00", "2000-8-1 6:00:00",
+                     "2000-8-1 6:00:00", "2000-9-1 6:00:00" ;
+</pre>
+</div>
+
+<!--========================================================================= 8 -->
+
+<h2><a name="size">8 &nbsp;Reduction of Dataset Size</a></h2>
+
+<p>There are two methods for reducing dataset size: packing and
+compression.  By packing we mean altering the data in a way that reduces
+its precision.  By compression we mean techniques that store the data more
+efficiently and result in no precision loss.  Compression only works in
+certain circumstances, e.g., when a variable contains a significant amount
+of missing or repeated data values.  In this case it is possible to make
+use of standard utilities, e.g., UNIX <kbd>compress</kbd> or GNU
+<kbd>gzip</kbd>, to compress the entire file after it has been written.  In
+this section we offer an alternative compression method that is applied on
+a variable by variable basis.  This has the advantage that only one
+variable need be uncompressed at a given time.  The disadvantage is that
+generic utilities that don't recognize the CF conventions will not be able
+to operate on compressed variables.
+</p>
+
+<!--========================================================================= 8.1 -->
+
+<h3><a name="pack">8.1 &nbsp;Packed data</a></h3>
+
+<p>At the current time the netCDF interface does not provide for packing
+data.  However a simple packing may be achieved through the use of the
+optional NUG defined attributes <kbd class="att">scale_factor</kbd> and
+<kbd class="att">add_offset</kbd>.  After the data values of a variable
+have been read, they are to be multiplied by the <kbd
+class="att">scale_factor</kbd>, and have <kbd class="att">add_offset</kbd>
+added to them.  If both attributes are present, the data are scaled before
+the offset is added.  When scaled data are written, the application should
+first subtract the offset and then divide by the scale factor.  The units
+of a variable should be representative of the unpacked data.</p>
+
+<p>This standard is more restrictive than the NUG with respect to the use
+of the <kbd class="att">scale_factor</kbd> and <kbd
+class="att">add_offset</kbd> attributes; ambiguities and precision problems
+related to data type conversions are resolved by these restrictions. If the
+<kbd class="att">scale_factor</kbd> and <kbd class="att">add_offset</kbd>
+attributes are of the same data type as the associated variable, the
+unpacked data is assumed to be of the same data type as the packed
+data. However, if the <kbd class="att">scale_factor</kbd> and <kbd
+class="att">add_offset</kbd> attributes are of a different data type from
+the variable (containing the packed data) then the unpacked data should
+match the type of these attributes, which must both be of type
+<kbd>float</kbd> or both be of type <kbd>double</kbd>.  An additional
+restriction in this case is that the variable containing the packed data
+must be of type <kbd>byte</kbd>, <kbd>short</kbd> or <kbd>int</kbd>.  It is
+not advised to unpack an <kbd>int</kbd> into a <kbd>float</kbd> as there is
+a potential precision loss.
+</p>
+
+<p>When data to be packed contains missing values the attributes that
+indicate missing values (<kbd class="att">_FillValue</kbd>, <kbd
+class="att">valid_min</kbd>, <kbd class="att">valid_max</kbd>, <kbd
+class="att">valid_range</kbd>) must be of the same data type as the packed
+data.  See section <a href="#miss"> 2.5.1</a> for a discussion of how
+applications should treat variables that have attributes indicating both
+missing values and transformations defined by a scale and/or offset.
+</p>
+
+<!--========================================================================= 8.2 -->
+
+<h3><a name="gath">8.2 &nbsp;Compression by gathering</a></h3>
+
+<p>To save space in the netCDF file, it may be desirable to eliminate
+points from data arrays that are invariably missing.  Such a compression
+can operate over one or more adjacent axes, and is accomplished with
+reference to a list of the points to be stored.  The list is constructed by
+considering a mask array that only includes the axes to be compressed, and
+then mapping this array onto one dimension without reordering.  The list is
+the set of indices in this one-dimensional mask of the required points.  In
+the compressed array, the axes to be compressed are all replaced by a
+single axis, whose dimension is the number of wanted points.  The wanted
+points appear along this dimension in the same order they appear in the
+uncompressed array, with the unwanted points skipped over.  Compression and
+uncompression are executed by looping over the list.
+</p>
+
+<p>The list is stored as the coordinate variable for the compressed axis of
+the data array.  Thus, the list variable and its dimension have the same
+name.  The list variable has a string attribute <kbd
+class="att">compress</kbd>, <em>containing a blank-separated list of the
+dimensions which were affected by the compression in the order of the CDL
+declaration of the uncompressed array</em>.  The presence of this attribute
+identifies the list variable as such.  The list, the original dimensions
+and coordinate variables (including boundary variables), and the compressed
+variables with all the attributes of the uncompressed variables are written
+to the netCDF file.  The uncompressed variables can be reconstituted
+exactly as they were using this information.
+</p>
+
+<div class="example">
+<p><span class="runin">Horizontal compression of a three-dimensional array</span>:&nbsp;&nbsp;
+We eliminate sea points at all depths in a longitude-latitude-depth array
+of soil temperatures.  In this case, only the longitude and latitude axes
+would be affected by the compression.  We construct a list
+<kbd>landpoint(landpoint)</kbd> containing the indices of land points.
+</p>
+
+<pre class="CDL">
+dimensions:
+  lat=73;
+  lon=96;
+  landpoint=2381;
+  depth=4;
+variables:
+  int landpoint(landpoint);
+    landpoint:compress="lat lon";
+  float landsoilt(depth,landpoint);
+    landsoilt:long_name="soil temperature";
+    landsoilt:units="K";
+  float depth(depth);
+  float lat(lat);
+  float lon(lon);
+data:
+  landpoint=363, 364, 365, ...;
+</pre>
+
+<p>Since <kbd>landpoint(0)=363</kbd>, for instance, we know that
+<kbd>landsoilt(*,0)</kbd> maps on to point 363 of the original data with
+dimensions <kbd>(lat,lon)</kbd>.  This corresponds to indices
+<kbd>(3,75)</kbd>, i.e., 363 = 3*96 + 75.
+</p>
+</div>
+
+<div class="example">
+<p><span class="runin">Compression of a three-dimensional field</span>:&nbsp;&nbsp;
+We compress a longitude-latitude-depth field of ocean salinity by
+eliminating points below the sea-floor.  In this case, all three dimensions
+are affected by the compression, since there are successively fewer active
+ocean points at increasing depths.
+</p>
+
+<pre class="CDL">
+variables:
+  float salinity(time,oceanpoint);
+  int oceanpoint(oceanpoint);
+    oceanpoint:compress="depth lat lon";
+  float depth(depth);
+  float lat(lat);
+  float lon(lon);
+  double time(time);
+</pre>
+
+<p>This information implies that the salinity field should be uncompressed
+to an array with dimensions <kbd>(depth,lat,lon)</kbd>.
+</p>
+
+</div>
+
+
+<!--========================================================================= APP -->
+<h2>Appendices</h2>
+
+<!--========================================================================= A -->
+<h3><a name="att_app">A &nbsp;Attributes</a></h3>
+
+<table border width="85%">
+
+<caption>
+The "Type" values are <b>S</b> for string, <b>N</b> for numeric.  The "Use"
+values are <b>G</b> for global, <b>C</b> for variables containing
+coordinate data, and <b>D</b> for variables containing non-coordinate data.
+"Links" indicates the location of the attribute's original definition
+(first link) and sections where the attribute is discussed in this document
+(additional links as necessary).
+</caption>
+
+<thead>
+<tr> <td>Attribute</td> <td>Type</td> <td>Use</td> <td>Links</td>
+<td>Description</td> </tr>
+</thead>
+
+<tbody>
+
+<tr> <td><kbd class="att">add_offset</kbd></td> <td>N</td> <td>D</td> <td><a href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">NUG(8.1)
+  </a>, <A href="#pack">8.1</A></td>
+  <td>If present for a variable, this number is to be added to
+  the data after it is read by an application.  If
+  both <kbd class="att">scale_factor</kbd> and <kbd class="att">add_offset</kbd> attributes are
+  present, the data are first scaled before the offset is added.</td> </tr>
+
+<tr> <td><kbd class="att">axis</kbd></td> <td>S</td> <td>C</td> <td><A
+  href="#ctype">4</A></td> <td>Identifies latitude, longitude, vertical,
+  or time axes.</td> </tr>
+
+<tr> <td><kbd class="att">bounds</kbd> </td><td>S</td> <td>C</td> <td><A
+  href="#bnds">7.1</A></td> <td>Identifies a boundary variable.</td>
+  </tr>
+
+<tr> <td><kbd class="att">calendar</kbd></td> <td>S</td> <td>C</td> <td><A
+  href="#cal">4.4.1</A></td> <td>Calendar used for encoding time axes.</td>
+  </tr>
+
+<tr> <td><kbd class="att">cell_measures</kbd></td> <td>S</td> <td>D</td> <td><A
+  href="#cell-measures">7.2</A>
+  </td> <td>Identifies variables that contain cell areas or volumes.</td> </tr>
+
+<tr> <td><kbd class="att">cell_methods</kbd></td> <td>S</td> <td>D</td> <td><A
+  href="#cell-methods">7.3</A>, <a href="#climatology">7.4</a>
+  </td> <td>Records the method used to derive data that represents
+  cell values.</td> </tr>
+
+<tr><td><kbd class="att">climatology</kbd></td> <td>S</td> <td>C</td> <td><A
+  href="#climatology">7.4</A>
+  </td><td>
+  Identifies a climatology variable.
+  </td> </tr>
+
+<tr> <td><kbd class="att">comment</kbd></td> <td>S</td> <td>G, D</td> <td><A
+  href="#des">2.6.2</A></td> <td>Miscellaneous information about the
+  data or methods used to produce it.</td> </tr>
+
+<tr> <td><kbd class="att">compress</kbd></td> <td>S</td> <td>C</td> <td><A
+  href="#gath">8.2</A>, <a href=#grid_ex3>5.3</a></td>
+  <td>Records dimensions which have been
+  compressed by gathering.</td> </tr>
+
+<tr> <td><kbd class="att">Conventions</kbd></td> <td>S</td> <td>G</td> <td><a href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">NUG(8.1)
+  </a></td> <td>Name of the conventions followed by the dataset.</td>
+  </tr>
+
+<tr> <td><kbd class="att">coordinates</kbd></td> <td>S</td> <td>D</td> <td><A
+  href="#grids">5</A>,
+  <A href="#lab">6.1</A>, <A href="#altc">6.2</A>
+  </td> <td>Identifies auxiliary coordinate variables, label variables, and
+  alternate coordinate variables.</td> </tr>
+
+<tr> <td><kbd class="att">_FillValue</kbd></td> <td>N</td> <td>D</td> <td><a href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">NUG(8.1)
+  </a></td> <td>A value used to represent missing or undefined data.</td> </tr>
+
+<tr> <td><kbd class="att">formula_terms</kbd></td> <td>S</td> <td>C</td> <td><a
+  href="#vnum">4.3.2</a></td> <td>Identifies variables that correspond to
+  the terms in a formula.</td> </tr>
+
+<tr> <td><kbd class="att">history</kbd></td> <td>S</td> <td>G</td> <td><a href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">NUG(8.1)
+  </a></td> <td>List of the applications that have modified the original data.</td>
+  </tr>
+
+<tr> <td><kbd class="att">institution</kbd></td> <td>S</td> <td>G, D</td> <td><A
+  href="#des">2.6.2</A></td> <td>Where the original data was produced.</td> </tr>
+
+<tr> <td><kbd class="att">leap_month</kbd></td> <td>N</td> <td>C</td>
+  <td><a href= "#cal">4.4.1</a></td> <td>Specifies which month is
+  lengthened by a day in leap years for a user defined calendar.</td> </tr>
+
+<tr> <td><kbd class="att">leap_year</kbd></td> <td>N</td> <td>C</td> <td><a
+  href= "#cal">4.4.1</a></td> <td>Provides an example of a leap year for a
+  user defined calendar.  It is assumed that all years that differ from
+  this year by a multiple of four are also leap years.</td>
+  </tr>
+
+<tr> <td><kbd class="att">long_name</kbd></td> <td>S</td> <td>C, D</td> <td><a href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">NUG(8.1)</a>,
+  <a href=#lname>3.2</a></td> <td>A descriptive name that indicates a variable's content.
+  This name is not standardized.</td> </tr>
+
+<tr> <td><kbd class="att">missing_value</kbd></td> <td>N</td> <td>D</td> <td><A
+  href="#miss">2.5.1</A></td> <td>A value used to represent missing or
+  undefined data (deprecated by the NUG).</td> </tr>
+
+<tr> <td><kbd class="att">month_lengths</kbd></td> <td>N</td> <td>C</td> <td><a
+  href= "#cal">4.4.1</a></td> <td>Specifies the length of each month in a
+  non-leap year for a user defined calendar.</td> </tr>
+
+<tr> <td><kbd class="att">positive</kbd></td> <td>S</td> <td>C</td> <td><a
+  href="http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html">COARDS</a></td>
+  <td>Direction of increasing vertical coordinate value.</td> </tr>
+
+<tr> <td><kbd class="att">references</kbd></td> <td>S</td> <td>G, D</td> <td><A
+  href="#des">2.6.2</A></td> <td>References that describe the data or
+  methods used to produce it.</td> </tr>
+
+<tr> <td><kbd class="att">scale_factor</kbd></td> <td>N</td> <td>D</td> <td><a href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">NUG(8.1)
+  </a>, <A href="#pack">8.1</A></td>
+  <td>If present for a variable, the data are to be multiplied by
+  this factor after the data are read by an application
+  See also the <kbd class="att">add_offset</kbd> attribute.</td> </tr>
+
+<tr> <td><kbd class="att">source</kbd></td> <td>S</td> <td>G, D</td> <td><a
+  href="#des">2.6.2</a></td> <td>Method of production of the original data.</td>
+  </tr>
+
+<tr> <td><kbd class="att">standard_name</kbd></td> <td>S</td> <td>C, D</td>
+  <td><A href="#sname">3.3</A></td> <td>A standard name that references a
+  description of a variable's content in the standard name table.</td> </tr>
+
+<tr> <td><kbd class="att">title</kbd></td> <td>S</td> <td>G</td> <td><a href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">NUG(8.1)
+  </a></td> <td>Short description of the file contents.</td>
+  </tr>
+
+<tr> <td><kbd class="att">units</kbd></td> <td>S</td> <td>C, D</td> <td><a href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">NUG(8.1)</a>, <a href=#units>3.1</a></td>
+  <td>Units of a variable's content.</td> </tr>
+
+<tr> <td><kbd class="att">valid_max</kbd></td> <td>N</td> <td>C, D</td> <td><a href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">NUG(8.1)
+  </a></td> <td>Largest valid value of a variable.</td> </tr>
+
+<tr> <td><kbd class="att">valid_min</kbd></td> <td>N</td> <td>C, D</td> <td><a href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">NUG(8.1)
+  </a></td> <td>Smallest valid value of a variable.</td> </tr>
+
+<tr> <td><kbd class="att">valid_range</kbd></td> <td>N</td> <td>C, D</td> <td><a
+  href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/guidef-13.html#HEADING13-12">NUG(8.1)
+  </a></td> <td>Smallest and largest valid values of a variable.</td>
+  </tr>
+
+</tbody>
+</table>
+
+<!--========================================================================= B -->
+
+<h3><a NAME="std_app"></a>B &nbsp;
+CF
+Standard Name Table Format</h3>
+
+<p>The
+CF standard name
+table
+is an XML document (i.e., its
+format adheres to the XML 1.0 [<a href="#ref_xml">XML</a>]
+recommendation).
+The XML suite of protocols provides a reasonable balance
+between human and machine readability. It also provides extensive support
+for internationalization. See the W3C [<a href="#ref_w3c">W3C</a>] home
+page for more information.</p>
+
+<p>The document begins with a header that identifies it as an XML file:</p>
+
+<div class="example">
+<pre>
+&lt;?xml version="1.0"?>
+</pre>
+</div>
+
+<p>Optionally, this is followed by a reference to an external file that
+describes the structure of standard name tables.
+</p>
+
+<div class="example">
+<pre>
+&lt;!DOCTYPE standard_name_table SYSTEM "standardNameTable.dtd">
+</pre>
+</div>
+
+<p>The filename following the SYSTEM keyword refers to the <a
+href="#stdname_table">document type definition</a>.  Next is the name table
+itself, which is bracketed by the tags <kbd>&lt;standard_name_table></kbd>
+and <kbd>&lt;/standard_name_table></kbd>.  The content (delimited by those
+tags) consists of, in order,
+</p>
+
+<div class="example">
+<pre>
+&lt;institution>Name of institution here ... &lt;/institution>
+&lt;contact>E-mail address of contact person ... &lt;/contact>
+</pre>
+</div>
+
+<p>followed by a sequence of table entries which may be either
+<kbd>entry</kbd> blocks or <kbd>alias</kbd> blocks which take the following
+forms:
+</p>
+
+<div class="example">
+<pre>
+&lt;entry id="an_id">Define the variable whose
+      <kbd class="att">standard_name</kbd> attribute has the value "an_id".
+&lt;/entry>
+&lt;alias id="another_id">Provide alias for a variable whose
+      <kbd class="att">standard_name</kbd> attribute has the value "another_id".
+&lt;/alias>
+</pre>
+</div>
+
+<p>The value of the <kbd>id</kbd> attribute appearing in the
+<kbd>entry</kbd> and <kbd>alias</kbd> tags is a case sensitive string,
+containing no whitespace, which uniquely identifies the entry relative to
+the table. <em>This is the value used for a variable's </em><kbd
+class="att">standard_name</kbd> <em>attribute</em>.
+</p>
+
+<p>The purpose of the <kbd>entry</kbd> blocks are to provide definitions
+for the <kbd>id</kbd> strings.  Each <kbd>entry</kbd> block contains the
+following elements, in order:
+</p>
+
+<div class="example">
+<pre>
+&lt;entry id="an_id">
+  &lt;canonical_units>Representative units for the variable ... &lt;/canonical_units>
+  &lt;description>Definition of the variable ... &lt;/description>
+&lt;/entry>
+</pre>
+</div>
+
+
+<p>The <kbd>alias</kbd> blocks do not contain definitions.  Rather they
+contain the value of the <kbd>id</kbd> attribute of an <kbd>entry</kbd>
+block that contains the sought after definition.  The purpose of the
+<kbd>alias</kbd> blocks are to provide a means for maintaining the table in
+a backwards compatible fashion.  For example, if more than one
+<kbd>id</kbd> string was found to correspond to identical definitions, then
+the redundant definitions can be converted into aliases.  It is not
+intended that the <kbd>alias</kbd> blocks be used to accommodate the use of
+local naming conventions in the <kbd class="att">standard_name</kbd>
+attribute strings.  Each <kbd>alias</kbd> block contains a single element:
+</p>
+
+<div class="example">
+<pre>
+&lt;alias id="an_id">
+  &lt;entry_id>Identifier of the defining entry ... &lt;/entry_id>
+&lt;/alias>
+</pre>
+</div>
+
+<div class="example">
+<p>Example: A name table containing three entries.</p>
+
+<pre>
+&lt;?xml version="1.0"?>
+&lt;standard_name_table>
+  &lt;institution>Program for Climate Model Diagnosis and Intercomparison&lt;/institution>
+  &lt;contact>support@pcmdi.llnl.gov&lt;/contact>
+  &lt;entry id="surface_air_pressure">
+    &lt;canonical_units>Pa&lt;/canonical_units>
+    &lt;description>Pressure defined at the level of the mean
+      topography within the grid box.&lt;/description>
+  &lt;/entry>
+  &lt;entry id="air_pressure_at_sea_level">
+    &lt;canonical_units>Pa&lt;/canonical_units>
+    &lt;description>Mean sea-level pressure.
+      Standard atmosphere reduction.&lt;/description>
+  &lt;/entry>
+  &lt;alias id="mean_sea_level_pressure">
+    &lt;entry_id>air_pressure_at_sea_level&lt;/entry_id>
+  &lt;/alias>
+&lt;/standard_name_table>
+</pre>
+</div>
+
+<p>The definition of a variable with the <kbd class="att">standard_name</kbd> attribute
+<kbd>surface_air_pressure</kbd> is found directly since the block with
+<kbd>id="surface_air_pressure"</kbd> is an <kbd>entry</kbd> block which
+contains the definition.
+</p>
+
+<p>The definition of a variable with the <kbd class="att">standard_name</kbd> attribute
+<kbd>mean_sea_level_pressure</kbd> is found indirectly by first finding
+the block with the <kbd>id="mean_sea_level_pressure"</kbd>, and then,
+since this is an <kbd>alias</kbd> block, by searching for the block with
+<kbd>id="air_pressure_at_sea_level"</kbd> as indicated by the value of the
+<kbd>entry_id</kbd> tag.
+</p>
+
+<p>It is possible that new tags may be added in the future.  Any
+applications that parse the standard table should be written so that
+unrecognized tags are gracefully ignored.
+</p>
+
+<!--========================================================================= C -->
+
+<h3><a name="vrt_app"></a>C &nbsp;Dimensionless Vertical Coordinates</h3>
+
+<p>The definitions given here allow an application to compute dimensional
+coordinate values from the dimensionless ones and associated variables.
+The formulas are expressed for a gridpoint <kbd>(n,k,j,i)</kbd> where
+<kbd>i</kbd> and <kbd>j</kbd> are the horizontal indices, <kbd>k</kbd> is
+the vertical index and <kbd>n</kbd> is the time index.  A coordinate
+variable is associated with its definition by the value of the <kbd
+class="att">standard_name</kbd> attribute.  The terms in the definition are
+associated with file variables by the <kbd class="att">formula_terms</kbd>
+attribute.  The <kbd class="att">formula_terms</kbd> attribute takes a
+string value, the string being comprised of blank-separated elements of the
+form <kbd>"term: variable"</kbd>, where <kbd>term</kbd> is a keyword that
+represents one of the terms in the definition, and <kbd>variable</kbd> is
+the name of the variable in a netCDF file that contains the values for that
+term.  The order of elements is not significant.  </p>
+
+<p>The gridpoint indices are not formally part of the definitions, but are
+included to illustrate the indices that <em>might</em> be present in the
+file variables.  For example, a vertical coordinate whose definition
+contains a time index is not necessarily time dependent in all netCDF
+files.  Also, the definitions are given in general forms that may be
+simplified by omitting certain terms.  A term that is omitted from the <kbd
+class="att">formula_terms</kbd> attribute should be assumed to be zero.
+</p>
+
+<!--==================================================-->
+<h4>Atmosphere sigma coordinate</h4>
+
+<div class="definition">
+
+<p><kbd class="att">standard_name</kbd> = <kbd>"atmosphere_sigma_coordinate"</kbd>
+</p>
+
+<p><em>Definition:</em>
+</p>
+
+<div class="example">
+<pre>
+p(n,k,j,i) = ptop + sigma(k)*(ps(n,j,i)-ptop)
+</pre>
+</div>
+
+<p>where <kbd>p(n,k,j,i)</kbd> is the pressure at gridpoint
+<kbd>(n,k,j,i)</kbd>, <kbd>ptop</kbd> is the pressure at the top of the
+model, <kbd>sigma(k)</kbd> is the dimensionless coordinate at vertical
+gridpoint <kbd>(k)</kbd>, and <kbd>ps(n,j,i)</kbd> is the surface pressure
+at horizontal gridpoint <kbd>(j,i)</kbd> and time <kbd>(n)</kbd>.  </p>
+
+<p>The format for the <kbd class="att">formula_terms</kbd> attribute is
+</p>
+
+<p><kbd class="att">formula_terms</kbd> = <kbd>"sigma: var1 ps: var2 ptop: var3"</kbd>
+</p>
+
+</div>
+
+<!--==================================================-->
+<h4>Atmosphere hybrid sigma pressure coordinate</h4>
+
+<div class="definition">
+
+<p><kbd class="att">standard_name</kbd> = <kbd>
+"atmosphere_hybrid_sigma_pressure_coordinate"</kbd>
+</p>
+
+<p><em>Definition:</em>
+</p>
+
+<div class="example">
+<pre>
+p(n,k,j,i) = a(k)*p0 + b(k)*ps(n,j,i)
+</pre>
+<p>or</p>
+<pre>
+p(n,k,j,i) = ap(k) + b(k)*ps(n,j,i)
+</pre>
+</div>
+
+<p>where <kbd>p(n,k,j,i)</kbd> is the pressure at gridpoint
+<kbd>(n,k,j,i)</kbd>, <kbd>a(k)</kbd> or <kbd>ap(k)</kbd> and
+<kbd>b(k)</kbd> are components of the hybrid coordinate at level
+<kbd>k</kbd>, <kbd>p0</kbd> is a reference pressure, and
+<kbd>ps(n,j,i)</kbd> is the surface pressure at horizontal gridpoint
+<kbd>(j,i)</kbd> and time <kbd>(n)</kbd>.  The choice of whether
+<kbd>a(k)</kbd> or <kbd>ap(k)</kbd> is used depends on model formulation;
+the former is a dimensionless fraction, the latter a pressure value.  In
+both formulations, <kbd>b(k)</kbd> is a dimensionless fraction.  </p>
+
+<p>The format for the <kbd class="att">formula_terms</kbd> attribute is
+</p>
+
+<p><kbd class="att">formula_terms</kbd> = <kbd>"a: var1 b: var2 ps: var3 p0: var4"</kbd>
+</p>
+
+<p>where <kbd>a</kbd> is replaced by <kbd>ap</kbd> if appropriate.
+
+<p>The hybrid sigma-pressure coordinate for level <kbd>k</kbd>
+is defined as <kbd>a(k)+b(k)</kbd> or <kbd>ap(k)/p0+b(k)</kbd>,
+as appropriate.
+</p>
+</div>
+
+<!--==================================================-->
+<h4>Atmosphere hybrid height coordinate</h4>
+
+<div class="definition">
+
+<p><kbd class="att">standard_name</kbd> = <kbd>
+"atmosphere_hybrid_height_coordinate"</kbd>
+</p>
+
+<p><em>Definition:</em>
+</p>
+
+<div class="example">
+<pre>
+z(k,j,i) = tau(k)*zsurface(j,i) + eta(k)*ztop
+</pre>
+</div>
+
+<p>where <kbd>z(k,j,i)</kbd> is the height above the geoid (approximately
+mean sea level) at gridpoint <kbd>(k,j,i)</kbd>, <kbd>zsurface(j,i)</kbd>
+is the height of the surface about mean sea level at <kbd>(j,i)</kbd>,
+<kbd>ztop</kbd> is the height of the top of the model, and
+<kbd>tau(k)</kbd> and <kbd>eta(k)</kbd> are the dimensionless coordinates
+which define hybrid height level <kbd>k</kbd>.  </p>
+
+<p>The format for the <kbd class="att">formula_terms</kbd> attribute is
+</p>
+
+<p><kbd class="att">formula_terms</kbd> = <kbd>"tau: var1 eta: var2
+ztop: var3 zsurface: var4"</kbd>
+</p>
+
+<p>The hybrid height coordinate for level <kbd>k</kbd>
+is defined as <kbd>eta(k)*ztop</kbd>.
+</p>
+</div>
+
+<!--==================================================-->
+<h4>Ocean sigma coordinate</h4>
+
+<div class="definition">
+<p><kbd class="att">standard_name</kbd> = <kbd>"ocean_sigma_coordinate"</kbd>
+</p>
+
+<p><em>Definition:</em>
+</p>
+
+<div class="example">
+<pre>
+z(n,k,j,i) = eta(n,j,i) + sigma(k)*(depth(j,i)+eta(n,j,i))
+</pre>
+</div>
+
+<p>where <kbd>z(n,k,j,i)</kbd> is height, positive upwards, relative to
+ocean datum (e.g.  mean sea level) at gridpoint <kbd>(n,k,j,i)</kbd>,
+<kbd>eta(n,j,i)</kbd> is the height of the ocean surface, positive upwards,
+relative to ocean datum at gridpoint <kbd>(n,j,i)</kbd>,
+<kbd>sigma(k)</kbd> is the dimensionless coordinate at vertical gridpoint
+<kbd>(k)</kbd>, and <kbd>depth(j,i)</kbd> is the distance from ocean datum
+to sea floor (positive value) at horizontal gridpoint <kbd>(j,i)</kbd>.
+</p>
+
+<p>The format for the <kbd class="att">formula_terms</kbd> attribute is
+</p>
+
+<p><kbd class="att">formula_terms</kbd> = <kbd>"sigma: var1 eta: var2
+depth: var3"</kbd>
+</p>
+
+</div>
+
+<!--==================================================-->
+<h4>Ocean s-coordinate</h4>
+
+<div class="definition">
+<p><kbd class="att">standard_name</kbd> = <kbd>"ocean_s_coordinate"</kbd>
+</p>
+
+<p><em>Definition:</em>
+</p>
+
+<div class="example">
+<pre>
+z(n,k,j,i) = eta(n,j,i)*(1+s(k)) + depth_c*s(k) +
+             (depth(j,i)-depth_c)*C(k)
+
+  C(k) = (1-b)*sinh(a*s(k))/sinh(a) + 
+         b*[tanh(a*(s(k)+0.5))/(2*tanh(0.5*a)) - 0.5]
+</pre>
+</div>
+
+<p>where <kbd>z(n,k,j,i)</kbd> is height, positive upwards, relative to
+ocean datum (e.g.  mean sea level) at gridpoint <kbd>(n,k,j,i)</kbd>,
+<kbd>eta(n,j,i)</kbd> is the height of the ocean surface, positive upwards,
+relative to ocean datum at gridpoint <kbd>(n,j,i)</kbd>, <kbd>s(k)</kbd> is
+the dimensionless coordinate at vertical gridpoint <kbd>(k)</kbd>, and
+<kbd>depth(j,i)</kbd> is the distance from ocean datum to sea floor
+(positive value) at horizontal gridpoint <kbd>(j,i)</kbd>.  The constants
+<kbd>a</kbd>, <kbd>b</kbd>, and <kbd>depth_c</kbd> control the stretching.
+</p>
+
+<p>The format for the <kbd class="att">formula_terms</kbd> attribute is
+</p>
+
+<p><kbd class="att">formula_terms</kbd> = <kbd>"s: var1 eta: var2
+depth: var3 a: var4 b: var5 depth_c: var6"</kbd>
+</p>
+
+</div>
+
+<!--==================================================-->
+<h4>Ocean sigma over z coordinate</h4>
+
+<div class="definition">
+<p><kbd class="att">standard_name</kbd> = <kbd>"ocean_sigma_z_coordinate"</kbd>
+</p>
+
+<p><em>Definition:</em>
+</p>
+
+<div class="example">
+<pre>
+for k <= nsigma:
+
+  z(n,k,j,i) = eta(n,j,i) + sigma(k)*(min(depth_c,depth(j,i))+eta(n,j,i))
+ 
+for k > nsigma:
+
+  z(n,k,j,i) = zlev(k)
+</pre>
+</div>
+
+<p>where <kbd>z(n,k,j,i)</kbd> is height, positive upwards, relative to
+ocean datum (e.g.  mean sea level) at gridpoint <kbd>(n,k,j,i)</kbd>,
+<kbd>eta(n,j,i)</kbd> is the height of the ocean surface, positive upwards,
+relative to ocean datum at gridpoint <kbd>(n,j,i)</kbd>,
+<kbd>sigma(k)</kbd> is the dimensionless coordinate at vertical gridpoint
+<kbd>(k)</kbd> for <kbd>k <= nsigma</kbd>, and <kbd>depth(j,i)</kbd> is the
+distance from ocean datum to sea floor (positive value) at horizontal
+gridpoint <kbd>(j,i)</kbd>.  Above depth <kbd>depth_c</kbd> there are
+<kbd>nsigma</kbd> layers.
+</p>
+
+<p>The format for the <kbd class="att">formula_terms</kbd> attribute is
+</p>
+
+<p><kbd class="att">formula_terms</kbd> = <kbd>"sigma: var1 eta: var2
+depth: var3 depth_c: var4 nsigma: var5 zlev: var6"</kbd>
+</p>
+
+</div>
+
+<!--==================================================-->
+<h4>Ocean double sigma coordinate</h4>
+
+<div class="definition">
+<p><kbd class="att">standard_name</kbd> = <kbd>"ocean_double_sigma_coordinate"</kbd>
+</p>
+
+<p><em>Definition:</em>
+</p>
+
+<div class="example">
+<pre>
+for k <= k_c
+
+  z(k,j,i)= sigma(k)*f(j,i)
+
+for k > k_c
+
+  z(k,j,i)= f(j,i) + (sigma(k)-1)*(depth(j,i)-f(j,i))
+
+f(j,i)= 0.5*(z1+ z2) + 0.5*(z1-z2)* tanh(2*a/(z1-z2)*(depth(j,i)-href))
+</pre>
+</div>
+
+<p>where <kbd>z(k,j,i)</kbd> is height, positive upwards, relative to ocean
+datum (e.g.  mean sea level) at gridpoint <kbd>(k,j,i)</kbd>,
+<kbd>sigma(k)</kbd> is the dimensionless coordinate at vertical gridpoint
+<kbd>(k)</kbd> for <kbd>k <= k_c</kbd>, and <kbd>depth(j,i)</kbd> is the
+distance from ocean datum to sea floor (positive value) at horizontal
+gridpoint <kbd>(j,i)</kbd>. &nbsp;&nbsp; <kbd>z1</kbd>, <kbd>z2</kbd>,
+<kbd>a</kbd>, and <kbd>href</kbd> are constants.
+</p>
+
+<p>The format for the <kbd class="att">formula_terms</kbd> attribute is
+</p>
+
+<p><kbd class="att">formula_terms</kbd> = <kbd>"sigma: var1
+depth: var2 z1: var3 z2: var4 a: var5 href: var6 k_c: var7"</kbd>
+</p>
+
+</div>
+
+<!--========================================================================= D -->
+
+<h3><a name="sub_app">D &nbsp;Cell Methods</a></h3>
+
+<table border width="85%">
+
+<caption>
+In the ``Units'' column, <em>u</em> indicates the units of the physical
+quantity before the method is applied.
+</caption>
+
+<thead>
+<tr> <td><kbd class=att>cell_methods</kbd></td>
+<td>Units</td>
+<td>Description</td> </tr>
+</thead>
+
+<tbody>
+
+<tr><td><kbd>point</kbd> </td><td><em>u</em></td>
+<td>The data values are representative of points in space or time
+(instantaneous).  This is the default method for a quantity that is
+intensive with respect to the specified dimension.</td>
+<tr><td><kbd>sum</kbd> </td><td><em>u</em></td><td>The data values are
+representative of a sum or accumulation over the cell.  This is the default
+method for a quantity that is extensive with respect to the specified
+dimension.</td>
+<tr><td><kbd>maximum</kbd> </td><td><em>u</em></td><td>Maximum </td>
+<tr><td><kbd>median</kbd> </td><td><em>u</em></td><td>Median </td>
+<tr><td><kbd>mid_range</kbd> </td><td><em>u</em></td><td>Average of maximum and
+minimum </td>
+<tr><td><kbd>minimum</kbd> </td><td><em>u</em></td><td>Minimum </td>
+<tr><td><kbd>mean</kbd> </td><td><em>u</em></td><td>Mean (average value) </td>
+<tr><td><kbd>mode</kbd> </td><td><em>u</em></td><td>Mode
+(most common value) </td>
+<tr><td><kbd>standard_deviation</kbd> </td><td><em>u</em> </td><td>Standard
+deviation</td>
+<tr><td><kbd>variance</kbd> </td><td><em>u</em><sup>2</sup>
+</td><td>Variance </td>
+</tbody>
+</table>
+
+<!--========================================================================= E -->
+<h3><a name="ref_gmap">E &nbsp;Grid Mapping Definitions</a></h3>
+
+<!--==================================================-->
+<h4>rotated_latitude_longitude</h4>
+
+<div class="definition">
+
+<p><em>Map parameter definitions:</em>
+</p>
+<dl>
+<dt>grid_north_pole_latitude</dt>
+<dd>True latitude (degrees_north) of the north pole of the rotated grid.</dd>
+<dt>grid_north_pole_longitude</dt>
+<dd>True longitude (degrees_east) of the north pole of the rotated grid.</dd>
+<dt>north_pole_grid_longitude</dt>
+<dd>Longitude (degrees) of the true north pole in the rotated grid.  This
+parameter is optional (default is 0.).</dd>
+</dl>
+
+</div>
+
+<!--==================================================-->
+
+
+<!--========================================================================= F -->
+<h3><a name="ref_app">F &nbsp;References</a></h3>
+
+<dl>
+
+<dt><a name="ref_coards">[COARDS]</a></dt>
+  <dd><a href=
+  "http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html">"Conventions
+  for the standardization of NetCDF files"</a>,  Sponsored by the
+  "Cooperative Ocean/Atmosphere Research Data Service," a NOAA/university
+  cooperative for the sharing and distribution of global atmospheric and
+  oceanographic research data sets, May 1995.</dd>
+
+<dt><a name="ref_nc">[NetCDF]</a></dt>
+  <dd><a
+  href="http://www.unidata.ucar.edu/packages/netcdf/index.html">NetCDF
+  Software Package</a>, from the UNIDATA Program Center of the University
+  Corporation for Atmospheric Research.
+  </dd>
+
+<dt><a name="ref_nug">[NUG]</a></dt>
+  <dd><a href=
+  "http://www.unidata.ucar.edu/packages/netcdf/guidef/">"NetCDF User's
+  Guide for FORTRAN: An Access Interface for Self-Describing,
+  Portable Data; version 3"</a>, Russ Rew, Glenn Davis, Steve Emmerson, and
+  Harvey Davies, June 1997.</dd>
+
+<dt><a name="ref_units">[UDUNITS]</a></dt>
+  <dd><a
+  href="http://www.unidata.ucar.edu/packages/udunits/">UDUNITS
+  Software Package</a>, from the UNIDATA Program Center of the University
+  Corporation for Atmospheric Research.
+  </dd>
+
+<dt><a name="ref_w3c">[W3C]</a></dt> 
+  <dd><a href="http://www.w3.org">World Wide Web Consortium (W3C)</a>,
+  home page.
+  </dd>
+
+<dt><a name="ref_xml">[XML]</a></dt>
+  <dd><a href="http://www.w3.org/TR/1998/REC-xml-19980210">"Extensible
+  Markup Language (XML) 1.0 Specification"</a>, T. Bray, J. Paoli,
+  C. M. Sperberg-McQueen, 10 February 1998.
+  </dd>
+
+
+</dl>
+
+</body>
+</html>

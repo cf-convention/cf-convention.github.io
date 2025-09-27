@@ -1,0 +1,102 @@
+Examples of ArcGIS 9.2 NetCDF output for a 2D topographic grid using the  "RasterToNetCDF" command.   Here three different coordinate systems were used: Geographic, UTM, and Miller. ArcGIS encodes the Coordinate System Specification in a variable attribute called "esri_pe_string" that contains a complete specification in ESRI WKT (similar but not the same as OGC WKT).
+
+For Geographic, we get something that is CF compliant:
+
+{{{
+[rsignell@ricsigdtlx cf]$ ncdump -h test36_arc.nc
+netcdf test36_arc {
+dimensions:
+        lon = 151 ;
+        lat = 80 ;
+variables:
+        double lon(lon) ;
+                lon:long_name = "longitude coordinate" ;
+                lon:standard_name = "longitude" ;
+                lon:units = "degrees_east" ;
+        double lat(lat) ;
+                lat:long_name = "latitude coordinate" ;
+                lat:standard_name = "latitude" ;
+                lat:units = "degrees_north" ;
+        float topo(lat, lon) ;
+                topo:long_name = "topo" ;
+                topo:esri_pe_string = "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]]" ;
+                topo:coordinates = "lon lat" ;
+                topo:units = "Degree" ;
+                topo:missing_value = 0.f ;
+
+// global attributes:
+                :Conventions = "CF-1.0" ;
+                :Source_Software = "ESRI ArcGIS" ;
+}
+
+}}}
+
+For non-geographic projections, if known to CF, it adds the "grid_mapping" variable.  So for UTM, we get:
+
+{{{
+
+[rsignell@ricsigdtlx cf]$ ncdump -h test36_utm_arc.nc
+netcdf test36_utm_arc {
+dimensions:
+        x = 141 ;
+        y = 101 ;
+variables:
+        double x(x) ;
+                x:long_name = "x coordinate of projection" ;
+                x:standard_name = "projection_x_coordinate" ;
+                x:units = "Meter" ;
+        double y(y) ;
+                y:long_name = "y coordinate of projection" ;
+                y:standard_name = "projection_y_coordinate" ;
+                y:units = "Meter" ;
+        float topo(y, x) ;
+                topo:long_name = "topo" ;
+                topo:esri_pe_string = "PROJCS[\"NAD_1983_UTM_Zone_19N\",GEOGCS[\"GCS_North_American_1983\",DATUM[\"D_North_American_1983\",SPHEROID[\"GRS_1980\",6378137.0,298.257222101]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",-69.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]" ;
+                topo:coordinates = "x y" ;
+                topo:grid_mapping = "transverse_mercator" ;
+                topo:units = "Meter" ;
+                topo:missing_value = 0.f ;
+        int transverse_mercator ;
+                transverse_mercator:grid_mapping_name = "transverse_mercator" ;
+                transverse_mercator:longitude_of_central_meridian = -69. ;
+                transverse_mercator:latitude_of_projection_origin = 0. ;
+                transverse_mercator:scale_factor_at_central_meridian = 0.9996 ;
+                transverse_mercator:false_easting = 500000. ;
+                transverse_mercator:false_northing = 0. ;
+
+// global attributes:
+                :Conventions = "CF-1.0" ;
+                :Source_Software = "ESRI ArcGIS" ;
+}
+}}}
+
+For a projection that isn't Geographic, and isn't defined one of the accepted "grid_mapping" projections in CF, just the esri_pe_string is written, as in this Miller Projection:
+
+{{{
+[rsignell@ricsigdtlx cf]$ ncdump -h test36_miller_arc.nc
+netcdf test36_miller_arc {
+dimensions:
+        x = 144 ;
+        y = 92 ;
+variables:
+        double x(x) ;
+                x:long_name = "x coordinate of projection" ;
+                x:standard_name = "projection_x_coordinate" ;
+                x:units = "Meter" ;
+        double y(y) ;
+                y:long_name = "y coordinate of projection" ;
+                y:standard_name = "projection_y_coordinate" ;
+                y:units = "Meter" ;
+        float topo(y, x) ;
+                topo:long_name = "topo" ;
+                topo:esri_pe_string = "PROJCS[\"Miller Cylindrical\",GEOGCS[\"GCS_North_American_1983\",DATUM[\"D_North_American_1983\",SPHEROID[\"GRS_1980\",6378137.0,298.257222101]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Miller_Cylindrical\"],PARAMETER[\"False_Easting\",0.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",-70.0],UNIT[\"Meter\",1.0]]" ;
+                topo:coordinates = "x y" ;
+                topo:units = "Meter" ;
+                topo:missing_value = 0.f ;
+
+// global attributes:
+                :Conventions = "CF-1.0" ;
+                :Source_Software = "ESRI ArcGIS" ;
+}
+}}}
+

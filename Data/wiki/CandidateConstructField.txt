@@ -1,0 +1,20 @@
+= Field construct =
+
+The central concept of the data model is a field construct. In a dataset contained in a single netCDF file, each data variable usually corresponds to a field construct, but a field construct might be a combination of several data variables. In a dataset comprising several netCDF files, a field construct may span data variables in more than one file, for instance from different ranges of a time coordinate (to be introduced by Gridspec in CF version 1.7). Rules for aggregating data variables from one or several files into a single field construct are needed but are not defined by CF version 1.5; such rules are regarded as the concern of data processing software.
+
+This data model makes a central assumption that each field construct is independent. Data variables stored in CF-netCDF files are often not independent, because they share coordinate variables. However, we view this solely as a means of saving disk space, and we assume that software will be able to alter any field construct in memory without affecting other field constructs. For instance, if the coordinates of one field construct are modified, it will not affect any other field construct. Explicit tests of equality will be required to establish whether two data variables have the same coordinates. Such tests are necessary in general if CF is applied to a dataset comprising more than one file, because different variables may then reside in different files, with their own coordinate variables.
+
+Each field construct may have
+
+    An ordered list of one or more dimension constructs (or "dimensions" for short).
+    A data array whose shape is determined by the dimensions in the order listed, excluding any dimensions of size one. If there are no dimensions of greater size than one, the data array is a scalar. Dimensions of size one are omitted because their position in the order of dimensions makes no difference to the order of data elements in the array. The elements of the data array must all be of the same data type, which may be numeric, character or string.
+    An unordered collection of auxiliary coordinate constructs.
+    An unordered collection of cell measure constructs.
+    A cell methods construct, which refers to the dimensions (but not their sizes).
+    An unordered collection of transform constructs.
+    Other properties, which are metadata that do not refer to the dimensions, and serve to describe the data the field contains. Properties may be of any data type (numeric, character or string) and can be scalars or arrays. They are attributes in the netCDF file, but we use the term "property" instead because not all CF-netCDF attributes are properties in this sense.
+    A list of ancillary fields. This corresponds to the CF-netCDF ancillary_variables attribute, which identifies other fields that provide metadata. 
+
+All the components of the field construct are optional. The data array would be missing if the field construct serves only to define a coordinate system, which we call a space. Thus a field construct can be regarded as a space with data in that space.
+
+The CF-netCDF formula_terms (see also Transform constructs) and ancillary_variables attributes make links between field constructs. These links are fragile. If a field construct is written to a file, it is not required that any other field constructs to which it is linked are also written to the file. If an operation alters one field construct in a way which could invalidate a relationship with another field construct, the link should be broken. The user of software will have to be aware of these relationships and remake them if applicable and useful. 

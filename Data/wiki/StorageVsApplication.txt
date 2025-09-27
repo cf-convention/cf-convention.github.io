@@ -1,0 +1,43 @@
+= Storage vs Application =
+
+The first two goals for functionality of an unstructured grid standard are to store data and then visualize it. These two goals may have different requirements. Visualization software is driven by technology developed for computer games such as OPENGL. These packages are only interested in data located at cell nodes and cell centers. As a result the information required to draw data may be much more difficult to store than the data needed to uniquely record the location and values of data from a model. 
+
+== Requirements for Storage ==
+
+The data values must be stored in a manner that allows their location in space to be reconstructed relative to where the values exist in the mesh. An example would be to only specify the vertices of a mesh but state that data exists at face centers. A list of which faces belong to which cell would then be sufficient to uniquely describe the data.
+
+
+== Requirements for Visualization ==
+
+In general 3D visualization requires that data exist only at the cell nodes and the cell centers of the mesh on which it is plotted.  Therefore a mesh must be generated for each variable location in the data set.
+	
+ 1. the data must only exist at the nodes and cell centers. 
+ 2. the mesh must fill the entire space of the original mesh.
+
+
+=== Example -- ''Better pictures please!'' ===
+In a 2D triangular mesh, data at the nodes and edge centers requires
+four sub triangles to fill the entire space.
+
+''This is not sufficient''
+{{{		
+		                    
+			/ \
+		       /   \      =>  -- 
+		       -----          \/
+}}}
+defining only the central triangle is not sufficient! 
+This would create empty space in the domain
+
+''This is a complete mesh''
+{{{	 
+			/_\
+		       /\ /\
+		       -----
+}}}
+Further, each type of data (eg: velocity, temperature, diffusivity) 
+must have its own grid. If diffusivity falls only at the triangle
+edge centers the above example would have to use a mixed mesh of triangles and hexagons! 
+	
+
+'''Go Back to''' CdlDiscussion '''Table of Contents'''

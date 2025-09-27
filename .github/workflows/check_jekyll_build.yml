@@ -1,0 +1,39 @@
+#
+# GitHub Actions Workflow for pull request events to make sure 
+# Markdown links are not-broken and Jekyll still builds. 
+# If successful, the resulting html files are uploaded as 
+# artifacts to make it easier to preview the results of a PR.
+#
+# For more information on the actions used in this workflow, please see:
+#   https://github.com/actions/checkout
+#   https://github.com/lycheeverse/lychee-action
+#   https://github.com/marketplace/actions/build-jekyll
+#   https://github.com/actions/upload-artifact
+#
+name: Check markdown links and Jekyll build
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+  workflow_dispatch:
+
+jobs:
+  check-markdown-links-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check markdown links
+        uses: lycheeverse/lychee-action@v2.0.2
+        with:
+          fail: true
+          format: markdown
+          jobSummary: true
+          output: ./lychee/results.md
+          args: --config .lychee/config.toml './**/*.md'
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} # GitHub API token to use when checking github.com links, to avoid rate limiting
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+          

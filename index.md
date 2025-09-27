@@ -1,35 +1,54 @@
 ---
 layout: default
 title: CF Conventions Home Page
-flash_message: "The <strong>CF Conventions Workshop 2025</strong> will be hosted online from 22nd to 25th September. Register <a href='https://forms.gle/UJ6JCiaZzSGndvWu8' target='_blank'><strong>here</strong></a> and view the agenda <a href='https://cfconventions.org/Meetings/2025-Workshop.html' target='_blank'><strong>here</strong></a>."
-flash_message_type: "info"  # Optional: Use 'info', 'success', 'warning', or 'error'
+#flash_message: "The <strong>CF Conventions Workshop 2025</strong> will be hosted online from 22nd to 25th September. Register <a href='https://forms.gle/UJ6JCiaZzSGndvWu8' target='_blank'><strong>here</strong></a> and view the agenda <a href='https://cfconventions.org/Meetings/2025-Workshop.html' target='_blank'><strong>here</strong></a>."
+#flash_message_type: "info"  # Optional: Use 'info', 'success', 'warning', or 'error'
+#hero_image: Data/media/images/CF2024_group1.JPG # Overwrites gradient if
+hero_gradient: to bottom, rgb(70, 110, 140), rgb(30, 70, 110)
+hero_header: CF Metadata Conventions # Only displays if hero_image or hero_gradient are provided
+#hero_paragraph: Some words about the CF Conventions # Only displays if hero_image or hero_gradient are provided
+hero_button_text: View latest release # Only displays if hero_image or hero_gradient are provided
+hero_button_url: Data/cf-conventions/cf-conventions-1.12/cf-conventions.html # Only displays if hero_image or hero_gradient are provided
 ---
 
-# CF Metadata Conventions
+<br>
 
 The CF metadata conventions are designed to promote the processing and sharing of files created with the [NetCDF API][api].
 The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data.
 This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities.
 The CF convention includes a standard name table, which defines strings that identify physical quantities.
 
----
-
-[**_Ask a question_ &#x2753; about how to use CF**][github_askq]<br>
-**_Read the conventions_:** **Latest release** (1.12) [HTML][releasedhtml] [PDF][releasedpdf]&nbsp;&bull;&nbsp;
-**Working draft** [HTML][workinghtml] [PDF][workingpdf]<br>
-**_Check the latest vocabularies_:** [**Standard names**][currentnames]&nbsp;&bull;&nbsp;
-[**Area types**][areatypes]&nbsp;&bull;&nbsp;
-[**Standardized regions**][regions]
+Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models.
+The use of CF is recommended where applicable by Unidata.
 
 ---
+
+#### [Ask a question &#x2753; about how to use CF][github_askq]
+
+### Latest release (1.12)  
+[HTML][releasedhtml] [PDF][releasedpdf]  
+
+### Working draft  
+[HTML][workinghtml] [PDF][workingpdf]
+
+### Check the latest vocabularies
+
+[Standard names][currentnames]{:.btn .btn-primary .btn-lg}
+[Area types][areatypes]{:.btn .btn-primary .btn-lg}
+[Standarized regions][regions]{:.btn .btn-primary .btn-lg}
+
+---
+
+## Get involved
 
 CF is developed through open discussion on GitHub.
 If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here][discussion].
 Changes are decided according to the CF [governance arrangements][governance].
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
 
-Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models.
-The use of CF is recommended where applicable by Unidata.
+![CF community at the 2024 conventions workshop](Data/media/images/CF2024_group2_cropped.jpg){: style="max-width:800px; height:auto;" } *CF community at the 2024 conventions workshop*
+
+---
 
 ## Quick links
 

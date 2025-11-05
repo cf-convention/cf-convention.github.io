@@ -13,7 +13,7 @@ hero_button_url: Data/cf-conventions/cf-conventions-1.12/cf-conventions.html # O
 
 <br>
 
-The CF metadata conventions are designed to promote the processing and sharing of files created with the [NetCDF API][https://www.unidata.ucar.edu/software/netcdf].
+The CF metadata conventions are designed to promote the processing and sharing of files created with the <a href="https://www.unidata.ucar.edu/software/netcdf">NetCDF API</a>.
 The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data.
 This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities.
 The CF convention includes a standard name table, which defines strings that identify physical quantities.
@@ -75,9 +75,7 @@ this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">w
 </div>
 </div>
 
----
-
-## Get involved
+<h2>Get involved</h2>
 
 CF is developed through open discussion on GitHub.
 If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here][discussion.md].

@@ -23,6 +23,9 @@ The use of CF is recommended where applicable by Unidata.
 
 ---
 
+<div style="display: flex;">
+<div style="width: 50%;">
+
 #### [Ask a question &#x2753; about how to use CF][github_askq]
 
 ### Latest release (1.12)  
@@ -37,18 +40,9 @@ The use of CF is recommended where applicable by Unidata.
 [Area types][areatypes]{:.btn .btn-primary .btn-lg}
 [Standarized regions][regions]{:.btn .btn-primary .btn-lg}
 
----
+</div>
 
-## Get involved
-
-CF is developed through open discussion on GitHub.
-If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here][discussion].
-Changes are decided according to the CF [governance arrangements][governance].
-The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
-
-![CF community at the 2024 conventions workshop](Data/media/images/CF2024_group2_cropped.jpg){: style="max-width:800px; height:auto;" } *CF community at the 2024 conventions workshop*
-
----
+<div style="width: 50%;">
 
 ## Quick links
 
@@ -64,6 +58,22 @@ See also the links in the navigation bar at the top of this page.
 * Overview of CF basics
   * High-level presentation ([DOI](https://doi.org/10.5281/zenodo.15015065), [PDF](https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=1) - from 2024 AGU)
   * More detailed [presentation][viewgraphs] and [paper][article]
+
+</div>
+</div>
+
+---
+
+## Get involved
+
+CF is developed through open discussion on GitHub.
+If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here][discussion].
+Changes are decided according to the CF [governance arrangements][governance].
+The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
+
+![CF community at the 2024 conventions workshop](Data/media/images/CF2024_group2_cropped.jpg){: style="max-width:800px; height:auto;" } *CF community at the 2024 conventions workshop*
+
+---
 
 [api]: https://www.unidata.ucar.edu/software/netcdf
 [coards]: https://ferret.pmel.noaa.gov/noaa_coop/coop_cdf_profile.html

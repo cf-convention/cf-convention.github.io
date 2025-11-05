@@ -78,10 +78,10 @@ this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">w
 <h2>Get involved</h2>
 
 CF is developed through open discussion on GitHub.
-If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here][discussion.md].
-Changes are decided according to the CF [governance arrangements][governance.md].
+If you would like to propose a change, make a suggestion, report a problem or ask a question, please <a href="discussion.html">see here</a>.
+Changes are decided according to the CF <a href="governance.html">governance arrangements</a>.
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
 
-![CF community at the 2024 conventions workshop](Data/media/images/CF2024_group2_cropped.jpg){: style="max-width:800px; height:auto;" } &nbsp;*Members of the CF community at the 2024 conventions workshop*
+<p><img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:800px; height:auto;" alt="Members of the CF community at the 2024 conventions workshop"> <em>Members of the CF community at the 2024 conventions workshop</em>
 
 ---

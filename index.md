@@ -41,12 +41,35 @@ The use of CF is recommended where applicable by Unidata.
 <a href="Data/standardized-region-list/standardized-region-list.current.html" class="btn btn-primary btn-lg">Standarized regions</a>
 
 </div>
-
 <div class="col-md-6">
 
 <h3>Quick links</h3>
 
 See also the links in the navigation bar at the top of this page.
+
+<ul>
+
+<li> <a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, forum for community discussion, questions and answers
+
+<li> Current proposals for changing CF (CF GitHub issues): <a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a>
+(including standard names), <a href="https://github.com/cf-convention/cf-conventions/issues">conventions</a>,
+this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">website</a> (including governance)
+
+<li> <a href="https://github.com/cf-convention">CF GitHub organisation</a>
+
+<li> <a href="faq.html">FAQ</a>
+
+<li> <a href="software.html">List of software for working with CF</a>
+
+<li> <a href="projects-activities.html">List of Projects and Activities that Use the CF Metadata Conventions</a>
+
+<li> <a href="https://doi.org/10.5194/gmd-10-4619-2017">Paper</a> describing the CF data model and reference software
+
+<li> Overview of CF, presented at 2025 AGU <a href="https://doi.org/10.5281/zenodo.15015065">DOI</a>, <a href="https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=">PDF</a>
+
+<li> More detailed <a href="Data/cf-documents/overview/viewgraphs.pdf">presentation</a> and <a href="Data/cf-documents/overview/article.pdf">paper</a> about CF basics
+
+</ul>
 
 </div>
 </div>
@@ -58,7 +81,15 @@ If you would like to propose a change, make a suggestion, report a problem or as
 Changes are decided according to the CF <a href="governance.html">governance arrangements</a>.
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
 
-<p>
-<table><tr>
-<td><img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:800px; height:auto;" alt="Members of the CF community at the 2024 conventions workshop">
-<td style="padding-left: 10px;"><em>Members of the CF community at the 2024 conventions workshop</em></td></table>
+<div class="row">
+<div class="col-md-9">
+
+<img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:800px; height:auto;" alt="Members of the CF community at the 2024 conventions workshop">
+
+</div>
+<div class="col-md-3">
+
+<em>Members of the CF community at the 2024 conventions workshop</em>
+
+</div>
+</div>

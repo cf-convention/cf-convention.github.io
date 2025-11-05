@@ -43,17 +43,21 @@ The use of CF is recommended where applicable by Unidata.
 
 <div style="width: 50%; float: left;">
 
-<h2>Quick links</h2>
+<h3>Quick links</h3>
 
 See also the links in the navigation bar at the top of this page.
 
 </div>
 
-<h2>Get involved</h2>
+<p><h2>Get involved</h2>
 
 CF is developed through open discussion on GitHub.
 If you would like to propose a change, make a suggestion, report a problem or ask a question, please <a href="discussion.html">see here</a>.
 Changes are decided according to the CF <a href="governance.html">governance arrangements</a>.
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
 
-<p><img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:800px; height:auto;" alt="Members of the CF community at the 2024 conventions workshop"> <em>Members of the CF community at the 2024 conventions workshop</em>
+<p>
+<table><tr>
+<td><img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:800px; height:auto;" alt="Members of the CF community at the 2024 conventions workshop">
+<td><em>Members of the CF community at the 2024 conventions workshop</em>
+</table>

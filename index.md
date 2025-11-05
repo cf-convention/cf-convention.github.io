@@ -73,6 +73,7 @@ this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">w
 
 </div>
 </div>
+<div class="row">
 
 <h2>Get involved</h2>
 
@@ -81,6 +82,7 @@ If you would like to propose a change, make a suggestion, report a problem or as
 Changes are decided according to the CF <a href="governance.html">governance arrangements</a>.
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
 
+</div>
 <div class="row">
 <div class="col-md-9">
 

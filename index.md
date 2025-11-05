@@ -70,14 +70,10 @@ this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">w
 
 <li> <a href="https://doi.org/10.5194/gmd-10-4619-2017">Paper</a> describing the CF data model and reference software
 
-<li> Overview of CF basics
-  <ul>
+<li> Overview of CF, presented at 2025 AGU <a href="https://doi.org/10.5281/zenodo.15015065">DOI</a>, <a href="https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=">PDF</a>
 
-  <li> High-level presentation ([DOI](https://doi.org/10.5281/zenodo.15015065), [PDF](https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=1) - from 2024 AGU)
+<li> More detailed <a href="Data/cf-documents/overview/viewgraphs.pdf">presentation</a> and <a href="Data/cf-documents/overview/article.pdf">paper</a> about CF basics
 
-  <li> More detailed <a href="Data/cf-documents/overview/viewgraphs.pdf">presentation</a> and <a href="Data/cf-documents/overview/article.pdf">paper</a>
-
-  </ul>
 </ul>
 
 </div>

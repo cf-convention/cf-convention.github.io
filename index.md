@@ -47,29 +47,30 @@ The use of CF is recommended where applicable by Unidata.
 
 See also the links in the navigation bar at the top of this page.
 
-&bullet;&nbsp; <a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, forum for community discussion, questions and answers
+<p>&bullet;&nbsp; <a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, forum for community discussion, questions and answers
 
-&bullet;&nbsp; Current proposals for changing CF (CF GitHub issues): <a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a>
+<p>&bullet;&nbsp; Current proposals for changing CF (CF GitHub issues): <a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a>
 (including standard names), <a href="https://github.com/cf-convention/cf-conventions/issues">conventions</a>,
 this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">website</a> (including governance)
 
-&bullet;&nbsp; <a href="https://github.com/cf-convention">CF GitHub organisation</a>
+<p>&bullet;&nbsp; <a href="https://github.com/cf-convention">CF GitHub organisation</a>
 
-&bullet;&nbsp; <a href="faq.html">FAQ</a>
+<p>&bullet;&nbsp; <a href="faq.html">FAQ</a>
 
-&bullet;&nbsp; <a href="software.html">List of software for working with CF</a>
+<p>&bullet;&nbsp; <a href="software.html">List of software for working with CF</a>
 
-&bullet;&nbsp; <a href="projects-activities.html">List of Projects and Activities that Use the CF Metadata Conventions</a>
+<p>&bullet;&nbsp; <a href="projects-activities.html">List of Projects and Activities that Use the CF Metadata Conventions</a>
 
-&bullet;&nbsp; <a href="https://doi.org/10.5194/gmd-10-4619-2017">Paper</a> describing the CF data model and reference software
+<p>&bullet;&nbsp; <a href="https://doi.org/10.5194/gmd-10-4619-2017">Paper</a> describing the CF data model and reference software
 
-&bullet;&nbsp; Overview of CF, presented at 2025 AGU <a href="https://doi.org/10.5281/zenodo.15015065">DOI</a>, <a href="https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=">PDF</a>
+<p>&bullet;&nbsp; Overview of CF, presented at 2025 AGU <a href="https://doi.org/10.5281/zenodo.15015065">DOI</a>, <a href="https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=">PDF</a>
 
-&bullet;&nbsp; More detailed <a href="Data/cf-documents/overview/viewgraphs.pdf">presentation</a> and <a href="Data/cf-documents/overview/article.pdf">paper</a> about CF basics
+<p>&bullet;&nbsp; More detailed <a href="Data/cf-documents/overview/viewgraphs.pdf">presentation</a> and <a href="Data/cf-documents/overview/article.pdf">paper</a> about CF basics
 
 </div>
 </div>
 <div class="row">
+<div class="col-md-12">
 
 <h2>Get involved</h2>
 
@@ -79,13 +80,14 @@ Changes are decided according to the CF <a href="governance.html">governance arr
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
 
 </div>
+</div>
 <div class="row">
-<div class="col-md-9">
+<div class="col-md-8">
 
 <img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:800px; height:auto;" alt="Members of the CF community at the 2024 conventions workshop">
 
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
 
 <em>Members of the CF community at the 2024 conventions workshop</em>
 

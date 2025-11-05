@@ -19,10 +19,12 @@ The CF convention includes a standard name table, which defines strings that ide
 Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models.
 The use of CF is recommended where applicable by Unidata.
 
+---
+
 <div class="row">
 <div class="col-md-6">
 
-<h4><a href="https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf">Ask a question &#x2753; about how to use CF</a></h4>
+<h3><a href="https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf">Ask a question &#x2753; about how to use CF</a></h3>
 
 <h3>Latest release (1.12)</h3>
 
@@ -69,6 +71,9 @@ this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">w
 
 </div>
 </div>
+
+---
+
 <div class="row">
 <div class="col-md-12">
 
@@ -81,10 +86,13 @@ The CF community embraces a philosophy of producing excellence by maintaining an
 
 </div>
 </div>
+
+<br>
+
 <div class="row">
 <div class="col-md-8">
 
-<img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:800px; height:auto;" alt="Members of the CF community at the 2024 conventions workshop">
+<img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:100%; height:auto;" alt="Members of the CF community at the 2024 conventions workshop">
 
 </div>
 <div class="col-md-4">

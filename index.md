@@ -47,30 +47,6 @@ The use of CF is recommended where applicable by Unidata.
 
 See also the links in the navigation bar at the top of this page.
 
-<ul>
-
-<li> <a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, forum for community discussion, questions and answers
-
-<li> Current proposals for changing CF (CF GitHub issues): <a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a>
-(including standard names), <a href="https://github.com/cf-convention/cf-conventions/issues">conventions</a>,
-this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">website</a> (including governance)
-
-<li> <a href="https://github.com/cf-convention">CF GitHub organisation</a>
-
-<li> <a href="faq.html">FAQ</a>
-
-<li> <a href="software.html">List of software for working with CF</a>
-
-<li> <a href="projects-activities.html">List of Projects and Activities that Use the CF Metadata Conventions</a>
-
-<li> <a href="https://doi.org/10.5194/gmd-10-4619-2017">Paper</a> describing the CF data model and reference software
-
-<li> Overview of CF, presented at 2025 AGU <a href="https://doi.org/10.5281/zenodo.15015065">DOI</a>, <a href="https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=">PDF</a>
-
-<li> More detailed <a href="Data/cf-documents/overview/viewgraphs.pdf">presentation</a> and <a href="Data/cf-documents/overview/article.pdf">paper</a> about CF basics
-
-</ul>
-
 </div>
 
 <h2>Get involved</h2>

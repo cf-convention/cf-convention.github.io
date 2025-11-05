@@ -11,7 +11,7 @@ hero_button_text: View latest release # Only displays if hero_image or hero_grad
 hero_button_url: Data/cf-conventions/cf-conventions-1.12/cf-conventions.html # Only displays if hero_image or hero_gradient are provided
 ---
 
-The CF metadata conventions are designed to promote the processing and sharing of files created with the <a href="https://www.unidata.ucar.edu/software/netcdf">NetCDF API</a>.
+<br>The CF metadata conventions are designed to promote the processing and sharing of files created with the <a href="https://www.unidata.ucar.edu/software/netcdf">NetCDF API</a>.
 The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data.
 This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities.
 The CF convention includes a standard name table, which defines strings that identify physical quantities.
@@ -19,7 +19,7 @@ The CF convention includes a standard name table, which defines strings that ide
 Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models.
 The use of CF is recommended where applicable by Unidata.
 
-<div style="width: 50%; float: left;">
+<div style="width: 50%; display: inline-block;">
 
 <h4><a href="https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf">Ask a question &#x2753; about how to use CF</a></h4>
 
@@ -41,7 +41,7 @@ The use of CF is recommended where applicable by Unidata.
 
 </div>
 
-<div style="width: 50%; float: left;">
+<div style="width: 50%; display: inline-block;">
 
 <h3>Quick links</h3>
 
@@ -59,5 +59,5 @@ The CF community embraces a philosophy of producing excellence by maintaining an
 <p>
 <table><tr>
 <td><img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:800px; height:auto;" alt="Members of the CF community at the 2024 conventions workshop">
-<td><em>Members of the CF community at the 2024 conventions workshop</em>
+<td style="padding-left: 10px;"><em>Members of the CF community at the 2024 conventions workshop</em>
 </table>

@@ -53,7 +53,7 @@ See also the links in the navigation bar at the top of this page.
 
 <br>&bullet;&nbsp; Proposals for changing CF (GitHub issues): <a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a>
 (including standard names),
-<br>&nbsp;&nbsp;<a href="https://github.com/cf-convention/cf-conventions/issues">conventions</a>,
+<br>&nbsp;&nbsp;&nbsp;<a href="https://github.com/cf-convention/cf-conventions/issues">conventions</a>,
 this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">website</a> (including governance)
 
 <br>&bullet;&nbsp; <a href="https://github.com/cf-convention">CF GitHub organisation</a>

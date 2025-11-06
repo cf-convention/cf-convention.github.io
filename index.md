@@ -21,14 +21,16 @@ The use of CF is recommended where applicable by Unidata.
 
 ---
 
-<!-- From here onwards this page is in HTML, which is ignored by the Markdown
-processor. It's not clearly documented what HTML tags can be used. Experiments
-indicate that <li> causes subsequent </ul> and </div> to be treated as text,
-rather than HTML, so we have not used <ul>. The classes used in the <div>s are
-from Bootstrap (getbootstrap.com). They allow column-handling which responds to
-the width of the browser window. Within each row-class <div>, the number of
-columns N in the contained col-md-N-class <div>s should add up to 12, and the
-window is divided into columns according to the proportions of the Ns. -->
+<!-- From here onwards the formatting of this page is mostly controlled by HTML
+tags, which are ignored by the Markdown processor. It's not clearly documented
+what HTML tags can be used. Experiment shows that block-level elements e.g. <p>
+<li> must be closed e.g. </p> </li>, although this isn't necessary in HTML, but
+if they aren't closed, the Markdown processor considers following HTML tags to
+be text. The classes used in the <div>s are from Bootstrap (getbootstrap.com).
+They allow column-handling which responds to the width of the browser window.
+Within each row-class <div>, the number of columns N in the col-md-N-class
+<div>s should add up to 12, and the window is divided into columns according to
+the proportions of the Ns. -->
 
 <div class="row">
 <div class="col-md-6">
@@ -60,9 +62,10 @@ See also the links in the navigation bar at the top of this page.
 
 <br><a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, discussion forum, questions and answers
 
-<br>Proposals for changing CF (GitHub issues): <a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a> (including standard names),
+<br>Proposals for changing CF (GitHub issues):
+<br>&nbsp;&nbsp;<a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a> (including standard names),
 <a href="https://github.com/cf-convention/cf-conventions/issues">conventions</a>,
-this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">website</a> (including governance)
+<a href="https://github.com/cf-convention/cf-convention.github.io/issues">website and governance</a>
 
 <br><a href="https://github.com/cf-convention">CF GitHub organisation</a>
 

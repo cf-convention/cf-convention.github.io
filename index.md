@@ -63,7 +63,7 @@ See also the links in the navigation bar at the top of this page.
 <br><a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, discussion forum, questions and answers
 
 <br>Proposals for changing CF (GitHub issues):
-<br>&nbsp;&nbsp;<a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a> (including standard names),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a> (including standard names),
 <a href="https://github.com/cf-convention/cf-conventions/issues">conventions</a>,
 <a href="https://github.com/cf-convention/cf-convention.github.io/issues">website and governance</a>
 

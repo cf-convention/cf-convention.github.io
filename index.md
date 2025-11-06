@@ -61,29 +61,25 @@ See also the links in the navigation bar at the top of this page.
 <!-- <br>&bullet;&nbsp; is used instead of <ul>...<li>...</ul>, as
 explained in an earlier comment. -->
 
-<ul>
+<p>&nbsp;&nbsp;<a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, discussion forum, questions and answers</p>
 
-<li><a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, discussion forum, questions and answers</li>
-
-<li>Proposals for changing CF (GitHub issues): <a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a> (including standard names),
+<p>&nbsp;&nbsp;Proposals for changing CF (GitHub issues): <a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a> (including standard names),
 <a href="https://github.com/cf-convention/cf-conventions/issues">conventions</a>,
-this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">website</a> (including governance)</li>
+this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">website</a> (including governance)</p>
 
-<li><a href="https://github.com/cf-convention">CF GitHub organisation</a></li>
+<p>&nbsp;&nbsp;<a href="https://github.com/cf-convention">CF GitHub organisation</a></p>
 
-<li><a href="faq.html">FAQ</a></li>
+<p>&nbsp;&nbsp;<a href="faq.html">FAQ</a></p>
 
-<li><a href="software.html">List of software for working with CF</a></li>
+<p>&nbsp;&nbsp;<a href="software.html">List of software for working with CF</a></p>
 
-<li><a href="projects-activities.html">List of projects and activities that use the CF metadata conventions</a></li>
+<p>&nbsp;&nbsp;<a href="projects-activities.html">List of projects and activities that use the CF metadata conventions</a></p>
 
-<li><a href="https://doi.org/10.5194/gmd-10-4619-2017">Paper</a> describing the CF data model and reference software</li>
+<p>&nbsp;&nbsp;<a href="https://doi.org/10.5194/gmd-10-4619-2017">Paper</a> describing the CF data model and reference software</p>
 
-<li>Overview of CF, presented at 2025 AGU: <a href="https://doi.org/10.5281/zenodo.15015065">DOI</a> <a href="https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=">PDF</a></li>
+<p>&nbsp;&nbsp;Overview of CF, presented at 2025 AGU: <a href="https://doi.org/10.5281/zenodo.15015065">DOI</a> <a href="https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=">PDF</a></p>
 
-<li>More detailed <a href="Data/cf-documents/overview/viewgraphs.pdf">presentation</a> and <a href="Data/cf-documents/overview/article.pdf">paper</a> about CF basics</li>
-
-</ul>
+<p>&nbsp;&nbsp;More detailed <a href="Data/cf-documents/overview/viewgraphs.pdf">presentation</a> and <a href="Data/cf-documents/overview/article.pdf">paper</a> about CF basics</p>
 
 </div>
 </div>

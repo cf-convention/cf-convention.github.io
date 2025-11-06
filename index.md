@@ -67,7 +67,7 @@ explained in an earlier comment. -->
 
 <li>Proposals for changing CF (GitHub issues): <a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a> (including standard names),
 <a href="https://github.com/cf-convention/cf-conventions/issues">conventions</a>,
-this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">website</a> (including governance)
+this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">website</a> (including governance)</li>
 
 <li><a href="https://github.com/cf-convention">CF GitHub organisation</a></li>
 

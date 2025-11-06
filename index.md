@@ -21,6 +21,10 @@ The use of CF is recommended where applicable by Unidata.
 
 ---
 
+<!-- From here onwards this page is in HTML, which is ignored by the Markdown
+processor. It's not clearly documented what HTML tags can be used. Experiments
+indicate that the </table> and </ul> -->
+
 <div class="row">
 <div class="col-md-6">
 
@@ -53,7 +57,7 @@ See also the links in the navigation bar at the top of this page.
 
 <br>&bullet;&nbsp; Proposals for changing CF (GitHub issues): <a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a>
 (including standard names),
-<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/cf-convention/cf-conventions/issues">conventions</a>,
+<br>&nbsp;&nbsp;&nbsp;&thinsp;<a href="https://github.com/cf-convention/cf-conventions/issues">conventions</a>,
 this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">website</a> (including governance)
 
 <br>&bullet;&nbsp; <a href="https://github.com/cf-convention">CF GitHub organisation</a>
@@ -69,6 +73,10 @@ this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">w
 <br>&bullet;&nbsp; Overview of CF, presented at 2025 AGU: <a href="https://doi.org/10.5281/zenodo.15015065">DOI</a> <a href="https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=">PDF</a>
 
 <br>&bullet;&nbsp; More detailed <a href="Data/cf-documents/overview/viewgraphs.pdf">presentation</a> and <a href="Data/cf-documents/overview/article.pdf">paper</a> about CF basics
+
+<ul>
+<li> Does this upset Markdown?
+</ul>
 
 </div>
 </div>

@@ -23,7 +23,12 @@ The use of CF is recommended where applicable by Unidata.
 
 <!-- From here onwards this page is in HTML, which is ignored by the Markdown
 processor. It's not clearly documented what HTML tags can be used. Experiments
-indicate that the </table> and </ul> -->
+indicate that <li> causes subsequent </ul> and </div> to be treated as text,
+rather than HTML, so we have not used <ul>. The classes used in the <div>s are
+from Bootstrap (getbootstrap.com). They allow column-handling which responds to
+the width of the browser window. Within each row-class <div>, the number of
+columns N in the contained col-md-N-class <div>s should add up to 12, and the
+window is divided into columns according to the proportions of the Ns. -->
 
 <div class="row">
 <div class="col-md-6">
@@ -53,6 +58,9 @@ indicate that the </table> and </ul> -->
 
 See also the links in the navigation bar at the top of this page.
 
+<!-- <br>&bullet;&nbsp; is used instead of <ul>...<li>...</ul>, as
+explained in an earlier comment. -->
+
 <br>&bullet;&nbsp; <a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, discussion forum, questions and answers
 
 <br>&bullet;&nbsp; Proposals for changing CF (GitHub issues): <a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a>
@@ -73,10 +81,6 @@ this <a href="https://github.com/cf-convention/cf-convention.github.io/issues">w
 <br>&bullet;&nbsp; Overview of CF, presented at 2025 AGU: <a href="https://doi.org/10.5281/zenodo.15015065">DOI</a> <a href="https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=">PDF</a>
 
 <br>&bullet;&nbsp; More detailed <a href="Data/cf-documents/overview/viewgraphs.pdf">presentation</a> and <a href="Data/cf-documents/overview/article.pdf">paper</a> about CF basics
-
-<ul>
-<li> Does this upset Markdown?
-</ul>
 
 </div>
 </div>

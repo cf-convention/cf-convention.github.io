@@ -56,11 +56,11 @@ divided into columns according to the proportions of the Ns. -->
 </div>
 <div class="col-md-6">
 
-<h3>Quick links</h3>
+<h3>Other resources</h3>
 
-See also the links in the navigation bar at the top of this page.
+<br>See also the links in the navigation bar at the top of this page.
 
-<br><a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, discussion forum, questions and answers
+<br><br><a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, discussion forum, questions and answers
 
 <br>Proposals for changing CF (GitHub issues):
 <br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/cf-convention/vocabularies/issues">vocabulary</a> (including standard names),

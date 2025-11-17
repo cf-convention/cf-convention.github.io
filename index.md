@@ -58,7 +58,7 @@ divided into columns according to the proportions of the Ns. -->
 
 <h3>Other resources</h3>
 
-<br>See also the links in the navigation bar at the top of this page.
+See also the links in the navigation bar at the top of this page.
 
 <br><br><a href="https://github.com/orgs/cf-convention/discussions">CF GitHub Discussions</a>: announcements, discussion forum, questions and answers
 

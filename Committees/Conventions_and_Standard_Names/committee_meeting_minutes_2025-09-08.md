@@ -35,7 +35,7 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
   - Do folk know how CF is governed? That it's community led, etc.
 - **Action Item**: David to start shared slide deck
 
-## Technical Discussion: Lake Variables Standard Names
+## Lake Variables Standard Names
 
 - Standard names for lake variables requiring new approach to naming conventions: https://github.com/cf-convention/vocabularies/issues/25
 - This issue could use aliases, but this is a different type of alias than we’ve used in the past \- i.e. it's an alternative (synonym, alias that is not deprecated)  
@@ -61,7 +61,7 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
   - Need to minimise headaches to the maximum number of people\!  
 - Jonathan to post on issue that the principle is agreed, but the implementation requires further technical discussion possible off-line working group …)
 
-## Action Items
+## Actions
 1. **David**: Create shared slide deck for CF workshop presentation
 2. **Jonathan**: Post on GitHub issue https://github.com/cf-convention/vocabularies/issues/255 regarding agreed principle and need for technical implementation discussion
 3. **Committee**: Determine CF workshop presenter

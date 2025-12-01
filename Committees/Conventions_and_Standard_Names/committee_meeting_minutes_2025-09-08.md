@@ -10,11 +10,11 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
 
 ## Membership changes
 
-- **Roy**: Announced retirement plans (started with the organization in 2004, remaining available for questions)
-- **Ellie**: Submitted resignation due to starting PhD program (time constraints, not lack of interest)
+- Roy: Announced retirement plans (started with the organization in 2004, remaining available for questions)
+- Ellie: Submitted resignation due to starting PhD program (time constraints, not lack of interest)
 
-## Rules
-- **Consolidated Rules/Contributing Guidelines**: Still pending completion (Jonathan delayed due to work on anomalies and leap seconds) - Issue https://github.com/cf-convention/cf-conventions/issues/369
+## Consolidated Rules/Contributing Guidelines
+- Still pending completion (Jonathan delayed due to work on anomalies and leap seconds) - Issue https://github.com/cf-convention/cf-conventions/issues/369
 
 ## Meeting Minutes Publication 
 - Current gap in published summaries (last published: 2025-01-27, previous: 2023-09-29)

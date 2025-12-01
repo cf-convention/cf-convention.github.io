@@ -40,21 +40,21 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
 ## Technical Discussion: Lake Variables Standard Names
 
 - Standard names for lake variables requiring new approach to naming conventions: https://github.com/cf-convention/vocabularies/issues/25
-- Need for alternative names (synonyms) that differ from traditional deprecated aliases
-- Three related concepts: sea_water, inland_water, sea_or_inland_water
-- Traditional aliases indicate deprecation; this case requires non-deprecated alternatives
-
-- **Implementation Complexity**: Adding synonym concept during major transition may be problematic
-- **Downstream Impact**: Re-purposing aliases could confuse applications expecting deprecation signals
-- **XML Structure**: Adding synonym tags requires propagation through multiple systems (CF editor, website, etc.)
-
-- **Estuary Classification**: Deliberately ambiguous cases where precise categorization isn't desired
-- **Continuous Measurements**: Scenarios crossing multiple water body types (lake → river → ocean)
-- **Comparison**: Similar to existing sea ice vs. open sea distinctions
-
-- **Principle**: Agreed in concept
-- **Implementation**: Requires further technical discussion
-- **Next Steps**: Jonathan to post on issue confirming agreed principle while noting need for technical working group to resolve implementation details
+- Description
+  - Need for alternative names (synonyms) that differ from traditional deprecated aliases
+  - Three related concepts: sea_water, inland_water, sea_or_inland_water
+  - Traditional aliases indicate deprecation; this case requires non-deprecated alternatives
+- Technical Considerations
+  - **Implementation Complexity**: Adding synonym concept during major transition may be problematic
+  - **Downstream Impact**: Re-purposing aliases could confuse applications expecting deprecation signals
+  - **XML Structure**: Adding synonym tags requires propagation through multiple systems (CF editor, website, etc.)
+  - **Estuary Classification**: Deliberately ambiguous cases where precise categorization isn't desired
+  - **Continuous Measurements**: Scenarios crossing multiple water body types (lake → river → ocean)
+  - **Comparison**: Similar to existing sea ice vs. open sea distinctions
+- Decision:
+  - **Principle**: Agreed in concept
+  - **Implementation**: Requires further technical discussion
+  - **Next Steps**: Jonathan to post on issue confirming agreed principle while noting need for technical working group to resolve implementation details
 
 ## Upcoming Meetings
 - **Info Management Committee**: Thursday (can raise Zenodo and related infrastructure topics)

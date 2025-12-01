@@ -13,7 +13,7 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
 - **Roy**: Announced retirement plans (started with the organization in 2004, remaining available for questions)
 - **Ellie**: Submitted resignation due to starting PhD program (time constraints, not lack of interest)
 
-## Documentation and Governance
+## Rules
 - **Consolidated Rules/Contributing Guidelines**: Still pending completion (Jonathan delayed due to work on anomalies and leap seconds) - Issue https://github.com/cf-convention/cf-conventions/issues/369
 
 ## Meeting Minutes Publication 
@@ -24,45 +24,34 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
 
 ## CF Workshop Preparation (Tuesday 15:10 UTC)
 
-### Committee Presentation Planning
 - **Presenter**: TBD
 - **Format**: Couple of slides only (time constraints)
-- **Content Focus**: 
+- **Possible content:**
   - Noteworthy developments from the past year
-  - Incorporation of older referenced standards (preservation via Zenodo)
-  - Community growth and tagging capabilities
-  - Regular committee meetings (governance, conventions, info management)
+  - CF governance structure and community leadership
+  - Repository organization (Vocabs, Discussions, cf-conventions)
+  - Consensus and change management processes
+  - Procedural points prioritization (items v-viii)
+  - Reminder of different repositories (Vocabs, Discussions, Cf-conventions)
+  - How we agree to changes/consensus/revisiting changes
+  - Do folk know how CF is governed? That it's community led, etc.
 - **Action Item**: David to start shared slide deck
-
-### Key Topics to Cover
-- CF governance structure and community leadership
-- Repository organization (Vocabs, Discussions, cf-conventions)
-- Consensus and change management processes
-- Procedural points prioritization (items v-viii)
-- **Note**: Ellie covering point repository organization in Monday's CF introduction
 
 ## Technical Discussion: Lake Variables Standard Names
 
-### Issue Overview
-- **GitHub Issue**: https://github.com/cf-convention/vocabularies/issues/25
-- **Topic**: Standard names for lake variables requiring new approach to naming conventions
-
-### Description
+- Standard names for lake variables requiring new approach to naming conventions: https://github.com/cf-convention/vocabularies/issues/25
 - Need for alternative names (synonyms) that differ from traditional deprecated aliases
 - Three related concepts: sea_water, inland_water, sea_or_inland_water
 - Traditional aliases indicate deprecation; this case requires non-deprecated alternatives
 
-### Technical Considerations
 - **Implementation Complexity**: Adding synonym concept during major transition may be problematic
 - **Downstream Impact**: Re-purposing aliases could confuse applications expecting deprecation signals
 - **XML Structure**: Adding synonym tags requires propagation through multiple systems (CF editor, website, etc.)
 
-### Use Cases and Edge Cases
 - **Estuary Classification**: Deliberately ambiguous cases where precise categorization isn't desired
 - **Continuous Measurements**: Scenarios crossing multiple water body types (lake → river → ocean)
 - **Comparison**: Similar to existing sea ice vs. open sea distinctions
 
-### Resolution
 - **Principle**: Agreed in concept
 - **Implementation**: Requires further technical discussion
 - **Next Steps**: Jonathan to post on issue confirming agreed principle while noting need for technical working group to resolve implementation details

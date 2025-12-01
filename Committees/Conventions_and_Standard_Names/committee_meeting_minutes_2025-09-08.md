@@ -31,8 +31,7 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
   - CF governance structure and community leadership
   - Repository organization (Vocabs, Discussions, cf-conventions)
   - Consensus and change management processes
-  - Procedural points prioritization (items v-viii)
-  - Reminder of different repositories (Vocabs, Discussions, Cf-conventions)
+  - Reminder of different repositories (vocabularies, discussions, cf-conventions)
   - How we agree to changes/consensus/revisiting changes
   - Do folk know how CF is governed? That it's community led, etc.
 - **Action Item**: David to start shared slide deck

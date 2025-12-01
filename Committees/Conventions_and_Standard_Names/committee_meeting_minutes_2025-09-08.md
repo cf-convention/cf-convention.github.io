@@ -24,9 +24,9 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
 
 ## CF Workshop Preparation (Tuesday 15:10 UTC)
 
-- **Presenter**: TBD
-- **Format**: Couple of slides only (time constraints)
-- **Possible content:**
+- Presenter: TBD
+- Couple of slides only (time constraints)
+- Possible content:
   - Noteworthy developments from the past year
   - CF governance structure and community leadership
   - Consensus and change management processes

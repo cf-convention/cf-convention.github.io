@@ -63,6 +63,13 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
 - JMG to post on issue that the principle is agreed, but the implementation requires further technical discussion possible off-line working group …)
 
 
+## Action Items
+1. **David**: Create shared slide deck for CF workshop presentation
+2. **Jonathan**: Post on GitHub issue https://github.com/cf-convention/vocabularies/issues/255 regarding agreed principle and need for technical implementation discussion
+3. **Committee**: Determine CF workshop presenter
+4. **Committee**: Review and approve LLM-generated meeting summaries before publication
+5. **Jonathan**: Complete consolidated rules/contributing guidelines when time permits
+
 - Description
   - Need for alternative names (synonyms) that differ from traditional deprecated aliases
   - Three related concepts: sea_water, inland_water, sea_or_inland_water
@@ -80,10 +87,3 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
   - **Next Steps**: Jonathan to post on issue confirming agreed principle while noting need for technical working group to resolve implementation details
 - **Info Management Committee**: Thursday (can raise Zenodo and related infrastructure topics)
 - **Governance Panel**: Thursday meeting scheduled
-
-## Action Items
-1. **David**: Create shared slide deck for CF workshop presentation
-2. **Jonathan**: Post on GitHub issue https://github.com/cf-convention/vocabularies/issues/255 regarding agreed principle and need for technical implementation discussion
-3. **Committee**: Determine CF workshop presenter
-4. **Committee**: Review and approve LLM-generated meeting summaries before publication
-5. **Jonathan**: Complete consolidated rules/contributing guidelines when time permits

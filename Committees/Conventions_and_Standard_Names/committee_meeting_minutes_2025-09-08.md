@@ -54,8 +54,6 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
   - **Principle**: Agreed in concept
   - **Implementation**: Requires further technical discussion
   - **Next Steps**: Jonathan to post on issue confirming agreed principle while noting need for technical working group to resolve implementation details
-
-## Upcoming Meetings
 - **Info Management Committee**: Thursday (can raise Zenodo and related infrastructure topics)
 - **Governance Panel**: Thursday meeting scheduled
 

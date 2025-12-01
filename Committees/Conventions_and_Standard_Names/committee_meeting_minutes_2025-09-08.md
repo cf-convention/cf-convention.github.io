@@ -39,12 +39,36 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
 ## Technical Discussion: Lake Variables Standard Names
 
 - Standard names for lake variables requiring new approach to naming conventions: https://github.com/cf-convention/vocabularies/issues/25
+- This issue could use aliases, but this is a different type of alias than we’ve used in the past \- i.e. it’s an alternative (synonym, alis that is not deprecated)  
+- Aliases are used to deprecate names (better idea, deepened understanding), this is a different concept.   
+- Bringing in a new concept (synonym) during a huge transition change is a challenge and may not be a good idea.   
+- Could make them aliases, and add a new XML tag to indicate “synonym”. Is that less disruptive …?  
+  - This could be confusing (i.e. an alias that is not really an alias\!)  
+  - Better to introduce (whenever appropriate \- no or later) the new thing \- synonym  
+- To re-purpose aliases “would be a disaster” (as it would confuse downstream applications on what is/isn’t a true deprecation).  
+- One physical concept with 3 different names (that can be considered the same for intercomparison purposes \- sea\_water, inland\_water, sea\_or\_inland\_water)  
+  - An alias is *not* a separate entry in the table to its parent name.  But we don’t want our new names to be “normal” aliases.  
+- Even adding a tag to alias is tricky, as the information needs to propagate through all sorts of systems (CF editor, website, ….)  
+- How would you refer to sea water and *not* inland water?:  
+  - Uses cell methods with an area type  
+  - This proposal is for standard names only \- not area types  
+- What do we call an estuary? \- that’s a case where we don’t want to decide\!  
+- What do you call a continuous measurement that starts in a lake, goes down a river and out into the ocean?  
+  - sea\_or\_inland\_water  
+- Are there any use cases where sea\_or\_inland\_water would cause problems, that we can think of?  
+- This is similar territory to open sea and sea ice  
+- Label "synonym" could be tricky, because it has baggage in the semantics community.  
+- Useful discussion, that shows we don’t know yet how to technically implement the agreed solution.  
+  - Need to minimise headaches to the maximum number of people\!  
+- JMG to post on issue that the principle is agreed, but the implementation requires further technical discussion possible off-line working group …)
+
+
 - Description
   - Need for alternative names (synonyms) that differ from traditional deprecated aliases
   - Three related concepts: sea_water, inland_water, sea_or_inland_water
   - Traditional aliases indicate deprecation; this case requires non-deprecated alternatives
 - Technical Considerations
-  - **Implementation Complexity**: Adding synonym concept during major transition may be problematic
+  -  Adding synonym concept during major transition may be problematic
   - **Downstream Impact**: Re-purposing aliases could confuse applications expecting deprecation signals
   - **XML Structure**: Adding synonym tags requires propagation through multiple systems (CF editor, website, etc.)
   - **Estuary Classification**: Deliberately ambiguous cases where precise categorization isn't desired
@@ -52,7 +76,7 @@ Jonathan, David, Luke, Roy, Daniel, Lars, Seth, Fran, Karl, Chris, Alison
   - **Comparison**: Similar to existing sea ice vs. open sea distinctions
 - Decision:
   - **Principle**: Agreed in concept
-  - **Implementation**: Requires further technical discussion
+  - **Implementation**: Requires further technical discussion, possibly in an off-line working group 
   - **Next Steps**: Jonathan to post on issue confirming agreed principle while noting need for technical working group to resolve implementation details
 - **Info Management Committee**: Thursday (can raise Zenodo and related infrastructure topics)
 - **Governance Panel**: Thursday meeting scheduled

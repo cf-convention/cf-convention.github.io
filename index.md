@@ -21,8 +21,6 @@ The CF convention includes a standard name table, which defines strings that ide
 Initially CF was developed for gridded data from climate and forecast models (hence "CF") of the atmosphere and ocean, but its use has subsequently extended to other geosciences, and to observations as well as numerical models.
 The use of CF is recommended where applicable by Unidata.
 
----
-
 <!-- The classes in the <div>s are used to produce two columns. They respond
 to the width of the browser window.  Within each row-class <div>, the number of
 columns N in the col-md-N-class <div>s should add up to 12, and the window is
@@ -58,7 +56,7 @@ See also the links in the navigation bar at the top of this page.
 
 [CF GitHub Discussions](https://github.com/orgs/cf-convention/discussions): announcements, discussion forum, questions and answers
 
-Proposals for changing CF (GitHub issues):<br>&nbsp;&nbsp;&nbsp;&nbsp;[vocabulary](https://github.com/cf-convention/vocabularies/issues) (including standard names), [conventions](https://github.com/cf-convention/cf-conventions/issues), [website and governance](https://github.com/cf-convention/cf-convention.github.io/issues)
+Proposals for changing CF (GitHub issues):<br>[vocabulary](https://github.com/cf-convention/vocabularies/issues) (including standard names), [conventions](https://github.com/cf-convention/cf-conventions/issues), [website and governance](https://github.com/cf-convention/cf-convention.github.io/issues)
 
 [CF GitHub organisation](https://github.com/cf-convention)
 
@@ -76,9 +74,6 @@ More detailed [presentation](Data/cf-documents/overview/viewgraphs.pdf) and [pap
 
 </div>
 </div>
-<br>
-
----
 
 <div class="row">
 <div class="col-md-12" markdown="1">

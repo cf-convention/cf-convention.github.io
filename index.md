@@ -33,12 +33,12 @@ divided into columns according to the proportions of the Ns. -->
 
 ### [Ask a question &#x2753; about how to use CF](https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf)
 
-### Latest release (1.12)</h3>
+### Latest release (1.12)
 
 [HTML](Data/cf-conventions/cf-conventions-1.12/cf-conventions.html) 
 [PDF](Data/cf-conventions/cf-conventions-1.12/cf-conventions.pdf) 
 
-### Working draft</h3>
+### Working draft
 
 [HTML](/cf-conventions/cf-conventions.html)
 [PDF](/cf-conventions/cf-conventions.pdf)
@@ -49,10 +49,6 @@ divided into columns according to the proportions of the Ns. -->
 [Area types](Data/area-type-table/current/build/area-type-table.html){:.btn .btn-primary .btn-lg}
 [Standarized regions](Data/standardized-region-list/standardized-region-list.current.html){:.btn .btn-primary .btn-lg}
 
-<a href="" class="btn btn-primary btn-lg">Standard names</a>
-<a href="" class="btn btn-primary btn-lg">Area types</a>
-<a href="" class="btn btn-primary btn-lg">Standarized regions</a>
-
 </div>
 <div class="col-md-6" markdown="1">
 
@@ -60,26 +56,23 @@ divided into columns according to the proportions of the Ns. -->
 
 See also the links in the navigation bar at the top of this page.
 
-<br><br>[CF GitHub Discussions](https://github.com/orgs/cf-convention/discussions): announcements, discussion forum, questions and answers
+[CF GitHub Discussions](https://github.com/orgs/cf-convention/discussions): announcements, discussion forum, questions and answers
 
-<br>Proposals for changing CF (GitHub issues):
-<br>&nbsp;&nbsp;&nbsp;&nbsp;[vocabulary](https://github.com/cf-convention/vocabularies/issues) (including standard names),
-[conventions](https://github.com/cf-convention/cf-conventions/issues),
-[website and governance](https://github.com/cf-convention/cf-convention.github.io/issues)
+Proposals for changing CF (GitHub issues):<br>&nbsp;&nbsp;&nbsp;&nbsp;[vocabulary](https://github.com/cf-convention/vocabularies/issues) (including standard names), [conventions](https://github.com/cf-convention/cf-conventions/issues), [website and governance](https://github.com/cf-convention/cf-convention.github.io/issues)
 
-<br>[CF GitHub organisation](https://github.com/cf-convention)
+[CF GitHub organisation](https://github.com/cf-convention)
 
-<br>[FAQ](faq.html)
+[FAQ](faq.html)
 
-<br>[List of software for working with CF](software.html)
+[List of software for working with CF](software.html)
 
-<br>[List of projects and activities that use the CF metadata conventions](projects-activities.html)
+[List of projects and activities that use the CF metadata conventions](projects-activities.html)
 
-<br>[Paper](https://doi.org/10.5194/gmd-10-4619-2017) describing the CF data model and reference software
+[Paper](https://doi.org/10.5194/gmd-10-4619-2017) describing the CF data model and reference software
 
-<br>Overview of CF, presented at 2025 AGU: [DOI](https://doi.org/10.5281/zenodo.15015065) [PDF](https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=)
+Overview of CF, presented at 2025 AGU: [DOI](https://doi.org/10.5281/zenodo.15015065) [PDF](https://zenodo.org/records/15015065/files/2024-12_AGU_CF_OpenSciPrize_presentation.pdf?download=1&preview=1)
 
-<br>More detailed [presentation](Data/cf-documents/overview/viewgraphs.pdf) and [paper](Data/cf-documents/overview/article.pdf) about CF basics
+More detailed [presentation](Data/cf-documents/overview/viewgraphs.pdf) and [paper](Data/cf-documents/overview/article.pdf) about CF basics
 
 </div>
 </div>

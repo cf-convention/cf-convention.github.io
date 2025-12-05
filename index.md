@@ -46,9 +46,9 @@ markdown="1" signals that the text within the div is markdown, not HTML. -->
 [Area types](Data/area-type-table/current/build/area-type-table.html){:.btn .btn-primary .btn-lg}
 [Standarized regions](Data/standardized-region-list/standardized-region-list.current.html){:.btn .btn-primary .btn-lg}
 
-### Any questions&#x2753;
+### Questions or comments&#x2753;
 
-[CF GitHub Discussions](https://github.com/orgs/cf-convention/discussions) is the place to [ask a question](https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf) about how to use CF, as well as for [discussions](https://github.com/orgs/cf-convention/discussions/categories/comments-and-ideas-for-changing-cf) and [announcements](https://github.com/orgs/cf-convention/discussions/categories/announcements-relevant-to-cf)
+[CF GitHub Discussions](https://github.com/orgs/cf-convention/discussions) is the place to [ask a question](https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf) about how to use CF,<br>and for [discussions](https://github.com/orgs/cf-convention/discussions/categories/comments-and-ideas-for-changing-cf) and [announcements](https://github.com/orgs/cf-convention/discussions/categories/announcements-relevant-to-cf)
 
 </div>
 <div class="col-md-6" markdown="1">
@@ -79,7 +79,7 @@ More detailed [presentation](Data/cf-documents/overview/viewgraphs.pdf) and [pap
 <div class="row">
 <div class="col-md-12" markdown="1">
 
-## Get involved
+### Get involved
 
 CF is developed through open discussion on GitHub.
 If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here](discussion.html).

@@ -24,22 +24,21 @@ The use of CF is recommended where applicable by Unidata.
 <!-- The classes in the <div>s are used to produce two columns. They respond
 to the width of the browser window.  Within each row-class <div>, the number of
 columns N in the col-md-N-class <div>s should add up to 12, and the window is
-divided into columns according to the proportions of the Ns. -->
+divided into columns according to the proportions of the Ns. The attribute
+markdown="1" signals that the text within the div is markdown, not HTML. -->
 
 <div class="row">
 <div class="col-md-6" markdown="1">
-
-### [Ask a question &#x2753; about how to use CF](https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf)
-
-### Latest release (1.12)
-
-[HTML](Data/cf-conventions/cf-conventions-1.12/cf-conventions.html) 
-[PDF](Data/cf-conventions/cf-conventions-1.12/cf-conventions.pdf) 
 
 ### Working draft
 
 [HTML](/cf-conventions/cf-conventions.html)
 [PDF](/cf-conventions/cf-conventions.pdf)
+
+### Latest release (1.12)
+
+[HTML](Data/cf-conventions/cf-conventions-1.12/cf-conventions.html) 
+[PDF](Data/cf-conventions/cf-conventions-1.12/cf-conventions.pdf) 
 
 ### Latest vocabularies
 
@@ -47,14 +46,16 @@ divided into columns according to the proportions of the Ns. -->
 [Area types](Data/area-type-table/current/build/area-type-table.html){:.btn .btn-primary .btn-lg}
 [Standarized regions](Data/standardized-region-list/standardized-region-list.current.html){:.btn .btn-primary .btn-lg}
 
+### Any questions&#x2753;
+
+[CF GitHub Discussions](https://github.com/orgs/cf-convention/discussions) is the place to [ask a question](https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf) about how to use CF, as well as for [discussions](https://github.com/orgs/cf-convention/discussions/categories/comments-and-ideas-for-changing-cf) and [announcements](https://github.com/orgs/cf-convention/discussions/categories/announcements-relevant-to-cf)
+
 </div>
 <div class="col-md-6" markdown="1">
 
 ### Other resources
 
 See also the links in the navigation bar at the top of this page.
-
-[CF GitHub Discussions](https://github.com/orgs/cf-convention/discussions): announcements, discussion forum, questions and answers
 
 Proposals for changing CF (GitHub issues):<br>[vocabulary](https://github.com/cf-convention/vocabularies/issues) (including standard names), [conventions](https://github.com/cf-convention/cf-conventions/issues), [website and governance](https://github.com/cf-convention/cf-convention.github.io/issues)
 

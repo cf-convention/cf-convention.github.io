@@ -48,7 +48,7 @@ markdown="1" signals that the text within the div is markdown, not HTML. -->
 
 ### Questions or comments&#x2753;
 
-[CF GitHub Discussions](https://github.com/orgs/cf-convention/discussions) is the place to [ask a question](https://github.com/orgs/cf-convention/discussions/new?category=q-a-about-using-cf) about how to use CF,<br>and for [discussions](https://github.com/orgs/cf-convention/discussions/categories/comments-and-ideas-for-changing-cf) and [announcements](https://github.com/orgs/cf-convention/discussions/categories/announcements-relevant-to-cf)
+[CF GitHub Discussions](https://github.com/orgs/cf-convention/discussions) is the place for asking [questions](https://github.com/orgs/cf-convention/discussions/q-a-about-using-cf) about how to use CF,<br>and for [discussions](https://github.com/orgs/cf-convention/discussions/categories/comments-and-ideas-for-changing-cf) and [announcements](https://github.com/orgs/cf-convention/discussions/categories/announcements-relevant-to-cf)
 
 </div>
 <div class="col-md-6" markdown="1">

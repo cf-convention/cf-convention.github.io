@@ -25,7 +25,7 @@ The use of CF is recommended where applicable by Unidata.
 
 #### [Ask a question &#x2753; about how to use CF][github_askq]
 
-### Latest release (1.13)  
+### Latest release (1.13)
 [HTML][releasedhtml] [PDF][releasedpdf]  
 
 ### Working draft  

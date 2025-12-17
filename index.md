@@ -8,7 +8,7 @@ hero_gradient: to bottom, rgb(70, 110, 140), rgb(30, 70, 110)
 hero_header: CF Metadata Conventions # Only displays if hero_image or hero_gradient are provided
 #hero_paragraph: Some words about the CF Conventions # Only displays if hero_image or hero_gradient are provided
 hero_button_text: View latest release # Only displays if hero_image or hero_gradient are provided
-hero_button_url: Data/cf-conventions/cf-conventions-1.12/cf-conventions.html # Only displays if hero_image or hero_gradient are provided
+hero_button_url: Data/cf-conventions/cf-conventions-1.13/cf-conventions.html # Only displays if hero_image or hero_gradient are provided
 ---
 
 <br>
@@ -25,7 +25,7 @@ The use of CF is recommended where applicable by Unidata.
 
 #### [Ask a question &#x2753; about how to use CF][github_askq]
 
-### Latest release (1.12)  
+### Latest release (1.13)
 [HTML][releasedhtml] [PDF][releasedpdf]  
 
 ### Working draft  
@@ -72,8 +72,8 @@ See also the links in the navigation bar at the top of this page.
 [discussion]: discussion.md
 [governance]: governance.md
 [faq]: faq.md
-[releasedhtml]: Data/cf-conventions/cf-conventions-1.12/cf-conventions.html
-[releasedpdf]: Data/cf-conventions/cf-conventions-1.12/cf-conventions.pdf
+[releasedhtml]: Data/cf-conventions/cf-conventions-1.13/cf-conventions.html
+[releasedpdf]: Data/cf-conventions/cf-conventions-1.13/cf-conventions.pdf
 [workinghtml]: /cf-conventions/cf-conventions.html
 [workingpdf]: /cf-conventions/cf-conventions.pdf
 [currentnames]: Data/cf-standard-names/current/build/cf-standard-name-table.html

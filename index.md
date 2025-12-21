@@ -8,7 +8,7 @@ hero_gradient: to bottom, rgb(70, 110, 140), rgb(30, 70, 110)
 hero_header: CF Metadata Conventions # Only displays if hero_image or hero_gradient are provided
 #hero_paragraph: Some words about the CF Conventions # Only displays if hero_image or hero_gradient are provided
 hero_button_text: View latest release # Only displays if hero_image or hero_gradient are provided
-hero_button_url: Data/cf-conventions/cf-conventions-1.12/cf-conventions.html # Only displays if hero_image or hero_gradient are provided
+hero_button_url: Data/cf-conventions/cf-conventions-1.13/cf-conventions.html # Only displays if hero_image or hero_gradient are provided
 ---
 
 <br>
@@ -35,10 +35,10 @@ markdown="1" signals that the text within the div is markdown, not HTML. -->
 [HTML](/cf-conventions/cf-conventions.html)
 [PDF](/cf-conventions/cf-conventions.pdf)
 
-### Latest release (1.12)
+### Latest release (1.13)
 
-[HTML](Data/cf-conventions/cf-conventions-1.12/cf-conventions.html) 
-[PDF](Data/cf-conventions/cf-conventions-1.12/cf-conventions.pdf) 
+[HTML](Data/cf-conventions/cf-conventions-1.13/cf-conventions.html) 
+[PDF](Data/cf-conventions/cf-conventions-1.13/cf-conventions.pdf) 
 
 ### Latest vocabularies
 
@@ -76,14 +76,10 @@ More detailed [presentation](Data/cf-documents/overview/viewgraphs.pdf) and [pap
 </div>
 </div>
 
-<div class="row"><div class="col-md-12" markdown="1">
-
-### Get involved
-
-</div></div>
-
 <div class="row">
 <div class="col-md-4" markdown="1">
+
+### Get involved
 
 CF is developed through open discussion on GitHub.
 If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here](discussion.html).

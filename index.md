@@ -81,7 +81,6 @@ More detailed [presentation](Data/cf-documents/overview/viewgraphs.pdf) and [pap
 ### Get involved
 
 </div></div>
-<br>
 
 <div class="row">
 <div class="col-md-4" markdown="1">
@@ -93,11 +92,11 @@ The CF community embraces a philosophy of producing excellence by maintaining an
 
 </div>
 
-<div class="col-md-8" markdown="1">
+<div class="col-md-8">
 
 <figure>
 <img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:100%; height:auto;" alt="Members of the CF community at the 2024 conventions workshop">
-<figcaption>Members of the CF community at the 2024 conventions workshop</figcaption>
+<figcaption><em>Members of the CF community at the 2024 conventions workshop</em></figcaption>
 </figure>
 
 </div>

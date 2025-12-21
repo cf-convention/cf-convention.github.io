@@ -76,10 +76,15 @@ More detailed [presentation](Data/cf-documents/overview/viewgraphs.pdf) and [pap
 </div>
 </div>
 
-<div class="row">
-<div class="col-md-12" markdown="1">
+<div class="row"><div class="col-md-12" markdown="1">
 
 ### Get involved
+
+</div></div>
+<br>
+
+<div class="row">
+<div class="col-md-4" markdown="1">
 
 CF is developed through open discussion on GitHub.
 If you would like to propose a change, make a suggestion, report a problem or ask a question, please [see here](discussion.html).
@@ -87,18 +92,13 @@ Changes are decided according to the CF [governance arrangements](governance.htm
 The CF community embraces a philosophy of producing excellence by maintaining an open and welcoming culture and an environment that promotes debate and inquiry in a respectful, bold and intellectually rigorous fashion.
 
 </div>
-</div>
-<br>
 
-<div class="row">
 <div class="col-md-8" markdown="1">
 
+<figure>
 <img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:100%; height:auto;" alt="Members of the CF community at the 2024 conventions workshop">
-
-</div>
-<div class="col-md-4" markdown="1">
-
-_Members of the CF community at the 2024 conventions workshop_
+<figcaption>Members of the CF community at the 2024 conventions workshop</figcaption>
+</figure>
 
 </div>
 </div>

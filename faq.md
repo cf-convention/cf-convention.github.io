@@ -11,7 +11,7 @@ If you have a question that isn't on this list, please ask it of the CF-metadata
 We will use that list as the basis for additional content for this set of questions.
 
 Note that many links in this FAQ point to previously released versions of the CF specification.
-However, others point to the currently-released CF-1.12 specification.
+However, others point to the currently-released CF-1.13 specification.
 This may provide better explanations or context, or more advanced capabilities.
 But generally these specifications do not conflict with one another, so there is no harm in following a link to a previous version.
 
@@ -45,7 +45,7 @@ Many of the principles of CF operations follow the proposals at these [rules for
 ### How long has CF been around? Is it mature?
 
 Work began on CF in 2001 and [Version 1.0](/Data/cf-conventions/cf-conventions-1.0/build/cf-conventions.html) was released in October 2003.
-Now at Version 1.12, it has been used for tens of thousands of distinct netCDF products, continues to develop through [discussions][cf-discussion-page] involving hundreds of participants, and is a mature technical specification.
+Now at Version 1.13, it has been used for tens of thousands of distinct netCDF products, continues to develop through [discussions][cf-discussion-page] involving hundreds of participants, and is a mature technical specification.
 Because it is community-supported and community-driven, turnaround on questions and changes can take a little time, but are generally thoroughly considered.
 
 ### How does CF relate to other conventions/specifications (especially COARDS and netCDF)?
@@ -169,7 +169,7 @@ For example, `horizontal` is indicating a plane rather than a direction, while `
 ### How can I encode flag values (or other enumerated lists) with CF?
 
 Often data values in an enumerated list are given as string codes ("UP", "GOOD", "Warning"), yet it is more useful to encode these values as integers.
-CF's [flag_values mechanism](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#flags) can encode strings in numeric data variables, while defining flag_meanings to map the numbers to the meanings.
+CF's [flag_values mechanism](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#flags) can encode strings in numeric data variables, while defining flag_meanings to map the numbers to the meanings.
 The `flag_values` and `flag_meanings` attributes (and, if necessary, the `flag_masks` attribute) describe a status flag consisting of mutually exclusive coded values.
 The `flag_values` attribute is the same type as the variable to which it is attached, and contains a list of the possible flag values.
 The `flag_meanings` attribute is a string whose value is a blank-separated list of descriptive words or phrases, one for each flag value. 
@@ -179,7 +179,7 @@ The `flag_meanings` attribute is a string whose value is a blank-separated list 
 In NetCDF, a `coordinate variable` is a one-dimensional variable with the same name as its dimension [e.g., time(time)]; is a numeric data type; has values that are ordered monotonically (always going in one direction); and has no missing values.
 If you have a variable that contains coordinate values but does not meet these criteria, in CF you can still indicate that it has coordinate values by naming it as an auxiliary coordinate variable. 
 
-The rules for creating and using auxiliary coordinate variables are described in the [Coordinate Systems](/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#coordinate-system) section of the Convention.
+The rules for creating and using auxiliary coordinate variables are described in the [Coordinate Systems](/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#coordinate-system) section of the Convention.
 
 ## Rich technical questions about CF
 The detailed and big picture concepts in CF.
@@ -190,9 +190,9 @@ CF allows coordinate variables to be used for any quantity that you might regard
 
 CF offers a rich set of options for specifying coordinate axes. Here is a short list of possibilities; others may be appropriate.
 
-* [Discrete axes](/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#discrete-axis) can have unordered, enumerated axis values, like days of the week or model levels [example](/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#alternative-coordinates).
+* [Discrete axes](/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#discrete-axis) can have unordered, enumerated axis values, like days of the week or model levels [example](/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#alternative-coordinates).
 * Isotherms are described as a data variable of depth with a coordinate of (potential) temperature. 
-* Various other vertical coordinate systems that are dimensionless are explicitly listed in [Appendix D](/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#parametric-v-coord), and are specified as described in [Dimensionless Vertical Coordinates section](/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#dimensionless-vertical-coordinate).
+* Various other vertical coordinate systems that are dimensionless are explicitly listed in [Appendix D](/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#parametric-v-coord), and are specified as described in [Dimensionless Vertical Coordinates section](/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#dimensionless-vertical-coordinate).
 * Swath coordinates (e.g., 'along-track' and 'across-track' values often obtained from platforms following a path, like satellites, planes, and autonomous underwater vehicles) can be expressed as x,y coordinates that are mapped to latitude and longitude. There are [open proposals](https://github.com/cf-convention/cf-conventions/issues/269) for specifying swath coordinates.
 * Degree-day integrals are described as integral_of_air_temperature_deficit|excess_wrt_time with a coordinate of air_temperature_threshold. 
 * Electromagnetic radiation at particular wavelengths uses a coordinate of radiation_wavelength or radiation_frequency.
@@ -210,7 +210,7 @@ Very briefly, values in either or both of these axes may vary (a single run may 
 If either axis contains just a single value, they are both specified as coordinates.
 If both are multi-valued, then they are each defined as one-dimensional auxiliary coordinate variables, with a common index dimension. 
 
-CF section 5.7 has an [example of the first case](/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#scalar-coordinate-variables), with a scalar coordinate variable for forecast_reference_time and a multivalued time axis for the valid time.
+CF section 5.7 has an [example of the first case](/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#scalar-coordinate-variables), with a scalar coordinate variable for forecast_reference_time and a multivalued time axis for the valid time.
 
 An example of the second case can be found in the email referenced above.
 
@@ -246,7 +246,7 @@ Use your good judgment!
 
 CF maintains a vocabulary specifically for specifying surface and area types; it is available on the CF site as the [Area Type Table](/Data/area-type-table/current/build/area-type-table.html), and can also be accessed as a [controlled vocabulary](http://mmisw.org/ont/cf/areatype).
 
-Terms from this vocabulary may be used as specified in the CF Convention [section 7.3.3 Statistics applying to portions of cells](/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#statistics-applying-portions).
+Terms from this vocabulary may be used as specified in the CF Convention [section 7.3.3 Statistics applying to portions of cells](/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#statistics-applying-portions).
 However, it is also possible to describe a data variable by using a named quantity as a coordinate variable, and the area_type is often needed for such a purpose.
 The area_type can be attached as a dimensioned coordinate variable, or as a scalar coordinate.
 
@@ -300,7 +300,7 @@ surface_temperature:coordinates = "lat lon surface_type";
 ## CF Standard Names
 General and specific information about purpose and mechanisms of standard names.
 
-Reference [section 3.3 of the CF Convention, Standard Name](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#standard-name)
+Reference [section 3.3 of the CF Convention, Standard Name](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#standard-name)
 
 ### What is the official list of standard names?
 
@@ -360,7 +360,7 @@ A CF standard name is a unique text string, which is associated in the CF Standa
 The text string is made up of two parts: the name (from the CF Standard Names table), and optionally, following the name and one or more blanks, a standard name modifier.
 The name contains no white space (underscores separate the words, in practice) and identifies the physical quantity.
 The modifier is used to describe a quantity which is related to another variable with the modified standard name.
-Details are provided in the convention section on [Standard Name](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#standard-name), and examples of modifiers are given in [Appendix C](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#standard-name-modifiers). 
+Details are provided in the convention section on [Standard Name](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#standard-name), and examples of modifiers are given in [Appendix C](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#standard-name-modifiers). 
 
 Several attributes are required for every standard name: the canonical units, which are *typical* units of the physical quantity, and the description, which clarifies related quantities and meanings of the standard name (but is not strictly a definition per se).
 Older standard names may not have a description. 
@@ -411,14 +411,14 @@ for  | by | reported on | Artifact State
 The standard name should not include:
 
 * provenance of the variable, including details of the process by which the value was obtained,
-* mathematical transformations such as addition, multiplication, and averaging (these are handled by [cell_methods](/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#cell-methods)),
+* mathematical transformations such as addition, multiplication, and averaging (these are handled by [cell_methods](/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#cell-methods)),
 * specialized terms not meaningful to a broad scientific audience, unless widely used and agreed on by the community of origin,
 * acronyms, or
 * geospatial location or similar deployment information, for example wind_speed_at_10_meter_platform.
 
 In many cases the standard name is qualified by a specific detail, for example area_type, whose value may change from one set of observations to another or one observation to another.
 In these cases the definition for the standard name references one or more attributes or variables where the additional qualifying information may be found.
-([Standard name *modifiers*](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#standard-name-modifiers) and [cell_methods](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#cell-methods) may also be used for this purpose.)
+([Standard name *modifiers*](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#standard-name-modifiers) and [cell_methods](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.13/cf-conventions.html#cell-methods) may also be used for this purpose.)
 In this way the divergence of the standard names is minimized, and interoperability increased.
 
 ### Are there common standard name phrases that get re-used?

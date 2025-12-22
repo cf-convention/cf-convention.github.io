@@ -92,7 +92,7 @@ The CF community embraces a philosophy of producing excellence by maintaining an
 
 <figure>
 <img src="Data/media/images/CF2024_group2_cropped.jpg" style="max-width:100%; height:auto;" alt="Members of the CF community at the 2024 conventions workshop">
-<figcaption>_Members of the CF community at the 2024 conventions workshop_</figcaption>
+<figcaption>Members of the CF community at the 2024 conventions workshop</figcaption>
 </figure>
 
 </div>

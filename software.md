@@ -93,7 +93,7 @@ The resulting object is logically equivalent to the original, and can be process
 
 ### netCDF-Java Library
 
-The [netCDF Java library](https://archive.unidata.ucar.edu/software/netcdf-java/) provides an interface for scientific data access.
+The [netCDF Java library](https://docs.unidata.ucar.edu/netcdf-java/current/userguide/index.html) provides an interface for scientific data access.
 It can be used to read scientific data from a variety of file formats including netCDF, HDF, GRIB, BUFR, and many others, as well as a variety of remote data access protocols.
 It implements the [Unidata Common Data Model](https://docs.unidata.ucar.edu/netcdf-java/current/userguide/common_data_model_overview.html) which uses CF and other metadata conventions in its Coordinate System and Scientific Feature Type layers.
 NetCDF-Java can write netCDF-3/4 files that conform to the CF Metadata Conventions.

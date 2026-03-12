@@ -53,7 +53,6 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Guilherme Castelão
 * Antonio S. Cofiño
 * Fran Eggleton
-* Ellie Fisher
 * David Hassell (secretary of the Conventions Committee)
 * Rosalyn Hatcher
 * Alison Pamment (secretary of Standard Names Committee)
@@ -75,7 +74,7 @@ The climate research community is indebted to former members of the committee, p
 * John Caron (Conventions)
 * Michel Crucifix (Standard Names)
 * Martin Desruisseaux (Information Management and Support)
-* Ellie Fisher (Standard Names)
+* Ellie Fisher (Standard Names, Information Management and Support)
 * Manuel Fuentes (Standard Names)
 * Nan Galbraith (Conventions and Standard Names)
 * John Graybeal (Information Management and Support)

@@ -55,6 +55,7 @@ CF Governance Panel meeting [minutes](Governance/GovPanel/meeting-minutes.md)
 * Fran Eggleton
 * David Hassell (secretary of the Conventions Committee)
 * Rosalyn Hatcher
+* Eileen Hertwig
 * Alison Pamment (secretary of Standard Names Committee)
 
 Governance Panel members also contribute to information management and support.

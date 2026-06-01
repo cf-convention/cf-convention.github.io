@@ -20,8 +20,8 @@ group: "navigation"
 (The date of the end of each member's present term appears in parentheses)
 
 * Chris Barker (29 Sep 2028)
-* Lars Bärring (12 Apr 2026)
-* Fran Eggleton (12 Apr 2026) 
+* Lars Bärring (12 Apr 2031)
+* Fran Eggleton (12 Apr 2031) 
 * John Graybeal (29 May 2030)
 * Jonathan Gregory (29 May 2030, chair of CF Committees, 28 August 2027)
 * David Hassell (31 Mar 2027, secretary of the Conventions Committee)

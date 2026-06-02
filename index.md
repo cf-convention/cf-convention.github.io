@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CF Conventions Home Page
-flash_message: "The <strong>CF Conventions Workshop 2026</strong> will take place at ECMWF in Bologna from 21st to 24th September. Save the date! Follow the discussion <a href='https://github.com/orgs/cf-convention/discussions/472' target='_blank'><strong>here</strong></a>"
+flash_message: "The <strong>CF Conventions Workshop 2026</strong> will take place at ECMWF from 21st to 24th September. Save the date! Follow the discussion <a href='https://github.com/orgs/cf-convention/discussions/472' target='_blank'><strong>here</strong></a>"
 flash_message_type: "info"  # Optional: Use 'info', 'success', 'warning', or 'error'
 #hero_image: Data/media/images/CF2024_group1.JPG # Overwrites gradient if
 hero_gradient: to bottom, rgb(70, 110, 140), rgb(30, 70, 110)

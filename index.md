@@ -57,9 +57,9 @@ markdown="1" signals that the text within the div is markdown, not HTML. -->
 
 See also the links in the navigation bar at the top of this page.
 
-Rules for contributing to CF: [vocabulary](https://cfconventions.org/standard_name_rules.html), [conventions](https://github.com/cf-convention/cf-conventions?tab=contributing-ov-file#contributing-to-the-cf-conventions)
+Rules for contributing to CF: [vocabulary](https://cfconventions.org/standard_name_rules.html) (including standard names), [conventions](https://github.com/cf-convention/cf-conventions?tab=contributing-ov-file#contributing-to-the-cf-conventions)
 
-Proposals for changing CF (GitHub issues):<br>[vocabulary](https://github.com/cf-convention/vocabularies/issues) (including standard names), [conventions](https://github.com/cf-convention/cf-conventions/issues), [website and governance](https://github.com/cf-convention/cf-convention.github.io/issues)
+Proposals for changing CF: [vocabulary](https://github.com/cf-convention/vocabularies/issues), [conventions](https://github.com/cf-convention/cf-conventions/issues), [website and governance](https://github.com/cf-convention/cf-convention.github.io/issues)
 
 [CF GitHub organisation](https://github.com/cf-convention)
 

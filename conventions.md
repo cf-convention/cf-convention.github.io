@@ -105,6 +105,12 @@ group: "navigation"
   </div>
 
   <div class="col-md-6">
+  
+    <h2>Rules for contributing to CF</h2>
+
+<p>Rules and guidelines for <a href="https://github.com/cf-convention/cf-conventions?tab=contributing-ov-file#contributing-to-the-cf-conventions">changes to the CF conventions</a>
+
+<p>Rules for <a href="https://cfconventions.org/standard_name_rules.html">changing CF standard names and other controlled vocabulary</a>
 
     <h2><a href="./conventions_contributors.html">List of contributors</a> to CF conventions</h2>
 

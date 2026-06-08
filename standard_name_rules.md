@@ -7,7 +7,7 @@ title: Vocabulary rules
 # Rules for Changes to CF Standard Names, Area Types and Standardized Region List Vocabularies
 
 **These rules apply only to changes in CF controlled vocabularies.
-The rules for changes to the CF conventions themselves are given [here](http://cfconventions.org/rules.html).**
+The rules for changes to the CF conventions themselves are given [here](https://github.com/cf-convention/cf-conventions?tab=contributing-ov-file#contributing-to-the-cf-conventions).**
 
 New proposals are made by opening a new issue in the cf-convention/vocabularies github repository.
 The 'Standard Names' template should be used, even if the proposal relates to one of the other vocabularies.

@@ -6,7 +6,7 @@ group: "navigation"
 # CF Standard Names and other CF Controlled Vocabularies
 ## Standard Name Table
   
-### Quick links to current version (v93, 17 March 2026)
+### Quick links to current version (v94, 9 June 2026)
 
 [HTML](Data/cf-standard-names/current/build/cf-standard-name-table.html) &nbsp;
 [XML](Data/cf-standard-names/current/src/cf-standard-name-table.xml) &nbsp;
@@ -16,6 +16,7 @@ group: "navigation"
 ### HTML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v93](Data/cf-standard-names/93/build/cf-standard-name-table.html) &nbsp;
 [v92](Data/cf-standard-names/92/build/cf-standard-name-table.html) &nbsp;
 [v91](Data/cf-standard-names/91/build/cf-standard-name-table.html) &nbsp;
 [v90](Data/cf-standard-names/90/build/cf-standard-name-table.html) &nbsp;
@@ -111,6 +112,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 ### XML versions (most current first)
 N.B. For technical reasons, no standard name table was published with version number 38
 
+[v93](Data/cf-standard-names/93/src/cf-standard-name-table.xml) &nbsp;
 [v92](Data/cf-standard-names/92/src/cf-standard-name-table.xml) &nbsp;
 [v91](Data/cf-standard-names/91/src/cf-standard-name-table.xml) &nbsp;
 [v90](Data/cf-standard-names/90/src/cf-standard-name-table.xml) &nbsp;
@@ -205,6 +207,7 @@ N.B. For technical reasons, no standard name table was published with version nu
 
 ### Keyword Centred List (most current first)
 
+[v93](Data/cf-standard-names/93/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v90](Data/cf-standard-names/90/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v89](Data/cf-standard-names/89/build/kwic_index_for_cf_standard_names.html) &nbsp;
 [v88](Data/cf-standard-names/88/build/kwic_index_for_cf_standard_names.html) &nbsp;

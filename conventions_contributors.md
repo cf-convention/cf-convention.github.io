@@ -13,6 +13,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Ryan Abernathey, Columbia University
 - Ben Adams, RPS group
 - Dave Allured, NOAA/CIRES/University of Colorado
+- James Anstey, Canadian Centre for Climate Modelling and Analysis (CCCma)
 - Abel Aoun, EUMETSAT
 - Sean Arms, SpectraLogic
 - Balaji, NOAA and Princeton University
@@ -43,6 +44,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Steve Emmerson, Unidata
 - Jesus Fernandez, Universidad de Cantabria
 - Nan Galbraith, WHOI
+- Lorea García San Martín, European Centre for Medium-Range Weather Forecasts
 - Lucile Gaultier, OceanDataLab
 - Beate Geyer, GKSS
 - Øystein Godøy, NMI
@@ -80,6 +82,7 @@ The affiliations are those that the contributors used at the time of their contr
 - Joao Macedo, IPMA
 - Ken Mankoff, NASA GISS
 - Fernando Manzano, Puertos del Estado, Madrid
+- Luke Marsden, NMI and the University Centre in Svalbard
 - Seth McGinnis, NCAR
 - Kai Mühlbauer, University of Bonn
 - Don Murray, Unidata

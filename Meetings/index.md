@@ -8,7 +8,7 @@ group: "navigation"
 
 ## Annual CF Workshops
 
-* [2026 CF Workshop][2026-copernicus] - 21-24 September 2026 - ECMWF - Bonn (germany) - Hybrid Workshop - [Follow discussion][2026-announcement]
+* [2026 CF Workshop][2026] - 21-24 September 2026 - ECMWF - Bonn (Germany) - Hybrid Workshop - [Follow discussion][2026-announcement]
 * [2025 CF Workshop][2025] - 22-25 September 2025 - Virtual Workshop
 * [2024 CF Workshop][2024] - 17-20 September 2024 - SMHI - Norrköping (Sweden)
 * [2023 CF Workshop][2023] - 3-5 October 2023 - Virtual Workshop
@@ -20,6 +20,7 @@ group: "navigation"
 * [2017 Advancing netCDF-CF Workshop][2017] - 6-8 September 2017 - EarthCube - Boulder, CO (USA)
 * [2016 Advancing netCDF-CF Workshop for the Geosciences][2016] - 24-26 May 2016 - EarthCube - Boulder, CO (USA)
 
+[2026]: 2026-Workshop.md
 [2026-ecmwf]: https://events.ecmwf.int/event/568/
 [2026-copernicus]: https://climate.copernicus.eu/cf-conventions-community-workshop-2026
 [2026-announcement]: https://github.com/orgs/cf-convention/discussions/472

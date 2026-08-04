@@ -6,12 +6,12 @@ last_checked: 2026-06-30
 
 # CF Conventions Community Workshop 2026
 
-**Dates:** 21-24 September 2026  
-**Time**: Starts at 13:00 CEST on the first day and ends at 14:00 CEST on the final day (Lunch from 12:30 CEST)
-**Location:** ECMWF, Bonn, Germany and online  
-**Format:** Hybrid event  
-**Registration:** [ECMWF Events registration page](https://events.ecmwf.int/event/568/registrations/440/)  
-**Event pages:** [ECMWF Events](https://events.ecmwf.int/event/568/) and [Copernicus Climate Change Service](https://climate.copernicus.eu/cf-conventions-community-workshop-2026)
+- **Dates:** 21-24 September 2026  
+- **Time:** Starts at 13:00 CEST on the first day and ends at 14:00 CEST on the final day (Lunch from 12:30 CEST).
+- **Location:** ECMWF, Bonn, Germany and online  
+- **Format:** Hybrid event  
+- **Registration:** [ECMWF Events registration page](https://events.ecmwf.int/event/568/registrations/440/)  
+- **Event pages:** [ECMWF Events](https://events.ecmwf.int/event/568/) and [Copernicus Climate Change Service](https://climate.copernicus.eu/cf-conventions-community-workshop-2026)
 
 This page records the main information for the 2026 CF Conventions Community Workshop for the CF Conventions meeting archive. The official event and registration pages are hosted by ECMWF and the Copernicus Climate Change Service.
 

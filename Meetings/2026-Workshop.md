@@ -48,7 +48,7 @@ Community input is being collected through GitHub Discussions:
 - [Call for breakout and hackathon sessions](https://github.com/orgs/cf-convention/discussions/476)
 - [Call for talks and presentations](https://github.com/orgs/cf-convention/discussions/475)
 
-Participants wishing to propose a presentation, poster, breakout, or hackathon topic should use the relevant GitHub discussion. The published deadline for contributions is **3 August 2026**.
+Participants wishing to propose a presentation, poster, breakout, or hackathon topic should use the relevant GitHub discussion. The published deadline for contributions is **17 August 2026**.
 
 A detailed agenda will be published closer to the event.
 

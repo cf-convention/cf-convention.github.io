@@ -7,6 +7,7 @@ last_checked: 2026-06-30
 # CF Conventions Community Workshop 2026
 
 **Dates:** 21-24 September 2026  
+**Time**: Starts at 13:00 CEST on the first day and ends at 14:00 CEST on the final day (Lunch from 12:30 CEST)
 **Location:** ECMWF, Bonn, Germany and online  
 **Format:** Hybrid event  
 **Registration:** [ECMWF Events registration page](https://events.ecmwf.int/event/568/registrations/440/)  

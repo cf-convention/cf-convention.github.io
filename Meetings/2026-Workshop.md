@@ -209,7 +209,7 @@ Sources checked on 30 June 2026:
 | 11:30 | Main   | Plenary - open time slot!!!! | |
 | 12:00 | Main   | CMIP and CORDEX interactinos and use of CF Conventions | Paul Smith (CMIP IPO) |
 | 12:30 |        | Lunch break |  |
-| 14:00 | Main   | Main | WMO Cloud-optimized future data infrastructure | Jeremy Tandy |
+| 14:00 | Main   | WMO Cloud-optimized future data infrastructure | Jeremy Tandy |
 | 14:30 | Main   | Plenary - open time slot!!!! | |
 | 15:00 | Main   | Coffee break / screen break |  |
 | 15:30 | Main   | CF Checkers | IOOS (needs confirmation) + Sadie |

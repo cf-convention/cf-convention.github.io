@@ -167,7 +167,7 @@ Sources checked on 30 June 2026:
 | 16:00 | Main | Introduction to today's breakout sessions | |
 | 16:10 |      | Breakouts / Hackathons | |
 |       | Room? | CF Profiles, work through with Satellite Swath data | Ethan Davis |
-|       | Room? | Support localization of attribute/variable values | Erin Turnbull (TBC) |
+|       | Room? | ??? | ??? |
 | 17:30 |       | Adjorn |  |
 | 19:00? | TBD | Workshop dinner |  |
 
@@ -186,7 +186,7 @@ Sources checked on 30 June 2026:
 |       | Room? | BCP 14 | Sadie Bartholemew |
 | 12:30 |        | Lunch break |  |
 | 14:00 | Main   | CF and GRIB (Title?) | Lorea Garcia San Martin, Sébastien Villaume, Pawel ?  |
-| 14:30 | Main   | Implementing CF semantics in BUFR | Mariajana Crepulja |
+| 14:30 | Main   | Implementing CF semantics in BUFR | Mariajana Crepulja (TBC)|
 | 15:00 | Main   | Coffee break / screen break |  |
 | 15:30 | Main   | World Meteorological Organization CF-NetCDF profiles and governance | David I. Berry, Kevin O'Brien, Bibraj Raj, ??more authors? |
 | 16:00 | Main   | GeoZarr and CF | Max Jones (TBC) |
@@ -216,7 +216,7 @@ Sources checked on 30 June 2026:
 | 16:00 | Main | Introduction to today's breakout sessions | |
 | 16:10 |      | Breakouts / Hackathons | |
 |       | Room? | Separating CF semantics from netCDF encoding | Patrick van Laake |
-|       | Room? | ??? | ??? |
+|       | Room? | Support localization of attribute/variable values | Erin Turnbull & ??? |
 | 17:30 |       | Adjorn |  |
 
 ### Day 4 - Thursday, 24 September 2026

@@ -183,7 +183,7 @@ Sources checked on 30 June 2026:
 | 11:00 | Main | Introduction to today's breakout sessions | |
 | 11:10 |      | Breakouts / Hackathons | |
 |       | Room? | Uncertainty | David Hassell |
-|       | Room? | BCP 14 | Sadie Bartholemew |
+|       | Room? | BCP 14 | Sadie Bartholomew |
 | 12:30 |        | Lunch break |  |
 | 14:00 | Main   | CF and GRIB (Title?) | Lorea Garcia San Martin, Sébastien Villaume, Pawel ?  |
 | 14:30 | Main   | Implementing CF semantics in BUFR | Mariajana Crepulja (TBC)|

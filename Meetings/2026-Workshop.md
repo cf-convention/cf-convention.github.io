@@ -157,75 +157,75 @@ Sources checked on 30 June 2026:
 {: .agenda .table .table-bordered .table-striped}
 | Local Time (Bonn)   | Room   | Session  | Presenter/Chair   |
 |:-------------|:-------|:-----------------------------------------------------|:----------------------------------------------|
-| 13:00 | Main   | Arrivals and coffee |   |
-| 14:00 | Main   | Welcome and Overview of meeting structure  | TBD  |
-| 14:10 | Main   | Introduction to CF |  Jonathan Gregory  |
-|       |        | CF Governance Processes |  Ethan Davis  |
-|       |        | What will be in CF 1.14 | Sadie Bartholomew    |
-| 15:00 | Main   | Coffee break / screen break |  |
-| 15:30 | Main   | Standard names / Vocabularies | Alison Pamment   |
-| 16:00 | Main | Introduction to today's breakout sessions | |
-| 16:10 |      | Breakouts / Hackathons | |
-|       | Room? | CF Profiles, work through with Satellite Swath data | Ethan Davis |
-|       | Room? | ??? | ??? |
-| 17:30 |       | Adjourn |  |
-| 19:00? | TBD | Workshop dinner |  |
+| 13:00 | Main   | **Arrivals and coffee** |   |
+| 14:00 | Main   | **Welcome and Overview of meeting structure**  | TBD  |
+| 14:10 | Main   | **Introduction to CF** |  Jonathan Gregory  |
+|       |        | **CF Governance Processes** |  Ethan Davis  |
+|       |        | **What will be in CF 1.14** | Sadie Bartholomew    |
+| 15:00 | Main   | **Coffee break / screen break** |  |
+| 15:30 | Main   | **Standard names / Vocabularies** | Alison Pamment   |
+| 16:00 | Main | **Introduction to today's breakout sessions** | |
+| 16:10 |      | **Breakouts / Hackathons** | |
+|       | Room? | **CF Profiles, work through with Satellite Swath data** | Ethan Davis |
+|       | Room? | **???** | ??? |
+| 17:30 |       | **Adjourn** |  |
+| 19:00? | TBD | **Workshop dinner** |  |
 
 ### Day 2 - Tuesday, 22 September 2026
 
 {: .agenda .table .table-bordered .table-striped}
 | Local Time (Bonn)   | Room   | Session  | Presenter/Chair   |
 |:-------------|:-------|:-----------------------------------------------------|:----------------------------------------------|
-| 09:00 | Main   | Coffee and welcome |   |
-| 09:30 | Main   | Uncertainty metadata in CF | David Hassell, Sam Hunt  |
-| 10:00 | Main   | Units of measure in CF and elsewhere | Lars Bärring  |
-| 10:30 | Main   | Coffee break / screen break |  |
-| 11:00 | Main | Introduction to today's breakout sessions | |
-| 11:10 |      | Breakouts / Hackathons | |
-|       | Room? | Uncertainty | David Hassell |
-|       | Room? | BCP 14 | Sadie Bartholomew |
-| 12:30 |        | Lunch break |  |
-| 14:00 | Main   | CF and GRIB (Title?) | Lorea Garcia San Martin, Sébastien Villaume, Pawel ?  |
-| 14:30 | Main   | Implementing CF semantics in BUFR | Mariajana Crepulja (TBC)|
-| 15:00 | Main   | Coffee break / screen break |  |
-| 15:30 | Main   | World Meteorological Organization CF-NetCDF profiles and governance | David I. Berry, Kevin O'Brien, Bibraj Raj, ??more authors? |
-| 16:00 | Main   | GeoZarr and CF | Max Jones (TBC) |
-| 16:30 | Main   | Implementing CF semantics in Zarr | Patrick van Laake |
-| 17:00 | Main   | Discussion of mappings | |
-| 17:30 |       | Adjourn |  |
+| 09:00 | Main   | **Coffee and welcome** |   |
+| 09:30 | Main   | **Uncertainty metadata in CF** | David Hassell, Sam Hunt  |
+| 10:00 | Main   | **Units of measure in CF and elsewhere** | Lars Bärring  |
+| 10:30 | Main   | **Coffee break / screen break** |  |
+| 11:00 | Main | **Introduction to today's breakout sessions** | |
+| 11:10 |      | **Breakouts / Hackathons** | |
+|       | Room? | **Uncertainty** | David Hassell |
+|       | Room? | **BCP 14** | Sadie Bartholomew |
+| 12:30 |        | **Lunch break** |  |
+| 14:00 | Main   | **CF and GRIB (Title?)** | Lorea Garcia San Martin, Sébastien Villaume, Pawel ?  |
+| 14:30 | Main   | **Implementing CF semantics in BUFR** | Mariajana Crepulja (TBC)|
+| 15:00 | Main   | **Coffee break / screen break** |  |
+| 15:30 | Main   | **World Meteorological Organization CF-NetCDF profiles and governance** | David I. Berry, Kevin O'Brien, Bibraj Raj, ??more authors? |
+| 16:00 | Main   | **GeoZarr and CF** | Max Jones (TBC) |
+| 16:30 | Main   | **Implementing CF semantics in Zarr** | Patrick van Laake |
+| 17:00 | Main   | **Discussion of mappings** | |
+| 17:30 |       | **Adjourn** |  |
 
 ### Day 3 - Wednesday, 23 September 2026
 
 {: .agenda .table .table-bordered .table-striped}
 | Local Time (Bonn)   | Room   | Session  | Presenter/Chair   |
 |:-------------|:-------|:-----------------------------------------------------|:----------------------------------------------|
-| 09:00 | Main   | Coffee and welcome |   |
-| 09:30 | Main | Introduction to today's breakout sessions | |
-| 09:40 |      | Breakouts / Hackathons | |
-|       | Room? | Housekeeping | ?? |
-|       | Room? | Standard names for chemical species | Lorea Garcia San Martin |
-| 10:30 | Main   | Coffee break / screen break |  |
-| 11:00 | Main   | Copernicus | Chris Goddard (Has this been confirmed???) |
-| 11:30 | Main   | Plenary - open time slot!!!! | |
-| 12:00 | Main   | CMIP and CORDEX interactions and use of CF Conventions | Paul Smith (CMIP IPO) |
-| 12:30 |        | Lunch break |  |
-| 14:00 | Main   | WMO Cloud-optimized future data infrastructure | Jeremy Tandy |
-| 14:30 | Main   | Plenary - open time slot!!!! | |
-| 15:00 | Main   | Coffee break / screen break |  |
-| 15:30 | Main   | CF Checkers | Filipe P. A. Fernandes + Sadie Bartholomew |
-| 16:00 | Main | Introduction to today's breakout sessions | |
-| 16:10 |      | Breakouts / Hackathons | |
-|       | Room? | Separating CF semantics from netCDF encoding | Patrick van Laake |
-|       | Room? | Support localization of attribute/variable values | Erin Turnbull & ??? |
-| 17:30 |       | Adjourn |  |
+| 09:00 | Main   | **Coffee and welcome** |   |
+| 09:30 | Main | **Introduction to today's breakout sessions** | |
+| 09:40 |      | **Breakouts / Hackathons** | |
+|       | Room? | **Housekeeping** | ?? |
+|       | Room? | **Standard names for chemical species** | Lorea Garcia San Martin |
+| 10:30 | Main   | **Coffee break / screen break** |  |
+| 11:00 | Main   | **Copernicus** | Chris Goddard (Has this been confirmed???) |
+| 11:30 | Main   | **Plenary - open time slot!!!!** | |
+| 12:00 | Main   | **CMIP and CORDEX interactions and use of CF Conventions** | Paul Smith (CMIP IPO) |
+| 12:30 |        | **Lunch break** |  |
+| 14:00 | Main   | **WMO Cloud-optimized future data infrastructure** | Jeremy Tandy |
+| 14:30 | Main   | **Plenary - open time slot!!!!** | |
+| 15:00 | Main   | **Coffee break / screen break** |  |
+| 15:30 | Main   | **CF Checkers** | Filipe P. A. Fernandes + Sadie Bartholomew |
+| 16:00 | Main | **Introduction to today's breakout sessions** | |
+| 16:10 |      | **Breakouts / Hackathons** | |
+|       | Room? | **Separating CF semantics from netCDF encoding** | Patrick van Laake |
+|       | Room? | **Support localization of attribute/variable values** | Erin Turnbull & ??? |
+| 17:30 |       | **Adjourn** |  |
 
 ### Day 4 - Thursday, 24 September 2026
 
 {: .agenda .table .table-bordered .table-striped}
 | Local Time (Bonn)   | Room   | Session  | Presenter/Chair   |
 |:-------------|:-------|:-----------------------------------------------------|:----------------------------------------------|
-| 09:00 | Main   | Coffee and welcome |   |
-| 09:30 | Main   | Breakout reports |  |
-| 10:30 | Main   | Coffee break / screen break |  |
-| 11:00 | Main   | Wrap-up and Meeting Conclusions |   |
-| 12:30 |        | Adjourn and Lunch |  |
+| 09:00 | Main   | **Coffee and welcome** |   |
+| 09:30 | Main   | **Breakout reports** |  |
+| 10:30 | Main   | **Coffee break / screen break** |  |
+| 11:00 | Main   | **Wrap-up and Meeting Conclusions** |   |
+| 12:30 |        | **Adjourn and Lunch** |  |

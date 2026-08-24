@@ -212,7 +212,7 @@ Sources checked on 30 June 2026:
 | 14:00 | Main   | WMO Cloud-optimized future data infrastructure | Jeremy Tandy |
 | 14:30 | Main   | Plenary - open time slot!!!! | |
 | 15:00 | Main   | Coffee break / screen break |  |
-| 15:30 | Main   | CF Checkers | IOOS (needs confirmation) + Sadie |
+| 15:30 | Main   | CF Checkers | Filipe P. A. Fernandes + Sadie Bartholomew |
 | 16:00 | Main | Introduction to today's breakout sessions | |
 | 16:10 |      | Breakouts / Hackathons | |
 |       | Room? | Separating CF semantics from netCDF encoding | Patrick van Laake |

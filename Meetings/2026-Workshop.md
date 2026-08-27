@@ -119,7 +119,7 @@ Online participation links will be provided by the organisers in due course.
 
 ## Venue
 
-The in-person component of the workshop will be hosted at ECMWF in Bonn, Germany.
+The in-person component of the workshop will be hosted at ECMWF in Bonn, Germany (ECMWF, Robert-Schuman-Platz 3, 53175 Bonn).
 
 ECMWF's Bonn premises provide conference and collaboration facilities suitable for hybrid participation. The venue is accessible by public transport; the Copernicus event page notes that participants can travel from Bonn Central Station using underground line 66 towards Ramersdorf, alighting at Robert-Schuman-Platz.
 
@@ -167,7 +167,7 @@ Sources checked on 30 June 2026:
 | 16:00 | Main | **Introduction to today's breakout sessions** | |
 | 16:10 |      | **Breakouts / Hackathons** | |
 |       | Room? | **CF Profiles, work through with Satellite Swath data** | Ethan Davis |
-|       | Room? | **???** | ??? |
+|       | Room? | **Data standards for oil spill models** | Chris Barker (confirmed) |
 | 17:30 |       | **Adjourn** |  |
 | 19:00? | TBD | **Workshop dinner** |  |
 

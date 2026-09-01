@@ -185,8 +185,8 @@ Sources checked on 30 June 2026:
 |       | Room? | **Uncertainty** | David Hassell |
 |       | Room? | **BCP 14** | Sadie Bartholomew |
 | 12:30 |        | **Lunch break** |  |
-| 14:00 | Main   | **CF, GRIB and BUFR** | Sébastien Villaume and Pawel Wolff |
-| 14:30 | Main   | **Implementing CF semantics in BUFR** | Marijana Crepulja (confirmed)|
+| 14:00 | Main   | **CF and GRIB** | Sébastien Villaume and Pawel Wolff |
+| 14:40 | Main   | **Implementing CF semantics in BUFR** | Marijana Crepulja |
 | 15:00 | Main   | **Coffee break / screen break** |  |
 | 15:30 | Main   | **World Meteorological Organization CF-NetCDF profiles and governance** | David I. Berry, Kevin O'Brien, Bibraj Raj, ??more authors? |
 | 16:00 | Main   | **GeoZarr and CF** | Max Jones (TBC) |

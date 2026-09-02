@@ -210,7 +210,7 @@ Sources checked on 30 June 2026:
 | 12:00 | Main   | **CMIP and CORDEX interactions and use of CF Conventions** | Paul Smith (CMIP IPO) |
 | 12:30 |        | **Lunch break** |  |
 | 14:00 | Main   | **WMO Cloud-optimized future data infrastructure** | Jeremy Tandy |
-| 14:30 | Main   | **BADC-CSV adoption by the CMIP community** | Charlotte Pascoe |
+| 14:30 | Main   | **BADC-CSV adoption by the IPCC community** | Charlotte Pascoe |
 | 15:00 | Main   | **Coffee break / screen break** |  |
 | 15:30 | Main   | **CF Checkers** | Filipe P. A. Fernandes + Sadie Bartholomew |
 | 16:00 | Main | **Introduction to today's breakout sessions** | |

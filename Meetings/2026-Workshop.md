@@ -206,7 +206,7 @@ Sources checked on 30 June 2026:
 |       | Room? | **Standard names for chemical species** | Lorea Garcia San Martin |
 | 10:30 | Main   | **Coffee break / screen break** |  |
 | 11:00 | Main   | **Copernicus** | Chris Goddard (Has this been confirmed???) |
-| 11:30 | Main   | **Plenary - open time slot!!!!** | |
+| 11:30 | Main   | **'Unconferencing' slot: no set agenda, time to discuss topics that arose or continue breakout work** | n/a |
 | 12:00 | Main   | **CMIP and CORDEX interactions and use of CF Conventions** | Paul Smith (CMIP IPO) |
 | 12:30 |        | **Lunch break** |  |
 | 14:00 | Main   | **WMO Cloud-optimized future data infrastructure** | Jeremy Tandy |

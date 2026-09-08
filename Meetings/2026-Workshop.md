@@ -206,7 +206,7 @@ Sources checked on 30 June 2026:
 |       | Room 2 | **Standard names for chemical species** | Lorea Garcia San Martin |
 | 10:30 | Main   | **Coffee break / screen break** |  |
 | 11:00 | Main   | **Example C3S uses of CF and netCDF** | Chris Goddard |
-| 11:30 | Main   | **'Unconferencing' slot: no set agenda, time to discuss topics that arose or continue breakout work** | n/a |
+| 11:30 | Main   | **Poster and 'unconferencing' slot: Poster viewing and general discussion** | n/a |
 | 12:00 | Main   | **CMIP and CORDEX interactions and use of CF Conventions** | Paul Smith (CMIP IPO) |
 | 12:30 |        | **Lunch break** |  |
 | 14:00 | Main   | **WMO Cloud-optimized future data infrastructure** | Jeremy Tandy |

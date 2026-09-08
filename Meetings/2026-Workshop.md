@@ -65,6 +65,7 @@ table.agenda > tbody > tr > td:nth-child(4) {
 - **Format:** Hybrid event  
 - **Registration:** [ECMWF Events registration page](https://events.ecmwf.int/event/568/registrations/440/)  
 - **Event pages:** [ECMWF Events](https://events.ecmwf.int/event/568/) and [Copernicus Climate Change Service](https://climate.copernicus.eu/cf-conventions-community-workshop-2026)
+- **Agenda:** [Complete agenda](#agenda)
 
 This page records the main information for the 2026 CF Conventions Community Workshop for the CF Conventions meeting archive. The official event and registration pages are hosted by ECMWF and the Copernicus Climate Change Service.
 
@@ -102,8 +103,6 @@ Community input is being collected through GitHub Discussions:
 - [Call for talks and presentations](https://github.com/orgs/cf-convention/discussions/475)
 
 Participants wishing to propose a presentation, poster, breakout, or hackathon topic should use the relevant GitHub discussion. The published deadline for contributions is **17 August 2026**.
-
-A detailed agenda will be published closer to the event.
 
 ## Participation and registration
 
@@ -150,7 +149,7 @@ Sources checked on 30 June 2026:
 - <https://events.ecmwf.int/event/568/>
 - <https://climate.copernicus.eu/cf-conventions-community-workshop-2026>
 
-## Draft Agenda
+## Agenda
 
 ### Day 1 - Monday, 21 September 2026
 
@@ -159,17 +158,17 @@ Sources checked on 30 June 2026:
 |:-------------|:-------|:-----------------------------------------------------|:----------------------------------------------|
 | 13:00 | Main   | **Arrivals and coffee** |   |
 | 14:00 | Main   | **Welcome and Overview of meeting structure**  | TBD  |
-| 14:10 | Main   | **Introduction to CF** |  Jonathan Gregory  |
-|       |        | **CF Governance Processes** |  Ethan Davis  |
+| 14:10 | Main   | **Introduction to CF** | Jonathan Gregory  |
+|       |        | **CF Governance Processes** | Ethan Davis  |
 |       |        | **What will be in CF 1.14** | Sadie Bartholomew    |
 | 15:00 | Main   | **Coffee break / screen break** |  |
 | 15:30 | Main   | **Standard names / Vocabularies** | Alison Pamment   |
 | 16:00 | Main | **Introduction to today's breakout sessions** | |
 | 16:10 |      | **Breakouts / Hackathons** | |
-|       | Room? | **CF Profiles, work through with Satellite Swath data** | Ethan Davis |
-|       | Room? | **Data standards for oil spill models** | Chris Barker (confirmed) |
-| 17:30 |       | **Adjourn** |  |
-| 19:00? | TBD | **Workshop dinner** |  |
+|       | Room 1 | **CF Profiles, work through with Satellite Swath data** | Ethan Davis |
+|       | Room 2 | **Data standards for oil spill models** | Chris Barker |
+| 17:30 |        | **Adjourn** |  |
+| 18:30 | TBA    | **Workshop dinner** |  |
 
 ### Day 2 - Tuesday, 22 September 2026
 
@@ -180,19 +179,20 @@ Sources checked on 30 June 2026:
 | 09:30 | Main   | **Uncertainty metadata in CF** | David Hassell, Sam Hunt  |
 | 10:00 | Main   | **Units of measure in CF and elsewhere** | Lars Bärring  |
 | 10:30 | Main   | **Coffee break / screen break** |  |
-| 11:00 | Main | **Introduction to today's breakout sessions** | |
-| 11:10 |      | **Breakouts / Hackathons** | |
-|       | Room? | **Uncertainty** | David Hassell |
-|       | Room? | **BCP 14** | Sadie Bartholomew |
-| 12:30 |        | **Lunch break** |  |
-| 14:00 | Main   | **CF and GRIB** | Sébastien Villaume and Pawel Wolff |
+| 11:00 | Main   | **Introduction to today's breakout sessions** | |
+| 11:10 |        | **Breakouts / Hackathons** | |
+|       | Room 1 | **Uncertainty** | David Hassell |
+|       | Room 2 | **BCP 14** | Sadie Bartholomew |
+| 12:30 |        | **Lunch break and group photograph** |  |
+| 14:00 | Main   | **CF and GRIB** | Sébastien Villaume |
+| 14:20 | Main   | **CF and Earthkit** | Pawel Wolff |
 | 14:40 | Main   | **Implementing CF semantics in BUFR** | Marijana Crepulja |
 | 15:00 | Main   | **Coffee break / screen break** |  |
-| 15:30 | Main   | **World Meteorological Organization CF-NetCDF profiles and governance** | David I. Berry, Kevin O'Brien, Bibraj Raj, ??more authors? |
-| 16:00 | Main   | **GeoZarr and CF** | Max Jones (TBC) |
+| 15:30 | Main   | **World Meteorological Organization CF-NetCDF profiles and governance** | David I. Berry |
+| 16:00 | Main   | **How CF maps to Zarr and relates to GeoZarr** | Max Jones |
 | 16:30 | Main   | **Implementing CF semantics in Zarr** | Patrick van Laake |
 | 17:00 | Main   | **Discussion of mappings** | |
-| 17:30 |       | **Adjourn** |  |
+| 17:30 |        | **Adjourn** |  |
 
 ### Day 3 - Wednesday, 23 September 2026
 
@@ -200,24 +200,24 @@ Sources checked on 30 June 2026:
 | Local Time (Bonn)   | Room   | Session  | Presenter/Chair   |
 |:-------------|:-------|:-----------------------------------------------------|:----------------------------------------------|
 | 09:00 | Main   | **Coffee and welcome** |   |
-| 09:30 | Main | **Introduction to today's breakout sessions** | |
-| 09:40 |      | **Breakouts / Hackathons** | |
-|       | Room? | **Housekeeping** | ?? |
-|       | Room? | **Standard names for chemical species** | Lorea Garcia San Martin |
+| 09:30 | Main   | **Introduction to today's breakout sessions** | |
+| 09:40 |        | **Breakouts / Hackathons** | |
+|       | Room 1 | **Housekeeping** | TBA |
+|       | Room 2 | **Standard names for chemical species** | Lorea Garcia San Martin |
 | 10:30 | Main   | **Coffee break / screen break** |  |
-| 11:00 | Main   | **Copernicus** | Chris Goddard (Has this been confirmed???) |
+| 11:00 | Main   | **Example C3S uses of CF and netCDF** | Chris Goddard |
 | 11:30 | Main   | **'Unconferencing' slot: no set agenda, time to discuss topics that arose or continue breakout work** | n/a |
 | 12:00 | Main   | **CMIP and CORDEX interactions and use of CF Conventions** | Paul Smith (CMIP IPO) |
 | 12:30 |        | **Lunch break** |  |
 | 14:00 | Main   | **WMO Cloud-optimized future data infrastructure** | Jeremy Tandy |
 | 14:30 | Main   | **BADC-CSV adoption by the IPCC community** | Charlotte Pascoe |
 | 15:00 | Main   | **Coffee break / screen break** |  |
-| 15:30 | Main   | **CF Checkers** | Filipe P. A. Fernandes + Sadie Bartholomew |
-| 16:00 | Main | **Introduction to today's breakout sessions** | |
-| 16:10 |      | **Breakouts / Hackathons** | |
-|       | Room? | **Separating CF semantics from netCDF encoding** | Patrick van Laake |
-|       | Room? | **Support localization of attribute/variable values** | Erin Turnbull & ??? |
-| 17:30 |       | **Adjourn** |  |
+| 15:30 | Main   | **CF Checkers** | Sadie Bartholomew, Filipe P. A. Fernandes|
+| 16:00 | Main   | **Introduction to today's breakout sessions** | |
+| 16:10 |        | **Breakouts / Hackathons** | |
+|       | Room 1 | **Separating CF semantics from netCDF encoding** | Patrick van Laake |
+|       | Room 2 | **Support localization of attribute/variable values** | Erin Turnbull |
+| 17:30 |        | **Adjourn** |  |
 
 ### Day 4 - Thursday, 24 September 2026
 

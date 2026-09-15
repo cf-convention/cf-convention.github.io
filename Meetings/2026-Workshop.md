@@ -153,10 +153,10 @@ Sources checked on 30 June 2026:
 ## Links
 
 The plenary sessions will be hosted online for remote attendees at this link:
-https://teams.microsoft.com/meet/392733462632533?p=HuQodAOmPaQf1GhAaI
+[https://teams.microsoft.com/meet/392733462632533?p=HuQodAOmPaQf1GhAaI](https://teams.microsoft.com/meet/392733462632533?p=HuQodAOmPaQf1GhAaI)
 
-All other online links for breakout sessions will be added to this google document: 
-https://docs.google.com/document/d/1ja4pSupgfkLG8upxnVzgWJkv8C-0geFe9cJUGBRGicw/edit?usp=sharing
+All other online links for breakout sessions will be added to this google document:
+[https://docs.google.com/document/d/1ja4pSupgfkLG8upxnVzgWJkv8C-0geFe9cJUGBRGicw/edit?usp=sharing](https://docs.google.com/document/d/1ja4pSupgfkLG8upxnVzgWJkv8C-0geFe9cJUGBRGicw/edit?usp=sharing)
 
 ## Agenda
 

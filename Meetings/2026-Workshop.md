@@ -66,6 +66,7 @@ table.agenda > tbody > tr > td:nth-child(4) {
 - **Registration:** [ECMWF Events registration page](https://events.ecmwf.int/event/568/registrations/440/)  
 - **Event pages:** [ECMWF Events](https://events.ecmwf.int/event/568/) and [Copernicus Climate Change Service](https://climate.copernicus.eu/cf-conventions-community-workshop-2026)
 - **Agenda:** [Complete agenda](#agenda)
+- **Online links for remote attendees:** [Links](#links) 
 
 This page records the main information for the 2026 CF Conventions Community Workshop for the CF Conventions meeting archive. The official event and registration pages are hosted by ECMWF and the Copernicus Climate Change Service.
 
@@ -148,6 +149,14 @@ Sources checked on 30 June 2026:
 
 - <https://events.ecmwf.int/event/568/>
 - <https://climate.copernicus.eu/cf-conventions-community-workshop-2026>
+
+## Links
+
+The plenary sessions will be hosted online for remote attendees at this link:
+https://teams.microsoft.com/meet/392733462632533?p=HuQodAOmPaQf1GhAaI
+
+All other online links for breakout sessions will be added to this google document: 
+https://docs.google.com/document/d/1ja4pSupgfkLG8upxnVzgWJkv8C-0geFe9cJUGBRGicw/edit?usp=sharing
 
 ## Agenda
 

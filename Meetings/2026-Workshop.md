@@ -158,6 +158,8 @@ The plenary sessions will be hosted online for remote attendees at this link:
 All other online links for breakout sessions will be added to this google document:
 [https://docs.google.com/document/d/1ja4pSupgfkLG8upxnVzgWJkv8C-0geFe9cJUGBRGicw/edit?usp=sharing](https://docs.google.com/document/d/1ja4pSupgfkLG8upxnVzgWJkv8C-0geFe9cJUGBRGicw/edit?usp=sharing)
 
+The presentation slides and notes from all the breakout sessions can be found under this google folder and its subfolders: [https://drive.google.com/drive/folders/1rcH2xqOX8Co2Pyj1V_oA-HVxPVQ87Dfq?usp=drive_link](https://drive.google.com/drive/folders/1rcH2xqOX8Co2Pyj1V_oA-HVxPVQ87Dfq?usp=drive_link)
+
 ## Agenda
 
 ### Day 1 - Monday, 21 September 2026

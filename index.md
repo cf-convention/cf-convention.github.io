@@ -1,8 +1,8 @@
 ---
 layout: default
 title: CF Conventions Home Page
-flash_message: "The <strong>CF Conventions Workshop 2026</strong> will take place at ECMWF, Bonn, Germany, from 21st to 24th September. See the details and register <a href='Meetings/2026-Workshop.html'><strong>here</strong></a>"
-flash_message_type: "info"  # Optional: Use 'info', 'success', 'warning', or 'error'
+#flash_message: "The <strong>CF Conventions Workshop 2026</strong> will take place at ECMWF, Bonn, Germany, from 21st to 24th September. See the details and register <a href='Meetings/2026-Workshop.html'><strong>here</strong></a>"
+#flash_message_type: "info"  # Optional: Use 'info', 'success', 'warning', or 'error'
 #hero_image: Data/media/images/CF2024_group1.JPG # Overwrites gradient if
 hero_gradient: to bottom, rgb(70, 110, 140), rgb(30, 70, 110)
 hero_header: CF Metadata Conventions # Only displays if hero_image or hero_gradient are provided

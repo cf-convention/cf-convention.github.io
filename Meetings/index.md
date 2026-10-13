@@ -8,7 +8,7 @@ group: "navigation"
 
 ## Annual CF Workshops
 
-* [2026 CF Workshop][2026] - 21-24 September 2026 - ECMWF - Bonn (Germany) - Hybrid Workshop - [Follow discussion][2026-announcement]
+* [2026 CF Workshop][2026] - 21-24 September 2026 - ECMWF - Bonn (Germany) - Hybrid Workshop
 * [2025 CF Workshop][2025] - 22-25 September 2025 - Virtual Workshop
 * [2024 CF Workshop][2024] - 17-20 September 2024 - SMHI - Norrköping (Sweden)
 * [2023 CF Workshop][2023] - 3-5 October 2023 - Virtual Workshop
@@ -34,7 +34,3 @@ group: "navigation"
 [2018]: 2018-Workshop.md
 [2017]: 2017-Workshop.md
 [2016]: 2016-Workshop.md
-
-## Other related CF meetings
-
-***To Be Completed***

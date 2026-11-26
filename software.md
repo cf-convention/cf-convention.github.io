@@ -134,7 +134,8 @@ The goal of xCDAT is to provide generalizable features and utilities for simple 
 
 ### `ncdfCF` - R package for reading and writing CF-encoded netCDF files
 
-R package [`ncdfCF`](https://cran.r-project.org/package=ncdfCF) reads and writes a wide variety of CF-encoded netCDF files, providing users with a high-level view of the dataset: all data variables are identified and associated with related data such as coordinate variables, boundary variables, auxiliary latitude-longitude grids, ancillary and external variables, formula terms, etc. The package contains a full set of functions to subset and select data, summarising over time, profiles by location or transect, as well as basic processing functions such as arithmetic and plotting.
+R package [`ncdfCF`](https://cran.r-project.org/package=ncdfCF) reads and writes a wide variety of CF-encoded netCDF files, providing users with a high-level view of the dataset: all data variables are identified and associated with related data such as coordinate variables, boundary variables, auxiliary latitude-longitude grids, ancillary and external variables, formula terms, etc.
+The package contains a full set of functions to subset and select data, summarising over time, profiles by location or transect, as well as basic processing functions such as arithmetic and plotting.
 
 ## Commercial Software Packages
 
